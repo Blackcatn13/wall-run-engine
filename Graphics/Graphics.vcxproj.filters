@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Archivos de recursos">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{40f9935f-e8d3-48b1-b599-4fd93c8552d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Font">
+      <UniqueIdentifier>{5c26019a-ea11-4370-841c-70d5b03de9ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Texture">
+      <UniqueIdentifier>{88d057bf-727b-4182-8ca4-64061019bdda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RenderableVertex">
+      <UniqueIdentifier>{7284a573-7d47-4c81-b506-91960ee24ee4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StaticMeshes">
+      <UniqueIdentifier>{0dfe7e8a-9d76-4301-8c45-b390111585ae}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GraphicsManager.cpp" />
+    <ClCompile Include="Camera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="FPSCamera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Object3D.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="ThPSCamera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Frustum.cpp" />
+    <ClCompile Include="FontManager.cpp">
+      <Filter>Font</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraController.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture\Texture.cpp">
+      <Filter>Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture\TextureManager.cpp">
+      <Filter>Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture\CubeTexture.cpp">
+      <Filter>Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture\GUITexture.cpp">
+      <Filter>Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderableVertex\VertexTypes.cpp">
+      <Filter>RenderableVertex</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticMeshes\StaticMesh.cpp">
+      <Filter>StaticMeshes</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GraphicsManager.h" />
+    <ClInclude Include="Camera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="FPSCamera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Object3D.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="ThPSCamera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Frustum.h" />
+    <ClInclude Include="FontManager.h">
+      <Filter>Font</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraController.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture\Texture.h">
+      <Filter>Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture\TextureManager.h">
+      <Filter>Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture\CubeTexture.h">
+      <Filter>Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture\GUITexture.h">
+      <Filter>Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableVertex\VertexTypes.h">
+      <Filter>RenderableVertex</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticMeshes\StaticMesh.h">
+      <Filter>StaticMeshes</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableVertex\IndexedVertexs.h">
+      <Filter>RenderableVertex</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableVertex\RenderableVertexs.h">
+      <Filter>RenderableVertex</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

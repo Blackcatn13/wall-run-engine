@@ -1,0 +1,127 @@
+#include <string>
+
+#include "Engine.h"
+#include "Process.h"
+#include "Core.h"
+#include "Utils\Defines.h"
+#include "XML\XMLTreeNode.h"
+#include "GraphicsManager.h"
+#include "LanguageManager.h"
+#include "InputManager.h"
+#include "ActionToInput.h"
+#include "Utils\Logger.h"
+#include "LogRender.h"
+
+CEngine::~CEngine(void)
+{
+    DeInit();
+}
+
+void CEngine::Init(CProcess *p, std::string ConfFile, HWND handler)
+{
+    m_Process = p;
+    m_Core = CCore::GetInstance();
+    m_ConfFile = ConfFile;
+    ParseConfFile();
+    m_Core->setConfig (m_Conf_info);
+    m_Core->setHandler (handler);
+    m_Core->Init (handler);
+	m_LogRender = new CLogRender();
+	LOGGER->SetCapacity(500);
+	m_LogRender->SetLinePerPage(30);
+	//m_Core->GetLanguageManager()->SetXmlFile(".\\Data\\fonts.xml");
+    //m_Core->GetLanguageManager()->LoadXMLs();
+}
+
+void CEngine::DeInit()
+{
+    CHECKED_DELETE (m_Process);
+    CHECKED_DELETE (m_Core);
+	CHECKED_DELETE (m_LogRender);
+	CLogger::DeInit();
+}
+
+void CEngine::Update()
+{
+    m_Timer.Update();
+    m_Core->Update (m_Timer.GetElapsedTime());
+    m_Process->Update (m_Timer.GetElapsedTime());
+    if (m_Core->GetActionToInput()->DoAction("LoadLanguages"))
+        m_Core->GetLanguageManager()->LoadXMLs();
+    if (m_Core->GetActionToInput()->DoAction("Logger"))
+        m_Process->SetPrintInfo(!m_Process->getPrintInfo());
+    if (m_Core->GetActionToInput()->DoAction("ReloadActions"))
+        m_Core->GetActionToInput()->ReloadXML();
+	if(m_Core->GetActionToInput()->DoAction("Save2File"))
+		LOGGER->SaveLogsInFile();
+	if(m_Core->GetActionToInput()->DoAction("LoggerOpen"))
+		m_LogRender->SetVisible(!m_LogRender->GetVisible());
+	m_LogRender->Update(m_Timer.GetElapsedTime());
+}
+
+void CEngine::Render()
+{
+    CGraphicsManager* gm = m_Core->GetGraphicsManager();
+    //CCamera* camera = m_Process->getCamera();
+    gm->BeginRendering();
+    gm->SetupMatrices(m_Process->GetCamera());
+    RenderScene();
+	gm->DisbaleZBuffering();
+	gm->EnableAlphaBlend();
+    m_Process->RenderDebugInfo(true, m_Timer.GetElapsedTime());
+	m_LogRender->Render(gm, CCore::GetInstance()->GetFontManager());
+	gm->DisbaleAlphaBlend();
+	gm->EnableZBuffering();
+    gm->EndRendering();
+}
+
+void CEngine::RenderScene()
+{
+    m_Core->Render();
+    m_Process->Render();
+}
+
+void CEngine::ParseConfFile()
+{
+    CXMLTreeNode File;
+    if (!File.LoadFile(m_ConfFile.c_str())) {
+        // log error
+    } else {
+        CXMLTreeNode n = File["Config"];
+        if (n.Exists()) {
+            int count = n.GetNumChildren();
+            for (int i = 0; i < count; ++i) {
+                if (!n(i).IsComment()) {
+                    std::string name = n(i).GetName();
+                    if (name == "ScreenResolution") {
+                        m_Conf_info.Screen_Width = n(i).GetIntProperty("width");
+                        m_Conf_info.Screen_Heigth = n(i).GetIntProperty("height");
+                    } else if (name == "WindowsPosition") {
+                        m_Conf_info.Win_posX = n(i).GetIntProperty("posX");
+                        m_Conf_info.Win_posY = n(i).GetIntProperty("posY");
+                    } else if (name == "Rendermode") {
+                        m_Conf_info.FullScreen = n(i).GetBoolProperty("fullscreenMode");
+                    } else if (name == "Mouse") {
+                        m_Conf_info.Mouse_Exclusive = n(i).GetBoolProperty("exclusiveModeinMouse");
+                        m_Conf_info.Mouse_Draw = n(i).GetBoolProperty("drawPointerMouse");
+                    } else if (name == "Languages") {
+                        m_Conf_info.LanguagesPath = std::vector<std::string>();
+                        m_Conf_info.CurrentLanguage = n(i).GetPszISOProperty("current", "catalan");
+                        int languages = n (i).GetNumChildren();
+                        for (int j = 0; j < languages; ++j)
+                            m_Conf_info.LanguagesPath.push_back(n(i)(j).GetPszISOProperty("XMLfile", "./Data/catalan.xml") );
+                    } else if (name == "Fonts") {
+                        m_Conf_info.FontsPath = n(i).GetPszISOProperty("fonstXML", "./Data/fonts/fonts.xml");
+                    } else if (name == "Actions") {
+                        m_Conf_info.ActionsPath = n(i).GetPszISOProperty("actionsXML", "./Data/Actions.xml");
+                    }
+                }
+            }
+        }
+        //<ScreenResolution width="800" height="600"/>
+        //  <!--ScreenResolution width="1280" height="1024"/-->
+        //  <WindowsPosition posX="100" posY="100"/>
+        //  <Rendermode fullscreenMode="false"/>
+        //  <!--Rendermode fullscreenMode="true"/-->
+    }
+}

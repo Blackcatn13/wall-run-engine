@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Config>
+  <ScreenResolution width="800" height="600"/> 
+  <!--ScreenResolution width="1280" height="1024"/-->
+  <WindowsPosition posX="100" posY="100"/>
+  <Rendermode fullscreenMode="false"/>          
+  <!--Rendermode fullscreenMode="true"/-->
+  <Console_Logger activateConsole="true" Log_Level="INFORMATION" activateLogger="true" linesPerPageInLogger="20"/>
+  <Mouse exclusiveModeinMouse="false"  drawPointerMouse="true" />
+  <Languages current="ingles">
+    <lang XMLfile="./Data/catalan.xml"/>
+    <lang XMLfile="./Data/castellano.xml"/>
+    <lang XMLfile="./Data/ingles.xml"/>
+  </Languages>
+  <Fonts fontsXML="./Data/fonts/fonts.xml"/>
+  <Actions actionsXML="./Data/Actions.xml"/>
+  <GUI initGuiXML="./Data/GUI/initGui_laberynth.xml"/>
+  <Sound soundXML="./Data/Sounds/LaberynthSounds.xml"/>
+  <Avi aviXML=""/>
+  <PhysX initPhysX="true"/>
+  <ComputerVision initComputerVision="false"/>
+  <Script init="_core       = getCore();
+                _inputM     = getCore():getInput();
+                _renderM    = getCore():getRender();
+                _physicM    = getCore():getPhysic();
+                _textureM   = getCore():getTexture()
+                _effectM    = getCore():getEffect();
+                _guiM       = getCore():getGui();
+                _soundM     = getCore():getSound();
+                _aviPM      = getCore():getAviPlayer();
+                _networkM   = getCore():getNetwork();
+                _cvM        = getCore():getComputerVision();
+                _game       = getGameLaberynth();"/>
+  <Process initProcess="LaberynthGame"/>
+</Config>

@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Archivos de recursos">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{17384c5c-232b-4022-8abf-5864070166ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{151d0af3-ca05-466d-a9ca-4f61735e4e39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="XML">
+      <UniqueIdentifier>{2a83792f-0e9b-46c9-8678-fc173a36c56f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\LerpAnimator">
+      <UniqueIdentifier>{4c145320-81f6-401d-a2c6-16d762b0f8c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\CountDownTimer">
+      <UniqueIdentifier>{ac5e2264-ec02-46a8-9eb6-3f998831a29a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Math\MathConstants.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="XML\Example.cpp">
+      <Filter>XML</Filter>
+    </ClCompile>
+    <ClCompile Include="XML\XMLTreeNode.cpp">
+      <Filter>XML</Filter>
+    </ClCompile>
+    <ClCompile Include="LanguageManager.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\Logger.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\LerpAnimator1D.cpp">
+      <Filter>Utils\LerpAnimator</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\LerpAnimator2D.cpp">
+      <Filter>Utils\LerpAnimator</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\LerpAnimator3D.cpp">
+      <Filter>Utils\LerpAnimator</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\CountDownTimer.cpp">
+      <Filter>Utils\CountDownTimer</Filter>
+    </ClCompile>
+    <ClCompile Include="Exception.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Math\MathTypes.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\MathUtils.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Matrix33.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Matrix34.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Matrix44.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Vector2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Vector3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Vector4.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="XML\XMLTreeNode.h">
+      <Filter>XML</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\Types.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\Defines.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Color.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="LanguageManager.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\BaseUtils.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\Logger.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\LerpAnimator1D.h">
+      <Filter>Utils\LerpAnimator</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\LerpAnimator2D.h">
+      <Filter>Utils\LerpAnimator</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\LerpAnimator3D.h">
+      <Filter>Utils\LerpAnimator</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\CountDownTimer.h">
+      <Filter>Utils\CountDownTimer</Filter>
+    </ClInclude>
+    <ClInclude Include="Exception.h" />
+    <ClInclude Include="MapManager.h" />
+    <ClInclude Include="TemplatedVectorMapManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Math\MathUtils.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="Math\Matrix33.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="Math\Matrix34.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="Math\Matrix44.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="Math\Vector2.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="Math\Vector3.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="Math\Vector4.inl">
+      <Filter>Math</Filter>
+    </None>
+    <None Include="Math\Color.inl">
+      <Filter>Math</Filter>
+    </None>
+  </ItemGroup>
+</Project>

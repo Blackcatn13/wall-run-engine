@@ -1,0 +1,3 @@
+<static_meshes>
+	<static_mesh name="box" filename="meshes/a.mesh"/>
+</static_meshes>

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Archivos de recursos">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Enemies">
+      <UniqueIdentifier>{1e36a9de-b2c5-49c5-a773-a531fb5a2680}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test Input">
+      <UniqueIdentifier>{5a615ad8-0f61-46f8-b34a-c093703c835c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test">
+      <UniqueIdentifier>{d17c3f74-04e5-4bcd-9a28-20573eea22c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="spce">
+      <UniqueIdentifier>{037fdbe4-ed8a-438e-a2dd-f3bddb4344c2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="videogame.cpp" />
+    <ClCompile Include="Enemies\EasyEnemy.cpp">
+      <Filter>Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemies\PatrolEnemy.cpp">
+      <Filter>Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemies\BossEnemy.cpp">
+      <Filter>Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemies\EnemyManager.cpp">
+      <Filter>Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemies\Enemy.cpp">
+      <Filter>Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="VideoGame_Process.cpp">
+      <Filter>Test Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_Process.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_Space.cpp">
+      <Filter>spce</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Enemies\EasyEnemy.h">
+      <Filter>Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemies\PatrolEnemy.h">
+      <Filter>Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemies\BossEnemy.h">
+      <Filter>Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemies\Enemy.h">
+      <Filter>Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemies\EnemyManager.h">
+      <Filter>Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="VideoGame_Process.h">
+      <Filter>Test Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Test_Process.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="Test_Space.h">
+      <Filter>spce</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

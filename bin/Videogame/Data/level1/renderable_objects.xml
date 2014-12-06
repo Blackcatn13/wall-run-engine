@@ -1,0 +1,3 @@
+<renderable_objects>
+	<mesh_instance name="box1" core="box" pos="0.0 0.0 0.0" yaw="0" pitch="0" roll="0" scale="2"/>
+</renderable_objects>

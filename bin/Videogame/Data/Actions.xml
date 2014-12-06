@@ -1,0 +1,115 @@
+<Actions>
+    <action name="CommutationCamera">
+   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_C"/>
+   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP"  Code="KEY_TAB"/>
+    </action>
+ 
+    <action name="Logger">
+   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
+   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP"  Code="KEY_F1"/>
+    </action>
+	
+	<action name="LoggerOpen">
+   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
+   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP"  Code="KEY_F3"/>
+    </action>
+	
+	<action name="Save2File">
+   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
+   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP"  Code="KEY_F2"/>
+    </action>
+
+    <action name="LoadLanguages">
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_F5"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_L"/>
+    </action>
+
+    <action name="ChangeCatalan">
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_1"/>
+    </action>
+
+    <action name="ChangeCastellano">
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_2"/>
+    </action>
+
+    <action name="ChangeIngles">
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_3"/>
+    </action>
+
+    <action name="ReloadActions">
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_F5"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_A"/>
+    </action>
+
+    <action name="yaw">
+    	<input deviceType="IDV_MOUSE" AxisType="AXIS_MOUSE_X"/>
+    </action>
+
+    <action name="pitch">
+    	<input deviceType="IDV_MOUSE" AxisType="AXIS_MOUSE_Y"/>
+    </action>
+
+    <action name="scroll">
+    	<input deviceType="IDV_MOUSE" AxisType="AXIS_MOUSE_Z"/>
+    </action>
+	
+	<action name="scrollLittle">
+    	<input deviceType="IDV_MOUSE" AxisType="AXIS_MOUSE_Z"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LSHIFT"/>
+    </action>
+
+    <action name="MoveForward">
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_W"/>
+    </action>
+
+    <action name="MoveBack">
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_S"/>
+    </action>
+
+    <action name="MoveRigth">
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_D"/>
+    </action>
+
+    <action name="MoveLeft">
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_A"/>
+    </action>
+	
+	<action name="PanX">
+		<input deviceType="IDV_MOUSE" EventType="EVENT_DOWN" Code="MOUSE_BUTTON_LEFT"/>
+		<input deviceType="IDV_MOUSE" AxisType="AXIS_MOUSE_X"/>
+	</action>
+	
+	<action name="PanY">
+		<input deviceType="IDV_MOUSE" EventType="EVENT_DOWN" Code="MOUSE_BUTTON_LEFT"/>
+		<input deviceType="IDV_MOUSE" AxisType="AXIS_MOUSE_Y"/>
+	</action>
+	
+	<action name="RotX">
+		<input deviceType="IDV_MOUSE" EventType="EVENT_DOWN" Code="MOUSE_BUTTON_RIGHT"/>
+		<input deviceType="IDV_MOUSE" AxisType="AXIS_MOUSE_X"/>
+	</action>
+	
+	<action name="RotY">
+		<input deviceType="IDV_MOUSE" EventType="EVENT_DOWN" Code="MOUSE_BUTTON_RIGHT"/>
+		<input deviceType="IDV_MOUSE" AxisType="AXIS_MOUSE_Y"/>
+	</action>
+	
+	<action name="ToggleFPSCam">
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_C"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP"  Code="KEY_0"/>
+	</action>
+	
+	<action name="FlyMode">
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_SPACE"/>
+	</action>
+
+    <action name="ReloadMeshes">
+        <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_F9"/>
+    </action>
+
+    <action name="ReloadTextures">
+        <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_F8"/>
+    </action>
+	
+</Actions>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Language id="ingles">
+	<literal id="OpenDebug"  font="arial"  color="1 1 1 0.9" value="Press 'Logger' to get debug info"/>
+</Language>
