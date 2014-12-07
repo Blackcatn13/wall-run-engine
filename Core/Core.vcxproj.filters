@@ -22,42 +22,46 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Core.cpp">
+    <ClCompile Include="Core\Core.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="Engine.cpp">
+    <ClCompile Include="Core\Engine.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Process.cpp">
+    <ClCompile Include="Core\Process.cpp">
       <Filter>Process</Filter>
     </ClCompile>
-    <ClCompile Include="Timer.cpp">
+    <ClCompile Include="Core_Utils\MemLeaks.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="LogRender.cpp">
+    <ClCompile Include="Core_Utils\Timer.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Core_Utils\LogRender.cpp">
       <Filter>LogRender</Filter>
     </ClCompile>
-    <ClCompile Include="MemLeaks.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Core.h">
+    <ClInclude Include="Core\Core.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Engine.h">
+    <ClInclude Include="Core\Engine.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="EngineDefs.h">
+    <ClInclude Include="Core\EngineDefs.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Process.h">
+    <ClInclude Include="Core\Process.h">
       <Filter>Process</Filter>
     </ClInclude>
-    <ClInclude Include="Timer.h">
+    <ClInclude Include="Core_Utils\MemLeaks.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="LogRender.h">
+    <ClInclude Include="Core_Utils\Timer.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Core_Utils\LogRender.h">
       <Filter>LogRender</Filter>
     </ClInclude>
-    <ClInclude Include="MemLeaks.h" />
   </ItemGroup>
 </Project>

@@ -1,12 +1,12 @@
 #include "StaticMesh.h"
-#include "Texture\Texture.h"
-#include "RenderableVertex\RenderableVertexs.h"
+#include "Texture/Texture.h"
+#include "RenderableVertex/RenderableVertexs.h"
 #include "GraphicsManager.h"
-#include "RenderableVertex\VertexTypes.h"
-#include "RenderableVertex\IndexedVertexs.h"
-#include "Core.h"
+#include "RenderableVertex/VertexTypes.h"
+#include "RenderableVertex/IndexedVertexs.h"
+#include "Core/Core.h"
 #include <cstdio>
-#include "Utils\Logger.h"
+#include "Utils/Logger.h"
 
 CStaticMesh::CStaticMesh() : m_NumVertexs(0),
     m_NumFaces(0)
@@ -75,7 +75,7 @@ bool CStaticMesh::Load (const std::string &FileName)
                 fread(index_list , n_idxs * sizeof(unsigned short), 1, f);
                 CRenderableVertexs *l_rv = NULL;
                 if (vertex_type[i] == TTEXTURE_NORMAL_VERTEX::GetVertexType())
-                    l_rv = new CIndexedVertexs<TTEXTURE_NORMAL_VERTEX>(CCore::GetInstance()->GetGraphicsManager(), vertex_list, index_list, n_vtxs, n_idxs);
+                    l_rv = new CIndexedVertexs<TTEXTURE_NORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
                 m_RVs.push_back(l_rv);
                 delete(vertex_list);
                 delete(index_list);

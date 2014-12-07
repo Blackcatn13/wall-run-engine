@@ -20,6 +20,15 @@
     <Filter Include="Utils\CountDownTimer">
       <UniqueIdentifier>{ac5e2264-ec02-46a8-9eb6-3f998831a29a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Language">
+      <UniqueIdentifier>{1c385cf1-e3ed-424e-a501-673e1371c855}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\Exception">
+      <UniqueIdentifier>{81bf42d7-cefd-4136-9fce-ccd7b4dfca47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\Logger">
+      <UniqueIdentifier>{a3881211-3e86-4598-be0c-07808c68ebde}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Math\MathConstants.cpp">
@@ -30,12 +39,6 @@
     </ClCompile>
     <ClCompile Include="XML\XMLTreeNode.cpp">
       <Filter>XML</Filter>
-    </ClCompile>
-    <ClCompile Include="LanguageManager.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="Utils\Logger.cpp">
-      <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="Utils\LerpAnimator1D.cpp">
       <Filter>Utils\LerpAnimator</Filter>
@@ -49,7 +52,15 @@
     <ClCompile Include="Utils\CountDownTimer.cpp">
       <Filter>Utils\CountDownTimer</Filter>
     </ClCompile>
-    <ClCompile Include="Exception.cpp" />
+    <ClCompile Include="Language\LanguageManager.cpp">
+      <Filter>Language</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\Exception.cpp">
+      <Filter>Utils\Exception</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\Logger.cpp">
+      <Filter>Utils\Logger</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Math\MathTypes.h">
@@ -88,13 +99,7 @@
     <ClInclude Include="Math\Color.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="LanguageManager.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
     <ClInclude Include="Utils\BaseUtils.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Utils\Logger.h">
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="Utils\LerpAnimator1D.h">
@@ -109,9 +114,21 @@
     <ClInclude Include="Utils\CountDownTimer.h">
       <Filter>Utils\CountDownTimer</Filter>
     </ClInclude>
-    <ClInclude Include="Exception.h" />
-    <ClInclude Include="MapManager.h" />
-    <ClInclude Include="TemplatedVectorMapManager.h" />
+    <ClInclude Include="Utils\MapManager.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\TemplatedVectorMapManager.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Language\LanguageManager.h">
+      <Filter>Language</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\Exception.h">
+      <Filter>Utils\Exception</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\Logger.h">
+      <Filter>Utils\Logger</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Math\MathUtils.inl">

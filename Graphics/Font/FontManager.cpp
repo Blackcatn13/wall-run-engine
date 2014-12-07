@@ -1,8 +1,8 @@
 #include "FontManager.h"
-#include "Core.h"
-#include "LanguageManager.h"
+#include "Core/Core.h"
+#include "Language/LanguageManager.h"
 #include "Utils/Logger.h"
-#include "Exception.h"
+#include "Utils/Exception.h"
 #include "GraphicsManager.h"
 #include "xml/XMLTreeNode.h"
 //#include "Script/ScriptManager.h"
@@ -94,7 +94,7 @@ bool CFontManager::LoadTTFs (const std::string& pathFile)
                 if (id == 1) {
                     m_vTTFsFiles.push_back(file);
                     m_TTFs[fontId] = CreateFont(size, bold, italica, name, _default);
-                    LOGGER->AddNewLog(ELL_INFORMATION, "LoadFonts:: Add font %s (file:%s,size:%d,bold:%d,italica:%d,default:%d),",fontId.c_str(), file.c_str(), size, bold, italica, _default);
+                    LOGGER->AddNewLog(ELL_INFORMATION, "LoadFonts:: Add font %s (file:%s,size:%d,bold:%d,italica:%d,default:%d),", fontId.c_str(), file.c_str(), size, bold, italica, _default);
                 } else {
                     LOGGER->AddNewLog(ELL_ERROR, "LoadFonts:: no se ha podido añadir el ttf file: %s", file.c_str());
                     //CORE->SetAssetError(ASSET_ERROR_TTF);
@@ -177,7 +177,7 @@ Vect2i CFontManager::GetDefaultTextSize(uint32 x, uint32 y, CColor color, const 
     DWORD color_aux = color.GetUint32Argb();
     assert(m_Fonts.size() > 0);
     m_Fonts[0]->DrawText( NULL, buffer, -1, &rect, DT_CALCRECT, color_aux );
-	free(buffer);
+    free(buffer);
     return Vect2i(rect.right - rect.left, rect.bottom - rect.top);
 }
 
@@ -217,13 +217,13 @@ Vect2i CFontManager::GetTextSize(uint32 x, uint32 y, CColor color, uint32 idFont
     // Calcular el tamaño del rectangulo necesario para pintar ese texto
     assert(m_Fonts.size() > idFont );
     m_Fonts[idFont]->DrawText( NULL, buffer, -1, &rect, DT_CALCRECT, color_aux );
-	free(buffer);
+    free(buffer);
     return Vect2i(rect.right - rect.left, rect.bottom - rect.top);
 }
 
 uint32 CFontManager::DrawLiteral (uint32 x, uint32 y, const std::string & s_lit)
 {
-    CLanguageManager* languageM = CCore::GetInstance()->GetLanguageManager();
+    CLanguageManager* languageM = LANGM;
     SLiteral lit;
     if (languageM->GetLiteral(s_lit, lit)) {
         int32 ttfId = GetTTF_Id(lit.m_sFontId);
@@ -238,7 +238,7 @@ uint32 CFontManager::DrawLiteral (uint32 x, uint32 y, const std::string & s_lit)
 
 Vect2i CFontManager::GetLiteralSize (uint32 x, uint32 y, const std::string & s_lit)
 {
-    CLanguageManager* languageM = CCore::GetInstance()->GetLanguageManager();
+    CLanguageManager* languageM = LANGM;
     SLiteral lit;
     if (languageM->GetLiteral(s_lit, lit)) {
         int32 ttfId = GetTTF_Id(lit.m_sFontId);

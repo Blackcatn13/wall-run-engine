@@ -2,15 +2,15 @@
 #include <string>
 #include <exception>
 #include <assert.h>
-#include "Math\Color.h"
+#include "Math/Color.h"
 #include "InputManager.h"
-#include "Core.h"
-#include "Math\MathUtils.h"
-#include "Camera.h"
-#include "Math\Matrix44.h"
+#include "Core/Core.h"
+#include "Math/MathUtils.h"
+#include "Camera/Camera.h"
+#include "Math/Matrix44.h"
 #include <vector>
-#include "Utils\Logger.h"
-#include "Exception.h"
+#include "Utils/Logger.h"
+#include "Utils/Exception.h"
 
 CGraphicsManager::CGraphicsManager()
 {
@@ -20,7 +20,7 @@ CGraphicsManager::CGraphicsManager()
     m_posCam = Vect3f(-1.f, 1.f, -1.f);
     m_yaw = 0;
     m_pitch = 0;
-	m_bPaintSolid = true;
+    m_bPaintSolid = true;
 }
 
 CGraphicsManager::~CGraphicsManager()
@@ -41,7 +41,7 @@ void CGraphicsManager::Update()
 
 bool CGraphicsManager::Init (HWND hWnd, bool fullscreenMode, uint32 widthScreen, uint32 heightScreen)
 {
-LOGGER->AddNewLog(ELL_INFORMATION, "RenderManager:: Inicializando la libreria Direct3D");
+    LOGGER->AddNewLog(ELL_INFORMATION, "RenderManager:: Inicializando la libreria Direct3D");
 // Create the D3D object.
     m_pD3D = Direct3DCreate9( D3D_SDK_VERSION );
     assert(m_pD3D);
@@ -99,7 +99,7 @@ LOGGER->AddNewLog(ELL_INFORMATION, "RenderManager:: Inicializando la libreria Di
             } else {
                 GetWindowRect(hWnd);
             }
-            LOGGER->AddNewLog(ELL_INFORMATION, "RenderManager:: La resolucion de pantalla es (%dx%d)",m_uWidth,m_uHeight);
+            LOGGER->AddNewLog(ELL_INFORMATION, "RenderManager:: La resolucion de pantalla es (%dx%d)", m_uWidth, m_uHeight);
         }
         if (!m_bIsOk) {
             std::string msg_error = "Rendermanager::Init-> Error al inicializar Direct3D";
@@ -168,7 +168,7 @@ void CGraphicsManager::SetupMatrices(CCamera* camera)
         //1 D3DXVECTOR3 l_Eye(-10.0f,0.0f,0.0f), l_LookAt(0.0f,0.0f,0.0f), l_VUP(0.0f,1.0f,0.0f);
         //2 D3DXVECTOR3 l_Eye(0.0f,10.0f,0.0f), l_LookAt(0.0f,0.0f,0.0f), l_VUP(0.0f,0.0f,1.0f);
         //3
-        /*CInputManager* im = CCore::GetInstance()->GetInputManager();
+        /*CInputManager* im = INPUTM;
         D3DXVECTOR3 l_Eye(0.0f,-10.0f,0.0f), l_LookAt(0.0f,0.0f,0.0f), l_VUP(0.0f,1.0f,0.0f);
         m_yaw -= im->GetMouseDelta().x;
         m_pitch -= im->GetMouseDelta().y;
@@ -295,83 +295,60 @@ void CGraphicsManager::DrawGrid(float Size, CColor Color, int GridX, int32 GridZ
 
 void CGraphicsManager::DrawPlane (float size, const Vect3f& normal, float distance, CColor Color, int32 GridX, int32 GridZ, ETypeModePaint mode )
 {
-	D3DXMATRIX matrix;
-	D3DXMatrixIdentity(&matrix);
-	m_pD3DDevice->SetTransform(D3DTS_WORLD, &matrix);
-
-	//Ax + By + Cz + D = 0
-	//if (x,y) = (0,0) then z = -D/C
-	//if (x,y) = (1,1) then z = (-D-A-B)/C
-	//With two points we have a vector-->
-
-	float A,B,C,D;
-	A = normal.x; 
-	B = normal.y; 
-	C = normal.z; 
-	D = distance; 
-
-
-	Vect3f pointA, pointB;
-	if( C!= 0)
-	{
-		pointA = Vect3f(0.f,0.f, -D/C);
-		pointB = Vect3f(1.f,1.f, (D-A-B)/C);
-	}
-	else if( B!= 0)
-	{
-		pointA = Vect3f(0.f,-D/B, 0.f);
-		pointB = Vect3f(1.f,(-D-A-C)/B,1.f);
-	}
-	else if( A != 0)
-	{
-		pointA = Vect3f(-D/A,0.f, 0.f);
-		pointB = Vect3f((-D-B-C)/A,1.f,1.f);
-	}
-	else
-	{
-		//error.
-	}
-
-	Vect3f vectorA = pointB - pointA;
-	vectorA.Normalize();
-	Vect3f vectorB;
-	vectorB = vectorA ^ normal; //cross product
-	vectorB.Normalize();
-	Vect3f initPoint = normal*distance;
-
-	assert(GridX>0);
-	assert(GridZ>0);
-
-	if (mode != PAINT_WIREFRAME)
-	{
-		Vect3f initP = normal*(distance+0.1f);
-		DrawQuad3D(initP, vectorA, vectorB,	size,	size,	Color);
-	}
-
-	if (mode != PAINT_SOLID)
-	{
-		if (mode == PAINT_BOTH)
-		{
-			//si es solid las lineas las pintamos blancas:
-			Color = colWHITE;
-		}
-		//LINEAS EN Z
-		Vect3f initPointA = initPoint - vectorB*size*0.5;
-		for(int b=0;b<=GridX;++b)
-		{		
-			DrawLine(	initPointA + vectorA*size*0.5, initPointA - vectorA*size*0.5, Color );
-
-			initPointA += vectorB*size/(float)GridX;
-		}
-		initPointA = initPoint - vectorA*size*0.5;
-		for(int b=0;b<=GridX;++b)
-		{
-			DrawLine(	initPointA + vectorB*size*0.5, initPointA - vectorB*size*0.5, Color);
-
-			initPointA += vectorA*size/(float)GridX;
-		}
-	}
-	
+    D3DXMATRIX matrix;
+    D3DXMatrixIdentity(&matrix);
+    m_pD3DDevice->SetTransform(D3DTS_WORLD, &matrix);
+    //Ax + By + Cz + D = 0
+    //if (x,y) = (0,0) then z = -D/C
+    //if (x,y) = (1,1) then z = (-D-A-B)/C
+    //With two points we have a vector-->
+    float A, B, C, D;
+    A = normal.x;
+    B = normal.y;
+    C = normal.z;
+    D = distance;
+    Vect3f pointA, pointB;
+    if ( C != 0) {
+        pointA = Vect3f(0.f, 0.f, -D / C);
+        pointB = Vect3f(1.f, 1.f, (D - A - B) / C);
+    } else if ( B != 0) {
+        pointA = Vect3f(0.f, -D / B, 0.f);
+        pointB = Vect3f(1.f, (-D - A - C) / B, 1.f);
+    } else if ( A != 0) {
+        pointA = Vect3f(-D / A, 0.f, 0.f);
+        pointB = Vect3f((-D - B - C) / A, 1.f, 1.f);
+    } else {
+        //error.
+    }
+    Vect3f vectorA = pointB - pointA;
+    vectorA.Normalize();
+    Vect3f vectorB;
+    vectorB = vectorA ^ normal; //cross product
+    vectorB.Normalize();
+    Vect3f initPoint = normal * distance;
+    assert(GridX > 0);
+    assert(GridZ > 0);
+    if (mode != PAINT_WIREFRAME) {
+        Vect3f initP = normal * (distance + 0.1f);
+        DrawQuad3D(initP, vectorA, vectorB,	size,	size,	Color);
+    }
+    if (mode != PAINT_SOLID) {
+        if (mode == PAINT_BOTH) {
+            //si es solid las lineas las pintamos blancas:
+            Color = colWHITE;
+        }
+        //LINEAS EN Z
+        Vect3f initPointA = initPoint - vectorB * size * 0.5;
+        for (int b = 0; b <= GridX; ++b) {
+            DrawLine(	initPointA + vectorA * size * 0.5, initPointA - vectorA * size * 0.5, Color );
+            initPointA += vectorB * size / (float)GridX;
+        }
+        initPointA = initPoint - vectorA * size * 0.5;
+        for (int b = 0; b <= GridX; ++b) {
+            DrawLine(	initPointA + vectorB * size * 0.5, initPointA - vectorB * size * 0.5, Color);
+            initPointA += vectorA * size / (float)GridX;
+        }
+    }
 }
 
 
@@ -593,228 +570,191 @@ void CGraphicsManager::CalculateAlignment (uint32 w, uint32 h, ETypeAlignment al
 
 void CGraphicsManager::EnableAlphaBlend ()
 {
-	m_pD3DDevice->SetRenderState( D3DRS_ALPHABLENDENABLE, TRUE );
-	// render el quad de difuminacion....
-
-	m_pD3DDevice->SetRenderState ( D3DRS_SRCBLEND, D3DBLEND_SRCALPHA  );
-	m_pD3DDevice->SetRenderState ( D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA );
-	//// render el quad de difuminacion....
-	m_pD3DDevice->SetTextureStageState( 0, D3DTSS_ALPHAOP, D3DTOP_MODULATE );
-	m_pD3DDevice->SetTextureStageState( 0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE ); 
-	m_pD3DDevice->SetTextureStageState( 0, D3DTSS_ALPHAARG2, D3DTA_DIFFUSE ); 
+    m_pD3DDevice->SetRenderState( D3DRS_ALPHABLENDENABLE, TRUE );
+    // render el quad de difuminacion....
+    m_pD3DDevice->SetRenderState ( D3DRS_SRCBLEND, D3DBLEND_SRCALPHA  );
+    m_pD3DDevice->SetRenderState ( D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA );
+    //// render el quad de difuminacion....
+    m_pD3DDevice->SetTextureStageState( 0, D3DTSS_ALPHAOP, D3DTOP_MODULATE );
+    m_pD3DDevice->SetTextureStageState( 0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE );
+    m_pD3DDevice->SetTextureStageState( 0, D3DTSS_ALPHAARG2, D3DTA_DIFFUSE );
 }
 
 void CGraphicsManager::DisbaleAlphaBlend ()
 {
-	m_pD3DDevice->SetRenderState( D3DRS_ALPHABLENDENABLE, FALSE );	
+    m_pD3DDevice->SetRenderState( D3DRS_ALPHABLENDENABLE, FALSE );
 }
 
 
 void CGraphicsManager::EnableZBuffering ()
 {
-	m_pD3DDevice->SetRenderState( D3DRS_ALPHABLENDENABLE, TRUE );
+    m_pD3DDevice->SetRenderState( D3DRS_ALPHABLENDENABLE, TRUE );
 }
 
 void CGraphicsManager::DisbaleZBuffering ()
 {
-	m_pD3DDevice->SetRenderState( D3DRS_ALPHABLENDENABLE, FALSE );	
+    m_pD3DDevice->SetRenderState( D3DRS_ALPHABLENDENABLE, FALSE );
 }
 
 bool CGraphicsManager::isSphereVisible(Vect3f pos, float rad)
 {
-	return m_Frustum.SphereVisible(D3DXVECTOR3(pos.x, pos.y, pos.z), rad);
+    return m_Frustum.SphereVisible(D3DXVECTOR3(pos.x, pos.y, pos.z), rad);
 }
 
 void CGraphicsManager::DrawRectangle2D (	const Vect2i& pos, uint32 w, uint32 h, CColor& backGroundColor,
-																				uint32 edge_w, uint32 edge_h, CColor& edgeColor )
+        uint32 edge_w, uint32 edge_h, CColor& edgeColor )
 {
-	//Draw background quad2D:
-	DrawQuad2D(pos, w, h, UPPER_LEFT, backGroundColor);
-		
-	//Draw the four edges:
-
-	//2 Horizontal:
-	Vect2i pos_aux = pos;
-	pos_aux.y -= edge_h;
-	DrawQuad2D(pos_aux, w, edge_h, UPPER_LEFT, edgeColor);
-	pos_aux = pos;
-	pos_aux.y += h;
-	DrawQuad2D(pos_aux, w, edge_h, UPPER_LEFT, edgeColor);
-	
-	//2 Vertical:
-	pos_aux = pos;
-	pos_aux.x -= edge_w;
-	pos_aux.y -= edge_h;
-	DrawQuad2D(pos_aux, edge_w, h + (2*edge_w), UPPER_LEFT, edgeColor);
-	pos_aux.x = pos.x + w;
-	DrawQuad2D(pos_aux, edge_w, h + (2*edge_w), UPPER_LEFT, edgeColor);	
+    //Draw background quad2D:
+    DrawQuad2D(pos, w, h, UPPER_LEFT, backGroundColor);
+    //Draw the four edges:
+    //2 Horizontal:
+    Vect2i pos_aux = pos;
+    pos_aux.y -= edge_h;
+    DrawQuad2D(pos_aux, w, edge_h, UPPER_LEFT, edgeColor);
+    pos_aux = pos;
+    pos_aux.y += h;
+    DrawQuad2D(pos_aux, w, edge_h, UPPER_LEFT, edgeColor);
+    //2 Vertical:
+    pos_aux = pos;
+    pos_aux.x -= edge_w;
+    pos_aux.y -= edge_h;
+    DrawQuad2D(pos_aux, edge_w, h + (2 * edge_w), UPPER_LEFT, edgeColor);
+    pos_aux.x = pos.x + w;
+    DrawQuad2D(pos_aux, edge_w, h + (2 * edge_w), UPPER_LEFT, edgeColor);
 }
 
 void CGraphicsManager::GetRay (const Vect2i& mousePos, Vect3f& posRay, Vect3f& dirRay)
 {
-	D3DXMATRIX projectionMatrix, viewMatrix, worldViewInverse, worldMatrix;
-
-	m_pD3DDevice->GetTransform(D3DTS_PROJECTION, &projectionMatrix);
-	m_pD3DDevice->GetTransform(D3DTS_VIEW, &viewMatrix);
-	m_pD3DDevice->GetTransform(D3DTS_WORLD, &worldMatrix);
-
-	float angle_x = (((2.0f * mousePos.x) / m_uWidth) - 1.0f) / projectionMatrix(0,0);
-	float angle_y = (((-2.0f * mousePos.y) / m_uHeight) + 1.0f) / projectionMatrix(1,1); 
-
-	D3DXVECTOR3 ray_org = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	D3DXVECTOR3 ray_dir = D3DXVECTOR3(angle_x, angle_y, 1.0f);
-
-	D3DXMATRIX m = worldMatrix * viewMatrix;
-	D3DXMatrixInverse(&worldViewInverse, 0, &m);
-	D3DXVec3TransformCoord(&ray_org, &ray_org, &worldViewInverse);
-	D3DXVec3TransformNormal(&ray_dir, &ray_dir, &worldViewInverse);
-	D3DXVec3Normalize(&ray_dir, &ray_dir);
-
-	posRay.x = ray_org.x;
-	posRay.y = ray_org.y;
-	posRay.z = ray_org.z;
-
-	dirRay.x = ray_dir.x;
-	dirRay.y = ray_dir.y;
-	dirRay.z = ray_dir.z;
+    D3DXMATRIX projectionMatrix, viewMatrix, worldViewInverse, worldMatrix;
+    m_pD3DDevice->GetTransform(D3DTS_PROJECTION, &projectionMatrix);
+    m_pD3DDevice->GetTransform(D3DTS_VIEW, &viewMatrix);
+    m_pD3DDevice->GetTransform(D3DTS_WORLD, &worldMatrix);
+    float angle_x = (((2.0f * mousePos.x) / m_uWidth) - 1.0f) / projectionMatrix(0, 0);
+    float angle_y = (((-2.0f * mousePos.y) / m_uHeight) + 1.0f) / projectionMatrix(1, 1);
+    D3DXVECTOR3 ray_org = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+    D3DXVECTOR3 ray_dir = D3DXVECTOR3(angle_x, angle_y, 1.0f);
+    D3DXMATRIX m = worldMatrix * viewMatrix;
+    D3DXMatrixInverse(&worldViewInverse, 0, &m);
+    D3DXVec3TransformCoord(&ray_org, &ray_org, &worldViewInverse);
+    D3DXVec3TransformNormal(&ray_dir, &ray_dir, &worldViewInverse);
+    D3DXVec3Normalize(&ray_dir, &ray_dir);
+    posRay.x = ray_org.x;
+    posRay.y = ray_org.y;
+    posRay.z = ray_org.z;
+    dirRay.x = ray_dir.x;
+    dirRay.y = ray_dir.y;
+    dirRay.z = ray_dir.z;
 }
 
 void CGraphicsManager::GetWidthAndHeight(uint32 &width, uint32 &height)
 {
-	width = m_uWidth;
-	height = m_uHeight;
+    width = m_uWidth;
+    height = m_uHeight;
 }
 
 void CGraphicsManager::DrawCylinder (float Top_Radius, float Bottom_Radius, float h, uint32 Aristas, CColor Color, ETypeModePaint mode, bool drawCover)
 {
-
-	CColor color_aux = Color;
-	if (mode == PAINT_BOTH)
-	{
-		color_aux = colWHITE;
-	}
-	std::vector< std::vector<Vect3f> > l_AllPoints;
-	
-	float currentRadius, currentHeight;
-	for(uint32 i= 0; i < Aristas; ++i)
-	{
-		std::vector<Vect3f> l_currentCircle;
-		currentRadius = mathUtils::Lerp(Top_Radius, Bottom_Radius,(float)i/(float)(Aristas-1));
-		currentHeight = mathUtils::Lerp(h*0.5f, -h*0.5f,(float)i/(float)(Aristas-1));
-		for(uint32 t= 0; t < Aristas; ++t)
-		{
-			float angle = mathUtils::Deg2Rad(360.0f*((float)t)/((float)Aristas));
-			Vect3f l_PosA(	currentRadius*cos(angle), currentHeight, currentRadius*sin(angle) );
-
-			if (mode != PAINT_SOLID)
-			{
-				angle = mathUtils::Deg2Rad(360.0f*((float)t+1)/((float)Aristas));
-				Vect3f l_PosB(	currentRadius*cos(angle), currentHeight,	currentRadius*sin(angle) );
-				DrawLine(l_PosA,l_PosB, color_aux);
-			}
-
-			l_currentCircle.push_back( l_PosA );
-		}//END: for(int32 t= 0; t < Aristas; ++t)
-		l_AllPoints.push_back(l_currentCircle);
-	}//END:for(int32 i= 0; i < Aristas; ++i)
-
-	for(uint32 cont = 0; cont < Aristas; ++cont)
-	{
-		//Laterales:
-		std::vector<Vect3f> l_TopRadiusPoints			= l_AllPoints[0];
-		std::vector<Vect3f> l_BottomRadiusPoints	= l_AllPoints[Aristas-1];
-		DrawLine(l_TopRadiusPoints[cont],l_BottomRadiusPoints[cont],color_aux);
-		if (drawCover)
-		{
-			if (mode != PAINT_SOLID)
-			{	
-				//Tapa de arriba:
-				DrawLine(l_TopRadiusPoints[cont], Vect3f(0.f,h*0.5f,0.f), color_aux);
-				//Tapa de abajo:
-				DrawLine(l_BottomRadiusPoints[cont], Vect3f(0.f,-h*0.5f,0.f), color_aux);
-			}
-			/*if (mode != PAINT_WIREFRAME)
-			{
-				//Tapa de arriba:
-				DrawTriangle3D(l_TopRadiusPoints[cont],	l_TopRadiusPoints[(cont+1)%Aristas],		Vect3f(0.f,h*0.5f,0.f),			Color);
-				//Tapa de abajo:
-				DrawTriangle3D(Vect3f(0.f,-h*0.5f,0.f),	l_BottomRadiusPoints[(cont+1)%Aristas],	l_BottomRadiusPoints[cont],	Color);
-			}*/
-		}
-	}
-
-
-	//Paint Solid:
-	if (mode != PAINT_WIREFRAME)
-	{
-		for(uint32 i = 0; i < Aristas -1; i++)
-		{
-			for(uint32 cont = 0; cont < Aristas; ++cont)
-			{
-				Vect3f ul = l_AllPoints[i][cont];
-				Vect3f dl = l_AllPoints[i+1][cont];
-				Vect3f ur;
-				Vect3f dr;
-				if( cont == Aristas -1 )
-				{
-					ur = l_AllPoints[i][0];
-					dr = l_AllPoints[i+1][0];
-				}
-				else
-				{
-					ur = l_AllPoints[i][cont+1];
-					dr = l_AllPoints[i+1][cont+1];
-				}
-
-				DrawQuad3D(ul,ur,dl,dr,Color);
-			}
-		}
-	}
+    CColor color_aux = Color;
+    if (mode == PAINT_BOTH) {
+        color_aux = colWHITE;
+    }
+    std::vector< std::vector<Vect3f> > l_AllPoints;
+    float currentRadius, currentHeight;
+    for (uint32 i = 0; i < Aristas; ++i) {
+        std::vector<Vect3f> l_currentCircle;
+        currentRadius = mathUtils::Lerp(Top_Radius, Bottom_Radius, (float)i / (float)(Aristas - 1));
+        currentHeight = mathUtils::Lerp(h * 0.5f, -h * 0.5f, (float)i / (float)(Aristas - 1));
+        for (uint32 t = 0; t < Aristas; ++t) {
+            float angle = mathUtils::Deg2Rad(360.0f * ((float)t) / ((float)Aristas));
+            Vect3f l_PosA(	currentRadius * cos(angle), currentHeight, currentRadius * sin(angle) );
+            if (mode != PAINT_SOLID) {
+                angle = mathUtils::Deg2Rad(360.0f * ((float)t + 1) / ((float)Aristas));
+                Vect3f l_PosB(	currentRadius * cos(angle), currentHeight,	currentRadius * sin(angle) );
+                DrawLine(l_PosA, l_PosB, color_aux);
+            }
+            l_currentCircle.push_back( l_PosA );
+        }//END: for(int32 t= 0; t < Aristas; ++t)
+        l_AllPoints.push_back(l_currentCircle);
+    }//END:for(int32 i= 0; i < Aristas; ++i)
+    for (uint32 cont = 0; cont < Aristas; ++cont) {
+        //Laterales:
+        std::vector<Vect3f> l_TopRadiusPoints			= l_AllPoints[0];
+        std::vector<Vect3f> l_BottomRadiusPoints	= l_AllPoints[Aristas - 1];
+        DrawLine(l_TopRadiusPoints[cont], l_BottomRadiusPoints[cont], color_aux);
+        if (drawCover) {
+            if (mode != PAINT_SOLID) {
+                //Tapa de arriba:
+                DrawLine(l_TopRadiusPoints[cont], Vect3f(0.f, h * 0.5f, 0.f), color_aux);
+                //Tapa de abajo:
+                DrawLine(l_BottomRadiusPoints[cont], Vect3f(0.f, -h * 0.5f, 0.f), color_aux);
+            }
+            /*if (mode != PAINT_WIREFRAME)
+            {
+            	//Tapa de arriba:
+            	DrawTriangle3D(l_TopRadiusPoints[cont],	l_TopRadiusPoints[(cont+1)%Aristas],		Vect3f(0.f,h*0.5f,0.f),			Color);
+            	//Tapa de abajo:
+            	DrawTriangle3D(Vect3f(0.f,-h*0.5f,0.f),	l_BottomRadiusPoints[(cont+1)%Aristas],	l_BottomRadiusPoints[cont],	Color);
+            }*/
+        }
+    }
+    //Paint Solid:
+    if (mode != PAINT_WIREFRAME) {
+        for (uint32 i = 0; i < Aristas - 1; i++) {
+            for (uint32 cont = 0; cont < Aristas; ++cont) {
+                Vect3f ul = l_AllPoints[i][cont];
+                Vect3f dl = l_AllPoints[i + 1][cont];
+                Vect3f ur;
+                Vect3f dr;
+                if ( cont == Aristas - 1 ) {
+                    ur = l_AllPoints[i][0];
+                    dr = l_AllPoints[i + 1][0];
+                } else {
+                    ur = l_AllPoints[i][cont + 1];
+                    dr = l_AllPoints[i + 1][cont + 1];
+                }
+                DrawQuad3D(ul, ur, dl, dr, Color);
+            }
+        }
+    }
 }
 
 void CGraphicsManager::DrawCapsule(	float radius, float h, uint32 Aristas, CColor Color, ETypeModePaint mode)
 {
-	D3DXMATRIX matrix;
-	D3DXMatrixIdentity(&matrix);
-	m_pD3DDevice->SetTransform(D3DTS_WORLD, &matrix);
-
-	DrawCylinder(radius, radius, h, Aristas, Color, mode);
-
-	D3DXMATRIX translation1, translation2;
-	D3DXMatrixTranslation(&translation1, 0.f, h*0.5f, 0.f);
-	m_pD3DDevice->SetTransform(D3DTS_WORLD, &translation1);
-	DrawSphere(radius, Color, Aristas, mode, HALF_TOP);
-
-	D3DXMatrixTranslation(&translation2, 0.f, -h*0.5f, 0.f);
-	m_pD3DDevice->SetTransform(D3DTS_WORLD, &translation2);
-	DrawSphere(radius, Color, Aristas, mode, HALF_BOTTOM);
+    D3DXMATRIX matrix;
+    D3DXMatrixIdentity(&matrix);
+    m_pD3DDevice->SetTransform(D3DTS_WORLD, &matrix);
+    DrawCylinder(radius, radius, h, Aristas, Color, mode);
+    D3DXMATRIX translation1, translation2;
+    D3DXMatrixTranslation(&translation1, 0.f, h * 0.5f, 0.f);
+    m_pD3DDevice->SetTransform(D3DTS_WORLD, &translation1);
+    DrawSphere(radius, Color, Aristas, mode, HALF_TOP);
+    D3DXMatrixTranslation(&translation2, 0.f, -h * 0.5f, 0.f);
+    m_pD3DDevice->SetTransform(D3DTS_WORLD, &translation2);
+    DrawSphere(radius, Color, Aristas, mode, HALF_BOTTOM);
 }
 
 void CGraphicsManager::DrawQuad3D (	const Vect3f& pos, const Vect3f& up, const Vect3f& right, float w, float h, CColor color)
 {
-	Vect3f upper_left, upper_right, down_right, down_left;
-	upper_left	= pos + up*h*0.5f - right*w*0.5f;
-	upper_right	= pos + up*h*0.5f + right*w*0.5f;
-	down_left		= pos - up*h*0.5f - right*w*0.5f;
-	down_right	= pos - up*h*0.5f + right*w*0.5f;
-
-	DrawQuad3D (	upper_left, upper_right, down_left, down_right, color);
+    Vect3f upper_left, upper_right, down_right, down_left;
+    upper_left	= pos + up * h * 0.5f - right * w * 0.5f;
+    upper_right	= pos + up * h * 0.5f + right * w * 0.5f;
+    down_left		= pos - up * h * 0.5f - right * w * 0.5f;
+    down_right	= pos - up * h * 0.5f + right * w * 0.5f;
+    DrawQuad3D (	upper_left, upper_right, down_left, down_right, color);
 }
 
 void CGraphicsManager::DrawQuad3D (	const Vect3f& ul, const Vect3f& ur, const Vect3f& dl, const Vect3f& dr, CColor color)
 {
-	unsigned short indices[6]={0,2,1,1,2,3};
-	CUSTOMVERTEX v[4] =
-	{
-			{ ul.x,		ul.y,		ul.z,		D3DCOLOR_COLORVALUE(color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha())} //(x,y) up_left.
-		, { dl.x,		dl.y,		dl.z,		D3DCOLOR_COLORVALUE(color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha())} //(x,y) down_left.
-		,	{ ur.x,		ur.y,		ur.z,		D3DCOLOR_COLORVALUE(color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha())} //(x,y) up_right.
-		,	{ dr.x,		dr.y,		dr.z,		D3DCOLOR_COLORVALUE(color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha())} //(x,y) down_right.
-	};
-
-	m_pD3DDevice->SetFVF( CUSTOMVERTEX::getFlags() );
-	m_pD3DDevice->SetTexture(0, NULL);
-	m_pD3DDevice->DrawIndexedPrimitiveUP( D3DPT_TRIANGLELIST,0, 4, 2,indices,D3DFMT_INDEX16, v, sizeof( CUSTOMVERTEX ) );
+    unsigned short indices[6] = {0, 2, 1, 1, 2, 3};
+    CUSTOMVERTEX v[4] = {
+        { ul.x,		ul.y,		ul.z,		D3DCOLOR_COLORVALUE(color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha())} //(x,y) up_left.
+        , { dl.x,		dl.y,		dl.z,		D3DCOLOR_COLORVALUE(color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha())} //(x,y) down_left.
+        ,	{ ur.x,		ur.y,		ur.z,		D3DCOLOR_COLORVALUE(color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha())} //(x,y) up_right.
+        ,	{ dr.x,		dr.y,		dr.z,		D3DCOLOR_COLORVALUE(color.GetRed(), color.GetGreen(), color.GetBlue(), color.GetAlpha())} //(x,y) down_right.
+    };
+    m_pD3DDevice->SetFVF( CUSTOMVERTEX::getFlags() );
+    m_pD3DDevice->SetTexture(0, NULL);
+    m_pD3DDevice->DrawIndexedPrimitiveUP( D3DPT_TRIANGLELIST, 0, 4, 2, indices, D3DFMT_INDEX16, v, sizeof( CUSTOMVERTEX ) );
 }
 
 

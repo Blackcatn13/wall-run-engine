@@ -3,8 +3,8 @@
 #include "SoundManager.h"
 #include "Utils/Defines.h"
 #include "InputManager.h"
-#include "LanguageManager.h"
-#include "FontManager.h"
+#include "Language/LanguageManager.h"
+#include "Font/FontManager.h"
 #include "ActionToInput.h"
 
 CCore* CCore::m_Instance = 0;
@@ -41,11 +41,11 @@ void CCore::DeInit()
 {
     CHECKED_DELETE(m_GraphicsManager);
     CHECKED_DELETE(m_SoundManager);
-	m_InputManager->Done();
-	CHECKED_DELETE(m_InputManager);
-	CHECKED_DELETE(m_LanguageManager);
-	CHECKED_DELETE(m_FontManager);
-	CHECKED_DELETE(m_ActionToInput);
+    m_InputManager->Done();
+    CHECKED_DELETE(m_InputManager);
+    CHECKED_DELETE(m_LanguageManager);
+    CHECKED_DELETE(m_FontManager);
+    CHECKED_DELETE(m_ActionToInput);
 }
 
 CCore* CCore::GetInstance()

@@ -2,23 +2,23 @@
 #ifndef TEXTURE_MANAGER_H
 #define TEXTURE_MANAGER_H
 
-#include "MapManager.h"
+#include "Utils/MapManager.h"
 #include "Texture.h"
 
 class CTextureManager : public CMapManager<CTexture>
 {
 public:
-	CTextureManager()
-	{
-		m_Resources = TMapResource();
-	}
+    CTextureManager()
+    {
+        m_Resources = TMapResource();
+    }
 
-	~CTextureManager()
-	{
-		Destroy();
-	}
+    ~CTextureManager()
+    {
+        Destroy();
+    }
 
-	void Reload ();
+    void Reload ();
 };
 
 #endif

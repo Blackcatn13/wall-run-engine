@@ -2,9 +2,9 @@
 #include "GamePad.h"
 #include "Keyboard.h"
 #include "Mouse.h"
-#include "Utils\Defines.h"
+#include "Utils/Defines.h"
 #include "Utils/Logger.h"
-#include "Exception.h"
+#include "Utils/Exception.h"
 //#include "Script/ScriptManager.h"
 //#include "luabind/luabind.hpp"
 
@@ -58,7 +58,6 @@ bool CInputManager::Init (HWND hWnd, const Vect2i& screenRes, bool exclusiveMode
         if (m_bIsOk) {
             m_bIsOk	= m_pMouse->Init(m_pDI, hWnd, screenRes, exclusiveModeinMouse);
             if (m_bIsOk) {
-                
                 m_bIsOk = m_pGamePad->Init(screenRes);
                 m_pGamePad->Update();
                 if (m_pGamePad->IsConnected() ) {

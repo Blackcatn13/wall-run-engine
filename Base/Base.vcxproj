@@ -11,10 +11,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Exception.cpp" />
-    <ClCompile Include="LanguageManager.cpp" />
+    <ClCompile Include="Language\LanguageManager.cpp" />
     <ClCompile Include="Math\MathConstants.cpp" />
     <ClCompile Include="Utils\CountDownTimer.cpp" />
+    <ClCompile Include="Utils\Exception.cpp" />
     <ClCompile Include="Utils\LerpAnimator1D.cpp" />
     <ClCompile Include="Utils\LerpAnimator2D.cpp" />
     <ClCompile Include="Utils\LerpAnimator3D.cpp" />
@@ -26,9 +26,7 @@
     <ClCompile Include="XML\XMLTreeNode.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Exception.h" />
-    <ClInclude Include="LanguageManager.h" />
-    <ClInclude Include="MapManager.h" />
+    <ClInclude Include="Language\LanguageManager.h" />
     <ClInclude Include="Math\Color.h" />
     <ClInclude Include="Math\MathTypes.h" />
     <ClInclude Include="Math\MathUtils.h" />
@@ -38,14 +36,16 @@
     <ClInclude Include="Math\Vector2.h" />
     <ClInclude Include="Math\Vector3.h" />
     <ClInclude Include="Math\Vector4.h" />
-    <ClInclude Include="TemplatedVectorMapManager.h" />
     <ClInclude Include="Utils\BaseUtils.h" />
     <ClInclude Include="Utils\CountDownTimer.h" />
     <ClInclude Include="Utils\Defines.h" />
+    <ClInclude Include="Utils\Exception.h" />
     <ClInclude Include="Utils\LerpAnimator1D.h" />
     <ClInclude Include="Utils\LerpAnimator2D.h" />
     <ClInclude Include="Utils\LerpAnimator3D.h" />
     <ClInclude Include="Utils\Logger.h" />
+    <ClInclude Include="Utils\MapManager.h" />
+    <ClInclude Include="Utils\TemplatedVectorMapManager.h" />
     <ClInclude Include="Utils\Types.h" />
     <ClInclude Include="XML\XMLTreeNode.h" />
   </ItemGroup>
@@ -109,7 +109,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(SolutionDir)\3dParty\libxml2-2.7.2.win32\include;$(SolutionDir)\3dParty\iconv-1.9.2.win32\include;$(SolutionDir)\Base;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\3dParty\libxml2-2.7.2.win32\include;$(SolutionDir)\3dParty\iconv-1.9.2.win32\include;$(SolutionDir)\$(ProjectName);C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

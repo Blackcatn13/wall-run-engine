@@ -1,8 +1,8 @@
 #ifndef CTEST_SPACE_H
 #define CTEST_SPACE_H
 
-#include "Process.h"
-#include "Math\Matrix44.h"
+#include "Core/Process.h"
+#include "Math/Matrix44.h"
 
 class CCameraController;
 class CObject3D;
@@ -17,9 +17,9 @@ private:
     CObject3D*		    m_ObjectThPS;
     CFPSCamera*		    m_FPSCamera;
     CThPSCamera*	    m_ThPSCamera;
-	CThPSCamera*	    m_ThPSCamera1;
+    CThPSCamera*	    m_ThPSCamera1;
     bool			    m_PlayerMode;
-	bool				m_FPSMode;
+    bool				m_FPSMode;
     float			    tTerra1_yaw;
     float			    tTerra2_yaw;
     float			    tlluna1_yaw;

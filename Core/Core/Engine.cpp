@@ -3,14 +3,14 @@
 #include "Engine.h"
 #include "Process.h"
 #include "Core.h"
-#include "Utils\Defines.h"
-#include "XML\XMLTreeNode.h"
+#include "Utils/Defines.h"
+#include "XML/XMLTreeNode.h"
 #include "GraphicsManager.h"
-#include "LanguageManager.h"
+#include "Language/LanguageManager.h"
 #include "InputManager.h"
 #include "ActionToInput.h"
-#include "Utils\Logger.h"
-#include "LogRender.h"
+#include "Utils/Logger.h"
+#include "Core_Utils/LogRender.h"
 
 CEngine::~CEngine(void)
 {
@@ -20,16 +20,16 @@ CEngine::~CEngine(void)
 void CEngine::Init(CProcess *p, std::string ConfFile, HWND handler)
 {
     m_Process = p;
-    m_Core = CCore::GetInstance();
+    m_Core = CCORE;
     m_ConfFile = ConfFile;
     ParseConfFile();
     m_Core->setConfig (m_Conf_info);
     m_Core->setHandler (handler);
     m_Core->Init (handler);
-	m_LogRender = new CLogRender();
-	LOGGER->SetCapacity(500);
-	m_LogRender->SetLinePerPage(30);
-	//m_Core->GetLanguageManager()->SetXmlFile(".\\Data\\fonts.xml");
+    m_LogRender = new CLogRender();
+    LOGGER->SetCapacity(500);
+    m_LogRender->SetLinePerPage(30);
+    //m_Core->GetLanguageManager()->SetXmlFile(".\\Data\\fonts.xml");
     //m_Core->GetLanguageManager()->LoadXMLs();
 }
 
@@ -37,8 +37,8 @@ void CEngine::DeInit()
 {
     CHECKED_DELETE (m_Process);
     CHECKED_DELETE (m_Core);
-	CHECKED_DELETE (m_LogRender);
-	CLogger::DeInit();
+    CHECKED_DELETE (m_LogRender);
+    CLogger::DeInit();
 }
 
 void CEngine::Update()
@@ -52,11 +52,11 @@ void CEngine::Update()
         m_Process->SetPrintInfo(!m_Process->getPrintInfo());
     if (m_Core->GetActionToInput()->DoAction("ReloadActions"))
         m_Core->GetActionToInput()->ReloadXML();
-	if(m_Core->GetActionToInput()->DoAction("Save2File"))
-		LOGGER->SaveLogsInFile();
-	if(m_Core->GetActionToInput()->DoAction("LoggerOpen"))
-		m_LogRender->SetVisible(!m_LogRender->GetVisible());
-	m_LogRender->Update(m_Timer.GetElapsedTime());
+    if (m_Core->GetActionToInput()->DoAction("Save2File"))
+        LOGGER->SaveLogsInFile();
+    if (m_Core->GetActionToInput()->DoAction("LoggerOpen"))
+        m_LogRender->SetVisible(!m_LogRender->GetVisible());
+    m_LogRender->Update(m_Timer.GetElapsedTime());
 }
 
 void CEngine::Render()
@@ -66,12 +66,12 @@ void CEngine::Render()
     gm->BeginRendering();
     gm->SetupMatrices(m_Process->GetCamera());
     RenderScene();
-	gm->DisbaleZBuffering();
-	gm->EnableAlphaBlend();
+    gm->DisbaleZBuffering();
+    gm->EnableAlphaBlend();
     m_Process->RenderDebugInfo(true, m_Timer.GetElapsedTime());
-	m_LogRender->Render(gm, CCore::GetInstance()->GetFontManager());
-	gm->DisbaleAlphaBlend();
-	gm->EnableZBuffering();
+    m_LogRender->Render(gm, FONTM);
+    gm->DisbaleAlphaBlend();
+    gm->EnableZBuffering();
     gm->EndRendering();
 }
 

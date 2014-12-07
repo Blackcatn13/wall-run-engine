@@ -20,28 +20,12 @@
     <Filter Include="StaticMeshes">
       <UniqueIdentifier>{0dfe7e8a-9d76-4301-8c45-b390111585ae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{2cedf85a-a694-4f6b-8b20-acb39338e535}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GraphicsManager.cpp" />
-    <ClCompile Include="Camera.cpp">
-      <Filter>Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="FPSCamera.cpp">
-      <Filter>Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="Object3D.cpp">
-      <Filter>Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="ThPSCamera.cpp">
-      <Filter>Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="Frustum.cpp" />
-    <ClCompile Include="FontManager.cpp">
-      <Filter>Font</Filter>
-    </ClCompile>
-    <ClCompile Include="CameraController.cpp">
-      <Filter>Camera</Filter>
-    </ClCompile>
     <ClCompile Include="Texture\Texture.cpp">
       <Filter>Texture</Filter>
     </ClCompile>
@@ -60,28 +44,30 @@
     <ClCompile Include="StaticMeshes\StaticMesh.cpp">
       <Filter>StaticMeshes</Filter>
     </ClCompile>
+    <ClCompile Include="Camera\Camera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera\CameraController.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera\FPSCamera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera\Frustum.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera\ThPSCamera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Font\FontManager.cpp">
+      <Filter>Font</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Object3D.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
-    <ClInclude Include="Camera.h">
-      <Filter>Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="FPSCamera.h">
-      <Filter>Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="Object3D.h">
-      <Filter>Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="ThPSCamera.h">
-      <Filter>Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="Frustum.h" />
-    <ClInclude Include="FontManager.h">
-      <Filter>Font</Filter>
-    </ClInclude>
-    <ClInclude Include="CameraController.h">
-      <Filter>Camera</Filter>
-    </ClInclude>
     <ClInclude Include="Texture\Texture.h">
       <Filter>Texture</Filter>
     </ClInclude>
@@ -105,6 +91,27 @@
     </ClInclude>
     <ClInclude Include="RenderableVertex\RenderableVertexs.h">
       <Filter>RenderableVertex</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera\Camera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera\CameraController.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera\FPSCamera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera\Frustum.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera\ThPSCamera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Font\FontManager.h">
+      <Filter>Font</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Object3D.h">
+      <Filter>Object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

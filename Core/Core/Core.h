@@ -12,6 +12,14 @@ class CInputManager;
 class CFontManager;
 class CActionToInput;
 
+#define CCORE   CCore::GetInstance()
+#define GRAPHM  CCore::GetInstance()->GetGraphicsManager()
+#define SOUNDM  CCore::GetInstance()->GetSoundManager()
+#define INPUTM  CCore::GetInstance()->GetInputManager()
+#define LANGM   CCore::GetInstance()->GetLanguageManager()
+#define FONTM   CCore::GetInstance()->GetFontManager()
+#define ACT2IN  CCore::GetInstance()->GetActionToInput()
+
 class CCore
 {
 protected:
