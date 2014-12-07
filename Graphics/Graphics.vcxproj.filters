@@ -23,6 +23,12 @@
     <Filter Include="Object">
       <UniqueIdentifier>{2cedf85a-a694-4f6b-8b20-acb39338e535}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mesh">
+      <UniqueIdentifier>{c1973183-d4c6-4d93-a80e-e3ea7465c07a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderable">
+      <UniqueIdentifier>{ee7840b0-d92b-4775-8cb2-0cc380545632}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GraphicsManager.cpp" />
@@ -64,6 +70,18 @@
     </ClCompile>
     <ClCompile Include="Object\Object3D.cpp">
       <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticMeshes\StaticMeshManager.cpp">
+      <Filter>StaticMeshes</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderable\RenderableObject.cpp">
+      <Filter>Renderable</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderable\RenderableObjectsManager.cpp">
+      <Filter>Renderable</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\MeshInstance.cpp">
+      <Filter>Mesh</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +130,18 @@
     </ClInclude>
     <ClInclude Include="Object\Object3D.h">
       <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticMeshes\StaticMeshManager.h">
+      <Filter>StaticMeshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderable\RenderableObject.h">
+      <Filter>Renderable</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderable\RenderableObjectsManager.h">
+      <Filter>Renderable</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\MeshInstance.h">
+      <Filter>Mesh</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

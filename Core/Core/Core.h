@@ -11,6 +11,9 @@ class CSoundManager;
 class CInputManager;
 class CFontManager;
 class CActionToInput;
+class CStaticMeshManager;
+class CRenderableObjectsManager;
+class CTextureManager;
 
 #define CCORE   CCore::GetInstance()
 #define GRAPHM  CCore::GetInstance()->GetGraphicsManager()
@@ -19,6 +22,9 @@ class CActionToInput;
 #define LANGM   CCore::GetInstance()->GetLanguageManager()
 #define FONTM   CCore::GetInstance()->GetFontManager()
 #define ACT2IN  CCore::GetInstance()->GetActionToInput()
+#define SMESHM  CCore::GetInstance()->GetStaticMeshManager()
+#define RENDM   CCore::GetInstance()->GetRenderableManager()
+#define TEXTM   CCore::GetInstance()->GetTextureManager()
 
 class CCore
 {
@@ -34,6 +40,9 @@ private:
     CONFIG_INFO				m_Config;
     CFontManager*			m_FontManager;
     CActionToInput*         m_ActionToInput;
+    CStaticMeshManager*     m_StaticMeshManager;
+    CRenderableObjectsManager* m_RenderableManager;
+    CTextureManager*        m_TextureManager;
 public:
     ~CCore();
     void Update ( float dt );
@@ -66,6 +75,18 @@ public:
     CActionToInput* GetActionToInput()
     {
         return m_ActionToInput;
+    }
+    CStaticMeshManager* GetStaticMeshManager()
+    {
+        return m_StaticMeshManager;
+    }
+    CRenderableObjectsManager* GetRenderableManager()
+    {
+        return m_RenderableManager;
+    }
+    CTextureManager* GetTextureManager()
+    {
+        return m_TextureManager;
     }
 };
 

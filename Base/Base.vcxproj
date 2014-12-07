@@ -45,8 +45,10 @@
     <ClInclude Include="Utils\LerpAnimator3D.h" />
     <ClInclude Include="Utils\Logger.h" />
     <ClInclude Include="Utils\MapManager.h" />
+    <ClInclude Include="Utils\Named.h" />
     <ClInclude Include="Utils\TemplatedVectorMapManager.h" />
     <ClInclude Include="Utils\Types.h" />
+    <ClInclude Include="Utils\Visible.h" />
     <ClInclude Include="XML\XMLTreeNode.h" />
   </ItemGroup>
   <ItemGroup>

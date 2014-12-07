@@ -29,6 +29,12 @@
     <Filter Include="Utils\Logger">
       <UniqueIdentifier>{a3881211-3e86-4598-be0c-07808c68ebde}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utils\Named">
+      <UniqueIdentifier>{eaab92df-c582-4301-bc8d-1b1c98aa5911}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\Visible">
+      <UniqueIdentifier>{c32d7d8b-9e9b-4bca-b2d6-67f33d50ad13}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Math\MathConstants.cpp">
@@ -128,6 +134,12 @@
     </ClInclude>
     <ClInclude Include="Utils\Logger.h">
       <Filter>Utils\Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\Named.h">
+      <Filter>Utils\Named</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\Visible.h">
+      <Filter>Utils\Visible</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

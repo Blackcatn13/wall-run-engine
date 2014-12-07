@@ -7,13 +7,24 @@
 #include "Core/Core.h"
 #include <cstdio>
 #include "Utils/Logger.h"
+#include "Texture\TextureManager.h"
+
+#include "Core_Utils/MemLeaks.h"
 
 CStaticMesh::CStaticMesh() : m_NumVertexs(0),
-    m_NumFaces(0)
+    m_NumFaces(0), m_deleted(false)
 {
 }
 
 CStaticMesh::~CStaticMesh()
+{
+    if (!m_deleted) {
+        Destroy();
+        m_deleted = true;
+    }
+}
+
+void CStaticMesh::Destroy()
 {
     for (std::vector<CRenderableVertexs*>::iterator it = m_RVs.begin(); it != m_RVs.end(); ++it) {
         CHECKED_DELETE(*it);
@@ -21,7 +32,7 @@ CStaticMesh::~CStaticMesh()
     m_RVs.clear();
     for (std::vector<std::vector<CTexture *>>::iterator it = m_Textures.begin(); it != m_Textures.end(); ++it) {
         for (std::vector<CTexture *>::iterator it1 = it->begin(); it1 != it->end(); ++it1) {
-            CHECKED_DELETE(*it1);
+            //CHECKED_DELETE(*it1);
         }
         it->clear();
     }
@@ -56,8 +67,14 @@ bool CStaticMesh::Load (const std::string &FileName)
                     size_t len = fread(buff, sizeof(char), aux_size + 1, f);
                     std::string aux_name(buff);
                     delete(buff);
-                    CTexture *aux_text = new CTexture();
-                    aux_text->Load(aux_name);
+                    CTexture *aux_text;
+                    if (TEXTM->ExisteResource(aux_name)) {
+                        aux_text = TEXTM->GetResource(aux_name);
+                    } else {
+                        aux_text = new CTexture();
+                        aux_text->Load(aux_name);
+                        TEXTM->AddResource(aux_name, aux_text);
+                    }
                     m_Textures[i].push_back(aux_text);
                 }
             }
@@ -96,6 +113,8 @@ bool CStaticMesh::Load (const std::string &FileName)
 }
 bool CStaticMesh::ReLoad ()
 {
+    Destroy();
+    m_deleted = false;
     return Load(m_FileName);
 }
 void CStaticMesh::Render (CGraphicsManager *RM)

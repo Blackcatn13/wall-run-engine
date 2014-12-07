@@ -20,14 +20,32 @@
 #include "Texture/Texture.h"
 #include "StaticMeshes/StaticMesh.h"
 #include "RenderableVertex/IndexedVertexs.h"
-
-
-
-CRenderableVertexs *g_RV = 0;
-CTexture *text = 0;
-CStaticMesh *sm = 0;
+#include "Mesh\MeshInstance.h"
+#include "Renderable\RenderableObjectsManager.h"
 
 CTest_Space::CTest_Space(void)
+{
+    tTerra1_yaw = 0;
+    tTerra2_yaw = 0;
+    tlluna1_yaw = 0;
+    skip = 0;
+    m_dt = 0;
+    m_textPosition(50, 2);
+    m_printInfo = false;
+    m_FPSMode = false;
+}
+
+CTest_Space::~CTest_Space(void)
+{
+    delete m_ObjectFPS;
+    delete m_ObjectThPS;
+    delete m_ThPSCamera;
+    delete m_ThPSCamera1;
+    delete m_FPSCamera;
+    delete m_CameraController;
+}
+
+void CTest_Space::Init()
 {
     m_ObjectFPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
     m_ObjectThPS = new CObject3D(Vect3f(0, 0, 0), 0, 0, 0);
@@ -42,39 +60,6 @@ CTest_Space::CTest_Space(void)
     m_CameraController->setActiveCamera("FPS");
     m_Camera = m_CameraController->getActiveCamera();
     m_PlayerMode = true;
-    tTerra1_yaw = 0;
-    tTerra2_yaw = 0;
-    tlluna1_yaw = 0;
-    skip = 0;
-    m_dt = 0;
-    m_textPosition(50, 2);
-    m_printInfo = false;
-    m_FPSMode = false;
-    text = new CTexture();
-    sm = new CStaticMesh();
-}
-
-
-CTest_Space::~CTest_Space(void)
-{
-    delete m_ObjectFPS;
-    delete m_ObjectThPS;
-    delete m_ThPSCamera;
-    delete m_ThPSCamera1;
-    delete m_FPSCamera;
-    delete m_CameraController;
-    delete g_RV;
-    delete text;
-    delete sm;
-}
-
-void CTest_Space::Init()
-{
-    TTEXTURE_VERTEX VB[4] = {{0, 0, 0, 0, 0}, {0, 5, 0, 0, 1}, {5, 5, 0, 1, 1}, {5, 0, 0, 1, 0}};
-    unsigned short IB[6] = {0, 1, 2, 0, 2, 3};
-    g_RV = new CIndexedVertexs<TTEXTURE_VERTEX>(GRAPHM, VB, IB, 4, 6);
-    text->Load("text.jpg");
-    sm->Load(".\\Data\\a.mesh");
 }
 
 void CTest_Space::DeInit()
@@ -178,10 +163,13 @@ void CTest_Space::Update(float dt)
 
 void CTest_Space::Render()
 {
+    Mat44f t;
+    t.SetIdentity();
+    GRAPHM->SetTransform(t);
     GRAPHM->DrawGrid(20);
     GRAPHM->DrawAxis(10);
-    text->Activate(0);
-    sm->Render(GRAPHM);
+    //text->Activate(0);
+    RENDM->Render(GRAPHM);
     //g_RV->Render(CCORE->GetGraphicsManager(º+-));
     /* Mat44f t;
      Mat44f trot1;

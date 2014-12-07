@@ -23,8 +23,13 @@ public:
             , m_Id(Id)
         {
         }
+        CMapResourceValue()
+            : m_Value(0)
+            , m_Id(0)
+        {
+        }
     };
-    typedef std::vector<T *> TVectorResources;
+    typedef std::vector<T * > TVectorResources;
     typedef std::map<std::string, CMapResourceValue> TMapResources;
 protected:
     TVectorResources	m_ResourcesVector;
@@ -32,6 +37,8 @@ protected:
 public:
     CTemplatedVectorMapManager()
     {
+        m_ResourcesVector = TVectorResources();
+        m_ResourcesMap = TMapResources();
     }
 
     virtual ~CTemplatedVectorMapManager()
@@ -41,13 +48,13 @@ public:
 
     void RemoveResource(const std::string &Name)
     {
-        m_ResourcesMap::iterator it = m_ResourcesMap.find(Name);
+        TMapResources::iterator it = m_ResourcesMap.find(Name);
         if (it != m_ResourcesMap.end()) {
             size_t index = m_ResourcesMap[Name].m_Id;
             CHECKED_DELETE(m_ResourcesVector[m_Id]);
             m_ResourcesVector.erase(m_ResourcesVector.begin() + m_Id);
             m_ResourcesMap.erase(it);
-            for (m_ResourcesMap::iterator it = m_ResourcesMap.begin(); ++it) {
+            for (TMapResources::iterator it = m_ResourcesMap.begin(); ++it) {
                 if (it->second.m_Id >= m_Id)
                     it->second.m_Id--;
             }
@@ -68,7 +75,7 @@ public:
 
     virtual T * GetResource(const std::string &Name)
     {
-        m_ResourcesMap::iterator it = m_ResourcesMap.find(Name);
+        TMapResources::iterator it = m_ResourcesMap.find(Name);
         if (it != m_ResourcesMap.end()) {
             return it->second.m_Value;
         } else {
@@ -79,19 +86,20 @@ public:
 
     virtual bool AddResource(const std::string &Name, T *Resource)
     {
-        m_ResourcesMap::iterator it = m_ResourcesMap.find(Name);
+        TMapResources::iterator it = m_ResourcesMap.find(Name);
         if (it != m_ResourcesMap.end()) {
             LOGGER->AddNewLog(ELL_ERROR, "Resource already found in TVectorMapManager with name '%s'", Name.c_str());
             return false;
         }
         m_ResourcesMap[Name] = CMapResourceValue(Resource, m_ResourcesVector.size());
         m_ResourcesVector.push_back(Resource);
+        return true;
     }
 
     virtual void Destroy()
     {
-        for (m_ResourcesVector::it = m_ResourcesVector.begin(); it != m_ResourcesVector.end(); ++it) {
-            CHECKED_DELETE(it);
+        for (TVectorResources::iterator it = m_ResourcesVector.begin(); it != m_ResourcesVector.end(); ++it) {
+            CHECKED_DELETE(*it);
         }
         m_ResourcesVector.clear();
         m_ResourcesMap.clear();

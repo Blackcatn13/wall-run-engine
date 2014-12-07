@@ -16,6 +16,8 @@ typedef struct Conf_info {
     std::string                 FontsPath;
     std::vector<std::string>    LanguagesPath;
     std::string                 CurrentLanguage;
+    std::string                 MeshesPath;
+    std::string                 RenderablePath;
 } CONFIG_INFO;
 
 

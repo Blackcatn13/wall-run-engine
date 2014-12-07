@@ -11,6 +11,8 @@
 #include "ActionToInput.h"
 #include "Utils/Logger.h"
 #include "Core_Utils/LogRender.h"
+#include "Texture\TextureManager.h"
+#include "Renderable\RenderableObjectsManager.h"
 
 CEngine::~CEngine(void)
 {
@@ -56,6 +58,10 @@ void CEngine::Update()
         LOGGER->SaveLogsInFile();
     if (m_Core->GetActionToInput()->DoAction("LoggerOpen"))
         m_LogRender->SetVisible(!m_LogRender->GetVisible());
+    if (m_Core->GetActionToInput()->DoAction("ReloadTextures"))
+        TEXTM->Reload();
+    if (m_Core->GetActionToInput()->DoAction("ReloadMeshes"))
+        RENDM->Reload();
     m_LogRender->Update(m_Timer.GetElapsedTime());
 }
 
@@ -109,11 +115,15 @@ void CEngine::ParseConfFile()
                         m_Conf_info.CurrentLanguage = n(i).GetPszISOProperty("current", "catalan");
                         int languages = n (i).GetNumChildren();
                         for (int j = 0; j < languages; ++j)
-                            m_Conf_info.LanguagesPath.push_back(n(i)(j).GetPszISOProperty("XMLfile", "./Data/catalan.xml") );
+                            m_Conf_info.LanguagesPath.push_back(n(i)(j).GetPszISOProperty("XMLfile", "./Data/catalan.xml"));
                     } else if (name == "Fonts") {
                         m_Conf_info.FontsPath = n(i).GetPszISOProperty("fonstXML", "./Data/fonts/fonts.xml");
                     } else if (name == "Actions") {
                         m_Conf_info.ActionsPath = n(i).GetPszISOProperty("actionsXML", "./Data/Actions.xml");
+                    } else if (name == "Meshes") {
+                        m_Conf_info.MeshesPath = n(i).GetPszISOProperty("meshesXML", "./Data/level1/static_meshes.xml");
+                    } else if (name == "Renderable") {
+                        m_Conf_info.RenderablePath = n(i).GetPszISOProperty("renderXML", "./Data/level1/renderable_objects.xml");
                     }
                 }
             }

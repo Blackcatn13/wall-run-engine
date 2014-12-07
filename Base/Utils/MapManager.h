@@ -26,6 +26,11 @@ public:
         }
     }
 
+    bool ExisteResource(const std::string &Name)
+    {
+        return (m_Resources.find(Name) != m_Resources.end());
+    }
+
     virtual void AddResource(const std::string &Name, T *Resource)
     {
         if (m_Resources.find(Name) != m_Resources.end()) {
@@ -37,7 +42,7 @@ public:
 
     void Destroy()
     {
-        for (TMapResource::iterator it = m_Resources.begin(); it != m_Resources.end(); ++it) {
+        for (TMapResource::iterator it = m_Resources.begin(); it != m_Resources.end(); it++) {
             CHECKED_DELETE(it->second);
         }
         m_Resources.clear();
