@@ -12,7 +12,6 @@
 #include "Math\MathTypes.h"
 #include "Math\Vector3.h"
 #include "Utils\Visible.h"
-#include "Math\Matrix44.h"
 
 class CObject3D : public CVisible
 {
@@ -60,23 +59,11 @@ public:
         m_fRoll = roll;
     }
 
-	void SetScale(float sc) {
-		m_scale = sc;
-	}
-
-	float GetScale() {
-		return m_scale;
-	}
-
-	Mat44f getTransform();
-
 protected:
     Vect3f	m_Position;
     float		m_fYaw;
     float		m_fPitch;
     float		m_fRoll;
-	float		m_scale;
-	Mat44f		m_transform;
 };
 
 #endif //INC_CORE_H_

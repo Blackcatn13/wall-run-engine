@@ -29,6 +29,9 @@
     <Filter Include="Renderable">
       <UniqueIdentifier>{ee7840b0-d92b-4775-8cb2-0cc380545632}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AnimatedModels">
+      <UniqueIdentifier>{aa6a2ba6-cbf8-4f70-b666-1651ea73e07e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GraphicsManager.cpp" />
@@ -82,6 +85,15 @@
     </ClCompile>
     <ClCompile Include="Mesh\MeshInstance.cpp">
       <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatedModels\AnimatedCoreModel.cpp">
+      <Filter>AnimatedModels</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatedModels\AnimatedInstanceModel.cpp">
+      <Filter>AnimatedModels</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatedModels\AnimatedModelManager.cpp">
+      <Filter>AnimatedModels</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +154,15 @@
     </ClInclude>
     <ClInclude Include="Mesh\MeshInstance.h">
       <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedModels\AnimatedCoreModel.h">
+      <Filter>AnimatedModels</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedModels\AnimatedInstanceModel.h">
+      <Filter>AnimatedModels</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedModels\AnimatedModelManager.h">
+      <Filter>AnimatedModels</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -48,9 +48,5 @@ set path -> directori exe
 
 
 
-numtriangles
-numvertex
-numdrawprimitives
-
 
 */

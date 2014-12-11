@@ -16,14 +16,3 @@ CObject3D::CObject3D()
 , m_fRoll(0.f)
 {
 }
-
-Mat44f CObject3D::getTransform()
-{
-	Mat44f trans =  m44fIDENTITY;
-	Mat44f rot = m44fIDENTITY;
-	Mat44f scale = m44fIDENTITY;
-	trans.Translate(m_Position);
-	scale.SetScale(m_scale, m_scale, m_scale);
-	rot.RotByAnglesYXZ(m_fYaw, m_fPitch, m_fRoll);
-	return trans * rot * scale;
-}

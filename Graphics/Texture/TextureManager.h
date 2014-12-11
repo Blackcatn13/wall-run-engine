@@ -18,6 +18,8 @@ public:
         Destroy();
     }
 
+	CTexture * GetResource(const std::string &Name);
+
     void Reload ();
 };
 
