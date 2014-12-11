@@ -5,11 +5,12 @@
 #include "GraphicsManager.h"
 #include "Core\Core.h"
 #include "Texture\TextureManager.h"
+#include "Utils\Defines.h"
+#include "cal3d\renderer.h"
 //#include "Utils\XMLTreeNode"
 
-#define CHECKED_DELETE(x) if(x != 0) {delete x; x=0;}
-#define CHECKED_RELEASE(x)  if(x) {x->Release(); x=0;}
-#define CORE_MODEL AnimatedCoreModel->GetCoreModel()
+
+#define CORE_MODEL m_AnimatedCoreModel->GetCoreModel()
 
 CAnimatedInstanceModel::CAnimatedInstanceModel()
 {
@@ -33,19 +34,12 @@ void CAnimatedInstanceModel::Destroy()
 void CAnimatedInstanceModel::Initialize(CAnimatedCoreModel *AnimatedCoreModel, CGraphicsManager *RM)
 {
 
-
+  m_AnimatedCoreModel = AnimatedCoreModel;
   m_CalModel = new CalModel(CORE_MODEL); 
-	
   LoadVertexBuffer(RM);
   LoadTextures();
-
 }
 
-
-void CAnimatedInstanceModel::LoadTextures()
-{
-	//leer fichero de texturas y ponerlo en m_TextureList
-}
 
 void CAnimatedInstanceModel::ExecuteAction(int Id, float DelayIn, float DelayOut, float WeightTarget=1.0f, bool AutoLock=true)
 {
@@ -64,19 +58,20 @@ void CAnimatedInstanceModel::ClearCycle(int Id, float DelayOut)
 
 void CAnimatedInstanceModel::Update(float ElapsedTime)
 {
+	//TODO => Revisar el update
 	m_CalModel->update(ElapsedTime);
 }
 
 bool CAnimatedInstanceModel::LoadVertexBuffer(CGraphicsManager *RM)
 {
- // Create vertex buffer
+ // Create vertex buffer =>> Pillar los nuestros
   if(FAILED(RM->GetDevice()->CreateVertexBuffer(30000*sizeof(VERTEX),
 	  D3DUSAGE_WRITEONLY|D3DUSAGE_DYNAMIC, D3DFVF_VERTEX, 
 	  D3DPOOL_DEFAULT , &m_pVB, NULL
 	  )))
 	  return false;
 
-  // Create index buffer
+  // Create index buffer =>> Pillar los nuestros
   if(sizeof(CalIndex)==2)
   {
 	  if(FAILED(
@@ -110,3 +105,25 @@ bool CAnimatedInstanceModel::LoadVertexBuffer(CGraphicsManager *RM)
 		 m_TextureList.push_back(TEXTM->GetResource(Name));
 	 }
  }
+
+
+void CAnimatedInstanceModel::RenderModelBySoftware(CGraphicsManager *RM)
+{
+	//TODO mirar que hace el renderModel y apañarlo aquí
+	 // get the renderer of the model
+  CalRenderer *pCalRenderer;
+  pCalRenderer = m_CalModel->getRenderer();
+
+  // begin the rendering loop
+  if(!pCalRenderer->beginRendering()) return;
+
+  m_NumVtxs=0;
+  m_NumFaces=0;
+
+  DWORD dwVBLockFlags=D3DLOCK_NOOVERWRITE;
+  DWORD dwIBLockFlags=D3DLOCK_NOOVERWRITE;
+
+  RM->GetDevice()->SetStreamSource( 0, m_pVB, 0,  sizeof(VERTEX) ); //<= Poner lo nuestro
+  RM->GetDevice()->SetFVF(D3DFVF_VERTEX);//<= Poner lo nuestro
+  RM->GetDevice()->SetIndices(m_pIB);
+}

@@ -2,15 +2,15 @@
 #define CANIMATED_INSTANCE_MODEL_H
 
 
-#include "global.h"
-#include "coremodel.h"
-#include "model.h"
+#include "cal3d\global.h"
+#include "cal3d\coremodel.h"
+#include "cal3d\model.h"
 #include "AnimatedCoreModel.h"
 #include <d3dx9.h>
 #include "Renderable\RenderableObject.h"
 #include <vector>
 #include "Texture\Texture.h"
-#include "model.h"
+
 
 class CAnimatedInstanceModel : public CRenderableObject
 {
