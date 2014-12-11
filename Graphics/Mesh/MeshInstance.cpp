@@ -22,12 +22,14 @@ CMeshInstance::~CMeshInstance()
 {
     if (m_StaticMesh->isDestroyed())
         m_StaticMesh = 0;
-    else
-        CHECKED_DELETE(m_StaticMesh);
 }
 void CMeshInstance::Render(CGraphicsManager *RM)
 {
-    if (m_Printable)
+    if (m_Printable) {
+		Mat44f t = m44fIDENTITY;
+		RM->SetTransform(t);
+		RM->SetTransform(getTransform());
         m_StaticMesh->Render(RM);
+	}
 }
 
