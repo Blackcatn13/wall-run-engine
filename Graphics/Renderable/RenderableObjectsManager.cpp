@@ -84,7 +84,7 @@ void CRenderableObjectsManager::Load(const std::string &FileName)
                 l_meshInstance->SetPosition(pos);
                 l_meshInstance->SetPitch(pitch);
                 l_meshInstance->SetRoll(roll);
-                //l_meshInstance->SetScale(scale);
+                l_meshInstance->SetScale(scale);
                 AddResource(meshName, l_meshInstance);
             }
         }
