@@ -13,7 +13,8 @@ class CGraphicsManager;
 class BoundingBox
 {
 private:
-	Vect3f m_minPos, m_maxPos;
+	Vect3f m_minPos;
+	Vect3f m_maxPos;
 public:
 	BoundingBox(){}
 	~BoundingBox(){}

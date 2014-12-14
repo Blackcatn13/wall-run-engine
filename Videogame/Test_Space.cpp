@@ -84,6 +84,9 @@ Vect2i CTest_Space::RenderDebugInfo(bool render, float dt)
             size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Drawing 3"));
         else
             size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Drawing 2"));
+		size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de vertices: %d", m_totalVertices));
+		size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de caras: %d", m_totalFaces));
+		size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de primitivas: %d", m_numPrimitives));
     } else {
         // print a message asking for key to open the menu
         Vect2i aux = m_textPosition;
@@ -94,12 +97,16 @@ Vect2i CTest_Space::RenderDebugInfo(bool render, float dt)
             size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Drawing 3"));
         else
             size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Drawing 2"));
+		size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de vertices: %d", m_totalVertices));
+		size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de caras: %d", m_totalFaces));
+		size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de primitivas: %d", m_numPrimitives));
     }
     return size;
 }
 
 void CTest_Space::Update(float dt)
 {
+	
     CInputManager* im = INPUTM;
     //float deltaX =  im->GetMouseDelta().x;
     //float deltaY = im->GetMouseDelta().y;
@@ -163,6 +170,11 @@ void CTest_Space::Update(float dt)
 
 void CTest_Space::Render()
 {
+	//TO DO: Actualizar variables m_numPrimitives, m_totalVertexs y m_totalFaces
+	m_numPrimitives = 0;
+	m_totalVertices = 0;
+	m_totalFaces = 0;
+
     Mat44f t;
     t.SetIdentity();
     GRAPHM->SetTransform(t);
