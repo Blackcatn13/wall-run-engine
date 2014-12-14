@@ -97,6 +97,26 @@ bool CStaticMesh::Load (const std::string &FileName)
                 delete(vertex_list);
                 delete(index_list);
             }
+
+			/*BoundingBox y BoundingSphere, 10 floats (6 BBox + 4 BShpere)
+			BoundingBox			BoundingSphere
+			0- xmin				6- center xmin
+			1- ymin				7- center ymin
+			2- zmin				8- center zmin
+			3- xmax				9- radius
+			4- ymax
+			5- zmax
+			*/
+			float* float_list = (float*)malloc(10*sizeof(float));
+			fread(float_list , 10 * sizeof(unsigned short), 1, f);
+			m_BBox = BoundingBox();
+			m_BBox.SetMinPos(Vect3f(float_list[0], float_list[1], float_list[2]));
+			m_BBox.SetMaxPos(Vect3f(float_list[3], float_list[4], float_list[5]));
+			m_BSphere = BoundingSphere();
+			m_BSphere.SetCenterPos(Vect3f(float_list[6], float_list[7], float_list[8]));
+			m_BSphere.SetRadius(float_list[9]);
+			delete(float_list);
+
             unsigned short footer;
             fread(&footer, sizeof footer, 1, f);
             if (footer != 0xff55) {
