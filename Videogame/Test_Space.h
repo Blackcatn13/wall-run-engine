@@ -26,6 +26,7 @@ private:
     float			    skip;
     float			    m_dt;
     Vect2i              m_textPosition;
+	int					m_numPrimitives, m_totalVertices, m_totalFaces;
 public:
     CTest_Space(void);
     ~CTest_Space(void);

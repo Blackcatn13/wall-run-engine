@@ -70,7 +70,7 @@ void CRenderableObjectsManager::Load(const std::string &FileName)
         for (int i = 0; i < count; ++i) {
             std::string name = m(i).GetName();
             if (name == "mesh_instance") {
-                std::string meshName = m(i).GetPszISOProperty("name", "box1");
+               /* std::string meshName = m(i).GetPszISOProperty("name", "box1");
                 std::string core = m(i).GetPszISOProperty("core", "box");
                 Vect3f pos = m(i).GetVect3fProperty("pos", v3fZERO);
                 float yaw = m(i).GetFloatProperty("yaw");
@@ -84,10 +84,18 @@ void CRenderableObjectsManager::Load(const std::string &FileName)
                 l_meshInstance->SetPosition(pos);
                 l_meshInstance->SetPitch(pitch);
                 l_meshInstance->SetRoll(roll);
-                l_meshInstance->SetScale(scale);
+                l_meshInstance->SetScale(scale);*/
+				CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
                 AddResource(meshName, l_meshInstance);
             }
+			else 
+				FALTA EL ANIMATED_MODEL DEL RENDERABLE OBJECT, LOAD
+				FALTA CARGAR EL ANIMATED_MODELS.XML
+
+				CAnimatedModelInstance * l_AnimatedModelInstance =AnimatedModleManager::Getinstanmce
+                AddResource(meshName, l_AnimatedModelInstance );
         }
+
     }
 }
 
