@@ -49,9 +49,9 @@ void CTest_Space::Init()
 {
     m_ObjectFPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
     m_ObjectThPS = new CObject3D(Vect3f(0, 0, 0), 0, 0, 0);
-    m_ThPSCamera = new CThPSCamera(1.f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS, 50);
-    m_ThPSCamera1 = new CThPSCamera(1.f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS, 50);
-    m_FPSCamera = new CFPSCamera(1.f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectFPS);
+    m_ThPSCamera = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS, 50);
+    m_ThPSCamera1 = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS, 50);
+    m_FPSCamera = new CFPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectFPS);
     m_ThPSCamera->SetTypeCamera(CCamera::TC_ESF);
     m_CameraController = new CCameraController();
     m_CameraController->AddNewCamera("FPS", m_FPSCamera);
@@ -166,6 +166,7 @@ void CTest_Space::Update(float dt)
     tTerra2_yaw += dt * 80 * 0.005;
     tlluna1_yaw -= dt * 60 * 0.05;
     m_dt = dt;
+	RENDM->Update(dt);
 }
 
 void CTest_Space::Render()

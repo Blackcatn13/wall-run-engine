@@ -22,9 +22,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Core\Core.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
     <ClCompile Include="Core\Engine.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
@@ -39,6 +36,9 @@
     </ClCompile>
     <ClCompile Include="Core_Utils\LogRender.cpp">
       <Filter>LogRender</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Core.cpp">
+      <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

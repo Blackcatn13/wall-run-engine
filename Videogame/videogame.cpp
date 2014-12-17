@@ -7,7 +7,9 @@
 #include "GraphicsManager.h"
 #include "Utils/Logger.h"
 #include "Utils/Exception.h"
-
+#include "cal3d\global.h"
+#include "cal3d\coremodel.h"
+#include "cal3d\model.h"
 #include "Core_Utils/MemLeaks.h"
 
 #define APPLICATION_NAME	"VIDEOGAME"

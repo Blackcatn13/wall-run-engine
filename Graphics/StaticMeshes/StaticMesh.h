@@ -3,6 +3,7 @@
 #define _STATIC_MESH_H
 
 #include "Utils\Defines.h"
+#include "Math\Vector3.h"
 #include <string>
 #include <vector>
 

@@ -1,0 +1,4 @@
+<animated_models>
+	<animated_model name="thug" path=".\Data\animated_models\thug\"/>
+	<animated_model name="paladin" path=".\Data\animated_models\paladin\"/>
+</animated_models>

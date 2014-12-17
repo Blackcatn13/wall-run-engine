@@ -1,11 +1,9 @@
 #ifndef ANIMATED_CORE_MODEL_H
 #define ANIMATED_CORE_MODEL_H
 
-#include "cal3d\global.h"
-#include "cal3d\coremodel.h"
 #include <vector>
 #include <string>
-#include "cal3d\model.h"
+#include "cal3D\coremodel.h"
 
 class CAnimatedCoreModel
 {

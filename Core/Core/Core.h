@@ -13,6 +13,7 @@ class CFontManager;
 class CActionToInput;
 class CStaticMeshManager;
 class CRenderableObjectsManager;
+class CAnimatedModelManager;
 class CTextureManager;
 
 #define CCORE   CCore::GetInstance()
@@ -25,6 +26,7 @@ class CTextureManager;
 #define SMESHM  CCore::GetInstance()->GetStaticMeshManager()
 #define RENDM   CCore::GetInstance()->GetRenderableManager()
 #define TEXTM   CCore::GetInstance()->GetTextureManager()
+#define ANIMAN	CCore::GetInstance()->GetAnimatedModelManager()
 
 class CCore
 {
@@ -42,6 +44,7 @@ private:
     CActionToInput*         m_ActionToInput;
     CStaticMeshManager*     m_StaticMeshManager;
     CRenderableObjectsManager* m_RenderableManager;
+	CAnimatedModelManager*  m_AnimatedModelManager;
     CTextureManager*        m_TextureManager;
 public:
     ~CCore();
@@ -83,6 +86,10 @@ public:
     CRenderableObjectsManager* GetRenderableManager()
     {
         return m_RenderableManager;
+    }
+	CAnimatedModelManager* GetAnimatedModelManager()
+    {
+        return m_AnimatedModelManager;
     }
     CTextureManager* GetTextureManager()
     {

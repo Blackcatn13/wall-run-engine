@@ -1,0 +1,32 @@
+<animated_model name="paladin">
+	<texture file="paladin_cape.tga"/>
+	<texture file="paladin_head.tga"/>
+	<texture file="paladin_chest.tga"/>
+	<texture file="paladin_gird.tga"/>
+	<texture file="paladin_arm.tga"/>
+	<texture file="paladin_flesh.tga"/>
+	<texture file="paladin_edge.tga"/>
+	
+		
+	<texture file="paladin_stripe.tga"/>
+	<texture file="paladin_plate.tga"/>
+	<texture file="paladin_cloth.tga"/>
+	<texture file="paladin_legplate_right.tga"/>
+	<texture file="paladin_legplate_left.tga"/>
+	<texture file="paladin_legging.tga"/>
+	<texture file="paladin_legguard.tga"/>
+	<texture file="paladin_shoe.tga"/>
+	<texture file="paladin_ponytail.tga"/>
+	
+	
+	
+	
+	
+	<skeleton file="paladin.csf"/>
+
+	<mesh file="paladin_body.cmf"/>
+	<mesh file="paladin_cape.cmf"/>
+	<mesh file="paladin_loincloth.cmf"/>
+
+	<animation name="paladin_walk" file="paladin_walk.caf"/>
+</animated_model>
