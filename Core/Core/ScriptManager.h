@@ -14,6 +14,10 @@
 #include "Texture\TextureManager.h"
 #include "Texture\Texture.h"
 #include "Math\Vector3.h"
+#include "Math\Matrix44.h"
+#include "Math\Matrix33.h"
+#include "Math\Matrix34.h"
+#include <d3dx9.h>
 
 extern "C"
 {
