@@ -9,6 +9,11 @@
 #include "Utils\Named.h"
 #include "Renderable\RenderableObject.h"
 #include "Renderable\RenderableObjectsManager.h"
+#include "Object\Object3D.h"
+#include "Utils\MapManager.h"
+#include "Texture\TextureManager.h"
+#include "Texture\Texture.h"
+#include "Math\Vector3.h"
 
 extern "C"
 {

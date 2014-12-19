@@ -3,131 +3,220 @@
 //Código de la función Alert que se llamará al generarse algún error de LUA
 int Alert(/*IN */lua_State * State)
 {
-	std::string l_Text;
-	int n = lua_gettop(State);
-	int i;
-	lua_getglobal(State, "tostring");
-	for (i=1; i<=n; i++) 
-	{
-		const char *s;
-		lua_pushvalue(State, -1);
-		lua_pushvalue(State, i);
-		lua_call(State, 1, 1);
-		s = lua_tostring(State, -1);
-		if (s == NULL)
-			return luaL_error(State, "`tostring' must return a string to `print'");
-		if (i>1) l_Text += '\t';
-		l_Text += s;
-		lua_pop(State, 1);
-	}
-	l_Text += '\n';
-	//Info( l_Text.c_str() );
-	LOGGER->AddNewLog(ELL_INFORMATION,  l_Text.c_str());
-	return true;
+        std::string l_Text;
+        int n = lua_gettop(State);
+        int i;
+        lua_getglobal(State, "tostring");
+        for (i=1; i<=n; i++) 
+        {
+                const char *s;
+                lua_pushvalue(State, -1);
+                lua_pushvalue(State, i);
+                lua_call(State, 1, 1);
+                s = lua_tostring(State, -1);
+                if (s == NULL)
+                        return luaL_error(State, "`tostring' must return a string to `print'");
+                if (i>1) l_Text += '\t';
+                l_Text += s;
+                lua_pop(State, 1);
+        }
+        l_Text += '\n';
+        //Info( l_Text.c_str() );
+        LOGGER->AddNewLog(ELL_INFORMATION,  l_Text.c_str());
+        return true;
 }
 
 CScriptManager::CScriptManager(void)
 {
-	//RegisterLUAClass();
 }
 
 
 CScriptManager::~CScriptManager(void)
 {
-	Destroy();
+        Destroy();
 }
 
 //Para inicializar el motor de LUA
 void CScriptManager::Initialize()
 {
-	m_LS=luaL_newstate();
-	
-	luaL_openlibs(m_LS);
-	//Sobreescribimos la función _ALERT de LUA cuando se genere algún error al ejecutar
-	//código LUA
-	lua_register(m_LS,"_ALERT",Alert);
-	luabind::open(m_LS);
+        m_LS=luaL_newstate();
+        
+        luaL_openlibs(m_LS);
+        //Sobreescribimos la función _ALERT de LUA cuando se genere algún error al ejecutar
+        //código LUA
+        lua_register(m_LS,"_ALERT",Alert);
+        luabind::open(m_LS);
 }
 
 //Para desinicializar el motor de LUA
 void CScriptManager::Destroy()
 {
-	lua_close(m_LS);
+        lua_close(m_LS);
 }
 //Para ejecutar un fragmento de código LUA
 void CScriptManager::RunCode(const std::string &Code) const
 {
-	if(luaL_dostring(m_LS,Code.c_str()))
-	{
-	const char *l_Str=lua_tostring(m_LS, -1);
-	//Info("%s",l_Str);
-	LOGGER->AddNewLog(ELL_INFORMATION, l_Str);
-	}
+        if(luaL_dostring(m_LS,Code.c_str()))
+        {
+        const char *l_Str=lua_tostring(m_LS, -1);
+        //Info("%s",l_Str);
+        LOGGER->AddNewLog(ELL_INFORMATION, l_Str);
+        }
 }
 //Para ejecutar un fichero de código LUA
 void CScriptManager::RunFile(const std::string &FileName) const
 {
-	if(luaL_dofile(m_LS, FileName.c_str()))
-	{
-		const char *l_Str=lua_tostring(m_LS, -1);
-		//Info("%s",l_Str);
-		LOGGER->AddNewLog(ELL_INFORMATION, l_Str);
-	}
+        if(luaL_dofile(m_LS, FileName.c_str()))
+        {
+                const char *l_Str=lua_tostring(m_LS, -1);
+                //Info("%s",l_Str);
+                LOGGER->AddNewLog(ELL_INFORMATION, l_Str);
+        }
 }
 
 void CScriptManager::RegisterLUAFunctions()
 {
-	luabind::module(LUA_STATE) [
-	class_<CScriptManager>("CScriptManager")
-	.def("load_file", & CScriptManager::LoadFile)
-	.def("run_code", & CScriptManager::RunCode)
-	.def("run_file", & CScriptManager::RunFile)
-	.def("load", & CScriptManager::Load)
-	];
 
-	luabind::module(LUA_STATE) [
-	class_<CVisible>("CVisible")
-	.def("get_visible", & CVisible::getVisible)
-	.def("set_visible", & CVisible::setVisible)
-	];
+        luabind::module(LUA_STATE) [
+        class_<CScriptManager>("CScriptManager")
+        .def("load_file", & CScriptManager::LoadFile)
+        .def("run_code", & CScriptManager::RunCode)
+        .def("run_file", & CScriptManager::RunFile)
+        .def("load", & CScriptManager::Load)
+        ];
 
-	luabind::module(LUA_STATE) [
-	class_<CVisible>("CNamed")
-	.def("get_name", & CNamed::getName)
-	.def("set_name", & CNamed::setName)
-	];
+        module(LUA_STATE) [
+        class_<Vect3f>("Vect3f") 
+        .def(constructor<float, float, float>())
+        /*.def(constructor<>())
+        .def(constructor<Vect3f>())
+        .def(constructor<Vect3f>())*/
+        //Operadores => Faltan varios por definir (!=, [], (), +=...
+        .def(const_self + const_self)
+        .def(const_self - const_self)
+        .def(const_self * const_self)
+        //.def(const_self / const_self)
+        .def(const_self == const_self)
+        .def(const_self ^ const_self)
+        // Operadores y funciones de asignación
+        .def("set",  &Vect3f::Set)
+        .def("set_zero",  &Vect3f::SetZero)
+        // Coordenadas polares
+        .def("set_from_polar", &Vect3f::SetFromPolar)
+        .def("get_polar",  &Vect3f::GetPolar)
+        //funciones de comparacion
+        .def("is_equal_epsilon",  &Vect3f::IsEqualEpsilon)
+        .def("is_not_equal_epsilon",  &Vect3f::IsNotEqualEpsilon)
+        // Producto por componentes (escalado)
+        .def("scale",  &Vect3f::Scale)
+        .def("get_scaled",  &Vect3f::GetScaled)
+        // Establecimiento condicional
+        .def("set_if_min_components",  &Vect3f::SetIfMinComponents)
+        .def("set_if_max_components",  &Vect3f::SetIfMaxComponents)
+        //Proyecciones
+        .def("get_proj_xy",  &Vect3f::GetProjXY)
+        .def("get_proj_yz",  &Vect3f::GetProjYZ)
+        .def("get_proj_zx",  &Vect3f::GetProjZX)
+        // Funciones de la longitud 
+        .def("normalize",  &Vect3f::Normalize)
+        .def("get_normalized",  &Vect3f::GetNormalized)
+        .def("length",  &Vect3f::Length)
+        .def("squared_length",  &Vect3f::SquaredLength)
+        .def("distance",  &Vect3f::Distance)
+        .def("sq_distance",  &Vect3f::SqDistance)
+        // Rotaciones en los ejes principales
+        .def("rotate_x",  &Vect3f::RotateX)
+        .def("get_rotated_x",  &Vect3f::GetRotatedX)
+        .def("rotate_y",  &Vect3f::RotateY)
+        .def("get_rotated_y",  &Vect3f::GetRotatedY)
+        .def("rotate_z",  &Vect3f::RotateZ)
+        .def("get_rotated_z",  &Vect3f::GetRotatedZ)
+        .def("get_angle_x",  &Vect3f::GetAngleX)
+        .def("get_angle_y",  &Vect3f::GetAngleY)
+        .def("get_angle_z",  &Vect3f::GetAngleZ)
+        .def("get_angles",  &Vect3f::GetAngles)
+         // Interpolación lineal
+        .def("lerp",  &Vect3f::Lerp)
+        .def("get_lerp",  &Vect3f::GetLerp)
+        // cosas externas (funciones, constantes...) no se registran?*/
+        //Variables
+        .def_readwrite("x", &Vect3f::x)
+        .def_readwrite("y", &Vect3f::y)
+        .def_readwrite("z", &Vect3f::z)
+        ];
+        
+        luabind::module(LUA_STATE) [
+        class_< Vector3<Vect3f> >("Vect3f2")
+        .def(constructor<float, float, float>())
+        .def(const_self + const_self)
+        //.def(const_self / const_self)
+        .def_readwrite("x", &Vect3f::x)
+        .def("set_from_polar", &Vector3<Vect3f>::SetFromPolar)
+        ];
 
-	module(LUA_STATE) [
-	class_< CRenderableObject >("CRenderableObject")
-	//.def(constructor<>())
-	.def("update", & CRenderableObject::Update)
-	.def("render", & CRenderableObject::Render)
-	];
+        
+        luabind::module(LUA_STATE) [
+        class_<CVisible>("CVisible")
+        .def("get_visible", & CVisible::getVisible)
+        .def("set_visible", & CVisible::setVisible)
+        ];
 
-	module(LUA_STATE) [
-	class_< CRenderableObjectsManager >("CRenderableObjectsManager")
-	.def(constructor<>())
-	.def("update", & CRenderableObjectsManager::Update)
-	.def("render", & CRenderableObjectsManager::Render)
-	.def("add_mesh_instance", (CRenderableObject *(CRenderableObjectsManager::*)(const std::string &, const std::string &, const Vect3f &)) &CRenderableObjectsManager::AddMeshInstance)
-	.def("add_mesh_instance", (CRenderableObject *(CRenderableObjectsManager::*)(CXMLTreeNode &Node)) &CRenderableObjectsManager::AddMeshInstance)
-	.def("add_animated_instance_model", (CRenderableObject *(CRenderableObjectsManager::*)(const std::string &CoreModelName, const std::string &InstanceModelName, const Vect3f &Position)) &CRenderableObjectsManager::AddAnimatedInstanceModel)
-	.def("add_animated_instance_model", (CRenderableObject *(CRenderableObjectsManager::*)(CXMLTreeNode &Node)) &CRenderableObjectsManager::AddAnimatedInstanceModel)
-	.def("load", & CRenderableObjectsManager::Load)
-	.def("reload", & CRenderableObjectsManager::Reload)
-	
-	// CRenderableObject* AddMeshInstance(CXMLTreeNode &Node);
-	//.def("add_animated_instance_model",*(CRenderableObjectsManager::*)(const std::string &, const std::string &, const Vect3f &)) & CRenderableObjectsManager::AddAnimatedInstanceModel)
-	
-	];
+        luabind::module(LUA_STATE) [
+        class_<CVisible>("CNamed")
+        .def("get_name", & CNamed::getName)
+        .def("set_name", & CNamed::setName)
+        ];
 
+        module(LUA_STATE) [
+        class_< CRenderableObject >("CRenderableObject")
+        //.def(constructor<>())
+        .def("update", & CRenderableObject::Update)
+        .def("render", & CRenderableObject::Render)
+        ];
 
-	/* void Update(float ElapsedTime);
-    void Render(CGraphicsManager *RM);
-    CRenderableObject* AddMeshInstance(const std::string &CoreMeshName, const std::string &InstanceName, const Vect3f &Position);
-    CRenderableObject* AddMeshInstance(CXMLTreeNode &Node);
-    CRenderableObject* AddAnimatedInstanceModel(const std::string &CoreModelName, const std::string &InstanceModelName, const Vect3f &Position);
-    CRenderableObject* AddAnimatedInstanceModel(CXMLTreeNode &Node);
-    void Load(const std::string &FileName);
-    void Reload();*/
+        module(LUA_STATE) [
+        class_< CRenderableObjectsManager >("CRenderableObjectsManager")
+        .def(constructor<>())
+        .def("update", & CRenderableObjectsManager::Update)
+        .def("render", & CRenderableObjectsManager::Render)
+        .def("add_mesh_instance", (CRenderableObject *(CRenderableObjectsManager::*)(const std::string &, const std::string &, const Vect3f &)) &CRenderableObjectsManager::AddMeshInstance)
+        .def("add_mesh_instance", (CRenderableObject *(CRenderableObjectsManager::*)(CXMLTreeNode &Node)) &CRenderableObjectsManager::AddMeshInstance)
+        .def("add_animated_instance_model", (CRenderableObject *(CRenderableObjectsManager::*)(const std::string &CoreModelName, const std::string &InstanceModelName, const Vect3f &Position)) &CRenderableObjectsManager::AddAnimatedInstanceModel)
+        .def("add_animated_instance_model", (CRenderableObject *(CRenderableObjectsManager::*)(CXMLTreeNode &Node)) &CRenderableObjectsManager::AddAnimatedInstanceModel)
+        .def("load", & CRenderableObjectsManager::Load)
+        .def("reload", & CRenderableObjectsManager::Reload)
+        ];
+
+        module(LUA_STATE) [
+        class_< CObject3D >("CObject3D")
+        .def(constructor<>())
+        .def(constructor<Vect3f, float, float, float>()) //Falta registrar la Vect3f
+        .def("get_yaw", & CObject3D::GetYaw)
+        .def("get_pitch", & CObject3D::GetPitch)
+        .def("get_roll", & CObject3D::GetRoll)
+        .def("get_position", & CObject3D::GetPosition)
+        .def("set_yaw", & CObject3D::SetYaw)
+        .def("set_pitch", & CObject3D::SetPitch)
+        .def("set_roll", & CObject3D::SetRoll)
+        .def("set_position", & CObject3D::SetPosition)
+        ];
+
+        //Si queremos registrar una clase templatizada como la clase CTextureManager debemos primero
+        //registrar su clase base con la clases templatizada y después la clase
+        module(LUA_STATE) [
+        class_<CMapManager<CTexture>>("CMapManager")
+        .def("get_resource", &CMapManager< CTexture >::GetResource)
+        .def("existe_resource", &CMapManager< CTexture >::ExisteResource)
+        .def("add_resource", &CMapManager< CTexture >::AddResource)
+        .def("destroy", &CMapManager< CTexture >::Destroy)
+        ];
+
+        module(LUA_STATE) [
+        class_< CTextureManager/*<CTexture>*/, CMapManager<CTexture>>("CTextureManager")
+        .def(constructor<>())
+        .def("get_resource", & CTextureManager::GetResource)
+        .def("reload", & CTextureManager::Reload)
+        ];
+
+        
 }
