@@ -14,6 +14,7 @@
     <ClCompile Include="Core\Core.cpp" />
     <ClCompile Include="Core\Engine.cpp" />
     <ClCompile Include="Core\Process.cpp" />
+    <ClCompile Include="Core\ScriptManager.cpp" />
     <ClCompile Include="Core_Utils\LogRender.cpp" />
     <ClCompile Include="Core_Utils\MemLeaks.cpp" />
     <ClCompile Include="Core_Utils\Timer.cpp" />
@@ -23,6 +24,7 @@
     <ClInclude Include="Core\Engine.h" />
     <ClInclude Include="Core\EngineDefs.h" />
     <ClInclude Include="Core\Process.h" />
+    <ClInclude Include="Core\ScriptManager.h" />
     <ClInclude Include="Core_Utils\LogRender.h" />
     <ClInclude Include="Core_Utils\MemLeaks.h" />
     <ClInclude Include="Core_Utils\Timer.h" />
@@ -71,7 +73,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(SolutionDir)\Graphics;$(SolutionDir)\Sound;$(SolutionDir)\Base;$(SolutionDir)\3dParty\libxml2-2.7.2.win32\include;$(SolutionDir)\3dParty\iconv-1.9.2.win32\include;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)\Input;$(SolutionDir)\$(ProjectName);$(SolutionDir)\3dParty</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Graphics;$(SolutionDir)\Sound;$(SolutionDir)\Base;$(SolutionDir)\3dParty\libxml2-2.7.2.win32\include;$(SolutionDir)\3dParty\iconv-1.9.2.win32\include;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)\Input;$(SolutionDir)\$(ProjectName);$(SolutionDir)\3dParty;$(SolutionDir)\3dParty\Lua\src;$(SolutionDir)\3dParty\LuaBind\;$(SolutionDir)\3dParty\Boost\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

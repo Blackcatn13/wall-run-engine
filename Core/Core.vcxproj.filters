@@ -20,6 +20,9 @@
     <Filter Include="LogRender">
       <UniqueIdentifier>{fd65c091-a046-4de1-8c39-f19593ae80a9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ScriptManager">
+      <UniqueIdentifier>{65bd3b2b-e9a1-4c1c-9cdf-b3454456b721}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Engine.cpp">
@@ -39,6 +42,9 @@
     </ClCompile>
     <ClCompile Include="Core\Core.cpp">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ScriptManager.cpp">
+      <Filter>ScriptManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +68,9 @@
     </ClInclude>
     <ClInclude Include="Core_Utils\LogRender.h">
       <Filter>LogRender</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ScriptManager.h">
+      <Filter>ScriptManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

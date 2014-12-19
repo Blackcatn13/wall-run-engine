@@ -15,6 +15,7 @@ class CStaticMeshManager;
 class CRenderableObjectsManager;
 class CAnimatedModelManager;
 class CTextureManager;
+class CScriptManager;
 
 #define CCORE   CCore::GetInstance()
 #define GRAPHM  CCore::GetInstance()->GetGraphicsManager()
@@ -27,6 +28,7 @@ class CTextureManager;
 #define RENDM   CCore::GetInstance()->GetRenderableManager()
 #define TEXTM   CCore::GetInstance()->GetTextureManager()
 #define ANIMAN	CCore::GetInstance()->GetAnimatedModelManager()
+#define SCRIPTM CCore::GetInstance()->GetScriptManager()
 
 class CCore
 {
@@ -46,6 +48,7 @@ private:
     CRenderableObjectsManager* m_RenderableManager;
 	CAnimatedModelManager*  m_AnimatedModelManager;
     CTextureManager*        m_TextureManager;
+	CScriptManager*			m_ScriptManager;
 public:
     ~CCore();
     void Update ( float dt );
@@ -94,6 +97,10 @@ public:
     CTextureManager* GetTextureManager()
     {
         return m_TextureManager;
+    }
+	CScriptManager* GetScriptManager()
+    {
+        return m_ScriptManager;
     }
 };
 

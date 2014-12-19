@@ -23,4 +23,9 @@
 
 #define NULL 0
 
+#define LUA_STATE CCore::GetInstance()->GetScriptManager()->GetLuaState()
+
+#define REGISTER_LUA_FUNCTION(FunctionName,AddrFunction) \
+{luabind::module(LUA_STATE) [ luabind::def(FunctionName,AddrFunction) ];} 
+
 #endif
