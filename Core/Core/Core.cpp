@@ -10,6 +10,7 @@
 #include "StaticMeshes\StaticMeshManager.h"
 #include "Texture\TextureManager.h"
 #include "AnimatedModels\AnimatedModelManager.h"
+#include "ScriptManager.h"
 
 CCore* CCore::m_Instance = 0;
 
@@ -45,6 +46,8 @@ void CCore::Init(HWND handler)
     m_RenderableManager = new CRenderableObjectsManager();
     m_AnimatedModelManager = new CAnimatedModelManager();
 	m_RenderableManager->Load(m_Config.RenderablePath);
+	m_ScriptManager = new CScriptManager();
+	m_ScriptManager->Initialize();
 }
 
 void CCore::DeInit()
@@ -60,6 +63,7 @@ void CCore::DeInit()
 	CHECKED_DELETE(m_AnimatedModelManager);
     CHECKED_DELETE(m_RenderableManager);
     CHECKED_DELETE(m_TextureManager);
+	CHECKED_DELETE(m_ScriptManager);
 	
 }
 

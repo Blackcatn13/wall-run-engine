@@ -8,6 +8,7 @@ class CCameraController;
 class CObject3D;
 class CFPSCamera;
 class CThPSCamera;
+class CScriptManager;
 
 class CTest_Space : public CProcess
 {

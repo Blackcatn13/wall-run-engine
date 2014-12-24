@@ -26,32 +26,37 @@ int Alert(/*IN */lua_State * State)
         return true;
 }
 
-CScriptManager::CScriptManager(void)
+CScriptManager::CScriptManager()
 {
 }
 
 
-CScriptManager::~CScriptManager(void)
+CScriptManager::~CScriptManager()
 {
         Destroy();
 }
 
+
 //Para inicializar el motor de LUA
 void CScriptManager::Initialize()
 {
+		m_DeleteMap = false;
         m_LS=luaL_newstate();
         
         luaL_openlibs(m_LS);
         //Sobreescribimos la función _ALERT de LUA cuando se genere algún error al ejecutar
         //código LUA
+		luabind::open(m_LS);
         lua_register(m_LS,"_ALERT",Alert);
-        luabind::open(m_LS);
+		RegisterLUAFunctions();
 }
 
 //Para desinicializar el motor de LUA
 void CScriptManager::Destroy()
 {
         lua_close(m_LS);
+		if(m_DeleteMap)
+			m_ScriptsMap.clear();
 }
 //Para ejecutar un fragmento de código LUA
 void CScriptManager::RunCode(const std::string &Code) const
@@ -74,24 +79,51 @@ void CScriptManager::RunFile(const std::string &FileName) const
         }
 }
 
+void CScriptManager::Load(const std::string &XMLFile)
+{
+	//TODO Añadir scripts a un vector?
+	std::string l_FileName = XMLFile;
+	CXMLTreeNode newFile;
+	if (!newFile.LoadFile(XMLFile.c_str()))
+	{
+		printf("ERROR loading the file.");
+		
+	}else
+	{
+		CXMLTreeNode  m = newFile["lua_scripts"];
+		if (m.Exists())
+		{
+			int count = m.GetNumChildren();
+			for (int i = 0; i < count; ++i)
+			{
+					std::string l_name = m(i).GetPszISOProperty("name", "");
+					std::string l_file = m(i).GetPszISOProperty("file", "");
+					m_ScriptsMap.insert ( std::pair<std::string,std::string>(l_name,l_file) );
+			} 
+			m_DeleteMap = true;
+		}
+	}
+}
+
+
 void CScriptManager::RegisterLUAFunctions()
 {
 
         luabind::module(LUA_STATE) [
         class_<CScriptManager>("CScriptManager")
-        .def("load_file", & CScriptManager::LoadFile)
+       // .def("load_file", & CScriptManager::LoadFile)
         .def("run_code", & CScriptManager::RunCode)
         .def("run_file", & CScriptManager::RunFile)
         .def("load", & CScriptManager::Load)
+		.def("get_scripts_map", & CScriptManager::GetScriptsMap)
         ];
 
-        module(LUA_STATE) [
+		luabind::module(LUA_STATE) [
         class_<Vect3f>("Vect3f") 
         .def(constructor<float, float, float>())
         .def(constructor<>())
         .def(constructor<Vect3f>())
-        //.def(constructor<Vect3f>())*/
-        //Operadores => Faltan varios por definir (!=, [], (), +=...
+      
         .def(const_self + const_self)
         .def(const_self - const_self)
         .def(const_self * const_self)
@@ -301,33 +333,14 @@ void CScriptManager::RegisterLUAFunctions()
         .def("set_visible", & CVisible::setVisible)
         ];
 
-        luabind::module(LUA_STATE) [
-        class_<CVisible>("CNamed")
+		module(LUA_STATE) [
+        class_<CNamed>("CNamed")
+		.def(constructor<>()) //Como no tiene metodos estaticos para probar el LUA pongo un constructor vacio
         .def("get_name", & CNamed::getName)
         .def("set_name", & CNamed::setName)
         ];
-
-        module(LUA_STATE) [
-        class_< CRenderableObject >("CRenderableObject")
-        //.def(constructor<>())
-        .def("update", & CRenderableObject::Update)
-        .def("render", & CRenderableObject::Render)
-        ];
-
-        module(LUA_STATE) [
-        class_< CRenderableObjectsManager >("CRenderableObjectsManager")
-        .def(constructor<>())
-        .def("update", & CRenderableObjectsManager::Update)
-        .def("render", & CRenderableObjectsManager::Render)
-        .def("add_mesh_instance", (CRenderableObject *(CRenderableObjectsManager::*)(const std::string &, const std::string &, const Vect3f &)) &CRenderableObjectsManager::AddMeshInstance)
-        .def("add_mesh_instance", (CRenderableObject *(CRenderableObjectsManager::*)(CXMLTreeNode &Node)) &CRenderableObjectsManager::AddMeshInstance)
-        .def("add_animated_instance_model", (CRenderableObject *(CRenderableObjectsManager::*)(const std::string &CoreModelName, const std::string &InstanceModelName, const Vect3f &Position)) &CRenderableObjectsManager::AddAnimatedInstanceModel)
-        .def("add_animated_instance_model", (CRenderableObject *(CRenderableObjectsManager::*)(CXMLTreeNode &Node)) &CRenderableObjectsManager::AddAnimatedInstanceModel)
-        .def("load", & CRenderableObjectsManager::Load)
-        .def("reload", & CRenderableObjectsManager::Reload)
-        ];
-
-        module(LUA_STATE) [
+		
+		luabind::module(LUA_STATE) [
         class_< CObject3D >("CObject3D")
         .def(constructor<>())
         .def(constructor<Vect3f, float, float, float>()) //Falta registrar la Vect3f
@@ -341,9 +354,29 @@ void CScriptManager::RegisterLUAFunctions()
         .def("set_position", & CObject3D::SetPosition)
         ];
 
-        //Si queremos registrar una clase templatizada como la clase CTextureManager debemos primero
+        luabind::module(LUA_STATE) [
+        class_< CRenderableObject >("CRenderableObject")
+        //.def(constructor<>())
+        .def("update", & CRenderableObject::Update)
+        .def("render", & CRenderableObject::Render)
+        ];
+
+       luabind:: module(LUA_STATE) [
+        class_< CRenderableObjectsManager >("CRenderableObjectsManager")
+        .def(constructor<>())
+        .def("update", & CRenderableObjectsManager::Update)
+        .def("render", & CRenderableObjectsManager::Render)
+        .def("add_mesh_instance", (CRenderableObject *(CRenderableObjectsManager::*)(const std::string &, const std::string &, const Vect3f &)) &CRenderableObjectsManager::AddMeshInstance)
+        .def("add_mesh_instance", (CRenderableObject *(CRenderableObjectsManager::*)(CXMLTreeNode &Node)) &CRenderableObjectsManager::AddMeshInstance)
+        .def("add_animated_instance_model", (CRenderableObject *(CRenderableObjectsManager::*)(const std::string &CoreModelName, const std::string &InstanceModelName, const Vect3f &Position)) &CRenderableObjectsManager::AddAnimatedInstanceModel)
+        .def("add_animated_instance_model", (CRenderableObject *(CRenderableObjectsManager::*)(CXMLTreeNode &Node)) &CRenderableObjectsManager::AddAnimatedInstanceModel)
+        .def("load", & CRenderableObjectsManager::Load)
+        .def("reload", & CRenderableObjectsManager::Reload)
+        ];
+		
+           //Si queremos registrar una clase templatizada como la clase CTextureManager debemos primero
         //registrar su clase base con la clases templatizada y después la clase
-        module(LUA_STATE) [
+        luabind::module(LUA_STATE) [
         class_<CMapManager<CTexture>>("CMapManager")
         .def("get_resource", &CMapManager< CTexture >::GetResource)
         .def("existe_resource", &CMapManager< CTexture >::ExisteResource)
@@ -351,7 +384,7 @@ void CScriptManager::RegisterLUAFunctions()
         .def("destroy", &CMapManager< CTexture >::Destroy)
         ];
 
-        module(LUA_STATE) [
+        luabind::module(LUA_STATE) [
         class_< CTextureManager/*<CTexture>*/, CMapManager<CTexture>>("CTextureManager")
         .def(constructor<>())
         .def("get_resource", & CTextureManager::GetResource)

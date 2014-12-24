@@ -5,6 +5,7 @@
 #include "Utils\Defines.h"
 #include "EngineDefs.h"
 
+
 class CLanguageManager;
 class CGraphicsManager;
 class CSoundManager;
@@ -98,7 +99,7 @@ public:
     {
         return m_TextureManager;
     }
-	CScriptManager* GetScriptManager()
+	CScriptManager * GetScriptManager()
     {
         return m_ScriptManager;
     }

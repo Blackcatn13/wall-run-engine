@@ -14,6 +14,7 @@
 #include "ActionToInput.h"
 #include "Camera/CameraController.h"
 #include "Core_Utils/MemLeaks.h"
+#include "Utils\Defines.h"
 
 #include "RenderableVertex/VertexTypes.h"
 #include "RenderableVertex/RenderableVertexs.h"
@@ -22,6 +23,8 @@
 #include "RenderableVertex/IndexedVertexs.h"
 #include "Mesh\MeshInstance.h"
 #include "Renderable\RenderableObjectsManager.h"
+#include "Core\ScriptManager.h"
+
 
 CTest_Space::CTest_Space(void)
 {
@@ -60,6 +63,12 @@ void CTest_Space::Init()
     m_CameraController->setActiveCamera("FPS");
     m_Camera = m_CameraController->getActiveCamera();
     m_PlayerMode = true;
+	
+	/* Script Manager Tests*/
+//	SCRIPTM->RunFile(".\\Data\\test2.lua");
+	SCRIPTM->Load(".\\Data\\lua_actions.xml");
+	SCRIPTM->RunFile(SCRIPTM->GetScriptsMap().find("test2")->second);
+//	SCRIPTM->RunCode("set_speed_player(get_speed_player())");
 }
 
 void CTest_Space::DeInit()
