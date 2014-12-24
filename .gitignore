@@ -6,6 +6,9 @@
 *.userosscache
 *.sln.docstates
 
+#Boost
+3dParty/boost
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
