@@ -5,8 +5,13 @@
 #include "XML\XMLTreeNode.h"
 #include <iterator>
 #include "Core\Core.h"
+#include "cal3d\cal3d.h"
 
-CAnimatedModelManager::CAnimatedModelManager(){}
+CAnimatedModelManager::CAnimatedModelManager()
+{
+	CalLoader::setLoadingMode(LOADER_ROTATE_X_AXIS);
+}
+
 CAnimatedModelManager::~CAnimatedModelManager(){}
 CAnimatedCoreModel * CAnimatedModelManager::GetCore(const std::string &Name, const std::string &Path)
 {
@@ -46,9 +51,9 @@ void CAnimatedModelManager::Load(const std::string &Filename)
 		int count = m.GetNumChildren();
 		for (int i = 0; i < count; ++i)
 		{
-			if(m(i).GetName() == "animated_model") {
-				std::string name = m(i).GetPszISOProperty("name");
-				std::string path = m(i).GetPszISOProperty("path");
+			if(std::string("animated_model")==m(i).GetName()) {
+				std::string name = m(i).GetPszISOProperty("name", "");
+				std::string path = m(i).GetPszISOProperty("path", "");
 				CAnimatedCoreModel* animModel = new CAnimatedCoreModel();
 				animModel->Load(path);
 				AddResource(name, animModel);

@@ -14,6 +14,7 @@
 #include "ActionToInput.h"
 #include "Camera/CameraController.h"
 #include "Core_Utils/MemLeaks.h"
+#include "Utils\Defines.h"
 
 #include "RenderableVertex/VertexTypes.h"
 #include "RenderableVertex/RenderableVertexs.h"
@@ -22,6 +23,8 @@
 #include "RenderableVertex/IndexedVertexs.h"
 #include "Mesh\MeshInstance.h"
 #include "Renderable\RenderableObjectsManager.h"
+#include "Core\ScriptManager.h"
+
 
 CTest_Space::CTest_Space(void)
 {
@@ -49,9 +52,9 @@ void CTest_Space::Init()
 {
     m_ObjectFPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
     m_ObjectThPS = new CObject3D(Vect3f(0, 0, 0), 0, 0, 0);
-    m_ThPSCamera = new CThPSCamera(1.f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS, 50);
-    m_ThPSCamera1 = new CThPSCamera(1.f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS, 50);
-    m_FPSCamera = new CFPSCamera(1.f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectFPS);
+    m_ThPSCamera = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS, 50);
+    m_ThPSCamera1 = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS, 50);
+    m_FPSCamera = new CFPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectFPS);
     m_ThPSCamera->SetTypeCamera(CCamera::TC_ESF);
     m_CameraController = new CCameraController();
     m_CameraController->AddNewCamera("FPS", m_FPSCamera);
@@ -60,6 +63,12 @@ void CTest_Space::Init()
     m_CameraController->setActiveCamera("FPS");
     m_Camera = m_CameraController->getActiveCamera();
     m_PlayerMode = true;
+	
+	/* Script Manager Tests*/
+//	SCRIPTM->RunFile(".\\Data\\test2.lua");
+	SCRIPTM->Load(".\\Data\\lua_actions.xml");
+	SCRIPTM->RunFile(SCRIPTM->GetScriptsMap().find("test2")->second);
+//	SCRIPTM->RunCode("set_speed_player(get_speed_player())");
 }
 
 void CTest_Space::DeInit()
@@ -166,6 +175,7 @@ void CTest_Space::Update(float dt)
     tTerra2_yaw += dt * 80 * 0.005;
     tlluna1_yaw -= dt * 60 * 0.05;
     m_dt = dt;
+	RENDM->Update(dt);
 }
 
 void CTest_Space::Render()

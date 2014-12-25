@@ -108,8 +108,8 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)\Base;$(SolutionDir)\Input;$(SolutionDir)\Core;$(SolutionDir)\3dParty\libxml2-2.7.2.win32\include;$(SolutionDir)\3dParty\iconv-1.9.2.win32\include;$(SolutionDir)\$(ProjectName);$(SolutionDir)\3dParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)\Base;$(SolutionDir)\Input;$(SolutionDir)\Core;$(SolutionDir)\3dParty\libxml2-2.7.2.win32\include;$(SolutionDir)\3dParty\iconv-1.9.2.win32\include;$(SolutionDir)\$(ProjectName);$(SolutionDir)\3dParty\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

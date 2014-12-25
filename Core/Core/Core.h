@@ -5,6 +5,7 @@
 #include "Utils\Defines.h"
 #include "EngineDefs.h"
 
+
 class CLanguageManager;
 class CGraphicsManager;
 class CSoundManager;
@@ -13,7 +14,9 @@ class CFontManager;
 class CActionToInput;
 class CStaticMeshManager;
 class CRenderableObjectsManager;
+class CAnimatedModelManager;
 class CTextureManager;
+class CScriptManager;
 
 #define CCORE   CCore::GetInstance()
 #define GRAPHM  CCore::GetInstance()->GetGraphicsManager()
@@ -25,6 +28,8 @@ class CTextureManager;
 #define SMESHM  CCore::GetInstance()->GetStaticMeshManager()
 #define RENDM   CCore::GetInstance()->GetRenderableManager()
 #define TEXTM   CCore::GetInstance()->GetTextureManager()
+#define ANIMAN	CCore::GetInstance()->GetAnimatedModelManager()
+#define SCRIPTM CCore::GetInstance()->GetScriptManager()
 
 class CCore
 {
@@ -42,7 +47,9 @@ private:
     CActionToInput*         m_ActionToInput;
     CStaticMeshManager*     m_StaticMeshManager;
     CRenderableObjectsManager* m_RenderableManager;
+	CAnimatedModelManager*  m_AnimatedModelManager;
     CTextureManager*        m_TextureManager;
+	CScriptManager*			m_ScriptManager;
 public:
     ~CCore();
     void Update ( float dt );
@@ -84,9 +91,17 @@ public:
     {
         return m_RenderableManager;
     }
+	CAnimatedModelManager* GetAnimatedModelManager()
+    {
+        return m_AnimatedModelManager;
+    }
     CTextureManager* GetTextureManager()
     {
         return m_TextureManager;
+    }
+	CScriptManager * GetScriptManager()
+    {
+        return m_ScriptManager;
     }
 };
 

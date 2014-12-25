@@ -14,7 +14,8 @@ protected:
     bool		m_Printable;
 public:
     CRenderableObject();
-	CRenderableObject(CXMLTreeNode &TreeNode);
+	//TODO
+	//CRenderableObject(CXMLTreeNode &TreeNode);
     virtual ~CRenderableObject() {}
     virtual void Update(float ElapsedTime)
     {

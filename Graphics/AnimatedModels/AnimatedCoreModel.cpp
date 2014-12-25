@@ -1,23 +1,24 @@
 #include "AnimatedCoreModel.h"
 #include "XML\XMLTreeNode.h"
-#include "Core\Core.h"
 #include "Texture\TextureManager.h"
+#include "Core\Core.h"
+
 
 CAnimatedCoreModel::CAnimatedCoreModel()
-{
-
+	: m_CalCoreModel(NULL)
+{	
 }
 
 
 CAnimatedCoreModel::~CAnimatedCoreModel()
 {
-	delete m_CalCoreModel;
+	//CHECKED_DELETE(m_CalCoreModel);
 }
 
 
 bool CAnimatedCoreModel::LoadMesh(const std::string &Filename)
 {
-	if(!m_CalCoreModel->loadCoreMesh(Filename))
+	if(m_CalCoreModel->loadCoreMesh(Filename)==0)
       {
         return false;
       }
@@ -25,14 +26,14 @@ bool CAnimatedCoreModel::LoadMesh(const std::string &Filename)
 }
 bool CAnimatedCoreModel::LoadSkeleton(const std::string &Filename)
 {
-	 if(!m_CalCoreModel->loadCoreSkeleton(Filename))
+	 if(m_CalCoreModel->loadCoreSkeleton(Filename)==0)
       {
         return false;
       }
 }
 bool CAnimatedCoreModel::LoadAnimation(const std::string &Name, const std::string &Filename)
 {
-	if(!m_CalCoreModel->loadCoreAnimation( Filename,Name))
+	if(m_CalCoreModel->loadCoreAnimation(Filename,Name)==0)
       {
         return false;
       }
@@ -44,31 +45,34 @@ void CAnimatedCoreModel::Load(const std::string &Path)
 
 		m_Path = Path;
 		CXMLTreeNode newFile;
-		if (!newFile.LoadFile(Path.c_str()))
+		if (!newFile.LoadFile((Path+ std::string("\\actor.xml")).c_str()))
 		{
 			printf("ERROR loading the file.");
 		}
-		CXMLTreeNode  m = newFile["actor"];
+		CXMLTreeNode  m = newFile["animated_model"];
 		if (m.Exists())
 		{
+			std::string l_Name=m.GetPszISOProperty("name", "");
+			m_CalCoreModel=new CalCoreModel(l_Name);
 			int count = m.GetNumChildren();
 			for (int i = 0; i < count; ++i)
 			{
-				if(m(i).GetName() == "skeleton") {
-					std::string Filename = m(i).GetPszISOProperty("file");
+				std::string l_Element(m(i).GetName());
+				if( l_Element== "skeleton") {
+					std::string Filename = m(i).GetPszISOProperty("file", "");
 					LoadSkeleton(Path+"\\"+Filename);
 				}
-				else if(m(i).GetName() == "animation") {
-					std::string name = m(i).GetPszISOProperty("name");
-					std::string Filename = m(i).GetPszISOProperty("file");
+				else if(l_Element == "animation") {
+					std::string name = m(i).GetPszISOProperty("name", "");
+					std::string Filename = m(i).GetPszISOProperty("file", "");
 					LoadAnimation(name, Path+"\\"+Filename);
 				}
-				else if(m(i).GetName() == "mesh") {
-					std::string Filename = m(i).GetPszISOProperty("file");
+				else if(l_Element == "mesh") {
+					std::string Filename = m(i).GetPszISOProperty("file", "");
 					LoadMesh(Path+"\\"+Filename);
 				}
-				else if(m(i).GetName() == "texture") {
-					std::string Filename = m(i).GetPszISOProperty("file");
+				else if(l_Element == "texture") {
+					std::string Filename = Path+std::string(m(i).GetPszISOProperty("file", ""));
 					m_TextureFilenameList.push_back(Filename);
 					TEXTM->GetResource(Filename);
 

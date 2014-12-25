@@ -17,6 +17,7 @@ public:
     CMeshInstance(const CXMLTreeNode &Node);
     ~CMeshInstance();
     void Render(CGraphicsManager *RM);
+	void Update(float dt) {};
 };
 
 #endif

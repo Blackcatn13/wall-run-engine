@@ -9,6 +9,8 @@ class CNamed
 private:
     std::string m_Name;
 public:
+	CNamed(){} //Ojo que este es solo para probar el ScriptManager
+
     void setName(std::string name)
     {
         m_Name = name;

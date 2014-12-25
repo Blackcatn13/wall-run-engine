@@ -1,0 +1,5 @@
+<lua_scripts>	
+	<script name="test2" file="Data/test2.lua" />
+	<script name="test" file="Data/test.lua" />
+</lua_scripts>
+

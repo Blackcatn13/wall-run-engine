@@ -9,6 +9,15 @@
 #include "cal3d\renderer.h"
 #include "RenderableVertex\VertexTypes.h"
 
+struct VERTEX
+{
+    D3DXVECTOR3    pos;
+    D3DXVECTOR3	normal;
+    FLOAT tu,tv;
+};
+
+#define D3DFVF_VERTEX (D3DFVF_XYZ|D3DFVF_NORMAL|D3DFVF_TEX1)
+
 //#include "Utils\XMLTreeNode"
 
 
@@ -29,25 +38,31 @@ CAnimatedInstanceModel::~CAnimatedInstanceModel()
 void CAnimatedInstanceModel::Destroy()
 {
 	CHECKED_DELETE(m_CalModel);
-	CHECKED_DELETE(m_AnimatedCoreModel);
+	//CHECKED_DELETE(m_AnimatedCoreModel);
 	m_TextureList.clear();
-	
 }
 
 void CAnimatedInstanceModel::Initialize(CAnimatedCoreModel *AnimatedCoreModel, CGraphicsManager *RM)
 {
+	
+	m_AnimatedCoreModel = AnimatedCoreModel;
+	CalCoreModel *l_CoreModel=CORE_MODEL;
+	m_CalModel = new CalModel(l_CoreModel); 
 
-  m_AnimatedCoreModel = AnimatedCoreModel;
-  m_CalModel = new CalModel(CORE_MODEL); 
+	for(int i=0;i<l_CoreModel->getCoreMeshCount();++i)
+		m_CalModel->attachMesh(i);
   
-  LoadVertexBuffer(RM);
-  LoadTextures();
+	LoadVertexBuffer(RM);
+	LoadTextures();
+
+	BlendCycle(0, 1.0f, 0.0f);
+	m_CalModel->update(0.0f);
 }
 
 
 void CAnimatedInstanceModel::ExecuteAction(int Id, float DelayIn, float DelayOut, float WeightTarget, bool AutoLock)
 {
-	  m_CalModel->getMixer()->executeAction(Id, DelayIn, DelayOut);
+	m_CalModel->getMixer()->executeAction(Id, DelayIn, DelayOut);
 }
 
 void CAnimatedInstanceModel::BlendCycle(int Id, float Weight, float DelayIn)
@@ -139,8 +154,8 @@ void CAnimatedInstanceModel::RenderModelBySoftware(CGraphicsManager *RM)
 
   //RM->GetDevice()->SetStreamSource( 0, m_pVB, 0,  sizeof(VERTEX) ); //<= Poner lo nuestro
   //RM->GetDevice()->SetFVF(D3DFVF_VERTEX);//<= Poner lo nuestro
-  RM->GetDevice()->SetStreamSource( 0, m_pVB, 0,  sizeof(TTEXTURE_VERTEX) ); //<= Poner lo nuestro
-  RM->GetDevice()->SetFVF(TTEXTURE_VERTEX::GetFVF());//<= Poner lo nuestro
+  RM->GetDevice()->SetStreamSource( 0, m_pVB, 0,  sizeof(VERTEX) ); //<= Poner lo nuestro
+  RM->GetDevice()->SetFVF(D3DFVF_VERTEX);//<= Poner lo nuestro
   RM->GetDevice()->SetIndices(m_pIB);
 
   //para cada submesah:
@@ -166,7 +181,7 @@ void CAnimatedInstanceModel::RenderModelBySoftware(CGraphicsManager *RM)
 
 
 
-	  m_pVB->Lock(m_NumVtxs*sizeof(TTEXTURE_VERTEX::GetFVF()), pCalRenderer->getVertexCount()*sizeof(TTEXTURE_VERTEX), (void**)&pVertices, dwVBLockFlags);
+	  m_pVB->Lock(m_NumVtxs*sizeof(VERTEX), pCalRenderer->getVertexCount()*sizeof(VERTEX), (void**)&pVertices, dwVBLockFlags);
 	  int vertexCount = pCalRenderer->getVerticesNormalsAndTexCoords(&pVertices->x);
 	  m_pVB->Unlock();
 
@@ -175,8 +190,9 @@ void CAnimatedInstanceModel::RenderModelBySoftware(CGraphicsManager *RM)
 	  int faceCount = pCalRenderer->getFaces(meshFaces);
 	  m_pIB->Unlock();
   
-	   GRAPHM->GetDevice()->SetRenderState(D3DRS_CULLMODE,D3DCULL_NONE);
-			  GRAPHM->GetDevice()->SetTexture(0,(LPDIRECT3DTEXTURE9)pCalRenderer->getMapUserData(0));
+	   //GRAPHM->GetDevice()->SetRenderState(D3DRS_CULLMODE,D3DCULL_NONE);
+	  m_TextureList[meshId]->Activate(0);
+			  //GRAPHM->GetDevice()->SetTexture(0,(LPDIRECT3DTEXTURE9)m_TextureList[meshId]);
           
 			  GRAPHM->GetDevice()->DrawIndexedPrimitive(
 				  D3DPT_TRIANGLELIST,

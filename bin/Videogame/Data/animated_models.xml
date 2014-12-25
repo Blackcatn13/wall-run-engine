@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
 <animated_models>
-	<animated_model name="thug" path="./data/animated_models/thug">
-	crear el actor.xml dentro de la carpeta
+	<animated_model name="thug" path=".\Data\animated_models\thug\"/>
+	<animated_model name="paladin" path=".\Data\animated_models\paladin\"/>
 </animated_models>
