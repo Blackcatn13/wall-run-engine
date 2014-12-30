@@ -63,6 +63,9 @@ void CTest_Space::Init()
     m_CameraController->setActiveCamera("FPS");
     m_Camera = m_CameraController->getActiveCamera();
     m_PlayerMode = true;
+
+	//Lights
+	LIGHTM->Load(".\\Data\\lights.xml");
 	
 	/* Script Manager Tests*/
 //	SCRIPTM->RunFile(".\\Data\\test2.lua");
@@ -192,6 +195,7 @@ void CTest_Space::Render()
     GRAPHM->DrawAxis(10);
     //text->Activate(0);
     RENDM->Render(GRAPHM);
+	LIGHTM->Render(GRAPHM);
     //g_RV->Render(CCORE->GetGraphicsManager(º+-));
     /* Mat44f t;
      Mat44f trot1;

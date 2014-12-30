@@ -86,7 +86,8 @@ void CScriptManager::Load(const std::string &XMLFile)
 	CXMLTreeNode newFile;
 	if (!newFile.LoadFile(XMLFile.c_str()))
 	{
-		printf("ERROR loading the file.");
+		std::string l_ErrorMsg = "ERROR loading file" + XMLFile;
+		LOGGER->AddNewLog(ELL_ERROR,  l_ErrorMsg.c_str());
 		
 	}else
 	{
@@ -105,6 +106,64 @@ void CScriptManager::Load(const std::string &XMLFile)
 	}
 }
 
+void RegisterLights()
+{
+	luabind::module(LUA_STATE) [
+	class_<CLight>("CLight")
+	.def(constructor<>())
+    .def("set_name", & CLight::SetName)
+    .def("get_name", & CLight::GetName)
+	.def("set_color", & CLight::SetColor)
+    .def("get_color", & CLight::GetColor)
+	.def("set_start_range_attenuation", & CLight::SetStartRangeAttenuation)
+    .def("get_start_range_attenuation", & CLight::GetStartRangeAttenuation)
+	.def("set_end_range_attenuation", & CLight::SetEndRangeAttenuation)
+    .def("get_end_range_attenuation", & CLight::GetEndRangeAttenuation)
+    .def("render_shadows", & CLight::RenderShadows)
+    .def("set_type", & CLight::SetType)
+	.def("get_type", & CLight::GetType)
+    .def("render", & CLight::Render)
+    ];
+
+	 luabind::module(LUA_STATE) [
+     class_<CMapManager<CLight>>("CMapManagerLight")
+     .def("get_resource", &CMapManager< CLight >::GetResource)
+     .def("existe_resource", &CMapManager< CLight >::ExisteResource)
+     .def("add_resource", &CMapManager< CLight >::AddResource)
+     .def("destroy", &CMapManager< CLight >::Destroy)
+     ];
+
+	luabind::module(LUA_STATE) [
+	class_<CLightManager>("CLightManager")
+	.def(constructor<>())
+    .def("load", & CLightManager::Load)
+    .def("render", & CLightManager::Render)
+	];
+
+
+	luabind::module(LUA_STATE) [
+	class_<COmniLight>("COmniLight")
+	.def(constructor<>())
+	];
+
+	luabind::module(LUA_STATE) [
+	class_<CDirectionalLight>("CDirectionalLight")
+	.def(constructor<>())
+	.def("set_direction", & CDirectionalLight::SetDirection)
+	.def("get_direction", & CDirectionalLight::GetDirection)
+	.def("render", & CDirectionalLight::Render)
+	];
+
+	luabind::module(LUA_STATE) [
+	class_<CSpotLight>("CSpotLight")
+	.def(constructor<>())
+	.def("set_angle", & CSpotLight::SetAngle)
+	.def("get_angle", & CSpotLight::GetAngle)
+	.def("set_fall_off", & CSpotLight::SetFallOff)
+	.def("get_fall_off", & CSpotLight::GetFallOff)
+	];
+
+}
 
 void CScriptManager::RegisterLUAFunctions()
 {
@@ -377,7 +436,7 @@ void CScriptManager::RegisterLUAFunctions()
            //Si queremos registrar una clase templatizada como la clase CTextureManager debemos primero
         //registrar su clase base con la clases templatizada y después la clase
         luabind::module(LUA_STATE) [
-        class_<CMapManager<CTexture>>("CMapManager")
+        class_<CMapManager<CTexture>>("CMapManagerTexture")
         .def("get_resource", &CMapManager< CTexture >::GetResource)
         .def("existe_resource", &CMapManager< CTexture >::ExisteResource)
         .def("add_resource", &CMapManager< CTexture >::AddResource)
@@ -391,5 +450,6 @@ void CScriptManager::RegisterLUAFunctions()
         .def("reload", & CTextureManager::Reload)
         ];
 
-        
+		RegisterLights();
 }
+

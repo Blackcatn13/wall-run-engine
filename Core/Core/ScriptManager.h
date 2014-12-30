@@ -20,6 +20,12 @@
 #include "Math\Matrix34.h"
 #include <d3dx9.h>
 
+#include "Lights\Light.h"
+#include "Lights\LightManager.h"
+#include "Lights\DirectionalLight.h"
+#include "Lights\OmniLight.h"
+#include "Lights\SpotLight.h"
+
 extern "C"
 {
 	#include "lua.h"
