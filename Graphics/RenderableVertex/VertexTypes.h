@@ -77,7 +77,7 @@ struct TCOLOR_TEXTURE_NORMAL_VERTEX {
 struct TTEXTURE2_VERTEX {
     float x, y, z;
     float tu, tv;
-	float tu2, tv2;
+    float tu2, tv2;
     static inline unsigned short GetVertexType()
     {
         return VERTEX_TYPE_GEOMETRY | VERTEX_TYPE_TEXTURE2;
@@ -220,6 +220,21 @@ struct TCOLORED_VERTEX {
     static inline unsigned int GetFVF()
     {
         return D3DFVF_XYZ | D3DFVF_DIFFUSE;
+    }
+};
+
+// G N D
+struct TCOLORED_NORMAL_VERTEX {
+    float x, y, z;
+    float nx, ny, nz;
+    unsigned long color;
+    static inline unsigned short GetVertexType()
+    {
+        return VERTEX_TYPE_GEOMETRY | VERTEX_TYPE_NORMAL | VERTEX_TYPE_DIFFUSE;
+    }
+    static inline unsigned int GetFVF()
+    {
+        return D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_DIFFUSE;
     }
 };
 

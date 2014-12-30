@@ -84,6 +84,8 @@ bool CStaticMesh::Load (const std::string &FileName)
                 int type_size;
                 if (vertex_type[i] == TTEXTURE_NORMAL_VERTEX::GetVertexType())
                     type_size = sizeof(TTEXTURE_NORMAL_VERTEX);
+                if (vertex_type[i] == TCOLORED_VERTEX::GetVertexType())
+                    type_size = sizeof(TCOLORED_VERTEX);
                 void* vertex_list = (void*)malloc(n_vtxs * type_size);
                 fread(vertex_list, n_vtxs * type_size, 1, f);
                 unsigned short n_idxs;
@@ -93,30 +95,30 @@ bool CStaticMesh::Load (const std::string &FileName)
                 CRenderableVertexs *l_rv = NULL;
                 if (vertex_type[i] == TTEXTURE_NORMAL_VERTEX::GetVertexType())
                     l_rv = new CIndexedVertexs<TTEXTURE_NORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
+                if (vertex_type[i] == TCOLORED_VERTEX::GetVertexType())
+                    l_rv = new CIndexedVertexs<TCOLORED_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
                 m_RVs.push_back(l_rv);
                 delete(vertex_list);
                 delete(index_list);
             }
-
-			/*BoundingBox y BoundingSphere, 10 floats (6 BBox + 4 BShpere)
-			BoundingBox			BoundingSphere
-			0- xmin				6- center xmin
-			1- ymin				7- center ymin
-			2- zmin				8- center zmin
-			3- xmax				9- radius
-			4- ymax
-			5- zmax
-			*/
-			float* float_list = (float*)malloc(10*sizeof(float));
-			fread(float_list , 10 * sizeof(unsigned short), 1, f);
-			m_BBox = BoundingBox();
-			m_BBox.SetMinPos(Vect3f(float_list[0], float_list[1], float_list[2]));
-			m_BBox.SetMaxPos(Vect3f(float_list[3], float_list[4], float_list[5]));
-			m_BSphere = BoundingSphere();
-			m_BSphere.SetCenterPos(Vect3f(float_list[6], float_list[7], float_list[8]));
-			m_BSphere.SetRadius(float_list[9]);
-			delete(float_list);
-
+            /*BoundingBox y BoundingSphere, 10 floats (6 BBox + 4 BShpere)
+            BoundingBox			BoundingSphere
+            0- xmin				6- center xmin
+            1- ymin				7- center ymin
+            2- zmin				8- center zmin
+            3- xmax				9- radius
+            4- ymax
+            5- zmax
+            */
+            float* float_list = (float*)malloc(10 * sizeof(float));
+            fread(float_list , 10 * sizeof(unsigned short), 1, f);
+            m_BBox = BoundingBox();
+            m_BBox.SetMinPos(Vect3f(float_list[0], float_list[1], float_list[2]));
+            m_BBox.SetMaxPos(Vect3f(float_list[3], float_list[4], float_list[5]));
+            m_BSphere = BoundingSphere();
+            m_BSphere.SetCenterPos(Vect3f(float_list[6], float_list[7], float_list[8]));
+            m_BSphere.SetRadius(float_list[9]);
+            delete(float_list);
             unsigned short footer;
             fread(&footer, sizeof footer, 1, f);
             if (footer != 0xff55) {
@@ -141,7 +143,11 @@ void CStaticMesh::Render (CGraphicsManager *RM)
 {
     for (int i = 0; i < m_RVs.size(); ++i) {
         // TODO iterate m_textures
-        m_Textures[i][0]->Activate(0);
+        if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_TEXTURE1) == VERTEX_TYPE_TEXTURE1)
+            m_Textures[i][0]->Activate(0);
+        if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_DIFFUSE) == VERTEX_TYPE_DIFFUSE) {
+            RM->GetDevice()->SetTexture(0, 0);
+        }
         m_RVs[i]->Render(RM);
     }
 }
