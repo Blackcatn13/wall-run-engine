@@ -17,6 +17,7 @@ class CRenderableObjectsManager;
 class CAnimatedModelManager;
 class CTextureManager;
 class CScriptManager;
+class CLightManager;
 
 #define CCORE   CCore::GetInstance()
 #define GRAPHM  CCore::GetInstance()->GetGraphicsManager()
@@ -30,6 +31,7 @@ class CScriptManager;
 #define TEXTM   CCore::GetInstance()->GetTextureManager()
 #define ANIMAN	CCore::GetInstance()->GetAnimatedModelManager()
 #define SCRIPTM CCore::GetInstance()->GetScriptManager()
+#define LIGHTM CCore::GetInstance()->GetLightManager()
 
 class CCore
 {
@@ -50,6 +52,7 @@ private:
 	CAnimatedModelManager*  m_AnimatedModelManager;
     CTextureManager*        m_TextureManager;
 	CScriptManager*			m_ScriptManager;
+	CLightManager*			m_LightManager;
 public:
     ~CCore();
     void Update ( float dt );
@@ -102,6 +105,10 @@ public:
 	CScriptManager * GetScriptManager()
     {
         return m_ScriptManager;
+    }
+	CLightManager * GetLightManager()
+    {
+        return m_LightManager;
     }
 };
 

@@ -32,6 +32,9 @@
     <Filter Include="AnimatedModels">
       <UniqueIdentifier>{aa6a2ba6-cbf8-4f70-b666-1651ea73e07e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Lights">
+      <UniqueIdentifier>{469eda1f-2832-4e88-a947-8c14603d21a6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GraphicsManager.cpp" />
@@ -94,6 +97,21 @@
     </ClCompile>
     <ClCompile Include="AnimatedModels\AnimatedModelManager.cpp">
       <Filter>AnimatedModels</Filter>
+    </ClCompile>
+    <ClCompile Include="Lights\LightManager.cpp">
+      <Filter>Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Lights\Light.cpp">
+      <Filter>Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Lights\DirectionalLight.cpp">
+      <Filter>Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Lights\OmniLight.cpp">
+      <Filter>Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Lights\SpotLight.cpp">
+      <Filter>Lights</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +181,21 @@
     </ClInclude>
     <ClInclude Include="AnimatedModels\AnimatedModelManager.h">
       <Filter>AnimatedModels</Filter>
+    </ClInclude>
+    <ClInclude Include="Lights\LightManager.h">
+      <Filter>Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Lights\Light.h">
+      <Filter>Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Lights\DirectionalLight.h">
+      <Filter>Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Lights\OmniLight.h">
+      <Filter>Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Lights\SpotLight.h">
+      <Filter>Lights</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

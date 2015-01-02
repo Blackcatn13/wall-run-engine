@@ -11,6 +11,7 @@
 #include "Texture\TextureManager.h"
 #include "AnimatedModels\AnimatedModelManager.h"
 #include "ScriptManager.h"
+#include "Lights\LightManager.h"
 
 CCore* CCore::m_Instance = 0;
 
@@ -48,6 +49,8 @@ void CCore::Init(HWND handler)
 	m_RenderableManager->Load(m_Config.RenderablePath);
 	m_ScriptManager = new CScriptManager();
 	m_ScriptManager->Initialize();
+	m_LightManager = new CLightManager();
+	
 }
 
 void CCore::DeInit()

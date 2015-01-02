@@ -21,6 +21,11 @@
     <ClCompile Include="Camera\ThPSCamera.cpp" />
     <ClCompile Include="Font\FontManager.cpp" />
     <ClCompile Include="GraphicsManager.cpp" />
+    <ClCompile Include="Lights\DirectionalLight.cpp" />
+    <ClCompile Include="Lights\Light.cpp" />
+    <ClCompile Include="Lights\LightManager.cpp" />
+    <ClCompile Include="Lights\OmniLight.cpp" />
+    <ClCompile Include="Lights\SpotLight.cpp" />
     <ClCompile Include="Mesh\MeshInstance.cpp" />
     <ClCompile Include="Object\Object3D.cpp" />
     <ClCompile Include="RenderableVertex\VertexTypes.cpp" />
@@ -44,6 +49,11 @@
     <ClInclude Include="Camera\ThPSCamera.h" />
     <ClInclude Include="Font\FontManager.h" />
     <ClInclude Include="GraphicsManager.h" />
+    <ClInclude Include="Lights\DirectionalLight.h" />
+    <ClInclude Include="Lights\Light.h" />
+    <ClInclude Include="Lights\LightManager.h" />
+    <ClInclude Include="Lights\OmniLight.h" />
+    <ClInclude Include="Lights\SpotLight.h" />
     <ClInclude Include="Mesh\MeshInstance.h" />
     <ClInclude Include="Object\Object3D.h" />
     <ClInclude Include="RenderableVertex\IndexedVertexs.h" />
