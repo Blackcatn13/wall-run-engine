@@ -25,37 +25,37 @@ public:
     }
 
     //---Get Functions
-    float						GetYaw			() const
+    float                                               GetYaw                  () const
     {
         return m_fYaw;
     }
-    float						GetRoll			() const
+    float                                               GetRoll                 () const
     {
         return m_fRoll;
     }
-    float						GetPitch		() const
+    float                                               GetPitch                () const
     {
         return m_fPitch;
     }
-    const Vect3f&		GetPosition	() const
+    const Vect3f&               GetPosition     () const
     {
         return m_Position;
     }
 
     //---Set Functions
-    void		SetPosition	( const Vect3f& pos )
+    void                SetPosition     ( const Vect3f& pos )
     {
         m_Position = pos;
     }
-    void		SetYaw			( float yaw )
+    void                SetYaw                  ( float yaw )
     {
         m_fYaw = yaw;
     }
-    void		SetPitch		( float pitch )
+    void                SetPitch                ( float pitch )
     {
         m_fPitch = pitch;
     }
-    void		SetRoll			( float roll )
+    void                SetRoll                 ( float roll )
     {
         m_fRoll = roll;
     }
@@ -73,12 +73,12 @@ public:
     Mat44f getTransform();
 
 protected:
-    Vect3f	    m_Position;
-    float		m_fYaw;
-    float		m_fPitch;
-    float		m_fRoll;
-    Vect3f		m_scale;
-    Mat44f		m_transform;
+    Vect3f          m_Position;
+    float               m_fYaw;
+    float               m_fPitch;
+    float               m_fRoll;
+    Vect3f              m_scale;
+    Mat44f              m_transform;
 };
 
 #endif //INC_CORE_H_
