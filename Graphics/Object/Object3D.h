@@ -60,23 +60,25 @@ public:
         m_fRoll = roll;
     }
 
-	void SetScale(float sc) {
-		m_scale = sc;
-	}
+    void SetScale(Vect3f sc)
+    {
+        m_scale = sc;
+    }
 
-	float GetScale() {
-		return m_scale;
-	}
+    Vect3f GetScale()
+    {
+        return m_scale;
+    }
 
-	Mat44f getTransform();
+    Mat44f getTransform();
 
 protected:
-    Vect3f	m_Position;
+    Vect3f	    m_Position;
     float		m_fYaw;
     float		m_fPitch;
     float		m_fRoll;
-	float		m_scale;
-	Mat44f		m_transform;
+    Vect3f		m_scale;
+    Mat44f		m_transform;
 };
 
 #endif //INC_CORE_H_
