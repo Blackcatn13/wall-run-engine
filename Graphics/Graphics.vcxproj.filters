@@ -35,6 +35,9 @@
     <Filter Include="Lights">
       <UniqueIdentifier>{469eda1f-2832-4e88-a947-8c14603d21a6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Effects">
+      <UniqueIdentifier>{3b363986-580b-4711-affb-fdca013d2e7e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GraphicsManager.cpp" />
@@ -196,6 +199,9 @@
     </ClInclude>
     <ClInclude Include="Lights\SpotLight.h">
       <Filter>Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\Effects.h">
+      <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

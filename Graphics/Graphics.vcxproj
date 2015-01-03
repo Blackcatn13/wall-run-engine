@@ -47,6 +47,7 @@
     <ClInclude Include="Camera\FPSCamera.h" />
     <ClInclude Include="Camera\Frustum.h" />
     <ClInclude Include="Camera\ThPSCamera.h" />
+    <ClInclude Include="Effects\Effects.h" />
     <ClInclude Include="Font\FontManager.h" />
     <ClInclude Include="GraphicsManager.h" />
     <ClInclude Include="Lights\DirectionalLight.h" />
