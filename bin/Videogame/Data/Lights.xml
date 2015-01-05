@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <lights>
-	<light name="Light01" type="spot" pos="58.335 6.15266 85.1666" dir="-0.758065 -0.193092 -0.622939" color="0.223529 0.788235 1.0" angle="0.226893" fall_off="0.977384" att_start_range="28.0" att_end_range="40.0"/>
-	<light name="Light02" type="directional" pos="-31.3958 35.6993 -74.0128" dir="0.555733 -0.350478 0.753874" color="1.0 1.0 1.0" render_shadows="true" att_start_range="8000.0" att_end_range="20000.0"/>
-	<light name=" Light03" type="omni" pos="51.2215 0.0 38.0957" color="1.0 1.0 1.0" att_start_range="80.0" att_end_range="200.0"/>
-	<light name="Light04" type="spot" pos="-20.0064 20.3447 29.1889" dir="-0.573021 - 0.490473 0.656569" color="1.0 1.0 1.0" angle="0.436332" fall_off="1.0472" att_start_range="8.0" att_end_range="10.0"/>
+	<light name="mylight2" type="spot" pos="169 18 14" dir="0.39344111 0.0096235331 0.91929936" color="1.0 1.0 1.0" att_start_range="20" att_end_range="40" 
+		generate_shadow_map="true" shadow_map_format_type="R32F" shadow_map_width="256" shadow_map_height="256" generate_static_shadow_map="true"
+		static_shadow_map_format_type="R32F" static_shadow_map_width="256" static_shadow_map_height="256" update_static_shadow_map="true" angle="1.05" fall_off="1.05" shadow_texture_mask="./data/textures/shadow_mask.tga">
+		<static renderable_objects_manager="solid"/>
+		<dynamic renderable_objects_manager="solid"/>
+	</light>
 </lights>

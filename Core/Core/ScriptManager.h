@@ -20,17 +20,9 @@
 #include "Math\Matrix34.h"
 #include <d3dx9.h>
 
-#include "Lights\Light.h"
-#include "Lights\LightManager.h"
-#include "Lights\DirectionalLight.h"
-#include "Lights\OmniLight.h"
-#include "Lights\SpotLight.h"
-
 #include "Utils\MapManager.h"
 #include "Utils\TemplatedVectorMapManager.h"
 
-#include "Camera\CameraController.h"
-#include "Camera\Camera.h"
 
 extern "C"
 {
@@ -77,19 +69,11 @@ class CScriptManager
 
 #endif
 
-/*class CLightWrapper : public CLight, public luabind::wrap_base 
- { 
- public: 
-     void SetShadowMap(CGraphicsManager *RM) 
-     { 
-         call<void>("SetShadowMap"); 
-     } 
- }; */
 /************************************/
 /***********AUXILIAR CLASSES********/
 /***********************************/
 /******CAMERAS******/
-//
+//
 //class CCameraInfo
 //{
 //public:
@@ -339,7 +323,10 @@ class CScriptManager
 //	void Update(float ElapsedTime){}
 //	void Render(CGraphicsManager *RM){}
 //	void Render(CGraphicsManager *RM, const std::string &LayerName){}
-//};//////class CRenderableObjectTechnique : public CNamed
+//};
+//
+//
+//class CRenderableObjectTechnique : public CNamed
 //{
 //private:
 //CEffectTechnique *m_EffectTechnique;
@@ -348,7 +335,9 @@ class CScriptManager
 //	CRenderableObjectTechnique(){}
 //	void SetEffectTechnique(CEffectTechnique *EffectTechnique){}
 //	CEffectTechnique * GetEffectTechnique() const{return m_EffectTechnique;}
-//};////class CPoolRenderableObjectTechnique : public CNamed
+//};
+//
+//class CPoolRenderableObjectTechnique : public CNamed
 //{
 //private:
 //	class CPoolRenderableObjectTechniqueElement
@@ -365,7 +354,9 @@ class CScriptManager
 //	void Destroy(){}
 //	void AddElement(const std::string &Name, const std::string &TechniqueName, CRenderableObjectTechnique *ROTOnRenderableObjectTechniqueManager){}
 //	void Apply(){}
-//};////class CRenderableObjectTechniqueManager : public CMapManager<CRenderableObjectTechnique>
+//};
+//
+//class CRenderableObjectTechniqueManager : public CMapManager<CRenderableObjectTechnique>
 //{
 //private:
 //	CMapManager<CPoolRenderableObjectTechnique> m_PoolRenderableObjectTechniques;
@@ -377,14 +368,18 @@ class CScriptManager
 //	void Load(const std::string &FileName){}
 //	std::string GetRenderableObjectTechniqueNameByVertexType(unsigned int VertexType){return "lala";}
 //	CMapManager<CPoolRenderableObjectTechnique> & GetPoolRenderableObjectTechniques(){return m_PoolRenderableObjectTechniques;}
-//};////class CSceneRendererCommand : /*public CUABActive,*/ public CNamed
+//};
+//
+//class CSceneRendererCommand : /*public CUABActive,*/ public CNamed
 //{
 //public:
 //	CSceneRendererCommand(CXMLTreeNode &atts){}
 //	CSceneRendererCommand(){}
 //	virtual ~CSceneRendererCommand(){}
 //	virtual void Execute(CGraphicsManager &RM) {}
-//};////class CClearSceneRendererCommand : public CSceneRendererCommand
+//};
+//
+//class CClearSceneRendererCommand : public CSceneRendererCommand
 //{
 //protected:
 //	bool m_Color;
@@ -394,7 +389,9 @@ class CScriptManager
 //	CClearSceneRendererCommand(CXMLTreeNode &atts){}
 //	CClearSceneRendererCommand(){}
 //	virtual void Execute(CGraphicsManager &RM){}
-//};////class CSceneRendererCommandManager
+//};
+//
+//class CSceneRendererCommandManager
 //{
 //private:
 //	CTemplatedVectorMapManager<CSceneRendererCommand> m_SceneRendererCommands; 
@@ -405,4 +402,5 @@ class CScriptManager
 //	~CSceneRendererCommandManager(){}
 //	void Load(const std::string &FileName){}
 //	void Execute(CGraphicsManager &RM){}
-//};//
+//};
+//

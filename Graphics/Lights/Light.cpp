@@ -2,8 +2,8 @@
 #include "GraphicsManager.h"
 
 
-CLight::CLight()
-{}
+//CLight::CLight()
+//{}
 
 CLight::~CLight()
 {

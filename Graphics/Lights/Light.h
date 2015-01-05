@@ -38,121 +38,121 @@ class CLight : public CObject3D
 		std::vector<CRenderableObjectsManager *> m_StaticShadowMapRenderableObjectsManagers,
 		m_DynamicShadowMapRenderableObjectsManagers;
 		Mat44f m_ViewShadowMap, m_ProjectionShadowMap;
-public:
-	CLight();
-	virtual ~CLight();
-	void SetName(const std::string &Name)
-	{
-		m_Name = Name;
-	}
-	const std::string &GetName()
-	{
-		return m_Name;
-	}
-	void SetColor(const CColor &Color)
-	{
-		m_Color = Color;
-	}
-	const CColor & GetColor() const
-	{
-		return m_Color;
-	}
-	void SetStartRangeAttenuation(const float StartRangeAttenuation)
-	{
-		m_StartRangeAttenuation = StartRangeAttenuation;
-	}
-	float GetStartRangeAttenuation() const
-	{
-		return m_StartRangeAttenuation;
-	}
-	void SetEndRangeAttenuation(const float EndRangeAttenuation)
-	{
-		m_EndRangeAttenuation = EndRangeAttenuation;
-	}
-	float GetEndRangeAttenuation() const
-	{
-		return m_EndRangeAttenuation;
-	}
-	bool RenderShadows() const
-	{
-		return m_RenderShadows;
-	}
-	void SetType(const TLightType Type)
-	{
-		m_Type = Type;
-	}
-	TLightType GetType() const
-	{
-		return m_Type;
-	}
+	public:
+	//	CLight();
+		virtual ~CLight();
+		void SetName(const std::string &Name)
+		{
+			m_Name = Name;
+		}
+		const std::string &GetName()
+		{
+			return m_Name;
+		}
+		void SetColor(const CColor &Color)
+		{
+			m_Color = Color;
+		}
+		const CColor & GetColor() const
+		{
+			return m_Color;
+		}
+		void SetStartRangeAttenuation(const float StartRangeAttenuation)
+		{
+			m_StartRangeAttenuation = StartRangeAttenuation;
+		}
+		float GetStartRangeAttenuation() const
+		{
+			return m_StartRangeAttenuation;
+		}
+		void SetEndRangeAttenuation(const float EndRangeAttenuation)
+		{
+			m_EndRangeAttenuation = EndRangeAttenuation;
+		}
+		float GetEndRangeAttenuation() const
+		{
+			return m_EndRangeAttenuation;
+		}
+		bool RenderShadows() const
+		{
+			return m_RenderShadows;
+		}
+		void SetType(const TLightType Type)
+		{
+			m_Type = Type;
+		}
+		TLightType GetType() const
+		{
+			return m_Type;
+		}
 
-	virtual void Render(CGraphicsManager *RM);
+		virtual void Render(CGraphicsManager *RM);
 
-	/**ADVANCED SHADERS**/
-	virtual void SetShadowMap(CGraphicsManager *RM){}//= 0;  <= Si se deja como virtual puro peta al registrarlo en Lua
+		/**ADVANCED SHADERS**/
+		virtual void SetShadowMap(CGraphicsManager *RM)= 0;  //<= Si se deja como virtual puro peta al registrarlo en Lua
 
-	void SetGenerateDynamicShadowMap(bool GenerateDynamicShadowMap)
-	{
-		m_GenerateDynamicShadowMap = GenerateDynamicShadowMap;
-	}
+		void SetGenerateDynamicShadowMap(bool GenerateDynamicShadowMap)
+		{
+			m_GenerateDynamicShadowMap = GenerateDynamicShadowMap;
+		}
 
-	bool GetGenerateDynamicShadowMap() const
-	{
-		return m_GenerateDynamicShadowMap;
-	}
-	void SetGenerateStaticShadowMap(bool GenerateStaticShadowMap)
-	{
-		m_GenerateStaticShadowMap = GenerateStaticShadowMap;
-	}
+		bool GetGenerateDynamicShadowMap() const
+		{
+			return m_GenerateDynamicShadowMap;
+		}
+		void SetGenerateStaticShadowMap(bool GenerateStaticShadowMap)
+		{
+			m_GenerateStaticShadowMap = GenerateStaticShadowMap;
+		}
 
-	bool GetGenerateStaticShadowMap() const
-	{
-		return m_GenerateStaticShadowMap; 	
-	}
+		bool GetGenerateStaticShadowMap() const
+		{
+			return m_GenerateStaticShadowMap; 	
+		}
 
-	void SetMustUpdateStaticShadowMap(bool MustUpdateStaticShadowMap)
-	{
-		m_MustUpdateStaticShadowMap = MustUpdateStaticShadowMap;
-	}
+		void SetMustUpdateStaticShadowMap(bool MustUpdateStaticShadowMap)
+		{
+			m_MustUpdateStaticShadowMap = MustUpdateStaticShadowMap;
+		}
 	
-	bool GetMustUpdateStaticShadowMap() const
-	{
-		return m_MustUpdateStaticShadowMap;
-	}
+		bool GetMustUpdateStaticShadowMap() const
+		{
+			return m_MustUpdateStaticShadowMap;
+		}
 
-	CTexture * GetStaticShadowMap() const
-	{
-		return m_StaticShadowMap;
-	}
-	CTexture * GetDynamicShadowMap() const
-	{
-		return m_DynamicShadowMap;
-	}
-	CTexture * GetShadowMaskTexture() const
-	{
-		return m_ShadowMaskTexture;
-	}
-	std::vector<CRenderableObjectsManager *> & GetStaticShadowMapRenderableObjectsManagers()
-	{
-		return m_StaticShadowMapRenderableObjectsManagers;
-	}
-	std::vector<CRenderableObjectsManager *> & GetDynamicShadowMapRenderableObjectsManagers()
-	{
-		return m_DynamicShadowMapRenderableObjectsManagers;
-	}
+		CTexture * GetStaticShadowMap() const
+		{
+			return m_StaticShadowMap;
+		}
+		CTexture * GetDynamicShadowMap() const
+		{
+			return m_DynamicShadowMap;
+		}
+		CTexture * GetShadowMaskTexture() const
+		{
+			return m_ShadowMaskTexture;
+		}
+		std::vector<CRenderableObjectsManager *> & GetStaticShadowMapRenderableObjectsManagers()
+		{
+			return m_StaticShadowMapRenderableObjectsManagers;
+		}
+		std::vector<CRenderableObjectsManager *> & GetDynamicShadowMapRenderableObjectsManagers()
+		{
+			return m_DynamicShadowMapRenderableObjectsManagers;
+		}
 
-	void GenerateShadowMap(CGraphicsManager *RM);
+		void GenerateShadowMap(CGraphicsManager *RM);
 
-	const Mat44f & GetViewShadowMap() const
-	{
-		return m_ViewShadowMap;
-	}
-	const Mat44f & GetProjectionShadowMap() const
-	{
-		m_ProjectionShadowMap;
-	}
+		const Mat44f & GetViewShadowMap() const
+		{
+			return m_ViewShadowMap;
+		}
+		const Mat44f & GetProjectionShadowMap() const
+		{
+			m_ProjectionShadowMap;
+		}
 	
-	void BeginRenderEffectManagerShadowMap(CEffect *Effect);
+		void BeginRenderEffectManagerShadowMap(CEffect *Effect);
 
 };
 
