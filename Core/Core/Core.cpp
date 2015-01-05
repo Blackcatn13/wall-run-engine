@@ -11,6 +11,8 @@
 #include "Texture\TextureManager.h"
 #include "AnimatedModels\AnimatedModelManager.h"
 #include "ScriptManager.h"
+#include "Lights\LightManager.h"
+#include "Cinematics\CinematicController.h"
 
 CCore* CCore::m_Instance = 0;
 
@@ -45,9 +47,12 @@ void CCore::Init(HWND handler)
     m_StaticMeshManager->Load(m_Config.MeshesPath);
     m_RenderableManager = new CRenderableObjectsManager();
     m_AnimatedModelManager = new CAnimatedModelManager();
-	m_RenderableManager->Load(m_Config.RenderablePath);
-	m_ScriptManager = new CScriptManager();
-	m_ScriptManager->Initialize();
+    m_RenderableManager->Load(m_Config.RenderablePath);
+    m_ScriptManager = new CScriptManager();
+    m_ScriptManager->Initialize();
+    m_LightManager = new CLightManager();
+    m_CinematicManager = new CCinematicController();
+    m_CinematicManager->Load(".\\Data\\level6\\cinematic.xml");
 }
 
 void CCore::DeInit()
@@ -60,11 +65,10 @@ void CCore::DeInit()
     CHECKED_DELETE(m_FontManager);
     CHECKED_DELETE(m_ActionToInput);
     CHECKED_DELETE(m_StaticMeshManager);
-	CHECKED_DELETE(m_AnimatedModelManager);
+    CHECKED_DELETE(m_AnimatedModelManager);
     CHECKED_DELETE(m_RenderableManager);
     CHECKED_DELETE(m_TextureManager);
-	CHECKED_DELETE(m_ScriptManager);
-	
+    CHECKED_DELETE(m_ScriptManager);
 }
 
 CCore* CCore::GetInstance()

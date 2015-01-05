@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <renderable_objects>
-	<mesh_instance name="Box001" core="Box001"  pos=" 0.000000 0.000000 0.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0" />
-	<mesh_instance name="Box002" core="Box002"  pos=" 6.631392 0.000000 0.760107" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0" />
-	<mesh_instance name="Box003" core="Box003"  pos=" -1.050793 0.000000 -4.022903" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0" />
-	<mesh_instance name="Box004" core="Box004"  pos=" -4.115671 0.981091 3.068662" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0" />
-	<mesh_instance name="Box005" core="Box005"  pos=" 4.833557 0.000000 -3.452945" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0" />
+	<mesh_instance name="Box001" core="Box001"  pos=" 0.000000 0.000000 0.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box002" core="Box002"  pos=" 6.631392 0.000000 0.760107" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box003" core="Box003"  pos=" -1.050793 0.000000 -4.022903" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box004" core="Box004"  pos=" -4.115671 0.981091 3.068662" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box005" core="Box005"  pos=" 4.833557 0.000000 -3.452945" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 </renderable_objects>

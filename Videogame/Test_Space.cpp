@@ -24,7 +24,8 @@
 #include "Mesh\MeshInstance.h"
 #include "Renderable\RenderableObjectsManager.h"
 #include "Core\ScriptManager.h"
-
+#include "Cinematics\CinematicController.h"
+#include "Cinematics\Cinematic.h"
 
 CTest_Space::CTest_Space(void)
 {
@@ -60,14 +61,16 @@ void CTest_Space::Init()
     m_CameraController->AddNewCamera("FPS", m_FPSCamera);
     m_CameraController->AddNewCamera("ThPSESF", m_ThPSCamera);
     m_CameraController->AddNewCamera("ThPS", m_ThPSCamera1);
+    m_CameraController->Load(".\\Data\\level6\\cameras.xml");
     m_CameraController->setActiveCamera("FPS");
     m_Camera = m_CameraController->getActiveCamera();
     m_PlayerMode = true;
-	
-	/* Script Manager Tests*/
+    //Lights
+    LIGHTM->Load(".\\Data\\lights.xml");
+    /* Script Manager Tests*/
 //	SCRIPTM->RunFile(".\\Data\\test2.lua");
-	SCRIPTM->Load(".\\Data\\lua_actions.xml");
-	SCRIPTM->RunFile(SCRIPTM->GetScriptsMap().find("test2")->second);
+    SCRIPTM->Load(".\\Data\\lua_actions.xml");
+    SCRIPTM->RunFile(SCRIPTM->GetScriptsMap().find("test2")->second);
 //	SCRIPTM->RunCode("set_speed_player(get_speed_player())");
 }
 
@@ -93,9 +96,9 @@ Vect2i CTest_Space::RenderDebugInfo(bool render, float dt)
             size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Drawing 3"));
         else
             size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Drawing 2"));
-		size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de vertices: %d", m_totalVertices));
-		size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de caras: %d", m_totalFaces));
-		size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de primitivas: %d", m_numPrimitives));
+        size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de vertices: %d", m_totalVertices));
+        size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de caras: %d", m_totalFaces));
+        size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de primitivas: %d", m_numPrimitives));
     } else {
         // print a message asking for key to open the menu
         Vect2i aux = m_textPosition;
@@ -106,28 +109,38 @@ Vect2i CTest_Space::RenderDebugInfo(bool render, float dt)
             size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Drawing 3"));
         else
             size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Drawing 2"));
-		size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de vertices: %d", m_totalVertices));
-		size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de caras: %d", m_totalFaces));
-		size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de primitivas: %d", m_numPrimitives));
+        size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de vertices: %d", m_totalVertices));
+        size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de caras: %d", m_totalFaces));
+        size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de primitivas: %d", m_numPrimitives));
     }
     return size;
 }
 
 void CTest_Space::Update(float dt)
 {
-	
     CInputManager* im = INPUTM;
     //float deltaX =  im->GetMouseDelta().x;
     //float deltaY = im->GetMouseDelta().y;
     //float deltaZ = im->GetMouseDelta().z;
     if (ACT2IN->DoAction("ChangeCatalan")) {
         LANGM->SetCurrentLanguage("catalan");
+		m_CameraController->setActiveCamera("Camera002");
+		m_Camera = m_CameraController->getActiveCamera();
+		m_CameraController->Play(true);
+        CCORE->GetCinematicController()->GetResource("a")->Play(true);
     }
     if (ACT2IN->DoAction("ChangeCastellano")) {
         LANGM->SetCurrentLanguage("castellano");
+        CCORE->GetCinematicController()->GetResource("a")->Stop();
+		m_CameraController->Stop();
+		m_CameraController->setActiveCamera("FPS");
+		m_Camera = m_CameraController->getActiveCamera();
     }
     if (ACT2IN->DoAction("ChangeIngles")) {
         LANGM->SetCurrentLanguage("ingles");
+		m_Camera = m_CameraController->getActiveCamera();
+		m_CameraController->Pause();
+        CCORE->GetCinematicController()->GetResource("a")->Pause();
     }
     if (ACT2IN->DoAction("CommutationCamera")) {
         if (m_PlayerMode) {
@@ -140,6 +153,7 @@ void CTest_Space::Update(float dt)
             m_Camera = m_CameraController->getActiveCamera();
         }
     }
+    CCORE->GetCinematicController()->Update(dt);
     /* if (m_PlayerMode) {
          m_ObjectFPS->SetYaw(m_ObjectFPS->GetYaw() -  deltaX * dt);
          m_ObjectFPS->SetPitch(m_ObjectFPS->GetPitch() - deltaY * dt);
@@ -175,16 +189,15 @@ void CTest_Space::Update(float dt)
     tTerra2_yaw += dt * 80 * 0.005;
     tlluna1_yaw -= dt * 60 * 0.05;
     m_dt = dt;
-	RENDM->Update(dt);
+    RENDM->Update(dt);
 }
 
 void CTest_Space::Render()
 {
-	//TO DO: Actualizar variables m_numPrimitives, m_totalVertexs y m_totalFaces
-	m_numPrimitives = 0;
-	m_totalVertices = 0;
-	m_totalFaces = 0;
-
+    //TO DO: Actualizar variables m_numPrimitives, m_totalVertexs y m_totalFaces
+    m_numPrimitives = 0;
+    m_totalVertices = 0;
+    m_totalFaces = 0;
     Mat44f t;
     t.SetIdentity();
     GRAPHM->SetTransform(t);
@@ -192,6 +205,7 @@ void CTest_Space::Render()
     GRAPHM->DrawAxis(10);
     //text->Activate(0);
     RENDM->Render(GRAPHM);
+    LIGHTM->Render(GRAPHM);
     //g_RV->Render(CCORE->GetGraphicsManager(º+-));
     /* Mat44f t;
      Mat44f trot1;

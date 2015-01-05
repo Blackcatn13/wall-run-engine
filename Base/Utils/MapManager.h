@@ -31,12 +31,14 @@ public:
         return (m_Resources.find(Name) != m_Resources.end());
     }
 
-    virtual void AddResource(const std::string &Name, T *Resource)
+    virtual bool AddResource(const std::string &Name, T *Resource)
     {
         if (m_Resources.find(Name) != m_Resources.end()) {
             LOGGER->AddNewLog(ELL_ERROR, "Resource already found in TMapManager with name '%s'", Name.c_str());
+			return false;
         } else {
             m_Resources[Name] = Resource;
+			return true;
         }
     }
 

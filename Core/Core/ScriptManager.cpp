@@ -1,4 +1,5 @@
 #include "ScriptManager.h"
+#include "Camera\Camera.h"
 
 //Código de la función Alert que se llamará al generarse algún error de LUA
 int Alert(/*IN */lua_State * State)
@@ -86,7 +87,8 @@ void CScriptManager::Load(const std::string &XMLFile)
 	CXMLTreeNode newFile;
 	if (!newFile.LoadFile(XMLFile.c_str()))
 	{
-		printf("ERROR loading the file.");
+		std::string l_ErrorMsg = "ERROR loading file" + XMLFile;
+		LOGGER->AddNewLog(ELL_ERROR,  l_ErrorMsg.c_str());
 		
 	}else
 	{
@@ -105,6 +107,292 @@ void CScriptManager::Load(const std::string &XMLFile)
 	}
 }
 
+void RegisterLights()
+{
+	luabind::module(LUA_STATE) [
+	class_<CLight, CObject3D>("CLight")
+	.def(constructor<>())
+    .def("set_name", & CLight::SetName)
+    .def("get_name", & CLight::GetName)
+	.def("set_color", & CLight::SetColor)
+    .def("get_color", & CLight::GetColor)
+	.def("set_start_range_attenuation", & CLight::SetStartRangeAttenuation)
+    .def("get_start_range_attenuation", & CLight::GetStartRangeAttenuation)
+	.def("set_end_range_attenuation", & CLight::SetEndRangeAttenuation)
+    .def("get_end_range_attenuation", & CLight::GetEndRangeAttenuation)
+    .def("render_shadows", & CLight::RenderShadows)
+    .def("set_type", & CLight::SetType)
+	.def("get_type", & CLight::GetType)
+    .def("render", & CLight::Render)
+    ];
+
+	 luabind::module(LUA_STATE) [
+     class_<CMapManager<CLight>>("CMapManagerLight")
+     .def("get_resource", &CMapManager< CLight >::GetResource)
+     .def("existe_resource", &CMapManager< CLight >::ExisteResource)
+     .def("add_resource", &CMapManager< CLight >::AddResource)
+     .def("destroy", &CMapManager< CLight >::Destroy)
+     ];
+
+	luabind::module(LUA_STATE) [
+	class_<CLightManager , CMapManager<CLight>>("CLightManager") 
+	.def(constructor<>())
+    .def("load", & CLightManager::Load)
+    .def("render", & CLightManager::Render)
+	];
+
+
+	luabind::module(LUA_STATE) [
+	class_<COmniLight, CLight>("COmniLight")
+	.def(constructor<>())
+	.def("set_shadow_map", & CDirectionalLight::SetShadowMap)
+	];
+
+	luabind::module(LUA_STATE) [
+	class_<CDirectionalLight, CLight>("CDirectionalLight")
+	.def(constructor<>())
+	.def("set_direction", & CDirectionalLight::SetDirection)
+	.def("get_direction", & CDirectionalLight::GetDirection)
+	.def("render", & CDirectionalLight::Render)
+	.def("set_shadow_map", & CDirectionalLight::SetShadowMap)
+	];
+
+	luabind::module(LUA_STATE) [
+	class_<CSpotLight, CDirectionalLight>("CSpotLight")
+	.def(constructor<>())
+	.def("set_angle", & CSpotLight::SetAngle)
+	.def("get_angle", & CSpotLight::GetAngle)
+	.def("set_fall_off", & CSpotLight::SetFallOff)
+	.def("get_fall_off", & CSpotLight::GetFallOff)
+	];
+
+}
+
+//void RegisterCameras()
+//{
+//	luabind::module(LUA_STATE) [
+//	class_<CCameraInfo>("CCameraInfo")
+//	.def(constructor<>())
+//	.def(constructor<const Vect3f &, const Vect3f &, const Vect3f &, float, float, float >())
+//	.def(constructor<CXMLTreeNode>())
+//	.def_readwrite("nearPlane", &CCameraInfo::m_NearPlane)
+//	.def_readwrite("farPlane", &CCameraInfo::m_FarPlane)
+//	.def_readwrite("fov", &CCameraInfo::m_FOV)
+//	.def_readwrite("eye", &CCameraInfo::m_Eye)
+//	.def_readwrite("lookAt", &CCameraInfo::m_LookAt)
+//	.def_readwrite("up", &CCameraInfo::m_Up)
+//	];
+//
+//	luabind::module(LUA_STATE) [
+//	class_<CCameraKey>("CCameraKey")
+//	.def(constructor<CCameraInfo, float>())
+//	.def_readwrite("cameraInfo", &CCameraKey::m_CameraInfo)
+//	.def_readwrite("time", &CCameraKey::m_Time)
+//	];
+//
+//	luabind::module(LUA_STATE) [
+//	class_<CCameraKeyController>("CCameraKeyController")
+//	.def(constructor<CXMLTreeNode &>())
+//	.def("update", & CCameraKeyController::Update)
+//	.def("set_current_time", & CCameraKeyController::SetCurrentTime)
+//	.def("reset_time", & CCameraKeyController::ResetTime)
+//	.def("is_cycle", & CCameraKeyController::IsCycle)
+//	.def("set_cycle", & CCameraKeyController::SetCycle)
+//	.def("is_reverse", & CCameraKeyController::IsReverse)
+//	.def("set_reverse", & CCameraKeyController::SetReverse)
+//	];
+//
+//}
+//
+//void RegisterCinematics()
+//{
+//	luabind::module(LUA_STATE) [
+//	class_<CCinematicPlayer>("CCinematicPlayer")
+//	.def(constructor<>())
+//	.def("init", & CCinematicPlayer::Init)
+//	.def("update", & CCameraKeyController::Update)
+//	.def("stop", & CCinematicPlayer::Stop)
+//	.def("play", & CCinematicPlayer::Play)
+//	.def("pause", & CCinematicPlayer::Pause)
+//	.def("is_finished", & CCinematicPlayer::IsFinished)
+//	.def("get_duration", & CCinematicPlayer::GetDuration)
+//	.def("get_current_time", & CCinematicPlayer::GetCurrentTimes) //Cambiar por GetCurrentTime
+//	.def("on_restart_cycle", & CCinematicPlayer::OnRestartCycle)
+//	];
+//
+//	luabind::module(LUA_STATE) [
+//	class_<CCinematicObjectKeyFrame, CObject3D>("CCinematicObjectKeyFrame")
+//	.def(constructor<CXMLTreeNode &>())
+//	.def("get_key_frame_time", & CCinematicObjectKeyFrame::GetKeyFrameTime)
+//	.def("set_key_frame_time", & CCinematicObjectKeyFrame::SetKeyFrameTime)
+//	];
+//
+//	luabind::module(LUA_STATE) [
+//	class_<CCinematicObject, CCinematicPlayer>("CCinematicObject")
+//	.def(constructor<CXMLTreeNode &>())
+//	.def("is_ok", & CCinematicObject::IsOk)
+//	.def("add_cinematic_object_key_frame", & CCinematicObject::AddCinematicObjectKeyFrame)
+//	.def("update", & CCinematicObject::Update)
+//	.def("stop", & CCinematicObject::Stop)
+//	.def("on_restart_cycle", & CCinematicObject::OnRestartCycle)
+//	];
+//
+//	luabind::module(LUA_STATE) [
+//	class_<CCinematic, bases<CRenderableObject, CCinematicPlayer>>("CCinematic")
+//	.def(constructor<CXMLTreeNode &>())
+//	.def("stop", & CCinematic::Stop)
+//	.def("play", & CCinematic::Play)
+//	.def("pause", & CCinematic::Pause)
+//	.def("load_xml", & CCinematic::LoadXML)
+//	.def("add_cinematic_object", & CCinematic::AddCinematicObject)
+//	.def("update", & CCinematic::Update)
+//	.def("render", & CCinematic::Render)
+//	];
+//}
+//
+//void RegisterEffects()
+//{
+//	luabind::module(LUA_STATE) [
+//	class_<CEffect>("CEffect")
+//	.def(constructor<>())
+//	.def("set_lights", & CEffect::SetLights)
+//	.def("load", & CEffect::Load)
+//	.def("reload", & CEffect::Reload)
+//	.def("get_d3d_effect", & CEffect::GetD3DEffect)
+//	.def("get_technique_by_name", & CEffect::GetTechniqueByName)
+//	];
+//
+//	luabind::module(LUA_STATE) [
+//	class_<CEffectTechnique>("CEffectTechnique")
+//	.def(constructor<>())
+//	.def("get_effect", & CEffectTechnique::GetEffect)
+//	.def("begin_render", & CEffectTechnique::BeginRender)
+//	.def("refresh", & CEffectTechnique::Refresh)
+//	.def("get_d3d_technique", & CEffectTechnique::GetD3DTechnique)
+//	];
+//
+//	luabind::module(LUA_STATE) [
+//    class_<CMapManager<CEffectTechnique>>("CMapManagerEffectTechnique")
+//    .def("get_resource", &CMapManager< CEffectTechnique >::GetResource)
+//    .def("existe_resource", &CMapManager< CEffectTechnique >::ExisteResource)
+//    .def("add_resource", &CMapManager< CEffectTechnique >::AddResource)
+//    .def("destroy", &CMapManager< CEffectTechnique >::Destroy)
+//    ];
+//
+//	luabind::module(LUA_STATE) [
+//	class_<CEffectManager, CMapManager<CEffectTechnique>>("CEffectManager") 
+//	.def(constructor<>())
+//	.def("get_world_matrix", & CEffectManager::GetWorldMatrix)
+//	.def("get_projection_matrix", & CEffectManager::GetProjectionMatrix)
+//	.def("get_view_matrix", & CEffectManager::GetViewMatrix)
+//	.def("get_view_projection_matrix", & CEffectManager::GetViewProjectionMatrix)
+//	.def("get_camera_eye", & CEffectManager::GetCameraEye)
+//	.def("get_light_view_matrix", & CEffectManager::GetLightViewMatrix)
+//	.def("get_shadow_projection_matrix", & CEffectManager::GetShadowProjectionMatrix)
+//	.def("set_world_matrix", & CEffectManager::SetWorldMatrix)
+//	.def("set_projection_matrix", & CEffectManager::SetProjectionMatrix)
+//	.def("set_view_matrix", & CEffectManager::SetViewMatrix)
+//	.def("set_view_projection_matrix", & CEffectManager::SetViewProjectionMatrix)
+//	.def("set_light_view_matrix", & CEffectManager::SetLightViewMatrix)
+//	.def("set_shadow_projection_matrix", & CEffectManager::SetShadowProjectionMatrix)
+//	.def("set_camera_eye", & CEffectManager::SetCameraEye)
+//	.def("load", & CEffectManager::Load)
+//	.def("reload", & CEffectManager::Reload)
+//	.def("get_technique_effect_name_by_vertex_default", & CEffectManager::GetTechniqueEffectNameByVertexDefault)
+//	.def("get_max_lights", & CEffectManager::GetMaxLights)
+//	.def("get_effect", & CEffectManager::GetEffect)
+//	.def("get_effect_technique", & CEffectManager::GetEffectTechnique)
+//	.def("get_static_mesh_technique", & CEffectManager::GetStaticMeshTechnique)
+//	.def("get_static_mesh_mechnique", & CEffectManager::SetStaticMeshTechnique)
+//	.def("get_animated_model_technique", & CEffectManager::GetAnimatedModelTechnique)
+//	.def("set_animated_model_technique", & CEffectManager::SetAnimatedModelTechnique)
+//	.def("cleanUp", & CEffectManager::CleanUp)
+//	];
+//
+//}
+//void RegisterAdvancedShaders()
+//{
+//	
+//	luabind::module(LUA_STATE) [
+//    class_<CTemplatedVectorMapManager<CRenderableObjectsManager>>("CTemplatedVectorMapManagerRenderableObjectManager")
+//	.def(constructor<>())
+//	.scope
+//		[
+//			class_<CTemplatedVectorMapManager<CRenderableObjectsManager>::CMapResourceValue>("CMapResourceValue")
+//			.def(constructor<>())
+//			.def_readwrite("m_Value", & CTemplatedVectorMapManager<CRenderableObjectsManager>::CMapResourceValue::m_Value)
+//			.def_readwrite("m_Id", & CTemplatedVectorMapManager<CRenderableObjectsManager>::CMapResourceValue::m_Id)
+//		]
+//	//.def("remove_resource", &CTemplatedVectorMapManager<CRenderableObjectsManager>::RemoveResource)
+//	.def("get_resource", &CTemplatedVectorMapManager<CRenderableObjectsManager>::GetResource)
+//    .def("get_resource_by_id", &CTemplatedVectorMapManager<CRenderableObjectsManager>:: GetResourceById)
+//    .def("add_resource", &CTemplatedVectorMapManager<CRenderableObjectsManager>::AddResource)
+//    .def("destroy", &CTemplatedVectorMapManager<CRenderableObjectsManager>::Destroy)
+//	.def("get_resource_map", &CTemplatedVectorMapManager<CRenderableObjectsManager>::GetResourcesMap)
+//    .def("get_resource_vector", &CTemplatedVectorMapManager<CRenderableObjectsManager>::GetResourcesVector)
+//    ];
+//
+//	luabind::module(LUA_STATE) [
+//	class_<CRenderableObjectsLayersManager, CTemplatedVectorMapManager<CRenderableObjectsManager>>("CRenderableObjectsLayersManager") 
+//	.def(constructor<>())
+//	.def("destroy", & CRenderableObjectsLayersManager::Destroy)
+//	.def("load", & CRenderableObjectsLayersManager::Load)
+//	.def("reload", & CRenderableObjectsLayersManager::Reload)
+//	.def("update", & CRenderableObjectsLayersManager::Update)
+//	.def("render", (void (CRenderableObjectsLayersManager::*) (CGraphicsManager *)) &CRenderableObjectsLayersManager::Render)
+//	.def("render", (void (CRenderableObjectsLayersManager::*) (CGraphicsManager *, const std::string &)) &CRenderableObjectsLayersManager::Render)
+//	];
+//
+//	luabind::module(LUA_STATE) [
+//	class_<CRenderableObjectTechnique, CNamed>("CRenderableObjectTechnique") 
+//	.def(constructor<const std::string &, CEffectTechnique *>())
+//	.def("set_effect_technique", & CRenderableObjectTechnique::SetEffectTechnique)
+//	.def("get_effect_technique", & CRenderableObjectTechnique::GetEffectTechnique)
+//	];
+//
+//	luabind::module(LUA_STATE) [
+//	class_<CPoolRenderableObjectTechnique, CNamed>("CPoolRenderableObjectTechnique") 
+//	.def(constructor<CXMLTreeNode>())
+//	.def("destroy", & CPoolRenderableObjectTechnique::Destroy)
+//	.def("addElement", & CPoolRenderableObjectTechnique::AddElement)
+//	.def("apply", & CPoolRenderableObjectTechnique::Apply)
+//	];
+//
+//	luabind::module(LUA_STATE) [
+//    class_<CMapManager<CRenderableObjectTechnique>>("CMapManagerRenderableObjectTechnique")
+//    .def("get_resource", &CMapManager< CRenderableObjectTechnique >::GetResource)
+//    .def("existe_resource", &CMapManager< CRenderableObjectTechnique >::ExisteResource)
+//    .def("add_resource", &CMapManager< CRenderableObjectTechnique >::AddResource)
+//    .def("destroy", &CMapManager< CRenderableObjectTechnique >::Destroy)
+//    ];
+//
+//	luabind::module(LUA_STATE) [
+//	class_<CRenderableObjectTechniqueManager, CMapManager<CRenderableObjectTechnique>>("CRenderableObjectTechniqueManager")
+//	.def(constructor<>())
+//    .def("destroy", &CRenderableObjectTechniqueManager::Destroy)
+//    .def("load", &CRenderableObjectTechniqueManager::Load)
+//    .def("get_renderable_object_technique_name_by_vertex_type", &CRenderableObjectTechniqueManager::GetRenderableObjectTechniqueNameByVertexType)
+//    .def("get_pool_renderable_object_techniques", &CRenderableObjectTechniqueManager::GetPoolRenderableObjectTechniques)
+//    ];
+//	
+//	luabind::module(LUA_STATE) [
+//	class_<CSceneRendererCommandManager>("CSceneRendererCommandManager") 
+//	.def(constructor<>())
+//	.def("load", & CSceneRendererCommandManager::Load)
+//	.def("execute", & CSceneRendererCommandManager::Execute)
+//	];
+//
+//	luabind::module(LUA_STATE) [
+//	class_<CSceneRendererCommand, /*bases<CUABActive,*/CNamed/*>*/>("CSceneRendererCommand") 
+//	.def(constructor<CXMLTreeNode>())
+//	];
+//
+//	luabind::module(LUA_STATE) [
+//	class_<CClearSceneRendererCommand, CSceneRendererCommand>("CClearSceneRendererCommand") 
+//	.def(constructor<CXMLTreeNode>())
+//	.def("execute", & CClearSceneRendererCommand::Execute)
+//	];
+//}
 
 void CScriptManager::RegisterLUAFunctions()
 {
@@ -341,7 +629,7 @@ void CScriptManager::RegisterLUAFunctions()
         ];
 		
 		luabind::module(LUA_STATE) [
-        class_< CObject3D >("CObject3D")
+        class_< CObject3D, CVisible >("CObject3D")
         .def(constructor<>())
         .def(constructor<Vect3f, float, float, float>()) //Falta registrar la Vect3f
         .def("get_yaw", & CObject3D::GetYaw)
@@ -355,14 +643,34 @@ void CScriptManager::RegisterLUAFunctions()
         ];
 
         luabind::module(LUA_STATE) [
-        class_< CRenderableObject >("CRenderableObject")
+		class_< CRenderableObject, bases<CObject3D, CNamed> >("CRenderableObject")
         //.def(constructor<>())
         .def("update", & CRenderableObject::Update)
         .def("render", & CRenderableObject::Render)
         ];
 
+		luabind::module(LUA_STATE) [
+		class_<CTemplatedVectorMapManager<CRenderableObject>>("CTemplatedVectorMapManagerRenderableObject")
+		.def(constructor<>())
+		.scope
+		[
+			class_<CTemplatedVectorMapManager<CRenderableObject>::CMapResourceValue>("CMapResourceValue")
+			.def(constructor<>())
+			.def_readwrite("m_Value", & CTemplatedVectorMapManager<CRenderableObject>::CMapResourceValue::m_Value)
+			.def_readwrite("m_Id", & CTemplatedVectorMapManager<CRenderableObject>::CMapResourceValue::m_Id)
+		]
+
+		//.def("remove_resource", &CTemplatedVectorMapManager<CRenderableObject>::RemoveResource) // <= m_Id identificador no declarado xq está en clase interna
+		.def("get_resource", &CTemplatedVectorMapManager<CRenderableObject>::GetResource)
+		.def("get_resource_by_id", &CTemplatedVectorMapManager<CRenderableObject>:: GetResourceById)
+		.def("add_resource", &CTemplatedVectorMapManager<CRenderableObject>::AddResource)
+		.def("destroy", &CTemplatedVectorMapManager<CRenderableObject>::Destroy)
+		.def("get_resource_map", &CTemplatedVectorMapManager<CRenderableObject>::GetResourcesMap)
+		.def("get_resource_vector", &CTemplatedVectorMapManager<CRenderableObject>::GetResourcesVector)
+		];
+
        luabind:: module(LUA_STATE) [
-        class_< CRenderableObjectsManager >("CRenderableObjectsManager")
+        class_< CRenderableObjectsManager, CTemplatedVectorMapManager<CRenderableObject> >("CRenderableObjectsManager")
         .def(constructor<>())
         .def("update", & CRenderableObjectsManager::Update)
         .def("render", & CRenderableObjectsManager::Render)
@@ -377,7 +685,7 @@ void CScriptManager::RegisterLUAFunctions()
            //Si queremos registrar una clase templatizada como la clase CTextureManager debemos primero
         //registrar su clase base con la clases templatizada y después la clase
         luabind::module(LUA_STATE) [
-        class_<CMapManager<CTexture>>("CMapManager")
+        class_<CMapManager<CTexture>>("CMapManagerTexture")
         .def("get_resource", &CMapManager< CTexture >::GetResource)
         .def("existe_resource", &CMapManager< CTexture >::ExisteResource)
         .def("add_resource", &CMapManager< CTexture >::AddResource)
@@ -391,5 +699,23 @@ void CScriptManager::RegisterLUAFunctions()
         .def("reload", & CTextureManager::Reload)
         ];
 
-        
+		//Camera Controller
+		luabind::module(LUA_STATE) [
+		class_< CCameraController>("CCameraController")
+        .def(constructor<>())
+        .def("add_new_camera", & CCameraController::AddNewCamera)
+        .def("add_new_object", & CCameraController::AddNewObject)
+		.def("update", (void (CCameraController::*)(float dt)) & CCameraController::Update)
+		.def("update", (void (CCameraController::*)(std::string, float)) & CCameraController::Update)
+		.def("get_active_camera", & CCameraController::getActiveCamera)
+		.def("set_active_camera", (void (CCameraController::*)(CCamera *cam)) & CCameraController::setActiveCamera)
+		.def("set_active_camera", (void (CCameraController::*)(std::string cam)) & CCameraController::setActiveCamera)
+        ];
+
+		RegisterLights();
+		/*RegisterCameras();
+		RegisterCinematics();
+		RegisterEffects();
+		RegisterAdvancedShaders();*/
 }
+

@@ -32,6 +32,18 @@
     <Filter Include="AnimatedModels">
       <UniqueIdentifier>{aa6a2ba6-cbf8-4f70-b666-1651ea73e07e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Lights">
+      <UniqueIdentifier>{469eda1f-2832-4e88-a947-8c14603d21a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Effects">
+      <UniqueIdentifier>{3b363986-580b-4711-affb-fdca013d2e7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Cinematics">
+      <UniqueIdentifier>{f986e087-8b03-4507-972f-cf794a21bdf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera\Importer">
+      <UniqueIdentifier>{ca0cab81-3496-43e5-aa21-30faf25a1844}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GraphicsManager.cpp" />
@@ -94,6 +106,45 @@
     </ClCompile>
     <ClCompile Include="AnimatedModels\AnimatedModelManager.cpp">
       <Filter>AnimatedModels</Filter>
+    </ClCompile>
+    <ClCompile Include="Lights\LightManager.cpp">
+      <Filter>Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Lights\Light.cpp">
+      <Filter>Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Lights\DirectionalLight.cpp">
+      <Filter>Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Lights\OmniLight.cpp">
+      <Filter>Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Lights\SpotLight.cpp">
+      <Filter>Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Cinematics\Cinematic.cpp">
+      <Filter>Cinematics</Filter>
+    </ClCompile>
+    <ClCompile Include="Cinematics\CinematicController.cpp">
+      <Filter>Cinematics</Filter>
+    </ClCompile>
+    <ClCompile Include="Cinematics\CinematicObject.cpp">
+      <Filter>Cinematics</Filter>
+    </ClCompile>
+    <ClCompile Include="Cinematics\CinematicObjectKeyFrame.cpp">
+      <Filter>Cinematics</Filter>
+    </ClCompile>
+    <ClCompile Include="Cinematics\CinematicPlayer.cpp">
+      <Filter>Cinematics</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera\Importer\CameraInfo.cpp">
+      <Filter>Camera\Importer</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera\Importer\CameraKey.cpp">
+      <Filter>Camera\Importer</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera\Importer\CameraKeyController.cpp">
+      <Filter>Camera\Importer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +214,48 @@
     </ClInclude>
     <ClInclude Include="AnimatedModels\AnimatedModelManager.h">
       <Filter>AnimatedModels</Filter>
+    </ClInclude>
+    <ClInclude Include="Lights\LightManager.h">
+      <Filter>Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Lights\Light.h">
+      <Filter>Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Lights\DirectionalLight.h">
+      <Filter>Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Lights\OmniLight.h">
+      <Filter>Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Lights\SpotLight.h">
+      <Filter>Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\Effects.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Cinematics\Cinematic.h">
+      <Filter>Cinematics</Filter>
+    </ClInclude>
+    <ClInclude Include="Cinematics\CinematicController.h">
+      <Filter>Cinematics</Filter>
+    </ClInclude>
+    <ClInclude Include="Cinematics\CinematicObject.h">
+      <Filter>Cinematics</Filter>
+    </ClInclude>
+    <ClInclude Include="Cinematics\CinematicObjectKeyFrame.h">
+      <Filter>Cinematics</Filter>
+    </ClInclude>
+    <ClInclude Include="Cinematics\CinematicPlayer.h">
+      <Filter>Cinematics</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera\Importer\CameraInfo.h">
+      <Filter>Camera\Importer</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera\Importer\CameraKey.h">
+      <Filter>Camera\Importer</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera\Importer\CameraKeyController.h">
+      <Filter>Camera\Importer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
