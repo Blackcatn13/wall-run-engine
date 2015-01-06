@@ -2,8 +2,8 @@
 #include "GraphicsManager.h"
 
 
-CLight::CLight()
-{}
+//CLight::CLight()
+//{}
 
 CLight::~CLight()
 {
@@ -44,7 +44,8 @@ void CLight::GenerateShadowMap(CGraphicsManager *RM)
 		RM->EndRendering();
 		m_DynamicShadowMap->UnsetAsRenderTarget(0);
 	}
-}
+}
+
 
 
 void CLight::BeginRenderEffectManagerShadowMap(CEffect *Effect)
@@ -63,7 +64,8 @@ void CLight::BeginRenderEffectManagerShadowMap(CEffect *Effect)
 		m_GenerateStaticShadowMap, m_GenerateDynamicShadowMap &&
 		m_DynamicShadowMapRenderableObjectsManagers.size()!=0);
 	}*/
-
+
+
 }
 
 

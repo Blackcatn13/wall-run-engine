@@ -20,6 +20,7 @@ class CScriptManager;
 class CLightManager;
 class CCinematicController;
 
+
 #define CCORE   CCore::GetInstance()
 #define GRAPHM  CCore::GetInstance()->GetGraphicsManager()
 #define SOUNDM  CCore::GetInstance()->GetSoundManager()
@@ -112,10 +113,12 @@ public:
     {
         return m_LightManager;
     }
+
 	CCinematicController * GetCinematicController()
     {
         return m_CinematicManager;
     }
+
 };
 
 

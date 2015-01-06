@@ -27,6 +27,9 @@
     <ClCompile Include="Cinematics\CinematicObject.cpp" />
     <ClCompile Include="Cinematics\CinematicObjectKeyFrame.cpp" />
     <ClCompile Include="Cinematics\CinematicPlayer.cpp" />
+    <ClCompile Include="Effects\Effect.cpp" />
+    <ClCompile Include="Effects\EffectManager.cpp" />
+    <ClCompile Include="Effects\EffectTechnique.cpp" />
     <ClCompile Include="Font\FontManager.cpp" />
     <ClCompile Include="GraphicsManager.cpp" />
     <ClCompile Include="Lights\DirectionalLight.cpp" />
@@ -63,7 +66,9 @@
     <ClInclude Include="Cinematics\CinematicObject.h" />
     <ClInclude Include="Cinematics\CinematicObjectKeyFrame.h" />
     <ClInclude Include="Cinematics\CinematicPlayer.h" />
-    <ClInclude Include="Effects\Effects.h" />
+    <ClInclude Include="Effects\Effect.h" />
+    <ClInclude Include="Effects\EffectManager.h" />
+    <ClInclude Include="Effects\EffectTechnique.h" />
     <ClInclude Include="Font\FontManager.h" />
     <ClInclude Include="GraphicsManager.h" />
     <ClInclude Include="Lights\DirectionalLight.h" />

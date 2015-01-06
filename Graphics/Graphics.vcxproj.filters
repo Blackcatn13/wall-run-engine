@@ -146,6 +146,15 @@
     <ClCompile Include="Camera\Importer\CameraKeyController.cpp">
       <Filter>Camera\Importer</Filter>
     </ClCompile>
+    <ClCompile Include="Effects\Effect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\EffectManager.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\EffectTechnique.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
@@ -230,9 +239,6 @@
     <ClInclude Include="Lights\SpotLight.h">
       <Filter>Lights</Filter>
     </ClInclude>
-    <ClInclude Include="Effects\Effects.h">
-      <Filter>Effects</Filter>
-    </ClInclude>
     <ClInclude Include="Cinematics\Cinematic.h">
       <Filter>Cinematics</Filter>
     </ClInclude>
@@ -256,6 +262,15 @@
     </ClInclude>
     <ClInclude Include="Camera\Importer\CameraKeyController.h">
       <Filter>Camera\Importer</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\Effect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\EffectManager.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\EffectTechnique.h">
+      <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

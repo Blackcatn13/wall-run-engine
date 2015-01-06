@@ -23,6 +23,18 @@ public:
 	virtual void Render(CGraphicsManager *RM);
 
 	void SetShadowMap(CGraphicsManager *RM);
+
+	void SetOrthoShadowMapSize(Vect2f VectSize)
+	{
+		m_OrthoShadowMapSize = VectSize;	
+	}
+
+	Vect2f GetOrthoShadowMapSize(Vect2f VectSize)
+	{
+		return m_OrthoShadowMapSize;	
+	}
+
+
 };
 
 #endif

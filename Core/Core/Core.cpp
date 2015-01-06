@@ -53,6 +53,12 @@ void CCore::Init(HWND handler)
     m_LightManager = new CLightManager();
     m_CinematicManager = new CCinematicController();
     m_CinematicManager->Load(".\\Data\\level6\\cinematic.xml");
+
+	m_RenderableManager->Load(m_Config.RenderablePath);
+	m_ScriptManager = new CScriptManager();
+	m_ScriptManager->Initialize();
+	m_LightManager = new CLightManager();
+
 }
 
 void CCore::DeInit()

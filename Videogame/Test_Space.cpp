@@ -24,8 +24,12 @@
 #include "Mesh\MeshInstance.h"
 #include "Renderable\RenderableObjectsManager.h"
 #include "Core\ScriptManager.h"
+
 #include "Cinematics\CinematicController.h"
 #include "Cinematics\Cinematic.h"
+
+#include "Lights\LightManager.h"
+
 
 CTest_Space::CTest_Space(void)
 {
@@ -65,12 +69,14 @@ void CTest_Space::Init()
     m_CameraController->setActiveCamera("FPS");
     m_Camera = m_CameraController->getActiveCamera();
     m_PlayerMode = true;
-    //Lights
-    LIGHTM->Load(".\\Data\\lights.xml");
-    /* Script Manager Tests*/
+
+	//Lights
+	LIGHTM->Load(".\\Data\\lights.xml");
+	
+	/* Script Manager Tests*/
 //	SCRIPTM->RunFile(".\\Data\\test2.lua");
-    SCRIPTM->Load(".\\Data\\lua_actions.xml");
-    SCRIPTM->RunFile(SCRIPTM->GetScriptsMap().find("test2")->second);
+	SCRIPTM->Load(".\\Data\\lua_actions.xml");
+	SCRIPTM->RunFile(SCRIPTM->GetScriptsMap().find("test2")->second);
 //	SCRIPTM->RunCode("set_speed_player(get_speed_player())");
 }
 
@@ -205,7 +211,7 @@ void CTest_Space::Render()
     GRAPHM->DrawAxis(10);
     //text->Activate(0);
     RENDM->Render(GRAPHM);
-    LIGHTM->Render(GRAPHM);
+	LIGHTM->Render(GRAPHM);
     //g_RV->Render(CCORE->GetGraphicsManager(º+-));
     /* Mat44f t;
      Mat44f trot1;
