@@ -18,6 +18,8 @@ class CAnimatedModelManager;
 class CTextureManager;
 class CScriptManager;
 class CLightManager;
+class CCinematicController;
+
 
 #define CCORE   CCore::GetInstance()
 #define GRAPHM  CCore::GetInstance()->GetGraphicsManager()
@@ -53,6 +55,7 @@ private:
     CTextureManager*        m_TextureManager;
 	CScriptManager*			m_ScriptManager;
 	CLightManager*			m_LightManager;
+	CCinematicController*	m_CinematicManager;
 public:
     ~CCore();
     void Update ( float dt );
@@ -110,6 +113,12 @@ public:
     {
         return m_LightManager;
     }
+
+	CCinematicController * GetCinematicController()
+    {
+        return m_CinematicManager;
+    }
+
 };
 
 

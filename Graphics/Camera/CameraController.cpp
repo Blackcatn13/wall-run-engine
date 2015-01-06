@@ -7,6 +7,9 @@
 #include "ActionToInput.h"
 #include "Math/Vector3.h"
 #include "Math/MathTypes.h"
+#include "Importer\CameraKeyController.h"
+#include "XML\XMLTreeNode.h"
+#include "Utils\Logger.h"
 
 CCameraController::CCameraController() : m_Speed(2),
     m_PanSpeed(10),
@@ -14,7 +17,8 @@ CCameraController::CCameraController() : m_Speed(2),
     m_FPSMaxPitch(90),
     m_ThPSMaxPitch(90),
     m_BigZoom(20),
-    m_LittleZoom(1)
+    m_LittleZoom(1),
+    m_FileName("")
 {
 }
 
@@ -112,6 +116,13 @@ void CCameraController::Update(float dt)
         if (ATI->DoAction("RotY", panY))
             camObject->SetPitch(camObject->GetPitch() - panY * dt);
     }
+    //CINEMATICS
+    TMapResource::iterator it = m_Resources.begin();
+    for (it; it != m_Resources.end(); ++it) {
+        if (camType == CCamera::TC_CIN) {
+            ((CCameraKeyController *)(* it).second)->Update(dt);
+        }
+    }
 }
 
 void CCameraController::Update(std::string camera, float dt)
@@ -120,5 +131,114 @@ void CCameraController::Update(std::string camera, float dt)
     m_ActiveCamera = m_Cameras[camera];
     Update(dt);
     m_ActiveCamera = aux;
+}
+
+// -------------------------------------------------------------------------------------------------
+// CINEMATICS
+// -------------------------------------------------------------------------------------------------
+
+//Función para cargar cámeras para las cinemáticas.
+bool CCameraController::Load(const std::string &FileName)
+{
+    m_FileName = FileName;
+    CXMLTreeNode l_XMLParser;
+    if (!l_XMLParser.LoadFile(FileName.c_str())) {
+        LOGGER->AddNewLog(ELL_ERROR, "No se ha encontrado el xml de cameras: %s", FileName.c_str());
+        return false;
+    } else {
+        CXMLTreeNode  m = l_XMLParser["cameras"];
+        if (m.Exists()) {
+            int count = m.GetNumChildren();
+            for (int i = 0; i < count; ++i) {
+                if (!strcmp(m(i).GetName(), "key_camera_controller")) {
+                    std::string l_Name = m(i).GetPszProperty("name");
+                    std::string l_file = m(i).GetPszProperty("file");
+                    CCameraKeyController *l_CameraKeyController = new CCameraKeyController();
+                    l_CameraKeyController->LoadXML(l_file);
+                    bool l_Ret = AddResource(l_Name, l_CameraKeyController);
+                    m_Cameras.insert(PairString2Camera(l_Name, l_CameraKeyController));
+                    if (l_Ret == false) {
+                        CHECKED_DELETE(l_CameraKeyController);
+                    }
+                }
+                if (!strcmp(m(i).GetName(), "fixed_camera")) {
+                    std::string l_Name = m(i).GetPszProperty("name");
+                    Vect3f pos = m(i).GetVect3fProperty("pos", v3fONE);
+                    Vect3f lookat = m(i).GetVect3fProperty("lookat", v3fONE);
+                    float l_fov = m(i).GetFloatProperty("fov");
+                    float l_near_plane = m(i).GetFloatProperty("near_plane");
+                    float l_far_plane = m(i).GetFloatProperty("far_plane");
+                    Vect3f l_V = pos - lookat;
+                    float l_yaw = atan2(l_V.z, l_V.x) - ePIf;
+                    float l_pitch = -atan2(l_V.y, sqrt((l_V.z * l_V.z) + (l_V.x * l_V.x)));
+                    float l_roll = 0.0f;
+                    CObject3D* m_Object = new CObject3D(pos, l_yaw, l_pitch, l_roll);
+                    CFPSCamera* cam = new CFPSCamera(l_near_plane, l_far_plane, l_fov, 1, m_Object);
+                    AddResource(l_Name, cam);
+                    m_Cameras.insert(PairString2Camera(l_Name, cam));
+                }
+            }
+        }
+    }
+    return true;
+}
+
+bool CCameraController::Reload()
+{
+    Destroy();
+    return Load(m_FileName);
+}
+
+bool CCameraController::Reload(const std::string &FileName)
+{
+    Destroy();
+    return Load(FileName);
+}
+
+bool CCameraController::IsAnyCinematicPlaying()
+{
+    CCamera::ETypeCamera camType = m_ActiveCamera->GetTypeCamera();
+    TMapResource::iterator it = m_Resources.begin();
+    for (it; it != m_Resources.end(); ++it) {
+        if (camType == CCamera::TC_CIN) {
+            if (((CCameraKeyController *)(* it).second)->IsPlayOn())
+                return true;
+        }
+    }
+    return false;
+}
+
+void CCameraController::Play(bool Cycle)
+{
+	CCamera::ETypeCamera camType = m_ActiveCamera->GetTypeCamera();
+    TMapResource::iterator it = m_Resources.begin();
+    for (it; it != m_Resources.end(); ++it) {
+        if (camType == CCamera::TC_CIN) {
+			((CCameraKeyController *)(* it).second)->Play();
+			((CCameraKeyController *)(* it).second)->SetCycle(Cycle);
+        }
+    }
+}
+
+void CCameraController::Pause()
+{
+	CCamera::ETypeCamera camType = m_ActiveCamera->GetTypeCamera();
+    TMapResource::iterator it = m_Resources.begin();
+    for (it; it != m_Resources.end(); ++it) {
+        if (camType == CCamera::TC_CIN) {
+			((CCameraKeyController *)(* it).second)->Pause();
+        }
+    }
+}
+
+void CCameraController::Stop()
+{
+	CCamera::ETypeCamera camType = m_ActiveCamera->GetTypeCamera();
+    TMapResource::iterator it = m_Resources.begin();
+    for (it; it != m_Resources.end(); ++it) {
+        if (camType == CCamera::TC_CIN) {
+			((CCameraKeyController *)(* it).second)->Stop();
+        }
+    }
 }
 

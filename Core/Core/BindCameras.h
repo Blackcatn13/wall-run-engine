@@ -90,6 +90,14 @@ void RegisterCameraController()
 		.def("get_active_camera", & CCameraController::getActiveCamera)
 		.def("set_active_camera", (void (CCameraController::*)(CCamera *cam)) & CCameraController::setActiveCamera)
 		.def("set_active_camera", (void (CCameraController::*)(std::string cam)) & CCameraController::setActiveCamera)
+		//CINEMATICS
+		.def("load", & CCameraController::Load)
+		.def("reload", (bool (CCameraController::*)()) & CCameraController::Reload)
+		.def("reload", (bool (CCameraController::*)(const std::string &)) & CCameraController::Reload)
+		.def("is_any_cinematic-playing", & CCameraController::IsAnyCinematicPlaying)
+		.def("play", & CCameraController::Play)
+		.def("pause", & CCameraController::Pause)
+		.def("stop", & CCameraController::Stop)
         ];
 
 }

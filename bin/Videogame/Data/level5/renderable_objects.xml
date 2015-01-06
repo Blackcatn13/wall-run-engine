@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<renderable_objects>
+	<mesh_instance name="Box001_Part_6" core="Box001_Part_6"  pos="0.043965 0.564898 0.002453" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_7" core="Box001_Part_7"  pos="0.000000 0.945963 0.901002" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_10" core="Box001_Part_10"  pos="-0.034329 1.170928 1.524929" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_14" core="Box001_Part_14"  pos="0.000000 0.902864 -0.697735" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_17" core="Box001_Part_17"  pos="0.000000 0.848071 -0.217345" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_19" core="Box001_Part_19"  pos="0.000000 1.057144 0.989451" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_20" core="Box001_Part_20"  pos="0.020971 1.031564 -1.162706" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_25" core="Box001_Part_25"  pos="0.000000 1.128344 -1.591094" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_26" core="Box001_Part_26"  pos="-0.023310 0.846629 -1.391865" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_28" core="Box001_Part_28"  pos="0.050546 0.667458 0.457893" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_29" core="Box001_Part_29"  pos="0.035386 0.815748 0.271803" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_30" core="Box001_Part_30"  pos="0.000000 0.679607 -1.020191" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_33" core="Box001_Part_33"  pos="0.000000 1.073048 1.274312" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_34" core="Box001_Part_34"  pos="0.000000 1.089154 -1.294040" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_38" core="Box001_Part_38"  pos="0.000000 0.667052 0.052373" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_39" core="Box001_Part_39"  pos="0.000000 0.810892 0.556854" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_43" core="Box001_Part_43"  pos="0.000000 0.633800 -0.497883" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_48" core="Box001_Part_48"  pos="-0.016634 0.678836 -0.620134" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_53" core="Box001_Part_53"  pos="0.000000 1.185763 -1.818389" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_57" core="Box001_Part_57"  pos="0.000000 1.112080 0.389984" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_58" core="Box001_Part_58"  pos="0.000000 0.690364 -0.367467" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_62" core="Box001_Part_62"  pos="-0.064896 0.432824 -0.778063" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_64" core="Box001_Part_64"  pos="0.000000 1.150697 -0.019667" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_66" core="Box001_Part_66"  pos="0.000000 0.528524 -0.700751" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_69" core="Box001_Part_69"  pos="-0.042704 0.716918 0.516627" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_70" core="Box001_Part_70"  pos="0.000000 0.267548 -0.325092" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_76" core="Box001_Part_76"  pos="0.085758 0.506265 -1.240832" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_79" core="Box001_Part_79"  pos="0.066203 0.697523 -0.954092" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_81" core="Box001_Part_81"  pos="0.000000 1.087742 -0.893514" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_82" core="Box001_Part_82"  pos="-0.069735 0.645260 0.229933" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_83" core="Box001_Part_83"  pos="0.065749 1.170321 1.430609" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_85" core="Box001_Part_85"  pos="0.046353 0.918247 -0.902125" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_91" core="Box001_Part_91"  pos="-0.047413 0.558124 -1.289751" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_92" core="Box001_Part_92"  pos="0.000000 0.990558 0.101759" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_93" core="Box001_Part_93"  pos="0.000000 0.653414 -0.773185" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_94" core="Box001_Part_94"  pos="0.000000 1.033352 0.604347" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_95" core="Box001_Part_95"  pos="0.000000 1.083230 -0.457022" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="FixedWall" core="FixedWall"  pos="0.000000 1.037374 2.380639" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_99" core="Box001_Part_99"  pos="-0.016817 0.448020 -0.018746" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box001_Part_100" core="Box001_Part_100"  pos="0.073608 0.828864 -1.423489" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Sphere001" core="Sphere001"  pos="-2.069798 0.978476 0.022810" yaw="0.0"  pitch="0.0" roll="0.0" scale="2.7892 2.7892 2.7892" />
+</renderable_objects>

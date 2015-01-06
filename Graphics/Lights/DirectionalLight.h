@@ -21,7 +21,7 @@ public:
 		return m_Direction;
 	}
 	virtual void Render(CGraphicsManager *RM);
-	
+
 	void SetShadowMap(CGraphicsManager *RM);
 
 	void SetOrthoShadowMapSize(Vect2f VectSize)

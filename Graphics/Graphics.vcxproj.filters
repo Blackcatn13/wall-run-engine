@@ -36,8 +36,13 @@
       <UniqueIdentifier>{469eda1f-2832-4e88-a947-8c14603d21a6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Effects">
-      <UniqueIdentifier>{9d13bc1f-eccf-4731-9395-c6322816797e}</UniqueIdentifier>
       <UniqueIdentifier>{3b363986-580b-4711-affb-fdca013d2e7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Cinematics">
+      <UniqueIdentifier>{f986e087-8b03-4507-972f-cf794a21bdf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera\Importer">
+      <UniqueIdentifier>{ca0cab81-3496-43e5-aa21-30faf25a1844}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -116,6 +121,30 @@
     </ClCompile>
     <ClCompile Include="Lights\SpotLight.cpp">
       <Filter>Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Cinematics\Cinematic.cpp">
+      <Filter>Cinematics</Filter>
+    </ClCompile>
+    <ClCompile Include="Cinematics\CinematicController.cpp">
+      <Filter>Cinematics</Filter>
+    </ClCompile>
+    <ClCompile Include="Cinematics\CinematicObject.cpp">
+      <Filter>Cinematics</Filter>
+    </ClCompile>
+    <ClCompile Include="Cinematics\CinematicObjectKeyFrame.cpp">
+      <Filter>Cinematics</Filter>
+    </ClCompile>
+    <ClCompile Include="Cinematics\CinematicPlayer.cpp">
+      <Filter>Cinematics</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera\Importer\CameraInfo.cpp">
+      <Filter>Camera\Importer</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera\Importer\CameraKey.cpp">
+      <Filter>Camera\Importer</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera\Importer\CameraKeyController.cpp">
+      <Filter>Camera\Importer</Filter>
     </ClCompile>
     <ClCompile Include="Effects\Effect.cpp">
       <Filter>Effects</Filter>
@@ -209,6 +238,30 @@
     </ClInclude>
     <ClInclude Include="Lights\SpotLight.h">
       <Filter>Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Cinematics\Cinematic.h">
+      <Filter>Cinematics</Filter>
+    </ClInclude>
+    <ClInclude Include="Cinematics\CinematicController.h">
+      <Filter>Cinematics</Filter>
+    </ClInclude>
+    <ClInclude Include="Cinematics\CinematicObject.h">
+      <Filter>Cinematics</Filter>
+    </ClInclude>
+    <ClInclude Include="Cinematics\CinematicObjectKeyFrame.h">
+      <Filter>Cinematics</Filter>
+    </ClInclude>
+    <ClInclude Include="Cinematics\CinematicPlayer.h">
+      <Filter>Cinematics</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera\Importer\CameraInfo.h">
+      <Filter>Camera\Importer</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera\Importer\CameraKey.h">
+      <Filter>Camera\Importer</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera\Importer\CameraKeyController.h">
+      <Filter>Camera\Importer</Filter>
     </ClInclude>
     <ClInclude Include="Effects\Effect.h">
       <Filter>Effects</Filter>
