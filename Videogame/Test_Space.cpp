@@ -24,7 +24,7 @@
 #include "Mesh\MeshInstance.h"
 #include "Renderable\RenderableObjectsManager.h"
 #include "Core\ScriptManager.h"
-
+#include "Lights\LightManager.h"
 
 CTest_Space::CTest_Space(void)
 {

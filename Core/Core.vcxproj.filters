@@ -72,5 +72,23 @@
     <ClInclude Include="Core\ScriptManager.h">
       <Filter>ScriptManager</Filter>
     </ClInclude>
+    <ClInclude Include="Core\BindAdvancedShaders.h">
+      <Filter>ScriptManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\BindCinematics.h">
+      <Filter>ScriptManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\BindEffects.h">
+      <Filter>ScriptManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\BindLights.h">
+      <Filter>ScriptManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\BindCameraKeys.h">
+      <Filter>ScriptManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\BindCameras.h">
+      <Filter>ScriptManager</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

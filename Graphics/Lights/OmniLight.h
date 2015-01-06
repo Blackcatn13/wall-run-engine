@@ -7,7 +7,8 @@ class COmniLight : public CLight
 {
 public:
 	COmniLight() : CLight() {}
-
+	////////////////////////////
+	void SetShadowMap(CGraphicsManager *RM){};
 };
 
 

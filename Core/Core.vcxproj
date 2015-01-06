@@ -20,6 +20,12 @@
     <ClCompile Include="Core_Utils\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Core\BindAdvancedShaders.h" />
+    <ClInclude Include="Core\BindCameraKeys.h" />
+    <ClInclude Include="Core\BindCameras.h" />
+    <ClInclude Include="Core\BindCinematics.h" />
+    <ClInclude Include="Core\BindEffects.h" />
+    <ClInclude Include="Core\BindLights.h" />
     <ClInclude Include="Core\Core.h" />
     <ClInclude Include="Core\Engine.h" />
     <ClInclude Include="Core\EngineDefs.h" />

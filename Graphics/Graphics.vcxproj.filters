@@ -36,7 +36,11 @@
       <UniqueIdentifier>{469eda1f-2832-4e88-a947-8c14603d21a6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Effects">
+<<<<<<< HEAD
       <UniqueIdentifier>{9d13bc1f-eccf-4731-9395-c6322816797e}</UniqueIdentifier>
+=======
+      <UniqueIdentifier>{3b363986-580b-4711-affb-fdca013d2e7e}</UniqueIdentifier>
+>>>>>>> ad36bc4899bc486729b18d9661117496994e2606
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -209,6 +213,7 @@
     <ClInclude Include="Lights\SpotLight.h">
       <Filter>Lights</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Effects\Effect.h">
       <Filter>Effects</Filter>
     </ClInclude>
@@ -216,6 +221,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="Effects\EffectTechnique.h">
+=======
+    <ClInclude Include="Effects\Effects.h">
+>>>>>>> ad36bc4899bc486729b18d9661117496994e2606
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

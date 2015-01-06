@@ -20,13 +20,9 @@
 #include "Math\Matrix34.h"
 #include <d3dx9.h>
 
-#include "Lights\Light.h"
-#include "Lights\LightManager.h"
-#include "Lights\DirectionalLight.h"
-#include "Lights\OmniLight.h"
-#include "Lights\SpotLight.h"
-
 #include "Utils\MapManager.h"
+#include "Utils\TemplatedVectorMapManager.h"
+
 
 extern "C"
 {
@@ -39,11 +35,14 @@ extern "C"
 #include <luabind/function.hpp>
 #include <luabind/class.hpp>
 #include <luabind/operator.hpp>
+#include <luabind/scope.hpp>
+
 #include "Utils\Visible.h"
 #include <map>
 #include <string>
 
 using namespace luabind;
+
 
 class CScriptManager
 {
@@ -74,7 +73,7 @@ class CScriptManager
 /***********AUXILIAR CLASSES********/
 /***********************************/
 /******CAMERAS******/
-//
+//
 //class CCameraInfo
 //{
 //public:
@@ -186,54 +185,54 @@ class CScriptManager
 //};
 //
 //
-///****EFFECTS*****/
-//#define MAX_LIGHTS_BY_SHADER 10
-//
-//class CEffect
-//{
-//private:
-//	std::string m_FileName;
-//	LPD3DXEFFECT m_Effect;
-//	//BOOL m_LightsEnabled[MAX_LIGHTS_BY_SHADER];
-//	int m_LightsEnabled[MAX_LIGHTS_BY_SHADER];
-//	int m_LightsType[MAX_LIGHTS_BY_SHADER];
-//	float m_LightsAngle[MAX_LIGHTS_BY_SHADER];
-//	float m_LightsFallOff[MAX_LIGHTS_BY_SHADER];
-//	float m_LightsStartRangeAttenuation[MAX_LIGHTS_BY_SHADER];
-//	float m_LightsEndRangeAttenuation[MAX_LIGHTS_BY_SHADER];
-//	/*CPoint3D*/ Vect3f m_LightsPosition[MAX_LIGHTS_BY_SHADER];
-//	/*CPoint3D*/ Vect3f m_LightsDirection[MAX_LIGHTS_BY_SHADER];
-//	/*CPoint3D*/ Vect3f m_LightsColor[MAX_LIGHTS_BY_SHADER];
-//	D3DXHANDLE m_WorldMatrixParameter, m_ViewMatrixParameter,
-//	m_ProjectionMatrixParameter;
-//	D3DXHANDLE m_WorldViewMatrixParameter,
-//	m_ViewProjectionMatrixParameter,
-//	m_WorldViewProjectionMatrixParameter;
-//	D3DXHANDLE m_ViewToLightProjectionMatrixParameter;
-//	D3DXHANDLE m_LightEnabledParameter, m_LightsTypeParameter,
-//	m_LightsPositionParameter, m_LightsDirectionParameter,
-//	m_LightsAngleParameter, m_LightsColorParameter;
-//	D3DXHANDLE m_LightsFallOffParameter,
-//	m_LightsStartRangeAttenuationParameter,
-//	m_LightsEndRangeAttenuationParameter;
-//	D3DXHANDLE m_CameraPositionParameter;
-//	D3DXHANDLE m_BonesParameter;
-//	D3DXHANDLE m_TimeParameter;
-//	void SetNullParameters();
-//	void GetParameterBySemantic(const std::string &SemanticName, D3DXHANDLE
-//	&l_Handle);
-//	bool LoadEffect();
-//	void Unload();
-//public:
-//	CEffect(){}
-//	~CEffect(){}
-//	bool SetLights(size_t NumOfLights){return false;}
-//	bool Load(const std::string &FileName){return false;}
-//	bool Reload(){return false;}
-//	//DirectX Methods Interface
-//	/*LPD3DXEFFECT*/ void GetD3DEffect() const{}
-//	/*D3DXHANDLE*/ void GetTechniqueByName(const std::string &TechniqueName){}
-//};
+/////****EFFECTS*****/
+////#define MAX_LIGHTS_BY_SHADER 10
+////
+////class CEffect
+////{
+////private:
+////	std::string m_FileName;
+////	LPD3DXEFFECT m_Effect;
+////	//BOOL m_LightsEnabled[MAX_LIGHTS_BY_SHADER];
+////	int m_LightsEnabled[MAX_LIGHTS_BY_SHADER];
+////	int m_LightsType[MAX_LIGHTS_BY_SHADER];
+////	float m_LightsAngle[MAX_LIGHTS_BY_SHADER];
+////	float m_LightsFallOff[MAX_LIGHTS_BY_SHADER];
+////	float m_LightsStartRangeAttenuation[MAX_LIGHTS_BY_SHADER];
+////	float m_LightsEndRangeAttenuation[MAX_LIGHTS_BY_SHADER];
+////	/*CPoint3D*/ Vect3f m_LightsPosition[MAX_LIGHTS_BY_SHADER];
+////	/*CPoint3D*/ Vect3f m_LightsDirection[MAX_LIGHTS_BY_SHADER];
+////	/*CPoint3D*/ Vect3f m_LightsColor[MAX_LIGHTS_BY_SHADER];
+////	D3DXHANDLE m_WorldMatrixParameter, m_ViewMatrixParameter,
+////	m_ProjectionMatrixParameter;
+////	D3DXHANDLE m_WorldViewMatrixParameter,
+////	m_ViewProjectionMatrixParameter,
+////	m_WorldViewProjectionMatrixParameter;
+////	D3DXHANDLE m_ViewToLightProjectionMatrixParameter;
+////	D3DXHANDLE m_LightEnabledParameter, m_LightsTypeParameter,
+////	m_LightsPositionParameter, m_LightsDirectionParameter,
+////	m_LightsAngleParameter, m_LightsColorParameter;
+////	D3DXHANDLE m_LightsFallOffParameter,
+////	m_LightsStartRangeAttenuationParameter,
+////	m_LightsEndRangeAttenuationParameter;
+////	D3DXHANDLE m_CameraPositionParameter;
+////	D3DXHANDLE m_BonesParameter;
+////	D3DXHANDLE m_TimeParameter;
+////	void SetNullParameters();
+////	void GetParameterBySemantic(const std::string &SemanticName, D3DXHANDLE
+////	&l_Handle);
+////	bool LoadEffect();
+////	void Unload();
+////public:
+////	CEffect(){}
+////	~CEffect(){}
+////	bool SetLights(size_t NumOfLights){return false;}
+////	bool Load(const std::string &FileName){return false;}
+////	bool Reload(){return false;}
+////	//DirectX Methods Interface
+////	/*LPD3DXEFFECT*/ void GetD3DEffect() const{}
+////	/*D3DXHANDLE*/ void GetTechniqueByName(const std::string &TechniqueName){}
+////};
 //
 //class CEffectTechnique
 //{
@@ -266,7 +265,7 @@ class CScriptManager
 //	//DirectX Methods Interface
 //	/*D3DXHANDLE*/ void GetD3DTechnique(){}
 //};
-
+//
 //class CEffectManager : public CMapManager<CEffectTechnique>
 //{
 //private:
@@ -284,9 +283,9 @@ class CScriptManager
 //	~CEffectManager(){}
 //	const /*CMatrix*/ Mat44f & GetWorldMatrix() const{return m_LightViewMatrix;}
 //	const /*CMatrix*/ Mat44f & GetProjectionMatrix() const{return m_LightViewMatrix;}
-//	const /*CMatrix*/ Mat44f & GetViewMatrix() const{return m_LightViewMatrix;
+//	const /*CMatrix*/ Mat44f & GetViewMatrix() const{return m_LightViewMatrix;}
 //	const /*CMatrix*/ Mat44f & GetViewProjectionMatrix(){return m_LightViewMatrix;}
-//	const /*CPoint3D*/ Vect3f & GetCameraEye(){return m_LightViewMatrix;}
+//	const /*CPoint3D*/ Vect3f & GetCameraEye(){return m_CameraEye;}
 //	const /*CMatrix*/ Mat44f & GetLightViewMatrix() const{return m_LightViewMatrix;}
 //	const /*CMatrix*/ Mat44f & GetShadowProjectionMatrix(){return m_LightViewMatrix;}
 //	void ActivateCamera(const /*CMatrix*/ Mat44f &ViewMatrix, const /*CMatrix*/ Mat44f &ProjectionMatrix, const /*CPoint3D*/ Vect3f &CameraEye){}
@@ -309,3 +308,99 @@ class CScriptManager
 //	void SetAnimatedModelTechnique(CEffectTechnique *AnimatedModelTechnique){}
 //	void CleanUp(){}
 //};
+//class CRenderableObjectsLayersManager : public CTemplatedVectorMapManager<CRenderableObjectsManager>
+//{
+//private:
+//	std::string m_FileName;
+//	CRenderableObjectsManager *m_DefaultRenderableObjectManager;
+//	CRenderableObjectsManager * GetRenderableObjectManager(CXMLTreeNode &Node);
+//public:
+//	CRenderableObjectsLayersManager(){}
+//	~CRenderableObjectsLayersManager(){}
+//	void Destroy(){}
+//	void Load(const std::string &FileName){}
+//	void Reload(){}
+//	void Update(float ElapsedTime){}
+//	void Render(CGraphicsManager *RM){}
+//	void Render(CGraphicsManager *RM, const std::string &LayerName){}
+//};
+//
+//
+//class CRenderableObjectTechnique : public CNamed
+//{
+//private:
+//CEffectTechnique *m_EffectTechnique;
+//public:
+//	CRenderableObjectTechnique(const std::string &Name, CEffectTechnique *EffectTechnique){}
+//	CRenderableObjectTechnique(){}
+//	void SetEffectTechnique(CEffectTechnique *EffectTechnique){}
+//	CEffectTechnique * GetEffectTechnique() const{return m_EffectTechnique;}
+//};
+//
+//class CPoolRenderableObjectTechnique : public CNamed
+//{
+//private:
+//	class CPoolRenderableObjectTechniqueElement
+//{
+//	public:
+//	CRenderableObjectTechnique m_RenderableObjectTechnique;
+//	CRenderableObjectTechnique *m_OnRenderableObjectTechniqueManager;
+//	CPoolRenderableObjectTechniqueElement(const std::string &Name, CEffectTechnique *EffectTechnique, CRenderableObjectTechnique *OnRenderableObjectTechniqueManager){}
+//	};
+//	std::vector<CPoolRenderableObjectTechniqueElement *> m_RenderableObjectTechniqueElements;
+//public:
+//	CPoolRenderableObjectTechnique(CXMLTreeNode &TreeNode){}
+//	virtual ~CPoolRenderableObjectTechnique(){}
+//	void Destroy(){}
+//	void AddElement(const std::string &Name, const std::string &TechniqueName, CRenderableObjectTechnique *ROTOnRenderableObjectTechniqueManager){}
+//	void Apply(){}
+//};
+//
+//class CRenderableObjectTechniqueManager : public CMapManager<CRenderableObjectTechnique>
+//{
+//private:
+//	CMapManager<CPoolRenderableObjectTechnique> m_PoolRenderableObjectTechniques;
+//	void InsertRenderableObjectTechnique(const std::string &ROTName, const std::string &TechniqueName);
+//public:
+//	CRenderableObjectTechniqueManager(){}
+//	virtual ~CRenderableObjectTechniqueManager(){}
+//	void Destroy(){}
+//	void Load(const std::string &FileName){}
+//	std::string GetRenderableObjectTechniqueNameByVertexType(unsigned int VertexType){return "lala";}
+//	CMapManager<CPoolRenderableObjectTechnique> & GetPoolRenderableObjectTechniques(){return m_PoolRenderableObjectTechniques;}
+//};
+//
+//class CSceneRendererCommand : /*public CUABActive,*/ public CNamed
+//{
+//public:
+//	CSceneRendererCommand(CXMLTreeNode &atts){}
+//	CSceneRendererCommand(){}
+//	virtual ~CSceneRendererCommand(){}
+//	virtual void Execute(CGraphicsManager &RM) {}
+//};
+//
+//class CClearSceneRendererCommand : public CSceneRendererCommand
+//{
+//protected:
+//	bool m_Color;
+//	bool m_Depth;
+//	bool m_Stencil;
+//public:
+//	CClearSceneRendererCommand(CXMLTreeNode &atts){}
+//	CClearSceneRendererCommand(){}
+//	virtual void Execute(CGraphicsManager &RM){}
+//};
+//
+//class CSceneRendererCommandManager
+//{
+//private:
+//	CTemplatedVectorMapManager<CSceneRendererCommand> m_SceneRendererCommands; 
+//	void CleanUp(){}
+//	std::string GetNextName(){}
+//public:
+//	CSceneRendererCommandManager(){}
+//	~CSceneRendererCommandManager(){}
+//	void Load(const std::string &FileName){}
+//	void Execute(CGraphicsManager &RM){}
+//};
+//
