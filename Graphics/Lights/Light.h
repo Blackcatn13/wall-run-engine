@@ -8,7 +8,7 @@
 #include "Texture\Texture.h"
 #include <d3dx9.h>
 #include "Renderable\RenderableObjectsManager.h"
-#include "Effects\Effects.h"
+#include "Effects\Effect.h"
 
 class CGraphicsManager;
 
