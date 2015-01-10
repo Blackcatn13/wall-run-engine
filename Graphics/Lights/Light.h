@@ -28,6 +28,7 @@ class CLight : public CObject3D
 		bool m_RenderShadows;
 		float m_StartRangeAttenuation;
 		float m_EndRangeAttenuation;
+		float m_Intensity;
 		static TLightType GetLightTypeByName(const std::string &StrLightType);
 
 		/**ADVANCED SHADERS**/
@@ -73,6 +74,16 @@ class CLight : public CObject3D
 		{
 			return m_EndRangeAttenuation;
 		}
+
+		void SetIntensity(const float Intensity)
+		{
+			m_Intensity = Intensity;
+		}
+		float GetIntensity() const
+		{
+			return m_Intensity;
+		}
+
 		bool RenderShadows() const
 		{
 			return m_RenderShadows;

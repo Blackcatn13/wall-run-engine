@@ -32,7 +32,7 @@ void CLightManager::Load(const std::string &FileName)
 		for (int i = 0; i < count; ++i)
 		{
 			if(std::string("light")==m(i).GetName()) {
-			//	XML type ejemplo
+	/*		//	XML type ejemplo
 				std::string l_Name = m(i).GetPszISOProperty("name", "");
 				std::string l_Type = m(i).GetPszISOProperty("type", "");
 				Vect3f l_Pos = m(i).GetVect3fProperty("pos", (0.0f,0.0f,0.0f));
@@ -40,7 +40,7 @@ void CLightManager::Load(const std::string &FileName)
 				Vect3f l_Color = m(i).GetVect3fProperty("color", (0.0f,0.0f,0.0f));
 				float l_StartRange = m(i).GetFloatProperty("att_start_range",0.0f);
 				float l_EndRange = m(i).GetFloatProperty("att_end_range",0.0f);
-			//	float l_Intensity = m(i).GetFloatProperty("intensity",0.0f); //<= Este no está en el xml del pdf
+				float l_Intensity = m(i).GetFloatProperty("intensity",0.0f); 
 				//Opcionales
 			//	bool l_ExportShadows = m(i).GetBoolProperty("export_shadows",false); //<= Este no está en el xml del pdf
 				bool l_GenerateDynamicShadowMap = m(i).GetBoolProperty("generate_shadow_map",false);
@@ -69,6 +69,9 @@ void CLightManager::Load(const std::string &FileName)
 						l_DynamicRenderableObjectsManager = m(i)(j).GetPszISOProperty("renderable_objects_manager", "");
 					}
 				}
+
+				*/
+
 				/*int l_OrthoShadowMapWidht = m(i).GetIntProperty("ortho_shadow_map_width", 0);										//<= Esto no está en el xml del pdf pero hará falta
 				int l_OrthoShadowMapHeight = m(i).GetIntProperty("ortho_shadow_map_height", 0);										//<= Esto no está en el xml del pdf pero hará falta
 				bool l_UpdateStaticShadowMap = m(i).GetBoolProperty("update_static_shadow_map",false);								//<= Esto no está en el xml del pdf pero hará falta
@@ -99,7 +102,7 @@ void CLightManager::Load(const std::string &FileName)
 
 				*/
 				//XML Type PDF
-				/*std::string l_Name = m(i).GetPszISOProperty("name", "");
+				std::string l_Name = m(i).GetPszISOProperty("name", "");
 				std::string l_Type = m(i).GetPszISOProperty("type", "");
 				Vect3f l_Pos = m(i).GetVect3fProperty("pos", (0.0f,0.0f,0.0f));
 				Vect3f l_Dir = m(i).GetVect3fProperty("dir", (0.0f,0.0f,0.0f));
@@ -109,17 +112,19 @@ void CLightManager::Load(const std::string &FileName)
 				bool l_RenderShadows = m(i).GetFloatProperty("render_shadows",false);
 				float l_StartRange = m(i).GetFloatProperty("att_start_range",0.0f);
 				float l_EndRange = m(i).GetFloatProperty("att_end_range",0.0f);
-				*/
+				float l_Intensity = m(i).GetFloatProperty("intensity",0.0f); 
+				
 				if(l_Type == "omni"){
 					COmniLight * l_OmniLight = new COmniLight();
 					l_OmniLight->SetName(l_Name);
 					l_OmniLight->SetType(CLight::TLightType::OMNI);
 					l_OmniLight->SetPosition(l_Pos);
 					l_OmniLight->SetColor(CColor(l_Color));
+					l_OmniLight->SetIntensity(l_Intensity);
 					l_OmniLight->SetStartRangeAttenuation(l_StartRange);
 					l_OmniLight->SetEndRangeAttenuation(l_EndRange);
 					/////////////////////////////////
-					l_OmniLight->SetGenerateDynamicShadowMap(l_GenerateDynamicShadowMap);
+	/*				l_OmniLight->SetGenerateDynamicShadowMap(l_GenerateDynamicShadowMap);
 					l_OmniLight->SetGenerateStaticShadowMap(l_GenerateStaticShadowMap);
 					l_OmniLight->SetMustUpdateStaticShadowMap(l_UpdateStaticShadowMap);
 					
@@ -136,7 +141,7 @@ void CLightManager::Load(const std::string &FileName)
 						//Aqui se le añadirá al CRenderableObjectsManager el valor de l_DynamicRenderableObjectsManager
 						l_OmniLight->GetDynamicShadowMapRenderableObjectsManagers().push_back(l_RenderableObjectManager);
 					}
-
+*/
 					AddResource(l_Name, l_OmniLight);
 				}
 				else if (l_Type == "directional"){
@@ -145,12 +150,13 @@ void CLightManager::Load(const std::string &FileName)
 					l_DirectionalLight->SetType(CLight::TLightType::DIRECTIONAL);
 					l_DirectionalLight->SetPosition(l_Pos);
 					l_DirectionalLight->SetColor(CColor(l_Color));
+					l_DirectionalLight->SetIntensity(l_Intensity);
 					l_DirectionalLight->SetStartRangeAttenuation(l_StartRange);
 					l_DirectionalLight->SetEndRangeAttenuation(l_EndRange);
 					l_DirectionalLight->SetDirection(l_Dir);
 
 					/////////////////////////////////
-					l_DirectionalLight->SetGenerateDynamicShadowMap(l_GenerateDynamicShadowMap);
+	/*				l_DirectionalLight->SetGenerateDynamicShadowMap(l_GenerateDynamicShadowMap);
 					l_DirectionalLight->SetGenerateStaticShadowMap(l_GenerateStaticShadowMap);
 					l_DirectionalLight->SetMustUpdateStaticShadowMap(l_UpdateStaticShadowMap);
 					l_DirectionalLight->SetOrthoShadowMapSize((l_ShadowMapWith, l_ShadowMapHeight));
@@ -167,7 +173,7 @@ void CLightManager::Load(const std::string &FileName)
 						//Aqui se le añadirá al CRenderableObjectsManager el valor de l_DynamicRenderableObjectsManager
 						l_DirectionalLight->GetDynamicShadowMapRenderableObjectsManagers().push_back(l_RenderableObjectManager);
 					}
-
+*/
 					AddResource(l_Name, l_DirectionalLight);		
 				}else
 				{
@@ -176,6 +182,7 @@ void CLightManager::Load(const std::string &FileName)
 					l_SpotLight->SetType(CLight::TLightType::SPOT);
 					l_SpotLight->SetPosition(l_Pos);
 					l_SpotLight->SetColor(CColor(l_Color));
+					l_SpotLight->SetIntensity(l_Intensity);
 					l_SpotLight->SetStartRangeAttenuation(l_StartRange);
 					l_SpotLight->SetEndRangeAttenuation(l_EndRange);
 					l_SpotLight->SetDirection(l_Dir);
@@ -183,7 +190,7 @@ void CLightManager::Load(const std::string &FileName)
 					l_SpotLight->SetFallOff(l_FallOff);
 
 					/////////////////////////////////
-					l_SpotLight->SetGenerateDynamicShadowMap(l_GenerateDynamicShadowMap);
+		/*			l_SpotLight->SetGenerateDynamicShadowMap(l_GenerateDynamicShadowMap);
 					l_SpotLight->SetGenerateStaticShadowMap(l_GenerateStaticShadowMap);
 					l_SpotLight->SetMustUpdateStaticShadowMap(l_UpdateStaticShadowMap);
 					l_SpotLight->SetOrthoShadowMapSize((l_ShadowMapWith, l_ShadowMapHeight));
@@ -200,7 +207,7 @@ void CLightManager::Load(const std::string &FileName)
 						//Aqui se le añadirá al CRenderableObjectsManager el valor de l_DynamicRenderableObjectsManager
 						l_SpotLight->GetDynamicShadowMapRenderableObjectsManagers().push_back(l_RenderableObjectManager);
 					}
-
+					*/
 					AddResource(l_Name, l_SpotLight);
 				}
 			}
