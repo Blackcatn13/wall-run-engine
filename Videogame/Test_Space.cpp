@@ -190,6 +190,13 @@ void CTest_Space::Update(float dt)
         m_CameraController->Update("FPS", dt);
     else
         m_CameraController->Update(dt);
+
+	if(ACT2IN->DoAction("ReloadScripts"))
+	{
+		SCRIPTM->Reload();
+		SCRIPTM->RunFile(SCRIPTM->GetScriptsMap().find("test2")->second);
+	}
+
     skip += dt;
     tTerra1_yaw += dt * 30 * 0.005;
     tTerra2_yaw += dt * 80 * 0.005;

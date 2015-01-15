@@ -1,6 +1,6 @@
 -- Ojo!!! Las clases tiene que tener constructor si o si?
 
-local name = "Tete"
+local name = "Teta"
 local n1 = CNamed();
 n1:set_name(name);
 

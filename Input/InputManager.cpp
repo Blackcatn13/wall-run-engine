@@ -5,8 +5,7 @@
 #include "Utils/Defines.h"
 #include "Utils/Logger.h"
 #include "Utils/Exception.h"
-//#include "Script/ScriptManager.h"
-//#include "luabind/luabind.hpp"
+
 
 
 
@@ -364,41 +363,3 @@ int32 CInputManager::Scan2ascii (uint32 scancode, uint16* result)
 }
 
 
-//----------------------------------------------------------------------------
-// LUA BIND
-//----------------------------------------------------------------------------
-/*void CInputManager::RegisterFunctions (CScriptManager* scriptManager)
-{
-	lua_State* l_pLUAState = scriptManager->GetLuaState();
-
-	using namespace luabind;
-
-	// ahora registramos lo que querramos
-	module(l_pLUAState)
-		[
-			// registramos la clase CInputManager
-			class_<CInputManager>(CScriptRegister::SetClassName("CInputManager"))
-			// registramos su constructor
-			.def(constructor<>())
-
-			//-----------GENERAL FUNCTIONS---------------------
-			.def(	CScriptRegister::PushFunctionName(AUTO_COMPLETE), &CScriptRegister::AutoComplete)
-
-			.def(	CScriptRegister::PushFunctionName(HELP,"void","void",
-						"Muestra todas las funciones de esta clase"),
-						&CScriptRegister::Help)
-
-			.def(	CScriptRegister::PushFunctionName("isDown","bool","INPUT_DEVICE_TYPE idType, uint32 nBtn",
-						"Informa si se esta presionando un boton de un disp. de entrada (0:keyb,1:joys,2:mouse)"),
-						&CInputManager::IsDown)
-
-			.def(	CScriptRegister::PushFunctionName("isDownUp","bool","INPUT_DEVICE_TYPE idType, uint32 nBtn",
-						"Informa si se justo ahora se ha despresionado un boton de un disp. de entrada (0:keyb,1:joys,2:mouse)"),
-						&CInputManager::IsDownUp)
-
-			.def(	CScriptRegister::PushFunctionName("isUpDown","bool","INPUT_DEVICE_TYPE idType, uint32 nBtn",
-						"Informa si se justo ahora se ha presionado un boton de un disp. de entrada (0:keyb,1:joys,2:mouse)"),
-						&CInputManager::IsUpDown)
-
-		];
-}*/

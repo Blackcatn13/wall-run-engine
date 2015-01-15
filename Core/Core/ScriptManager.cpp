@@ -93,7 +93,7 @@ void CScriptManager::RunFile(const std::string &FileName) const
 void CScriptManager::Load(const std::string &XMLFile)
 {
 	//TODO Añadir scripts a un vector?
-	std::string l_FileName = XMLFile;
+	m_FileName = XMLFile;
 	CXMLTreeNode newFile;
 	if (!newFile.LoadFile(XMLFile.c_str()))
 	{
@@ -117,7 +117,12 @@ void CScriptManager::Load(const std::string &XMLFile)
 	}
 }
 
-
+void CScriptManager::Reload()
+{
+	if(m_DeleteMap)
+			m_ScriptsMap.clear();
+	Load(m_FileName);
+}
 
 
 void CScriptManager::RegisterLUAFunctions()

@@ -20,7 +20,7 @@ public:
 	virtual void Pause();
 	bool IsFinished() {return m_CurrentTime>=m_Duration;}
 	float GetDuration() {return m_Duration;}
-	float GetCurrentTime() {return m_CurrentTime;}
+	float GetCurrentTimes() {return m_CurrentTime;}
 	virtual void OnRestartCycle();
 };
 

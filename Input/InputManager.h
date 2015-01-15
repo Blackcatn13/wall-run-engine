@@ -14,10 +14,9 @@
 #include <dinput.h>
 #include "InputDefs.h"
 
-//#include "Script/ScriptRegister.h"
+
 
 //---Forward Declarations--
-class CScriptManager;
 class CMouse;
 class CKeyboard;
 class CGamePad;
