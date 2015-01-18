@@ -111,4 +111,6 @@
 	<mesh_instance name="Box001_Part_53_Part_8" core="Box001_Part_53_Part_8"  pos="-0.071613 0.933296 0.592413" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<mesh_instance name="Box001_Part_53_Part_9" core="Box001_Part_53_Part_9"  pos="0.013675 0.919441 0.872320" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<mesh_instance name="Box001_Part_53_Part_10" core="Box001_Part_53_Part_10"  pos="-0.161086 0.915699 0.786929" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box005" core="Box005"  pos=" 1.833557 0.000000 -3.452945" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box002" core="Box002"  pos=" 6.631392 0.000000 0.760107" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 </renderable_objects>

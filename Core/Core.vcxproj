@@ -12,8 +12,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Core.cpp" />
+    <ClCompile Include="Core\CoreLuaWrapper.cpp" />
     <ClCompile Include="Core\Engine.cpp" />
+    <ClCompile Include="Core\MathLuaUtils.cpp" />
     <ClCompile Include="Core\Process.cpp" />
+    <ClCompile Include="Core\ScriptedController.cpp" />
     <ClCompile Include="Core\ScriptManager.cpp" />
     <ClCompile Include="Core_Utils\LogRender.cpp" />
     <ClCompile Include="Core_Utils\MemLeaks.cpp" />
@@ -21,15 +24,23 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\BindAdvancedShaders.h" />
+    <ClInclude Include="Core\BindAnimatedModels.h" />
     <ClInclude Include="Core\BindCameraKeys.h" />
     <ClInclude Include="Core\BindCameras.h" />
     <ClInclude Include="Core\BindCinematics.h" />
+    <ClInclude Include="Core\BindCore.h" />
     <ClInclude Include="Core\BindEffects.h" />
+    <ClInclude Include="Core\BindInputs.h" />
     <ClInclude Include="Core\BindLights.h" />
+    <ClInclude Include="Core\BindManagers.h" />
+    <ClInclude Include="Core\BindVectors.h" />
     <ClInclude Include="Core\Core.h" />
+    <ClInclude Include="Core\CoreLuaWrapper.h" />
     <ClInclude Include="Core\Engine.h" />
     <ClInclude Include="Core\EngineDefs.h" />
+    <ClInclude Include="Core\MathLuaUtils.h" />
     <ClInclude Include="Core\Process.h" />
+    <ClInclude Include="Core\ScriptedController.h" />
     <ClInclude Include="Core\ScriptManager.h" />
     <ClInclude Include="Core_Utils\LogRender.h" />
     <ClInclude Include="Core_Utils\MemLeaks.h" />

@@ -91,6 +91,16 @@ bool CActionToInput::DoAction(const std::string& action_name, float &amount)
     return false;
 }
 
+bool CActionToInput::DoActionFromLua(const std::string action_name)
+{
+	return DoAction(action_name);
+}
+
+bool CActionToInput::DoActionFromLua(const std::string action_name,  float amount)
+{
+	return DoAction(action_name, amount);
+}
+
 bool CActionToInput::ReloadXML()
 {
     LoadXML(m_fileName);

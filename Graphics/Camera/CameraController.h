@@ -5,9 +5,11 @@
 #include "Utils\MapManager.h"
 #include <map>
 #include <string>
+#include "Core\Core.h"
+#include "ActionToInput.h"
+#include "Camera\Camera.h"
 
 class CObject3D;
-class CCamera;
 class CCameraKeyController;
 
 typedef std::map< std::string, CObject3D*> map2Object;
@@ -61,5 +63,57 @@ public:
 	void Pause(); 
 	void Stop();
 
+
+	void SetFlyMode (bool flyMode)
+	{
+		m_FlyMode = flyMode;
+	}
+
+	bool GetFlyMode ()
+	{
+		return m_FlyMode;
+	}
+
+	void SetSpeed (float speed)
+	{
+		m_Speed = speed;
+	}
+
+	float GetSpeed ()
+	{
+		return m_Speed;
+	}
+
+	void SetLittleZoom (float littleZoom)
+	{
+		m_LittleZoom = littleZoom;
+	}
+
+	float GetLittleZoom ()
+	{
+		return m_LittleZoom;
+	}
+
+	void SetBigZoom (float bigZoom)
+	{
+		m_BigZoom = bigZoom;
+	}
+
+	float GetBigZoom ()
+	{
+		return m_BigZoom;
+	}
+
+	void SetPanSpeed (float panSpeed)
+	{
+		m_PanSpeed = panSpeed;
+	}
+
+	float GetPanSpeed ()
+	{
+		return m_PanSpeed;
+	}
+
+	void CamUpdates(CCamera::ETypeCamera camType, float dt);
 };
 #endif

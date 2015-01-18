@@ -4,6 +4,7 @@
 #include <Windows.h>
 #include "Utils\Defines.h"
 #include "EngineDefs.h"
+#include "Camera\CameraController.h"
 
 
 class CLanguageManager;
@@ -19,6 +20,7 @@ class CTextureManager;
 class CScriptManager;
 class CLightManager;
 class CCinematicController;
+class CCameraController;
 
 
 #define CCORE   CCore::GetInstance()
@@ -56,6 +58,8 @@ private:
 	CScriptManager*			m_ScriptManager;
 	CLightManager*			m_LightManager;
 	CCinematicController*	m_CinematicManager;
+	CCameraController*		m_CameraController;
+
 public:
     ~CCore();
     void Update ( float dt );
@@ -117,6 +121,15 @@ public:
 	CCinematicController * GetCinematicController()
     {
         return m_CinematicManager;
+    }
+
+	CCameraController * GetCameraController()
+    {
+        return m_CameraController;
+    }
+	void SetCameraController(CCameraController * cameraController)
+    {
+		m_CameraController = cameraController;
     }
 
 };

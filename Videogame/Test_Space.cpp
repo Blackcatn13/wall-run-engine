@@ -23,12 +23,15 @@
 #include "RenderableVertex/IndexedVertexs.h"
 #include "Mesh\MeshInstance.h"
 #include "Renderable\RenderableObjectsManager.h"
+#include "Renderable\RenderableObject.h"
 #include "Core\ScriptManager.h"
 
 #include "Cinematics\CinematicController.h"
 #include "Cinematics\Cinematic.h"
 
 #include "Lights\LightManager.h"
+#include "Core\ScriptedController.h"
+
 
 
 CTest_Space::CTest_Space(void)
@@ -50,15 +53,25 @@ CTest_Space::~CTest_Space(void)
     delete m_ThPSCamera;
     delete m_ThPSCamera1;
     delete m_FPSCamera;
-    delete m_CameraController;
+
 }
 
 void CTest_Space::Init()
 {
-    m_ObjectFPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
-    m_ObjectThPS = new CObject3D(Vect3f(0, 0, 0), 0, 0, 0);
+
+	/* Script Manager Tests*/
+//	SCRIPTM->RunFile(".\\Data\\scripted_controller.lua");
+//	SCRIPTM->Load(".\\Data\\lua_actions.xml");
+//	SCRIPTM->RunFile(SCRIPTM->GetScriptsMap().find("test2")->second);
+	/*float l_ElapsedTime=0.3f;
+	char l_Text[256];
+	_snprintf_s(l_Text, 256, 256, "on_update_scripted_controller(%f)", l_ElapsedTime);
+	SCRIPTM->RunCode(l_Text);*/
+	m_ObjectFPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
+    m_ObjectThPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
+	m_RenderableObject = RENDM->GetResourcesMap().find("Box005")->second.m_Value;
     m_ThPSCamera = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS, 50);
-    m_ThPSCamera1 = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS, 50);
+    m_ThPSCamera1 = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_RenderableObject, 10);
     m_FPSCamera = new CFPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectFPS);
     m_ThPSCamera->SetTypeCamera(CCamera::TC_ESF);
     m_CameraController = new CCameraController();
@@ -67,17 +80,15 @@ void CTest_Space::Init()
     m_CameraController->AddNewCamera("ThPS", m_ThPSCamera1);
     m_CameraController->Load(".\\Data\\level6\\cameras.xml");
     m_CameraController->setActiveCamera("FPS");
+	CCORE->SetCameraController(m_CameraController);
     m_Camera = m_CameraController->getActiveCamera();
     m_PlayerMode = true;
-
+	m_ScriptedController = new CScriptedController();
+	RENDM->AddResource("ScriptedController", m_ScriptedController);
 	//Lights
 	LIGHTM->Load(".\\Data\\lights.xml");
 	
-	/* Script Manager Tests*/
-//	SCRIPTM->RunFile(".\\Data\\test2.lua");
-	SCRIPTM->Load(".\\Data\\lua_actions.xml");
-	SCRIPTM->RunFile(SCRIPTM->GetScriptsMap().find("test2")->second);
-//	SCRIPTM->RunCode("set_speed_player(get_speed_player())");
+	
 }
 
 void CTest_Space::DeInit()
@@ -151,7 +162,8 @@ void CTest_Space::Update(float dt)
     if (ACT2IN->DoAction("CommutationCamera")) {
         if (m_PlayerMode) {
             m_PlayerMode = false;
-            m_CameraController->setActiveCamera("ThPSESF");
+          //  m_CameraController->setActiveCamera("ThPSESF");
+			 m_CameraController->setActiveCamera("ThPS");
             m_Camera = m_CameraController->getActiveCamera();
         } else {
             m_PlayerMode = true;
@@ -160,6 +172,7 @@ void CTest_Space::Update(float dt)
         }
     }
     CCORE->GetCinematicController()->Update(dt);
+//	m_ScriptedController->Update(dt);
     /* if (m_PlayerMode) {
          m_ObjectFPS->SetYaw(m_ObjectFPS->GetYaw() -  deltaX * dt);
          m_ObjectFPS->SetPitch(m_ObjectFPS->GetPitch() - deltaY * dt);
@@ -194,7 +207,9 @@ void CTest_Space::Update(float dt)
 	if(ACT2IN->DoAction("ReloadScripts"))
 	{
 		SCRIPTM->Reload();
-		SCRIPTM->RunFile(SCRIPTM->GetScriptsMap().find("test2")->second);
+	//	SCRIPTM->RunFile(SCRIPTM->GetScriptsMap().find("test2")->second);
+		SCRIPTM->RunFile(".\\Data\\scripted_controller.lua");
+		
 	}
 
     skip += dt;

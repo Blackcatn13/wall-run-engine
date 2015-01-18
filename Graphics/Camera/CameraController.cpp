@@ -51,7 +51,7 @@ void CCameraController::Update(float dt)
 //-control de pitch.
 //-correr, ajupir-se, ..
 //
-    float deltaX, deltaY, deltaZ;
+  /*  float deltaX, deltaY, deltaZ;
     CCamera::ETypeCamera camType = m_ActiveCamera->GetTypeCamera();
     CObject3D* camObject = m_ActiveCamera->GetObject3D();
     CActionToInput* ATI = ACT2IN;
@@ -116,7 +116,13 @@ void CCameraController::Update(float dt)
         if (ATI->DoAction("RotY", panY))
             camObject->SetPitch(camObject->GetPitch() - panY * dt);
     }
-    //CINEMATICS
+		CamUpdates(camType, dt);
+  */
+}
+
+void CCameraController::CamUpdates(CCamera::ETypeCamera camType, float dt)
+{
+	  //CINEMATICS
     TMapResource::iterator it = m_Resources.begin();
     for (it; it != m_Resources.end(); ++it) {
         if (camType == CCamera::TC_CIN) {
@@ -124,7 +130,6 @@ void CCameraController::Update(float dt)
         }
     }
 }
-
 void CCameraController::Update(std::string camera, float dt)
 {
     CCamera* aux = m_ActiveCamera;

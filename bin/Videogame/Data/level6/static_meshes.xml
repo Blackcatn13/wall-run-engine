@@ -101,4 +101,6 @@
 	<static_mesh name="Box001_Part_53_Part_8" filename=".\Data\level6\meshes//Box001_Part_53_Part_8.mesh"/>
 	<static_mesh name="Box001_Part_53_Part_9" filename=".\Data\level6\meshes//Box001_Part_53_Part_9.mesh"/>
 	<static_mesh name="Box001_Part_53_Part_10" filename=".\Data\level6\meshes//Box001_Part_53_Part_10.mesh"/>
+	<static_mesh name="Box005" filename=".\Data\level6\meshes//Box005.mesh"/>
+	<static_mesh name="Box002" filename=".\Data\level6\meshes//Box002.mesh"/>
 </static_meshes>

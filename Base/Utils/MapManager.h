@@ -49,6 +49,11 @@ public:
         }
         m_Resources.clear();
     }
+
+	TMapResource GetResources()
+	{
+		return m_Resources;
+	}
 };
 
 #endif

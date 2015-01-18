@@ -75,6 +75,8 @@ void CCore::DeInit()
     CHECKED_DELETE(m_RenderableManager);
     CHECKED_DELETE(m_TextureManager);
     CHECKED_DELETE(m_ScriptManager);
+	CHECKED_DELETE(m_CameraController);
+	
 }
 
 CCore* CCore::GetInstance()

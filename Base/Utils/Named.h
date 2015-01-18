@@ -14,6 +14,8 @@ public:
     void setName(std::string name)
     {
         m_Name = name;
+		if(name =="Tete") //Test scripting
+			printf("Yaay\n");
     }
     std::string getName()
     {

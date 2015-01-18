@@ -39,9 +39,6 @@ public:
         return m_bIsOk;
     }
 
-    //----CScriptRegister interface---------------------------------------
-    //virtual void	RegisterFunctions				(CScriptManager* scriptManager);
-
     void					Init					();
     bool					ReloadTTFs				();
     bool					LoadTTFs				(const std::string& pathFile);

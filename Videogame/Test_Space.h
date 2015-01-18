@@ -3,12 +3,14 @@
 
 #include "Core/Process.h"
 #include "Math/Matrix44.h"
+#include "Renderable\RenderableObject.h"
 
 class CCameraController;
 class CObject3D;
 class CFPSCamera;
 class CThPSCamera;
 class CScriptManager;
+class CScriptedController;
 
 class CTest_Space : public CProcess
 {
@@ -19,6 +21,8 @@ private:
     CFPSCamera*		    m_FPSCamera;
     CThPSCamera*	    m_ThPSCamera;
     CThPSCamera*	    m_ThPSCamera1;
+	CScriptedController * m_ScriptedController;
+	CRenderableObject	*m_RenderableObject;
     bool			    m_PlayerMode;
     bool				m_FPSMode;
     float			    tTerra1_yaw;

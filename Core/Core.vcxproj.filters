@@ -23,6 +23,9 @@
     <Filter Include="ScriptManager">
       <UniqueIdentifier>{65bd3b2b-e9a1-4c1c-9cdf-b3454456b721}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ScriptedController">
+      <UniqueIdentifier>{21e8ec54-c1a9-427b-8b19-0ccdb7c3d8da}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Engine.cpp">
@@ -45,6 +48,15 @@
     </ClCompile>
     <ClCompile Include="Core\ScriptManager.cpp">
       <Filter>ScriptManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\CoreLuaWrapper.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\MathLuaUtils.cpp">
+      <Filter>ScriptManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ScriptedController.cpp">
+      <Filter>ScriptedController</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +100,30 @@
       <Filter>ScriptManager</Filter>
     </ClInclude>
     <ClInclude Include="Core\BindCameras.h">
+      <Filter>ScriptManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\BindCore.h">
+      <Filter>ScriptManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\BindInputs.h">
+      <Filter>ScriptManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\BindManagers.h">
+      <Filter>ScriptManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\BindAnimatedModels.h">
+      <Filter>ScriptManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\CoreLuaWrapper.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\MathLuaUtils.h">
+      <Filter>ScriptManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ScriptedController.h">
+      <Filter>ScriptedController</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\BindVectors.h">
       <Filter>ScriptManager</Filter>
     </ClInclude>
   </ItemGroup>

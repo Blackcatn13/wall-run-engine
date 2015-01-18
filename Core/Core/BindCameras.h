@@ -25,6 +25,7 @@ extern "C"
 #include "Camera\FPSCamera.h"
 #include "Camera\ThPSCamera.h"
 #include "Camera\CameraController.h"
+#include "Utils\MapManager.h"
 
 using namespace luabind;
 
@@ -54,6 +55,7 @@ void RegisterCameraController()
 		.def("add_fov", &CCamera::AddFov)
 		.def("add_zf", &CCamera::AddZf)
 		.def("add_view_d", &CCamera::AddViewD)
+		//.def("set_type_camera", &CCamera::SetTypeCamera)
 		];
 
 		luabind::module(LUA_STATE) [
@@ -79,10 +81,24 @@ void RegisterCameraController()
         .def("get_zoom", & CThPSCamera::GetZoom)
 		];
 
+		luabind::module(LUA_STATE) [
+        class_<CMapManager<CCamera>>("CMapManagerCamera")
+        .def("get_resource", &CMapManager< CCamera >::GetResource)
+        .def("existe_resource", &CMapManager< CCamera >::ExisteResource)
+        .def("add_resource", &CMapManager< CCamera >::AddResource)
+        .def("destroy", &CMapManager< CCamera >::Destroy)
+		.property("m_Resources",  &CMapManager< CCamera >::GetResources)
+        ];
+
 		//Camera Controller
 		luabind::module(LUA_STATE) [
-		class_< CCameraController>("CCameraController")
+		class_< CCameraController, CMapManager<CCamera>>("CCameraController")
         .def(constructor<>())
+		.property("m_FlyMode", & CCameraController::GetFlyMode, & CCameraController::SetFlyMode)
+		.property("m_Speed", & CCameraController::GetSpeed, & CCameraController::SetSpeed)
+		.property("m_LittleZoom", & CCameraController::GetLittleZoom, & CCameraController::SetLittleZoom)
+		.property("m_BittleZoom", & CCameraController::GetBigZoom, & CCameraController::SetBigZoom)
+		.property("m_PanSpeed", & CCameraController::GetPanSpeed, & CCameraController::SetPanSpeed)	
         .def("add_new_camera", & CCameraController::AddNewCamera)
         .def("add_new_object", & CCameraController::AddNewObject)
 		.def("update", (void (CCameraController::*)(float dt)) & CCameraController::Update)
@@ -98,6 +114,8 @@ void RegisterCameraController()
 		.def("play", & CCameraController::Play)
 		.def("pause", & CCameraController::Pause)
 		.def("stop", & CCameraController::Stop)
+		.def("cam_updates", & CCameraController::CamUpdates)
+		
         ];
 
 }

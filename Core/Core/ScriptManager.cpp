@@ -5,7 +5,14 @@
 #include "BindCameraKeys.h"
 #include "BindCinematics.h"
 #include "BindEffects.h"
+#include "BindManagers.h"
 #include "BindAdvancedShaders.h"
+#include "BindCore.h"
+#include "BindInputs.h"
+#include "BindAnimatedModels.h"
+#include "BindVectors.h"
+#include "MathLuaUtils.h"
+
 #include "Camera\Camera.h"
 #include "Camera\FPSCamera.h"
 #include "Camera\ThPSCamera.h"
@@ -137,64 +144,7 @@ void CScriptManager::RegisterLUAFunctions()
 		.def("get_scripts_map", & CScriptManager::GetScriptsMap)
         ];
 
-		luabind::module(LUA_STATE) [
-        class_<Vect3f>("Vect3f") 
-        .def(constructor<float, float, float>())
-        .def(constructor<>())
-        .def(constructor<Vect3f>())
-      
-        .def(const_self + const_self)
-        .def(const_self - const_self)
-        .def(const_self * const_self)
-        .def(const_self / float())
-        .def(const_self == const_self)
-        .def(const_self ^ const_self)
-        // Operadores y funciones de asignación
-        .def("set",  &Vect3f::Set)
-        .def("set_zero",  &Vect3f::SetZero)
-        // Coordenadas polares
-        .def("set_from_polar", &Vect3f::SetFromPolar)
-        .def("get_polar",  &Vect3f::GetPolar)
-        //funciones de comparacion
-        .def("is_equal_epsilon",  &Vect3f::IsEqualEpsilon)
-        .def("is_not_equal_epsilon",  &Vect3f::IsNotEqualEpsilon)
-        // Producto por componentes (escalado)
-        .def("scale",  &Vect3f::Scale)
-        .def("get_scaled",  &Vect3f::GetScaled)
-        // Establecimiento condicional
-        .def("set_if_min_components",  &Vect3f::SetIfMinComponents)
-        .def("set_if_max_components",  &Vect3f::SetIfMaxComponents)
-        //Proyecciones
-        .def("get_proj_xy",  &Vect3f::GetProjXY)
-        .def("get_proj_yz",  &Vect3f::GetProjYZ)
-        .def("get_proj_zx",  &Vect3f::GetProjZX)
-        // Funciones de la longitud 
-        .def("normalize",  &Vect3f::Normalize)
-        .def("get_normalized",  &Vect3f::GetNormalized)
-        .def("length",  &Vect3f::Length)
-        .def("squared_length",  &Vect3f::SquaredLength)
-        .def("distance",  &Vect3f::Distance)
-        .def("sq_distance",  &Vect3f::SqDistance)
-        // Rotaciones en los ejes principales
-        .def("rotate_x",  &Vect3f::RotateX)
-        .def("get_rotated_x",  &Vect3f::GetRotatedX)
-        .def("rotate_y",  &Vect3f::RotateY)
-        .def("get_rotated_y",  &Vect3f::GetRotatedY)
-        .def("rotate_z",  &Vect3f::RotateZ)
-        .def("get_rotated_z",  &Vect3f::GetRotatedZ)
-        .def("get_angle_x",  &Vect3f::GetAngleX)
-        .def("get_angle_y",  &Vect3f::GetAngleY)
-        .def("get_angle_z",  &Vect3f::GetAngleZ)
-        .def("get_angles",  &Vect3f::GetAngles)
-         // Interpolación lineal
-        .def("lerp",  &Vect3f::Lerp)
-        .def("get_lerp",  &Vect3f::GetLerp)
-        // cosas externas (funciones, constantes...) no se registran?*/
-        //Variables
-        .def_readwrite("x", &Vect3f::x)
-        .def_readwrite("y", &Vect3f::y)
-        .def_readwrite("z", &Vect3f::z)
-        ];
+		RegisterVectors();
         
 		luabind::module(LUA_STATE) [
         class_< Mat44f >("Mat44f")
@@ -421,6 +371,7 @@ void CScriptManager::RegisterLUAFunctions()
         .def("existe_resource", &CMapManager< CTexture >::ExisteResource)
         .def("add_resource", &CMapManager< CTexture >::AddResource)
         .def("destroy", &CMapManager< CTexture >::Destroy)
+		.property("m_Resources",  &CMapManager< CTexture >::GetResources)
         ];
 
         luabind::module(LUA_STATE) [
@@ -430,11 +381,21 @@ void CScriptManager::RegisterLUAFunctions()
         .def("reload", & CTextureManager::Reload)
         ];
 
+		luabind::module(LUA_STATE) [
+        class_< CCMathLuaUtils>("CCMathLuaUtils")
+        .def(constructor<>())
+        .def("normalize", & CCMathLuaUtils::Normalize)
+        ];
+
 		RegisterCameraController();
 		RegisterLights();
 		RegisterCameras();
 		RegisterCinematics();
 		RegisterEffects();
 		RegisterAdvancedShaders();
+		RegisterManagers();
+		RegisterAnimatedModels();
+		RegisterCore();
+		RegisterInputs();
 }
 
