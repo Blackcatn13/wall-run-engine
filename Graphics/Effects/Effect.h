@@ -2,7 +2,7 @@
 #ifndef INC_EFFECT_H_
 #define INC_EFFECT_H_
 
-#define MAX_LIGHTS_BY_SHADER 5
+#define MAX_LIGHTS_BY_SHADER 4
 
 #include <string>
 #include "d3d9.h"
@@ -20,6 +20,7 @@ class CEffect
 		float m_LightsFallOff[MAX_LIGHTS_BY_SHADER];
 		float m_LightsStartRangeAttenuation[MAX_LIGHTS_BY_SHADER];
 		float m_LightsEndRangeAttenuation[MAX_LIGHTS_BY_SHADER];
+		float m_LightsIntensity[MAX_LIGHTS_BY_SHADER];
 		Vect3f m_LightsPosition[MAX_LIGHTS_BY_SHADER];
 		Vect3f m_LightsDirection[MAX_LIGHTS_BY_SHADER];
 		Vect3f m_LightsColor[MAX_LIGHTS_BY_SHADER];
@@ -44,6 +45,25 @@ class CEffect
 		//DirectX Methods Interface
 		LPD3DXEFFECT GetD3DEffect() const;
 		D3DXHANDLE GetTechniqueByName(const std::string &TechniqueName);
+		D3DXHANDLE GetWorldMatrixParameter(){return m_WorldMatrixParameter;}
+		D3DXHANDLE GetViewMatrixParameter(){return m_ViewMatrixParameter;}
+		D3DXHANDLE GetProjectionMatrixParameter(){return m_ProjectionMatrixParameter;}
+		D3DXHANDLE GetWorldViewMatrixParameter(){return m_WorldViewMatrixParameter;}
+		D3DXHANDLE GetViewProjectionMatrixParameter(){return m_ViewProjectionMatrixParameter;}
+		D3DXHANDLE GetWorldViewProjectionMatrixParameter(){return m_WorldViewProjectionMatrixParameter;}
+		D3DXHANDLE GetViewToLightProjectionMatrixParameter(){return m_ViewToLightProjectionMatrixParameter;}
+		D3DXHANDLE GetLightEnabledParameter(){return m_LightEnabledParameter;}
+		D3DXHANDLE GetLightsTypeParameter(){return m_LightsTypeParameter;}
+		D3DXHANDLE GetLightsPositionParameter(){return m_LightsPositionParameter;}
+		D3DXHANDLE GetLightsDirectionParameter(){return m_LightsDirectionParameter;}
+		D3DXHANDLE GetLightsAngleParameter(){return m_LightsAngleParameter;}
+		D3DXHANDLE GetLightsColorParameter(){return m_LightsColorParameter;}
+		D3DXHANDLE GetLightsFallOffParameter(){return m_LightsFallOffParameter;}
+		D3DXHANDLE GetLightsStartRangeAttenuationParameter(){return m_LightsStartRangeAttenuationParameter;}
+		D3DXHANDLE GetLightsEndRangeAttenuationParameter(){return m_LightsEndRangeAttenuationParameter;}
+		D3DXHANDLE GetCameraPositionParameter(){return m_CameraPositionParameter;}
+		D3DXHANDLE GetBonesParameter(){return m_BonesParameter;}
+		D3DXHANDLE GetTimeParameter(){return m_TimeParameter;}
 };
 
 #endif //INC_EFFECT_H_

@@ -1,5 +1,6 @@
 #include "Core.h"
 #include "GraphicsManager.h"
+#include "Effects\EffectManager.h"
 #include "SoundManager.h"
 #include "Utils/Defines.h"
 #include "InputManager.h"
@@ -29,6 +30,7 @@ void CCore::Init(HWND handler)
 {
     m_GraphicsManager = new CGraphicsManager();
     m_SoundManager = new CSoundManager();
+	m_EffectManager = new CEffectManager();
     m_GraphicsManager->Init(handler, m_Config.FullScreen, m_Config.Screen_Width, m_Config.Screen_Heigth);
     m_InputManager = new CInputManager();
     m_InputManager->Init(handler, Vect2i(m_Config.Screen_Width, m_Config.Screen_Heigth), m_Config.Mouse_Exclusive);

@@ -4,9 +4,23 @@
 #include "XML\XMLTreeNode.h"
 #include "Utils\Logger.h"
 #include "Utils\Defines.h"
+#include "RenderableVertex\VertexTypes.h"
 
 CEffectManager::CEffectManager()
 {
+	/*TTEXTURE_VERTEX.GetVertexDeclaration();
+	TTEXTURE_NORMAL_VERTEX.GetVertexDeclaration();
+	TCOLOR_TEXTURE_VERTEX.GetVertexDeclaration();
+	TCOLOR_TEXTURE_NORMAL_VERTEX.GetVertexDeclaration();
+	TCOLOR_TEXTURE2_VERTEX.GetVertexDeclaration();
+	TTEXTURE2_NORMAL_VERTEX.GetVertexDeclaration();
+	TCOLOR_TEXTURE2_NORMAL_VERTEX.GetVertexDeclaration();
+	TTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX.GetVertexDeclaration();
+	TTEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX.GetVertexDeclaration();
+	TCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX.GetVertexDeclaration();
+	TCOLORED_TEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX.GetVertexDeclaration();
+	TCOLORED_VERTEX.GetVertexDeclaration();
+	TCOLORED_NORMAL_VERTEX.GetVertexDeclaration();*/
 }
 CEffectManager::~CEffectManager()
 {
@@ -41,9 +55,9 @@ const Mat44f & CEffectManager::GetShadowProjectionMatrix()
 }
 void CEffectManager::ActivateCamera(const Mat44f &ViewMatrix, const Mat44f &ProjectionMatrix,const Vect3f &CameraEye)
 {
-	//************************
-	// TODO
-	//************************
+	m_ViewMatrix = ViewMatrix;
+	m_ProjectionMatrix = ProjectionMatrix;
+	m_CameraEye = CameraEye;
 }
 void CEffectManager::SetWorldMatrix(const Mat44f &Matrix)
 {
@@ -157,10 +171,7 @@ std::string CEffectManager::GetTechniqueEffectNameByVertexDefault(unsigned short
 }
 size_t CEffectManager::GetMaxLights() const
 {
-	//************************
-	// TODO
-	//************************
-	return 0;
+	return MAX_LIGHTS_BY_SHADER;
 }
 CEffect * CEffectManager::GetEffect(const std::string &Name)
 {

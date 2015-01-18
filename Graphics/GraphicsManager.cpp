@@ -11,6 +11,7 @@
 #include <vector>
 #include "Utils/Logger.h"
 #include "Utils/Exception.h"
+#include "Effects\EffectManager.h"
 
 CGraphicsManager::CGraphicsManager()
 {
@@ -213,6 +214,7 @@ void CGraphicsManager::SetupMatrices(CCamera* camera)
         D3DXMatrixPerspectiveFovLH(	&m_matProject, camera->GetFov(), /*camera->GetAspectRatio(),*/(float)(m_uWidth / m_uHeight),
                                     camera->GetZn(), camera->GetZf());
     }
+	EFFECTM->ActivateCamera(m_matView, m_matProject, camera->GetEye());
     m_Frustum.Update( m_matView * m_matProject );
     m_pD3DDevice->SetTransform( D3DTS_VIEW, &m_matView );
     m_pD3DDevice->SetTransform( D3DTS_PROJECTION, &m_matProject );
