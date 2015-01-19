@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<renderable_objects>
+	<mesh_instance name="Box001" core="Box001"  pos="-10.271301 0.000000 10.460228" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box002" core="Box002"  pos="9.314245 0.000000 10.460228" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box003" core="Box003"  pos="-10.139250 0.000000 -0.635879" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box004" core="Box004"  pos="0.084577 0.000000 -0.449444" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box005" core="Box005"  pos="-23.307125 0.000000 5.136912" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Plane001" core="Plane001"  pos="2.305853 0.000000 4.665506" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box006" core="Box006"  pos="-6.917897 0.000000 22.130627" yaw="-1.5708"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+</renderable_objects>

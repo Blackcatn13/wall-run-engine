@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<cameras>
+	<fixed_camera name="Camera001"  pos="-8.19971 1.2052 4.18387" lookat="-0.910889 4.18387 -2.73938"  fov="0.785398" near_plane="1.0" far_plane="1000.0" />
+	<key_camera_controller name="Camera002" file=".\Data\level3\cameras\Camera002.xml" />
+</cameras>
