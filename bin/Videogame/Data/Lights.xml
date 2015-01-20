@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <lights>
-	<light name="mylight2" type="spot" pos="169 18 14" dir="0.39344111 0.0096235331 0.91929936" color="1.0 1.0 1.0" att_start_range="20" att_end_range="40" 
+	<light name="mylight2" type="spot" pos="20 15 10" dir="0.39344111 0.0096235331 0.91929936" color="1.0 1.0 1.0" att_start_range="20" att_end_range="40" 
 		generate_shadow_map="true" shadow_map_format_type="R32F" shadow_map_width="256" shadow_map_height="256" generate_static_shadow_map="true"
 		static_shadow_map_format_type="R32F" static_shadow_map_width="256" static_shadow_map_height="256" update_static_shadow_map="true" angle="1.05" fall_off="1.05" shadow_texture_mask="./data/textures/shadow_mask.tga">
 		<static renderable_objects_manager="solid"/>

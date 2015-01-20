@@ -5,6 +5,8 @@
 #include <d3d9.h>
 #include "../GraphicsManager.h"
 
+class CEffectTechnique;
+
 class CRenderableVertexs
 {
 protected:
@@ -20,6 +22,8 @@ public:
 		CHECKED_RELEASE(m_IB);
 	}
 	virtual bool Render(CGraphicsManager *RM) = 0;
+	virtual bool Render(CGraphicsManager *RM, CEffectTechnique *EffectTechnique) const = 0;
+
 	virtual inline size_t GetFacesCount() const {return m_IndexCount/3;}
 	virtual inline size_t GetVertexsCount() const {return m_VertexCount;}
 	virtual inline unsigned short GetVertexType() const = 0;

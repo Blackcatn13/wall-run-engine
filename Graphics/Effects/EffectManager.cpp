@@ -8,19 +8,20 @@
 
 CEffectManager::CEffectManager()
 {
-	/*TTEXTURE_VERTEX.GetVertexDeclaration();
-	TTEXTURE_NORMAL_VERTEX.GetVertexDeclaration();
-	TCOLOR_TEXTURE_VERTEX.GetVertexDeclaration();
-	TCOLOR_TEXTURE_NORMAL_VERTEX.GetVertexDeclaration();
-	TCOLOR_TEXTURE2_VERTEX.GetVertexDeclaration();
-	TTEXTURE2_NORMAL_VERTEX.GetVertexDeclaration();
-	TCOLOR_TEXTURE2_NORMAL_VERTEX.GetVertexDeclaration();
-	TTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX.GetVertexDeclaration();
-	TTEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX.GetVertexDeclaration();
-	TCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX.GetVertexDeclaration();
-	TCOLORED_TEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX.GetVertexDeclaration();
-	TCOLORED_VERTEX.GetVertexDeclaration();
-	TCOLORED_NORMAL_VERTEX.GetVertexDeclaration();*/
+	TTEXTURE_VERTEX::GetVertexDeclaration();
+	TTEXTURE_NORMAL_VERTEX::GetVertexDeclaration();
+	TCOLOR_TEXTURE_VERTEX::GetVertexDeclaration();
+	TCOLOR_TEXTURE_NORMAL_VERTEX::GetVertexDeclaration();
+	TTEXTURE2_VERTEX::GetVertexDeclaration();
+	TTEXTURE2_NORMAL_VERTEX::GetVertexDeclaration();
+	TCOLOR_TEXTURE2_VERTEX::GetVertexDeclaration();
+	TCOLOR_TEXTURE2_NORMAL_VERTEX::GetVertexDeclaration();
+	TTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexDeclaration();
+	TTEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexDeclaration();
+	TCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexDeclaration();
+	TCOLORED_TEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexDeclaration();
+	TCOLORED_VERTEX::GetVertexDeclaration();
+	TCOLORED_NORMAL_VERTEX::GetVertexDeclaration();
 }
 CEffectManager::~CEffectManager()
 {

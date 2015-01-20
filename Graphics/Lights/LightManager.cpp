@@ -17,7 +17,7 @@ CLightManager::~CLightManager()
 
 void CLightManager::Load(const std::string &FileName)
 {
-	std::string m_File = FileName;
+	m_File = FileName;
 	CXMLTreeNode newFile;
 	if (!newFile.LoadFile(FileName.c_str()))
 	{
@@ -217,13 +217,22 @@ void CLightManager::Load(const std::string &FileName)
 }
 void CLightManager::Render(CGraphicsManager *RenderManager)
 {
-	//TODO confirmar que tenga que hacer esto
-	TMapResource::iterator it = m_Resources.begin();	
-	TMapResource::iterator it_End = m_Resources.end();	
-	 while (it != it_End) 
-	 {
-		 it->second->Render(RenderManager);
-		++it;
-    }
+	//El render de las luces solo es para debug
+	#ifdef _DEBUG
+	{ 
+		TMapResource::iterator it = m_Resources.begin();	
+		TMapResource::iterator it_End = m_Resources.end();	
+		 while (it != it_End) 
+		 {
+			 it->second->Render(RenderManager);
+			++it;
+		}
+	}
+	#endif
 }
 
+void CLightManager::Reload()
+{
+	m_Resources.clear();
+	Load(m_File);
+}

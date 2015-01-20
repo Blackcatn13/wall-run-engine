@@ -1,6 +1,9 @@
 #include "Lights\Light.h"
 #include "GraphicsManager.h"
+#include "Core\Core.h"
+#include "Effects\EffectManager.h"
 
+class CEffectManager;
 
 //CLight::CLight()
 //{}
@@ -16,6 +19,16 @@ CLight::~CLight()
 void CLight::Render(CGraphicsManager *RM)
 {
 	//TODO A ver que tiene que hacer esto
+	//Debug. Printar un eje y alguna luz con la dirección
+		Mat44f t;
+	t.SetIdentity();
+	CColor l_Color =  CColor(GetColor().GetRed(), GetColor().GetGreen(), GetColor().GetBlue());
+	GRAPHM->SetTransform(t);
+	Mat44f l_trans;
+	l_trans.SetIdentity();
+	l_trans.Translate(Vect3f(GetPosition()));
+	GRAPHM->SetTransform(l_trans);
+	GRAPHM->DrawCube(0.5f, l_Color);
 	printf("I'm a light \n");
 }
 
@@ -50,9 +63,10 @@ void CLight::GenerateShadowMap(CGraphicsManager *RM)
 
 void CLight::BeginRenderEffectManagerShadowMap(CEffect *Effect)
 {
-	/*if(m_GenerateDynamicShadowMap)
+	if(m_GenerateDynamicShadowMap)
 	{
-		CEffectManager &l_EM=CORE->GetEffectManager();
+		/*
+		CEffectManager * l_EM=CCORE->GetEffectManager();
 		l_EM.SetLightViewMatrix(m_ViewShadowMap);
 		l_EM.SetShadowProjectionMatrix(m_ProjectionShadowMap);
 		if(m_ShadowMaskTexture!=NULL)
@@ -62,8 +76,8 @@ void CLight::BeginRenderEffectManagerShadowMap(CEffect *Effect)
 		m_DynamicShadowMap->Activate(DYNAMIC_SHADOW_MAP_STAGE);
 		Effect->SetShadowMapParameters(m_ShadowMaskTexture!=NULL,
 		m_GenerateStaticShadowMap, m_GenerateDynamicShadowMap &&
-		m_DynamicShadowMapRenderableObjectsManagers.size()!=0);
-	}*/
+		m_DynamicShadowMapRenderableObjectsManagers.size()!=0);*/
+	}
 
 
 }

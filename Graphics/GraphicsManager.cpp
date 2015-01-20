@@ -223,6 +223,7 @@ void CGraphicsManager::SetupMatrices(CCamera* camera)
 void CGraphicsManager::SetTransform	(D3DXMATRIX& matrix)
 {
     m_pD3DDevice->SetTransform(D3DTS_WORLD, &matrix);
+	EFFECTM->SetWorldMatrix(matrix);
 }
 
 void CGraphicsManager::SetTransform	(Mat44f& m)
@@ -232,6 +233,8 @@ void CGraphicsManager::SetTransform	(Mat44f& m)
                     , m.m02, m.m12, m.m22, m.m32
                     , m.m03, m.m13, m.m23, m.m33);
     m_pD3DDevice->SetTransform(D3DTS_WORLD, &aux);
+	EFFECTM->SetWorldMatrix(aux);
+
 }
 
 void CGraphicsManager::DrawLine(const Vect3f &PosA, const Vect3f &PosB, CColor Color)

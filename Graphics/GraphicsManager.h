@@ -82,7 +82,7 @@ public:
     {
         return m_pD3DDevice;
     }
-    void DrawLine	(const Vect3f &PosA, const Vect3f &PosB, CColor Color = colWHITE);
+    void DrawLine	(const Vect3f &PosA, const Vect3f &PosB, CColor Color /*= colWHITE*/);
     void DrawAxis	(float Size);
     void DrawCube	(float Size, CColor color = colWHITE);
     void DrawBox	(float SizeX, float SizeY, float SizeZ, CColor Color = colWHITE);

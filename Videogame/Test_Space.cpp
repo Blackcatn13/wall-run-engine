@@ -29,6 +29,8 @@
 #include "Cinematics\CinematicController.h"
 #include "Cinematics\Cinematic.h"
 
+#include "Effects\EffectManager.h"
+
 #include "Lights\LightManager.h"
 #include "Core\ScriptedController.h"
 
@@ -51,7 +53,7 @@ CTest_Space::~CTest_Space(void)
     delete m_ObjectFPS;
     delete m_ObjectThPS;
     delete m_ThPSCamera;
-    delete m_ThPSCamera1;
+//    delete m_ThPSCamera1;
     delete m_FPSCamera;
 
 }
@@ -69,9 +71,9 @@ void CTest_Space::Init()
 	SCRIPTM->RunCode(l_Text);*/
 	m_ObjectFPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
     m_ObjectThPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
-	m_RenderableObject = RENDM->GetResourcesMap().find("Box005")->second.m_Value;
+	//m_RenderableObject = RENDM->GetResourcesMap().find("Box005")->second.m_Value;
     m_ThPSCamera = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS, 50);
-    m_ThPSCamera1 = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_RenderableObject, 10);
+    //m_ThPSCamera1 = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_RenderableObject, 10);
     m_FPSCamera = new CFPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectFPS);
     m_ThPSCamera->SetTypeCamera(CCamera::TC_ESF);
     m_CameraController = new CCameraController();
@@ -87,6 +89,8 @@ void CTest_Space::Init()
 	RENDM->AddResource("ScriptedController", m_ScriptedController);
 	//Lights
 	LIGHTM->Load(".\\Data\\lights.xml");
+
+	EFFECTM->Load(".\\Data\\effects.xml");
 	
 	
 }
@@ -210,6 +214,16 @@ void CTest_Space::Update(float dt)
 	//	SCRIPTM->RunFile(SCRIPTM->GetScriptsMap().find("test2")->second);
 		SCRIPTM->RunFile(".\\Data\\scripted_controller.lua");
 		
+	}
+
+	if(ACT2IN->DoAction("ReloadEffects"))
+	{
+		EFFECTM->Reload();
+	}
+
+	if(ACT2IN->DoAction("ReloadLights"))
+	{
+		LIGHTM->Reload();
 	}
 
     skip += dt;

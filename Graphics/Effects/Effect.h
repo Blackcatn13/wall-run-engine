@@ -25,6 +25,7 @@ class CEffect
 		Vect3f m_LightsDirection[MAX_LIGHTS_BY_SHADER];
 		Vect3f m_LightsColor[MAX_LIGHTS_BY_SHADER];
 		D3DXHANDLE m_WorldMatrixParameter, m_ViewMatrixParameter, m_ProjectionMatrixParameter;
+		D3DXHANDLE m_InverseWorldMatrixParameter, m_InverseViewMatrixParameter, m_InverseProjectionMatrixParameter;
 		D3DXHANDLE m_WorldViewMatrixParameter, m_ViewProjectionMatrixParameter, m_WorldViewProjectionMatrixParameter;
 		D3DXHANDLE m_ViewToLightProjectionMatrixParameter;
 		D3DXHANDLE m_LightEnabledParameter, m_LightsTypeParameter, m_LightsPositionParameter, m_LightsDirectionParameter, m_LightsAngleParameter, m_LightsColorParameter;
@@ -42,6 +43,17 @@ class CEffect
 		bool SetLights(size_t NumOfLights);
 		bool Load(const std::string &FileName);
 		bool Reload();
+		//Getters
+		BOOL * GetLightsEnabled(){return m_LightsEnabled;}
+		int * GetLightsType(){return m_LightsType;}
+		float * GetLightsAngle(){return m_LightsAngle;}
+		float * GetLightsFallOff(){return m_LightsFallOff;}
+		float * GetLightsStartRangeAttenuation(){return m_LightsStartRangeAttenuation;}
+		float * GetLightsEndRangeAttenuation(){return m_LightsEndRangeAttenuation;}
+		float * GetLightsIntensity(){return m_LightsIntensity;}
+		Vect3f * GetLightsPosition(){return m_LightsPosition;}
+		Vect3f * GetLightsDirection(){return m_LightsDirection;}
+		Vect3f * GetLightsColor(){return m_LightsColor ;}
 		//DirectX Methods Interface
 		LPD3DXEFFECT GetD3DEffect() const;
 		D3DXHANDLE GetTechniqueByName(const std::string &TechniqueName);
@@ -64,6 +76,9 @@ class CEffect
 		D3DXHANDLE GetCameraPositionParameter(){return m_CameraPositionParameter;}
 		D3DXHANDLE GetBonesParameter(){return m_BonesParameter;}
 		D3DXHANDLE GetTimeParameter(){return m_TimeParameter;}
+		D3DXHANDLE GetInverseWorldMatrixParameter(){return m_InverseWorldMatrixParameter;}
+		D3DXHANDLE GetInverseViewMatrixParameter(){return m_InverseViewMatrixParameter;}
+		D3DXHANDLE GetInverseProjectionMatrixParameter(){return m_InverseProjectionMatrixParameter;}
 };
 
 #endif //INC_EFFECT_H_

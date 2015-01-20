@@ -4,6 +4,8 @@
 
 #include <d3d9.h>
 #include "RenderableVertex\RenderableVertexs.h"
+#include "Effects/Effect.h"
+#include "Effects/EffectTechnique.h"
 
 template<class T>
 class CIndexedVertexs : public CRenderableVertexs
@@ -44,6 +46,29 @@ public:
         m_ok = RM->GetDevice()->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, m_VertexCount, 0, m_IndexCount / 3);
         return true;
     }
+	bool Render(CGraphicsManager *GM, CEffectTechnique *EffectTechnique) const
+	{
+		LPDIRECT3DDEVICE9 l_Device=GM->GetDevice();
+		UINT l_NumPasses;
+		LPD3DXEFFECT l_Effect=EffectTechnique->GetEffect()->GetD3DEffect();
+		l_Effect->SetTechnique(EffectTechnique->GetD3DTechnique());
+		EffectTechnique->BeginRender();
+		if(SUCCEEDED(l_Effect->Begin(&l_NumPasses,0)))
+		{
+			l_Device->SetVertexDeclaration(T::GetVertexDeclaration());
+			l_Device->SetStreamSource(0,m_VB,0,sizeof(T));
+			l_Device->SetIndices(m_IB);
+			for (UINT b=0;b<l_NumPasses;++b)
+			{
+				l_Effect->BeginPass(b);
+				l_Device->DrawIndexedPrimitive( D3DPT_TRIANGLELIST, 0, 0,
+				(UINT)m_VertexCount, 0, (UINT) m_IndexCount/3);
+				l_Effect->EndPass();
+			}
+			l_Effect->End();
+		}
+		return true;
+	}
     virtual inline unsigned short GetVertexType() const
     {
         return T::GetVertexType();

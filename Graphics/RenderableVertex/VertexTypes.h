@@ -12,6 +12,8 @@
 #define VERTEX_TYPE_TEXTURE2 0x0020     // D3DFVF_TEX2
 #define VERTEX_TYPE_DIFFUSE 0x0040      // D3DFVF_DIFFUSE
 
+#include "GraphicsManager.h"
+#include "Utils\Defines.h"
 
 // G T1
 struct TTEXTURE_VERTEX {
@@ -25,6 +27,12 @@ struct TTEXTURE_VERTEX {
     {
         return D3DFVF_XYZ | D3DFVF_TEX1;
     }
+		static LPDIRECT3DVERTEXDECLARATION9 s_VertexDeclaration;
+	static LPDIRECT3DVERTEXDECLARATION9 & GetVertexDeclaration();
+	static void ReleaseVertexDeclaration()
+	{
+		CHECKED_RELEASE(s_VertexDeclaration);
+	}
 };
 
 // G N T1
@@ -40,6 +48,12 @@ struct TTEXTURE_NORMAL_VERTEX {
     {
         return D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
     }
+	static LPDIRECT3DVERTEXDECLARATION9 s_VertexDeclaration;
+	static LPDIRECT3DVERTEXDECLARATION9 & GetVertexDeclaration();
+	static void ReleaseVertexDeclaration()
+	{
+		CHECKED_RELEASE(s_VertexDeclaration);
+	}
 };
 
 // G D T1
@@ -55,6 +69,12 @@ struct TCOLOR_TEXTURE_VERTEX {
     {
         return D3DFVF_XYZ | D3DFVF_DIFFUSE | D3DFVF_TEX1;
     }
+	static LPDIRECT3DVERTEXDECLARATION9 s_VertexDeclaration;
+	static LPDIRECT3DVERTEXDECLARATION9 & GetVertexDeclaration();
+	static void ReleaseVertexDeclaration()
+	{
+		CHECKED_RELEASE(s_VertexDeclaration);
+	}
 };
 
 // G N D T1
@@ -71,6 +91,12 @@ struct TCOLOR_TEXTURE_NORMAL_VERTEX {
     {
         return D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_DIFFUSE | D3DFVF_TEX1;
     }
+	static LPDIRECT3DVERTEXDECLARATION9 s_VertexDeclaration;
+	static LPDIRECT3DVERTEXDECLARATION9 & GetVertexDeclaration();
+	static void ReleaseVertexDeclaration()
+	{
+		CHECKED_RELEASE(s_VertexDeclaration);
+	}
 };
 
 // G T1 T2
@@ -86,8 +112,13 @@ struct TTEXTURE2_VERTEX {
     {
         return D3DFVF_XYZ | D3DFVF_TEX2;
     }
+	static LPDIRECT3DVERTEXDECLARATION9 s_VertexDeclaration;
+	static LPDIRECT3DVERTEXDECLARATION9 & GetVertexDeclaration();
+	static void ReleaseVertexDeclaration()
+	{
+		CHECKED_RELEASE(s_VertexDeclaration);
+	}
 };
-
 // G N T1 T2
 struct TTEXTURE2_NORMAL_VERTEX {
     float x, y, z;
@@ -102,6 +133,12 @@ struct TTEXTURE2_NORMAL_VERTEX {
     {
         return D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX2;
     }
+	static LPDIRECT3DVERTEXDECLARATION9 s_VertexDeclaration;
+	static LPDIRECT3DVERTEXDECLARATION9 & GetVertexDeclaration();
+	static void ReleaseVertexDeclaration()
+	{
+		CHECKED_RELEASE(s_VertexDeclaration);
+	}
 };
 
 // G D T1 T2
@@ -118,6 +155,12 @@ struct TCOLOR_TEXTURE2_VERTEX {
     {
         return D3DFVF_XYZ | D3DFVF_DIFFUSE | D3DFVF_TEX2;
     }
+	static LPDIRECT3DVERTEXDECLARATION9 s_VertexDeclaration;
+	static LPDIRECT3DVERTEXDECLARATION9 & GetVertexDeclaration();
+	static void ReleaseVertexDeclaration()
+	{
+		CHECKED_RELEASE(s_VertexDeclaration);
+	}
 };
 
 // G N D T1 T2
@@ -135,6 +178,12 @@ struct TCOLOR_TEXTURE2_NORMAL_VERTEX {
     {
         return D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_DIFFUSE | D3DFVF_TEX2;
     }
+	static LPDIRECT3DVERTEXDECLARATION9 s_VertexDeclaration;
+	static LPDIRECT3DVERTEXDECLARATION9 & GetVertexDeclaration();
+	static void ReleaseVertexDeclaration()
+	{
+		CHECKED_RELEASE(s_VertexDeclaration);
+	}
 };
 
 // G N T B T1
@@ -152,6 +201,12 @@ struct TTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX {
     {
         return 0;
     }
+	static LPDIRECT3DVERTEXDECLARATION9 s_VertexDeclaration;
+	static LPDIRECT3DVERTEXDECLARATION9 & GetVertexDeclaration();
+	static void ReleaseVertexDeclaration()
+	{
+		CHECKED_RELEASE(s_VertexDeclaration);
+	}
 };
 
 // G N T B T1 T2
@@ -170,6 +225,12 @@ struct TTEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX {
     {
         return 0;
     }
+	static LPDIRECT3DVERTEXDECLARATION9 s_VertexDeclaration;
+	static LPDIRECT3DVERTEXDECLARATION9 & GetVertexDeclaration();
+	static void ReleaseVertexDeclaration()
+	{
+		CHECKED_RELEASE(s_VertexDeclaration);
+	}
 };
 
 // G N T B D T1
@@ -188,6 +249,12 @@ struct TCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX {
     {
         return 0;
     }
+	static LPDIRECT3DVERTEXDECLARATION9 s_VertexDeclaration;
+	static LPDIRECT3DVERTEXDECLARATION9 & GetVertexDeclaration();
+	static void ReleaseVertexDeclaration()
+	{
+		CHECKED_RELEASE(s_VertexDeclaration);
+	}
 };
 
 // G N T B D T1 T2
@@ -207,6 +274,12 @@ struct TCOLORED_TEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX {
     {
         return 0;
     }
+	static LPDIRECT3DVERTEXDECLARATION9 s_VertexDeclaration;
+	static LPDIRECT3DVERTEXDECLARATION9 & GetVertexDeclaration();
+	static void ReleaseVertexDeclaration()
+	{
+		CHECKED_RELEASE(s_VertexDeclaration);
+	}
 };
 
 // G D
@@ -221,6 +294,12 @@ struct TCOLORED_VERTEX {
     {
         return D3DFVF_XYZ | D3DFVF_DIFFUSE;
     }
+	static LPDIRECT3DVERTEXDECLARATION9 s_VertexDeclaration;
+	static LPDIRECT3DVERTEXDECLARATION9 & GetVertexDeclaration();
+	static void ReleaseVertexDeclaration()
+	{
+		CHECKED_RELEASE(s_VertexDeclaration);
+	}
 };
 
 // G N D
@@ -236,6 +315,12 @@ struct TCOLORED_NORMAL_VERTEX {
     {
         return D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_DIFFUSE;
     }
+	static LPDIRECT3DVERTEXDECLARATION9 s_VertexDeclaration;
+	static LPDIRECT3DVERTEXDECLARATION9 & GetVertexDeclaration();
+	static void ReleaseVertexDeclaration()
+	{
+		CHECKED_RELEASE(s_VertexDeclaration);
+	}
 };
 
 #endif

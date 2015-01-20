@@ -30,6 +30,9 @@ void CEffect::SetNullParameters()
 	m_CameraPositionParameter = NULL;
 	m_BonesParameter = NULL;
 	m_TimeParameter = NULL;
+	m_InverseWorldMatrixParameter = NULL;
+	m_InverseViewMatrixParameter = NULL;
+	m_InverseProjectionMatrixParameter = NULL;
 }
 
 void CEffect::GetParameterBySemantic(const std::string &SemanticName, D3DXHANDLE &l_Handle)
@@ -40,16 +43,48 @@ void CEffect::GetParameterBySemantic(const std::string &SemanticName, D3DXHANDLE
 }
 bool CEffect::LoadEffect()
 {
-	bool isOK = false;
-	if(!m_FileName.compare(""))
+	SetNullParameters();
+	LPD3DXBUFFER l_ErrorBuffer=NULL;
+	HRESULT l_HR=D3DXCreateEffectFromFile(GRAPHM->GetDevice(), m_FileName.c_str(), NULL, NULL, D3DXSHADER_USE_LEGACY_D3DX9_31_DLL, NULL, &m_Effect, &l_ErrorBuffer);
+	if(l_ErrorBuffer)
 	{
-		isOK = Load(m_FileName);
-	}else
+		LOGGER->AddNewLog(ELL_ERROR, "Error creating effect '%s':\n%s", m_FileName.c_str(), l_ErrorBuffer->GetBufferPointer());
+		CHECKED_RELEASE(l_ErrorBuffer);
+		return false;
+	}
 	
-		return isOK;
+	bool isOK = true;
+	
+	
+	
+	GetParameterBySemantic("WORLD", m_WorldMatrixParameter);
+	GetParameterBySemantic("VIEW", m_ViewMatrixParameter);
+	GetParameterBySemantic("PROJECTION", m_ProjectionMatrixParameter);
+	GetParameterBySemantic("INVERSEWORLD", m_InverseWorldMatrixParameter);
+	GetParameterBySemantic("INVERSEVIEW", m_InverseViewMatrixParameter);
+	GetParameterBySemantic("INVERSEPROJECTION", m_InverseProjectionMatrixParameter);
+	GetParameterBySemantic("WORLDVIEW", m_WorldViewMatrixParameter);
+	GetParameterBySemantic("VIEWPROJECTION", m_ViewProjectionMatrixParameter);
+	GetParameterBySemantic("WORLDVIEWPROJECTION", m_WorldViewProjectionMatrixParameter);
+	GetParameterBySemantic("VIEWTOLIGHTPROJECTION", m_ViewToLightProjectionMatrixParameter);
+	GetParameterBySemantic("LIGHTENABLED", m_LightEnabledParameter);
+	GetParameterBySemantic("LIGHTSTYPE", m_LightsTypeParameter);
+	GetParameterBySemantic("LIGHTSPOSITION", m_LightsPositionParameter);
+	GetParameterBySemantic("LIGHTSDIRECTION", m_LightsDirectionParameter);
+	GetParameterBySemantic("LIGHTSANGLE", m_LightsAngleParameter);
+	GetParameterBySemantic("LIGHTSCOLOR", m_LightsColorParameter);
+	GetParameterBySemantic("LIGHTSFALLOFF", m_LightsFallOffParameter);
+	GetParameterBySemantic("LIGHTSSTARTRANGEATTENUATION", m_LightsStartRangeAttenuationParameter);
+	GetParameterBySemantic("LIGHTSENDRANGEATTENUATION", m_LightsEndRangeAttenuationParameter);
+	GetParameterBySemantic("CAMERAPOSITION", m_CameraPositionParameter);
+	GetParameterBySemantic("BONES", m_BonesParameter);
+	GetParameterBySemantic("TIME", m_TimeParameter);
+	
+	return isOK;
 }
 void CEffect::Unload()
 {
+	CHECKED_RELEASE(m_Effect);
 	SetNullParameters();
 }
 
@@ -59,6 +94,7 @@ CEffect::CEffect()
 
 CEffect::~CEffect()
 {
+	Unload();
 }
 
 bool CEffect::SetLights(size_t NumOfLights)
@@ -108,15 +144,8 @@ bool CEffect::SetLights(size_t NumOfLights)
 bool CEffect::Load(const std::string &FileName)
 {
 	m_FileName = FileName;
-	LPD3DXBUFFER l_ErrorBuffer=NULL;
-	HRESULT l_HR=D3DXCreateEffectFromFile(GRAPHM->GetDevice(), FileName.c_str(), NULL, NULL, D3DXSHADER_USE_LEGACY_D3DX9_31_DLL, NULL, &m_Effect, &l_ErrorBuffer);
-	if(l_ErrorBuffer)
-	{
-		LOGGER->AddNewLog(ELL_ERROR, "Error creating effect '%s':\n%s", FileName.c_str(), l_ErrorBuffer->GetBufferPointer());
-		CHECKED_RELEASE(l_ErrorBuffer);
-		return false;
-	}
-	return true;
+	return LoadEffect();
+	
 }
 bool CEffect::Reload()
 {

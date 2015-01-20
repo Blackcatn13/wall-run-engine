@@ -8,6 +8,8 @@
 #include <cstdio>
 #include "Utils/Logger.h"
 #include "Texture\TextureManager.h"
+#include "Effects\EffectManager.h"
+//#include "Effects\EffectManager.h"
 
 #include "Core_Utils/MemLeaks.h"
 
@@ -141,6 +143,8 @@ bool CStaticMesh::ReLoad ()
 }
 void CStaticMesh::Render (CGraphicsManager *RM)
 {
+	CEffectTechnique *l_EffectTechnique=EFFECTM->GetEffectTechnique("BasicTechnique");
+
     for (int i = 0; i < m_RVs.size(); ++i) {
         // TODO iterate m_textures
         if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_TEXTURE1) == VERTEX_TYPE_TEXTURE1)
@@ -148,7 +152,7 @@ void CStaticMesh::Render (CGraphicsManager *RM)
         if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_DIFFUSE) == VERTEX_TYPE_DIFFUSE) {
             RM->GetDevice()->SetTexture(0, 0);
         }
-        m_RVs[i]->Render(RM);
+        m_RVs[i]->Render(RM, l_EffectTechnique);
     }
 }
 

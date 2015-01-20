@@ -3,8 +3,21 @@
 
 void CDirectionalLight::Render(CGraphicsManager *RM)
 {
-	//TODO A ver que hace este tb
+	//Debug
+	Mat44f t;
+	t.SetIdentity();
+	CColor l_Color =  CColor(GetColor().GetRed(), GetColor().GetGreen(), GetColor().GetBlue());
+	Vect3f l_FinalPosition = GetDirection() * GetStartRangeAttenuation();
+	GRAPHM->SetTransform(t);
+	RM->DrawLine(GetPosition(), l_FinalPosition, l_Color);
+	Mat44f l_trans;
+	l_trans.SetIdentity();
+	l_trans.Translate(Vect3f(GetPosition()));
+	GRAPHM->SetTransform(l_trans);
+	GRAPHM->DrawAxis(1.0f);
+	
 	printf("I'm a directional Light \n");
+	
 }
 
 void CDirectionalLight::SetShadowMap(CGraphicsManager *RM)
