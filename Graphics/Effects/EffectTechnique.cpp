@@ -46,13 +46,9 @@ bool CEffectTechnique::BeginRender()
 	{
 		l_Effect->SetBoolArray(m_Effect->GetLightEnabledParameter(), m_Effect->GetLightsEnabled(), MAX_LIGHTS_BY_SHADER);
 	}
-	if(m_NumOfLights)
-	{
-		//TODO
-	}
 	if(m_UseLightAmbientColor)
 	{
-		//l_Effect->SetFloatArray(m_Effect->GetLightsColorParameter(), &m_Effect->GetLightsColor(), MAX_LIGHTS_BY_SHADER*3);
+		//l_Effect->SetFloatArray(m_Effect->GetLightsColorParameter(), m_Effect->GetLightsColor(), MAX_LIGHTS_BY_SHADER*3);
 	}
 	if(m_UseProjMatrix)
 	{
@@ -98,6 +94,17 @@ bool CEffectTechnique::BeginRender()
 	if(m_UseTime)
 	{
 		//TODO
+	}
+	if(m_NumOfLights>0)
+	{
+		if(m_NumOfLights>3)
+		{
+			m_Effect->SetLights(m_NumOfLights);
+		}
+		else
+		{
+			m_Effect->SetLights(MAX_LIGHTS_BY_SHADER);
+		}
 	}
 	return true;
 }

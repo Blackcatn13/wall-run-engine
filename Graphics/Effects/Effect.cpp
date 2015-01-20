@@ -101,7 +101,7 @@ bool CEffect::SetLights(size_t NumOfLights)
 {
 	std::map<std::string, CLight*>::iterator it = LIGHTM->GetResources().begin();
 	int l_lightIndex = 0;
-	while(it != LIGHTM->GetResources().end())
+	while(it != LIGHTM->GetResources().end() && l_lightIndex < NumOfLights)
 	{
 		m_LightsEnabled[l_lightIndex] = 1;
 		int l_type = it->second->GetType();
@@ -137,6 +137,10 @@ bool CEffect::SetLights(size_t NumOfLights)
 		m_LightsDirection[l_lightIndex] = l_direction;
 		Vect3f l_color = Vect3f(it->second->GetColor().GetRed(),it->second->GetColor().GetBlue(), it->second->GetColor().GetGreen()) ;
 		m_LightsColor[l_lightIndex] = l_color;
+
+		it++;
+
+		l_lightIndex += 1;
 	}
 
 	return true;
