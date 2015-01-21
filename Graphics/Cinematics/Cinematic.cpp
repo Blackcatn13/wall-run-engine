@@ -52,7 +52,7 @@ void CCinematic::Pause()
 	}
 }
 
-void CCinematic::LoadXML(const std::string &Filename)
+std::string CCinematic::LoadXML(const std::string &Filename)
 {
 	std::string m_FileName = Filename;
 	CXMLTreeNode l_XMLParser;
@@ -79,6 +79,7 @@ void CCinematic::LoadXML(const std::string &Filename)
 					AddCinematicObject(l_cinematicObject);
 				}
 			}
+			return m_Name;
 		}
 	}
 }

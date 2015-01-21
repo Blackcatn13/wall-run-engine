@@ -26,6 +26,7 @@ extern "C"
 #include "Cinematics/CinematicObject.h"
 #include "Cinematics\Cinematic.h"
 #include "Cinematics\CinematicController.h"
+#include "Utils\MapManager.h"
 
 using namespace luabind;
 
@@ -74,13 +75,22 @@ void RegisterCinematics()
 	.def("update", & CCinematic::Update)
 	.def("render", & CCinematic::Render)
 	];
+	
+	luabind::module(LUA_STATE) [
+	class_<CMapManager<CCinematic>>("CMapManagerCinematic")
+	.def("get_resource", &CMapManager< CCinematic >::GetResource)
+	.def("existe_resource", &CMapManager< CCinematic >::ExisteResource)
+	.def("add_resource", &CMapManager< CCinematic >::AddResource)
+	.def("destroy", &CMapManager< CCinematic >::Destroy)
+	.property("m_Resources",  &CMapManager< CCinematic >::GetResources)
+	];
 
 	luabind::module(LUA_STATE) [
-	class_<CCinematicController>("CCinematicController")
+	class_<CCinematicController, CMapManager<CCinematic>>("CCinematicController")
 	.def(constructor<>())
 	.def("load", & CCinematicController::Load)
 	.def("reload", (bool (CCinematicController::*)())& CCinematicController::Reload)
-	.def("pause",  (bool (CCinematicController::*)(const std::string &))& CCinematicController::Reload)
+	.def("reload",  (bool (CCinematicController::*)(const std::string &))& CCinematicController::Reload)
 	.def("update", & CCinematicController::Update)
 	];
 	

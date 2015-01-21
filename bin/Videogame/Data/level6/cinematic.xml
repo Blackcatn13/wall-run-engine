@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<cinematic name="DestroyW" duration="3.36667">
+<cinematic name="DestroyW2" duration="3.36667">
 	<cinematic_object resource="Box001_Part_1" renderable_objects_manager="solid">
 		<cinematic_object_key_frame time="0.0" pos="0.0 0.79792 -1.0724" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
 		<cinematic_object_key_frame time="0.0333333" pos="0.0 0.79792 -1.0724" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>

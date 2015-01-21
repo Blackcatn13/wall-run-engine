@@ -118,6 +118,11 @@ void CCameraController::Update(float dt)
     }
 		CamUpdates(camType, dt);
   */
+
+	CCamera::ETypeCamera camType = m_ActiveCamera->GetTypeCamera();
+	if (camType == CCamera::TC_CIN) {
+		CamUpdates(camType, dt);
+	}
 }
 
 void CCameraController::CamUpdates(CCamera::ETypeCamera camType, float dt)
@@ -125,9 +130,9 @@ void CCameraController::CamUpdates(CCamera::ETypeCamera camType, float dt)
 	  //CINEMATICS
     TMapResource::iterator it = m_Resources.begin();
     for (it; it != m_Resources.end(); ++it) {
-        if (camType == CCamera::TC_CIN) {
+        //if (camType == CCamera::TC_CIN) {
             ((CCameraKeyController *)(* it).second)->Update(dt);
-        }
+        //}
     }
 }
 void CCameraController::Update(std::string camera, float dt)

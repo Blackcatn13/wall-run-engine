@@ -11,6 +11,8 @@
 #define VERTEX_TYPE_TEXTURE1 0x0010     // D3DFVF_TEX1
 #define VERTEX_TYPE_TEXTURE2 0x0020     // D3DFVF_TEX2
 #define VERTEX_TYPE_DIFFUSE 0x0040      // D3DFVF_DIFFUSE
+#define VERTEX_TYPE_WEIGHTS 0x0080      // CAL3D_WEIGHTS
+#define VERTEX_TYPE_INDEXS 0x0100      // CAL3D_INDEXS
 
 #include "GraphicsManager.h"
 #include "Utils\Defines.h"
@@ -315,6 +317,32 @@ struct TCOLORED_NORMAL_VERTEX {
     {
         return D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_DIFFUSE;
     }
+	static LPDIRECT3DVERTEXDECLARATION9 s_VertexDeclaration;
+	static LPDIRECT3DVERTEXDECLARATION9 & GetVertexDeclaration();
+	static void ReleaseVertexDeclaration()
+	{
+		CHECKED_RELEASE(s_VertexDeclaration);
+	}
+};
+
+//CAL3D
+struct CAL3D_HW_VERTEX
+{
+	float x, y, z;
+	float weights[4];
+	float indices[4];
+	float nx, ny, nz, nw;
+	float tangentx, tangenty, tangentz, tangentw;
+	float binormalx, binormaly, binormalz, binormalw;
+	float tu,tv;
+	static inline unsigned short GetVertexType()
+	{
+		return VERTEX_TYPE_GEOMETRY | VERTEX_TYPE_WEIGHTS | VERTEX_TYPE_INDEXS | VERTEX_TYPE_TANGENT | VERTEX_TYPE_BINORMAL | VERTEX_TYPE_TEXTURE1;
+	}
+	static inline unsigned int GetFVF()
+	{
+		return 0;
+	}
 	static LPDIRECT3DVERTEXDECLARATION9 s_VertexDeclaration;
 	static LPDIRECT3DVERTEXDECLARATION9 & GetVertexDeclaration();
 	static void ReleaseVertexDeclaration()

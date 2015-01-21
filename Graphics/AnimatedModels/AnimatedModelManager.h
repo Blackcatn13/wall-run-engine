@@ -1,6 +1,8 @@
 #include "Utils\MapManager.h"
 #include "AnimatedCoreModel.h"
 
+#define MAXBONES 40
+
 class CAnimatedInstanceModel;
 
 class CAnimatedModelManager : public CMapManager<CAnimatedCoreModel>

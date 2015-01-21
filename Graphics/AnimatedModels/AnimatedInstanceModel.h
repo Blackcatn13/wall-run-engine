@@ -22,13 +22,14 @@ private:
 	LPDIRECT3DINDEXBUFFER9 m_pIB;
 	int m_NumVtxs;
 	int m_NumFaces;
-	bool LoadVertexBuffer(CGraphicsManager *RM);
+	//bool LoadVertexBuffer(CGraphicsManager *RM);
 	void LoadTextures();
 public:
 	CAnimatedInstanceModel();
 	~CAnimatedInstanceModel();
 	void Render(CGraphicsManager *RM);
 	void RenderModelBySoftware(CGraphicsManager *RM);
+	void RenderModelByHardware(CGraphicsManager *RM);
 	void Update(float ElapsedTime);
 	void Initialize(CAnimatedCoreModel *AnimatedCoreModel, CGraphicsManager *RM);
 	void Destroy();

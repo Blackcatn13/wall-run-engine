@@ -8,6 +8,9 @@
 #include "Utils\Defines.h"
 #include "cal3d\renderer.h"
 #include "RenderableVertex\VertexTypes.h"
+#include "Effects\Effect.h"
+#include "Effects\EffectManager.h"
+#include "Effects\EffectTechnique.h"
 
 struct VERTEX
 {
@@ -212,4 +215,48 @@ void CAnimatedInstanceModel::RenderModelBySoftware(CGraphicsManager *RM)
 	}
   }
   pCalRenderer->endRendering();
+}
+
+void CAnimatedInstanceModel::RenderModelByHardware(CGraphicsManager *RM)
+{
+	CEffectManager &l_EffectManager = CCORE.GetEffectManager();
+	CEffectTechnique *l_EffectTechnique = l_EffectManager.GetAnimatedModelTechnique();
+	if(l_EffectTechnique==NULL)
+		l_EffectTechnique=m_EffectTechnique;
+	if(l_EffectTechnique==NULL)
+		return;
+	l_EffectManager.SetWorldMatrix(GetTransform());
+	CEffect *m_Effect=l_EffectTechnique->GetEffect();
+	if(m_Effect==NULL)
+		return;
+	LPD3DXEFFECT l_Effect=m_Effect->GetD3DEffect();
+	if(l_Effect)
+	{
+		l_EffectTechnique->BeginRender();
+		CalHardwareModel *l_CalHardwareModel=m_AnimatedCoreModel->GetCalHardwareModel();
+		D3DXMATRIX transformation[MAXBONES];
+		for(int hardwareMeshId=0;hardwareMeshId<l_CalHardwareModel->getHardwareMeshCount(); hardwareMeshId++)
+		{
+			l_CalHardwareModel->selectHardwareMesh(hardwareMeshId);
+			for(int boneId = 0; boneId < l_CalHardwareModel->getBoneCount(); boneId++)
+			{
+				D3DXMatrixRotationQuaternion(&transformation[boneId],(CONST D3DXQUATERNION*)&l_CalHardwareModel->getRotationBoneSpace(boneId, 
+					m_CalModel->getSkeleton()));
+				CalVector translationBoneSpace = l_CalHardwareModel->getTranslationBoneSpace(boneId,m_CalModel->getSkeleton());
+				transformation[boneId]._14 = translationBoneSpace.x;
+				transformation[boneId]._24 = translationBoneSpace.y;
+				transformation[boneId]._34 = translationBoneSpace.z;
+			}
+			float l_Matrix[MAXBONES*3*4];
+			for(int b=0;b<l_CalHardwareModel->getBoneCount();++b)
+			{
+				memcpy(&l_Matrix[b*3*4], &transformation[b], sizeof(float)*3*4);
+			}
+			l_Effect->SetFloatArray(m_Effect->m_BonesParameter,	(float *)l_Matrix,(l_CalHardwareModel->getBoneCount())*3*4);
+			m_TextureList[0]->Activate(0);
+			m_NormalTextureList[0]->Activate(1);
+			m_AnimatedCoreModel->GetRenderableVertexs()->Render(l_EffectTechnique, l_CalHardwareModel->getBaseVertexIndex(), 0, 
+				l_CalHardwareModel->getVertexCount(), l_CalHardwareModel->getStartIndex(),l_CalHardwareModel->getFaceCount());
+		}
+	}
 }

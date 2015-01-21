@@ -71,16 +71,16 @@ void CTest_Space::Init()
 	SCRIPTM->RunCode(l_Text);*/
 	m_ObjectFPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
     m_ObjectThPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
-	//m_RenderableObject = RENDM->GetResourcesMap().find("Box005")->second.m_Value;
+	m_RenderableObject = RENDM->GetResourcesMap().find("Box005")->second.m_Value;
     m_ThPSCamera = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS, 50);
-    //m_ThPSCamera1 = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_RenderableObject, 10);
+    m_ThPSCamera1 = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_RenderableObject, 10);
     m_FPSCamera = new CFPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectFPS);
     m_ThPSCamera->SetTypeCamera(CCamera::TC_ESF);
     m_CameraController = new CCameraController();
     m_CameraController->AddNewCamera("FPS", m_FPSCamera);
     m_CameraController->AddNewCamera("ThPSESF", m_ThPSCamera);
     m_CameraController->AddNewCamera("ThPS", m_ThPSCamera1);
-    m_CameraController->Load(".\\Data\\level6\\cameras.xml");
+    m_CameraController->Load(".\\Data\\level3\\cameras.xml");
     m_CameraController->setActiveCamera("FPS");
 	CCORE->SetCameraController(m_CameraController);
     m_Camera = m_CameraController->getActiveCamera();
@@ -146,36 +146,33 @@ void CTest_Space::Update(float dt)
     if (ACT2IN->DoAction("ChangeCatalan")) {
         LANGM->SetCurrentLanguage("catalan");
 		m_CameraController->setActiveCamera("Camera002");
-		m_Camera = m_CameraController->getActiveCamera();
 		m_CameraController->Play(true);
-        CCORE->GetCinematicController()->GetResource("a")->Play(true);
+        CCORE->GetCinematicController()->GetResource("DestroyW")->Play(true);
     }
     if (ACT2IN->DoAction("ChangeCastellano")) {
         LANGM->SetCurrentLanguage("castellano");
-        CCORE->GetCinematicController()->GetResource("a")->Stop();
+        CCORE->GetCinematicController()->GetResource("DestroyW")->Stop();
 		m_CameraController->Stop();
 		m_CameraController->setActiveCamera("FPS");
-		m_Camera = m_CameraController->getActiveCamera();
     }
     if (ACT2IN->DoAction("ChangeIngles")) {
         LANGM->SetCurrentLanguage("ingles");
-		m_Camera = m_CameraController->getActiveCamera();
 		m_CameraController->Pause();
-        CCORE->GetCinematicController()->GetResource("a")->Pause();
+        CCORE->GetCinematicController()->GetResource("DestroyW")->Pause();
     }
     if (ACT2IN->DoAction("CommutationCamera")) {
         if (m_PlayerMode) {
             m_PlayerMode = false;
           //  m_CameraController->setActiveCamera("ThPSESF");
 			 m_CameraController->setActiveCamera("ThPS");
-            m_Camera = m_CameraController->getActiveCamera();
         } else {
             m_PlayerMode = true;
             m_CameraController->setActiveCamera("FPS");
-            m_Camera = m_CameraController->getActiveCamera();
         }
     }
     CCORE->GetCinematicController()->Update(dt);
+
+	m_Camera = m_CameraController->getActiveCamera();
 //	m_ScriptedController->Update(dt);
     /* if (m_PlayerMode) {
          m_ObjectFPS->SetYaw(m_ObjectFPS->GetYaw() -  deltaX * dt);

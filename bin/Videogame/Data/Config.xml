@@ -16,8 +16,8 @@
   <Actions actionsXML="./Data/Actions.xml"/>
   <GUI initGuiXML="./Data/GUI/initGui_laberynth.xml"/>
   <Sound soundXML="./Data/Sounds/LaberynthSounds.xml"/>
-  <Meshes meshesXML="./Data/level6/static_meshes.xml"/>
-  <Renderable renderXML="./Data/level6/renderable_objects.xml"/> 
+  <Meshes meshesXML="./Data/level3/static_meshes.xml"/>
+  <Renderable renderXML="./Data/level3/renderable_objects.xml"/> 
   <Avi aviXML=""/>
   <PhysX initPhysX="true"/>
   <ComputerVision initComputerVision="false"/>

@@ -13,6 +13,7 @@ function on_update_scripted_controller(l_ElapsedTime)
 	local luaUtil = CCMathLuaUtils();
 	
 	local cam_Controller = coreInstance.m_CameraController;
+	local cin_Controller = coreInstance:get_cinematic_controller();
 	local active_camera = cam_Controller:get_active_camera();
 	local type_camera = active_camera.m_eTypeCamera;
 	local camObject = active_camera.m_pObject3D;
@@ -106,15 +107,21 @@ function on_update_scripted_controller(l_ElapsedTime)
 		end
 	end
 		
-	cam_Controller:load(".\\Data\\level6\\cameras.xml");
-	cam_Controller:cam_updates(type_camera, l_ElapsedTime);
+	if type_camera == CCamera.TC_CIN then
+		cam_Controller:cam_updates(type_camera, l_ElapsedTime);
+	end
 	
 	--local type_camera2 = active_camera.m_eTypeCamera;
 	if camObject:get_position().x >= xMin and camObject:get_position().x <= xMax and camObject:get_position().z >= zMin and camObject:get_position().z <= zMax then
 		--Aqui launcher de cinematica 2
 		local name = "Tete"
 		local n1 = CNamed();
-		n1:set_name(name);
+		--n1:set_name(name);
+		
+		cam_Controller:set_active_camera("Camera002");
+		cam_Controller:play(true);
+		cin_Controller:get_resource("DestroyW"):play(true);
+		
 	end
 	return 0;
 end

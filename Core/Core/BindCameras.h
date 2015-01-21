@@ -38,7 +38,8 @@ void RegisterCameraController()
 		[
 			value("TC_FPS" ,0),
 			value("TC_THPS", 1),
-			value("TC_ESF", 2)	
+			value("TC_ESF", 2),
+			value("TC_CIN", 3)				
 		]
 	//	.def(constructor<float, float, float, float, CObject3D, ETypeCamera>()) 
     //    .def(constructor<>())

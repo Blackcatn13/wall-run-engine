@@ -54,7 +54,7 @@ void CCore::Init(HWND handler)
     m_ScriptManager->Initialize();
     m_LightManager = new CLightManager();
     m_CinematicManager = new CCinematicController();
-    m_CinematicManager->Load(".\\Data\\level6\\cinematic.xml");
+    m_CinematicManager->Load(".\\Data\\level3\\cinematic.xml");
 
 	m_RenderableManager->Load(m_Config.RenderablePath);
 	m_ScriptManager = new CScriptManager();
@@ -78,7 +78,7 @@ void CCore::DeInit()
     CHECKED_DELETE(m_TextureManager);
     CHECKED_DELETE(m_ScriptManager);
 	CHECKED_DELETE(m_CameraController);
-	
+	CHECKED_DELETE(m_CinematicManager);
 }
 
 CCore* CCore::GetInstance()

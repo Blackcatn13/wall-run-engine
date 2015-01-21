@@ -15,8 +15,8 @@ bool CCinematicController::Load(const std::string &FileName)
 {
     m_FileName = FileName;
     CCinematic *l_Cinematic = new CCinematic();
-    AddResource("a", l_Cinematic);
-    l_Cinematic->LoadXML(FileName);
+	std::string name = l_Cinematic->LoadXML(FileName);
+    AddResource(name, l_Cinematic);
     return true;
 }
 
