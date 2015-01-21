@@ -44,11 +44,11 @@ bool CEffectTechnique::BeginRender()
 	}
 	if(m_UseLights)
 	{
-		l_Effect->SetBoolArray(m_Effect->GetLightEnabledParameter(), m_Effect->GetLightsEnabled(), MAX_LIGHTS_BY_SHADER);
+		l_Effect->SetBoolArray(m_Effect->GetLightEnabledParameter(), &m_Effect->GetLightsEnabled()[0], MAX_LIGHTS_BY_SHADER);
 	}
 	if(m_UseLightAmbientColor)
 	{
-		//l_Effect->SetFloatArray(m_Effect->GetLightsColorParameter(), m_Effect->GetLightsColor(), MAX_LIGHTS_BY_SHADER*3);
+		l_Effect->SetFloatArray(m_Effect->GetLightsColorParameter(), &m_Effect->GetLightsColor()[0].x, MAX_LIGHTS_BY_SHADER*3);
 	}
 	if(m_UseProjMatrix)
 	{

@@ -46,7 +46,7 @@ public:
         m_ok = RM->GetDevice()->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, m_VertexCount, 0, m_IndexCount / 3);
         return true;
     }
-	bool Render(CGraphicsManager *GM, CEffectTechnique *EffectTechnique) const
+	bool Render(CGraphicsManager *GM, CEffectTechnique *EffectTechnique, int baseVertex, int MinVertex, int NumVertex, int StartIndex,int IndexCount) const
 	{
 		LPDIRECT3DDEVICE9 l_Device=GM->GetDevice();
 		UINT l_NumPasses;
@@ -61,8 +61,13 @@ public:
 			for (UINT b=0;b<l_NumPasses;++b)
 			{
 				l_Effect->BeginPass(b);
-				l_Device->DrawIndexedPrimitive( D3DPT_TRIANGLELIST, 0, 0,
-				(UINT)m_VertexCount, 0, (UINT) m_IndexCount/3);
+				l_Device->DrawIndexedPrimitive( D3DPT_TRIANGLELIST, 
+					baseVertex, 
+					MinVertex,
+					NumVertex==-1 ? (UINT)m_VertexCount : (UINT)NumVertex, 
+					StartIndex,
+					IndexCount==-1 ? (UINT) m_IndexCount/3 : (UINT)IndexCount/3);
+
 				l_Effect->EndPass();
 			}
 			l_Effect->End();

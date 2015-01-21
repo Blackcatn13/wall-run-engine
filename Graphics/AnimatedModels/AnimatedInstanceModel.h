@@ -11,6 +11,7 @@
 #include <vector>
 #include "Texture\Texture.h"
 
+class CEffectTechnique;
 
 class CAnimatedInstanceModel : public CRenderableObject
 {
@@ -18,8 +19,11 @@ private:
 	CalModel *m_CalModel;
 	CAnimatedCoreModel *m_AnimatedCoreModel;
 	std::vector<CTexture *> m_TextureList;
+	std::vector<CTexture *> m_NormalTextureList;
 	LPDIRECT3DVERTEXBUFFER9 m_pVB;
 	LPDIRECT3DINDEXBUFFER9 m_pIB;
+
+	CEffectTechnique *m_EffectTechnique;
 	int m_NumVtxs;
 	int m_NumFaces;
 	//bool LoadVertexBuffer(CGraphicsManager *RM);

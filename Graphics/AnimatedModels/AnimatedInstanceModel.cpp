@@ -11,6 +11,8 @@
 #include "Effects\Effect.h"
 #include "Effects\EffectManager.h"
 #include "Effects\EffectTechnique.h"
+#include "AnimatedModels\AnimatedModelManager.h"
+#include "RenderableVertex\RenderableVertexs.h"
 
 struct VERTEX
 {
@@ -55,7 +57,7 @@ void CAnimatedInstanceModel::Initialize(CAnimatedCoreModel *AnimatedCoreModel, C
 	for(int i=0;i<l_CoreModel->getCoreMeshCount();++i)
 		m_CalModel->attachMesh(i);
   
-	LoadVertexBuffer(RM);
+//	LoadVertexBuffer(RM);
 	LoadTextures();
 
 	BlendCycle(0, 1.0f, 0.0f);
@@ -84,7 +86,7 @@ void CAnimatedInstanceModel::Update(float ElapsedTime)
 	m_CalModel->update(ElapsedTime);
 }
 
-bool CAnimatedInstanceModel::LoadVertexBuffer(CGraphicsManager *RM)
+/*bool CAnimatedInstanceModel::LoadVertexBuffer(CGraphicsManager *RM)
 {
  // Create vertex buffer =>> Pillar los nuestros
   //if(FAILED(RM->GetDevice()->CreateVertexBuffer(30000*sizeof(VERTEX),
@@ -114,7 +116,7 @@ bool CAnimatedInstanceModel::LoadVertexBuffer(CGraphicsManager *RM)
   }
 
   return true;
-}
+}*/
 
  void CAnimatedInstanceModel::Render(CGraphicsManager *RM)
  {
@@ -219,13 +221,13 @@ void CAnimatedInstanceModel::RenderModelBySoftware(CGraphicsManager *RM)
 
 void CAnimatedInstanceModel::RenderModelByHardware(CGraphicsManager *RM)
 {
-	CEffectManager &l_EffectManager = CCORE.GetEffectManager();
-	CEffectTechnique *l_EffectTechnique = l_EffectManager.GetAnimatedModelTechnique();
+	//CEffectManager &l_EffectManager = CCORE->GetEffectManager();
+	CEffectTechnique *l_EffectTechnique = EFFECTM->GetAnimatedModelTechnique();
 	if(l_EffectTechnique==NULL)
 		l_EffectTechnique=m_EffectTechnique;
 	if(l_EffectTechnique==NULL)
 		return;
-	l_EffectManager.SetWorldMatrix(GetTransform());
+	EFFECTM->SetWorldMatrix(getTransform());
 	CEffect *m_Effect=l_EffectTechnique->GetEffect();
 	if(m_Effect==NULL)
 		return;
@@ -252,10 +254,10 @@ void CAnimatedInstanceModel::RenderModelByHardware(CGraphicsManager *RM)
 			{
 				memcpy(&l_Matrix[b*3*4], &transformation[b], sizeof(float)*3*4);
 			}
-			l_Effect->SetFloatArray(m_Effect->m_BonesParameter,	(float *)l_Matrix,(l_CalHardwareModel->getBoneCount())*3*4);
+			l_Effect->SetFloatArray(m_Effect->GetBonesParameter(),	(float *)l_Matrix,(l_CalHardwareModel->getBoneCount())*3*4);
 			m_TextureList[0]->Activate(0);
 			m_NormalTextureList[0]->Activate(1);
-			m_AnimatedCoreModel->GetRenderableVertexs()->Render(l_EffectTechnique, l_CalHardwareModel->getBaseVertexIndex(), 0, 
+			m_AnimatedCoreModel->GetRenderableVertexs()->Render(GRAPHM, l_EffectTechnique, l_CalHardwareModel->getBaseVertexIndex(), 0, 
 				l_CalHardwareModel->getVertexCount(), l_CalHardwareModel->getStartIndex(),l_CalHardwareModel->getFaceCount());
 		}
 	}

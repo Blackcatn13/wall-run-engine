@@ -22,7 +22,7 @@ public:
 		CHECKED_RELEASE(m_IB);
 	}
 	virtual bool Render(CGraphicsManager *RM) = 0;
-	virtual bool Render(CGraphicsManager *RM, CEffectTechnique *EffectTechnique) const = 0;
+	virtual bool Render(CGraphicsManager *RM, CEffectTechnique *EffectTechnique, int=0, int=0, int=-1, int=0, int=-1) const = 0;
 
 	virtual inline size_t GetFacesCount() const {return m_IndexCount/3;}
 	virtual inline size_t GetVertexsCount() const {return m_VertexCount;}
