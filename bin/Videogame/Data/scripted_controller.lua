@@ -6,9 +6,9 @@ function on_update_scripted_controller(l_ElapsedTime)
 	local xMax = 7.0;
 	local zMin = -3.4;
 	local zMax = 0.7;
-	deltaX = coreInstance:get_input_manager():get_mouse_delta().x * 0.1;
-	deltaY = coreInstance:get_input_manager():get_mouse_delta().y *0.1;
-	deltaZ = coreInstance:get_input_manager():get_mouse_delta().z *0.1;
+	deltaX = coreInstance:get_input_manager():get_mouse_delta().x;
+	deltaY = coreInstance:get_input_manager():get_mouse_delta().y;
+	deltaZ = coreInstance:get_input_manager():get_mouse_delta().z;
 
 	local luaUtil = CCMathLuaUtils();
 	

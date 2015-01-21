@@ -71,15 +71,15 @@ void CTest_Space::Init()
 	SCRIPTM->RunCode(l_Text);*/
 	m_ObjectFPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
     m_ObjectThPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
-	m_RenderableObject = RENDM->GetResourcesMap().find("Box005")->second.m_Value;
+	//m_RenderableObject = RENDM->GetResourcesMap().find("Box005")->second.m_Value;
     m_ThPSCamera = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS, 50);
-    m_ThPSCamera1 = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_RenderableObject, 10);
+    //m_ThPSCamera1 = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_RenderableObject, 10);
     m_FPSCamera = new CFPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectFPS);
     m_ThPSCamera->SetTypeCamera(CCamera::TC_ESF);
     m_CameraController = new CCameraController();
     m_CameraController->AddNewCamera("FPS", m_FPSCamera);
     m_CameraController->AddNewCamera("ThPSESF", m_ThPSCamera);
-    m_CameraController->AddNewCamera("ThPS", m_ThPSCamera1);
+    //m_CameraController->AddNewCamera("ThPS", m_ThPSCamera1);
     m_CameraController->Load(".\\Data\\level3\\cameras.xml");
     m_CameraController->setActiveCamera("FPS");
 	CCORE->SetCameraController(m_CameraController);
@@ -164,7 +164,7 @@ void CTest_Space::Update(float dt)
         if (m_PlayerMode) {
             m_PlayerMode = false;
           //  m_CameraController->setActiveCamera("ThPSESF");
-			 m_CameraController->setActiveCamera("ThPS");
+			 m_CameraController->setActiveCamera("ThPSESF");
         } else {
             m_PlayerMode = true;
             m_CameraController->setActiveCamera("FPS");

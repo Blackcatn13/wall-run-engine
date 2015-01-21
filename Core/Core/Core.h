@@ -35,7 +35,7 @@ class CEffectManager;
 #define TEXTM   CCore::GetInstance()->GetTextureManager()
 #define ANIMAN	CCore::GetInstance()->GetAnimatedModelManager()
 #define SCRIPTM CCore::GetInstance()->GetScriptManager()
-#define LIGHTM CCore::GetInstance()->GetLightManager()
+#define LIGHTM  CCore::GetInstance()->GetLightManager()
 #define EFFECTM CCore::GetInstance()->GetEffectManager()
 
 
