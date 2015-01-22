@@ -45,18 +45,18 @@ struct VertexVS_TTEXTURE2_VERTEX {
 // G N T1 T2
 struct VertexVS_TTEXTURE2_NORMAL_VERTEX {
     float3 Position	: POSITION;
+	float4 Normal	: NORMAL;
     float4 UV		: TEXCOORD0;
 	float4 UV2		: TEXCOORD1;
-	float4 Normal	: NORMAL;
 };
 
 // G N D T1 T2
-struct VertexVS_TTEXTURE2_NORMAL_VERTEX {
+struct VertexVS_TTEXTURE2_NORMAL_DIFFUSE_VERTEX {
     float3 Position	: POSITION;
-    float4 UV		: TEXCOORD0;
-	float4 UV2		: TEXCOORD1;
 	float4 Normal	: NORMAL;
 	float4 Color	: COLOR;
+    float4 UV		: TEXCOORD0;
+	float4 UV2		: TEXCOORD1;
 };
 
 // G N T B T1 T2

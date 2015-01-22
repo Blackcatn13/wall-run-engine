@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <effects>
 	<default_technique vertex_type="19" technique="BasicTechnique"/>
+	<default_technique vertex_type="159" technique="BasicTechnique"/>
 	<effect name="BasicEffect" file="data/effects/BasicEffect.fx"/>
+	<effect name="Cal3DEffect" file="data/effects/Cal3D.fx"/>
 	<technique name="BasicTechnique" effect="BasicEffect" use_world_matrix="true" use_world_view_projection_matrix="true"  />
+	<technique name="Cal3DTechnique" effect="Cal3DEffect" use_world_matrix="true" use_world_view_projection_matrix="true"  />
 </effects>

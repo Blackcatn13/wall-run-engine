@@ -166,7 +166,7 @@ struct TCOLOR_TEXTURE2_VERTEX {
 };
 
 // G N D T1 T2
-struct TCOLOR_TEXTURE2_NORMAL_VERTEX {
+struct TCOLOR_NORMAL_DIFFUSE_TEXTURE2_VERTEX {
     float x, y, z;
     float nx, ny, nz;
     unsigned long color;

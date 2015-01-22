@@ -15,7 +15,7 @@ CEffectManager::CEffectManager()
 	TTEXTURE2_VERTEX::GetVertexDeclaration();
 	TTEXTURE2_NORMAL_VERTEX::GetVertexDeclaration();
 	TCOLOR_TEXTURE2_VERTEX::GetVertexDeclaration();
-	TCOLOR_TEXTURE2_NORMAL_VERTEX::GetVertexDeclaration();
+	TCOLOR_NORMAL_DIFFUSE_TEXTURE2_VERTEX::GetVertexDeclaration();
 	TTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexDeclaration();
 	TTEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexDeclaration();
 	TCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexDeclaration();

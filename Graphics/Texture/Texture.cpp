@@ -58,14 +58,18 @@ bool CTexture::SetAsRenderTarget(size_t IdStage)
 	l_Device->SetDepthStencilSurface(
 	m_DepthStencilRenderTargetTexture );
 	return true;
-}void CTexture::UnsetAsRenderTarget(size_t IdStage)
+}
+
+void CTexture::UnsetAsRenderTarget(size_t IdStage)
 {
 	LPDIRECT3DDEVICE9 l_Device=GRAPHM->GetDevice();
 	l_Device->SetDepthStencilSurface(m_OldDepthStencilRenderTarget);
 	 CHECKED_RELEASE(m_OldDepthStencilRenderTarget);
 	l_Device->SetRenderTarget(IdStage, m_OldRenderTarget);
 	 CHECKED_RELEASE(m_OldRenderTarget);
-}void CTexture::CaptureFrameBuffer(size_t IdStage)
+}
+
+void CTexture::CaptureFrameBuffer(size_t IdStage)
 {
 	LPDIRECT3DDEVICE9 l_Device=GRAPHM->GetDevice();
 	LPDIRECT3DSURFACE9 l_RenderTarget, l_Surface;
@@ -73,7 +77,9 @@ bool CTexture::SetAsRenderTarget(size_t IdStage)
 	l_Device->GetRenderTarget(IdStage,&l_RenderTarget);
 	l_Device->StretchRect(l_RenderTarget,NULL, l_Surface,NULL,D3DTEXF_NONE);
 	l_RenderTarget->Release();
-}CTexture::TFormatType CTexture::GetFormatTypeFromString(const std::string &FormatType)
+}
+
+CTexture::TFormatType CTexture::GetFormatTypeFromString(const std::string &FormatType)
 {
 	if(FormatType=="R32F")
 		return CTexture::R32F;
@@ -90,4 +96,6 @@ bool CTexture::SetAsRenderTarget(size_t IdStage)
 		//Info("Format Type '%s' not recognized", FormatType.c_str());
 	}
 	return CTexture::A8R8G8B8;
-}
+}
+
+

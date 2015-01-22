@@ -116,7 +116,8 @@ public:
 	bool SetAsRenderTarget(size_t IdStage=0);
 	void UnsetAsRenderTarget(size_t IdStage=0);
 	void CaptureFrameBuffer(size_t IdStage);
-	CTexture::TFormatType CTexture::GetFormatTypeFromString(const std::string &FormatType);
+	CTexture::TFormatType CTexture::GetFormatTypeFromString(const std::string &FormatType);
+
 };
 
 

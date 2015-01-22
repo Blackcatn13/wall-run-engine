@@ -124,7 +124,7 @@ void CAnimatedInstanceModel::Update(float ElapsedTime)
 
 	 RM->SetTransform(getTransform());
 	 RM->DrawAxis(8.0f);
-	RenderModelBySoftware(RM);
+	RenderModelByHardware(RM);
  }
 
  void CAnimatedInstanceModel::LoadTextures()
