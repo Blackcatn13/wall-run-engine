@@ -24,8 +24,6 @@ class CEffectManager : public CMapManager<CEffectTechnique>
 		Mat44f m_LightViewMatrix, m_ShadowProjectionMatrix;
 		Vect3f m_CameraEye;
 		CMapManager<CEffect> m_Effects;
-		CEffectTechnique *m_StaticMeshTechnique;
-		CEffectTechnique *m_AnimatedModelTechnique;
 		std::string m_FileName;
 	public:
 		CEffectManager();
@@ -52,10 +50,6 @@ class CEffectManager : public CMapManager<CEffectTechnique>
 		size_t GetMaxLights() const;
 		CEffect * GetEffect(const std::string &Name);
 		CEffectTechnique * GetEffectTechnique(const std::string &Name);
-		CEffectTechnique * GetStaticMeshTechnique() const;
-		void SetStaticMeshTechnique(CEffectTechnique *StaticMeshTechnique);
-		CEffectTechnique * GetAnimatedModelTechnique() const;
-		void SetAnimatedModelTechnique(CEffectTechnique *AnimatedModelTechnique);
 		void CleanUp();
 };
 

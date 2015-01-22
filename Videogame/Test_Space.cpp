@@ -52,9 +52,9 @@ CTest_Space::~CTest_Space(void)
 {
     delete m_ObjectFPS;
     delete m_ObjectThPS;
-    delete m_ThPSCamera;
+    //delete m_ThPSCamera;
 //    delete m_ThPSCamera1;
-    delete m_FPSCamera;
+    //delete m_FPSCamera;
 
 }
 

@@ -40,7 +40,7 @@ class CLight : public CObject3D
 		m_DynamicShadowMapRenderableObjectsManagers;
 		Mat44f m_ViewShadowMap, m_ProjectionShadowMap;
 	public:
-	//	CLight();
+		CLight();
 		virtual ~CLight();
 		void SetName(const std::string &Name)
 		{
@@ -162,12 +162,8 @@ class CLight : public CObject3D
 		{
 			m_ProjectionShadowMap;
 		}
-	
 		void BeginRenderEffectManagerShadowMap(CEffect *Effect);
-
 };
-
-
 
 
 #endif

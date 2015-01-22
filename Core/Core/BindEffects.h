@@ -79,10 +79,6 @@ void RegisterEffects()
 	.def("get_max_lights", & CEffectManager::GetMaxLights)
 	.def("get_effect", & CEffectManager::GetEffect)
 	.def("get_effect_technique", & CEffectManager::GetEffectTechnique)
-	.def("get_static_mesh_technique", & CEffectManager::GetStaticMeshTechnique)
-	.def("get_static_mesh_mechnique", & CEffectManager::SetStaticMeshTechnique)
-	.def("get_animated_model_technique", & CEffectManager::GetAnimatedModelTechnique)
-	.def("set_animated_model_technique", & CEffectManager::SetAnimatedModelTechnique)
 	.def("cleanUp", & CEffectManager::CleanUp)
 	];
 

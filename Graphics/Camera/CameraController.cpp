@@ -22,6 +22,15 @@ CCameraController::CCameraController() : m_Speed(2),
 {
 }
 
+CCameraController::~CCameraController()
+{
+	Destroy();
+	for(map2Object::iterator it = m_Objects.begin(); it != m_Objects.end(); ++it) {
+		CHECKED_DELETE(it->second);
+	}
+	m_Objects.clear();
+}
+
 void CCameraController::AddNewObject(std::string objName, CObject3D* obj)
 {
     m_Objects.insert(PairString2Object(objName, obj));
@@ -29,7 +38,8 @@ void CCameraController::AddNewObject(std::string objName, CObject3D* obj)
 
 void CCameraController::AddNewCamera(std::string camName, CCamera* cam)
 {
-    m_Cameras.insert(PairString2Camera(camName, cam));
+    //m_Cameras.insert(PairString2Camera(camName, cam));
+	AddResource(camName, cam);
 }
 
 void CCameraController::Update(float dt)
@@ -138,7 +148,7 @@ void CCameraController::CamUpdates(CCamera::ETypeCamera camType, float dt)
 void CCameraController::Update(std::string camera, float dt)
 {
     CCamera* aux = m_ActiveCamera;
-    m_ActiveCamera = m_Cameras[camera];
+    m_ActiveCamera = m_Resources[camera];
     Update(dt);
     m_ActiveCamera = aux;
 }
@@ -166,7 +176,7 @@ bool CCameraController::Load(const std::string &FileName)
                     CCameraKeyController *l_CameraKeyController = new CCameraKeyController();
                     l_CameraKeyController->LoadXML(l_file);
                     bool l_Ret = AddResource(l_Name, l_CameraKeyController);
-                    m_Cameras.insert(PairString2Camera(l_Name, l_CameraKeyController));
+                    //m_Cameras.insert(PairString2Camera(l_Name, l_CameraKeyController));
                     if (l_Ret == false) {
                         CHECKED_DELETE(l_CameraKeyController);
                     }
@@ -183,9 +193,10 @@ bool CCameraController::Load(const std::string &FileName)
                     float l_pitch = -atan2(l_V.y, sqrt((l_V.z * l_V.z) + (l_V.x * l_V.x)));
                     float l_roll = 0.0f;
                     CObject3D* m_Object = new CObject3D(pos, l_yaw, l_pitch, l_roll);
+					m_Objects.insert(PairString2Object(l_Name, m_Object));
                     CFPSCamera* cam = new CFPSCamera(l_near_plane, l_far_plane, l_fov, 1, m_Object);
                     AddResource(l_Name, cam);
-                    m_Cameras.insert(PairString2Camera(l_Name, cam));
+                    //m_Cameras.insert(PairString2Camera(l_Name, cam));
                 }
             }
         }

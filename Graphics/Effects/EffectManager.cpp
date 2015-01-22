@@ -25,6 +25,7 @@ CEffectManager::CEffectManager()
 }
 CEffectManager::~CEffectManager()
 {
+	CleanUp();
 }
 const Mat44f & CEffectManager::GetWorldMatrix() const
 {
@@ -184,22 +185,7 @@ CEffectTechnique * CEffectManager::GetEffectTechnique(const std::string &Name)
 	CEffectTechnique *effectTechnique = GetResource(Name);
 	return effectTechnique;
 }
-CEffectTechnique * CEffectManager::GetStaticMeshTechnique() const
-{
-	return m_StaticMeshTechnique;
-}
-void CEffectManager::SetStaticMeshTechnique(CEffectTechnique *StaticMeshTechnique)
-{
-	m_StaticMeshTechnique = StaticMeshTechnique;
-}
-CEffectTechnique * CEffectManager::GetAnimatedModelTechnique() const
-{
-	return m_AnimatedModelTechnique;
-}
-void CEffectManager::SetAnimatedModelTechnique(CEffectTechnique *AnimatedModelTechnique)
-{
-	m_AnimatedModelTechnique = AnimatedModelTechnique;
-}
+
 void CEffectManager::CleanUp()
 {
 	m_DefaultTechniqueEffectMap.clear();

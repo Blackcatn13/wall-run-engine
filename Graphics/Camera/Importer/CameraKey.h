@@ -11,6 +11,7 @@ public:
 	float					m_Time;
 
 	CCameraKey(CCameraInfo *CameraInfo, float Time);
+	~CCameraKey();
 	
 	float GetTime() { return m_Time;}
 };

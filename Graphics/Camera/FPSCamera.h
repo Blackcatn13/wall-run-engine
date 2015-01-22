@@ -19,7 +19,7 @@ public:
 
 	CFPSCamera(float zn, float zf, float fov, float aspect, CObject3D* object3D);
 	CFPSCamera();
-	virtual ~CFPSCamera(){/*Nothing*/;}
+	virtual ~CFPSCamera() {;}
 
 	//---Interfaz de CCamera
 	virtual Vect3f					GetDirection		() const;

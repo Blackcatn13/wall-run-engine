@@ -5,8 +5,12 @@
 
 class CEffectManager;
 
-//CLight::CLight()
-//{}
+CLight::CLight()
+{
+	m_StaticShadowMap = NULL;
+	m_DynamicShadowMap = NULL;
+	m_ShadowMaskTexture = NULL;
+}
 
 CLight::~CLight()
 {

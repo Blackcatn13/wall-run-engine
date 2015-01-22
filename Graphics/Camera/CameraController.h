@@ -36,7 +36,7 @@ private:
     std::string		m_FileName;
 public:
     CCameraController();
-
+	~CCameraController();
     void AddNewCamera(std::string camName, CCamera* cam);
     void AddNewObject(std::string objName, CObject3D* obj);
     void Update(std::string camera, float dt);
@@ -51,7 +51,7 @@ public:
     }
     void setActiveCamera(std::string cam)
     {
-        m_ActiveCamera = m_Cameras[cam];
+        m_ActiveCamera = m_Resources[cam];
     }
 
     //CINEMATICS

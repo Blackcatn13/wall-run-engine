@@ -222,7 +222,8 @@ void CAnimatedInstanceModel::RenderModelBySoftware(CGraphicsManager *RM)
 void CAnimatedInstanceModel::RenderModelByHardware(CGraphicsManager *RM)
 {
 	//CEffectManager &l_EffectManager = CCORE->GetEffectManager();
-	CEffectTechnique *l_EffectTechnique = EFFECTM->GetAnimatedModelTechnique();
+	unsigned short l_Id=CAL3D_HW_VERTEX::GetVertexType();
+	CEffectTechnique *l_EffectTechnique = EFFECTM->GetEffectTechnique(EFFECTM->GetTechniqueEffectNameByVertexDefault(CAL3D_HW_VERTEX::GetVertexType()));
 	if(l_EffectTechnique==NULL)
 		l_EffectTechnique=m_EffectTechnique;
 	if(l_EffectTechnique==NULL)
@@ -255,10 +256,10 @@ void CAnimatedInstanceModel::RenderModelByHardware(CGraphicsManager *RM)
 				memcpy(&l_Matrix[b*3*4], &transformation[b], sizeof(float)*3*4);
 			}
 			l_Effect->SetFloatArray(m_Effect->GetBonesParameter(),	(float *)l_Matrix,(l_CalHardwareModel->getBoneCount())*3*4);
-			m_TextureList[0]->Activate(0);
-			m_NormalTextureList[0]->Activate(1);
+			m_TextureList[l_CalHardwareModel->getVectorHardwareMesh()[hardwareMeshId].meshId]->Activate(0);
+			//m_NormalTextureList[0]->Activate(1);
 			m_AnimatedCoreModel->GetRenderableVertexs()->Render(GRAPHM, l_EffectTechnique, l_CalHardwareModel->getBaseVertexIndex(), 0, 
-				l_CalHardwareModel->getVertexCount(), l_CalHardwareModel->getStartIndex(),l_CalHardwareModel->getFaceCount());
+				l_CalHardwareModel->getVertexCount(), l_CalHardwareModel->getStartIndex(),l_CalHardwareModel->getFaceCount()*3);
 		}
 	}
 }
