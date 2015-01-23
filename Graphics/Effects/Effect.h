@@ -29,7 +29,7 @@ class CEffect
 		D3DXHANDLE m_WorldViewMatrixParameter, m_ViewProjectionMatrixParameter, m_WorldViewProjectionMatrixParameter;
 		D3DXHANDLE m_ViewToLightProjectionMatrixParameter;
 		D3DXHANDLE m_LightEnabledParameter, m_LightsTypeParameter, m_LightsPositionParameter, m_LightsDirectionParameter, m_LightsAngleParameter, m_LightsColorParameter;
-		D3DXHANDLE m_LightsFallOffParameter, m_LightsStartRangeAttenuationParameter, m_LightsEndRangeAttenuationParameter;
+		D3DXHANDLE m_LightsFallOffParameter, m_LightsStartRangeAttenuationParameter, m_LightsEndRangeAttenuationParameter, m_LightsIntensityParameter;
 		D3DXHANDLE m_CameraPositionParameter;
 		D3DXHANDLE m_BonesParameter;
 		D3DXHANDLE m_TimeParameter;

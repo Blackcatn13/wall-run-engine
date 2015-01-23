@@ -27,6 +27,7 @@ void CEffect::SetNullParameters()
 	m_LightsFallOffParameter = NULL;
 	m_LightsStartRangeAttenuationParameter = NULL;
 	m_LightsEndRangeAttenuationParameter = NULL;
+	m_LightsIntensityParameter = NULL;
 	m_CameraPositionParameter = NULL;
 	m_BonesParameter = NULL;
 	m_TimeParameter = NULL;
@@ -76,6 +77,7 @@ bool CEffect::LoadEffect()
 	GetParameterBySemantic("LIGHTSFALLOFF", m_LightsFallOffParameter);
 	GetParameterBySemantic("LIGHTSSTARTRANGEATTENUATION", m_LightsStartRangeAttenuationParameter);
 	GetParameterBySemantic("LIGHTSENDRANGEATTENUATION", m_LightsEndRangeAttenuationParameter);
+	GetParameterBySemantic("LIGHTSINTENSITY", m_LightsIntensityParameter);
 	GetParameterBySemantic("CAMERAPOSITION", m_CameraPositionParameter);
 	GetParameterBySemantic("BONES", m_BonesParameter);
 	GetParameterBySemantic("TIME", m_TimeParameter);

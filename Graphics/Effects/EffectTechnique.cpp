@@ -46,6 +46,10 @@ bool CEffectTechnique::BeginRender()
 	{
 		l_Effect->SetBoolArray(m_Effect->GetLightEnabledParameter(), &m_Effect->GetLightsEnabled()[0], MAX_LIGHTS_BY_SHADER);
 	}
+	//if(m_UseIntensity)
+	//{
+		//l_Effect->
+	//}
 	if(m_UseLightAmbientColor)
 	{
 		l_Effect->SetFloatArray(m_Effect->GetLightsColorParameter(), &m_Effect->GetLightsColor()[0].x, MAX_LIGHTS_BY_SHADER*3);
