@@ -20,7 +20,9 @@ CAnimatedCoreModel::CAnimatedCoreModel()
 
 CAnimatedCoreModel::~CAnimatedCoreModel()
 {
-	//CHECKED_DELETE(m_CalCoreModel);
+	CHECKED_DELETE(m_CalCoreModel);
+	CHECKED_DELETE(m_RenderableVertexs);
+	CHECKED_DELETE(m_CalHardwareModel);
 }
 
 

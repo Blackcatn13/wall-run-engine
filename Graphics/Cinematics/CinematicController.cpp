@@ -9,6 +9,7 @@ CCinematicController::CCinematicController()
 
 CCinematicController::~CCinematicController()
 {
+	Destroy();
 }
 
 bool CCinematicController::Load(const std::string &FileName)

@@ -12,7 +12,11 @@ CAnimatedModelManager::CAnimatedModelManager()
 	CalLoader::setLoadingMode(LOADER_ROTATE_X_AXIS);
 }
 
-CAnimatedModelManager::~CAnimatedModelManager(){}
+CAnimatedModelManager::~CAnimatedModelManager()
+{
+	Destroy();
+}
+
 CAnimatedCoreModel * CAnimatedModelManager::GetCore(const std::string &Name, const std::string &Path)
 {
 	//TODO Name o Path + Name
