@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <static_meshes>
-	<static_mesh name="Plane009" filename=".\Data\level2\meshes//Plane009.mesh"/>
+	<static_mesh name="Box001" filename=".\Data\level2\meshes//Box001.mesh"/>
 </static_meshes>
