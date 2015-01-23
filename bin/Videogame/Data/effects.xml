@@ -2,8 +2,11 @@
 <effects>
 	<default_technique vertex_type="19" technique="BasicTechnique"/>
 	<default_technique vertex_type="413" technique="Cal3DTechnique"/>
+	<default_technique vertex_type="19" technique="DirectionalLightTechnique"/>
 	<effect name="BasicEffect" file="data/effects/BasicEffect.fx"/>
 	<effect name="Cal3DEffect" file="data/effects/Cal3D.fx"/>
+	<effect name="DirectionalLightEffect" file="data/effects/DirectionalLighting.fx"/>
 	<technique name="BasicTechnique" effect="BasicEffect" use_world_matrix="true" use_world_view_projection_matrix="true"  />
 	<technique name="Cal3DTechnique" effect="Cal3DEffect" use_world_matrix="true" use_world_view_projection_matrix="true"  />
+	<technique name="DirectionalLightTechnique" effect="DirectionalLightEffect" use_world_matrix="true" use_world_view_projection_matrix="true" num_of_lights="3" use_lights="true" use_inverse_view_matrix="true" />
 </effects>

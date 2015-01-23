@@ -97,7 +97,7 @@ bool CEffectTechnique::BeginRender()
 	}
 	if(m_NumOfLights>0)
 	{
-		if(m_NumOfLights>3)
+		if(m_NumOfLights<4)
 		{
 			m_Effect->SetLights(m_NumOfLights);
 		}

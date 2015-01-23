@@ -14,7 +14,7 @@ bool MemLeaks::MemoryBegin()
 {
     //Si se ponen threads hay que bloquear este acceso con un mute	x
     _CrtSetDbgFlag ( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
-    //_CrtSetBreakAlloc (8065);
+    //_CrtSetBreakAlloc (22168);
     //_CrtSetReportMode ( _CRT_ERROR, _CRTDBG_MODE_DEBUG);
     //atexit(FileStringDestroy);
     //atexit(DumpLeaks);

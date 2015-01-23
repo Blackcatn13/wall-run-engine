@@ -11,8 +11,9 @@
 template<class T>
 class CMapManager
 {
-protected:
+public:
     typedef std::map<std::string, T*> TMapResource;
+protected:
     TMapResource m_Resources;
 public:
     virtual T * GetResource(const std::string &Name)
@@ -50,7 +51,7 @@ public:
         m_Resources.clear();
     }
 
-	TMapResource GetResources()
+	TMapResource & GetResources()
 	{
 		return m_Resources;
 	}
