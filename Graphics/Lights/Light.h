@@ -7,8 +7,9 @@
 #include <vector>
 #include "Texture\Texture.h"
 #include <d3dx9.h>
-#include "Renderable\RenderableObjectsManager.h"
-#include "Effects\Effect.h"
+
+class CRenderableObjectsManager;
+class CEffect;
 
 class CGraphicsManager;
 

@@ -3,7 +3,9 @@
 #include "Light.h"
 #include "Math\Vector3.h"
 #include "Math\Vector2.h"
-#include "GraphicsManager.h"
+
+
+class CGraphicsManager;
 
 class CDirectionalLight : public CLight
 {

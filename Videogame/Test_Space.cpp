@@ -31,7 +31,6 @@
 
 #include "Effects\EffectManager.h"
 
-#include "Lights\LightManager.h"
 #include "Core\ScriptedController.h"
 
 
@@ -62,8 +61,8 @@ void CTest_Space::Init()
 {
 
 	/* Script Manager Tests*/
-//	SCRIPTM->RunFile(".\\Data\\scripted_controller.lua");
-//	SCRIPTM->Load(".\\Data\\lua_actions.xml");
+//	SCRIPTM->RunFile(".\\Data\\test2.lua");
+//	
 //	SCRIPTM->RunFile(SCRIPTM->GetScriptsMap().find("test2")->second);
 	/*float l_ElapsedTime=0.3f;
 	char l_Text[256];
@@ -85,11 +84,11 @@ void CTest_Space::Init()
 	CCORE->SetCameraController(m_CameraController);
     m_Camera = m_CameraController->getActiveCamera();
     m_PlayerMode = true;
-	m_ScriptedController = new CScriptedController();
-	RENDM->AddResource("ScriptedController", m_ScriptedController);
+//	m_ScriptedController = new CScriptedController();
+//	RENDM->AddResource("ScriptedController", m_ScriptedController);
 	//Lights
-	LIGHTM->Load(".\\Data\\lights.xml");
-
+	//LIGHTM->Load(".\\Data\\lights.xml");
+	//SCRIPTM->Load(".\\Data\\lua_actions.xml");
 	EFFECTM->Load(".\\Data\\effects.xml");
 	
 	
@@ -205,23 +204,14 @@ void CTest_Space::Update(float dt)
     else
         m_CameraController->Update(dt);
 
-	if(ACT2IN->DoAction("ReloadScripts"))
+	if(ACT2IN->DoAction("ReloadScriptedController"))
 	{
-		SCRIPTM->Reload();
+		SCRIPTM->Reload(".\\Data\\scripted_controller.lua");
 	//	SCRIPTM->RunFile(SCRIPTM->GetScriptsMap().find("test2")->second);
-		SCRIPTM->RunFile(".\\Data\\scripted_controller.lua");
-		
+		//SCRIPTM->RunFile(".\\Data\\scripted_controller.lua");
 	}
 
-	if(ACT2IN->DoAction("ReloadEffects"))
-	{
-		EFFECTM->Reload();
-	}
-
-	if(ACT2IN->DoAction("ReloadLights"))
-	{
-		LIGHTM->Reload();
-	}
+	
 
     skip += dt;
     tTerra1_yaw += dt * 30 * 0.005;
@@ -244,7 +234,7 @@ void CTest_Space::Render()
     GRAPHM->DrawAxis(10);
     //text->Activate(0);
     RENDM->Render(GRAPHM);
-	LIGHTM->Render(GRAPHM);
+
     //g_RV->Render(CCORE->GetGraphicsManager(º+-));
     /* Mat44f t;
      Mat44f trot1;

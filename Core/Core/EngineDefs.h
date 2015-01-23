@@ -18,6 +18,7 @@ typedef struct Conf_info {
     std::string                 CurrentLanguage;
     std::string                 MeshesPath;
     std::string                 RenderablePath;
+	std::string					LightsPath;
 } CONFIG_INFO;
 
 

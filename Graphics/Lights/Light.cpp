@@ -1,7 +1,8 @@
 #include "Lights\Light.h"
 #include "GraphicsManager.h"
-#include "Core\Core.h"
 #include "Effects\EffectManager.h"
+#include "Effects\Effect.h"
+#include "Renderable\RenderableObjectsManager.h"
 
 class CEffectManager;
 
@@ -27,12 +28,12 @@ void CLight::Render(CGraphicsManager *RM)
 		Mat44f t;
 	t.SetIdentity();
 	CColor l_Color =  CColor(GetColor().GetRed(), GetColor().GetGreen(), GetColor().GetBlue());
-	GRAPHM->SetTransform(t);
+	RM->SetTransform(t);
 	Mat44f l_trans;
 	l_trans.SetIdentity();
 	l_trans.Translate(Vect3f(GetPosition()));
-	GRAPHM->SetTransform(l_trans);
-	GRAPHM->DrawCube(0.5f, l_Color);
+	RM->SetTransform(l_trans);
+	RM->DrawCube(0.5f, l_Color);
 	printf("I'm a light \n");
 }
 

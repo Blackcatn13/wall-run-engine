@@ -12,11 +12,21 @@
 #include "BindAnimatedModels.h"
 #include "BindVectors.h"
 #include "MathLuaUtils.h"
-
-#include "Camera\Camera.h"
-#include "Camera\FPSCamera.h"
-#include "Camera\ThPSCamera.h"
-#include "Camera\CameraController.h"
+#include "Utils\Visible.h"
+#include "Core\Core.h"
+#include "Utils\Named.h"
+#include "Renderable\RenderableObject.h"
+#include "Renderable\RenderableObjectsManager.h"
+#include "Object\Object3D.h"
+#include "Utils\MapManager.h"
+#include "Texture\TextureManager.h"
+#include "Texture\Texture.h"
+#include "Math\Vector3.h"
+#include "Math\Matrix44.h"
+#include "Math\Matrix33.h"
+#include "Math\Matrix34.h"
+#include "Utils\MapManager.h"
+#include "Utils\TemplatedVectorMapManager.h"
 
 //Código de la función Alert que se llamará al generarse algún error de LUA
 int Alert(/*IN */lua_State * State)
@@ -46,6 +56,9 @@ int Alert(/*IN */lua_State * State)
 
 CScriptManager::CScriptManager()
 {
+	m_DeleteMap=false;
+	m_FileName="";
+	m_ScriptsMap.clear();
 }
 
 
@@ -114,10 +127,16 @@ void CScriptManager::Load(const std::string &XMLFile)
 		{
 			int count = m.GetNumChildren();
 			for (int i = 0; i < count; ++i)
-			{
+			{	
+				std::string name = m(i).GetName();
+				if(name=="script"){
 					std::string l_name = m(i).GetPszISOProperty("name", "");
 					std::string l_file = m(i).GetPszISOProperty("file", "");
+					bool l_autoRun = m(i).GetBoolProperty("auto_run", true);
+					if(l_autoRun)
+						RunFile(l_file);
 					m_ScriptsMap.insert ( std::pair<std::string,std::string>(l_name,l_file) );
+				}
 			} 
 			m_DeleteMap = true;
 		}
@@ -127,8 +146,19 @@ void CScriptManager::Load(const std::string &XMLFile)
 void CScriptManager::Reload()
 {
 	if(m_DeleteMap)
+		for (std::map<std::string, std::string>::iterator it = m_ScriptsMap.begin(); it != m_ScriptsMap.end(); it++) {
+			it->second.clear();
+        }
 			m_ScriptsMap.clear();
 	Load(m_FileName);
+}
+
+void CScriptManager::Reload(std::string File)
+{
+	/*if(m_DeleteMap)
+			m_ScriptsMap.clear();
+	Load(m_FileName);*/
+	RunFile(File);
 }
 
 
@@ -142,6 +172,8 @@ void CScriptManager::RegisterLUAFunctions()
         .def("run_file", & CScriptManager::RunFile)
         .def("load", & CScriptManager::Load)
 		.def("get_scripts_map", & CScriptManager::GetScriptsMap)
+		.def("set_from_basis",(void (CScriptManager::*)())  & CScriptManager::Reload)
+		.def("set_from_basis",(void (CScriptManager::*)(std::string))  & CScriptManager::Reload)
         ];
 
 		RegisterVectors();

@@ -1,5 +1,6 @@
 <lua_scripts>	
 	<script name="test2" file="Data/test2.lua" />
-	<script name="test" file="Data/test.lua" />
+	<script name="test" file="Data/test.lua" auto_run = "false"/>
+	<renderable_script name="scriptedController" file="Data/scripted_controller.lua" />
 </lua_scripts>
 

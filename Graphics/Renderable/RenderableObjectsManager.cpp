@@ -5,6 +5,7 @@
 #include "Core\Core.h"
 #include "AnimatedModels\AnimatedModelManager.h"
 #include "AnimatedModels\AnimatedInstanceModel.h"
+#include "Core\ScriptedController.h"
 
 #include <assert.h>
 
@@ -62,13 +63,14 @@ CRenderableObject * CRenderableObjectsManager::AddAnimatedInstanceModel(CXMLTree
 
 void CRenderableObjectsManager::Load(const std::string &FileName)
 {
-    m_FileName = FileName;
     CXMLTreeNode newFile;
     if (!newFile.LoadFile(FileName.c_str())) {
         printf("ERROR loading the file.");
     }
     CXMLTreeNode  m = newFile["renderable_objects"];
+	CXMLTreeNode m2 = newFile["lua_scripts"];
     if (m.Exists()) {
+		 m_FileName = FileName;
         //cargamos aqui el animated models para no hacerlo varias veces dentro del bucle
         //CCore::GetInstance()->GetAnimatedModelManager()->Load(".\\Data\\level1\\animated_models.xml"); //se carga animatedmodels.xml
         CCore::GetInstance()->GetAnimatedModelManager()->Load(".\\Data\\animated_models.xml"); //se carga animatedmodels.xml
@@ -114,10 +116,31 @@ void CRenderableObjectsManager::Load(const std::string &FileName)
             }
         }
     }
+	if(m2.Exists())
+	{
+		m_FileName2 = FileName;
+		int count = m2.GetNumChildren();
+        for (int i = 0; i < count; ++i) 
+		{
+            std::string name = m2(i).GetName();
+            if (name == "renderable_script") 
+			{
+				std::string l_name = m2(i).GetPszISOProperty("name", "");
+				std::string l_file = m2(i).GetPszISOProperty("file", "");
+				if(l_name == "scriptedController")
+				{
+					CScriptedController *l_ScriptedController = new CScriptedController();
+					AddResource(l_name, l_ScriptedController);
+				}
+				
+			}
+		}
+	}
 }
 
 void CRenderableObjectsManager::Reload()
 {
     Destroy();
     Load(m_FileName);
+	Load(m_FileName2);
 }

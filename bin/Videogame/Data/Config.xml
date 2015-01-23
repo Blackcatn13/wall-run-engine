@@ -18,6 +18,7 @@
   <Sound soundXML="./Data/Sounds/LaberynthSounds.xml"/>
   <Meshes meshesXML="./Data/level1/static_meshes.xml"/>
   <Renderable renderXML="./Data/level1/renderable_objects.xml"/> 
+  <Lights lightsXML="./Data/level1/lights.xml"/> 
   <Avi aviXML=""/>
   <PhysX initPhysX="true"/>
   <ComputerVision initComputerVision="false"/>

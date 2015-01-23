@@ -117,6 +117,11 @@
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_F7"/>
 	</action>
 	
+	<action name="ReloadScriptedController">
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_7"/>
+	</action>
+	
 	<action name="ReloadEffects">
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_F6"/>
 	</action>

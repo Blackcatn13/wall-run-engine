@@ -47,19 +47,21 @@ void CCore::Init(HWND handler)
     m_TextureManager = new CTextureManager();
     m_StaticMeshManager = new CStaticMeshManager();
     m_StaticMeshManager->Load(m_Config.MeshesPath);
+	m_ScriptManager = new CScriptManager();
+    m_ScriptManager->Initialize();
     m_RenderableManager = new CRenderableObjectsManager();
     m_AnimatedModelManager = new CAnimatedModelManager();
     m_RenderableManager->Load(m_Config.RenderablePath);
-    m_ScriptManager = new CScriptManager();
-    m_ScriptManager->Initialize();
+	m_RenderableManager->Load(".\\Data\\lua_actions.xml");
     m_LightManager = new CLightManager();
+	m_LightManager->Load(m_Config.LightsPath);
     m_CinematicManager = new CCinematicController();
     m_CinematicManager->Load(".\\Data\\level3\\cinematic.xml");
 
-	m_RenderableManager->Load(m_Config.RenderablePath);
+	/*m_RenderableManager->Load(m_Config.RenderablePath);
 	m_ScriptManager = new CScriptManager();
 	m_ScriptManager->Initialize();
-	m_LightManager = new CLightManager();
+	m_LightManager = new CLightManager();*/
 
 }
 
@@ -95,6 +97,7 @@ CCore* CCore::GetInstance()
 void CCore::Render()
 {
     //m_GraphicsManager->Render();
+	m_LightManager->Render(GRAPHM);
     m_SoundManager->Render();
 }
 

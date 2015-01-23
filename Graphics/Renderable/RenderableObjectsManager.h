@@ -13,7 +13,7 @@ class CGraphicsManager;
 class CRenderableObjectsManager : public CTemplatedVectorMapManager<CRenderableObject>
 {
 private:
-    std::string m_FileName;
+    std::string m_FileName, m_FileName2;
 public:
     CRenderableObjectsManager();
     virtual ~CRenderableObjectsManager();
