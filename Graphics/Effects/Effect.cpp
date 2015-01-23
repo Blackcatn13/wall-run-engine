@@ -99,7 +99,8 @@ CEffect::~CEffect()
 
 bool CEffect::SetLights(size_t NumOfLights)
 {
-	std::map<std::string, CLight*>::iterator it = LIGHTM->GetResources().begin();
+	CLightManager::TMapResource::iterator it = LIGHTM->GetResources().begin();
+	//std::map<std::string, CLight*>::iterator it = LIGHTM->GetResources().begin();
 	int l_lightIndex = 0;
 	while(it != LIGHTM->GetResources().end() && l_lightIndex < NumOfLights)
 	{

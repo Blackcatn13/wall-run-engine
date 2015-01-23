@@ -112,7 +112,7 @@ function on_update_scripted_controller(l_ElapsedTime)
 	end
 	
 	--local type_camera2 = active_camera.m_eTypeCamera;
-	if camObject:get_position().x >= xMin and camObject:get_position().x <= xMax and camObject:get_position().z >= zMin and camObject:get_position().z <= zMax then
+--[[	if camObject:get_position().x >= xMin and camObject:get_position().x <= xMax and camObject:get_position().z >= zMin and camObject:get_position().z <= zMax then
 		--Aqui launcher de cinematica 2
 		local name = "Tete"
 		local n1 = CNamed();
@@ -122,7 +122,7 @@ function on_update_scripted_controller(l_ElapsedTime)
 		cam_Controller:play(true);
 		cin_Controller:get_resource("DestroyW"):play(true);
 		
-	end
+	end]]
 	return 0;
 end
 

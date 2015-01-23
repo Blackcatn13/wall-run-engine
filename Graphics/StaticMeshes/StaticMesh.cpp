@@ -143,7 +143,8 @@ bool CStaticMesh::ReLoad ()
 }
 void CStaticMesh::Render (CGraphicsManager *RM)
 {
-	CEffectTechnique *l_EffectTechnique=EFFECTM->GetEffectTechnique("BasicTechnique");
+	//CEffectTechnique *l_EffectTechnique=EFFECTM->GetEffectTechnique("BasicTechnique");
+	CEffectTechnique *l_EffectTechnique=EFFECTM->GetEffectTechnique("DirectionalLightTechnique");
 
     for (int i = 0; i < m_RVs.size(); ++i) {
         // TODO iterate m_textures
