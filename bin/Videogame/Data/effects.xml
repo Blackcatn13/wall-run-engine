@@ -8,5 +8,5 @@
 	<effect name="DirectionalLightEffect" file="data/effects/DirectionalLighting.fx"/>
 	<technique name="BasicTechnique" effect="BasicEffect" use_world_matrix="true" use_world_view_projection_matrix="true"  />
 	
-	<technique name="DirectionalLightTechnique" effect="DirectionalLightEffect" use_world_matrix="true" use_world_view_projection_matrix="true" num_of_lights="3" use_lights="true" use_inverse_view_matrix="true" />
+	<technique name="DirectionalLightTechnique" effect="DirectionalLightEffect" use_world_matrix="true" use_world_view_projection_matrix="true" num_of_lights="3" use_lights="true" use_light_ambient_color="true" use_inverse_view_matrix="true" />
 </effects>

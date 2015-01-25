@@ -46,7 +46,7 @@ float4 RenderNormalsPS20(PNormalVertex IN) : COLOR
 			}
 		}
 	}
-	return float4(g_LightDirection[0],1);
+	return float4(g_LightDirection[2],1);
     //float3 l_DiffuseContrib=saturate(dot(l_Nn, -g_LightDir))*l_DiffuseColor.xyz*g_LightColor;
     //float3 l_CameraPostion=g_ViewMatrix[3].xyz;
     //float3 l_Hn=normalize(normalize(l_CameraPostion-IN.WorldPosition)-g_LightDir);
