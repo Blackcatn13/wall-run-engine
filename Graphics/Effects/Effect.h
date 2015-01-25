@@ -33,6 +33,12 @@ class CEffect
 		D3DXHANDLE m_CameraPositionParameter;
 		D3DXHANDLE m_BonesParameter;
 		D3DXHANDLE m_TimeParameter;
+
+		////
+		D3DXHANDLE m_UseShadowMaskTextureParameter;
+		D3DXHANDLE m_UseStaticShadowmapParameter;
+		D3DXHANDLE m_UseDynamicShadowmapParameter;
+		////
 		void SetNullParameters();
 		void GetParameterBySemantic(const std::string &SemanticName, D3DXHANDLE &l_Handle);
 		bool LoadEffect();
@@ -43,6 +49,7 @@ class CEffect
 		bool SetLights(size_t NumOfLights);
 		bool Load(const std::string &FileName);
 		bool Reload();
+		void SetShadowMapParameters(bool UseShadowMaskTexture, bool UseStaticShadowmap, bool UseDynamicShadowmap);
 		//Getters
 		BOOL * GetLightsEnabled(){return m_LightsEnabled;}
 		int * GetLightsType(){return m_LightsType;}

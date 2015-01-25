@@ -34,6 +34,13 @@ void CEffect::SetNullParameters()
 	m_InverseWorldMatrixParameter = NULL;
 	m_InverseViewMatrixParameter = NULL;
 	m_InverseProjectionMatrixParameter = NULL;
+
+	////
+	m_UseShadowMaskTextureParameter = NULL;
+	m_UseStaticShadowmapParameter = NULL;
+	m_UseDynamicShadowmapParameter =NULL;
+		
+
 }
 
 void CEffect::GetParameterBySemantic(const std::string &SemanticName, D3DXHANDLE &l_Handle)
@@ -178,3 +185,10 @@ D3DXHANDLE CEffect::GetTechniqueByName(const std::string &TechniqueName)
 	D3DXHANDLE l_EffectTechnique=m_Effect->GetTechniqueByName(TechniqueName.c_str());
 	return l_EffectTechnique;
 }
+
+void CEffect::SetShadowMapParameters(bool UseShadowMaskTexture, bool UseStaticShadowmap, bool UseDynamicShadowmap)
+{
+	m_Effect->SetBool(m_UseShadowMaskTextureParameter, UseShadowMaskTexture ? TRUE : FALSE);
+	m_Effect->SetBool(m_UseStaticShadowmapParameter, UseStaticShadowmap ? TRUE : FALSE);
+	m_Effect->SetBool(m_UseDynamicShadowmapParameter, UseDynamicShadowmap ? TRUE : FALSE);
+}

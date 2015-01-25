@@ -32,7 +32,7 @@ void CLightManager::Load(const std::string &FileName)
 		for (int i = 0; i < count; ++i)
 		{
 			if(std::string("light")==m(i).GetName()) {
-	/*		//	XML type ejemplo
+			//	XML type ejemplo
 				std::string l_Name = m(i).GetPszISOProperty("name", "");
 				std::string l_Type = m(i).GetPszISOProperty("type", "");
 				Vect3f l_Pos = m(i).GetVect3fProperty("pos", (0.0f,0.0f,0.0f));
@@ -70,7 +70,7 @@ void CLightManager::Load(const std::string &FileName)
 					}
 				}
 
-				*/
+				
 
 				/*int l_OrthoShadowMapWidht = m(i).GetIntProperty("ortho_shadow_map_width", 0);										//<= Esto no está en el xml del pdf pero hará falta
 				int l_OrthoShadowMapHeight = m(i).GetIntProperty("ortho_shadow_map_height", 0);										//<= Esto no está en el xml del pdf pero hará falta
@@ -102,7 +102,7 @@ void CLightManager::Load(const std::string &FileName)
 
 				*/
 				//XML Type PDF
-				std::string l_Name = m(i).GetPszISOProperty("name", "");
+			/*	std::string l_Name = m(i).GetPszISOProperty("name", "");
 				std::string l_Type = m(i).GetPszISOProperty("type", "");
 				Vect3f l_Pos = m(i).GetVect3fProperty("pos", (0.0f,0.0f,0.0f));
 				Vect3f l_Dir = m(i).GetVect3fProperty("dir", (0.0f,0.0f,0.0f));
@@ -112,7 +112,7 @@ void CLightManager::Load(const std::string &FileName)
 				bool l_RenderShadows = m(i).GetFloatProperty("render_shadows",false);
 				float l_StartRange = m(i).GetFloatProperty("att_start_range",0.0f);
 				float l_EndRange = m(i).GetFloatProperty("att_end_range",0.0f);
-				float l_Intensity = m(i).GetFloatProperty("intensity",0.0f); 
+				float l_Intensity = m(i).GetFloatProperty("intensity",0.0f); */
 				
 				if(l_Type == "omni"){
 					COmniLight * l_OmniLight = new COmniLight();
@@ -124,7 +124,7 @@ void CLightManager::Load(const std::string &FileName)
 					l_OmniLight->SetStartRangeAttenuation(l_StartRange);
 					l_OmniLight->SetEndRangeAttenuation(l_EndRange);
 					/////////////////////////////////
-	/*				l_OmniLight->SetGenerateDynamicShadowMap(l_GenerateDynamicShadowMap);
+					l_OmniLight->SetGenerateDynamicShadowMap(l_GenerateDynamicShadowMap);
 					l_OmniLight->SetGenerateStaticShadowMap(l_GenerateStaticShadowMap);
 					l_OmniLight->SetMustUpdateStaticShadowMap(l_UpdateStaticShadowMap);
 					
@@ -141,7 +141,7 @@ void CLightManager::Load(const std::string &FileName)
 						//Aqui se le añadirá al CRenderableObjectsManager el valor de l_DynamicRenderableObjectsManager
 						l_OmniLight->GetDynamicShadowMapRenderableObjectsManagers().push_back(l_RenderableObjectManager);
 					}
-*/
+
 					AddResource(l_Name, l_OmniLight);
 				}
 				else if (l_Type == "directional"){
@@ -156,7 +156,7 @@ void CLightManager::Load(const std::string &FileName)
 					l_DirectionalLight->SetDirection(l_Dir);
 
 					/////////////////////////////////
-	/*				l_DirectionalLight->SetGenerateDynamicShadowMap(l_GenerateDynamicShadowMap);
+					l_DirectionalLight->SetGenerateDynamicShadowMap(l_GenerateDynamicShadowMap);
 					l_DirectionalLight->SetGenerateStaticShadowMap(l_GenerateStaticShadowMap);
 					l_DirectionalLight->SetMustUpdateStaticShadowMap(l_UpdateStaticShadowMap);
 					l_DirectionalLight->SetOrthoShadowMapSize((l_ShadowMapWith, l_ShadowMapHeight));
@@ -173,7 +173,7 @@ void CLightManager::Load(const std::string &FileName)
 						//Aqui se le añadirá al CRenderableObjectsManager el valor de l_DynamicRenderableObjectsManager
 						l_DirectionalLight->GetDynamicShadowMapRenderableObjectsManagers().push_back(l_RenderableObjectManager);
 					}
-*/
+
 					AddResource(l_Name, l_DirectionalLight);		
 				}else
 				{
@@ -190,7 +190,7 @@ void CLightManager::Load(const std::string &FileName)
 					l_SpotLight->SetFallOff(l_FallOff);
 
 					/////////////////////////////////
-		/*			l_SpotLight->SetGenerateDynamicShadowMap(l_GenerateDynamicShadowMap);
+					l_SpotLight->SetGenerateDynamicShadowMap(l_GenerateDynamicShadowMap);
 					l_SpotLight->SetGenerateStaticShadowMap(l_GenerateStaticShadowMap);
 					l_SpotLight->SetMustUpdateStaticShadowMap(l_UpdateStaticShadowMap);
 					l_SpotLight->SetOrthoShadowMapSize((l_ShadowMapWith, l_ShadowMapHeight));
@@ -207,7 +207,7 @@ void CLightManager::Load(const std::string &FileName)
 						//Aqui se le añadirá al CRenderableObjectsManager el valor de l_DynamicRenderableObjectsManager
 						l_SpotLight->GetDynamicShadowMapRenderableObjectsManagers().push_back(l_RenderableObjectManager);
 					}
-					*/
+					
 					AddResource(l_Name, l_SpotLight);
 				}
 			}

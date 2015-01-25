@@ -70,10 +70,10 @@ void CLight::BeginRenderEffectManagerShadowMap(CEffect *Effect)
 {
 	if(m_GenerateDynamicShadowMap)
 	{
-		/*
-		CEffectManager * l_EM=CCORE->GetEffectManager();
-		l_EM.SetLightViewMatrix(m_ViewShadowMap);
-		l_EM.SetShadowProjectionMatrix(m_ProjectionShadowMap);
+		//Faltan las mascaras
+		/*CEffectManager * l_EM=CCORE->GetEffectManager();
+		l_EM->SetLightViewMatrix(m_ViewShadowMap);
+		l_EM->SetShadowProjectionMatrix(m_ProjectionShadowMap);
 		if(m_ShadowMaskTexture!=NULL)
 		m_ShadowMaskTexture->Activate(SHADOW_MAP_MASK_STAGE);
 		if(m_GenerateStaticShadowMap)
@@ -81,9 +81,9 @@ void CLight::BeginRenderEffectManagerShadowMap(CEffect *Effect)
 		m_DynamicShadowMap->Activate(DYNAMIC_SHADOW_MAP_STAGE);
 		Effect->SetShadowMapParameters(m_ShadowMaskTexture!=NULL,
 		m_GenerateStaticShadowMap, m_GenerateDynamicShadowMap &&
-		m_DynamicShadowMapRenderableObjectsManagers.size()!=0);*/
+		m_DynamicShadowMapRenderableObjectsManagers.size()!=0);
+	*/
 	}
-
 
 }
 
