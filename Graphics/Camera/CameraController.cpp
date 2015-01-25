@@ -61,11 +61,11 @@ void CCameraController::Update(float dt)
 //-control de pitch.
 //-correr, ajupir-se, ..
 //
-  /*  float deltaX, deltaY, deltaZ;
+    float deltaX, deltaY, deltaZ;
     CCamera::ETypeCamera camType = m_ActiveCamera->GetTypeCamera();
     CObject3D* camObject = m_ActiveCamera->GetObject3D();
     CActionToInput* ATI = ACT2IN;
-    if (ATI->DoAction("FlyMode"))
+  /*  if (ATI->DoAction("FlyMode"))
         m_FlyMode = !m_FlyMode;
     if (camType == CCamera::TC_FPS) {
         if (ATI->DoAction("yaw", deltaX))
@@ -116,6 +116,8 @@ void CCameraController::Update(float dt)
             ((CThPSCamera *) m_ActiveCamera)->AddZoom(-deltaZ * m_LittleZoom * dt);
         else if (ATI->DoAction("scroll", deltaZ))
             ((CThPSCamera *) m_ActiveCamera)->AddZoom(-deltaZ * m_BigZoom * dt);
+		}
+	
         float panX, panY;
         if (ATI->DoAction("PanX", panX))
             camObject->SetPosition(camObject->GetPosition() + Vect3f(0, 0, panX) * m_PanSpeed * dt);
@@ -129,7 +131,7 @@ void CCameraController::Update(float dt)
 		CamUpdates(camType, dt);
   */
 
-	CCamera::ETypeCamera camType = m_ActiveCamera->GetTypeCamera();
+	//CCamera::ETypeCamera camType = m_ActiveCamera->GetTypeCamera();
 	if (camType == CCamera::TC_CIN) {
 		CamUpdates(camType, dt);
 	}

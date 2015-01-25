@@ -84,11 +84,11 @@ function on_update_scripted_controller(l_ElapsedTime)
 	end
 	
 	if type_camera == CCamera.TC_ESF then
+			
 		if act2in:do_action_from_lua("scrollLittle", deltaZ) then
-			m_ActiveCamera:add_zoom(-deltaZ * cam_Controller.m_LittleZoom * l_ElapsedTime)
-		end
-		if act2in:do_action_from_lua("scroll", deltaZ) then
-			m_ActiveCamera:add_zoom(-deltaZ * cam_Controller.m_BigZoom * l_ElapsedTime)
+			active_camera:add_zoom(-deltaZ * cam_Controller.m_LittleZoom * l_ElapsedTime)
+		elseif act2in:do_action_from_lua("scroll", deltaZ) then
+			active_camera:add_zoom(-deltaZ * cam_Controller.m_BigZoom * l_ElapsedTime)			
 		end
 		local panX, panY;
 		panX = deltaX;
