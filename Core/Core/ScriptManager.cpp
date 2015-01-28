@@ -391,7 +391,8 @@ void CScriptManager::RegisterLUAFunctions()
         .def("add_mesh_instance", (CRenderableObject *(CRenderableObjectsManager::*)(CXMLTreeNode &Node)) &CRenderableObjectsManager::AddMeshInstance)
         .def("add_animated_instance_model", (CRenderableObject *(CRenderableObjectsManager::*)(const std::string &CoreModelName, const std::string &InstanceModelName, const Vect3f &Position)) &CRenderableObjectsManager::AddAnimatedInstanceModel)
         .def("add_animated_instance_model", (CRenderableObject *(CRenderableObjectsManager::*)(CXMLTreeNode &Node)) &CRenderableObjectsManager::AddAnimatedInstanceModel)
-        .def("load", & CRenderableObjectsManager::Load)
+        .def("load", (void (CRenderableObjectsManager::*)(const std::string &FileName)) &CRenderableObjectsManager::Load)	
+		.def("load", (void (CRenderableObjectsManager::*)(CXMLTreeNode &Node)) &CRenderableObjectsManager::Load)
         .def("reload", & CRenderableObjectsManager::Reload)
         ];
 		

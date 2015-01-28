@@ -145,9 +145,15 @@ void CStaticMesh::Render (CGraphicsManager *RM)
 {
 	//CEffectTechnique *l_EffectTechnique=EFFECTM->GetEffectTechnique("BasicTechnique");
 	CEffectTechnique *l_EffectTechnique=EFFECTM->GetEffectTechnique("DirectionalLightTechnique");
+	// TODO cambiar a esto
+	//CEffectTechnique *l_EffectTechnique;
+	//std::string l_EffectName;
 
     for (int i = 0; i < m_RVs.size(); ++i) {
         // TODO iterate m_textures
+		// TODO cambiar a esto
+		//l_EffectName = EFFECTM->GetTechniqueEffectNameByVertexDefault(m_RVs[i]->GetVertexType());
+		//l_EffectTechnique=EFFECTM->GetEffectTechnique(l_EffectName);
         if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_TEXTURE1) == VERTEX_TYPE_TEXTURE1)
             m_Textures[i][0]->Activate(0);
         if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_DIFFUSE) == VERTEX_TYPE_DIFFUSE) {

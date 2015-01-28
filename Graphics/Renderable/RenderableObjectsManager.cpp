@@ -68,8 +68,10 @@ void CRenderableObjectsManager::Load(const std::string &FileName)
         printf("ERROR loading the file.");
     }
     CXMLTreeNode  m = newFile["renderable_objects"];
-	CXMLTreeNode m2 = newFile["lua_scripts"];
-    if (m.Exists()) {
+    CXMLTreeNode m2 = newFile["lua_scripts"];
+	//this->Load(m);
+	//TODO comentar todo y usar la llamada a Load(XMLTreeNode)
+	if (m.Exists()) {
 		 m_FileName = FileName;
         //cargamos aqui el animated models para no hacerlo varias veces dentro del bucle
         //CCore::GetInstance()->GetAnimatedModelManager()->Load(".\\Data\\level1\\animated_models.xml"); //se carga animatedmodels.xml
@@ -137,6 +139,60 @@ void CRenderableObjectsManager::Load(const std::string &FileName)
 		}
 	}
 }
+
+void CRenderableObjectsManager::Load(CXMLTreeNode &Node)
+{
+	CXMLTreeNode  m = Node;
+    if (Node.Exists()) {
+        //cargamos aqui el animated models para no hacerlo varias veces dentro del bucle
+        //CCore::GetInstance()->GetAnimatedModelManager()->Load(".\\Data\\level1\\animated_models.xml"); //se carga animatedmodels.xml
+        CCore::GetInstance()->GetAnimatedModelManager()->Load(".\\Data\\animated_models.xml"); //se carga animatedmodels.xml
+        int count = m.GetNumChildren();
+        for (int i = 0; i < count; ++i) {
+            std::string name = m(i).GetName();
+            if (name == "mesh_instance") {
+                //TODO poder pasar XMLTreeNode
+                std::string meshName = m(i).GetPszISOProperty("name", "box1");
+                std::string core = m(i).GetPszISOProperty("core", "box");
+                Vect3f pos = m(i).GetVect3fProperty("pos", v3fZERO);
+                float yaw = m(i).GetFloatProperty("yaw");
+                float pitch = m(i).GetFloatProperty("pitch");
+                float roll = m(i).GetFloatProperty("roll");
+                Vect3f scale = m(i).GetVect3fProperty("scale", v3fONE);
+                //TODO Static mesh por mesh instance hecho?
+                //
+                CMeshInstance* l_meshInstance = new CMeshInstance(meshName, core);
+                l_meshInstance->SetYaw(yaw);
+                l_meshInstance->SetPosition(pos);
+                l_meshInstance->SetPitch(pitch);
+                l_meshInstance->SetRoll(roll);
+                l_meshInstance->SetScale(scale);
+                //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
+                AddResource(meshName, l_meshInstance);
+            } else if (name == "animated_model") {
+                //FALTA CARGAR EL ANIMATED_MODELS.XML hecho?
+                std::string meshName = m(i).GetPszISOProperty("name", "box1");
+                std::string core = m(i).GetPszISOProperty("core", "box");
+                Vect3f pos = m(i).GetVect3fProperty("pos", v3fZERO);
+                float yaw = m(i).GetFloatProperty("yaw");
+                float pitch = m(i).GetFloatProperty("pitch");
+                float roll = m(i).GetFloatProperty("roll");
+                float scale = m(i).GetFloatProperty("scale");
+                CAnimatedInstanceModel * l_AnimatedInstanceModel  = ANIMAN->GetInstance(core);
+                l_AnimatedInstanceModel->SetYaw(yaw);
+                l_AnimatedInstanceModel->SetPosition(pos);
+                l_AnimatedInstanceModel->SetPitch(pitch);
+                l_AnimatedInstanceModel->SetRoll(roll);
+                l_AnimatedInstanceModel->SetScale(scale);
+                //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
+                AddResource(meshName, l_AnimatedInstanceModel);
+            }
+        }
+    }
+}
+
+
+
 
 void CRenderableObjectsManager::Reload()
 {

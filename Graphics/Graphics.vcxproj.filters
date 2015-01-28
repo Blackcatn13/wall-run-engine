@@ -155,6 +155,18 @@
     <ClCompile Include="Effects\EffectTechnique.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="Renderable\PoolRenderableObjectTechnique.cpp">
+      <Filter>Renderable</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderable\RenderableObjectsLayersManager.cpp">
+      <Filter>Renderable</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderable\RenderableObjectTechnique.cpp">
+      <Filter>Renderable</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderable\RenderableObjectTechniqueManager.cpp">
+      <Filter>Renderable</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
@@ -271,6 +283,18 @@
     </ClInclude>
     <ClInclude Include="Effects\EffectTechnique.h">
       <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderable\PoolRenderableObjectTechnique.h">
+      <Filter>Renderable</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderable\RenderableObjectsLayersManager.h">
+      <Filter>Renderable</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderable\RenderableObjectTechnique.h">
+      <Filter>Renderable</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderable\RenderableObjectTechniqueManager.h">
+      <Filter>Renderable</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

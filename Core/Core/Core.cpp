@@ -14,6 +14,7 @@
 #include "ScriptManager.h"
 #include "Lights\LightManager.h"
 #include "Cinematics\CinematicController.h"
+#include "Renderable\RenderableObjectTechniqueManager.h"
 
 CCore* CCore::m_Instance = 0;
 
@@ -32,6 +33,8 @@ void CCore::Init(HWND handler)
     m_GraphicsManager->Init(handler, m_Config.FullScreen, m_Config.Screen_Width, m_Config.Screen_Heigth);
 	m_SoundManager = new CSoundManager();
 	m_EffectManager = new CEffectManager();
+	//m_RenderableObjectTechniqueManager = new CRenderableObjectTechniqueManager();
+	//Load?
     m_InputManager = new CInputManager();
     m_InputManager->Init(handler, Vect2i(m_Config.Screen_Width, m_Config.Screen_Heigth), m_Config.Mouse_Exclusive);
     m_LanguageManager = new CLanguageManager();
@@ -83,6 +86,7 @@ void CCore::DeInit()
 	CHECKED_DELETE(m_CameraController);
 	CHECKED_DELETE(m_CinematicManager);
 	CHECKED_DELETE(m_EffectManager);
+	//CHECKED_DELETE(m_RenderableObjectTechniqueManager);
 	
 }
 

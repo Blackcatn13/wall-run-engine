@@ -40,8 +40,12 @@
     <ClCompile Include="Mesh\MeshInstance.cpp" />
     <ClCompile Include="Object\Object3D.cpp" />
     <ClCompile Include="RenderableVertex\VertexTypes.cpp" />
+    <ClCompile Include="Renderable\PoolRenderableObjectTechnique.cpp" />
     <ClCompile Include="Renderable\RenderableObject.cpp" />
+    <ClCompile Include="Renderable\RenderableObjectsLayersManager.cpp" />
     <ClCompile Include="Renderable\RenderableObjectsManager.cpp" />
+    <ClCompile Include="Renderable\RenderableObjectTechnique.cpp" />
+    <ClCompile Include="Renderable\RenderableObjectTechniqueManager.cpp" />
     <ClCompile Include="StaticMeshes\StaticMesh.cpp" />
     <ClCompile Include="StaticMeshes\StaticMeshManager.cpp" />
     <ClCompile Include="Texture\CubeTexture.cpp" />
@@ -81,8 +85,12 @@
     <ClInclude Include="RenderableVertex\IndexedVertexs.h" />
     <ClInclude Include="RenderableVertex\RenderableVertexs.h" />
     <ClInclude Include="RenderableVertex\VertexTypes.h" />
+    <ClInclude Include="Renderable\PoolRenderableObjectTechnique.h" />
     <ClInclude Include="Renderable\RenderableObject.h" />
+    <ClInclude Include="Renderable\RenderableObjectsLayersManager.h" />
     <ClInclude Include="Renderable\RenderableObjectsManager.h" />
+    <ClInclude Include="Renderable\RenderableObjectTechnique.h" />
+    <ClInclude Include="Renderable\RenderableObjectTechniqueManager.h" />
     <ClInclude Include="StaticMeshes\StaticMesh.h" />
     <ClInclude Include="StaticMeshes\StaticMeshManager.h" />
     <ClInclude Include="Texture\CubeTexture.h" />

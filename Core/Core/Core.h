@@ -22,6 +22,7 @@ class CLightManager;
 class CCinematicController;
 class CCameraController;
 class CEffectManager;
+class CRenderableObjectTechniqueManager;
 
 #define CCORE   CCore::GetInstance()
 #define GRAPHM  CCore::GetInstance()->GetGraphicsManager()
@@ -37,6 +38,7 @@ class CEffectManager;
 #define SCRIPTM CCore::GetInstance()->GetScriptManager()
 #define LIGHTM  CCore::GetInstance()->GetLightManager()
 #define EFFECTM CCore::GetInstance()->GetEffectManager()
+#define RENDTECHM CCore::GetInstance()->GetRenderableObjectTechniqueManager()
 
 
 class CCore
@@ -62,6 +64,7 @@ private:
 	CCinematicController*	m_CinematicManager;
 	CCameraController*		m_CameraController;
 	CEffectManager*			m_EffectManager;
+	CRenderableObjectTechniqueManager* m_RenderableObjectTechniqueManager;
 
 public:
     ~CCore();
@@ -133,6 +136,10 @@ public:
 	CEffectManager * GetEffectManager()
 	{
 		return m_EffectManager;
+	}
+	CRenderableObjectTechniqueManager * GetRenderableObjectTechniqueManager()
+	{
+		return m_RenderableObjectTechniqueManager;
 	}
 	void SetCameraController(CCameraController * cameraController)
     {
