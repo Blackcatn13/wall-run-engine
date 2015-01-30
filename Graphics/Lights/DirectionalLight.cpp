@@ -7,7 +7,7 @@ void CDirectionalLight::Render(CGraphicsManager *RM)
 	Mat44f t;
 	t.SetIdentity();
 	CColor l_Color =  CColor(GetColor().GetRed(), GetColor().GetGreen(), GetColor().GetBlue());
-	Vect3f l_FinalPosition = GetDirection() * GetStartRangeAttenuation();
+	Vect3f l_FinalPosition = GetDirection().Normalize() * GetStartRangeAttenuation();
 	RM->SetTransform(t);
 	RM->DrawLine(GetPosition(), l_FinalPosition, l_Color);
 	Mat44f l_trans;

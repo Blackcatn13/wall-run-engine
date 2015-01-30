@@ -111,6 +111,7 @@ bool CEffect::SetLights(size_t NumOfLights)
 	CLightManager::TMapResource::iterator it = LIGHTM->GetResources().begin();
 	//std::map<std::string, CLight*>::iterator it = LIGHTM->GetResources().begin();
 	int l_lightIndex = 0;
+	std::map<std::string, CLight*> resources = LIGHTM->GetResources();
 	while(it != LIGHTM->GetResources().end() && l_lightIndex < NumOfLights)
 	{
 		m_LightsEnabled[l_lightIndex] = 1;
@@ -143,9 +144,10 @@ bool CEffect::SetLights(size_t NumOfLights)
 		}else
 		{
 			l_direction = ((CDirectionalLight*)it->second)->GetDirection();
+			l_direction = l_direction.Normalize();
 		}
 		m_LightsDirection[l_lightIndex] = l_direction;
-		Vect3f l_color = Vect3f(it->second->GetColor().GetRed(),it->second->GetColor().GetBlue(), it->second->GetColor().GetGreen()) ;
+		Vect3f l_color = Vect3f(it->second->GetColor().GetRed(),it->second->GetColor().GetGreen(), it->second->GetColor().GetBlue()) ;
 		m_LightsColor[l_lightIndex] = l_color;
 
 		it++;
@@ -156,6 +158,7 @@ bool CEffect::SetLights(size_t NumOfLights)
 	m_Effect->SetIntArray(m_LightsTypeParameter, &m_LightsType[0], MAX_LIGHTS_BY_SHADER);
 	m_Effect->SetFloatArray(m_LightsAngleParameter, &m_LightsAngle[0], MAX_LIGHTS_BY_SHADER);
 	m_Effect->SetFloatArray(m_LightsFallOffParameter, &m_LightsFallOff[0], MAX_LIGHTS_BY_SHADER);
+	m_Effect->SetFloatArray(m_LightsIntensityParameter, &m_LightsIntensity[0], MAX_LIGHTS_BY_SHADER);
 	m_Effect->SetFloatArray(m_LightsStartRangeAttenuationParameter, &m_LightsStartRangeAttenuation[0], MAX_LIGHTS_BY_SHADER);
 	m_Effect->SetFloatArray(m_LightsEndRangeAttenuationParameter, &m_LightsEndRangeAttenuation[0], MAX_LIGHTS_BY_SHADER);
 	m_Effect->SetFloatArray(m_LightsPositionParameter, &m_LightsPosition[0].x, MAX_LIGHTS_BY_SHADER*3);

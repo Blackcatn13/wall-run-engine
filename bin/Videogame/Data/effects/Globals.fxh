@@ -17,8 +17,10 @@ float3 g_LightPosition[MAXLIGHTS] : LIGHTSPOSITION;
 float3 g_LightDirection[MAXLIGHTS] : LIGHTSDIRECTION;
 float g_LightAngle[MAXLIGHTS] : LIGHTSANGLE;
 float3 g_LightColor[MAXLIGHTS] : LIGHTSCOLOR;
-//float g_LightIntensity[MAXLIGHTS] : LIGHTSINTENSITY;
 float3 g_CameraPosition : CAMERAPOSITION;
 float3x4 g_Bones[MAXBONES] : BONES;
 float g_Time : TIME;
-
+float g_LightIntensity[MAXLIGHTS] : LIGHTSINTENSITY;
+float g_NearAtten[MAXLIGHTS] : LIGHTSSTARTRANGEATTENUATION;
+float g_FarAtten[MAXLIGHTS] : LIGHTSENDRANGEATTENUATION;
+float g_FallOff[MAXLIGHTS] : LIGHTSFALLOFF;

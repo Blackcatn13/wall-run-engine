@@ -88,6 +88,34 @@ bool CStaticMesh::Load (const std::string &FileName)
                     type_size = sizeof(TTEXTURE_NORMAL_VERTEX);
                 if (vertex_type[i] == TCOLORED_VERTEX::GetVertexType())
                     type_size = sizeof(TCOLORED_VERTEX);
+				if (vertex_type[i] == TCOLOR_TEXTURE2_VERTEX::GetVertexType())
+                    type_size = sizeof(TCOLOR_TEXTURE2_VERTEX);
+				if (vertex_type[i] == TCOLOR_TEXTURE_NORMAL_VERTEX::GetVertexType())
+                    type_size = sizeof(TCOLOR_TEXTURE_NORMAL_VERTEX);
+				if (vertex_type[i] == TCOLOR_NORMAL_DIFFUSE_TEXTURE2_VERTEX::GetVertexType())
+                    type_size = sizeof(TCOLOR_NORMAL_DIFFUSE_TEXTURE2_VERTEX);
+				if (vertex_type[i] == TTEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexType())
+                    type_size = sizeof(TTEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX);
+				if (vertex_type[i] == TTEXTURE_VERTEX::GetVertexType())
+                    type_size = sizeof(TTEXTURE_VERTEX);
+				if (vertex_type[i] == TCOLOR_TEXTURE_VERTEX::GetVertexType())
+                    type_size = sizeof(TCOLOR_TEXTURE_VERTEX);
+				if (vertex_type[i] == TTEXTURE2_VERTEX::GetVertexType())
+                    type_size = sizeof(TTEXTURE2_VERTEX);
+				if (vertex_type[i] == TTEXTURE2_NORMAL_VERTEX::GetVertexType())
+                    type_size = sizeof(TTEXTURE2_NORMAL_VERTEX);
+				if (vertex_type[i] == TTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexType())
+                    type_size = sizeof(TTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX);
+				if (vertex_type[i] == TCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexType())
+                    type_size = sizeof(TCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX);
+				if (vertex_type[i] == TCOLORED_TEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexType())
+                    type_size = sizeof(TCOLORED_TEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX);
+				if (vertex_type[i] == TCOLORED_NORMAL_VERTEX::GetVertexType())
+                    type_size = sizeof(TCOLORED_NORMAL_VERTEX);
+				if (vertex_type[i] == CAL3D_HW_VERTEX::GetVertexType())
+                    type_size = sizeof(CAL3D_HW_VERTEX);
+				
+				
                 void* vertex_list = (void*)malloc(n_vtxs * type_size);
                 fread(vertex_list, n_vtxs * type_size, 1, f);
                 unsigned short n_idxs;
@@ -144,10 +172,8 @@ bool CStaticMesh::ReLoad ()
 void CStaticMesh::Render (CGraphicsManager *RM)
 {
 	//CEffectTechnique *l_EffectTechnique=EFFECTM->GetEffectTechnique("BasicTechnique");
-	CEffectTechnique *l_EffectTechnique=EFFECTM->GetEffectTechnique("DirectionalLightTechnique");
-	// TODO cambiar a esto
-	//CEffectTechnique *l_EffectTechnique;
-	//std::string l_EffectName;
+	//CEffectTechnique *l_EffectTechnique=EFFECTM->GetEffectTechnique("LightsTechnique");
+	CEffectTechnique *l_EffectTechnique=EFFECTM->GetEffectTechnique("NormalMapTechnique");
 
     for (int i = 0; i < m_RVs.size(); ++i) {
         // TODO iterate m_textures

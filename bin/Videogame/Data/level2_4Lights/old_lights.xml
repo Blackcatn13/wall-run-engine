@@ -1,0 +1,4 @@
+<light name="Spot001" type="spot" pos="-0.208513 0.642497 3.40568" dir="0.286777 -0.0659876 -2.08142" color="0.0 255.0 50.0" intensity="1.0" angle="43.0" fall_off="45.0" att_start_range="80.0" att_end_range="200.0"/>
+	<light name="Omni001" type="omni" pos="0.0000134 5.78802 -0.0719562" color="255.0 0.0 0.0" intensity="1.0" att_start_range="80.0" att_end_range="200.0"/>
+	
+	<light name="Direct001" type="directional" pos="10.8266 0.0 -11.3261" dir="-1.24975 0.0 1.86191" color="0.0 11.0 153.0" intensity="1.0" att_start_range="80.0" att_end_range="200.0"/>
