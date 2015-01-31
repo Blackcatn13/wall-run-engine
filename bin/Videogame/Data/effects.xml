@@ -3,7 +3,7 @@
 	<default_technique vertex_type="19" technique="BasicTechnique"/>
 
 	<default_technique vertex_type="19" technique="LightsTechnique"/>
-	<default_technique vertex_type="37" technique="NormalMapTechnique"/>
+	<default_technique vertex_type="63" technique="NormalMapTechnique"/>
 	
 	<effect name="BasicEffect" file="data/effects/BasicEffect.fx"/>
 	<effect name="LightsEffect" file="data/effects/Lights.fx"/>

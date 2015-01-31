@@ -211,10 +211,10 @@ void CGraphicsManager::SetupMatrices(CCamera* camera)
         //Setup Matrix view
         D3DXMatrixLookAtLH( &m_matView, &l_Eye, &l_LookAt, &l_VUP);
         //Setup Matrix projection
-        D3DXMatrixPerspectiveFovLH(	&m_matProject, camera->GetFov(), /*camera->GetAspectRatio(),*/(float)(m_uWidth / m_uHeight),
+        D3DXMatrixPerspectiveFovLH(	&m_matProject, camera->GetFov(), camera->GetAspectRatio(),/*(float)(m_uWidth / m_uHeight),*/
                                     camera->GetZn(), camera->GetZf());
     }
-	EFFECTM->ActivateCamera(m_matView, m_matProject, camera->GetEye());
+    EFFECTM->ActivateCamera(m_matView, m_matProject, camera->GetEye());
     m_Frustum.Update( m_matView * m_matProject );
     m_pD3DDevice->SetTransform( D3DTS_VIEW, &m_matView );
     m_pD3DDevice->SetTransform( D3DTS_PROJECTION, &m_matProject );
@@ -223,7 +223,7 @@ void CGraphicsManager::SetupMatrices(CCamera* camera)
 void CGraphicsManager::SetTransform	(D3DXMATRIX& matrix)
 {
     m_pD3DDevice->SetTransform(D3DTS_WORLD, &matrix);
-	EFFECTM->SetWorldMatrix(matrix);
+    EFFECTM->SetWorldMatrix(matrix);
 }
 
 void CGraphicsManager::SetTransform	(Mat44f& m)
@@ -233,8 +233,7 @@ void CGraphicsManager::SetTransform	(Mat44f& m)
                     , m.m02, m.m12, m.m22, m.m32
                     , m.m03, m.m13, m.m23, m.m33);
     m_pD3DDevice->SetTransform(D3DTS_WORLD, &aux);
-	EFFECTM->SetWorldMatrix(aux);
-
+    EFFECTM->SetWorldMatrix(aux);
 }
 
 void CGraphicsManager::DrawLine(const Vect3f &PosA, const Vect3f &PosB, CColor Color)

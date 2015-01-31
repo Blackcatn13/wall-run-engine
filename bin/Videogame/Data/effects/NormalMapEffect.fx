@@ -5,9 +5,9 @@
 
 
 //DWORD  BCLR = 0xff202080;  // Background color (if no image)
-float3 g_LightAmbient=float3(0.3, 0.35, 0.4);
+float3 g_LightAmbient=float3(0.2, 0.2, 0.2);
 float g_SpecularExponent = 200;
-float g_Bump = 2.0;
+float g_Bump = 30.0;
 
 struct PNormalVertex
 {
@@ -23,13 +23,12 @@ PNormalVertex RenderNormalsVS(
     VertexVS_TTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX IN)
 {
     PNormalVertex OUT = (PNormalVertex)0;
-	OUT.UV.x = IN.UV.x;
-	OUT.UV.y = -IN.UV.y;
+	OUT.UV = IN.UV;
 	OUT.HPosition = mul(float4 (IN.Position.xyz, 1.0),g_WorldViewProjectionMatrix);
 	OUT.WorldPosition=mul(float4(IN.Position.xyz, 1.0), g_WorldMatrix);
 	OUT.WorldNormal= mul(IN.Normal.xyz, (float3x3)g_WorldMatrix);
-	OUT.WorldBinormal= mul(IN.Binormal.xyz, (float3x3)g_WorldMatrix);
 	OUT.WorldTangent= mul(IN.Tangent.xyz, (float3x3)g_WorldMatrix);
+	OUT.WorldBinormal= mul(IN.Binormal.xyz, (float3x3)g_WorldMatrix);
 	return OUT;
  
 }
@@ -43,15 +42,16 @@ float4 RenderNormalsPS20(PNormalVertex IN) : COLOR
 	
 	float4 l_DiffuseTex = tex2D(S0LinearWrapSampler, IN.UV);
 	float4 l_NormalTex = tex2D(S1LinearWrapSampler, IN.UV);
-	
-	float3 l_Bump = g_Bump * (l_NormalTex.rgb -float3 (0.5,0.5,0.5));
+	//return l_DiffuseTex;
+	float3 l_Bump = g_Bump * (l_NormalTex.rgb - float3 (0.5,0.5,0.5));
 	
 	float3 l_newN = l_WNn + l_Bump.x*l_TangentNormalized + l_Bump.y*l_BinormalNormalized;
-	float3 l_Nn = mul(normalize(l_newN),(float3x3)g_WorldMatrix);
-	float3 l_CameraPosition = g_WorldViewMatrix[3].xyz;//g_InverseViewMatrix[3].xyz;
+	//float3 l_Nn = mul(normalize(l_newN),(float3x3)g_WorldMatrix);
+	float3 l_CameraPosition = g_InverseViewMatrix[3].xyz;//g_InverseViewMatrix[3].xyz;
 	//g_LightDirection[2]=normalize(g_LightDirection[2]);
 	float3 finalColor = g_LightAmbient*l_DiffuseTex.xyz;
-	l_Nn = normalize(l_Nn);
+	float3 l_Nn = normalize(l_newN);
+	//return float4(finalColor, 1);
 	
 	for(int i=0;i<MAXLIGHTS;i++)
 	{
@@ -75,10 +75,10 @@ float4 RenderNormalsPS20(PNormalVertex IN) : COLOR
 			}
 			else if(g_LightType[i]==1) //directional
 			{
-				float l_DiffuseContribution = saturate(dot(-g_LightDirection[i], l_Nn));
+				float l_DiffuseContribution = saturate(dot(l_Nn, -g_LightDirection[i])) * l_DiffuseTex.xyz;
 				float3 l_Hn=normalize(normalize(l_CameraPosition-IN.WorldPosition)-g_LightDirection[i]);
-				float l_SpecularContribution=g_LightColor[i]*pow(saturate(dot(l_Hn,l_Nn)), g_SpecularExponent);
-				finalColor = finalColor + (l_DiffuseContribution*g_LightColor[i]*l_DiffuseTex.xyz*g_LightIntensity[i]+l_SpecularContribution*g_LightIntensity[i]);
+				//float l_SpecularContribution=pow(saturate(dot(l_Hn,l_Nn)), g_SpecularExponent);
+				finalColor = finalColor + (l_DiffuseContribution);
 			}
 			else if(g_LightType[i]==2) //spot
 			{
@@ -110,13 +110,13 @@ float4 RenderNormalsPS20(PNormalVertex IN) : COLOR
 		}
 	}
 	
-	
 	//ONE LIGHT
-	//float l_DiffuseContribution = saturate(dot(-g_LightDirection[3], l_Nn));
-	//float3 l_Hn=normalize(normalize(l_CameraPosition-IN.WorldPosition)-g_LightDirection[3]);
+	/*
+	float l_DiffuseContribution = saturate(dot(-g_LightDirection[0], l_Nn));
+	float3 l_Hn=normalize(normalize(l_CameraPosition-IN.WorldPosition) - g_LightDirection[0]);
 	//float l_SpecularContribution=g_LightColor[3]*pow(saturate(dot(l_Hn,l_Nn)), g_SpecularExponent);
-	//finalColor = finalColor + (l_DiffuseContribution*g_LightColor[3]*l_DiffuseTex.xyz*g_LightIntensity[3]+l_SpecularContribution*g_LightIntensity[3]);
-	
+	finalColor = finalColor + (l_DiffuseContribution*l_DiffuseTex.xyz);
+	*/
 	return float4(finalColor, 1.0);
 	//return float4(l_DiffuseContribution,l_DiffuseContribution,l_DiffuseContribution,1);
 	//return float4(l_DiffuseContribution*g_LightColor[3]*l_DiffuseTex.xyz*g_LightIntensity[3], 1);

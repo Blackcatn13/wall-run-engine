@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <renderable_objects>
-	<mesh_instance name="LOW001" core="LOW001"  pos="0.000000 0.000000 0.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Plane001" core="LOW001"  pos="0.000000 1.000000 0.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 </renderable_objects>
