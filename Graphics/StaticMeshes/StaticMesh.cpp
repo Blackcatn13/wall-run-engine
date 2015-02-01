@@ -191,8 +191,11 @@ bool CStaticMesh::Load (const std::string &FileName)
                 fread(&n_idxs, sizeof n_idxs, 1, f);
                 void* index_list = (void*)malloc(n_idxs * sizeof(unsigned short));
                 fread(index_list , n_idxs * sizeof(unsigned short), 1, f);
-                if ((vertex_type[i] & VERTEX_TYPE_BINORMAL) == VERTEX_TYPE_BINORMAL) {
+                if (vertex_type[i] == TTEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexType()) {
                     CalcTangentsAndBinormals(vertex_list, (unsigned short*)index_list, n_vtxs, n_idxs, type_size, 0, 12, 24, 36, 56);
+                }
+                if (vertex_type[i] == TCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexType()) {
+                    CalcTangentsAndBinormals(vertex_list, (unsigned short*)index_list, n_vtxs, n_idxs, type_size, 0, 12, 24, 36, 52);
                 }
                 CRenderableVertexs *l_rv = NULL;
                 if (vertex_type[i] == TTEXTURE_NORMAL_VERTEX::GetVertexType())
