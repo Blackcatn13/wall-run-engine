@@ -19,6 +19,10 @@
   <Meshes meshesXML="./Data/level2/static_meshes.xml"/>
   <Renderable renderXML="./Data/level2/renderable_objects.xml"/> 
   <Lights lightsXML="./Data/level2/lights.xml"/> 
+  <Cameras CamerasLvl="No"/>
+  <Cinematic CinematicLvl="No"/>
+  <Lua LuaFile="./Data/lua_actions.xml"/>
+  <Effect EffectXML="./Data/effects.xml"/> 
   <Avi aviXML=""/>
   <PhysX initPhysX="true"/>
   <ComputerVision initComputerVision="false"/>

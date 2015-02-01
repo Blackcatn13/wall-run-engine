@@ -39,6 +39,7 @@ class CRenderableObjectTechniqueManager;
 #define LIGHTM  CCore::GetInstance()->GetLightManager()
 #define EFFECTM CCore::GetInstance()->GetEffectManager()
 #define RENDTECHM CCore::GetInstance()->GetRenderableObjectTechniqueManager()
+#define CAMCONTM CCore::GetInstance()->GetCameraController()
 
 
 class CCore
@@ -47,24 +48,24 @@ protected:
     static CCore* m_Instance;
     CCore();
 private:
-    CGraphicsManager*		m_GraphicsManager;
-    CSoundManager*			m_SoundManager;
-    CInputManager*          m_InputManager;
-    CLanguageManager*		m_LanguageManager;
-    HWND					m_Handler;
-    CONFIG_INFO				m_Config;
-    CFontManager*			m_FontManager;
-    CActionToInput*         m_ActionToInput;
-    CStaticMeshManager*     m_StaticMeshManager;
-    CRenderableObjectsManager* m_RenderableManager;
-	CAnimatedModelManager*  m_AnimatedModelManager;
-    CTextureManager*        m_TextureManager;
-	CScriptManager*			m_ScriptManager;
-	CLightManager*			m_LightManager;
-	CCinematicController*	m_CinematicManager;
-	CCameraController*		m_CameraController;
-	CEffectManager*			m_EffectManager;
-	CRenderableObjectTechniqueManager* m_RenderableObjectTechniqueManager;
+    CGraphicsManager*		            m_GraphicsManager;
+    CSoundManager*			            m_SoundManager;
+    CInputManager*                      m_InputManager;
+    CLanguageManager*		            m_LanguageManager;
+    HWND					            m_Handler;
+    CONFIG_INFO				            m_Config;
+    CFontManager*			            m_FontManager;
+    CActionToInput*                     m_ActionToInput;
+    CStaticMeshManager*                 m_StaticMeshManager;
+    CRenderableObjectsManager*          m_RenderableManager;
+    CAnimatedModelManager*              m_AnimatedModelManager;
+    CTextureManager*                    m_TextureManager;
+    CScriptManager*			            m_ScriptManager;
+    CLightManager*			            m_LightManager;
+    CCinematicController*	            m_CinematicManager;
+    CCameraController*		            m_CameraController;
+    CEffectManager*			            m_EffectManager;
+    CRenderableObjectTechniqueManager*  m_RenderableObjectTechniqueManager;
 
 public:
     ~CCore();
@@ -107,7 +108,7 @@ public:
     {
         return m_RenderableManager;
     }
-	CAnimatedModelManager* GetAnimatedModelManager()
+    CAnimatedModelManager* GetAnimatedModelManager()
     {
         return m_AnimatedModelManager;
     }
@@ -115,35 +116,35 @@ public:
     {
         return m_TextureManager;
     }
-	CScriptManager * GetScriptManager()
+    CScriptManager * GetScriptManager()
     {
         return m_ScriptManager;
     }
-	CLightManager * GetLightManager()
+    CLightManager * GetLightManager()
     {
         return m_LightManager;
     }
 
-	CCinematicController * GetCinematicController()
+    CCinematicController * GetCinematicController()
     {
         return m_CinematicManager;
     }
 
-	CCameraController * GetCameraController()
+    CCameraController * GetCameraController()
     {
         return m_CameraController;
     }
-	CEffectManager * GetEffectManager()
-	{
-		return m_EffectManager;
-	}
-	CRenderableObjectTechniqueManager * GetRenderableObjectTechniqueManager()
-	{
-		return m_RenderableObjectTechniqueManager;
-	}
-	void SetCameraController(CCameraController * cameraController)
+    CEffectManager * GetEffectManager()
     {
-		m_CameraController = cameraController;
+        return m_EffectManager;
+    }
+    CRenderableObjectTechniqueManager * GetRenderableObjectTechniqueManager()
+    {
+        return m_RenderableObjectTechniqueManager;
+    }
+    void SetCameraController(CCameraController * cameraController)
+    {
+        m_CameraController = cameraController;
     }
 
 };

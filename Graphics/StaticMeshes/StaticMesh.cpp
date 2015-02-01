@@ -271,9 +271,9 @@ bool CStaticMesh::ReLoad ()
 void CStaticMesh::Render (CGraphicsManager *RM)
 {
     //CEffectTechnique *l_EffectTechnique=EFFECTM->GetEffectTechnique("BasicTechnique");
-    //CEffectTechnique *l_EffectTechnique=EFFECTM->GetEffectTechnique("LightsTechnique");
+    CEffectTechnique *l_EffectTechnique = EFFECTM->GetEffectTechnique("LightsTechnique");
     //CEffectTechnique *l_EffectTechnique = EFFECTM->GetEffectTechnique("NormalMapTechnique");
-	CEffectTechnique *l_EffectTechnique = EFFECTM->GetEffectTechnique("CubeMapTechnique");
+    //CEffectTechnique *l_EffectTechnique = EFFECTM->GetEffectTechnique("CubeMapTechnique");
     for (int i = 0; i < m_RVs.size(); ++i) {
         // TODO iterate m_textures
         // TODO cambiar a esto

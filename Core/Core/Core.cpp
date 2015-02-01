@@ -15,6 +15,7 @@
 #include "Lights\LightManager.h"
 #include "Cinematics\CinematicController.h"
 #include "Renderable\RenderableObjectTechniqueManager.h"
+#include "Camera\CameraController.h"
 
 CCore* CCore::m_Instance = 0;
 
@@ -31,10 +32,11 @@ void CCore::Init(HWND handler)
 {
     m_GraphicsManager = new CGraphicsManager();
     m_GraphicsManager->Init(handler, m_Config.FullScreen, m_Config.Screen_Width, m_Config.Screen_Heigth);
-	m_SoundManager = new CSoundManager();
-	m_EffectManager = new CEffectManager();
-	//m_RenderableObjectTechniqueManager = new CRenderableObjectTechniqueManager();
-	//Load?
+    m_SoundManager = new CSoundManager();
+    m_EffectManager = new CEffectManager();
+    m_EffectManager->Load(m_Config.EffectPath);
+    //m_RenderableObjectTechniqueManager = new CRenderableObjectTechniqueManager();
+    //Load?
     m_InputManager = new CInputManager();
     m_InputManager->Init(handler, Vect2i(m_Config.Screen_Width, m_Config.Screen_Heigth), m_Config.Mouse_Exclusive);
     m_LanguageManager = new CLanguageManager();
@@ -50,22 +52,22 @@ void CCore::Init(HWND handler)
     m_TextureManager = new CTextureManager();
     m_StaticMeshManager = new CStaticMeshManager();
     m_StaticMeshManager->Load(m_Config.MeshesPath);
-	m_ScriptManager = new CScriptManager();
+    m_ScriptManager = new CScriptManager();
     m_ScriptManager->Initialize();
     m_RenderableManager = new CRenderableObjectsManager();
     m_AnimatedModelManager = new CAnimatedModelManager();
     m_RenderableManager->Load(m_Config.RenderablePath);
-	m_RenderableManager->Load(".\\Data\\lua_actions.xml");
+    m_RenderableManager->Load(m_Config.LuaPath);
     m_LightManager = new CLightManager();
-	m_LightManager->Load(m_Config.LightsPath);
+    m_LightManager->Load(m_Config.LightsPath);
     m_CinematicManager = new CCinematicController();
-    m_CinematicManager->Load(".\\Data\\level3\\cinematic.xml");
-
-	/*m_RenderableManager->Load(m_Config.RenderablePath);
-	m_ScriptManager = new CScriptManager();
-	m_ScriptManager->Initialize();
-	m_LightManager = new CLightManager();*/
-
+    m_CinematicManager->Load(m_Config.CinematicPath);
+    m_CameraController = new CCameraController();
+    m_CameraController->Load(m_Config.CameraPath);
+    /*m_RenderableManager->Load(m_Config.RenderablePath);
+    m_ScriptManager = new CScriptManager();
+    m_ScriptManager->Initialize();
+    m_LightManager = new CLightManager();*/
 }
 
 void CCore::DeInit()
@@ -80,14 +82,13 @@ void CCore::DeInit()
     CHECKED_DELETE(m_StaticMeshManager);
     CHECKED_DELETE(m_AnimatedModelManager);
     CHECKED_DELETE(m_RenderableManager);
-	CHECKED_DELETE(m_LightManager);
+    CHECKED_DELETE(m_LightManager);
     CHECKED_DELETE(m_TextureManager);
     CHECKED_DELETE(m_ScriptManager);
-	CHECKED_DELETE(m_CameraController);
-	CHECKED_DELETE(m_CinematicManager);
-	CHECKED_DELETE(m_EffectManager);
-	//CHECKED_DELETE(m_RenderableObjectTechniqueManager);
-	
+    CHECKED_DELETE(m_CameraController);
+    CHECKED_DELETE(m_CinematicManager);
+    CHECKED_DELETE(m_EffectManager);
+    //CHECKED_DELETE(m_RenderableObjectTechniqueManager);
 }
 
 CCore* CCore::GetInstance()
@@ -101,7 +102,7 @@ CCore* CCore::GetInstance()
 void CCore::Render()
 {
     //m_GraphicsManager->Render();
-	m_LightManager->Render(GRAPHM);
+    m_LightManager->Render(GRAPHM);
     m_SoundManager->Render();
 }
 

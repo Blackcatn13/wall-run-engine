@@ -65,13 +65,12 @@ void CEngine::Update()
         TEXTM->Reload();
     if (m_Core->GetActionToInput()->DoAction("ReloadMeshes"))
         RENDM->Reload();
-	if(ACT2IN->DoAction("ReloadEffects"))
-		EFFECTM->Reload();
-	if(ACT2IN->DoAction("ReloadLights"))
-		LIGHTM->Reload();
-	if(ACT2IN->DoAction("ReloadScripts"))
-		SCRIPTM->Reload();
-
+    if (ACT2IN->DoAction("ReloadEffects"))
+        EFFECTM->Reload();
+    if (ACT2IN->DoAction("ReloadLights"))
+        LIGHTM->Reload();
+    if (ACT2IN->DoAction("ReloadScripts"))
+        SCRIPTM->Reload();
     m_LogRender->Update(m_Timer.GetElapsedTime());
 }
 
@@ -136,6 +135,14 @@ void CEngine::ParseConfFile()
                         m_Conf_info.RenderablePath = n(i).GetPszISOProperty("renderXML", "./Data/level1/renderable_objects.xml");
                     } else if (name == "Lights") {
                         m_Conf_info.LightsPath = n(i).GetPszISOProperty("lightsXML", "./Data/level1/lights.xml");
+                    } else if (name == "Cameras") {
+                        m_Conf_info.CameraPath = n(i).GetPszISOProperty("CamerasLvl", "");
+                    } else if (name == "Cinematic") {
+                        m_Conf_info.CinematicPath = n(i).GetPszISOProperty("CinematicLvl", "");
+                    } else if (name == "Lua") {
+                        m_Conf_info.LuaPath = n(i).GetPszISOProperty("LuaFile", "");
+                    } else if (name == "Effect") {
+                        m_Conf_info.EffectPath = n(i).GetPszISOProperty("EffectXML", "");
                     }
                 }
             }

@@ -18,7 +18,11 @@ typedef struct Conf_info {
     std::string                 CurrentLanguage;
     std::string                 MeshesPath;
     std::string                 RenderablePath;
-	std::string					LightsPath;
+    std::string					LightsPath;
+    std::string                 CameraPath;
+    std::string                 CinematicPath;
+    std::string                 LuaPath;
+    std::string                 EffectPath;
 } CONFIG_INFO;
 
 

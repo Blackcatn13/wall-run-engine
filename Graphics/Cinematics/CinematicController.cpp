@@ -1,5 +1,6 @@
 #include "CinematicController.h"
 #include "Cinematic.h"
+#include "Utils\Logger.h"
 
 
 CCinematicController::CCinematicController()
@@ -9,15 +10,19 @@ CCinematicController::CCinematicController()
 
 CCinematicController::~CCinematicController()
 {
-	Destroy();
+    Destroy();
 }
 
 bool CCinematicController::Load(const std::string &FileName)
 {
     m_FileName = FileName;
-    CCinematic *l_Cinematic = new CCinematic();
-	std::string name = l_Cinematic->LoadXML(FileName);
-    AddResource(name, l_Cinematic);
+    if (FileName != "No") {
+        CCinematic *l_Cinematic = new CCinematic();
+        std::string name = l_Cinematic->LoadXML(FileName);
+        AddResource(name, l_Cinematic);
+    } else {
+        LOGGER->AddNewLog(ELL_INFORMATION, "No Cinematic File loaded");
+    }
     return true;
 }
 

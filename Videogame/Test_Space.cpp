@@ -54,44 +54,38 @@ CTest_Space::~CTest_Space(void)
     //delete m_ThPSCamera;
 //    delete m_ThPSCamera1;
     //delete m_FPSCamera;
-
 }
 
 void CTest_Space::Init()
 {
-
-	/* Script Manager Tests*/
+    /* Script Manager Tests*/
 //	SCRIPTM->RunFile(".\\Data\\test2.lua");
-//	
+//
 //	SCRIPTM->RunFile(SCRIPTM->GetScriptsMap().find("test2")->second);
-	/*float l_ElapsedTime=0.3f;
-	char l_Text[256];
-	_snprintf_s(l_Text, 256, 256, "on_update_scripted_controller(%f)", l_ElapsedTime);
-	SCRIPTM->RunCode(l_Text);*/
-	m_ObjectFPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
+    /*float l_ElapsedTime=0.3f;
+    char l_Text[256];
+    _snprintf_s(l_Text, 256, 256, "on_update_scripted_controller(%f)", l_ElapsedTime);
+    SCRIPTM->RunCode(l_Text);*/
+    m_ObjectFPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
     m_ObjectThPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
-	//m_RenderableObject = RENDM->GetResourcesMap().find("Box005")->second.m_Value;
+    //m_RenderableObject = RENDM->GetResourcesMap().find("Box005")->second.m_Value;
     m_ThPSCamera = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS, 50);
     //m_ThPSCamera1 = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_RenderableObject, 10);
     m_FPSCamera = new CFPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectFPS);
     m_ThPSCamera->SetTypeCamera(CCamera::TC_ESF);
-    m_CameraController = new CCameraController();
-    m_CameraController->AddNewCamera("FPS", m_FPSCamera);
-    m_CameraController->AddNewCamera("ThPSESF", m_ThPSCamera);
+    //m_CameraController = new CCameraController();
+    CAMCONTM->AddNewCamera("FPS", m_FPSCamera);
+    CAMCONTM->AddNewCamera("ThPSESF", m_ThPSCamera);
     //m_CameraController->AddNewCamera("ThPS", m_ThPSCamera1);
-    m_CameraController->Load(".\\Data\\level3\\cameras.xml");
-    m_CameraController->setActiveCamera("FPS");
-	CCORE->SetCameraController(m_CameraController);
-    m_Camera = m_CameraController->getActiveCamera();
+    CAMCONTM->setActiveCamera("FPS");
+    m_Camera = CAMCONTM->getActiveCamera();
     m_PlayerMode = true;
 //	m_ScriptedController = new CScriptedController();
 //	RENDM->AddResource("ScriptedController", m_ScriptedController);
-	//Lights
-	//LIGHTM->Load(".\\Data\\lights.xml");
-	//SCRIPTM->Load(".\\Data\\lua_actions.xml");
-	EFFECTM->Load(".\\Data\\effects.xml");
-	
-	
+    //Lights
+    //LIGHTM->Load(".\\Data\\lights.xml");
+    //SCRIPTM->Load(".\\Data\\lua_actions.xml");
+    //EFFECTM->Load(".\\Data\\effects.xml");
 }
 
 void CTest_Space::DeInit()
@@ -144,34 +138,33 @@ void CTest_Space::Update(float dt)
     //float deltaZ = im->GetMouseDelta().z;
     if (ACT2IN->DoAction("ChangeCatalan")) {
         LANGM->SetCurrentLanguage("catalan");
-		m_CameraController->setActiveCamera("Camera002");
-		m_CameraController->Play(true);
+        CAMCONTM->setActiveCamera("Camera002");
+        CAMCONTM->Play(true);
         CCORE->GetCinematicController()->GetResource("DestroyW")->Play(true);
     }
     if (ACT2IN->DoAction("ChangeCastellano")) {
         LANGM->SetCurrentLanguage("castellano");
         CCORE->GetCinematicController()->GetResource("DestroyW")->Stop();
-		m_CameraController->Stop();
-		m_CameraController->setActiveCamera("FPS");
+        CAMCONTM->Stop();
+        CAMCONTM->setActiveCamera("FPS");
     }
     if (ACT2IN->DoAction("ChangeIngles")) {
         LANGM->SetCurrentLanguage("ingles");
-		m_CameraController->Pause();
+        CAMCONTM->Pause();
         CCORE->GetCinematicController()->GetResource("DestroyW")->Pause();
     }
     if (ACT2IN->DoAction("CommutationCamera")) {
         if (m_PlayerMode) {
             m_PlayerMode = false;
-          //  m_CameraController->setActiveCamera("ThPSESF");
-			 m_CameraController->setActiveCamera("ThPSESF");
+            //  m_CameraController->setActiveCamera("ThPSESF");
+            CAMCONTM->setActiveCamera("ThPSESF");
         } else {
             m_PlayerMode = true;
-            m_CameraController->setActiveCamera("FPS");
+            CAMCONTM->setActiveCamera("FPS");
         }
     }
     CCORE->GetCinematicController()->Update(dt);
-
-	m_Camera = m_CameraController->getActiveCamera();
+    m_Camera = CAMCONTM->getActiveCamera();
 //	m_ScriptedController->Update(dt);
     /* if (m_PlayerMode) {
          m_ObjectFPS->SetYaw(m_ObjectFPS->GetYaw() -  deltaX * dt);
@@ -200,19 +193,14 @@ void CTest_Space::Update(float dt)
     if (ACT2IN->DoAction("ToggleFPSCam"))
         m_FPSMode = !m_FPSMode;
     if (m_FPSMode)
-        m_CameraController->Update("FPS", dt);
+        CAMCONTM->Update("FPS", dt);
     else
-        m_CameraController->Update(dt);
-
-	if(ACT2IN->DoAction("ReloadScriptedController"))
-	{
-		SCRIPTM->Reload(".\\Data\\scripted_controller.lua");
-	//	SCRIPTM->RunFile(SCRIPTM->GetScriptsMap().find("test2")->second);
-		//SCRIPTM->RunFile(".\\Data\\scripted_controller.lua");
-	}
-
-	
-
+        CAMCONTM->Update(dt);
+    if (ACT2IN->DoAction("ReloadScriptedController")) {
+        SCRIPTM->Reload(".\\Data\\scripted_controller.lua");
+        //	SCRIPTM->RunFile(SCRIPTM->GetScriptsMap().find("test2")->second);
+        //SCRIPTM->RunFile(".\\Data\\scripted_controller.lua");
+    }
     skip += dt;
     tTerra1_yaw += dt * 30 * 0.005;
     tTerra2_yaw += dt * 80 * 0.005;
@@ -234,7 +222,6 @@ void CTest_Space::Render()
     GRAPHM->DrawAxis(10);
     //text->Activate(0);
     RENDM->Render(GRAPHM);
-
     //g_RV->Render(CCORE->GetGraphicsManager(º+-));
     /* Mat44f t;
      Mat44f trot1;
