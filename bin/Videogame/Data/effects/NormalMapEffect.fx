@@ -43,54 +43,56 @@ float4 RN20(PNormalVertex IN) : COLOR
 	float3 l_Bump = g_Bump * (l_NormalTex.rgb - float3 (0.5,0.5,0.5));
 	float3 l_Nn = l_WNn + l_Bump.x*l_TangentNormalized + l_Bump.y*l_BinormalNormalized;
 	float3 finalColor = g_LightAmbient*l_DiffuseTex.xyz;
-	l_Nn = normalize(l_Nn);
+	//l_Nn = normalize(l_Nn);
 	float3 l_CameraPosition = g_InverseViewMatrix[3].xyz;
-	for(int i = 0; i < MAXLIGHTS; i++) {
-		if(g_LightEnabled[i] >= 0) {
-			if(g_LightType[i] == 0) {
-				float l_Distance=length(IN.WorldPosition-g_LightPosition[i]);
-				float l_DistanceAttenuation=1.0-saturate((l_Distance-g_NearAtten[i])/(g_FarAtten[i]-g_NearAtten[i]));
-				
+	for(int i = 0; i < MAXLIGHTS; i++) 
+	{
+		if(g_LightEnabled[i] >= 0) 
+		{
+			
+			if(g_LightType[i]==0) //omni
+			{	
 				float3 l_DirVectorNoNormal = g_LightPosition[i]-IN.WorldPosition;
 				float l_distance = distance(g_LightPosition[i],IN.WorldPosition);
 				float l_Attenuation = 1-saturate((l_distance-g_NearAtten[i])/(g_FarAtten[i]-g_NearAtten[i]));
-				float3 l_DirVector = normalize(l_DirVectorNoNormal);
-				float3 l_DiffuseContribution = saturate(dot(l_Nn,l_DirVector));
-
+				float3 l_DirVector = normalize(-l_DirVectorNoNormal);
+				float3 l_DiffuseContribution = saturate(dot(l_Nn,-l_DirVector));
 				float3 l_HV = normalize(normalize(l_CameraPosition - IN.WorldPosition)-l_DirVector);
 				float3 l_SpecularComponent = g_LightColor[i]*pow(saturate(dot(l_Nn,l_HV)), g_SpecularExponent);
-				finalColor = finalColor +((l_DiffuseTex.xyz*g_LightIntensity[i])*((l_DiffuseContribution*g_LightColor[i]*l_Attenuation)+l_SpecularComponent*g_LightColor[i]));
+				finalColor = finalColor +((l_DiffuseTex.xyz*g_LightIntensity[i])*(l_DiffuseContribution*g_LightColor[i]*l_Attenuation) +l_SpecularComponent*g_LightIntensity[i]);
 			}
-			if(g_LightType[i] == 1) {
-				float3 diff = saturate(dot(l_Nn, -g_LightDirection[i])) * l_DiffuseTex.xyz * g_LightColor[i];	
-				float3 l_Hn=normalize(normalize(l_CameraPosition-IN.WorldPosition)-g_LightDirection[i]);
-				float l_SpecularContribution=pow(saturate(dot(l_Hn,l_Nn)), g_SpecularExponent) * g_LightColor[i];		
-				finalColor = finalColor + diff + l_SpecularContribution;
-			}
-			if(g_LightType[i] == 2) {
-				float l_Distance=length(IN.WorldPosition-g_LightPosition[i]);
-				float l_DistanceAttenuation=1.0-saturate((l_Distance-g_NearAtten[i])/(g_FarAtten[i]-g_NearAtten[i]));
+			else if(g_LightType[i]==1) //directional
+			{
 				
-				float3 l_DirVectorNoNormal = g_LightPosition[i]-IN.WorldPosition;
+				float l_LightColor = saturate(dot(l_Nn, -g_LightDirection[i]));
+				float3 l_HV = normalize(normalize(l_CameraPosition - IN.WorldPosition)-g_LightDirection[i]);
+				float3 l_SpecularComponent = g_LightColor[i]*pow(saturate(dot(l_Nn,l_HV)), g_SpecularExponent);
+			
+				//finalColor = finalColor +(l_DiffuseTex.xyz*g_LightAmbient+l_DiffuseTex.xyz*l_LightColor*g_LightColor[i]*g_LightIntensity[i]+l_SpecularComponent*g_LightIntensity[i]);
+				finalColor = finalColor +(l_DiffuseTex.xyz*l_LightColor*g_LightColor[i]*g_LightIntensity[i]+l_SpecularComponent*g_LightIntensity[i]);
+			}
+			else if(g_LightType[i]==2) //spot
+			{
 				float l_distance = distance(g_LightPosition[i],IN.WorldPosition);
 				float l_Attenuation = 1-saturate((l_distance-g_NearAtten[i])/(g_FarAtten[i]-g_NearAtten[i]));
-				float3 l_DirVector = normalize(l_DirVectorNoNormal);
-				float3 l_Color = saturate(dot(l_Nn, l_DirVector));
-				
+								
 				float l_HalfFallOff = g_FallOff[i]/2.0;
 				float l_HalfAngle = g_LightAngle[i]/2.0;
 				float l_MaxAngle = l_HalfFallOff + l_HalfAngle;
-				float3 l_LightToPixelDirection = normalize(l_DirVectorNoNormal);
-				float l_DotDirNormal= dot(l_Nn, l_LightToPixelDirection);
-				
-				float l_AngAttenuation = /*1*/-saturate((l_DotDirNormal - cos(l_HalfAngle))/(cos(l_HalfAngle+g_FallOff[i])-cos(l_HalfAngle)));
+							
+				float l_AngAttenuation = /*1-*/saturate((g_LightDirection[i] - cos(l_HalfAngle))/(cos(l_HalfAngle+g_FallOff[i])-cos(l_HalfAngle)));
 
-				float3 l_HV = normalize(normalize(l_CameraPosition - IN.WorldPosition)-l_DirVector);
+				float l_LightColor = saturate(dot(l_Nn, -g_LightDirection[i]));
+				float3 l_HV = normalize(normalize(l_CameraPosition - IN.WorldPosition)-g_LightDirection[i]);
 				float3 l_SpecularComponent = g_LightColor[i]*pow(saturate(dot(l_Nn,l_HV)), g_SpecularExponent);
+				float3 l_DifuseContrib = l_DiffuseTex.xyz*l_LightColor*g_LightColor[i];
 
-				if(l_DotDirNormal >= cos(l_HalfAngle+g_FallOff[i]) ){
-					finalColor = finalColor+(l_DiffuseTex.xyz*g_LightIntensity[i])*((l_Color*l_Attenuation*l_AngAttenuation*g_LightColor[i])+l_SpecularComponent);
+				if(dot(l_Nn, -g_LightDirection[i]) >= cos(l_HalfAngle+g_FallOff[i]) ){
+					finalColor = finalColor +(l_DifuseContrib*g_LightIntensity[i]*l_AngAttenuation*l_Attenuation+l_SpecularComponent*g_LightIntensity[i]);
 				}
+					
+					
+				
 			}
 		}
 	}
