@@ -10,7 +10,7 @@
 #include "cal3d\global.h"
 #include "cal3d\coremodel.h"
 #include "cal3d\model.h"
-#include "Core_Utils/MemLeaks.h"
+#include "Core_Utils\MemLeaks.h"
 
 #define APPLICATION_NAME	"VIDEOGAME"
 
@@ -67,7 +67,11 @@ void ShowErrorMessage (const std::string& message)
 //-----------------------------------------------------------------------
 int APIENTRY WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance, LPSTR _lpCmdLine, int _nCmdShow)
 {
-    MemLeaks::MemoryBegin();
+    #ifdef _DEBUG
+	{ 
+		MemLeaks::MemoryBegin();
+	}
+	#endif
     // Register the window class
     WNDCLASSEX wc = {	sizeof(WNDCLASSEX), CS_CLASSDC, MsgProc, 0L, 0L, GetModuleHandle(NULL), NULL, NULL, NULL, NULL, APPLICATION_NAME, NULL };
     RegisterClassEx( &wc );
@@ -103,7 +107,12 @@ int APIENTRY WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance, LPSTR _lpCm
     }
     UnregisterClass( APPLICATION_NAME, wc.hInstance );
     delete m_Engine;
-    MemLeaks::MemoryEnd();
+	#ifdef _DEBUG
+	{ 
+		MemLeaks::MemoryEnd();
+	}
+	#endif
+  //  MemLeaks::MemoryEnd();
     // Añadir una llamada a la alicación para finalizar/liberar memoria de todos sus datos
     return 0;
 }

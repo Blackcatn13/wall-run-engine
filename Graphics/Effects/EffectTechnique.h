@@ -70,6 +70,9 @@ class CEffectTechnique
 		void SetUseViewProjectionMatrix(bool value){m_UseViewProjectionMatrix=value;}
 		void SetUseViewToLightProjectionMatrix(bool value){m_UseViewToLightProjectionMatrix=value;}
 		void SetUseTime(bool value){m_UseTime=value;}
+
+		//apaño para default vertex repetidos
+		int GetDefaultVertex();
 };
 
 #endif //INC_EFFECT_TECHNIQUE_H_

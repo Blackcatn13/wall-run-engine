@@ -2,7 +2,7 @@
 <effects>
 	<default_technique vertex_type="19" technique="BasicTechnique"/>
 
-	<default_technique vertex_type="19" technique="LightsTechnique"/>
+	<default_technique vertex_type="20" technique="LightsTechnique"/>
 	<default_technique vertex_type="63" technique="NormalMapTechnique"/>
 	<default_technique vertex_type="19" technique="CubeMapTechnique"/>
 	<default_technique vertex_type="51" technique="LightMapTechnique"/>

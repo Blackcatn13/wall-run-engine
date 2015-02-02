@@ -192,3 +192,16 @@ void CEffectManager::CleanUp()
 	m_Effects.Destroy();
 	Destroy();
 }
+
+/*int CEffectManager::GetDefaultVertex(std::string TechniqueName)
+{
+	//m_DefaultTechniqueEffectMap[0].
+	TDefaultTechniqueEffectMap::iterator it = m_DefaultTechniqueEffectMap.begin();
+	while (it!=m_DefaultTechniqueEffectMap.end())
+	{
+		if(it->second==TechniqueName)
+			return it->first;
+		++it;
+	}
+	return 0;
+}*/

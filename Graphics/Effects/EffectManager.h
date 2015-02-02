@@ -51,6 +51,8 @@ class CEffectManager : public CMapManager<CEffectTechnique>
 		CEffect * GetEffect(const std::string &Name);
 		CEffectTechnique * GetEffectTechnique(const std::string &Name);
 		void CleanUp();
+		//apaño para default vertex repetidos
+		//int GetDefaultVertex(std::string TechniqueName);
 };
 
 #endif //INC_EFFECT_MANAGER_H_

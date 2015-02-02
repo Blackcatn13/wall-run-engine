@@ -191,11 +191,8 @@ bool CStaticMesh::Load (const std::string &FileName)
                 fread(&n_idxs, sizeof n_idxs, 1, f);
                 void* index_list = (void*)malloc(n_idxs * sizeof(unsigned short));
                 fread(index_list , n_idxs * sizeof(unsigned short), 1, f);
-                if (vertex_type[i] == TTEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexType()) {
+                if ((vertex_type[i] & VERTEX_TYPE_BINORMAL) == VERTEX_TYPE_BINORMAL) {
                     CalcTangentsAndBinormals(vertex_list, (unsigned short*)index_list, n_vtxs, n_idxs, type_size, 0, 12, 24, 36, 56);
-                }
-                if (vertex_type[i] == TCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexType()) {
-                    CalcTangentsAndBinormals(vertex_list, (unsigned short*)index_list, n_vtxs, n_idxs, type_size, 0, 12, 24, 36, 52);
                 }
                 CRenderableVertexs *l_rv = NULL;
                 if (vertex_type[i] == TTEXTURE_NORMAL_VERTEX::GetVertexType())
@@ -274,12 +271,13 @@ void CStaticMesh::Render (CGraphicsManager *RM)
     //CEffectTechnique *l_EffectTechnique = EFFECTM->GetEffectTechnique("LightsTechnique");
     //CEffectTechnique *l_EffectTechnique = EFFECTM->GetEffectTechnique("NormalMapTechnique");
     //CEffectTechnique *l_EffectTechnique = EFFECTM->GetEffectTechnique("CubeMapTechnique");
-    CEffectTechnique *l_EffectTechnique = EFFECTM->GetEffectTechnique("LightMapTechnique");
+   // CEffectTechnique *l_EffectTechnique = EFFECTM->GetEffectTechnique("LightMapTechnique");
+	
     for (int i = 0; i < m_RVs.size(); ++i) {
         // TODO iterate m_textures
         // TODO cambiar a esto
-        //l_EffectName = EFFECTM->GetTechniqueEffectNameByVertexDefault(m_RVs[i]->GetVertexType());
-        //l_EffectTechnique=EFFECTM->GetEffectTechnique(l_EffectName);
+        std::string l_EffectName = EFFECTM->GetTechniqueEffectNameByVertexDefault(m_RVs[i]->GetVertexType());
+		CEffectTechnique *l_EffectTechnique =EFFECTM->GetEffectTechnique(l_EffectName);
         if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_TEXTURE1) == VERTEX_TYPE_TEXTURE1)
             m_Textures[i][0]->Activate(0);
         if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_TEXTURE2) == VERTEX_TYPE_TEXTURE2)
