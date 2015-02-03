@@ -16,6 +16,7 @@
 #include "Cinematics\CinematicController.h"
 #include "Renderable\RenderableObjectTechniqueManager.h"
 #include "Camera\CameraController.h"
+#include "PhysicsManager.h"
 
 CCore* CCore::m_Instance = 0;
 
@@ -39,6 +40,7 @@ void CCore::Init(HWND handler)
     //Load?
     m_InputManager = new CInputManager();
     m_InputManager->Init(handler, Vect2i(m_Config.Screen_Width, m_Config.Screen_Heigth), m_Config.Mouse_Exclusive);
+	
     m_LanguageManager = new CLanguageManager();
     m_FontManager = new CFontManager();
     m_FontManager->Init(m_GraphicsManager);
@@ -68,6 +70,9 @@ void CCore::Init(HWND handler)
     m_ScriptManager = new CScriptManager();
     m_ScriptManager->Initialize();
     m_LightManager = new CLightManager();*/
+
+	m_PhysicsManager = new CPhysicsManager();
+	m_PhysicsManager->Init();
 }
 
 void CCore::DeInit()
@@ -88,6 +93,7 @@ void CCore::DeInit()
     CHECKED_DELETE(m_CameraController);
     CHECKED_DELETE(m_CinematicManager);
     CHECKED_DELETE(m_EffectManager);
+	CHECKED_DELETE(m_PhysicsManager);
     //CHECKED_DELETE(m_RenderableObjectTechniqueManager);
 }
 
@@ -102,13 +108,15 @@ CCore* CCore::GetInstance()
 void CCore::Render()
 {
     //m_GraphicsManager->Render();
-    m_LightManager->Render(GRAPHM);
+    m_LightManager->Render(m_GraphicsManager);
+	m_PhysicsManager->DebugRender(m_GraphicsManager);
     m_SoundManager->Render();
 }
 
 void CCore::Update(float dt)
 {
     m_GraphicsManager->Update();
+	m_PhysicsManager->Update(dt);
     m_SoundManager->Update();
     m_InputManager->Update();
 }

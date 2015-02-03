@@ -26,3 +26,8 @@ Mat44f CObject3D::getTransform()
     rot.RotByAnglesYXZ(m_fYaw, m_fPitch, m_fRoll);
     return trans * rot * scale;
 }
+
+void CObject3D::InitMat44()
+{
+	m_transform = m44fIDENTITY;
+}
