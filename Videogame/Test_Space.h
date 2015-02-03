@@ -26,6 +26,7 @@ private:
 	CScriptedController * m_ScriptedController;
 	CRenderableObject	*m_RenderableObject;
 	CPhysicActor		*m_PhysicActor;
+	CPhysicActor		*m_PhysicActorCubeFix;
 	CPhysicUserData		*m_PhysicUserData;
 	CPhysicUserData		*m_PhysicUserDataCube;
 

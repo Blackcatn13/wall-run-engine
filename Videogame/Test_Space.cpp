@@ -59,6 +59,8 @@ CTest_Space::~CTest_Space(void)
     //delete m_FPSCamera;
 	CHECKED_DELETE(m_PhysicActor);
 	CHECKED_DELETE(m_PhysicUserData);
+	CHECKED_DELETE(m_PhysicUserDataCube);
+	CHECKED_DELETE(m_PhysicActorCubeFix);
 }
 
 void CTest_Space::Init()
@@ -92,20 +94,21 @@ void CTest_Space::Init()
     //SCRIPTM->Load(".\\Data\\lua_actions.xml");
     //EFFECTM->Load(".\\Data\\effects.xml");
 
-	m_PhysicUserData = new CPhysicUserData("name");
+	m_PhysicUserData = new CPhysicUserData("box");
 
 	m_PhysicUserData->SetPaint(true);
 	m_PhysicActor = new CPhysicActor(m_PhysicUserData);
-	m_PhysicActor->AddBoxSphape(Vect3f(1.f,1.f,1.f),v3fZERO,0,0);
-	m_PhysicActor->SetGlobalPosition(Vect3f(0.f,10.f,0.f));
+	m_PhysicActor->AddSphereShape(1.0f,v3fZERO,0,0);
+	m_PhysicActor->SetGlobalPosition(Vect3f(2.1f,15.f,0.f));
 	m_PhysicActor->CreateBody(0.5f);
-	PHYSXM->AddPhysicActor(m_PhysicActor);   
+	PHYSXM->AddPhysicActor(m_PhysicActor); 
+	m_PhysicUserDataCube = new CPhysicUserData("fixbox");
 	m_PhysicUserDataCube->SetPaint(true);
-	m_PhysicActor = new CPhysicActor(m_PhysicUserData);
-	m_PhysicActor->AddBoxSphape(Vect3f(1.f,1.f,1.f),v3fZERO,0,0);
-	m_PhysicActor->SetGlobalPosition(Vect3f(0.f,10.f,0.f));
-	m_PhysicActor->CreateBody(0.5f);
-	PHYSXM->AddPhysicActor(m_PhysicActor);   
+	m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+	m_PhysicActorCubeFix->AddBoxSphape(Vect3f(2.f,2.f,2.f),v3fZERO,0,0);
+	m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(0.f,5.f,0.f));
+	//m_PhysicActorCubeFix->CreateBody(0.5f);
+	PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);   
 	  
 }
 
@@ -222,6 +225,18 @@ void CTest_Space::Update(float dt)
         //	SCRIPTM->RunFile(SCRIPTM->GetScriptsMap().find("test2")->second);
         //SCRIPTM->RunFile(".\\Data\\scripted_controller.lua");
     }
+
+	if (ACT2IN->DoAction("DestroyActor")) {
+		PHYSXM->ReleasePhysicActor(m_PhysicActorCubeFix);
+	}else if (ACT2IN->DoAction("CreateActor")) {
+		m_PhysicUserDataCube = new CPhysicUserData("fixbox");
+		m_PhysicUserDataCube->SetPaint(true);
+		m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+		m_PhysicActorCubeFix->AddBoxSphape(Vect3f(2.f,2.f,2.f),v3fZERO,0,0);
+		m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(0.f,5.f,0.f));
+		//m_PhysicActorCubeFix->CreateBody(0.5f);
+		PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
+	}
     skip += dt;
     tTerra1_yaw += dt * 30 * 0.005;
     tTerra2_yaw += dt * 80 * 0.005;
