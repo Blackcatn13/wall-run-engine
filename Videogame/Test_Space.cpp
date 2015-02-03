@@ -32,6 +32,9 @@
 #include "Effects\EffectManager.h"
 
 #include "Core\ScriptedController.h"
+#include "PhysicsManager.h"
+#include "Actor\PhysicActor.h"
+#include "Utils\PhysicUserData.h"
 
 
 
@@ -54,6 +57,8 @@ CTest_Space::~CTest_Space(void)
     //delete m_ThPSCamera;
 //    delete m_ThPSCamera1;
     //delete m_FPSCamera;
+	CHECKED_DELETE(m_PhysicActor);
+	CHECKED_DELETE(m_PhysicUserData);
 }
 
 void CTest_Space::Init()
@@ -86,6 +91,22 @@ void CTest_Space::Init()
     //LIGHTM->Load(".\\Data\\lights.xml");
     //SCRIPTM->Load(".\\Data\\lua_actions.xml");
     //EFFECTM->Load(".\\Data\\effects.xml");
+
+	m_PhysicUserData = new CPhysicUserData("name");
+
+	m_PhysicUserData->SetPaint(true);
+	m_PhysicActor = new CPhysicActor(m_PhysicUserData);
+	m_PhysicActor->AddBoxSphape(Vect3f(1.f,1.f,1.f),v3fZERO,0,0);
+	m_PhysicActor->SetGlobalPosition(Vect3f(0.f,10.f,0.f));
+	m_PhysicActor->CreateBody(0.5f);
+	PHYSXM->AddPhysicActor(m_PhysicActor);   
+	m_PhysicUserDataCube->SetPaint(true);
+	m_PhysicActor = new CPhysicActor(m_PhysicUserData);
+	m_PhysicActor->AddBoxSphape(Vect3f(1.f,1.f,1.f),v3fZERO,0,0);
+	m_PhysicActor->SetGlobalPosition(Vect3f(0.f,10.f,0.f));
+	m_PhysicActor->CreateBody(0.5f);
+	PHYSXM->AddPhysicActor(m_PhysicActor);   
+	  
 }
 
 void CTest_Space::DeInit()
