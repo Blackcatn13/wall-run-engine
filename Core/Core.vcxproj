@@ -90,7 +90,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(SolutionDir)\Graphics;$(SolutionDir)\Sound;$(SolutionDir)\Base;$(SolutionDir)\3dParty\libxml2-2.7.2.win32\include;$(SolutionDir)\3dParty\iconv-1.9.2.win32\include;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)\Input;$(SolutionDir)\$(ProjectName);$(SolutionDir)\3dParty;$(SolutionDir)\3dParty\Lua\src;$(SolutionDir)\3dParty\LuaBind\;$(SolutionDir)\3dParty\Boost\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Graphics;$(SolutionDir)\Sound;$(SolutionDir)\Base;$(SolutionDir)\3dParty\libxml2-2.7.2.win32\include;$(SolutionDir)\3dParty\iconv-1.9.2.win32\include;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)\Input;$(SolutionDir)\$(ProjectName);$(SolutionDir)\3dParty;$(SolutionDir)\3dParty\Lua\src;$(SolutionDir)\3dParty\LuaBind\;$(SolutionDir)\3dParty\Boost\;$(SolutionDir)\PhysX</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -113,7 +113,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(SolutionDir)\Graphics;$(SolutionDir)\Sound;$(SolutionDir)\Base;$(SolutionDir)\3dParty\libxml2-2.7.2.win32\include;$(SolutionDir)\3dParty\iconv-1.9.2.win32\include;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)\Input;$(SolutionDir)\$(ProjectName);$(SolutionDir)\3dParty;$(SolutionDir)\3dParty\Lua\src;$(SolutionDir)\3dParty\LuaBind\;$(SolutionDir)\3dParty\Boost\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Graphics;$(SolutionDir)\Sound;$(SolutionDir)\Base;$(SolutionDir)\3dParty\libxml2-2.7.2.win32\include;$(SolutionDir)\3dParty\iconv-1.9.2.win32\include;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)\Input;$(SolutionDir)\$(ProjectName);$(SolutionDir)\3dParty;$(SolutionDir)\3dParty\Lua\src;$(SolutionDir)\3dParty\LuaBind\;$(SolutionDir)\3dParty\Boost\;$(SolutionDir)\PhysX</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

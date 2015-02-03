@@ -23,6 +23,7 @@ class CCinematicController;
 class CCameraController;
 class CEffectManager;
 class CRenderableObjectTechniqueManager;
+class CPhysicsManager;
 
 #define CCORE   CCore::GetInstance()
 #define GRAPHM  CCore::GetInstance()->GetGraphicsManager()
@@ -40,6 +41,7 @@ class CRenderableObjectTechniqueManager;
 #define EFFECTM CCore::GetInstance()->GetEffectManager()
 #define RENDTECHM CCore::GetInstance()->GetRenderableObjectTechniqueManager()
 #define CAMCONTM CCore::GetInstance()->GetCameraController()
+#define PHYSXM CCore::GetInstance()->GetPhysicsManager()
 
 
 class CCore
@@ -66,6 +68,7 @@ private:
     CCameraController*		            m_CameraController;
     CEffectManager*			            m_EffectManager;
     CRenderableObjectTechniqueManager*  m_RenderableObjectTechniqueManager;
+	CPhysicsManager*					m_PhysicsManager;
 
 public:
     ~CCore();
@@ -129,7 +132,10 @@ public:
     {
         return m_CinematicManager;
     }
-
+	CPhysicsManager * GetPhysicsManager()
+	{
+		return m_PhysicsManager;
+	}
     CCameraController * GetCameraController()
     {
         return m_CameraController;

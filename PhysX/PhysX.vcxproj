@@ -11,7 +11,43 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dummy.cpp" />
+    <ClCompile Include="Actor\PhysicActor.cpp" />
+    <ClCompile Include="Actor\PhysicController.cpp" />
+    <ClCompile Include="Cooking Mesh\PhysicCookingMesh.cpp" />
+    <ClCompile Include="Joints\PhysicFixedJoint.cpp" />
+    <ClCompile Include="Joints\PhysicRevoluteJoint.cpp" />
+    <ClCompile Include="Joints\PhysicSphericalJoint.cpp" />
+    <ClCompile Include="Jump\Jump.cpp" />
+    <ClCompile Include="PhysicMaterial\PhysicMaterial.cpp" />
+    <ClCompile Include="PhysicsManager.cpp" />
+    <ClCompile Include="Reports\PhysicCollisionReport.cpp" />
+    <ClCompile Include="Reports\PhysicTriggerReport.cpp" />
+    <ClCompile Include="Utils\PhysicASELoader.cpp" />
+    <ClCompile Include="Utils\PhysicStream.cpp" />
+    <ClCompile Include="Utils\PhysicUserAllocator.cpp" />
+    <ClCompile Include="Utils\PhysXObjManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Actor\PhysicActor.h" />
+    <ClInclude Include="Actor\PhysicController.h" />
+    <ClInclude Include="Cooking Mesh\PhysicCookingMesh.h" />
+    <ClInclude Include="Joints\JointsDefs.h" />
+    <ClInclude Include="Joints\PhysicFixedJoint.h" />
+    <ClInclude Include="Joints\PhysicRevoluteJoint.h" />
+    <ClInclude Include="Joints\PhysicSphericalJoint.h" />
+    <ClInclude Include="Jump\Jump.h" />
+    <ClInclude Include="PhysicMaterial\PhysicMaterial.h" />
+    <ClInclude Include="PhysicsDefs.h" />
+    <ClInclude Include="PhysicsManager.h" />
+    <ClInclude Include="Reports\PhysicCollisionReport.h" />
+    <ClInclude Include="Reports\PhysicsControllerHitReport.h" />
+    <ClInclude Include="Reports\PhysicTriggerReport.h" />
+    <ClInclude Include="Utils\PhysicASELoader.h" />
+    <ClInclude Include="Utils\PhysicStream.h" />
+    <ClInclude Include="Utils\PhysicUserAllocator.h" />
+    <ClInclude Include="Utils\PhysicUserData.h" />
+    <ClInclude Include="Utils\PhysXObjDefs.h" />
+    <ClInclude Include="Utils\PhysXObjManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B85966FE-68AE-4DE5-8D0D-09E4CC473875}</ProjectGuid>
@@ -63,6 +99,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Cooking\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Foundation\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\NxCharacter\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\PhysXLoader\include;$(SolutionDir)\Base;$(SolutionDir)\PhysX;$(SolutionDir)\Core;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)\Input;$(SolutionDir)\3dParty\libxml2-2.7.2.win32\include;$(SolutionDir)\3dParty\iconv-1.9.2.win32\include;$(SolutionDir)\$(ProjectName);$(SolutionDir)\3dParty\;$(SolutionDir)\Graphics;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -82,6 +119,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Cooking\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Foundation\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\NxCharacter\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\PhysXLoader\include;$(SolutionDir)\Base;$(SolutionDir)\PhysX;$(SolutionDir)\Core;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)\Input;$(SolutionDir)\3dParty\libxml2-2.7.2.win32\include;$(SolutionDir)\3dParty\iconv-1.9.2.win32\include;$(SolutionDir)\$(ProjectName);$(SolutionDir)\3dParty\;$(SolutionDir)\Graphics;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
