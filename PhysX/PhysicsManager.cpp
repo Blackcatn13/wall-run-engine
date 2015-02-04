@@ -160,6 +160,11 @@ m_pPhysicsSDK->getFoundationSDK().getRemoteDebugger()->connect("127.0.0.1");
 	return m_bIsOk;
 }
 
+void CPhysicsManager::SetGravity(Vect3f g)
+{
+	GetScene()->setGravity(NxVec3(g.x, g.y, g.z));
+}
+
 //----------------------------------------------------------------------------
 // Finalize data
 //----------------------------------------------------------------------------

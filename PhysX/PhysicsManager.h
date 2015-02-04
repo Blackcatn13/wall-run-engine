@@ -142,7 +142,7 @@ public:
 
 	CPhysicUserData*		GetUserData						( std::string name);
 	void                    ReleaseElement					(const std::string &_ase);
-
+	void					SetGravity(Vect3f);
 private:
 	bool					LoadXML							();
 	void					Release							();

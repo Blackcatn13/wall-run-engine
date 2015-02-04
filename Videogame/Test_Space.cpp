@@ -76,7 +76,7 @@ void CTest_Space::Init()
     m_ObjectFPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
     m_ObjectThPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
     //m_RenderableObject = RENDM->GetResourcesMap().find("Box005")->second.m_Value;
-    m_ThPSCamera = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS, 50);
+    m_ThPSCamera = new CThPSCamera(0.1f, 10000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS, 50);
     //m_ThPSCamera1 = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_RenderableObject, 10);
     m_FPSCamera = new CFPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectFPS);
     m_ThPSCamera->SetTypeCamera(CCamera::TC_ESF);
@@ -84,7 +84,7 @@ void CTest_Space::Init()
     CAMCONTM->AddNewCamera("FPS", m_FPSCamera);
     CAMCONTM->AddNewCamera("ThPSESF", m_ThPSCamera);
     //m_CameraController->AddNewCamera("ThPS", m_ThPSCamera1);
-    CAMCONTM->setActiveCamera("FPS");
+    CAMCONTM->setActiveCamera("ThPSESF");
     m_Camera = CAMCONTM->getActiveCamera();
     m_PlayerMode = true;
 //	m_ScriptedController = new CScriptedController();
@@ -94,23 +94,99 @@ void CTest_Space::Init()
     //SCRIPTM->Load(".\\Data\\lua_actions.xml");
     //EFFECTM->Load(".\\Data\\effects.xml");
 
-	m_PhysicUserData = new CPhysicUserData("box");
+	//// Exercici 1
+	//m_PhysicUserDataCube = new CPhysicUserData("fixbox");
+	//m_PhysicUserDataCube->SetPaint(true);
+	//m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+	//m_PhysicActorCubeFix->AddBoxSphape(Vect3f(1.f,1.f,1.f),v3fZERO,	Vect3f(3, 0, -3));
+	//m_PhysicActorCubeFix->AddBoxSphape(Vect3f(1.f,1.f,1.f),v3fZERO, Vect3f(-3, 0, -3));
+	//m_PhysicActorCubeFix->AddBoxSphape(Vect3f(1.f,1.f,1.f),v3fZERO, Vect3f(-3, 0, 3));
+	//m_PhysicActorCubeFix->AddBoxSphape(Vect3f(1.f,1.f,1.f),v3fZERO,	Vect3f(3, 0, 3));
+	//m_PhysicActorCubeFix->AddBoxSphape(Vect3f(4.f,.5f,4.f),v3fZERO, Vect3f(0, 1.f, 0));
+	//m_PhysicActorCubeFix->AddSphereShape(1.5f, v3fZERO, Vect3f(0, 2.5, 0));
+	//m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(0.f,20.f,0.f));
+	//m_PhysicActorCubeFix->CreateBody(0.5f);
+	//PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);   
+	//m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+	//m_PhysicActorCubeFix->AddBoxSphape(Vect3f(2,2,2), Vect3f(2, 5, 2));
+	//PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);   
+	//m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+	//m_PhysicActorCubeFix->AddPlaneShape(Vect3f(0,1,0), 0);
+	//PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);   
 
-	m_PhysicUserData->SetPaint(true);
-	m_PhysicActor = new CPhysicActor(m_PhysicUserData);
-	m_PhysicActor->AddSphereShape(1.0f,v3fZERO,0,0);
-	m_PhysicActor->SetGlobalPosition(Vect3f(2.1f,15.f,0.f));
-	m_PhysicActor->CreateBody(0.5f);
-	PHYSXM->AddPhysicActor(m_PhysicActor); 
+	// Exercici 2
+	/*m_PhysicUserDataCube = new CPhysicUserData("fixbox");
+	m_PhysicUserDataCube->SetPaint(true);
+	m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+	m_PhysicActorCubeFix->AddBoxSphape(Vect3f(1.f,1.f,1.f),v3fZERO,	Vect3f(0, 20, 3));
+	m_PhysicActorCubeFix->AddBoxSphape(Vect3f(1.f,1.f,1.f),v3fZERO, Vect3f(0, 20, -3));
+	m_PhysicActorCubeFix->CreateBody(0.5f);
+	PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);   
+	m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+	m_PhysicActorCubeFix->AddBoxSphape(Vect3f(1.f,1.f,1.f),v3fZERO,	Vect3f(0, 7.5, 0));
+	PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);   
+	m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+	m_PhysicActorCubeFix->AddPlaneShape(Vect3f(0,1,0), 0);
+	PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);   
+	*/
+
+	//// Exercici 3
+	//m_PhysicUserDataCube = new CPhysicUserData("fixbox");
+	//m_PhysicUserDataCube->SetPaint(true);
+	//m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+	//m_PhysicActorCubeFix->AddPlaneShape(Vect3f(0,1,0), -20);
+	//PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);   
+	///*m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+	//m_PhysicActorCubeFix->AddPlaneShape(Vect3f(0,1,0), 20);
+	//PHYSXM->AddPhysicActor(m_PhysicActorCubeFix); */  
+	////m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+	////m_PhysicActorCubeFix->AddPlaneShape(Vect3f(1,0,0), 10);
+	////PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);   
+	////m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+	////m_PhysicActorCubeFix->AddPlaneShape(Vect3f(1,0,0), -10);
+	////PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);   
+	//
+	////for(int i = 0; i < 10; i++) {
+	//	m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+	//	m_PhysicActorCubeFix->AddBoxSphape(Vect3f(.5f,.5f,.5f), v3fZERO);
+	//	m_PhysicActorCubeFix->CreateBody(0.5f);
+	//	m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(0.f,2.f,0.f));
+	//	PHYSXM->AddPhysicActor(m_PhysicActorCubeFix); 
+	////}  
+
+	// Exercici 4
 	m_PhysicUserDataCube = new CPhysicUserData("fixbox");
 	m_PhysicUserDataCube->SetPaint(true);
 	m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
-	m_PhysicActorCubeFix->AddBoxSphape(Vect3f(2.f,2.f,2.f),v3fZERO,0,0);
-	m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(0.f,5.f,0.f));
-	//m_PhysicActorCubeFix->CreateBody(0.5f);
-	PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);   
-	  
+	m_PhysicActorCubeFix->AddBoxSphape(Vect3f(.5f,.5f,.5f), v3fZERO);
+	m_PhysicActorCubeFix->CreateBody(0.5f);
+	m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(0.f,0.5,0.f));
+	PHYSXM->AddPhysicActor(m_PhysicActorCubeFix); 
+	m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+	m_PhysicActorCubeFix->AddBoxSphape(Vect3f(.5f,.5f,.5f), v3fZERO);
+	m_PhysicActorCubeFix->CreateBody(0.5f);
+	m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(0.f,1.5,0.f));
+	PHYSXM->AddPhysicActor(m_PhysicActorCubeFix); 
+	m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+	m_PhysicActorCubeFix->AddBoxSphape(Vect3f(.5f,.5f,.5f), v3fZERO);
+	m_PhysicActorCubeFix->CreateBody(0.5f);
+	m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(0.f,2.5,0.f));
+	PHYSXM->AddPhysicActor(m_PhysicActorCubeFix); 
+	m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+	m_PhysicActorCubeFix->AddBoxSphape(Vect3f(.5f,.5f,.5f), v3fZERO);
+	m_PhysicActorCubeFix->CreateBody(0.5f);
+	m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(0.f,3.5,0.f));
+	PHYSXM->AddPhysicActor(m_PhysicActorCubeFix); 
+	m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+	m_PhysicActorCubeFix->AddBoxSphape(Vect3f(.5f,.5f,.5f), v3fZERO);
+	m_PhysicActorCubeFix->CreateBody(0.5f);
+	m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(0.f,4.5,0.f));
+	PHYSXM->AddPhysicActor(m_PhysicActorCubeFix); 
+	m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+	m_PhysicActorCubeFix->AddPlaneShape(Vect3f(0,1,0), 0);
+	PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);  
 }
+
 
 void CTest_Space::DeInit()
 {
@@ -187,6 +263,27 @@ void CTest_Space::Update(float dt)
             CAMCONTM->setActiveCamera("FPS");
         }
     }
+
+	if (ACT2IN->DoAction("KeyMoveForward")) {
+		PHYSXM->SetGravity(Vect3f(0, 9.8, 0));
+	}
+	if (ACT2IN->DoAction("KeyMoveBack")) {
+		PHYSXM->SetGravity(Vect3f(0, -9.8, 0));
+	}
+	if (ACT2IN->DoAction("KeyMoveLeft")) {
+		m_PhysicUserDataCube = new CPhysicUserData("fixbox");
+		m_PhysicUserDataCube->SetPaint(true);
+		m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+		m_PhysicActorCubeFix->AddSphereShape(0.5, m_Camera->GetEye());
+		m_PhysicActorCubeFix->CreateBody(0.5f);
+		PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
+		m_PhysicActorCubeFix->AddVelocityAtPos(m_Camera->GetDirection().Normalize(), v3fZERO, 10);
+		 
+	}
+	if (ACT2IN->DoAction("KeyMoveRight")) {
+		PHYSXM->SetGravity(Vect3f(0,0,0));
+	}
+
     CCORE->GetCinematicController()->Update(dt);
     m_Camera = CAMCONTM->getActiveCamera();
 //	m_ScriptedController->Update(dt);
