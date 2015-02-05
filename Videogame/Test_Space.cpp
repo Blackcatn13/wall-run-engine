@@ -36,7 +36,7 @@
 #include "Actor\PhysicActor.h"
 #include "Utils\PhysicUserData.h"
 
-
+#include "Granade.h"
 
 CTest_Space::CTest_Space(void)
 {
@@ -184,7 +184,10 @@ void CTest_Space::Init()
 	PHYSXM->AddPhysicActor(m_PhysicActorCubeFix); 
 	m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
 	m_PhysicActorCubeFix->AddPlaneShape(Vect3f(0,1,0), 0);
-	PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);  
+	PHYSXM->AddPhysicActor(m_PhysicActorCubeFix); 
+
+
+	m_Granade = new CGranade();
 }
 
 
@@ -263,8 +266,13 @@ void CTest_Space::Update(float dt)
             CAMCONTM->setActiveCamera("FPS");
         }
     }
+	///////////////////////////////////////////////////////////////////////////////////////
+	//GRANADE
+	///////////////////////////////////////////////////////////////////////////////////////
+	m_Granade->Update(dt);
 
-	if (ACT2IN->DoAction("KeyMoveForward")) {
+
+	/*if (ACT2IN->DoAction("KeyMoveForward")) {
 		PHYSXM->SetGravity(Vect3f(0, 9.8, 0));
 	}
 	if (ACT2IN->DoAction("KeyMoveBack")) {
@@ -282,7 +290,7 @@ void CTest_Space::Update(float dt)
 	}
 	if (ACT2IN->DoAction("KeyMoveRight")) {
 		PHYSXM->SetGravity(Vect3f(0,0,0));
-	}
+	}*/
 
     CCORE->GetCinematicController()->Update(dt);
     m_Camera = CAMCONTM->getActiveCamera();
@@ -325,7 +333,7 @@ void CTest_Space::Update(float dt)
 
 	if (ACT2IN->DoAction("DestroyActor")) {
 		PHYSXM->ReleasePhysicActor(m_PhysicActorCubeFix);
-	}else if (ACT2IN->DoAction("CreateActor")) {
+	}/*else if (ACT2IN->DoAction("CreateActor")) {
 		m_PhysicUserDataCube = new CPhysicUserData("fixbox");
 		m_PhysicUserDataCube->SetPaint(true);
 		m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
@@ -333,7 +341,7 @@ void CTest_Space::Update(float dt)
 		m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(0.f,5.f,0.f));
 		//m_PhysicActorCubeFix->CreateBody(0.5f);
 		PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
-	}
+	}*/
     skip += dt;
     tTerra1_yaw += dt * 30 * 0.005;
     tTerra2_yaw += dt * 80 * 0.005;
@@ -354,6 +362,7 @@ void CTest_Space::Render()
     GRAPHM->DrawGrid(20);
     GRAPHM->DrawAxis(10);
     //text->Activate(0);
+	m_Granade->Render();
     RENDM->Render(GRAPHM);
     //g_RV->Render(CCORE->GetGraphicsManager(º+-));
     /* Mat44f t;

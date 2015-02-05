@@ -44,6 +44,9 @@
     <ClCompile Include="Test_Space.cpp">
       <Filter>spce</Filter>
     </ClCompile>
+    <ClCompile Include="Granade.cpp">
+      <Filter>spce</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enemies\EasyEnemy.h">
@@ -68,6 +71,9 @@
       <Filter>Test</Filter>
     </ClInclude>
     <ClInclude Include="Test_Space.h">
+      <Filter>spce</Filter>
+    </ClInclude>
+    <ClInclude Include="Granade.h">
       <Filter>spce</Filter>
     </ClInclude>
   </ItemGroup>

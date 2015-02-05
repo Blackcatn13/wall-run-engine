@@ -14,6 +14,8 @@ class CScriptedController;
 class CPhysicUserData;
 class CPhysicActor;
 
+class CGranade;
+
 class CTest_Space : public CProcess
 {
 private:
@@ -29,6 +31,8 @@ private:
 	CPhysicActor		*m_PhysicActorCubeFix;
 	CPhysicUserData		*m_PhysicUserData;
 	CPhysicUserData		*m_PhysicUserDataCube;
+
+	CGranade*		m_Granade;
 
     bool			    m_PlayerMode;
     bool				m_FPSMode;

@@ -75,7 +75,7 @@
     </action>
 	
 	<action name="KeyMoveForward">
-    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_UP"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_UP"/>
     </action>
 
     <action name="KeyMoveBack">
