@@ -13,6 +13,7 @@ class CScriptManager;
 class CScriptedController;
 class CPhysicUserData;
 class CPhysicActor;
+class CPhysicMaterial;
 
 class CGranade;
 
@@ -31,6 +32,7 @@ private:
 	CPhysicActor		*m_PhysicActorCubeFix;
 	CPhysicUserData		*m_PhysicUserData;
 	CPhysicUserData		*m_PhysicUserDataCube;
+	CPhysicMaterial		*m_Material;
 
 	CGranade*		m_Granade;
 

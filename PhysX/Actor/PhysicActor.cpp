@@ -23,6 +23,7 @@ CPhysicActor::CPhysicActor( CPhysicUserData* _pUserData )
 	, m_pPhXActor		( NULL )
 	, m_pPhXActorDesc	( NULL )
 	, m_pPhXBodyDesc	( NULL )
+	, hasMaterial (false)
 {
 	assert ( m_pUserData );
 	_pUserData->SetActor(this);
@@ -151,6 +152,13 @@ void CPhysicActor::CreateSphereTrigger ( const Vect3f& _vGlobalPos, const float 
 //					MÈTODES
 // -----------------------------------------
 
+void CPhysicActor::SetActorMaterial(int mat)
+{
+	m_MaterialID = mat;
+	hasMaterial = true;
+}
+
+
 void CPhysicActor::AddTorque(const Vect3f _vTorque)
 {
 	if (m_pPhXActor)
@@ -186,6 +194,8 @@ void CPhysicActor::AddSphereShape ( float radius, const Vect3f& _vGlobalPos, con
 		sphereDesc->ccdSkeleton = skeleton;
 		sphereDesc->shapeFlags |= NX_SF_DYNAMIC_DYNAMIC_CCD; //Activate dynamic-dynamic CCD for this body
 	}
+	if(hasMaterial)
+		sphereDesc->materialIndex = m_MaterialID;
 	m_pPhXActorDesc->shapes.pushBack( sphereDesc );
   
 }
@@ -229,6 +239,8 @@ void CPhysicActor::AddBoxSphape ( const Vect3f& _vSize, const Vect3f& _vGlobalPo
 		l_BoxDesc->ccdSkeleton = skeleton;
 		l_BoxDesc->shapeFlags |= NX_SF_DYNAMIC_DYNAMIC_CCD; //Activate dynamic-dynamic CCD for this body
 	}
+	if(hasMaterial)
+		l_BoxDesc->materialIndex = m_MaterialID;
 	m_pPhXActorDesc->shapes.pushBack( l_BoxDesc );
   
 }
@@ -253,6 +265,8 @@ void CPhysicActor::AddCapsuleShape (float radius, float height, const Vect3f& _v
 		capsuleDesc->ccdSkeleton = skeleton;
 		capsuleDesc->shapeFlags |= NX_SF_DYNAMIC_DYNAMIC_CCD; //Activate dynamic-dynamic CCD for this body
 	}
+	if(hasMaterial)
+		capsuleDesc->materialIndex = m_MaterialID;
 	m_pPhXActorDesc->shapes.pushBack( capsuleDesc );
 }
 
@@ -277,7 +291,8 @@ void CPhysicActor::AddMeshShape	( NxTriangleMesh* mesh, const Vect3f& _vGlobalPo
 		triangleMeshDesc->shapeFlags |= NX_SF_DYNAMIC_DYNAMIC_CCD; //Activate dynamic-dynamic CCD for this body
 		triangleMeshDesc->shapeFlags |= NX_MESH_SMOOTH_SPHERE_COLLISIONS;
 	}
-
+	if(hasMaterial)
+		triangleMeshDesc->materialIndex = m_MaterialID;
 	m_pPhXActorDesc->shapes.pushBack( triangleMeshDesc );
 }
 
@@ -292,6 +307,8 @@ void CPhysicActor::AddPlaneShape ( const Vect3f& _vNormal, float distance, uint3
 	m_vPlaneDesc.push_back(planeDesc);
 	planeDesc->normal	= NxVec3 ( _vNormal.x, _vNormal.y, _vNormal.z );
 	planeDesc->d		= distance;
+	if(hasMaterial)
+		planeDesc->materialIndex = m_MaterialID;
 	m_pPhXActorDesc->shapes.pushBack( planeDesc );
 
 }

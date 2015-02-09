@@ -23,6 +23,7 @@
 #include "Reports\PhysicTriggerReport.h"
 #include "Utils\PhysicUserAllocator.h"
 #include "Utils\PhysicUserData.h"
+#include "PhysicMaterial\PhysicMaterial.h"
 ////--------------------------------
 
 #include "GraphicsManager.h"
@@ -650,6 +651,28 @@ bool CPhysicsManager::ReleaseAllActors ( void ) //EUserDataFlag _eFlags )
 	}
 	
 	return isOk;
+}
+
+//----------------------------------------------------------------------------
+// AddMaterial : Afegim un material a l'escena
+//----------------------------------------------------------------------------
+bool CPhysicsManager::AddMaterial(CPhysicMaterial* _pMaterial)
+{
+	NxMaterial* mat;
+	NxMaterialDesc* des = _pMaterial->getMaterialDesc();
+	mat = m_pScene->createMaterial(*des);
+	_pMaterial->setMaterial(mat);
+	return true;
+}
+
+//----------------------------------------------------------------------------
+// AddMaterial : Afegim un material a l'escena
+//----------------------------------------------------------------------------
+
+bool CPhysicsManager::ReleaseMaterial (CPhysicMaterial* _pMaterial)
+{
+	m_pScene->releaseMaterial(*(_pMaterial->getMaterial()));
+	return true;
 }
 
 //----------------------------------------------------------------------------

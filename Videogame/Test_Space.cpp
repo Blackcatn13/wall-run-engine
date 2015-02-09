@@ -25,6 +25,7 @@
 #include "Renderable\RenderableObjectsManager.h"
 #include "Renderable\RenderableObject.h"
 #include "Core\ScriptManager.h"
+#include "PhysicMaterial\PhysicMaterial.h"
 
 #include "Cinematics\CinematicController.h"
 #include "Cinematics\Cinematic.h"
@@ -155,34 +156,47 @@ void CTest_Space::Init()
 	////}  
 
 	// Exercici 4
+	m_Material = new CPhysicMaterial();
+	m_Material->NewMaterial(0, 0, 0);
+	PHYSXM->AddMaterial(m_Material);
 	m_PhysicUserDataCube = new CPhysicUserData("fixbox");
 	m_PhysicUserDataCube->SetPaint(true);
+	//m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+	//m_PhysicActorCubeFix->AddBoxSphape(Vect3f(.5f,.5f,.5f), v3fZERO);
+	//m_PhysicActorCubeFix->CreateBody(0.5f);
+	//m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(0.f,0.5,0.f));
+	//PHYSXM->AddPhysicActor(m_PhysicActorCubeFix); 
+	//m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+	//m_PhysicActorCubeFix->AddBoxSphape(Vect3f(.5f,.5f,.5f), v3fZERO);
+	//m_PhysicActorCubeFix->CreateBody(0.5f);
+	//m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(0.f,1.5,0.f));
+	//PHYSXM->AddPhysicActor(m_PhysicActorCubeFix); 
+	//m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+	//m_PhysicActorCubeFix->AddBoxSphape(Vect3f(.5f,.5f,.5f), v3fZERO);
+	//m_PhysicActorCubeFix->CreateBody(0.5f);
+	//m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(0.f,2.5,0.f));
+	//PHYSXM->AddPhysicActor(m_PhysicActorCubeFix); 
+	//m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+	//m_PhysicActorCubeFix->AddBoxSphape(Vect3f(.5f,.5f,.5f), v3fZERO);
+	//m_PhysicActorCubeFix->CreateBody(0.5f);
+	//m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(0.f,3.5,0.f));
+	//PHYSXM->AddPhysicActor(m_PhysicActorCubeFix); 
 	m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+	m_PhysicActorCubeFix->SetActorMaterial(m_Material->getMaterialID());
 	m_PhysicActorCubeFix->AddBoxSphape(Vect3f(.5f,.5f,.5f), v3fZERO);
-	m_PhysicActorCubeFix->CreateBody(0.5f);
-	m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(0.f,0.5,0.f));
+	m_PhysicActorCubeFix->CreateBody(0.1f);
+	m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(-6.f,25,0.f));
 	PHYSXM->AddPhysicActor(m_PhysicActorCubeFix); 
+
 	m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
-	m_PhysicActorCubeFix->AddBoxSphape(Vect3f(.5f,.5f,.5f), v3fZERO);
-	m_PhysicActorCubeFix->CreateBody(0.5f);
-	m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(0.f,1.5,0.f));
+	m_PhysicActorCubeFix->SetActorMaterial(m_Material->getMaterialID());
+	m_PhysicActorCubeFix->AddBoxSphape(Vect3f(15,.5f, 4), v3fZERO);
+	m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(0.f,7,0.f));
 	PHYSXM->AddPhysicActor(m_PhysicActorCubeFix); 
+	m_PhysicActorCubeFix->SetRotation(Vect3f(0, 0, -0.87));
+
 	m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
-	m_PhysicActorCubeFix->AddBoxSphape(Vect3f(.5f,.5f,.5f), v3fZERO);
-	m_PhysicActorCubeFix->CreateBody(0.5f);
-	m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(0.f,2.5,0.f));
-	PHYSXM->AddPhysicActor(m_PhysicActorCubeFix); 
-	m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
-	m_PhysicActorCubeFix->AddBoxSphape(Vect3f(.5f,.5f,.5f), v3fZERO);
-	m_PhysicActorCubeFix->CreateBody(0.5f);
-	m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(0.f,3.5,0.f));
-	PHYSXM->AddPhysicActor(m_PhysicActorCubeFix); 
-	m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
-	m_PhysicActorCubeFix->AddBoxSphape(Vect3f(.5f,.5f,.5f), v3fZERO);
-	m_PhysicActorCubeFix->CreateBody(0.5f);
-	m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(0.f,4.5,0.f));
-	PHYSXM->AddPhysicActor(m_PhysicActorCubeFix); 
-	m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+	//m_PhysicActorCubeFix->SetActorMaterial(m_Material->getMaterialID());
 	m_PhysicActorCubeFix->AddPlaneShape(Vect3f(0,1,0), 0);
 	PHYSXM->AddPhysicActor(m_PhysicActorCubeFix); 
 
