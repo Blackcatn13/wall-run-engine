@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<triggers>
+	<trigger name="Puerta_Entrar_Bruja" position="18.9117 10.545 -30.2472" shape="box" size="9.716 9.2 8.749" type_event="stay" script="./assets/scripts/textoPuerta.lua" group="1" 
+			 paint="false" color="0.0 0.0 1.0" />
+	<trigger name="Puerta_Entrar_Obispo" position="23.2005 11.3686 0.526208" shape="box" size="4.86 9.2 8.492" type_event="stay" script="./assets/scripts/textoPuerta.lua" group="1" 
+			 paint="false" color="0.0 0.0 1.0" />
+	<trigger name="Plaza_Final_Atajo" position="-31.613 11.635 67.606" shape="box" size="1.4335 5.299 1.224" type_event="stay" script="./assets/scripts/textoPuerta3.lua" group="1" 
+			 paint="false" color="0.0 0.0 1.0" />
+	<trigger name="Plaza_Final_Principal" position="-6.74774 12.707 58.8023" shape="box" size="7.477 8.059 4.326" type_event="stay" script="./assets/scripts/textoPuerta3.lua" group="1" 
+			 paint="false" color="0.0 0.0 1.0" />
+	<trigger name="PuertaAtajoFinalPuzzle" position="-33.66 12.642 63.002" shape="box" size="5.961 5.372 4.1195" type_event="enter" script="./assets/scripts/PuertaAtajoFinalPuzzle.lua" group="1" 
+			 paint="false" color="0.0 0.0 1.0" />
+</triggers>

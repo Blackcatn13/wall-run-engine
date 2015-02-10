@@ -17,6 +17,7 @@
 #include "Renderable\RenderableObjectTechniqueManager.h"
 #include "Camera\CameraController.h"
 #include "PhysicsManager.h"
+#include "TriggerManager\TriggerManager.h"
 
 CCore* CCore::m_Instance = 0;
 
@@ -73,6 +74,7 @@ void CCore::Init(HWND handler)
 
 	m_PhysicsManager = new CPhysicsManager();
 	m_PhysicsManager->Init();
+	m_TriggerManager = new CTriggerManager();
 }
 
 void CCore::DeInit()

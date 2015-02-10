@@ -39,6 +39,9 @@
 
 #include "Granade.h"
 
+#include "Joints\PhysicSphericalJoint.h"
+#include "Joints\PhysicRevoluteJoint.h"
+
 CTest_Space::CTest_Space(void)
 {
     tTerra1_yaw = 0;
@@ -58,9 +61,9 @@ CTest_Space::~CTest_Space(void)
     //delete m_ThPSCamera;
 //    delete m_ThPSCamera1;
     //delete m_FPSCamera;
-	CHECKED_DELETE(m_PhysicActor);
-	CHECKED_DELETE(m_PhysicUserData);
-	CHECKED_DELETE(m_PhysicUserDataCube);
+//	CHECKED_DELETE(m_PhysicActor);
+	//CHECKED_DELETE(m_PhysicUserData);
+	//CHECKED_DELETE(m_PhysicUserDataCube);
 	CHECKED_DELETE(m_PhysicActorCubeFix);
 }
 
@@ -157,7 +160,7 @@ void CTest_Space::Init()
 
 	// Exercici 4
 	m_Material = new CPhysicMaterial();
-	m_Material->NewMaterial(0, 0, 0);
+	m_Material->NewMaterial(1, 0, 0);
 	PHYSXM->AddMaterial(m_Material);
 	m_PhysicUserDataCube = new CPhysicUserData("fixbox");
 	m_PhysicUserDataCube->SetPaint(true);
@@ -183,23 +186,33 @@ void CTest_Space::Init()
 	//PHYSXM->AddPhysicActor(m_PhysicActorCubeFix); 
 	m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
 	m_PhysicActorCubeFix->SetActorMaterial(m_Material->getMaterialID());
-	m_PhysicActorCubeFix->AddBoxSphape(Vect3f(.5f,.5f,.5f), v3fZERO);
-	m_PhysicActorCubeFix->CreateBody(0.1f);
-	m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(-6.f,25,0.f));
+	m_PhysicActorCubeFix->AddBoxSphape(Vect3f(2.f,5.f,.5f), Vect3f(3.f,5.5f,0.f));
+	m_PhysicActorCubeFix->CreateBody(1.f);
 	PHYSXM->AddPhysicActor(m_PhysicActorCubeFix); 
+	m_RevolutionJoint = new CPhysicRevoluteJoint();
+	m_RevolutionJoint->SetInfo(Vect3f(1.f,0.f,0.f),Vect3f(3.f,0.5f,0.f),m_PhysicActorCubeFix);
+	m_RevolutionJoint->SetMotor(100,5,false);
+	PHYSXM->AddPhysicRevoluteJoint(m_RevolutionJoint);
 
-	m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+	/*m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
 	m_PhysicActorCubeFix->SetActorMaterial(m_Material->getMaterialID());
 	m_PhysicActorCubeFix->AddBoxSphape(Vect3f(15,.5f, 4), v3fZERO);
 	m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(0.f,7,0.f));
 	PHYSXM->AddPhysicActor(m_PhysicActorCubeFix); 
-	m_PhysicActorCubeFix->SetRotation(Vect3f(0, 0, -0.87));
+	m_PhysicActorCubeFix->SetRotation(Vect3f(0, 0, -0.87));*/
 
 	m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
-	//m_PhysicActorCubeFix->SetActorMaterial(m_Material->getMaterialID());
+	m_PhysicActorCubeFix->SetActorMaterial(m_Material->getMaterialID());
 	m_PhysicActorCubeFix->AddPlaneShape(Vect3f(0,1,0), 0);
 	PHYSXM->AddPhysicActor(m_PhysicActorCubeFix); 
 
+	m_TriggerData = new CPhysicUserData("trigger");
+	m_TriggerData->SetPaint(true);
+	m_TriggerData->SetColor(colMAGENTA);
+	m_Trigger = new CPhysicActor(m_TriggerData);
+	m_Trigger->CreateBoxTrigger(Vect3f(5.f,5.f,5.f),Vect3f(2.f,2.f,2.f));
+	PHYSXM->AddPhysicActor(m_Trigger);
+	PHYSXM->SetTriggerReport((CPhysicTriggerReport*)TRIGGM);
 
 	m_Granade = new CGranade();
 }
@@ -344,6 +357,15 @@ void CTest_Space::Update(float dt)
         //	SCRIPTM->RunFile(SCRIPTM->GetScriptsMap().find("test2")->second);
         //SCRIPTM->RunFile(".\\Data\\scripted_controller.lua");
     }
+
+	if(ACT2IN->DoAction("ForwardMotor"))
+	{
+		m_RevolutionJoint->ActiveMotor(50);
+	}
+	if(ACT2IN->DoAction("BackwardMotor"))
+	{
+		m_RevolutionJoint->ActiveMotor(-50);
+	}
 
 	if (ACT2IN->DoAction("DestroyActor")) {
 		PHYSXM->ReleasePhysicActor(m_PhysicActorCubeFix);

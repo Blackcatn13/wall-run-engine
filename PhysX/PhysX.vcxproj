@@ -22,6 +22,7 @@
     <ClCompile Include="PhysicsManager.cpp" />
     <ClCompile Include="Reports\PhysicCollisionReport.cpp" />
     <ClCompile Include="Reports\PhysicTriggerReport.cpp" />
+    <ClCompile Include="TriggerManager\TriggerManager.cpp" />
     <ClCompile Include="Utils\PhysicASELoader.cpp" />
     <ClCompile Include="Utils\PhysicStream.cpp" />
     <ClCompile Include="Utils\PhysicUserAllocator.cpp" />
@@ -42,6 +43,7 @@
     <ClInclude Include="Reports\PhysicCollisionReport.h" />
     <ClInclude Include="Reports\PhysicsControllerHitReport.h" />
     <ClInclude Include="Reports\PhysicTriggerReport.h" />
+    <ClInclude Include="TriggerManager\TriggerManager.h" />
     <ClInclude Include="Utils\PhysicASELoader.h" />
     <ClInclude Include="Utils\PhysicStream.h" />
     <ClInclude Include="Utils\PhysicUserAllocator.h" />

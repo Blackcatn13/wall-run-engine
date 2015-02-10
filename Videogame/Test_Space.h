@@ -14,6 +14,9 @@ class CScriptedController;
 class CPhysicUserData;
 class CPhysicActor;
 class CPhysicMaterial;
+class CPhysicSphericalJoint;
+class CPhysicRevoluteJoint;
+
 
 class CGranade;
 
@@ -33,6 +36,10 @@ private:
 	CPhysicUserData		*m_PhysicUserData;
 	CPhysicUserData		*m_PhysicUserDataCube;
 	CPhysicMaterial		*m_Material;
+	CPhysicUserData		*m_TriggerData;
+	CPhysicActor		*m_Trigger;
+	CPhysicSphericalJoint *m_SphericalJoint;
+	CPhysicRevoluteJoint *m_RevolutionJoint;
 
 	CGranade*		m_Granade;
 
