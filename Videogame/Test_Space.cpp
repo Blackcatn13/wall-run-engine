@@ -60,10 +60,10 @@ CTest_Space::~CTest_Space(void)
     delete m_ObjectThPS;
     //delete m_ThPSCamera;
 //    delete m_ThPSCamera1;
-    //delete m_FPSCamera;
-//	CHECKED_DELETE(m_PhysicActor);
-	//CHECKED_DELETE(m_PhysicUserData);
-	//CHECKED_DELETE(m_PhysicUserDataCube);
+  //delete m_FPSCamera;
+	CHECKED_DELETE(m_PhysicActor);
+	CHECKED_DELETE(m_PhysicUserData);
+	CHECKED_DELETE(m_PhysicUserDataCube);
 	CHECKED_DELETE(m_PhysicActorCubeFix);
 }
 
