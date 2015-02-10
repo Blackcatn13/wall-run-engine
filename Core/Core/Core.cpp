@@ -15,6 +15,7 @@
 #include "Lights\LightManager.h"
 #include "Cinematics\CinematicController.h"
 #include "Renderable\RenderableObjectTechniqueManager.h"
+#include "Renderable\RenderableObjectsLayersManager.h"
 #include "Camera\CameraController.h"
 #include "PhysicsManager.h"
 
@@ -56,10 +57,17 @@ void CCore::Init(HWND handler)
     m_StaticMeshManager->Load(m_Config.MeshesPath);
     m_ScriptManager = new CScriptManager();
     m_ScriptManager->Initialize();
-    m_RenderableManager = new CRenderableObjectsManager();
+    //m_RenderableManager = new CRenderableObjectsManager();
     m_AnimatedModelManager = new CAnimatedModelManager();
-    m_RenderableManager->Load(m_Config.RenderablePath);
-    m_RenderableManager->Load(m_Config.LuaPath);
+	//Cargando Layers
+	m_RenderableLayersManager = new CRenderableObjectsLayersManager();
+	m_RenderableLayersManager->Load(m_Config.RenderablePath);
+	m_RenderableLayersManager->Load(m_Config.LuaPath);
+		//m_RenderableLayersManager->Load(m_Config.LuaPath);
+	//como cargar LuaPath?
+	//m_RenderableLayersManager->Load(m_Config.LuaPath);
+    //m_RenderableManager->Load(m_Config.RenderablePath);
+    //m_RenderableManager->Load(m_Config.LuaPath);
     m_LightManager = new CLightManager();
     m_LightManager->Load(m_Config.LightsPath);
     m_CinematicManager = new CCinematicController();
@@ -70,7 +78,6 @@ void CCore::Init(HWND handler)
     m_ScriptManager = new CScriptManager();
     m_ScriptManager->Initialize();
     m_LightManager = new CLightManager();*/
-
 	m_PhysicsManager = new CPhysicsManager();
 	m_PhysicsManager->Init();
 }
@@ -86,7 +93,8 @@ void CCore::DeInit()
     CHECKED_DELETE(m_ActionToInput);
     CHECKED_DELETE(m_StaticMeshManager);
     CHECKED_DELETE(m_AnimatedModelManager);
-    CHECKED_DELETE(m_RenderableManager);
+    //CHECKED_DELETE(m_RenderableManager);
+	CHECKED_DELETE(m_RenderableLayersManager);
     CHECKED_DELETE(m_LightManager);
     CHECKED_DELETE(m_TextureManager);
     CHECKED_DELETE(m_ScriptManager);
@@ -95,6 +103,7 @@ void CCore::DeInit()
     CHECKED_DELETE(m_EffectManager);
 	CHECKED_DELETE(m_PhysicsManager);
     //CHECKED_DELETE(m_RenderableObjectTechniqueManager);
+	//TODO añadir checked delete renderableobjectslayersmanager
 }
 
 CCore* CCore::GetInstance()

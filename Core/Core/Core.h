@@ -24,6 +24,7 @@ class CCameraController;
 class CEffectManager;
 class CRenderableObjectTechniqueManager;
 class CPhysicsManager;
+class CRenderableObjectsLayersManager;
 
 #define CCORE   CCore::GetInstance()
 #define GRAPHM  CCore::GetInstance()->GetGraphicsManager()
@@ -42,6 +43,7 @@ class CPhysicsManager;
 #define RENDTECHM CCore::GetInstance()->GetRenderableObjectTechniqueManager()
 #define CAMCONTM CCore::GetInstance()->GetCameraController()
 #define PHYSXM CCore::GetInstance()->GetPhysicsManager()
+#define RENDLM CCore::GetInstance()->GetRenderableObjectsLayersManager()
 
 
 class CCore
@@ -69,6 +71,7 @@ private:
     CEffectManager*			            m_EffectManager;
     CRenderableObjectTechniqueManager*  m_RenderableObjectTechniqueManager;
 	CPhysicsManager*					m_PhysicsManager;
+	CRenderableObjectsLayersManager*		m_RenderableLayersManager;
 
 public:
     ~CCore();
@@ -147,6 +150,10 @@ public:
     CRenderableObjectTechniqueManager * GetRenderableObjectTechniqueManager()
     {
         return m_RenderableObjectTechniqueManager;
+    }
+	CRenderableObjectsLayersManager * GetRenderableObjectsLayersManager()
+    {
+        return m_RenderableLayersManager;
     }
     void SetCameraController(CCameraController * cameraController)
     {

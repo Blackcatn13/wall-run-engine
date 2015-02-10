@@ -13,6 +13,8 @@
 
 CRenderableObjectsManager ::CRenderableObjectsManager()
 {
+	m_FileName = "";
+	m_FileName2 = "";
 }
 
 CRenderableObjectsManager ::~CRenderableObjectsManager()
@@ -147,18 +149,18 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node)
         //cargamos aqui el animated models para no hacerlo varias veces dentro del bucle
         //CCore::GetInstance()->GetAnimatedModelManager()->Load(".\\Data\\level1\\animated_models.xml"); //se carga animatedmodels.xml
         CCore::GetInstance()->GetAnimatedModelManager()->Load(".\\Data\\animated_models.xml"); //se carga animatedmodels.xml
-        int count = m.GetNumChildren();
-        for (int i = 0; i < count; ++i) {
-            std::string name = m(i).GetName();
+		//int count = m.GetNumChildren();
+        //for (int i = 0; i < count; ++i) {
+            std::string name = m.GetName();
             if (name == "mesh_instance") {
                 //TODO poder pasar XMLTreeNode
-                std::string meshName = m(i).GetPszISOProperty("name", "box1");
-                std::string core = m(i).GetPszISOProperty("core", "box");
-                Vect3f pos = m(i).GetVect3fProperty("pos", v3fZERO);
-                float yaw = m(i).GetFloatProperty("yaw");
-                float pitch = m(i).GetFloatProperty("pitch");
-                float roll = m(i).GetFloatProperty("roll");
-                Vect3f scale = m(i).GetVect3fProperty("scale", v3fONE);
+                std::string meshName = m.GetPszISOProperty("name", "box1");
+                std::string core = m.GetPszISOProperty("core", "box");
+                Vect3f pos = m.GetVect3fProperty("pos", v3fZERO);
+                float yaw = m.GetFloatProperty("yaw");
+                float pitch = m.GetFloatProperty("pitch");
+                float roll = m.GetFloatProperty("roll");
+                Vect3f scale = m.GetVect3fProperty("scale", v3fONE);
                 //TODO Static mesh por mesh instance hecho?
                 //
                 CMeshInstance* l_meshInstance = new CMeshInstance(meshName, core);
@@ -171,13 +173,13 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node)
                 AddResource(meshName, l_meshInstance);
             } else if (name == "animated_model") {
                 //FALTA CARGAR EL ANIMATED_MODELS.XML hecho?
-                std::string meshName = m(i).GetPszISOProperty("name", "box1");
-                std::string core = m(i).GetPszISOProperty("core", "box");
-                Vect3f pos = m(i).GetVect3fProperty("pos", v3fZERO);
-                float yaw = m(i).GetFloatProperty("yaw");
-                float pitch = m(i).GetFloatProperty("pitch");
-                float roll = m(i).GetFloatProperty("roll");
-                float scale = m(i).GetFloatProperty("scale");
+                std::string meshName = m.GetPszISOProperty("name", "box1");
+                std::string core = m.GetPszISOProperty("core", "box");
+                Vect3f pos = m.GetVect3fProperty("pos", v3fZERO);
+                float yaw = m.GetFloatProperty("yaw");
+                float pitch = m.GetFloatProperty("pitch");
+                float roll = m.GetFloatProperty("roll");
+                float scale = m.GetFloatProperty("scale");
                 CAnimatedInstanceModel * l_AnimatedInstanceModel  = ANIMAN->GetInstance(core);
                 l_AnimatedInstanceModel->SetYaw(yaw);
                 l_AnimatedInstanceModel->SetPosition(pos);
@@ -186,8 +188,18 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node)
                 l_AnimatedInstanceModel->SetScale(scale);
                 //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
                 AddResource(meshName, l_AnimatedInstanceModel);
-            }
-        }
+            }else  if (name == "renderable_script") 
+			{
+				std::string l_name = m.GetPszISOProperty("name", "");
+				std::string l_file = m.GetPszISOProperty("file", "");
+				if(l_name == "scriptedController")
+				{
+					CScriptedController *l_ScriptedController = new CScriptedController();
+					AddResource(l_name, l_ScriptedController);
+				}
+				
+			}
+        //}
     }
 }
 

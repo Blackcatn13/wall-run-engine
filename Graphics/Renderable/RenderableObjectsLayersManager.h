@@ -8,14 +8,15 @@
 class CRenderableObjectsLayersManager :public CTemplatedVectorMapManager<CRenderableObjectsManager>
 {
 	private:
-		std::string m_FileName;
+		std::string m_FileName, m_FileName2;
 		std::string m_DefaultLayerName;
 		CRenderableObjectsManager *m_DefaultRenderableObjectManager;
 		CRenderableObjectsManager * GetRenderableObjectManager(CXMLTreeNode &Node);
 	public:
 		CRenderableObjectsLayersManager();
 		~CRenderableObjectsLayersManager();
-		void Destroy();
+		CRenderableObjectsManager * GetDefaultRenderableObjectManager();
+		//void Destroy();
 		void Load(const std::string &FileName);
 		void Reload();
 		void Update(float ElapsedTime);

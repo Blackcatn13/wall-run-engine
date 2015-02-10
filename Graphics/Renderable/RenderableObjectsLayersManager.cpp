@@ -1,6 +1,6 @@
 #include "Renderable\RenderableObjectsLayersManager.h"
 #include "XML\XMLTreeNode.h"
-
+#include "Core\Core.h"
 CRenderableObjectsLayersManager ::CRenderableObjectsLayersManager()
 {
 	m_DefaultRenderableObjectManager = NULL;
@@ -20,7 +20,9 @@ void CRenderableObjectsLayersManager::Update(float ElapsedTime)
 
 void CRenderableObjectsLayersManager::Render(CGraphicsManager *RM)
 {
+	int test = m_ResourcesVector.size();
     for (int i = 0; i < m_ResourcesVector.size(); ++i) {
+		int test2 = i;
         m_ResourcesVector[i]->Render(RM);
     }
 }
@@ -34,7 +36,7 @@ void CRenderableObjectsLayersManager::Render(CGraphicsManager *RM, const std::st
 	}
 
 }
-
+/*
 void CRenderableObjectsLayersManager::Destroy()
 {
 	for (int i = 0; i < m_ResourcesVector.size(); ++i) {
@@ -42,11 +44,12 @@ void CRenderableObjectsLayersManager::Destroy()
     }
     Destroy();
 }
-
+*/
 void CRenderableObjectsLayersManager::Reload()
 {
 	Destroy();
 	Load(m_FileName);
+	Load(m_FileName2);
 }
 
 CRenderableObjectsManager * CRenderableObjectsLayersManager::GetRenderableObjectManager(CXMLTreeNode &Node)
@@ -68,51 +71,74 @@ CRenderableObjectsManager * CRenderableObjectsLayersManager::GetRenderableObject
 	}*/
 }
 
+CRenderableObjectsManager * CRenderableObjectsLayersManager::GetDefaultRenderableObjectManager()
+{
+	return GetResource( m_DefaultLayerName.c_str());
+}
+
 void CRenderableObjectsLayersManager::Load(const std::string &FileName)
 {
-	m_FileName = FileName;
+	//CCore::GetInstance()->GetAnimatedModelManager()->Load(".\\Data\\animated_models.xml"); //se carga animatedmodels.xml
     CXMLTreeNode newFile;
     if (!newFile.LoadFile(FileName.c_str())) {
         printf("ERROR loading the file.");
     }
     CXMLTreeNode  m = newFile["renderable_objects"];
-	int count = m.GetNumChildren();
-
-	 for (int i = 0; i < count; ++i) {
-            std::string name = m(i).GetName();
-            if (name == "layer") {
-                std::string layerName = m(i).GetPszISOProperty("name", "");
-				bool isDefault = m(i).GetBoolProperty("default", false);
-                CRenderableObjectsManager* l_managerInstance = new CRenderableObjectsManager();
-                //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
-                AddResource(layerName, l_managerInstance);
-				if (isDefault)
-				{
-					m_DefaultLayerName = layerName;
-					m_DefaultRenderableObjectManager = l_managerInstance;
-				}
-            }
-	 }
-
-	 for (int i = 0; i < count; ++i) {
-            std::string name = m(i).GetName();
-            if (name == "mesh_instance") {
-				GetRenderableObjectManager(m(i))->Load(m(i));
-                /*std::string layerAssigned = m(i).GetPszISOProperty("layer", "box1");
-				if (layerAssigned == "box1")
-				{
-					m_DefaultRenderableObjectManager->Load(m(i));
-				}
-				else
-				{
-					//FIND layerAssigned, load m(i)
-					CRenderableObjectsManager* l_managerInstance = GetResource(layerAssigned);
-					if (l_managerInstance != NULL)
+	CXMLTreeNode  m2= newFile["lua_scripts"];
+	if (m.Exists()) {
+		m_FileName = FileName;
+		int count = m.GetNumChildren();
+		for (int i = 0; i < count; ++i) {
+				std::string name = m(i).GetName();
+				if (name == "layer") {
+					std::string layerName = m(i).GetPszISOProperty("name", "");
+					bool isDefault = m(i).GetBoolProperty("default", false);
+					CRenderableObjectsManager* l_managerInstance = new CRenderableObjectsManager();
+					//CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
+					AddResource(layerName, l_managerInstance);
+					if (isDefault)
 					{
-						l_managerInstance->Load(m(i));
+						m_DefaultLayerName = layerName;
+						m_DefaultRenderableObjectManager = l_managerInstance;
 					}
-				}*/
-            }
+				}
+		 }
+
+		 for (int i = 0; i < count; ++i) {
+				std::string name = m(i).GetName();
+				//if ((name == "mesh_instance") || (name == "renderable_script")){
+				if (name == "mesh_instance"){
+					(GetRenderableObjectManager(m(i)))->Load(m(i));
+					/*std::string layerAssigned = m(i).GetPszISOProperty("layer", "box1");
+					if (layerAssigned == "box1")
+					{
+						m_DefaultRenderableObjectManager->Load(m(i));
+					}
+					else
+					{
+						//FIND layerAssigned, load m(i)
+						CRenderableObjectsManager* l_managerInstance = GetResource(layerAssigned);
+						if (l_managerInstance != NULL)
+						{
+							l_managerInstance->Load(m(i));
+						}
+					}*/
+				}
+		 }
 	 }
+	 if(m2.Exists())
+	 {
+		m_FileName2 = FileName;
+		int count = m2.GetNumChildren();
+        for (int i = 0; i < count; ++i) 
+		{
+            std::string name = m2(i).GetName();
+            if (name == "renderable_script") 
+			{
+				GetDefaultRenderableObjectManager()->Load(m2(i));
+				
+			}
+		}
+	}
 
 }

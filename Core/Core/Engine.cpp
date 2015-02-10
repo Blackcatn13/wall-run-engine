@@ -16,6 +16,7 @@
 #include "Effects\EffectManager.h"
 #include "Lights\LightManager.h"
 #include "ScriptManager.h"
+#include "Renderable\RenderableObjectsLayersManager.h"
 
 CEngine::~CEngine(void)
 {
@@ -63,8 +64,7 @@ void CEngine::Update()
         m_LogRender->SetVisible(!m_LogRender->GetVisible());
     if (m_Core->GetActionToInput()->DoAction("ReloadTextures"))
         TEXTM->Reload();
-    if (m_Core->GetActionToInput()->DoAction("ReloadMeshes"))
-        RENDM->Reload();
+    if (m_Core->GetActionToInput()->DoAction("ReloadMeshes")) RENDLM->Reload();
     if (ACT2IN->DoAction("ReloadEffects"))
         EFFECTM->Reload();
     if (ACT2IN->DoAction("ReloadLights"))

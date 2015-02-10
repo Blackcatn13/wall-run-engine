@@ -1,0 +1,1 @@
+#include "RenderableCommands\StagedTexturedRendererCommand.h"

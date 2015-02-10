@@ -32,6 +32,7 @@
 #include "Effects\EffectManager.h"
 
 #include "Core\ScriptedController.h"
+#include "Renderable\RenderableObjectsLayersManager.h"
 
 
 
@@ -206,7 +207,7 @@ void CTest_Space::Update(float dt)
     tTerra2_yaw += dt * 80 * 0.005;
     tlluna1_yaw -= dt * 60 * 0.05;
     m_dt = dt;
-    RENDM->Update(dt);
+    RENDLM->Update(dt);
 }
 
 void CTest_Space::Render()
@@ -221,7 +222,7 @@ void CTest_Space::Render()
     GRAPHM->DrawGrid(20);
     GRAPHM->DrawAxis(10);
     //text->Activate(0);
-    RENDM->Render(GRAPHM);
+    RENDLM->Render(GRAPHM);
     //g_RV->Render(CCORE->GetGraphicsManager(º+-));
     /* Mat44f t;
      Mat44f trot1;
