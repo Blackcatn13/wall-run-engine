@@ -1,18 +1,18 @@
 #pragma once
-#ifndef CLEAR_SCENE_RENDERER_COMMAND_H
-#define CLEAR_SCENE_RENDERER_COMMAND_H
+#ifndef SET_MATRICES_SCENE_RENDERER_COMMAND_H
+#define SET_MATRICES_SCENE_RENDERER_COMMAND_H
 
 #include "SceneRendererCommand.h"
 #include "XML\XMLTreeNode.h"
 #include "GraphicsManager.h"
 
-class CClearSceneRendererCommand : public CSceneRendererCommand {
+class CSetMatricesSceneRendererCommand : public CSceneRendererCommand {
 protected:
 	bool m_Color;
 	bool m_Depth;
 	bool m_Stencil;
 public:
-	CClearSceneRendererCommand(CXMLTreeNode &atts);
+	CSetMatricesSceneRendererCommand(CXMLTreeNode &atts);
 	virtual void Execute(CGraphicsManager &RM);
 };
 #endif

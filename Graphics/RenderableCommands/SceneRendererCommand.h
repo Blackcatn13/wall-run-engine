@@ -11,7 +11,9 @@
 
 //class CSceneRendererCommand : public CUABActive, public CNamed {
 class CSceneRendererCommand : public CNamed {
-	public: CSceneRendererCommand(CXMLTreeNode &atts);
+	public: 
+	CSceneRendererCommand();
+	CSceneRendererCommand(CXMLTreeNode &atts);
 	virtual ~CSceneRendererCommand();
 	virtual void Execute(CGraphicsManager &RM) = 0;
 };

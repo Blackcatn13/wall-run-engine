@@ -18,6 +18,7 @@
 #include "Renderable\RenderableObjectsLayersManager.h"
 #include "Camera\CameraController.h"
 #include "PhysicsManager.h"
+#include "RenderableCommands\SceneRendererCommandManager.h"
 
 CCore* CCore::m_Instance = 0;
 
@@ -80,6 +81,8 @@ void CCore::Init(HWND handler)
     m_LightManager = new CLightManager();*/
 	m_PhysicsManager = new CPhysicsManager();
 	m_PhysicsManager->Init();
+	m_SceneRendererCommandManager = new CSceneRendererCommandManager();
+	m_SceneRendererCommandManager->Load(m_Config.SceneRenderCommandsPath);
 }
 
 void CCore::DeInit()
@@ -117,7 +120,7 @@ CCore* CCore::GetInstance()
 void CCore::Render()
 {
     //m_GraphicsManager->Render();
-    m_LightManager->Render(m_GraphicsManager);
+   // m_LightManager->Render(m_GraphicsManager);
 	m_PhysicsManager->DebugRender(m_GraphicsManager);
     m_SoundManager->Render();
 }

@@ -1,18 +1,18 @@
 #pragma once
-#ifndef RENDER_SCENE_SCENE_RENDERER_COMMAND_H
-#define RENDER_SCENE_SCENE_RENDERER_COMMAND_H
+#ifndef RENDER_DEBUG_LIGHTS_SCENE_RENDERER_COMMAND_H
+#define RENDER_DEBUG_LIGHTS_SCENE_RENDERER_COMMAND_H
 
 #include "SceneRendererCommand.h"
 #include "GraphicsManager.h"
 #include "XML\XMLTreeNode.h"
 #include "Renderable\RenderableObjectsManager.h"
 
-class CRenderSceneSceneRendererCommand : public CSceneRendererCommand
+class CRenderDebugLightsSceneRenderCommand : public CSceneRendererCommand
 {
 private:
-	CRenderableObjectsManager *m_Layer;
+	bool m_Active;
 public:
-	CRenderSceneSceneRendererCommand(CXMLTreeNode &atts);
+	CRenderDebugLightsSceneRenderCommand(CXMLTreeNode &atts);
 	void Execute(CGraphicsManager &RM);
 };
 

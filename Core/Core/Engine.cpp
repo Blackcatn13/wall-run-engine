@@ -17,6 +17,7 @@
 #include "Lights\LightManager.h"
 #include "ScriptManager.h"
 #include "Renderable\RenderableObjectsLayersManager.h"
+#include "RenderableCommands\SceneRendererCommandManager.h"
 
 CEngine::~CEngine(void)
 {
@@ -71,6 +72,8 @@ void CEngine::Update()
         LIGHTM->Reload();
     if (ACT2IN->DoAction("ReloadScripts"))
         SCRIPTM->Reload();
+	if (ACT2IN->DoAction("ReloadRenderCommands"))
+		SCENRENDCOMM->Reload();
     m_LogRender->Update(m_Timer.GetElapsedTime());
 }
 
@@ -143,7 +146,11 @@ void CEngine::ParseConfFile()
                         m_Conf_info.LuaPath = n(i).GetPszISOProperty("LuaFile", "");
                     } else if (name == "Effect") {
                         m_Conf_info.EffectPath = n(i).GetPszISOProperty("EffectXML", "");
+                    }else if (name == "RendererCommands") {
+						m_Conf_info.SceneRenderCommandsPath = n(i).GetPszISOProperty("rendererCommandsXML", "");
                     }
+
+
                 }
             }
         }

@@ -4,7 +4,7 @@
 void CDirectionalLight::Render(CGraphicsManager *RM)
 {
 	//Debug
-	/*Mat44f t;
+	Mat44f t;
 	t.SetIdentity();
 	CColor l_Color =  CColor(GetColor().GetRed(), GetColor().GetGreen(), GetColor().GetBlue());
 	Vect3f l_FinalPosition = GetDirection().Normalize() * GetStartRangeAttenuation();
@@ -16,7 +16,7 @@ void CDirectionalLight::Render(CGraphicsManager *RM)
 	RM->SetTransform(l_trans);
 	RM->DrawAxis(1.0f);
 	
-	printf("I'm a directional Light \n");*/
+	printf("I'm a directional Light \n");
 	
 }
 

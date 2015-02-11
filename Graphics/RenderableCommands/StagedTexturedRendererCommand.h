@@ -24,6 +24,7 @@ protected:
 	};
 	std::vector<CKGStageTexture> m_StageTextures;
 public:
+	CStagedTexturedRendererCommand(){}
 	CStagedTexturedRendererCommand(CXMLTreeNode &atts);
 	virtual ~CStagedTexturedRendererCommand();
 	void ActivateTextures();
