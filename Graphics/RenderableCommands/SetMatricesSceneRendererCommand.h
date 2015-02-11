@@ -7,10 +7,6 @@
 #include "GraphicsManager.h"
 
 class CSetMatricesSceneRendererCommand : public CSceneRendererCommand {
-protected:
-	bool m_Color;
-	bool m_Depth;
-	bool m_Stencil;
 public:
 	CSetMatricesSceneRendererCommand(CXMLTreeNode &atts);
 	virtual void Execute(CGraphicsManager &RM);
