@@ -150,7 +150,7 @@ void CGraphicsManager::BeginRendering()
         m_pD3DDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_WIREFRAME  );
     }
 }
-
+//
 void CGraphicsManager::EndRendering()
 {
     m_pD3DDevice->EndScene();
@@ -759,6 +759,69 @@ void CGraphicsManager::DrawQuad3D (	const Vect3f& ul, const Vect3f& ur, const Ve
     m_pD3DDevice->SetFVF( CUSTOMVERTEX::getFlags() );
     m_pD3DDevice->SetTexture(0, NULL);
     m_pD3DDevice->DrawIndexedPrimitiveUP( D3DPT_TRIANGLELIST, 0, 4, 2, indices, D3DFMT_INDEX16, v, sizeof( CUSTOMVERTEX ) );
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// COMMANDS
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void CGraphicsManager::ClearSceneCommand(float color, float depth, float stencil)
+{
+	uint32 red = 0;
+	uint32 green = 0;
+	uint32 blue = 0;
+
+	if (color)
+	{
+		#ifdef _DEBUG // Clear the backbuffer to a blue color in a Debug mode
+			red		= (uint32) (m_BackbufferColor_debug.GetRed() * 255);
+			green	= (uint32) (m_BackbufferColor_debug.GetGreen() * 255);
+			blue	= (uint32) (m_BackbufferColor_debug.GetBlue() * 255);
+		#else // Clear the backbuffer to a black color in a Release mode
+			red		= (uint32) (m_BackbufferColor_release.GetRed() * 255);
+			green	= (uint32) (m_BackbufferColor_release.GetGreen() * 255);
+			blue	= (uint32) (m_BackbufferColor_release.GetBlue() * 255);
+		#endif
+	}
+	DWORD flags = D3DCLEAR_TARGET;
+	if (depth)
+		flags = flags | D3DCLEAR_ZBUFFER;
+	if (stencil)
+		flags = flags | D3DCLEAR_STENCIL;
+
+	m_pD3DDevice->Clear( 0, NULL, flags, D3DCOLOR_XRGB(red, green, blue), 1.0f, 0 );
+}
+
+void CGraphicsManager::BeginRenderCommand()
+{
+	// Begin the scene
+    HRESULT hr = m_pD3DDevice->BeginScene();
+    assert( SUCCEEDED( hr ) );
+    m_pD3DDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CCW);
+    m_pD3DDevice->SetRenderState( D3DRS_ZENABLE, D3DZB_TRUE);
+    m_pD3DDevice->SetRenderState( D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
+    //m_pD3DDevice->SetRenderState( D3DRS_ZWRITEENABLE, TRUE);
+    m_pD3DDevice->SetRenderState( D3DRS_LIGHTING, FALSE );
+    m_pD3DDevice->SetRenderState( D3DRS_DITHERENABLE, TRUE );
+    m_pD3DDevice->SetRenderState( D3DRS_SPECULARENABLE, FALSE );
+    if (m_bPaintSolid) {
+        m_pD3DDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_SOLID  );
+    } else {
+        m_pD3DDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_WIREFRAME  );
+    }
+
+}
+
+void CGraphicsManager::EndRenderCommand()
+{
+    m_pD3DDevice->EndScene();
+}
+
+void CGraphicsManager::PresentSceneCommand()
+{
+    // Present the backbuffer contents to the display
+    m_pD3DDevice->Present( NULL, NULL, NULL, NULL );
 }
 
 

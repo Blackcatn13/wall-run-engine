@@ -43,23 +43,27 @@ void CLight::GenerateShadowMap(CGraphicsManager *RM)
 	if(m_GenerateStaticShadowMap && m_MustUpdateStaticShadowMap)
 	{
 	m_StaticShadowMap->SetAsRenderTarget(0);
-	RM->BeginRendering();
+//	RM->BeginRendering();
+	RM->BeginRenderCommand();
 	//RM->Clear(true, true, true, 0xffffffff);
 	for(size_t i=0;i< m_StaticShadowMapRenderableObjectsManagers.size();++i)
 		m_StaticShadowMapRenderableObjectsManagers[i]->Render(RM);
 		m_MustUpdateStaticShadowMap=false;
-		RM->EndRendering();
+	//	RM->EndRendering();
+		RM->EndRenderCommand();
 		m_StaticShadowMap->UnsetAsRenderTarget(0);
 	}
 	if(m_DynamicShadowMapRenderableObjectsManagers.size()>0)
 	{
 		m_DynamicShadowMap->SetAsRenderTarget(0);
-		RM->BeginRendering();
+		//	RM->BeginRendering();
+		RM->BeginRenderCommand();
 		//RM->Clear(true, true, true, 0xffffffff);
 		for(size_t i=0;i<
 		m_DynamicShadowMapRenderableObjectsManagers.size();++i)
 		m_DynamicShadowMapRenderableObjectsManagers[i]->Render(RM);
-		RM->EndRendering();
+		//	RM->EndRendering();
+		RM->EndRenderCommand();
 		m_DynamicShadowMap->UnsetAsRenderTarget(0);
 	}
 }

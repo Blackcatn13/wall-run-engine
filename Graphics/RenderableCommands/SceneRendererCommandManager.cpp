@@ -68,7 +68,7 @@ void CSceneRendererCommandManager::Load(const std::string &FileName)
 					l_Name = GetNextName();
 
 				std::string name = m(i).GetName();
-              /*  if (name == "begin_scene") {
+                if (name == "begin_scene") {
 					CBeginRenderSceneRendererCommand *l_Command = new CBeginRenderSceneRendererCommand(m(i));
 					m_SceneRendererCommands.AddResource(l_Name,l_Command);
 				}
@@ -76,7 +76,7 @@ void CSceneRendererCommandManager::Load(const std::string &FileName)
 					CClearSceneRendererCommand *l_Command = new CClearSceneRendererCommand(m(i));
 					m_SceneRendererCommands.AddResource(l_Name,l_Command);
 				}
-				if (name == "capture_frame_buffer") {
+			/*	if (name == "capture_frame_buffer") {
 					CCaptureFrameBufferSceneRendererCommand *l_Command = new CCaptureFrameBufferSceneRendererCommand(m(i));
 					m_SceneRendererCommands.AddResource(l_Name,l_Command);
 				}
@@ -84,15 +84,15 @@ void CSceneRendererCommandManager::Load(const std::string &FileName)
 					CDeferredShadingSceneRendererCommand *l_Command = new CDeferredShadingSceneRendererCommand(m(i));
 					m_SceneRendererCommands.AddResource(l_Name,l_Command);
 				}
-				if (name == "disable_z_write") {
+			*/	if (name == "disable_z_write") {
 					CDisableZWriteSceneRendererCommand *l_Command = new CDisableZWriteSceneRendererCommand(m(i));
 					m_SceneRendererCommands.AddResource(l_Name,l_Command);
 				}
-				if (name == "render_draw_quad") {
+			/*	if (name == "render_draw_quad") {
 					CDrawQuadRendererCommand *l_Command = new CDrawQuadRendererCommand(m(i));
 					m_SceneRendererCommands.AddResource(l_Name,l_Command);
 				}
-				if (name == "enable_z_write") {
+			*/	if (name == "enable_z_write") {
 					CEnableZWriteSceneRendererCommand *l_Command = new CEnableZWriteSceneRendererCommand(m(i));
 					m_SceneRendererCommands.AddResource(l_Name,l_Command);
 				}
@@ -100,15 +100,15 @@ void CSceneRendererCommandManager::Load(const std::string &FileName)
 					CEndRenderSceneRendererCommand *l_Command = new CEndRenderSceneRendererCommand(m(i));
 					m_SceneRendererCommands.AddResource(l_Name,l_Command);
 				}
-				if (name == "generate_shadow_maps") {
+				/*if (name == "generate_shadow_maps") {
 					CGenerateShadowMapsSceneRendererCommand *l_Command = new CGenerateShadowMapsSceneRendererCommand(m(i));
 					m_SceneRendererCommands.AddResource(l_Name,l_Command);
-				}
+				}*/
 				if (name == "present") {				
 					CPresentSceneRendererCommand *l_Command = new CPresentSceneRendererCommand(m(i));
 					m_SceneRendererCommands.AddResource(l_Name,l_Command);
 				}
-				if (name == "set_pool_renderable_objects_technique") {
+			/*	if (name == "set_pool_renderable_objects_technique") {
 					CRenderableObjectTechniquesSceneRendererCommand *l_Command = new CRenderableObjectTechniquesSceneRendererCommand(m(i));
 					m_SceneRendererCommands.AddResource(l_Name,l_Command);
 				}*/
@@ -132,10 +132,10 @@ void CSceneRendererCommandManager::Load(const std::string &FileName)
 				//	CRenderSceneSceneRendererCommand *l_Command = new CRenderSceneSceneRendererCommand(m(i));
 				//	m_SceneRendererCommands.AddResource(l_Name,l_Command);
 				//}
-				//if (name == "set_matrices") {
-				//	CSetMatricesSceneRendererCommand *l_Command = new CSetMatricesSceneRendererCommand(m(i));
-				//	m_SceneRendererCommands.AddResource(l_Name,l_Command);
-				//}
+				if (name == "set_matrices") {
+					CSetMatricesSceneRendererCommand *l_Command = new CSetMatricesSceneRendererCommand(m(i));
+					m_SceneRendererCommands.AddResource(l_Name,l_Command);
+				}
 				//if (name == "set_render_target") {
 				//	CSetRenderTargetSceneRendererCommand *l_Command = new CSetRenderTargetSceneRendererCommand(m(i));
 				//	m_SceneRendererCommands.AddResource(l_Name,l_Command);

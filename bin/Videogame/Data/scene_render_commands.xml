@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <scene_renderer_commands>
  <!--pre_render-->
-<begin_scene/>
-<clear_scene color="true" depth="true" stencil="true"/>
+
+<set_matrices/>
 <enable_z_write/>
 <enable_z_test/>
+
 <set_pool_renderable_objects_technique
 pool="generate_shadow_map_renderable_obejcts_technique"/>
 <generate_shadow_maps />
@@ -20,7 +21,7 @@ texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 <dynamic_texture stage_id="3" name="DepthMapTexture"
 texture_width_as_frame_buffer="true" format_type="R32F"/>
 </set_render_target>
-<clear_scene color="true" depth="true" stencil="true"/>
+
 <enable_z_write/>
 <enable_z_test/>
 <render_scene layer="solid" active="true"/>
@@ -122,5 +123,6 @@ pool="draw_shadow_map_2d_debug_pool_renderable_object_technique"/>
 <render_debug_shadow_maps screen_width="0.15" screen_height="0.15"/>
 <!--end render shadow_maps_debug-->
 <render_gui active="true"/>
-<present/>
+<!--<end_scene/>
+<present/> -->
 </scene_renderer_commands>

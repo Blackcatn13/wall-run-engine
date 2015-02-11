@@ -80,11 +80,13 @@ void CEngine::Update()
 void CEngine::Render()
 {
     CGraphicsManager* gm = m_Core->GetGraphicsManager();
-    //CCamera* camera = m_Process->getCamera();
-    gm->BeginRendering();
-    gm->SetupMatrices(m_Process->GetCamera());
+    //CCamera* camera = m_Process->GetCamera();
+   // gm->BeginRendering();
+  //  gm->SetupMatrices(m_Process->GetCamera());
+	gm->ClearSceneCommand(true, true, true);
+	gm->BeginRenderCommand();
     RenderScene();
-    gm->DisbaleZBuffering();
+	gm->DisbaleZBuffering();
     gm->EnableAlphaBlend();
     m_Process->RenderDebugInfo(true, m_Timer.GetElapsedTime());
     m_LogRender->Render(gm, FONTM);

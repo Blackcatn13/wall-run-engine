@@ -4,7 +4,8 @@
 
 #include "RenderableCommands\SceneRendererCommand.h"
 #include "XML\XMLTreeNode.h"
-#include "GraphicsManager.h"
+
+class CGraphicsManager;
 
 class CBeginRenderSceneRendererCommand : public CSceneRendererCommand{
 	public:

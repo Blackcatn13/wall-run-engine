@@ -39,36 +39,24 @@
     <ClCompile Include="Lights\SpotLight.cpp" />
     <ClCompile Include="Mesh\MeshInstance.cpp" />
     <ClCompile Include="Object\Object3D.cpp" />
-    <ClCompile Include="RenderableCommands\BeginRenderSceneRendererCommand.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="RenderableCommands\BeginRenderSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\CaptureFrameBufferSceneRendererCommand.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="RenderableCommands\ClearSceneRendererCommand.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="RenderableCommands\ClearSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\DeferredShadingSceneRendererCommand.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="RenderableCommands\DisableZWriteSceneRendererCommand.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="RenderableCommands\DisableZWriteSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\DrawQuadRendererCommand.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="RenderableCommands\EnableZWriteSceneRendererCommand.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="RenderableCommands\EndRenderSceneRendererCommand.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="RenderableCommands\EnableZWriteSceneRendererCommand.cpp" />
+    <ClCompile Include="RenderableCommands\EndRenderSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\GenerateShadowMapsSceneRendererCommand.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="RenderableCommands\PresentSceneRenderCommand.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="RenderableCommands\PresentSceneRenderCommand.cpp" />
     <ClCompile Include="RenderableCommands\RenderableObjectTechniquesSceneRendererCommand.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -87,9 +75,7 @@
     </ClCompile>
     <ClCompile Include="RenderableCommands\SceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\SceneRendererCommandManager.cpp" />
-    <ClCompile Include="RenderableCommands\SetMatricesSceneRendererCommand.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="RenderableCommands\SetMatricesSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\SetRenderTargetSceneRendererCommand.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -142,36 +128,24 @@
     <ClInclude Include="Lights\SpotLight.h" />
     <ClInclude Include="Mesh\MeshInstance.h" />
     <ClInclude Include="Object\Object3D.h" />
-    <ClInclude Include="RenderableCommands\BeginRenderSceneRendererCommand.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
+    <ClInclude Include="RenderableCommands\BeginRenderSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\CaptureFrameBufferSceneRendererCommand.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="RenderableCommands\ClearSceneRendererCommand.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
+    <ClInclude Include="RenderableCommands\ClearSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\DeferredShadingSceneRendererCommand.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="RenderableCommands\DisableZWriteSceneRendererCommand.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
+    <ClInclude Include="RenderableCommands\DisableZWriteSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\DrawQuadRendererCommand.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="RenderableCommands\EnableZWriteSceneRendererCommand.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="RenderableCommands\EndRenderSceneRendererCommand.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
+    <ClInclude Include="RenderableCommands\EnableZWriteSceneRendererCommand.h" />
+    <ClInclude Include="RenderableCommands\EndRenderSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\GenerateShadowMapsSceneRendererCommand.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="RenderableCommands\PresentSceneRenderCommand.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
+    <ClInclude Include="RenderableCommands\PresentSceneRenderCommand.h" />
     <ClInclude Include="RenderableCommands\RenderableObjectTechniquesSceneRendererCommand.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
@@ -190,9 +164,7 @@
     </ClInclude>
     <ClInclude Include="RenderableCommands\SceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\SceneRendererCommandManager.h" />
-    <ClInclude Include="RenderableCommands\SetMatricesSceneRendererCommand.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
+    <ClInclude Include="RenderableCommands\SetMatricesSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\SetRenderTargetSceneRendererCommand.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
