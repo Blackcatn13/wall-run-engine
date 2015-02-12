@@ -1,4 +1,4 @@
 <renderable_objects>
-	<mesh_instance name="box1" core="box" pos="10.0 0.0 0.0" yaw="0" pitch="0" roll="0" scale="0.1 0.1 0.1"/>
-	<animated_model name="tuga" core="thug" pos="0.0 0.0 0.0" yaw="0" pitch="0" roll="0" scale="1.0 1.0 1.0"/>
+	<mesh_instance name="box1" core="box" pos="0.0 0.0 0.0" yaw="0" pitch="0" roll="0" scale="1 1 1"/>
+	<!--<animated_model name="tuga" core="thug" pos="0.0 0.0 0.0" yaw="0" pitch="0" roll="0" scale="1.0 1.0 1.0"/>-->
 </renderable_objects>

@@ -1,3 +1,3 @@
 <static_meshes>
-	<static_mesh name="box" filename="./Data/level1/meshes/Box001.mesh"/>
+	<static_mesh name="box" filename="./Data/level1/meshes/BOX_Lightmap.mesh"/>
 </static_meshes>

@@ -29,6 +29,7 @@ PSVertex RenderLightMapVS(
 
 float4 RN20(PSVertex IN) : COLOR
 {
+	return tex2D(S0LinearWrapSampler, IN.UV);
 	float3 l_Nn = normalize(IN.WorldNormal);
 	float3 l_DiffuseTex = tex2D(S0LinearWrapSampler, IN.UV).rgb;
 	float3 l_DiffuseLigthMap = tex2D(S1LinearWrapSampler, IN.UV2).rgb;
