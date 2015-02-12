@@ -17,7 +17,7 @@
 #include "Lights\LightManager.h"
 #include "ScriptManager.h"
 #include "Renderable\RenderableObjectsLayersManager.h"
-#include "Renderable\RenderableObjectTechniqueManager.h"
+#include "RenderableCommands\SceneRendererCommandManager.h"
 
 CEngine::~CEngine(void)
 {
@@ -28,6 +28,7 @@ void CEngine::Init(CProcess *p, std::string ConfFile, HWND handler)
 {
     m_Process = p;
     m_Core = CCORE;
+	m_Core->SetProcess(m_Process);
     m_ConfFile = ConfFile;
     ParseConfFile();
     m_Core->setConfig (m_Conf_info);
@@ -65,39 +66,44 @@ void CEngine::Update()
         m_LogRender->SetVisible(!m_LogRender->GetVisible());
     if (m_Core->GetActionToInput()->DoAction("ReloadTextures"))
         TEXTM->Reload();
-    if (m_Core->GetActionToInput()->DoAction("ReloadMeshes"))
-		RENDLM->Reload();
-		//RENDTECHM->GetPoolRenderableObjectTechniques().GetResource("dummy_manager")->Apply();
-		//RENDTECHM->GetPoolRenderableObjectTechniques().GetResource("dummy_test")->Apply();
+    if (m_Core->GetActionToInput()->DoAction("ReloadMeshes")) RENDLM->Reload();
     if (ACT2IN->DoAction("ReloadEffects"))
         EFFECTM->Reload();
     if (ACT2IN->DoAction("ReloadLights"))
         LIGHTM->Reload();
     if (ACT2IN->DoAction("ReloadScripts"))
         SCRIPTM->Reload();
+	if (ACT2IN->DoAction("ReloadRenderCommands"))
+		SCENRENDCOMM->Reload();
     m_LogRender->Update(m_Timer.GetElapsedTime());
 }
 
 void CEngine::Render()
 {
     CGraphicsManager* gm = m_Core->GetGraphicsManager();
-    //CCamera* camera = m_Process->getCamera();
-    gm->BeginRendering();
-    gm->SetupMatrices(m_Process->GetCamera());
-    RenderScene();
-    gm->DisbaleZBuffering();
+    //CCamera* camera = m_Process->GetCamera();
+   // gm->BeginRendering();
+  //  gm->SetupMatrices(m_Process->GetCamera());
+
+	//gm->ClearSceneCommand(true, true, true);
+	//gm->BeginRenderCommand();
+  //  RenderScene();
+	m_Process->Render();
+	gm->DisbaleZBuffering();
     gm->EnableAlphaBlend();
     m_Process->RenderDebugInfo(true, m_Timer.GetElapsedTime());
     m_LogRender->Render(gm, FONTM);
     gm->DisbaleAlphaBlend();
     gm->EnableZBuffering();
-    gm->EndRendering();
+   // gm->EndRendering();
 }
 
 void CEngine::RenderScene()
 {
     m_Core->Render();
     m_Process->Render();
+	
+	
 }
 
 void CEngine::ParseConfFile()
@@ -147,7 +153,11 @@ void CEngine::ParseConfFile()
                         m_Conf_info.LuaPath = n(i).GetPszISOProperty("LuaFile", "");
                     } else if (name == "Effect") {
                         m_Conf_info.EffectPath = n(i).GetPszISOProperty("EffectXML", "");
+                    }else if (name == "RendererCommands") {
+						m_Conf_info.SceneRenderCommandsPath = n(i).GetPszISOProperty("rendererCommandsXML", "");
                     }
+
+
                 }
             }
         }

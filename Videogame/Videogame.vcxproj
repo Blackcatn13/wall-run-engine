@@ -98,6 +98,7 @@
     <ClCompile Include="Enemies\Enemy.cpp" />
     <ClCompile Include="Enemies\EnemyManager.cpp" />
     <ClCompile Include="Enemies\PatrolEnemy.cpp" />
+    <ClCompile Include="TestCommands.cpp" />
     <ClCompile Include="Test_Process.cpp" />
     <ClCompile Include="Test_Space.cpp" />
     <ClCompile Include="videogame.cpp" />
@@ -109,6 +110,7 @@
     <ClInclude Include="Enemies\Enemy.h" />
     <ClInclude Include="Enemies\EnemyManager.h" />
     <ClInclude Include="Enemies\PatrolEnemy.h" />
+    <ClInclude Include="TestCommands.h" />
     <ClInclude Include="Test_Process.h" />
     <ClInclude Include="Test_Space.h" />
     <ClInclude Include="VideoGame_Process.h" />

@@ -9,6 +9,7 @@
 class CSetRenderTargetSceneRendererCommand : public CStagedTexturedRendererCommand
 {
 public:
+	CSetRenderTargetSceneRendererCommand(){}
 	CSetRenderTargetSceneRendererCommand(CXMLTreeNode &atts);
 	void Execute(CGraphicsManager &RM);
 	void UnsetRenderTarget();

@@ -2,11 +2,10 @@
 #ifndef PRESENT_SCENE_RENDERER_COMMAND_H
 #define PRESENT_SCENE_RENDERER_COMMAND_H
 
-#include <string>
-#include "Utils\MapManager.h"
 #include "SceneRendererCommand.h"
-#include "GraphicsManager.h"
 #include "XML\XMLTreeNode.h"
+
+class CGraphicsManager;
 
 class CPresentSceneRendererCommand : public CSceneRendererCommand
 {

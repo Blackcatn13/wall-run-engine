@@ -17,6 +17,9 @@
     <Filter Include="spce">
       <UniqueIdentifier>{037fdbe4-ed8a-438e-a2dd-f3bddb4344c2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="commands">
+      <UniqueIdentifier>{fb021be5-354e-4f5f-aabe-7de8d724c3ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="videogame.cpp" />
@@ -44,6 +47,9 @@
     <ClCompile Include="Test_Space.cpp">
       <Filter>spce</Filter>
     </ClCompile>
+    <ClCompile Include="TestCommands.cpp">
+      <Filter>commands</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enemies\EasyEnemy.h">
@@ -69,6 +75,9 @@
     </ClInclude>
     <ClInclude Include="Test_Space.h">
       <Filter>spce</Filter>
+    </ClInclude>
+    <ClInclude Include="TestCommands.h">
+      <Filter>commands</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

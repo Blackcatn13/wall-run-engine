@@ -56,12 +56,12 @@ void RegisterManagers()
 	.def("de_init", &CGraphicsManager::DeInit)
 	.def("render", &CGraphicsManager::Render)
 	.def("get_window_rect", &CGraphicsManager::GetWindowRect)
-	.def("begin_rendering", &CGraphicsManager::BeginRendering)
-
 	.def("setup_matrices", &CGraphicsManager::SetupMatrices)
 	.def("get_window_rect", &CGraphicsManager::GetWindowRect)
-	.def("begin_rendering", &CGraphicsManager::BeginRendering)
-	.def("end_rendering", &CGraphicsManager::EndRendering)
+	/*.def("begin_rendering", &CGraphicsManager::BeginRendering)
+	.def("end_rendering", &CGraphicsManager::EndRendering)*/
+	.def("begin_rendering", &CGraphicsManager::BeginRenderCommand)
+	.def("end_rendering", &CGraphicsManager::EndRenderCommand)
 	 //----Transform Functions-----------------------------------------------
 	.def("get_window_rect", (void (CGraphicsManager::*)(D3DXMATRIX &)) &CGraphicsManager::SetTransform)
 	.def("begin_rendering", (void (CGraphicsManager::*)(Mat44f &)) &CGraphicsManager::SetTransform)
