@@ -28,6 +28,7 @@ void CEngine::Init(CProcess *p, std::string ConfFile, HWND handler)
 {
     m_Process = p;
     m_Core = CCORE;
+	m_Core->SetProcess(m_Process);
     m_ConfFile = ConfFile;
     ParseConfFile();
     m_Core->setConfig (m_Conf_info);
@@ -83,22 +84,26 @@ void CEngine::Render()
     //CCamera* camera = m_Process->GetCamera();
    // gm->BeginRendering();
   //  gm->SetupMatrices(m_Process->GetCamera());
+
 	gm->ClearSceneCommand(true, true, true);
 	gm->BeginRenderCommand();
-    RenderScene();
+  //  RenderScene();
+	m_Process->Render();
 	gm->DisbaleZBuffering();
     gm->EnableAlphaBlend();
     m_Process->RenderDebugInfo(true, m_Timer.GetElapsedTime());
     m_LogRender->Render(gm, FONTM);
     gm->DisbaleAlphaBlend();
     gm->EnableZBuffering();
-    gm->EndRendering();
+   // gm->EndRendering();
 }
 
 void CEngine::RenderScene()
 {
     m_Core->Render();
     m_Process->Render();
+	
+	
 }
 
 void CEngine::ParseConfFile()

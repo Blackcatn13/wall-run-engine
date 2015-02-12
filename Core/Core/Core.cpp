@@ -105,6 +105,7 @@ void CCore::DeInit()
     CHECKED_DELETE(m_CinematicManager);
     CHECKED_DELETE(m_EffectManager);
 	CHECKED_DELETE(m_PhysicsManager);
+	//CHECKED_DELETE(m_Process);
     //CHECKED_DELETE(m_RenderableObjectTechniqueManager);
 	//TODO añadir checked delete renderableobjectslayersmanager
 }

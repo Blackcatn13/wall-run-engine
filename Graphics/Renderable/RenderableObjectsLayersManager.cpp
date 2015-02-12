@@ -4,6 +4,7 @@
 CRenderableObjectsLayersManager ::CRenderableObjectsLayersManager()
 {
 	m_DefaultRenderableObjectManager = NULL;
+	m_CurrentLayer="solid";
 }
 
 CRenderableObjectsLayersManager ::~CRenderableObjectsLayersManager()

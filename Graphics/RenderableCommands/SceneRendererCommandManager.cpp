@@ -128,10 +128,10 @@ void CSceneRendererCommandManager::Load(const std::string &FileName)
 				//	CRenderGUISceneRendererCommand *l_Command = new CRenderGUISceneRendererCommand(m(i));
 				//	m_SceneRendererCommands.AddResource(l_Name,l_Command);
 				//}
-				//if (name == "render_scene") {
-				//	CRenderSceneSceneRendererCommand *l_Command = new CRenderSceneSceneRendererCommand(m(i));
-				//	m_SceneRendererCommands.AddResource(l_Name,l_Command);
-				//}
+				if (name == "render_scene") {
+					CRenderSceneSceneRendererCommand *l_Command = new CRenderSceneSceneRendererCommand(m(i));
+					m_SceneRendererCommands.AddResource(l_Name,l_Command);
+				}
 				if (name == "set_matrices") {
 					CSetMatricesSceneRendererCommand *l_Command = new CSetMatricesSceneRendererCommand(m(i));
 					m_SceneRendererCommands.AddResource(l_Name,l_Command);

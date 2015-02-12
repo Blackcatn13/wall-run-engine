@@ -223,7 +223,7 @@ void CTestCommands::Render()
     GRAPHM->DrawGrid(20);
     GRAPHM->DrawAxis(10);
     //text->Activate(0);
-    RENDLM->Render(GRAPHM);
+	//RENDLM->Render(GRAPHM, RENDLM->getCurrentLayer);
 	SCENRENDCOMM->Execute(*GRAPHM);
     //g_RV->Render(CCORE->GetGraphicsManager(º+-));
     /* Mat44f t;

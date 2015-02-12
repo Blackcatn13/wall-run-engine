@@ -26,6 +26,7 @@ class CRenderableObjectTechniqueManager;
 class CPhysicsManager;
 class CRenderableObjectsLayersManager;
 class CSceneRendererCommandManager;
+class CProcess;
 
 #define CCORE   CCore::GetInstance()
 #define GRAPHM  CCore::GetInstance()->GetGraphicsManager()
@@ -75,6 +76,7 @@ private:
 	CPhysicsManager*					m_PhysicsManager;
 	CRenderableObjectsLayersManager*		m_RenderableLayersManager;
 	CSceneRendererCommandManager*		m_SceneRendererCommandManager;
+	CProcess*							m_Process;
 
 public:
     ~CCore();
@@ -165,6 +167,16 @@ public:
 	CSceneRendererCommandManager * GetSceneRendererCommandManager()
     {
 		return m_SceneRendererCommandManager;
+    }
+
+	CProcess * GetProcess()
+    {
+		return m_Process;
+    }
+
+	void SetProcess(CProcess * process)
+    {
+        m_Process = process;
     }
 
 };
