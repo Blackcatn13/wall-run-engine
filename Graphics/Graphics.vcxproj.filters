@@ -236,6 +236,9 @@
     <ClCompile Include="RenderableCommands\UnsetRenderTargetSceneRendererCommand.cpp">
       <Filter>RenderableCommands</Filter>
     </ClCompile>
+    <ClCompile Include="RenderableCommands\SetAxisRendererCommand.cpp">
+      <Filter>RenderableCommands</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
@@ -429,6 +432,9 @@
       <Filter>RenderableCommands</Filter>
     </ClInclude>
     <ClInclude Include="RenderableCommands\UnsetRenderTargetSceneRendererCommand.h">
+      <Filter>RenderableCommands</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableCommands\SetAxisRendererCommand.h">
       <Filter>RenderableCommands</Filter>
     </ClInclude>
   </ItemGroup>

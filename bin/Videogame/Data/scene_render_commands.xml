@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <scene_renderer_commands>
  <!--pre_render-->
-<!--<clear_scene color="true" depth="true" stencil="true"/>
-<begin_scene /> -->
+<clear_scene color="true" depth="true" stencil="true"/>
+<begin_scene /> 
 <set_matrices/>
 <enable_z_write/>
 <enable_z_test/>
-
+<set_axis />
 <set_pool_renderable_objects_technique pool="generate_shadow_map_renderable_obejcts_technique"/>
 <generate_shadow_maps />
 <set_pool_renderable_objects_technique pool="generate_deferred_shading_pool_renderable_object_technique"/>

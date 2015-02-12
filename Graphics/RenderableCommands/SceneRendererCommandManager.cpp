@@ -25,6 +25,7 @@
 #include "RenderableCommands\SetRenderTargetSceneRendererCommand.h"
 //#include "RenderableCommands\StagedTexturedRendererCommand.h"
 #include "RenderableCommands\UnsetRenderTargetSceneRendererCommand.h"
+#include "RenderableCommands\SetAxisRendererCommand.h"
 
 
 CSceneRendererCommandManager::CSceneRendererCommandManager()
@@ -134,6 +135,10 @@ void CSceneRendererCommandManager::Load(const std::string &FileName)
 				}
 				if (name == "set_matrices") {
 					CSetMatricesSceneRendererCommand *l_Command = new CSetMatricesSceneRendererCommand(m(i));
+					m_SceneRendererCommands.AddResource(l_Name,l_Command);
+				}
+				if (name == "set_axis") {
+					CSetAxisRendererCommand *l_Command = new CSetAxisRendererCommand(m(i));
 					m_SceneRendererCommands.AddResource(l_Name,l_Command);
 				}
 				//if (name == "set_render_target") {

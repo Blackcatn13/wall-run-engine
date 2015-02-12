@@ -73,6 +73,7 @@
     <ClCompile Include="RenderableCommands\RenderSceneSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\SceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\SceneRendererCommandManager.cpp" />
+    <ClCompile Include="RenderableCommands\SetAxisRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\SetMatricesSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\SetRenderTargetSceneRendererCommand.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -160,6 +161,7 @@
     <ClInclude Include="RenderableCommands\RenderSceneSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\SceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\SceneRendererCommandManager.h" />
+    <ClInclude Include="RenderableCommands\SetAxisRendererCommand.h" />
     <ClInclude Include="RenderableCommands\SetMatricesSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\SetRenderTargetSceneRendererCommand.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

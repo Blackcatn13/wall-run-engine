@@ -85,8 +85,8 @@ void CEngine::Render()
    // gm->BeginRendering();
   //  gm->SetupMatrices(m_Process->GetCamera());
 
-	gm->ClearSceneCommand(true, true, true);
-	gm->BeginRenderCommand();
+	//gm->ClearSceneCommand(true, true, true);
+	//gm->BeginRenderCommand();
   //  RenderScene();
 	m_Process->Render();
 	gm->DisbaleZBuffering();
