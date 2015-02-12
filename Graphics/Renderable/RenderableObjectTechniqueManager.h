@@ -9,18 +9,20 @@
 
 
 //class CRenderableObjectTechniqueManager : public CTemplatedMapManager<CRenderableObjectTechnique> {
-class CRenderableObjectTechniqueManager : public CMapManager<CRenderableObjectTechnique> {
-	private: 
-		std::string m_FileName;
-		CMapManager<CPoolRenderableObjectTechnique> m_PoolRenderableObjectTechniques;
-		void InsertRenderableObjectTechnique(const std::string &ROTName, const std::string &TechniqueName);
-	public : 
-		CRenderableObjectTechniqueManager();
-		virtual ~CRenderableObjectTechniqueManager();
-		void Destroy();
-		void Load(const std::string &FileName);
-		std::string GetRenderableObjectTechniqueNameByVertexType(unsigned int VertexType);
-		CMapManager<CPoolRenderableObjectTechnique> & GetPoolRenderableObjectTechniques();
+class CRenderableObjectTechniqueManager : public CMapManager<CRenderableObjectTechnique>
+{
+private:
+    std::string m_FileName;
+    CMapManager<CPoolRenderableObjectTechnique> m_PoolRenderableObjectTechniques;
+    void InsertRenderableObjectTechnique(const std::string &ROTName, const std::string &TechniqueName);
+public :
+    CRenderableObjectTechniqueManager();
+    virtual ~CRenderableObjectTechniqueManager();
+    void Destroy();
+    void Load(const std::string &FileName);
+    void Reload();
+    std::string GetRenderableObjectTechniqueNameByVertexType(unsigned int VertexType);
+    CMapManager<CPoolRenderableObjectTechnique> & GetPoolRenderableObjectTechniques();
 };
 
 #endif
