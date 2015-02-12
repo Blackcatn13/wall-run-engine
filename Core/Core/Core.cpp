@@ -47,7 +47,7 @@ void CCore::Init(HWND handler)
     m_FontManager->Init(m_GraphicsManager);
     m_FontManager->LoadTTFs(m_Config.FontsPath);
     for (uint32 i = 0; i < m_Config.LanguagesPath.size(); ++i)
-        m_LanguageManager->SetXmlFile(m_Config.LanguagesPath[i]);
+    m_LanguageManager->SetXmlFile(m_Config.LanguagesPath[i]);
     m_LanguageManager->LoadXMLs();
     m_LanguageManager->SetCurrentLanguage(m_Config.CurrentLanguage);
     m_ActionToInput = new CActionToInput(m_InputManager);
@@ -59,11 +59,15 @@ void CCore::Init(HWND handler)
     m_ScriptManager->Initialize();
     //m_RenderableManager = new CRenderableObjectsManager();
     m_AnimatedModelManager = new CAnimatedModelManager();
+	//Cargamos Technique pools
+	m_RenderableObjectTechniqueManager = new CRenderableObjectTechniqueManager();
+	m_RenderableObjectTechniqueManager->Load(".\\Data\\level2\\pool_renderable_objects.xml");
+
 	//Cargando Layers
 	m_RenderableLayersManager = new CRenderableObjectsLayersManager();
 	m_RenderableLayersManager->Load(m_Config.RenderablePath);
 	m_RenderableLayersManager->Load(m_Config.LuaPath);
-		//m_RenderableLayersManager->Load(m_Config.LuaPath);
+	//m_RenderableLayersManager->Load(m_Config.LuaPath);
 	//como cargar LuaPath?
 	//m_RenderableLayersManager->Load(m_Config.LuaPath);
     //m_RenderableManager->Load(m_Config.RenderablePath);
@@ -102,7 +106,7 @@ void CCore::DeInit()
     CHECKED_DELETE(m_CinematicManager);
     CHECKED_DELETE(m_EffectManager);
 	CHECKED_DELETE(m_PhysicsManager);
-    //CHECKED_DELETE(m_RenderableObjectTechniqueManager);
+    CHECKED_DELETE(m_RenderableObjectTechniqueManager);
 	//TODO añadir checked delete renderableobjectslayersmanager
 }
 

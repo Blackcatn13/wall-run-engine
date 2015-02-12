@@ -17,6 +17,7 @@
 #include "Lights\LightManager.h"
 #include "ScriptManager.h"
 #include "Renderable\RenderableObjectsLayersManager.h"
+#include "Renderable\RenderableObjectTechniqueManager.h"
 
 CEngine::~CEngine(void)
 {
@@ -64,7 +65,10 @@ void CEngine::Update()
         m_LogRender->SetVisible(!m_LogRender->GetVisible());
     if (m_Core->GetActionToInput()->DoAction("ReloadTextures"))
         TEXTM->Reload();
-    if (m_Core->GetActionToInput()->DoAction("ReloadMeshes")) RENDLM->Reload();
+    if (m_Core->GetActionToInput()->DoAction("ReloadMeshes"))
+		RENDLM->Reload();
+		//RENDTECHM->GetPoolRenderableObjectTechniques().GetResource("dummy_manager")->Apply();
+		//RENDTECHM->GetPoolRenderableObjectTechniques().GetResource("dummy_test")->Apply();
     if (ACT2IN->DoAction("ReloadEffects"))
         EFFECTM->Reload();
     if (ACT2IN->DoAction("ReloadLights"))

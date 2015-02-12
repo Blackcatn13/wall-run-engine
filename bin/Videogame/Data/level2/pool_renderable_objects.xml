@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<renderable_object_techniques>
+	<pool_renderable_object_technique name="dummy_manager" default="true">
+		<default_technique vertex_type="19" technique="CubeMapTechnique"/>
+		<default_technique vertex_type="63" technique="NormalMapTechnique"/>
+		<default_technique vertex_type="51" technique="LightMapTechnique"/>
+	</pool_renderable_object_technique>
+	<pool_renderable_object_technique name="dummy_test">
+		<default_technique vertex_type="19" technique="LightsTechnique"/>
+		<default_technique vertex_type="63" technique="NormalMapTechnique"/>
+		<default_technique vertex_type="51" technique="LightMapTechnique"/>
+	</pool_renderable_object_technique>
+</renderable_object_techniques>

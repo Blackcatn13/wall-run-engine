@@ -22,7 +22,6 @@ CPoolRenderableObjectTechnique::CPoolRenderableObjectTechnique(CXMLTreeNode &Tre
 		//nombres para parsear
 		//nombre DefaultROTTechnique_31 renderableObjectTechnique
 		//nombre: technique="NormalMapAmbientLightNormalTextureVertexTechnique"/> EffectTechnique
-
     CXMLTreeNode m = TreeNode;
 	//padre debe ser <pool_renderable_object_technique name="dummy_manager"
 	std::string l_poolName = m.GetPszISOProperty("name", "");
@@ -106,7 +105,10 @@ void CPoolRenderableObjectTechnique::AddElement(const std::string &Name, const s
 
 void CPoolRenderableObjectTechnique::Apply()
 {
-	for (int i = 0; i < m_RenderableObjectTechniqueElements.size(); ++i)
+	for (int i = 0; i < m_RenderableObjectTechniqueElements.size(); ++i) {
+		CRenderableObjectTechnique * adios = m_RenderableObjectTechniqueElements[i]->m_OnRenderableObjectTechniqueManager;
+		CEffectTechnique * hola = m_RenderableObjectTechniqueElements[i]->m_RenderableObjectTechnique.GetEffectTechnique();
 		m_RenderableObjectTechniqueElements[i]->m_OnRenderableObjectTechniqueManager->SetEffectTechnique(m_RenderableObjectTechniqueElements[i]->m_RenderableObjectTechnique.GetEffectTechnique());
+	}
 }
 

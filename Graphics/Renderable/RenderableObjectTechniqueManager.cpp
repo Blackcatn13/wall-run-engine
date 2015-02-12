@@ -33,7 +33,8 @@ void CRenderableObjectTechniqueManager::Destroy()
             CHECKED_DELETE(it->second);
         }
         m_Resources.clear();
-	//Destroy, destruye todos los CPoolRenderableObjectTechnique y los CRenderableObjectTechnique.
+		m_PoolRenderableObjectTechniques.Destroy();
+		//Destroy, destruye todos los CPoolRenderableObjectTechnique y los CRenderableObjectTechnique.
 }
 
 
@@ -49,24 +50,27 @@ void CRenderableObjectTechniqueManager::Load(const std::string &FileName)
 	for (int i = 0; i < count; ++i) {
 		std::string name = m(i).GetName();
         if (name == "pool_renderable_object_technique") {
-			std::string l_poolName = m.GetPszISOProperty("name", "");
+			std::string l_poolName = m(i).GetPszISOProperty("name", "");
+			bool l_isDefault = m(i).GetBoolProperty("default",false);
 			//TODO Revisar que se le pasa el hijo correctamente
-			CPoolRenderableObjectTechnique * l_Pool = new CPoolRenderableObjectTechnique(m(i));
-			m_PoolRenderableObjectTechniques.AddResource(l_poolName, l_Pool);
-			int count = m.GetNumChildren();
-			for (int i = 0; i < count; ++i) {
-				std::string name = m(i).GetName();
-				if (name == "default_technique") {
-					unsigned int l_VertexNumber = m(i).GetIntProperty("vertex_type",0);
-					std::string l_TechniqueName = m(i).GetPszISOProperty("technique", "");
-					//añadir CRenderableObjectTechniqueManager a CORE y hacer MACRO
-					std::string l_RenderableObjectTechniqueName = GetRenderableObjectTechniqueNameByVertexType(l_VertexNumber);
-					//CRenderableObjectTechnique * l_RenderableObjectTechnique = RENDTECHM->GetResource(l_RenderableObjectTechniqueName);
-					InsertRenderableObjectTechnique(l_RenderableObjectTechniqueName, l_TechniqueName);
-					//CRenderableObjectTechnique * l_RenderableObjectTechnique = new CRenderableObjectTechnique(l_RenderableObjectTechniqueName, 0);
-					//AddResource(l_RenderableObjectTechniqueName, l_RenderableObjectTechnique);
+			int count = m(i).GetNumChildren();
+			if (l_isDefault) {
+				for (int j = 0; j < count; ++j) {
+					std::string name = m(i)(j).GetName();
+					if (name == "default_technique") {
+						unsigned int l_VertexNumber = m(i)(j).GetIntProperty("vertex_type",0);
+						std::string l_TechniqueName = m(i)(j).GetPszISOProperty("technique", "");
+						//añadir CRenderableObjectTechniqueManager a CORE y hacer MACRO
+						std::string l_RenderableObjectTechniqueName = GetRenderableObjectTechniqueNameByVertexType(l_VertexNumber);
+						//CRenderableObjectTechnique * l_RenderableObjectTechnique = RENDTECHM->GetResource(l_RenderableObjectTechniqueName);
+						InsertRenderableObjectTechnique(l_RenderableObjectTechniqueName, l_TechniqueName);
+						//CRenderableObjectTechnique * l_RenderableObjectTechnique = new CRenderableObjectTechnique(l_RenderableObjectTechniqueName, 0);
+						//AddResource(l_RenderableObjectTechniqueName, l_RenderableObjectTechnique);
+					}
 				}
 			}
+			CPoolRenderableObjectTechnique * l_Pool = new CPoolRenderableObjectTechnique(m(i));
+			m_PoolRenderableObjectTechniques.AddResource(l_poolName, l_Pool);
 		}
 	}
 }
@@ -80,7 +84,10 @@ std::string CRenderableObjectTechniqueManager::GetRenderableObjectTechniqueNameB
 {
 	//TODO creo que esto esta mal
 	std::string l_VertexName = "DefaultROTTechnique_";
-	std::string l_VertexType = "" + VertexType;
-	return l_VertexName.append(l_VertexType);
+	char buff[500];
+    sprintf(buff, "%u", VertexType);
+    std::string l_VertexType = buff;
+	l_VertexName.append(l_VertexType);
+	return l_VertexName;
 }
 

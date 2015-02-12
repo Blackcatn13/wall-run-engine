@@ -64,6 +64,7 @@ public:
 	void SetBoundingBox(BoundingBox box){m_BBox = box;}
 	BoundingSphere GetBoundingSphere(){return m_BSphere;}
 	void SetBoundingSphere(BoundingSphere sphere){m_BSphere = sphere;}
+	bool GetRenderableObjectTechnique();
 };
 
 #endif
