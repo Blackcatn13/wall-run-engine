@@ -20,6 +20,7 @@
   <Renderable renderXML="./Data/level2/renderable_objects.xml"/> 
   <Lights lightsXML="./Data/level2/lights.xml"/> 
   <RendererCommands rendererCommandsXML="./Data/scene_render_commands.xml"/>
+  <PoolRenderableObjects poolRenderableObjects=".\\Data\\level2\\pool_renderable_objects.xml"/>
   <Cameras CamerasLvl="No"/>
   <Cinematic CinematicLvl="No"/>
   <Lua LuaFile="./Data/lua_actions.xml"/>

@@ -77,7 +77,7 @@ void CRenderableObjectsManager::Load(const std::string &FileName)
 		 m_FileName = FileName;
         //cargamos aqui el animated models para no hacerlo varias veces dentro del bucle
         //CCore::GetInstance()->GetAnimatedModelManager()->Load(".\\Data\\level1\\animated_models.xml"); //se carga animatedmodels.xml
-        CCore::GetInstance()->GetAnimatedModelManager()->Load(".\\Data\\animated_models.xml"); //se carga animatedmodels.xml
+        //CCore::GetInstance()->GetAnimatedModelManager()->Load(".\\Data\\animated_models.xml"); //se carga animatedmodels.xml
         int count = m.GetNumChildren();
         for (int i = 0; i < count; ++i) {
             std::string name = m(i).GetName();
@@ -148,7 +148,7 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node)
     if (Node.Exists()) {
         //cargamos aqui el animated models para no hacerlo varias veces dentro del bucle
         //CCore::GetInstance()->GetAnimatedModelManager()->Load(".\\Data\\level1\\animated_models.xml"); //se carga animatedmodels.xml
-        CCore::GetInstance()->GetAnimatedModelManager()->Load(".\\Data\\animated_models.xml"); //se carga animatedmodels.xml
+        //CCore::GetInstance()->GetAnimatedModelManager()->Load(".\\Data\\animated_models.xml"); //se carga animatedmodels.xml
 		//int count = m.GetNumChildren();
         //for (int i = 0; i < count; ++i) {
             std::string name = m.GetName();

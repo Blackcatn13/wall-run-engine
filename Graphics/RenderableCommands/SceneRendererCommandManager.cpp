@@ -40,7 +40,7 @@ CSceneRendererCommandManager::~CSceneRendererCommandManager()
 
 void CSceneRendererCommandManager::CleanUp()
 {
-	if(!m_SceneRendererCommands.GetResourcesMap().empty())
+	//if(!m_SceneRendererCommands.GetResourcesMap().empty())
 		m_SceneRendererCommands.Destroy();
 }
 
