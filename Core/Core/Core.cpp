@@ -60,11 +60,15 @@ void CCore::Init(HWND handler)
     m_ScriptManager->Initialize();
     //m_RenderableManager = new CRenderableObjectsManager();
     m_AnimatedModelManager = new CAnimatedModelManager();
+	//Cargamos Technique pools
+	m_RenderableObjectTechniqueManager = new CRenderableObjectTechniqueManager();
+	m_RenderableObjectTechniqueManager->Load(".\\Data\\level2\\pool_renderable_objects.xml");
+
 	//Cargando Layers
 	m_RenderableLayersManager = new CRenderableObjectsLayersManager();
 	m_RenderableLayersManager->Load(m_Config.RenderablePath);
 	m_RenderableLayersManager->Load(m_Config.LuaPath);
-		//m_RenderableLayersManager->Load(m_Config.LuaPath);
+	//m_RenderableLayersManager->Load(m_Config.LuaPath);
 	//como cargar LuaPath?
 	//m_RenderableLayersManager->Load(m_Config.LuaPath);
     //m_RenderableManager->Load(m_Config.RenderablePath);
