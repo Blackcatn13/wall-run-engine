@@ -17,6 +17,7 @@ CGraphicsManager::CGraphicsManager()
 {
     m_BackbufferColor_debug.Set(0.49804f, 1.f, 0.83137f, 1.f);
     m_BackbufferColor_release.Set(0.f, 0.f, 0.f, 1.f);
+	
     m_speed = 0.001f;
     m_posCam = Vect3f(-1.f, 1.f, -1.f);
     m_yaw = 0;

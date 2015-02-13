@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <static_meshes>
-	<!--<static_mesh name="LOW001" filename=".\Data\level2\meshes//LOW001.mesh"/>
+	<static_mesh name="LOW001" filename=".\Data\level2\meshes//LOW001.mesh"/>
 	<static_mesh name="Plane001" filename=".\Data\level2\meshes\Plane001.mesh"/>
 	<static_mesh name="Sphere001" filename=".\Data\level2\meshes\Sphere001.mesh"/>
 	
-	<static_mesh name="Box002" filename=".\Data\level2\meshes//Box001.mesh"/> -->
+	<static_mesh name="Box002" filename=".\Data\level2\meshes//Box001.mesh"/> 
 	<static_mesh name="Box001" filename=".\Data\level2\meshes\BOX_Lightmap.mesh"/>
 </static_meshes>
