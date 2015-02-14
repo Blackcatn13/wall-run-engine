@@ -10,84 +10,85 @@ struct VertexVS_TTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX {
 // G T1
 struct VertexVS_TTEXTURE_VERTEX {
     float3 Position	: POSITION;
-    float4 UV		: TEXCOORD0;
+    float2 UV		: TEXCOORD0;
 };
 
 // G N T1
 struct VertexVS_TTEXTURE_NORMAL_VERTEX {
     float3 Position	: POSITION;
-    float4 UV		: TEXCOORD0;
-    float4 Normal	: NORMAL;
+    float3 Normal	: NORMAL;
+    float2 UV		: TEXCOORD0;
 };
 
 // G D T1
 struct VertexVS_TCOLOR_TEXTURE_VERTEX {
     float3 Position	: POSITION;
-    float4 UV		: TEXCOORD0;
 	float4 Color	: COLOR;
+	float2 UV		: TEXCOORD0;
 };
 
 // G N D T1
 struct VertexVS_TCOLOR_TEXTURE_NORMAL_VERTEX {
     float3 Position	: POSITION;
-    float4 UV		: TEXCOORD0;
+    float3 Normal	: NORMAL;
 	float4 Color	: COLOR;
-	float4 Normal	: NORMAL;
+	float2 UV		: TEXCOORD0;
+	
 };
 
 // G T1 T2
 struct VertexVS_TTEXTURE2_VERTEX {
     float3 Position	: POSITION;
-    float4 UV		: TEXCOORD0;
-	float4 UV2		: TEXCOORD1;
+    float2 UV		: TEXCOORD0;
+	float2 UV2		: TEXCOORD1;
 };
 
 // G N T1 T2
 struct VertexVS_TTEXTURE2_NORMAL_VERTEX {
     float3 Position	: POSITION;
-	float4 Normal	: NORMAL;
-    float4 UV		: TEXCOORD0;
-	float4 UV2		: TEXCOORD1;
+	float3 Normal	: NORMAL;
+    float2 UV		: TEXCOORD0;
+	float2 UV2		: TEXCOORD1;
 };
 
 // G N D T1 T2
 struct VertexVS_TTEXTURE2_NORMAL_DIFFUSE_VERTEX {
     float3 Position	: POSITION;
-	float4 Normal	: NORMAL;
+	float3 Normal	: NORMAL;
 	float4 Color	: COLOR;
-    float4 UV		: TEXCOORD0;
-	float4 UV2		: TEXCOORD1;
+    float2 UV		: TEXCOORD0;
+	float2 UV2		: TEXCOORD1;
 };
 
 // G N T B T1 T2
-struct VertexVS_NORMAL_TANGET_BINORMAL_VERTEX{
+struct VertexVS_TTEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX{
     float3 Position	: POSITION;
-    float4 UV		: TEXCOORD0;
-	float4 UV2		: TEXCOORD1;
-	float4 Normal	: NORMAL;
+    float4 Normal	: NORMAL;
 	float4 Tangent	: TANGENT0;
     float4 Binormal	: BINORMAL0;
+    float2 UV		: TEXCOORD0;
+	float2 UV2		: TEXCOORD1;
 };
 
 // G N T B D T1
 struct VertexVS_TCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX{
     float3 Position	: POSITION;
-    float4 UV		: TEXCOORD0;
 	float4 Normal	: NORMAL;
 	float4 Tangent	: TANGENT0;
     float4 Binormal	: BINORMAL0;
 	float4 Color	: COLOR;
+	float2 UV		: TEXCOORD0;
 };
 
 // G N T B D T1 T2
 struct VertexVS_TCOLORED_TEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX{
     float3 Position	: POSITION;
-    float4 UV		: TEXCOORD0;
-	float4 UV2		: TEXCOORD1;
 	float4 Normal	: NORMAL;
 	float4 Tangent	: TANGENT0;
     float4 Binormal	: BINORMAL0;
 	float4 Color	: COLOR;
+	float2 UV		: TEXCOORD0;
+	float2 UV2		: TEXCOORD1;
 };
 
 // G D
@@ -99,7 +100,7 @@ struct VertexVS_TCOLORED_VERTEX{
 // G N D
 struct VertexVS_TCOLORED_NORMAL_VERTEX{
     float3 Position	: POSITION;
-	float4 Normal	: NORMAL;
+	float3 Normal	: NORMAL;
 	float4 Color	: COLOR;
 };
 

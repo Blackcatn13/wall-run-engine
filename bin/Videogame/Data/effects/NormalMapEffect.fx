@@ -11,12 +11,12 @@ float g_Bump = 30.0;
 
 struct PNormalVertex
 {
-    float4 HPosition	: POSITION;
-    float2 UV		: TEXCOORD0;
-    float3 WorldNormal	: TEXCOORD1;
-    float3 WorldTangent	: TEXCOORD2;
-    float3 WorldBinormal : TEXCOORD3;
-    float3 WorldPosition: TEXCOORD4;
+    float4 HPosition		: POSITION;
+    float2 UV				: TEXCOORD0;
+    float3 WorldNormal		: TEXCOORD1;
+    float3 WorldTangent		: TEXCOORD2;
+    float3 WorldBinormal 	: TEXCOORD3;
+    float3 WorldPosition	: TEXCOORD4;
 };
 
 PNormalVertex RenderNormalsVS(
@@ -28,7 +28,8 @@ PNormalVertex RenderNormalsVS(
 	OUT.WorldPosition=mul(float4(IN.Position.xyz, 1.0), g_WorldMatrix);
 	OUT.WorldNormal= mul(IN.Normal.xyz, (float3x3)g_WorldMatrix);
 	OUT.WorldTangent= mul(IN.Tangent.xyz, (float3x3)g_WorldMatrix);
-	OUT.WorldBinormal= mul(IN.Binormal.xyz, (float3x3)g_WorldMatrix);
+	//OUT.WorldBinormal= mul(IN.Binormal.xyz, (float3x3)g_WorldMatrix);
+	OUT.WorldBinormal = mul(cross(IN.Tangent.xyz,IN.Normal),(float3x3)g_WorldMatrix);
 	return OUT;
  
 }
@@ -43,7 +44,7 @@ float4 RN20(PNormalVertex IN) : COLOR
 	float3 l_Bump = g_Bump * (l_NormalTex.rgb - float3 (0.5,0.5,0.5));
 	float3 l_Nn = l_WNn + l_Bump.x*l_TangentNormalized + l_Bump.y*l_BinormalNormalized;
 	float3 finalColor = g_LightAmbient*l_DiffuseTex.xyz;
-	//l_Nn = normalize(l_Nn);
+	l_Nn = normalize(l_Nn);
 	float3 l_CameraPosition = g_InverseViewMatrix[3].xyz;
 	for(int i = 0; i < MAXLIGHTS; i++) 
 	{

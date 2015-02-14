@@ -6,16 +6,19 @@
 	<default_technique vertex_type="31" technique="NormalMapTechnique"/>
 	<!--<default_technique vertex_type="19" technique="CubeMapTechnique"/>-->
 	<default_technique vertex_type="51" technique="LightMapTechnique"/>
+	<!--<default_technique vertex_type="95" technique="NormalColoredMapTechnique"/>-->
 	
 	<effect name="BasicEffect" file="data/effects/BasicEffect.fx"/>
 	<effect name="LightsEffect" file="data/effects/Lights.fx"/>
 	<effect name="NormalMapEffect" file="data/effects/NormalMapEffect.fx"/>
 	<!--<effect name="CubeMapEffect" file="data/effects/CubeMap.fx"/>-->
 	<effect name="LightMapEffect" file="data/effects/LightMapEffect.fx"/>
+	<!--<effect name="NormalColoredMapEffect" file="data/effect/NormalMapWithColorEffect.fx"/>-->
 	
 	<technique name="BasicTechnique" effect="BasicEffect" use_world_matrix="true" use_world_view_projection_matrix="true"/>
 	<technique name="LightsTechnique" effect="LightsEffect" use_world_matrix="true" use_world_view_projection_matrix="true" num_of_lights="4" use_lights="true" use_light_ambient_color="true" use_inverse_view_matrix="true" />
 	<technique name="NormalMapTechnique" effect="NormalMapEffect" use_world_matrix="true" use_world_view_projection_matrix="true" num_of_lights="4" use_lights="true" use_light_ambient_color="true" use_inverse_view_matrix="true" />
 	<!--<technique name="CubeMapTechnique" effect="CubeMapEffect" use_world_matrix="true" use_world_view_projection_matrix="true" num_of_lights="4" use_lights="true" use_light_ambient_color="true" use_inverse_view_matrix="true" />-->
 	<technique name="LightMapTechnique" effect="LightMapEffect" use_world_matrix="true" use_world_view_projection_matrix="true" num_of_lights="4" use_lights="true" use_light_ambient_color="true" use_inverse_view_matrix="true" />
+	<!--<technique name="NormalColoredMapTechnique" effect="NormalColoredMapEffect" use_world_matrix="true" use_world_view_projection_matrix="true" num_of_lights="4" use_lights="true" use_light_ambient_color="true" use_inverse_view_matrix="true" />-->
 </effects>

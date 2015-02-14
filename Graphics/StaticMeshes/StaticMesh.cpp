@@ -198,6 +198,9 @@ bool CStaticMesh::Load (const std::string &FileName)
                 if (vertex_type[i] == TTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexType()) {
                     CalcTangentsAndBinormals(vertex_list, (unsigned short*)index_list, n_vtxs, n_idxs, type_size, 0, 12, 28, 44, 60);
                 }
+                if (vertex_type[i] == TCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexType()) {
+                    CalcTangentsAndBinormals(vertex_list, (unsigned short*)index_list, n_vtxs, n_idxs, type_size, 0, 12, 28, 44, 64);
+                }
                 // Creating Renderable vertex
                 CRenderableVertexs *l_rv = NULL;
                 if (vertex_type[i] == TTEXTURE_NORMAL_VERTEX::GetVertexType())
@@ -286,7 +289,7 @@ void CStaticMesh::Render (CGraphicsManager *RM)
         CEffectTechnique *l_EffectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(m_RVs[i]->GetVertexType()))->GetEffectTechnique();
         if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_TEXTURE1) == VERTEX_TYPE_TEXTURE1)
             m_Textures[i][0]->Activate(0);
-        if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_TEXTURE2) == VERTEX_TYPE_TEXTURE2)
+        if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_TANGENT) == VERTEX_TYPE_TANGENT)
             m_Textures[i][1]->Activate(1);
         if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_DIFFUSE) == VERTEX_TYPE_DIFFUSE) {
             RM->GetDevice()->SetTexture(0, 0);

@@ -4,6 +4,7 @@
 		<default_technique vertex_type="19" technique="CubeMapTechnique"/>
 		<default_technique vertex_type="31" technique="NormalMapTechnique"/>
 		<default_technique vertex_type="51" technique="LightMapTechnique"/>
+		<!-- <default_technique vertex_type="95" technique="NormalColoredMapTechnique"/> -->
 	</pool_renderable_object_technique>
 	<pool_renderable_object_technique name="dummy_test">
 		<default_technique vertex_type="19" technique="LightsTechnique"/>

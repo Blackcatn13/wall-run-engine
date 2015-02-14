@@ -214,9 +214,9 @@ struct TTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX {
 // G N T B T1 T2
 struct TTEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX {
     float x, y, z;
-    float nx, ny, nz;
-    float tnx, tny, tnz;
-    float bnx, bny, bnz;
+    float nx, ny, nz, nw;
+    float tnx, tny, tnz, tnw;
+    float bnx, bny, bnz, bnw;
     float tu, tv;
     float tu2, tv2;
     static inline unsigned short GetVertexType()
@@ -238,9 +238,9 @@ struct TTEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX {
 // G N T B D T1
 struct TCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX {
     float x, y, z;
-    float nx, ny, nz;
-    float tnx, tny, tnz;
-    float bnx, bny, bnz;
+    float nx, ny, nz, nw;
+    float tnx, tny, tnz, tnw;
+    float bnx, bny, bnz, bnw;
     unsigned long color;
     float tu, tv;
     static inline unsigned short GetVertexType()
@@ -262,9 +262,9 @@ struct TCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX {
 // G N T B D T1 T2
 struct TCOLORED_TEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX {
     float x, y, z;
-    float nx, ny, nz;
-    float tnx, tny, tnz;
-    float bnx, bny, bnz;
+    float nx, ny, nz, nw;
+    float tnx, tny, tnz, tnw;
+    float bnx, bny, bnz, bnw;
     unsigned long color;
     float tu, tv;
     float tu2, tv2;
