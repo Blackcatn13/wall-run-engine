@@ -191,9 +191,9 @@ struct TCOLOR_NORMAL_DIFFUSE_TEXTURE2_VERTEX {
 // G N T B T1
 struct TTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX {
     float x, y, z;
-    float nx, ny, nz;
-    float tnx, tny, tnz;
-    float bnx, bny, bnz;
+    float nx, ny, nz, nw;
+    float tnx, tny, tnz, tnw;
+    float bnx, bny, bnz, bnw;
     float tu, tv;
     static inline unsigned short GetVertexType()
     {

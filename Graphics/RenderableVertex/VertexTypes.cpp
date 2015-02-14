@@ -225,19 +225,19 @@ LPDIRECT3DVERTEXDECLARATION9 & TTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX::GetVertex
                 D3DDECLUSAGE_POSITION, 0
             },
             {
-                0, 12, D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT,
+                0, 12, D3DDECLTYPE_FLOAT4, D3DDECLMETHOD_DEFAULT,
                 D3DDECLUSAGE_NORMAL, 0
             },
             {
-                0, 24, D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT,
+                0, 28, D3DDECLTYPE_FLOAT4, D3DDECLMETHOD_DEFAULT,
                 D3DDECLUSAGE_TANGENT, 0
             },
             {
-                0, 36, D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT,
+                0, 44, D3DDECLTYPE_FLOAT4, D3DDECLMETHOD_DEFAULT,
                 D3DDECLUSAGE_BINORMAL, 0
             },
             {
-                0, 48, D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT,
+                0, 60, D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT,
                 D3DDECLUSAGE_TEXCOORD, 0
             },
             D3DDECL_END()

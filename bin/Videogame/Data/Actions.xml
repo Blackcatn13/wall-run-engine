@@ -177,6 +177,8 @@
 	
 	<action name="ReloadRenderCommands">
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_F4"/>
+	</action>
+
 	<action name="ForwardMotor">
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_M"/>
 	</action>

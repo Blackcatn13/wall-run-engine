@@ -1,10 +1,10 @@
 // G N T B T1
 struct VertexVS_TTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX {
     float3 Position	: POSITION;
-    float4 UV		: TEXCOORD0;
     float4 Normal	: NORMAL;
     float4 Tangent	: TANGENT0;
     float4 Binormal	: BINORMAL0;
+    float2 UV		: TEXCOORD0;
 };
 
 // G T1

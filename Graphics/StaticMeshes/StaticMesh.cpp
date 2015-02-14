@@ -158,6 +158,7 @@ bool CStaticMesh::Load (const std::string &FileName)
                 unsigned short n_vtxs;
                 fread(&n_vtxs, sizeof n_vtxs, 1, f);
                 int type_size;
+                // Getting vertex type size
                 if (vertex_type[i] == TTEXTURE_NORMAL_VERTEX::GetVertexType())
                     type_size = sizeof(TTEXTURE_NORMAL_VERTEX);
                 if (vertex_type[i] == TCOLORED_VERTEX::GetVertexType())
@@ -186,15 +187,18 @@ bool CStaticMesh::Load (const std::string &FileName)
                     type_size = sizeof(TCOLORED_TEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX);
                 if (vertex_type[i] == TCOLORED_NORMAL_VERTEX::GetVertexType())
                     type_size = sizeof(TCOLORED_NORMAL_VERTEX);
+                // Getting vertex list (vb) and index list (ib)
                 void* vertex_list = (void*)malloc(n_vtxs * type_size);
                 fread(vertex_list, n_vtxs * type_size, 1, f);
                 unsigned short n_idxs;
                 fread(&n_idxs, sizeof n_idxs, 1, f);
                 void* index_list = (void*)malloc(n_idxs * sizeof(unsigned short));
                 fread(index_list , n_idxs * sizeof(unsigned short), 1, f);
-                if ((vertex_type[i] & VERTEX_TYPE_BINORMAL) == VERTEX_TYPE_BINORMAL) {
-                    CalcTangentsAndBinormals(vertex_list, (unsigned short*)index_list, n_vtxs, n_idxs, type_size, 0, 12, 24, 36, 56);
+                // Calculate Tangent and binormal
+                if (vertex_type[i] == TTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexType()) {
+                    CalcTangentsAndBinormals(vertex_list, (unsigned short*)index_list, n_vtxs, n_idxs, type_size, 0, 12, 28, 44, 60);
                 }
+                // Creating Renderable vertex
                 CRenderableVertexs *l_rv = NULL;
                 if (vertex_type[i] == TTEXTURE_NORMAL_VERTEX::GetVertexType())
                     l_rv = new CIndexedVertexs<TTEXTURE_NORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
