@@ -27,6 +27,8 @@ class CPhysicsManager;
 class CRenderableObjectsLayersManager;
 class CSceneRendererCommandManager;
 class CProcess;
+class CTriggerManager;
+
 
 #define CCORE   CCore::GetInstance()
 #define GRAPHM  CCore::GetInstance()->GetGraphicsManager()
@@ -47,6 +49,8 @@ class CProcess;
 #define PHYSXM CCore::GetInstance()->GetPhysicsManager()
 #define RENDLM CCore::GetInstance()->GetRenderableObjectsLayersManager()
 #define SCENRENDCOMM CCore::GetInstance()->GetSceneRendererCommandManager()
+#define TRIGGM CCore::GetInstance()->GetTriggerManager()
+
 
 
 class CCore
@@ -74,9 +78,10 @@ private:
     CEffectManager*			            m_EffectManager;
     CRenderableObjectTechniqueManager*  m_RenderableObjectTechniqueManager;
 	CPhysicsManager*					m_PhysicsManager;
-	CRenderableObjectsLayersManager*		m_RenderableLayersManager;
+	CRenderableObjectsLayersManager*	m_RenderableLayersManager;
 	CSceneRendererCommandManager*		m_SceneRendererCommandManager;
 	CProcess*							m_Process;
+	CTriggerManager*					m_TriggerManager;
 
 public:
     ~CCore();
@@ -177,6 +182,9 @@ public:
 	void SetProcess(CProcess * process)
     {
         m_Process = process;
+	CTriggerManager * GetTriggerManager()
+    {
+        return m_TriggerManager;
     }
 
 };

@@ -11,6 +11,14 @@ class CFPSCamera;
 class CThPSCamera;
 class CScriptManager;
 class CScriptedController;
+class CPhysicUserData;
+class CPhysicActor;
+class CPhysicMaterial;
+class CPhysicSphericalJoint;
+class CPhysicRevoluteJoint;
+
+
+class CGranade;
 
 class CTest_Space : public CProcess
 {
@@ -23,6 +31,18 @@ private:
     CThPSCamera*	    m_ThPSCamera1;
 	CScriptedController * m_ScriptedController;
 	CRenderableObject	*m_RenderableObject;
+	CPhysicActor		*m_PhysicActor;
+	CPhysicActor		*m_PhysicActorCubeFix;
+	CPhysicUserData		*m_PhysicUserData;
+	CPhysicUserData		*m_PhysicUserDataCube;
+	CPhysicMaterial		*m_Material;
+	CPhysicUserData		*m_TriggerData;
+	CPhysicActor		*m_Trigger;
+	CPhysicSphericalJoint *m_SphericalJoint;
+	CPhysicRevoluteJoint *m_RevolutionJoint;
+
+	CGranade*		m_Granade;
+
     bool			    m_PlayerMode;
     bool				m_FPSMode;
     float			    tTerra1_yaw;

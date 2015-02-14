@@ -49,6 +49,8 @@
     </ClCompile>
     <ClCompile Include="TestCommands.cpp">
       <Filter>commands</Filter>
+    <ClCompile Include="Granade.cpp">
+      <Filter>spce</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +80,8 @@
     </ClInclude>
     <ClInclude Include="TestCommands.h">
       <Filter>commands</Filter>
+    <ClInclude Include="Granade.h">
+      <Filter>spce</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

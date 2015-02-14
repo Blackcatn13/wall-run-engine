@@ -25,6 +25,9 @@
     <Filter Include="Jump">
       <UniqueIdentifier>{1104d736-e07a-49b9-b6ef-528bd27955d3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TriggerManager">
+      <UniqueIdentifier>{626d6b0c-5031-49cc-b7a4-d1e91ff9e30f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor\PhysicActor.cpp">
@@ -69,6 +72,9 @@
     <ClCompile Include="PhysicsManager.cpp" />
     <ClCompile Include="Jump\Jump.cpp">
       <Filter>Jump</Filter>
+    </ClCompile>
+    <ClCompile Include="TriggerManager\TriggerManager.cpp">
+      <Filter>TriggerManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +133,9 @@
     <ClInclude Include="PhysicsManager.h" />
     <ClInclude Include="Jump\Jump.h">
       <Filter>Jump</Filter>
+    </ClInclude>
+    <ClInclude Include="TriggerManager\TriggerManager.h">
+      <Filter>TriggerManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

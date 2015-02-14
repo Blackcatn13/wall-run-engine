@@ -114,6 +114,9 @@ public:
 	void				SetContactReportThreshold	( float _fThreshold );
 
 	void				Destroy						();
+
+//---Set Material -------
+	void				SetActorMaterial			(int material_id);
 private:
 //	void				Destroy						();
 	void				AddForceAtPos				( const Vect3f& _vDirection, const Vect3f& _vPos, float _fPower, NxForceMode _sForceMode, bool _bLocal );
@@ -135,6 +138,8 @@ private:
 	ECollisionGroup								m_uCollisionGroups;
 	ECollisionGroup								m_myCollisionGroups;
 	ECollisionGroup								m_TriggerGroup;
+	int											m_MaterialID;
+	bool										hasMaterial;
 };
 
 #endif __PHYSIC_ACTOR_CLASS_H__

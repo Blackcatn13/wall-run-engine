@@ -23,6 +23,7 @@
 #include "Reports\PhysicTriggerReport.h"
 #include "Utils\PhysicUserAllocator.h"
 #include "Utils\PhysicUserData.h"
+#include "PhysicMaterial\PhysicMaterial.h"
 ////--------------------------------
 
 #include "GraphicsManager.h"
@@ -148,16 +149,21 @@ bool CPhysicsManager::Init ( void )
 		throw CException ( __FILE__, __LINE__, msg_error );
 	}
 
-
+m_pPhysicsSDK->getFoundationSDK().getRemoteDebugger()->connect("127.0.0.1");
 	/*Precompilation Directives*/
 #if defined( _DEBUG )
 #define USE_DEBUGGER
 #ifdef USE_DEBUGGER
-	m_pPhysicsSDK->getFoundationSDK().getRemoteDebugger()->connect("127.0.0.1");
+	//m_pPhysicsSDK->getFoundationSDK().getRemoteDebugger()->connect("127.0.0.1");
 #endif
 #endif
 
 	return m_bIsOk;
+}
+
+void CPhysicsManager::SetGravity(Vect3f g)
+{
+	GetScene()->setGravity(NxVec3(g.x, g.y, g.z));
 }
 
 //----------------------------------------------------------------------------
@@ -412,7 +418,7 @@ void CPhysicsManager::DrawActor ( NxActor* _pActor, CGraphicsManager* _RM )
 		case NX_SHAPE_BOX:
 			{
 				
-				NxVec3 pos = shapes[nShapes]->getGlobalPosition();
+ 				NxVec3 pos = shapes[nShapes]->getGlobalPosition();
 				
 				NxF32 m_aux[16];
 				shapes[nShapes]->getGlobalPose().getColumnMajor44(m_aux);
@@ -425,7 +431,7 @@ void CPhysicsManager::DrawActor ( NxActor* _pActor, CGraphicsManager* _RM )
 				NxVec3 boxDim = shapes[nShapes]->isBox()->getDimensions();
 				CColor color = physicUserData->GetColor();
 				//CColor	color = colRED;
-				_RM->DrawBox(boxDim.x,boxDim.y,boxDim.z, color);
+				_RM->DrawBox(2*boxDim.x,2*boxDim.y,2*boxDim.z, color);
 				//_RM->DrawCube(boxDim.y*2,color);
 
 				_RM->SetTransform(m44fIDENTITY.GetD3DXMatrix());
@@ -645,6 +651,28 @@ bool CPhysicsManager::ReleaseAllActors ( void ) //EUserDataFlag _eFlags )
 	}
 	
 	return isOk;
+}
+
+//----------------------------------------------------------------------------
+// AddMaterial : Afegim un material a l'escena
+//----------------------------------------------------------------------------
+bool CPhysicsManager::AddMaterial(CPhysicMaterial* _pMaterial)
+{
+	NxMaterial* mat;
+	NxMaterialDesc* des = _pMaterial->getMaterialDesc();
+	mat = m_pScene->createMaterial(*des);
+	_pMaterial->setMaterial(mat);
+	return true;
+}
+
+//----------------------------------------------------------------------------
+// AddMaterial : Afegim un material a l'escena
+//----------------------------------------------------------------------------
+
+bool CPhysicsManager::ReleaseMaterial (CPhysicMaterial* _pMaterial)
+{
+	m_pScene->releaseMaterial(*(_pMaterial->getMaterial()));
+	return true;
 }
 
 //----------------------------------------------------------------------------

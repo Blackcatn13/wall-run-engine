@@ -57,7 +57,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(SolutionDir)\Base;$(SolutionDir)\3dParty\libxml2-2.7.2.win32\include;$(SolutionDir)\3dParty\iconv-1.9.2.win32\include;$(SolutionDir)\Core;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)\Graphics;$(SolutionDir)\Input;$(SolutionDir)\3dParty;$(SolutionDir)\3dParty\Lua\src;$(SolutionDir)\3dParty\LuaBind\;$(SolutionDir)\3dParty\Boost\;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Cooking\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Foundation\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\NxCharacter\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\PhysXLoader\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Base;$(SolutionDir)\3dParty\libxml2-2.7.2.win32\include;$(SolutionDir)\3dParty\iconv-1.9.2.win32\include;$(SolutionDir)\Core;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)\Graphics;$(SolutionDir)\Input;$(SolutionDir)\3dParty;$(SolutionDir)\3dParty\Lua\src;$(SolutionDir)\3dParty\LuaBind\;$(SolutionDir)\3dParty\Boost\;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Cooking\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Foundation\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\NxCharacter\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\PhysXLoader\include;$(SolutionDir)\PhysX;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <ShowIncludes>false</ShowIncludes>
       <UseFullPaths>false</UseFullPaths>
@@ -81,7 +81,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(SolutionDir)\Base;$(SolutionDir)\3dParty\libxml2-2.7.2.win32\include;$(SolutionDir)\3dParty\iconv-1.9.2.win32\include;$(SolutionDir)\Core;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)\Graphics;$(SolutionDir)\Input;$(SolutionDir)\3dParty;$(SolutionDir)\3dParty\Lua\src;$(SolutionDir)\3dParty\LuaBind\;$(SolutionDir)\3dParty\Boost\;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Cooking\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Foundation\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\NxCharacter\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\PhysXLoader\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Base;$(SolutionDir)\3dParty\libxml2-2.7.2.win32\include;$(SolutionDir)\3dParty\iconv-1.9.2.win32\include;$(SolutionDir)\Core;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)\Graphics;$(SolutionDir)\Input;$(SolutionDir)\3dParty;$(SolutionDir)\3dParty\Lua\src;$(SolutionDir)\3dParty\LuaBind\;$(SolutionDir)\3dParty\Boost\;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Cooking\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Foundation\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\NxCharacter\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\PhysXLoader\include;$(SolutionDir)\PhysX;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -99,6 +99,7 @@
     <ClCompile Include="Enemies\EnemyManager.cpp" />
     <ClCompile Include="Enemies\PatrolEnemy.cpp" />
     <ClCompile Include="TestCommands.cpp" />
+    <ClCompile Include="Granade.cpp" />
     <ClCompile Include="Test_Process.cpp" />
     <ClCompile Include="Test_Space.cpp" />
     <ClCompile Include="videogame.cpp" />
@@ -111,6 +112,7 @@
     <ClInclude Include="Enemies\EnemyManager.h" />
     <ClInclude Include="Enemies\PatrolEnemy.h" />
     <ClInclude Include="TestCommands.h" />
+    <ClInclude Include="Granade.h" />
     <ClInclude Include="Test_Process.h" />
     <ClInclude Include="Test_Space.h" />
     <ClInclude Include="VideoGame_Process.h" />

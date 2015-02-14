@@ -37,7 +37,7 @@ class CPhysicUserData : public CNamed
 {
 public:
 	CPhysicUserData				( const std::string& _szName, EUserDataFlag _eflags = UD_IS_HW_ACTOR, ECollisionGroup _uiGrup = ::ECG_ESCENE )	// Afegeixo el flag per distingir-lo
-		: CNamed				( )
+		: CNamed				()
 		, m_bPaintPhysicObject	( false )
 		, m_ColorPhysicObject	( colWHITE )
 		, m_pEntity				( 0 )
@@ -46,7 +46,9 @@ public:
 		, m_eFlags				( _eflags )
 		, m_uiCollisionGroup	( _uiGrup )
 		, m_myCollisionGroup	( _uiGrup )
-	{}
+	{
+		setName(_szName);
+	}
 		
 	~CPhysicUserData()						
 	{

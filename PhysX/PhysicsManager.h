@@ -43,6 +43,7 @@ class CPhysicUserData;
 //class CScriptManager;
 class CGameEntity;
 class CGraphicsManager;
+class CPhysicMaterial;
 //--------------------------
 
 class CPhysicsManager
@@ -74,6 +75,10 @@ public:
 	//--- Add/Release CharacterControllers
 	bool					AddPhysicController				( CPhysicController* _pController, EControleType _Tipus = ::CAPSULE, ECollisionGroup _Group = ::ECG_ENEMY );
 	bool					ReleasePhysicController			( CPhysicController* _pController );
+
+	//---- Add/Release Materials
+	bool					AddMaterial (CPhysicMaterial* _pMaterial);
+	bool					ReleaseMaterial (CPhysicMaterial* _pMaterial);
 
 	////--- Add/Release Joints
 	bool					AddPhysicSphericalJoint			( CPhysicSphericalJoint* _pJoint );
@@ -142,7 +147,7 @@ public:
 
 	CPhysicUserData*		GetUserData						( std::string name);
 	void                    ReleaseElement					(const std::string &_ase);
-
+	void					SetGravity(Vect3f);
 private:
 	bool					LoadXML							();
 	void					Release							();
