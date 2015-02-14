@@ -66,7 +66,8 @@ void CEngine::Update()
         m_LogRender->SetVisible(!m_LogRender->GetVisible());
     if (m_Core->GetActionToInput()->DoAction("ReloadTextures"))
         TEXTM->Reload();
-    if (m_Core->GetActionToInput()->DoAction("ReloadMeshes")) RENDLM->Reload();
+    if (m_Core->GetActionToInput()->DoAction("ReloadMeshes")) 
+		RENDLM->Reload();
     if (ACT2IN->DoAction("ReloadEffects"))
         EFFECTM->Reload();
     if (ACT2IN->DoAction("ReloadLights"))
@@ -155,7 +156,9 @@ void CEngine::ParseConfFile()
                         m_Conf_info.EffectPath = n(i).GetPszISOProperty("EffectXML", "");
                     }else if (name == "RendererCommands") {
 						m_Conf_info.SceneRenderCommandsPath = n(i).GetPszISOProperty("rendererCommandsXML", "");
-                    }
+                    }else if (name == "PoolRenderableObjects") {
+						m_Conf_info.PoolRenderableObjects = n(i).GetPszISOProperty("poolRenderableObjects", ".\\Data\\level1\\pool_renderable_objects.xml");
+					}
 
 
                 }

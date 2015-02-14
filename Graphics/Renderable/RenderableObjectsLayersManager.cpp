@@ -1,6 +1,10 @@
 #include "Renderable\RenderableObjectsLayersManager.h"
 #include "XML\XMLTreeNode.h"
 #include "Core\Core.h"
+#include <assert.h>
+#include "AnimatedModels\AnimatedModelManager.h"
+#include "AnimatedModels\AnimatedInstanceModel.h"
+
 CRenderableObjectsLayersManager ::CRenderableObjectsLayersManager()
 {
 	m_DefaultRenderableObjectManager = NULL;
@@ -79,7 +83,7 @@ CRenderableObjectsManager * CRenderableObjectsLayersManager::GetDefaultRenderabl
 
 void CRenderableObjectsLayersManager::Load(const std::string &FileName)
 {
-	//CCore::GetInstance()->GetAnimatedModelManager()->Load(".\\Data\\animated_models.xml"); //se carga animatedmodels.xml
+	CCore::GetInstance()->GetAnimatedModelManager()->Load(".\\Data\\animated_models.xml"); //se carga animatedmodels.xml
     CXMLTreeNode newFile;
     if (!newFile.LoadFile(FileName.c_str())) {
         printf("ERROR loading the file.");

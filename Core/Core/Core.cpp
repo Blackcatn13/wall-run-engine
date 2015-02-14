@@ -64,7 +64,7 @@ void CCore::Init(HWND handler)
     m_AnimatedModelManager = new CAnimatedModelManager();
 	//Cargamos Technique pools
 	m_RenderableObjectTechniqueManager = new CRenderableObjectTechniqueManager();
-	m_RenderableObjectTechniqueManager->Load(".\\Data\\level2\\pool_renderable_objects.xml");
+	m_RenderableObjectTechniqueManager->Load(m_Config.PoolRenderableObjects);
 
 	//Cargando Layers
 	m_RenderableLayersManager = new CRenderableObjectsLayersManager();
@@ -113,8 +113,8 @@ void CCore::DeInit()
     CHECKED_DELETE(m_EffectManager);
 	CHECKED_DELETE(m_PhysicsManager);
 	//CHECKED_DELETE(m_Process);
-    //CHECKED_DELETE(m_RenderableObjectTechniqueManager);
-	//TODO añadir checked delete renderableobjectslayersmanager
+    CHECKED_DELETE(m_RenderableObjectTechniqueManager);
+	CHECKED_DELETE(m_SceneRendererCommandManager);
 }
 
 CCore* CCore::GetInstance()

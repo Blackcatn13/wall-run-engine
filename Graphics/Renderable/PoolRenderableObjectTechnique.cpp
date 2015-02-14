@@ -78,15 +78,19 @@ CPoolRenderableObjectTechnique::~CPoolRenderableObjectTechnique()
 {
 	Destroy();
 }
+
 void CPoolRenderableObjectTechnique::Destroy()
 {
 	/*TODO no coge bien el it->second
-	/*
+	
 	for (std::vector<CPoolRenderableObjectTechniqueElement *>::iterator it = m_RenderableObjectTechniqueElements.begin(); it != m_RenderableObjectTechniqueElements.end(); it++) {
             CHECKED_DELETE(it->second);
-        }
-		*/
-        m_RenderableObjectTechniqueElements.clear();
+     }*/
+	for (int i=0; i<m_RenderableObjectTechniqueElements.size(); ++i)
+	{
+		CHECKED_DELETE(m_RenderableObjectTechniqueElements[i]);
+	}
+	m_RenderableObjectTechniqueElements.clear();
 	//CHECKED_DELETE(m_RenderableObjectTechniqueElements);
 	//no tiene punteros, solo a renderableOBjectManager y esos ya se destruyen desde RenderableObjectLayerManager
 }

@@ -12,6 +12,7 @@ class CDirectionalLight : public CLight
 protected:
 	/*CPoint3D*/ Vect3f m_Direction;
 	Vect2f m_OrthoShadowMapSize;
+	D3DXMATRIX * l_D3dMatrix; 
 public:
 	CDirectionalLight() : CLight() {}
 	void SetDirection(const /*CPoint3D*/ Vect3f &Direction)
