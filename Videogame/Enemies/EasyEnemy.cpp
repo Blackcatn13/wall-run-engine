@@ -12,15 +12,12 @@ CEasyEnemy::~CEasyEnemy()
 
 void CEasyEnemy::Init()
 {
-
 }
 
 void CEasyEnemy::Update(float elapsedTime)
 {
-
 }
 
 void CEasyEnemy::Render()
 {
-
 }

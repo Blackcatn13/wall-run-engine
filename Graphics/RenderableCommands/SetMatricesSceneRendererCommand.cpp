@@ -9,5 +9,5 @@ CSetMatricesSceneRendererCommand::CSetMatricesSceneRendererCommand(CXMLTreeNode 
 
 void CSetMatricesSceneRendererCommand::Execute(CGraphicsManager &RM)
 {
-	RM.SetupMatrices(CAMCONTM->getActiveCamera());
+    RM.SetupMatrices(CAMCONTM->getActiveCamera());
 }

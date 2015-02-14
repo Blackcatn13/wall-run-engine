@@ -1,14 +1,14 @@
 //-----------------------------------------------------------------------
 // Vector2 inline
 /// Definiciones de funciones inline de la clase 'Vector2'
-/// Este fichero es realmente parte de la cabecera 'Vector2.h' 
+/// Este fichero es realmente parte de la cabecera 'Vector2.h'
 //-----------------------------------------------------------------------
 
 // NO PONER INCLUDES
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Constructor versión 1
-/// Construcción sin inicialización de parámetros  
+/// Construcción sin inicialización de parámetros
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename T>
 inline Vector2<T>::Vector2()
@@ -21,8 +21,8 @@ inline Vector2<T>::Vector2()
 template<typename T>
 inline Vector2<T>::Vector2 (const T tx, const T ty)
 {
-  x = tx;
-  y = ty;
+    x = tx;
+    y = ty;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -32,8 +32,8 @@ inline Vector2<T>::Vector2 (const T tx, const T ty)
 template<typename T>
 inline Vector2<T>::Vector2 (const Vector2<T>& otro)
 {
-  x = otro.x; 
-  y = otro.y;
+    x = otro.x;
+    y = otro.y;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -43,8 +43,8 @@ inline Vector2<T>::Vector2 (const Vector2<T>& otro)
 template<typename T>
 inline Vector2<T>::Vector2 (const T escalar)
 {
-  x = escalar;
-  y = escalar;
+    x = escalar;
+    y = escalar;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -52,9 +52,9 @@ inline Vector2<T>::Vector2 (const T escalar)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename T>
 inline Vector2<T> Vector2<T>::operator + (const Vector2<T>& otro) const
-{   
-  return (Vector2<T>(x + otro.x,
-                     y + otro.y));
+{
+    return (Vector2<T>(x + otro.x,
+                       y + otro.y));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -62,91 +62,84 @@ inline Vector2<T> Vector2<T>::operator + (const Vector2<T>& otro) const
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename T>
 inline Vector2<T> Vector2<T>::operator - (const Vector2<T>& otro) const
-{   
-  return (Vector2<T>(x - otro.x,
-                     y - otro.y));
+{
+    return (Vector2<T>(x - otro.x,
+                       y - otro.y));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Operador aritmético: producto vector x escalar
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline Vector2<T> Vector2<T>::operator * (const T escalar) const
-{ 
-  return (Vector2<T>(x * escalar,
-                     y * escalar)); 
+{
+    return (Vector2<T>(x * escalar,
+                       y * escalar));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// Función externa operador aritmético: producto escalar x vector 
+/// Función externa operador aritmético: producto escalar x vector
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline Vector2<T> operator * (const T escalar, const Vector2<T>& otro)
-{ 
-  return (Vector2<T>(otro.x * escalar,
-                     otro.y * escalar));
+{
+    return (Vector2<T>(otro.x * escalar,
+                       otro.y * escalar));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Operador aritmético: cociente vector / escalar
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline Vector2<T> Vector2<T>::operator / (const T escalar) const
-{ 
+{
 #ifdef CHECK_MATH_SINGULARITY
-  //-----------------------------------------------<<<
-  // Con chequeo de división por cero
-  Vector2<T> retVect(*this);
-
-  ASSERTMSG(escalar != Zero<T>(), "División por cero en cociente vector-escalar");
-  if(escalar != Zero<T>())
-  {
-    retVect.x /= escalar;
-    retVect.y /= escalar;
-  }
- 
-  return retVect;
-  //----------------------------------------------->>>
+    //-----------------------------------------------<<<
+    // Con chequeo de división por cero
+    Vector2<T> retVect(*this);
+    ASSERTMSG(escalar != Zero<T>(), "División por cero en cociente vector-escalar");
+    if (escalar != Zero<T>()) {
+        retVect.x /= escalar;
+        retVect.y /= escalar;
+    }
+    return retVect;
+    //----------------------------------------------->>>
 #else
-  //-----------------------------------------------<<<
-  // Sin chequeo
-  return (Vector2<T>(x / escalar,
-                     y / escalar));
-  //----------------------------------------------->>>
+    //-----------------------------------------------<<<
+    // Sin chequeo
+    return (Vector2<T>(x / escalar,
+                       y / escalar));
+    //----------------------------------------------->>>
 #endif
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Función externa operador aritmético: cociente escalar / vector
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline Vector2<T> operator / (const T escalar, const Vector2<T>& otro)
 {
 #ifdef CHECK_MATH_SINGULARITY
-  //-----------------------------------------------<<<
-  // Con chequeo de división por cero
-  Vector2<T> retVect(escalar);
-
-  ASSERTMSG(otro.x != Zero<T>() &&
-            otro.y != Zero<T>(),
-            "División por cero en cociente escalar-vector");
-  if(otro.x != Zero<T>())
-  {
-    retVect.x /= otro.x; 
-  }
-  if(otro.y != Zero<T>())
-  {
-    retVect.y /= otro.y;
-  }
-
-  return retVect;
-  //----------------------------------------------->>>
+    //-----------------------------------------------<<<
+    // Con chequeo de división por cero
+    Vector2<T> retVect(escalar);
+    ASSERTMSG(otro.x != Zero<T>() &&
+              otro.y != Zero<T>(),
+              "División por cero en cociente escalar-vector");
+    if (otro.x != Zero<T>()) {
+        retVect.x /= otro.x;
+    }
+    if (otro.y != Zero<T>()) {
+        retVect.y /= otro.y;
+    }
+    return retVect;
+    //----------------------------------------------->>>
 #else
-  //-----------------------------------------------<<<
-  // Sin chequeo
-  return (Vector2<T>(escalar / otro.x,
-                     escalar / otro.y));
-  //----------------------------------------------->>>
+    //-----------------------------------------------<<<
+    // Sin chequeo
+    return (Vector2<T>(escalar / otro.x,
+                       escalar / otro.y));
+    //----------------------------------------------->>>
 #endif
 }
 
@@ -156,7 +149,7 @@ inline Vector2<T> operator / (const T escalar, const Vector2<T>& otro)
 template<typename T>
 inline Vector2<T> Vector2<T>::operator + (const T escalar) const
 {
-  return Vector2<T>(x + escalar, y + escalar);
+    return Vector2<T>(x + escalar, y + escalar);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -165,7 +158,7 @@ inline Vector2<T> Vector2<T>::operator + (const T escalar) const
 template<typename T>
 inline Vector2<T> operator + (const T escalar, Vector2<T> vector)
 {
-  return Vector2<T>(vector.x + escalar, vector.y + escalar);
+    return Vector2<T>(vector.x + escalar, vector.y + escalar);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -174,7 +167,7 @@ inline Vector2<T> operator + (const T escalar, Vector2<T> vector)
 template<typename T>
 inline Vector2<T> Vector2<T>::operator - (const T escalar) const
 {
-  return Vector2<T>(x - escalar, y - escalar);
+    return Vector2<T>(x - escalar, y - escalar);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -183,154 +176,147 @@ inline Vector2<T> Vector2<T>::operator - (const T escalar) const
 template<typename T>
 inline Vector2<T> operator - (const T escalar, const Vector2<T> vector)
 {
-  return Vector2<T>(escalar - vector.x, escalar - vector.y);
+    return Vector2<T>(escalar - vector.x, escalar - vector.y);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Operador aritmético: cambio de signo
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline Vector2<T> Vector2<T>::operator - () const
-{   
-  return (Vector2<T>(-x, -y));
+{
+    return (Vector2<T>(-x, -y));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Operador aritmético: signo positivo
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline Vector2<T>& Vector2<T>::operator + ()
 {
-  return (*this);
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Operador aritmético: signo positivo (versión const)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline const Vector2<T>& Vector2<T>::operator + () const
 {
-  return (*this);
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Operador aritmético de actualización: incremento
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline Vector2<T>& Vector2<T>::operator += (const Vector2<T>& otro)
-{   
-  x += otro.x;
-  y += otro.y;
-
-  return (*this);
+{
+    x += otro.x;
+    y += otro.y;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Operador aritmético de actualización: decremento
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline Vector2<T>& Vector2<T>::operator -= (const Vector2<T>& otro)
 {
-  x -= otro.x;
-  y -= otro.y;
-
-  return (*this);
+    x -= otro.x;
+    y -= otro.y;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Operador aritmético de actualización: vector x escalar
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline Vector2<T>& Vector2<T>::operator *= (const T escalar)
-{ 
-  x *= escalar;
-  y *= escalar;
-
-  return (*this);
+{
+    x *= escalar;
+    y *= escalar;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Operador aritmético de actualización: vector / escalar
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline Vector2<T>& Vector2<T>::operator /= (const T escalar)
 {
 #ifdef CHECK_MATH_SINGULARITY
-  //-----------------------------------------------<<<
-  // Con chequeo de división por cero
-  ASSERTMSG(escalar != Zero<T>(), "División por cero en cociente vector-escalar");
-  if(escalar != Zero<T>())
-  {
+    //-----------------------------------------------<<<
+    // Con chequeo de división por cero
+    ASSERTMSG(escalar != Zero<T>(), "División por cero en cociente vector-escalar");
+    if (escalar != Zero<T>()) {
+        x /= escalar;
+        y /= escalar;
+    }
+    //----------------------------------------------->>>
+#else
+    //-----------------------------------------------<<<
+    // Sin chequeo
     x /= escalar;
     y /= escalar;
-  }
-  //----------------------------------------------->>>
-#else
-  //-----------------------------------------------<<<
-  // Sin chequeo
-  x /= escalar;
-  y /= escalar;
-  //----------------------------------------------->>>
+    //----------------------------------------------->>>
 #endif
-  return (*this);
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Operador aritmético de actualización: vector + escalar
 /// Suma el escalar a las 2 componentes del vector
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline Vector2<T>& Vector2<T>::operator += (const T escalar)
 {
-  x += escalar;
-  y += escalar;
-
-  return (*this);
+    x += escalar;
+    y += escalar;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Operador aritmético de actualización: vector - escalar
 /// Resta el escalar a las 2 componentes del vector
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline Vector2<T>& Vector2<T>::operator -= (const T escalar)
 {
-  x -= escalar;
-  y -= escalar;
-
-  return (*this);
+    x -= escalar;
+    y -= escalar;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Operador de asignación de componentes paréntesis
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline Vector2<T>& Vector2<T>::operator () (const T tx, const T ty)
-{   
-  x = tx;
-  y = ty;
-  
-  return (*this);
+{
+    x = tx;
+    y = ty;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Función de asignación de componentes
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline void Vector2<T>::Set (const T tx, const T ty)
 {
-  x = tx;
-  y = ty;  
+    x = tx;
+    y = ty;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Establece el vector a [0, 0]
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline void Vector2<T>::SetZero ()
 {
-  x = Zero<T>();
-  y = Zero<T>();
+    x = Zero<T>();
+    y = Zero<T>();
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -338,10 +324,10 @@ inline void Vector2<T>::SetZero ()
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename T>
 void Vector2<T>::SetFromPolar(const T ang, const T length)
-{ 
-  mathUtils::SinCos(ang, y, x);
-  x *= length;
-  y *= length;
+{
+    mathUtils::SinCos(ang, y, x);
+    x *= length;
+    y *= length;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -350,25 +336,25 @@ void Vector2<T>::SetFromPolar(const T ang, const T length)
 template<typename T>
 void Vector2<T>::GetPolar(T& ang, T& length) const
 {
-  length = Length();
-  ang    = (T)atan2(y, x);
+    length = Length();
+    ang    = (T)atan2(y, x);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Operador vectorial: producto escalar (dot product)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline T Vector2<T>::operator * (const Vector2<T>& otro) const
 {
-  return (x * otro.x + y * otro.y);
+    return (x * otro.x + y * otro.y);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Operador de igualdad absoluto
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline bool Vector2<T>::operator == (const Vector2<T>& otro) const
-{   
+{
     return (x == otro.x &&
             y == otro.y);
 }
@@ -376,9 +362,9 @@ inline bool Vector2<T>::operator == (const Vector2<T>& otro) const
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Operador de desigualdad absoluto
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline bool Vector2<T>::operator != (const Vector2<T>& otro) const
-{   
+{
     return (x != otro.x ||
             y != otro.y);
 }
@@ -386,21 +372,21 @@ inline bool Vector2<T>::operator != (const Vector2<T>& otro) const
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Operador de igualdad con epsilon global
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline bool Vector2<T>::IsEqualEpsilon (const Vector2<T>& otro) const
 {
-  return (mathUtils::Compare(x, otro.x) == 0 &&
-          mathUtils::Compare(y, otro.y) == 0);
+    return (mathUtils::Compare(x, otro.x) == 0 &&
+            mathUtils::Compare(y, otro.y) == 0);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Operador de desigualdad con epsilon global
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline bool Vector2<T>::IsNotEqualEpsilon (const Vector2<T>& otro) const
 {
-  return (mathUtils::Compare(x, otro.x) != 0 ||
-          mathUtils::Compare(y, otro.y) != 0);
+    return (mathUtils::Compare(x, otro.x) != 0 ||
+            mathUtils::Compare(y, otro.y) != 0);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -409,10 +395,9 @@ inline bool Vector2<T>::IsNotEqualEpsilon (const Vector2<T>& otro) const
 template<typename T>
 inline Vector2<T>& Vector2<T>::Scale (const Vector2<T>& otro)
 {
-  x *= otro.x;
-  y *= otro.y;
-  
-  return (*this);
+    x *= otro.x;
+    y *= otro.y;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -421,7 +406,7 @@ inline Vector2<T>& Vector2<T>::Scale (const Vector2<T>& otro)
 template<typename T>
 inline Vector2<T> Vector2<T>::GetScaled (const Vector2<T>& otro) const
 {
-  return Vector2<T>(x * otro.x, y * otro.y);
+    return Vector2<T>(x * otro.x, y * otro.y);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -431,16 +416,13 @@ inline Vector2<T> Vector2<T>::GetScaled (const Vector2<T>& otro) const
 template<typename T>
 inline const Vector2<T>& Vector2<T>::SetIfMinComponents (const Vector2<T>& otro)
 {
-  if(otro.x < x)
-  {
-    x = otro.x;
-  }
-  if(otro.y < y)
-  {
-    y = otro.y;
-  }
-
-  return (*this);
+    if (otro.x < x) {
+        x = otro.x;
+    }
+    if (otro.y < y) {
+        y = otro.y;
+    }
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -450,16 +432,13 @@ inline const Vector2<T>& Vector2<T>::SetIfMinComponents (const Vector2<T>& otro)
 template<typename T>
 inline const Vector2<T>& Vector2<T>::SetIfMaxComponents (const Vector2<T>& otro)
 {
-  if(otro.x > x)
-  {
-    x = otro.x;
-  }
-  if(otro.y > y)
-  {
-    y = otro.y;
-  }
-
-  return (*this);
+    if (otro.x > x) {
+        x = otro.x;
+    }
+    if (otro.y > y) {
+        y = otro.y;
+    }
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -469,7 +448,7 @@ inline const Vector2<T>& Vector2<T>::SetIfMaxComponents (const Vector2<T>& otro)
 template<typename T>
 inline T Vector2<T>::operator [] (int i) const
 {
-  return ((T*)this)[i];
+    return ((T*)this)[i];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -479,103 +458,96 @@ inline T Vector2<T>::operator [] (int i) const
 template<typename T>
 inline T& Vector2<T>::operator [] (int i)
 {
-  return ((T*)this)[i];
+    return ((T*)this)[i];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Función de normalización
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline Vector2<T>& Vector2<T>::Normalize (const T tk)
 {
-  T len = (T)sqrt(x * x + y * y);
-
+    T len = (T)sqrt(x * x + y * y);
 #ifdef CHECK_MATH_SINGULARITY
-  //---------------------------------------------------<<<
-  ASSERTMSG(len != Zero<T>(), "División por cero en normalización de vector");
-  if(len != Zero<T>())
-  {
+    //---------------------------------------------------<<<
+    ASSERTMSG(len != Zero<T>(), "División por cero en normalización de vector");
+    if (len != Zero<T>()) {
+        T aux = tk / len;
+        x *= aux;
+        y *= aux;
+    }
+    //--------------------------------------------------->>>
+#else
+    //---------------------------------------------------<<<
     T aux = tk / len;
     x *= aux;
     y *= aux;
-  }
-  //--------------------------------------------------->>>
-#else
-  //---------------------------------------------------<<<
-  T aux = tk / len;
-  x *= aux;
-  y *= aux;
-  //--------------------------------------------------->>>
-#endif 
-    
-  return (*this);
+    //--------------------------------------------------->>>
+#endif
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Devuelve un vector igual al actual pero normalizado
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline Vector2<T> Vector2<T>::GetNormalized () const
 {
-  return (Vector2<T>(*this).Normalize());
+    return (Vector2<T>(*this).Normalize());
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Longitud
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline T Vector2<T>::Length () const
 {
-  return ((T)sqrt(x * x + y * y));
+    return ((T)sqrt(x * x + y * y));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Longitud al cuadrado
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline T Vector2<T>::SquaredLength () const
 {
-  return (x * x + y * y);
+    return (x * x + y * y);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Rotación del vector
 /// Angulos positivos producen un giro antihorario
 /// NOTA: Rotación básica de la librería matemática. Matricialmente:
-/// 
+///
 /// | cos a   -sen a |   | x |   | x*cos a - y*sen a |
 /// |                | . |   | = |                   |
 /// | sen a    cos a |   | y |   | s*sen a + y*cos a |
-/// 
+///
 /// Define una rotación con un ángulo positivo como antihoraria, regla del 'tornillo saliente'.
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline Vector2<T>& Vector2<T>::Rotate(const T angle)
 {
-  /*T sina = (T)sin(angle);
-  T cosa = (T)cos(angle);*/
-  T sina;
-  T cosa;
-
-  mathUtils::SinCos(angle, sina, cosa);
-
-  T aux_x = x;
-  T aux_y = y;
-
-  x = cosa * aux_x - sina * aux_y;
-  y = sina * aux_x + cosa * aux_y;
-
-  return (*this);
+    /*T sina = (T)sin(angle);
+    T cosa = (T)cos(angle);*/
+    T sina;
+    T cosa;
+    mathUtils::SinCos(angle, sina, cosa);
+    T aux_x = x;
+    T aux_y = y;
+    x = cosa * aux_x - sina * aux_y;
+    y = sina * aux_x + cosa * aux_y;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Devuelve un vector rotado 'angle' radianes respecto al actual
 /// Sentido antihorarios para ángulos positivos
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline Vector2<T> Vector2<T>::GetRotated(const T angle) const
 {
-  return (Vector2<T>(*this).Rotate(angle));
+    return (Vector2<T>(*this).Rotate(angle));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -587,10 +559,10 @@ inline Vector2<T> Vector2<T>::GetRotated(const T angle) const
 ///      'atan2' está bien definida para todo punto menos el origen. También si x==0 siendo y!=0.
 ///      'atan2' utiliza los signos de los dos parámetros para determinar el cuadrante del valor de retorno.
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 inline T Vector2<T>::GetAngle () const
 {
-  return (T)atan2(y, x);
+    return (T)atan2(y, x);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -602,10 +574,9 @@ inline T Vector2<T>::GetAngle () const
 template<typename T>
 inline Vector2<T>& Vector2<T>::Lerp (const Vector2<T>& otro, const T t)
 {
-  x += (otro.x - x) * t;
-  y += (otro.y - y) * t;
-  
-  return (*this);
+    x += (otro.x - x) * t;
+    y += (otro.y - y) * t;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -617,7 +588,7 @@ inline Vector2<T>& Vector2<T>::Lerp (const Vector2<T>& otro, const T t)
 template<typename T>
 inline Vector2<T> Vector2<T>::GetLerp (const Vector2<T>& otro, const T t) const
 {
-  return Vector2<T>(*this).Lerp(otro, t);
+    return Vector2<T>(*this).Lerp(otro, t);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -627,8 +598,8 @@ inline Vector2<T> Vector2<T>::GetLerp (const Vector2<T>& otro, const T t) const
 template<typename T>
 inline Vector2<T> VectorMinComponents (const Vector2<T>& uno, const Vector2<T>& otro)
 {
-  return Vector2<T>(mathUtils::Min(uno.x, otro.x),
-                    mathUtils::Min(uno.y, otro.y));
+    return Vector2<T>(mathUtils::Min(uno.x, otro.x),
+                      mathUtils::Min(uno.y, otro.y));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -638,8 +609,8 @@ inline Vector2<T> VectorMinComponents (const Vector2<T>& uno, const Vector2<T>& 
 template<typename T>
 inline Vector2<T> VectorMaxComponents (const Vector2<T>& uno, const Vector2<T>& otro)
 {
-  return Vector2<T>(mathUtils::Max(uno.x, otro.x),
-                    mathUtils::Max(uno.y, otro.y));
+    return Vector2<T>(mathUtils::Max(uno.x, otro.x),
+                      mathUtils::Max(uno.y, otro.y));
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -648,8 +619,7 @@ inline Vector2<T> VectorMaxComponents (const Vector2<T>& uno, const Vector2<T>& 
 template<typename T>
 inline Vector2<T>& Vector2<T>::Add_Max (const Vector2<T>& otro)
 {
-  y += otro.y;
-  x = mathUtils::Max(x, otro.x);
-  
-  return (*this);
+    y += otro.y;
+    x = mathUtils::Max(x, otro.x);
+    return (*this);
 }

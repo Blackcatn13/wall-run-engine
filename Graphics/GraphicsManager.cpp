@@ -17,7 +17,6 @@ CGraphicsManager::CGraphicsManager()
 {
     m_BackbufferColor_debug.Set(0.49804f, 1.f, 0.83137f, 1.f);
     m_BackbufferColor_release.Set(0.f, 0.f, 0.f, 1.f);
-	
     m_speed = 0.001f;
     m_posCam = Vect3f(-1.f, 1.f, -1.f);
     m_yaw = 0;
@@ -769,34 +768,31 @@ void CGraphicsManager::DrawQuad3D (	const Vect3f& ul, const Vect3f& ur, const Ve
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void CGraphicsManager::ClearSceneCommand(float color, float depth, float stencil)
 {
-	uint32 red = 0;
-	uint32 green = 0;
-	uint32 blue = 0;
-
-	if (color)
-	{
-		#ifdef _DEBUG // Clear the backbuffer to a blue color in a Debug mode
-			red		= (uint32) (m_BackbufferColor_debug.GetRed() * 255);
-			green	= (uint32) (m_BackbufferColor_debug.GetGreen() * 255);
-			blue	= (uint32) (m_BackbufferColor_debug.GetBlue() * 255);
-		#else // Clear the backbuffer to a black color in a Release mode
-			red		= (uint32) (m_BackbufferColor_release.GetRed() * 255);
-			green	= (uint32) (m_BackbufferColor_release.GetGreen() * 255);
-			blue	= (uint32) (m_BackbufferColor_release.GetBlue() * 255);
-		#endif
-	}
-	DWORD flags = D3DCLEAR_TARGET;
-	if (depth)
-		flags = flags | D3DCLEAR_ZBUFFER;
-	if (stencil)
-		flags = flags | D3DCLEAR_STENCIL;
-
-	m_pD3DDevice->Clear( 0, NULL, flags, D3DCOLOR_XRGB(red, green, blue), 1.0f, 0 );
+    uint32 red = 0;
+    uint32 green = 0;
+    uint32 blue = 0;
+    if (color) {
+#ifdef _DEBUG // Clear the backbuffer to a blue color in a Debug mode
+        red		= (uint32) (m_BackbufferColor_debug.GetRed() * 255);
+        green	= (uint32) (m_BackbufferColor_debug.GetGreen() * 255);
+        blue	= (uint32) (m_BackbufferColor_debug.GetBlue() * 255);
+#else // Clear the backbuffer to a black color in a Release mode
+        red		= (uint32) (m_BackbufferColor_release.GetRed() * 255);
+        green	= (uint32) (m_BackbufferColor_release.GetGreen() * 255);
+        blue	= (uint32) (m_BackbufferColor_release.GetBlue() * 255);
+#endif
+    }
+    DWORD flags = D3DCLEAR_TARGET;
+    if (depth)
+        flags = flags | D3DCLEAR_ZBUFFER;
+    if (stencil)
+        flags = flags | D3DCLEAR_STENCIL;
+    m_pD3DDevice->Clear( 0, NULL, flags, D3DCOLOR_XRGB(red, green, blue), 1.0f, 0 );
 }
 
 void CGraphicsManager::BeginRenderCommand()
 {
-	// Begin the scene
+    // Begin the scene
     HRESULT hr = m_pD3DDevice->BeginScene();
     assert( SUCCEEDED( hr ) );
     m_pD3DDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CCW);
@@ -811,7 +807,6 @@ void CGraphicsManager::BeginRenderCommand()
     } else {
         m_pD3DDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_WIREFRAME  );
     }
-
 }
 
 void CGraphicsManager::EndRenderCommand()

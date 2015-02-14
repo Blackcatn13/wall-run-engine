@@ -9,9 +9,9 @@ class CGraphicsManagers;
 
 class CEndRenderSceneRendererCommand : public CSceneRendererCommand
 {
-	public: 
-		CEndRenderSceneRendererCommand (CXMLTreeNode &atts);
-		void Execute(CGraphicsManager &RM);
+public:
+    CEndRenderSceneRendererCommand (CXMLTreeNode &atts);
+    void Execute(CGraphicsManager &RM);
 };
 
 #endif

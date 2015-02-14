@@ -2,11 +2,11 @@
 #include "GraphicsManager.h"
 
 CEndRenderSceneRendererCommand::CEndRenderSceneRendererCommand (CXMLTreeNode &atts)
-: CSceneRendererCommand(atts)
+    : CSceneRendererCommand(atts)
 {
 }
 
 void CEndRenderSceneRendererCommand::Execute(CGraphicsManager &RM)
 {
-	RM.EndRenderCommand();
+    RM.EndRenderCommand();
 }

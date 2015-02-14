@@ -12,13 +12,13 @@ class CXMLTreeNode;
 class CPatrolEnemy : public CEnemy
 {
 private:
-	std::vector<Vect3f>		m_WayPoints;
+    std::vector<Vect3f>		m_WayPoints;
 public:
-	CPatrolEnemy(CXMLTreeNode &info1);
-	~CPatrolEnemy();
-	virtual void Init();
-	virtual void Update(float elapsedTime);
-	virtual void Render();
+    CPatrolEnemy(CXMLTreeNode &info1);
+    ~CPatrolEnemy();
+    virtual void Init();
+    virtual void Update(float elapsedTime);
+    virtual void Render();
 };
 
 #endif

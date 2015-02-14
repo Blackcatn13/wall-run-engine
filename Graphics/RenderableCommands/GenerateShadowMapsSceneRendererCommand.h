@@ -9,8 +9,8 @@
 class CGenerateShadowMapsSceneRendererCommand : public CSceneRendererCommand
 {
 public:
-	CGenerateShadowMapsSceneRendererCommand(CXMLTreeNode &atts);
-	void Execute(CGraphicsManager &RM);
+    CGenerateShadowMapsSceneRendererCommand(CXMLTreeNode &atts);
+    void Execute(CGraphicsManager &RM);
 };
 
 #endif

@@ -10,12 +10,13 @@
 #include "GraphicsManager.h"
 
 //class CSceneRendererCommand : public CUABActive, public CNamed {
-class CSceneRendererCommand : public CNamed {
-	public: 
-	CSceneRendererCommand();
-	CSceneRendererCommand(CXMLTreeNode &atts);
-	virtual ~CSceneRendererCommand();
-	virtual void Execute(CGraphicsManager &RM) = 0;
+class CSceneRendererCommand : public CNamed
+{
+public:
+    CSceneRendererCommand();
+    CSceneRendererCommand(CXMLTreeNode &atts);
+    virtual ~CSceneRendererCommand();
+    virtual void Execute(CGraphicsManager &RM) = 0;
 };
 
 

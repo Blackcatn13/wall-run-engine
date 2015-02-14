@@ -12,15 +12,12 @@ CBossEnemy::~CBossEnemy()
 
 void CBossEnemy::Init()
 {
-
 }
 
 void CBossEnemy::Update(float elapsedTime)
 {
-
 }
 
 void CBossEnemy::Render()
 {
-
 }

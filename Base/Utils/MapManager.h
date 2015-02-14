@@ -36,10 +36,10 @@ public:
     {
         if (m_Resources.find(Name) != m_Resources.end()) {
             LOGGER->AddNewLog(ELL_ERROR, "Resource already found in TMapManager with name '%s'", Name.c_str());
-			return false;
+            return false;
         } else {
             m_Resources[Name] = Resource;
-			return true;
+            return true;
         }
     }
 
@@ -51,10 +51,10 @@ public:
         m_Resources.clear();
     }
 
-	TMapResource & GetResources()
-	{
-		return m_Resources;
-	}
+    TMapResource & GetResources()
+    {
+        return m_Resources;
+    }
 };
 
 #endif

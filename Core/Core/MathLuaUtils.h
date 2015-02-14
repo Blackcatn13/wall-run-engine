@@ -8,9 +8,9 @@ class CCMathLuaUtils
 {
 
 public:
-	CCMathLuaUtils();
-	~CCMathLuaUtils();
-	Vect3f Normalize(Vect3f vector);
+    CCMathLuaUtils();
+    ~CCMathLuaUtils();
+    Vect3f Normalize(Vect3f vector);
 };
 
 #endif

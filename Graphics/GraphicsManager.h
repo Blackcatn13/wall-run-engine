@@ -107,10 +107,10 @@ public:
 
 
 //COMMANDS
-	void ClearSceneCommand(float color, float depth, float stencil); 
-	void BeginRenderCommand();
-	void EndRenderCommand();
-	void PresentSceneCommand();
+    void ClearSceneCommand(float color, float depth, float stencil);
+    void BeginRenderCommand();
+    void EndRenderCommand();
+    void PresentSceneCommand();
 };
 
 

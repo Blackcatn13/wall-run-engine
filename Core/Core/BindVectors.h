@@ -9,9 +9,9 @@
 
 extern "C"
 {
-	#include "lua.h"
-	#include "lualib.h"
-	#include "lauxlib.h"
+#include "lua.h"
+#include "lualib.h"
+#include "lauxlib.h"
 }
 
 #include <luabind/luabind.hpp>
@@ -26,19 +26,18 @@ using namespace luabind;
 
 void RegisterVectors()
 {
-	luabind::module(LUA_STATE) [
-        class_<Vect3f>("Vect3f") 
+    luabind::module(LUA_STATE) [
+        class_<Vect3f>("Vect3f")
         .def(constructor<float, float, float>())
         .def(constructor<>())
         .def(constructor<Vect3f>())
-      
         .def(const_self + const_self)
         .def(const_self - const_self)
         .def(const_self * const_self)
         .def(const_self / float())
-		.def(const_self * float())
-		.def(const_self + float())
-		.def(const_self - float())
+        .def(const_self * float())
+        .def(const_self + float())
+        .def(const_self - float())
         .def(const_self == const_self)
         .def(const_self ^ const_self)
         // Operadores y funciones de asignación
@@ -60,7 +59,7 @@ void RegisterVectors()
         .def("get_proj_xy",  &Vect3f::GetProjXY)
         .def("get_proj_yz",  &Vect3f::GetProjYZ)
         .def("get_proj_zx",  &Vect3f::GetProjZX)
-        // Funciones de la longitud 
+        // Funciones de la longitud
         .def("normalize",  &Vect3f::Normalize)
         .def("get_normalized",  &Vect3f::GetNormalized)
         .def("length",  &Vect3f::Length)
@@ -78,7 +77,7 @@ void RegisterVectors()
         .def("get_angle_y",  &Vect3f::GetAngleY)
         .def("get_angle_z",  &Vect3f::GetAngleZ)
         .def("get_angles",  &Vect3f::GetAngles)
-         // Interpolación lineal
+        // Interpolación lineal
         .def("lerp",  &Vect3f::Lerp)
         .def("get_lerp",  &Vect3f::GetLerp)
         // cosas externas (funciones, constantes...) no se registran?*/
@@ -86,29 +85,27 @@ void RegisterVectors()
         .def_readwrite("x", &Vect3f::x)
         .def_readwrite("y", &Vect3f::y)
         .def_readwrite("z", &Vect3f::z)
-        ];
-
-	luabind::module(LUA_STATE) [
-        class_<Vect3i>("Vect3i") 
+    ];
+    luabind::module(LUA_STATE) [
+        class_<Vect3i>("Vect3i")
         .def(constructor<int, int, int>())
         .def(constructor<>())
         .def(constructor<Vect3i>())
-      
         .def(const_self + const_self)
         .def(const_self - const_self)
         .def(const_self * const_self)
         .def(const_self / int())
-		.def(const_self * int())
-		.def(const_self + int())
-		.def(const_self - int())
+        .def(const_self * int())
+        .def(const_self + int())
+        .def(const_self - int())
         .def(const_self == const_self)
         .def(const_self ^ const_self)
         // Operadores y funciones de asignación
         .def("set",  &Vect3i::Set)
         .def("set_zero",  &Vect3i::SetZero)
         //// Coordenadas polares
-       // .def("set_from_polar", &Vect3i::SetFromPolar)
-       // .def("get_polar",  &Vect3i::GetPolar)
+        // .def("set_from_polar", &Vect3i::SetFromPolar)
+        // .def("get_polar",  &Vect3i::GetPolar)
         ////funciones de comparacion
         .def("is_equal_epsilon",  &Vect3i::IsEqualEpsilon)
         .def("is_not_equal_epsilon",  &Vect3i::IsNotEqualEpsilon)
@@ -122,8 +119,8 @@ void RegisterVectors()
         .def("get_proj_xy",  &Vect3i::GetProjXY)
         .def("get_proj_yz",  &Vect3i::GetProjYZ)
         .def("get_proj_zx",  &Vect3i::GetProjZX)
-        // Funciones de la longitud 
-       // .def("normalize",  &Vect3i::Normalize)
+        // Funciones de la longitud
+        // .def("normalize",  &Vect3i::Normalize)
         //.def("get_normalized",  &Vect3i::GetNormalized)
         //.def("length",  &Vect3i::Length)
         //.def("squared_length",  &Vect3i::SquaredLength)
@@ -148,7 +145,7 @@ void RegisterVectors()
         .def_readwrite("x", &Vect3i::x)
         .def_readwrite("y", &Vect3i::y)
         .def_readwrite("z", &Vect3i::z)
-        ];
+    ];
 }
 
 //#endif

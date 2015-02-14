@@ -7,13 +7,16 @@ class CCameraInfo;
 class CCameraKey
 {
 public:
-	CCameraInfo*			m_CameraInfo;
-	float					m_Time;
+    CCameraInfo*			m_CameraInfo;
+    float					m_Time;
 
-	CCameraKey(CCameraInfo *CameraInfo, float Time);
-	~CCameraKey();
-	
-	float GetTime() { return m_Time;}
+    CCameraKey(CCameraInfo *CameraInfo, float Time);
+    ~CCameraKey();
+
+    float GetTime()
+    {
+        return m_Time;
+    }
 };
 
 #endif

@@ -2,11 +2,11 @@
 #include "GraphicsManager.h"
 
 CBeginRenderSceneRendererCommand::CBeginRenderSceneRendererCommand(CXMLTreeNode &atts)
-: CSceneRendererCommand(atts)
+    : CSceneRendererCommand(atts)
 {
 }
 
 void CBeginRenderSceneRendererCommand::Execute(CGraphicsManager &RM)
 {
-	RM.BeginRenderCommand();
+    RM.BeginRenderCommand();
 }

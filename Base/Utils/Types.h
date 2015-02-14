@@ -14,6 +14,6 @@ typedef unsigned int        uint32; // integer positivo de 32 bits
 
 
 typedef enum ETypeModePaint { PAINT_SOLID, PAINT_WIREFRAME, PAINT_BOTH};
-typedef enum EtypeSphere		{ COMPLETE, HALF_TOP, HALF_BOTTOM };	
+typedef enum EtypeSphere		{ COMPLETE, HALF_TOP, HALF_BOTTOM };
 
 #endif

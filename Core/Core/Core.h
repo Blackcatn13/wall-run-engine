@@ -77,11 +77,11 @@ private:
     CCameraController*		            m_CameraController;
     CEffectManager*			            m_EffectManager;
     CRenderableObjectTechniqueManager*  m_RenderableObjectTechniqueManager;
-	CPhysicsManager*					m_PhysicsManager;
-	CRenderableObjectsLayersManager*	m_RenderableLayersManager;
-	CSceneRendererCommandManager*		m_SceneRendererCommandManager;
-	CProcess*							m_Process;
-	CTriggerManager*					m_TriggerManager;
+    CPhysicsManager*					m_PhysicsManager;
+    CRenderableObjectsLayersManager*	m_RenderableLayersManager;
+    CSceneRendererCommandManager*		m_SceneRendererCommandManager;
+    CProcess*							m_Process;
+    CTriggerManager*					m_TriggerManager;
 
 public:
     ~CCore();
@@ -145,10 +145,10 @@ public:
     {
         return m_CinematicManager;
     }
-	CPhysicsManager * GetPhysicsManager()
-	{
-		return m_PhysicsManager;
-	}
+    CPhysicsManager * GetPhysicsManager()
+    {
+        return m_PhysicsManager;
+    }
     CCameraController * GetCameraController()
     {
         return m_CameraController;
@@ -161,7 +161,7 @@ public:
     {
         return m_RenderableObjectTechniqueManager;
     }
-	CRenderableObjectsLayersManager * GetRenderableObjectsLayersManager()
+    CRenderableObjectsLayersManager * GetRenderableObjectsLayersManager()
     {
         return m_RenderableLayersManager;
     }
@@ -169,20 +169,21 @@ public:
     {
         m_CameraController = cameraController;
     }
-	CSceneRendererCommandManager * GetSceneRendererCommandManager()
+    CSceneRendererCommandManager * GetSceneRendererCommandManager()
     {
-		return m_SceneRendererCommandManager;
+        return m_SceneRendererCommandManager;
     }
 
-	CProcess * GetProcess()
+    CProcess * GetProcess()
     {
-		return m_Process;
+        return m_Process;
     }
 
-	void SetProcess(CProcess * process)
+    void SetProcess(CProcess * process)
     {
         m_Process = process;
-	CTriggerManager * GetTriggerManager()
+    }
+    CTriggerManager * GetTriggerManager()
     {
         return m_TriggerManager;
     }

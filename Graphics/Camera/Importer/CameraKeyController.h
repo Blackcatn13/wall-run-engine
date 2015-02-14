@@ -17,19 +17,19 @@ private:
     size_t								m_CurrentKey, m_NextKey;
     float								m_CurrentTime, m_TotalTime;
     bool								m_IsPlaying;
-	bool								m_Once;
+    bool								m_Once;
     bool								m_Cycle;
     bool								m_Reverse;
-	bool								m_IsReversing;
+    bool								m_IsReversing;
     CObject3D							*m_Object;
 
     Vect3f								m_PosInterpolated;
     float								m_YawInterpolated;
     float								m_PitchInterpolated;
 
-	Vect3f								m_PositionInit;
-	float								m_YawInit;
-	float								m_PitchInit;
+    Vect3f								m_PositionInit;
+    float								m_YawInit;
+    float								m_PitchInit;
 
     void GetCurrentKey();
 public:
@@ -41,7 +41,7 @@ public:
     void SetCurrentTime(float CurrentTime);
     void ResetTime(bool reverse);
     float GetTotalTime();
-	bool IsOnce() const;
+    bool IsOnce() const;
     void SetOnce(bool Once);
     bool IsCycle() const;
     void SetCycle(bool Cycle);
@@ -49,8 +49,8 @@ public:
     void SetReverse(bool Reverse);
 
     void Play();
-	void Pause();
-	void Stop();
+    void Pause();
+    void Stop();
     bool IsPlayOn();
 
     void InterpolatePosition(Vect3f PointA, Vect3f PointB, float TimeA, float TimeB, float ElapsedTime);

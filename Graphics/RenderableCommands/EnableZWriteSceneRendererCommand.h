@@ -9,8 +9,8 @@
 class CEnableZWriteSceneRendererCommand : public CSceneRendererCommand
 {
 public:
-CEnableZWriteSceneRendererCommand(CXMLTreeNode &atts);
-void Execute(CGraphicsManager &RM);
+    CEnableZWriteSceneRendererCommand(CXMLTreeNode &atts);
+    void Execute(CGraphicsManager &RM);
 };
 
 #endif

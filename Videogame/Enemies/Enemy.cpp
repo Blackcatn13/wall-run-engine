@@ -7,11 +7,11 @@ CEnemy::CEnemy(CXMLTreeNode &info1)
     , m_Position(info1.GetVect3fProperty("pos", Vect3f()))
     , m_Yaw(info1.GetFloatProperty("yaw"))
 {
-	// ask for it to enemyManager
-	//m_Life(info2.GetFloatProperty("life"))
-	//m_ShootAccuracy(info2.GetFloatProperty("shoot_accuracy"))
-	//, m_TimeToShoot(info2.GetFloatProperty("time_to_shoot"))
-	//, m_TimeToSpawn(info2.GetFloatProperty("time_to_spawn"))
+    // ask for it to enemyManager
+    //m_Life(info2.GetFloatProperty("life"))
+    //m_ShootAccuracy(info2.GetFloatProperty("shoot_accuracy"))
+    //, m_TimeToShoot(info2.GetFloatProperty("time_to_shoot"))
+    //, m_TimeToSpawn(info2.GetFloatProperty("time_to_spawn"))
 }
 
 

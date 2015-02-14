@@ -20,21 +20,21 @@
 
 class CPhysicUserData;
 
-class CPhysicTriggerReport : public NxUserTriggerReport 
+class CPhysicTriggerReport : public NxUserTriggerReport
 {
 public:
-	//--- Init and End protocols------------------------------------------
-					CPhysicTriggerReport	( void ) {}
-	virtual			~CPhysicTriggerReport	( void ) {}
+    //--- Init and End protocols------------------------------------------
+    CPhysicTriggerReport	( void ) {}
+    virtual			~CPhysicTriggerReport	( void ) {}
 
 
-	//--- NxUserTriggerReport Interface	----------------------------------
-	void			onTrigger	( NxShape &_TriggerShape, NxShape &_OtherShape, NxTriggerFlag _Status );
-	
-	//--- CPhysicTrigger Interface ---------------------------------------
-	virtual void	OnEnter		( CPhysicUserData* _Entity_Trigger1, CPhysicUserData* _Other_Shape) = 0;
-	virtual	void	OnLeave		( CPhysicUserData* _Entity_Trigger1, CPhysicUserData* _Other_Shape) = 0;
-	virtual	void	OnStay		( CPhysicUserData* _Entity_Trigger1, CPhysicUserData* _Other_Shape) = 0;
+    //--- NxUserTriggerReport Interface	----------------------------------
+    void			onTrigger	( NxShape &_TriggerShape, NxShape &_OtherShape, NxTriggerFlag _Status );
+
+    //--- CPhysicTrigger Interface ---------------------------------------
+    virtual void	OnEnter		( CPhysicUserData* _Entity_Trigger1, CPhysicUserData* _Other_Shape) = 0;
+    virtual	void	OnLeave		( CPhysicUserData* _Entity_Trigger1, CPhysicUserData* _Other_Shape) = 0;
+    virtual	void	OnStay		( CPhysicUserData* _Entity_Trigger1, CPhysicUserData* _Other_Shape) = 0;
 };
 
 #endif __PHYSIC_TRIGGER_REPORT_CLASS_H__

@@ -2,11 +2,11 @@
 #include "GraphicsManager.h"
 
 CPresentSceneRendererCommand::CPresentSceneRendererCommand(CXMLTreeNode &atts)
-: CSceneRendererCommand(atts)
+    : CSceneRendererCommand(atts)
 {
 }
 
 void CPresentSceneRendererCommand::Execute(CGraphicsManager &RM)
 {
-	RM.PresentSceneCommand();
+    RM.PresentSceneCommand();
 }

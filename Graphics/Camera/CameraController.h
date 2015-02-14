@@ -36,7 +36,7 @@ private:
     std::string		m_FileName;
 public:
     CCameraController();
-	~CCameraController();
+    ~CCameraController();
     void AddNewCamera(std::string camName, CCamera* cam);
     void AddNewObject(std::string objName, CObject3D* obj);
     void Update(std::string camera, float dt);
@@ -59,61 +59,61 @@ public:
     bool Reload();
     bool Reload(const std::string &FileName);
     bool IsAnyCinematicPlaying();
-	void Play(bool Cycle);
-	void Pause(); 
-	void Stop();
+    void Play(bool Cycle);
+    void Pause();
+    void Stop();
 
 
-	void SetFlyMode (bool flyMode)
-	{
-		m_FlyMode = flyMode;
-	}
+    void SetFlyMode (bool flyMode)
+    {
+        m_FlyMode = flyMode;
+    }
 
-	bool GetFlyMode ()
-	{
-		return m_FlyMode;
-	}
+    bool GetFlyMode ()
+    {
+        return m_FlyMode;
+    }
 
-	void SetSpeed (float speed)
-	{
-		m_Speed = speed;
-	}
+    void SetSpeed (float speed)
+    {
+        m_Speed = speed;
+    }
 
-	float GetSpeed ()
-	{
-		return m_Speed;
-	}
+    float GetSpeed ()
+    {
+        return m_Speed;
+    }
 
-	void SetLittleZoom (float littleZoom)
-	{
-		m_LittleZoom = littleZoom;
-	}
+    void SetLittleZoom (float littleZoom)
+    {
+        m_LittleZoom = littleZoom;
+    }
 
-	float GetLittleZoom ()
-	{
-		return m_LittleZoom;
-	}
+    float GetLittleZoom ()
+    {
+        return m_LittleZoom;
+    }
 
-	void SetBigZoom (float bigZoom)
-	{
-		m_BigZoom = bigZoom;
-	}
+    void SetBigZoom (float bigZoom)
+    {
+        m_BigZoom = bigZoom;
+    }
 
-	float GetBigZoom ()
-	{
-		return m_BigZoom;
-	}
+    float GetBigZoom ()
+    {
+        return m_BigZoom;
+    }
 
-	void SetPanSpeed (float panSpeed)
-	{
-		m_PanSpeed = panSpeed;
-	}
+    void SetPanSpeed (float panSpeed)
+    {
+        m_PanSpeed = panSpeed;
+    }
 
-	float GetPanSpeed ()
-	{
-		return m_PanSpeed;
-	}
+    float GetPanSpeed ()
+    {
+        return m_PanSpeed;
+    }
 
-	void CamUpdates(CCamera::ETypeCamera camType, float dt);
+    void CamUpdates(CCamera::ETypeCamera camType, float dt);
 };
 #endif

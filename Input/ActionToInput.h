@@ -40,8 +40,8 @@ public:
 
     void    CActionToInput::InitString2Input ();
 
-	bool DoActionFromLua(const std::string action_name);
-	bool DoActionFromLua (const std::string action_name, float amount);
+    bool DoActionFromLua(const std::string action_name);
+    bool DoActionFromLua (const std::string action_name, float amount);
 };
 
 #endif

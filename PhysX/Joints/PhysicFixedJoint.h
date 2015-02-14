@@ -18,19 +18,25 @@ class CPhysicActor;
 class CPhysicFixedJoint
 {
 public:
-	CPhysicFixedJoint();
-	~CPhysicFixedJoint();
+    CPhysicFixedJoint();
+    ~CPhysicFixedJoint();
 
-	void					CreateJoint			(NxJoint* joint);
-	void					SetInfo				(CPhysicActor* actorA,  CPhysicActor* actorB =0);
+    void					CreateJoint			(NxJoint* joint);
+    void					SetInfo				(CPhysicActor* actorA,  CPhysicActor* actorB = 0);
 
-	//---Get PhsX Info---
-	NxJoint*				GetPhXJoint			( void ) const		{ return m_pJoint; }
-	NxFixedJointDesc*		GetPhXDescJoint		( void ) const		{ return m_pFixedDesc; }
+    //---Get PhsX Info---
+    NxJoint*				GetPhXJoint			( void ) const
+    {
+        return m_pJoint;
+    }
+    NxFixedJointDesc*		GetPhXDescJoint		( void ) const
+    {
+        return m_pFixedDesc;
+    }
 
 private:
-	NxJoint					*m_pJoint;
-	NxFixedJointDesc		*m_pFixedDesc;
+    NxJoint					*m_pJoint;
+    NxFixedJointDesc		*m_pFixedDesc;
 };
 
 #endif //INC_PHYSIC_FIXED_JOINT_H_

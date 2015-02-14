@@ -7,7 +7,7 @@ class CVisible
 private:
     bool m_visible;
 public:
-	CVisible(){}
+    CVisible() {}
     void setVisible(bool visible)
     {
         m_visible = visible;

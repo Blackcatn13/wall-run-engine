@@ -18,20 +18,23 @@ class CJump
 {
 
 public:
-	CJump();
-	~CJump()			{ /*Nothing*/ }
+    CJump();
+    ~CJump()
+    {
+        /*Nothing*/
+    }
 
-	void	StartJump	( float v0 );
-	void	StopJump	();
-	float	GetHeight	( float elapsedTime );
+    void	StartJump	( float v0 );
+    void	StopJump	();
+    float	GetHeight	( float elapsedTime );
 
 private:
 
-	bool	m_bJump;
-	float	m_fV0;
-	float	m_fJumpTime;
-	float	m_fG;
-	float	m_fDefaultGravity;
+    bool	m_bJump;
+    float	m_fV0;
+    float	m_fJumpTime;
+    float	m_fG;
+    float	m_fDefaultGravity;
 };
 
 #endif // INC_JUMP_H_

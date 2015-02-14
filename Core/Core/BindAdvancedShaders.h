@@ -15,9 +15,9 @@
 
 extern "C"
 {
-	#include "lua.h"
-	#include "lualib.h"
-	#include "lauxlib.h"
+#include "lua.h"
+#include "lualib.h"
+#include "lauxlib.h"
 }
 
 #include <luabind/luabind.hpp>
@@ -30,7 +30,7 @@ using namespace luabind;
 
 void RegisterAdvancedShaders()
 {
-//	
+//
 //	luabind::module(LUA_STATE) [
 //    class_<CTemplatedVectorMapManager<CRenderableObjectsManager>>("CTemplatedVectorMapManagerRenderableObjectManager")
 //	.def(constructor<>())
@@ -51,7 +51,7 @@ void RegisterAdvancedShaders()
 //    ];
 //
 //	luabind::module(LUA_STATE) [
-//	class_<CRenderableObjectsLayersManager, CTemplatedVectorMapManager<CRenderableObjectsManager>>("CRenderableObjectsLayersManager") 
+//	class_<CRenderableObjectsLayersManager, CTemplatedVectorMapManager<CRenderableObjectsManager>>("CRenderableObjectsLayersManager")
 //	.def(constructor<>())
 //	.def("destroy", & CRenderableObjectsLayersManager::Destroy)
 //	.def("load", & CRenderableObjectsLayersManager::Load)
@@ -62,14 +62,14 @@ void RegisterAdvancedShaders()
 //	];
 //
 //	luabind::module(LUA_STATE) [
-//	class_<CRenderableObjectTechnique, CNamed>("CRenderableObjectTechnique") 
+//	class_<CRenderableObjectTechnique, CNamed>("CRenderableObjectTechnique")
 //	.def(constructor<const std::string &, CEffectTechnique *>())
 //	.def("set_effect_technique", & CRenderableObjectTechnique::SetEffectTechnique)
 //	.def("get_effect_technique", & CRenderableObjectTechnique::GetEffectTechnique)
 //	];
 //
 //	luabind::module(LUA_STATE) [
-//	class_<CPoolRenderableObjectTechnique, CNamed>("CPoolRenderableObjectTechnique") 
+//	class_<CPoolRenderableObjectTechnique, CNamed>("CPoolRenderableObjectTechnique")
 //	.def(constructor<CXMLTreeNode>())
 //	.def("destroy", & CPoolRenderableObjectTechnique::Destroy)
 //	.def("addElement", & CPoolRenderableObjectTechnique::AddElement)
@@ -92,21 +92,21 @@ void RegisterAdvancedShaders()
 //    .def("get_renderable_object_technique_name_by_vertex_type", &CRenderableObjectTechniqueManager::GetRenderableObjectTechniqueNameByVertexType)
 //    .def("get_pool_renderable_object_techniques", &CRenderableObjectTechniqueManager::GetPoolRenderableObjectTechniques)
 //    ];
-//	
+//
 //	luabind::module(LUA_STATE) [
-//	class_<CSceneRendererCommandManager>("CSceneRendererCommandManager") 
+//	class_<CSceneRendererCommandManager>("CSceneRendererCommandManager")
 //	.def(constructor<>())
 //	.def("load", & CSceneRendererCommandManager::Load)
 //	.def("execute", & CSceneRendererCommandManager::Execute)
 //	];
 //
 //	luabind::module(LUA_STATE) [
-//	class_<CSceneRendererCommand, /*bases<CUABActive,*/CNamed/*>*/>("CSceneRendererCommand") 
+//	class_<CSceneRendererCommand, /*bases<CUABActive,*/CNamed/*>*/>("CSceneRendererCommand")
 //	.def(constructor<CXMLTreeNode>())
 //	];
 //
 //	luabind::module(LUA_STATE) [
-//	class_<CClearSceneRendererCommand, CSceneRendererCommand>("CClearSceneRendererCommand") 
+//	class_<CClearSceneRendererCommand, CSceneRendererCommand>("CClearSceneRendererCommand")
 //	.def(constructor<CXMLTreeNode>())
 //	.def("execute", & CClearSceneRendererCommand::Execute)
 //	];

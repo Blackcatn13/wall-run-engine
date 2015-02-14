@@ -44,7 +44,6 @@ void CCore::Init(HWND handler)
     //Load?
     m_InputManager = new CInputManager();
     m_InputManager->Init(handler, Vect2i(m_Config.Screen_Width, m_Config.Screen_Heigth), m_Config.Mouse_Exclusive);
-	
     m_LanguageManager = new CLanguageManager();
     m_FontManager = new CFontManager();
     m_FontManager->Init(m_GraphicsManager);
@@ -62,17 +61,16 @@ void CCore::Init(HWND handler)
     m_ScriptManager->Initialize();
     //m_RenderableManager = new CRenderableObjectsManager();
     m_AnimatedModelManager = new CAnimatedModelManager();
-	//Cargamos Technique pools
-	m_RenderableObjectTechniqueManager = new CRenderableObjectTechniqueManager();
-	m_RenderableObjectTechniqueManager->Load(m_Config.PoolRenderableObjects);
-
-	//Cargando Layers
-	m_RenderableLayersManager = new CRenderableObjectsLayersManager();
-	m_RenderableLayersManager->Load(m_Config.RenderablePath);
-	m_RenderableLayersManager->Load(m_Config.LuaPath);
-	//m_RenderableLayersManager->Load(m_Config.LuaPath);
-	//como cargar LuaPath?
-	//m_RenderableLayersManager->Load(m_Config.LuaPath);
+    //Cargamos Technique pools
+    m_RenderableObjectTechniqueManager = new CRenderableObjectTechniqueManager();
+    m_RenderableObjectTechniqueManager->Load(m_Config.PoolRenderableObjects);
+    //Cargando Layers
+    m_RenderableLayersManager = new CRenderableObjectsLayersManager();
+    m_RenderableLayersManager->Load(m_Config.RenderablePath);
+    m_RenderableLayersManager->Load(m_Config.LuaPath);
+    //m_RenderableLayersManager->Load(m_Config.LuaPath);
+    //como cargar LuaPath?
+    //m_RenderableLayersManager->Load(m_Config.LuaPath);
     //m_RenderableManager->Load(m_Config.RenderablePath);
     //m_RenderableManager->Load(m_Config.LuaPath);
     m_LightManager = new CLightManager();
@@ -85,11 +83,11 @@ void CCore::Init(HWND handler)
     m_ScriptManager = new CScriptManager();
     m_ScriptManager->Initialize();
     m_LightManager = new CLightManager();*/
-	m_PhysicsManager = new CPhysicsManager();
-	m_PhysicsManager->Init();
-	m_SceneRendererCommandManager = new CSceneRendererCommandManager();
-	m_SceneRendererCommandManager->Load(m_Config.SceneRenderCommandsPath);
-	m_TriggerManager = new CTriggerManager();
+    m_PhysicsManager = new CPhysicsManager();
+    m_PhysicsManager->Init();
+    m_SceneRendererCommandManager = new CSceneRendererCommandManager();
+    m_SceneRendererCommandManager->Load(m_Config.SceneRenderCommandsPath);
+    m_TriggerManager = new CTriggerManager();
 }
 
 void CCore::DeInit()
@@ -104,17 +102,17 @@ void CCore::DeInit()
     CHECKED_DELETE(m_StaticMeshManager);
     CHECKED_DELETE(m_AnimatedModelManager);
     //CHECKED_DELETE(m_RenderableManager);
-	CHECKED_DELETE(m_RenderableLayersManager);
+    CHECKED_DELETE(m_RenderableLayersManager);
     CHECKED_DELETE(m_LightManager);
     CHECKED_DELETE(m_TextureManager);
     CHECKED_DELETE(m_ScriptManager);
     CHECKED_DELETE(m_CameraController);
     CHECKED_DELETE(m_CinematicManager);
     CHECKED_DELETE(m_EffectManager);
-	CHECKED_DELETE(m_PhysicsManager);
-	//CHECKED_DELETE(m_Process);
+    CHECKED_DELETE(m_PhysicsManager);
+    //CHECKED_DELETE(m_Process);
     CHECKED_DELETE(m_RenderableObjectTechniqueManager);
-	CHECKED_DELETE(m_SceneRendererCommandManager);
+    CHECKED_DELETE(m_SceneRendererCommandManager);
 }
 
 CCore* CCore::GetInstance()
@@ -128,15 +126,15 @@ CCore* CCore::GetInstance()
 void CCore::Render()
 {
     //m_GraphicsManager->Render();
-   // m_LightManager->Render(m_GraphicsManager);
-	m_PhysicsManager->DebugRender(m_GraphicsManager);
+    // m_LightManager->Render(m_GraphicsManager);
+    m_PhysicsManager->DebugRender(m_GraphicsManager);
     m_SoundManager->Render();
 }
 
 void CCore::Update(float dt)
 {
     m_GraphicsManager->Update();
-	m_PhysicsManager->Update(dt);
+    m_PhysicsManager->Update(dt);
     m_SoundManager->Update();
     m_InputManager->Update();
 }

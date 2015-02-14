@@ -16,14 +16,14 @@
 // @Note1 \verbatim
 // El espacio 3D en el que se definen estos vectores, que también incluyen la funcionalidad de punto,
 // es un espacio que sigue un criterio de sistema de referencia de "mano derecha".
-// 
+//
 //                     z |
 //                       |
 //                       |  / y
 //                       | /
 //                       |/
 //                        --------  x
-// 
+//
 // Este criterio es utilizado y respetado en todas las operaciones entre objetos de la librería
 // matematica.
 // \endverbatim
@@ -32,112 +32,112 @@ template<typename T>
 class Vector3
 {
 public:
-  //-----------------
-  // DATOS PUBLICOS
-  //-----------------
-  T x, y, z;
-      
-public: 
-  //-------------------
-  // METODOS PUBLICOS
-  //-------------------
+    //-----------------
+    // DATOS PUBLICOS
+    //-----------------
+    T x, y, z;
 
-  // Construcción   
-  inline Vector3 ();
-  inline Vector3 (const Vector3<T>& otro);
-  inline Vector3 (const T tx, const T ty, const T tz);
-  inline Vector3 (const T escalar);
-  
-  
-  // Operadores aritméticos   
-  inline        Vector3<T>  operator + (const Vector3<T>& otro) const;
-  inline        Vector3<T>  operator - (const Vector3<T>& otro) const;
-  inline        Vector3<T>  operator * (const T escalar) const;
-  inline        Vector3<T>  operator / (const T escalar) const;
-  inline        Vector3<T>  operator + (const T escalar) const;
-  inline        Vector3<T>  operator - (const T escalar) const;
-  inline        Vector3<T>  operator - () const;
-  inline        Vector3<T>& operator + ();
-  inline const  Vector3<T>& operator + () const;
+public:
+    //-------------------
+    // METODOS PUBLICOS
+    //-------------------
 
-      
-  // Operadores aritméticos de actualización   
-  inline Vector3<T>& operator += (const Vector3<T>& otro);
-  inline Vector3<T>& operator -= (const Vector3<T>& otro);
-  inline Vector3<T>& operator *= (const T escalar);
-  inline Vector3<T>& operator /= (const T escalar);
-  inline Vector3<T>& operator += (const T escalar);
-  inline Vector3<T>& operator -= (const T escalar);
+    // Construcción
+    inline Vector3 ();
+    inline Vector3 (const Vector3<T>& otro);
+    inline Vector3 (const T tx, const T ty, const T tz);
+    inline Vector3 (const T escalar);
 
 
-  // Operadores y funciones de asignación
-  inline Vector3<T>& operator ()  (const T tx, const T ty, const T tz);
-  inline void        Set          (const T tx, const T ty, const T tz);
-  inline void        SetZero      ();
+    // Operadores aritméticos
+    inline        Vector3<T>  operator + (const Vector3<T>& otro) const;
+    inline        Vector3<T>  operator - (const Vector3<T>& otro) const;
+    inline        Vector3<T>  operator * (const T escalar) const;
+    inline        Vector3<T>  operator / (const T escalar) const;
+    inline        Vector3<T>  operator + (const T escalar) const;
+    inline        Vector3<T>  operator - (const T escalar) const;
+    inline        Vector3<T>  operator - () const;
+    inline        Vector3<T>& operator + ();
+    inline const  Vector3<T>& operator + () const;
 
 
-  // Coordenadas polares
-  void  SetFromPolar (const T longitude, const T latitude, const T length);
-  void  GetPolar     (T& longitude, T& latitude, T& length) const;
+    // Operadores aritméticos de actualización
+    inline Vector3<T>& operator += (const Vector3<T>& otro);
+    inline Vector3<T>& operator -= (const Vector3<T>& otro);
+    inline Vector3<T>& operator *= (const T escalar);
+    inline Vector3<T>& operator /= (const T escalar);
+    inline Vector3<T>& operator += (const T escalar);
+    inline Vector3<T>& operator -= (const T escalar);
 
 
-  // Producto escalar (*) y producto vectorial (^)
-  inline T          operator * (const Vector3<T>& otro) const;
-  inline Vector3<T> operator ^ (const Vector3<T>& otro) const;
+    // Operadores y funciones de asignación
+    inline Vector3<T>& operator ()  (const T tx, const T ty, const T tz);
+    inline void        Set          (const T tx, const T ty, const T tz);
+    inline void        SetZero      ();
 
 
-  // Operadores y funciones de comparacion
-  inline bool operator ==       (const Vector3<T>& otro) const;
-  inline bool operator !=       (const Vector3<T>& otro) const;
-  inline bool IsEqualEpsilon    (const Vector3<T>& otro, const T Epsilo = Epsilon<T>()) const;//TODO CW quito la n para que no sea igual
-  inline bool IsNotEqualEpsilon (const Vector3<T>& otro, const T Epsilo = Epsilon<T>()) const;//TODO CW quito la n para que no sea igual
+    // Coordenadas polares
+    void  SetFromPolar (const T longitude, const T latitude, const T length);
+    void  GetPolar     (T& longitude, T& latitude, T& length) const;
 
 
-  // Producto por componentes (escalado)
-  inline Vector3<T>& Scale     (const Vector3<T>& otro);
-  inline Vector3<T>  GetScaled (const Vector3<T>& otro) const;
+    // Producto escalar (*) y producto vectorial (^)
+    inline T          operator * (const Vector3<T>& otro) const;
+    inline Vector3<T> operator ^ (const Vector3<T>& otro) const;
 
 
-  // Establecimiento condicional
-  inline const Vector3<T>& SetIfMinComponents (const Vector3<T>& otro);
-  inline const Vector3<T>& SetIfMaxComponents (const Vector3<T>& otro);
-
-  
-  // Operador de acceso []
-  inline T  operator [] (int i) const;
-  inline T& operator [] (int i);
+    // Operadores y funciones de comparacion
+    inline bool operator ==       (const Vector3<T>& otro) const;
+    inline bool operator !=       (const Vector3<T>& otro) const;
+    inline bool IsEqualEpsilon    (const Vector3<T>& otro, const T Epsilo = Epsilon<T>()) const;//TODO CW quito la n para que no sea igual
+    inline bool IsNotEqualEpsilon (const Vector3<T>& otro, const T Epsilo = Epsilon<T>()) const;//TODO CW quito la n para que no sea igual
 
 
-  // Proyecciones
-  inline Vector2<T> GetProjXY () const;
-  inline Vector2<T> GetProjYZ () const;
-  inline Vector2<T> GetProjZX () const;
+    // Producto por componentes (escalado)
+    inline Vector3<T>& Scale     (const Vector3<T>& otro);
+    inline Vector3<T>  GetScaled (const Vector3<T>& otro) const;
 
 
-  // Funciones de la longitud 
-  inline Vector3<T>& Normalize     (const T tk = One<T>());
-  inline Vector3<T>  GetNormalized (const T tk = One<T>()) const;
-  inline T           Length        () const;
-  inline T           SquaredLength () const;
-  inline T           Distance      (const Vector3<T>& rhs) const;
-  inline T           SqDistance    (const Vector3<T>& rhs) const;
+    // Establecimiento condicional
+    inline const Vector3<T>& SetIfMinComponents (const Vector3<T>& otro);
+    inline const Vector3<T>& SetIfMaxComponents (const Vector3<T>& otro);
 
-  // Rotaciones en los ejes principales
-  inline Vector3<T>& RotateX     (const T angle);
-  inline Vector3<T>  GetRotatedX (const T angle) const;
-  inline Vector3<T>& RotateY     (const T angle);
-  inline Vector3<T>  GetRotatedY (const T angle) const;
-  inline Vector3<T>& RotateZ     (const T angle);
-  inline Vector3<T>  GetRotatedZ (const T angle) const;
-  inline T           GetAngleX   () const;
-  inline T           GetAngleY   () const;
-  inline T           GetAngleZ   () const;
-  inline void        GetAngles   (T& angX, T& angY, T& angZ) const;
-         
 
-  // Interpolación lineal
-  inline Vector3<T>& Lerp    (const Vector3<T>& otro, const T t);
-  inline Vector3<T>  GetLerp (const Vector3<T>& otro, const T t) const;
+    // Operador de acceso []
+    inline T  operator [] (int i) const;
+    inline T& operator [] (int i);
+
+
+    // Proyecciones
+    inline Vector2<T> GetProjXY () const;
+    inline Vector2<T> GetProjYZ () const;
+    inline Vector2<T> GetProjZX () const;
+
+
+    // Funciones de la longitud
+    inline Vector3<T>& Normalize     (const T tk = One<T>());
+    inline Vector3<T>  GetNormalized (const T tk = One<T>()) const;
+    inline T           Length        () const;
+    inline T           SquaredLength () const;
+    inline T           Distance      (const Vector3<T>& rhs) const;
+    inline T           SqDistance    (const Vector3<T>& rhs) const;
+
+    // Rotaciones en los ejes principales
+    inline Vector3<T>& RotateX     (const T angle);
+    inline Vector3<T>  GetRotatedX (const T angle) const;
+    inline Vector3<T>& RotateY     (const T angle);
+    inline Vector3<T>  GetRotatedY (const T angle) const;
+    inline Vector3<T>& RotateZ     (const T angle);
+    inline Vector3<T>  GetRotatedZ (const T angle) const;
+    inline T           GetAngleX   () const;
+    inline T           GetAngleY   () const;
+    inline T           GetAngleZ   () const;
+    inline void        GetAngles   (T& angX, T& angY, T& angZ) const;
+
+
+    // Interpolación lineal
+    inline Vector3<T>& Lerp    (const Vector3<T>& otro, const T t);
+    inline Vector3<T>  GetLerp (const Vector3<T>& otro, const T t) const;
 };
 
 //////////////////////////////////////////////

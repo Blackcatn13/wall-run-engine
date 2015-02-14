@@ -5,15 +5,16 @@
 #include <string>
 #include "Utils\Named.h"
 #include "Effects\EffectTechnique.h"
- 
-class CRenderableObjectTechnique : public CNamed {
-	private:
-		CEffectTechnique *m_EffectTechnique;
-	public:
-		CRenderableObjectTechnique();
-		CRenderableObjectTechnique(const std::string &Name, CEffectTechnique*EffectTechnique);
-		void SetEffectTechnique(CEffectTechnique *EffectTechnique);
-		CEffectTechnique * GetEffectTechnique() const;
+
+class CRenderableObjectTechnique : public CNamed
+{
+private:
+    CEffectTechnique *m_EffectTechnique;
+public:
+    CRenderableObjectTechnique();
+    CRenderableObjectTechnique(const std::string &Name, CEffectTechnique*EffectTechnique);
+    void SetEffectTechnique(CEffectTechnique *EffectTechnique);
+    CEffectTechnique * GetEffectTechnique() const;
 };
 
 /*class CEffectTechnique
@@ -21,7 +22,7 @@ class CRenderableObjectTechnique : public CNamed {
 private:
 	bool m_UseCameraPosition;
 	bool m_UseInverseProjMatrix;
-	bool m_UseInverseViewMatrix;	
+	bool m_UseInverseViewMatrix;
 	bool m_UseInverseWorldMatrix;
 	bool m_UseLights;
 	int m_NumOfLights;
@@ -43,7 +44,7 @@ public:
 	inline CEffect * GetEffect() const {return m_Effect;}
 	bool BeginRender();
 	bool Refresh();
-	
+
 	//DirectX Methods Interface
 	D3DXHANDLE GetD3DTechnique();
 };*/

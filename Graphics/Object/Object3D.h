@@ -71,7 +71,7 @@ public:
     }
 
     Mat44f getTransform();
-	void InitMat44();
+    void InitMat44();
 
 protected:
     Vect3f          m_Position;

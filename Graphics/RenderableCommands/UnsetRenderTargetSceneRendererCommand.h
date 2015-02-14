@@ -10,11 +10,11 @@
 class CUnsetRenderTargetSceneRendererCommand : public CSceneRendererCommand
 {
 private:
-	CSetRenderTargetSceneRendererCommand *m_SetRenderTargetRendererCommand;
+    CSetRenderTargetSceneRendererCommand *m_SetRenderTargetRendererCommand;
 public:
-	CUnsetRenderTargetSceneRendererCommand(CSetRenderTargetSceneRendererCommand
-	*SetRenderTargetRendererCommand, CXMLTreeNode &atts);
-	void Execute(CGraphicsManager &RM);
+    CUnsetRenderTargetSceneRendererCommand(CSetRenderTargetSceneRendererCommand
+                                           *SetRenderTargetRendererCommand, CXMLTreeNode &atts);
+    void Execute(CGraphicsManager &RM);
 };
 
 #endif

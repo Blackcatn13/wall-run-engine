@@ -9,10 +9,10 @@
 class CDrawQuadRendererCommand : public CStagedTexturedRendererCommand
 {
 protected:
-	CColor m_Color;
+    CColor m_Color;
 public:
-	CDrawQuadRendererCommand(CXMLTreeNode &atts);
-	void Execute(CGraphicsManager &RM);
+    CDrawQuadRendererCommand(CXMLTreeNode &atts);
+    void Execute(CGraphicsManager &RM);
 };
 
 //explicación pagina 22:: Esta clase nos permitirá renderizar un cuadro en 2D según un color. El código

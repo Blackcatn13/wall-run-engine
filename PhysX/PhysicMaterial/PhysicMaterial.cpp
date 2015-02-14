@@ -16,13 +16,13 @@ CPhysicMaterial::~CPhysicMaterial(void)
 
 void CPhysicMaterial::NewMaterial(float rest, float stfric, float dynfric)
 {
-	m_Desc = new NxMaterialDesc();
-	m_Desc->restitution = rest;
-	m_Desc->dynamicFriction = dynfric;
-	m_Desc->staticFriction = stfric;
+    m_Desc = new NxMaterialDesc();
+    m_Desc->restitution = rest;
+    m_Desc->dynamicFriction = dynfric;
+    m_Desc->staticFriction = stfric;
 }
 
 int CPhysicMaterial::getMaterialID()
 {
-	return m_Mat->getMaterialIndex();
+    return m_Mat->getMaterialIndex();
 }

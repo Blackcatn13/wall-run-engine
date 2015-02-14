@@ -14,15 +14,15 @@
 class CPhysicASELoader
 {
 public:
-	static bool		ReadMeshFromASE			(	std::string fileName, std::vector<Vect3f>&vertices, std::vector<uint32>& faces );
+    static bool		ReadMeshFromASE			(	std::string fileName, std::vector<Vect3f>&vertices, std::vector<uint32>& faces );
 
 private:
-	//---------PARA PARSEAR UN ASE-------------
-	static void		ReadMeshFromASE_aux	(	FILE* f, std::vector<Vect3f>&vertices, std::vector<uint32>& faces );
-	static void		ReadVertices				( FILE* f, std::vector<Vect3f>& vertices );
-	static void		ReadFaces						( FILE* f, std::vector<uint32>& faces );
-	static char*	TrimFront						( char* c );
-	//-------------------------------------------
+    //---------PARA PARSEAR UN ASE-------------
+    static void		ReadMeshFromASE_aux	(	FILE* f, std::vector<Vect3f>&vertices, std::vector<uint32>& faces );
+    static void		ReadVertices				( FILE* f, std::vector<Vect3f>& vertices );
+    static void		ReadFaces						( FILE* f, std::vector<uint32>& faces );
+    static char*	TrimFront						( char* c );
+    //-------------------------------------------
 };
 
 #endif //INC_PHYSIC_ASE_LOADER_H

@@ -11,11 +11,11 @@ class CXMLTreeNode;
 class CBossEnemy : public CEnemy
 {
 public:
-	CBossEnemy(CXMLTreeNode &info1);
-	~CBossEnemy();
-	virtual void Init();
-	virtual void Update(float elapsedTime);
-	virtual void Render();
+    CBossEnemy(CXMLTreeNode &info1);
+    ~CBossEnemy();
+    virtual void Init();
+    virtual void Update(float elapsedTime);
+    virtual void Render();
 };
 
 #endif

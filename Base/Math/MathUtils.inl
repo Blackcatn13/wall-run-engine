@@ -7,9 +7,9 @@
 // NO PONER INCLUDES
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// @brief Compara los valores de 2 numeros usando un epsilon y nos devuelve la relacion 
+/// @brief Compara los valores de 2 numeros usando un epsilon y nos devuelve la relacion
 ///        del primero respecto al segundo. 'a' sera igual a 'b' si:
-/// \verbatim  
+/// \verbatim
 ///                a - Epsilon < b < a + Epsilon
 ///
 ///     -------------|-----------O--X--------|------------
@@ -28,20 +28,17 @@
 template<typename TA, typename TB>
 inline int Compare( const TA& a, const TB& b, const TA epsilon)
 {
-  if ( a >= b )
-  {
-    if ((a-epsilon)>b)
-      return 1; // es mayor
-    else
-      return 0; // es igual
-  }
-  else
-  {
-    if ((b-epsilon)>a)
-      return -1; // es menor
-    else
-      return 0; // es igual
-  }
+    if ( a >= b ) {
+        if ((a - epsilon) > b)
+            return 1; // es mayor
+        else
+            return 0; // es igual
+    } else {
+        if ((b - epsilon) > a)
+            return -1; // es menor
+        else
+            return 0; // es igual
+    }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -51,7 +48,7 @@ inline int Compare( const TA& a, const TB& b, const TA epsilon)
 template<typename T>
 inline bool EqualEpsilon (const T a, const T b, const T epsilon)
 {
-  return ((a > b-epsilon) && (a < b+epsilon));
+    return ((a > b - epsilon) && (a < b + epsilon));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -60,7 +57,7 @@ inline bool EqualEpsilon (const T a, const T b, const T epsilon)
 template<typename T>
 inline bool ZeroEpsilon (const T a, const T epsilon)
 {
-  return ((a > -epsilon) && (a < epsilon));
+    return ((a > -epsilon) && (a < epsilon));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -69,8 +66,8 @@ inline bool ZeroEpsilon (const T a, const T epsilon)
 template<typename T>
 inline bool EqualRelatEpsilon (const T a, const T b, const T epsilon)
 {
-  T epsilon_rel = epsilon * (a + b) * Half<T>();
-  return ((a > b-epsilon_rel) && (a < b+epsilon_rel));
+    T epsilon_rel = epsilon * (a + b) * Half<T>();
+    return ((a > b - epsilon_rel) && (a < b + epsilon_rel));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -79,8 +76,8 @@ inline bool EqualRelatEpsilon (const T a, const T b, const T epsilon)
 template<typename T>
 inline bool ZeroRelatEpsilon (const T a, const T epsilon)
 {
-  T epsilon_rel = epsilon * a;
-  return ((a > -epsilon_rel) && (a < epsilon_rel));
+    T epsilon_rel = epsilon * a;
+    return ((a > -epsilon_rel) && (a < epsilon_rel));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -89,7 +86,7 @@ inline bool ZeroRelatEpsilon (const T a, const T epsilon)
 template<typename T>
 inline T PiTimes (T _times)
 {
-  return ((T)DOUBLE_PI_VALUE)*_times;
+    return ((T)DOUBLE_PI_VALUE) * _times;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -97,7 +94,7 @@ inline T PiTimes (T _times)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename T> inline T Deg2Rad (T deg)
 {
-  return ( deg * PiTimes((T)1) ) * (T)(1.0/180.0);
+    return ( deg * PiTimes((T)1) ) * (T)(1.0 / 180.0);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -106,7 +103,7 @@ template<typename T> inline T Deg2Rad (T deg)
 template<typename T>
 inline T Rad2Deg( T rad )
 {
-  return ((rad * (T)180.0) / PiTimes((T)1));
+    return ((rad * (T)180.0) / PiTimes((T)1));
 }
 
 
@@ -115,8 +112,7 @@ inline T Rad2Deg( T rad )
 //////////////////////////////////////////////////////////////////////////
 void CanonizeAngle (float& fAngle)
 {
-  fAngle = fmod (fAngle, e2PIf);
-
-  if (fAngle >  ePIf) fAngle -= e2PIf;
-  if (fAngle < -ePIf) fAngle += e2PIf;
+    fAngle = fmod (fAngle, e2PIf);
+    if (fAngle >  ePIf) fAngle -= e2PIf;
+    if (fAngle < -ePIf) fAngle += e2PIf;
 }

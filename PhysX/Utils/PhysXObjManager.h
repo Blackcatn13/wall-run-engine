@@ -12,15 +12,15 @@
 class CPhysXObjManager : public CMapManager<TPhysXObj>
 {
 private:
-	std::string		m_Filename;
+    std::string		m_Filename;
 
 public:
-	CPhysXObjManager();
-	virtual ~CPhysXObjManager();
-	
-	bool			Load					(const std::string& filename);
-	bool			Reload					();
-	void			CleanUp					();
+    CPhysXObjManager();
+    virtual ~CPhysXObjManager();
+
+    bool			Load					(const std::string& filename);
+    bool			Reload					();
+    void			CleanUp					();
 };
 
 #endif

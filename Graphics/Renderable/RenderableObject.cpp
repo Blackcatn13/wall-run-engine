@@ -3,7 +3,7 @@
 
 CRenderableObject::CRenderableObject()
 {
-	m_Printable = true;
+    m_Printable = true;
 }
 
 

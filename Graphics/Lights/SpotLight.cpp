@@ -1,5 +1,5 @@
 #include "Lights\SpotLight.h"
 
-CSpotLight::CSpotLight(){}
+CSpotLight::CSpotLight() {}
 
 

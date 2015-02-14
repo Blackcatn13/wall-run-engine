@@ -18,15 +18,15 @@ bool CActionToInput::DoAction(const std::string& action_name)
             switch (aux[i].EventType) {
             case EVENT_DOWN:
                 action &= m_InputManager->IsDown(aux[i].deviceType, aux[i].Code);
-				if(!action) return false;
+                if (!action) return false;
                 break;
             case EVENT_DOWN_UP:
                 action &= m_InputManager->IsDownUp(aux[i].deviceType, aux[i].Code);
-				if(!action) return false;
+                if (!action) return false;
                 break;
             case EVENT_UP_DOWN:
                 action &= m_InputManager->IsUpDown(aux[i].deviceType, aux[i].Code);
-				if(!action) return false;
+                if (!action) return false;
                 break;
             case EVENT_NOTHING:
                 return false;
@@ -48,17 +48,17 @@ bool CActionToInput::DoAction(const std::string& action_name, float &amount)
             case AXIS_MOUSE_X:
                 amount = m_InputManager->GetMouseDelta().x;
                 action &= amount != 0;
-				if(!action) return false;
+                if (!action) return false;
                 break;
             case AXIS_MOUSE_Y:
                 amount = m_InputManager->GetMouseDelta().y;
                 action &= amount != 0;
-				if(!action) return false;
+                if (!action) return false;
                 break;
             case AXIS_MOUSE_Z:
                 amount = m_InputManager->GetMouseDelta().z;
                 action &= amount != 0 ;
-				if(!action) return false;
+                if (!action) return false;
                 break;
             case AXIS_LEFT_THUMB_X:
             case AXIS_LEFT_THUMB_Y:
@@ -67,23 +67,23 @@ bool CActionToInput::DoAction(const std::string& action_name, float &amount)
             case AXIS_DELTA_TRIGGER_RIGHT:
             case AXIS_DELTA_TRIGGER_LEFT:
             case AXIS_NOTHING:
-				break;
+                break;
             }
-			switch (aux[i].EventType) {
+            switch (aux[i].EventType) {
             case EVENT_DOWN:
                 action &= m_InputManager->IsDown(aux[i].deviceType, aux[i].Code);
-				if(!action) return false;
+                if (!action) return false;
                 break;
             case EVENT_DOWN_UP:
                 action &= m_InputManager->IsDownUp(aux[i].deviceType, aux[i].Code);
-				if(!action) return false;
+                if (!action) return false;
                 break;
             case EVENT_UP_DOWN:
                 action &= m_InputManager->IsUpDown(aux[i].deviceType, aux[i].Code);
-				if(!action) return false;
+                if (!action) return false;
                 break;
             case EVENT_NOTHING:
-				break;
+                break;
             }
         }
         return action;
@@ -93,12 +93,12 @@ bool CActionToInput::DoAction(const std::string& action_name, float &amount)
 
 bool CActionToInput::DoActionFromLua(const std::string action_name)
 {
-	return DoAction(action_name);
+    return DoAction(action_name);
 }
 
 bool CActionToInput::DoActionFromLua(const std::string action_name,  float amount)
 {
-	return DoAction(action_name, amount);
+    return DoAction(action_name, amount);
 }
 
 bool CActionToInput::ReloadXML()
@@ -124,7 +124,7 @@ bool CActionToInput::LoadXML (const std::string& xmlFile)
                 std::string nameAction = m(i).GetPszISOProperty("name", "Action" + counter++);
                 int actionsCount = m(i).GetNumChildren();
                 m_String2Actions[nameAction] = VecInfoInputs();
-				m_String2Actions[nameAction].clear();
+                m_String2Actions[nameAction].clear();
                 for (int j = 0; j < actionsCount; ++j) {
                     std::string nameDevice = m(i)(j).GetPszISOProperty("deviceType", "IDV_NOTHING");
                     std::string nameEvent = m(i)(j).GetPszISOProperty("EventType", "EVENT_NOTHING");

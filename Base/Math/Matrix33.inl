@@ -6,7 +6,7 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Constructor versión 1
-/// Construcción sin inicialización de parámetros  
+/// Construcción sin inicialización de parámetros
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename T>
 inline Matrix33<T>::Matrix33()
@@ -19,9 +19,9 @@ inline Matrix33<T>::Matrix33()
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename T>
 inline Matrix33<T>::Matrix33 (const Matrix33<T>& otra) :
-  m00(otra.m00), m10(otra.m10), m20(otra.m20),
-  m01(otra.m01), m11(otra.m11), m21(otra.m21),
-  m02(otra.m02), m12(otra.m12), m22(otra.m22)
+    m00(otra.m00), m10(otra.m10), m20(otra.m20),
+    m01(otra.m01), m11(otra.m11), m21(otra.m21),
+    m02(otra.m02), m12(otra.m12), m22(otra.m22)
 {
 }
 
@@ -33,9 +33,9 @@ template<typename T>
 inline Matrix33<T>::Matrix33 (const T _m00, const T _m01, const T _m02,
                               const T _m10, const T _m11, const T _m12,
                               const T _m20, const T _m21, const T _m22) :
-  m00(_m00), m10(_m10), m20(_m20),
-  m01(_m01), m11(_m11), m21(_m21),
-  m02(_m02), m12(_m12), m22(_m22)
+    m00(_m00), m10(_m10), m20(_m20),
+    m01(_m01), m11(_m11), m21(_m21),
+    m02(_m02), m12(_m12), m22(_m22)
 {
 }
 
@@ -48,7 +48,7 @@ inline Matrix33<T>::Matrix33 (const Vector3<T>& ejeX,
                               const Vector3<T>& ejeY,
                               const Vector3<T>& ejeZ)
 {
-  SetFromBasis(ejeX, ejeY, ejeZ);
+    SetFromBasis(ejeX, ejeY, ejeZ);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -58,25 +58,29 @@ inline Matrix33<T>::Matrix33 (const Vector3<T>& ejeX,
 template<typename T>
 inline Matrix33<T>::Matrix33 (const T angleY, const T angleX, const T angleZ)
 {
-  SetFromAnglesYXZ(angleY, angleX, angleZ); 
+    SetFromAnglesYXZ(angleY, angleX, angleZ);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Elimina la rotación de la matriz, considerándola como una transformación
 /// afín ROTACION + ESCALADO. El escalado se mantiene invariable
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename T>
 inline Matrix33<T>& Matrix33<T>::ResetRotation ()
 {
-  T escale_x = GetVectorBasisLength(0);
-  T escale_y = GetVectorBasisLength(1);
-  T escale_z = GetVectorBasisLength(2);
-
-  m00 = escale_x;   m01 = Zero<T>();  m02 = Zero<T>();
-  m10 = Zero<T>();  m11 = escale_y;   m12 = Zero<T>();
-  m20 = Zero<T>();  m21 = Zero<T>();  m22 = escale_z;
-
-  return (*this);
+    T escale_x = GetVectorBasisLength(0);
+    T escale_y = GetVectorBasisLength(1);
+    T escale_z = GetVectorBasisLength(2);
+    m00 = escale_x;
+    m01 = Zero<T>();
+    m02 = Zero<T>();
+    m10 = Zero<T>();
+    m11 = escale_y;
+    m12 = Zero<T>();
+    m20 = Zero<T>();
+    m21 = Zero<T>();
+    m22 = escale_z;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -87,20 +91,24 @@ inline Matrix33<T>& Matrix33<T>::ResetRotation ()
 template<typename T>
 inline Matrix33<T>& Matrix33<T>::ResetScale ()
 {
-	T escale_x = 1.0f / GetVectorBasisLength(0);
-	T escale_y = 1.0f / GetVectorBasisLength(1);
-	T escale_z = 1.0f / GetVectorBasisLength(2);
-
-	m00 *= escale_x;  m01 *= escale_y;  m02 *= escale_z;
-	m10 *= escale_x;  m11 *= escale_y;  m12 *= escale_z;
-	m20 *= escale_x;  m21 *= escale_y;  m22 *= escale_z;
-
-  return (*this);
+    T escale_x = 1.0f / GetVectorBasisLength(0);
+    T escale_y = 1.0f / GetVectorBasisLength(1);
+    T escale_z = 1.0f / GetVectorBasisLength(2);
+    m00 *= escale_x;
+    m01 *= escale_y;
+    m02 *= escale_z;
+    m10 *= escale_x;
+    m11 *= escale_y;
+    m12 *= escale_z;
+    m20 *= escale_x;
+    m21 *= escale_y;
+    m22 *= escale_z;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Cambia los datos de la matriz por los de una 'matriz identidad'
-/// \verbatim  
+/// \verbatim
 ///   | 1 0 0 |
 ///   | 0 1 0 |
 ///   | 0 0 1 |
@@ -109,11 +117,16 @@ inline Matrix33<T>& Matrix33<T>::ResetScale ()
 template<typename T>
 inline Matrix33<T>& Matrix33<T>::SetIdentity ()
 {
-  m00 = One<T>();   m10 = Zero<T>();  m20 = Zero<T>();
-  m01 = Zero<T>();  m11 = One<T>();   m21 = Zero<T>();
-  m02 = Zero<T>();  m12 = Zero<T>();  m22 = One<T>();
-
-  return (*this);
+    m00 = One<T>();
+    m10 = Zero<T>();
+    m20 = Zero<T>();
+    m01 = Zero<T>();
+    m11 = One<T>();
+    m21 = Zero<T>();
+    m02 = Zero<T>();
+    m12 = Zero<T>();
+    m22 = One<T>();
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -122,12 +135,10 @@ inline Matrix33<T>& Matrix33<T>::SetIdentity ()
 template<typename T>
 inline Matrix33<T>& Matrix33<T>::SetZero ()
 {
-  for(int i=0; i<9; i++)
-  {
-    ((T*)this)[i] = Zero<T>();
-  }
-
-  return (*this);
+    for (int i = 0; i < 9; i++) {
+        ((T*)this)[i] = Zero<T>();
+    }
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -144,14 +155,19 @@ inline Matrix33<T>& Matrix33<T>::SetZero ()
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename T>
 inline Matrix33<T>& Matrix33<T>::SetFromBasis (const Vector3<T>& ejeX,
-																							 const Vector3<T>& ejeY,
-																							 const Vector3<T>& ejeZ)
+        const Vector3<T>& ejeY,
+        const Vector3<T>& ejeZ)
 {
-	m00 = ejeX.x;  m01 = ejeY.x;  m02 = ejeZ.x;
-	m10 = ejeX.y;  m11 = ejeY.y;  m12 = ejeZ.y;
-	m20 = ejeX.z;  m21 = ejeY.z;  m22 = ejeZ.z;
-
-  return (*this);
+    m00 = ejeX.x;
+    m01 = ejeY.x;
+    m02 = ejeZ.x;
+    m10 = ejeX.y;
+    m11 = ejeY.y;
+    m12 = ejeZ.y;
+    m20 = ejeX.z;
+    m21 = ejeY.z;
+    m22 = ejeZ.z;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -170,15 +186,19 @@ inline Matrix33<T>& Matrix33<T>::SetFromBasis (const Vector3<T>& ejeX,
 template<typename T>
 inline Matrix33<T>& Matrix33<T>::SetFromAngleX (const T angleX)
 {
-  T sina;
-  T cosa;
-  mathUtils::SinCos(angleX, sina, cosa);
-
-  m00 = One<T>();   m01 = Zero<T>();  m02 = Zero<T>();
-  m10 = Zero<T>();  m11 = cosa;       m12 = -sina;
-  m20 = Zero<T>();  m21 = sina;       m22 = cosa;
-
-  return (*this);
+    T sina;
+    T cosa;
+    mathUtils::SinCos(angleX, sina, cosa);
+    m00 = One<T>();
+    m01 = Zero<T>();
+    m02 = Zero<T>();
+    m10 = Zero<T>();
+    m11 = cosa;
+    m12 = -sina;
+    m20 = Zero<T>();
+    m21 = sina;
+    m22 = cosa;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -197,15 +217,19 @@ inline Matrix33<T>& Matrix33<T>::SetFromAngleX (const T angleX)
 template<typename T>
 inline Matrix33<T>& Matrix33<T>::SetFromAngleY (const T angleY)
 {
-  T sina;
-  T cosa;
-  mathUtils::SinCos(angleY, sina, cosa);
-
-  m00 = cosa;       m01 = Zero<T>();  m02 = sina;
-  m10 = Zero<T>();  m11 = One<T>();   m12 = Zero<T>();
-  m20 = -sina;      m21 = Zero<T>();  m22 = cosa;
-
-  return (*this);
+    T sina;
+    T cosa;
+    mathUtils::SinCos(angleY, sina, cosa);
+    m00 = cosa;
+    m01 = Zero<T>();
+    m02 = sina;
+    m10 = Zero<T>();
+    m11 = One<T>();
+    m12 = Zero<T>();
+    m20 = -sina;
+    m21 = Zero<T>();
+    m22 = cosa;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -224,15 +248,19 @@ inline Matrix33<T>& Matrix33<T>::SetFromAngleY (const T angleY)
 template<typename T>
 inline Matrix33<T>& Matrix33<T>::SetFromAngleZ (const T angleZ)
 {
-  T sina;
-  T cosa;
-  mathUtils::SinCos(angleZ, sina, cosa);
-
-  m00 = cosa;       m01 = -sina;      m02 = Zero<T>();
-  m10 = sina;       m11 = cosa;       m12 = Zero<T>();
-  m20 = Zero<T>();  m21 = Zero<T>();  m22 = One<T>();
-
-  return (*this);
+    T sina;
+    T cosa;
+    mathUtils::SinCos(angleZ, sina, cosa);
+    m00 = cosa;
+    m01 = -sina;
+    m02 = Zero<T>();
+    m10 = sina;
+    m11 = cosa;
+    m12 = Zero<T>();
+    m20 = Zero<T>();
+    m21 = Zero<T>();
+    m22 = One<T>();
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -254,15 +282,19 @@ inline Matrix33<T>& Matrix33<T>::SetFromAngleZ (const T angleZ)
 template<typename T>
 inline Matrix33<T>& Matrix33<T>::SetFromAnglesXZ (const T angleX, const T angleZ)
 {
-  T sinx, cosx, sinz, cosz;
-  mathUtils::SinCos(angleX, sinx, cosx);
-  mathUtils::SinCos(angleZ, sinz, cosz);
-
-  m00 = cosz;         m01 = -sinz * cosx;   m02 = sinz * sinx;
-  m10 = sinz;         m11 = cosz * cosx;    m12 = -cosz * sinx;
-  m20 = Zero<T>();    m21 = sinx;           m22 = cosx;
-
-  return (*this);
+    T sinx, cosx, sinz, cosz;
+    mathUtils::SinCos(angleX, sinx, cosx);
+    mathUtils::SinCos(angleZ, sinz, cosz);
+    m00 = cosz;
+    m01 = -sinz * cosx;
+    m02 = sinz * sinx;
+    m10 = sinz;
+    m11 = cosz * cosx;
+    m12 = -cosz * sinx;
+    m20 = Zero<T>();
+    m21 = sinx;
+    m22 = cosx;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -282,7 +314,7 @@ inline Matrix33<T>& Matrix33<T>::SetFromAnglesXZ (const T angleX, const T angleZ
 ///   | sen z    cos z    0 | * | 0    cos x   -sen x  | = | sen z     cos z * cos x    -cos z * sen x |
 ///   | 0        0        1 |   | 0    sen x    cos x  |   |  0        sen x             cos x         |
 ///
-///   | cos z  -sen z * cos x   sen z * sen x |   |  cos y    0     sin y  |   | cz*cy - sz*sx*sy    -sz*cx    cz*sy + sz*sx*cy |  
+///   | cos z  -sen z * cos x   sen z * sen x |   |  cos y    0     sin y  |   | cz*cy - sz*sx*sy    -sz*cx    cz*sy + sz*sx*cy |
 ///   | sen z   cos z * cos x  -cos z * sen x | * |  0        1     0      | = | sz*cy + cz*sx*sy     cz*cx    sz*sy - cz*sx*cy |
 ///   |  0      sen x           cos x         |   | -sin y    0     cos y  |   | -cx*sy                sx      cx*cy            |
 /// \endverbatim
@@ -290,16 +322,20 @@ inline Matrix33<T>& Matrix33<T>::SetFromAnglesXZ (const T angleX, const T angleZ
 template<typename T>
 inline Matrix33<T>& Matrix33<T>::SetFromAnglesYXZ (const T angleY, const T angleX, const T angleZ)
 {
-  T sx, cx, sy, cy, sz, cz;
-  mathUtils::SinCos(angleX, sx, cx);
-  mathUtils::SinCos(angleY, sy, cy);
-  mathUtils::SinCos(angleZ, sz, cz);
-
-  m00 = cz*cy - sz*sx*sy;    m01 = -sz*cx;    m02 = cz*sy + sz*sx*cy;
-  m10 = sz*cy + cz*sx*sy;    m11 = cz*cx;     m12 = sz*sy - cz*sx*cy;
-  m20 = -cx*sy;              m21 = sx;        m22 = cx*cy;
-
-  return (*this);
+    T sx, cx, sy, cy, sz, cz;
+    mathUtils::SinCos(angleX, sx, cx);
+    mathUtils::SinCos(angleY, sy, cy);
+    mathUtils::SinCos(angleZ, sz, cz);
+    m00 = cz * cy - sz * sx * sy;
+    m01 = -sz * cx;
+    m02 = cz * sy + sz * sx * cy;
+    m10 = sz * cy + cz * sx * sy;
+    m11 = cz * cx;
+    m12 = sz * sy - cz * sx * cy;
+    m20 = -cx * sy;
+    m21 = sx;
+    m22 = cx * cy;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -315,11 +351,16 @@ inline Matrix33<T>& Matrix33<T>::SetFromAnglesYXZ (const T angleY, const T angle
 template<typename T>
 inline Matrix33<T>& Matrix33<T>::SetFromScale (const T escala_x, const T escala_y, const T escala_z)
 {
-  m00 = escala_x;    m01 = Zero<T>();   m02 = Zero<T>();
-  m10 = Zero<T>();   m11 = escala_y;    m12 = Zero<T>();
-  m20 = Zero<T>();   m21 = Zero<T>();   m22 = escala_z;
-
-  return (*this);
+    m00 = escala_x;
+    m01 = Zero<T>();
+    m02 = Zero<T>();
+    m10 = Zero<T>();
+    m11 = escala_y;
+    m12 = Zero<T>();
+    m20 = Zero<T>();
+    m21 = Zero<T>();
+    m22 = escala_z;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -331,46 +372,32 @@ inline Matrix33<T>& Matrix33<T>::SetFromScale (const T escala_x, const T escala_
 template<typename T>
 inline Matrix33<T>& Matrix33<T>::SetFromLookAt (const Vector3<T>& vPos, const Vector3<T>& vTarget, const Vector3<T>& vUp)
 {
-  Vector3<T> vLookAt_eje_Z = (vTarget - vPos).Normalize();
-
+    Vector3<T> vLookAt_eje_Z = (vTarget - vPos).Normalize();
 #ifdef CHECK_MATH_SINGULARITY_LOOK_AT
-  //--------------------------------------------------------------------<<<
-  // Se comprueba cuando el vector 'look_at' tiene la misma dirección que el vector 'up'.
-  // En este caso el producto vectorial falla al intentar calcular el vector 'right' ya que da (0,0,0).
-  // La solución es desviar un poco el vector 'up' al detectar la condición.
-  if(vUP.IsNotEqualEpsilon(v3fY))
-  {
-    if(vLookAt_eje_Z.IsEqualEpsilon(vUp, (T)0.0001))
-    {
-      vUP.y -= (T)0.1;
+    //--------------------------------------------------------------------<<<
+    // Se comprueba cuando el vector 'look_at' tiene la misma dirección que el vector 'up'.
+    // En este caso el producto vectorial falla al intentar calcular el vector 'right' ya que da (0,0,0).
+    // La solución es desviar un poco el vector 'up' al detectar la condición.
+    if (vUP.IsNotEqualEpsilon(v3fY)) {
+        if (vLookAt_eje_Z.IsEqualEpsilon(vUp, (T)0.0001)) {
+            vUP.y -= (T)0.1;
+        } else if (vLookAt_eje_Z.IsEqualEpsilon(-vUp, (T)0.0001)) {
+            vUP.y += (T)0.1;
+        }
+    } else {
+        if (vLookAt_eje_Z.IsEqualEpsilon(vUp, (T)0.0001)) {
+            vUP.z += (T)0.1;
+        } else if (vLookAt_eje_Z.IsEqualEpsilon(-vUp, (T)0.0001)) {
+            vUP.z -= (T)0.1;
+        }
     }
-    else
-    if(vLookAt_eje_Z.IsEqualEpsilon(-vUp, (T)0.0001))
-    {
-      vUP.y += (T)0.1;
-    }
-  }
-  else
-  {
-    if(vLookAt_eje_Z.IsEqualEpsilon(vUp, (T)0.0001))
-    {
-      vUP.z += (T)0.1;
-    }
-    else
-    if(vLookAt_eje_Z.IsEqualEpsilon(-vUp, (T)0.0001))
-    {
-      vUP.z -= (T)0.1;
-    }
-  }
-  //-------------------------------------------------------------------->>>
+    //-------------------------------------------------------------------->>>
 #endif
-
-  Vector3<T> vRight_eje_X = vUp ^ vLookAt_eje_Z;
-  vRight_eje_X.Normalize();
-  Vector3<T> vUP_eje_Y = vLookAt_eje_Z ^ vRight_eje_X;
-  
-  SetFromBasis(vRight_eje_X, vUP_eje_Y, vLookAt_eje_Z);
-  return (*this);
+    Vector3<T> vRight_eje_X = vUp ^ vLookAt_eje_Z;
+    vRight_eje_X.Normalize();
+    Vector3<T> vUP_eje_Y = vLookAt_eje_Z ^ vRight_eje_X;
+    SetFromBasis(vRight_eje_X, vUP_eje_Y, vLookAt_eje_Z);
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -384,7 +411,7 @@ inline Matrix33<T>& Matrix33<T>::SetFromLookAt (const Vector3<T>& vPos, const Ve
 template<typename T>
 inline Matrix33<T>& Matrix33<T>::SetFromLookAt (const Vector3<T>& vPos, const Vector3<T>& vTarget)
 {
-  return SetFromLookAt(vPos, vTarget, v3fY);
+    return SetFromLookAt(vPos, vTarget, v3fY);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -414,32 +441,27 @@ inline Matrix33<T>& Matrix33<T>::SetFromQuat (const Quatn<T>& quat)
 template<typename T>
 inline Matrix33<T>& Matrix33<T>::SetRotByAngleX (const T angleX)
 {
-  ResetRotation();
-
-	Vector2<T> v;
-
-	// eje X
-	v.x = m10;
-	v.y = m20;
-	v.Rotate(angleX);
-	m10 = v.x;
-	m20 = v.y;
-
-	// eje Y
-	v.x = m11;
-	v.y = m21;
-	v.Rotate(angleX);
-	m11 = v.x;
-	m21 = v.y;
-
-	// eje Z
-	v.x = m12;
-	v.y = m22;
-	v.Rotate(angleX);
-	m12 = v.x;
-	m22 = v.y;
-
-  return (*this);
+    ResetRotation();
+    Vector2<T> v;
+    // eje X
+    v.x = m10;
+    v.y = m20;
+    v.Rotate(angleX);
+    m10 = v.x;
+    m20 = v.y;
+    // eje Y
+    v.x = m11;
+    v.y = m21;
+    v.Rotate(angleX);
+    m11 = v.x;
+    m21 = v.y;
+    // eje Z
+    v.x = m12;
+    v.y = m22;
+    v.Rotate(angleX);
+    m12 = v.x;
+    m22 = v.y;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -449,32 +471,27 @@ inline Matrix33<T>& Matrix33<T>::SetRotByAngleX (const T angleX)
 template<typename T>
 inline Matrix33<T>& Matrix33<T>::SetRotByAngleY (const T angleY)
 {
-  ResetRotation();
-
-	Vector2<T> v;
-
-	// eje X
-	v.x = m20;
-	v.y = m00;
-	v.Rotate(angleY);
-	m20 = v.x;
-	m00 = v.y;
-
-	// eje Y
-	v.x = m21;
-	v.y = m01;
-	v.Rotate(angleY);
-	m21 = v.x;
-	m01 = v.y;
-
-	// eje Z
-	v.x = m22;
-	v.y = m02;
-	v.Rotate(angleY);
-	m22 = v.x;
-	m02 = v.y;
-
-  return (*this);
+    ResetRotation();
+    Vector2<T> v;
+    // eje X
+    v.x = m20;
+    v.y = m00;
+    v.Rotate(angleY);
+    m20 = v.x;
+    m00 = v.y;
+    // eje Y
+    v.x = m21;
+    v.y = m01;
+    v.Rotate(angleY);
+    m21 = v.x;
+    m01 = v.y;
+    // eje Z
+    v.x = m22;
+    v.y = m02;
+    v.Rotate(angleY);
+    m22 = v.x;
+    m02 = v.y;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -484,32 +501,27 @@ inline Matrix33<T>& Matrix33<T>::SetRotByAngleY (const T angleY)
 template<typename T>
 inline Matrix33<T>& Matrix33<T>::SetRotByAngleZ (const T angleZ)
 {
-  ResetRotation();
-
-	Vector2<T> v;
-
-	// eje X
-	v.x = m00;
-	v.y = m10;
-	v.Rotate(angleZ);
-	m00 = v.x;
-	m10 = v.y;
-
-	// eje Y
-	v.x = m01;
-	v.y = m11;
-	v.Rotate(angleZ);
-	m01 = v.x;
-	m11 = v.y;
-
-	// eje Z
-	v.x = m02;
-	v.y = m12;
-	v.Rotate(angleZ);
-	m02 = v.x;
-	m12 = v.y;
-
-  return (*this);
+    ResetRotation();
+    Vector2<T> v;
+    // eje X
+    v.x = m00;
+    v.y = m10;
+    v.Rotate(angleZ);
+    m00 = v.x;
+    m10 = v.y;
+    // eje Y
+    v.x = m01;
+    v.y = m11;
+    v.Rotate(angleZ);
+    m01 = v.x;
+    m11 = v.y;
+    // eje Z
+    v.x = m02;
+    v.y = m12;
+    v.Rotate(angleZ);
+    m02 = v.x;
+    m12 = v.y;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -519,61 +531,51 @@ inline Matrix33<T>& Matrix33<T>::SetRotByAngleZ (const T angleZ)
 template<typename T>
 inline Matrix33<T>& Matrix33<T>::SetRotByAnglesXZ (const T angleX, const T angleZ)
 {
-  ResetRotation();
-
-	Vector2<T> v;
-
-	////////////
-	// RotX
-	////////////
-
-	// eje X
-	v.x = m10;
-	v.y = m20;
-	v.Rotate(angleX);
-	m10 = v.x;
-	m20 = v.y;
-
-	// eje Y
-	v.x = m11;
-	v.y = m21;
-	v.Rotate(angleX);
-	m11 = v.x;
-	m21 = v.y;
-
-	// eje Z
-	v.x = m12;
-	v.y = m22;
-	v.Rotate(angleX);
-	m12 = v.x;
-	m22 = v.y;
-
-	////////////
-	// RotZ
-	////////////
-
-	// eje X
-	v.x = m00;
-	v.y = m10;
-	v.Rotate(angleZ);
-	m00 = v.x;
-	m10 = v.y;
-
-	// eje Y
-	v.x = m01;
-	v.y = m11;
-	v.Rotate(angleZ);
-	m01 = v.x;
-	m11 = v.y;
-
-	// eje Z
-	v.x = m02;
-	v.y = m12;
-	v.Rotate(angleZ);
-	m02 = v.x;
-	m12 = v.y;
-
-  return (*this);
+    ResetRotation();
+    Vector2<T> v;
+    ////////////
+    // RotX
+    ////////////
+    // eje X
+    v.x = m10;
+    v.y = m20;
+    v.Rotate(angleX);
+    m10 = v.x;
+    m20 = v.y;
+    // eje Y
+    v.x = m11;
+    v.y = m21;
+    v.Rotate(angleX);
+    m11 = v.x;
+    m21 = v.y;
+    // eje Z
+    v.x = m12;
+    v.y = m22;
+    v.Rotate(angleX);
+    m12 = v.x;
+    m22 = v.y;
+    ////////////
+    // RotZ
+    ////////////
+    // eje X
+    v.x = m00;
+    v.y = m10;
+    v.Rotate(angleZ);
+    m00 = v.x;
+    m10 = v.y;
+    // eje Y
+    v.x = m01;
+    v.y = m11;
+    v.Rotate(angleZ);
+    m01 = v.x;
+    m11 = v.y;
+    // eje Z
+    v.x = m02;
+    v.y = m12;
+    v.Rotate(angleZ);
+    m02 = v.x;
+    m12 = v.y;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -583,86 +585,72 @@ inline Matrix33<T>& Matrix33<T>::SetRotByAnglesXZ (const T angleX, const T angle
 template<typename T>
 inline Matrix33<T>& Matrix33<T>::SetRotByAnglesYXZ (const T angleY, const T angleX, const T angleZ)
 {
-  ResetRotation();
-
-	Vector2<T> v;
-
-	////////////
-	// RotY
-	////////////
-
-	// eje X
-	v.x = m20;
-	v.y = m00;
-	v.Rotate(angleY);
-	m20 = v.x;
-	m00 = v.y;
-
-	// eje Y
-	v.x = m21;
-	v.y = m01;
-	v.Rotate(angleY);
-	m21 = v.x;
-	m01 = v.y;
-
-	// eje Z
-	v.x = m22;
-	v.y = m02;
-	v.Rotate(angleY);
-	m22 = v.x;
-	m02 = v.y;
-
-	////////////
-	// RotX
-	////////////
-
-	// eje X
-	v.x = m10;
-	v.y = m20;
-	v.Rotate(angleX);
-	m10 = v.x;
-	m20 = v.y;
-
-	// eje Y
-	v.x = m11;
-	v.y = m21;
-	v.Rotate(angleX);
-	m11 = v.x;
-	m21 = v.y;
-
-	// eje Z
-	v.x = m12;
-	v.y = m22;
-	v.Rotate(angleX);
-	m12 = v.x;
-	m22 = v.y;
-
-	////////////
-	// RotZ
-	////////////
-
-	// eje X
-	v.x = m00;
-	v.y = m10;
-	v.Rotate(angleZ);
-	m00 = v.x;
-	m10 = v.y;
-
-	// eje Y
-	v.x = m01;
-	v.y = m11;
-	v.Rotate(angleZ);
-	m01 = v.x;
-	m11 = v.y;
-
-	// eje Z
-	v.x = m02;
-	v.y = m12;
-	v.Rotate(angleZ);
-	m02 = v.x;
-	m12 = v.y;
-
-  return (*this);
+    ResetRotation();
+    Vector2<T> v;
+    ////////////
+    // RotY
+    ////////////
+    // eje X
+    v.x = m20;
+    v.y = m00;
+    v.Rotate(angleY);
+    m20 = v.x;
+    m00 = v.y;
+    // eje Y
+    v.x = m21;
+    v.y = m01;
+    v.Rotate(angleY);
+    m21 = v.x;
+    m01 = v.y;
+    // eje Z
+    v.x = m22;
+    v.y = m02;
+    v.Rotate(angleY);
+    m22 = v.x;
+    m02 = v.y;
+    ////////////
+    // RotX
+    ////////////
+    // eje X
+    v.x = m10;
+    v.y = m20;
+    v.Rotate(angleX);
+    m10 = v.x;
+    m20 = v.y;
+    // eje Y
+    v.x = m11;
+    v.y = m21;
+    v.Rotate(angleX);
+    m11 = v.x;
+    m21 = v.y;
+    // eje Z
+    v.x = m12;
+    v.y = m22;
+    v.Rotate(angleX);
+    m12 = v.x;
+    m22 = v.y;
+    ////////////
+    // RotZ
+    ////////////
+    // eje X
+    v.x = m00;
+    v.y = m10;
+    v.Rotate(angleZ);
+    m00 = v.x;
+    m10 = v.y;
+    // eje Y
+    v.x = m01;
+    v.y = m11;
+    v.Rotate(angleZ);
+    m01 = v.x;
+    m11 = v.y;
+    // eje Z
+    v.x = m02;
+    v.y = m12;
+    v.Rotate(angleZ);
+    m02 = v.x;
+    m12 = v.y;
+    return (*this);
 }
 /*
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -693,15 +681,19 @@ inline Matrix34<T>& Matrix33<T>::SetRotByQuat(const Quatn<T>& quat)
 template<typename T>
 inline Matrix33<T>& Matrix33<T>::SetScale (const Matrix33<T>& mat_escala)
 {
-	T scale_x = mat_escala.m00 / GetVectorBasisLength(0);
-	T scale_y = mat_escala.m11 / GetVectorBasisLength(1);
-	T scale_z = mat_escala.m22 / GetVectorBasisLength(2);
-
-	m00 *= scale_x;  m01 *= scale_y;  m02 = *= scale_z;
-	m10 *= scale_x;  m11 *= scale_y;  m12 = *= scale_z;
-	m20 *= scale_x;  m21 *= scale_y;  m22 = *= scale_z;
-
-  return (*this);
+    T scale_x = mat_escala.m00 / GetVectorBasisLength(0);
+    T scale_y = mat_escala.m11 / GetVectorBasisLength(1);
+    T scale_z = mat_escala.m22 / GetVectorBasisLength(2);
+    m00 *= scale_x;
+    m01 *= scale_y;
+    m02 = *= scale_z;
+    m10 *= scale_x;
+    m11 *= scale_y;
+    m12 = *= scale_z;
+    m20 *= scale_x;
+    m21 *= scale_y;
+    m22 = *= scale_z;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -717,15 +709,19 @@ inline Matrix33<T>& Matrix33<T>::SetScale (const Matrix33<T>& mat_escala)
 template<typename T>
 inline Matrix33<T>& Matrix33<T>::SetScale (const Vector3<T>& vect_escala)
 {
-	T scale_x = vect_escala.x / GetVectorBasisLength(0);
-	T scale_y = vect_escala.y / GetVectorBasisLength(1);
-	T scale_z = vect_escala.z / GetVectorBasisLength(2);
-
-	m00 *= scale_x;  m01 *= scale_y;  m02 *= scale_z;
-	m10 *= scale_x;  m11 *= scale_y;  m12 *= scale_z;
-	m20 *= scale_x;  m21 *= scale_y;  m22 *= scale_z;
-
-  return (*this);
+    T scale_x = vect_escala.x / GetVectorBasisLength(0);
+    T scale_y = vect_escala.y / GetVectorBasisLength(1);
+    T scale_z = vect_escala.z / GetVectorBasisLength(2);
+    m00 *= scale_x;
+    m01 *= scale_y;
+    m02 *= scale_z;
+    m10 *= scale_x;
+    m11 *= scale_y;
+    m12 *= scale_z;
+    m20 *= scale_x;
+    m21 *= scale_y;
+    m22 *= scale_z;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -740,15 +736,19 @@ inline Matrix33<T>& Matrix33<T>::SetScale (const Vector3<T>& vect_escala)
 template<typename T>
 inline Matrix33<T>& Matrix33<T>::SetScale (const T escala_x, const T escala_y, const T escala_z)
 {
-	T scale_x = escala_x / GetVectorBasisLength(0);
-	T scale_y = escala_y / GetVectorBasisLength(1);
-	T scale_z = escala_z / GetVectorBasisLength(2);
-
-	m00 *= scale_x;  m01 *= scale_y;  m02 *= scale_z;
-	m10 *= scale_x;  m11 *= scale_y;  m12 *= scale_z;
-	m20 *= scale_x;  m21 *= scale_y;  m22 *= scale_z;
-
-  return (*this);
+    T scale_x = escala_x / GetVectorBasisLength(0);
+    T scale_y = escala_y / GetVectorBasisLength(1);
+    T scale_z = escala_z / GetVectorBasisLength(2);
+    m00 *= scale_x;
+    m01 *= scale_y;
+    m02 *= scale_z;
+    m10 *= scale_x;
+    m11 *= scale_y;
+    m12 *= scale_z;
+    m20 *= scale_x;
+    m21 *= scale_y;
+    m22 *= scale_z;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -758,11 +758,11 @@ template<typename T>
 inline Vector3<T> Matrix33<T>::GetRow (int i) const
 {
 #ifdef ROW_MAJOR_MATRICES
-	return *((Vector3<T>*)this + i);
+    return *((Vector3<T>*)this + i);
 #else
-  return Vector3<T>( ((T*)this)[i],
-                     ((T*)this)[3 + i],
-                     ((T*)this)[6 + i] );
+    return Vector3<T>( ((T*)this)[i],
+                       ((T*)this)[3 + i],
+                       ((T*)this)[6 + i] );
 #endif
 }
 
@@ -773,13 +773,12 @@ template<typename T>
 inline T Matrix33<T>::GetVectorBasisLength (int i) const
 {
 #ifdef ROW_MAJOR_MATRICES
-	return Vector3<T>(((T*)this)[i],
-										((T*)this)[3 + i],
-										((T*)this)[6 + i] ).Length();
+    return Vector3<T>(((T*)this)[i],
+                      ((T*)this)[3 + i],
+                      ((T*)this)[6 + i] ).Length();
 #else
-	return (*((Vector3<T>*)this + i)).Length();
+    return (*((Vector3<T>*)this + i)).Length();
 #endif
-
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -790,11 +789,11 @@ template<typename T>
 inline Vector3<T> Matrix33<T>::GetColum (int i) const
 {
 #ifdef ROW_MAJOR_MATRICES
-	return Vector3<T>(((T*)this)[i],
-										((T*)this)[3 + i],
-										((T*)this)[6 + i] );
+    return Vector3<T>(((T*)this)[i],
+                      ((T*)this)[3 + i],
+                      ((T*)this)[6 + i] );
 #else
-  return *((Vector3<T>*)this + i);
+    return *((Vector3<T>*)this + i);
 #endif
 }
 
@@ -806,7 +805,7 @@ inline Vector3<T> Matrix33<T>::GetColum (int i) const
 template<typename T>
 inline Vector3<T> Matrix33<T>::GetVectorBasis (int i) const
 {
-  return GetColum(i);
+    return GetColum(i);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -819,9 +818,9 @@ inline void Matrix33<T>::GetBasis (Vector3<T>& vBasisX,
                                    Vector3<T>& vBasisY,
                                    Vector3<T>& vBasisZ) const
 {
-  vBasisX = GetColum(0);
-  vBasisY = GetColum(1);
-  vBasisZ = GetColum(2);
+    vBasisX = GetColum(0);
+    vBasisY = GetColum(1);
+    vBasisZ = GetColum(2);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -832,9 +831,9 @@ inline void Matrix33<T>::GetBasis (Vector3<T>& vBasisX,
 template<typename T>
 inline Matrix33<T> Matrix33<T>::Get33RotationNormalized () const
 {
-  return Matrix33<T>(GetVectorBasis(0).GetNormalized(),
-                     GetVectorBasis(1).GetNormalized(),
-                     GetVectorBasis(2).GetNormalized());
+    return Matrix33<T>(GetVectorBasis(0).GetNormalized(),
+                       GetVectorBasis(1).GetNormalized(),
+                       GetVectorBasis(2).GetNormalized());
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -846,7 +845,7 @@ inline Matrix33<T> Matrix33<T>::Get33RotationNormalized () const
 template<typename T>
 inline Matrix33<T> Matrix33<T>::Get33RotationScaled () const
 {
-  return (*this);
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -856,9 +855,9 @@ inline Matrix33<T> Matrix33<T>::Get33RotationScaled () const
 template<typename T>
 inline Matrix33<T> Matrix33<T>::Get33Scale () const
 {
-  return Matrix33<T>(GetVectorBasisLength(0),              0.0          ,            0.0,
-                              0.0              , GetVectorBasisLength(1),            0.0,
-                              0.0              ,              0.0          , GetVectorBasisLength(2));
+    return Matrix33<T>(GetVectorBasisLength(0),              0.0          ,            0.0,
+                       0.0              , GetVectorBasisLength(1),            0.0,
+                       0.0              ,              0.0          , GetVectorBasisLength(2));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -867,9 +866,9 @@ inline Matrix33<T> Matrix33<T>::Get33Scale () const
 template<typename T>
 inline Vector3<T> Matrix33<T>::GetScale() const
 {
-  return Vector3<T>(GetVectorBasisLength(0),
-                    GetVectorBasisLength(1),
-                    GetVectorBasisLength(2));
+    return Vector3<T>(GetVectorBasisLength(0),
+                      GetVectorBasisLength(1),
+                      GetVectorBasisLength(2));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -879,7 +878,7 @@ inline Vector3<T> Matrix33<T>::GetScale() const
 template<typename T>
 inline T Matrix33<T>::GetScaleX () const
 {
-  return GetVectorBasisLength(0);
+    return GetVectorBasisLength(0);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -889,7 +888,7 @@ inline T Matrix33<T>::GetScaleX () const
 template<typename T>
 inline T Matrix33<T>::GetScaleY () const
 {
-  return GetVectorBasisLength(1);
+    return GetVectorBasisLength(1);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -899,7 +898,7 @@ inline T Matrix33<T>::GetScaleY () const
 template<typename T>
 inline T Matrix33<T>::GetScaleZ () const
 {
-  return GetVectorBasisLength(2);
+    return GetVectorBasisLength(2);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -920,9 +919,9 @@ inline T Matrix33<T>::GetScaleZ () const
 template<typename T>
 void Matrix33<T>::GetAnglesYXZ(T& angleY, T& angleX, T& angleZ) const
 {
-  angleY = mathUtils::ATan2(-m20, m22);
-  angleX = mathUtils::ASin(m21);
-  angleZ = mathUtils::ATan2(-m01, m11); 
+    angleY = mathUtils::ATan2(-m20, m22);
+    angleX = mathUtils::ASin(m21);
+    angleZ = mathUtils::ATan2(-m01, m11);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -933,7 +932,7 @@ void Matrix33<T>::GetAnglesYXZ(T& angleY, T& angleX, T& angleZ) const
 template<typename T>
 T Matrix33<T>::GetAngleX() const
 {
-  return mathUtils::ASin(m21);
+    return mathUtils::ASin(m21);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -944,7 +943,7 @@ T Matrix33<T>::GetAngleX() const
 template<typename T>
 T Matrix33<T>::GetAngleY() const
 {
-  return mathUtils::ATan2(-m20, m22);
+    return mathUtils::ATan2(-m20, m22);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -955,7 +954,7 @@ T Matrix33<T>::GetAngleY() const
 template<typename T>
 T Matrix33<T>::GetAngleZ() const
 {
-  return mathUtils::ATan2(-m01, m11); 
+    return mathUtils::ATan2(-m01, m11);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -965,7 +964,7 @@ T Matrix33<T>::GetAngleZ() const
 template<typename T>
 T Matrix33<T>::GetRoll() const
 {
-  return mathUtils::ATan2(m20, m00);
+    return mathUtils::ATan2(m20, m00);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -975,7 +974,7 @@ T Matrix33<T>::GetRoll() const
 template<typename T>
 T Matrix33<T>::GetPitch() const
 {
-  return mathUtils::ATan2(-m12, m11);
+    return mathUtils::ATan2(-m12, m11);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -985,7 +984,7 @@ T Matrix33<T>::GetPitch() const
 template<typename T>
 T Matrix33<T>::GetYaw() const
 {
-  return mathUtils::ASin(-m10);
+    return mathUtils::ASin(-m10);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1010,9 +1009,9 @@ T Matrix33<T>::GetYaw() const
 template<typename T>
 Vector3<T> Matrix33<T>::GetPitchRollYaw () const
 {
-  return Vector3<T>(mathUtils::ATan2(-m12, m11),
-                    mathUtils::ATan2(m20, m00),
-                    mathUtils::ASin(-m10));
+    return Vector3<T>(mathUtils::ATan2(-m12, m11),
+                      mathUtils::ATan2(m20, m00),
+                      mathUtils::ASin(-m10));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1032,36 +1031,40 @@ Vector3<T> Matrix33<T>::GetPitchRollYaw () const
 /// Las matrices de rotación con el ángulo de parámetro se encadenan al revés:
 ///  (-Y)(-Z)(X)
 /// \verbatim
-/// |  cos (-y)  0   sin (-y) |   | cos (-z)  -sen (-z) 0 |   | 1    0        0      |   
+/// |  cos (-y)  0   sin (-y) |   | cos (-z)  -sen (-z) 0 |   | 1    0        0      |
 /// |  0         1   0        | * | sen (-z)   cos (-z) 0 | * | 0    cos x   -sen x  | =
-/// | -sin (-y)  0   cos (-y) |   | 0          0        1 |   | 0    sen x    cos x  |   
+/// | -sin (-y)  0   cos (-y) |   | 0          0        1 |   | 0    sen x    cos x  |
 ///
-/// | cos y   0  -sin y |   |  cos z   sen z   0 |   | 1    0        0      |   
+/// | cos y   0  -sin y |   |  cos z   sen z   0 |   | 1    0        0      |
 /// | 0       1   0     | * | -sen z   cos z   0 | * | 0    cos x   -sen x  |  =
-/// | sin y   0   cos y |   |  0       0       1 |   | 0    sen x    cos x  |   
+/// | sin y   0   cos y |   |  0       0       1 |   | 0    sen x    cos x  |
 ///
 /// | cy*cz   cy*sz  -sy |   | 1  0    0  |
-/// | -sz      cz     0  | * | 0  cx  -sx | = 
+/// | -sz      cz     0  | * | 0  cx  -sx | =
 /// | sy*cz   sy*sz  cy  |   | 0  sx   cx |
 ///
 /// | cy*cz    cy*sz*cx - sy*sx     -cy*sz*sx - sy*cx  |
 /// |  -sz      cz*cx                  -cz*sx          |
-/// | sy*cz    sy*sz*cx + cy*sx     -sy*sz*sx + cy*cx  | 
+/// | sy*cz    sy*sz*cx + cy*sx     -sy*sz*sx + cy*cx  |
 /// \endverbatim
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename T>
 Matrix33<T>& Matrix33<T>::SetPitchRollYaw (const Vector3<T>& v3PitchRollYaw)
 {
-  T sx, cx, sy, cy, sz, cz;
-  mathUtils::SinCos(v3PitchRollYaw.x, sx, cx);
-  mathUtils::SinCos(v3PitchRollYaw.y, sy, cy);
-  mathUtils::SinCos(v3PitchRollYaw.z, sz, cz);
-
-  m00 = cy*cz;  m01 = cy*sz*cx - sy*sx;  m02 = -cy*sz*sx - sy*cx;
-  m10 = -sz;    m11 = cz*cx;             m12 = -cz*sx;
-  m20 = sy*cz;  m21 = sy*sz*cx + cy*sx;  m22 = -sy*sz*sx + cy*cx;
-
-  return (*this);
+    T sx, cx, sy, cy, sz, cz;
+    mathUtils::SinCos(v3PitchRollYaw.x, sx, cx);
+    mathUtils::SinCos(v3PitchRollYaw.y, sy, cy);
+    mathUtils::SinCos(v3PitchRollYaw.z, sz, cz);
+    m00 = cy * cz;
+    m01 = cy * sz * cx - sy * sx;
+    m02 = -cy * sz * sx - sy * cx;
+    m10 = -sz;
+    m11 = cz * cx;
+    m12 = -cz * sx;
+    m20 = sy * cz;
+    m21 = sy * sz * cx + cy * sx;
+    m22 = -sy * sz * sx + cy * cx;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1070,10 +1073,9 @@ Matrix33<T>& Matrix33<T>::SetPitchRollYaw (const Vector3<T>& v3PitchRollYaw)
 template<typename T>
 Matrix33<T> Matrix33<T>::operator + (const Matrix33<T>& otra) const
 {
-  return Matrix33<T>(m00 + otra.m00, m01 + otra.m01, m02 + otra.m02,
-                     m10 + otra.m10, m11 + otra.m11, m12 + otra.m12,
-                     m20 + otra.m20, m21 + otra.m21, m22 + otra.m22);
-                      
+    return Matrix33<T>(m00 + otra.m00, m01 + otra.m01, m02 + otra.m02,
+                       m10 + otra.m10, m11 + otra.m11, m12 + otra.m12,
+                       m20 + otra.m20, m21 + otra.m21, m22 + otra.m22);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1082,9 +1084,9 @@ Matrix33<T> Matrix33<T>::operator + (const Matrix33<T>& otra) const
 template<typename T>
 Matrix33<T> Matrix33<T>::operator - (const Matrix33<T>& otra) const
 {
-  return Matrix33<T>(m00 - otra.m00, m01 - otra.m01, m02 - otra.m02,
-                     m10 - otra.m10, m11 - otra.m11, m12 - otra.m12,
-                     m20 - otra.m20, m21 - otra.m21, m22 - otra.m22);
+    return Matrix33<T>(m00 - otra.m00, m01 - otra.m01, m02 - otra.m02,
+                       m10 - otra.m10, m11 - otra.m11, m12 - otra.m12,
+                       m20 - otra.m20, m21 - otra.m21, m22 - otra.m22);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1098,28 +1100,26 @@ Matrix33<T> Matrix33<T>::operator - (const Matrix33<T>& otra) const
 template<typename T>
 Matrix33<T> Matrix33<T>::operator * (const Matrix33<T>& otra) const
 {
-  return Matrix33<T>(m00 * otra.m00 + m01 * otra.m10 + m02 * otra.m20,
-                     m00 * otra.m01 + m01 * otra.m11 + m02 * otra.m21,
-                     m00 * otra.m02 + m01 * otra.m12 + m02 * otra.m22,
-
-                     m10 * otra.m00 + m11 * otra.m10 + m12 * otra.m20,
-                     m10 * otra.m01 + m11 * otra.m11 + m12 * otra.m21,
-                     m10 * otra.m02 + m11 * otra.m12 + m12 * otra.m22,
-
-                     m20 * otra.m00 + m21 * otra.m10 + m22 * otra.m20,
-                     m20 * otra.m01 + m21 * otra.m11 + m22 * otra.m21,
-                     m20 * otra.m02 + m21 * otra.m12 + m22 * otra.m22);
+    return Matrix33<T>(m00 * otra.m00 + m01 * otra.m10 + m02 * otra.m20,
+                       m00 * otra.m01 + m01 * otra.m11 + m02 * otra.m21,
+                       m00 * otra.m02 + m01 * otra.m12 + m02 * otra.m22,
+                       m10 * otra.m00 + m11 * otra.m10 + m12 * otra.m20,
+                       m10 * otra.m01 + m11 * otra.m11 + m12 * otra.m21,
+                       m10 * otra.m02 + m11 * otra.m12 + m12 * otra.m22,
+                       m20 * otra.m00 + m21 * otra.m10 + m22 * otra.m20,
+                       m20 * otra.m01 + m21 * otra.m11 + m22 * otra.m21,
+                       m20 * otra.m02 + m21 * otra.m12 + m22 * otra.m22);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// Operador aritmético: producto matriz x escalar 
+/// Operador aritmético: producto matriz x escalar
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename T>
 Matrix33<T> Matrix33<T>::operator * (const T escalar) const
 {
-  return (Matrix33<T>(m00 * escalar, m01 * escalar, m02 * escalar,
-                      m10 * escalar, m11 * escalar, m12 * escalar,
-                      m20 * escalar, m21 * escalar, m22 * escalar));
+    return (Matrix33<T>(m00 * escalar, m01 * escalar, m02 * escalar,
+                        m10 * escalar, m11 * escalar, m12 * escalar,
+                        m20 * escalar, m21 * escalar, m22 * escalar));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1128,9 +1128,9 @@ Matrix33<T> Matrix33<T>::operator * (const T escalar) const
 template<typename T>
 Matrix33<T> operator * (const T escalar, const Matrix33<T>& mat)
 {
-  return (Matrix33<T>(mat.m00 * escalar, mat.m01 * escalar, mat.m02 * escalar,
-                      mat.m10 * escalar, mat.m11 * escalar, mat.m12 * escalar,
-                      mat.m20 * escalar, mat.m21 * escalar, mat.m22 * escalar)); 
+    return (Matrix33<T>(mat.m00 * escalar, mat.m01 * escalar, mat.m02 * escalar,
+                        mat.m10 * escalar, mat.m11 * escalar, mat.m12 * escalar,
+                        mat.m20 * escalar, mat.m21 * escalar, mat.m22 * escalar));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1140,25 +1140,22 @@ template<typename T>
 Matrix33<T> Matrix33<T>::operator / (const T escalar) const
 {
 #ifdef CHECK_MATH_SINGULARITY
-  //----------------------------------------------------------------------------------<<<
-  Matrix33<T> retMat(*this);
-
-  ASSERTMSG(escalar != Zero<T>(), "División por cero en cociente matriz3x3-escalar");
-  if(escalar != Zero<T>())
-  {
-    T inv_escalar = One<T>() / escalar;
-    retMat *= inv_escalar;
-  }
-
-  return retMat;
-  //---------------------------------------------------------------------------------->>>
+    //----------------------------------------------------------------------------------<<<
+    Matrix33<T> retMat(*this);
+    ASSERTMSG(escalar != Zero<T>(), "División por cero en cociente matriz3x3-escalar");
+    if (escalar != Zero<T>()) {
+        T inv_escalar = One<T>() / escalar;
+        retMat *= inv_escalar;
+    }
+    return retMat;
+    //---------------------------------------------------------------------------------->>>
 #else
-  //----------------------------------------------------------------------------------<<<
-  T inv_escalar = One<T>() / escalar;
-  return (Matrix33<T>(m00 * inv_escalar, m01 * inv_escalar, m02 * inv_escalar,
-                      m10 * inv_escalar, m11 * inv_escalar, m12 * inv_escalar,
-                      m20 * inv_escalar, m21 * inv_escalar, m22 * inv_escalar));
-  //---------------------------------------------------------------------------------->>>
+    //----------------------------------------------------------------------------------<<<
+    T inv_escalar = One<T>() / escalar;
+    return (Matrix33<T>(m00 * inv_escalar, m01 * inv_escalar, m02 * inv_escalar,
+                        m10 * inv_escalar, m11 * inv_escalar, m12 * inv_escalar,
+                        m20 * inv_escalar, m21 * inv_escalar, m22 * inv_escalar));
+    //---------------------------------------------------------------------------------->>>
 #endif
 }
 
@@ -1175,9 +1172,9 @@ Matrix33<T> Matrix33<T>::operator / (const T escalar) const
 template<typename T>
 Vector3<T> Matrix33<T>::operator * (const Vector3<T>& vector) const
 {
-  return Vector3<T>(vector.x * m00 + vector.y * m01 + vector.z * m02,
-                    vector.x * m10 + vector.y * m11 + vector.z * m12,
-                    vector.x * m20 + vector.y * m21 + vector.z * m22);
+    return Vector3<T>(vector.x * m00 + vector.y * m01 + vector.z * m02,
+                      vector.x * m10 + vector.y * m11 + vector.z * m12,
+                      vector.x * m20 + vector.y * m21 + vector.z * m22);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1186,11 +1183,16 @@ Vector3<T> Matrix33<T>::operator * (const Vector3<T>& vector) const
 template<typename T>
 Matrix33<T>& Matrix33<T>::operator += (const Matrix33<T>& otra)
 {
-  m00 += otra.m00; m01 += otra.m01; m02 += otra.m02;
-  m10 += otra.m10; m11 += otra.m11; m12 += otra.m12;
-  m20 += otra.m20; m21 += otra.m21; m22 += otra.m22;
-  
-  return (*this);
+    m00 += otra.m00;
+    m01 += otra.m01;
+    m02 += otra.m02;
+    m10 += otra.m10;
+    m11 += otra.m11;
+    m12 += otra.m12;
+    m20 += otra.m20;
+    m21 += otra.m21;
+    m22 += otra.m22;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1199,11 +1201,16 @@ Matrix33<T>& Matrix33<T>::operator += (const Matrix33<T>& otra)
 template<typename T>
 Matrix33<T>& Matrix33<T>::operator -= (const Matrix33<T>& otra)
 {
-  m00 -= otra.m00; m01 -= otra.m01; m02 -= otra.m02;
-  m10 -= otra.m10; m11 -= otra.m11; m12 -= otra.m12;
-  m20 -= otra.m20; m21 -= otra.m21; m22 -= otra.m22;
-  
-  return (*this);
+    m00 -= otra.m00;
+    m01 -= otra.m01;
+    m02 -= otra.m02;
+    m10 -= otra.m10;
+    m11 -= otra.m11;
+    m12 -= otra.m12;
+    m20 -= otra.m20;
+    m21 -= otra.m21;
+    m22 -= otra.m22;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1216,7 +1223,7 @@ Matrix33<T>& Matrix33<T>::operator -= (const Matrix33<T>& otra)
 template<typename T>
 Matrix33<T>& Matrix33<T>::operator *= (const Matrix33<T>& otra)
 {
-  return (*this) = (*this) * otra;
+    return (*this) = (*this) * otra;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1225,11 +1232,16 @@ Matrix33<T>& Matrix33<T>::operator *= (const Matrix33<T>& otra)
 template<typename T>
 Matrix33<T>& Matrix33<T>::operator *= (const T escalar)
 {
-  m00 *= escalar; m01 *= escalar; m02 *= escalar;
-  m10 *= escalar; m11 *= escalar; m12 *= escalar;
-  m20 *= escalar; m21 *= escalar; m22 *= escalar;
-
-  return (*this);
+    m00 *= escalar;
+    m01 *= escalar;
+    m02 *= escalar;
+    m10 *= escalar;
+    m11 *= escalar;
+    m12 *= escalar;
+    m20 *= escalar;
+    m21 *= escalar;
+    m22 *= escalar;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1239,26 +1251,36 @@ template<typename T>
 Matrix33<T>& Matrix33<T>::operator /= (const T escalar)
 {
 #ifdef CHECK_MATH_SINGULARITY
-  //----------------------------------------------------------------------------<<<
-  ASSERTMSG(escalar != Zero<T>(), "División por cero en cociente matriz3x3-escalar");
-  if(escalar != Zero<T>())
-  {
-    T inv_escalar = One<T>()/escalar;
-    m00 *= inv_escalar;  m01 *= inv_escalar;  m02 *= inv_escalar;
-    m10 *= inv_escalar;  m11 *= inv_escalar;  m12 *= inv_escalar;
-    m20 *= inv_escalar;  m21 *= inv_escalar;  m22 *= inv_escalar;
-  }
-  //---------------------------------------------------------------------------->>>
+    //----------------------------------------------------------------------------<<<
+    ASSERTMSG(escalar != Zero<T>(), "División por cero en cociente matriz3x3-escalar");
+    if (escalar != Zero<T>()) {
+        T inv_escalar = One<T>() / escalar;
+        m00 *= inv_escalar;
+        m01 *= inv_escalar;
+        m02 *= inv_escalar;
+        m10 *= inv_escalar;
+        m11 *= inv_escalar;
+        m12 *= inv_escalar;
+        m20 *= inv_escalar;
+        m21 *= inv_escalar;
+        m22 *= inv_escalar;
+    }
+    //---------------------------------------------------------------------------->>>
 #else
-  //----------------------------------------------------------------------------<<<
-  T inv_escalar = One<T>()/escalar;
-  m00 *= inv_escalar;  m01 *= inv_escalar;  m02 *= inv_escalar;
-  m10 *= inv_escalar;  m11 *= inv_escalar;  m12 *= inv_escalar;
-  m20 *= inv_escalar;  m21 *= inv_escalar;  m22 *= inv_escalar;
-  //---------------------------------------------------------------------------->>>
+    //----------------------------------------------------------------------------<<<
+    T inv_escalar = One<T>() / escalar;
+    m00 *= inv_escalar;
+    m01 *= inv_escalar;
+    m02 *= inv_escalar;
+    m10 *= inv_escalar;
+    m11 *= inv_escalar;
+    m12 *= inv_escalar;
+    m20 *= inv_escalar;
+    m21 *= inv_escalar;
+    m22 *= inv_escalar;
+    //---------------------------------------------------------------------------->>>
 #endif
- 
-  return (*this);
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1267,7 +1289,7 @@ Matrix33<T>& Matrix33<T>::operator /= (const T escalar)
 template<typename T>
 inline bool Matrix33<T>::operator == (const Matrix33<T>& otra) const
 {
-  return (0 == memcmp(this, &otra, sizeof(Matrix33<T>)));
+    return (0 == memcmp(this, &otra, sizeof(Matrix33<T>)));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1276,7 +1298,7 @@ inline bool Matrix33<T>::operator == (const Matrix33<T>& otra) const
 template<typename T>
 inline bool Matrix33<T>::operator != (const Matrix33<T>& otra) const
 {
-  return (0 != memcmp(this, &otra, sizeof(Matrix33<T>)));
+    return (0 != memcmp(this, &otra, sizeof(Matrix33<T>)));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1285,17 +1307,14 @@ inline bool Matrix33<T>::operator != (const Matrix33<T>& otra) const
 template<typename T>
 inline bool Matrix33<T>::IsEqualEpsilon (const Matrix33<T>& otra, const T Epsilon) const
 {
-  bool bIgual = true;
-  for(int i = 0; i < 9; i++)
-  {
-    if(!mathUtils::EqualEpsilon( ((T*)this)[i], ((T*)&otra)[i], Epsilon ))
-    {
-      bIgual = false;
-      break;
-    }   
-  }
-
-  return bIgual;
+    bool bIgual = true;
+    for (int i = 0; i < 9; i++) {
+        if (!mathUtils::EqualEpsilon( ((T*)this)[i], ((T*)&otra)[i], Epsilon )) {
+            bIgual = false;
+            break;
+        }
+    }
+    return bIgual;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1304,20 +1323,16 @@ inline bool Matrix33<T>::IsEqualEpsilon (const Matrix33<T>& otra, const T Epsilo
 template<typename T>
 inline bool Matrix33<T>::IsNotEqualEpsilon (const Matrix33<T>& otra, const T Epsilon) const
 {
-  bool bDistinto = false;
-  for(int i=0; i<9; i++)
-  {
-    T valor    = ((T*)this)[i];
-    T valorRef = ((T*)&otra)[i];
-
-    if(valor < (valorRef - Epsilon) || valor > (valorRef + Epsilon))
-    {
-      bDistinto = true;
-      break;
+    bool bDistinto = false;
+    for (int i = 0; i < 9; i++) {
+        T valor    = ((T*)this)[i];
+        T valorRef = ((T*)&otra)[i];
+        if (valor < (valorRef - Epsilon) || valor > (valorRef + Epsilon)) {
+            bDistinto = true;
+            break;
+        }
     }
-  }
-
-  return bDistinto;
+    return bDistinto;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1337,7 +1352,7 @@ inline bool Matrix33<T>::IsNotEqualEpsilon (const Matrix33<T>& otra, const T Eps
 template<typename T>
 Matrix33<T>& Matrix33<T>::Invert ()
 {
-  return ((*this) = GetInverted());
+    return ((*this) = GetInverted());
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1347,40 +1362,33 @@ Matrix33<T>& Matrix33<T>::Invert ()
 template<typename T>
 Matrix33<T> Matrix33<T>::GetInverted () const
 {
-  T determinante = Determinant();
-  T inv_det = One<T>();
-
+    T determinante = Determinant();
+    T inv_det = One<T>();
 #ifdef CHECK_MATH_SINGULARITY
-  //-----------------------------------------------------------------------<<<
-  // Con chequeo de división por cero
-  ASSERTMSG(determinante != Zero<T>(), "Determinante nulo en cálculo de matriz inversa");
-  if(determinante != Zero<T>())
-  {
-    inv_det /= determinante;
-  }
-  //----------------------------------------------------------------------->>>
+    //-----------------------------------------------------------------------<<<
+    // Con chequeo de división por cero
+    ASSERTMSG(determinante != Zero<T>(), "Determinante nulo en cálculo de matriz inversa");
+    if (determinante != Zero<T>()) {
+        inv_det /= determinante;
+    }
+    //----------------------------------------------------------------------->>>
 #else
-  //-----------------------------------------------------------------------<<<  
-  // Sin chequeo
-  inv_det /= determinante;
-  //----------------------------------------------------------------------->>>
+    //-----------------------------------------------------------------------<<<
+    // Sin chequeo
+    inv_det /= determinante;
+    //----------------------------------------------------------------------->>>
 #endif
-
-  Matrix33<T> auxMat;
-
-  auxMat.m00 = (m11*m22 - m12*m21) * inv_det;
-  auxMat.m10 = (m12*m20 - m10*m22) * inv_det;
-  auxMat.m20 = (m10*m21 - m11*m20) * inv_det;
-
-  auxMat.m01 = (m02*m21 - m01*m22) * inv_det;
-  auxMat.m11 = (m00*m22 - m02*m20) * inv_det;
-  auxMat.m21 = (m01*m20 - m00*m21) * inv_det;
-
-  auxMat.m02 = (m01*m12 - m02*m11) * inv_det;
-  auxMat.m12 = (m02*m10 - m00*m12) * inv_det;
-  auxMat.m22 = (m00*m11 - m01*m10) * inv_det;
-
-  return auxMat;
+    Matrix33<T> auxMat;
+    auxMat.m00 = (m11 * m22 - m12 * m21) * inv_det;
+    auxMat.m10 = (m12 * m20 - m10 * m22) * inv_det;
+    auxMat.m20 = (m10 * m21 - m11 * m20) * inv_det;
+    auxMat.m01 = (m02 * m21 - m01 * m22) * inv_det;
+    auxMat.m11 = (m00 * m22 - m02 * m20) * inv_det;
+    auxMat.m21 = (m01 * m20 - m00 * m21) * inv_det;
+    auxMat.m02 = (m01 * m12 - m02 * m11) * inv_det;
+    auxMat.m12 = (m02 * m10 - m00 * m12) * inv_det;
+    auxMat.m22 = (m00 * m11 - m01 * m10) * inv_det;
+    return auxMat;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1395,7 +1403,7 @@ Matrix33<T> Matrix33<T>::GetInverted () const
 template<typename T>
 Matrix33<T>& Matrix33<T>::InvertRS ()
 {
-  return ((*this) = GetInvertedRS());
+    return ((*this) = GetInvertedRS());
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1405,58 +1413,48 @@ Matrix33<T>& Matrix33<T>::InvertRS ()
 template<typename T>
 Matrix33<T> Matrix33<T>::GetInvertedRS () const
 {
-  T div_x = One<T>();
-  T div_y = One<T>();
-  T div_z = One<T>();
-
-  T esc_x = GetScaleX();
-  T esc_y = GetScaleY();
-  T esc_z = GetScaleZ();
-
+    T div_x = One<T>();
+    T div_y = One<T>();
+    T div_z = One<T>();
+    T esc_x = GetScaleX();
+    T esc_y = GetScaleY();
+    T esc_z = GetScaleZ();
 #ifdef CHECK_MATH_SINGULARITY
-  //-----------------------------------------------------<<<
-  // Con chequeo de división por cero
-  ASSERTMSG(esc_x != Zero<T>() &&
-            esc_y != Zero<T>() &&
-            esc_z != Zero<T>(),
-            "División por cero en cálculo de matriz inversa de RS");
-  if(esc_x != Zero<T>())
-  {
-    div_x /= (esc_x * esc_x);
-  }
-  if(esc_y != Zero<T>())
-  {
-    div_y /= (esc_y * esc_y);
-  }
-  if(esc_z != Zero<T>())
-  {
-    div_z /= (esc_z * esc_z);
-  }
-  //----------------------------------------------------->>>
+    //-----------------------------------------------------<<<
+    // Con chequeo de división por cero
+    ASSERTMSG(esc_x != Zero<T>() &&
+              esc_y != Zero<T>() &&
+              esc_z != Zero<T>(),
+              "División por cero en cálculo de matriz inversa de RS");
+    if (esc_x != Zero<T>()) {
+        div_x /= (esc_x * esc_x);
+    }
+    if (esc_y != Zero<T>()) {
+        div_y /= (esc_y * esc_y);
+    }
+    if (esc_z != Zero<T>()) {
+        div_z /= (esc_z * esc_z);
+    }
+    //----------------------------------------------------->>>
 #else
-  //-----------------------------------------------------<<<
-  // Sin chequeo
-  div_x /= (esc_x * esc_x);
-  div_y /= (esc_y * esc_y);
-  div_z /= (esc_z * esc_z);
-  //----------------------------------------------------->>>
+    //-----------------------------------------------------<<<
+    // Sin chequeo
+    div_x /= (esc_x * esc_x);
+    div_y /= (esc_y * esc_y);
+    div_z /= (esc_z * esc_z);
+    //----------------------------------------------------->>>
 #endif
-
-  Matrix33<T> auxMat;
-
-  auxMat.m00 = m00 * div_x;
-  auxMat.m01 = m10 * div_x;
-  auxMat.m02 = m20 * div_x;
-
-  auxMat.m10 = m01 * div_y;
-  auxMat.m11 = m11 * div_y;
-  auxMat.m12 = m21 * div_y;
-
-  auxMat.m20 = m02 * div_z;
-  auxMat.m21 = m12 * div_z;
-  auxMat.m22 = m22 * div_z;
-
-  return auxMat;
+    Matrix33<T> auxMat;
+    auxMat.m00 = m00 * div_x;
+    auxMat.m01 = m10 * div_x;
+    auxMat.m02 = m20 * div_x;
+    auxMat.m10 = m01 * div_y;
+    auxMat.m11 = m11 * div_y;
+    auxMat.m12 = m21 * div_y;
+    auxMat.m20 = m02 * div_z;
+    auxMat.m21 = m12 * div_z;
+    auxMat.m22 = m22 * div_z;
+    return auxMat;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1465,12 +1463,17 @@ Matrix33<T> Matrix33<T>::GetInvertedRS () const
 template<typename T>
 Matrix33<T>& Matrix33<T>::Transpose ()
 {
-  T valor;
-  valor = m01;  m01 = m10;  m10 = valor;
-  valor = m02;  m02 = m20;  m20 = valor;
-  valor = m12;  m12 = m21;  m21 = valor;
-
-  return (*this);
+    T valor;
+    valor = m01;
+    m01 = m10;
+    m10 = valor;
+    valor = m02;
+    m02 = m20;
+    m20 = valor;
+    valor = m12;
+    m12 = m21;
+    m21 = valor;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1479,9 +1482,9 @@ Matrix33<T>& Matrix33<T>::Transpose ()
 template<typename T>
 Matrix33<T> Matrix33<T>::GetTransposed () const
 {
-  return Matrix33<T>(m00, m10, m20,
-                     m01, m11, m21,
-                     m02, m12, m22);
+    return Matrix33<T>(m00, m10, m20,
+                       m01, m11, m21,
+                       m02, m12, m22);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1492,39 +1495,35 @@ Matrix33<T> Matrix33<T>::GetTransposed () const
 template<typename T>
 Matrix33<T> Matrix33<T>::GetRotedByAngleX (const T angleX) const
 {
-  return Matrix33<T>(*this).RotByAngleX(angleX);
+    return Matrix33<T>(*this).RotByAngleX(angleX);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Versión no const que modifica la matriz
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 Matrix33<T>& Matrix33<T>::RotByAngleX (const T angleX)
 {
-	Vector2<T> v;
-
-	// eje X
-	v.x = m10;
-	v.y = m20;
-	v.Rotate(angleX);
-	m10 = v.x;
-	m20 = v.y;
-
-	// eje Y
-	v.x = m11;
-	v.y = m21;
-	v.Rotate(angleX);
-	m11 = v.x;
-	m21 = v.y;
-
-	// eje Z
-	v.x = m12;
-	v.y = m22;
-	v.Rotate(angleX);
-	m12 = v.x;
-	m22 = v.y;
-
-  return (*this);
+    Vector2<T> v;
+    // eje X
+    v.x = m10;
+    v.y = m20;
+    v.Rotate(angleX);
+    m10 = v.x;
+    m20 = v.y;
+    // eje Y
+    v.x = m11;
+    v.y = m21;
+    v.Rotate(angleX);
+    m11 = v.x;
+    m21 = v.y;
+    // eje Z
+    v.x = m12;
+    v.y = m22;
+    v.Rotate(angleX);
+    m12 = v.x;
+    m22 = v.y;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1535,7 +1534,7 @@ Matrix33<T>& Matrix33<T>::RotByAngleX (const T angleX)
 template<typename T>
 Matrix33<T> Matrix33<T>::GetRotedByAngleY (const T angleY) const
 {
-  return Matrix33<T>(*this).RotByAngleY(angleY);
+    return Matrix33<T>(*this).RotByAngleY(angleY);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1544,30 +1543,26 @@ Matrix33<T> Matrix33<T>::GetRotedByAngleY (const T angleY) const
 template<typename T>
 Matrix33<T>& Matrix33<T>::RotByAngleY (const T angleY)
 {
-	Vector2<T> v;
-
-	// eje X
-	v.x = m20;
-	v.y = m00;
-	v.Rotate(angleY);
-	m20 = v.x;
-	m00 = v.y;
-
-	// eje Y
-	v.x = m21;
-	v.y = m01;
-	v.Rotate(angleY);
-	m21 = v.x;
-	m01 = v.y;
-
-	// eje Z
-	v.x = m22;
-	v.y = m02;
-	v.Rotate(angleY);
-	m22 = v.x;
-	m02 = v.y;
-
-  return (*this);
+    Vector2<T> v;
+    // eje X
+    v.x = m20;
+    v.y = m00;
+    v.Rotate(angleY);
+    m20 = v.x;
+    m00 = v.y;
+    // eje Y
+    v.x = m21;
+    v.y = m01;
+    v.Rotate(angleY);
+    m21 = v.x;
+    m01 = v.y;
+    // eje Z
+    v.x = m22;
+    v.y = m02;
+    v.Rotate(angleY);
+    m22 = v.x;
+    m02 = v.y;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1577,8 +1572,8 @@ Matrix33<T>& Matrix33<T>::RotByAngleY (const T angleY)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename T>
 Matrix33<T> Matrix33<T>::GetRotedByAngleZ (const T angleZ) const
-{ 
-  return Matrix33<T>(*this).RotByAngleZ(angleZ);
+{
+    return Matrix33<T>(*this).RotByAngleZ(angleZ);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1587,30 +1582,26 @@ Matrix33<T> Matrix33<T>::GetRotedByAngleZ (const T angleZ) const
 template<typename T>
 Matrix33<T>& Matrix33<T>::RotByAngleZ (const T angleZ)
 {
-	Vector2<T> v;
-
-	// eje X
-	v.x = m00;
-	v.y = m10;
-	v.Rotate(angleZ);
-	m00 = v.x;
-	m10 = v.y;
-
-	// eje Y
-	v.x = m01;
-	v.y = m11;
-	v.Rotate(angleZ);
-	m01 = v.x;
-	m11 = v.y;
-
-	// eje Z
-	v.x = m02;
-	v.y = m12;
-	v.Rotate(angleZ);
-	m02 = v.x;
-	m12 = v.y;
-  
-  return (*this);
+    Vector2<T> v;
+    // eje X
+    v.x = m00;
+    v.y = m10;
+    v.Rotate(angleZ);
+    m00 = v.x;
+    m10 = v.y;
+    // eje Y
+    v.x = m01;
+    v.y = m11;
+    v.Rotate(angleZ);
+    m01 = v.x;
+    m11 = v.y;
+    // eje Z
+    v.x = m02;
+    v.y = m12;
+    v.Rotate(angleZ);
+    m02 = v.x;
+    m12 = v.y;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1618,10 +1609,10 @@ Matrix33<T>& Matrix33<T>::RotByAngleZ (const T angleZ)
 /// luego de 'AngleZ' radianes alrededor del eje Z, del sistema de referencia del padre
 /// (versión const que devuelve una matriz copia)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 Matrix33<T> Matrix33<T>::GetRotedByAnglesXZ (const T angleX, const T angleZ) const
 {
-  return Matrix33<T>(*this).RotByAnglesXZ(angleX, angleZ);
+    return Matrix33<T>(*this).RotByAnglesXZ(angleX, angleZ);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1630,59 +1621,50 @@ Matrix33<T> Matrix33<T>::GetRotedByAnglesXZ (const T angleX, const T angleZ) con
 template<typename T>
 Matrix33<T>& Matrix33<T>::RotByAnglesXZ (const T angleX, const T angleZ)
 {
-	Vector2<T> v;
-
-	////////////
-	// RotX
-	////////////
-
-	// eje X
-	v.x = m10;
-	v.y = m20;
-	v.Rotate(angleX);
-	m10 = v.x;
-	m20 = v.y;
-
-	// eje Y
-	v.x = m11;
-	v.y = m21;
-	v.Rotate(angleX);
-	m11 = v.x;
-	m21 = v.y;
-
-	// eje Z
-	v.x = m12;
-	v.y = m22;
-	v.Rotate(angleX);
-	m12 = v.x;
-	m22 = v.y;
-
-	////////////
-	// RotZ
-	////////////
-
-	// eje X
-	v.x = m00;
-	v.y = m10;
-	v.Rotate(angleZ);
-	m00 = v.x;
-	m10 = v.y;
-
-	// eje Y
-	v.x = m01;
-	v.y = m11;
-	v.Rotate(angleZ);
-	m01 = v.x;
-	m11 = v.y;
-
-	// eje Z
-	v.x = m02;
-	v.y = m12;
-	v.Rotate(angleZ);
-	m02 = v.x;
-	m12 = v.y;
-
-  return (*this);
+    Vector2<T> v;
+    ////////////
+    // RotX
+    ////////////
+    // eje X
+    v.x = m10;
+    v.y = m20;
+    v.Rotate(angleX);
+    m10 = v.x;
+    m20 = v.y;
+    // eje Y
+    v.x = m11;
+    v.y = m21;
+    v.Rotate(angleX);
+    m11 = v.x;
+    m21 = v.y;
+    // eje Z
+    v.x = m12;
+    v.y = m22;
+    v.Rotate(angleX);
+    m12 = v.x;
+    m22 = v.y;
+    ////////////
+    // RotZ
+    ////////////
+    // eje X
+    v.x = m00;
+    v.y = m10;
+    v.Rotate(angleZ);
+    m00 = v.x;
+    m10 = v.y;
+    // eje Y
+    v.x = m01;
+    v.y = m11;
+    v.Rotate(angleZ);
+    m01 = v.x;
+    m11 = v.y;
+    // eje Z
+    v.x = m02;
+    v.y = m12;
+    v.Rotate(angleZ);
+    m02 = v.x;
+    m12 = v.y;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1691,10 +1673,10 @@ Matrix33<T>& Matrix33<T>::RotByAnglesXZ (const T angleX, const T angleZ)
 /// alrededor del eje Z, del sistema de referencia del padre
 /// (versión const que devuelve una matriz copia)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> 
+template<typename T>
 Matrix33<T> Matrix33<T>::GetRotedByAnglesYXZ (const T angleY, const T angleX, const T angleZ) const
 {
-  return Matrix33<T>(*this).RotByAnglesYXZ(angleY, angleX, angleZ);
+    return Matrix33<T>(*this).RotByAnglesYXZ(angleY, angleX, angleZ);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1702,85 +1684,72 @@ Matrix33<T> Matrix33<T>::GetRotedByAnglesYXZ (const T angleY, const T angleX, co
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename T>
 Matrix33<T>& Matrix33<T>::RotByAnglesYXZ (const T angleY, const T angleX, const T angleZ)
-{	
-	Vector2<T> v;
-
-	////////////
-	// RotY
-	////////////
-
-	// eje X
-	v.x = m20;
-	v.y = m00;
-	v.Rotate(angleY);
-	m20 = v.x;
-	m00 = v.y;
-
-	// eje Y
-	v.x = m21;
-	v.y = m01;
-	v.Rotate(angleY);
-	m21 = v.x;
-	m01 = v.y;
-
-	// eje Z
-	v.x = m22;
-	v.y = m02;
-	v.Rotate(angleY);
-	m22 = v.x;
-	m02 = v.y;
-
-	////////////
-	// RotX
-	////////////
-
-	// eje X
-	v.x = m10;
-	v.y = m20;
-	v.Rotate(angleX);
-	m10 = v.x;
-	m20 = v.y;
-
-	// eje Y
-	v.x = m11;
-	v.y = m21;
-	v.Rotate(angleX);
-	m11 = v.x;
-	m21 = v.y;
-
-	// eje Z
-	v.x = m12;
-	v.y = m22;
-	v.Rotate(angleX);
-	m12 = v.x;
-	m22 = v.y;
-
-	////////////
-	// RotZ
-	////////////
-
-	// eje X
-	v.x = m00;
-	v.y = m10;
-	v.Rotate(angleZ);
-	m00 = v.x;
-	m10 = v.y;
-
-	// eje Y
-	v.x = m01;
-	v.y = m11;
-	v.Rotate(angleZ);
-	m01 = v.x;
-	m11 = v.y;
-
-	// eje Z
-	v.x = m02;
-	v.y = m12;
-	v.Rotate(angleZ);
-	m02 = v.x;
-	m12 = v.y;
-
-  return (*this);
+{
+    Vector2<T> v;
+    ////////////
+    // RotY
+    ////////////
+    // eje X
+    v.x = m20;
+    v.y = m00;
+    v.Rotate(angleY);
+    m20 = v.x;
+    m00 = v.y;
+    // eje Y
+    v.x = m21;
+    v.y = m01;
+    v.Rotate(angleY);
+    m21 = v.x;
+    m01 = v.y;
+    // eje Z
+    v.x = m22;
+    v.y = m02;
+    v.Rotate(angleY);
+    m22 = v.x;
+    m02 = v.y;
+    ////////////
+    // RotX
+    ////////////
+    // eje X
+    v.x = m10;
+    v.y = m20;
+    v.Rotate(angleX);
+    m10 = v.x;
+    m20 = v.y;
+    // eje Y
+    v.x = m11;
+    v.y = m21;
+    v.Rotate(angleX);
+    m11 = v.x;
+    m21 = v.y;
+    // eje Z
+    v.x = m12;
+    v.y = m22;
+    v.Rotate(angleX);
+    m12 = v.x;
+    m22 = v.y;
+    ////////////
+    // RotZ
+    ////////////
+    // eje X
+    v.x = m00;
+    v.y = m10;
+    v.Rotate(angleZ);
+    m00 = v.x;
+    m10 = v.y;
+    // eje Y
+    v.x = m01;
+    v.y = m11;
+    v.Rotate(angleZ);
+    m01 = v.x;
+    m11 = v.y;
+    // eje Z
+    v.x = m02;
+    v.y = m12;
+    v.Rotate(angleZ);
+    m02 = v.x;
+    m12 = v.y;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1791,7 +1760,7 @@ Matrix33<T>& Matrix33<T>::RotByAnglesYXZ (const T angleY, const T angleX, const 
 template<typename T>
 Matrix33<T> Matrix33<T>::GetScaled (const T escala_x, const T escala_y, const T escala_z) const
 {
-  return Matrix33<T>(*this).Scale(escala_x, escala_y, escala_z);  
+    return Matrix33<T>(*this).Scale(escala_x, escala_y, escala_z);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1800,11 +1769,16 @@ Matrix33<T> Matrix33<T>::GetScaled (const T escala_x, const T escala_y, const T 
 template<typename T>
 Matrix33<T>& Matrix33<T>::Scale (const T escala_x, const T escala_y, const T escala_z)
 {
-	m00 *= escala_x;  m01 *= escala_y;  m02 *= escala_z;
-	m10 *= escala_x;  m11 *= escala_y;  m12 *= escala_z;
-	m20 *= escala_x;  m21 *= escala_y;  m22 *= escala_z;
-
-  return (*this);
+    m00 *= escala_x;
+    m01 *= escala_y;
+    m02 *= escala_z;
+    m10 *= escala_x;
+    m11 *= escala_y;
+    m12 *= escala_z;
+    m20 *= escala_x;
+    m21 *= escala_y;
+    m22 *= escala_z;
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1818,15 +1792,12 @@ Matrix33<T>& Matrix33<T>::Scale (const T escala_x, const T escala_y, const T esc
 template<typename T>
 Matrix33<T>& Matrix33<T>::AlignYX (const Vector3<T>& vY, const Vector3<T>& vX)
 {
-  Vector3<T> y = vY;
-  Vector3<T> z = vX ^ vY;
-  Vector3<T> x = vY ^ z;
-
-	SetFromBasis(x, y , z);
-
-  ResetScale();
-
-  return (*this);
+    Vector3<T> y = vY;
+    Vector3<T> z = vX ^ vY;
+    Vector3<T> x = vY ^ z;
+    SetFromBasis(x, y , z);
+    ResetScale();
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1840,15 +1811,12 @@ Matrix33<T>& Matrix33<T>::AlignYX (const Vector3<T>& vY, const Vector3<T>& vX)
 template<typename T>
 Matrix33<T>& Matrix33<T>::AlignYZ (const Vector3<T>& vY, const Vector3<T>& vZ)
 {
-	Vector3<T> y = vY;
-	Vector3<T> x = vY ^ vZ;
-	Vector3<T> z = x ^ vY;
-
-	SetFromBasis(x, y , z);
-
-	ResetScale();
-
-  return (*this);
+    Vector3<T> y = vY;
+    Vector3<T> x = vY ^ vZ;
+    Vector3<T> z = x ^ vY;
+    SetFromBasis(x, y , z);
+    ResetScale();
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1862,23 +1830,20 @@ Matrix33<T>& Matrix33<T>::AlignYZ (const Vector3<T>& vY, const Vector3<T>& vZ)
 template<typename T>
 Matrix33<T>& Matrix33<T>::AlignXZ (const Vector3<T>& vX, const Vector3<T>& vZ)
 {
-	Vector3<T> x = vX;
-	Vector3<T> y = vZ ^ vX;
-	Vector3<T> z = vX ^ y;
-
-	SetFromBasis(x, y , z);
-
-	ResetScale();
-
-  return (*this);
+    Vector3<T> x = vX;
+    Vector3<T> y = vZ ^ vX;
+    Vector3<T> z = vX ^ y;
+    SetFromBasis(x, y , z);
+    ResetScale();
+    return (*this);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Calcula el determinante de la matriz. Para una matriz 3x3 es un escalar definido como:
 /// \verbatim
 ///   | m00 m01 m02 |
-///   | m10 m11 m12 | = m00*m11*m22 + m10*m21*m02 + m01*m12*m20 - m02*m11*m20 - m01*m10*m22 - m12*m21*m00 = 
-///   | m20 m21 m22 |   
+///   | m10 m11 m12 | = m00*m11*m22 + m10*m21*m02 + m01*m12*m20 - m02*m11*m20 - m01*m10*m22 - m12*m21*m00 =
+///   | m20 m21 m22 |
 ///                     m00*(m11*m22 - m12*21) - m01*(m10*m22 - m12*m20) + m02*(m10*m21 - m11*m20)
 ///
 /// Coste: [9 productos y 5 sumas]
@@ -1887,7 +1852,7 @@ Matrix33<T>& Matrix33<T>::AlignXZ (const Vector3<T>& vX, const Vector3<T>& vZ)
 template<typename T>
 inline T Matrix33<T>::Determinant () const
 {
-  return m00*(m11*m22 - m12*m21) + m01*(m12*m20 - m10*m22) + m02*(m10*m21 - m11*m20);
+    return m00 * (m11 * m22 - m12 * m21) + m01 * (m12 * m20 - m10 * m22) + m02 * (m10 * m21 - m11 * m20);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1898,9 +1863,9 @@ inline T Matrix33<T>::Determinant () const
 template<typename T>
 bool Matrix33<T>::IsOrthogonalEpsilon () const
 {
-  return(mathUtils::ZeroEpsilon<T>(GetVectorBasis(0) * GetVectorBasis(1)) &&
-         mathUtils::ZeroEpsilon<T>(GetVectorBasis(0) * GetVectorBasis(2)) &&
-         mathUtils::ZeroEpsilon<T>(GetVectorBasis(1) * GetVectorBasis(2)));
+    return (mathUtils::ZeroEpsilon<T>(GetVectorBasis(0) * GetVectorBasis(1)) &&
+            mathUtils::ZeroEpsilon<T>(GetVectorBasis(0) * GetVectorBasis(2)) &&
+            mathUtils::ZeroEpsilon<T>(GetVectorBasis(1) * GetVectorBasis(2)));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1911,21 +1876,21 @@ bool Matrix33<T>::IsOrthogonalEpsilon () const
 template<typename T>
 bool Matrix33<T>::IsOrthonormalEpsilon () const
 {
-  return(IsOrthogonalEpsilon() &&
-         mathUtils::EqualEpsilon<T>(GetVectorBasis(0).SquaredLength(), One<T>()) && 
-         mathUtils::EqualEpsilon<T>(GetVectorBasis(1).SquaredLength(), One<T>()) && 
-         mathUtils::EqualEpsilon<T>(GetVectorBasis(2).SquaredLength(), One<T>()));
+    return (IsOrthogonalEpsilon() &&
+            mathUtils::EqualEpsilon<T>(GetVectorBasis(0).SquaredLength(), One<T>()) &&
+            mathUtils::EqualEpsilon<T>(GetVectorBasis(1).SquaredLength(), One<T>()) &&
+            mathUtils::EqualEpsilon<T>(GetVectorBasis(2).SquaredLength(), One<T>()));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Transformación del vector pasado en el parámetro. Equivalente al producto de matriz x vector 3D.
 /// Equivalente a produto de matrices [3 3]x[3 1]. Equivalente a una transformación de ROTACION.
-/// [ver notas en el operador '*', producto por vector]                     
+/// [ver notas en el operador '*', producto por vector]
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename T>
 inline void Matrix33<T>::TransformVector (Vector3<T>& vector) const
 {
-  vector = (*this) * vector; 
+    vector = (*this) * vector;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1936,7 +1901,7 @@ inline void Matrix33<T>::TransformVector (Vector3<T>& vector) const
 template<typename T>
 inline Vector3<T> Matrix33<T>::GetTransformVector (const Vector3<T>& vector) const
 {
-  return (*this) * vector;
+    return (*this) * vector;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1947,8 +1912,7 @@ inline Vector3<T> Matrix33<T>::GetTransformVector (const Vector3<T>& vector) con
 template<typename T>
 inline void Matrix33<T>::TransformArrayVectors (int iElements, Vector3<T>* pVecOUT, Vector3<T>* pVecIN) const
 {
-  for(int i=0; i<iElements; i++)
-  {
-    pVecOUT[i] = (*this) * (pVecIN[i]);
-  }
+    for (int i = 0; i < iElements; i++) {
+        pVecOUT[i] = (*this) * (pVecIN[i]);
+    }
 }

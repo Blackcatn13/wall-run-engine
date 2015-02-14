@@ -12,10 +12,10 @@ CCameraKeyController::CCameraKeyController()
     , m_CurrentTime(0.0)
     , m_TotalTime(0.0)
     , m_IsPlaying(false)
-	, m_Once(false)
+    , m_Once(false)
     , m_Cycle(false)
     , m_Reverse(false)
-	, m_IsReversing(false)
+    , m_IsReversing(false)
     , m_Object(NULL)
     , m_YawInterpolated(0.0)
     , m_PitchInterpolated(0.0)
@@ -42,10 +42,10 @@ void CCameraKeyController::LoadXML(const std::string &FileName)
         CXMLTreeNode  m = l_XMLParser["camera_key_controller"];
         if (m.Exists()) {
             if (m.GetNumChildren() > 1) m_NextKey = 1;
-			bool l_once = m.GetBoolProperty("once");
+            bool l_once = m.GetBoolProperty("once");
             bool l_cycle = m.GetBoolProperty("cycle");
             bool l_reverse = false;//m.GetBoolProperty("reverse");
-			SetOnce(l_once);
+            SetOnce(l_once);
             SetCycle(l_cycle);
             SetReverse(l_reverse);
             Vect3f l_aux1 = m(0).GetVect3fProperty("pos", NULL, true);
@@ -55,9 +55,9 @@ void CCameraKeyController::LoadXML(const std::string &FileName)
             float l_pitch = -atan2(l_V.y, sqrt((l_V.z * l_V.z) + (l_V.x * l_V.x)));
             float l_roll = 0.0f;
             m_Object = new CObject3D(l_aux1, l_yaw, l_pitch, l_roll);
-			m_PositionInit = l_aux1;
-			m_YawInit = l_yaw;
-			m_PitchInit = l_pitch;
+            m_PositionInit = l_aux1;
+            m_YawInit = l_yaw;
+            m_PitchInit = l_pitch;
             m_PosInterpolated = l_aux1;
             m_YawInterpolated = l_yaw;
             m_PitchInterpolated = l_pitch;
@@ -86,30 +86,27 @@ void CCameraKeyController::LoadXML(const std::string &FileName)
 
 void CCameraKeyController::GetCurrentKey()
 {
-	if (!m_IsReversing)
-	{
-		if (m_CurrentTime >= m_Keys[m_NextKey]->m_Time) {
-			if (m_NextKey == m_Keys.size() - 1) {
-				++m_CurrentKey;
-				m_NextKey = 0;
-			} else {
-				++m_CurrentKey;
-				++m_NextKey;
-			}
-		}
-	}
-	else
-	{
-		if (m_CurrentTime >= m_Keys[m_Keys.size()-(m_NextKey+1)]->m_Time) {
-			if (m_NextKey == 0) {
-				--m_CurrentKey;
-				m_NextKey = 0;
-			} else {
-				--m_CurrentKey;
-				--m_NextKey;
-			}
-		}
-	}
+    if (!m_IsReversing) {
+        if (m_CurrentTime >= m_Keys[m_NextKey]->m_Time) {
+            if (m_NextKey == m_Keys.size() - 1) {
+                ++m_CurrentKey;
+                m_NextKey = 0;
+            } else {
+                ++m_CurrentKey;
+                ++m_NextKey;
+            }
+        }
+    } else {
+        if (m_CurrentTime >= m_Keys[m_Keys.size() - (m_NextKey + 1)]->m_Time) {
+            if (m_NextKey == 0) {
+                --m_CurrentKey;
+                m_NextKey = 0;
+            } else {
+                --m_CurrentKey;
+                --m_NextKey;
+            }
+        }
+    }
 }
 
 void CCameraKeyController::Update(float ElapsedTime)
@@ -119,7 +116,7 @@ void CCameraKeyController::Update(float ElapsedTime)
         GetCurrentKey();
         //Si el siguiente keyframe está a más de 1 frame de distancia (0.034 seg), toca interpolar.
         if ( ( !m_IsReversing && (m_Keys[m_NextKey]->GetTime() - m_Keys[m_CurrentKey]->GetTime() > 0.034) ) ||
-			( m_IsReversing && (m_Keys[m_CurrentKey]->GetTime() - m_Keys[m_NextKey]->GetTime() > 0.034) ) ){
+             ( m_IsReversing && (m_Keys[m_CurrentKey]->GetTime() - m_Keys[m_NextKey]->GetTime() > 0.034) ) ) {
             Vect3f l_p, l_p2;
             Vect3f l_la;
             Vect3f l_V;
@@ -136,27 +133,24 @@ void CCameraKeyController::Update(float ElapsedTime)
             l_yaw2 = atan2(l_V.z, l_V.x);
             l_pitch2 = -atan2(l_V.y, sqrt((l_V.z * l_V.z) + (l_V.x * l_V.x)));
             //Interpolación entre frames
-			InterpolatePosition(l_p, l_p2, m_Keys[m_CurrentKey]->GetTime(), m_Keys[m_NextKey]->GetTime(), ElapsedTime);
-			InterpolateYaw(l_yaw, l_yaw2, m_Keys[m_CurrentKey]->GetTime(), m_Keys[m_NextKey]->GetTime(), ElapsedTime);
-			InterpolatePitch(l_pitch, l_pitch2, m_Keys[m_CurrentKey]->GetTime(), m_Keys[m_NextKey]->GetTime(), ElapsedTime);
+            InterpolatePosition(l_p, l_p2, m_Keys[m_CurrentKey]->GetTime(), m_Keys[m_NextKey]->GetTime(), ElapsedTime);
+            InterpolateYaw(l_yaw, l_yaw2, m_Keys[m_CurrentKey]->GetTime(), m_Keys[m_NextKey]->GetTime(), ElapsedTime);
+            InterpolatePitch(l_pitch, l_pitch2, m_Keys[m_CurrentKey]->GetTime(), m_Keys[m_NextKey]->GetTime(), ElapsedTime);
             m_Object->SetPosition(m_PosInterpolated);
             m_Object->SetYaw(m_YawInterpolated);
             m_Object->SetPitch(m_PitchInterpolated);
         }
-        if ( m_CurrentTime >= m_TotalTime ){
-			if (IsOnce()) m_IsPlaying = false;
-			else
-			{
-				if (!IsCycle()) m_IsPlaying = false;
-			}
+        if ( m_CurrentTime >= m_TotalTime ) {
+            if (IsOnce()) m_IsPlaying = false;
+            else {
+                if (!IsCycle()) m_IsPlaying = false;
+            }
             ResetTime(IsReverse());
-			if (m_Keys.size() > 1) 
-			{
-				if (!IsReverse()) m_NextKey = 1;
-				else m_NextKey = m_Keys.size()-2;
-			}
-			else m_NextKey = 0;
-			Vect3f l_p = m_Keys[0]->m_CameraInfo->GetPos();
+            if (m_Keys.size() > 1) {
+                if (!IsReverse()) m_NextKey = 1;
+                else m_NextKey = m_Keys.size() - 2;
+            } else m_NextKey = 0;
+            Vect3f l_p = m_Keys[0]->m_CameraInfo->GetPos();
             Vect3f l_la = m_Keys[0]->m_CameraInfo->GetLookAt();
             Vect3f l_V = l_p - l_la;
             float l_yaw = atan2(l_V.z, l_V.x) - ePIf;
@@ -175,17 +169,14 @@ void CCameraKeyController::SetCurrentTime(float CurrentTime)
 
 void CCameraKeyController::ResetTime(bool reverse)
 {
-	m_CurrentTime = 0.0;
-	if (!reverse || m_IsReversing) 
-	{
-		m_CurrentKey = 0;
-		m_IsReversing = false;
-	}
-	else 
-	{
-		m_CurrentKey = m_Keys.size()-1;
-		m_IsReversing = true;
-	}
+    m_CurrentTime = 0.0;
+    if (!reverse || m_IsReversing) {
+        m_CurrentKey = 0;
+        m_IsReversing = false;
+    } else {
+        m_CurrentKey = m_Keys.size() - 1;
+        m_IsReversing = true;
+    }
 }
 
 void CCameraKeyController::SetOnce(bool Once)
@@ -236,11 +227,11 @@ void CCameraKeyController::Pause()
 void CCameraKeyController::Stop()
 {
     m_IsPlaying = false;
-	ResetTime(false);
-	if (m_Keys.size() > 1) m_NextKey = 1;
-	else m_NextKey = 0;
+    ResetTime(false);
+    if (m_Keys.size() > 1) m_NextKey = 1;
+    else m_NextKey = 0;
     m_PosInterpolated = m_PositionInit;
-	m_YawInterpolated = m_YawInit;
+    m_YawInterpolated = m_YawInit;
     m_PitchInterpolated = m_PitchInit;
 }
 

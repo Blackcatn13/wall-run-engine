@@ -68,11 +68,11 @@ void ShowErrorMessage (const std::string& message)
 //-----------------------------------------------------------------------
 int APIENTRY WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance, LPSTR _lpCmdLine, int _nCmdShow)
 {
-    #ifdef _DEBUG
-	{ 
-		MemLeaks::MemoryBegin();
-	}
-	#endif
+#ifdef _DEBUG
+    {
+        MemLeaks::MemoryBegin();
+    }
+#endif
     // Register the window class
     WNDCLASSEX wc = {	sizeof(WNDCLASSEX), CS_CLASSDC, MsgProc, 0L, 0L, GetModuleHandle(NULL), NULL, NULL, NULL, NULL, APPLICATION_NAME, NULL };
     RegisterClassEx( &wc );
@@ -87,7 +87,7 @@ int APIENTRY WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance, LPSTR _lpCm
         m_Engine = new CEngine();
         //new CVideoGame_Process()
         //new CTest_Process()
-		CProcess *proc = new CTestCommands();
+        CProcess *proc = new CTestCommands();
         m_Engine->Init(proc, ".\\Data\\Config.xml", hWnd);
         proc->Init();
         // Añadir en el while la condición de salida del programa de la aplicación
@@ -108,12 +108,12 @@ int APIENTRY WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance, LPSTR _lpCm
     }
     UnregisterClass( APPLICATION_NAME, wc.hInstance );
     delete m_Engine;
-	#ifdef _DEBUG
-	{ 
-		MemLeaks::MemoryEnd();
-	}
-	#endif
-  //  MemLeaks::MemoryEnd();
+#ifdef _DEBUG
+    {
+        MemLeaks::MemoryEnd();
+    }
+#endif
+    //  MemLeaks::MemoryEnd();
     // Añadir una llamada a la alicación para finalizar/liberar memoria de todos sus datos
     return 0;
 }

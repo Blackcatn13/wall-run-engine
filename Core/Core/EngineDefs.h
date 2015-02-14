@@ -23,8 +23,8 @@ typedef struct Conf_info {
     std::string                 CinematicPath;
     std::string                 LuaPath;
     std::string                 EffectPath;
-	std::string					SceneRenderCommandsPath;	
-	std::string					PoolRenderableObjects;
+    std::string					SceneRenderCommandsPath;
+    std::string					PoolRenderableObjects;
 } CONFIG_INFO;
 
 

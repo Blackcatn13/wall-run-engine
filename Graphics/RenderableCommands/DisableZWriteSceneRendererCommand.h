@@ -9,7 +9,7 @@
 class CDisableZWriteSceneRendererCommand : public CSceneRendererCommand
 {
 public:
-	CDisableZWriteSceneRendererCommand(CXMLTreeNode &atts);
-	void Execute(CGraphicsManager &RM);
+    CDisableZWriteSceneRendererCommand(CXMLTreeNode &atts);
+    void Execute(CGraphicsManager &RM);
 };
 #endif

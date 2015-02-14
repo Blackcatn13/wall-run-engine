@@ -10,10 +10,10 @@
 class CDeferredShadingSceneRendererCommand : public CStagedTexturedRendererCommand
 {
 private:
-	CRenderableObjectTechnique *m_RenderableObjectTechnique;
-	void SetLightsData(CGraphicsManager &RM);
+    CRenderableObjectTechnique *m_RenderableObjectTechnique;
+    void SetLightsData(CGraphicsManager &RM);
 public:
-	CDeferredShadingSceneRendererCommand(CXMLTreeNode &atts);
-	void Execute(CGraphicsManager &RM);
+    CDeferredShadingSceneRendererCommand(CXMLTreeNode &atts);
+    void Execute(CGraphicsManager &RM);
 };
 #endif

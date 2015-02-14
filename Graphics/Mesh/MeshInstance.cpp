@@ -26,10 +26,10 @@ CMeshInstance::~CMeshInstance()
 void CMeshInstance::Render(CGraphicsManager *RM)
 {
     if (m_Printable) {
-		Mat44f t = m44fIDENTITY;
-		RM->SetTransform(t);
-		RM->SetTransform(getTransform());
+        Mat44f t = m44fIDENTITY;
+        RM->SetTransform(t);
+        RM->SetTransform(getTransform());
         m_StaticMesh->Render(RM);
-	}
+    }
 }
 

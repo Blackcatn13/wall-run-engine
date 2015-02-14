@@ -21,23 +21,29 @@ class CPhysicActor;
 class CPhysicRevoluteJoint
 {
 public:
-							CPhysicRevoluteJoint	( void );
-							~CPhysicRevoluteJoint	( void );
+    CPhysicRevoluteJoint	( void );
+    ~CPhysicRevoluteJoint	( void );
 
-	void					CreateJoint				( NxJoint* joint );
-	void					SetInfo					( const Vect3f& axis, const Vect3f& anchor, CPhysicActor* actorA,  CPhysicActor* actorB = 0 );
-													  
-	void					SetMotor				( float maxForce, float veltarget, bool limit=false, float limHigh=0.f, float limLow=0.f );
-	void					ActiveMotor				( float velocity );
+    void					CreateJoint				( NxJoint* joint );
+    void					SetInfo					( const Vect3f& axis, const Vect3f& anchor, CPhysicActor* actorA,  CPhysicActor* actorB = 0 );
 
-	//---Get PhsX Info---
-	NxJoint*				GetPhXJoint				( void ) const		{ return m_pJoint; }
-	NxRevoluteJointDesc*	GetPhXDescJoint			( void ) const		{ return m_pRevoluteDesc; }
+    void					SetMotor				( float maxForce, float veltarget, bool limit = false, float limHigh = 0.f, float limLow = 0.f );
+    void					ActiveMotor				( float velocity );
+
+    //---Get PhsX Info---
+    NxJoint*				GetPhXJoint				( void ) const
+    {
+        return m_pJoint;
+    }
+    NxRevoluteJointDesc*	GetPhXDescJoint			( void ) const
+    {
+        return m_pRevoluteDesc;
+    }
 
 
 private:
-	NxJoint					*m_pJoint;
-	NxRevoluteJointDesc		*m_pRevoluteDesc;
+    NxJoint					*m_pJoint;
+    NxRevoluteJointDesc		*m_pRevoluteDesc;
 };
 
 #endif //INC_PHYSIC_REVOLUTE_JOINT_H_

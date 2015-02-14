@@ -21,8 +21,8 @@ private:
     CFPSCamera*		    m_FPSCamera;
     CThPSCamera*	    m_ThPSCamera;
     CThPSCamera*	    m_ThPSCamera1;
-	CScriptedController * m_ScriptedController;
-	CRenderableObject	*m_RenderableObject;
+    CScriptedController * m_ScriptedController;
+    CRenderableObject	*m_RenderableObject;
     bool			    m_PlayerMode;
     bool				m_FPSMode;
     float			    tTerra1_yaw;
@@ -31,7 +31,7 @@ private:
     float			    skip;
     float			    m_dt;
     Vect2i              m_textPosition;
-	int					m_numPrimitives, m_totalVertices, m_totalFaces;
+    int					m_numPrimitives, m_totalVertices, m_totalFaces;
 public:
     CTestCommands(void);
     ~CTestCommands(void);

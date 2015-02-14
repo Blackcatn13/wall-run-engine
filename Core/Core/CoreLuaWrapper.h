@@ -5,14 +5,15 @@
 class CCoreLuaWrapper
 {
 protected:
-	CCore *m_CoreInstance;
+    CCore *m_CoreInstance;
 public:
-	CCoreLuaWrapper();
-	~CCoreLuaWrapper();
+    CCoreLuaWrapper();
+    ~CCoreLuaWrapper();
 
-	CCore* GetCoreInstance(){
-		return m_CoreInstance;
-	}
+    CCore* GetCoreInstance()
+    {
+        return m_CoreInstance;
+    }
 
 };
 

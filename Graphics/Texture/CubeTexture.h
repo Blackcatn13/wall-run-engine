@@ -7,7 +7,7 @@
 class CCubeTexture : public CTexture
 {
 protected:
-	bool LoadFile();
+    bool LoadFile();
 };
 
 #endif

@@ -27,55 +27,163 @@ const float  FLOAT_PI_VALUE  = (float)DOUBLE_PI_VALUE;
 /// Constantes numéricas con tipo templatizado
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-template<typename T>  inline T      Epsilon           () { return 0; }
-template<>            inline float  Epsilon<float>    () { return ALG_EPSILON_FLOAT; }
-template<>            inline double Epsilon<double>   () { return ALG_EPSILON_DOUBLE; }
+template<typename T>  inline T      Epsilon           ()
+{
+    return 0;
+}
+template<>            inline float  Epsilon<float>    ()
+{
+    return ALG_EPSILON_FLOAT;
+}
+template<>            inline double Epsilon<double>   ()
+{
+    return ALG_EPSILON_DOUBLE;
+}
 
-template<typename T>  inline T      One               () { return 1;    }
-template<>            inline float  One<float>        () { return 1.0f; }
-template<>            inline double One<double>       () { return 1.0;  }
+template<typename T>  inline T      One               ()
+{
+    return 1;
+}
+template<>            inline float  One<float>        ()
+{
+    return 1.0f;
+}
+template<>            inline double One<double>       ()
+{
+    return 1.0;
+}
 
-template<typename T>  inline T      MinusOne          () { return -1;    }
-template<>            inline float  MinusOne<float>   () { return -1.0f; }
-template<>            inline double MinusOne<double>  () { return -1.0;  }
+template<typename T>  inline T      MinusOne          ()
+{
+    return -1;
+}
+template<>            inline float  MinusOne<float>   ()
+{
+    return -1.0f;
+}
+template<>            inline double MinusOne<double>  ()
+{
+    return -1.0;
+}
 
-template<typename T>  inline T      Zero              () { return 0;    }
-template<>            inline float  Zero<float>       () { return 0.0f; }
-template<>            inline double Zero<double>      () { return 0.0;  }
+template<typename T>  inline T      Zero              ()
+{
+    return 0;
+}
+template<>            inline float  Zero<float>       ()
+{
+    return 0.0f;
+}
+template<>            inline double Zero<double>      ()
+{
+    return 0.0;
+}
 
-template<typename T>  inline T      Half              () { return (T)0.5; }
-template<>            inline float  Half<float>       () { return 0.5f;   }
-template<>            inline double Half<double>      () { return 0.5;    }
+template<typename T>  inline T      Half              ()
+{
+    return (T)0.5;
+}
+template<>            inline float  Half<float>       ()
+{
+    return 0.5f;
+}
+template<>            inline double Half<double>      ()
+{
+    return 0.5;
+}
 
-template<typename T>  inline T      Two               () { return 2;    }
-template<>            inline float  Two<float>        () { return 2.0f; }
-template<>            inline double Two<double>       () { return 2.0;  }
+template<typename T>  inline T      Two               ()
+{
+    return 2;
+}
+template<>            inline float  Two<float>        ()
+{
+    return 2.0f;
+}
+template<>            inline double Two<double>       ()
+{
+    return 2.0;
+}
 
 // Epsilon utilizado en la determinación de ángulos de Euler
-template<typename T>  inline T      QuatPoleEpsilon         () { return 0; }
-template<>            inline float  QuatPoleEpsilon<float>  () { return QUAT_POLE_EPSILON_FLOAT; }
-template<>            inline double QuatPoleEpsilon<double> () { return QUAT_POLE_EPSILON_DOUBLE; }
+template<typename T>  inline T      QuatPoleEpsilon         ()
+{
+    return 0;
+}
+template<>            inline float  QuatPoleEpsilon<float>  ()
+{
+    return QUAT_POLE_EPSILON_FLOAT;
+}
+template<>            inline double QuatPoleEpsilon<double> ()
+{
+    return QUAT_POLE_EPSILON_DOUBLE;
+}
 
 // Constantes relacionadas con el número PI
-template<typename T>  inline T      ePI            () { return (T)DOUBLE_PI_VALUE; }
-template<>            inline float  ePI<float>     () { return FLOAT_PI_VALUE;     }
-template<>            inline double ePI<double>    () { return DOUBLE_PI_VALUE;    }
+template<typename T>  inline T      ePI            ()
+{
+    return (T)DOUBLE_PI_VALUE;
+}
+template<>            inline float  ePI<float>     ()
+{
+    return FLOAT_PI_VALUE;
+}
+template<>            inline double ePI<double>    ()
+{
+    return DOUBLE_PI_VALUE;
+}
 
-template<typename T>  inline T      e2PI           () { return (T)(2.0 * DOUBLE_PI_VALUE); }
-template<>            inline float  e2PI<float>    () { return (2.0f * FLOAT_PI_VALUE);    }
-template<>            inline double e2PI<double>   () { return (2.0 * DOUBLE_PI_VALUE);    }
+template<typename T>  inline T      e2PI           ()
+{
+    return (T)(2.0 * DOUBLE_PI_VALUE);
+}
+template<>            inline float  e2PI<float>    ()
+{
+    return (2.0f * FLOAT_PI_VALUE);
+}
+template<>            inline double e2PI<double>   ()
+{
+    return (2.0 * DOUBLE_PI_VALUE);
+}
 
-template<typename T>  inline T      ePI2           () { return (T)(0.5 * DOUBLE_PI_VALUE); }
-template<>            inline float  ePI2<float>    () { return (0.5f * FLOAT_PI_VALUE);    }
-template<>            inline double ePI2<double>   () { return (0.5 * DOUBLE_PI_VALUE);    }
+template<typename T>  inline T      ePI2           ()
+{
+    return (T)(0.5 * DOUBLE_PI_VALUE);
+}
+template<>            inline float  ePI2<float>    ()
+{
+    return (0.5f * FLOAT_PI_VALUE);
+}
+template<>            inline double ePI2<double>   ()
+{
+    return (0.5 * DOUBLE_PI_VALUE);
+}
 
-template<typename T>  inline T      eInPI          () { return (T)(1.0 / DOUBLE_PI_VALUE); }
-template<>            inline float  eInPI<float>   () { return (1.0f / FLOAT_PI_VALUE);    }
-template<>            inline double eInPI<double>  () { return (1.0 / DOUBLE_PI_VALUE);    }
+template<typename T>  inline T      eInPI          ()
+{
+    return (T)(1.0 / DOUBLE_PI_VALUE);
+}
+template<>            inline float  eInPI<float>   ()
+{
+    return (1.0f / FLOAT_PI_VALUE);
+}
+template<>            inline double eInPI<double>  ()
+{
+    return (1.0 / DOUBLE_PI_VALUE);
+}
 
-template<typename T>  inline T      eIn2PI         () { return (T)(1.0 / (2.0 * DOUBLE_PI_VALUE)); }
-template<>            inline float  eIn2PI<float>  () { return (1.0f / (2.0f * FLOAT_PI_VALUE));   }
-template<>            inline double eIn2PI<double> () { return (1.0 / (2.0 * DOUBLE_PI_VALUE));    }
+template<typename T>  inline T      eIn2PI         ()
+{
+    return (T)(1.0 / (2.0 * DOUBLE_PI_VALUE));
+}
+template<>            inline float  eIn2PI<float>  ()
+{
+    return (1.0f / (2.0f * FLOAT_PI_VALUE));
+}
+template<>            inline double eIn2PI<double> ()
+{
+    return (1.0 / (2.0 * DOUBLE_PI_VALUE));
+}
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

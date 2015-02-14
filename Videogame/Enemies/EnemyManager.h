@@ -13,23 +13,23 @@ class CXMLTreeNode;
 class CEnemyManager
 {
 private:
-	std::vector<CEnemy *>						m_Enemies;
-	std::string									m_File;
-	std::map<std::string, CXMLTreeNode>			m_Cores;
+    std::vector<CEnemy *>						m_Enemies;
+    std::string									m_File;
+    std::map<std::string, CXMLTreeNode>			m_Cores;
 
-	CEnemyManager();
+    CEnemyManager();
 protected:
-	static CEnemyManager*		m_Singleton;
+    static CEnemyManager*		m_Singleton;
 
 public:
-	~CEnemyManager();
-	void Init(const std::string &FileName);
-	void Update(float elapsedTime);
-	void Render();
-	void Destroy();
-	void Reload();
-	static CEnemyManager* GetInstance();
-	const CXMLTreeNode & GetCoreEnemy(const std::string &type);
+    ~CEnemyManager();
+    void Init(const std::string &FileName);
+    void Update(float elapsedTime);
+    void Render();
+    void Destroy();
+    void Reload();
+    static CEnemyManager* GetInstance();
+    const CXMLTreeNode & GetCoreEnemy(const std::string &type);
 };
 
 #endif

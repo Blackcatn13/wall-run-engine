@@ -14,9 +14,9 @@
 
 extern "C"
 {
-	#include "lua.h"
-	#include "lualib.h"
-	#include "lauxlib.h"
+#include "lua.h"
+#include "lualib.h"
+#include "lauxlib.h"
 }
 
 #include <luabind/luabind.hpp>
@@ -30,28 +30,34 @@ using namespace luabind;
 
 class CScriptManager
 {
-	private:
-		lua_State *m_LS;
-		std::map<std::string,std::string>  m_ScriptsMap;
-		bool m_DeleteMap;
-		std::string m_FileName;
+private:
+    lua_State *m_LS;
+    std::map<std::string, std::string>  m_ScriptsMap;
+    bool m_DeleteMap;
+    std::string m_FileName;
 
-	public:
-		CScriptManager();
-		~CScriptManager();
-		void Initialize();
-		void Destroy();
-		void RunCode(const std::string &Code) const;
-		void RunFile(const std::string &FileName) const;
-		void Load(const std::string &XMLFile);
-		void Reload();
-		void Reload(std::string File);
-	//	void LoadFile(const std::string &XMLFile);
-		lua_State * GetLuaState() const {return m_LS;}
-		void RegisterLUAFunctions();
-		
-		std::map<std::string, std::string>  GetScriptsMap(){return m_ScriptsMap;}
-	
+public:
+    CScriptManager();
+    ~CScriptManager();
+    void Initialize();
+    void Destroy();
+    void RunCode(const std::string &Code) const;
+    void RunFile(const std::string &FileName) const;
+    void Load(const std::string &XMLFile);
+    void Reload();
+    void Reload(std::string File);
+    //	void LoadFile(const std::string &XMLFile);
+    lua_State * GetLuaState() const
+    {
+        return m_LS;
+    }
+    void RegisterLUAFunctions();
+
+    std::map<std::string, std::string>  GetScriptsMap()
+    {
+        return m_ScriptsMap;
+    }
+
 };
 
 #endif

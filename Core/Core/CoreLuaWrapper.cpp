@@ -3,10 +3,10 @@
 
 CCoreLuaWrapper::CCoreLuaWrapper()
 {
-	m_CoreInstance = CCORE;
+    m_CoreInstance = CCORE;
 }
 
 CCoreLuaWrapper::~CCoreLuaWrapper()
 {
-	//CHECKED_DELETE(m_CoreInstance);
+    //CHECKED_DELETE(m_CoreInstance);
 }

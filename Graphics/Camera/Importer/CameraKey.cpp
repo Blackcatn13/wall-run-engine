@@ -4,11 +4,11 @@
 
 CCameraKey::CCameraKey(CCameraInfo *CameraInfo, float Time)
 {
-	m_CameraInfo = CameraInfo;
-	m_Time = Time;
+    m_CameraInfo = CameraInfo;
+    m_Time = Time;
 }
 
 CCameraKey::~CCameraKey()
 {
-	CHECKED_DELETE(m_CameraInfo);
+    CHECKED_DELETE(m_CameraInfo);
 }

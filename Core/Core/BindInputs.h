@@ -10,9 +10,9 @@
 
 extern "C"
 {
-	#include "lua.h"
-	#include "lualib.h"
-	#include "lauxlib.h"
+#include "lua.h"
+#include "lualib.h"
+#include "lauxlib.h"
 }
 
 #include <luabind/luabind.hpp>
@@ -27,15 +27,15 @@ using namespace luabind;
 
 void RegisterInputs()
 {
-	luabind::module(LUA_STATE) [
-	class_<CActionToInput>("CActionToInput")
-	.def(constructor<CInputManager *>())
-	.def("load_xml", &CActionToInput::LoadXML)
-	.def("reload_xml", &CActionToInput::ReloadXML)
-	.def("init_string_2_Input", &CActionToInput::InitString2Input)
-	.def("do_action", (bool (CActionToInput::*)(const std::string & action_name, float &amount)) &CActionToInput::DoAction)
-	.def("do_action", (bool (CActionToInput::*)(const std::string & action_name)) &CActionToInput::DoAction)
-	.def("do_action_from_lua", (bool (CActionToInput::*)(const std::string action_name, float amount)) &CActionToInput::DoActionFromLua)
-	.def("do_action_from_lua", (bool (CActionToInput::*)(const std::string action_name)) &CActionToInput::DoActionFromLua)
-	];
+    luabind::module(LUA_STATE) [
+        class_<CActionToInput>("CActionToInput")
+        .def(constructor<CInputManager *>())
+        .def("load_xml", &CActionToInput::LoadXML)
+        .def("reload_xml", &CActionToInput::ReloadXML)
+        .def("init_string_2_Input", &CActionToInput::InitString2Input)
+        .def("do_action", (bool (CActionToInput::*)(const std::string & action_name, float & amount)) &CActionToInput::DoAction)
+        .def("do_action", (bool (CActionToInput::*)(const std::string & action_name)) &CActionToInput::DoAction)
+        .def("do_action_from_lua", (bool (CActionToInput::*)(const std::string action_name, float amount)) &CActionToInput::DoActionFromLua)
+        .def("do_action_from_lua", (bool (CActionToInput::*)(const std::string action_name)) &CActionToInput::DoActionFromLua)
+    ];
 }

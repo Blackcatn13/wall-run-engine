@@ -10,9 +10,9 @@
 class CRenderableObjectTechniquesSceneRendererCommand : public CSceneRendererCommand
 {
 private:
-	CPoolRenderableObjectTechnique *m_PoolRenderableObjectTechnique;
+    CPoolRenderableObjectTechnique *m_PoolRenderableObjectTechnique;
 public:
-	CRenderableObjectTechniquesSceneRendererCommand(CXMLTreeNode &atts);
-	void Execute(CGraphicsManager &RM);
+    CRenderableObjectTechniquesSceneRendererCommand(CXMLTreeNode &atts);
+    void Execute(CGraphicsManager &RM);
 };
 #endif

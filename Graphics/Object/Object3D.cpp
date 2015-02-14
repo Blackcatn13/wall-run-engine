@@ -29,5 +29,5 @@ Mat44f CObject3D::getTransform()
 
 void CObject3D::InitMat44()
 {
-	m_transform = m44fIDENTITY;
+    m_transform = m44fIDENTITY;
 }

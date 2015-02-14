@@ -10,8 +10,8 @@ class CRenderDebugSceneSceneRendererCommand : public CSceneRendererCommand
 {
 private:
 public:
-	CRenderDebugSceneSceneRendererCommand(CXMLTreeNode &atts);
-	void Execute(CGraphicsManager &RM);
+    CRenderDebugSceneSceneRendererCommand(CXMLTreeNode &atts);
+    void Execute(CGraphicsManager &RM);
 };
 
 #endif

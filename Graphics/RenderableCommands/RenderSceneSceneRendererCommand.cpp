@@ -7,17 +7,14 @@
 
 CRenderSceneSceneRendererCommand::CRenderSceneSceneRendererCommand(CXMLTreeNode &atts)
 {
-	m_Layer = atts.GetPszProperty("layer","solid");
-	m_Active =atts.GetBoolProperty("active", true);
+    m_Layer = atts.GetPszProperty("layer", "solid");
+    m_Active = atts.GetBoolProperty("active", true);
 }
 void CRenderSceneSceneRendererCommand::Execute(CGraphicsManager &RM)
 {
-	RENDLM->setCurrentLayer(m_Layer);
-	if(m_Active){
-		CCORE->Render();
-		RENDLM->Render(GRAPHM, RENDLM->getCurrentLayer());
-	}
-
-	
-
+    RENDLM->setCurrentLayer(m_Layer);
+    if (m_Active) {
+        CCORE->Render();
+        RENDLM->Render(GRAPHM, RENDLM->getCurrentLayer());
+    }
 }

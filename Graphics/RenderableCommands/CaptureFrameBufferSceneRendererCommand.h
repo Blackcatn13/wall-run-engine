@@ -9,8 +9,8 @@
 class CCaptureFrameBufferSceneRendererCommand : public CStagedTexturedRendererCommand
 {
 public:
-	CCaptureFrameBufferSceneRendererCommand(CXMLTreeNode &atts);
-	void Execute(CGraphicsManager &RM);
+    CCaptureFrameBufferSceneRendererCommand(CXMLTreeNode &atts);
+    void Execute(CGraphicsManager &RM);
 };
 
 #endif

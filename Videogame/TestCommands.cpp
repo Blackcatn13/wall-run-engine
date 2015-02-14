@@ -217,14 +217,14 @@ void CTestCommands::Render()
     m_numPrimitives = 0;
     m_totalVertices = 0;
     m_totalFaces = 0;
-   /* Mat44f t;
-    t.SetIdentity();
-    GRAPHM->SetTransform(t);
-    GRAPHM->DrawGrid(20);
-    GRAPHM->DrawAxis(10);*/
+    /* Mat44f t;
+     t.SetIdentity();
+     GRAPHM->SetTransform(t);
+     GRAPHM->DrawGrid(20);
+     GRAPHM->DrawAxis(10);*/
     //text->Activate(0);
-	//RENDLM->Render(GRAPHM, RENDLM->getCurrentLayer);
-	SCENRENDCOMM->Execute(*GRAPHM);
+    //RENDLM->Render(GRAPHM, RENDLM->getCurrentLayer);
+    SCENRENDCOMM->Execute(*GRAPHM);
     //g_RV->Render(CCORE->GetGraphicsManager(º+-));
     /* Mat44f t;
      Mat44f trot1;

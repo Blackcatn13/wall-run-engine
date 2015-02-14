@@ -13,7 +13,7 @@ class CGraphicsManager;
 class CRenderableObjectsManager : public CTemplatedVectorMapManager<CRenderableObject>
 {
 private:
-	std::string m_FileName, m_FileName2;
+    std::string m_FileName, m_FileName2;
 public:
     CRenderableObjectsManager();
     virtual ~CRenderableObjectsManager();
@@ -24,7 +24,7 @@ public:
     CRenderableObject* AddAnimatedInstanceModel(const std::string &CoreModelName, const std::string &InstanceModelName, const Vect3f &Position);
     CRenderableObject* AddAnimatedInstanceModel(CXMLTreeNode &Node);
     void Load(const std::string &FileName);
-	void Load(CXMLTreeNode &Node);
+    void Load(CXMLTreeNode &Node);
     void Reload();
 };
 

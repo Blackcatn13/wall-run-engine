@@ -6,18 +6,19 @@ CRenderableObjectTechnique::CRenderableObjectTechnique()
 
 CRenderableObjectTechnique::CRenderableObjectTechnique(const std::string &Name, CEffectTechnique*EffectTechnique)
 {
-	setName(Name);
-	m_EffectTechnique = EffectTechnique;
+    setName(Name);
+    m_EffectTechnique = EffectTechnique;
 }
 
 
 void CRenderableObjectTechnique::SetEffectTechnique(CEffectTechnique *EffectTechnique)
 {
-	m_EffectTechnique = EffectTechnique;
+    m_EffectTechnique = EffectTechnique;
 }
 
-CEffectTechnique * CRenderableObjectTechnique::GetEffectTechnique() const{
-	return m_EffectTechnique;
+CEffectTechnique * CRenderableObjectTechnique::GetEffectTechnique() const
+{
+    return m_EffectTechnique;
 }
 
 /*La clase CRenderableObjectTechnique nos permitirá enlazar un

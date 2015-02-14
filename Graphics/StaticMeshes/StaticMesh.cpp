@@ -272,15 +272,14 @@ void CStaticMesh::Render (CGraphicsManager *RM)
     //CEffectTechnique *l_EffectTechnique = EFFECTM->GetEffectTechnique("LightsTechnique");
     //CEffectTechnique *l_EffectTechnique = EFFECTM->GetEffectTechnique("NormalMapTechnique");
     //CEffectTechnique *l_EffectTechnique = EFFECTM->GetEffectTechnique("CubeMapTechnique");
-   // CEffectTechnique *l_EffectTechnique = EFFECTM->GetEffectTechnique("LightMapTechnique");
-	
+    // CEffectTechnique *l_EffectTechnique = EFFECTM->GetEffectTechnique("LightMapTechnique");
     for (int i = 0; i < m_RVs.size(); ++i) {
         // TODO iterate m_textures
         // TODO cambiar a esto
-		// TODO modificar esto para que coja el effectTechnique del TechniqueManager a partir del vertexType
+        // TODO modificar esto para que coja el effectTechnique del TechniqueManager a partir del vertexType
         //std::string l_EffectName = EFFECTM->GetTechniqueEffectNameByVertexDefault(m_RVs[i]->GetVertexType());
-		//CEffectTechnique *l_EffectTechnique =EFFECTM->GetEffectTechnique(l_EffectName);
-		CEffectTechnique *l_EffectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(m_RVs[i]->GetVertexType()))->GetEffectTechnique();
+        //CEffectTechnique *l_EffectTechnique =EFFECTM->GetEffectTechnique(l_EffectName);
+        CEffectTechnique *l_EffectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(m_RVs[i]->GetVertexType()))->GetEffectTechnique();
         if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_TEXTURE1) == VERTEX_TYPE_TEXTURE1)
             m_Textures[i][0]->Activate(0);
         if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_TEXTURE2) == VERTEX_TYPE_TEXTURE2)
@@ -294,18 +293,21 @@ void CStaticMesh::Render (CGraphicsManager *RM)
 
 
 bool CStaticMesh::GetRenderableObjectTechnique()
-{/*
-	CRenderableObjectTechniqueManager *l_ROTM= C3DEngine::GetInstance().GetRenderableObjectsTechniqueManager();
-	bool l_Ok=true;
-	for(size_t i=0;i<m_VertexTypes.size();++i)
-	{
-		if(m_RenderableObjectTechniqueName=="")
-			m_RenderableObjectTechniqueName=l_ROTM->GetRenderableObjectTechniqueNameByVertexType(m_VertexTypes[i]);
-				CRenderableObjectTechnique *l_ROT=l_ROTM->GetResource(m_RenderableObjectTechniqueName);		m_RenderableObjectTechniques.push_back(l_ROT);
-		if(l_ROT==NULL)
-			Info("Error trying to GetRenderableObjectTechnique '%s' on CStaticMesh", m_RenderableObjectTechniqueName.c_str());
-		l_Ok=l_Ok && l_ROT!=NULL;
-	}
-	return l_Ok;*/
-	return true;
-}
+{
+    /*
+    CRenderableObjectTechniqueManager *l_ROTM= C3DEngine::GetInstance().GetRenderableObjectsTechniqueManager();
+    bool l_Ok=true;
+    for(size_t i=0;i<m_VertexTypes.size();++i)
+    {
+    	if(m_RenderableObjectTechniqueName=="")
+    		m_RenderableObjectTechniqueName=l_ROTM->GetRenderableObjectTechniqueNameByVertexType(m_VertexTypes[i]);
+
+    	CRenderableObjectTechnique *l_ROT=l_ROTM->GetResource(m_RenderableObjectTechniqueName);
+    	m_RenderableObjectTechniques.push_back(l_ROT);
+    	if(l_ROT==NULL)
+    		Info("Error trying to GetRenderableObjectTechnique '%s' on CStaticMesh", m_RenderableObjectTechniqueName.c_str());
+    	l_Ok=l_Ok && l_ROT!=NULL;
+    }
+    return l_Ok;*/
+    return true;
+}

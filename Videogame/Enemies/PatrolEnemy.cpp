@@ -13,15 +13,12 @@ CPatrolEnemy::~CPatrolEnemy()
 
 void CPatrolEnemy::Init()
 {
-
 }
 
 void CPatrolEnemy::Update(float elapsedTime)
 {
-
 }
 
 void CPatrolEnemy::Render()
 {
-
 }

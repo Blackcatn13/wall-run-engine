@@ -10,10 +10,10 @@
 class CRenderDebugLightsSceneRenderCommand : public CSceneRendererCommand
 {
 private:
-	bool m_Active;
+    bool m_Active;
 public:
-	CRenderDebugLightsSceneRenderCommand(CXMLTreeNode &atts);
-	void Execute(CGraphicsManager &RM);
+    CRenderDebugLightsSceneRenderCommand(CXMLTreeNode &atts);
+    void Execute(CGraphicsManager &RM);
 };
 
 #endif

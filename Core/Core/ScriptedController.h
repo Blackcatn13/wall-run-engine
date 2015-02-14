@@ -4,13 +4,14 @@
 #include "Utils\Defines.h"
 #include "Renderable\RenderableObject.h"
 
-class CScriptedController : public CRenderableObject {
+class CScriptedController : public CRenderableObject
+{
 public:
-  CScriptedController();
-  ~CScriptedController();
-  void Update(float dt);
-  void Render(CGraphicsManager *RM);
-  
+    CScriptedController();
+    ~CScriptedController();
+    void Update(float dt);
+    void Render(CGraphicsManager *RM);
+
 };
 
 

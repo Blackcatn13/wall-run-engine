@@ -15,7 +15,7 @@
 #define INCLUDE_MEMLEAKS_H
 
 
-#include <list> 
+#include <list>
 #include <map>
 #include <string>
 

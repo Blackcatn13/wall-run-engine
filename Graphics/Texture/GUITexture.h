@@ -7,7 +7,7 @@
 class CGUITexture : public CTexture
 {
 protected:
-	bool LoadFile();
+    bool LoadFile();
 };
 
 #endif

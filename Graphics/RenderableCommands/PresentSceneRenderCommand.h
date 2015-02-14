@@ -10,8 +10,8 @@ class CGraphicsManager;
 class CPresentSceneRendererCommand : public CSceneRendererCommand
 {
 public:
-	CPresentSceneRendererCommand(CXMLTreeNode &atts);
-	void Execute(CGraphicsManager &RM);
+    CPresentSceneRendererCommand(CXMLTreeNode &atts);
+    void Execute(CGraphicsManager &RM);
 };
 
 #endif

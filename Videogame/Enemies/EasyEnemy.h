@@ -10,11 +10,11 @@ class CXMLTreeNode;
 class CEasyEnemy : public CEnemy
 {
 public:
-	CEasyEnemy(CXMLTreeNode &info1);
-	~CEasyEnemy();
-	virtual void Init();
-	virtual void Update(float elapsedTime);
-	virtual void Render();
+    CEasyEnemy(CXMLTreeNode &info1);
+    ~CEasyEnemy();
+    virtual void Init();
+    virtual void Update(float elapsedTime);
+    virtual void Render();
 };
 
 #endif

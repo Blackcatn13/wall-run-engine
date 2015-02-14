@@ -7,13 +7,14 @@
 
 class  CGraphicsManager;
 
-class CClearSceneRendererCommand : public CSceneRendererCommand {
+class CClearSceneRendererCommand : public CSceneRendererCommand
+{
 protected:
-	bool m_Color;
-	bool m_Depth;
-	bool m_Stencil;
+    bool m_Color;
+    bool m_Depth;
+    bool m_Stencil;
 public:
-	CClearSceneRendererCommand(CXMLTreeNode &atts);
-	virtual void Execute(CGraphicsManager &RM);
+    CClearSceneRendererCommand(CXMLTreeNode &atts);
+    virtual void Execute(CGraphicsManager &RM);
 };
 #endif
