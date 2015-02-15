@@ -7,6 +7,12 @@
 		<default_technique vertex_type="19" technique="LightsTechnique"/>
 		<!-- <default_technique vertex_type="95" technique="NormalColoredMapTechnique"/> -->
 	</pool_renderable_object_technique>
+	<pool_renderable_object_technique name="generate_shadow_map_renderable_obejcts_technique"/>
+		<default_technique vertex_type="19" technique="GenerateShadowMap"/>
+		<default_technique vertex_type="31" technique="GenerateShadowMap"/>
+		<default_technique vertex_type="51" technique="GenerateShadowMap"/>
+		<default_technique vertex_type="531" technique="GenerateShadowMap"/>
+	</pool_renderable_object_technique>
 	<pool_renderable_object_technique name="dummy_test">
 		<default_technique vertex_type="19" technique="LightsTechnique"/>
 		<default_technique vertex_type="31" technique="NormalMapTechnique"/>

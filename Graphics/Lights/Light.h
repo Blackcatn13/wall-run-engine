@@ -5,12 +5,12 @@
 #include "Math\Color.h"
 #include <string>
 #include <vector>
-#include "Texture\Texture.h"
+
 #include <d3dx9.h>
 
 class CRenderableObjectsManager;
 class CEffect;
-
+class CTexture;
 class CGraphicsManager;
 
 class CLight : public CObject3D
@@ -39,7 +39,7 @@ protected:
     std::vector<CRenderableObjectsManager *> m_StaticShadowMapRenderableObjectsManagers,
         m_DynamicShadowMapRenderableObjectsManagers;
     Mat44f m_ViewShadowMap, m_ProjectionShadowMap;
-	std::string m_FormatType, m_ShadowTextureMask;
+    std::string m_FormatType, m_ShadowTextureMask;
 public:
     CLight();
     virtual ~CLight();
@@ -164,12 +164,12 @@ public:
         m_ProjectionShadowMap;
     }
 
-	void SetFormatType(std::string FormatType)
+    void SetFormatType(std::string FormatType)
     {
         m_FormatType = FormatType;
     }
 
-	void SetShadowTextureMask(std::string ShadowTextureMask)
+    void SetShadowTextureMask(std::string ShadowTextureMask)
     {
         m_ShadowTextureMask = ShadowTextureMask;
     }

@@ -3,13 +3,14 @@
 #include "Effects\EffectManager.h"
 #include "Effects\Effect.h"
 #include "Renderable\RenderableObjectsManager.h"
+#include "Texture\Texture.h"
 
 class CEffectManager;
 
 CLight::CLight()
 {
-    m_StaticShadowMap = NULL;
-    m_DynamicShadowMap = NULL;
+    m_StaticShadowMap = new CTexture();
+    m_DynamicShadowMap = new CTexture();
     m_ShadowMaskTexture = NULL;
 }
 
@@ -72,23 +73,22 @@ void CLight::GenerateShadowMap(CGraphicsManager *RM)
 
 void CLight::BeginRenderEffectManagerShadowMap(CEffect *Effect)
 {
-    if (m_GenerateDynamicShadowMap) {
-        //Faltan las mascaras
-        //SHADOW_MAP_MASK_STAGE=>5
-        //STATIC_SHADOW_MAP_STAGE 6
-        //DYNAMIC_SHADOW_MAP_STAGE 7
-        CEffectManager * l_EM = CCORE->GetEffectManager();
-        l_EM->SetLightViewMatrix(m_ViewShadowMap);
-        l_EM->SetShadowProjectionMatrix(m_ProjectionShadowMap);
-        if (m_ShadowMaskTexture != NULL)
-            m_ShadowMaskTexture->Activate(5/*SHADOW_MAP_MASK_STAGE*/);
-        if (m_GenerateStaticShadowMap)
-            m_StaticShadowMap->Activate(6/*STATIC_SHADOW_MAP_STAGE*/);
+    //Faltan las mascaras
+    //SHADOW_MAP_MASK_STAGE=>5
+    //STATIC_SHADOW_MAP_STAGE 6
+    //DYNAMIC_SHADOW_MAP_STAGE 7
+    CEffectManager * l_EM = CCORE->GetEffectManager();
+    l_EM->SetLightViewMatrix(m_ViewShadowMap);
+    l_EM->SetShadowProjectionMatrix(m_ProjectionShadowMap);
+    if (m_ShadowMaskTexture != NULL)
+        m_ShadowMaskTexture->Activate(5/*SHADOW_MAP_MASK_STAGE*/);
+    if (m_GenerateStaticShadowMap)
+        m_StaticShadowMap->Activate(6/*STATIC_SHADOW_MAP_STAGE*/);
+    if (m_GenerateDynamicShadowMap)
         m_DynamicShadowMap->Activate(7/*DYNAMIC_SHADOW_MAP_STAGE*/);
-        Effect->SetShadowMapParameters(m_ShadowMaskTexture != NULL,
-                                       m_GenerateStaticShadowMap, m_GenerateDynamicShadowMap &&
-                                       m_DynamicShadowMapRenderableObjectsManagers.size() != 0);
-    }
+    Effect->SetShadowMapParameters(m_ShadowMaskTexture != NULL,
+                                   m_GenerateStaticShadowMap, m_GenerateDynamicShadowMap &&
+                                   m_DynamicShadowMapRenderableObjectsManagers.size() != 0);
 }
 
 
