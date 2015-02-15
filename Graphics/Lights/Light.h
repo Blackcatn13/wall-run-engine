@@ -8,6 +8,7 @@
 
 #include <d3dx9.h>
 
+class CTexture;
 class CRenderableObjectsManager;
 class CEffect;
 class CTexture;

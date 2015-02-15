@@ -5,6 +5,7 @@
 #include "Renderable\RenderableObjectsManager.h"
 #include "Texture\Texture.h"
 
+
 class CEffectManager;
 
 CLight::CLight()

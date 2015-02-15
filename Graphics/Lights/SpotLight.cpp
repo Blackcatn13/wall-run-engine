@@ -3,6 +3,10 @@
 #include "Object\Object3D.h"
 #include "Core/Core.h"
 #include "Effects/EffectManager.h"
+#include "GraphicsManager.h"
+#include "Effects\EffectManager.h"
+#include "Core\Core.h"
+
 
 CSpotLight::CSpotLight() {}
 
