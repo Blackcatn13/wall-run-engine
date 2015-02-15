@@ -104,7 +104,6 @@ struct VertexVS_TCOLORED_NORMAL_VERTEX{
 	float4 Color	: COLOR;
 };
 
-
 struct CAL3D_HW_VERTEX_VS {
 	float3 Position : POSITION;
 	float4 Weight : BLENDWEIGHT;
@@ -114,6 +113,7 @@ struct CAL3D_HW_VERTEX_VS {
 	float4 BiNormal : BINORMAL0;
 	float2 TexCoord : TEXCOORD0;
 };
+
 struct CAL3D_HW_VERTEX_PS
 {
 	float4 HPosition : POSITION;

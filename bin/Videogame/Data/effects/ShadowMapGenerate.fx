@@ -12,14 +12,14 @@ PNormalVertex VertShadow(float4 Pos: POSITION,
 	float3 Normal: NORMAL)
 {
 	PNormalVertex OUT = (PNormalVertex)0;
-	OUT.oPos = mul(Pos, g_WorldViewProj);
-	OUT.Depth.xy = oPpos.zw;
+	OUT.oPos = mul(Pos, g_WorldViewProjectionMatrix);
+	OUT.Depth.xy = OUT.oPos.zw;
 	return OUT;
 }
 
 float4 PixShadow(PNormalVertex IN) : COLOR
 {
-	Color = IN.Depth.x / IN.Depth.y;
+	float4 Color = IN.Depth.x / IN.Depth.y;
 	return Color;
 }
 

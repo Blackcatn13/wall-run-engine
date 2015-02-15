@@ -8,7 +8,7 @@
 <enable_z_test/>
 <set_axis />
 <set_pool_renderable_objects_technique pool="generate_shadow_map_renderable_obejcts_technique"/>
-<!--<generate_shadow_maps />-->
+<generate_shadow_maps />
 <set_pool_renderable_objects_technique pool="generate_deferred_shading_pool_renderable_object_technique"/>
 <set_render_target name="deferred_multiple_render_target">
 	<dynamic_texture stage_id="0" name="DiffuseMapTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
