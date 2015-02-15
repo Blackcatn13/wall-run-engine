@@ -5,6 +5,7 @@
 //DWORD  BCLR = 0xff202080;  // Background color (if no image)
 float3 g_LightAmbient=float3(0.2, 0.2, 0.2);
 float g_SpecularExponent = 100;
+float g_LightMapContrib = 0.5;
 
 struct PSVertex
 {
@@ -32,9 +33,13 @@ float4 RN20(PSVertex IN) : COLOR
 	
 	float3 l_Nn = normalize(IN.WorldNormal);
 	float3 l_DiffuseTex = tex2D(S0LinearWrapSampler, IN.UV).rgb;
+	//return float4(l_DiffuseTex,1);
 	float3 l_DiffuseLigthMap = tex2D(S3LinearWrapSampler, IN.UV2).rgb;
-	return float4(l_DiffuseLigthMap, 1);
-	float3 finalColor = l_DiffuseTex * l_DiffuseLigthMap;
+	float3 l_intensity = l_DiffuseTex * l_DiffuseLigthMap;
+	//return float4(l_intensity,1);
+	float3 finalColor = l_DiffuseTex *  g_LightAmbient + l_intensity;
+	return float4(finalColor,1);
+	// A PARTIR DE AQUI SOBRA SI NO INFLUYEN LAS LUCES
 	float3 l_CameraPosition = g_InverseViewMatrix[3].xyz;
 	for(int i = 0; i < MAXLIGHTS; i++) 
 	{
