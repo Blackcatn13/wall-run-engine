@@ -75,17 +75,17 @@ Mat44f		COrthoFixedCamera::GetProjectionMatrix()
 	return(Mat44f)m_MatProj;
 }
 
-Vect3f CrossProduct(Vect3f vect1, Vect3f vect2)
-{
-	/*vec vector; 
-vector.x = Ay*Bz - By*Az; 
-vector.y = Bx*Az - Ax*Bz; 
-vector.z = Ax*By - Ay*Bx; */
-	Vect3f l_Vector;
-	l_Vector.x = (vect1.y*vect2.z) - (vect2.y*vect1.z);
-	l_Vector.y = (vect2.x*vect1.z) - (vect1.x*vect2.z);
-	l_Vector.z = (vect1.x*vect2.y) - (vect1.y*vect2.x);
-
-	return l_Vector;
-
-}
+//Vect3f CrossProduct(Vect3f vect1, Vect3f vect2)
+//{
+//	/*vec vector; 
+//vector.x = Ay*Bz - By*Az; 
+//vector.y = Bx*Az - Ax*Bz; 
+//vector.z = Ax*By - Ay*Bx; */
+//	Vect3f l_Vector;
+//	l_Vector.x = (vect1.y*vect2.z) - (vect2.y*vect1.z);
+//	l_Vector.y = (vect2.x*vect1.z) - (vect1.x*vect2.z);
+//	l_Vector.z = (vect1.x*vect2.y) - (vect1.y*vect2.x);
+//
+//	return l_Vector;
+//
+//}

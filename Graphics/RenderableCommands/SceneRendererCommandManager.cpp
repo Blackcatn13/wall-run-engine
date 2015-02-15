@@ -99,10 +99,10 @@ void CSceneRendererCommandManager::Load(const std::string &FileName)
                     CEndRenderSceneRendererCommand *l_Command = new CEndRenderSceneRendererCommand(m(i));
                     m_SceneRendererCommands.AddResource(l_Name, l_Command);
                 }
-                /*if (name == "generate_shadow_maps") {
+                if (name == "generate_shadow_maps") {
                 	CGenerateShadowMapsSceneRendererCommand *l_Command = new CGenerateShadowMapsSceneRendererCommand(m(i));
                 	m_SceneRendererCommands.AddResource(l_Name,l_Command);
-                }*/
+                }
                 if (name == "present") {
                     CPresentSceneRendererCommand *l_Command = new CPresentSceneRendererCommand(m(i));
                     m_SceneRendererCommands.AddResource(l_Name, l_Command);

@@ -194,9 +194,6 @@
     <ClCompile Include="RenderableCommands\EndRenderSceneRendererCommand.cpp">
       <Filter>RenderableCommands</Filter>
     </ClCompile>
-    <ClCompile Include="RenderableCommands\GenerateShadowMapsSceneRendererCommand.cpp">
-      <Filter>RenderableCommands</Filter>
-    </ClCompile>
     <ClCompile Include="RenderableCommands\PresentSceneRenderCommand.cpp">
       <Filter>RenderableCommands</Filter>
     </ClCompile>
@@ -244,6 +241,9 @@
     </ClCompile>
     <ClCompile Include="Camera\OrthoFixedCameraController.cpp">
       <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderableCommands\GenerateShadowMapsSceneRendererCommand.cpp">
+      <Filter>RenderableCommands</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -398,9 +398,6 @@
     <ClInclude Include="RenderableCommands\EndRenderSceneRendererCommand.h">
       <Filter>RenderableCommands</Filter>
     </ClInclude>
-    <ClInclude Include="RenderableCommands\GenerateShadowMapsSceneRendererCommand.h">
-      <Filter>RenderableCommands</Filter>
-    </ClInclude>
     <ClInclude Include="RenderableCommands\PresentSceneRenderCommand.h">
       <Filter>RenderableCommands</Filter>
     </ClInclude>
@@ -448,6 +445,9 @@
     </ClInclude>
     <ClInclude Include="Camera\OrthoFixedCameraController.h">
       <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableCommands\GenerateShadowMapsSceneRendererCommand.h">
+      <Filter>RenderableCommands</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
