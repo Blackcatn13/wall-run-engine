@@ -4,6 +4,7 @@
 #include "XML\XMLTreeNode.h"
 #include "Utils\Defines.h"
 #include "Core\Core.h"
+#include "TriggerManager\TriggerManager.h"
 
 CTrigger::CTrigger(CXMLTreeNode& node, CPhysicUserData* _pUserData)
     : CPhysicActor(_pUserData)
@@ -16,7 +17,7 @@ CTrigger::CTrigger(CXMLTreeNode& node, CPhysicUserData* _pUserData)
         CreateSphereTrigger(node.GetVect3fProperty("position", v3fZERO), node.GetFloatProperty("radius", 0.f), group);
     SetTriggerGroup(ECG_TRIGGERS);
     PHYSXM->AddPhysicActor(this);
-    PHYSXM->SetTriggerReport((CPhysicTriggerReport*)TRIGGM);
+    PHYSXM->SetTriggerReport(TRIGGM->getTriggerReport());
     //Events & scripts
     std::string triggerEvent = node.GetPszISOProperty("type_event", "enter");
     std::string script = node.GetPszISOProperty("script", "");

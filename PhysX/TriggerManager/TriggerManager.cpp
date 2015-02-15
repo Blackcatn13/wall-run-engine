@@ -6,6 +6,7 @@
 #include "Core\Core.h"
 
 CTriggerManager::CTriggerManager()
+    : CPhysicTriggerReport()
 {
 }
 
@@ -26,27 +27,21 @@ void CTriggerManager::Clear()
 
 void	CTriggerManager::OnEnter		( CPhysicUserData* _Entity_Trigger1, CPhysicUserData* _Other_Shape)
 {
-    if (_Other_Shape->getName() == "Controller") {
-        CTrigger * trigger = GetResource(_Entity_Trigger1->getName());
-        if (trigger != NULL)
-            trigger->ExecuteOnEnter();
-    }
+    CTrigger * trigger = GetResource(_Entity_Trigger1->getName());
+    if (trigger != NULL)
+        trigger->ExecuteOnEnter();
 }
 void	CTriggerManager::OnLeave		( CPhysicUserData* _Entity_Trigger1, CPhysicUserData* _Other_Shape)
 {
-    if (_Other_Shape->getName() == "Controller") {
-        CTrigger * trigger = GetResource(_Entity_Trigger1->getName());
-        if (trigger != NULL)
-            trigger->ExecuteOnExit();
-    }
+    CTrigger * trigger = GetResource(_Entity_Trigger1->getName());
+    if (trigger != NULL)
+        trigger->ExecuteOnExit();
 }
 void	CTriggerManager::OnStay		( CPhysicUserData* _Entity_Trigger1, CPhysicUserData* _Other_Shape)
 {
-    if (_Other_Shape->getName() == "Controller") {
-        CTrigger * trigger = GetResource(_Entity_Trigger1->getName());
-        if (trigger != NULL)
-            trigger->ExecuteOnStay();
-    }
+    CTrigger * trigger = GetResource(_Entity_Trigger1->getName());
+    if (trigger != NULL)
+        trigger->ExecuteOnStay();
 }
 
 bool	CTriggerManager::LoadTriggers( std::string FileName)

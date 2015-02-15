@@ -13,13 +13,17 @@ class CTriggerManager : public CTemplatedVectorMapManager<CTrigger>, public CPhy
 public:
     virtual ~CTriggerManager(void);
     CTriggerManager(void);
-	void	Clear();
+    void	Clear();
     bool	LoadTriggers( std::string FileName);
-    void	OnEnter		( CPhysicUserData* _Entity_Trigger1, CPhysicUserData* _Other_Shape);
-    void	OnLeave		( CPhysicUserData* _Entity_Trigger1, CPhysicUserData* _Other_Shape);
-    void	OnStay		( CPhysicUserData* _Entity_Trigger1, CPhysicUserData* _Other_Shape);
-	bool	Reload(const std::string &FileName);
-	bool	Reload();
+    virtual void	OnEnter		( CPhysicUserData* _Entity_Trigger1, CPhysicUserData* _Other_Shape);
+    virtual void	OnLeave		( CPhysicUserData* _Entity_Trigger1, CPhysicUserData* _Other_Shape);
+    virtual void	OnStay		( CPhysicUserData* _Entity_Trigger1, CPhysicUserData* _Other_Shape);
+    bool	Reload(const std::string &FileName);
+    bool	Reload();
+    CPhysicTriggerReport* getTriggerReport()
+    {
+        return this;
+    }
 private:
     std::string							m_FileName;
     std::vector	<CPhysicUserData *>		m_UserData;
