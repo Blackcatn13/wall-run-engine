@@ -19,13 +19,9 @@ void CGenerateShadowMapsSceneRendererCommand::Execute(CGraphicsManager &RM)
     //CRenderableObjectTechniqueManager::TMapResource::iterator it2 = RENDTECHM->GetResources().begin();
     while (it != LIGHTM->GetResources().end()) {
         if (it->second->GetGenerateDynamicShadowMap()) {
-            //while (it2 != RENDTECHM->GetResources().end())
-            //{
-            //it->second->BeginRenderEffectManagerShadowMap(it2->second->GetEffectTechnique()->GetEffect());
-            it->second->BeginRenderEffectManagerShadowMap(EFFECTM->GetEffect("shadowMapEffect"));
+            it->second->BeginRenderEffectManagerShadowMap(EFFECTM->GetEffect("ShadowMapGenerate"));
             it->second->SetShadowMap(&RM);
             it->second->GenerateShadowMap(&RM);
-            //}
         }
     }
 }

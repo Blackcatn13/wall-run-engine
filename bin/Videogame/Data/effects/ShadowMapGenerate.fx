@@ -1,3 +1,7 @@
+#include "Globals.fxh"
+#include "Samplers.fxh"
+#include "VertexTypes.fxh"
+
 void VertShadow(float4 Pos: POSITION,
 	float3 Normal: NORMAL,
 	out float4 oPos: POSITION,
