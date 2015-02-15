@@ -303,6 +303,8 @@ void CStaticMesh::Render (CGraphicsManager *RM)
             m_Textures[i][1]->Activate(1);
         if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_CUBE) == VERTEX_TYPE_CUBE)
             m_Textures[i][1]->Activate(2);
+        if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_TEXTURE2) == VERTEX_TYPE_TEXTURE2)
+            m_Textures[i][1]->Activate(3);
         if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_DIFFUSE) == VERTEX_TYPE_DIFFUSE)
             RM->GetDevice()->SetTexture(0, 0);
         m_RVs[i]->Render(RM, l_EffectTechnique);

@@ -29,10 +29,10 @@ PSVertex RenderLightMapVS(
 
 float4 RN20(PSVertex IN) : COLOR
 {
-	return tex2D(S0LinearWrapSampler, IN.UV);
+	
 	float3 l_Nn = normalize(IN.WorldNormal);
 	float3 l_DiffuseTex = tex2D(S0LinearWrapSampler, IN.UV).rgb;
-	float3 l_DiffuseLigthMap = tex2D(S1LinearWrapSampler, IN.UV2).rgb;
+	float3 l_DiffuseLigthMap = tex2D(S3LinearWrapSampler, IN.UV2).rgb;
 	return float4(l_DiffuseLigthMap, 1);
 	float3 finalColor = l_DiffuseTex * l_DiffuseLigthMap;
 	float3 l_CameraPosition = g_InverseViewMatrix[3].xyz;
