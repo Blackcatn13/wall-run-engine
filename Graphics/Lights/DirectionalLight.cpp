@@ -2,6 +2,9 @@
 #include "Core\Core.h"
 #include "Effects\EffectManager.h"
 #include <d3dx9.h>
+#include "Camera\OrthoFixedCameraController.h"
+#include "Camera\OrthoFixedCamera.h" 
+
 
 /*CDirectionalLight::CDirectionalLight() : CLight()
 {
@@ -29,12 +32,12 @@ void CDirectionalLight::Render(CGraphicsManager *RM)
 
 void CDirectionalLight::SetShadowMap(CGraphicsManager *RM)
 {
-    //COrthoFixedCameraController l_OrthoFixedCameraController(m_Position - m_Direction,
-    //	m_Position, m_OrthoShadowMapSize.x, m_OrthoShadowMapSize.y, 1.0f, m_EndRangeAttenuation);
-    CEffectManager *l_EffectManager = CCORE->GetEffectManager(); //CEffectManager &l_EffectManager=CCORE->GetEffectManager();
-    CCamera * l_Camera = CAMCONTM->getActiveCamera();
-    //m_ViewShadowMap= l_Camera->GetViewMatrix();
-    //m_ProjectionShadowMap= l_Camera->GetProjectionMatrix();
-    l_EffectManager->ActivateCamera(m_ViewShadowMap, m_ProjectionShadowMap,
-                                    l_Camera->GetEye());//l_Camera.GetPosition()
+	COrthoFixedCameraController l_OrthoFixedCameraController(m_Position - m_Direction, 
+		m_Position, m_OrthoShadowMapSize.x, m_OrthoShadowMapSize.y, 1.0f, m_EndRangeAttenuation);
+	CEffectManager *l_EffectManager=CCORE->GetEffectManager(); //CEffectManager &l_EffectManager=CCORE->GetEffectManager();
+	COrthoFixedCamera l_Camera = l_OrthoFixedCameraController.GetCamera();
+	m_ViewShadowMap= l_Camera.GetViewMatrix();  
+	m_ProjectionShadowMap= l_Camera.GetProjectionMatrix();
+	l_EffectManager->ActivateCamera(m_ViewShadowMap, m_ProjectionShadowMap, l_Camera.GetEye());//l_Camera.GetPosition()
+		
 }

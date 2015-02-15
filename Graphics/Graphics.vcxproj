@@ -21,6 +21,8 @@
     <ClCompile Include="Camera\Importer\CameraInfo.cpp" />
     <ClCompile Include="Camera\Importer\CameraKey.cpp" />
     <ClCompile Include="Camera\Importer\CameraKeyController.cpp" />
+    <ClCompile Include="Camera\OrthoFixedCamera.cpp" />
+    <ClCompile Include="Camera\OrthoFixedCameraController.cpp" />
     <ClCompile Include="Camera\ThPSCamera.cpp" />
     <ClCompile Include="Cinematics\Cinematic.cpp" />
     <ClCompile Include="Cinematics\CinematicController.cpp" />
@@ -109,6 +111,8 @@
     <ClInclude Include="Camera\Importer\CameraInfo.h" />
     <ClInclude Include="Camera\Importer\CameraKey.h" />
     <ClInclude Include="Camera\Importer\CameraKeyController.h" />
+    <ClInclude Include="Camera\OrthoFixedCamera.h" />
+    <ClInclude Include="Camera\OrthoFixedCameraController.h" />
     <ClInclude Include="Camera\ThPSCamera.h" />
     <ClInclude Include="Cinematics\Cinematic.h" />
     <ClInclude Include="Cinematics\CinematicController.h" />

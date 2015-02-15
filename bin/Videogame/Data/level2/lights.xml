@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <lights>
-	<light name="Direct002" type="directional" pos="5 20 5" dir="-1 -1.0 0" color="0.8 0.8 0.8" intensity="0.8" att_start_range="80.0" att_end_range="200.0"/>
+
+	<!--<light name="Direct002" type="directional" pos="0 20 0" dir="0 -1.0 0" color="0.8 0.8 0.8" intensity="1" att_start_range="80.0" att_end_range="200.0"/>-->
+
 	
 	<!--<light name="Omni002" type="omni" pos="-20.0000134 5.78802 -5.0719562" color="130.0 155.0 20.0" intensity="0.01" att_start_range="10.0" att_end_range="15.0"/>
 	
 		<light name="Direct001" type="directional" pos="0.302862 0.0 -3.06009" dir="1.346485 0.0 2.2522" color="20.0 11.0 253.0" intensity="0.01" att_start_range="80.0" att_end_range="200.0"/>
 	<light name="Spot001" type="spot" pos="-0.208513 0.642497 7.40568" dir="-3.286777 -0.0659876 -2.08142" color="10.0 100.0 100.0" intensity="0.01" angle="43.0" fall_off="45.0" att_start_range="80.0" att_end_range="200.0"/>
 	-->
+	
+<light name="Direct002" type="directional" pos="5 10 5" dir="-1 -1.0 0" color="0.8 0.8 0.8" intensity="1" att_start_range="80.0" att_end_range="200.0" 
+ generate_shadow_map="true" shadow_map_format_type="R32F" shadow_map_width="256" shadow_map_height="256" generate_static_shadow_map="fase" static_shadow_map_format_type="R32F" 
+ angle="1.05" fall_off="1.05" shadow_texture_mask="./data/textures/shadow_mask.tga">
+ <dynamic renderable_objects_manager="solid"/>
+</light>
 </lights>
