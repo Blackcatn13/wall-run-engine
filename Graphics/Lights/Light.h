@@ -5,9 +5,9 @@
 #include "Math\Color.h"
 #include <string>
 #include <vector>
-#include "Texture\Texture.h"
 #include <d3dx9.h>
 
+class CTexture;
 class CRenderableObjectsManager;
 class CEffect;
 

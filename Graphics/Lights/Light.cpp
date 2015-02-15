@@ -4,6 +4,7 @@
 #include "Effects\Effect.h"
 #include "Renderable\RenderableObjectsManager.h"
 
+
 class CEffectManager;
 
 CLight::CLight()

@@ -3,7 +3,8 @@
 #include "Effects\EffectManager.h"
 #include <d3dx9.h>
 #include "Camera\OrthoFixedCameraController.h"
-#include "Camera\OrthoFixedCamera.h" 
+#include "Camera\OrthoFixedCamera.h"
+#include "GraphicsManager.h"
 
 
 /*CDirectionalLight::CDirectionalLight() : CLight()

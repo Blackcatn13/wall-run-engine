@@ -1,6 +1,9 @@
 #include "Lights\SpotLight.h"
 #include "Camera\FPSCamera.h"
 #include "Object\Object3D.h"
+#include "GraphicsManager.h"
+#include "Effects\EffectManager.h"
+#include "Core\Core.h"
 
 CSpotLight::CSpotLight() {}
 
