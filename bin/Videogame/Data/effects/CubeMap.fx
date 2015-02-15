@@ -4,6 +4,7 @@
 
 float3 g_LightAmbient=float3(0.2, 0.2, 0.2);
 float g_SpecularExponent = 100;
+float g_ReflectionContribution = 0.3;
 
 struct PNormalVertex
 {
@@ -35,9 +36,9 @@ float4 mainPS(PNormalVertex IN) : COLOR
 	float3 l_CameraToPixel=normalize(l_EyePos-IN.WorldPosition);
 	float3 l_ReflectVector=reflect(l_CameraToPixel, l_Nm);
 	float4 l_DiffuseColor=tex2D(S0LinearWrapSampler, l_ReflectVector);
-	float4 l_Cube=texCUBE(S2LinearWrapSampler, l_ReflectVector);
-	
-	float3 finalColor = l_DiffuseColor.xyz*g_LightAmbient;
+	float4 l_Cube=texCUBE(S2LinearWrapSampler, -l_ReflectVector);
+	float3 finalColor = l_DiffuseColor.xyz*g_LightAmbient + l_Cube * g_ReflectionContribution;
+	//return l_Cube;
 	for(int i=0;i<MAXLIGHTS;i++)
 	{
 		if(g_LightEnabled[i]==1)
