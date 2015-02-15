@@ -111,25 +111,22 @@ void CCameraController::Update(float dt)
           if (ATI->DoAction("MoveLeft"))
               camObject->SetPosition(camObject->GetPosition() + nor * m_Speed * dt);
       }
-      if (camType == CCamera::TC_ESF) {
-          if (ATI->DoAction("scrollLittle", deltaZ))
-              ((CThPSCamera *) m_ActiveCamera)->AddZoom(-deltaZ * m_LittleZoom * dt);
-          else if (ATI->DoAction("scroll", deltaZ))
-              ((CThPSCamera *) m_ActiveCamera)->AddZoom(-deltaZ * m_BigZoom * dt);
-    	}
-
-          float panX, panY;
-          if (ATI->DoAction("PanX", panX))
-              camObject->SetPosition(camObject->GetPosition() + Vect3f(0, 0, panX) * m_PanSpeed * dt);
-          if (ATI->DoAction("PanY", panY))
-              camObject->SetPosition(camObject->GetPosition() + Vect3f(panY, 0, 0) * m_PanSpeed * dt);
-          if (ATI->DoAction("RotX", panX))
-              camObject->SetYaw(camObject->GetYaw() - panX * dt);
-          if (ATI->DoAction("RotY", panY))
-              camObject->SetPitch(camObject->GetPitch() - panY * dt);
-      }
-    	CamUpdates(camType, dt);
-    */
+    if (camType == CCamera::TC_ESF) {
+        if (ATI->DoAction("scrollLittle", deltaZ))
+            ((CThPSCamera *) m_ActiveCamera)->AddZoom(-deltaZ * m_LittleZoom * dt);
+        else if (ATI->DoAction("scroll", deltaZ))
+            ((CThPSCamera *) m_ActiveCamera)->AddZoom(-deltaZ * m_BigZoom * dt);
+        float panX, panY;
+        if (ATI->DoAction("PanX", panX))
+            camObject->SetPosition(camObject->GetPosition() + Vect3f(0, 0, panX) * m_PanSpeed * dt);
+        if (ATI->DoAction("PanY", panY))
+            camObject->SetPosition(camObject->GetPosition() + Vect3f(panY, 0, 0) * m_PanSpeed * dt);
+        if (ATI->DoAction("RotX", panX))
+            camObject->SetYaw(camObject->GetYaw() - panX * dt);
+        if (ATI->DoAction("RotY", panY))
+            camObject->SetPitch(camObject->GetPitch() - panY * dt);
+    }*/
+    //CamUpdates(camType, dt);
     //CCamera::ETypeCamera camType = m_ActiveCamera->GetTypeCamera();
     if (camType == CCamera::TC_CIN) {
         CamUpdates(camType, dt);

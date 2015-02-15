@@ -90,14 +90,19 @@ function on_update_scripted_controller(l_ElapsedTime)
 		elseif act2in:do_action_from_lua("scroll", deltaZ) then
 			active_camera:add_zoom(-deltaZ * cam_Controller.m_BigZoom * l_ElapsedTime)			
 		end
+		local yaw = camObject: get_yaw();
+
+		local dir = active_camera:get_direction();
+		local nor = Vect3f(math.cos(yaw + (math.pi/2)), 0, (math.sin(yaw + (math.pi/2))));
+		nor = luaUtil:normalize(nor);
 		local panX, panY;
 		panX = deltaX;
 		panY = deltaY;
 		if act2in:do_action_from_lua("PanX", panX) then
-			camObject:set_position(camObject:get_position() +  Vect3f(0, 0, panX) * cam_Controller.m_PanSpeed *l_ElapsedTime)
+			camObject:set_position(camObject:get_position() +  nor * panX * cam_Controller.m_PanSpeed *l_ElapsedTime)
 		end
 		if act2in:do_action_from_lua("PanY", panY) then
-			camObject:set_position(camObject:get_position() +  Vect3f(panY, 0, 0) * cam_Controller.m_PanSpeed *l_ElapsedTime)
+			camObject:set_position(camObject:get_position() - nor * panY * cam_Controller.m_PanSpeed *l_ElapsedTime)
 		end
 		if act2in:do_action_from_lua("RotX", panX) then
 			camObject:set_yaw(camObject:get_yaw() - panX * l_ElapsedTime);
