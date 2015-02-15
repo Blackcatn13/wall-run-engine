@@ -11,6 +11,10 @@ class CFPSCamera;
 class CThPSCamera;
 class CScriptManager;
 class CScriptedController;
+class CPhysicUserData;
+class CPhysicActor;
+class CPhysicMaterial;
+class CGranade;
 
 class CTestCommands : public CProcess
 {
@@ -23,6 +27,11 @@ private:
     CThPSCamera*	    m_ThPSCamera1;
     CScriptedController * m_ScriptedController;
     CRenderableObject	*m_RenderableObject;
+    CPhysicActor		*m_PhysicActor;
+    CPhysicActor		*m_PhysicActorCubeFix;
+    CPhysicUserData		*m_PhysicUserData;
+    CPhysicUserData		*m_PhysicUserDataCube;
+    CGranade			*m_Granade;
     bool			    m_PlayerMode;
     bool				m_FPSMode;
     float			    tTerra1_yaw;

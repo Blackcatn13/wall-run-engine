@@ -76,6 +76,9 @@
     <ClCompile Include="TriggerManager\TriggerManager.cpp">
       <Filter>TriggerManager</Filter>
     </ClCompile>
+    <ClCompile Include="TriggerManager\Trigger.cpp">
+      <Filter>TriggerManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor\PhysicActor.h">
@@ -135,6 +138,9 @@
       <Filter>Jump</Filter>
     </ClInclude>
     <ClInclude Include="TriggerManager\TriggerManager.h">
+      <Filter>TriggerManager</Filter>
+    </ClInclude>
+    <ClInclude Include="TriggerManager\Trigger.h">
       <Filter>TriggerManager</Filter>
     </ClInclude>
   </ItemGroup>

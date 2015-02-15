@@ -135,8 +135,8 @@ void CTest_Space::Init()
     PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
     */
     //// Exercici 3
-    //m_PhysicUserDataCube = new CPhysicUserData("fixbox");
-    //m_PhysicUserDataCube->SetPaint(true);
+    m_PhysicUserDataCube = new CPhysicUserData("fixbox");
+    m_PhysicUserDataCube->SetPaint(true);
     //m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
     //m_PhysicActorCubeFix->AddPlaneShape(Vect3f(0,1,0), -20);
     //PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
@@ -146,9 +146,9 @@ void CTest_Space::Init()
     ////m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
     ////m_PhysicActorCubeFix->AddPlaneShape(Vect3f(1,0,0), 10);
     ////PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
-    ////m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
-    ////m_PhysicActorCubeFix->AddPlaneShape(Vect3f(1,0,0), -10);
-    ////PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
+    m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+    m_PhysicActorCubeFix->AddPlaneShape(Vect3f(1,0,0), -10);
+    PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
     //
     ////for(int i = 0; i < 10; i++) {
     //	m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
@@ -158,11 +158,11 @@ void CTest_Space::Init()
     //	PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
     ////}
     // Exercici 4
-    m_Material = new CPhysicMaterial();
+    /*m_Material = new CPhysicMaterial();
     m_Material->NewMaterial(1, 0, 0);
     PHYSXM->AddMaterial(m_Material);
     m_PhysicUserDataCube = new CPhysicUserData("fixbox");
-    m_PhysicUserDataCube->SetPaint(true);
+    m_PhysicUserDataCube->SetPaint(true);*/
     //m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
     //m_PhysicActorCubeFix->AddBoxSphape(Vect3f(.5f,.5f,.5f), v3fZERO);
     //m_PhysicActorCubeFix->CreateBody(0.5f);
@@ -183,7 +183,8 @@ void CTest_Space::Init()
     //m_PhysicActorCubeFix->CreateBody(0.5f);
     //m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(0.f,3.5,0.f));
     //PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
-    m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+
+    /*m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
     m_PhysicActorCubeFix->SetActorMaterial(m_Material->getMaterialID());
     m_PhysicActorCubeFix->AddBoxSphape(Vect3f(2.f, 5.f, .5f), Vect3f(3.f, 5.5f, 0.f));
     m_PhysicActorCubeFix->CreateBody(1.f);
@@ -191,17 +192,19 @@ void CTest_Space::Init()
     m_RevolutionJoint = new CPhysicRevoluteJoint();
     m_RevolutionJoint->SetInfo(Vect3f(1.f, 0.f, 0.f), Vect3f(3.f, 0.5f, 0.f), m_PhysicActorCubeFix);
     m_RevolutionJoint->SetMotor(100, 5, false);
-    PHYSXM->AddPhysicRevoluteJoint(m_RevolutionJoint);
+    PHYSXM->AddPhysicRevoluteJoint(m_RevolutionJoint);*/
+
     /*m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
     m_PhysicActorCubeFix->SetActorMaterial(m_Material->getMaterialID());
     m_PhysicActorCubeFix->AddBoxSphape(Vect3f(15,.5f, 4), v3fZERO);
     m_PhysicActorCubeFix->SetGlobalPosition(Vect3f(0.f,7,0.f));
     PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
     m_PhysicActorCubeFix->SetRotation(Vect3f(0, 0, -0.87));*/
-    m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+
+    /*m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
     m_PhysicActorCubeFix->SetActorMaterial(m_Material->getMaterialID());
     m_PhysicActorCubeFix->AddPlaneShape(Vect3f(0, 1, 0), 0);
-    PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
+    PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);*/
     m_TriggerData = new CPhysicUserData("trigger");
     m_TriggerData->SetPaint(true);
     m_TriggerData->SetColor(colMAGENTA);

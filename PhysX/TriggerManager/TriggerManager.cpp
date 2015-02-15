@@ -1,22 +1,52 @@
 #include "TriggerManager\TriggerManager.h"
+#include "PhysicsManager.h"
 #include "XML\XMLTreeNode.h"
+#include "Utils\Defines.h"
+#include "Utils\PhysicUserData.h"
+#include "Core\Core.h"
 
 CTriggerManager::CTriggerManager()
 {
-    m_TriggerMap = std::map<std::string, CTrigger*>();
 }
 
 CTriggerManager::~CTriggerManager()
 {
+    Clear();
 }
+
+void CTriggerManager::Clear()
+{
+    for (size_t i = 0; i < m_UserData.size(); ++i) {
+        PHYSXM->ReleasePhysicActor(m_UserData[i]->GetActor());
+        CHECKED_DELETE(m_UserData[i]);
+    }
+    m_UserData.clear();
+    Destroy();
+}
+
 void	CTriggerManager::OnEnter		( CPhysicUserData* _Entity_Trigger1, CPhysicUserData* _Other_Shape)
 {
+    if (_Other_Shape->getName() == "Controller") {
+        CTrigger * trigger = GetResource(_Entity_Trigger1->getName());
+        if (trigger != NULL)
+            trigger->ExecuteOnEnter();
+    }
 }
 void	CTriggerManager::OnLeave		( CPhysicUserData* _Entity_Trigger1, CPhysicUserData* _Other_Shape)
 {
+    if (_Other_Shape->getName() == "Controller") {
+        CTrigger * trigger = GetResource(_Entity_Trigger1->getName());
+        if (trigger != NULL)
+            trigger->ExecuteOnExit();
+    }
 }
 void	CTriggerManager::OnStay		( CPhysicUserData* _Entity_Trigger1, CPhysicUserData* _Other_Shape)
 {
+    if (_Other_Shape->getName() == "Controller") {
+        CTrigger * trigger = GetResource(_Entity_Trigger1->getName());
+        if (trigger != NULL)
+            trigger->ExecuteOnStay();
+    }
 }
 
 bool	CTriggerManager::LoadTriggers( std::string FileName)
@@ -30,31 +60,34 @@ bool	CTriggerManager::LoadTriggers( std::string FileName)
         if (m.Exists()) {
             int count = m.GetNumChildren();
             for (int i = 0; i < count; ++i) {
-                std::string name = m(i).GetName();
-                if (name == "trigger") {
-                    std::string triggerName = m(i).GetPszISOProperty("name", "");
-                    Vect3f triggerPos = m(i).GetVect3fProperty("position", v3fZERO);
-                    std::string triggerShapeString = m(i).GetPszISOProperty("shape", "box");
-                    TRIGGER_SHAPE triggerShape;
-                    if (triggerShapeString.compare("box") == 0) {
-                        triggerShape = TBOX;
-                    } else if (triggerShapeString.compare("sphere")) {
-                        triggerShape = TSPHERE;
-                    }
-                    Vect3f triggerSize = m(i).GetVect3fProperty("size", v3fZERO);
-                    std::string triggerEvemtString = m(i).GetPszISOProperty("event", "enter");
-                    TRIGGER_EVENT_TYPE triggerEvent;
-                    if (triggerShapeString.compare("enter") == 0) {
-                        triggerEvent = ENTER;
-                    } else if (triggerShapeString.compare("stay")) {
-                        triggerEvent = STAY;
-                    } else if (triggerShapeString.compare("leave")) {
-                        triggerEvent = LEAVE;
-                    }
+                //Creando el UserData para el trigger
+                std::string name = m(i).GetPszProperty("name", "");
+                CPhysicUserData* l_pUserData = new CPhysicUserData(name);
+                l_pUserData->SetPaint(m(i).GetBoolProperty("paint", true));
+                CColor col(m(i).GetVect3fProperty("color", v3fZERO));
+                l_pUserData->SetColor(colRED);
+                l_pUserData->SetGroup(ECG_TRIGGERS);
+                m_UserData.push_back( l_pUserData );
+                CTrigger * trigger = new CTrigger(m(i), l_pUserData);
+                if (!AddResource(name, trigger)) {
+                    LOGGER->AddNewLog(ELL_WARNING, "El CTrigger ya existía ", name.c_str());
+                    CHECKED_DELETE(trigger);
                 }
             }
             return true;
         }
     }
     return false;
+}
+
+bool CTriggerManager::Reload()
+{
+    Clear();
+    return LoadTriggers(m_FileName);
+}
+
+bool CTriggerManager::Reload(const std::string &FileName)
+{
+    Clear();
+    return LoadTriggers(FileName);
 }

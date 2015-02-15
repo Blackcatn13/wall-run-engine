@@ -34,8 +34,11 @@
 #include "Core\ScriptedController.h"
 #include "Renderable\RenderableObjectsLayersManager.h"
 #include "RenderableCommands\SceneRendererCommandManager.h"
+#include "PhysicsManager.h"
+#include "Actor\PhysicActor.h"
+#include "Utils\PhysicUserData.h"
 
-
+#include "Granade.h"
 
 CTestCommands::CTestCommands(void)
 {
@@ -56,6 +59,10 @@ CTestCommands::~CTestCommands(void)
     //delete m_ThPSCamera;
 //    delete m_ThPSCamera1;
     //delete m_FPSCamera;
+    CHECKED_DELETE(m_PhysicActor);
+    CHECKED_DELETE(m_PhysicUserData);
+    CHECKED_DELETE(m_PhysicUserDataCube);
+    CHECKED_DELETE(m_PhysicActorCubeFix);
 }
 
 void CTestCommands::Init()
@@ -88,6 +95,19 @@ void CTestCommands::Init()
     //LIGHTM->Load(".\\Data\\lights.xml");
     //SCRIPTM->Load(".\\Data\\lua_actions.xml");
     //EFFECTM->Load(".\\Data\\effects.xml");
+    m_PhysicUserDataCube = new CPhysicUserData("fixbox");
+    m_PhysicUserDataCube->SetPaint(true);
+    m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+    m_PhysicActorCubeFix->AddPlaneShape(Vect3f(0, 1, 0), 0);
+    PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
+    /*CPhysicUserData* m_TriggerData = new CPhysicUserData("trigger");
+    m_TriggerData->SetPaint(true);
+    m_TriggerData->SetColor(colMAGENTA);
+    CPhysicActor* m_Trigger = new CPhysicActor(m_TriggerData);
+    m_Trigger->CreateBoxTrigger(Vect3f(5.f, 5.f, 5.f), Vect3f(2.f, 2.f, 2.f));
+    PHYSXM->AddPhysicActor(m_Trigger);
+    PHYSXM->SetTriggerReport((CPhysicTriggerReport*)TRIGGM);*/
+    m_Granade = new CGranade();
 }
 
 void CTestCommands::DeInit()
@@ -134,6 +154,7 @@ Vect2i CTestCommands::RenderDebugInfo(bool render, float dt)
 
 void CTestCommands::Update(float dt)
 {
+    m_Granade->Update(dt);
     CInputManager* im = INPUTM;
     //float deltaX =  im->GetMouseDelta().x;
     //float deltaY = im->GetMouseDelta().y;
