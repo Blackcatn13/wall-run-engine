@@ -7,7 +7,7 @@
 //DWORD  BCLR = 0xff202080;  // Background color (if no image)
 float3 g_LightAmbient=float3(0.2, 0.2, 0.2);
 float g_SpecularExponent = 200;
-float g_Bump = 30.0;
+float g_Bump = 3.0;
 
 struct PNormalVertex
 {
@@ -45,6 +45,7 @@ float4 RN20(PNormalVertex IN) : COLOR
 	float3 l_Nn = l_WNn + l_Bump.x*l_TangentNormalized + l_Bump.y*l_BinormalNormalized;
 	float3 finalColor = g_LightAmbient*l_DiffuseTex.xyz;
 	l_Nn = normalize(l_Nn);
+	//return float4(l_Nn, 1);
 	float3 l_CameraPosition = g_InverseViewMatrix[3].xyz;
 	for(int i = 0; i < MAXLIGHTS; i++) 
 	{

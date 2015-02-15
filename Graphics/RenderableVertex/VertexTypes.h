@@ -13,6 +13,7 @@
 #define VERTEX_TYPE_DIFFUSE 0x0040      // D3DFVF_DIFFUSE
 #define VERTEX_TYPE_WEIGHTS 0x0080      // CAL3D_WEIGHTS
 #define VERTEX_TYPE_INDEXS 0x0100      // CAL3D_INDEXS
+#define VERTEX_TYPE_CUBE 0x0200      // CAL3D_INDEXS
 
 #include "GraphicsManager.h"
 #include "Utils\Defines.h"
@@ -45,6 +46,26 @@ struct TTEXTURE_NORMAL_VERTEX {
     static inline unsigned short GetVertexType()
     {
         return VERTEX_TYPE_GEOMETRY | VERTEX_TYPE_NORMAL | VERTEX_TYPE_TEXTURE1;
+    }
+    static inline unsigned int GetFVF()
+    {
+        return D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
+    }
+    static LPDIRECT3DVERTEXDECLARATION9 s_VertexDeclaration;
+    static LPDIRECT3DVERTEXDECLARATION9 & GetVertexDeclaration();
+    static void ReleaseVertexDeclaration()
+    {
+        CHECKED_RELEASE(s_VertexDeclaration);
+    }
+};
+
+struct TTEXTURE_CUBE_NORMAL_VERTEX {
+    float x, y, z;
+    float nx, ny, nz;
+    float tu, tv;
+    static inline unsigned short GetVertexType()
+    {
+        return VERTEX_TYPE_GEOMETRY | VERTEX_TYPE_NORMAL | VERTEX_TYPE_TEXTURE1 | VERTEX_TYPE_CUBE;
     }
     static inline unsigned int GetFVF()
     {

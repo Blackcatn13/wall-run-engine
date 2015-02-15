@@ -8,6 +8,7 @@
 #include <cstdio>
 #include "Utils/Logger.h"
 #include "Texture\TextureManager.h"
+#include "Texture\CubeTexture.h"
 #include "Effects\EffectManager.h"
 //#include "Effects\EffectManager.h"
 #include "Renderable\RenderableObjectTechniqueManager.h"
@@ -147,8 +148,13 @@ bool CStaticMesh::Load (const std::string &FileName)
                     if (TEXTM->ExisteResource(aux_name)) {
                         aux_text = TEXTM->GetResource(aux_name);
                     } else {
-                        aux_text = new CTexture();
-                        aux_text->Load(aux_name);
+                        if (vertex_type[i] == TTEXTURE_CUBE_NORMAL_VERTEX::GetVertexType() && ((j + 1) == n_text)) {
+                            aux_text = new CCubeTexture();
+                            aux_text->Load(aux_name);
+                        } else {
+                            aux_text = new CTexture();
+                            aux_text->Load(aux_name);
+                        }
                         TEXTM->AddResource(aux_name, aux_text);
                     }
                     m_Textures[i].push_back(aux_text);
@@ -187,6 +193,8 @@ bool CStaticMesh::Load (const std::string &FileName)
                     type_size = sizeof(TCOLORED_TEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX);
                 if (vertex_type[i] == TCOLORED_NORMAL_VERTEX::GetVertexType())
                     type_size = sizeof(TCOLORED_NORMAL_VERTEX);
+                if (vertex_type[i] == TTEXTURE_CUBE_NORMAL_VERTEX::GetVertexType())
+                    type_size = sizeof(TTEXTURE_CUBE_NORMAL_VERTEX);
                 // Getting vertex list (vb) and index list (ib)
                 void* vertex_list = (void*)malloc(n_vtxs * type_size);
                 fread(vertex_list, n_vtxs * type_size, 1, f);
@@ -231,6 +239,8 @@ bool CStaticMesh::Load (const std::string &FileName)
                     l_rv = new CIndexedVertexs<TCOLORED_TEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
                 if (vertex_type[i] == TCOLORED_NORMAL_VERTEX::GetVertexType())
                     l_rv = new CIndexedVertexs<TCOLORED_NORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
+                if (vertex_type[i] == TTEXTURE_CUBE_NORMAL_VERTEX::GetVertexType())
+                    l_rv = new CIndexedVertexs<TTEXTURE_CUBE_NORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
                 m_RVs.push_back(l_rv);
                 delete(vertex_list);
                 delete(index_list);
@@ -291,9 +301,10 @@ void CStaticMesh::Render (CGraphicsManager *RM)
             m_Textures[i][0]->Activate(0);
         if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_TANGENT) == VERTEX_TYPE_TANGENT)
             m_Textures[i][1]->Activate(1);
-        if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_DIFFUSE) == VERTEX_TYPE_DIFFUSE) {
+        if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_CUBE) == VERTEX_TYPE_CUBE)
+            m_Textures[i][1]->Activate(2);
+        if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_DIFFUSE) == VERTEX_TYPE_DIFFUSE)
             RM->GetDevice()->SetTexture(0, 0);
-        }
         m_RVs[i]->Render(RM, l_EffectTechnique);
     }
 }

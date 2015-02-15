@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <lights>
-	<light name="Direct002" type="directional" pos="0 20 0" dir="0 -1.0 0" color="0.8 0.8 0.8" intensity="1" att_start_range="80.0" att_end_range="200.0"/>
+	<light name="Direct002" type="directional" pos="5 20 5" dir="-1 -1.0 0" color="0.8 0.8 0.8" intensity="0.8" att_start_range="80.0" att_end_range="200.0"/>
 	
 	<!--<light name="Omni002" type="omni" pos="-20.0000134 5.78802 -5.0719562" color="130.0 155.0 20.0" intensity="0.01" att_start_range="10.0" att_end_range="15.0"/>
 	
