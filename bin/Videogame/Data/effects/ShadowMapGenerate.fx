@@ -2,18 +2,25 @@
 #include "Samplers.fxh"
 #include "VertexTypes.fxh"
 
-void VertShadow(float4 Pos: POSITION,
-	float3 Normal: NORMAL,
-	out float4 oPos: POSITION,
-	out float2 Depth: TEXCOORD0)
+struct PNormalVertex
 {
-	oPos = mul(Pos, g_WorldViewProj);
-	Depth.xy = oPpos.zw;
+	float4 oPos : POSITION;
+	float2 Depth : TEXCOORD0;
+};
+
+PNormalVertex VertShadow(float4 Pos: POSITION,
+	float3 Normal: NORMAL)
+{
+	PNormalVertex OUT = (PNormalVertex)0;
+	OUT.oPos = mul(Pos, g_WorldViewProj);
+	OUT.Depth.xy = oPpos.zw;
+	return OUT;
 }
 
-void PixShadow(float2 Depth: TEXTCOORD0, out float4 Color: COLOR)
+float4 PixShadow(PNormalVertex IN) : COLOR
 {
-	Color = Depth.x / Depth.y;
+	Color = IN.Depth.x / IN.Depth.y;
+	return Color;
 }
 
 technique tec0
