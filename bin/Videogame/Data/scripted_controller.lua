@@ -93,16 +93,18 @@ function on_update_scripted_controller(l_ElapsedTime)
 		local yaw = camObject: get_yaw();
 
 		local dir = active_camera:get_direction();
-		local nor = Vect3f(math.cos(yaw + (math.pi/2)), 0, (math.sin(yaw + (math.pi/2))));
-		nor = luaUtil:normalize(nor);
+		local norX = Vect3f(math.cos(yaw + (math.pi/2)), 0, (math.sin(yaw + (math.pi/2))));
+		norX = luaUtil:normalize(norX);
+		local norY = Vect3f(math.sin(yaw + (math.pi/2)), 0, -(math.cos(yaw + (math.pi/2))));
+		norY = luaUtil:normalize(norY);
 		local panX, panY;
 		panX = deltaX;
 		panY = deltaY;
 		if act2in:do_action_from_lua("PanX", panX) then
-			camObject:set_position(camObject:get_position() +  nor * panX * cam_Controller.m_PanSpeed *l_ElapsedTime)
+			camObject:set_position(camObject:get_position() +  norX * panX * cam_Controller.m_PanSpeed *l_ElapsedTime)
 		end
 		if act2in:do_action_from_lua("PanY", panY) then
-			camObject:set_position(camObject:get_position() - nor * panY * cam_Controller.m_PanSpeed *l_ElapsedTime)
+			camObject:set_position(camObject:get_position() + norY * panY * cam_Controller.m_PanSpeed *l_ElapsedTime)
 		end
 		if act2in:do_action_from_lua("RotX", panX) then
 			camObject:set_yaw(camObject:get_yaw() - panX * l_ElapsedTime);
