@@ -39,6 +39,7 @@ protected:
     std::vector<CRenderableObjectsManager *> m_StaticShadowMapRenderableObjectsManagers,
         m_DynamicShadowMapRenderableObjectsManagers;
     Mat44f m_ViewShadowMap, m_ProjectionShadowMap;
+	std::string m_FormatType, m_ShadowTextureMask;
 public:
     CLight();
     virtual ~CLight();
@@ -162,7 +163,18 @@ public:
     {
         m_ProjectionShadowMap;
     }
+
+	void SetFormatType(std::string FormatType)
+    {
+        m_FormatType = FormatType;
+    }
+
+	void SetShadowTextureMask(std::string ShadowTextureMask)
+    {
+        m_ShadowTextureMask = ShadowTextureMask;
+    }
     void BeginRenderEffectManagerShadowMap(CEffect *Effect);
+
 };
 
 

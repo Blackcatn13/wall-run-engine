@@ -77,7 +77,14 @@ bool CEffectTechnique::BeginRender()
         l_Effect->SetMatrix(m_Effect->GetViewProjectionMatrixParameter(), &l_Transform.GetD3DXMatrix());
     }
     if (m_UseViewToLightProjectionMatrix) {
-        //TODO
+        //ShadowMap
+		//Mat44f l_ViewToLightProjectionMatrix=l_ViewMatrix;
+		Mat44f l_ViewToLightProjectionMatrix=l_EM->GetViewMatrix();
+		//l_ViewToLightProjectionMatrix.Inverse();
+		l_ViewToLightProjectionMatrix.GetInverted();
+		l_ViewToLightProjectionMatrix=l_ViewToLightProjectionMatrix*l_EM->GetLightViewMatrix();
+		l_ViewToLightProjectionMatrix=l_ViewToLightProjectionMatrix*l_EM->GetShadowProjectionMatrix();
+		//l_Effect->SetMatrix(m_Effect->m_ViewToLightProjectionMatrixParameter, &l_ViewToLightProjectionMatrix.GetD3DXMatrix());		l_Effect->SetMatrix(m_Effect->GetViewToLightProjectionMatrixParameter(), &l_ViewToLightProjectionMatrix.GetD3DXMatrix());
     }
     if (m_UseTime) {
         //TODO

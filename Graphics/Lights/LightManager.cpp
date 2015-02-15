@@ -112,10 +112,15 @@ void CLightManager::Load(const std::string &FileName)
                     l_OmniLight->SetStartRangeAttenuation(l_StartRange);
                     l_OmniLight->SetEndRangeAttenuation(l_EndRange);
                     /////////////////////////////////
-                    l_OmniLight->SetGenerateDynamicShadowMap(l_GenerateDynamicShadowMap);
-                    l_OmniLight->SetGenerateStaticShadowMap(l_GenerateStaticShadowMap);
-                    l_OmniLight->SetMustUpdateStaticShadowMap(l_UpdateStaticShadowMap);
-                    //Faltan Format Type (static y dynamic), ShadowMap Heigh y with (static y dynamic), shadowTexTuremask
+					l_OmniLight->SetGenerateDynamicShadowMap(l_GenerateDynamicShadowMap);
+					l_OmniLight->SetGenerateStaticShadowMap(l_GenerateStaticShadowMap);
+					if(l_GenerateDynamicShadowMap)
+					{
+						l_OmniLight->SetFormatType(l_ShadowMapFormatType);
+						l_OmniLight->SetMustUpdateStaticShadowMap(l_UpdateStaticShadowMap);
+						l_OmniLight->SetShadowTextureMask(l_ShadowTextureMask);
+					}
+              
                     if (l_StaticRenderableObjectsManager != "") {
                         CRenderableObjectsManager * l_RenderableObjectManager = new  CRenderableObjectsManager();
                         //Aqui se le añadirá al CRenderableObjectsManager el valor de l_StaticRenderableObjectsManager
@@ -138,11 +143,16 @@ void CLightManager::Load(const std::string &FileName)
                     l_DirectionalLight->SetEndRangeAttenuation(l_EndRange);
                     l_DirectionalLight->SetDirection(l_Dir);
                     /////////////////////////////////
-                    l_DirectionalLight->SetGenerateDynamicShadowMap(l_GenerateDynamicShadowMap);
-                    l_DirectionalLight->SetGenerateStaticShadowMap(l_GenerateStaticShadowMap);
-                    l_DirectionalLight->SetMustUpdateStaticShadowMap(l_UpdateStaticShadowMap);
-                    l_DirectionalLight->SetOrthoShadowMapSize((l_ShadowMapWith, l_ShadowMapHeight));
-                    //Faltan Format Type (static y dynamic), ShadowMap Heigh y with ( dynamic), shadowTexTuremask
+					l_DirectionalLight->SetGenerateDynamicShadowMap(l_GenerateDynamicShadowMap);
+					l_DirectionalLight->SetGenerateStaticShadowMap(l_GenerateStaticShadowMap);
+					if(l_GenerateDynamicShadowMap)
+					{
+						l_DirectionalLight->SetMustUpdateStaticShadowMap(l_UpdateStaticShadowMap);
+						l_DirectionalLight->SetOrthoShadowMapSize((l_ShadowMapWith, l_ShadowMapHeight));
+						l_DirectionalLight->SetFormatType(l_ShadowMapFormatType);
+						l_DirectionalLight->SetShadowTextureMask(l_ShadowTextureMask);
+					}
+              
                     if (l_StaticRenderableObjectsManager != "") {
                         CRenderableObjectsManager * l_RenderableObjectManager = new  CRenderableObjectsManager();
                         //Aqui se le añadirá al CRenderableObjectsManager el valor de l_StaticRenderableObjectsManager
@@ -166,12 +176,17 @@ void CLightManager::Load(const std::string &FileName)
                     l_SpotLight->SetDirection(l_Dir);
                     l_SpotLight->SetAngle(l_Angle);
                     l_SpotLight->SetFallOff(l_FallOff);
+					l_SpotLight->SetGenerateDynamicShadowMap(l_GenerateDynamicShadowMap);
+					l_SpotLight->SetGenerateStaticShadowMap(l_GenerateStaticShadowMap);
                     /////////////////////////////////
-                    l_SpotLight->SetGenerateDynamicShadowMap(l_GenerateDynamicShadowMap);
-                    l_SpotLight->SetGenerateStaticShadowMap(l_GenerateStaticShadowMap);
-                    l_SpotLight->SetMustUpdateStaticShadowMap(l_UpdateStaticShadowMap);
-                    l_SpotLight->SetOrthoShadowMapSize((l_ShadowMapWith, l_ShadowMapHeight));
-                    //Faltan Format Type (static y dynamic), ShadowMap Heigh y with ( dynamic), shadowTexTuremask
+					if(l_GenerateDynamicShadowMap)
+					{
+						l_SpotLight->SetMustUpdateStaticShadowMap(l_UpdateStaticShadowMap);
+						l_SpotLight->SetFormatType(l_ShadowMapFormatType);
+						l_SpotLight->SetOrthoShadowMapSize((l_ShadowMapWith, l_ShadowMapHeight));
+						l_SpotLight->SetShadowTextureMask(l_ShadowTextureMask);
+					}
+               
                     if (l_StaticRenderableObjectsManager != "") {
                         CRenderableObjectsManager * l_RenderableObjectManager = new  CRenderableObjectsManager();
                         //Aqui se le añadirá al CRenderableObjectsManager el valor de l_StaticRenderableObjectsManager

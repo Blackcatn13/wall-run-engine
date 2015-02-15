@@ -239,6 +239,12 @@
     <ClCompile Include="RenderableCommands\SetAxisRendererCommand.cpp">
       <Filter>RenderableCommands</Filter>
     </ClCompile>
+    <ClCompile Include="Camera\OrthoFixedCamera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera\OrthoFixedCameraController.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
@@ -436,6 +442,12 @@
     </ClInclude>
     <ClInclude Include="RenderableCommands\SetAxisRendererCommand.h">
       <Filter>RenderableCommands</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera\OrthoFixedCamera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera\OrthoFixedCameraController.h">
+      <Filter>Camera</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
