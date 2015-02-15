@@ -111,11 +111,11 @@ LPDIRECT3DVERTEXDECLARATION9 & TCOLOR_TEXTURE_NORMAL_VERTEX::GetVertexDeclaratio
                 D3DDECLUSAGE_NORMAL, 0
             },
             {
-                0, 16, D3DDECLTYPE_D3DCOLOR, D3DDECLMETHOD_DEFAULT,
+                0, 24, D3DDECLTYPE_D3DCOLOR, D3DDECLMETHOD_DEFAULT,
                 D3DDECLUSAGE_COLOR, 0
             },
             {
-                0, 24, D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT,
+                0, 28, D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT,
                 D3DDECLUSAGE_TEXCOORD, 0
             },
             D3DDECL_END()
@@ -132,9 +132,18 @@ LPDIRECT3DVERTEXDECLARATION9 & TTEXTURE2_VERTEX::GetVertexDeclaration()
     if (s_VertexDeclaration == NULL) {
         D3DVERTEXELEMENT9 l_VertexDeclaration[] = {
             //TODO: CHECK TEXRECORD 0 1 0 1?
-            { 0, 0 , D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_POSITION, 0 },
-            { 0, 12, D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 0 },
-            { 0, 20, D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 1 },
+            {
+                0, 0 , D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT,
+                D3DDECLUSAGE_POSITION, 0
+            },
+            {
+                0, 12, D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT,
+                D3DDECLUSAGE_TEXCOORD, 0
+            },
+            {
+                0, 20, D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT,
+                D3DDECLUSAGE_TEXCOORD, 1
+            },
             D3DDECL_END()
         };
         GRAPHM->GetDevice()->CreateVertexDeclaration(l_VertexDeclaration,
@@ -158,11 +167,11 @@ LPDIRECT3DVERTEXDECLARATION9 & TTEXTURE2_NORMAL_VERTEX::GetVertexDeclaration()
                 D3DDECLUSAGE_NORMAL, 0
             },
             {
-                0, 20, D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT,
+                0, 24, D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT,
                 D3DDECLUSAGE_TEXCOORD, 0
             },
             {
-                0, 28, D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT,
+                0, 32, D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT,
                 D3DDECLUSAGE_TEXCOORD, 1
             },
             D3DDECL_END()

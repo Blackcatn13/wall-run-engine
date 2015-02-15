@@ -30,13 +30,13 @@ PSVertex RenderLightMapVS(
 
 float4 RN20(PSVertex IN) : COLOR
 {
-	
+	//return float4(IN.UV2, 0, 1);
 	float3 l_Nn = normalize(IN.WorldNormal);
 	float3 l_DiffuseTex = tex2D(S0LinearWrapSampler, IN.UV).rgb;
 	//return float4(l_DiffuseTex,1);
 	float3 l_DiffuseLigthMap = tex2D(S3LinearWrapSampler, IN.UV2).rgb;
 	float3 l_intensity = l_DiffuseTex * l_DiffuseLigthMap;
-	//return float4(l_intensity,1);
+	//return float4(l_DiffuseLigthMap,1);
 	float3 finalColor = l_DiffuseTex *  g_LightAmbient + l_intensity;
 	return float4(finalColor,1);
 	// A PARTIR DE AQUI SOBRA SI NO INFLUYEN LAS LUCES
