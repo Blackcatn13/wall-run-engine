@@ -7,6 +7,7 @@
 #include "Math/Color.h"
 #include "Camera/Frustum.h"
 #include "Math/Vector2.h"
+#include "Texture\Texture.h"
 
 class CColor;
 class CCamera;
@@ -105,7 +106,7 @@ public:
     void DrawCylinder (float Top_Radius, float Bottom_Radius, float h, uint32 Aristas, CColor Color = colBLUE, ETypeModePaint mode = PAINT_WIREFRAME, bool drawCover = false);
     void DrawQuad3D	(const Vect3f& pos, const Vect3f& up, const Vect3f& right, float w, float h, CColor color = colBLUE);
     void DrawQuad3D (	const Vect3f& ul, const Vect3f& ur, const Vect3f& dl, const Vect3f& dr, CColor colo = colBLUE);
-
+	void DrawColoredQuad2DTexturedInPixels(RECT Rect, CColor Color, CTexture Texture, float U0,	float V0, float U1, float V1);
 
 //COMMANDS
     void ClearSceneCommand(float color, float depth, float stencil);
