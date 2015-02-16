@@ -1,4 +1,4 @@
-#include "RenderableCommands\BeginRenderSceneRendererCommand.h"
+#include "RenderableCommands\CDrawQuadRendererCommand.h"
 
 void CDrawQuadRendererCommand::DrawColoredQuad2DTexturedInPixelsByEffectTechnique(CRenderManager *RM, CEffectTechnique *EffectTechnique, RECT Rect, CColor Color, CTexture *Texture,
 														float U0=0.0f, float V0=0.0f, float U1=1.0f, float V1=1.0f)
@@ -21,6 +21,9 @@ void CDrawQuadRendererCommand::DrawColoredQuad2DTexturedInPixelsByEffectTechniqu
 		l_Effect->End();
 	}
 }
+
+^/*crear la función DrawColoredQuad2DTexturedInPixels en GrapchisManager DrawColoredQuad2DTexturedInPixels(Rect,Color,Texture, U0,
+			V0, U1, V1);
 
 /*
 technique DrawQuadTechnique
