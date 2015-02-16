@@ -20,6 +20,9 @@
     <Filter Include="StaticMeshes">
       <UniqueIdentifier>{0dfe7e8a-9d76-4301-8c45-b390111585ae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{2cedf85a-a694-4f6b-8b20-acb39338e535}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Mesh">
       <UniqueIdentifier>{c1973183-d4c6-4d93-a80e-e3ea7465c07a}</UniqueIdentifier>
     </Filter>
@@ -43,9 +46,6 @@
     </Filter>
     <Filter Include="RenderableCommands">
       <UniqueIdentifier>{5fd68bb7-bad3-4270-aeb8-ed777e1056e8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Renderable\Object">
-      <UniqueIdentifier>{2cedf85a-a694-4f6b-8b20-acb39338e535}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -87,7 +87,7 @@
       <Filter>Font</Filter>
     </ClCompile>
     <ClCompile Include="Object\Object3D.cpp">
-      <Filter>Renderable\Object</Filter>
+      <Filter>Object</Filter>
     </ClCompile>
     <ClCompile Include="StaticMeshes\StaticMeshManager.cpp">
       <Filter>StaticMeshes</Filter>
@@ -297,7 +297,7 @@
       <Filter>Font</Filter>
     </ClInclude>
     <ClInclude Include="Object\Object3D.h">
-      <Filter>Renderable\Object</Filter>
+      <Filter>Object</Filter>
     </ClInclude>
     <ClInclude Include="StaticMeshes\StaticMeshManager.h">
       <Filter>StaticMeshes</Filter>

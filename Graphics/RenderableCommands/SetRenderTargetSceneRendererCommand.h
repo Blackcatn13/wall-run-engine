@@ -3,8 +3,9 @@
 #define SET_RENDER_TARGET_SCENE_RENDERER_COMMAND_H
 
 #include "StagedTexturedRendererCommand.h"
-#include "XML\XMLTreeNode.h"
-#include "GraphicsManager.h"
+
+class CXMLTreeNode;
+class CGraphicsManager;
 
 class CSetRenderTargetSceneRendererCommand : public CStagedTexturedRendererCommand
 {

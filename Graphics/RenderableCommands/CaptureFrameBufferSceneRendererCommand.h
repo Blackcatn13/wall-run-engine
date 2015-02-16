@@ -3,8 +3,9 @@
 #define CAPTURE_FRAME_BUFFER_SCENE_RENDERER_COMMAND_H
 
 #include "StagedTexturedRendererCommand.h"
-#include "XML\XMLTreeNode.h"
-#include "GraphicsManager.h"
+
+class CGraphicsManager;
+class CXMLTreeNode;
 
 class CCaptureFrameBufferSceneRendererCommand : public CStagedTexturedRendererCommand
 {
