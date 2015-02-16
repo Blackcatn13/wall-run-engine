@@ -245,6 +245,12 @@
     <ClCompile Include="RenderableCommands\GenerateShadowMapsSceneRendererCommand.cpp">
       <Filter>RenderableCommands</Filter>
     </ClCompile>
+    <ClCompile Include="RenderableCommands\DisableZTestSceneRendererCommand.cpp">
+      <Filter>RenderableCommands</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderableCommands\EnableZTestSceneRendererCommand.cpp">
+      <Filter>RenderableCommands</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
@@ -447,6 +453,12 @@
       <Filter>Camera</Filter>
     </ClInclude>
     <ClInclude Include="RenderableCommands\GenerateShadowMapsSceneRendererCommand.h">
+      <Filter>RenderableCommands</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableCommands\DisableZTestSceneRendererCommand.h">
+      <Filter>RenderableCommands</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableCommands\EnableZTestSceneRendererCommand.h">
       <Filter>RenderableCommands</Filter>
     </ClInclude>
   </ItemGroup>
