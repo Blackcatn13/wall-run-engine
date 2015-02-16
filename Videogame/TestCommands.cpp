@@ -59,10 +59,11 @@ CTestCommands::~CTestCommands(void)
     //delete m_ThPSCamera;
 //    delete m_ThPSCamera1;
     //delete m_FPSCamera;
-    CHECKED_DELETE(m_PhysicActor);
-    CHECKED_DELETE(m_PhysicUserData);
-    CHECKED_DELETE(m_PhysicUserDataCube);
-    CHECKED_DELETE(m_PhysicActorCubeFix);
+    PHYSXM->ReleaseAllActors();
+    /* CHECKED_DELETE(m_PhysicActor);
+     CHECKED_DELETE(m_PhysicUserData);
+     CHECKED_DELETE(m_PhysicUserDataCube);
+     CHECKED_DELETE(m_PhysicActorCubeFix);*/
 }
 
 void CTestCommands::Init()

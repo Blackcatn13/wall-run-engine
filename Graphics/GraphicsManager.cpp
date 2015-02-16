@@ -793,7 +793,9 @@ void CGraphicsManager::ClearSceneCommand(float color, float depth, float stencil
 void CGraphicsManager::BeginRenderCommand()
 {
     // Begin the scene
+    //if (!m_Rendering) {
     HRESULT hr = m_pD3DDevice->BeginScene();
+    m_Rendering = true;
     assert( SUCCEEDED( hr ) );
     m_pD3DDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CCW);
     m_pD3DDevice->SetRenderState( D3DRS_ZENABLE, D3DZB_TRUE);
@@ -807,11 +809,13 @@ void CGraphicsManager::BeginRenderCommand()
     } else {
         m_pD3DDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_WIREFRAME  );
     }
+    // }
 }
 
 void CGraphicsManager::EndRenderCommand()
 {
     m_pD3DDevice->EndScene();
+    m_Rendering = false;
 }
 
 void CGraphicsManager::PresentSceneCommand()

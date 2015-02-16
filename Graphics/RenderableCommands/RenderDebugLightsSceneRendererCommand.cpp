@@ -2,7 +2,7 @@
 #include "XML\XMLTreeNode.h"
 #include "GraphicsManager.h"
 #include "Lights\LightManager.h"
-#include "Core/Core.h"
+#include "Core\Core.h"
 
 CRenderDebugLightsSceneRenderCommand::CRenderDebugLightsSceneRenderCommand(CXMLTreeNode &atts)
 {

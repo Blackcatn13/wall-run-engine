@@ -24,7 +24,7 @@ void CSpotLight::SetShadowMap(CGraphicsManager *RM)
     m_ViewShadowMap = (Mat44f) m_matView;
     D3DXMATRIX m_matProject;
     D3DXMatrixPerspectiveFovLH(	&m_matProject, m_Camera.GetFov(), m_Camera.GetAspectRatio(),/*(float)(m_uWidth / m_uHeight),*/
-                                m_Camera.GetZn(), m_Camera.GetZf());
+                                /*m_Camera.GetZn()*/0.1f, m_Camera.GetZf());
     m_ProjectionShadowMap = (Mat44f)m_matProject;
 //	l_EffectManager->ActivateCamera(m_ViewShadowMap, m_ProjectionShadowMap, l_Camera.GetEye());//l_Camera.GetPosition()
     //D3DXMatrixLookAtLH( &m_matView, &l_Eye, &l_LookAt, &l_VUP);

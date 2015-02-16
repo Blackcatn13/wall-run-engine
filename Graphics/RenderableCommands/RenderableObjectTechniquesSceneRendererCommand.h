@@ -3,9 +3,10 @@
 #define RENDERABLE_OBJECT_TECHNIQUES_SCENE_RENDERER_COMMAND_H
 
 #include "SceneRendererCommand.h"
-#include "GraphicsManager.h"
-#include "XML\XMLTreeNode.h"
-#include "Renderable\PoolRenderableObjectTechnique.h"
+
+class CGraphicsManager;
+class CXMLTreeNode;
+class CPoolRenderableObjectTechnique;
 
 class CRenderableObjectTechniquesSceneRendererCommand : public CSceneRendererCommand
 {

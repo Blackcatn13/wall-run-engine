@@ -6,7 +6,7 @@
 	<default_technique vertex_type="31" technique="NormalMapTechnique"/>
 	<default_technique vertex_type="531" technique="CubeMapTechnique"/>
 	<default_technique vertex_type="51" technique="LightMapTechnique"/>
-	<!--<default_technique vertex_type="500" technique="GenerateShadowMap"/>-->
+	<default_technique vertex_type="500" technique="GenerateShadowMap"/>
 	<!--<default_technique vertex_type="95" technique="NormalColoredMapTechnique"/>-->
 	
 	<effect name="BasicEffect" file="data/effects/BasicEffect.fx"/>

@@ -100,17 +100,17 @@ void CSceneRendererCommandManager::Load(const std::string &FileName)
                     m_SceneRendererCommands.AddResource(l_Name, l_Command);
                 }
                 if (name == "generate_shadow_maps") {
-                	CGenerateShadowMapsSceneRendererCommand *l_Command = new CGenerateShadowMapsSceneRendererCommand(m(i));
-                	m_SceneRendererCommands.AddResource(l_Name,l_Command);
+                    CGenerateShadowMapsSceneRendererCommand *l_Command = new CGenerateShadowMapsSceneRendererCommand(m(i));
+                    m_SceneRendererCommands.AddResource(l_Name, l_Command);
                 }
                 if (name == "present") {
                     CPresentSceneRendererCommand *l_Command = new CPresentSceneRendererCommand(m(i));
                     m_SceneRendererCommands.AddResource(l_Name, l_Command);
                 }
-                /*	if (name == "set_pool_renderable_objects_technique") {
-                		CRenderableObjectTechniquesSceneRendererCommand *l_Command = new CRenderableObjectTechniquesSceneRendererCommand(m(i));
-                		m_SceneRendererCommands.AddResource(l_Name,l_Command);
-                	}*/
+                if (name == "set_pool_renderable_objects_technique") {
+                    CRenderableObjectTechniquesSceneRendererCommand *l_Command = new CRenderableObjectTechniquesSceneRendererCommand(m(i));
+                    m_SceneRendererCommands.AddResource(l_Name, l_Command);
+                }
                 if (name == "render_debug_lights") {
                     CRenderDebugLightsSceneRenderCommand *l_Command = new CRenderDebugLightsSceneRenderCommand(m(i));
                     m_SceneRendererCommands.AddResource(l_Name, l_Command);

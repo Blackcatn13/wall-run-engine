@@ -63,6 +63,7 @@ private:
     float                   m_speed;
     float                   m_pitch;
     CFrustum                m_Frustum;
+    bool					m_Rendering;
 
 public:
     CGraphicsManager();

@@ -6,12 +6,18 @@
 #include "Texture\Texture.h"
 
 
-class CEffectManager;
-
 CLight::CLight()
 {
+}
+
+void CLight::Init()
+{
     m_StaticShadowMap = new CTexture();
+    std::string l_StaticShadowMapTextureName = "Static_" + m_Name;
+    m_StaticShadowMap->Create(l_StaticShadowMapTextureName, m_ShadowMapWidth, m_ShadowMapHeigth, 0, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, m_StaticShadowMap->GetFormatTypeFromString(m_FormatType));
     m_DynamicShadowMap = new CTexture();
+    std::string l_DinamicShadowMapTextureName = "Dynamic_" + m_Name;
+    m_DynamicShadowMap->Create(l_DinamicShadowMapTextureName, m_ShadowMapWidth, m_ShadowMapHeigth, 0, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, m_DynamicShadowMap->GetFormatTypeFromString(m_FormatType));
     m_ShadowMaskTexture = NULL;
 }
 
@@ -44,33 +50,37 @@ void CLight::GenerateShadowMap(CGraphicsManager *RM)
     SetShadowMap(RM);
     if (m_GenerateStaticShadowMap && m_MustUpdateStaticShadowMap) {
         m_StaticShadowMap->SetAsRenderTarget(0);
-//	RM->BeginRendering();
+        // RM->BeginRendering();
         RM->BeginRenderCommand();
-        //RM->Clear(true, true, true, 0xffffffff);
+        //   RM->Clear(true, true, true, 0xffffffff);
         RM->ClearSceneCommand(true, true, true);
         for (size_t i = 0; i < m_StaticShadowMapRenderableObjectsManagers.size(); ++i)
             m_StaticShadowMapRenderableObjectsManagers[i]->Render(RM);
         m_MustUpdateStaticShadowMap = false;
-        //	RM->EndRendering();
+        //RM->EndRendering();
         RM->EndRenderCommand();
         m_StaticShadowMap->UnsetAsRenderTarget(0);
     }
     if (m_DynamicShadowMapRenderableObjectsManagers.size() > 0) {
         m_DynamicShadowMap->SetAsRenderTarget(0);
-        //	RM->BeginRendering();
+        //   RM->BeginRendering();
         RM->BeginRenderCommand();
         //RM->Clear(true, true, true, 0xffffffff);
         RM->ClearSceneCommand(true, true, true);
         for (size_t i = 0; i <
              m_DynamicShadowMapRenderableObjectsManagers.size(); ++i)
             m_DynamicShadowMapRenderableObjectsManagers[i]->Render(RM);
-        //	RM->EndRendering();
+        //   RM->EndRendering();
         RM->EndRenderCommand();
         m_DynamicShadowMap->UnsetAsRenderTarget(0);
     }
 }
 
-
+void CLight::SetShadowMaskTexture(std::string textureName)
+{
+    m_ShadowMaskTexture = new CTexture();
+    m_ShadowMaskTexture->Load(textureName);
+}
 
 void CLight::BeginRenderEffectManagerShadowMap(CEffect *Effect)
 {

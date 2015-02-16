@@ -5,7 +5,7 @@
 #include "Math\Color.h"
 #include <string>
 #include <vector>
-
+#include "Utils\Defines.h"
 #include <d3dx9.h>
 
 class CTexture;
@@ -33,6 +33,7 @@ protected:
     static TLightType GetLightTypeByName(const std::string &StrLightType);
 
     /**ADVANCED SHADERS**/
+    int m_ShadowMapWidth, m_ShadowMapHeigth;
     bool m_GenerateDynamicShadowMap;
     bool m_GenerateStaticShadowMap;
     bool m_MustUpdateStaticShadowMap;
@@ -40,10 +41,12 @@ protected:
     std::vector<CRenderableObjectsManager *> m_StaticShadowMapRenderableObjectsManagers,
         m_DynamicShadowMapRenderableObjectsManagers;
     Mat44f m_ViewShadowMap, m_ProjectionShadowMap;
-    std::string m_FormatType, m_ShadowTextureMask;
+    std::string m_FormatType;
 public:
     CLight();
     virtual ~CLight();
+    void Init();
+
     void SetName(const std::string &Name)
     {
         m_Name = Name;
@@ -145,6 +148,9 @@ public:
     {
         return m_ShadowMaskTexture;
     }
+
+    void SetShadowMaskTexture(std::string textureName);
+
     std::vector<CRenderableObjectsManager *> & GetStaticShadowMapRenderableObjectsManagers()
     {
         return m_StaticShadowMapRenderableObjectsManagers;
@@ -170,10 +176,8 @@ public:
         m_FormatType = FormatType;
     }
 
-    void SetShadowTextureMask(std::string ShadowTextureMask)
-    {
-        m_ShadowTextureMask = ShadowTextureMask;
-    }
+    GET_SET(int, ShadowMapWidth);
+    GET_SET(int, ShadowMapHeigth);
     void BeginRenderEffectManagerShadowMap(CEffect *Effect);
 
 };

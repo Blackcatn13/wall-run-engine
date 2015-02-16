@@ -56,8 +56,8 @@ public:
     };
     bool Create(const std::string &Name, unsigned int Width, unsigned int
                 Height, unsigned int MipMaps, TUsageType UsageType, TPoolType PoolType,
-                TFormatType FormatType);
-   
+                TFormatType FormatType); //UsageType RenderTarget, 0
+
 
     void Deactivate(size_t Stage);
     bool SetAsRenderTarget(size_t IdStage = 0);
