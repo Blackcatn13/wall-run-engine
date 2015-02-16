@@ -796,7 +796,7 @@ void CGraphicsManager::BeginRenderCommand()
     //if (!m_Rendering) {
     HRESULT hr = m_pD3DDevice->BeginScene();
     m_Rendering = true;
-    assert( SUCCEEDED( hr ) );
+    //assert( SUCCEEDED( hr ) );
     m_pD3DDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CCW);
     // m_pD3DDevice->SetRenderState( D3DRS_ZENABLE, D3DZB_TRUE);
     m_pD3DDevice->SetRenderState( D3DRS_ZFUNC, D3DCMP_LESSEQUAL);

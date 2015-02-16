@@ -5,8 +5,10 @@
 #include "SpotLight.h"
 #include "DirectionalLight.h"
 #include "Utils\Logger.h"
+#include "Core\Core.h"
 
 #include "Renderable\RenderableObjectsManager.h"
+#include "Renderable\RenderableObjectsLayersManager.h"
 
 CLightManager::CLightManager()
 {}
@@ -124,12 +126,12 @@ void CLightManager::Load(const std::string &FileName)
                         l_OmniLight->setShadowMapHeigth(l_ShadowMapHeight);
                     }
                     if (l_StaticRenderableObjectsManager != "") {
-                        CRenderableObjectsManager * l_RenderableObjectManager = new  CRenderableObjectsManager();
+                        CRenderableObjectsManager * l_RenderableObjectManager = RENDLM->GetResource(l_StaticRenderableObjectsManager);
                         //Aqui se le añadirá al CRenderableObjectsManager el valor de l_StaticRenderableObjectsManager
                         l_OmniLight->GetStaticShadowMapRenderableObjectsManagers().push_back(l_RenderableObjectManager);
                     }
                     if (l_DynamicRenderableObjectsManager != "") {
-                        CRenderableObjectsManager * l_RenderableObjectManager = new  CRenderableObjectsManager();
+                        CRenderableObjectsManager * l_RenderableObjectManager = RENDLM->GetResource(l_DynamicRenderableObjectsManager);
                         //Aqui se le añadirá al CRenderableObjectsManager el valor de l_DynamicRenderableObjectsManager
                         l_OmniLight->GetDynamicShadowMapRenderableObjectsManagers().push_back(l_RenderableObjectManager);
                     }
@@ -157,12 +159,12 @@ void CLightManager::Load(const std::string &FileName)
                         l_DirectionalLight->setShadowMapHeigth(l_ShadowMapHeight);
                     }
                     if (l_StaticRenderableObjectsManager != "") {
-                        CRenderableObjectsManager * l_RenderableObjectManager = new  CRenderableObjectsManager();
+                        CRenderableObjectsManager * l_RenderableObjectManager = RENDLM->GetResource(l_StaticRenderableObjectsManager);
                         //Aqui se le añadirá al CRenderableObjectsManager el valor de l_StaticRenderableObjectsManager
                         l_DirectionalLight->GetStaticShadowMapRenderableObjectsManagers().push_back(l_RenderableObjectManager);
                     }
                     if (l_DynamicRenderableObjectsManager != "") {
-                        CRenderableObjectsManager * l_RenderableObjectManager = new  CRenderableObjectsManager();
+                        CRenderableObjectsManager * l_RenderableObjectManager = RENDLM->GetResource(l_DynamicRenderableObjectsManager);
                         //Aqui se le añadirá al CRenderableObjectsManager el valor de l_DynamicRenderableObjectsManager
                         l_DirectionalLight->GetDynamicShadowMapRenderableObjectsManagers().push_back(l_RenderableObjectManager);
                     }
@@ -191,12 +193,12 @@ void CLightManager::Load(const std::string &FileName)
                         l_SpotLight->setShadowMapHeigth(l_ShadowMapHeight);
                     }
                     if (l_StaticRenderableObjectsManager != "") {
-                        CRenderableObjectsManager * l_RenderableObjectManager = new  CRenderableObjectsManager();
+                        CRenderableObjectsManager * l_RenderableObjectManager = RENDLM->GetResource(l_StaticRenderableObjectsManager);
                         //Aqui se le añadirá al CRenderableObjectsManager el valor de l_StaticRenderableObjectsManager
                         l_SpotLight->GetStaticShadowMapRenderableObjectsManagers().push_back(l_RenderableObjectManager);
                     }
                     if (l_DynamicRenderableObjectsManager != "") {
-                        CRenderableObjectsManager * l_RenderableObjectManager = new  CRenderableObjectsManager();
+                        CRenderableObjectsManager * l_RenderableObjectManager = RENDLM->GetResource(l_DynamicRenderableObjectsManager);
                         //Aqui se le añadirá al CRenderableObjectsManager el valor de l_DynamicRenderableObjectsManager
                         l_SpotLight->GetDynamicShadowMapRenderableObjectsManagers().push_back(l_RenderableObjectManager);
                     }

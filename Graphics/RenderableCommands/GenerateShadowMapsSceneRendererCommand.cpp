@@ -22,6 +22,7 @@ void CGenerateShadowMapsSceneRendererCommand::Execute(CGraphicsManager &RM)
             it->second->BeginRenderEffectManagerShadowMap(EFFECTM->GetEffect("ShadowMapGenerate"));
             it->second->SetShadowMap(&RM);
             it->second->GenerateShadowMap(&RM);
+            it++;
         }
     }
 }
