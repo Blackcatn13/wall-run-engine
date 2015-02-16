@@ -798,7 +798,7 @@ void CGraphicsManager::BeginRenderCommand()
     m_Rendering = true;
     assert( SUCCEEDED( hr ) );
     m_pD3DDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CCW);
-    m_pD3DDevice->SetRenderState( D3DRS_ZENABLE, D3DZB_TRUE);
+    // m_pD3DDevice->SetRenderState( D3DRS_ZENABLE, D3DZB_TRUE);
     m_pD3DDevice->SetRenderState( D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
     //m_pD3DDevice->SetRenderState( D3DRS_ZWRITEENABLE, TRUE);
     m_pD3DDevice->SetRenderState( D3DRS_LIGHTING, FALSE );

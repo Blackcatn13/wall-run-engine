@@ -9,8 +9,10 @@
 #include "RenderableCommands\ClearSceneRendererCommand.h"
 #include "RenderableCommands\CaptureFrameBufferSceneRendererCommand.h"
 #include "RenderableCommands\DeferredShadingSceneRendererCommand.h"
+#include "RenderableCommands\DisableZTestSceneRendererCommand.h"
 #include "RenderableCommands\DisableZWriteSceneRendererCommand.h"
 #include "RenderableCommands\DrawQuadRendererCommand.h"
+#include "RenderableCommands\EnableZTestSceneRendererCommand.h"
 #include "RenderableCommands\EnableZWriteSceneRendererCommand.h"
 #include "RenderableCommands\EndRenderSceneRendererCommand.h"
 #include "RenderableCommands\GenerateShadowMapsSceneRendererCommand.h"
@@ -75,11 +77,11 @@ void CSceneRendererCommandManager::Load(const std::string &FileName)
                     CClearSceneRendererCommand *l_Command = new CClearSceneRendererCommand(m(i));
                     m_SceneRendererCommands.AddResource(l_Name, l_Command);
                 }
-                /*	if (name == "capture_frame_buffer") {
-                		CCaptureFrameBufferSceneRendererCommand *l_Command = new CCaptureFrameBufferSceneRendererCommand(m(i));
-                		m_SceneRendererCommands.AddResource(l_Name,l_Command);
-                	}
-                	if (name == "render_deferred_shading") {
+                if (name == "capture_frame_buffer") {
+                    CCaptureFrameBufferSceneRendererCommand *l_Command = new CCaptureFrameBufferSceneRendererCommand(m(i));
+                    m_SceneRendererCommands.AddResource(l_Name, l_Command);
+                }
+                /*	if (name == "render_deferred_shading") {
                 		CDeferredShadingSceneRendererCommand *l_Command = new CDeferredShadingSceneRendererCommand(m(i));
                 		m_SceneRendererCommands.AddResource(l_Name,l_Command);
                 	}
@@ -139,39 +141,42 @@ void CSceneRendererCommandManager::Load(const std::string &FileName)
                     CSetAxisRendererCommand *l_Command = new CSetAxisRendererCommand(m(i));
                     m_SceneRendererCommands.AddResource(l_Name, l_Command);
                 }
-                //if (name == "set_render_target") {
-                //	CSetRenderTargetSceneRendererCommand *l_Command = new CSetRenderTargetSceneRendererCommand(m(i));
-                //	m_SceneRendererCommands.AddResource(l_Name,l_Command);
-                //}
+                if (name == "set_render_target") {
+                    CSetRenderTargetSceneRendererCommand *l_Command = new CSetRenderTargetSceneRendererCommand(m(i));
+                    m_SceneRendererCommands.AddResource(l_Name, l_Command);
+                }
                 ///*if (name == "texture") {
                 //	CStagedTexturedRendererCommand *l_Command = new CStagedTexturedRendererCommand(m(i));
                 //	m_SceneRendererCommands.AddResource(l_Name,l_Command);
                 //}*/
-                //if (name == "unset_render_target") {
-                //	CSetRenderTargetSceneRendererCommand *l_UnsetRenderTarget;
-                //	GetSetRenderTargetSceneRendererCommand(l_UnsetRenderTarget);
-                //	CUnsetRenderTargetSceneRendererCommand *l_Command = new CUnsetRenderTargetSceneRendererCommand(l_UnsetRenderTarget,m(i));
-                //	m_SceneRendererCommands.AddResource(l_Name,l_Command);
-                //}
-                /*if (name == "enable_z_test") {
-                	CEnableZTestSceneRendererCommand *l_Command = new CEnableZTestSceneRendererCommand(m(i));
-                	m_SceneRendererCommands.AddResource(l_Name,l_Command);
+                if (name == "unset_render_target") {
+                    std::string l_CommandName = m(i).GetPszProperty("render_target", "");
+                    CSetRenderTargetSceneRendererCommand *l_UnsetRenderTarget = (CSetRenderTargetSceneRendererCommand *)m_SceneRendererCommands.GetResourcesMap().find(l_CommandName)->second.m_Value;
+                    //	GetSetRenderTargetSceneRendererCommand(l_UnsetRenderTarget);
+                    if (l_UnsetRenderTarget != NULL) {
+                        CUnsetRenderTargetSceneRendererCommand *l_Command = new CUnsetRenderTargetSceneRendererCommand(l_UnsetRenderTarget, m(i));
+                        m_SceneRendererCommands.AddResource(l_Name, l_Command);
+                    }
+                }
+                if (name == "enable_z_test") {
+                    CEnableZTestSceneRendererCommand *l_Command = new CEnableZTestSceneRendererCommand(m(i));
+                    m_SceneRendererCommands.AddResource(l_Name, l_Command);
                 }
                 if (name == "disable_z_test") {
-                	CDisableZTestSceneRendererCommand *l_Command = new CDisableZTestSceneRendererCommand(m(i));
-                	m_SceneRendererCommands.AddResource(l_Name,l_Command);
-                }*/
+                    CDisableZTestSceneRendererCommand *l_Command = new CDisableZTestSceneRendererCommand(m(i));
+                    m_SceneRendererCommands.AddResource(l_Name, l_Command);
+                }
             }
         }
     }
 }
-
-void CSceneRendererCommandManager::GetSetRenderTargetSceneRendererCommand(CSetRenderTargetSceneRendererCommand *TargetSceneRendererCommand)
-{
-    for (int i = 0; i < m_SceneRendererCommands.GetResourcesVector().size(); ++i) {
-        TargetSceneRendererCommand = (CSetRenderTargetSceneRendererCommand *)m_SceneRendererCommands.GetResourcesVector().at(i);
-    }
-}
+//
+//void CSceneRendererCommandManager::GetSetRenderTargetSceneRendererCommand(CSetRenderTargetSceneRendererCommand *TargetSceneRendererCommand)
+//{
+//    for (int i = 0; i < m_SceneRendererCommands.GetResourcesVector().size(); ++i) {
+//        TargetSceneRendererCommand = (CSetRenderTargetSceneRendererCommand *)m_SceneRendererCommands.GetResourcesVector().at(i);
+//    }
+//}
 void CSceneRendererCommandManager::Execute(CGraphicsManager& RM)
 {
     for (int i = 0; i < m_SceneRendererCommands.GetResourcesVector().size(); ++i) {

@@ -3,9 +3,10 @@
 #define STAGED_TEXTURED_RENDERER_COMMAND_H
 
 #include "SceneRendererCommand.h"
-#include "Texture\Texture.h"
-#include "XML\XMLTreeNode.h"
-#include "GraphicsManager.h"
+
+class CGraphicsManager;
+class CTexture;
+class CXMLTreeNode;
 
 class CStagedTexturedRendererCommand : public CSceneRendererCommand
 {
