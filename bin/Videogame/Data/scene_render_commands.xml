@@ -34,6 +34,9 @@
 <capture_frame_buffer>
 	<dynamic_texture stage_id="1" name="SSAOMapTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 </capture_frame_buffer>
+<!--<capture_frame_buffer>
+	<dynamic_texture stage_id="1" name="SSAOMapTexture" width="800" heigth="600" format_type="A8R8G8B8"/>
+</capture_frame_buffer>-->
 <!--	<set_pool_renderable_objects_technique pool="ssao_blur_pool_renderable_object_technique"/>
 <render_draw_quad>
 	<texture stage_id="0" file="SSAOMapTexture"/>
