@@ -1,6 +1,7 @@
 #include "RenderableCommands\CDrawQuadRendererCommand.h"
+#include "Texture\Texture.h"
 
-void CDrawQuadRendererCommand::DrawColoredQuad2DTexturedInPixelsByEffectTechnique(CRenderManager *RM, CEffectTechnique *EffectTechnique, RECT Rect, CColor Color, CTexture *Texture,
+void CDrawQuadRendererCommand::DrawColoredQuad2DTexturedInPixelsByEffectTechnique(CGraphicsManager *RM, CEffectTechnique *EffectTechnique, RECT Rect, CColor Color, CTexture *Texture,
 														float U0=0.0f, float V0=0.0f, float U1=1.0f, float V1=1.0f)
 {
 	EffectTechnique->BeginRender();

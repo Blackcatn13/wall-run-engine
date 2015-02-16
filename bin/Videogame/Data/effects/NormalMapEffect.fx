@@ -6,7 +6,7 @@
 
 //DWORD  BCLR = 0xff202080;  // Background color (if no image)
 float3 g_LightAmbient=float3(0.2, 0.2, 0.2);
-float g_SpecularExponent = 200;
+float g_SpecularExponent = 20;
 float g_Bump = 3.0;
 
 struct PNormalVertex
@@ -60,7 +60,7 @@ float4 RN20(PNormalVertex IN) : COLOR
 				float3 l_DirVector = normalize(-l_DirVectorNoNormal);
 				float3 l_DiffuseContribution = saturate(dot(l_Nn,-l_DirVector));
 				float3 l_HV = normalize(normalize(l_CameraPosition - IN.WorldPosition)-l_DirVector);
-				float3 l_SpecularComponent = g_LightColor[i]*pow(saturate(dot(l_Nn,l_HV)), g_SpecularExponent);
+				float3 l_SpecularComponent = g_LightColor[i]*pow(saturate(dot(l_Nn,l_HV)), g_SpecularExponent)*l_NormalTex.a;
 				finalColor = finalColor +((l_DiffuseTex.xyz*g_LightIntensity[i])*(l_DiffuseContribution*g_LightColor[i]*l_Attenuation) +l_SpecularComponent*g_LightIntensity[i]);
 			}
 			else if(g_LightType[i]==1) //directional
@@ -68,7 +68,7 @@ float4 RN20(PNormalVertex IN) : COLOR
 				
 				float l_LightColor = saturate(dot(l_Nn, -g_LightDirection[i]));
 				float3 l_HV = normalize(normalize(l_CameraPosition - IN.WorldPosition)-g_LightDirection[i]);
-				float3 l_SpecularComponent = g_LightColor[i]*pow(saturate(dot(l_Nn,l_HV)), g_SpecularExponent);
+				float3 l_SpecularComponent = g_LightColor[i]*pow(saturate(dot(l_Nn,l_HV)), g_SpecularExponent)*l_NormalTex.a;
 			
 				//finalColor = finalColor +(l_DiffuseTex.xyz*g_LightAmbient+l_DiffuseTex.xyz*l_LightColor*g_LightColor[i]*g_LightIntensity[i]+l_SpecularComponent*g_LightIntensity[i]);
 				finalColor = finalColor +(l_DiffuseTex.xyz*l_LightColor*g_LightColor[i]*g_LightIntensity[i]+l_SpecularComponent*g_LightIntensity[i]);
@@ -86,7 +86,7 @@ float4 RN20(PNormalVertex IN) : COLOR
 
 				float l_LightColor = saturate(dot(l_Nn, -g_LightDirection[i]));
 				float3 l_HV = normalize(normalize(l_CameraPosition - IN.WorldPosition)-g_LightDirection[i]);
-				float3 l_SpecularComponent = g_LightColor[i]*pow(saturate(dot(l_Nn,l_HV)), g_SpecularExponent);
+				float3 l_SpecularComponent = g_LightColor[i]*pow(saturate(dot(l_Nn,l_HV)), g_SpecularExponent)*l_NormalTex.a;
 				float3 l_DifuseContrib = l_DiffuseTex.xyz*l_LightColor*g_LightColor[i];
 
 				if(dot(l_Nn, -g_LightDirection[i]) >= cos(l_HalfAngle+g_FallOff[i]) ){

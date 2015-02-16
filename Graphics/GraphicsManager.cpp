@@ -825,7 +825,7 @@ void CGraphicsManager::PresentSceneCommand()
 }
 
 
-void CGraphicsManager::DrawColoredQuad2DTexturedInPixels(RECT Rect, CColor Color, CTexture Texture, float U0, float V0, float U1, float V1)
+/*void CGraphicsManager::DrawColoredQuad2DTexturedInPixels(RECT Rect, CColor Color, CTexture Texture, float U0, float V0, float U1, float V1)
 {
 	//TODO Picar función
-}
+}*/
