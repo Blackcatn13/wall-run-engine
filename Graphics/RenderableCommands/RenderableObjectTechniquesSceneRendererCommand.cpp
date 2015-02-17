@@ -13,7 +13,11 @@ CRenderableObjectTechniquesSceneRendererCommand::CRenderableObjectTechniquesScen
 }
 void CRenderableObjectTechniquesSceneRendererCommand::Execute(CGraphicsManager &RM)
 {
-	m_PoolRenderableObjectTechnique = RENDTECHM->GetPoolRenderableObjectTechniques().GetResource(m_PoolName);
 	if (m_PoolRenderableObjectTechnique != NULL)
         m_PoolRenderableObjectTechnique->Apply();
+}
+
+void CRenderableObjectTechniquesSceneRendererCommand::Reload()
+{
+	m_PoolRenderableObjectTechnique = RENDTECHM->GetPoolRenderableObjectTechniques().GetResource(m_PoolName);
 }

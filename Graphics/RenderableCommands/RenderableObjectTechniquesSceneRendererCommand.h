@@ -16,5 +16,6 @@ private:
 public:
     CRenderableObjectTechniquesSceneRendererCommand(CXMLTreeNode &atts);
     void Execute(CGraphicsManager &RM);
+	void Reload();
 };
 #endif

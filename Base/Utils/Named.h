@@ -6,7 +6,7 @@
 
 class CNamed
 {
-private:
+protected:
     std::string m_Name;
 public:
     CNamed() {} //Ojo que este es solo para probar el ScriptManager

@@ -17,6 +17,7 @@ public:
     CSceneRendererCommand(CXMLTreeNode &atts);
     virtual ~CSceneRendererCommand();
     virtual void Execute(CGraphicsManager &RM) = 0;
+	virtual void Reload();
 };
 
 

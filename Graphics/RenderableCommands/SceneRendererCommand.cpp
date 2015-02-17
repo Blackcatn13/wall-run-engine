@@ -10,3 +10,7 @@ CSceneRendererCommand::CSceneRendererCommand(CXMLTreeNode &atts)
 CSceneRendererCommand::~CSceneRendererCommand()
 {
 }
+
+void CSceneRendererCommand::Reload()
+{
+}

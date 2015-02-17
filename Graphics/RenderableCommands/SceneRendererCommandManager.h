@@ -18,6 +18,7 @@ private:
     std::string m_FileName;
     void CleanUp();
     std::string GetNextName();
+	bool m_needReload;
 
     void GetSetRenderTargetSceneRendererCommand(CSetRenderTargetSceneRendererCommand *SceneRendererCommand);
 public:
@@ -26,6 +27,7 @@ public:
     void Load(const std::string &FileName);
     void Execute(CGraphicsManager& RM);
     void Reload();
+	void setReload() {m_needReload = true;}
 
 };
 //XML a parsear scene_renderer_commands.xml pag 17 pdf

@@ -31,9 +31,11 @@
 
 
 CSceneRendererCommandManager::CSceneRendererCommandManager()
+	: m_FileName(""),
+	m_needReload(false)
 {
     CleanUp();
-    m_FileName = "";
+    
 }
 CSceneRendererCommandManager::~CSceneRendererCommandManager()
 {
@@ -180,8 +182,13 @@ void CSceneRendererCommandManager::Load(const std::string &FileName)
 void CSceneRendererCommandManager::Execute(CGraphicsManager& RM)
 {
     for (int i = 0; i < m_SceneRendererCommands.GetResourcesVector().size(); ++i) {
+		if(m_needReload) {
+			m_SceneRendererCommands.GetResourcesVector().at(i)->Reload();
+		}
         m_SceneRendererCommands.GetResourcesVector().at(i)->Execute(RM);
     }
+	if(m_needReload)
+		m_needReload = false;
 }
 
 void CSceneRendererCommandManager::Reload()
