@@ -4,6 +4,7 @@
 #include <assert.h>
 #include "AnimatedModels\AnimatedModelManager.h"
 #include "AnimatedModels\AnimatedInstanceModel.h"
+#include "StaticMeshes\StaticMeshManager.h"
 
 CRenderableObjectsLayersManager ::CRenderableObjectsLayersManager()
 {
@@ -51,8 +52,10 @@ void CRenderableObjectsLayersManager::Destroy()
 void CRenderableObjectsLayersManager::Reload()
 {
     Destroy();
+	SMESHM->Reload();
     Load(m_FileName);
     Load(m_FileName2);
+	
 }
 
 CRenderableObjectsManager * CRenderableObjectsLayersManager::GetRenderableObjectManager(CXMLTreeNode &Node)

@@ -8,11 +8,12 @@
 
 CRenderableObjectTechniquesSceneRendererCommand::CRenderableObjectTechniquesSceneRendererCommand(CXMLTreeNode &atts)
 {
-    std::string l_PoolName = atts.GetPszProperty("pool", "");
-    m_PoolRenderableObjectTechnique = RENDTECHM->GetPoolRenderableObjectTechniques().GetResource(l_PoolName);
+    m_PoolName = atts.GetPszProperty("pool", "");
+    m_PoolRenderableObjectTechnique = RENDTECHM->GetPoolRenderableObjectTechniques().GetResource(m_PoolName);
 }
 void CRenderableObjectTechniquesSceneRendererCommand::Execute(CGraphicsManager &RM)
 {
-    if (m_PoolRenderableObjectTechnique != NULL)
+	m_PoolRenderableObjectTechnique = RENDTECHM->GetPoolRenderableObjectTechniques().GetResource(m_PoolName);
+	if (m_PoolRenderableObjectTechnique != NULL)
         m_PoolRenderableObjectTechnique->Apply();
 }

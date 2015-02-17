@@ -26,10 +26,10 @@ PNormalVertex RenderNormalsVS(
 	OUT.UV = IN.UV;
 	OUT.HPosition = mul(float4 (IN.Position.xyz, 1.0),g_WorldViewProjectionMatrix);
 	OUT.WorldPosition=mul(float4(IN.Position.xyz, 1.0), g_WorldMatrix);
-	OUT.WorldNormal= mul(IN.Normal.xyz, (float3x3)g_WorldMatrix);
-	OUT.WorldTangent= mul(IN.Tangent.xyz, (float3x3)g_WorldMatrix);
-	//OUT.WorldBinormal= mul(IN.Binormal.xyz, (float3x3)g_WorldMatrix);
-	OUT.WorldBinormal = mul(cross(IN.Tangent.xyz,IN.Normal),(float3x3)g_WorldMatrix);
+	OUT.WorldNormal= normalize(mul(IN.Normal.xyz, (float3x3)g_WorldMatrix));
+	OUT.WorldTangent= normalize(mul(IN.Tangent.xyz, (float3x3)g_WorldMatrix));
+	OUT.WorldBinormal= normalize(mul(IN.Binormal.xyz, (float3x3)g_WorldMatrix));
+	//OUT.WorldBinormal = mul(cross(IN.Tangent.xyz,IN.Normal),(float3x3)g_WorldMatrix);
 	return OUT;
  
 }
@@ -39,8 +39,9 @@ float4 RN20(PNormalVertex IN) : COLOR
 	float3 l_TangentNormalized = normalize(IN.WorldTangent);
 	float3 l_WNn= normalize(IN.WorldNormal);
 	float3 l_BinormalNormalized = normalize(IN.WorldBinormal);
-	float4 l_DiffuseTex = tex2D(S0LinearWrapSampler, IN.UV);
-	float4 l_NormalTex = tex2D(S1LinearWrapSampler, IN.UV);
+	float4 l_DiffuseTex = tex2D(S0LinearClampSampler, IN.UV);
+	float4 l_NormalTex = tex2D(S1LinearClampSampler, IN.UV);
+	//return l_NormalTex;
 	float3 l_Bump = g_Bump * (l_NormalTex.rgb - float3 (0.5,0.5,0.5));
 	float3 l_Nn = l_WNn + l_Bump.x*l_TangentNormalized + l_Bump.y*l_BinormalNormalized;
 	float3 finalColor = g_LightAmbient*l_DiffuseTex.xyz;
@@ -105,7 +106,6 @@ technique tec0
 {
     pass p0
     {
-		//CullMode = None;
         VertexShader =compile vs_3_0 RenderNormalsVS();
         PixelShader = compile ps_3_0 RN20();
     }

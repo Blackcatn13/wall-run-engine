@@ -12,6 +12,7 @@ class CRenderableObjectTechniquesSceneRendererCommand : public CSceneRendererCom
 {
 private:
     CPoolRenderableObjectTechnique *m_PoolRenderableObjectTechnique;
+	std::string m_PoolName;
 public:
     CRenderableObjectTechniquesSceneRendererCommand(CXMLTreeNode &atts);
     void Execute(CGraphicsManager &RM);

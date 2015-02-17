@@ -7,6 +7,7 @@
 #include "RenderableVertex\VertexTypes.h"
 #include "Core\Core.h"
 #include "Renderable\RenderableObjectTechniqueManager.h"
+#include "Renderable\RenderableObjectsLayersManager.h"
 
 CEffectManager::CEffectManager()
 {
@@ -166,6 +167,8 @@ void CEffectManager::Reload()
     CleanUp();
     Load(m_FileName);
     RENDTECHM->Reload();
+	RENDLM->Reload();
+
 }
 std::string CEffectManager::GetTechniqueEffectNameByVertexDefault(unsigned short VertexType)
 {
