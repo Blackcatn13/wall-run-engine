@@ -7,7 +7,7 @@
 <enable_z_write/>
 <enable_z_test/>
 <set_axis />
-<!--<set_pool_renderable_objects_technique pool="generate_shadow_map_renderable_obejcts_technique"/>-->
+<set_pool_renderable_objects_technique pool="generate_shadow_map_renderable_obejcts_technique"/>
 <!-- <generate_shadow_maps /> -->
 <set_pool_renderable_objects_technique pool="dummy_manager"/>
 <!--<set_render_target name="deferred_multiple_render_target">

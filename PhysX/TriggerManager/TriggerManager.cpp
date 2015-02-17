@@ -18,7 +18,7 @@ CTriggerManager::~CTriggerManager()
 void CTriggerManager::Clear()
 {
     for (size_t i = 0; i < m_UserData.size(); ++i) {
-        PHYSXM->ReleasePhysicActor(m_UserData[i]->GetActor());
+        //PHYSXM->ReleasePhysicActor(m_UserData[i]->GetActor());
         CHECKED_DELETE(m_UserData[i]);
     }
     m_UserData.clear();

@@ -110,10 +110,12 @@ void CCore::DeInit()
     CHECKED_DELETE(m_CameraController);
     CHECKED_DELETE(m_CinematicManager);
     CHECKED_DELETE(m_EffectManager);
+	CHECKED_DELETE(m_TriggerManager);
     CHECKED_DELETE(m_PhysicsManager);
     //CHECKED_DELETE(m_Process);
     CHECKED_DELETE(m_RenderableObjectTechniqueManager);
     CHECKED_DELETE(m_SceneRendererCommandManager);
+	
 }
 
 CCore* CCore::GetInstance()
