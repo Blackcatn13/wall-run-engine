@@ -24,3 +24,8 @@ float g_LightIntensity[MAXLIGHTS] : LIGHTSINTENSITY;
 float g_NearAtten[MAXLIGHTS] : LIGHTSSTARTRANGEATTENUATION;
 float g_FarAtten[MAXLIGHTS] : LIGHTSENDRANGEATTENUATION;
 float g_FallOff[MAXLIGHTS] : LIGHTSFALLOFF;
+
+float g_ZBlurFocalStart = 50;
+float g_ZBlurFocalEnd = 65;
+float g_ZBlurEnd = 300;
+float g_ConstantBlur = 0.4;
