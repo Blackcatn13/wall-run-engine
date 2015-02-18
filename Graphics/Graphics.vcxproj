@@ -47,9 +47,11 @@
     <ClCompile Include="RenderableCommands\DeferredShadingSceneRendererCommand.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="RenderableCommands\DisableAlphaBlendCommand.cpp" />
     <ClCompile Include="RenderableCommands\DisableZTestSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\DisableZWriteSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\DrawQuadRendererCommand.cpp" />
+    <ClCompile Include="RenderableCommands\EnableAlphaBlendCommand.cpp" />
     <ClCompile Include="RenderableCommands\EnableZTestSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\EnableZWriteSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\EndRenderSceneRendererCommand.cpp" />
@@ -125,9 +127,11 @@
     <ClInclude Include="RenderableCommands\DeferredShadingSceneRendererCommand.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="RenderableCommands\DisableAlphaBlendCommand.h" />
     <ClInclude Include="RenderableCommands\DisableZTestSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\DisableZWriteSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\DrawQuadRendererCommand.h" />
+    <ClInclude Include="RenderableCommands\EnableAlphaBlendCommand.h" />
     <ClInclude Include="RenderableCommands\EnableZTestSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\EnableZWriteSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\EndRenderSceneRendererCommand.h" />
