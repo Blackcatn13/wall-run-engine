@@ -138,7 +138,8 @@ void CEffectManager::Load(const std::string &FileName)
                     CEffect * effect = m_Effects.GetResource(effectName);
                     if (effect != NULL) {
                         CEffectTechnique *effectTechnique = new CEffectTechnique();
-                        effectTechnique->SetEffect(effect);
+						effectTechnique->SetTechniqueName(techniqueName);
+						effectTechnique->SetEffect(effect);
                         effectTechnique->SetUseCameraPosition(UseCameraPosition);
                         effectTechnique->SetUseInverseProjMatrix(UseInverseProjMatrix);
                         effectTechnique->SetUseInverseViewMatrix(UseInverseViewMatrix);
@@ -154,6 +155,7 @@ void CEffectManager::Load(const std::string &FileName)
                         effectTechnique->SetUseViewProjectionMatrix(UseViewProjectionMatrix);
                         effectTechnique->SetUseViewToLightProjectionMatrix(UseViewToLightProjectionMatrix);
                         effectTechnique->SetUseTime(UseTime);
+						effectTechnique->Refresh();
                         AddResource(techniqueName, effectTechnique);
                     } else {
                         LOGGER->AddNewLog(ELL_ERROR, "Not effect '%s' exists in the map", effectName.c_str());

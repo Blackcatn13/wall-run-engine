@@ -14,7 +14,7 @@ CSetRenderTargetSceneRendererCommand::CSetRenderTargetSceneRendererCommand(CXMLT
             std::string l_TextureName = atts(i).GetPszProperty("name", "");
             std::string l_FormatType = atts(i).GetPszProperty("format_type", "");
             int l_Width = atts(i).GetIntProperty("width", 0);
-            int l_Height = atts(i).GetIntProperty("heigth", 0);
+            int l_Height = atts(i).GetIntProperty("height", 0);
             bool l_WidthAsFrameBuffer = atts(i).GetBoolProperty("texture_width_as_frame_buffer", false);//Este para que sirve?
             if ((l_Width == 0 || l_Height == 0) && l_WidthAsFrameBuffer) {
                 D3DVIEWPORT9 * l_viewPort = new D3DVIEWPORT9();

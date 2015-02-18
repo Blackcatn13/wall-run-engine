@@ -3,10 +3,11 @@
 	<!-- <static_mesh name="LOW001" filename=".\Data\level2\meshes//LOW001.mesh"/>
 	<static_mesh name="Plane001" filename=".\Data\level2\meshes\Plane001.mesh"/>
 	
-	<static_mesh name="Box002" filename=".\Data\level2\meshes//Box001.mesh"/> -->
 	<static_mesh name="Box001" filename=".\Data\level2\meshes\BOX_Lightmap.mesh"/> 
 	<static_mesh name="Sphere001" filename=".\Data\level2\meshes\Sphere001.mesh"/>
 	<static_mesh name="Sphere002" filename=".\Data\level2\meshes\Sphere002.mesh"/>
 	<static_mesh name="COFRE" filename=".\Data\level2\meshes\COFRE_LOW.mesh"/>
 	<static_mesh name="CubeMap" filename=".\Data\level2\meshes\CubeMapSphere.mesh"/>
+	 -->
+	 <static_mesh name="Box002" filename=".\Data\level2\meshes//Box001.mesh"/>
 </static_meshes>

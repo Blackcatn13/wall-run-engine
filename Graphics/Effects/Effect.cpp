@@ -165,8 +165,7 @@ LPD3DXEFFECT CEffect::GetD3DEffect() const
 }
 D3DXHANDLE CEffect::GetTechniqueByName(const std::string &TechniqueName)
 {
-    D3DXHANDLE l_EffectTechnique = m_Effect->GetTechniqueByName(TechniqueName.c_str());
-    return l_EffectTechnique;
+    return m_Effect==NULL ? NULL : m_Effect->GetTechniqueByName(TechniqueName.c_str());
 }
 
 void CEffect::SetShadowMapParameters(bool UseShadowMaskTexture, bool UseStaticShadowmap, bool UseDynamicShadowmap)

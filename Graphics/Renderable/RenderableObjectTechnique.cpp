@@ -1,6 +1,7 @@
 #include "Renderable\RenderableObjectTechnique.h"
 
 CRenderableObjectTechnique::CRenderableObjectTechnique()
+: m_EffectTechnique(NULL)
 {
 }
 

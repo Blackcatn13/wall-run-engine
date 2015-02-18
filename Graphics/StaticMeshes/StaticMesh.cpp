@@ -297,7 +297,10 @@ void CStaticMesh::Render (CGraphicsManager *RM)
         //std::string l_EffectName = EFFECTM->GetTechniqueEffectNameByVertexDefault(m_RVs[i]->GetVertexType());
         //CEffectTechnique *l_EffectTechnique =EFFECTM->GetEffectTechnique(l_EffectName);
         CEffectTechnique *l_EffectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(m_RVs[i]->GetVertexType()))->GetEffectTechnique();
-        if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_TEXTURE1) == VERTEX_TYPE_TEXTURE1)
+		for(size_t j=0;j<m_Textures[i].size();++j)
+			m_Textures[i][j]->Activate(j);
+		
+		/*if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_TEXTURE1) == VERTEX_TYPE_TEXTURE1)
             m_Textures[i][0]->Activate(0);
         if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_TANGENT) == VERTEX_TYPE_TANGENT)
             m_Textures[i][1]->Activate(1);
@@ -306,7 +309,7 @@ void CStaticMesh::Render (CGraphicsManager *RM)
         if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_TEXTURE2) == VERTEX_TYPE_TEXTURE2)
             m_Textures[i][1]->Activate(3);
         if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_DIFFUSE) == VERTEX_TYPE_DIFFUSE)
-            RM->GetDevice()->SetTexture(0, 0);
+            RM->GetDevice()->SetTexture(0, 0);*/
         m_RVs[i]->Render(RM, l_EffectTechnique);
     }
 }

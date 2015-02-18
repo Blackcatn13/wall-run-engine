@@ -35,6 +35,8 @@ void CCaptureFrameBufferSceneRendererCommand::Execute(CGraphicsManager &RM)
 {
     for (int i = 0; i < m_StageTextures.size(); ++i) {
         m_StageTextures[i].m_Texture->CaptureFrameBuffer(m_StageTextures[i].m_StageId);
-        //  m_StageTextures[i].m_Texture->SaveToFile("wololo.jpg");
+		bool l_Done=false;
+		if(l_Done)
+          m_StageTextures[i].m_Texture->SaveToFile("d:\\wololo.jpg");
     }
 }

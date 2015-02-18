@@ -5,6 +5,10 @@
 #include "Utils\Logger.h"
 
 CTexture::CTexture()
+	: m_DepthStencilRenderTargetTexture(NULL)
+	, m_OldRenderTarget(NULL)
+	, m_RenderTargetTexture(NULL)
+	, m_OldDepthStencilRenderTarget(NULL)
 {
 }
 

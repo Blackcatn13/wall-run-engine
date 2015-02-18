@@ -166,6 +166,14 @@ public:
     {
         m_UseTime = value;
     }
+	void SetTechniqueName(const std::string &TechniqueName)
+	{
+		m_TechniqueName=TechniqueName;
+	}
+	const std::string & GetTechniqueName()
+	{
+		return m_TechniqueName;
+	}
 
     //apaño para default vertex repetidos
     int GetDefaultVertex();

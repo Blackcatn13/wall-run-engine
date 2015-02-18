@@ -2,12 +2,7 @@
 #include "Samplers.fxh"
 #include "VertexTypes.fxh"
 
-struct TGBUFFER_TEXTURED1_VERTEX_VS 
-{
-    float3 Position : POSITION;
-    float3 Normal : NORMAL;
-    float2 UV : TEXCOORD0;
-};
+
 
 struct TGBUFFER_TEXTURED1_VERTEX_PS
 {
@@ -31,7 +26,7 @@ float3 Normal2Texture(float3 Normal)
 	return Normal*0.5+0.5;
 }
 
-TGBUFFER_TEXTURED1_VERTEX_PS GBufferVS(TGBUFFER_TEXTURED1_VERTEX_VS IN){
+TGBUFFER_TEXTURED1_VERTEX_PS GBufferVS(VertexVS_TTEXTURE_NORMAL_VERTEX IN){
 	
 	TGBUFFER_TEXTURED1_VERTEX_PS OUT = (TGBUFFER_TEXTURED1_VERTEX_PS)0;
     OUT.UV = IN.UV;
@@ -63,7 +58,8 @@ technique GBufferDiffuseMapTechnique
 {
 	pass p0
 	{
-		CullMode = NONE; // NONE - CW
+		AlphaBlendEnable = false;
+		//CullMode = NONE; // NONE - CW
 		VertexShader = compile vs_3_0 GBufferVS();
 		PixelShader = compile ps_3_0 GBufferPS();
 	}
