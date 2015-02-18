@@ -49,9 +49,7 @@
     </ClCompile>
     <ClCompile Include="RenderableCommands\DisableZTestSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\DisableZWriteSceneRendererCommand.cpp" />
-    <ClCompile Include="RenderableCommands\DrawQuadRendererCommand.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="RenderableCommands\DrawQuadRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\EnableZTestSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\EnableZWriteSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\EndRenderSceneRendererCommand.cpp" />
@@ -129,9 +127,7 @@
     </ClInclude>
     <ClInclude Include="RenderableCommands\DisableZTestSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\DisableZWriteSceneRendererCommand.h" />
-    <ClInclude Include="RenderableCommands\DrawQuadRendererCommand.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
+    <ClInclude Include="RenderableCommands\DrawQuadRendererCommand.h" />
     <ClInclude Include="RenderableCommands\EnableZTestSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\EnableZWriteSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\EndRenderSceneRendererCommand.h" />

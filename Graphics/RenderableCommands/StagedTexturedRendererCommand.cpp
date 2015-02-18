@@ -15,9 +15,9 @@ void CStagedTexturedRendererCommand::ActivateTextures()
 
 CStagedTexturedRendererCommand::~CStagedTexturedRendererCommand()
 {
-    for (int i = 0; i < m_StageTextures.size(); ++i) {
+    /*for (int i = 0; i < m_StageTextures.size(); ++i) {
         CHECKED_DELETE (m_StageTextures[i].m_Texture);
-    }
+    }*/
     m_StageTextures.clear();
 }
 void CStagedTexturedRendererCommand::AddStageTexture(int StageId, CTexture *Texture)

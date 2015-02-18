@@ -2,8 +2,8 @@
 #include "Samplers.fxh"
 #include "VertexTypes.fxh"
 
-float3 g_LightAmbient=float3(0.2, 0.2, 0.2);
-float g_SpecularExponent = 100;
+//float3 g_LightAmbient=float3(0.2, 0.2, 0.2);
+//float g_SpecularExponent = 100;
 float g_ReflectionContribution = 0.3;
 
 struct PNormalVertex

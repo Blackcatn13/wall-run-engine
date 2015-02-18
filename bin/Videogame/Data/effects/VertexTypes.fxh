@@ -123,3 +123,11 @@ struct CAL3D_HW_VERTEX_PS
 	// float3 WorldTangent : TEXCOORD3;
 	// float3 WorldBinormal : TEXCOORD4;
 };
+
+//Texture quad
+struct SCREEN_TEXTURED_COLORED_VERTEX_VS 
+{
+    float3 Position : POSITION;
+	float4 Color : COLOR0;
+	float2 UV : TEXCOORD0;
+};

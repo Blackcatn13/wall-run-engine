@@ -13,9 +13,20 @@
 		<default_technique vertex_type="51" technique="GenerateShadowMap"/>
 		<default_technique vertex_type="531" technique="GenerateShadowMap"/>
 	</pool_renderable_object_technique> 
+	
+	<pool_renderable_object_technique name="generate_deferred_shading_pool_renderable_object_technique">
+		<default_technique vertex_type="19" technique="GBufferDiffuseMapTechnique"/>
+		<default_technique vertex_type="31" technique="GBufferDiffuseMapTechnique"/>
+		<default_technique vertex_type="51" technique="GBufferDiffuseMapTechnique"/>
+		<default_technique vertex_type="531" technique="GBufferDiffuseMapTechnique"/>
+	</pool_renderable_object_technique> 
 	<pool_renderable_object_technique name="dummy_test">
 		<default_technique vertex_type="19" technique="LightsTechnique"/>
 		<default_technique vertex_type="31" technique="NormalMapTechnique"/>
 		<default_technique vertex_type="51" technique="LightMapTechnique"/>
 	</pool_renderable_object_technique>
+	<pool_renderable_object_technique name="draw_textured_quad_pool">
+		 <renderable_object_technique name="DrawQuadTechnique" technique="DrawQuadTechnique"/>
+	</pool_renderable_object_technique> 
+	
 </renderable_object_techniques>

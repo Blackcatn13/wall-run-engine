@@ -31,11 +31,10 @@
 
 
 CSceneRendererCommandManager::CSceneRendererCommandManager()
-	: m_FileName(""),
-	m_needReload(false)
+    : m_FileName(""),
+      m_needReload(false)
 {
     CleanUp();
-    
 }
 CSceneRendererCommandManager::~CSceneRendererCommandManager()
 {
@@ -91,11 +90,11 @@ void CSceneRendererCommandManager::Load(const std::string &FileName)
                     CDisableZWriteSceneRendererCommand *l_Command = new CDisableZWriteSceneRendererCommand(m(i));
                     m_SceneRendererCommands.AddResource(l_Name, l_Command);
                 }
-                /*	if (name == "render_draw_quad") {
-                		CDrawQuadRendererCommand *l_Command = new CDrawQuadRendererCommand(m(i));
-                		m_SceneRendererCommands.AddResource(l_Name,l_Command);
-                	}
-                */	if (name == "enable_z_write") {
+                if (name == "render_draw_quad") {
+                    CDrawQuadRendererCommand *l_Command = new CDrawQuadRendererCommand(m(i));
+                    m_SceneRendererCommands.AddResource(l_Name, l_Command);
+                }
+                if (name == "enable_z_write") {
                     CEnableZWriteSceneRendererCommand *l_Command = new CEnableZWriteSceneRendererCommand(m(i));
                     m_SceneRendererCommands.AddResource(l_Name, l_Command);
                 }
@@ -182,13 +181,13 @@ void CSceneRendererCommandManager::Load(const std::string &FileName)
 void CSceneRendererCommandManager::Execute(CGraphicsManager& RM)
 {
     for (int i = 0; i < m_SceneRendererCommands.GetResourcesVector().size(); ++i) {
-		if(m_needReload) {
-			m_SceneRendererCommands.GetResourcesVector().at(i)->Reload();
-		}
+        if (m_needReload) {
+            m_SceneRendererCommands.GetResourcesVector().at(i)->Reload();
+        }
         m_SceneRendererCommands.GetResourcesVector().at(i)->Execute(RM);
     }
-	if(m_needReload)
-		m_needReload = false;
+    if (m_needReload)
+        m_needReload = false;
 }
 
 void CSceneRendererCommandManager::Reload()

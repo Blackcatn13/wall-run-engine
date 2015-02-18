@@ -2,11 +2,13 @@
 #ifndef DRAW_QUAD_RENDERER_COMMAND_H
 #define DRAW_QUAD_RENDERER_COMMAND_H
 
-#include "GraphicsManager.h"
+
 #include "XML\XMLTreeNode.h"
 #include "StagedTexturedRendererCommand.h"
 
+class CEffectTechnique;
 class CTexture;
+class CGraphicsManager;
 
 class CDrawQuadRendererCommand : public CStagedTexturedRendererCommand
 {
@@ -15,8 +17,8 @@ protected:
 public:
     CDrawQuadRendererCommand(CXMLTreeNode &atts);
     void Execute(CGraphicsManager &RM);
-	void DrawColoredQuad2DTexturedInPixelsByEffectTechnique(CGraphicsManager *RM, CEffectTechnique *EffectTechnique, RECT Rect, CColor Color, CTexture *Texture,
-														float U0=0.0f, float V0=0.0f, float U1=1.0f, float V1=1.0f);
+    void DrawColoredQuad2DTexturedInPixelsByEffectTechnique(CGraphicsManager *RM, CEffectTechnique *EffectTechnique, RECT Rect, CColor Color, CTexture *Texture,
+            float U0 = 0.0f, float V0 = 0.0f, float U1 = 1.0f, float V1 = 1.0f);
 };
 
 //explicación pagina 22:: Esta clase nos permitirá renderizar un cuadro en 2D según un color. El código

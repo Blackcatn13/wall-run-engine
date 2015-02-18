@@ -7,6 +7,7 @@
 #include "Core\Core.h"
 #include "GraphicsManager.h"
 #include <assert.h>
+#include <string>
 
 class CTexture : public CNamed
 {
@@ -64,6 +65,15 @@ public:
     void UnsetAsRenderTarget(size_t IdStage = 0);
     void CaptureFrameBuffer(size_t IdStage);
     CTexture::TFormatType CTexture::GetFormatTypeFromString(const std::string &FormatType);
+    int GetWidth()
+    {
+        return m_Width;
+    }
+    int GetHeight()
+    {
+        return m_Height;
+    }
+    bool SaveToFile(const std::string &Filename);
 
 };
 

@@ -5,8 +5,8 @@
 
 
 //DWORD  BCLR = 0xff202080;  // Background color (if no image)
-float3 g_LightAmbient=float3(0.3, 0.35, 0.4);
-float g_SpecularExponent = 200;
+//float3 g_LightAmbient=float3(0.3, 0.35, 0.4);
+//float g_SpecularExponent = 200;
 
 struct PNormalVertex
 {

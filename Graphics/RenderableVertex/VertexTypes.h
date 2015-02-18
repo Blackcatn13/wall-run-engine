@@ -18,6 +18,24 @@
 #include "GraphicsManager.h"
 #include "Utils\Defines.h"
 
+//ColoredQuad2D
+struct SCREEN_TEXTURED_COLORED_VERTEX {
+    float x, y, z, w;
+    DWORD color;
+    float tu, tv;
+
+    static inline unsigned int GetFVF()
+    {
+        return D3DFVF_XYZRHW | D3DFVF_DIFFUSE | D3DFVF_TEX1;
+    }
+    static LPDIRECT3DVERTEXDECLARATION9 s_VertexDeclaration;
+    static LPDIRECT3DVERTEXDECLARATION9 & GetVertexDeclaration();
+    static void ReleaseVertexDeclaration()
+    {
+        CHECKED_RELEASE(s_VertexDeclaration);
+    }
+};
+
 // G T1
 struct TTEXTURE_VERTEX {
     float x, y, z;

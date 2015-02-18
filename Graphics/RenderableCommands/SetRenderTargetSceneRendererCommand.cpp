@@ -3,7 +3,7 @@
 #include "XML\XMLTreeNode.h"
 #include "GraphicsManager.h"
 #include "Texture\Texture.h"
-
+#include "Texture\TextureManager.h"
 
 CSetRenderTargetSceneRendererCommand::CSetRenderTargetSceneRendererCommand(CXMLTreeNode &atts)
 {
@@ -13,11 +13,20 @@ CSetRenderTargetSceneRendererCommand::CSetRenderTargetSceneRendererCommand(CXMLT
             int l_StageId = atts(i).GetIntProperty("stage_id", 0);
             std::string l_TextureName = atts(i).GetPszProperty("name", "");
             std::string l_FormatType = atts(i).GetPszProperty("format_type", "");
-            bool l_WidthAsFrameBuffer = atts(i).GetBoolKeyword("texture_width_as_frame_buffer", false);//Este para que sirve?
+            int l_Width = atts(i).GetIntProperty("width", 0);
+            int l_Height = atts(i).GetIntProperty("heigth", 0);
+            bool l_WidthAsFrameBuffer = atts(i).GetBoolProperty("texture_width_as_frame_buffer", false);//Este para que sirve?
+            if ((l_Width == 0 || l_Height == 0) && l_WidthAsFrameBuffer) {
+                D3DVIEWPORT9 * l_viewPort = new D3DVIEWPORT9();
+                GRAPHM->GetDevice()->GetViewport(l_viewPort);
+                l_Width = l_viewPort->Width;
+                l_Height = l_viewPort->Height;
+                CHECKED_DELETE(l_viewPort);
+            }
             CTexture * l_Texture = new CTexture();
-            //Width&Heigth ?
-            l_Texture->Create(l_TextureName, 100, 100, 1, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, l_Texture->GetFormatTypeFromString(l_FormatType));
+            l_Texture->Create(l_TextureName, l_Width, l_Height, 1, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, l_Texture->GetFormatTypeFromString(l_FormatType));
             AddStageTexture(l_StageId, l_Texture);
+            TEXTM->AddResource(l_TextureName, l_Texture);
         }
     }
 }

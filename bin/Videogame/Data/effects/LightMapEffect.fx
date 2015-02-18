@@ -3,8 +3,8 @@
 #include "VertexTypes.fxh"
 
 //DWORD  BCLR = 0xff202080;  // Background color (if no image)
-float3 g_LightAmbient=float3(0.2, 0.2, 0.2);
-float g_SpecularExponent = 100;
+//float3 g_LightAmbient=float3(0.2, 0.2, 0.2);
+//float g_SpecularExponent = 100;
 float g_LightMapContrib = 0.5;
 
 struct PSVertex

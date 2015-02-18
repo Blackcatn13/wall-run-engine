@@ -2,7 +2,6 @@
 #include <string>
 #include <exception>
 #include <assert.h>
-#include "Math/Color.h"
 #include "InputManager.h"
 #include "Core/Core.h"
 #include "Math/MathUtils.h"
@@ -12,6 +11,8 @@
 #include "Utils/Logger.h"
 #include "Utils/Exception.h"
 #include "Effects\EffectManager.h"
+#include "RenderableVertex\VertexTypes.h"
+#include "Texture\Texture.h"
 
 CGraphicsManager::CGraphicsManager()
 {
@@ -829,3 +830,21 @@ void CGraphicsManager::PresentSceneCommand()
 {
 	//TODO Picar función
 }*/
+void CGraphicsManager::DrawColoredQuad2DTexturedInPixels (RECT Rect, CColor Color, CTexture *Texture, float U0,	float V0, float U1, float V1)
+{
+    //  [0]------[2]
+    //   |        |
+    //   |        |
+    //   |        |
+    //  [1]------[3]
+    D3DCOLOR l_Color = D3DCOLOR_COLORVALUE(Color.GetRed(), Color.GetGreen(), Color.GetBlue(), Color.GetAlpha());
+    SCREEN_TEXTURED_COLORED_VERTEX v[4] = {
+        { (float)Rect.left,     (float)Rect.top,    0, 1, l_Color, U0, V0} //(x,y) sup_esq.
+        , { (float)Rect.right,    (float)Rect.top,    0, 1, l_Color, U1, V0} //(x,y) sup_dr.
+        , { (float)Rect.left,     (float)Rect.bottom,     0, 1, l_Color, U0, V1} //(x,y) inf_esq.
+        , { (float)Rect.right,    (float)Rect.bottom,     0, 1, l_Color, U1, V1} //(x,y) inf_dr.
+    };
+    m_pD3DDevice->SetFVF( SCREEN_TEXTURED_COLORED_VERTEX::GetFVF() );
+    Texture->Activate(0);
+    m_pD3DDevice->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP, 2, v, sizeof( SCREEN_TEXTURED_COLORED_VERTEX ) );
+}
