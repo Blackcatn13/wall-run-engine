@@ -26,11 +26,6 @@ float3 Normal2Texture(float3 Normal)
 	return Normal*0.5+0.5;
 }
 
-float3 GetPositionFromZDepthView(float ZDepthView, float2 UV, float4x4 InverseViewMatrix, float4x4 InverseProjectionMatrix)
-{
-	float3 l_PositionView=GetPositionFromZDepthViewInViewCoordinates(ZDepthView, UV, InverseProjectionMatrix);
-	return mul(float4(l_PositionView,1.0), InverseViewMatrix).xyz;
-}
 float3 GetPositionFromZDepthViewInViewCoordinates(float ZDepthView, float2 UV, float4x4 InverseProjectionMatrix)
 {
 	// Get the depth value for this pixel
@@ -42,6 +37,13 @@ float3 GetPositionFromZDepthViewInViewCoordinates(float ZDepthView, float2 UV, f
 	float4 l_PositionVS = mul(l_ProjectedPos, InverseProjectionMatrix);
 	// Divide by w to get the view-space position
 	return l_PositionVS.xyz / l_PositionVS.w;
+}
+
+
+float3 GetPositionFromZDepthView(float ZDepthView, float2 UV, float4x4 InverseViewMatrix, float4x4 InverseProjectionMatrix)
+{
+	float3 l_PositionView=GetPositionFromZDepthViewInViewCoordinates(ZDepthView, UV, InverseProjectionMatrix);
+	return mul(float4(l_PositionView,1.0), InverseViewMatrix).xyz;
 }
 
 TGBUFFER_TEXTURED1_VERTEX_PS GBufferVS(VertexVS_TTEXTURE_NORMAL_VERTEX IN){
@@ -81,7 +83,7 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 	// Para la pos del pixel hay que usar la l_Depth y usar la funcion que hay en el pdf para sacar la pos de la profundidad. Todo los calculos son
 	// los que ya estan hechos, cambiando las variables por las de arriba.
 	
-	float3 l_PositionFromDepth = GetPositionFromZDepthView(l_Depth.x, IN.UV, g_InverseViewMatrix, g_InverseProjectionMatrix);
+	float3 l_PositionFromDepth = GetPositionFromZDepthView(l_Depth.x, UV, g_InverseViewMatrix, g_InverseProjectionMatrix);
 	
 	float3 finalColor = l_DiffuseColor.xyz*l_Ambient;
 	

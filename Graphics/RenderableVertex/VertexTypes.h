@@ -14,6 +14,7 @@
 #define VERTEX_TYPE_WEIGHTS 0x0080      // CAL3D_WEIGHTS
 #define VERTEX_TYPE_INDEXS 0x0100      // CAL3D_INDEXS
 #define VERTEX_TYPE_CUBE 0x0200      // CAL3D_INDEXS
+#define VERTEX_TYPE_SCREEN 0x0250		//DRAW_QUAD_SCREEN
 
 #include "GraphicsManager.h"
 #include "Utils\Defines.h"

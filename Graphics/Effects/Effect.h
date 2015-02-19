@@ -9,6 +9,7 @@
 #include "d3dx9shader.h"
 #include "Math\Vector3.h"
 
+class CLight;
 class CEffect
 {
 private:
@@ -47,6 +48,7 @@ public:
     CEffect();
     ~CEffect();
     bool SetLights(size_t NumOfLights);
+    bool SetLight(CLight *Light);
     bool Load(const std::string &FileName);
     bool Reload();
     void SetShadowMapParameters(bool UseShadowMaskTexture, bool UseStaticShadowmap, bool UseDynamicShadowmap);
