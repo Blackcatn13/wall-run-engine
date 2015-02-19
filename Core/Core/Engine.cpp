@@ -89,11 +89,11 @@ void CEngine::Render()
     //gm->BeginRenderCommand();
     //  RenderScene();
     m_Process->Render();
-    gm->DisbaleZBuffering();
+    gm->DisableZBuffering();
     gm->EnableAlphaBlend();
     m_Process->RenderDebugInfo(true, m_Timer.GetElapsedTime());
     m_LogRender->Render(gm, FONTM);
-    gm->DisbaleAlphaBlend();
+    gm->DisableAlphaBlend();
     gm->EnableZBuffering();
     // gm->EndRendering();
 }

@@ -5,7 +5,9 @@
 #include "Utils\Defines.h"
 
 
-CStagedTexturedRendererCommand::CStagedTexturedRendererCommand(CXMLTreeNode &atts) {}
+CStagedTexturedRendererCommand::CStagedTexturedRendererCommand(CXMLTreeNode &atts)
+{
+}
 void CStagedTexturedRendererCommand::ActivateTextures()
 {
     for (int i = 0; i < m_StageTextures.size(); ++i) {

@@ -28,6 +28,8 @@
 //#include "RenderableCommands\StagedTexturedRendererCommand.h"
 #include "RenderableCommands\UnsetRenderTargetSceneRendererCommand.h"
 #include "RenderableCommands\SetAxisRendererCommand.h"
+#include "RenderableCommands\EnableAlphaBlendCommand.h"
+#include "RenderableCommands\DisableAlphaBlendCommand.h"
 
 
 CSceneRendererCommandManager::CSceneRendererCommandManager()
@@ -82,11 +84,11 @@ void CSceneRendererCommandManager::Load(const std::string &FileName)
                     CCaptureFrameBufferSceneRendererCommand *l_Command = new CCaptureFrameBufferSceneRendererCommand(m(i));
                     m_SceneRendererCommands.AddResource(l_Name, l_Command);
                 }
-                /*	if (name == "render_deferred_shading") {
-                		CDeferredShadingSceneRendererCommand *l_Command = new CDeferredShadingSceneRendererCommand(m(i));
-                		m_SceneRendererCommands.AddResource(l_Name,l_Command);
-                	}
-                */	if (name == "disable_z_write") {
+                if (name == "render_deferred_shading") {
+                    CDeferredShadingSceneRendererCommand *l_Command = new CDeferredShadingSceneRendererCommand(m(i));
+                    m_SceneRendererCommands.AddResource(l_Name, l_Command);
+                }
+                if (name == "disable_z_write") {
                     CDisableZWriteSceneRendererCommand *l_Command = new CDisableZWriteSceneRendererCommand(m(i));
                     m_SceneRendererCommands.AddResource(l_Name, l_Command);
                 }
@@ -96,6 +98,14 @@ void CSceneRendererCommandManager::Load(const std::string &FileName)
                 }
                 if (name == "enable_z_write") {
                     CEnableZWriteSceneRendererCommand *l_Command = new CEnableZWriteSceneRendererCommand(m(i));
+                    m_SceneRendererCommands.AddResource(l_Name, l_Command);
+                }
+                if (name == "enable_alpha_blend") {
+                    CEnableAlphaBlendSceneRendererCommand *l_Command = new CEnableAlphaBlendSceneRendererCommand(m(i));
+                    m_SceneRendererCommands.AddResource(l_Name, l_Command);
+                }
+                if (name == "disable_alpha_blend") {
+                    CDisableAlphaBlendSceneRendererCommand *l_Command = new CDisableAlphaBlendSceneRendererCommand(m(i));
                     m_SceneRendererCommands.AddResource(l_Name, l_Command);
                 }
                 if (name == "end_scene") {

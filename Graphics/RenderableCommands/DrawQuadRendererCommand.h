@@ -5,6 +5,7 @@
 
 #include "XML\XMLTreeNode.h"
 #include "StagedTexturedRendererCommand.h"
+#include <string>
 
 class CEffectTechnique;
 class CTexture;
@@ -14,6 +15,7 @@ class CDrawQuadRendererCommand : public CStagedTexturedRendererCommand
 {
 protected:
     CColor m_Color;
+    std::string m_TechniqueName;
 public:
     CDrawQuadRendererCommand(CXMLTreeNode &atts);
     void Execute(CGraphicsManager &RM);

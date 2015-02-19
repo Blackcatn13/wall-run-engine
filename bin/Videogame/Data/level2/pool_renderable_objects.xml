@@ -30,6 +30,13 @@
 	</pool_renderable_object_technique>
 	<pool_renderable_object_technique name="draw_vignetting">
 		 <renderable_object_technique name="DrawVignettingTechnique" technique="DrawVignettingTechnique"/>
-	</pool_renderable_object_technique> 
+	</pool_renderable_object_technique>
+	<pool_renderable_object_technique name="BlurPool">
+			<default_technique vertex_type="1104" technique="ZBlurTechnique"/>
+	</pool_renderable_object_technique>
+	<pool_renderable_object_technique name="deferred_lights_pool">
+        <renderable_object_technique name="DeferredLightsTechnique" technique="DeferredLightsTechnique"/>
+    </pool_renderable_object_technique>
+
 	
 </renderable_object_techniques>

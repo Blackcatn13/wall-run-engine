@@ -10,6 +10,7 @@
 
 
 
+
 void CDrawQuadRendererCommand::DrawColoredQuad2DTexturedInPixelsByEffectTechnique(CGraphicsManager *RM, CEffectTechnique *EffectTechnique, RECT Rect, CColor Color, CTexture *Texture, float U0, float V0, float U1, float V1)
 {
     if (EffectTechnique == NULL)
@@ -34,6 +35,7 @@ CDrawQuadRendererCommand::CDrawQuadRendererCommand(CXMLTreeNode &atts) : CStaged
 {
     Vect3f color = atts.GetVect3fProperty("color", v3fZERO);
     m_Color.Set(color.x, color.y, color.z);
+    m_TechniqueName = atts.GetPszProperty("technique_name", "");
     for (int i = 0; i < atts.GetNumChildren(); ++i) {
         std::string name = atts(i).GetName();
         if (name == "texture") {
@@ -64,7 +66,7 @@ CDrawQuadRendererCommand::CDrawQuadRendererCommand(CXMLTreeNode &atts) : CStaged
 
 void CDrawQuadRendererCommand::Execute(CGraphicsManager &RM)
 {
-    CEffectTechnique * l_EffectTechnique = RENDTECHM->GetResource("DrawVignettingTechnique")->GetEffectTechnique();
+    CEffectTechnique * l_EffectTechnique = RENDTECHM->GetResource(m_TechniqueName)->GetEffectTechnique();//"DrawQuadSolidTechnique"
     RECT rect;
     rect.top = 0;
     rect.left = 0;
@@ -74,13 +76,3 @@ void CDrawQuadRendererCommand::Execute(CGraphicsManager &RM)
     RM.GetWidthAndHeight((uint32 &)rect.right, (uint32 &)rect.bottom);
     DrawColoredQuad2DTexturedInPixelsByEffectTechnique(&RM, l_EffectTechnique, rect, m_Color, m_StageTextures[0].m_Texture);
 }
-/*
-technique DrawQuadTechnique
-{
-pass p0
-{
-AlphaBlendEnable = false;
-CullMode = CCW;
-PixelShader = compile ps_3_0 DrawQuadPS();
-}
-}*/
