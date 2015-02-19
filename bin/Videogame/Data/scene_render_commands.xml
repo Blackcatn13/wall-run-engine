@@ -9,8 +9,23 @@
 	<!--
 	<set_axis />
 	-->
+	
+	<!-- ZBlur -->
+	<!--<enable_alpha_blend />
+	<capture_frame_buffer>
+			<dynamic_texture stage_id="0" name="DiffuseMapTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
+	</capture_frame_buffer>
+	<set_pool_renderable_objects_technique pool="BlurPool"/>
+	<render_draw_quad technique_name="DrawQuadSolidTechnique">
+			<texture stage_id="0" file="DiffuseMapTexture"/>
+	</render_draw_quad>	
+	<capture_frame_buffer>
+			<dynamic_texture stage_id="0" name="DiffuseMapTexture2" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
+	</capture_frame_buffer>-->
+	
 	<!--<set_pool_renderable_objects_technique pool="generate_shadow_map_renderable_obejcts_technique"/>-->
 	<!-- <generate_shadow_maps /> -->
+	
 	<set_pool_renderable_objects_technique pool="generate_deferred_shading_pool_renderable_object_technique"/>
 	<set_render_target name="deferred_multiple_render_target" >
 		<dynamic_texture stage_id="0" name="DiffuseMapTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
@@ -34,13 +49,13 @@
 		<texture stage_id="0" file="LightMapTexture"/>
 	</render_draw_quad>
 	
+	
 	<!--<deferred_shading/>-->
 	<enable_alpha_blend />
 
 	<!-- Segunda pasada TODO-->
 	<enable_z_write/>
-	<enable_z_test/>
-					
+	<enable_z_test/>			
 	<!--render_debug_lights/-->
 	<!--render_gui/-->
 	 <render_debug_scene layer="solid" active="true"/>
