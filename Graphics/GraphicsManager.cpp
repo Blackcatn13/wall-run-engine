@@ -13,6 +13,8 @@
 #include "Effects\EffectManager.h"
 #include "RenderableVertex\VertexTypes.h"
 #include "Texture\Texture.h"
+#include "Effects\EffectTechnique.h"
+#include "Effects\Effect.h"
 
 CGraphicsManager::CGraphicsManager()
 {
@@ -585,7 +587,7 @@ void CGraphicsManager::EnableAlphaBlend ()
     m_pD3DDevice->SetTextureStageState( 0, D3DTSS_ALPHAARG2, D3DTA_DIFFUSE );
 }
 
-void CGraphicsManager::DisbaleAlphaBlend ()
+void CGraphicsManager::DisableAlphaBlend ()
 {
     m_pD3DDevice->SetRenderState( D3DRS_ALPHABLENDENABLE, FALSE );
 }
@@ -596,7 +598,7 @@ void CGraphicsManager::EnableZBuffering ()
     m_pD3DDevice->SetRenderState( D3DRS_ALPHABLENDENABLE, TRUE );
 }
 
-void CGraphicsManager::DisbaleZBuffering ()
+void CGraphicsManager::DisableZBuffering ()
 {
     m_pD3DDevice->SetRenderState( D3DRS_ALPHABLENDENABLE, FALSE );
 }
@@ -826,10 +828,6 @@ void CGraphicsManager::PresentSceneCommand()
 }
 
 
-/*void CGraphicsManager::DrawColoredQuad2DTexturedInPixels(RECT Rect, CColor Color, CTexture Texture, float U0, float V0, float U1, float V1)
-{
-	//TODO Picar función
-}*/
 void CGraphicsManager::DrawColoredQuad2DTexturedInPixels (RECT Rect, CColor Color, CTexture *Texture, float U0,	float V0, float U1, float V1)
 {
     //  [0]------[2]
@@ -847,4 +845,22 @@ void CGraphicsManager::DrawColoredQuad2DTexturedInPixels (RECT Rect, CColor Colo
     m_pD3DDevice->SetFVF( SCREEN_TEXTURED_COLORED_VERTEX::GetFVF() );
     Texture->Activate(0);
     m_pD3DDevice->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP, 2, v, sizeof( SCREEN_TEXTURED_COLORED_VERTEX ) );
+}
+void CGraphicsManager::DrawColoredQuad2DTexturedInPixelsByEffectTechnique(CGraphicsManager *RM, CEffectTechnique *EffectTechnique, RECT Rect, CColor Color, CTexture *Texture, float U0, float V0, float U1, float V1)
+{
+    if (EffectTechnique == NULL)
+        return;
+    EffectTechnique->BeginRender();
+    LPD3DXEFFECT l_Effect = EffectTechnique->GetEffect()->GetD3DEffect();
+    if (l_Effect != NULL) {
+        l_Effect->SetTechnique(EffectTechnique->GetD3DTechnique());
+        UINT l_NumPasses;
+        l_Effect->Begin(&l_NumPasses, 0);
+        for (UINT iPass = 0; iPass < l_NumPasses; iPass++) {
+            l_Effect->BeginPass(iPass);
+            RM->DrawColoredQuad2DTexturedInPixels(Rect, Color, Texture, U0, V0, U1, V1);
+            l_Effect->EndPass();
+        }
+        l_Effect->End();
+    }
 }

@@ -10,6 +10,7 @@
 
 class CCamera;
 class CTexture;
+class CEffectTechnique;
 //class CFontManager;
 
 #define D3DFVF_CUSTOMVERTEX (D3DFVF_XYZ|D3DFVF_DIFFUSE)
@@ -94,9 +95,9 @@ public:
     void DrawQuad2D (const Vect2i& pos, uint32 w, uint32 h, ETypeAlignment alignment, CColor color = colBLUE);
     void CalculateAlignment (uint32 w, uint32 h, ETypeAlignment alignment, Vect2i & finalPos);
     void EnableAlphaBlend ();
-    void DisbaleAlphaBlend ();
+    void DisableAlphaBlend ();
     void EnableZBuffering ();
-    void DisbaleZBuffering ();
+    void DisableZBuffering ();
     bool isSphereVisible(Vect3f pos, float rad);
     void DrawRectangle2D ( const Vect2i& pos, uint32 w, uint32 h, CColor& backGroundColor, uint32 edge_w, uint32 edge_h, CColor& edgeColor );
     void GetRay (const Vect2i& mousePos, Vect3f& posRay, Vect3f& dirRay);
@@ -105,6 +106,7 @@ public:
     void DrawCylinder (float Top_Radius, float Bottom_Radius, float h, uint32 Aristas, CColor Color = colBLUE, ETypeModePaint mode = PAINT_WIREFRAME, bool drawCover = false);
     void DrawQuad3D	(const Vect3f& pos, const Vect3f& up, const Vect3f& right, float w, float h, CColor color = colBLUE);
     void DrawQuad3D (	const Vect3f& ul, const Vect3f& ur, const Vect3f& dl, const Vect3f& dr, CColor colo = colBLUE);
+    void DrawColoredQuad2DTexturedInPixelsByEffectTechnique(CGraphicsManager *RM, CEffectTechnique *EffectTechnique, RECT Rect, CColor Color, CTexture *Texture, float U0, float V0, float U1, float V1);
     void DrawColoredQuad2DTexturedInPixels(RECT Rect, CColor Color, CTexture *Texture, float U0, float V0, float U1, float V1);
 
 //COMMANDS

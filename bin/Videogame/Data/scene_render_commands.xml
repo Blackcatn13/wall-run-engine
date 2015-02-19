@@ -30,12 +30,12 @@
 	<disable_z_test />
 
 	<set_pool_renderable_objects_technique pool="draw_textured_quad_pool"/>
-	<render_draw_quad> 
+	<render_draw_quad technique_name="DrawQuadSolidTechnique"> 
 		<texture stage_id="0" file="LightMapTexture"/>
 	</render_draw_quad>
 	
 	<!--<deferred_shading/>-->
-	<!--<enable_alpha_blend /> -->
+	<enable_alpha_blend />
 
 	<!-- Segunda pasada TODO-->
 	<enable_z_write/>

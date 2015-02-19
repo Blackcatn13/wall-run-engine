@@ -9,31 +9,11 @@
 #include "Texture\TextureManager.h"
 
 
-
-void CDrawQuadRendererCommand::DrawColoredQuad2DTexturedInPixelsByEffectTechnique(CGraphicsManager *RM, CEffectTechnique *EffectTechnique, RECT Rect, CColor Color, CTexture *Texture, float U0, float V0, float U1, float V1)
-{
-    if (EffectTechnique == NULL)
-        return;
-    EffectTechnique->BeginRender();
-    LPD3DXEFFECT l_Effect = EffectTechnique->GetEffect()->GetD3DEffect();
-    if (l_Effect != NULL) {
-        l_Effect->SetTechnique(EffectTechnique->GetD3DTechnique());
-        UINT l_NumPasses;
-        l_Effect->Begin(&l_NumPasses, 0);
-        for (UINT iPass = 0; iPass < l_NumPasses; iPass++) {
-            l_Effect->BeginPass(iPass);
-            RM->DrawColoredQuad2DTexturedInPixels(Rect, Color, Texture, U0, V0, U1, V1);
-            l_Effect->EndPass();
-        }
-        l_Effect->End();
-    }
-}
-
-
 CDrawQuadRendererCommand::CDrawQuadRendererCommand(CXMLTreeNode &atts) : CStagedTexturedRendererCommand(atts)
 {
     Vect3f color = atts.GetVect3fProperty("color", v3fZERO);
     m_Color.Set(color.x, color.y, color.z);
+    m_TechniqueName = atts.GetPszProperty("technique_name", "");
     for (int i = 0; i < atts.GetNumChildren(); ++i) {
         std::string name = atts(i).GetName();
         if (name == "texture") {
@@ -62,8 +42,7 @@ CDrawQuadRendererCommand::CDrawQuadRendererCommand(CXMLTreeNode &atts) : CStaged
 
 void CDrawQuadRendererCommand::Execute(CGraphicsManager &RM)
 {
-    //TODO Que se pille el nombre de la technique por XML
-    CEffectTechnique * l_EffectTechnique = RENDTECHM->GetResource("DrawQuadSolidTechnique")->GetEffectTechnique();
+    CEffectTechnique * l_EffectTechnique = RENDTECHM->GetResource(m_TechniqueName)->GetEffectTechnique();//"DrawQuadSolidTechnique"
     RECT rect;
     rect.top = 0;
     rect.left = 0;
@@ -72,6 +51,27 @@ void CDrawQuadRendererCommand::Execute(CGraphicsManager &RM)
         DrawColoredQuad2DTexturedInPixelsByEffectTechnique(&RM, l_EffectTechnique, rect, m_Color, m_StageTextures[i].m_Texture);
     }
 }
+
+
+void CDrawQuadRendererCommand::DrawColoredQuad2DTexturedInPixelsByEffectTechnique(CGraphicsManager *RM, CEffectTechnique *EffectTechnique, RECT Rect, CColor Color, CTexture *Texture, float U0, float V0, float U1, float V1)
+{
+    if (EffectTechnique == NULL)
+        return;
+    EffectTechnique->BeginRender();
+    LPD3DXEFFECT l_Effect = EffectTechnique->GetEffect()->GetD3DEffect();
+    if (l_Effect != NULL) {
+        l_Effect->SetTechnique(EffectTechnique->GetD3DTechnique());
+        UINT l_NumPasses;
+        l_Effect->Begin(&l_NumPasses, 0);
+        for (UINT iPass = 0; iPass < l_NumPasses; iPass++) {
+            l_Effect->BeginPass(iPass);
+            RM->DrawColoredQuad2DTexturedInPixels(Rect, Color, Texture, U0, V0, U1, V1);
+            l_Effect->EndPass();
+        }
+        l_Effect->End();
+    }
+}
+
 /*
 technique DrawQuadTechnique
 {

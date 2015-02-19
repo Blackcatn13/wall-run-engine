@@ -3,5 +3,5 @@
 CDisableAlphaBlendSceneRendererCommand::CDisableAlphaBlendSceneRendererCommand(CXMLTreeNode &atts) {}
 void CDisableAlphaBlendSceneRendererCommand::Execute(CGraphicsManager &RM)
 {
-    RM.DisbaleAlphaBlend();
+    RM.DisableAlphaBlend();
 }
