@@ -27,6 +27,9 @@
 	</pool_renderable_object_technique>
 	<pool_renderable_object_technique name="draw_textured_quad_pool">
 		 <renderable_object_technique name="DrawQuadSolidTechnique" technique="DrawQuadSolidTechnique"/>
+	</pool_renderable_object_technique>
+	<pool_renderable_object_technique name="draw_vignetting">
+		 <renderable_object_technique name="DrawVignettingTechnique" technique="DrawVignettingTechnique"/>
 	</pool_renderable_object_technique> 
 	
 </renderable_object_techniques>
