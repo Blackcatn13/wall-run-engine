@@ -7,9 +7,9 @@
 	<!--<enable_z_write/>
 	<enable_z_test/> -->
 
-	<!--<enable_z_write/>
+	<enable_z_write/>
 	<enable_z_test/>
-	<disable_alpha_blend /> -->
+	<disable_alpha_blend /> 
 
 	<!--
 	<set_axis />
@@ -30,9 +30,6 @@
 	
 	<!--<set_pool_renderable_objects_technique pool="generate_shadow_map_renderable_obejcts_technique"/>-->
 	<!-- <generate_shadow_maps /> -->
-
-	<!--<set_pool_renderable_objects_technique pool="generate_deferred_shading_pool_renderable_object_technique"/>
-
 	
 	<set_pool_renderable_objects_technique pool="generate_deferred_shading_pool_renderable_object_technique"/>
 
@@ -46,8 +43,6 @@
 	<set_matrices/>
 	<enable_z_write/>
 	<enable_z_test/>
-	
-	
 
 	<unset_render_target render_target="deferred_multiple_render_target"/>
 	<disable_z_write/>
@@ -56,11 +51,10 @@
 	<set_pool_renderable_objects_technique pool="draw_textured_quad_pool"/>
 	<render_draw_quad technique_name="DrawQuadSolidTechnique"> 
 		<texture stage_id="0" file="LightMapTexture"/>
-	</render_draw_quad>-->
-	
+	</render_draw_quad>
 	
 	<!--<deferred_shading/>-->
-	<!-- <enable_alpha_blend />
+	<enable_alpha_blend />
 	<set_pool_renderable_objects_technique pool="deferred_lights_pool"/>
 	<render_deferred_shading technique_name="DeferredLightsTechnique" >
 		<texture stage_id="0" file="DiffuseMapTexture"/>
@@ -68,11 +62,11 @@
 		<texture stage_id="2" file="NormalMapTexture"/>
 		<texture stage_id="3" file="DepthMapTexture"/>
 	
-	</render_deferred_shading > 
+	</render_deferred_shading >
 
 	<!-- Segunda pasada TODO-->
-	<set_matrices/>
-	<enable_z_write/> -->
+	<!-- <set_matrices/>
+	<enable_z_write/>
 	<enable_z_test/>
 	<set_axis />
 	<set_pool_renderable_objects_technique pool="dummy_manager"/>
@@ -81,11 +75,11 @@
 		<dynamic_texture stage_id="0" name="FrameBuffer" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 	</capture_frame_buffer>
 	<set_pool_renderable_objects_technique pool="draw_vignetting"/>
-	<render_draw_quad>
+	<render_draw_quad technique_name="DrawVignettingTechnique">
 	 	<texture stage_id="0" file="FrameBuffer"/>
 		<texture stage_id="1" file="./data/level2/textures/noise2d.png" load_file="true"/>
 		<texture stage_id="2" file="./data/level2/textures/Vignetting.tga" load_file="true"/>
-	</render_draw_quad>
+	</render_draw_quad> -->
 
 	<!--<enable_z_test/> -->
 

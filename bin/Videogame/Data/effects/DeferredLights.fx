@@ -83,7 +83,7 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 	// Para la pos del pixel hay que usar la l_Depth y usar la funcion que hay en el pdf para sacar la pos de la profundidad. Todo los calculos son
 	// los que ya estan hechos, cambiando las variables por las de arriba.
 	
-	float3 l_PositionFromDepth = GetPositionFromZDepthView(l_Depth.x, UV, g_InverseViewMatrix, g_InverseProjectionMatrix);
+	float3 l_PositionFromDepth = GetPositionFromZDepthView(l_Depth.z, UV, g_InverseViewMatrix, g_InverseProjectionMatrix);
 	
 	float3 finalColor = l_DiffuseColor.xyz*l_Ambient;
 	
@@ -97,17 +97,17 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 			float3 l_DirVector = normalize(-l_DirVectorNoNormal);
 			float3 l_DiffuseContribution = saturate(dot(l_Nn,-l_DirVector));
 			float3 l_HV = normalize(normalize(l_EyePos - l_PositionFromDepth)-l_DirVector);
-			//float3 l_SpecularComponent = g_LightColor[0]*pow(saturate(dot(l_Nn,l_HV)), g_SpecularExponent);
-			finalColor = finalColor +((l_DiffuseColor.xyz*g_LightIntensity[0])*(l_DiffuseContribution*g_LightColor[0]*l_Attenuation) +l_SpecularComponent*g_LightIntensity[0]);
+			float3 l_SpecularComponent = pow(saturate(dot(l_Nn,l_HV)), l_SpecularExponent);
+			finalColor = ((l_DiffuseColor*g_LightIntensity[0])*(l_DiffuseContribution*g_LightColor[0]*l_Attenuation) +l_SpecularComponent*g_LightIntensity[0]*l_SpecularFactor);
 		}
 		else if(g_LightType[0]==1) //directional
 		{			
-			float l_LightColor = saturate(dot(l_Nn, g_LightDirection[0]));
+			float l_LightContrib = saturate(dot(l_Nn, g_LightDirection[0]));
 			float3 l_HV = normalize(normalize(l_EyePos - l_PositionFromDepth)-g_LightDirection[0]);
-			//float3 l_SpecularComponent = g_LightColor[0]*pow(saturate(dot(l_Nn,l_HV)), g_SpecularExponent);
+			float3 l_SpecularComponent = pow(saturate(dot(l_Nn,l_HV)), l_SpecularExponent);
 		
 			//finalColor = finalColor +(l_DiffuseColor.xyz*g_LightAmbient+l_DiffuseColor.xyz*l_LightColor*g_LightColor[0]*g_LightIntensity[0]+l_SpecularComponent*g_LightIntensity[0]);
-			finalColor = finalColor +(l_DiffuseColor.xyz*l_LightColor*g_LightColor[0]*g_LightIntensity[0]+l_SpecularComponent*g_LightIntensity[0]);
+			finalColor = (l_DiffuseColor*l_LightContrib*g_LightColor[0]*g_LightIntensity[0]+l_SpecularComponent*g_LightIntensity[0]*l_SpecularFactor);
 		}
 		else if(g_LightType[0]==2) //spot
 		{
@@ -121,13 +121,13 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 							
 			float l_AngAttenuation = /*1-*/saturate((g_LightDirection[0] - cos(l_HalfAngle))/(cos(l_HalfAngle+g_FallOff[0])-cos(l_HalfAngle)));
 
-			float l_LightColor = saturate(dot(l_Nn, -g_LightDirection[0]));
+			float l_LightContrib = saturate(dot(l_Nn, -g_LightDirection[0]));
 			float3 l_HV = normalize(normalize(l_EyePos - l_PositionFromDepth)-g_LightDirection[0]);
-			//float3 l_SpecularComponent = g_LightColor[0]*pow(saturate(dot(l_Nn,l_HV)), g_SpecularExponent);
-			float3 l_DifuseContrib = l_DiffuseColor.xyz*l_LightColor*g_LightColor[0];
+			float3 l_SpecularComponent = pow(saturate(dot(l_Nn,l_HV)), l_SpecularExponent);
+			float3 l_DifuseContrib = l_DiffuseColor*l_LightContrib*g_LightColor[0];
 
 			if(dot(l_Nn, -g_LightDirection[0]) >= cos(l_HalfAngle+g_FallOff[0]) ){
-				finalColor = finalColor +(l_DifuseContrib*g_LightIntensity[0]*l_AngAttenuation*l_Attenuation+l_SpecularComponent*g_LightIntensity[0]);
+				finalColor = (l_DifuseContrib*g_LightIntensity[0]*l_AngAttenuation*l_Attenuation+l_SpecularComponent*g_LightIntensity[0]*l_SpecularFactor);
 			}				
 		}
 	}
