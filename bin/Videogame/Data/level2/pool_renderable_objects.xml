@@ -35,7 +35,7 @@
 			<default_technique vertex_type="1104" technique="ZBlurTechnique"/>
 	</pool_renderable_object_technique>
 	<pool_renderable_object_technique name="deferred_lights_pool">
-        <renderable_object_technique name="DeferredLightsTechnique" technique="DeferredLightsTechnique"/>
+        <default_technique vertex_type="1104" technique="DeferredLightsTechnique"/>
     </pool_renderable_object_technique>
 
 	

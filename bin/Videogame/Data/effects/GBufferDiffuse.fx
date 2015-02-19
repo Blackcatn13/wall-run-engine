@@ -40,13 +40,13 @@ TMultiRenderTargetPixel GBufferPS(TGBUFFER_TEXTURED1_VERTEX_PS IN) {
 	TMultiRenderTargetPixel OUT = (TMultiRenderTargetPixel)0;
 	float4 l_DiffuseColor = tex2D(S0LinearWrapSampler , IN.UV);
 	
-	float3 Nn = Normal2Texture(normalize(IN.Normal));
+	float3 Nn = normalize(IN.Normal);
 	float3 NnScalated = Normal2Texture(Nn);
 	// Cálculo de la z en formato color
 	float l_Depth = IN.WorldPosition.z/IN.WorldPosition.w;
 	
-	OUT.RT0.xyz=l_DiffuseColor.xyz;
-	OUT.RT1.xyz=l_DiffuseColor.xyz*g_LightAmbient*g_LightAmbientIntensity;
+	OUT.RT0=float4(l_DiffuseColor.xyz, 1.0);
+	OUT.RT1=float4(l_DiffuseColor.xyz*g_LightAmbient*g_LightAmbientIntensity, 1.0);
 	OUT.RT2.xyz=NnScalated;
 	OUT.RT3=l_Depth;  
 	

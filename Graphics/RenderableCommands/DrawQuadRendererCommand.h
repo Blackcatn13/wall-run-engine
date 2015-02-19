@@ -19,8 +19,6 @@ protected:
 public:
     CDrawQuadRendererCommand(CXMLTreeNode &atts);
     void Execute(CGraphicsManager &RM);
-    void DrawColoredQuad2DTexturedInPixelsByEffectTechnique(CGraphicsManager *RM, CEffectTechnique *EffectTechnique, RECT Rect, CColor Color, CTexture *Texture,
-            float U0 = 0.0f, float V0 = 0.0f, float U1 = 1.0f, float V1 = 1.0f);
 };
 
 //explicación pagina 22:: Esta clase nos permitirá renderizar un cuadro en 2D según un color. El código
