@@ -29,7 +29,9 @@ float g_ZBlurFocalStart = 50;
 float g_ZBlurFocalEnd = 65;
 float g_ZBlurEnd = 300;
 float g_ConstantBlur = 0.4;
+float2 g_RenderTargetSize = float2(754 , 584);
 
 float3 g_LightAmbient=float3(0.3, 0.35, 0.4);
 float g_SpecularExponent = 200;
 float g_LightAmbientIntensity = 1;
+
