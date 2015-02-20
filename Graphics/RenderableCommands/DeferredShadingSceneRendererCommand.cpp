@@ -47,5 +47,6 @@ void CDeferredShadingSceneRendererCommand::Execute(CGraphicsManager &RM)
     while (it != LIGHTM->GetResources().end()) {
         CEffect *eff = m_RenderableObjectTechnique->GetEffectTechnique()->GetEffect();
         m_RenderableObjectTechnique->GetEffectTechnique()->GetEffect()->SetLight(it->second);
+        ++it;
     }
 }
