@@ -7,7 +7,7 @@
 	<default_technique vertex_type="51" technique="LightMapTechnique"/>
 	<default_technique vertex_type="500" technique="GenerateShadowMap"/>
 	<default_technique vertex_type="19" technique="GBufferDiffuseMapTechnique"/>
-	<default_technique vertex_type="2014" technique="DrawQuadSolidTechnique"/>
+	<default_technique vertex_type="2048" technique="DrawQuadSolidTechnique"/>
 	<!--
 	<default_technique vertex_type="2015" technique="DrawVignettingTechnique"/>
 	<default_technique vertex_type="609" technique="DeferredLightsTechnique"/>

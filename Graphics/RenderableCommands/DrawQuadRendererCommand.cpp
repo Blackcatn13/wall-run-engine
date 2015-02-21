@@ -1,4 +1,3 @@
-
 #include "RenderableCommands\DrawQuadRendererCommand.h"
 #include "Texture\Texture.h"
 #include "Effects\EffectTechnique.h"
@@ -7,7 +6,7 @@
 #include "GraphicsManager.h"
 #include "Renderable\RenderableObjectTechniqueManager.h"
 #include "Texture\TextureManager.h"
-
+#include "RenderableVertex\VertexTypes.h"
 
 CDrawQuadRendererCommand::CDrawQuadRendererCommand(CXMLTreeNode &atts) : CStagedTexturedRendererCommand(atts)
 {
@@ -44,7 +43,7 @@ CDrawQuadRendererCommand::CDrawQuadRendererCommand(CXMLTreeNode &atts) : CStaged
 
 void CDrawQuadRendererCommand::Execute(CGraphicsManager &RM)
 {
-    CEffectTechnique * l_EffectTechnique = RENDTECHM->GetResource(m_TechniqueName)->GetEffectTechnique();//"DrawQuadSolidTechnique"
+    CEffectTechnique * l_EffectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(VERTEX_TYPE_SCREEN))->GetEffectTechnique();//"DrawQuadSolidTechnique"
     RECT rect;
     rect.top = 0;
     rect.left = 0;

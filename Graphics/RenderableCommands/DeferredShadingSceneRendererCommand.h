@@ -15,5 +15,6 @@ private:
 public:
     CDeferredShadingSceneRendererCommand(CXMLTreeNode &atts);
     void Execute(CGraphicsManager &RM);
+    void Reload();
 };
 #endif

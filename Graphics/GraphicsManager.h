@@ -94,7 +94,7 @@ public:
     void DrawCamera (CCamera* camera);
     void DrawQuad2D (const Vect2i& pos, uint32 w, uint32 h, ETypeAlignment alignment, CColor color = colBLUE);
     void CalculateAlignment (uint32 w, uint32 h, ETypeAlignment alignment, Vect2i & finalPos);
-    void EnableAlphaBlend ();
+    void EnableAlphaBlend (DWORD opblend = D3DBLENDOP_ADD, DWORD srcblend = D3DBLEND_SRCALPHA, DWORD destblend = D3DBLEND_INVSRCALPHA);
     void DisableAlphaBlend ();
     void EnableZBuffering ();
     void DisableZBuffering ();

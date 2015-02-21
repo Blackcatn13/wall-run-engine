@@ -28,11 +28,11 @@
 	</pool_renderable_object_technique>
 
 	<pool_renderable_object_technique name="draw_textured_quad_pool">
-		 <renderable_object_technique name="DrawQuadSolidTechnique" technique="DrawQuadSolidTechnique"/>
+		 <default_technique vertex_type="2048" technique="DrawQuadSolidTechnique"/>
 	</pool_renderable_object_technique>
 
 	<pool_renderable_object_technique name="draw_vignetting">
-		 <default_technique vertex_type="1104" technique="DrawVignettingTechnique"/>
+		 <default_technique vertex_type="2048" technique="DrawVignettingTechnique"/>
 	</pool_renderable_object_technique>
 
 	<pool_renderable_object_technique name="z_blur_pool_renderable_object_technique">
@@ -40,11 +40,11 @@
 	</pool_renderable_object_technique>
 
 	<pool_renderable_object_technique name="BlurPool">
-			<default_technique vertex_type="1104" technique="ZBlurTechnique"/>
+		<default_technique vertex_type="2048" technique="ZBlurTechnique"/>
 	</pool_renderable_object_technique>
 
 	<pool_renderable_object_technique name="deferred_lights_pool">
-        <default_technique vertex_type="1104" technique="DeferredLightsTechnique"/>
+        <default_technique vertex_type="2048" technique="DeferredLightsTechnique"/>
     </pool_renderable_object_technique>
 	
 </renderable_object_techniques>

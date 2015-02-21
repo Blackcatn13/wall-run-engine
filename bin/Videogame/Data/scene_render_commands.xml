@@ -49,20 +49,20 @@
 	<disable_z_test />
 
 	<set_pool_renderable_objects_technique pool="draw_textured_quad_pool"/>
-	<render_draw_quad technique_name="DrawQuadSolidTechnique"> 
+	<render_draw_quad> 
 		<texture stage_id="0" file="LightMapTexture"/>
 	</render_draw_quad>
 	
-	<!--<deferred_shading/>
-	<enable_alpha_blend/>-->
+	<!--<deferred_shading/>-->
+	<enable_alpha_blend blendOP="add" blendSrc="one" blendSrc="one"/>
 	<set_pool_renderable_objects_technique pool="deferred_lights_pool"/>
-	<render_deferred_shading technique_name="DeferredLightsTechnique">
+	<render_deferred_shading>
 		<texture stage_id="0" file="DiffuseMapTexture"/>
 		<texture stage_id="1" file="LightMapTexture"/>
 		<texture stage_id="2" file="NormalMapTexture"/>
 		<texture stage_id="3" file="DepthMapTexture"/>
 	</render_deferred_shading >
-	
+	<!--<disable_alpha_blend />-->
 	<!--<enable_alpha_blend />-->
 	<!--
 	<render_scene layer="solid" active="true"/>

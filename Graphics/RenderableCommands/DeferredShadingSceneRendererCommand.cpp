@@ -7,7 +7,7 @@
 #include "Texture\Texture.h"
 #include "Texture\TextureManager.h"
 #include "Effects\Effect.h"
-
+#include "RenderableVertex\VertexTypes.h"
 
 CDeferredShadingSceneRendererCommand::CDeferredShadingSceneRendererCommand(CXMLTreeNode &atts): CStagedTexturedRendererCommand(atts)
 {
@@ -35,11 +35,10 @@ CDeferredShadingSceneRendererCommand::CDeferredShadingSceneRendererCommand(CXMLT
             AddStageTexture(l_StageId, l_Texture);
         }
     }
+    m_RenderableObjectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(VERTEX_TYPE_SCREEN));
 }
 void CDeferredShadingSceneRendererCommand::Execute(CGraphicsManager &RM)
 {
-    m_RenderableObjectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(1104));
-    CEffect *effect = m_RenderableObjectTechnique->GetEffectTechnique()->GetEffect();
     //recorrer todas las luces y aplicar el shader de deferred
     ActivateTextures();
     RECT rect;
@@ -48,12 +47,17 @@ void CDeferredShadingSceneRendererCommand::Execute(CGraphicsManager &RM)
     RM.GetWidthAndHeight((uint32 &)rect.right, (uint32 &)rect.bottom);
     CColor m_Color = CColor(0, 0, 0);
     CLightManager::TMapResource::iterator it = LIGHTM->GetResources().begin();
+    CEffectTechnique* l_EffectTechnique = m_RenderableObjectTechnique->GetEffectTechnique();
     while (it != LIGHTM->GetResources().end()) {
-        CEffectTechnique* l_EffectTechnique = m_RenderableObjectTechnique->GetEffectTechnique();
         if (m_RenderableObjectTechnique->GetEffectTechnique() != NULL && m_RenderableObjectTechnique->GetEffectTechnique()->GetEffect() != NULL) {
             m_RenderableObjectTechnique->GetEffectTechnique()->GetEffect()->SetLight(it->second);
             DrawColoredQuad2DTexturedInPixelsByEffectTechnique(&RM, l_EffectTechnique, rect, m_Color, m_StageTextures[0].m_Texture);
         }
         ++it;
     }
+}
+
+void CDeferredShadingSceneRendererCommand::Reload()
+{
+    m_RenderableObjectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(VERTEX_TYPE_SCREEN));
 }

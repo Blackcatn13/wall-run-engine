@@ -158,10 +158,10 @@ technique RenderLightDeferredShadingTechnique
 {
 	pass p0
 	{
-		AlphaBlendEnable = true;
-		BlendOp=Add;
-		SrcBlend = one;
-		DestBlend = one;
+		//AlphaBlendEnable = true;
+		//BlendOp=Add;
+		//SrcBlend = one;
+		//DestBlend = one;
 		VertexShader = null;
 		PixelShader = compile ps_3_0 DeferredLightPS();
 	}
