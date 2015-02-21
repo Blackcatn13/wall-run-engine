@@ -54,7 +54,7 @@
 	</render_draw_quad>
 	
 	<!--<deferred_shading/>-->
-	<enable_alpha_blend blendOP="add" blendSrc="one" blendSrc="one"/>
+	<enable_alpha_blend/>
 	<set_pool_renderable_objects_technique pool="deferred_lights_pool"/>
 	<render_deferred_shading>
 		<texture stage_id="0" file="DiffuseMapTexture"/>
@@ -62,7 +62,7 @@
 		<texture stage_id="2" file="NormalMapTexture"/>
 		<texture stage_id="3" file="DepthMapTexture"/>
 	</render_deferred_shading >
-	<!--<disable_alpha_blend />-->
+	<disable_alpha_blend />
 	<!--<enable_alpha_blend />-->
 	<!--
 	<render_scene layer="solid" active="true"/>

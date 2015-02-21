@@ -7,7 +7,7 @@ CEnableAlphaBlendSceneRendererCommand::CEnableAlphaBlendSceneRendererCommand(CXM
     initMaps();
     m_blendop = m_ToBlendOp[atts.GetPszISOProperty("blendOP", "add")];
     m_srcblend = m_ToBlendType[atts.GetPszISOProperty("blendSrc", "one")];
-    m_destblend = m_ToBlendType[atts.GetPszISOProperty("blendSrc", "one")];
+    m_destblend = m_ToBlendType[atts.GetPszISOProperty("blendDest", "one")];
 }
 
 void CEnableAlphaBlendSceneRendererCommand::Execute(CGraphicsManager &RM)
