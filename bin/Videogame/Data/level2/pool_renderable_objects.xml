@@ -5,8 +5,8 @@
 		<default_technique vertex_type="31" technique="NormalMapTechnique"/>
 		<default_technique vertex_type="51" technique="LightMapTechnique"/>
 		<default_technique vertex_type="19" technique="LightsTechnique"/>
-		<!-- <default_technique vertex_type="95" technique="NormalColoredMapTechnique"/> -->
 	</pool_renderable_object_technique>
+
 	<pool_renderable_object_technique name="generate_shadow_map_renderable_obejcts_technique">
 		<default_technique vertex_type="19" technique="GenerateShadowMap"/>
 		<default_technique vertex_type="31" technique="GenerateShadowMap"/>
@@ -20,23 +20,31 @@
 		<default_technique vertex_type="51" technique="GBufferDiffuseMapTechnique"/>
 		<default_technique vertex_type="531" technique="GBufferDiffuseMapTechnique"/>
 	</pool_renderable_object_technique> 
+
 	<pool_renderable_object_technique name="dummy_test">
 		<default_technique vertex_type="19" technique="LightsTechnique"/>
 		<default_technique vertex_type="31" technique="NormalMapTechnique"/>
 		<default_technique vertex_type="51" technique="LightMapTechnique"/>
 	</pool_renderable_object_technique>
+
 	<pool_renderable_object_technique name="draw_textured_quad_pool">
 		 <renderable_object_technique name="DrawQuadSolidTechnique" technique="DrawQuadSolidTechnique"/>
 	</pool_renderable_object_technique>
+
 	<pool_renderable_object_technique name="draw_vignetting">
-		 <renderable_object_technique name="DrawVignettingTechnique" technique="DrawVignettingTechnique"/>
+		 <default_technique vertex_type="1104" technique="DrawVignettingTechnique"/>
 	</pool_renderable_object_technique>
-	<!--<pool_renderable_object_technique name="deferred_lights_pool">
-        <renderable_object_technique name="DeferredLightsTechnique" technique="DeferredLightsTechnique"/>
-    </pool_renderable_object_technique>-->
+
 	<pool_renderable_object_technique name="z_blur_pool_renderable_object_technique">
 		 <renderable_object_technique name="ZBlurTechnique" technique="ZBlurTechnique"/>
 	</pool_renderable_object_technique>
 
+	<pool_renderable_object_technique name="BlurPool">
+			<default_technique vertex_type="1104" technique="ZBlurTechnique"/>
+	</pool_renderable_object_technique>
+
+	<pool_renderable_object_technique name="deferred_lights_pool">
+        <default_technique vertex_type="1104" technique="DeferredLightsTechnique"/>
+    </pool_renderable_object_technique>
 	
 </renderable_object_techniques>

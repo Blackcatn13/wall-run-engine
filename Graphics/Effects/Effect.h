@@ -16,7 +16,7 @@ private:
     std::string m_FileName;
     LPD3DXEFFECT m_Effect;
     BOOL m_LightsEnabled[MAX_LIGHTS_BY_SHADER];
-    int m_LightsType[MAX_LIGHTS_BY_SHADER];
+	int m_LightsType[MAX_LIGHTS_BY_SHADER];
     float m_LightsAngle[MAX_LIGHTS_BY_SHADER];
     float m_LightsFallOff[MAX_LIGHTS_BY_SHADER];
     float m_LightsStartRangeAttenuation[MAX_LIGHTS_BY_SHADER];

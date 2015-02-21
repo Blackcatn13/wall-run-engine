@@ -11,8 +11,8 @@
 
 CDeferredShadingSceneRendererCommand::CDeferredShadingSceneRendererCommand(CXMLTreeNode &atts): CStagedTexturedRendererCommand(atts)
 {
-    std::string l_Technique = atts.GetPszProperty("technique_name", "");
-    m_RenderableObjectTechnique = RENDTECHM->GetResource(l_Technique);
+    //std::string l_Technique = atts.GetPszProperty("technique_name", "");
+    //m_RenderableObjectTechnique = RENDTECHM->GetResource(l_Technique);
     for (int i = 0; i < atts.GetNumChildren(); ++i) {
         std::string name = atts(i).GetName();
         if (name == "texture") {
@@ -38,15 +38,22 @@ CDeferredShadingSceneRendererCommand::CDeferredShadingSceneRendererCommand(CXMLT
 }
 void CDeferredShadingSceneRendererCommand::Execute(CGraphicsManager &RM)
 {
+    m_RenderableObjectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(1104));
     CEffect *effect = m_RenderableObjectTechnique->GetEffectTechnique()->GetEffect();
     //recorrer todas las luces y aplicar el shader de deferred
-    for (int i = 0; i < m_StageTextures.size(); ++i) {
-        m_StageTextures[i].Activate();
-    }
+    ActivateTextures();
+    RECT rect;
+    rect.top = 0;
+    rect.left = 0;
+    RM.GetWidthAndHeight((uint32 &)rect.right, (uint32 &)rect.bottom);
+    CColor m_Color = CColor(0, 0, 0);
     CLightManager::TMapResource::iterator it = LIGHTM->GetResources().begin();
     while (it != LIGHTM->GetResources().end()) {
-        CEffect *eff = m_RenderableObjectTechnique->GetEffectTechnique()->GetEffect();
-        m_RenderableObjectTechnique->GetEffectTechnique()->GetEffect()->SetLight(it->second);
+        CEffectTechnique* l_EffectTechnique = m_RenderableObjectTechnique->GetEffectTechnique();
+        if (m_RenderableObjectTechnique->GetEffectTechnique() != NULL && m_RenderableObjectTechnique->GetEffectTechnique()->GetEffect() != NULL) {
+            m_RenderableObjectTechnique->GetEffectTechnique()->GetEffect()->SetLight(it->second);
+            DrawColoredQuad2DTexturedInPixelsByEffectTechnique(&RM, l_EffectTechnique, rect, m_Color, m_StageTextures[0].m_Texture);
+        }
         ++it;
     }
 }

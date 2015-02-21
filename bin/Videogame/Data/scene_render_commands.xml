@@ -33,7 +33,7 @@
 	
 	<set_pool_renderable_objects_technique pool="generate_deferred_shading_pool_renderable_object_technique"/>
 
-	<set_render_target name="deferred_multiple_render_target" >
+	<set_render_target name="deferred_multiple_render_target">
 		<dynamic_texture stage_id="0" name="DiffuseMapTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 		<dynamic_texture stage_id="1" name="LightMapTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 		<dynamic_texture stage_id="2" name="NormalMapTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
@@ -43,7 +43,7 @@
 	<set_matrices/>
 	<enable_z_write/>
 	<enable_z_test/>
-
+	<render_scene layer="solid" active="true"/>
 	<unset_render_target render_target="deferred_multiple_render_target"/>
 	<disable_z_write/>
 	<disable_z_test />
@@ -53,19 +53,18 @@
 		<texture stage_id="0" file="LightMapTexture"/>
 	</render_draw_quad>
 	
-	<!--<deferred_shading/>-->
-	<enable_alpha_blend />
+	<!--<deferred_shading/>
+	<enable_alpha_blend/>-->
 	<set_pool_renderable_objects_technique pool="deferred_lights_pool"/>
-	<!--<render_deferred_shading technique_name="DeferredLightsTechnique" >
+	<render_deferred_shading technique_name="DeferredLightsTechnique">
 		<texture stage_id="0" file="DiffuseMapTexture"/>
 		<texture stage_id="1" file="LightMapTexture"/>
 		<texture stage_id="2" file="NormalMapTexture"/>
 		<texture stage_id="3" file="DepthMapTexture"/>
-	
-	</render_deferred_shading >-->
-	
+	</render_deferred_shading >
 	
 	<!--<enable_alpha_blend />-->
+	<!--
 	<render_scene layer="solid" active="true"/>
 	<capture_frame_buffer>
 		<dynamic_texture stage_id="0" name="FrameBufferCompleteTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
@@ -74,7 +73,8 @@
 	<render_draw_quad technique_name="ZBlurTechnique"> 
 		<texture stage_id="0" file="DepthMapTexture"/>
 		<texture stage_id="1" file="FrameBufferCompleteTexture"/>
-	</render_draw_quad>
+	</render_draw_quad>-->
+
 
 	<!-- Segunda pasada TODO-->
 	<!-- <set_matrices/>
@@ -82,8 +82,8 @@
 	<enable_z_test/>
 	<set_axis />
 	<set_pool_renderable_objects_technique pool="dummy_manager"/>
-	<render_scene layer="solid" active="true"/>
-	<capture_frame_buffer>
+	<render_scene layer="solid" active="true"/> -->
+	<!--<capture_frame_buffer>
 		<dynamic_texture stage_id="0" name="FrameBuffer" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 	</capture_frame_buffer>
 	<set_pool_renderable_objects_technique pool="draw_vignetting"/>
@@ -97,7 +97,7 @@
 
 	<!--render_debug_lights/-->
 	<!--render_gui/-->
-	 <render_debug_scene layer="solid" active="true"/>
+	 <!--<render_debug_scene layer="solid" active="true"/>-->
 	<disable_z_test/>
 	<disable_z_write/>
 	<!-- <capture_frame_buffer> 

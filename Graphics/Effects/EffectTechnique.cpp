@@ -31,7 +31,7 @@ bool CEffectTechnique::BeginRender()
     if (m_UseInverseProjMatrix) {
         Mat44f l_InvertedProjectionMatrix = EFFECTM->GetProjectionMatrix();
         l_InvertedProjectionMatrix.Invert();
-        l_Effect->SetMatrix(m_Effect->GetProjectionMatrixParameter(), &l_InvertedProjectionMatrix.GetD3DXMatrix());
+        l_Effect->SetMatrix(m_Effect->GetInverseProjectionMatrixParameter(), &l_InvertedProjectionMatrix.GetD3DXMatrix());
     }
     if (m_UseInverseViewMatrix) {
         Mat44f l_InvertedViewMatrix = EFFECTM->GetViewMatrix();

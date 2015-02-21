@@ -31,6 +31,8 @@ public:
     void ActivateTextures();
     void AddStageTexture(int StageId, CTexture *Texture);
     virtual void Execute(CGraphicsManager &RM) = 0;
+	void DrawColoredQuad2DTexturedInPixelsByEffectTechnique(CGraphicsManager *RM, CEffectTechnique *EffectTechnique, RECT Rect, CColor Color, CTexture *Texture,
+            float U0 = 0.0f, float V0 = 0.0f, float U1 = 1.0f, float V1 = 1.0f);
 };
 
 #endif

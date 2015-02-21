@@ -74,18 +74,37 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 	float l_SpecularFactor = l_RT0.w;
 	float4 l_RT1 = tex2D(S1LinearWrapSampler, UV);
 	float3 l_Ambient = l_RT1.xyz;
-	float l_SpecularExponent = l_RT1.w;
+	float l_SpecularExponent = l_RT1.w*160;
 	float3 l_N = tex2D(S2LinearWrapSampler, UV).xyz;
-	float3 l_Nn = Texture2Normal(l_N);
-	float4 l_Depth = tex2D(S3LinearWrapSampler, UV);
+	float3 l_Nn = normalize(Texture2Normal(l_N));
+	float l_Depth = tex2D(S3LinearWrapSampler, UV).x;
+	//l_SpecularFactor=1.0;
+	//l_SpecularExponent=200;
+	
+	float x = UV.x * 2 - 1;
+	float y = (1 - UV.y) * 2 - 1;
+	float4 l_ProjectedPos = float4(x, y, l_Depth, 1.0);
+	// Transform by the inverse projection matrix
+	float4 l_PositionVS = mul(l_ProjectedPos, g_InverseProjectionMatrix);
+	
+	
+	if(l_PositionVS.w>=1.0)
+		clip(-1);
+	//return float4(g_LightColor[0], 1.0);
+	//return float4(l_Nn.xyz, 1.0);
 	
 	//TODO : Con todos los parametros recogidos hacer los calculos para 1 luz, el for es a nivel de C, (como si MAXLIGHTS fuera 1, todo igual)
 	// Para la pos del pixel hay que usar la l_Depth y usar la funcion que hay en el pdf para sacar la pos de la profundidad. Todo los calculos son
 	// los que ya estan hechos, cambiando las variables por las de arriba.
 	
-	float3 l_PositionFromDepth = GetPositionFromZDepthView(l_Depth.z, UV, g_InverseViewMatrix, g_InverseProjectionMatrix);
-	
-	float3 finalColor = l_DiffuseColor.xyz*l_Ambient;
+	float3 l_PositionFromDepth = GetPositionFromZDepthView(l_Depth, UV, g_InverseViewMatrix, g_InverseProjectionMatrix);
+	/*if(g_LightType[0]==1)
+		return float4(1,0,0,1);
+	else
+		return float4(0,0,1,1);*/
+	//return float4(l_DiffuseColor*dot(l_Nn, -g_LightDirection[0]), 0.0);
+	//return float4(1.0, 0.0, 0.0, 0.0);
+	float3 finalColor = 0;//l_DiffuseColor.xyz*l_Ambient;
 	
 	if(g_LightEnabled[0]==1)
 	{
@@ -102,11 +121,10 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 		}
 		else if(g_LightType[0]==1) //directional
 		{			
-			float l_LightContrib = saturate(dot(l_Nn, g_LightDirection[0]));
+			float l_LightContrib = saturate(dot(l_Nn, -g_LightDirection[0]));
 			float3 l_HV = normalize(normalize(l_EyePos - l_PositionFromDepth)-g_LightDirection[0]);
 			float3 l_SpecularComponent = pow(saturate(dot(l_Nn,l_HV)), l_SpecularExponent);
 		
-			//finalColor = finalColor +(l_DiffuseColor.xyz*g_LightAmbient+l_DiffuseColor.xyz*l_LightColor*g_LightColor[0]*g_LightIntensity[0]+l_SpecularComponent*g_LightIntensity[0]);
 			finalColor = (l_DiffuseColor*l_LightContrib*g_LightColor[0]*g_LightIntensity[0]+l_SpecularComponent*g_LightIntensity[0]*l_SpecularFactor);
 		}
 		else if(g_LightType[0]==2) //spot
@@ -131,6 +149,7 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 			}				
 		}
 	}
+
     return float4(finalColor, 1);
 }
 
@@ -139,9 +158,11 @@ technique RenderLightDeferredShadingTechnique
 {
 	pass p0
 	{
-		//AlphaBlendEnable = false;
-		//CullMode = NONE; // NONE - CW
-		VertexShader = compile vs_3_0 GBufferVS();
+		AlphaBlendEnable = true;
+		BlendOp=Add;
+		SrcBlend = one;
+		DestBlend = one;
+		VertexShader = null;
 		PixelShader = compile ps_3_0 DeferredLightPS();
 	}
 }
