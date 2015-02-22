@@ -4,11 +4,12 @@
 
 float4 DrawQuadSolidPS(in float2 UV:TEXCOORD0) : COLOR
 {
-	float3 l_diff = tex2D(S0LinearWrapSampler, UV).rgb;
-	float3 l_noise = tex2D(S1LinearWrapSampler, UV * 25).rgb;
-	float l_vig_aux = tex2D(S2LinearWrapSampler, UV).a;
-	float l_vig = (1 - l_vig_aux) * 2;
-	return float4(l_diff * l_noise * l_vig, 1);
+	float2 l_Offset = float2(cos(g_Time), sin(g_Time));
+	float2 l_UV = UV+l_Offset;
+	float4 l_noise = tex2D(S1LinearWrapSampler, l_UV) * 0.2;
+	float4 l_vig = tex2D(S2LinearWrapSampler, UV);
+	//float l_vig = (1 - l_vig_aux) * 2;
+	return float4(l_noise.xyz, l_vig.a);
 }
 
 technique DrawQuadSolidTechnique
@@ -16,7 +17,6 @@ technique DrawQuadSolidTechnique
 
 	pass p0
 	{
-		//AlphaBlendEnable = true;
 		VertexShader = null;
 		PixelShader = compile ps_3_0 DrawQuadSolidPS();
 	}
