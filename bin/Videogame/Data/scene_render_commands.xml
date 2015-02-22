@@ -35,10 +35,22 @@
 	<disable_z_write/>
 	<disable_z_test />
 	
+		<!-- Skybox -->
+	<set_pool_renderable_objects_technique pool="skybox_pool"/>
+	<capture_frame_buffer>
+		<dynamic_texture stage_id="0" name="SkyBoxTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
+	</capture_frame_buffer>
+	<render_draw_quad> 
+		<texture stage_id="0" file="SkyBoxTexture"/>
+	</render_draw_quad>
+	<!-- End Skybox -->
+	
 	<set_pool_renderable_objects_technique pool="draw_textured_quad_pool"/>
 	<render_draw_quad> 
 		<texture stage_id="0" file="LightMapTexture"/>
 	</render_draw_quad>
+	
+
 	
 	<!--<deferred_shading/>-->
 	<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
@@ -52,7 +64,7 @@
 	<disable_alpha_blend />
 	
 	<!--Fog-->
-<!--	<enable_alpha_blend blendOp ="add" blendSrc="srcalpha" destBlend="invsrcalpha" />
+	<!--<enable_alpha_blend blendOp ="add" blendSrc="srcalpha" destBlend="invsrcalpha" />
 	<set_pool_renderable_objects_technique pool="fog_pool"/>
 	<render_draw_quad> 
 		<texture stage_id="0" file="DepthMapTexture"/>
@@ -61,15 +73,7 @@
 	<!--End Fog-->
 	
 
-	<!-- Skybox -->
-	<!--<set_pool_renderable_objects_technique pool="skybox_pool"/>
-	<capture_frame_buffer>
-		<dynamic_texture stage_id="0" name="SkyBoxTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
-	</capture_frame_buffer>
-	<render_draw_quad> 
-		<texture stage_id="0" file="DiffuseMapTexture"/>
-	</render_draw_quad>-->
-	<!-- End Skybox -->
+	
 	
 	
 	
