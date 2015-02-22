@@ -25,10 +25,10 @@ float g_NearAtten[MAXLIGHTS] : LIGHTSSTARTRANGEATTENUATION;
 float g_FarAtten[MAXLIGHTS] : LIGHTSENDRANGEATTENUATION;
 float g_FallOff[MAXLIGHTS] : LIGHTSFALLOFF;
 
-float g_ZBlurFocalStart = 50;
-float g_ZBlurFocalEnd = 65;
+float g_ZBlurFocalStart = 5.0;
+float g_ZBlurFocalEnd = 6.5;
 float g_ZBlurEnd = 300;
-float g_ConstantBlur = 0.4;
+float g_ConstantBlur = 0.05;
 float2 g_RenderTargetSize = float2(754 , 584);
 
 float3 g_LightAmbient=float3(0.3, 0.35, 0.4);
