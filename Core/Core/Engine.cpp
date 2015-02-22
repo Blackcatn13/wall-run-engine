@@ -47,7 +47,7 @@ void CEngine::DeInit()
     CHECKED_DELETE (m_Process);
     CHECKED_DELETE (m_Core);
     //CHECKED_DELETE (m_LogRender);
-    //CLogger::DeInit();
+    CLogger::DeInit();
 }
 
 void CEngine::Update()

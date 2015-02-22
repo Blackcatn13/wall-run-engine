@@ -51,45 +51,21 @@ void CRenderableObjectTechniqueManager::Load(const std::string &FileName)
         std::string name = m(i).GetName();
         if (name == "pool_renderable_object_technique") {
             std::string l_poolName = m(i).GetPszISOProperty("name", "");
-            bool l_isDefault = m(i).GetBoolProperty("default", false);
-            //TODO Revisar que se le pasa el hijo correctamente
-            int count2 = m(i).GetNumChildren();
+            bool l_isDefault = m(i).GetBoolProperty("default", false, false);
             if (l_isDefault) {
+                int count2 = m(i).GetNumChildren();
                 for (int j = 0; j < count2; ++j) {
                     std::string name2 = m(i)(j).GetName();
                     if (name2 == "default_technique") {
-                        unsigned int l_VertexNumber = m(i)(j).GetIntProperty("vertex_type", 0);
-                        std::string l_TechniqueName = m(i)(j).GetPszISOProperty("technique", "");
-                        //añadir CRenderableObjectTechniqueManager a CORE y hacer MACRO
+                        unsigned int l_VertexNumber = m(i)(j).GetIntProperty("vertex_type", 0, false);
+                        std::string l_TechniqueName = m(i)(j).GetPszISOProperty("technique", "", false);
                         std::string l_RenderableObjectTechniqueName = GetRenderableObjectTechniqueNameByVertexType(l_VertexNumber);
-                        //CRenderableObjectTechnique * l_RenderableObjectTechnique = RENDTECHM->GetResource(l_RenderableObjectTechniqueName);
                         InsertRenderableObjectTechnique(l_RenderableObjectTechniqueName, l_TechniqueName);
-                        //CRenderableObjectTechnique * l_RenderableObjectTechnique = new CRenderableObjectTechnique(l_RenderableObjectTechniqueName, 0);
-                        //AddResource(l_RenderableObjectTechniqueName, l_RenderableObjectTechnique);
                     }
-                }
-            } else {
-                for (int j = 0; j < count2; ++j) {
-                    std::string name2 = m(i)(j).GetName();
-                    if (name2 == "default_technique") {
-                        unsigned int l_VertexNumber = m(i)(j).GetIntProperty("vertex_type", 0);
-                        std::string l_TechniqueName = m(i)(j).GetPszISOProperty("technique", "");
-                        //añadir CRenderableObjectTechniqueManager a CORE y hacer MACRO
-                        std::string l_RenderableObjectTechniqueName = GetRenderableObjectTechniqueNameByVertexType(l_VertexNumber);
-                        //CRenderableObjectTechnique * l_RenderableObjectTechnique = RENDTECHM->GetResource(l_RenderableObjectTechniqueName);
-                        InsertRenderableObjectTechnique(l_RenderableObjectTechniqueName, l_TechniqueName);
-                        //CRenderableObjectTechnique * l_RenderableObjectTechnique = new CRenderableObjectTechnique(l_RenderableObjectTechniqueName, 0);
-                        //AddResource(l_RenderableObjectTechniqueName, l_RenderableObjectTechnique);
-                    }
-                    if (name2 == "renderable_object_technique") {
-                        std::string techName = m(i)(j).GetPszProperty("technique");
-                        std::string rotName = m(i)(j).GetPszProperty("name");
-                        InsertRenderableObjectTechnique(rotName, techName);
-                    }
-                    CPoolRenderableObjectTechnique * l_Pool = new CPoolRenderableObjectTechnique(m(i));
-                    m_PoolRenderableObjectTechniques.AddResource(l_poolName, l_Pool);
                 }
             }
+            CPoolRenderableObjectTechnique * l_Pool = new CPoolRenderableObjectTechnique(m(i));
+            m_PoolRenderableObjectTechniques.AddResource(l_poolName, l_Pool);
         }
     }
 }

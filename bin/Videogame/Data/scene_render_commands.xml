@@ -77,9 +77,13 @@
 	<!-- <set_matrices/>
 	<enable_z_write/>
 	<enable_z_test/>
-	<set_axis />
+	<set_axis /> -->
+	<clear_scene color="true" depth="true" stencil="true"/> 
+	<set_matrices/>
+	<enable_z_write/>
+	<enable_z_test/>
 	<set_pool_renderable_objects_technique pool="dummy_manager"/>
-	<render_scene layer="solid" active="true"/> -->
+	<render_scene layer="solid" active="true"/>
 	<!--<capture_frame_buffer>
 		<dynamic_texture stage_id="0" name="FrameBuffer" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 	</capture_frame_buffer>
