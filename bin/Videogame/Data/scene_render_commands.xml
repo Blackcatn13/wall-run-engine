@@ -35,10 +35,10 @@
 	<disable_z_write/>
 	<disable_z_test />
 	
-	<!--<set_pool_renderable_objects_technique pool="draw_textured_quad_pool"/>
+	<set_pool_renderable_objects_technique pool="draw_textured_quad_pool"/>
 	<render_draw_quad> 
 		<texture stage_id="0" file="LightMapTexture"/>
-	</render_draw_quad>-->
+	</render_draw_quad>
 	
 	<!--<deferred_shading/>-->
 	<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
@@ -51,10 +51,10 @@
 	</render_deferred_shading >
 	<disable_alpha_blend />
 	
-	<set_pool_renderable_objects_technique pool="draw_textured_quad_pool"/>
+	<!--<set_pool_renderable_objects_technique pool="draw_textured_quad_pool"/>
 	<render_draw_quad> 
 		<texture stage_id="0" file="DepthMapTexture"/>
-	</render_draw_quad>
+	</render_draw_quad> -->
 	
 	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
 	<!-- ZBlur -->
@@ -78,18 +78,18 @@
 	<enable_z_write/>
 	<enable_z_test/>
 	<set_axis /> -->
-	<clear_scene color="true" depth="true" stencil="true"/> 
+	<!--<clear_scene color="true" depth="true" stencil="true"/> 
 	<set_matrices/>
 	<enable_z_write/>
 	<enable_z_test/>
 	<set_pool_renderable_objects_technique pool="dummy_manager"/>
-	<render_scene layer="solid" active="true"/>
+	<render_scene layer="solid" active="true"/> -->
 	<!--<capture_frame_buffer>
 		<dynamic_texture stage_id="0" name="FrameBuffer" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
-	</capture_frame_buffer>
+	</capture_frame_buffer> -->
+	<!--<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>
 	<set_pool_renderable_objects_technique pool="draw_vignetting"/>
-	<render_draw_quad technique_name="DrawVignettingTechnique">
-	 	<texture stage_id="0" file="FrameBuffer"/>
+	<render_draw_quad>
 		<texture stage_id="1" file="./data/level2/textures/noise2d.png" load_file="true"/>
 		<texture stage_id="2" file="./data/level2/textures/Vignetting.tga" load_file="true"/>
 	</render_draw_quad> -->

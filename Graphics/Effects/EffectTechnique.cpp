@@ -6,6 +6,7 @@
 #include "EffectManager.h"
 #include <d3dx9.h>
 #include "Core_Utils/MemLeaks.h"
+#include "Core_Utils/Timer.h"
 
 CEffectTechnique::CEffectTechnique()
     : m_Effect(NULL)
@@ -94,7 +95,7 @@ bool CEffectTechnique::BeginRender()
         l_Effect->SetMatrix(m_Effect->GetViewToLightProjectionMatrixParameter(), &l_ViewToLightProjectionMatrix.GetD3DXMatrix());
     }
     if (m_UseTime) {
-        //TODO
+        l_Effect->SetFloat(m_Effect->GetTimeParameter(), rand() / 1000.0f);
     }
     if (m_NumOfLights > 0) {
         if (m_NumOfLights < 4) {
