@@ -3,6 +3,7 @@
 #include "VertexTypes.fxh"
 
 
+float g_Bump = 3.0;
 
 struct TGBUFFER_TEXTURED1_VERTEX_PS
 {
@@ -26,12 +27,22 @@ float3 Normal2Texture(float3 Normal)
 	return Normal*0.5+0.5;
 }
 
-TGBUFFER_TEXTURED1_VERTEX_PS GBufferVS(VertexVS_TTEXTURE_NORMAL_VERTEX IN){
+TGBUFFER_TEXTURED1_VERTEX_PS GBufferVS(VertexVS_TTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX IN){
 	
 	TGBUFFER_TEXTURED1_VERTEX_PS OUT = (TGBUFFER_TEXTURED1_VERTEX_PS)0;
     OUT.UV = IN.UV;
     OUT.HPosition = mul(float4(IN.Position,1.0), g_WorldViewProjectionMatrix);
-	OUT.Normal = normalize(mul(IN.Normal,(float3x3)g_WorldMatrix));
+	float3 l_WorldNormal = normalize(mul(IN.Normal,(float3x3)g_WorldMatrix));
+	float3 l_WorldTangent = normalize(mul(IN.Tangent.xyz, (float3x3)g_WorldMatrix));
+	float3 l_WorldBinormal = normalize(mul(IN.Binormal.xyz, (float3x3)g_WorldMatrix));
+	float3 l_TangentNormalized = normalize(l_WorldTangent);
+	float3 l_WNn= normalize(l_WorldNormal);
+	float3 l_BinormalNormalized = normalize(l_WorldBinormal);
+	float4 l_NormalTex = tex2D(S1LinearClampSampler, IN.UV);
+	float3 l_Bump = g_Bump * (l_NormalTex.rgb - float3 (0.5,0.5,0.5));
+	float3 l_Nn = l_WNn + l_Bump.x*l_TangentNormalized + l_Bump.y*l_BinormalNormalized;
+	l_Nn = normalize(l_Nn);
+	OUT.Normal = l_Nn;
 	OUT.WorldPosition = OUT.HPosition;
     return OUT;
 }
@@ -40,13 +51,13 @@ TMultiRenderTargetPixel GBufferPS(TGBUFFER_TEXTURED1_VERTEX_PS IN) {
 	TMultiRenderTargetPixel OUT = (TMultiRenderTargetPixel)0;
 	float4 l_DiffuseColor = tex2D(S0LinearWrapSampler , IN.UV);
 	
-	float3 Nn = Normal2Texture(normalize(IN.Normal));
+	float3 Nn = normalize(IN.Normal);
 	float3 NnScalated = Normal2Texture(Nn);
 	// Cálculo de la z en formato color
 	float l_Depth = IN.WorldPosition.z/IN.WorldPosition.w;
 	
-	OUT.RT0.xyz=l_DiffuseColor.xyz;
-	OUT.RT1.xyz=l_DiffuseColor.xyz*g_LightAmbient*g_LightAmbientIntensity;
+	OUT.RT0=float4(l_DiffuseColor.xyz,1.0);
+	OUT.RT1=float4(l_DiffuseColor.xyz*g_LightAmbient*g_LightAmbientIntensity,1.0);
 	OUT.RT2.xyz=NnScalated;
 	OUT.RT3=l_Depth;  
 	
