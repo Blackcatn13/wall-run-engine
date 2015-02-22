@@ -10,6 +10,8 @@ struct TGBUFFER_TEXTURED1_VERTEX_PS
     float2 UV : TEXCOORD0;
 	float3 Normal : TEXCOORD1;
 	float4 WorldPosition : TEXCOORD2;
+	float3 RealWorldPosition: TEXCOORD3;
+	
 };
 
 // Estructura de píxel que contiene la info de 4 píxeles de salida
@@ -33,6 +35,7 @@ TGBUFFER_TEXTURED1_VERTEX_PS GBufferVS(VertexVS_TTEXTURE_NORMAL_VERTEX IN){
     OUT.HPosition = mul(float4(IN.Position,1.0), g_WorldViewProjectionMatrix);
 	OUT.Normal = normalize(mul(IN.Normal,(float3x3)g_WorldMatrix));
 	OUT.WorldPosition = OUT.HPosition;
+	OUT.RealWorldPosition = mul(float4(IN.Position.xyz, 1.0), g_WorldMatrix).xyz;
     return OUT;
 }
 
@@ -41,17 +44,20 @@ TMultiRenderTargetPixel GBufferPS(TGBUFFER_TEXTURED1_VERTEX_PS IN) {
 	float4 l_DiffuseColor = tex2D(S0LinearWrapSampler , IN.UV);
 	float3 Nn = normalize(IN.Normal);
 	float3 l_EyePos=g_InverseViewMatrix[3].xyz;
-	float3 l_CameraToPixel=normalize(l_EyePos-IN.WorldPosition);
+	float3 l_CameraToPixel=normalize(l_EyePos-IN.RealWorldPosition.xyz);
 	float3 l_ReflectVector=reflect(l_CameraToPixel, Nn);
-	float4 l_Cube=texCUBE(S2LinearWrapSampler, -l_ReflectVector);
+	float4 l_Cube=texCUBE(S1LinearWrapSampler, -l_ReflectVector);
 	float3 l_Color = l_DiffuseColor.xyz + l_Cube * g_ReflectionContribution;
 	
 	float3 NnScalated = Normal2Texture(Nn);
 	// Cálculo de la z en formato color
 	float l_Depth = IN.WorldPosition.z/IN.WorldPosition.w;
 	
+	
 	OUT.RT0=float4(l_Color, 1.0);
-	OUT.RT1=float4(l_Color*g_LightAmbient*g_LightAmbientIntensity, 1.0);
+	//OUT.RT0=float4(0,1,0,1);
+	//OUT.RT1=float4(l_Color*g_LightAmbient*g_LightAmbientIntensity, 1.0);
+	OUT.RT1=float4(l_Cube.xyz,1);
 	OUT.RT2.xyz=NnScalated;
 	OUT.RT3=l_Depth;  
 	

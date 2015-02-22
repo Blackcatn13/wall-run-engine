@@ -33,7 +33,7 @@
 	<technique name="GBufferDiffuseMapTechnique" effect="GBufferDiffuseEffect"  use_world_matrix="true" use_world_view_projection_matrix="true" />
 	<technique name="GBufferNormalMapTechnique" effect="GBufferNormalMapEffect"  use_world_matrix="true" use_world_view_projection_matrix="true" />
 	<technique name="GBufferLightMapTechnique" effect="GBufferLightMapEffect"  use_world_matrix="true" use_world_view_projection_matrix="true" />
-	<technique name="GBufferCubeMapTechnique" effect="GBufferCubeMapEffect"  use_world_matrix="true" use_world_view_projection_matrix="true" se_inverse_view_matrix="true" />
+	<technique name="GBufferCubeMapTechnique" effect="GBufferCubeMapEffect"  use_world_matrix="true" use_world_view_projection_matrix="true" use_inverse_view_matrix="true" />
 	<technique name="DrawQuadSolidTechnique" effect="DrawQuadEffect"  use_world_matrix="true" use_world_view_projection_matrix="true" />
 	<technique name="DrawVignettingTechnique" effect="DrawVignettingEffect"  use_world_matrix="true" use_world_view_projection_matrix="true" />
 	<technique name="ZBlurTechnique" effect="ZBlurEffect" use_inverse_proj_matrix="true" use_inverse_view_matrix="true" use_blur_w="true" use_zblur_parameters="true"/>

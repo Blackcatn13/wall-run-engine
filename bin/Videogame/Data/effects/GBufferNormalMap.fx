@@ -30,7 +30,7 @@ float3 Normal2Texture(float3 Normal)
 TGBUFFER_TEXTURED1_VERTEX_PS GBufferVS(VertexVS_TTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX IN){
 	
 	TGBUFFER_TEXTURED1_VERTEX_PS OUT = (TGBUFFER_TEXTURED1_VERTEX_PS)0;
-    OUT.UV = IN.UV;
+    
     OUT.HPosition = mul(float4(IN.Position,1.0), g_WorldViewProjectionMatrix);
 	float3 l_WorldNormal = normalize(mul(IN.Normal,(float3x3)g_WorldMatrix));
 	float3 l_WorldTangent = normalize(mul(IN.Tangent.xyz, (float3x3)g_WorldMatrix));
@@ -43,6 +43,7 @@ TGBUFFER_TEXTURED1_VERTEX_PS GBufferVS(VertexVS_TTEXTURE_NORMAL_TANGET_BINORMAL_
 	float3 l_Nn = l_WNn + l_Bump.x*l_TangentNormalized + l_Bump.y*l_BinormalNormalized;
 	l_Nn = normalize(l_Nn);
 	OUT.Normal = l_Nn;
+	OUT.UV = IN.UV;
 	OUT.WorldPosition = OUT.HPosition;
     return OUT;
 }
