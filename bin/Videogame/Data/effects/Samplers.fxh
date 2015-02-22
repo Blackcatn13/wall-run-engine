@@ -253,3 +253,12 @@ sampler S7PointClampSampler:register(s7) = sampler_state {
 	AddressU = Clamp;
 	AddressV = Clamp;
 };
+
+samplerCUBE S0CubeLinearSampler:register(s0) = sampler_state 
+{ 
+   	MinFilter = Linear;
+	MagFilter = Linear;
+	MipFilter = Linear;
+	AddressU = Wrap;
+	AddressV = Wrap;
+};

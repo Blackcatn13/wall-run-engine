@@ -17,3 +17,39 @@ float3 GetPositionFromZDepthView(float ZDepthView, float2 UV, float4x4 InverseVi
 	float3 l_PositionView=GetPositionFromZDepthViewInViewCoordinates(ZDepthView, UV, InverseProjectionMatrix);
 	return mul(float4(l_PositionView,1.0), InverseViewMatrix).xyz;
 }
+
+//Fog
+float CalcAttenuation(float Depth, float StartFog, float EndFog)
+{			
+	return saturate((Depth-EndFog)/(StartFog-EndFog));
+	//return Attenuation;
+}
+
+float4 CalcLinearFog(float Depth, float StartFog, float EndFog, float4 FogColor)
+{
+	return float4(FogColor.xyz, FogColor.a*(1.0-CalcAttenuation(Depth, StartFog, EndFog)));
+}
+
+float4 CalcExp2Fog(float Depth, float ExpDensityFog, float4 FogColor)
+{
+	//Versión de directx
+	float l_ExpDensity=Depth*ExpDensityFog;
+	float l_Fog=1.0/exp(l_ExpDensity*l_ExpDensity);
+	return float4(FogColor.xyz,FogColor.a*(1.0-l_Fog));
+	//Versión que mejora el cálculo
+	/*const float LOG2E = 1.442695; // = 1 / log(2)
+	float l_Fog = exp2(-ExpDensityFog * ExpDensityFog * Depth * Depth * LOG2E);
+	return float4(FogColor.xyz,FogColor.a*(1.0-l_Fog));*/
+}
+
+float4 CalcExpFog(float Depth, float ExpDensityFog, float4 FogColor)
+{
+	//Versión de directx
+	/*float l_Fog=1.0/exp(Depth*ExpDensityFog);
+	return float4(FogColor.xyz,FogColor.a*(1.0-l_Fog));*/
+	//Versión que mejora el cálculo
+	const float LOG2E = 1.442695; // = 1 / log(2)
+	float l_Fog = exp2(-ExpDensityFog * Depth * LOG2E);
+	return float4(FogColor.xyz,FogColor.a*(1.0-l_Fog));
+}
+

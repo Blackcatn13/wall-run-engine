@@ -51,31 +51,40 @@
 	</render_deferred_shading >
 	<disable_alpha_blend />
 	
-	<!--<set_pool_renderable_objects_technique pool="draw_textured_quad_pool"/>
+	<!--Fog-->
+<!--	<enable_alpha_blend blendOp ="add" blendSrc="srcalpha" destBlend="invsrcalpha" />
+	<set_pool_renderable_objects_technique pool="fog_pool"/>
 	<render_draw_quad> 
 		<texture stage_id="0" file="DepthMapTexture"/>
-<<<<<<< HEAD
-	</render_draw_quad>-->
-=======
-	</render_draw_quad> -->
->>>>>>> 89d858e8b7ea8dadcb066daa286a247ce0493efe
+	</render_draw_quad>
+	<disable_alpha_blend />-->
+	<!--End Fog-->
 	
-	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
-	<!-- ZBlur -->
-	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
-	<!--<disable_alpha_blend/>
+
+	<!-- Skybox -->
+	<!--<set_pool_renderable_objects_technique pool="skybox_pool"/>
 	<capture_frame_buffer>
-			<dynamic_texture stage_id="0" name="DiffuseMapTexture1" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
+		<dynamic_texture stage_id="0" name="SkyBoxTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 	</capture_frame_buffer>
-	<set_pool_renderable_objects_technique pool="BlurPool"/>
-	<render_draw_quad technique_name="DrawQuadSolidTechnique">
-			<texture stage_id="0" file="DepthMapTexture"/>
-			<texture stage_id="1" file="DiffuseMapTexture1"/>
-	</render_draw_quad>	
+	<render_draw_quad> 
+		<texture stage_id="0" file="DiffuseMapTexture"/>
+	</render_draw_quad>-->
+	<!-- End Skybox -->
+	
+	
+	
+	<!--<enable_alpha_blend />-->
+	<!--
+	<render_scene layer="solid" active="true"/>
 	<capture_frame_buffer>
-			<dynamic_texture stage_id="0" name="DiffuseMapTexture2" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
-	</capture_frame_buffer>-->
-	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
+		<dynamic_texture stage_id="0" name="FrameBufferCompleteTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
+	</capture_frame_buffer>
+	<set_pool_renderable_objects_technique pool="z_blur_pool_renderable_object_technique"/>
+	<render_draw_quad technique_name="ZBlurTechnique"> 
+		<texture stage_id="0" file="DepthMapTexture"/>
+		<texture stage_id="1" file="FrameBufferCompleteTexture"/>
+	</render_draw_quad>-->
+
 
 	<!-- Segunda pasada TODO-->
 	<!-- <set_matrices/>
@@ -87,11 +96,8 @@
 	<enable_z_write/>
 	<enable_z_test/>
 	<set_pool_renderable_objects_technique pool="dummy_manager"/>
-<<<<<<< HEAD
 	<render_scene layer="solid" active="true"/>-->
-=======
-	<render_scene layer="solid" active="true"/> -->
->>>>>>> 89d858e8b7ea8dadcb066daa286a247ce0493efe
+
 	<!--<capture_frame_buffer>
 		<dynamic_texture stage_id="0" name="FrameBuffer" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 	</capture_frame_buffer> -->
