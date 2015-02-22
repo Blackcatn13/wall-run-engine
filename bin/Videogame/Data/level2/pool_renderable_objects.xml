@@ -16,9 +16,9 @@
 	
 	<pool_renderable_object_technique name="generate_deferred_shading_pool_renderable_object_technique">
 		<default_technique vertex_type="19" technique="GBufferDiffuseMapTechnique"/>
-		<default_technique vertex_type="31" technique="GBufferDiffuseMapTechnique"/>
-		<default_technique vertex_type="51" technique="GBufferDiffuseMapTechnique"/>
-		<default_technique vertex_type="531" technique="GBufferDiffuseMapTechnique"/>
+		<default_technique vertex_type="31" technique="GBufferNormalMapTechnique"/>
+		<default_technique vertex_type="51" technique="GBufferLightMapTechnique"/>
+		<default_technique vertex_type="531" technique="GBufferCubeMapTechnique"/>
 	</pool_renderable_object_technique> 
 
 	<pool_renderable_object_technique name="dummy_test">
