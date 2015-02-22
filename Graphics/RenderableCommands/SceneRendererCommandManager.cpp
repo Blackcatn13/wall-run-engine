@@ -70,7 +70,7 @@ void CSceneRendererCommandManager::Load(const std::string &FileName)
         if (m.Exists()) {
             int count = m.GetNumChildren();
             for (int i = 0; i < count; ++i) {
-                std::string l_Name = m(i).GetPszProperty("name", "");
+                std::string l_Name = m(i).GetPszProperty("name", "", false);
                 if (l_Name.empty())
                     l_Name = GetNextName();
                 std::string name = m(i).GetName();

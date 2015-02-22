@@ -6,9 +6,9 @@
 CEnableAlphaBlendSceneRendererCommand::CEnableAlphaBlendSceneRendererCommand(CXMLTreeNode &atts)
 {
     initMaps();
-    m_blendop = m_ToBlendOp[atts.GetPszISOProperty("blendOP", "add")];
-    m_srcblend = m_ToBlendType[atts.GetPszISOProperty("blendSrc", "one")];
-    m_destblend = m_ToBlendType[atts.GetPszISOProperty("blendDest", "one")];
+    m_blendop = m_ToBlendOp[atts.GetPszISOProperty("blendOP", "add", false)];
+    m_srcblend = m_ToBlendType[atts.GetPszISOProperty("blendSrc", "one", false)];
+    m_destblend = m_ToBlendType[atts.GetPszISOProperty("blendDest", "one", false)];
 }
 
 void CEnableAlphaBlendSceneRendererCommand::Execute(CGraphicsManager &RM)

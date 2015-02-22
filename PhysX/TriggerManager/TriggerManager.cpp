@@ -56,10 +56,10 @@ bool	CTriggerManager::LoadTriggers( std::string FileName)
             int count = m.GetNumChildren();
             for (int i = 0; i < count; ++i) {
                 //Creando el UserData para el trigger
-                std::string name = m(i).GetPszProperty("name", "");
+                std::string name = m(i).GetPszProperty("name", "", false);
                 CPhysicUserData* l_pUserData = new CPhysicUserData(name);
-                l_pUserData->SetPaint(m(i).GetBoolProperty("paint", true));
-                CColor col(m(i).GetVect3fProperty("color", v3fZERO));
+                l_pUserData->SetPaint(m(i).GetBoolProperty("paint", true, false));
+                CColor col(m(i).GetVect3fProperty("color", v3fZERO, false));
                 l_pUserData->SetColor(colRED);
                 l_pUserData->SetGroup(ECG_TRIGGERS);
                 m_UserData.push_back( l_pUserData );

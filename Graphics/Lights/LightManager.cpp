@@ -43,26 +43,26 @@ void CLightManager::Load(const std::string &FileName)
                 //Opcionales
                 //	bool l_ExportShadows = m(i).GetBoolProperty("export_shadows",false); //<= Este no está en el xml del pdf
                 bool l_GenerateDynamicShadowMap = m(i).GetBoolProperty("generate_shadow_map", false);
-                int l_OrthoShadowMapWidht = m(i).GetIntProperty("ortho_shadow_map_width", 0);										//<= Esto no está en el xml del pdf pero hará falta
-                int l_OrthoShadowMapHeight = m(i).GetIntProperty("ortho_shadow_map_height", 0);
-                std::string l_ShadowMapFormatType = m(i).GetPszISOProperty("shadow_map_format_type", "");
-                int l_ShadowMapWith = m(i).GetIntProperty("shadow_map_width", 0);
-                int l_ShadowMapHeight = m(i).GetIntProperty("shadow_map_height", 0);
+                int l_OrthoShadowMapWidht = m(i).GetIntProperty("ortho_shadow_map_width", 0, false);										//<= Esto no está en el xml del pdf pero hará falta
+                int l_OrthoShadowMapHeight = m(i).GetIntProperty("ortho_shadow_map_height", 0, false);
+                std::string l_ShadowMapFormatType = m(i).GetPszISOProperty("shadow_map_format_type", "", false);
+                int l_ShadowMapWith = m(i).GetIntProperty("shadow_map_width", 0, false);
+                int l_ShadowMapHeight = m(i).GetIntProperty("shadow_map_height", 0, false);
                 bool l_GenerateStaticShadowMap = m(i).GetBoolProperty("generate_static_shadow_map", false);
-                std::string l_StaticShadowMapFormatType = m(i).GetPszISOProperty("static_shadow_map_format_type", "");
-                int l_StaticShadowMapWidth = m(i).GetIntProperty("static_shadow_map_width", 0);
-                int l_StaticShadowMapHeight = m(i).GetIntProperty("static_shadow_map_height", 0);
-                bool l_UpdateStaticShadowMap = m(i).GetBoolProperty("update_static_shadow_map", false);
-                float l_Angle =  m(i).GetFloatProperty("angle", 0.0f);
-                float l_FallOff =  m(i).GetFloatProperty("fall_off", 0.0f);
-                std::string l_ShadowTextureMask = m(i).GetPszISOProperty("shadow_texture_mask", "");
+                std::string l_StaticShadowMapFormatType = m(i).GetPszISOProperty("static_shadow_map_format_type", "", false);
+                int l_StaticShadowMapWidth = m(i).GetIntProperty("static_shadow_map_width", 0, false);
+                int l_StaticShadowMapHeight = m(i).GetIntProperty("static_shadow_map_height", 0, false);
+                bool l_UpdateStaticShadowMap = m(i).GetBoolProperty("update_static_shadow_map", false, false);
+                float l_Angle =  m(i).GetFloatProperty("angle", 0.0f, false);
+                float l_FallOff =  m(i).GetFloatProperty("fall_off", 0.0f, false);
+                std::string l_ShadowTextureMask = m(i).GetPszISOProperty("shadow_texture_mask", "", false);
                 std::string l_StaticRenderableObjectsManager, l_DynamicRenderableObjectsManager;
                 int countChild = m(i).GetNumChildren();
                 for (int j = 0; j < countChild; ++j) {
                     if (std::string("static") == m(i)(j).GetName()) {
-                        l_StaticRenderableObjectsManager = m(i)(j).GetPszISOProperty("renderable_objects_manager", "");
+                        l_StaticRenderableObjectsManager = m(i)(j).GetPszISOProperty("renderable_objects_manager", "", false);
                     } else if (std::string("dynamic") == m(i)(j).GetName()) {
-                        l_DynamicRenderableObjectsManager = m(i)(j).GetPszISOProperty("renderable_objects_manager", "");
+                        l_DynamicRenderableObjectsManager = m(i)(j).GetPszISOProperty("renderable_objects_manager", "", false);
                     }
                 }
                 /*int l_OrthoShadowMapWidht = m(i).GetIntProperty("ortho_shadow_map_width", 0);										//<= Esto no está en el xml del pdf pero hará falta

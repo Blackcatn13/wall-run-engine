@@ -9,18 +9,18 @@
 CTrigger::CTrigger(CXMLTreeNode& node, CPhysicUserData* _pUserData)
     : CPhysicActor(_pUserData)
 {
-    std::string l_sType = node.GetPszProperty("shape", "box");
-    int group = node.GetIntProperty("group", 1);
+    std::string l_sType = node.GetPszProperty("shape", "box", false);
+    int group = node.GetIntProperty("group", 1, false);
     if (l_sType == "box")
-        CreateBoxTrigger(node.GetVect3fProperty("position", v3fZERO), node.GetVect3fProperty("size", v3fZERO));
+        CreateBoxTrigger(node.GetVect3fProperty("position", v3fZERO, false), node.GetVect3fProperty("size", v3fZERO, false));
     else if (l_sType == "sphere")
-        CreateSphereTrigger(node.GetVect3fProperty("position", v3fZERO), node.GetFloatProperty("radius", 0.f), group);
+        CreateSphereTrigger(node.GetVect3fProperty("position", v3fZERO, false), node.GetFloatProperty("radius", 0.f, false), group);
     SetTriggerGroup(ECG_TRIGGERS);
     PHYSXM->AddPhysicActor(this);
     PHYSXM->SetTriggerReport(TRIGGM->getTriggerReport());
     //Events & scripts
-    std::string triggerEvent = node.GetPszISOProperty("type_event", "enter");
-    std::string script = node.GetPszISOProperty("script", "");
+    std::string triggerEvent = node.GetPszISOProperty("type_event", "enter", false);
+    std::string script = node.GetPszISOProperty("script", "", false);
     if (triggerEvent == "enter") {
         m_OnEnter = script;
     } else if (triggerEvent == "stay") {

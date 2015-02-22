@@ -22,7 +22,7 @@ CDeferredShadingSceneRendererCommand::CDeferredShadingSceneRendererCommand(CXMLT
             std::string l_TextureName = atts(i).GetPszProperty("file", "");
             uint32 l_Width, l_Height;
             GRAPHM->GetWidthAndHeight(l_Width, l_Height);
-            if (atts(i).GetBoolProperty("load_file"))
+            if (atts(i).GetBoolProperty("load_file", false, false))
                 l_Texture->Load(l_TextureName);
             else {
                 l_Texture = TEXTM->GetResource(l_TextureName);

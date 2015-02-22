@@ -11,9 +11,9 @@
 
 CDrawQuadRendererCommand::CDrawQuadRendererCommand(CXMLTreeNode &atts) : CStagedTexturedRendererCommand(atts)
 {
-    Vect3f color = atts.GetVect3fProperty("color", v3fZERO);
+    Vect3f color = atts.GetVect3fProperty("color", v3fZERO, false);
     m_Color.Set(color.x, color.y, color.z);
-    m_TechniqueName = atts.GetPszProperty("technique_name", "");
+    m_TechniqueName = atts.GetPszProperty("technique_name", "", false);
     for (int i = 0; i < atts.GetNumChildren(); ++i) {
         std::string name = atts(i).GetName();
         if (name == "texture") {
@@ -22,7 +22,7 @@ CDrawQuadRendererCommand::CDrawQuadRendererCommand(CXMLTreeNode &atts) : CStaged
             std::string l_TextureName = atts(i).GetPszProperty("file", "");
             uint32 l_Width, l_Height;
             GRAPHM->GetWidthAndHeight(l_Width, l_Height);
-            if (atts(i).GetBoolProperty("load_file")) {
+            if (atts(i).GetBoolProperty("load_file", false, false)) {
                 l_Texture = new CTexture();
                 l_Texture->Load(l_TextureName);
                 TEXTM->AddResource(l_TextureName, l_Texture);

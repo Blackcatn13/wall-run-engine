@@ -60,7 +60,7 @@ void CRenderableObjectsLayersManager::Reload()
 
 CRenderableObjectsManager * CRenderableObjectsLayersManager::GetRenderableObjectManager(CXMLTreeNode &Node)
 {
-    std::string l_LayerName = Node.GetPszProperty("layer", m_DefaultLayerName.c_str());
+    std::string l_LayerName = Node.GetPszProperty("layer", m_DefaultLayerName.c_str(), false);
     return GetResource(l_LayerName);
     /*
     	CXMLTreeNode  m = Node;
@@ -97,7 +97,7 @@ void CRenderableObjectsLayersManager::Load(const std::string &FileName)
             std::string name = m(i).GetName();
             if (name == "layer") {
                 std::string layerName = m(i).GetPszISOProperty("name", "");
-                bool isDefault = m(i).GetBoolProperty("default", false);
+                bool isDefault = m(i).GetBoolProperty("default", false, false);
                 CRenderableObjectsManager* l_managerInstance = new CRenderableObjectsManager();
                 //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
                 AddResource(layerName, l_managerInstance);
