@@ -7,6 +7,7 @@
 #include "ActionToInput.h"
 #include "GraphicsManager.h"
 #include "Font/FontManager.h"
+#include "Core_Utils/MemLeaks.h"
 
 CLogRender::CLogRender()
     : m_uIsFullFirstPage(false)

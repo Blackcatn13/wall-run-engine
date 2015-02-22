@@ -4,6 +4,7 @@
 #include "GraphicsManager.h"
 #include "Texture\Texture.h"
 #include "Texture\TextureManager.h"
+#include "Core_Utils/MemLeaks.h"
 
 CSetRenderTargetSceneRendererCommand::CSetRenderTargetSceneRendererCommand(CXMLTreeNode &atts)
 {

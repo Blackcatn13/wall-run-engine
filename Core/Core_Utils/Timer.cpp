@@ -1,6 +1,7 @@
 #include <Windows.h>
 #include <assert.h>
 #include "Timer.h"
+#include "Core_Utils/MemLeaks.h"
 
 //Inicializamos todas las variables
 CTimer::CTimer (uint32 avgSamples)

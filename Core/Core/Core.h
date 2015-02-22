@@ -28,6 +28,7 @@ class CRenderableObjectsLayersManager;
 class CSceneRendererCommandManager;
 class CProcess;
 class CTriggerManager;
+class CLogRender;
 
 
 #define CCORE			CCore::GetInstance()
@@ -50,7 +51,7 @@ class CTriggerManager;
 #define RENDLM			CCore::GetInstance()->GetRenderableObjectsLayersManager()
 #define SCENRENDCOMM	CCore::GetInstance()->GetSceneRendererCommandManager()
 #define TRIGGM			CCore::GetInstance()->GetTriggerManager()
-
+#define LOGRNDR         CCore::GetInstance()->GetLogRender()
 
 
 class CCore
@@ -82,6 +83,7 @@ private:
     CSceneRendererCommandManager*		m_SceneRendererCommandManager;
     CProcess*							m_Process;
     CTriggerManager*					m_TriggerManager;
+    CLogRender*                         m_LogRender;
 
 public:
     ~CCore();
@@ -186,6 +188,11 @@ public:
     CTriggerManager * GetTriggerManager()
     {
         return m_TriggerManager;
+    }
+
+    CLogRender* GetLogRender()
+    {
+        return m_LogRender;
     }
 
 };

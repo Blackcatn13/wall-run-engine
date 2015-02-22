@@ -9,6 +9,7 @@
 #include "Renderable\RenderableObjectTechniqueManager.h"
 #include "Renderable\RenderableObjectsLayersManager.h"
 #include "RenderableCommands\SceneRendererCommandManager.h"
+#include "Core_Utils/MemLeaks.h"
 
 CEffectManager::CEffectManager()
 {
@@ -120,26 +121,26 @@ void CEffectManager::Load(const std::string &FileName)
                 if (name == "technique") {
                     std::string techniqueName = m(i).GetPszISOProperty("name", "");
                     std::string effectName = m(i).GetPszISOProperty("effect", "");
-                    bool UseCameraPosition = m(i).GetBoolProperty("use_camera_position");
-                    bool UseInverseProjMatrix = m(i).GetBoolProperty("use_inverse_projection_matrix");
-                    bool UseInverseViewMatrix = m(i).GetBoolProperty("use_inverse_view_matrix");
-                    bool UseInverseWorldMatrix = m(i).GetBoolProperty("use_inverse_world_matrix");
-                    bool UseLights = m(i).GetBoolProperty("use_lights");
-                    int NumOfLights = m(i).GetIntProperty("num_of_lights");
-                    bool UseLightAmbientColor = m(i).GetBoolProperty("use_light_ambient_color");
-                    bool UseProjMatrix = m(i).GetBoolProperty("use_projection_matrix");
-                    bool UseViewMatrix = m(i).GetBoolProperty("use_view_matrix");
-                    bool UseWorldMatrix = m(i).GetBoolProperty("use_world_matrix");
-                    bool UseWorldViewMatrix = m(i).GetBoolProperty("use_world_view_matrix");
-                    bool UseWorldViewProjectionMatrix = m(i).GetBoolProperty("use_world_view_projection_matrix");
-                    bool UseViewProjectionMatrix = m(i).GetBoolProperty("use__view_projection_matrix");
-                    bool UseViewToLightProjectionMatrix = m(i).GetBoolProperty("use_view_to_light_projection_matrix");
-                    bool UseTime = m(i).GetBoolProperty("use_time");
+                    bool UseCameraPosition = m(i).GetBoolProperty("use_camera_position", false, false);
+                    bool UseInverseProjMatrix = m(i).GetBoolProperty("use_inverse_projection_matrix", false, false);
+                    bool UseInverseViewMatrix = m(i).GetBoolProperty("use_inverse_view_matrix", false, false);
+                    bool UseInverseWorldMatrix = m(i).GetBoolProperty("use_inverse_world_matrix", false, false);
+                    bool UseLights = m(i).GetBoolProperty("use_lights", false, false);
+                    int NumOfLights = m(i).GetIntProperty("num_of_lights", 0, false);
+                    bool UseLightAmbientColor = m(i).GetBoolProperty("use_light_ambient_color", false, false);
+                    bool UseProjMatrix = m(i).GetBoolProperty("use_projection_matrix", false, false);
+                    bool UseViewMatrix = m(i).GetBoolProperty("use_view_matrix", false, false);
+                    bool UseWorldMatrix = m(i).GetBoolProperty("use_world_matrix", false, false);
+                    bool UseWorldViewMatrix = m(i).GetBoolProperty("use_world_view_matrix", false, false);
+                    bool UseWorldViewProjectionMatrix = m(i).GetBoolProperty("use_world_view_projection_matrix", false, false);
+                    bool UseViewProjectionMatrix = m(i).GetBoolProperty("use__view_projection_matrix", false, false);
+                    bool UseViewToLightProjectionMatrix = m(i).GetBoolProperty("use_view_to_light_projection_matrix", false, false);
+                    bool UseTime = m(i).GetBoolProperty("use_time", false, false);
                     CEffect * effect = m_Effects.GetResource(effectName);
                     if (effect != NULL) {
                         CEffectTechnique *effectTechnique = new CEffectTechnique();
-						effectTechnique->SetTechniqueName(techniqueName);
-						effectTechnique->SetEffect(effect);
+                        effectTechnique->SetTechniqueName(techniqueName);
+                        effectTechnique->SetEffect(effect);
                         effectTechnique->SetUseCameraPosition(UseCameraPosition);
                         effectTechnique->SetUseInverseProjMatrix(UseInverseProjMatrix);
                         effectTechnique->SetUseInverseViewMatrix(UseInverseViewMatrix);
@@ -155,7 +156,7 @@ void CEffectManager::Load(const std::string &FileName)
                         effectTechnique->SetUseViewProjectionMatrix(UseViewProjectionMatrix);
                         effectTechnique->SetUseViewToLightProjectionMatrix(UseViewToLightProjectionMatrix);
                         effectTechnique->SetUseTime(UseTime);
-						effectTechnique->Refresh();
+                        effectTechnique->Refresh();
                         AddResource(techniqueName, effectTechnique);
                     } else {
                         LOGGER->AddNewLog(ELL_ERROR, "Not effect '%s' exists in the map", effectName.c_str());
@@ -170,8 +171,8 @@ void CEffectManager::Reload()
     CleanUp();
     Load(m_FileName);
     RENDTECHM->Reload();
-	RENDLM->Reload();
-	SCENRENDCOMM->setReload();
+    RENDLM->Reload();
+    SCENRENDCOMM->setReload();
 }
 std::string CEffectManager::GetTechniqueEffectNameByVertexDefault(unsigned short VertexType)
 {

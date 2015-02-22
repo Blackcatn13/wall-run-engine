@@ -3,12 +3,13 @@
 #include "GraphicsManager.h"
 #include "Core/Core.h"
 #include "Utils\Logger.h"
+#include "Core_Utils/MemLeaks.h"
 
 CTexture::CTexture()
-	: m_DepthStencilRenderTargetTexture(NULL)
-	, m_OldRenderTarget(NULL)
-	, m_RenderTargetTexture(NULL)
-	, m_OldDepthStencilRenderTarget(NULL)
+    : m_DepthStencilRenderTargetTexture(NULL)
+    , m_OldRenderTarget(NULL)
+    , m_RenderTargetTexture(NULL)
+    , m_OldDepthStencilRenderTarget(NULL)
 {
 }
 

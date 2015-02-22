@@ -30,6 +30,8 @@
 #include "RenderableCommands\SetAxisRendererCommand.h"
 #include "RenderableCommands\EnableAlphaBlendCommand.h"
 #include "RenderableCommands\DisableAlphaBlendCommand.h"
+#include "RenderableCommands\RenderDebugInfoSceneRendererCommand.h"
+#include "Core_Utils/MemLeaks.h"
 
 
 CSceneRendererCommandManager::CSceneRendererCommandManager()
@@ -175,6 +177,10 @@ void CSceneRendererCommandManager::Load(const std::string &FileName)
                 }
                 if (name == "disable_z_test") {
                     CDisableZTestSceneRendererCommand *l_Command = new CDisableZTestSceneRendererCommand(m(i));
+                    m_SceneRendererCommands.AddResource(l_Name, l_Command);
+                }
+                if (name == "render_debug_info") {
+                    CRenderDebugInfoSceneRendererCommand *l_Command = new CRenderDebugInfoSceneRendererCommand(m(i));
                     m_SceneRendererCommands.AddResource(l_Name, l_Command);
                 }
             }

@@ -1,4 +1,5 @@
 #include "Object3D.h"
+#include "Core_Utils/MemLeaks.h"
 
 CObject3D::CObject3D(const Vect3f& pos, float yaw, float pitch, float roll)
     : m_Position(pos)

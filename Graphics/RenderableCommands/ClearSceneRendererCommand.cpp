@@ -1,5 +1,6 @@
 #include "RenderableCommands\ClearSceneRendererCommand.h"
 #include "GraphicsManager.h"
+#include "Core_Utils/MemLeaks.h"
 
 CClearSceneRendererCommand::CClearSceneRendererCommand(CXMLTreeNode &atts)
     : m_Color(atts.GetBoolProperty("color", false))

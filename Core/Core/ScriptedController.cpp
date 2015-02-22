@@ -1,6 +1,7 @@
 #include "ScriptedController.h"
 #include "Core\Core.h"
 #include "ScriptManager.h"
+#include "Core_Utils/MemLeaks.h"
 
 CScriptedController::CScriptedController()
 {

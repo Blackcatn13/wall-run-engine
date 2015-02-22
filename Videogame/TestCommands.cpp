@@ -59,11 +59,12 @@ CTestCommands::~CTestCommands(void)
     //delete m_ThPSCamera;
 //    delete m_ThPSCamera1;
     //delete m_FPSCamera;
-    PHYSXM->ReleaseAllActors();
+    // PHYSXM->ReleaseAllActors();
     /* CHECKED_DELETE(m_PhysicActor);
      CHECKED_DELETE(m_PhysicUserData);
      CHECKED_DELETE(m_PhysicUserDataCube);
      CHECKED_DELETE(m_PhysicActorCubeFix);*/
+    // CHECKED_DELETE(m_Granade);
 }
 
 void CTestCommands::Init()
@@ -96,11 +97,11 @@ void CTestCommands::Init()
     //LIGHTM->Load(".\\Data\\lights.xml");
     //SCRIPTM->Load(".\\Data\\lua_actions.xml");
     //EFFECTM->Load(".\\Data\\effects.xml");
-    m_PhysicUserDataCube = new CPhysicUserData("fixbox");
-    m_PhysicUserDataCube->SetPaint(true);
-    m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
-    m_PhysicActorCubeFix->AddPlaneShape(Vect3f(0, 1, 0), 0);
-    PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
+    // m_PhysicUserDataCube = new CPhysicUserData("fixbox");
+    // m_PhysicUserDataCube->SetPaint(true);
+    // m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+    // m_PhysicActorCubeFix->AddPlaneShape(Vect3f(0, 1, 0), 0);
+    // PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
     /*CPhysicUserData* m_TriggerData = new CPhysicUserData("trigger");
     m_TriggerData->SetPaint(true);
     m_TriggerData->SetColor(colMAGENTA);
@@ -108,7 +109,7 @@ void CTestCommands::Init()
     m_Trigger->CreateBoxTrigger(Vect3f(5.f, 5.f, 5.f), Vect3f(2.f, 2.f, 2.f));
     PHYSXM->AddPhysicActor(m_Trigger);
     PHYSXM->SetTriggerReport((CPhysicTriggerReport*)TRIGGM);*/
-    m_Granade = new CGranade();
+    // m_Granade = new CGranade();
 }
 
 void CTestCommands::DeInit()
@@ -155,27 +156,27 @@ Vect2i CTestCommands::RenderDebugInfo(bool render, float dt)
 
 void CTestCommands::Update(float dt)
 {
-    m_Granade->Update(dt);
-    CInputManager* im = INPUTM;
+    // m_Granade->Update(dt);
+    //CInputManager* im = INPUTM;
     //float deltaX =  im->GetMouseDelta().x;
     //float deltaY = im->GetMouseDelta().y;
     //float deltaZ = im->GetMouseDelta().z;
     if (ACT2IN->DoAction("ChangeCatalan")) {
         LANGM->SetCurrentLanguage("catalan");
-        CAMCONTM->setActiveCamera("Camera002");
-        CAMCONTM->Play(true);
-        CCORE->GetCinematicController()->GetResource("DestroyW")->Play(true);
+        // CAMCONTM->setActiveCamera("Camera002");
+        //CAMCONTM->Play(true);
+        //CCORE->GetCinematicController()->GetResource("DestroyW")->Play(true);
     }
     if (ACT2IN->DoAction("ChangeCastellano")) {
         LANGM->SetCurrentLanguage("castellano");
-        CCORE->GetCinematicController()->GetResource("DestroyW")->Stop();
-        CAMCONTM->Stop();
-        CAMCONTM->setActiveCamera("FPS");
+        //CCORE->GetCinematicController()->GetResource("DestroyW")->Stop();
+        // CAMCONTM->Stop();
+        //CAMCONTM->setActiveCamera("FPS");
     }
     if (ACT2IN->DoAction("ChangeIngles")) {
         LANGM->SetCurrentLanguage("ingles");
-        CAMCONTM->Pause();
-        CCORE->GetCinematicController()->GetResource("DestroyW")->Pause();
+        // CAMCONTM->Pause();
+        // CCORE->GetCinematicController()->GetResource("DestroyW")->Pause();
     }
     if (ACT2IN->DoAction("CommutationCamera")) {
         if (m_PlayerMode) {
@@ -187,7 +188,7 @@ void CTestCommands::Update(float dt)
             CAMCONTM->setActiveCamera("FPS");
         }
     }
-    CCORE->GetCinematicController()->Update(dt);
+    // CCORE->GetCinematicController()->Update(dt);
     m_Camera = CAMCONTM->getActiveCamera();
 //	m_ScriptedController->Update(dt);
     /* if (m_PlayerMode) {

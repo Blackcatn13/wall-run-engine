@@ -4,6 +4,7 @@
 #include "Renderable\RenderableObjectTechniqueManager.h"
 #include "Renderable\PoolRenderableObjectTechnique.h"
 #include "Utils\Defines.h"
+#include "Core_Utils/MemLeaks.h"
 
 CPoolRenderableObjectTechnique::CPoolRenderableObjectTechnique(CXMLTreeNode &TreeNode)
 {
@@ -60,7 +61,7 @@ CPoolRenderableObjectTechnique::CPoolRenderableObjectTechnique(CXMLTreeNode &Tre
 
 
 CPoolRenderableObjectTechnique::CPoolRenderableObjectTechniqueElement::CPoolRenderableObjectTechniqueElement(const std::string &Name, CEffectTechnique *EffectTechnique, CRenderableObjectTechnique *OnRenderableObjectTechniqueManager)
-	: m_RenderableObjectTechnique(Name, EffectTechnique)
+    : m_RenderableObjectTechnique(Name, EffectTechnique)
 {
     //m_RenderableObjectTechnique = CRenderableObjectTechnique::CRenderableObjectTechnique(Name, EffectTechnique);
     m_OnRenderableObjectTechniqueManager = OnRenderableObjectTechniqueManager;

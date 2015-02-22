@@ -10,6 +10,7 @@
 #include "Importer\CameraKeyController.h"
 #include "XML\XMLTreeNode.h"
 #include "Utils\Logger.h"
+#include "Core_Utils/MemLeaks.h"
 
 CCameraController::CCameraController() : m_Speed(2),
     m_PanSpeed(10),

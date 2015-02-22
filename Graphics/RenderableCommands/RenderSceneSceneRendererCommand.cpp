@@ -4,6 +4,7 @@
 #include "Renderable\RenderableObjectsLayersManager.h"
 #include "Core\Core.h"
 #include "Core\Process.h"
+#include "Core_Utils/MemLeaks.h"
 
 CRenderSceneSceneRendererCommand::CRenderSceneSceneRendererCommand(CXMLTreeNode &atts)
 {

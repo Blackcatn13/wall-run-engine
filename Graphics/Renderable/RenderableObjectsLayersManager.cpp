@@ -5,6 +5,7 @@
 #include "AnimatedModels\AnimatedModelManager.h"
 #include "AnimatedModels\AnimatedInstanceModel.h"
 #include "StaticMeshes\StaticMeshManager.h"
+#include "Core_Utils/MemLeaks.h"
 
 CRenderableObjectsLayersManager ::CRenderableObjectsLayersManager()
 {
@@ -52,10 +53,9 @@ void CRenderableObjectsLayersManager::Destroy()
 void CRenderableObjectsLayersManager::Reload()
 {
     Destroy();
-	SMESHM->Reload();
+    SMESHM->Reload();
     Load(m_FileName);
     Load(m_FileName2);
-	
 }
 
 CRenderableObjectsManager * CRenderableObjectsLayersManager::GetRenderableObjectManager(CXMLTreeNode &Node)
@@ -84,7 +84,6 @@ CRenderableObjectsManager * CRenderableObjectsLayersManager::GetDefaultRenderabl
 
 void CRenderableObjectsLayersManager::Load(const std::string &FileName)
 {
-    CCore::GetInstance()->GetAnimatedModelManager()->Load(".\\Data\\animated_models.xml"); //se carga animatedmodels.xml
     CXMLTreeNode newFile;
     if (!newFile.LoadFile(FileName.c_str())) {
         printf("ERROR loading the file.");

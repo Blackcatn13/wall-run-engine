@@ -121,15 +121,15 @@ bool CActionToInput::LoadXML (const std::string& xmlFile)
         for (int i = 0; i < count; ++i) {
             std::string name = m(i).GetName();
             if (name == "action") {
-                std::string nameAction = m(i).GetPszISOProperty("name", "Action" + counter++);
+                std::string nameAction = m(i).GetPszISOProperty("name", "Action" + counter++, false);
                 int actionsCount = m(i).GetNumChildren();
                 m_String2Actions[nameAction] = VecInfoInputs();
                 m_String2Actions[nameAction].clear();
                 for (int j = 0; j < actionsCount; ++j) {
-                    std::string nameDevice = m(i)(j).GetPszISOProperty("deviceType", "IDV_NOTHING");
-                    std::string nameEvent = m(i)(j).GetPszISOProperty("EventType", "EVENT_NOTHING");
-                    std::string nameKey = m(i)(j).GetPszISOProperty("Code", "KEY_M");
-                    std::string axisKey = m(i)(j).GetPszISOProperty("AxisType", "AXIS_NOTHING");
+                    std::string nameDevice = m(i)(j).GetPszISOProperty("deviceType", "IDV_NOTHING", false);
+                    std::string nameEvent = m(i)(j).GetPszISOProperty("EventType", "EVENT_NOTHING", false);
+                    std::string nameKey = m(i)(j).GetPszISOProperty("Code", "KEY_M", false);
+                    std::string axisKey = m(i)(j).GetPszISOProperty("AxisType", "AXIS_NOTHING", false);
                     action_info actAux = {static_cast<INPUT_DEVICE_TYPE>(m_String2Code[nameDevice]),
                                           static_cast<INPUT_EVENT_TYPE>(m_String2Code[nameEvent]),
                                           (uint32) m_String2Code[nameKey],

@@ -1,6 +1,7 @@
 #include "RenderableCommands\SetAxisRendererCommand.h"
 #include "GraphicsManager.h"
 #include "Math\Matrix44.h"
+#include "Core_Utils/MemLeaks.h"
 
 CSetAxisRendererCommand::CSetAxisRendererCommand(CXMLTreeNode &atts)
     : CSceneRendererCommand(atts)

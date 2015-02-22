@@ -1,6 +1,7 @@
 #include "CinematicController.h"
 #include "Cinematic.h"
 #include "Utils\Logger.h"
+#include "Core_Utils/MemLeaks.h"
 
 
 CCinematicController::CCinematicController()

@@ -4,7 +4,7 @@
 #include "Renderable\PoolRenderableObjectTechnique.h"
 #include "Renderable\RenderableObjectTechniqueManager.h"
 #include "Core\Core.h"
-
+#include "Core_Utils/MemLeaks.h"
 
 CRenderableObjectTechniquesSceneRendererCommand::CRenderableObjectTechniquesSceneRendererCommand(CXMLTreeNode &atts)
 {
@@ -13,11 +13,11 @@ CRenderableObjectTechniquesSceneRendererCommand::CRenderableObjectTechniquesScen
 }
 void CRenderableObjectTechniquesSceneRendererCommand::Execute(CGraphicsManager &RM)
 {
-	if (m_PoolRenderableObjectTechnique != NULL)
+    if (m_PoolRenderableObjectTechnique != NULL)
         m_PoolRenderableObjectTechnique->Apply();
 }
 
 void CRenderableObjectTechniquesSceneRendererCommand::Reload()
 {
-	m_PoolRenderableObjectTechnique = RENDTECHM->GetPoolRenderableObjectTechniques().GetResource(m_PoolName);
+    m_PoolRenderableObjectTechnique = RENDTECHM->GetPoolRenderableObjectTechniques().GetResource(m_PoolName);
 }

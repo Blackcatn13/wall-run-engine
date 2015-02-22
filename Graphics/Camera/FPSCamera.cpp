@@ -1,6 +1,7 @@
 #include "FPSCamera.h"
 #include <assert.h>
 #include "Utils\Defines.h"
+#include "Core_Utils/MemLeaks.h"
 
 CFPSCamera::CFPSCamera(float zn, float zf, float fov, float aspect, CObject3D* object3D)
     : CCamera( zn, zf, fov, aspect, object3D, TC_FPS)

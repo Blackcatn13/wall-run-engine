@@ -257,6 +257,9 @@
     <ClCompile Include="RenderableCommands\EnableAlphaBlendCommand.cpp">
       <Filter>RenderableCommands</Filter>
     </ClCompile>
+    <ClCompile Include="RenderableCommands\RenderDebugInfoSceneRendererCommand.cpp">
+      <Filter>RenderableCommands</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
@@ -471,6 +474,9 @@
       <Filter>RenderableCommands</Filter>
     </ClInclude>
     <ClInclude Include="RenderableCommands\EnableAlphaBlendCommand.h">
+      <Filter>RenderableCommands</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableCommands\RenderDebugInfoSceneRendererCommand.h">
       <Filter>RenderableCommands</Filter>
     </ClInclude>
   </ItemGroup>

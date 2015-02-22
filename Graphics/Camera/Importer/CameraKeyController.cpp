@@ -4,6 +4,7 @@
 #include "Utils/Logger.h"
 #include "Object\Object3D.h"
 #include "Utils\Defines.h"
+#include "Core_Utils/MemLeaks.h"
 
 
 CCameraKeyController::CCameraKeyController()

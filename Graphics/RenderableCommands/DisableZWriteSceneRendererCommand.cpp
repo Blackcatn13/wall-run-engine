@@ -1,4 +1,5 @@
 #include "RenderableCommands\DisableZWriteSceneRendererCommand.h"
+#include "Core_Utils/MemLeaks.h"
 
 CDisableZWriteSceneRendererCommand::CDisableZWriteSceneRendererCommand(CXMLTreeNode &atts) {}
 

@@ -1,4 +1,5 @@
 #include "CameraInfo.h"
+#include "Core_Utils/MemLeaks.h"
 
 CCameraInfo::CCameraInfo()
 {

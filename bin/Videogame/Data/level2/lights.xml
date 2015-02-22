@@ -12,7 +12,7 @@
 	
 <light name="Direct002" type="directional" pos="5 10 5" dir="-1 -1.0 0" color="0.8 0.8 0.8" intensity="1" att_start_range="80.0" att_end_range="200.0" 
  generate_shadow_map="true" shadow_map_format_type="R32F" ortho_shadow_map_width="256" ortho_shadow_map_height="256" shadow_map_width="256" shadow_map_height="256" generate_static_shadow_map="fase" static_shadow_map_format_type="R32F" 
- angle="1.05" fall_off="1.05" shadow_texture_mask="./data/level2/textures/shadow_mask.tga">
+ angle="1.05" fall_off="1.05">
  <dynamic renderable_objects_manager="solid"/>
 </light>
 </lights>

@@ -13,6 +13,7 @@
 #include "Effects\EffectTechnique.h"
 #include "AnimatedModels\AnimatedModelManager.h"
 #include "RenderableVertex\RenderableVertexs.h"
+#include "Core_Utils/MemLeaks.h"
 
 struct VERTEX {
     D3DXVECTOR3    pos;

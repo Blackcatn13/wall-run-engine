@@ -1,5 +1,6 @@
 #include "ThPSCamera.h"
 #include <assert.h>
+#include "Core_Utils/MemLeaks.h"
 
 CThPSCamera::CThPSCamera(float zn, float zf, float fov, float aspect, CObject3D* object3D, float zoom)
     : CCamera( zn, zf, fov, aspect, object3D, TC_THPS)

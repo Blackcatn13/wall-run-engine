@@ -1,5 +1,6 @@
 #include "TextureManager.h"
 #include "Texture.h"
+#include "Core_Utils/MemLeaks.h"
 
 void CTextureManager::Reload()
 {

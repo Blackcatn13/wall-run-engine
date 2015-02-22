@@ -3,6 +3,7 @@
 #include "GraphicsManager.h"
 #include "SetRenderTargetSceneRendererCommand.h"
 #include "Utils\Defines.h"
+#include "Core_Utils/MemLeaks.h"
 
 CUnsetRenderTargetSceneRendererCommand::CUnsetRenderTargetSceneRendererCommand(CSetRenderTargetSceneRendererCommand *SetRenderTargetRendererCommand, CXMLTreeNode &atts)
 {

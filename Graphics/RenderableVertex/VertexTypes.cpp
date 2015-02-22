@@ -1,6 +1,7 @@
 #include "VertexTypes.h"
 #include "GraphicsManager.h"
 #include "Core\Core.h"
+#include "Core_Utils/MemLeaks.h"
 
 LPDIRECT3DVERTEXDECLARATION9 TTEXTURE_VERTEX::s_VertexDeclaration = NULL;
 LPDIRECT3DVERTEXDECLARATION9 & TTEXTURE_VERTEX::GetVertexDeclaration()

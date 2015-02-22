@@ -1,5 +1,6 @@
 #include "GUITexture.h"
 #include "Utils\Logger.h"
+#include "Core_Utils/MemLeaks.h"
 
 bool CGUITexture::LoadFile()
 {

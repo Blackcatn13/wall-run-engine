@@ -13,7 +13,35 @@
    	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
    	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP"  Code="KEY_F3"/>
     </action>
+
+    <action name="LoggerPageUP">
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_PGUP"/>
+    </action>
+
+    <action name="LoggerPageDown">
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_PGDOWN"/>
+    </action>
 	
+	<action name="LoggerUP">
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_UP"/>
+    </action>
+
+    <action name="LoggerDown">
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_DOWN"/>
+    </action>
+
+    <action name="LoggerUPCont">
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_UP"/>
+    </action>
+
+    <action name="LoggerDownCont">
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_DOWN"/>
+    </action>
+
 	<action name="Save2File">
    	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
    	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP"  Code="KEY_F2"/>

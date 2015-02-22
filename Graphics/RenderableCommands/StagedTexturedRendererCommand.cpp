@@ -5,6 +5,7 @@
 #include "Utils\Defines.h"
 #include "Effects\EffectTechnique.h"
 #include "Effects\Effect.h"
+#include "Core_Utils/MemLeaks.h"
 
 
 CStagedTexturedRendererCommand::CStagedTexturedRendererCommand(CXMLTreeNode &atts)

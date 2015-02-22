@@ -10,6 +10,7 @@
 #include "cal3d\cal3d.h"
 #include "cal3d\coremodel.h"
 #include "cal3d\hardwaremodel.h"
+#include "Core_Utils/MemLeaks.h"
 
 
 CAnimatedCoreModel::CAnimatedCoreModel()

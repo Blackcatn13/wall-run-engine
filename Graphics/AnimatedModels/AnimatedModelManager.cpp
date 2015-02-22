@@ -6,6 +6,7 @@
 #include <iterator>
 #include "Core\Core.h"
 #include "cal3d\cal3d.h"
+#include "Core_Utils/MemLeaks.h"
 
 CAnimatedModelManager::CAnimatedModelManager()
 {

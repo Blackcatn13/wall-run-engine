@@ -1,4 +1,5 @@
 #include "RenderableCommands\DisableZTestSceneRendererCommand.h"
+#include "Core_Utils/MemLeaks.h"
 
 CDisableZTestSceneRendererCommand::CDisableZTestSceneRendererCommand(CXMLTreeNode &atts) {}
 void CDisableZTestSceneRendererCommand::Execute(CGraphicsManager &RM)

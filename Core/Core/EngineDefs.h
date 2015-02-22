@@ -25,6 +25,7 @@ typedef struct Conf_info {
     std::string                 EffectPath;
     std::string					SceneRenderCommandsPath;
     std::string					PoolRenderableObjects;
+    std::string					AnimatedMeshPath;
 } CONFIG_INFO;
 
 

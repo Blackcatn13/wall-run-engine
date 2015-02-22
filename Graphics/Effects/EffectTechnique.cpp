@@ -5,9 +5,10 @@
 #include "Core\Core.h"
 #include "EffectManager.h"
 #include <d3dx9.h>
+#include "Core_Utils/MemLeaks.h"
 
 CEffectTechnique::CEffectTechnique()
-	: m_Effect(NULL)
+    : m_Effect(NULL)
     , m_D3DTechnique(NULL)
 {
 }
@@ -17,8 +18,8 @@ CEffectTechnique::~CEffectTechnique()
 }
 bool CEffectTechnique::BeginRender()
 {
-	if(m_Effect==NULL)
-		return false;
+    if (m_Effect == NULL)
+        return false;
     CEffectManager *l_EM = EFFECTM;
     LPD3DXEFFECT l_Effect = m_Effect->GetD3DEffect();
     if (m_UseCameraPosition) {
@@ -83,15 +84,14 @@ bool CEffectTechnique::BeginRender()
     }
     if (m_UseViewToLightProjectionMatrix) {
         //ShadowMap
-		//Mat44f l_ViewToLightProjectionMatrix=l_ViewMatrix;
-		Mat44f l_ViewToLightProjectionMatrix=l_EM->GetViewMatrix();
-		//l_ViewToLightProjectionMatrix.Inverse();
-		l_ViewToLightProjectionMatrix.GetInverted();
-		l_ViewToLightProjectionMatrix=l_ViewToLightProjectionMatrix*l_EM->GetLightViewMatrix();
-		l_ViewToLightProjectionMatrix=l_ViewToLightProjectionMatrix*l_EM->GetShadowProjectionMatrix();
-		//l_Effect->SetMatrix(m_Effect->m_ViewToLightProjectionMatrixParameter, &l_ViewToLightProjectionMatrix.GetD3DXMatrix());
-		l_Effect->SetMatrix(m_Effect->GetViewToLightProjectionMatrixParameter(), &l_ViewToLightProjectionMatrix.GetD3DXMatrix());
-
+        //Mat44f l_ViewToLightProjectionMatrix=l_ViewMatrix;
+        Mat44f l_ViewToLightProjectionMatrix = l_EM->GetViewMatrix();
+        //l_ViewToLightProjectionMatrix.Inverse();
+        l_ViewToLightProjectionMatrix.GetInverted();
+        l_ViewToLightProjectionMatrix = l_ViewToLightProjectionMatrix * l_EM->GetLightViewMatrix();
+        l_ViewToLightProjectionMatrix = l_ViewToLightProjectionMatrix * l_EM->GetShadowProjectionMatrix();
+        //l_Effect->SetMatrix(m_Effect->m_ViewToLightProjectionMatrixParameter, &l_ViewToLightProjectionMatrix.GetD3DXMatrix());
+        l_Effect->SetMatrix(m_Effect->GetViewToLightProjectionMatrixParameter(), &l_ViewToLightProjectionMatrix.GetD3DXMatrix());
     }
     if (m_UseTime) {
         //TODO
@@ -107,7 +107,7 @@ bool CEffectTechnique::BeginRender()
 }
 bool CEffectTechnique::Refresh()
 {
-	m_D3DTechnique=m_Effect->GetTechniqueByName(m_TechniqueName);
+    m_D3DTechnique = m_Effect->GetTechniqueByName(m_TechniqueName);
     return false;
 }
 //DirectX Methods Interface

@@ -1,5 +1,6 @@
 #include "RenderableCommands\EnableZTestSceneRendererCommand.h"
 #include "GraphicsManager.h"
+#include "Core_Utils/MemLeaks.h"
 //#include "XML\XMLTreeNode.h"
 
 CEnableZTestSceneRendererCommand::CEnableZTestSceneRendererCommand(CXMLTreeNode &atts) {}

@@ -6,7 +6,7 @@
 #include "DirectionalLight.h"
 #include "Utils\Logger.h"
 #include "Core\Core.h"
-
+#include "Core_Utils/MemLeaks.h"
 #include "Renderable\RenderableObjectsManager.h"
 #include "Renderable\RenderableObjectsLayersManager.h"
 
@@ -121,7 +121,8 @@ void CLightManager::Load(const std::string &FileName)
                     if (l_GenerateDynamicShadowMap) {
                         l_OmniLight->SetFormatType(l_ShadowMapFormatType);
                         l_OmniLight->SetMustUpdateStaticShadowMap(l_UpdateStaticShadowMap);
-                        l_OmniLight->SetShadowMaskTexture(l_ShadowTextureMask);
+                        if (l_ShadowTextureMask != "")
+                            l_OmniLight->SetShadowMaskTexture(l_ShadowTextureMask);
                         l_OmniLight->setShadowMapWidth(l_ShadowMapWith);
                         l_OmniLight->setShadowMapHeigth(l_ShadowMapHeight);
                     }
@@ -154,7 +155,8 @@ void CLightManager::Load(const std::string &FileName)
                         l_DirectionalLight->SetMustUpdateStaticShadowMap(l_UpdateStaticShadowMap);
                         l_DirectionalLight->SetOrthoShadowMapSize((l_OrthoShadowMapWidht, l_OrthoShadowMapHeight));
                         l_DirectionalLight->SetFormatType(l_ShadowMapFormatType);
-                        l_DirectionalLight->SetShadowMaskTexture(l_ShadowTextureMask);
+                        if (l_ShadowTextureMask != "")
+                            l_DirectionalLight->SetShadowMaskTexture(l_ShadowTextureMask);
                         l_DirectionalLight->setShadowMapWidth(l_ShadowMapWith);
                         l_DirectionalLight->setShadowMapHeigth(l_ShadowMapHeight);
                     }
@@ -188,7 +190,8 @@ void CLightManager::Load(const std::string &FileName)
                     if (l_GenerateDynamicShadowMap) {
                         l_SpotLight->SetMustUpdateStaticShadowMap(l_UpdateStaticShadowMap);
                         l_SpotLight->SetFormatType(l_ShadowMapFormatType);
-                        l_SpotLight->SetShadowMaskTexture(l_ShadowTextureMask);
+                        if (l_ShadowTextureMask != "")
+                            l_SpotLight->SetShadowMaskTexture(l_ShadowTextureMask);
                         l_SpotLight->setShadowMapWidth(l_ShadowMapWith);
                         l_SpotLight->setShadowMapHeigth(l_ShadowMapHeight);
                     }

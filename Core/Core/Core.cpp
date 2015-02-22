@@ -20,6 +20,8 @@
 #include "PhysicsManager.h"
 #include "RenderableCommands\SceneRendererCommandManager.h"
 #include "TriggerManager\TriggerManager.h"
+#include "Core_Utils/MemLeaks.h"
+#include "Core_Utils\LogRender.h"
 
 
 CCore* CCore::m_Instance = 0;
@@ -61,6 +63,7 @@ void CCore::Init(HWND handler)
     m_ScriptManager->Initialize();
     //m_RenderableManager = new CRenderableObjectsManager();
     m_AnimatedModelManager = new CAnimatedModelManager();
+    m_AnimatedModelManager->Load(m_Config.AnimatedMeshPath);
     //Cargamos Technique pools
     m_RenderableObjectTechniqueManager = new CRenderableObjectTechniqueManager();
     m_RenderableObjectTechniqueManager->Load(m_Config.PoolRenderableObjects);
@@ -85,6 +88,7 @@ void CCore::Init(HWND handler)
     m_LightManager = new CLightManager();*/
     m_PhysicsManager = new CPhysicsManager();
     m_PhysicsManager->Init();
+    m_LogRender = new CLogRender();
     m_SceneRendererCommandManager = new CSceneRendererCommandManager();
     m_SceneRendererCommandManager->Load(m_Config.SceneRenderCommandsPath);
     m_TriggerManager = new CTriggerManager();
@@ -110,12 +114,12 @@ void CCore::DeInit()
     CHECKED_DELETE(m_CameraController);
     CHECKED_DELETE(m_CinematicManager);
     CHECKED_DELETE(m_EffectManager);
-	CHECKED_DELETE(m_TriggerManager);
+    CHECKED_DELETE(m_TriggerManager);
     CHECKED_DELETE(m_PhysicsManager);
     //CHECKED_DELETE(m_Process);
     CHECKED_DELETE(m_RenderableObjectTechniqueManager);
     CHECKED_DELETE(m_SceneRendererCommandManager);
-	
+    CHECKED_DELETE(m_LogRender);
 }
 
 CCore* CCore::GetInstance()
@@ -140,4 +144,5 @@ void CCore::Update(float dt)
     m_PhysicsManager->Update(dt);
     m_SoundManager->Update();
     m_InputManager->Update();
+    m_LogRender->Update(dt);
 }

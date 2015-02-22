@@ -8,38 +8,41 @@
 
 class COrthoFixedCamera: public CCamera
 {
-	private:
-		float m_Width; 
-		float m_Height;
+private:
+    float m_Width;
+    float m_Height;
 
-	public:
+public:
 
-		COrthoFixedCamera(float zn, float zf, float fov, float aspect, CObject3D* object3D);
-		COrthoFixedCamera();
-		virtual ~COrthoFixedCamera() {;}
+    COrthoFixedCamera(float zn, float zf, float fov, float aspect, CObject3D* object3D);
+    COrthoFixedCamera();
+    virtual ~COrthoFixedCamera()
+    {
+        ;
+    }
 
-		//---Interfaz de CCamera
-		virtual Vect3f					GetDirection		() const;
-		virtual Vect3f					GetLookAt				() const;
-		virtual Vect3f					GetEye					() const;
-		virtual Vect3f					GetVecUp				() const;
+    //---Interfaz de CCamera
+    virtual Vect3f					GetDirection		() const;
+    virtual Vect3f					GetLookAt				() const;
+    virtual Vect3f					GetEye					() const;
+    virtual Vect3f					GetVecUp				() const;
 
-		//---ShadowMap
+    //---ShadowMap
 
-		Mat44f		GetViewMatrix();
-		Mat44f		GetProjectionMatrix();
-	
-		void SetWidth(float width)
-		{
-			m_Width = width;
-		}
+    Mat44f		GetViewMatrix();
+    Mat44f		GetProjectionMatrix();
 
-		void SetHeight(float height)
-		{
-			m_Height = height;
-		}
-		//...	
+    void SetWidth(float width)
+    {
+        m_Width = width;
+    }
 
-	};
+    void SetHeight(float height)
+    {
+        m_Height = height;
+    }
+    //...
+
+};
 
 #endif // INC_FPS_CAMERA_H_

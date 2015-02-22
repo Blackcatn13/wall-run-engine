@@ -1,6 +1,7 @@
 #include "Camera.h"
 #include "Assert.h"
 #include "Math\MathUtils.h"
+#include "Core_Utils/MemLeaks.h"
 
 CCamera::CCamera(float zn, float zf, float fov, float aspect, CObject3D* object3D, ETypeCamera typeCamera)
     : m_pObject3D(object3D)

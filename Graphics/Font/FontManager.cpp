@@ -8,6 +8,7 @@
 //#include "Script/ScriptManager.h"
 //#include "luabind/luabind.hpp"
 #include <assert.h>
+#include "Core_Utils/MemLeaks.h"
 
 
 void CFontManager::Done ()

@@ -6,6 +6,7 @@
 #include "d3dx9.h"
 #include <string>
 #include <map>
+#include "Core_Utils/MemLeaks.h"
 
 void CEffect::SetNullParameters()
 {
@@ -128,7 +129,7 @@ bool CEffect::SetLight(CLight *Light)
     m_LightsDirection[0] = l_direction;
     Vect3f l_color = Vect3f(Light->GetColor().GetRed(), Light->GetColor().GetGreen(), Light->GetColor().GetBlue()) ;
     m_LightsColor[0] = l_color;
-     m_Effect->SetIntArray(m_LightsTypeParameter, &m_LightsType[0], MAX_LIGHTS_BY_SHADER);
+    m_Effect->SetIntArray(m_LightsTypeParameter, &m_LightsType[0], MAX_LIGHTS_BY_SHADER);
     m_Effect->SetFloatArray(m_LightsAngleParameter, &m_LightsAngle[0], MAX_LIGHTS_BY_SHADER);
     m_Effect->SetFloatArray(m_LightsFallOffParameter, &m_LightsFallOff[0], MAX_LIGHTS_BY_SHADER);
     m_Effect->SetFloatArray(m_LightsIntensityParameter, &m_LightsIntensity[0], MAX_LIGHTS_BY_SHADER);

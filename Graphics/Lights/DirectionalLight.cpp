@@ -5,6 +5,7 @@
 #include "Camera\OrthoFixedCameraController.h"
 #include "Camera\OrthoFixedCamera.h"
 #include "GraphicsManager.h"
+#include "Core_Utils/MemLeaks.h"
 
 /*CDirectionalLight::CDirectionalLight() : CLight()
 {

@@ -1,5 +1,5 @@
 #include "CinematicObjectKeyFrame.h"
-
+#include "Core_Utils/MemLeaks.h"
 
 
 CCinematicObjectKeyFrame::CCinematicObjectKeyFrame(CXMLTreeNode &atts)

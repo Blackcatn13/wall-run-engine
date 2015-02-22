@@ -1,7 +1,8 @@
 #include "Renderable\RenderableObjectTechnique.h"
+#include "Core_Utils/MemLeaks.h"
 
 CRenderableObjectTechnique::CRenderableObjectTechnique()
-: m_EffectTechnique(NULL)
+    : m_EffectTechnique(NULL)
 {
 }
 

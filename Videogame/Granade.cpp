@@ -23,9 +23,9 @@ CGranade::CGranade() :
 
 CGranade::~CGranade()
 {
-    CHECKED_DELETE(m_PhysicUserData);
-    CHECKED_DELETE(actor);
-    CHECKED_DELETE(mesh);
+    //CHECKED_DELETE(m_PhysicUserData);
+    //CHECKED_DELETE(actor);
+    //CHECKED_DELETE(mesh);
 }
 
 void CGranade::Start()

@@ -2,6 +2,7 @@
 #include "Core\Core.h"
 #include "Effects\EffectManager.h"
 #include "Renderable\PoolRenderableObjectTechnique.h"
+#include "Core_Utils/MemLeaks.h"
 
 CRenderableObjectTechniqueManager::CRenderableObjectTechniqueManager()
 {

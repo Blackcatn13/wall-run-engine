@@ -1,5 +1,6 @@
 #include "RenderableCommands\EnableZWriteSceneRendererCommand.h"
 #include "GraphicsManager.h"
+#include "Core_Utils/MemLeaks.h"
 
 CEnableZWriteSceneRendererCommand::CEnableZWriteSceneRendererCommand(CXMLTreeNode &atts) {}
 

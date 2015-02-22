@@ -18,6 +18,7 @@
 #include "ScriptManager.h"
 #include "Renderable\RenderableObjectsLayersManager.h"
 #include "RenderableCommands\SceneRendererCommandManager.h"
+#include "Core_Utils/MemLeaks.h"
 
 CEngine::~CEngine(void)
 {
@@ -34,9 +35,9 @@ void CEngine::Init(CProcess *p, std::string ConfFile, HWND handler)
     m_Core->setConfig (m_Conf_info);
     m_Core->setHandler (handler);
     m_Core->Init (handler);
-    m_LogRender = new CLogRender();
-    LOGGER->SetCapacity(500);
-    m_LogRender->SetLinePerPage(30);
+    //m_LogRender = new CLogRender();
+    //LOGGER->SetCapacity(500);
+    //m_LogRender->SetLinePerPage(30);
     //m_Core->GetLanguageManager()->SetXmlFile(".\\Data\\fonts.xml");
     //m_Core->GetLanguageManager()->LoadXMLs();
 }
@@ -45,8 +46,8 @@ void CEngine::DeInit()
 {
     CHECKED_DELETE (m_Process);
     CHECKED_DELETE (m_Core);
-    CHECKED_DELETE (m_LogRender);
-    CLogger::DeInit();
+    //CHECKED_DELETE (m_LogRender);
+    //CLogger::DeInit();
 }
 
 void CEngine::Update()
@@ -54,19 +55,27 @@ void CEngine::Update()
     m_Timer.Update();
     m_Core->Update (m_Timer.GetElapsedTime());
     m_Process->Update (m_Timer.GetElapsedTime());
-    if (m_Core->GetActionToInput()->DoAction("LoadLanguages"))
-        m_Core->GetLanguageManager()->LoadXMLs();
-    if (m_Core->GetActionToInput()->DoAction("Logger"))
+    if (ACT2IN->DoAction("LoadLanguages"))
+        LANGM->LoadXMLs();
+    if (ACT2IN->DoAction("Logger"))
         m_Process->SetPrintInfo(!m_Process->getPrintInfo());
-    if (m_Core->GetActionToInput()->DoAction("ReloadActions"))
-        m_Core->GetActionToInput()->ReloadXML();
-    if (m_Core->GetActionToInput()->DoAction("Save2File"))
+    if (ACT2IN->DoAction("LoggerPageUP"))
+        LOGRNDR->PageUp();
+    if (ACT2IN->DoAction("LoggerPageDown"))
+        LOGRNDR->PageDown();
+    if (ACT2IN->DoAction("LoggerUP") || ACT2IN->DoAction("LoggerUPCont"))
+        LOGRNDR->PrevLine();
+    if (ACT2IN->DoAction("LoggerDown") || ACT2IN->DoAction("LoggerDownCont"))
+        LOGRNDR->NextLine();
+    if (ACT2IN->DoAction("ReloadActions"))
+        ACT2IN->ReloadXML();
+    if (ACT2IN->DoAction("Save2File"))
         LOGGER->SaveLogsInFile();
-    if (m_Core->GetActionToInput()->DoAction("LoggerOpen"))
-        m_LogRender->SetVisible(!m_LogRender->GetVisible());
-    if (m_Core->GetActionToInput()->DoAction("ReloadTextures"))
+    if (ACT2IN->DoAction("LoggerOpen"))
+        LOGRNDR->SetVisible(!LOGRNDR->GetVisible());
+    if (ACT2IN->DoAction("ReloadTextures"))
         TEXTM->Reload();
-    if (m_Core->GetActionToInput()->DoAction("ReloadMeshes"))
+    if (ACT2IN->DoAction("ReloadMeshes"))
         RENDLM->Reload();
     if (ACT2IN->DoAction("ReloadEffects"))
         EFFECTM->Reload();
@@ -76,12 +85,12 @@ void CEngine::Update()
         SCRIPTM->Reload();
     if (ACT2IN->DoAction("ReloadRenderCommands"))
         SCENRENDCOMM->Reload();
-    m_LogRender->Update(m_Timer.GetElapsedTime());
+    //m_LogRender->Update(m_Timer.GetElapsedTime());
 }
 
 void CEngine::Render()
 {
-    CGraphicsManager* gm = m_Core->GetGraphicsManager();
+    //CGraphicsManager* gm = m_Core->GetGraphicsManager();
     //CCamera* camera = m_Process->GetCamera();
     // gm->BeginRendering();
     //  gm->SetupMatrices(m_Process->GetCamera());
@@ -89,12 +98,12 @@ void CEngine::Render()
     //gm->BeginRenderCommand();
     //  RenderScene();
     m_Process->Render();
-    gm->DisableZBuffering();
+    /*gm->DisableZBuffering();
     gm->EnableAlphaBlend();
     m_Process->RenderDebugInfo(true, m_Timer.GetElapsedTime());
     m_LogRender->Render(gm, FONTM);
     gm->DisableAlphaBlend();
-    gm->EnableZBuffering();
+    gm->EnableZBuffering();*/
     // gm->EndRendering();
 }
 
@@ -129,12 +138,12 @@ void CEngine::ParseConfFile()
                         m_Conf_info.Mouse_Draw = n(i).GetBoolProperty("drawPointerMouse");
                     } else if (name == "Languages") {
                         m_Conf_info.LanguagesPath = std::vector<std::string>();
-                        m_Conf_info.CurrentLanguage = n(i).GetPszISOProperty("current", "catalan");
+                        m_Conf_info.CurrentLanguage = n(i).GetPszISOProperty("current", "catalan", false);
                         int languages = n (i).GetNumChildren();
                         for (int j = 0; j < languages; ++j)
                             m_Conf_info.LanguagesPath.push_back(n(i)(j).GetPszISOProperty("XMLfile", "./Data/catalan.xml"));
                     } else if (name == "Fonts") {
-                        m_Conf_info.FontsPath = n(i).GetPszISOProperty("fonstXML", "./Data/fonts/fonts.xml");
+                        m_Conf_info.FontsPath = n(i).GetPszISOProperty("fontsXML", "./Data/fonts/fonts.xml");
                     } else if (name == "Actions") {
                         m_Conf_info.ActionsPath = n(i).GetPszISOProperty("actionsXML", "./Data/Actions.xml");
                     } else if (name == "Meshes") {
@@ -155,6 +164,8 @@ void CEngine::ParseConfFile()
                         m_Conf_info.SceneRenderCommandsPath = n(i).GetPszISOProperty("rendererCommandsXML", "");
                     } else if (name == "PoolRenderableObjects") {
                         m_Conf_info.PoolRenderableObjects = n(i).GetPszISOProperty("poolRenderableObjects", ".\\Data\\level1\\pool_renderable_objects.xml");
+                    } else if (name == "AnimatedModels") {
+                        m_Conf_info.AnimatedMeshPath = n(i).GetPszISOProperty("modelsXML", "./Data/animated_models.xml");
                     }
                 }
             }

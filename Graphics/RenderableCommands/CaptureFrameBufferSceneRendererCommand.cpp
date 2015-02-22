@@ -5,6 +5,7 @@
 #include "Core\Core.h"
 #include "Utils\Defines.h"
 #include "Texture\TextureManager.h"
+#include "Core_Utils/MemLeaks.h"
 
 CCaptureFrameBufferSceneRendererCommand::CCaptureFrameBufferSceneRendererCommand(CXMLTreeNode &atts)
 {

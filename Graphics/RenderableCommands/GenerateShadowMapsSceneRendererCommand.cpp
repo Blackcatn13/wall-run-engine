@@ -5,8 +5,7 @@
 #include "Lights\Light.h"
 #include "Effects\Effect.h"
 #include "Effects\EffectManager.h"
-
-
+#include "Core_Utils/MemLeaks.h"
 
 CGenerateShadowMapsSceneRendererCommand::CGenerateShadowMapsSceneRendererCommand(CXMLTreeNode &atts)
 {

@@ -4,9 +4,13 @@
 #include "Effects\Effect.h"
 #include "Renderable\RenderableObjectsManager.h"
 #include "Texture\Texture.h"
+#include "Core_Utils/MemLeaks.h"
 
 
 CLight::CLight()
+    : m_StaticShadowMap(NULL),
+      m_DynamicShadowMap(NULL),
+      m_ShadowMaskTexture(NULL)
 {
 }
 

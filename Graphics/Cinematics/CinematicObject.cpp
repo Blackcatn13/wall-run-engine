@@ -3,6 +3,7 @@
 #include "Renderable\RenderableObject.h"
 #include "Renderable\RenderableObjectsManager.h"
 #include "Core\Core.h"
+#include "Core_Utils/MemLeaks.h"
 
 
 CCinematicObject::CCinematicObject(CXMLTreeNode &atts)

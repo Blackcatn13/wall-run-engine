@@ -8,6 +8,7 @@
 #include "Texture\TextureManager.h"
 #include "Effects\Effect.h"
 #include "RenderableVertex\VertexTypes.h"
+#include "Core_Utils/MemLeaks.h"
 
 CDeferredShadingSceneRendererCommand::CDeferredShadingSceneRendererCommand(CXMLTreeNode &atts): CStagedTexturedRendererCommand(atts)
 {

@@ -4,6 +4,7 @@
 #include "CinematicPlayer.h"
 #include "Utils\Logger.h"
 #include <vector>
+#include "Core_Utils/MemLeaks.h"
 
 CCinematic::CCinematic()
     : CRenderableObject()

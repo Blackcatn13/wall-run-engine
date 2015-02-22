@@ -3,6 +3,7 @@
 #include "GraphicsManager.h"
 #include "Lights\LightManager.h"
 #include "Core\Core.h"
+#include "Core_Utils/MemLeaks.h"
 
 CRenderDebugLightsSceneRenderCommand::CRenderDebugLightsSceneRenderCommand(CXMLTreeNode &atts)
 {

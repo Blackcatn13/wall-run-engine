@@ -1,6 +1,7 @@
 #include "RenderableCommands\EnableAlphaBlendCommand.h"
 #include "GraphicsManager.h"
 #include "XML\XMLTreeNode.h"
+#include "Core_Utils/MemLeaks.h"
 
 CEnableAlphaBlendSceneRendererCommand::CEnableAlphaBlendSceneRendererCommand(CXMLTreeNode &atts)
 {

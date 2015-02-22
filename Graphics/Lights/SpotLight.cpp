@@ -6,6 +6,7 @@
 #include "GraphicsManager.h"
 #include "Effects\EffectManager.h"
 #include "Core\Core.h"
+#include "Core_Utils/MemLeaks.h"
 
 
 CSpotLight::CSpotLight() {}

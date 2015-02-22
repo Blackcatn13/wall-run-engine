@@ -1,6 +1,7 @@
 #include "Process.h"
 #include "Core.h"
 #include "Font/FontManager.h"
+#include "Core_Utils/MemLeaks.h"
 
 CProcess::CProcess(void)
 {

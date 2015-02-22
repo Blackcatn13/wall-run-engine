@@ -1,4 +1,5 @@
 #include "CinematicPlayer.h"
+#include "Core_Utils/MemLeaks.h"
 
 CCinematicPlayer::CCinematicPlayer()
     : m_Playing(false)

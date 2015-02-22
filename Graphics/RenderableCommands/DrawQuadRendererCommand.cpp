@@ -7,6 +7,7 @@
 #include "Renderable\RenderableObjectTechniqueManager.h"
 #include "Texture\TextureManager.h"
 #include "RenderableVertex\VertexTypes.h"
+#include "Core_Utils/MemLeaks.h"
 
 CDrawQuadRendererCommand::CDrawQuadRendererCommand(CXMLTreeNode &atts) : CStagedTexturedRendererCommand(atts)
 {

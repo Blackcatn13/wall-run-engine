@@ -1,6 +1,7 @@
 #include "CubeTexture.h"
 #include "Utils\Logger.h"
 #include "Core\Core.h"
+#include "Core_Utils/MemLeaks.h"
 
 bool CCubeTexture::LoadFile()
 {
