@@ -26,6 +26,9 @@
     <Filter Include="ScriptedController">
       <UniqueIdentifier>{21e8ec54-c1a9-427b-8b19-0ccdb7c3d8da}</UniqueIdentifier>
     </Filter>
+    <Filter Include="PlayerController">
+      <UniqueIdentifier>{a7df8b91-a908-4445-b570-5d8fb6106c66}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Engine.cpp">
@@ -57,6 +60,9 @@
     </ClCompile>
     <ClCompile Include="Core\ScriptedController.cpp">
       <Filter>ScriptedController</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\PlayerController.cpp">
+      <Filter>PlayerController</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -125,6 +131,9 @@
     </ClInclude>
     <ClInclude Include="Core\BindVectors.h">
       <Filter>ScriptManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\PlayerController.h">
+      <Filter>PlayerController</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

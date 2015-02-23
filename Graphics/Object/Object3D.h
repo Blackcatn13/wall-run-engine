@@ -74,7 +74,7 @@ public:
     void InitMat44();
 
 protected:
-    Vect3f          m_Position;
+    Vect3f				m_Position;
     float               m_fYaw;
     float               m_fPitch;
     float               m_fRoll;

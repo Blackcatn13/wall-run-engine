@@ -15,6 +15,7 @@ class CPhysicUserData;
 class CPhysicActor;
 class CPhysicMaterial;
 class CGranade;
+class CPlayerController;
 
 class CTestCommands : public CProcess
 {
@@ -41,6 +42,7 @@ private:
     float			    m_dt;
     Vect2i              m_textPosition;
     int					m_numPrimitives, m_totalVertices, m_totalFaces;
+	CPlayerController*  m_PlayerController;
 public:
     CTestCommands(void);
     ~CTestCommands(void);

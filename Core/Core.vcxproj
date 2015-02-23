@@ -15,6 +15,7 @@
     <ClCompile Include="Core\CoreLuaWrapper.cpp" />
     <ClCompile Include="Core\Engine.cpp" />
     <ClCompile Include="Core\MathLuaUtils.cpp" />
+    <ClCompile Include="Core\PlayerController.cpp" />
     <ClCompile Include="Core\Process.cpp" />
     <ClCompile Include="Core\ScriptedController.cpp" />
     <ClCompile Include="Core\ScriptManager.cpp" />
@@ -39,6 +40,7 @@
     <ClInclude Include="Core\Engine.h" />
     <ClInclude Include="Core\EngineDefs.h" />
     <ClInclude Include="Core\MathLuaUtils.h" />
+    <ClInclude Include="Core\PlayerController.h" />
     <ClInclude Include="Core\Process.h" />
     <ClInclude Include="Core\ScriptedController.h" />
     <ClInclude Include="Core\ScriptManager.h" />

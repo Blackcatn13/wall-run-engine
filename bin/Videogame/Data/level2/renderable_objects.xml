@@ -9,7 +9,7 @@
 	<mesh_instance name="Reflection" core="CubeMap" pos="10.0 0.0 7.0" yaw="0.0" pitch="0.0" roll="0.0" scale="0.5 0.5 0.5"/>
 	<!--<mesh_instance name="Box003" core="Box002"  pos="0.000000 0.000000 0.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />-->
 	<mesh_instance name="Box002" core="Box002"  pos="5.000000 0.000000 1.000000" yaw="0.34"  pitch="0.0" roll="0.0" scale="2.0 2.0 2.0" />
-	<mesh_instance name="Box001LobyW" core="Box001LobyW"  pos="0.000000 0.000000 0.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="100.0 100.0 100.0" />
+	<!--mesh_instance name="Box001LobyW" core="Box001LobyW"  pos="0.000000 0.000000 0.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="100.0 100.0 100.0" />-->
 	<!-- <mesh_instance name="Plane001" core="Plane001"  pos="8.000000 1.000000 0.000000" yaw="5.0"  pitch="0.0" roll="-5.0" scale="0.1 0.1 0.1" />
 	<mesh_instance name="Low" core="LOW001"  pos="5.000000 0.000000 5.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1 1 1" /> -->
 	<!--
