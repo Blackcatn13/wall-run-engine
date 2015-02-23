@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <triggers>
-	<trigger name="Puerta_Entrar_Bruja" position="5.0 5.0 3.0" shape="box" size="1.0 1.0 1.0" type_event="enter" script="./assets/scripts/textoPuerta.lua" group="3" paint="true" color="0.0 1.0 0.0" />
-	<trigger name="Puerta_Entrar_Bruja1" position="7.0 0.0 6.0" shape="box" size="1.0 1.0 1.0" type_event="enter" script="./assets/scripts/textoPuerta.lua" group="3" paint="true" color="0.0 1.0 0.0" />
-	<trigger name="Puerta_Entrar_Bruja2" position="7.0 10.0 0.0" shape="box" size="1.0 1.0 1.0" type_event="enter" script="./assets/scripts/textoPuerta.lua" group="3" paint="true" color="0.0 1.0 0.0" />
-	<trigger name="Puerta_Entrar_Bruja3" position="7.0 5.0 -5.0" shape="box" size="1.0 1.0 1.0" type_event="enter" script="./assets/scripts/textoPuerta.lua" group="3" paint="true" color="0.0 1.0 0.0" />
+	<trigger name="Puerta_Entrar_Bruja" position="5.0 5.0 3.0" shape="box" size="1.0 1.0 1.0" type_event="enter" script="./Data/TestTriggersEnter.lua" group="3" paint="true" color="0.0 1.0 0.0" />
+	<trigger name="Puerta_Entrar_Bruja1" position="7.0 0.0 6.0" shape="box" size="1.0 1.0 1.0" type_event="stay" script="./Data/TestTriggersStay.lua" group="3" paint="true" color="0.0 1.0 0.0" />
+	<trigger name="Puerta_Entrar_Bruja2" position="7.0 10.0 0.0" shape="box" size="1.0 1.0 1.0" type_event="leave" script="./Data/TestTriggersExit.lua" group="3" paint="true" color="0.0 1.0 0.0" />
 	
 	<!--<trigger name="Puerta_Entrar_Obispo" position="23.2005 11.3686 0.526208" shape="box" size="4.86 9.2 8.492" type_event="stay" script="./assets/scripts/textoPuerta.lua" group="1" paint="false" color="0.0 0.0 1.0" />
 	<trigger name="Plaza_Final_Atajo" position="-31.613 11.635 67.606" shape="box" size="1.4335 5.299 1.224" type_event="stay" script="./assets/scripts/textoPuerta3.lua" group="1" paint="false" color="0.0 0.0 1.0" />

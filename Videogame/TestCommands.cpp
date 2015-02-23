@@ -64,7 +64,7 @@ CTestCommands::~CTestCommands(void)
      CHECKED_DELETE(m_PhysicUserData);
      CHECKED_DELETE(m_PhysicUserDataCube);
      CHECKED_DELETE(m_PhysicActorCubeFix);*/
-    // CHECKED_DELETE(m_Granade);
+    CHECKED_DELETE(m_Granade);
 }
 
 void CTestCommands::Init()
@@ -109,7 +109,7 @@ void CTestCommands::Init()
     m_Trigger->CreateBoxTrigger(Vect3f(5.f, 5.f, 5.f), Vect3f(2.f, 2.f, 2.f));
     PHYSXM->AddPhysicActor(m_Trigger);
     PHYSXM->SetTriggerReport((CPhysicTriggerReport*)TRIGGM);*/
-    // m_Granade = new CGranade();
+    m_Granade = new CGranade();
 }
 
 void CTestCommands::DeInit()
@@ -190,6 +190,7 @@ void CTestCommands::Update(float dt)
     }
     // CCORE->GetCinematicController()->Update(dt);
     m_Camera = CAMCONTM->getActiveCamera();
+    m_Granade->Update(dt);
 //	m_ScriptedController->Update(dt);
     /* if (m_PlayerMode) {
          m_ObjectFPS->SetYaw(m_ObjectFPS->GetYaw() -  deltaX * dt);

@@ -16,6 +16,12 @@ public:
         m_Name = name;
         if (name == "Tete") //Test scripting
             printf("Yaay\n");
+        if (name == "TriggerEnter") //Test scripting
+            printf("Triggers Enter\n");
+        if (name == "TriggerStay") //Test scripting
+            printf("Triggers Stay\n");
+        if (name == "TriggerExit") //Test scripting
+            printf("Triggers Exit\n");
     }
     std::string getName()
     {
