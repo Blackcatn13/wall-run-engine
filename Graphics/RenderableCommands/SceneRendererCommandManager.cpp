@@ -31,6 +31,7 @@
 #include "RenderableCommands\EnableAlphaBlendCommand.h"
 #include "RenderableCommands\DisableAlphaBlendCommand.h"
 #include "RenderableCommands\RenderDebugInfoSceneRendererCommand.h"
+#include "RenderableCommands\GaussianBlurSceneRendererCommand.h"
 #include "Core_Utils/MemLeaks.h"
 
 
@@ -99,7 +100,7 @@ void CSceneRendererCommandManager::Load(const std::string &FileName)
                     m_SceneRendererCommands.AddResource(l_Name, l_Command);
                 }
 				if (name == "gaussian_blur") {
-                    CDrawQuadRendererCommand *l_Command = new CDrawQuadRendererCommand(m(i));
+                    CGaussianBlueSceneRendererCommand *l_Command = new CGaussianBlueSceneRendererCommand(m(i));
                     m_SceneRendererCommands.AddResource(l_Name, l_Command);
                 }
                 if (name == "enable_z_write") {
