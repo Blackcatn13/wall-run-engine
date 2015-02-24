@@ -53,6 +53,7 @@
     <ClCompile Include="RenderableCommands\EnableZTestSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\EnableZWriteSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\EndRenderSceneRendererCommand.cpp" />
+    <ClCompile Include="RenderableCommands\GaussianBlurSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\GenerateShadowMapsSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\PresentSceneRenderCommand.cpp" />
     <ClCompile Include="RenderableCommands\RenderableObjectTechniquesSceneRendererCommand.cpp" />
@@ -132,6 +133,7 @@
     <ClInclude Include="RenderableCommands\EnableZTestSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\EnableZWriteSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\EndRenderSceneRendererCommand.h" />
+    <ClInclude Include="RenderableCommands\GaussianBlurSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\GenerateShadowMapsSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\PresentSceneRenderCommand.h" />
     <ClInclude Include="RenderableCommands\RenderableObjectTechniquesSceneRendererCommand.h" />

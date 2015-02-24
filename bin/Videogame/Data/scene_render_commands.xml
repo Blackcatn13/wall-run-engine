@@ -35,7 +35,7 @@
 	<disable_z_write/>
 	<disable_z_test />
 	
-		<!-- Skybox -->
+	<!-- Skybox -->
 	<!--<set_pool_renderable_objects_technique pool="skybox_pool"/>
 	<capture_frame_buffer>
 		<dynamic_texture stage_id="0" name="SkyBoxTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
@@ -64,29 +64,87 @@
 	<disable_alpha_blend />
 	
 	<!--Fog-->
-	<!--<enable_alpha_blend blendOp ="add" blendSrc="srcalpha" destBlend="invsrcalpha" />
+	<enable_alpha_blend blendOp ="add" blendSrc="srcalpha" destBlend="invsrcalpha" />
 	<set_pool_renderable_objects_technique pool="fog_pool"/>
 	<render_draw_quad> 
 		<texture stage_id="0" file="DepthMapTexture"/>
 	</render_draw_quad>
-	<disable_alpha_blend />-->
+	<disable_alpha_blend />
 	<!--End Fog-->
 
 	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
+	<!-- Bloom pas 1	-->
+	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
+	<!--<capture_frame_buffer>
+			<dynamic_texture stage_id="0" name="BloomCombineTexture1" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
+	</capture_frame_buffer>
+	<capture_frame_buffer>
+			<dynamic_texture stage_id="0" name="SceneTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
+	</capture_frame_buffer>
+	<set_pool_renderable_objects_technique pool="apply_gaussianblur"/>
+	<render_draw_quad> 
+		<texture stage_id="0" file="DiffuseMapTexture"/>
+	</render_draw_quad>-->
+	
+	
+	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
+	<!-- Bloom pas 2	-->
+	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
+	<!--
+	<disable_alpha_blend/>
+	<capture_frame_buffer>
+			<dynamic_texture stage_id="0" name="TextureToBlur" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
+	</capture_frame_buffer>
+	<set_pool_renderable_objects_technique pool="BlurPool"/>
+	-->
+	<!--
+	<render_draw_quad technique_name="DrawQuadSolidTechnique">
+			<texture stage_id="0" file="DepthMapTexture"/>
+			<texture stage_id="1" file="TextureToBlur"/>
+	</render_draw_quad>
+	-->
+	<!--
+	<gaussian_blur>
+		<texture stage_id="0" file="DepthMapTexture"/>
+		<texture stage_id="1" file="TextureToBlur"/>
+	</gaussian_blur>
+	
+	<capture_frame_buffer>
+			<dynamic_texture stage_id="0" name="BloomCombineTexture2" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
+	</capture_frame_buffer>
+	-->
+	
+	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
 	<!-- ZBlur -->
 	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
-	<!--<disable_alpha_blend/>
+	<!--
+	<disable_alpha_blend/>
 	<capture_frame_buffer>
-		<dynamic_texture stage_id="0" name="DiffuseMapTexture1" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
+			<dynamic_texture stage_id="0" name="DiffuseMapTexture1" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 	</capture_frame_buffer>
 	<set_pool_renderable_objects_technique pool="BlurPool"/>
 	<render_draw_quad technique_name="DrawQuadSolidTechnique">
-		<texture stage_id="0" file="DepthMapTexture"/>
-		<texture stage_id="1" file="DiffuseMapTexture1"/>
-	</render_draw_quad>     
+			<texture stage_id="0" file="DepthMapTexture"/>
+			<texture stage_id="1" file="DiffuseMapTexture1"/>
+	</render_draw_quad>	
 	<capture_frame_buffer>
-		<dynamic_texture stage_id="0" name="DiffuseMapTexture2" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
-	</capture_frame_buffer>-->
+			<dynamic_texture stage_id="0" name="DiffuseMapTexture2" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
+	</capture_frame_buffer>
+	-->
+	
+	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
+	<!-- Bloom pas 3 -->
+	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
+	<!--
+	<disable_alpha_blend/>
+	<set_pool_renderable_objects_technique pool="apply_combinebloomeffect"/>
+	<render_draw_quad>
+			<texture stage_id="0" file="DiffuseMapTexture"/>
+			<texture stage_id="1" file="BloomCombineTexture2"/>
+	</render_draw_quad>
+	-->
 	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
 	
 
@@ -95,13 +153,14 @@
 	<enable_z_write/>
 	<enable_z_test/>
 	<set_axis /> -->
+	<!--
 	<clear_scene color="true" depth="true" stencil="true"/> 
 	<set_matrices/>
 	<enable_z_write/>
 	<enable_z_test/>
 	<set_pool_renderable_objects_technique pool="dummy_manager"/>
 	<render_scene layer="solid" active="true"/>
-
+	-->
 	<!--<capture_frame_buffer>
 		<dynamic_texture stage_id="0" name="FrameBuffer" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 	</capture_frame_buffer> -->

@@ -98,6 +98,10 @@ void CSceneRendererCommandManager::Load(const std::string &FileName)
                     CDrawQuadRendererCommand *l_Command = new CDrawQuadRendererCommand(m(i));
                     m_SceneRendererCommands.AddResource(l_Name, l_Command);
                 }
+				if (name == "gaussian_blur") {
+                    CDrawQuadRendererCommand *l_Command = new CDrawQuadRendererCommand(m(i));
+                    m_SceneRendererCommands.AddResource(l_Name, l_Command);
+                }
                 if (name == "enable_z_write") {
                     CEnableZWriteSceneRendererCommand *l_Command = new CEnableZWriteSceneRendererCommand(m(i));
                     m_SceneRendererCommands.AddResource(l_Name, l_Command);

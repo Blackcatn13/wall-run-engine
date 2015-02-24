@@ -52,4 +52,16 @@
         <default_technique vertex_type="2048" technique="SkyBoxTechnique"/>
     </pool_renderable_object_technique>
 	
+	<pool_renderable_object_technique name="apply_bloomeffect">
+		 <default_technique vertex_type="2048" technique="BloomTechnique"/>
+	</pool_renderable_object_technique>
+	
+	<pool_renderable_object_technique name="apply_combinebloomeffect">
+		 <default_technique vertex_type="2048" technique="CombineBloomTechnique"/>
+	</pool_renderable_object_technique>
+	
+	<pool_renderable_object_technique name="apply_gaussianblur">
+		 <default_technique vertex_type="2048" technique="GaussianBlurTechnique"/>
+	</pool_renderable_object_technique>
+	
 </renderable_object_techniques>
