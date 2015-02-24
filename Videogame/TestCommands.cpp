@@ -70,7 +70,7 @@ CTestCommands::~CTestCommands(void)
      CHECKED_DELETE(m_PhysicUserData);
      CHECKED_DELETE(m_PhysicUserDataCube);
      CHECKED_DELETE(m_PhysicActorCubeFix);*/
-    CHECKED_DELETE(m_Granade);
+   // CHECKED_DELETE(m_Granade);
 }
 
 void CTestCommands::Init()
@@ -115,7 +115,7 @@ void CTestCommands::Init()
     m_Trigger->CreateBoxTrigger(Vect3f(5.f, 5.f, 5.f), Vect3f(2.f, 2.f, 2.f));
     PHYSXM->AddPhysicActor(m_Trigger);
     PHYSXM->SetTriggerReport((CPhysicTriggerReport*)TRIGGM);*/
-	CPhysicActor* m_PhysicActorCubeFix;
+	/*CPhysicActor* m_PhysicActorCubeFix;
 	CPhysicUserData* m_PhysicUserDataCube;
 	m_PhysicUserDataCube = new CPhysicUserData("fixbox");
     m_PhysicUserDataCube->SetPaint(true);
@@ -136,7 +136,7 @@ void CTestCommands::Init()
 	m_PlayerController = new CPlayerController();
 	//CPhysicCookingMesh* m_CockMesh = new CPhysicCookingMesh();
 	//m_CockMesh->Init(PHYSXM->GetPhysicsSDK(), m_Alloc);
-	//m_CockMesh->CreateMeshFromASE("./Data/sceneTrainingPiky.ASE", "sceneTraining");
+	//m_CockMesh->CreateMeshFromASE("./Data/sceneTrainingPiky.ASE", "sceneTraining");*/
 	
 }
 
@@ -218,9 +218,9 @@ void CTestCommands::Update(float dt)
     }
     // CCORE->GetCinematicController()->Update(dt);
     m_Camera = CAMCONTM->getActiveCamera();
-    m_Granade->Update(dt);
+  /*  m_Granade->Update(dt);
 	m_PlayerController->Move(dt);
-//	m_ScriptedController->Update(dt);
+//	m_ScriptedController->Update(dt);*/
     /* if (m_PlayerMode) {
          m_ObjectFPS->SetYaw(m_ObjectFPS->GetYaw() -  deltaX * dt);
          m_ObjectFPS->SetPitch(m_ObjectFPS->GetPitch() - deltaY * dt);

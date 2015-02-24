@@ -49,7 +49,7 @@
     </pool_renderable_object_technique>
 	
 	<pool_renderable_object_technique name="skybox_pool">
-        <default_technique vertex_type="2048" technique="SkyBoxTechnique"/>
+        <default_technique vertex_type="351" technique="SkyBoxTechnique"/>
     </pool_renderable_object_technique>
 	
 	<pool_renderable_object_technique name="apply_bloomeffect">
