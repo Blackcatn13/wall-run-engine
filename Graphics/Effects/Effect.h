@@ -10,6 +10,7 @@
 #include "Math\Vector3.h"
 
 class CLight;
+
 class CEffect
 {
 private:
@@ -35,6 +36,7 @@ private:
     D3DXHANDLE m_BonesParameter;
     D3DXHANDLE m_TimeParameter;
 
+	CLight* m_Light;
     ////
     D3DXHANDLE m_UseShadowMaskTextureParameter;
     D3DXHANDLE m_UseStaticShadowmapParameter;
@@ -48,7 +50,11 @@ public:
     CEffect();
     ~CEffect();
     bool SetLights(size_t NumOfLights);
-    bool SetLight(CLight *Light);
+    bool SetLight();
+	void ChangeLight(CLight *Light) 
+	{
+		m_Light = Light;
+	}
     bool Load(const std::string &FileName);
     bool Reload();
     void SetShadowMapParameters(bool UseShadowMaskTexture, bool UseStaticShadowmap, bool UseDynamicShadowmap);

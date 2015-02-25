@@ -9,8 +9,10 @@ struct TGBUFFER_TEXTURED1_VERTEX_PS
 {
 	float4 HPosition : POSITION;
     float2 UV : TEXCOORD0;
-	float3 Normal : TEXCOORD1;
-	float4 WorldPosition : TEXCOORD2;
+	float3 WorldNormal : TEXCOORD1;
+	float3 WorldTangent : TEXCOORD2;
+	float3 WorldBinormal : TEXCOORD3;
+	float4 WorldPosition : TEXCOORD4;
 };
 
 // Estructura de píxel que contiene la info de 4 píxeles de salida
@@ -32,19 +34,18 @@ TGBUFFER_TEXTURED1_VERTEX_PS GBufferVS(VertexVS_TTEXTURE_NORMAL_TANGET_BINORMAL_
 	TGBUFFER_TEXTURED1_VERTEX_PS OUT = (TGBUFFER_TEXTURED1_VERTEX_PS)0;
     
     OUT.HPosition = mul(float4(IN.Position,1.0), g_WorldViewProjectionMatrix);
-	float3 l_WorldNormal = normalize(mul(IN.Normal,(float3x3)g_WorldMatrix));
-	float3 l_WorldTangent = normalize(mul(IN.Tangent.xyz, (float3x3)g_WorldMatrix));
-	float3 l_WorldBinormal = normalize(mul(IN.Binormal.xyz, (float3x3)g_WorldMatrix));
-	float3 l_TangentNormalized = normalize(l_WorldTangent);
-	float3 l_WNn= normalize(l_WorldNormal);
-	float3 l_BinormalNormalized = normalize(l_WorldBinormal);
-	float4 l_NormalTex = tex2D(S1LinearClampSampler, IN.UV);
-	float3 l_Bump = g_Bump * (l_NormalTex.rgb - float3 (0.5,0.5,0.5));
-	float3 l_Nn = l_WNn + l_Bump.x*l_TangentNormalized + l_Bump.y*l_BinormalNormalized;
-	l_Nn = normalize(l_Nn);
-	OUT.Normal = l_Nn;
+	OUT.WorldNormal = normalize(mul(IN.Normal.xyz, (float3x3) g_WorldMatrix));
+	OUT.WorldTangent = normalize(mul(IN.Tangent.xyz, (float3x3) g_WorldMatrix));
+	OUT.WorldBinormal = normalize(mul(IN.Binormal.xyz, (float3x3) g_WorldMatrix));
 	OUT.UV = IN.UV;
 	OUT.WorldPosition = OUT.HPosition;
+	
+	/*float3 l_WorldNormal = normalize(mul(IN.Normal,(float3x3)g_WorldMatrix));
+	float3 l_WorldTangent = normalize(mul(IN.Tangent.xyz, (float3x3)g_WorldMatrix));
+	float3 l_WorldBinormal = normalize(mul(IN.Binormal.xyz, (float3x3)g_WorldMatrix));
+	
+	OUT.Normal = l_Nn;*/
+	
     return OUT;
 }
 
@@ -52,15 +53,25 @@ TMultiRenderTargetPixel GBufferPS(TGBUFFER_TEXTURED1_VERTEX_PS IN) {
 	TMultiRenderTargetPixel OUT = (TMultiRenderTargetPixel)0;
 	float4 l_DiffuseColor = tex2D(S0LinearWrapSampler , IN.UV);
 	
-	float3 Nn = normalize(IN.Normal);
-	float3 NnScalated = Normal2Texture(Nn);
+	
+	float3 l_TangentNormalized = normalize(IN.WorldTangent);
+	float3 l_WNn= normalize(IN.WorldNormal);
+	float3 l_BinormalNormalized = normalize(IN.WorldBinormal);
+	float4 l_NormalTex = tex2D(S1LinearClampSampler, IN.UV);
+	float3 l_Bump = g_Bump * (l_NormalTex.rgb - float3 (0.5,0.5,0.5));
+	float3 l_Nn = l_WNn + l_Bump.x*l_TangentNormalized + l_Bump.y*l_BinormalNormalized;
+	l_Nn = normalize(l_Nn);
+	
+	
+	//float3 Nn = normalize(IN.Normal);
+	float3 NnScaled = Normal2Texture(l_Nn);
 	// Cálculo de la z en formato color
 	float l_Depth = IN.WorldPosition.z/IN.WorldPosition.w;
 	
 	OUT.RT0=float4(l_DiffuseColor.xyz,1.0);
 	OUT.RT1=float4(l_DiffuseColor.xyz*g_LightAmbient*g_LightAmbientIntensity,1.0);
-	OUT.RT2.xyz=NnScalated;
-	OUT.RT3=l_Depth;  
+	OUT.RT2.xyz=NnScaled;
+	OUT.RT3=l_Depth;
 	
 	return OUT;
 }

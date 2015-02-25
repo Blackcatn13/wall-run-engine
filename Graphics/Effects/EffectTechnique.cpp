@@ -98,11 +98,12 @@ bool CEffectTechnique::BeginRender()
         l_Effect->SetFloat(m_Effect->GetTimeParameter(), rand() / 1000.0f);
     }
     if (m_NumOfLights > 0) {
-        if (m_NumOfLights < 4) {
+		m_Effect->SetLight();
+        /*if (m_NumOfLights < 4) {
             m_Effect->SetLights(m_NumOfLights);
         } else {
             m_Effect->SetLights(MAX_LIGHTS_BY_SHADER);
-        }
+        }*/
     }
     return true;
 }
