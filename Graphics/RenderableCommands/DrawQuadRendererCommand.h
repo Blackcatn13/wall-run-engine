@@ -14,8 +14,8 @@ class CGraphicsManager;
 class CDrawQuadRendererCommand : public CStagedTexturedRendererCommand
 {
 protected:
-    CColor m_Color;
-    std::string m_TechniqueName;
+    /* CColor m_Color;
+     std::string m_TechniqueName;*/
 public:
     CDrawQuadRendererCommand(CXMLTreeNode &atts);
     void Execute(CGraphicsManager &RM);

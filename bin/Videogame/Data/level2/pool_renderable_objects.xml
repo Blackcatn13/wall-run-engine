@@ -36,8 +36,12 @@
 		 <default_technique vertex_type="2048" technique="DrawVignettingTechnique"/>
 	</pool_renderable_object_technique>
 
-	<pool_renderable_object_technique name="BlurPool">
+	<pool_renderable_object_technique name="ZBlurPool">
 		<default_technique vertex_type="2048" technique="ZBlurTechnique"/>
+	</pool_renderable_object_technique>
+	
+	<pool_renderable_object_technique name="BlurPool">
+		<default_technique vertex_type="2048" technique="BlurTechnique"/>
 	</pool_renderable_object_technique>
 
 	<pool_renderable_object_technique name="deferred_lights_pool">

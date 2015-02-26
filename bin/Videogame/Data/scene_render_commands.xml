@@ -53,7 +53,7 @@
 
 	
 	<!--<deferred_shading/>-->
-	<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
+	<!--<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
 	<set_pool_renderable_objects_technique pool="deferred_lights_pool"/>
 	<render_deferred_shading>
 		<texture stage_id="0" file="DiffuseMapTexture"/>
@@ -61,7 +61,7 @@
 		<texture stage_id="2" file="NormalMapTexture"/>
 		<texture stage_id="3" file="DepthMapTexture"/>
 	</render_deferred_shading >
-	<disable_alpha_blend />
+	<disable_alpha_blend />-->
 	
 	<!--Fog-->
 <!--	<enable_alpha_blend blendOp ="add" blendSrc="srcalpha" destBlend="invsrcalpha" />
@@ -119,18 +119,45 @@
 	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
 	<!-- ZBlur -->
 	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
-	<!--
-	<disable_alpha_blend/>
+	
+
+	<!--<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>
 	<capture_frame_buffer>
 			<dynamic_texture stage_id="0" name="DiffuseMapTexture1" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 	</capture_frame_buffer>
-	<set_pool_renderable_objects_technique pool="BlurPool"/>
+	<set_pool_renderable_objects_technique pool="ZBlurPool"/>
 	<render_draw_quad technique_name="DrawQuadSolidTechnique">
 			<texture stage_id="0" file="DepthMapTexture"/>
 			<texture stage_id="1" file="DiffuseMapTexture1"/>
 	</render_draw_quad>	
-	<capture_frame_buffer>
+	<disable_alpha_blend />-->
+	<!-- Not Needed -->
+	<!--<capture_frame_buffer>
 			<dynamic_texture stage_id="0" name="DiffuseMapTexture2" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
+	</capture_frame_buffer>
+	-->
+	
+	
+	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
+	<!-- Blur -->
+	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
+	
+	<!--<capture_frame_buffer>
+		<dynamic_texture stage_id="0" name="DiffuseMapTexture1" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
+	</capture_frame_buffer>
+	
+	<set_pool_renderable_objects_technique pool="BlurPool"/>
+	<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>
+	<render_draw_quad technique_name="DrawQuadSolidTechnique">
+		<dynamic_texture stage_id="1" name="PreviousTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8" />
+		<texture stage_id="0" file="DiffuseMapTexture1"/>
+		<texture stage_id="1" file="PreviousTexture"/>
+	</render_draw_quad>	
+	
+	<disable_alpha_blend />-->
+	
+<!--	<capture_frame_buffer>
+		<dynamic_texture stage_id="0" name="PreviousTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 	</capture_frame_buffer>
 	-->
 	

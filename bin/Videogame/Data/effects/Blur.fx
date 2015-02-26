@@ -5,11 +5,16 @@
 
 float4 BlurPS(in float2 UV : TEXCOORD0) : COLOR
 {
-	float3 Color;
+	//return float4(1,0,0,0.5);
+//	float3 Color;
 	float Percent = 0.5;
-    Color = tex2D(S1LinearWrapSampler, UV.xy).xyz;
+	float4 Color = tex2D(S0LinearWrapSampler, UV.xy);
+	float3 PrevColor = tex2D(S1LinearWrapSampler, UV.xy).xyz;
 	
-    return float4(Color, Percent);
+	return float4(PrevColor, 1);
+	
+	float4 FinalColor = float4(Color)*0.5+ float4(PrevColor,0.5)*0.5;
+    return FinalColor;
 }
 
 
@@ -17,7 +22,6 @@ technique ZBlurTechnique
 {
 	pass p0
 	{
-		//AlphaBlendEnable = false;
 		//CullMode = CCW;
 		PixelShader = compile ps_3_0 BlurPS();
 	}

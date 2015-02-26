@@ -5,9 +5,11 @@
 
 float4 ZBlurPS(in float2 UV : TEXCOORD0) : COLOR
 {
-	float4 l_DepthMap = float4(tex2D(S0LinearWrapSampler , UV).xyz, 1.0);
-	float3 l_WorldPosition=GetPositionFromZDepthView(l_DepthMap, float2(0,0),g_InverseViewMatrix, g_InverseProjectionMatrix);
-	float l_Distance=length(l_WorldPosition-g_CameraPosition);
+	
+	float4 l_DepthMap = tex2D(S0LinearWrapSampler , UV);
+	float3 l_WorldPosition=GetPositionFromZDepthView(l_DepthMap, UV,g_InverseViewMatrix, g_InverseProjectionMatrix);
+	float3 l_Eye = g_InverseViewMatrix[3].xyz;
+	float l_Distance=length(l_WorldPosition-l_Eye);
 	float4 l_Color=float4(0,0,0,0);
 	float l_Blur=0.0;
 	if(l_Distance<g_ZBlurFocalEnd)

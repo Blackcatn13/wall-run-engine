@@ -92,7 +92,7 @@ void CCore::Init(HWND handler)
     m_SceneRendererCommandManager = new CSceneRendererCommandManager();
     m_SceneRendererCommandManager->Load(m_Config.SceneRenderCommandsPath);
     m_TriggerManager = new CTriggerManager();
-    m_TriggerManager->LoadTriggers("./Data/triggers.xml");
+    //m_TriggerManager->LoadTriggers("./Data/triggers.xml");
 }
 
 void CCore::DeInit()
