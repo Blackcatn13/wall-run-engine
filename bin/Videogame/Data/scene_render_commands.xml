@@ -141,25 +141,26 @@
 	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
 	<!-- Blur -->
 	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
+	<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>
 	
-	<!--<capture_frame_buffer>
+	<capture_frame_buffer>
 		<dynamic_texture stage_id="0" name="DiffuseMapTexture1" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 	</capture_frame_buffer>
 	
 	<set_pool_renderable_objects_technique pool="BlurPool"/>
-	<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>
+	
 	<render_draw_quad technique_name="DrawQuadSolidTechnique">
-		<dynamic_texture stage_id="1" name="PreviousTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8" />
+		<dynamic_texture stage_id="0" name="PreviousTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8" />
 		<texture stage_id="0" file="DiffuseMapTexture1"/>
 		<texture stage_id="1" file="PreviousTexture"/>
 	</render_draw_quad>	
 	
-	<disable_alpha_blend />-->
+	<!--<disable_alpha_blend />-->
 	
-<!--	<capture_frame_buffer>
+	<capture_frame_buffer>
 		<dynamic_texture stage_id="0" name="PreviousTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 	</capture_frame_buffer>
-	-->
+	
 	
 	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
 

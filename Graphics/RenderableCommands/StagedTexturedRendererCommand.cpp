@@ -61,10 +61,10 @@ CStagedTexturedRendererCommand::CStagedTexturedRendererCommand(CXMLTreeNode &att
                 }*/
                 if (TEXTM->ExisteResource(l_TextureName)) {
                     l_Texture = TEXTM->GetResource(l_TextureName);
-                    AddStageTexture(l_StageId, l_Texture);
+                    //AddStageTexture(l_StageId, l_Texture);
                 }
             }
-            //AddStageTexture(l_StageId, l_Texture);
+            AddStageTexture(l_StageId, l_Texture);
         }
     }
 }
