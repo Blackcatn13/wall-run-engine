@@ -229,6 +229,6 @@ void CLightManager::Render(CGraphicsManager *RenderManager)
 
 void CLightManager::Reload()
 {
-    m_Resources.clear();
+    Destroy();
     Load(m_File);
 }

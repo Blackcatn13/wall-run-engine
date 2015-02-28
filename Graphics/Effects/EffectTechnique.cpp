@@ -52,9 +52,9 @@ bool CEffectTechnique::BeginRender()
     //{
     //l_Effect->
     //}
-    if (m_UseLightAmbientColor) {
-        l_Effect->SetFloatArray(m_Effect->GetLightsColorParameter(), &m_Effect->GetLightsColor()[0].x, MAX_LIGHTS_BY_SHADER * 3);
-    }
+    //if (m_UseLightAmbientColor) {
+    //    l_Effect->SetFloatArray(m_Effect->GetLightsColorParameter(), &m_Effect->GetLightsColor()[0].x, MAX_LIGHTS_BY_SHADER * 3);
+    //}
     if (m_UseProjMatrix) {
         l_Effect->SetMatrix(m_Effect->GetProjectionMatrixParameter(), &l_EM->GetProjectionMatrix().GetD3DXMatrix());
     }
@@ -98,7 +98,7 @@ bool CEffectTechnique::BeginRender()
         l_Effect->SetFloat(m_Effect->GetTimeParameter(), rand() / 1000.0f);
     }
     if (m_NumOfLights > 0) {
-		m_Effect->SetLight();
+        m_Effect->SetLight();
         /*if (m_NumOfLights < 4) {
             m_Effect->SetLights(m_NumOfLights);
         } else {

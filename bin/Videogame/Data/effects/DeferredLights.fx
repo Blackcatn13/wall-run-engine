@@ -90,7 +90,7 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 	
 	if(l_PositionVS.w>=1.0)
 		clip(-1);
-	return float4(g_LightColor[0]*g_LightIntensity[0], 1.0);
+	//return float4(g_LightColor[0]*g_LightIntensity[0], 1.0);
 	//return float4(l_Nn.xyz, 1.0);
 	
 	//TODO : Con todos los parametros recogidos hacer los calculos para 1 luz, el for es a nivel de C, (como si MAXLIGHTS fuera 1, todo igual)

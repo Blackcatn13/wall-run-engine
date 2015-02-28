@@ -137,6 +137,7 @@ bool CEffect::SetLight()
     m_Effect->SetFloatArray(m_LightsEndRangeAttenuationParameter, &m_LightsEndRangeAttenuation[0], MAX_LIGHTS_BY_SHADER);
     m_Effect->SetFloatArray(m_LightsPositionParameter, &m_LightsPosition[0].x, MAX_LIGHTS_BY_SHADER * 3);
     m_Effect->SetFloatArray(m_LightsDirectionParameter, &m_LightsDirection[0].x, MAX_LIGHTS_BY_SHADER * 3);
+    m_Effect->SetFloatArray(m_LightsColorParameter, &m_LightsColor[0].x, MAX_LIGHTS_BY_SHADER * 3);
     return true;
 }
 
