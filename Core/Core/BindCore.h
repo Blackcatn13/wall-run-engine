@@ -6,6 +6,8 @@
 #include "Utils\Defines.h"
 #include "Core\Core.h"
 #include "Core\CoreLuaWrapper.h"
+#include "PlayerController.h"
+#include "Object\Object3D.h"
 
 
 extern "C"

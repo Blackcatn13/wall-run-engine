@@ -11,6 +11,7 @@
 #include "BindInputs.h"
 #include "BindAnimatedModels.h"
 #include "BindVectors.h"
+#include "BindPhysx.h"
 #include "MathLuaUtils.h"
 #include "Utils\Visible.h"
 #include "Core\Core.h"
@@ -27,7 +28,7 @@
 #include "Math\Matrix34.h"
 #include "Utils\MapManager.h"
 #include "Utils\TemplatedVectorMapManager.h"
-#include "Core_Utils/MemLeaks.h"
+//#include "Core_Utils/MemLeaks.h"
 
 //Código de la función Alert que se llamará al generarse algún error de LUA
 int Alert(/*IN */lua_State * State)
@@ -396,5 +397,6 @@ void CScriptManager::RegisterLUAFunctions()
     RegisterAnimatedModels();
     RegisterCore();
     RegisterInputs();
+    RegisterPhysX();
 }
 

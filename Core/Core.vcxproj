@@ -34,6 +34,7 @@
     <ClInclude Include="Core\BindInputs.h" />
     <ClInclude Include="Core\BindLights.h" />
     <ClInclude Include="Core\BindManagers.h" />
+    <ClInclude Include="Core\BindPhysx.h" />
     <ClInclude Include="Core\BindVectors.h" />
     <ClInclude Include="Core\Core.h" />
     <ClInclude Include="Core\CoreLuaWrapper.h" />

@@ -135,5 +135,8 @@
     <ClInclude Include="Core\PlayerController.h">
       <Filter>PlayerController</Filter>
     </ClInclude>
+    <ClInclude Include="Core\BindPhysx.h">
+      <Filter>ScriptManager</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
