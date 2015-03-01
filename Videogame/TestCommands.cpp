@@ -115,7 +115,7 @@ void CTestCommands::Init()
     m_Trigger->CreateBoxTrigger(Vect3f(5.f, 5.f, 5.f), Vect3f(2.f, 2.f, 2.f));
     PHYSXM->AddPhysicActor(m_Trigger);
     PHYSXM->SetTriggerReport((CPhysicTriggerReport*)TRIGGM);*/
-    /*CPhysicActor* m_PhysicActorCubeFix;
+    CPhysicActor* m_PhysicActorCubeFix;
     CPhysicUserData* m_PhysicUserDataCube;
     m_PhysicUserDataCube = new CPhysicUserData("fixbox");
     m_PhysicUserDataCube->SetPaint(true);
@@ -129,14 +129,14 @@ void CTestCommands::Init()
     m_PhysicActorCubeFix->AddBoxSphape(Vect3f(5, .2, 5), Vect3f(0, 1.2, 4));
     PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
     m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
-    m_PhysicActorCubeFix->AddBoxSphape(Vect3f(5, .2, 5), Vect3f(0, 1.2, 4), v3fZERO, Vect3f(0,0,0.35));
+    m_PhysicActorCubeFix->AddBoxSphape(Vect3f(5, .2, 5), Vect3f(0, 1.2, 4), v3fZERO, Vect3f(0, 0, 0.35));
     PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
     m_Granade = new CGranade();
     //CPhysicUserAllocator* m_Alloc = new CPhysicUserAllocator();
     m_PlayerController = new CPlayerController();
     //CPhysicCookingMesh* m_CockMesh = new CPhysicCookingMesh();
     //m_CockMesh->Init(PHYSXM->GetPhysicsSDK(), m_Alloc);
-    //m_CockMesh->CreateMeshFromASE("./Data/sceneTrainingPiky.ASE", "sceneTraining");*/
+    //m_CockMesh->CreateMeshFromASE("./Data/sceneTrainingPiky.ASE", "sceneTraining");
     m_LuaInitLevelFunc = CCORE->getLuaLoadLevelFunc();
     char l_InitLevelText[256];
     _snprintf_s(l_InitLevelText, 256, 256, m_LuaInitLevelFunc.c_str());
@@ -221,8 +221,8 @@ void CTestCommands::Update(float dt)
     }
     // CCORE->GetCinematicController()->Update(dt);
     m_Camera = CAMCONTM->getActiveCamera();
-    /*  m_Granade->Update(dt);
     m_PlayerController->Move(dt);
+    /*  m_Granade->Update(dt);
     //	m_ScriptedController->Update(dt);*/
     /* if (m_PlayerMode) {
          m_ObjectFPS->SetYaw(m_ObjectFPS->GetYaw() -  deltaX * dt);
@@ -260,9 +260,9 @@ void CTestCommands::Update(float dt)
         //SCRIPTM->RunFile(".\\Data\\scripted_controller.lua");
     }
     skip += dt;
-    tTerra1_yaw += dt * 30 * 0.005;
-    tTerra2_yaw += dt * 80 * 0.005;
-    tlluna1_yaw -= dt * 60 * 0.05;
+    //tTerra1_yaw += dt * 30 * 0.005;
+    //tTerra2_yaw += dt * 80 * 0.005;
+    //tlluna1_yaw -= dt * 60 * 0.05;
     m_dt = dt;
     RENDLM->Update(dt);
 }

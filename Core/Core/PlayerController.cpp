@@ -8,11 +8,15 @@
 
 CPlayerController::CPlayerController()
     : CObject3D(),
-      m_Speed (3)
+      m_Gravity(13),
+      m_Speed (15),
+      m_JumpForce(1.5),
+      m_CurrentJumpForce(0),
+      m_isJumping(false)
 {
     m_PhysicUserData = new CPhysicUserData("Player");
     m_PhysicUserData->SetPaint(true);
-    m_PhysicController = new CPhysicController(1, 2, 0.87, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, Vect3f(0, 5, 0));
+    m_PhysicController = new CPhysicController(1, 2, 0.87, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, Vect3f(0, 5, 0), -m_Gravity);
     PHYSXM->AddPhysicController(m_PhysicController);
 }
 
@@ -40,6 +44,15 @@ void CPlayerController::Move(float dt)
         mov = mov - Vect3f(-1, 0, 0) * m_Speed * dt;
     if (ACT2IN->DoAction("MoveLeft"))
         mov = mov + Vect3f(-1, 0, 0) * m_Speed * dt;
+    if (ACT2IN->DoAction("Jump")) {
+        m_isJumping = true;
+        m_CurrentJumpForce = m_JumpForce;
+        mov.y = m_CurrentJumpForce;
+    }
+    if (m_isJumping && m_CurrentJumpForce > 0) {
+        m_CurrentJumpForce = m_CurrentJumpForce - (m_Gravity * dt);
+        mov.y = m_CurrentJumpForce;
+    }
     m_PhysicController->Move(mov, dt);
     SetPosition(m_PhysicController->GetPosition());
 }

@@ -21,7 +21,11 @@ public:
 private:
     CPhysicController*	m_PhysicController;
     CPhysicUserData*	m_PhysicUserData;
+    float				m_Gravity;
     float				m_Speed;
+    float				m_JumpForce;
+    float				m_CurrentJumpForce;
+    bool				m_isJumping;
 };
 
 
