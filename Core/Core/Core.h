@@ -28,6 +28,7 @@ class CRenderableObjectsLayersManager;
 class CSceneRendererCommandManager;
 class CProcess;
 class CTriggerManager;
+class CPlayerController;
 class CLogRender;
 
 
@@ -51,6 +52,7 @@ class CLogRender;
 #define RENDLM			CCore::GetInstance()->GetRenderableObjectsLayersManager()
 #define SCENRENDCOMM	CCore::GetInstance()->GetSceneRendererCommandManager()
 #define TRIGGM			CCore::GetInstance()->GetTriggerManager()
+#define PLAYC			CCore::GetInstance()->GetPlayerController()
 #define LOGRNDR         CCore::GetInstance()->GetLogRender()
 
 
@@ -83,6 +85,7 @@ private:
     CSceneRendererCommandManager*		m_SceneRendererCommandManager;
     CProcess*							m_Process;
     CTriggerManager*					m_TriggerManager;
+    CPlayerController*					m_PlayerController;
     CLogRender*                         m_LogRender;
     std::string							m_LuaLoadLevelFunc;
     std::string							m_LuaCameras;
@@ -190,6 +193,10 @@ public:
     CTriggerManager * GetTriggerManager()
     {
         return m_TriggerManager;
+    }
+    CPlayerController * GetPlayerController()
+    {
+        return m_PlayerController;
     }
 
     CLogRender* GetLogRender()

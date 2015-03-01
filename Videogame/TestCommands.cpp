@@ -39,7 +39,6 @@
 #include "Actor\PhysicActor.h"
 #include "Utils\PhysicUserData.h"
 
-#include "Core\PlayerController.h"
 #include "Cooking Mesh\PhysicCookingMesh.h"
 
 #include "Granade.h"
@@ -65,11 +64,11 @@ CTestCommands::~CTestCommands(void)
     //delete m_ThPSCamera;
 //    delete m_ThPSCamera1;
     //delete m_FPSCamera;
-    // PHYSXM->ReleaseAllActors();
-    /* CHECKED_DELETE(m_PhysicActor);
-     CHECKED_DELETE(m_PhysicUserData);
-     CHECKED_DELETE(m_PhysicUserDataCube);
-     CHECKED_DELETE(m_PhysicActorCubeFix);*/
+    PHYSXM->ReleaseAllActors();
+    /*CHECKED_DELETE(m_PhysicActor);
+    CHECKED_DELETE(m_PhysicUserData);
+    CHECKED_DELETE(m_PhysicUserDataCube);
+    CHECKED_DELETE(m_PhysicActorCubeFix);*/
     // CHECKED_DELETE(m_Granade);
 }
 
@@ -131,9 +130,8 @@ void CTestCommands::Init()
     m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
     m_PhysicActorCubeFix->AddBoxSphape(Vect3f(5, .2, 5), Vect3f(0, 1.2, 4), v3fZERO, Vect3f(0, 0, 0.35));
     PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
-    m_Granade = new CGranade();
+    //m_Granade = new CGranade();
     //CPhysicUserAllocator* m_Alloc = new CPhysicUserAllocator();
-    m_PlayerController = new CPlayerController();
     //CPhysicCookingMesh* m_CockMesh = new CPhysicCookingMesh();
     //m_CockMesh->Init(PHYSXM->GetPhysicsSDK(), m_Alloc);
     //m_CockMesh->CreateMeshFromASE("./Data/sceneTrainingPiky.ASE", "sceneTraining");
@@ -221,7 +219,6 @@ void CTestCommands::Update(float dt)
     }
     // CCORE->GetCinematicController()->Update(dt);
     m_Camera = CAMCONTM->getActiveCamera();
-    m_PlayerController->Move(dt);
     /*  m_Granade->Update(dt);
     //	m_ScriptedController->Update(dt);*/
     /* if (m_PlayerMode) {

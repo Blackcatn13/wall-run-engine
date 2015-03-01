@@ -130,6 +130,33 @@ function on_update_scripted_controller(l_ElapsedTime)
 		cin_Controller:get_resource("DestroyW"):play(true);
 		
 	end]]
+	
+	local player = coreInstance:get_player_controller();
+	local mov = Vect3f(0,0,0);
+	if act2in:do_action_from_lua("MoveForward") then
+		mov = mov + Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
+	end
+	if act2in:do_action_from_lua("MoveBack") then
+		mov = mov - Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
+	end
+	if act2in:do_action_from_lua("MoveRigth") then
+		mov = mov - Vect3f(-1,0,0) * player.m_Speed * l_ElapsedTime;
+	end
+	if act2in:do_action_from_lua("MoveLeft") then
+		mov = mov + Vect3f(-1,0,0) * player.m_Speed * l_ElapsedTime;
+	end
+	if act2in:do_action_from_lua("Jump") then
+		player.m_isJumping = true;
+		player.m_CurrentJumpForce = player.m_JumpForce;
+		mov.y = player.m_CurrentJumpForce;
+	end
+	if (player.m_isJumping == true) and (player.m_CurrentJumpForce > 0) then
+		player.m_CurrentJumpForce = player.m_CurrentJumpForce - (player.m_Gravity * l_ElapsedTime);
+		mov.y = player.m_CurrentJumpForce;
+	end
+	player.m_PhysicController:move(mov,l_ElapsedTime);
+	player:set_position(m_PhysicController:get_position());
+	
 	return 0;
 end
 

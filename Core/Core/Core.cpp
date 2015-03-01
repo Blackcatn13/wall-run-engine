@@ -20,6 +20,7 @@
 #include "PhysicsManager.h"
 #include "RenderableCommands\SceneRendererCommandManager.h"
 #include "TriggerManager\TriggerManager.h"
+#include "PlayerController.h"
 #include "Core_Utils/MemLeaks.h"
 #include "Core_Utils\LogRender.h"
 
@@ -92,6 +93,7 @@ void CCore::Init(HWND handler)
     m_SceneRendererCommandManager = new CSceneRendererCommandManager();
     m_SceneRendererCommandManager->Load(m_Config.SceneRenderCommandsPath);
     m_TriggerManager = new CTriggerManager();
+    m_PlayerController = new CPlayerController();
     //m_TriggerManager->LoadTriggers("./Data/triggers.xml");
     m_ScriptManager->Load(m_Config.LuaPath);
     m_LuaLoadLevelFunc = m_Config.LuaLevelObjectsFunc;
@@ -117,6 +119,7 @@ void CCore::DeInit()
     CHECKED_DELETE(m_CinematicManager);
     CHECKED_DELETE(m_EffectManager);
     CHECKED_DELETE(m_TriggerManager);
+    CHECKED_DELETE(m_PlayerController);
     CHECKED_DELETE(m_PhysicsManager);
     //CHECKED_DELETE(m_Process);
     CHECKED_DELETE(m_RenderableObjectTechniqueManager);
@@ -147,4 +150,5 @@ void CCore::Update(float dt)
     m_SoundManager->Update();
     m_InputManager->Update();
     m_LogRender->Update(dt);
+    //m_PlayerController->Move(dt);
 }

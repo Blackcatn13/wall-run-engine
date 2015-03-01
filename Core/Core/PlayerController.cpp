@@ -2,6 +2,7 @@
 #include "Actor\PhysicController.h"
 #include "Utils\PhysicUserData.h"
 #include "Core\Core.h"
+#include "Utils\Defines.h"
 #include "PhysicsManager.h"
 #include "ActionToInput.h"
 #include "Camera\CameraController.h"
@@ -22,11 +23,13 @@ CPlayerController::CPlayerController()
 
 CPlayerController::~CPlayerController()
 {
+    CHECKED_DELETE(m_PhysicUserData);
+    CHECKED_DELETE(m_PhysicController);
 }
 
 void CPlayerController::Move(float dt)
 {
-    float deltaX, deltaY, deltaZ;
+    /*float deltaX, deltaY, deltaZ;
     if (ACT2IN->DoAction("yaw", deltaX))
         SetYaw(GetYaw() - deltaX * dt);
     if (ACT2IN->DoAction("pitch", deltaY))
@@ -54,5 +57,5 @@ void CPlayerController::Move(float dt)
         mov.y = m_CurrentJumpForce;
     }
     m_PhysicController->Move(mov, dt);
-    SetPosition(m_PhysicController->GetPosition());
+    SetPosition(m_PhysicController->GetPosition());*/
 }

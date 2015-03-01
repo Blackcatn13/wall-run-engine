@@ -156,7 +156,11 @@ void RegisterPhysX()
         .def("move", &CPlayerController::Move)
         .property("m_PhysicController", &CPlayerController::getPhysicController, &CPlayerController::setPhysicController )
         .property("m_PhysicUserData", &CPlayerController::getPhysicUserData, &CPlayerController::setPhysicUserData )
-        .property("m_Speed", &CPlayerController::getSpeed, &CPlayerController::setSpeed )
+        .property("m_Gravity", &CPlayerController::getGravity, &CPlayerController::setGravity )
+		.property("m_Speed", &CPlayerController::getSpeed, &CPlayerController::setSpeed )
+		.property("m_JumpForce", &CPlayerController::getJumpForce, &CPlayerController::setJumpForce )
+		.property("m_isJumping", &CPlayerController::getisJumping, &CPlayerController::setisJumping )
+		.property("m_CurrentJumpForce", &CPlayerController::getCurrentJumpForce, &CPlayerController::setCurrentJumpForce )
     ];
     luabind::module(LUA_STATE) [
         class_<CPhysicsManager>("CPhysicsManager")
