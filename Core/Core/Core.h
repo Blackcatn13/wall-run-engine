@@ -84,6 +84,8 @@ private:
     CProcess*							m_Process;
     CTriggerManager*					m_TriggerManager;
     CLogRender*                         m_LogRender;
+    std::string							m_LuaLoadLevelFunc;
+    std::string							m_LuaCameras;
 
 public:
     ~CCore();
@@ -195,6 +197,7 @@ public:
         return m_LogRender;
     }
 
+    GET_SET(std::string, LuaLoadLevelFunc)
 };
 
 

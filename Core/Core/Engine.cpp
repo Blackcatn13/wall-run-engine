@@ -166,6 +166,9 @@ void CEngine::ParseConfFile()
                         m_Conf_info.PoolRenderableObjects = n(i).GetPszISOProperty("poolRenderableObjects", ".\\Data\\level1\\pool_renderable_objects.xml");
                     } else if (name == "AnimatedModels") {
                         m_Conf_info.AnimatedMeshPath = n(i).GetPszISOProperty("modelsXML", "./Data/animated_models.xml");
+                    } else if (name == "LoadLevel") {
+                        m_Conf_info.LuaLevelObjectsFunc = n(i).GetPszISOProperty("LuaInitLevelFunc", "init_level()");
+                        m_Conf_info.LuaLevelCamFunc = n(i).GetPszISOProperty("LuaInitCamerasFunc", "");
                     }
                 }
             }

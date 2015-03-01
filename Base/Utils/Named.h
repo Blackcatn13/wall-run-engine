@@ -22,6 +22,8 @@ public:
             printf("Triggers Stay\n");
         if (name == "TriggerExit") //Test scripting
             printf("Triggers Exit\n");
+        if (name == "Testing-Chanchullo_Lua") //Test scripting
+            printf("Testing-Chanchullo_Lua\n");
     }
     std::string getName()
     {

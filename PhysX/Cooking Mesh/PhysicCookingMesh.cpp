@@ -15,6 +15,7 @@
 #include "Utils\PhysicStream.h"
 #include "Utils\PhysicASELoader.h"
 #include "Cooking Mesh\PhysicCookingMesh.h"
+#include "PhysicsManager.h"
 //--------------------------
 
 #if defined( _DEBUG )
@@ -49,6 +50,11 @@ bool CPhysicCookingMesh::Init (NxPhysicsSDK* _pPhysicSDK, CPhysicUserAllocator* 
         Release();
     }
     return m_bIsOk;
+}
+//To init from Lua
+void CPhysicCookingMesh::Init ( CPhysicsManager * physicsManager, CPhysicUserAllocator* myAllocator )
+{
+    Init(physicsManager->GetPhysicsSDK(), myAllocator );
 }
 
 //----------------------------------------------------------------------------

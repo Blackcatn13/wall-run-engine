@@ -42,7 +42,8 @@ private:
     float			    m_dt;
     Vect2i              m_textPosition;
     int					m_numPrimitives, m_totalVertices, m_totalFaces;
-	CPlayerController*  m_PlayerController;
+    CPlayerController*  m_PlayerController;
+    std::string			m_LuaInitLevelFunc;
 public:
     CTestCommands(void);
     ~CTestCommands(void);

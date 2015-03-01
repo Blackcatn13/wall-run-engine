@@ -22,6 +22,8 @@ typedef struct Conf_info {
     std::string                 CameraPath;
     std::string                 CinematicPath;
     std::string                 LuaPath;
+    std::string					LuaLevelObjectsFunc;
+    std::string					LuaLevelCamFunc;
     std::string                 EffectPath;
     std::string					SceneRenderCommandsPath;
     std::string					PoolRenderableObjects;

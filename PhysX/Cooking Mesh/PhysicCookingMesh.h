@@ -15,6 +15,7 @@
 #include "Math\Vector3.h"
 
 //---Forward Declarations---
+class CPhysicsManager;
 class NxPhysicsSDK;
 class CPhysicUserAllocator;
 class NxCookingInterface;
@@ -25,6 +26,8 @@ class NxClothMeshDesc;
 //--------------------------
 
 using namespace std;
+
+
 
 class CPhysicCookingMesh
 {
@@ -40,6 +43,7 @@ public:
     }
 
     bool						Init				( NxPhysicsSDK* physicSDK, CPhysicUserAllocator* myAllocator );
+    void						Init				( CPhysicsManager * physicsManager, CPhysicUserAllocator* myAllocator );
     void						Done				( void );
     bool						IsOk				( void ) const
     {

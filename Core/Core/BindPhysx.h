@@ -12,7 +12,12 @@
 #include "Object\Object3D.h"
 #include "Actor\PhysicActor.h"
 #include "Actor\PhysicController.h"
+#include "TriggerManager\Trigger.h"
+#include "PhysicsManager.h"
+#include "Cooking Mesh\PhysicCookingMesh.h"
+#include "Utils\PhysicUserAllocator.h"
 //#include "NxActor.h"
+//#include "NxPhysicsSDK.h"
 #include "Utils\PhysicUserData.h"
 #include "Utils\Named.h"
 #include <string>
@@ -40,19 +45,6 @@ void RegisterPhysX()
 {
     luabind::module(LUA_STATE) [
         class_<CPhysicUserData, CNamed>("CPhysicUserData")
-        .enum_("EUserDataFlag")
-        [
-            value("UD_IS_HW_ACTOR" , 0),
-            value("UD_IS_HW_CONTROLLER", 1),
-            value("UD_IS_TRIGGER", 2),
-            value("UD_IS_INSIDE_TRIGGER", 3),
-            value("UD_PASSES_INTERSECTION_TEST", 4),
-            value("UD_HIT_BY_RAYCAST", 5),
-            value("UD_NO_RENDER", 6),
-            value("UD_IS_DRAIN", 7),
-            value("UD_IS_ASLEEP", 8),
-            value("UD_RENDER_USING_LIGHT1", 9)
-        ]
         .def(constructor<std::string>())
         .property("m_bPaintPhysicObject", &CPhysicUserData::GetPaint,  &CPhysicUserData::SetPaint )
         .property("m_ColorPhysicObject", &CPhysicUserData::GetColor,  &CPhysicUserData::SetColor )
@@ -165,6 +157,35 @@ void RegisterPhysX()
         .property("m_PhysicController", &CPlayerController::getPhysicController, &CPlayerController::setPhysicController )
         .property("m_PhysicUserData", &CPlayerController::getPhysicUserData, &CPlayerController::setPhysicUserData )
         .property("m_Speed", &CPlayerController::getSpeed, &CPlayerController::setSpeed )
+    ];
+    luabind::module(LUA_STATE) [
+        class_<CPhysicsManager>("CPhysicsManager")
+        .def(constructor<>())
+        .def("add_physic_actor", &CPhysicsManager::AddPhysicActor )
+        .def("set_trigger_report", &CPhysicsManager::SetTriggerReport )
+        // .def("get_physics_sdk", &CPhysicsManager::GetPhysicsSDK )
+        //TODO afegir la resta a mesura que calgui / hi hagi temps
+    ];
+    luabind::module(LUA_STATE) [
+        class_<CTrigger, CPhysicActor >("CTrigger")
+        .def(constructor<CXMLTreeNode, CPhysicUserData*>())
+        .def("execute_on_enter", &CTrigger::ExecuteOnEnter )
+        .def("execute_on_stay", &CTrigger::ExecuteOnStay )
+        .def("execute_on_exit", &CTrigger::ExecuteOnExit )
+    ];
+    luabind::module(LUA_STATE) [
+        class_<CPhysicCookingMesh >("CPhysicCookingMesh")
+        .def(constructor<>())
+        .def("init", (void (CPhysicCookingMesh::*)(CPhysicsManager*, CPhysicUserAllocator*)) &CPhysicCookingMesh::Init )
+        .def("done", &CPhysicCookingMesh::Done)
+        .def("is_ok", &CPhysicCookingMesh::IsOk)
+        .def("create_physic_mesh", (bool (CPhysicCookingMesh::*)(const std::string &, const std::string &)) &CPhysicCookingMesh::CreatePhysicMesh)
+        .def("create_physic_mesh", (bool (CPhysicCookingMesh::*)(const std::vector<Vect3f>&, const std::vector<uint32>&, const std::string &)) &CPhysicCookingMesh::CreatePhysicMesh)
+        .def("save_physic_mesh",  &CPhysicCookingMesh::SavePhysicMesh)
+        .def("create_mesh_fromASE",  &CPhysicCookingMesh::CreateMeshFromASE)
+        .def("cook_cloth_mesh",  &CPhysicCookingMesh::CookClothMesh)
+        .def("release",  &CPhysicCookingMesh::Release)
+        .def("release_physic_mesh",  &CPhysicCookingMesh::ReleasePhysicMesh)
     ];
 }
 
