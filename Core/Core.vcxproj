@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AI\AIController.cpp" />
     <ClCompile Include="Core\Core.cpp" />
     <ClCompile Include="Core\CoreLuaWrapper.cpp" />
     <ClCompile Include="Core\Engine.cpp" />
@@ -24,6 +25,7 @@
     <ClCompile Include="Core_Utils\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AI\AIController.h" />
     <ClInclude Include="Core\BindAdvancedShaders.h" />
     <ClInclude Include="Core\BindAnimatedModels.h" />
     <ClInclude Include="Core\BindCameraKeys.h" />

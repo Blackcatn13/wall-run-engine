@@ -42,8 +42,10 @@
 #include "Cooking Mesh\PhysicCookingMesh.h"
 
 #include "Granade.h"
+#include "AI\AIController.h"
 
 //#include "Utils\PhysicUserAllocator.h"
+CAIController* AI;
 
 CTestCommands::CTestCommands(void)
 {
@@ -93,7 +95,7 @@ void CTestCommands::Init()
     CAMCONTM->AddNewCamera("FPS", m_FPSCamera);
     CAMCONTM->AddNewCamera("ThPSESF", m_ThPSCamera);
     //m_CameraController->AddNewCamera("ThPS", m_ThPSCamera1);
-    CAMCONTM->setActiveCamera("FPS");
+    CAMCONTM->setActiveCamera("ThPSESF");
     m_Camera = CAMCONTM->getActiveCamera();
     m_PlayerMode = true;
 //	m_ScriptedController = new CScriptedController();
@@ -119,7 +121,7 @@ void CTestCommands::Init()
     m_PhysicUserDataCube = new CPhysicUserData("fixbox");
     m_PhysicUserDataCube->SetPaint(true);
     m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
-    m_PhysicActorCubeFix->AddBoxSphape(Vect3f(15, 1, 15));
+    m_PhysicActorCubeFix->AddBoxSphape(Vect3f(40, 1, 40));
     PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
     m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
     m_PhysicActorCubeFix->AddBoxSphape(Vect3f(5, .2, 5), Vect3f(0, 1, 3));
@@ -139,6 +141,7 @@ void CTestCommands::Init()
     char l_InitLevelText[256];
     _snprintf_s(l_InitLevelText, 256, 256, m_LuaInitLevelFunc.c_str());
     SCRIPTM->RunCode(l_InitLevelText);
+	AI = new CAIController();
 }
 
 void CTestCommands::DeInit()
@@ -262,6 +265,7 @@ void CTestCommands::Update(float dt)
     //tlluna1_yaw -= dt * 60 * 0.05;
     m_dt = dt;
     RENDLM->Update(dt);
+	AI->MoveTo(dt, Vect3f(15, 2, 15));
 }
 
 void CTestCommands::Render()

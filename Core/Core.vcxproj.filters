@@ -29,6 +29,9 @@
     <Filter Include="PlayerController">
       <UniqueIdentifier>{a7df8b91-a908-4445-b570-5d8fb6106c66}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AI">
+      <UniqueIdentifier>{c41f54e0-a765-4eea-9275-a2cffa18cd51}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Engine.cpp">
@@ -63,6 +66,9 @@
     </ClCompile>
     <ClCompile Include="Core\PlayerController.cpp">
       <Filter>PlayerController</Filter>
+    </ClCompile>
+    <ClCompile Include="AI\AIController.cpp">
+      <Filter>AI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +143,9 @@
     </ClInclude>
     <ClInclude Include="Core\BindPhysx.h">
       <Filter>ScriptManager</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\AIController.h">
+      <Filter>AI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
