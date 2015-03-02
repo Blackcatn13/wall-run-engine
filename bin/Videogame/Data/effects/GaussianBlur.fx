@@ -12,11 +12,19 @@
 
 //float weights[KERNEL_SIZE];
 //float2 offsets[KERNEL_SIZE];
+//float pixeldistance = 1.0/580.0;
+//#define pixeldistance 0.001724;
+//hay que pasarle el offset
 
 float2 offsets[KERNEL_SIZE] =
 	{
-		float2(-1,1), float2(0,1), float2(1,1), float2(-1,0), float2(0,0), float2(0,1), float2(-1,-1), float2(0,-1), float2(1,-1)
+		float2(-0.005555,0.005555), float2(0,0.005555), float2(0.005555,0.005555), float2(-0.005555,0), float2(0,0), float2(0,0.005555), float2(-0.005555,-0.005555), float2(0,-0.005555), float2(0.005555,-0.005555)
 	};
+//float2 offsets[KERNEL_SIZE] =
+//	{
+//		float2(-1,1), float2(0,1), float2(1,1), float2(-1,0), float2(0,0), float2(0,1), float2(-1,-1), float2(0,-1), float2(1,-1)
+//	};
+
 //float2 offsets[KERNEL_SIZE] =
 //	{
 //		float2(0,-3),float2(0,-2),float2(0,-1),float2(0,0),float2(0,1),float2(0,2),float2(0,3)
@@ -52,18 +60,19 @@ float weights[KERNEL_SIZE] =
 
 float4 PS_GaussianBlur(in float2 UV : TEXCOORD0) : COLOR
 {
+//	offsets = offsets * pixeldistance;
     float4 color = float4(0.0f, 0.0f, 0.0f, 0.0f);
 	
     for (int i = 0; i < KERNEL_SIZE; ++i)
-        color += float4(tex2D(S0LinearClampSampler, UV + offsets[i]) * weights[i]);
-    return color;
+        color += float4(tex2D(S0NoFilterClampSampler, UV + offsets[i]) * weights[i]);
+	return color;
 }
 
 //-----------------------------------------------------------------------------
 // Techniques.
 //-----------------------------------------------------------------------------
 
-technique GaussianBlur
+technique GaussianBlurTechnique
 {
     pass
     {

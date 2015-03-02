@@ -12,6 +12,7 @@
 
 CStagedTexturedRendererCommand::CStagedTexturedRendererCommand(CXMLTreeNode &atts)
 {
+	
     for (int i = 0; i < atts.GetNumChildren(); ++i) {
         std::string name = atts(i).GetName();
         if (name == "dynamic_texture") {
@@ -34,9 +35,11 @@ CStagedTexturedRendererCommand::CStagedTexturedRendererCommand(CXMLTreeNode &att
             } else {
                 l_Texture = new CTexture();
                 l_Texture->Create(l_TextureName, l_Width, l_Height, 1, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, l_Texture->GetFormatTypeFromString(l_FormatType));
-                TEXTM->AddResource(l_TextureName, l_Texture);
+                AddStageTexture(l_StageId, l_Texture);
+				TEXTM->AddResource(l_TextureName, l_Texture);
             }
-            AddStageTexture(l_StageId, l_Texture);
+            
+			//AddStageTexture(l_StageId, l_Texture);
         } else  if (name == "texture") {
             CTexture* l_Texture;
             Vect3f color = atts.GetVect3fProperty("color", v3fZERO, false);
@@ -61,10 +64,10 @@ CStagedTexturedRendererCommand::CStagedTexturedRendererCommand(CXMLTreeNode &att
                 }*/
                 if (TEXTM->ExisteResource(l_TextureName)) {
                     l_Texture = TEXTM->GetResource(l_TextureName);
-                    //AddStageTexture(l_StageId, l_Texture);
+                    AddStageTexture(l_StageId, l_Texture);
                 }
             }
-            AddStageTexture(l_StageId, l_Texture);
+            //AddStageTexture(l_StageId, l_Texture);
         }
     }
 }

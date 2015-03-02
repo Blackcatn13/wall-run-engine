@@ -75,47 +75,44 @@
 	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
 	<!-- Bloom pas 1	-->
 	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
-	
-	<!--<capture_frame_buffer>
+	<!--
+	<capture_frame_buffer>
 			<dynamic_texture stage_id="0" name="BloomCombineTexture1" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 	</capture_frame_buffer>
-	<capture_frame_buffer>
-			<dynamic_texture stage_id="0" name="SceneTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
-	</capture_frame_buffer>
-	<set_pool_renderable_objects_technique pool="apply_gaussianblur"/>
-	<gaussian_blur> 
-		<texture stage_id="0" file="DiffuseMapTexture"/>
-	</gaussian_blur>
+	<set_pool_renderable_objects_technique pool="apply_bloomeffect"/>
+	<render_draw_quad technique_name="BloomEffect">
+			<texture stage_id="0" file="DiffuseMapTexture"/>
+	</render_draw_quad>	
 	-->
 	
 	
 	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
 	<!-- Bloom pas 2	-->
-	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
+	<!-- ///////////////////////////-///////////////////////////////////////////////////////////////////// -->
 	<!--
-	<disable_alpha_blend/>
 	<capture_frame_buffer>
-			<dynamic_texture stage_id="0" name="TextureToBlur" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
+		<dynamic_texture stage_id="0" name="SceneTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 	</capture_frame_buffer>
-	<set_pool_renderable_objects_technique pool="BlurPool"/>
+	
+	<set_pool_renderable_objects_technique pool="apply_gaussianblur"/>
 	-->
+	<!--<gaussian_blur gaussian_loops="2" effect_technique_copy="DrawQuadTechnique" effect_technique_gaussian="DrawQuadGaussianTechnique">-->
 	<!--
-	<render_draw_quad technique_name="DrawQuadSolidTechnique">
-			<texture stage_id="0" file="DepthMapTexture"/>
-			<texture stage_id="1" file="TextureToBlur"/>
-	</render_draw_quad>
-	-->
-	<!--
-	<gaussian_blur>
-		<texture stage_id="0" file="DepthMapTexture"/>
-		<texture stage_id="1" file="TextureToBlur"/>
+	<gaussian_blur gaussian_loops="2">
+		<texture stage_id="0" file="SceneTexture"/>
+		<dynamic_texture stage_id="1" name="FinalTexture" width="512" height="512" format_type="A8R8G8B8"/>
+		<dynamic_texture stage_id="2" name="TempTexture" width="512" height="512" format_type="A8R8G8B8"/>
 	</gaussian_blur>
+	<set_pool_renderable_objects_technique pool="draw_textured_quad_pool"/>
+	
+	<render_draw_quad technique_name="DrawQuadSolidTechnique">
+			<texture stage_id="0" file="FinalTexture"/>
+	</render_draw_quad>
 	
 	<capture_frame_buffer>
-			<dynamic_texture stage_id="0" name="BloomCombineTexture2" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
+		<dynamic_texture stage_id="0" name="TextureToCombine" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 	</capture_frame_buffer>
 	-->
-	
 	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
 	<!-- ZBlur -->
 	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -171,8 +168,8 @@
 	<disable_alpha_blend/>
 	<set_pool_renderable_objects_technique pool="apply_combinebloomeffect"/>
 	<render_draw_quad>
-			<texture stage_id="0" file="DiffuseMapTexture"/>
-			<texture stage_id="1" file="BloomCombineTexture2"/>
+			<texture stage_id="0" file="BloomCombineTexture1"/>
+			<texture stage_id="1" file="TextureToCombine"/>
 	</render_draw_quad>
 	-->
 	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->

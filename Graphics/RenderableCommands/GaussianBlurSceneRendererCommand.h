@@ -15,8 +15,6 @@ class CGaussianBlueSceneRendererCommand : public CStagedTexturedRendererCommand
 {
 protected:
 	int m_GaussianLoops;
-	CTexture * m_Texture;
-	CTexture * m_Texture1;
 	CColor m_Color;
 	std::string m_TechniqueName;
 public:

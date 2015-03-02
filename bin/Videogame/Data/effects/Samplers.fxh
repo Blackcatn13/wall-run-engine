@@ -262,3 +262,8 @@ samplerCUBE S0CubeLinearSampler:register(s0) = sampler_state
 	AddressU = Wrap;
 	AddressV = Wrap;
 };
+
+sampler S0NoFilterClampSampler:register(s0) = sampler_state {
+	AddressU = Clamp;
+	AddressV = Clamp;
+};
