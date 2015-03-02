@@ -8,12 +8,13 @@
 #include "Texture\TextureManager.h"
 #include "RenderableVertex\VertexTypes.h"
 #include "Core_Utils/MemLeaks.h"
+#include "Effects\EffectManager.h"
 
 CGaussianBlueSceneRendererCommand::CGaussianBlueSceneRendererCommand(CXMLTreeNode &atts) : CStagedTexturedRendererCommand(atts)
 {
     Vect3f color = atts.GetVect3fProperty("color", v3fZERO, false);
     m_Color.Set(color.x, color.y, color.z);
-    m_TechniqueName = atts.GetPszProperty("technique_name", "", false);
+    m_TechniqueName = atts.GetPszProperty("effect_technique_copy", "", false);
 	m_GaussianLoops = atts.GetIntProperty("gaussian_loops", 2, false);
 	int l_numDynamicTexture = 0;
 	if ((m_GaussianLoops % 2) != 0) ++m_GaussianLoops;
@@ -67,7 +68,8 @@ void CGaussianBlueSceneRendererCommand::Execute(CGraphicsManager &RM)
 {
 	//un pasada
 	//int l_numLoops = 0;
-    CEffectTechnique * l_EffectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(VERTEX_TYPE_SCREEN))->GetEffectTechnique();//"DrawQuadSolidTechnique"
+    CEffectTechnique * l_GaussianTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(VERTEX_TYPE_SCREEN))->GetEffectTechnique();//"DrawQuadSolidTechnique"
+	CEffectTechnique * l_DrawQuadTechnique = EFFECTM->GetEffectTechnique(m_TechniqueName);
 	RECT rect;
     rect.top = 0;
     rect.left = 0;
@@ -94,7 +96,7 @@ void CGaussianBlueSceneRendererCommand::Execute(CGraphicsManager &RM)
 		CTexture *l_SourceTexture=i==0 ? m_StageTextures[0].m_Texture : ((i%2)==0 ? m_StageTextures[1].m_Texture : m_StageTextures[2].m_Texture);
 		CTexture *l_RenderTargetTexture=(i%2)==0 ? m_StageTextures[2].m_Texture: m_StageTextures[1].m_Texture;
 		
-		//CEffectTechnique *l_EffectTechnique=i==0 ? DrawQuadTechnique : GaussianTechnique;
+		CEffectTechnique *l_EffectTechnique=i==0 ? l_DrawQuadTechnique : l_GaussianTechnique;
 		
 		l_RenderTargetTexture->SetAsRenderTarget(0);
 		RM.GetWidthAndHeight((uint32 &)rect.right, (uint32 &)rect.bottom);
