@@ -42,10 +42,10 @@
 #include "Cooking Mesh\PhysicCookingMesh.h"
 
 #include "Granade.h"
-#include "AI\AIController.h"
+//#include "AI\AIController.h"
 
 //#include "Utils\PhysicUserAllocator.h"
-CAIController* AI;
+//CAIController* AI;
 
 CTestCommands::CTestCommands(void)
 {
@@ -141,7 +141,7 @@ void CTestCommands::Init()
     char l_InitLevelText[256];
     _snprintf_s(l_InitLevelText, 256, 256, m_LuaInitLevelFunc.c_str());
     SCRIPTM->RunCode(l_InitLevelText);
-	AI = new CAIController();
+    //AI = new CAIController();
 }
 
 void CTestCommands::DeInit()
@@ -265,7 +265,7 @@ void CTestCommands::Update(float dt)
     //tlluna1_yaw -= dt * 60 * 0.05;
     m_dt = dt;
     RENDLM->Update(dt);
-	AI->MoveTo(dt, Vect3f(15, 2, 15));
+    // AI->MoveTo(dt, Vect3f(15, 2, 15));
 }
 
 void CTestCommands::Render()

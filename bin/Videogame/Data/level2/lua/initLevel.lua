@@ -1,5 +1,8 @@
+
 function init_level()
-	local name = "Testing-Chanchullo_Lua"
-	local n1 = CNamed();
-	n1:set_name(name);
+	
+	platform = Platform:create()
+	
+	platform:className()
+	--platform:set_platform(4,2,4, "platform1")
 end

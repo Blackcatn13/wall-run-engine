@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<static_meshes>
+	<!-- <static_mesh name="LOW001" filename=".\Data\level2\meshes//LOW001.mesh"/>
+	<static_mesh name="Plane001" filename=".\Data\level2\meshes\Plane001.mesh"/>
+	
+	<static_mesh name="Box001" filename=".\Data\level2\meshes\BOX_Lightmap.mesh"/> 
+	<static_mesh name="Sphere001" filename=".\Data\level2\meshes\Sphere001.mesh"/>
+	<static_mesh name="Sphere002" filename=".\Data\level2\meshes\Sphere002.mesh"/>
+	<static_mesh name="COFRE" filename=".\Data\level2\meshes\COFRE_LOW.mesh"/>-->
+	<static_mesh name="Box001" filename=".\Data\levelTest\meshes//Box001.mesh"/>
+	<static_mesh name="Box002" filename=".\Data\levelTest\meshes//Box002.mesh"/>
+	<static_mesh name="Box003" filename=".\Data\levelTest\meshes//Box003.mesh"/>
+	<static_mesh name="Box004" filename=".\Data\levelTest\meshes//Box004.mesh"/>
+	<static_mesh name="Box005" filename=".\Data\levelTest\meshes//Box005.mesh"/>
+	<static_mesh name="Box006" filename=".\Data\levelTest\meshes//Box006.mesh"/>
+	<static_mesh name="Box007" filename=".\Data\levelTest\meshes//Box007.mesh"/>
+	<static_mesh name="Box008" filename=".\Data\levelTest\meshes//Box008.mesh"/>
+	<static_mesh name="Box009" filename=".\Data\levelTest\meshes//Box009.mesh"/>
+	<static_mesh name="Box010" filename=".\Data\levelTest\meshes//Box010.mesh"/>
+	<static_mesh name="Box011" filename=".\Data\levelTest\meshes//Box011.mesh"/>
+	<static_mesh name="Box012" filename=".\Data\levelTest\meshes//Box012.mesh"/>
+	<static_mesh name="Box013" filename=".\Data\levelTest\meshes//Box013.mesh"/>
+	<static_mesh name="Box014" filename=".\Data\levelTest\meshes//Box014.mesh"/>
+</static_meshes>

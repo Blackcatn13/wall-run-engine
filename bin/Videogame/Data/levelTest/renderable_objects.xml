@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<renderable_objects>
+	<layer name="solid" default="true"/>
+	<layer name="alpha_objects"/>
+	<layer name="alpha_blend_objects"/>
+	<layer name="particles"/>
+	
+	<mesh_instance name="Box001" core="Box001"  pos="0.000000 -1.000000 0.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box002" core="Box002"  pos="0.000000 0.000000 11.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box003" core="Box003"  pos="0.000000 0.000000 6.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box004" core="Box004"  pos="0.000000 0.000000 4.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box005" core="Box005"  pos="0.000000 0.000000 8.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box006" core="Box006"  pos="-10.000000 0.000000 0.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box007" core="Box007"  pos="0.000000 0.000000 -10.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box008" core="Box008"  pos="14.657749 1.048002 0.221005" yaw="0.0"  pitch="0.0" roll="-0.312651" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box009" core="Box009"  pos="14.268936 1.955879 6.406747" yaw="0.0"  pitch="0.0" roll="-0.511853" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box010" core="Box010"  pos="12.438571 2.144835 13.019793" yaw="0.0"  pitch="0.0" roll="-0.839377" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box011" core="Box011"  pos="14.607794 0.241913 -5.444057" yaw="0.0"  pitch="0.0" roll="-0.127408" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box012" core="Box012"  pos="4.000000 0.000000 13.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box013" core="Box013"  pos="0.000000 0.000000 15.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Box014" core="Box014"  pos="-3.000000 0.000000 13.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	
+</renderable_objects>
