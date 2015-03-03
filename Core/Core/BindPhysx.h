@@ -22,6 +22,8 @@
 #include "Utils\Named.h"
 #include <string>
 #include "PhysicsDefs.h"
+#include "Reports\PhysicTriggerReport.h"
+#include "NxPhysics.h"
 
 
 extern "C"
@@ -157,10 +159,10 @@ void RegisterPhysX()
         .property("m_PhysicController", &CPlayerController::getPhysicController, &CPlayerController::setPhysicController )
         .property("m_PhysicUserData", &CPlayerController::getPhysicUserData, &CPlayerController::setPhysicUserData )
         .property("m_Gravity", &CPlayerController::getGravity, &CPlayerController::setGravity )
-		.property("m_Speed", &CPlayerController::getSpeed, &CPlayerController::setSpeed )
-		.property("m_JumpForce", &CPlayerController::getJumpForce, &CPlayerController::setJumpForce )
-		.property("m_isJumping", &CPlayerController::getisJumping, &CPlayerController::setisJumping )
-		.property("m_CurrentJumpForce", &CPlayerController::getCurrentJumpForce, &CPlayerController::setCurrentJumpForce )
+        .property("m_Speed", &CPlayerController::getSpeed, &CPlayerController::setSpeed )
+        .property("m_JumpForce", &CPlayerController::getJumpForce, &CPlayerController::setJumpForce )
+        .property("m_isJumping", &CPlayerController::getisJumping, &CPlayerController::setisJumping )
+        .property("m_CurrentJumpForce", &CPlayerController::getCurrentJumpForce, &CPlayerController::setCurrentJumpForce )
     ];
     luabind::module(LUA_STATE) [
         class_<CPhysicsManager>("CPhysicsManager")
@@ -190,6 +192,18 @@ void RegisterPhysX()
         .def("cook_cloth_mesh",  &CPhysicCookingMesh::CookClothMesh)
         .def("release",  &CPhysicCookingMesh::Release)
         .def("release_physic_mesh",  &CPhysicCookingMesh::ReleasePhysicMesh)
+    ];
+    luabind::module(LUA_STATE) [
+        class_<NxUserTriggerReport >("NxUserTriggerReport")
+        .def("on_Trigger", &NxUserTriggerReport::onTrigger)
+    ];
+    luabind::module(LUA_STATE) [
+        class_<CPhysicTriggerReport, NxUserTriggerReport >("CPhysicTriggerReport")
+        //.def(constructor<>())
+        .def("on_enter", &CPhysicTriggerReport::OnEnter)
+        .def("on_leave", &CPhysicTriggerReport::OnLeave)
+        .def("on_stay", &CPhysicTriggerReport::OnStay)
+        .def("on_Trigger", &CPhysicTriggerReport::onTrigger)
     ];
 }
 

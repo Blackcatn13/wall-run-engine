@@ -147,5 +147,8 @@
     <ClInclude Include="AI\AIController.h">
       <Filter>AI</Filter>
     </ClInclude>
+    <ClInclude Include="Core\BindIA.h">
+      <Filter>ScriptManager</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

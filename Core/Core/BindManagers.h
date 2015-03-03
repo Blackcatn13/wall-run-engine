@@ -11,6 +11,7 @@
 #include "Font\FontManager.h"
 #include "GraphicsManager.h"
 #include "Language\LanguageManager.h"
+#include "TriggerManager\TriggerManager.h"
 
 #include "StaticMeshes\StaticMeshManager.h"
 
@@ -140,6 +141,34 @@ void RegisterManagers()
         .def("get_game_pad_delta_triggers", &CInputManager::GetGamePadDeltaTriggers)
         .def("set_game_pad_left_motor_speed", &CInputManager::SetGamePadLeftMotorSpeed)
         .def("set_game_pad_right_motor_speed", &CInputManager::SetGamePadRightMotorSpeed)
+    ];
+    luabind::module(LUA_STATE) [
+        class_<CTemplatedVectorMapManager<CTrigger>>("CTemplatedVectorMapManagerTriggerManager")
+        .def(constructor<>())
+        .scope
+        [
+            class_<CTemplatedVectorMapManager<CTrigger>::CMapResourceValue>("CMapResourceValue")
+            .def(constructor<>())
+            .def_readwrite("m_Value", & CTemplatedVectorMapManager<CTrigger>::CMapResourceValue::m_Value)
+            .def_readwrite("m_Id", & CTemplatedVectorMapManager<CTrigger>::CMapResourceValue::m_Id)
+        ]
+        //.def("remove_resource", &CTemplatedVectorMapManager<CRenderableObject>::RemoveResource) // <= m_Id identificador no declarado xq está en clase interna
+        .def("get_resource", &CTemplatedVectorMapManager<CTrigger>::GetResource)
+        .def("get_resource_by_id", &CTemplatedVectorMapManager<CTrigger>:: GetResourceById)
+        .def("add_resource", &CTemplatedVectorMapManager<CTrigger>::AddResource)
+        .def("destroy", &CTemplatedVectorMapManager<CTrigger>::Destroy)
+        .def("get_resource_map", &CTemplatedVectorMapManager<CTrigger>::GetResourcesMap)
+        .def("get_resource_vector", &CTemplatedVectorMapManager<CTrigger>::GetResourcesVector)
+    ];
+    luabind::module(LUA_STATE) [
+        class_<CTriggerManager, bases<CTemplatedVectorMapManager<CTrigger>, CPhysicTriggerReport>>("CTriggerManager")
+        .def(constructor<>())
+        .def("clear", &CTriggerManager::Clear)
+        .def("load_triggers", &CTriggerManager::LoadTriggers)
+        .def("on_enter", &CTriggerManager::OnEnter)
+        .def("on_leave", &CTriggerManager::OnLeave)
+        .def("on_stay", &CTriggerManager::OnStay)
+        .def("get_trigger_report", &CTriggerManager::getTriggerReport)
     ];
 }
 

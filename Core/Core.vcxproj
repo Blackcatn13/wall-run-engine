@@ -33,6 +33,7 @@
     <ClInclude Include="Core\BindCinematics.h" />
     <ClInclude Include="Core\BindCore.h" />
     <ClInclude Include="Core\BindEffects.h" />
+    <ClInclude Include="Core\BindIA.h" />
     <ClInclude Include="Core\BindInputs.h" />
     <ClInclude Include="Core\BindLights.h" />
     <ClInclude Include="Core\BindManagers.h" />

@@ -50,7 +50,12 @@ void RegisterCore()
         .def("get_script_manager", &CCore::GetScriptManager)
         .def("get_light_manager", &CCore::GetLightManager)
         .def("get_cinematic_controller", &CCore::GetCinematicController)
-		.def("get_player_controller", &CCore::GetPlayerController)
+        .def("get_player_controller", &CCore::GetPlayerController)
+        //.def("get_renderable_object_layer_manager", &CCore::GetRenderableObjectsLayersManager)
+        .def("get_phisics_manager", &CCore::GetPhysicsManager)
+        //.def("get_scene_render_commands_manager", &CCore::GetSceneRendererCommandManager)
+        .def("get_trigger_manager", &CCore::GetTriggerManager)
+        // .def("get_log_render", &CCore::GetLogRender)
         .property("m_CameraController", &CCore::GetCameraController, &CCore::SetCameraController)
     ];
     luabind::module(LUA_STATE) [
