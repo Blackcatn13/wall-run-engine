@@ -1,0 +1,23 @@
+<fsm name="Patrulla">
+	<initialState name="Parado"/>
+	<state name="Parado">
+		<onEnter lua_funtion="Enter1()"/>
+		<onExit lua_funtion="Exit1()"/>
+		<Update time="1" lua_funtion="Update1()"/>
+	</state>
+	<state name="Andar_WP">
+		<onEnter lua_funtion="Enter2()"/>
+		<onExit lua_funtion="Exit2()"/>
+		<Update time="1" lua_funtion="Update2()"/>
+	</state>
+	<state name="Buscar_next_WP">
+		<onEnter lua_funtion="Enter3()"/>
+		<onExit lua_funtion="Exit3()"/>
+		<Update time="1" lua_funtion="Update3()"/>
+	</state>
+	<state name="Perseguir_Player">
+		<onEnter lua_funtion="Enter4()"/>
+		<onExit lua_funtion="Exit4()"/>
+		<Update time="1" lua_funtion="Update4()"/>
+	</state>
+</fsm>
