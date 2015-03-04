@@ -6,6 +6,7 @@
 #include "PhysicsManager.h"
 #include "ActionToInput.h"
 #include "Camera\CameraController.h"
+#include "ScriptManager.h"
 
 CPlayerController::CPlayerController()
     : CObject3D(),
@@ -19,6 +20,7 @@ CPlayerController::CPlayerController()
     m_PhysicUserData->SetPaint(true);
     m_PhysicController = new CPhysicController(1, 2, 0.87, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, Vect3f(0, 2, 0), -m_Gravity);
     PHYSXM->AddPhysicController(m_PhysicController);
+	SCRIPTM->RunCode("on_init_cameras_lua()");
 }
 
 CPlayerController::~CPlayerController()

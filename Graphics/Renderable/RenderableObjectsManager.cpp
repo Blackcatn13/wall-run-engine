@@ -131,7 +131,7 @@ void CRenderableObjectsManager::Load(const std::string &FileName)
                 if (l_name == "scriptedController") {
                     CScriptedController *l_ScriptedController = new CScriptedController();
                     AddResource(l_name, l_ScriptedController);
-                }
+               }
             }
         }
     }

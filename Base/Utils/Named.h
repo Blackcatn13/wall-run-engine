@@ -24,6 +24,14 @@ public:
             printf("Triggers Exit\n");
         if (name == "Testing-Chanchullo_Lua") //Test scripting
             printf("Testing-Chanchullo_Lua\n");
+		if(name=="TestCamara")
+			printf("Camara3DOK");
+		if(name=="InitCamara")
+			printf("InitCamaraOK");
+		if(name=="InitCamaraBefore")
+			printf("InitCamaraOKBefore");
+		if(name=="Empieza")
+			printf("EmpiezaOK");
     }
     std::string getName()
     {
