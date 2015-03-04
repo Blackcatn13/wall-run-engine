@@ -131,3 +131,11 @@ struct SCREEN_TEXTURED_COLORED_VERTEX_VS
 	float4 Color : COLOR0;
 	float2 UV : TEXCOORD0;
 };
+
+struct TMultiRenderTargetPixel
+{
+	float4 RT0 : COLOR0; //Albedo (float3) + (float) SpecularFactor
+	float4 RT1 : COLOR1; //AmbientLight (float3) + (float) SpecularPow
+	float4 RT2 : COLOR2; //Normal (float3) + (float) Not used
+	float4 RT3 : COLOR3; //Depth (float4)
+};

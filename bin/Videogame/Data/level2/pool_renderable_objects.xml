@@ -4,6 +4,7 @@
 		<default_technique vertex_type="19" technique="LightsTechnique"/>
 		<default_technique vertex_type="31" technique="NormalMapTechnique"/>
 		<default_technique vertex_type="51" technique="LightMapTechnique"/>
+		<default_technique vertex_type="67" technique=""/>
 		<default_technique vertex_type="531" technique="CubeMapTechnique"/>		
 		<default_technique vertex_type="2048" technique=""/>
 	</pool_renderable_object_technique>
@@ -19,6 +20,7 @@
 		<default_technique vertex_type="19" technique="GBufferDiffuseMapTechnique"/>
 		<default_technique vertex_type="31" technique="GBufferNormalMapTechnique"/>
 		<default_technique vertex_type="51" technique="GBufferLightMapTechnique"/>
+		<default_technique vertex_type="67" technique="GBufferColoredTechnique"/>
 		<default_technique vertex_type="531" technique="GBufferCubeMapTechnique"/>
 	</pool_renderable_object_technique> 
 

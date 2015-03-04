@@ -15,15 +15,6 @@ struct TGBUFFER_TEXTURED1_VERTEX_PS
 	float4 WorldPosition : TEXCOORD4;
 };
 
-// Estructura de píxel que contiene la info de 4 píxeles de salida
-struct TMultiRenderTargetPixel
-{
-	float4 RT0 : COLOR0; //Albedo (float3) + (float) SpecularFactor
-	float4 RT1 : COLOR1; //AmbientLight (float3) + (float) SpecularPow
-	float4 RT2 : COLOR2; //Normal (float3) + (float) Not used
-	float4 RT3 : COLOR3; //Depth (float4)
-};
-
 float3 Normal2Texture(float3 Normal)
 {
 	return Normal*0.5+0.5;
@@ -81,7 +72,7 @@ technique GBufferDiffuseMapTechnique
 {
 	pass p0
 	{
-		AlphaBlendEnable = false;
+		//AlphaBlendEnable = false;
 		//CullMode = NONE; // NONE - CW
 		VertexShader = compile vs_3_0 GBufferVS();
 		PixelShader = compile ps_3_0 GBufferPS();

@@ -4,13 +4,12 @@
 
 
 
-struct TGBUFFER_TEXTURED1_VERTEX_PS
+struct TGBUFFER_COLORED_NORMAL_VERTEX_PS
 {
 	float4 HPosition : POSITION;
-    float2 UV : TEXCOORD0;
-	float2 UV2 : TEXCOORD1;
-	float3 Normal : TEXCOORD2;
-	float4 WorldPosition : TEXCOORD3;
+	float4 Col : TEXCOORD0;
+	float3 Normal	: TEXCOORD1;
+	float4 WorldPosition : TEXCOORD2;
 };
 
 float3 Normal2Texture(float3 Normal)
@@ -18,29 +17,27 @@ float3 Normal2Texture(float3 Normal)
 	return Normal*0.5+0.5;
 }
 
-TGBUFFER_TEXTURED1_VERTEX_PS GBufferVS(VertexVS_TTEXTURE2_NORMAL_VERTEX IN){
+TGBUFFER_COLORED_NORMAL_VERTEX_PS GBufferVS(VertexVS_TCOLORED_NORMAL_VERTEX IN){
 	
-	TGBUFFER_TEXTURED1_VERTEX_PS OUT = (TGBUFFER_TEXTURED1_VERTEX_PS)0;
-    OUT.UV = IN.UV;
-	OUT.UV2 = IN.UV2;
+	TGBUFFER_COLORED_NORMAL_VERTEX_PS OUT = (TGBUFFER_COLORED_NORMAL_VERTEX_PS)0;
     OUT.HPosition = mul(float4(IN.Position,1.0), g_WorldViewProjectionMatrix);
-	OUT.Normal = normalize(mul(IN.Normal,(float3x3)g_WorldMatrix));
+    OUT.Normal = normalize(mul(IN.Normal,(float3x3)g_WorldMatrix));
 	OUT.WorldPosition = OUT.HPosition;
+	OUT.Col = IN.Color;
     return OUT;
 }
 
-TMultiRenderTargetPixel GBufferPS(TGBUFFER_TEXTURED1_VERTEX_PS IN) {
+TMultiRenderTargetPixel GBufferPS(TGBUFFER_COLORED_NORMAL_VERTEX_PS IN) {
 	TMultiRenderTargetPixel OUT = (TMultiRenderTargetPixel)0;
-	float4 l_DiffuseColor = tex2D(S0LinearWrapSampler , IN.UV);
-	float3 l_DiffuseLigthMap = tex2D(S3LinearWrapSampler, IN.UV2).rgb;
-	float3 l_intensity = l_DiffuseColor.xyz * l_DiffuseLigthMap;
+	float4 l_DiffuseColor = IN.Col;
+	
 	float3 Nn = normalize(IN.Normal);
 	float3 NnScalated = Normal2Texture(Nn);
-	// Cálculo de la z en formato color
+	// CÃ¡lculo de la z en formato color
 	float l_Depth = IN.WorldPosition.z/IN.WorldPosition.w;
 	
 	OUT.RT0=float4(l_DiffuseColor.xyz, 1.0);
-	OUT.RT1=float4(l_intensity*g_LightAmbientIntensity, 1.0);
+	OUT.RT1=float4(l_DiffuseColor.xyz*g_LightAmbient*g_LightAmbientIntensity, 1.0);
 	OUT.RT2.xyz=NnScalated;
 	OUT.RT3=l_Depth;  
 	

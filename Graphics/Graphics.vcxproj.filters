@@ -392,9 +392,6 @@
     <ClInclude Include="Renderable\RenderableObjectTechniqueManager.h">
       <Filter>Renderable</Filter>
     </ClInclude>
-    <ClInclude Include="RenderableCommands\BeginRenderSceneRendererCommand.h">
-      <Filter>RenderableCommands</Filter>
-    </ClInclude>
     <ClInclude Include="RenderableCommands\CaptureFrameBufferSceneRendererCommand.h">
       <Filter>RenderableCommands</Filter>
     </ClInclude>
@@ -484,6 +481,9 @@
     </ClInclude>
     <ClInclude Include="RenderableCommands\GaussianBlurSceneRendererCommand.h">
       <Filter>RenderableCommands</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableCommands\BeginRenderSceneRendererCommand.h">
+      <Filter>Renderable</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
