@@ -40,7 +40,7 @@ void CFSMManager::Load()
 				} else if (name == "state") {
 					STATE* s = new STATE();
 					int states = m(i).GetNumChildren();
-					std::string StateName = m(i)(j).GetPszISOProperty("name", "");
+					std::string StateName = m(i).GetPszISOProperty("name", "");
 					for (int j = 0; j < states; ++j) {
 						std::string StateType = m(i)(j).GetName();
 						if (StateType == "onEnter") {

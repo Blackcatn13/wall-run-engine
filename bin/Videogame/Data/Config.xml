@@ -25,7 +25,7 @@
   <Cameras CamerasLvl="No"/>
   <Cinematic CinematicLvl="No"/>
   <Lua LuaFile="./Data/lua_actions.xml"/>
-  <LoadLevel LuaInitLevelFunc="init_level()" LuaInitCamerasFunc="" />
+  <LoadLevel LuaInitLevelFunc="init_level" LuaInitCamerasFunc="" />
   <Effect EffectXML="./Data/effects.xml"/> 
   <Avi aviXML=""/>
   <PhysX initPhysX="true"/>

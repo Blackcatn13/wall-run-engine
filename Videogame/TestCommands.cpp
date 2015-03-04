@@ -44,6 +44,10 @@
 #include "Granade.h"
 #include "AI\AIController.h"
 
+#include <sstream>
+#include <string>
+#include "Utils\LuaGlobals.h"
+
 //#include "Utils\PhysicUserAllocator.h"
 CAIController* AI;
 
@@ -140,7 +144,12 @@ void CTestCommands::Init()
     m_LuaInitLevelFunc = CCORE->getLuaLoadLevelFunc();
     char l_InitLevelText[256];
     _snprintf_s(l_InitLevelText, 256, 256, m_LuaInitLevelFunc.c_str());
-    SCRIPTM->RunCode(l_InitLevelText);
+	std::stringstream ss;
+	int var = 1;
+	ss << CCORE->getLuaLoadLevelFunc() << "(" << var << ")";
+	std::string toRun = ss.str();
+    SCRIPTM->RunCode(toRun.c_str());
+	CLuaGlobals::getInstance()->getString();
     AI = new CAIController();
 }
 

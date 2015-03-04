@@ -31,6 +31,7 @@
 //#include "Core_Utils/MemLeaks.h"
 #include "AI\AIController.h"
 #include "BindIA.h"
+#include "Utils\LuaGlobals.h"
 
 //Código de la función Alert que se llamará al generarse algún error de LUA
 int Alert(/*IN */lua_State * State)
@@ -307,6 +308,18 @@ void CScriptManager::RegisterLUAFunctions()
         .def("is_orthogonal_epsilon",  & Mat44f::IsOrthogonalEpsilon)
         .def("is_orthonormal_epsilon",  & Mat44f::IsOrthonormalEpsilon)
     ];
+
+	  luabind::module(LUA_STATE) [
+        class_<CLuaGlobals>("CLuaGlobals")
+        .def(constructor<>())
+		.def("getInstance", & CLuaGlobals::getInstance)
+		.def("m_string", & CLuaGlobals::setString)
+		/*.property("m_string",  & CLuaGlobals::getString, CLuaGlobals::setString)
+		.property("m_int",  & CLuaGlobals::getInt, CLuaGlobals::setInt)  
+		.property("m_float",  & CLuaGlobals::getFloat, CLuaGlobals::setFloat)  */
+    ];
+
+	
     luabind::module(LUA_STATE) [
         class_<CVisible>("CVisible")
         .def("get_visible", & CVisible::getVisible)

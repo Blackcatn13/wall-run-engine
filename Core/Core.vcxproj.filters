@@ -70,6 +70,9 @@
     <ClCompile Include="AI\AIController.cpp">
       <Filter>AI</Filter>
     </ClCompile>
+    <ClCompile Include="AI\FSMManager.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h">
@@ -149,6 +152,9 @@
     </ClInclude>
     <ClInclude Include="Core\BindIA.h">
       <Filter>ScriptManager</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\FSMManager.h">
+      <Filter>AI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

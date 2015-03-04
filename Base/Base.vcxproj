@@ -19,6 +19,7 @@
     <ClCompile Include="Utils\LerpAnimator2D.cpp" />
     <ClCompile Include="Utils\LerpAnimator3D.cpp" />
     <ClCompile Include="Utils\Logger.cpp" />
+    <ClCompile Include="Utils\LuaGlobals.cpp" />
     <ClCompile Include="XML\Example.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -44,6 +45,7 @@
     <ClInclude Include="Utils\LerpAnimator2D.h" />
     <ClInclude Include="Utils\LerpAnimator3D.h" />
     <ClInclude Include="Utils\Logger.h" />
+    <ClInclude Include="Utils\LuaGlobals.h" />
     <ClInclude Include="Utils\MapManager.h" />
     <ClInclude Include="Utils\Named.h" />
     <ClInclude Include="Utils\TemplatedVectorMapManager.h" />

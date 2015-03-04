@@ -35,6 +35,9 @@
     <Filter Include="Utils\Visible">
       <UniqueIdentifier>{c32d7d8b-9e9b-4bca-b2d6-67f33d50ad13}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utils\LuaGlobals">
+      <UniqueIdentifier>{5a1064ad-7365-4c06-b6da-277bbd72cd0b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Math\MathConstants.cpp">
@@ -66,6 +69,9 @@
     </ClCompile>
     <ClCompile Include="Utils\Logger.cpp">
       <Filter>Utils\Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\LuaGlobals.cpp">
+      <Filter>Utils\LuaGlobals</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +146,9 @@
     </ClInclude>
     <ClInclude Include="Utils\Visible.h">
       <Filter>Utils\Visible</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\LuaGlobals.h">
+      <Filter>Utils\LuaGlobals</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

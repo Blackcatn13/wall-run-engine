@@ -88,8 +88,8 @@ int APIENTRY WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance, LPSTR _lpCm
         m_Engine = new CEngine();
         //new CVideoGame_Process()
         //new CTest_Process()
-        CProcess *proc = new CTestGameplay();
-        // CProcess *proc = new CTestCommands();
+        //CProcess *proc = new CTestGameplay();
+        CProcess *proc = new CTestCommands();
         m_Engine->Init(proc, ".\\Data\\Config.xml", hWnd);
         proc->Init();
         // Añadir en el while la condición de salida del programa de la aplicación
