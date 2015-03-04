@@ -92,10 +92,11 @@ void CCore::Init(HWND handler)
     m_LogRender = new CLogRender();
     m_SceneRendererCommandManager = new CSceneRendererCommandManager();
     m_SceneRendererCommandManager->Load(m_Config.SceneRenderCommandsPath);
-    m_TriggerManager = new CTriggerManager();
+    m_TriggerManager = new CTriggerManager();  
+	m_ScriptManager->Load(m_Config.LuaPath);
     m_PlayerController = new CPlayerController();
     //m_TriggerManager->LoadTriggers("./Data/triggers.xml");
-    m_ScriptManager->Load(m_Config.LuaPath);
+  
     m_LuaLoadLevelFunc = m_Config.LuaLevelObjectsFunc;
 }
 
