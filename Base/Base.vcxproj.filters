@@ -150,6 +150,9 @@
     <ClInclude Include="Utils\LuaGlobals.h">
       <Filter>Utils\LuaGlobals</Filter>
     </ClInclude>
+    <ClInclude Include="Utils\LuaGlobalsWrapper.h">
+      <Filter>Utils\LuaGlobals</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Math\MathUtils.inl">

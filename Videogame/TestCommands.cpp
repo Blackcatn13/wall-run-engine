@@ -48,6 +48,8 @@
 #include <string>
 #include "Utils\LuaGlobals.h"
 
+#include "SceneElements\StaticPlatform.h"
+
 //#include "Utils\PhysicUserAllocator.h"
 CAIController* AI;
 
@@ -70,7 +72,7 @@ CTestCommands::~CTestCommands(void)
     //delete m_ThPSCamera;
 //    delete m_ThPSCamera1;
     //delete m_FPSCamera;
-    PHYSXM->ReleaseAllActors();
+    //PHYSXM->ReleaseAllActors();
     /*CHECKED_DELETE(m_PhysicActor);
     CHECKED_DELETE(m_PhysicUserData);
     CHECKED_DELETE(m_PhysicUserDataCube);
@@ -144,13 +146,14 @@ void CTestCommands::Init()
     m_LuaInitLevelFunc = CCORE->getLuaLoadLevelFunc();
     char l_InitLevelText[256];
     _snprintf_s(l_InitLevelText, 256, 256, m_LuaInitLevelFunc.c_str());
-	std::stringstream ss;
-	int var = 1;
-	ss << CCORE->getLuaLoadLevelFunc() << "(" << var << ")";
-	std::string toRun = ss.str();
+    std::stringstream ss;
+    int var = 1;
+    ss << CCORE->getLuaLoadLevelFunc() << "(" << var << ")";
+    std::string toRun = ss.str();
     SCRIPTM->RunCode(toRun.c_str());
-	CLuaGlobals::getInstance()->getString();
+    std::string l_Hi =	CLuaGlobals::getInstance()->getString();
     AI = new CAIController();
+    //CStaticPlatform * l_Platform = new CStaticPlatform("Platform1", "UserDataPlatform1", Vect3f(2, 2, 2), Vect3f(5, 7, 2), Vect3f(0, 0, 0));
 }
 
 void CTestCommands::DeInit()

@@ -83,6 +83,7 @@
     <ClCompile Include="Renderable\RenderableObjectsManager.cpp" />
     <ClCompile Include="Renderable\RenderableObjectTechnique.cpp" />
     <ClCompile Include="Renderable\RenderableObjectTechniqueManager.cpp" />
+    <ClCompile Include="SceneElements\StaticPlatform.cpp" />
     <ClCompile Include="StaticMeshes\StaticMesh.cpp" />
     <ClCompile Include="StaticMeshes\StaticMeshManager.cpp" />
     <ClCompile Include="Texture\CubeTexture.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="Renderable\RenderableObjectsManager.h" />
     <ClInclude Include="Renderable\RenderableObjectTechnique.h" />
     <ClInclude Include="Renderable\RenderableObjectTechniqueManager.h" />
+    <ClInclude Include="SceneElements\StaticPlatform.h" />
     <ClInclude Include="StaticMeshes\StaticMesh.h" />
     <ClInclude Include="StaticMeshes\StaticMeshManager.h" />
     <ClInclude Include="Texture\CubeTexture.h" />
@@ -223,7 +225,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)\Base;$(SolutionDir)\Input;$(SolutionDir)\Core;$(SolutionDir)\3dParty\libxml2-2.7.2.win32\include;$(SolutionDir)\3dParty\iconv-1.9.2.win32\include;$(SolutionDir)\$(ProjectName);$(SolutionDir)\3dParty\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)\Base;$(SolutionDir)\Input;$(SolutionDir)\Core;$(SolutionDir)\3dParty\libxml2-2.7.2.win32\include;$(SolutionDir)\3dParty\iconv-1.9.2.win32\include;$(SolutionDir)\$(ProjectName);$(SolutionDir)\3dParty\;$(SolutionDir)\PhysX;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -243,7 +245,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)\Base;$(SolutionDir)\Input;$(SolutionDir)\Core;$(SolutionDir)\3dParty\libxml2-2.7.2.win32\include;$(SolutionDir)\3dParty\iconv-1.9.2.win32\include;$(SolutionDir)\$(ProjectName);$(SolutionDir)\3dParty\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)\Base;$(SolutionDir)\Input;$(SolutionDir)\Core;$(SolutionDir)\3dParty\libxml2-2.7.2.win32\include;$(SolutionDir)\3dParty\iconv-1.9.2.win32\include;$(SolutionDir)\$(ProjectName);$(SolutionDir)\3dParty\;$(SolutionDir)\PhysX;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

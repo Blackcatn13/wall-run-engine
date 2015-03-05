@@ -24,6 +24,7 @@ extern "C"
 #include <luabind/class.hpp>
 #include <luabind/operator.hpp>
 #include <luabind/scope.hpp>
+#include <luabind/out_value_policy.hpp>
 
 using namespace luabind;
 

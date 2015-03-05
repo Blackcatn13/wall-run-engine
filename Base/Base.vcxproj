@@ -46,6 +46,7 @@
     <ClInclude Include="Utils\LerpAnimator3D.h" />
     <ClInclude Include="Utils\Logger.h" />
     <ClInclude Include="Utils\LuaGlobals.h" />
+    <ClInclude Include="Utils\LuaGlobalsWrapper.h" />
     <ClInclude Include="Utils\MapManager.h" />
     <ClInclude Include="Utils\Named.h" />
     <ClInclude Include="Utils\TemplatedVectorMapManager.h" />

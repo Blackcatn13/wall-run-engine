@@ -1,11 +1,11 @@
 
 function init_level(a)
-	name = CLuaGlobals()
-	local luaString = name:getInstance()
+	--name = CLuaGlobals()
+	local instance = CLuaGlobalsWrapper().m_CoreInstance;
 	local var lolo = CNamed()
 	lolo:set_name("Tete")
 	local var = "hi"
-	luaString:m_string(var)
+	instance.m_string = "hi"
 
 
 	--platform = Platform:create()

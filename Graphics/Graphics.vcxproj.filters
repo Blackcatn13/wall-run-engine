@@ -47,6 +47,9 @@
     <Filter Include="RenderableCommands">
       <UniqueIdentifier>{5fd68bb7-bad3-4270-aeb8-ed777e1056e8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SceneElements">
+      <UniqueIdentifier>{3465eb9e-2815-4961-8d9f-02eac8acc95a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GraphicsManager.cpp" />
@@ -263,6 +266,9 @@
     <ClCompile Include="RenderableCommands\GaussianBlurSceneRendererCommand.cpp">
       <Filter>RenderableCommands</Filter>
     </ClCompile>
+    <ClCompile Include="SceneElements\StaticPlatform.cpp">
+      <Filter>SceneElements</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
@@ -392,6 +398,9 @@
     <ClInclude Include="Renderable\RenderableObjectTechniqueManager.h">
       <Filter>Renderable</Filter>
     </ClInclude>
+    <ClInclude Include="RenderableCommands\BeginRenderSceneRendererCommand.h">
+      <Filter>RenderableCommands</Filter>
+    </ClInclude>
     <ClInclude Include="RenderableCommands\CaptureFrameBufferSceneRendererCommand.h">
       <Filter>RenderableCommands</Filter>
     </ClInclude>
@@ -482,8 +491,8 @@
     <ClInclude Include="RenderableCommands\GaussianBlurSceneRendererCommand.h">
       <Filter>RenderableCommands</Filter>
     </ClInclude>
-    <ClInclude Include="RenderableCommands\BeginRenderSceneRendererCommand.h">
-      <Filter>Renderable</Filter>
+    <ClInclude Include="SceneElements\StaticPlatform.h">
+      <Filter>SceneElements</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

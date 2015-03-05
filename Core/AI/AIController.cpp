@@ -15,15 +15,14 @@ CAIController::CAIController()
     : CObject3D(),
       m_Gravity(13),
       m_Speed (0.03),
-	  m_TurnSpeed(0.3),
+      m_TurnSpeed(0.3),
       m_JumpForce(1.5),
       m_CurrentJumpForce(0),
       m_isJumping(false)
 {
-	
     m_PhysicUserData = new CPhysicUserData("AI");
     m_PhysicUserData->SetPaint(true);
-	m_PhysicUserData->SetColor(colRED);
+    m_PhysicUserData->SetColor(colRED);
     m_PhysicController = new CPhysicController(1, 2, 0.87, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, Vect3f(-15, 5, -15), -m_Gravity);
     PHYSXM->AddPhysicController(m_PhysicController);
 }
@@ -69,25 +68,24 @@ void CAIController::Move(float dt)
 
 void CAIController::MoveTo(float dt, Vect3f point)
 {
-	if (point.Distance(m_Position) >= 2) {
-		Vect3f direction = (point - m_Position);
-		Vect3f diff = Vect3f(1,0,0).RotateY(m_fYaw);
-		float angle = getAngleDiff(direction, diff);
-		m_fYaw = m_fYaw - angle * m_TurnSpeed * dt;
-		//m_Position = m_Position + Vect3f(1,0,0).RotateZ(m_fYaw) * m_Speed * dt;
-		m_PhysicController->Move( Vect3f(1,0,0).RotateY(m_fYaw) * m_Speed, dt);
-		SetPosition(m_PhysicController->GetPosition());
-		CRenderableObject* malla = RENDLM->GetDefaultRenderableObjectManager()->GetResource("Box002");
-		malla->SetYaw(m_fYaw);
-		malla->SetPosition(m_PhysicController->GetPosition());
-	}
-	
+    if (point.Distance(m_Position) >= 2) {
+        Vect3f direction = (point - m_Position);
+        Vect3f diff = Vect3f(1, 0, 0).RotateY(m_fYaw);
+        float angle = getAngleDiff(direction, diff);
+        m_fYaw = m_fYaw - angle * m_TurnSpeed * dt;
+        //m_Position = m_Position + Vect3f(1,0,0).RotateZ(m_fYaw) * m_Speed * dt;
+        m_PhysicController->Move( Vect3f(1, 0, 0).RotateY(m_fYaw) * m_Speed, dt);
+        SetPosition(m_PhysicController->GetPosition());
+        CRenderableObject* malla = RENDLM->GetDefaultRenderableObjectManager()->GetResource("Box002");
+        malla->SetYaw(m_fYaw);
+        malla->SetPosition(m_PhysicController->GetPosition());
+    }
 }
 
 float CAIController::getAngleDiff(Vect3f A, Vect3f B)
 {
-	float angle = A * B;
-	angle = mathUtils::ACos(mathUtils::Deg2Rad(angle));
-	float dir = (A ^ B).y >= 0 ? 1 : -1;
-	return (angle * dir);
+    float angle = A * B;
+    angle = mathUtils::ACos(mathUtils::Deg2Rad(angle));
+    float dir = (A ^ B).y >= 0 ? 1 : -1;
+    return (angle * dir);
 }
