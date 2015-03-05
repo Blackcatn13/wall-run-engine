@@ -8,9 +8,8 @@ class CLuaGlobals
 {
 protected:
     std::string m_string;
-    int			m_int;
-    float		m_float;
     static CLuaGlobals* m_instance;
+    bool        m_changed;
 public:
     CLuaGlobals();
     //Ojo que este es solo para probar el ScriptManager
@@ -25,31 +24,18 @@ public:
     void setString (std::string s)
     {
         m_string = s;
-    }
-
-    void setInt (int i)
-    {
-        m_int = i;
-    }
-
-    void setFloat (float f)
-    {
-        m_float = f;
+        m_changed = true;
     }
 
     std::string getString ()
     {
+        m_changed = false;
         return m_string;
     }
 
-    int getInt ()
+    bool ValueChanged()
     {
-        return m_int;
-    }
-
-    float getFloat ()
-    {
-        return m_float;
+        return m_changed;
     }
 };
 

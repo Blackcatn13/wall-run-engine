@@ -315,8 +315,6 @@ void CScriptManager::RegisterLUAFunctions()
         // .def("getInstance", & CLuaGlobals::getInstance)
         //.def("m_string", & CLuaGlobals::setString)
         .property("m_string",  & CLuaGlobals::getString, &CLuaGlobals::setString)
-        .property("m_int",  & CLuaGlobals::getInt, &CLuaGlobals::setInt)
-        .property("m_float",  & CLuaGlobals::getFloat, &CLuaGlobals::setFloat)
         // .scope
         //[
         .def("get_instance",  & CLuaGlobals::getInstance)

@@ -45,6 +45,7 @@
 #include "Granade.h"
 
 //#include "Utils\PhysicUserAllocator.h"
+#include "Utils\LuaGlobals.h"
 
 CTestGameplay::CTestGameplay(void)
 {
@@ -151,6 +152,7 @@ void CTestGameplay::Init()
     char l_InitLevelText[256];
     _snprintf_s(l_InitLevelText, 256, 256, m_LuaInitLevelFunc.c_str());
     SCRIPTM->RunCode(l_InitLevelText);
+    CLuaGlobals::getInstance()->getString();
 }
 
 void CTestGameplay::DeInit()
