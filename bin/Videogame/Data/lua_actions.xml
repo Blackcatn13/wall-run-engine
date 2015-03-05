@@ -4,8 +4,7 @@
 	<script name="platform" file="Data/lua/platform.lua" auto_run = "true"/>
 	<script name="initLevel" file="Data/level2/lua/initLevel.lua" auto_run = "true"/>
 	<script name="patrullero" file="Data/lua/patrullero.lua" auto_run = "true"/>
-	<!--<script name="CamerasLua" file="Data/lua/Cameras.lua" auto_run = "true"/>-->
-	
+	<script name="CamerasLua" file="Data/lua/Cameras.lua" auto_run = "true"/>
 	<renderable_script name="scriptedController" file="Data/scripted_controller.lua" />
 	<renderable_script name="PlayerController" file="Data/lua/PlayerController.lua" />
 </lua_scripts>
