@@ -73,6 +73,9 @@
     <ClCompile Include="AI\FSMManager.cpp">
       <Filter>AI</Filter>
     </ClCompile>
+    <ClCompile Include="AI\WPManager.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h">
@@ -154,6 +157,9 @@
       <Filter>ScriptManager</Filter>
     </ClInclude>
     <ClInclude Include="AI\FSMManager.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI\WPManager.h">
       <Filter>AI</Filter>
     </ClInclude>
   </ItemGroup>
