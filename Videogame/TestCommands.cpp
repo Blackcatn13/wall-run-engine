@@ -50,6 +50,8 @@
 
 #include "SceneElements\StaticPlatform.h"
 
+#include "AI\FSMManager.h"
+
 //#include "Utils\PhysicUserAllocator.h"
 CAIController* AI;
 
@@ -152,8 +154,10 @@ void CTestCommands::Init()
     std::string toRun = ss.str();
     SCRIPTM->RunCode(toRun.c_str());
     std::string l_Hi =	CLuaGlobals::getInstance()->getString();
-    AI = new CAIController();
+    //AI = new CAIController();
     //CStaticPlatform * l_Platform = new CStaticPlatform("Platform1", "UserDataPlatform1", Vect3f(2, 2, 2), Vect3f(5, 7, 2), Vect3f(0, 0, 0));
+	m_fsmManager = new CFSMManager();
+	m_fsmManager->Load("data//AI//Patrulla.xml");
 }
 
 void CTestCommands::DeInit()
@@ -276,8 +280,8 @@ void CTestCommands::Update(float dt)
     //tTerra2_yaw += dt * 80 * 0.005;
     //tlluna1_yaw -= dt * 60 * 0.05;
     m_dt = dt;
+	m_fsmManager->Update(dt);
     RENDLM->Update(dt);
-    AI->MoveTo(dt, Vect3f(15, 2, 15));
 }
 
 void CTestCommands::Render()

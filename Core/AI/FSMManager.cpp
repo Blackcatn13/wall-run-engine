@@ -5,7 +5,7 @@
 #include "Utils\LuaGlobals.h"
 
 CFSMManager::CFSMManager()
-    : m_fileName (NULL)
+    : m_fileName ("")
 {
 }
 
@@ -47,11 +47,11 @@ void CFSMManager::Load()
                     for (int j = 0; j < states; ++j) {
                         std::string StateType = m(i)(j).GetName();
                         if (StateType == "onEnter") {
-                            s->onEnter = m(i)(j).GetPszISOProperty("name", "");
+                            s->onEnter = m(i)(j).GetPszISOProperty("lua_funtion", "");
                         } else if (StateType == "onExit") {
-                            s->onExit = m(i)(j).GetPszISOProperty("name", "");
+                            s->onExit = m(i)(j).GetPszISOProperty("lua_funtion", "");
                         } else if (StateType == "Update") {
-                            s->onUpdate = m(i)(j).GetPszISOProperty("name", "");
+                            s->onUpdate = m(i)(j).GetPszISOProperty("lua_funtion", "");
                             s->m_UpdateTime = m(i)(j).GetFloatProperty("time");
                         }
                         s->m_ElapsedTime = 0;
@@ -69,11 +69,17 @@ void CFSMManager::Update(float dt)
 {
     for (TMapResource::iterator it = m_Resources.begin(); it != m_Resources.end(); ++it) {
         STATE *s = it->second->m_States.GetResource(it->second->m_currentState);
-        if (s->m_onEnter == false)
+        if (s->m_onEnter == false) {
             SCRIPTM->RunCode(s->onEnter.c_str());
+			s->m_onEnter = true;
+		}
         s->m_ElapsedTime += dt;
-        if (s->m_ElapsedTime >= s->m_UpdateTime)
-            SCRIPTM->RunCode(s->onUpdate.c_str());
+        if (s->m_ElapsedTime >= s->m_UpdateTime) {
+			char l_InitLevelText[256];
+			_snprintf_s(l_InitLevelText, 256, 256, "%s(%f)", s->onUpdate.c_str(), dt);
+            SCRIPTM->RunCode(l_InitLevelText);
+			s->m_ElapsedTime = 0;
+		}
         bool change = CLuaGlobals::getInstance()->ValueChanged();
         if (change) {
             SCRIPTM->RunCode(s->onExit.c_str());

@@ -153,3 +153,9 @@ void CCore::Update(float dt)
     m_LogRender->Update(dt);
     //m_PlayerController->Move(dt);
 }
+
+
+void CCore::Trace(const std::string & msg )
+{
+	std::cout << msg << std::endl;
+}

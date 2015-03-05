@@ -16,6 +16,7 @@ class CPhysicActor;
 class CPhysicMaterial;
 class CGranade;
 class CPlayerController;
+class CFSMManager;
 
 class CTestCommands : public CProcess
 {
@@ -33,6 +34,7 @@ private:
     CPhysicUserData		*m_PhysicUserData;
     CPhysicUserData		*m_PhysicUserDataCube;
     CGranade			*m_Granade;
+	CFSMManager			*m_fsmManager;
     bool			    m_PlayerMode;
     bool				m_FPSMode;
     float			    tTerra1_yaw;

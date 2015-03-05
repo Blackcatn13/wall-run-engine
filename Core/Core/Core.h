@@ -93,6 +93,7 @@ private:
 public:
     ~CCore();
     void Update ( float dt );
+	void Trace(const std::string & msg );
     void Render();
     void Init ( HWND handler );
     void DeInit();

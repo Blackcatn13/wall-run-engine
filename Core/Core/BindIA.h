@@ -41,7 +41,7 @@ using namespace luabind;
 void RegisterAI()
 {
     luabind::module(LUA_STATE) [
-        class_<CAIController>("CAIController")
+        class_<CAIController, CObject3D>("CAIController")
         .def(constructor<>())
         .property("m_PhysicController", &CAIController::getPhysicController,  &CAIController::setPhysicController )
         .property("m_PhysicUserData", &CAIController::getPhysicUserData,  &CAIController::setPhysicUserData )
