@@ -155,7 +155,7 @@ function on_update_scripted_controller(l_ElapsedTime)
 		mov.y = player.m_CurrentJumpForce;
 	end
 	player.m_PhysicController:move(mov,l_ElapsedTime);
-	player:set_position(m_PhysicController:get_position());
+	player:set_position(player.m_PhysicController:get_position());
 	
 	return 0;
 end

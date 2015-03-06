@@ -70,8 +70,8 @@ void ShowErrorMessage (const std::string& message)
 
 int APIENTRY WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance, LPSTR _lpCmdLine, int _nCmdShow)
 {
-	AllocConsole();
-	freopen("CONOUT$", "w", stdout);
+    AllocConsole();
+    freopen("CONOUT$", "w", stdout);
 #ifdef _DEBUG
     {
         MemLeaks::MemoryBegin();
@@ -91,8 +91,8 @@ int APIENTRY WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance, LPSTR _lpCm
         m_Engine = new CEngine();
         //new CVideoGame_Process()
         //new CTest_Process()
-        //CProcess *proc = new CTestGameplay();
-        CProcess *proc = new CTestCommands();
+        CProcess *proc = new CTestGameplay();
+        //CProcess *proc = new CTestCommands();
         m_Engine->Init(proc, ".\\Data\\Config.xml", hWnd);
         proc->Init();
         // Añadir en el while la condición de salida del programa de la aplicación

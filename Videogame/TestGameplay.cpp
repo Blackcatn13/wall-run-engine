@@ -46,6 +46,7 @@
 
 //#include "Utils\PhysicUserAllocator.h"
 #include "Utils\LuaGlobals.h"
+#include "AI\FSMManager.h"
 
 CTestGameplay::CTestGameplay(void)
 {
@@ -153,6 +154,8 @@ void CTestGameplay::Init()
     _snprintf_s(l_InitLevelText, 256, 256, m_LuaInitLevelFunc.c_str());
     SCRIPTM->RunCode(l_InitLevelText);
     CLuaGlobals::getInstance()->getString();
+    m_fsmManager = new CFSMManager();
+    m_fsmManager->Load("data//AI//Patrulla.xml");
 }
 
 void CTestGameplay::DeInit()
@@ -275,6 +278,7 @@ void CTestGameplay::Update(float dt)
     //tTerra2_yaw += dt * 80 * 0.005;
     //tlluna1_yaw -= dt * 60 * 0.05;
     m_dt = dt;
+    m_fsmManager->Update(dt);
     RENDLM->Update(dt);
 }
 

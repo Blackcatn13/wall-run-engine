@@ -17,6 +17,7 @@ class CPhysicMaterial;
 class CGranade;
 class CPlayerController;
 //class CPhysicMaterial;
+class CFSMManager;
 
 class CTestGameplay : public CProcess
 {
@@ -35,6 +36,7 @@ private:
     CPhysicUserData		*m_PhysicUserData;
     CPhysicUserData		*m_PhysicUserDataCube;
     CPhysicUserData		*m_PhysicUserDataCube2;
+    CFSMManager			*m_fsmManager;
     // CPhysicMaterial		* m_MyMaterial;
     CGranade			*m_Granade;
     bool			    m_PlayerMode;

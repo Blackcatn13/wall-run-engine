@@ -20,7 +20,6 @@ CPlayerController::CPlayerController()
     m_PhysicUserData->SetPaint(true);
     m_PhysicController = new CPhysicController(1, 2, 0.87, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, Vect3f(0, 2, 0), -m_Gravity);
     PHYSXM->AddPhysicController(m_PhysicController);
-	
 }
 
 CPlayerController::~CPlayerController()
