@@ -96,7 +96,6 @@ void CCore::Init(HWND handler)
     m_ScriptManager->Load(m_Config.LuaPath);
     m_PlayerController = new CPlayerController();
     m_TriggerManager->LoadTriggers("./Data/triggers.xml");
-    SCRIPTM->RunCode("on_init_cameras_lua()");
     m_LuaLoadLevelFunc = m_Config.LuaLevelObjectsFunc;
 }
 

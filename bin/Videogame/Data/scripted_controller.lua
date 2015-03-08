@@ -135,8 +135,10 @@ function on_update_scripted_controller(l_ElapsedTime)
 	if act2in:do_action_from_lua("ChangeDimension") then
 		if player.m_is3D == true then 
 			player.m_is3D = false;
+			coreInstance.m_CameraController:set_active_camera("2DCam");
 		else
 			player.m_is3D = true;
+			coreInstance.m_CameraController:set_active_camera("3DCam");
 		end
 	end
 	local mov = Vect3f(0,0,0);

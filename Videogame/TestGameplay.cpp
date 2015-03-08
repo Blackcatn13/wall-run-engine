@@ -88,7 +88,13 @@ void CTestGameplay::Init()
     SCRIPTM->RunCode(l_Text);*/
     m_ObjectFPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
     m_ObjectThPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
+	m_Object3D = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
+	m_Object2D = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
     //m_RenderableObject = RENDM->GetResourcesMap().find("Box005")->second.m_Value;
+	m_3DCamera = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_Object3D, 50);
+	m_3DCamera->SetTypeCamera(CCamera::TC_3DCAM);
+	m_2DCamera = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_Object2D, 50);
+	m_2DCamera->SetTypeCamera(CCamera::TC_2DCAM);
     m_ThPSCamera = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS, 50);
     //m_ThPSCamera1 = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_RenderableObject, 10);
     m_FPSCamera = new CFPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectFPS);
@@ -96,6 +102,8 @@ void CTestGameplay::Init()
     //m_CameraController = new CCameraController();
     CAMCONTM->AddNewCamera("FPS", m_FPSCamera);
     CAMCONTM->AddNewCamera("ThPSESF", m_ThPSCamera);
+	CAMCONTM->AddNewCamera("3DCam", m_3DCamera);
+	CAMCONTM->AddNewCamera("2DCam", m_2DCamera);
     //m_CameraController->AddNewCamera("ThPS", m_ThPSCamera1);
     CAMCONTM->setActiveCamera("FPS");
     m_Camera = CAMCONTM->getActiveCamera();
