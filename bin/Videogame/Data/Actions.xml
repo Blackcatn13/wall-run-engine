@@ -106,6 +106,10 @@
     	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_SPACE"/>
     </action>
 	
+	<action name="ChangeDimension">
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP"  Code="KEY_X"/>
+    </action>
+	
 	<action name="KeyMoveForward">
     	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_UP"/>
     </action>

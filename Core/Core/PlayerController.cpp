@@ -14,7 +14,8 @@ CPlayerController::CPlayerController()
       m_Speed (15),
       m_JumpForce(1.5),
       m_CurrentJumpForce(0),
-      m_isJumping(false)
+      m_isJumping(false),
+      m_is3D(false)
 {
     m_PhysicUserData = new CPhysicUserData("Player");
     m_PhysicUserData->SetPaint(true);

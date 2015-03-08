@@ -15,19 +15,38 @@ function on_update_player_controller(l_ElapsedTime)
 	--	player:set_pitch(player:get_pitch() - deltaY * l_ElapsedTime);
 	--end
 	--local yaw = player:get_yaw();*/
+	if act2in:do_action_from_lua("ChangeDimension") then
+		if player.m_is3D == true then 
+			player.m_is3D = false;
+		else
+			player.m_is3D = true;
+		end
+	end
 	local mov = Vect3f(0,0,0);
-	if act2in:do_action_from_lua("MoveForward") then
-		mov = mov + Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
-	end
-	if act2in:do_action_from_lua("MoveBack") then
-		mov = mov - Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
-	end
-	if act2in:do_action_from_lua("MoveRigth") then
-		mov = mov - Vect3f(-1,0,0) * player.m_Speed * l_ElapsedTime;
-	end
-	if act2in:do_action_from_lua("MoveLeft") then
-		mov = mov + Vect3f(-1,0,0) * player.m_Speed * l_ElapsedTime;
-	end
+		if act2in:do_action_from_lua("MoveForward") then
+			if player.m_is3D == true then	
+				mov = mov + Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
+			end
+		end
+		if act2in:do_action_from_lua("MoveBack") then
+			if player.m_is3D == true then	
+				mov = mov - Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
+			end
+		end
+		if act2in:do_action_from_lua("MoveRigth") then
+			if player.m_is3D == true then	
+				mov = mov - Vect3f(-1,0,0) * player.m_Speed * l_ElapsedTime;
+			else
+				mov = mov + Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
+			end
+		end
+		if act2in:do_action_from_lua("MoveLeft") then
+			if player.m_is3D == true then	
+				mov = mov + Vect3f(-1,0,0) * player.m_Speed * l_ElapsedTime;
+			else
+				mov = mov - Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
+			end
+		end
 	if act2in:do_action_from_lua("Jump") then
 		player.m_isJumping = true;
 		player.m_CurrentJumpForce = player.m_JumpForce;

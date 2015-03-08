@@ -162,6 +162,7 @@ void RegisterPhysX()
         .property("m_Speed", &CPlayerController::getSpeed, &CPlayerController::setSpeed )
         .property("m_JumpForce", &CPlayerController::getJumpForce, &CPlayerController::setJumpForce )
         .property("m_isJumping", &CPlayerController::getisJumping, &CPlayerController::setisJumping )
+		.property("m_is3D", &CPlayerController::getis3D, &CPlayerController::setis3D )
         .property("m_CurrentJumpForce", &CPlayerController::getCurrentJumpForce, &CPlayerController::setCurrentJumpForce )
     ];
     luabind::module(LUA_STATE) [
