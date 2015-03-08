@@ -18,6 +18,7 @@ public:
     virtual void	OnEnter		( CPhysicUserData* _Entity_Trigger1, CPhysicUserData* _Other_Shape);
     virtual void	OnLeave		( CPhysicUserData* _Entity_Trigger1, CPhysicUserData* _Other_Shape);
     virtual void	OnStay		( CPhysicUserData* _Entity_Trigger1, CPhysicUserData* _Other_Shape);
+    virtual void	Update		(float dt);
     bool	Reload(const std::string &FileName);
     bool	Reload();
     CPhysicTriggerReport* getTriggerReport()
@@ -27,6 +28,7 @@ public:
 private:
     std::string							m_FileName;
     std::vector	<CPhysicUserData *>		m_UserData;
+    float								ElapsedTime;
 };
 
 

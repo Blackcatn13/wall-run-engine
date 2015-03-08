@@ -5,7 +5,7 @@
 #include "Utils\Defines.h"
 #include "EngineDefs.h"
 #include "Camera\CameraController.h"
-
+#include "Utils\MapManager.h"
 
 class CLanguageManager;
 class CGraphicsManager;
@@ -30,7 +30,7 @@ class CProcess;
 class CTriggerManager;
 class CPlayerController;
 class CLogRender;
-
+class CStaticPlatform;
 
 #define CCORE			CCore::GetInstance()
 #define GRAPHM			CCore::GetInstance()->GetGraphicsManager()
@@ -89,11 +89,11 @@ private:
     CLogRender*                         m_LogRender;
     std::string							m_LuaLoadLevelFunc;
     std::string							m_LuaCameras;
-
+    // CMapManager<CStaticPlatform>	*		m_PlatformsMap;
 public:
     ~CCore();
     void Update ( float dt );
-	void Trace(const std::string & msg );
+    void Trace(const std::string & msg );
     void Render();
     void Init ( HWND handler );
     void DeInit();
@@ -206,6 +206,11 @@ public:
     }
 
     GET_SET(std::string, LuaLoadLevelFunc)
+
+    /*  CMapManager<CStaticPlatform>	*GetPlatformsMap()
+      {
+          return m_PlatformsMap;
+      }*/
 };
 
 

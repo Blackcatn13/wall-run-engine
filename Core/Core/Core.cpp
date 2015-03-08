@@ -92,12 +92,11 @@ void CCore::Init(HWND handler)
     m_LogRender = new CLogRender();
     m_SceneRendererCommandManager = new CSceneRendererCommandManager();
     m_SceneRendererCommandManager->Load(m_Config.SceneRenderCommandsPath);
-    m_TriggerManager = new CTriggerManager();  
-	m_ScriptManager->Load(m_Config.LuaPath);
+    m_TriggerManager = new CTriggerManager();
+    m_ScriptManager->Load(m_Config.LuaPath);
     m_PlayerController = new CPlayerController();
-    //m_TriggerManager->LoadTriggers("./Data/triggers.xml");
-	SCRIPTM->RunCode("on_init_cameras_lua()");
-  
+    m_TriggerManager->LoadTriggers("./Data/triggers.xml");
+    SCRIPTM->RunCode("on_init_cameras_lua()");
     m_LuaLoadLevelFunc = m_Config.LuaLevelObjectsFunc;
 }
 
@@ -127,6 +126,7 @@ void CCore::DeInit()
     CHECKED_DELETE(m_RenderableObjectTechniqueManager);
     CHECKED_DELETE(m_SceneRendererCommandManager);
     CHECKED_DELETE(m_LogRender);
+    // m_PlatformsMap->Destroy();
 }
 
 CCore* CCore::GetInstance()
@@ -152,11 +152,12 @@ void CCore::Update(float dt)
     m_SoundManager->Update();
     m_InputManager->Update();
     m_LogRender->Update(dt);
+    m_TriggerManager->Update(dt);
     //m_PlayerController->Move(dt);
 }
 
 
 void CCore::Trace(const std::string & msg )
 {
-	std::cout << msg << std::endl;
+    std::cout << msg << std::endl;
 }

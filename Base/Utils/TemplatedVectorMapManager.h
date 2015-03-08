@@ -51,11 +51,11 @@ public:
         TMapResources::iterator it = m_ResourcesMap.find(Name);
         if (it != m_ResourcesMap.end()) {
             size_t index = m_ResourcesMap[Name].m_Id;
-            CHECKED_DELETE(m_ResourcesVector[m_Id]);
-            m_ResourcesVector.erase(m_ResourcesVector.begin() + m_Id);
+            CHECKED_DELETE(m_ResourcesVector[index/*m_Id*/]);
+            m_ResourcesVector.erase(m_ResourcesVector.begin() + index/*m_Id*/);
             m_ResourcesMap.erase(it);
-            for (TMapResources::iterator it = m_ResourcesMap.begin(); ++it) {
-                if (it->second.m_Id >= m_Id)
+            for (TMapResources::iterator it = m_ResourcesMap.begin(); it != m_ResourcesMap.end(); ++it) {
+                if (it->second.m_Id >= index/*m_Id*/)
                     it->second.m_Id--;
             }
         } else {

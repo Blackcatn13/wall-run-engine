@@ -66,10 +66,10 @@ end
 
 function Update1(ElapsedTime)
 -- Update Parado	
-core:trace("Update Parado");
+--core:trace("Update Parado");
 	--player_position = Vect3f(19,0,5)
 	player_position = core:get_player_controller():get_position()
-	core:trace(tostring(player_position.x));
+--	core:trace(tostring(player_position.x));
 	if current_time >= 0.1 then
 		instance.m_string = "Andar_WP"
 	end
@@ -85,7 +85,7 @@ function Update2(ElapsedTime)
 	-- agafar player , player_position
 -- Update Andar_WP	
 	--andar a wp
-	core:trace("Update Andar_WP");
+--	core:trace("Update Andar_WP");
 	--player_position = Vect3f(10,0,10)
 	player_position = core:get_player_controller():get_position()
 	--core:trace(tostring(player_position.x));
@@ -103,12 +103,12 @@ end
 
 function Update3(ElapsedTime)
 -- Update Buscar_next_WP	
-core:trace("Update Buscar_next_WP");
+--core:trace("Update Buscar_next_WP");
 	instance.m_string = "Andar_WP"
 end
 
 function Update4(ElapsedTime)
-	core:trace("Update Perseguir_Player");
+--	core:trace("Update Perseguir_Player");
 -- Update Perseguir_Player 	, player_position
 	-- obtener posicion actual del player
 	--move to posicion del player

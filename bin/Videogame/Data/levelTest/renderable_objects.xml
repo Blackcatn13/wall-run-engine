@@ -7,8 +7,8 @@
 	
 	<mesh_instance name="Box001" core="Box001"  pos="0.000000 -1.000000 0.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<mesh_instance name="Box002" core="Box002"  pos="0.000000 0.000000 11.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Box003" core="Box003"  pos="0.000000 0.000000 6.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Box004" core="Box004"  pos="0.000000 0.000000 4.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<!--<mesh_instance name="Box003" core="Box003"  pos="0.000000 3.000000 6.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="2.0 3.0 2.0" />-->
+	<!--<mesh_instance name="Box004" core="Box004"  pos="2.000000 4.000000 -3.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="2.0 4.0 2.0" />-->
 	<mesh_instance name="Box005" core="Box005"  pos="0.000000 0.000000 8.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<mesh_instance name="Box006" core="Box006"  pos="-10.000000 0.000000 0.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<mesh_instance name="Box007" core="Box007"  pos="0.000000 0.000000 -10.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
@@ -19,5 +19,8 @@
 	<mesh_instance name="Box012" core="Box012"  pos="4.000000 0.000000 13.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<mesh_instance name="Box013" core="Box013"  pos="0.000000 0.000000 15.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<mesh_instance name="Box014" core="Box014"  pos="-3.000000 0.000000 13.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	
+	<platform name="StaticPlatform001" type="static" core="Box003"  pos="0.000000 3.000000 6.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="2.0 4.0 2.0" />
+	<platform name="BreakablePlatform001" type="breakable" trigger_name="BreakablePlatform_test" core="Box004"  pos="2.000000 4.000000 -3.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="2.0 4.0 2.0" />
 	
 </renderable_objects>

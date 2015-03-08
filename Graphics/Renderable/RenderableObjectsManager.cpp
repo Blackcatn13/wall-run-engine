@@ -6,6 +6,8 @@
 #include "AnimatedModels\AnimatedModelManager.h"
 #include "AnimatedModels\AnimatedInstanceModel.h"
 #include "Core\ScriptedController.h"
+#include "SceneElements\BreakablePlatform.h"
+#include "SceneElements\StaticPlatform.h"
 
 #include <assert.h>
 
@@ -117,6 +119,41 @@ void CRenderableObjectsManager::Load(const std::string &FileName)
                 l_AnimatedInstanceModel->SetScale(scale);
                 //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
                 AddResource(meshName, l_AnimatedInstanceModel);
+            } else  if (name == "platform") {
+                //TODO
+                std::string platformName = m(i).GetPszISOProperty("name", "box1");
+                std::string core = m(i).GetPszISOProperty("core", "box");
+                Vect3f pos = m(i).GetVect3fProperty("pos", v3fZERO);
+                float yaw = m(i).GetFloatProperty("yaw");
+                float pitch = m(i).GetFloatProperty("pitch");
+                float roll = m(i).GetFloatProperty("roll");
+                Vect3f scale = m(i).GetVect3fProperty("scale", v3fONE);
+                std::string type = m(i).GetPszISOProperty("type", "", false);
+                //TODO Static mesh por mesh instance
+                //
+                if (type == "static") {
+                    CStaticPlatform* l_StaticPlatform = new CStaticPlatform(platformName, core);
+                    l_StaticPlatform->SetYaw(yaw);
+                    l_StaticPlatform->SetPosition(pos);
+                    l_StaticPlatform->SetPitch(pitch);
+                    l_StaticPlatform->SetRoll(roll);
+                    l_StaticPlatform->SetScale(scale);
+                    //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
+                    AddResource(platformName, l_StaticPlatform);
+                    //std::string boxName, std::string coreName, std::string userDataName, Vect3f size, Vect3f localPosition)
+                }
+                if (type == "breakable") {
+                    std::string l_TriggerName =  m(i).GetPszISOProperty("trigger_name", "", false);
+                    CBreakablePlatform * l_BreakablePlatform = new CBreakablePlatform(platformName, core, l_TriggerName);
+                    l_BreakablePlatform->SetYaw(yaw);
+                    l_BreakablePlatform->SetPosition(pos);
+                    l_BreakablePlatform->SetPitch(pitch);
+                    l_BreakablePlatform->SetRoll(roll);
+                    l_BreakablePlatform->SetScale(scale);
+                    //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
+                    AddResource(platformName, l_BreakablePlatform);
+                    //std::string boxName, std::string coreName, std::string userDataName, Vect3f size, Vect3f localPosition)
+                }
             }
         }
     }
@@ -131,13 +168,12 @@ void CRenderableObjectsManager::Load(const std::string &FileName)
                 if (l_name == "scriptedController") {
                     CScriptedController *l_ScriptedController = new CScriptedController();
                     AddResource(l_name, l_ScriptedController);
-               }
+                }
             }
         }
     }
 }
-
-void CRenderableObjectsManager::Load(CXMLTreeNode &Node)
+void CRenderableObjectsManager::Load(CXMLTreeNode & Node)
 {
     CXMLTreeNode  m = Node;
     if (Node.Exists()) {
@@ -190,14 +226,45 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node)
                 CScriptedController *l_ScriptedController = new CScriptedController();
                 AddResource(l_name, l_ScriptedController);
             }
+        } else  if (name == "platform") {
+            //TODO
+            std::string platformName = m.GetPszISOProperty("name", "box1");
+            std::string core = m.GetPszISOProperty("core", "box");
+            Vect3f pos = m.GetVect3fProperty("pos", v3fZERO);
+            float yaw = m.GetFloatProperty("yaw");
+            float pitch = m.GetFloatProperty("pitch");
+            float roll = m.GetFloatProperty("roll");
+            Vect3f scale = m.GetVect3fProperty("scale", v3fONE);
+            std::string type = m.GetPszISOProperty("type", "", false);
+            //TODO Static mesh por mesh instance
+            //
+            if (type == "static") {
+                CStaticPlatform* l_StaticPlatform = new CStaticPlatform(platformName, core);
+                l_StaticPlatform->SetYaw(yaw);
+                l_StaticPlatform->SetPosition(pos);
+                l_StaticPlatform->SetPitch(pitch);
+                l_StaticPlatform->SetRoll(roll);
+                l_StaticPlatform->SetScale(scale);
+                //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
+                AddResource(platformName, l_StaticPlatform);
+                //std::string boxName, std::string coreName, std::string userDataName, Vect3f size, Vect3f localPosition)
+            }
+            if (type == "breakable") {
+                std::string l_TriggerName =  m.GetPszISOProperty("trigger_name", "", false);
+                CBreakablePlatform * l_BreakablePlatform = new CBreakablePlatform(platformName, core, l_TriggerName);
+                l_BreakablePlatform->SetYaw(yaw);
+                l_BreakablePlatform->SetPosition(pos);
+                l_BreakablePlatform->SetPitch(pitch);
+                l_BreakablePlatform->SetRoll(roll);
+                l_BreakablePlatform->SetScale(scale);
+                //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
+                AddResource(platformName, l_BreakablePlatform);
+                //std::string boxName, std::string coreName, std::string userDataName, Vect3f size, Vect3f localPosition)
+            }
         }
         //}
     }
 }
-
-
-
-
 void CRenderableObjectsManager::Reload()
 {
     Destroy();

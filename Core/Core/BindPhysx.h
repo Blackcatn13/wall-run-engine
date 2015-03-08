@@ -178,6 +178,7 @@ void RegisterPhysX()
         .def("execute_on_enter", &CTrigger::ExecuteOnEnter )
         .def("execute_on_stay", &CTrigger::ExecuteOnStay )
         .def("execute_on_exit", &CTrigger::ExecuteOnExit )
+        .property("m_Update",  &CTrigger::getUpdate,  &CTrigger::setUpdate)
     ];
     luabind::module(LUA_STATE) [
         class_<CPhysicCookingMesh >("CPhysicCookingMesh")

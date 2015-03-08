@@ -3,6 +3,7 @@
 #define LUA_GLOBALS_H
 
 #include <string>
+#include "Utils\Defines.h"
 
 class CLuaGlobals
 {

@@ -110,7 +110,7 @@ void CRenderableObjectsLayersManager::Load(const std::string &FileName)
         for (int i = 0; i < count; ++i) {
             std::string name = m(i).GetName();
             //if ((name == "mesh_instance") || (name == "renderable_script")){
-            if (name == "mesh_instance" || name == "animated_model") {
+            if (name == "mesh_instance" || name == "animated_model" || name == "platform") {
                 (GetRenderableObjectManager(m(i)))->Load(m(i));
                 /*std::string layerAssigned = m(i).GetPszISOProperty("layer", "box1");
                 if (layerAssigned == "box1")

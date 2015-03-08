@@ -86,3 +86,11 @@ bool CTriggerManager::Reload(const std::string &FileName)
     Clear();
     return LoadTriggers(FileName);
 }
+
+void CTriggerManager::Update(float dt)
+{
+    for (int i = 0; i < GetResourcesVector().size(); ++i) {
+        if (GetResourcesVector()[i]->getUpdate())
+            GetResourcesVector()[i]->Update(dt);
+    }
+}

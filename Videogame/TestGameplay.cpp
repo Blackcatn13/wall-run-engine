@@ -73,6 +73,7 @@ CTestGameplay::~CTestGameplay(void)
     CHECKED_DELETE(m_PhysicUserDataCube);
     CHECKED_DELETE(m_PhysicActorCubeFix);*/
     // CHECKED_DELETE(m_Granade);
+    CHECKED_DELETE(m_fsmManager);
 }
 
 void CTestGameplay::Init()
@@ -121,20 +122,20 @@ void CTestGameplay::Init()
     CPhysicUserData* m_PhysicUserDataCube;
     */ m_PhysicUserDataCube = new CPhysicUserData("fixbox");
     m_PhysicUserDataCube->SetPaint(true);
-    m_PhysicUserDataCube2 = new CPhysicUserData("fixbox2");
-    m_PhysicUserDataCube2->SetPaint(true);
-    /*  m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
-      m_PhysicActorCubeFix->AddBoxSphape(Vect3f(15, 1, 15));
-      PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
-      m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
-      m_PhysicActorCubeFix->AddBoxSphape(Vect3f(5, .2, 5), Vect3f(0, 1, 3));
-      PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
-      m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
-      m_PhysicActorCubeFix->AddBoxSphape(Vect3f(5, .2, 5), Vect3f(0, 1.2, 4));
-      PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
-      m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
-      m_PhysicActorCubeFix->AddBoxSphape(Vect3f(5, .2, 5), Vect3f(0, 1.2, 4), v3fZERO, Vect3f(0, 0, 0.35));
-      PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);*/
+    /*m_PhysicUserDataCube2 = new CPhysicUserData("fixbox2");
+       m_PhysicUserDataCube2->SetPaint(true);
+        m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+         m_PhysicActorCubeFix->AddBoxSphape(Vect3f(15, 1, 15));
+         PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
+         m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+         m_PhysicActorCubeFix->AddBoxSphape(Vect3f(5, .2, 5), Vect3f(0, 1, 3));
+         PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
+         m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+         m_PhysicActorCubeFix->AddBoxSphape(Vect3f(5, .2, 5), Vect3f(0, 1.2, 4));
+         PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
+         m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+         m_PhysicActorCubeFix->AddBoxSphape(Vect3f(5, .2, 5), Vect3f(0, 1.2, 4), v3fZERO, Vect3f(0, 0, 0.35));
+         PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);*/
     //m_Granade = new CGranade();
     /* CPhysicUserAllocator* m_Alloc = new CPhysicUserAllocator();
      CPhysicCookingMesh* m_CockMesh = new CPhysicCookingMesh();*/
@@ -144,15 +145,21 @@ void CTestGameplay::Init()
     m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
     m_PhysicActorCubeFix->AddMeshShape( PHYSXM->GetCookingMesh()->GetPhysicMesh("sceneTraining"));
     PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
-    m_PhysicActorCubeFix2 = new CPhysicActor(m_PhysicUserDataCube2);
-    m_PhysicActorCubeFix2->AddBoxSphape(Vect3f(2, 2, 2), Vect3f(0, 10.2, 4), Vect3f(0, 0, 0.35));
-    m_PhysicActorCubeFix2->CreateBody(0.5f);
-    PHYSXM->AddPhysicActor(m_PhysicActorCubeFix2);
+    /* m_PhysicActorCubeFix2 = new CPhysicActor(m_PhysicUserDataCube2);
+     m_PhysicActorCubeFix2->AddBoxSphape(Vect3f(2, 2, 2), Vect3f(0, 10.2, 4), Vect3f(0, 0, 0.35));
+     m_PhysicActorCubeFix2->CreateBody(0.5f);
+     PHYSXM->AddPhysicActor(m_PhysicActorCubeFix2);*/
     m_LuaInitLevelFunc = CCORE->getLuaLoadLevelFunc();
-    PHYSXM->ReleasePhysicActor(m_PhysicActorCubeFix2);
-    char l_InitLevelText[256];
-    _snprintf_s(l_InitLevelText, 256, 256, m_LuaInitLevelFunc.c_str());
-    SCRIPTM->RunCode(l_InitLevelText);
+    //PHYSXM->ReleasePhysicActor(m_PhysicActorCubeFix2);
+    /*  char l_InitLevelText[256];
+      _snprintf_s(l_InitLevelText, 256, 256, m_LuaInitLevelFunc.c_str());
+      SCRIPTM->RunCode(l_InitLevelText);
+    */
+    std::stringstream ss;
+    int var = 1;
+    ss << CCORE->getLuaLoadLevelFunc() << "(" << var << ")";
+    std::string toRun = ss.str();
+    SCRIPTM->RunCode(toRun.c_str());
     CLuaGlobals::getInstance()->getString();
     m_fsmManager = new CFSMManager();
     m_fsmManager->Load("data//AI//Patrulla.xml");

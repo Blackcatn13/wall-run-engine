@@ -11,6 +11,12 @@ CFSMManager::CFSMManager()
 
 CFSMManager::~CFSMManager()
 {
+    CMapManager<FSM>::TMapResource::iterator it = GetResources().begin();
+    while (it != GetResources().end() ) {
+        it->second->m_States.Destroy();
+        ++it;
+    }
+    Destroy();
 }
 
 void CFSMManager::Load(std::string file)
@@ -71,15 +77,15 @@ void CFSMManager::Update(float dt)
         STATE *s = it->second->m_States.GetResource(it->second->m_currentState);
         if (s->m_onEnter == false) {
             SCRIPTM->RunCode(s->onEnter.c_str());
-			s->m_onEnter = true;
-		}
+            s->m_onEnter = true;
+        }
         s->m_ElapsedTime += dt;
         if (s->m_ElapsedTime >= s->m_UpdateTime) {
-			char l_InitLevelText[256];
-			_snprintf_s(l_InitLevelText, 256, 256, "%s(%f)", s->onUpdate.c_str(), dt);
+            char l_InitLevelText[256];
+            _snprintf_s(l_InitLevelText, 256, 256, "%s(%f)", s->onUpdate.c_str(), dt);
             SCRIPTM->RunCode(l_InitLevelText);
-			s->m_ElapsedTime = 0;
-		}
+            s->m_ElapsedTime = 0;
+        }
         bool change = CLuaGlobals::getInstance()->ValueChanged();
         if (change) {
             SCRIPTM->RunCode(s->onExit.c_str());

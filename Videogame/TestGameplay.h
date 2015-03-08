@@ -30,12 +30,12 @@ private:
     CThPSCamera*	    m_ThPSCamera1;
     CScriptedController * m_ScriptedController;
     CRenderableObject	*m_RenderableObject;
-    CPhysicActor		*m_PhysicActor;
+    //CPhysicActor		*m_PhysicActor;
     CPhysicActor		*m_PhysicActorCubeFix;
-    CPhysicActor		*m_PhysicActorCubeFix2;
-    CPhysicUserData		*m_PhysicUserData;
+    //  CPhysicActor		*m_PhysicActorCubeFix2;
+    //  CPhysicUserData		*m_PhysicUserData;
     CPhysicUserData		*m_PhysicUserDataCube;
-    CPhysicUserData		*m_PhysicUserDataCube2;
+    //  CPhysicUserData		*m_PhysicUserDataCube2;
     CFSMManager			*m_fsmManager;
     // CPhysicMaterial		* m_MyMaterial;
     CGranade			*m_Granade;

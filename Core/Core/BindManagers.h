@@ -14,6 +14,7 @@
 #include "TriggerManager\TriggerManager.h"
 
 #include "StaticMeshes\StaticMeshManager.h"
+#include "Renderable\RenderableObjectsLayersManager.h"
 
 #include <d3dx9.h>
 #include "Math\Matrix44.h"
@@ -169,6 +170,31 @@ void RegisterManagers()
         .def("on_leave", &CTriggerManager::OnLeave)
         .def("on_stay", &CTriggerManager::OnStay)
         .def("get_trigger_report", &CTriggerManager::getTriggerReport)
+    ];
+    luabind::module(LUA_STATE) [
+        class_<CTemplatedVectorMapManager<CRenderableObjectsManager>>("CTemplatedVectorMapManagerROM")
+        .def(constructor<>())
+        .scope
+        [
+            class_<CTemplatedVectorMapManager<CRenderableObjectsManager>::CMapResourceValue>("CMapResourceValue")
+            .def(constructor<>())
+            .def_readwrite("m_Value", & CTemplatedVectorMapManager<CRenderableObjectsManager>::CMapResourceValue::m_Value)
+            .def_readwrite("m_Id", & CTemplatedVectorMapManager<CRenderableObjectsManager>::CMapResourceValue::m_Id)
+        ]
+        //.def("remove_resource", &CTemplatedVectorMapManager<CRenderableObject>::RemoveResource) // <= m_Id identificador no declarado xq está en clase interna
+        .def("get_resource", &CTemplatedVectorMapManager<CRenderableObjectsManager>::GetResource)
+        .def("get_resource_by_id", &CTemplatedVectorMapManager<CRenderableObjectsManager>:: GetResourceById)
+        .def("add_resource", &CTemplatedVectorMapManager<CRenderableObjectsManager>::AddResource)
+        .def("destroy", &CTemplatedVectorMapManager<CRenderableObjectsManager>::Destroy)
+        .def("get_resource_map", &CTemplatedVectorMapManager<CRenderableObjectsManager>::GetResourcesMap)
+        .def("get_resource_vector", &CTemplatedVectorMapManager<CRenderableObjectsManager>::GetResourcesVector)
+    ];
+    luabind::module(LUA_STATE) [
+        class_<CRenderableObjectsLayersManager, CTemplatedVectorMapManager<CRenderableObjectsManager>>("CRenderableObjectsLayersManager")
+        .def(constructor<>())
+        .def("get_default_renderable_object_manager", &CRenderableObjectsLayersManager::GetDefaultRenderableObjectManager)
+        .def("load", &CRenderableObjectsLayersManager::Load)
+        .property("m_CurrentLayer", &CRenderableObjectsLayersManager::getCurrentLayer, &CRenderableObjectsLayersManager::setCurrentLayer)
     ];
 }
 

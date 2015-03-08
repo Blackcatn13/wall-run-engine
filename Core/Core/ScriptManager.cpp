@@ -33,6 +33,8 @@
 #include "BindIA.h"
 #include "Utils\LuaGlobals.h"
 #include "Utils\LuaGlobalsWrapper.h"
+#include "BindSceneElements.h"
+#include "Mesh\MeshInstance.h"
 
 //Código de la función Alert que se llamará al generarse algún error de LUA
 int Alert(/*IN */lua_State * State)
@@ -99,7 +101,7 @@ void CScriptManager::RunCode(const std::string &Code) const
     if (luaL_dostring(m_LS, Code.c_str())) {
         const char *l_Str = lua_tostring(m_LS, -1);
         //Info("%s",l_Str);
-		LOGGER->AddNewLog(ELL_INFORMATION, l_Str);
+        LOGGER->AddNewLog(ELL_INFORMATION, l_Str);
     }
 }
 //Para ejecutar un fichero de código LUA
@@ -356,6 +358,13 @@ void CScriptManager::RegisterLUAFunctions()
         .def("render", & CRenderableObject::Render)
     ];
     luabind::module(LUA_STATE) [
+        class_< CMeshInstance, CRenderableObject>  ("CMeshInstance")
+        .def(constructor<std::string, std::string>())
+        .def(constructor<CXMLTreeNode>())
+        .def("update", & CRenderableObject::Update)
+        .def("render", & CRenderableObject::Render)
+    ];
+    luabind::module(LUA_STATE) [
         class_<CTemplatedVectorMapManager<CRenderableObject>>("CTemplatedVectorMapManagerRenderableObject")
         .def(constructor<>())
         .scope
@@ -418,6 +427,7 @@ void CScriptManager::RegisterLUAFunctions()
     RegisterInputs();
     RegisterPhysX();
     RegisterAI();
+    RegisterSceneElements();
     RegisterManagers();
 }
 

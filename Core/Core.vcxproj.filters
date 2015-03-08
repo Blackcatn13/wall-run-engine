@@ -162,5 +162,8 @@
     <ClInclude Include="AI\WPManager.h">
       <Filter>AI</Filter>
     </ClInclude>
+    <ClInclude Include="Core\BindSceneElements.h">
+      <Filter>ScriptManager</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
