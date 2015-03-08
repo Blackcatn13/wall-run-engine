@@ -7,6 +7,7 @@
 #include "Renderable\RenderableObject.h"
 #include "Utils\TemplatedVectorMapManager.h"
 #include "Core\PlayerController.h"
+#include "Utils\PhysicUserData.h"
 
 
 CBreakablePlatform::CBreakablePlatform(std::string platformName, std::string coreName, std::string triggerName)
@@ -21,10 +22,14 @@ CBreakablePlatform::~CBreakablePlatform ()
 {
 }
 
-void CBreakablePlatform::DisablePlatform()
+void CBreakablePlatform::DisablePlatform(float dt)
 {
+    m_PlatformUserData->SetPaint(false);
     m_PlatorformActor->Activate(false);
     m_Printable = false;
     TRIGGM->GetResource(m_TriggerName)->setUpdate(false);
+    TRIGGM->GetResource(m_TriggerName)->Activate(false);
+    Vect3f l_CurrentPosition = Vect3f (CCORE->GetPlayerController()->GetPosition());
+    CCORE->GetPlayerController()->getPhysicController()->Move(Vect3f(.0f, -1.f, .0f), dt);
 }
 

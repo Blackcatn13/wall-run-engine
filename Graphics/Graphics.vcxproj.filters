@@ -272,6 +272,9 @@
     <ClCompile Include="SceneElements\BreakablePlatform.cpp">
       <Filter>SceneElements</Filter>
     </ClCompile>
+    <ClCompile Include="SceneElements\MovingPlatform.cpp">
+      <Filter>SceneElements</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
@@ -498,6 +501,9 @@
       <Filter>SceneElements</Filter>
     </ClInclude>
     <ClInclude Include="SceneElements\BreakablePlatform.h">
+      <Filter>SceneElements</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneElements\MovingPlatform.h">
       <Filter>SceneElements</Filter>
     </ClInclude>
   </ItemGroup>

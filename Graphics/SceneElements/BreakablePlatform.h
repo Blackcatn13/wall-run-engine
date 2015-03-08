@@ -17,7 +17,7 @@ public:
     CBreakablePlatform(std::string platformName, std::string coreName, std::string triggerName);
 
     ~ CBreakablePlatform ();
-    void DisablePlatform();
+    void DisablePlatform(float dt);
 
 
 };

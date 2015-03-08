@@ -84,6 +84,7 @@
     <ClCompile Include="Renderable\RenderableObjectTechnique.cpp" />
     <ClCompile Include="Renderable\RenderableObjectTechniqueManager.cpp" />
     <ClCompile Include="SceneElements\BreakablePlatform.cpp" />
+    <ClCompile Include="SceneElements\MovingPlatform.cpp" />
     <ClCompile Include="SceneElements\StaticPlatform.cpp" />
     <ClCompile Include="StaticMeshes\StaticMesh.cpp" />
     <ClCompile Include="StaticMeshes\StaticMeshManager.cpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="Renderable\RenderableObjectTechnique.h" />
     <ClInclude Include="Renderable\RenderableObjectTechniqueManager.h" />
     <ClInclude Include="SceneElements\BreakablePlatform.h" />
+    <ClInclude Include="SceneElements\MovingPlatform.h" />
     <ClInclude Include="SceneElements\StaticPlatform.h" />
     <ClInclude Include="StaticMeshes\StaticMesh.h" />
     <ClInclude Include="StaticMeshes\StaticMeshManager.h" />

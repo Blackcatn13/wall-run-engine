@@ -82,7 +82,7 @@ void CTrigger::Update(float dt)
     if ( m_UpdateFunction != "") {
         float l_Time = m_Time * dt;
         std::stringstream ss;
-        ss << m_UpdateFunction << "(" << l_Time << "," << m_MaxTime << ",\"" << m_PlatformName << "\")";
+        ss << m_UpdateFunction << "(" << dt << "," << l_Time << "," << m_MaxTime << ",\"" << m_PlatformName << "\")";
         std::string toRun = ss.str();
         SCRIPTM->RunCode(toRun.c_str());
         ++m_Time;

@@ -15,10 +15,10 @@ end
 --	return breakable_platform
 --end
 
-function update_break_platform(current_time, max_time, platform_name)
+function update_break_platform(dt, current_time, max_time, platform_name)
 
 	if current_time >= max_time then
 		local platform = rol_manager:get_default_renderable_object_manager():get_resource(platform_name)
-		platform:disable_platform()
+		platform:disable_platform(dt)
 	end
 end
