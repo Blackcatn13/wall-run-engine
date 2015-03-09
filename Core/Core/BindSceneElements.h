@@ -8,6 +8,8 @@
 
 #include "SceneElements\StaticPlatform.h"
 #include "SceneElements\BreakablePlatform.h"
+#include "SceneElements\MovingPlatform.h"
+
 #include "Mesh\MeshInstance.h"
 #include <string>
 #include "Math\Vector3.h"
@@ -40,6 +42,12 @@ void RegisterSceneElements()
         class_<CBreakablePlatform, CStaticPlatform>("CBreakablePlatform")
         .def(constructor<std::string, std::string, std::string>())
         .def("disable_platform", &CBreakablePlatform::DisablePlatform)
+    ];
+    luabind::module(LUA_STATE) [
+        class_<CMovingPlatform, CStaticPlatform>("CMovingPlatform")
+        .def(constructor<std::string, std::string, float>())
+        .def("move_to_point", &CMovingPlatform::MoveToPoint)
+        .def("get_next_wp", &CMovingPlatform::GetNextWP)
     ];
 }
 

@@ -29,8 +29,8 @@ function on_update_cameras_lua(l_ElapsedTime)
 		cam:set_zoom(25);
 		cam.m_fZNear = 0.1;
 		cam.m_fZFar = 1000;
-		cam.m_fFOV = 45.0 * 3.1415 / 180;
-		cam.m_fAspectRatio = 1;
+		--cam.m_fFOV = 45.0 * 3.1415 / 180;
+		--cam.m_fAspectRatio = 1;
 	end
 	--Update Camera 2D
 	if(cam.m_eTypeCamera == 5) then
@@ -44,8 +44,8 @@ function on_update_cameras_lua(l_ElapsedTime)
 		cam:set_zoom(50);
 		cam.m_fZNear = 0.1;
 		cam.m_fZFar = 1000;
-		cam.m_fFOV = 45.0 * 3.1415 / 180;
-		cam.m_fAspectRatio = 1;
+		--cam.m_fFOV = 45.0 * 3.1415 / 180;
+		--cam.m_fAspectRatio = 1;
 	end
 	name2:set_name("UpdatePassFinal");
 end
