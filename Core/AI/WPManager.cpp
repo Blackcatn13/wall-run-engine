@@ -26,11 +26,11 @@ void CWPManager::Reload()
 int CWPManager::FindClosestWaypoint(std::string ZONEName, Vect3f Position)
 {
 	int l_closestId = 0;
-	float l_closestDistance = 500;
+	float l_closestDistance = 500.0;
 	ZONE * l_currentZone = GetResource("ZONEName");
 	for (std::vector<WP *>::iterator it = l_currentZone->m_Waypoints.begin(); it != l_currentZone->m_Waypoints.end(); ++it) {
 		//(*it)->m_id
-		int l_WaypointDistance = GetDistance((*it)->m_pos, Position);
+		float l_WaypointDistance = GetDistance((*it)->m_pos, Position);
 		if (l_WaypointDistance < l_closestDistance)
 		{
 			l_closestId = (*it)->m_id;
@@ -63,6 +63,42 @@ std::string CWPManager::FindNExtWaypointOptimal(std::string ZONEName, int Waypoi
 	return "";
 }
 
+int CWPManager::TestFunction(int parametro1)
+{
+	//inputs de Test
+	ZONE * l_currentZone = GetResource("sala_principal");
+	int id_origen = 1;
+	int id_destino = 4;
+	Vect3f posicionDestino = Vect3f(7.000, 0.000, 7.000);
+
+	//creamos vector de nodos abiertos
+	std::vector<WP *> l_openVector;
+
+	//añadimos a vectores abiertos el nodo por defecto
+	l_openVector.push_back(l_currentZone->m_Waypoints[id_origen]);
+
+	//calculamos G H y F para nodo abierto inicial
+	float temp_H = CalcularH(0, id_origen, id_destino, l_currentZone);
+	float temp_G = 0;
+	float temp_F = temp_H + temp_G;
+
+	//calculamos todos los vecinos de nodo inicial
+	for (std::vector<Link *>::iterator it = l_currentZone->m_Waypoints[id_origen]->m_LinkList.begin(); it != l_currentZone->m_Waypoints[id_origen]->m_LinkList.end(); ++it) 
+	{
+		l_openVector.push_back(l_currentZone->m_Waypoints[(*it)->id]);
+	}
+	//cerramos el vector actual
+	l_currentZone->m_Waypoints[id_origen]->m_cerrado = true;
+
+	return 0;
+}
+
+float CWPManager::CalcularH(int pesoEntrada, int id_origen, int id_destino, ZONE * currentZone)
+{
+	float l_H = pesoEntrada + GetDistance(currentZone->m_Waypoints[id_origen]->m_pos, currentZone->m_Waypoints[id_destino]->m_pos);
+	l_H = sqrt(l_H);
+	return l_H;
+}
 
 Vect3f CWPManager::GetWaypointPosition(int id, std::string ZONEName)
 {
@@ -97,6 +133,11 @@ void CWPManager::Load()
 						WP* newWP = new WP();
 						newWP->m_id = m(i)(j).GetIntProperty("id", 0);
 						newWP->m_pos = m(i)(j).GetVect3fProperty("pos",Vect3f(0,0,0));
+						newWP->m_cerrado = false;
+						newWP->m_F = 999.0;
+						newWP->m_G = 999.0;
+						newWP->m_H = 999.0;
+						newWP->m_Padre = NULL;
 						int count3 = m(i)(j).GetNumChildren();
 						for (int k = 0; k < count3; ++k) {
 							Link* newLink = new Link();
@@ -112,3 +153,21 @@ void CWPManager::Load()
 		}
     }
 }
+
+void CWPManager::ResetWPStruct(std::string ZONEName)
+{
+	ZONE * l_currentZone = GetResource(ZONEName);
+	for (std::vector<WP *>::iterator it = l_currentZone->m_Waypoints.begin(); it != l_currentZone->m_Waypoints.end(); ++it) 
+	{
+		(*it)->m_cerrado = false;
+		(*it)->m_F = 999.0;
+		(*it)->m_G = 999.0;
+		(*it)->m_H = 999.0;
+		(*it)->m_Padre = NULL;
+	}
+
+}
+
+
+
+

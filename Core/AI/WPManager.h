@@ -16,7 +16,12 @@ typedef struct Waypoint
 {
 	int					m_id;
 	Vect3f				m_pos;
+	bool				m_cerrado;
+	float				m_G;
+	float				m_H;
+	float				m_F;
 	std::vector<Link *> m_LinkList;
+	struct Waypoint *	m_Padre;
 } WP;
 
 typedef struct Zone
@@ -38,10 +43,12 @@ public:
 	Vect3f GetWaypointPosition(int id, std::string ZONEName);
 	int FindOptimalPath(std::string ZONEName, Vect3f PositionStart, Vect3f PositionDestiny);
 	std::string FindNExtWaypointOptimal(std::string ZONEName, int WaypointStart, int WaypointDestiny, std::string CurrentPath);
+	int CWPManager::TestFunction(int parametro1);
+	void CWPManager::ResetWPStruct(std::string ZONEName);
 private:
 	void Load();
 	std::string m_fileName;
-
+	float CalcularH (int pesoEntrada, int id_origen, int id_destino, ZONE * currentZone);
 };
 
 #endif
