@@ -9,6 +9,7 @@
 #include "SceneElements\BreakablePlatform.h"
 #include "SceneElements\StaticPlatform.h"
 #include "SceneElements\MovingPlatform.h"
+#include "SceneElements\PinchosPlatform.h"
 
 #include <assert.h>
 
@@ -142,8 +143,7 @@ void CRenderableObjectsManager::Load(const std::string &FileName)
                     //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
                     AddResource(platformName, l_StaticPlatform);
                     //std::string boxName, std::string coreName, std::string userDataName, Vect3f size, Vect3f localPosition)
-                }
-                if (type == "breakable") {
+                } else if (type == "breakable") {
                     std::string l_TriggerName =  m(i).GetPszISOProperty("trigger_name", "", false);
                     CBreakablePlatform * l_BreakablePlatform = new CBreakablePlatform(platformName, core, l_TriggerName);
                     l_BreakablePlatform->SetYaw(yaw);
@@ -154,8 +154,7 @@ void CRenderableObjectsManager::Load(const std::string &FileName)
                     //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
                     AddResource(platformName, l_BreakablePlatform);
                     //std::string boxName, std::string coreName, std::string userDataName, Vect3f size, Vect3f localPosition)
-                }
-                if (type == "moving") {
+                } else if (type == "moving") {
                     float l_speed =  m(i).GetFloatProperty("speed", 0.0f, false);
                     int l_WpCount = m(i).GetNumChildren();
                     CMovingPlatform * l_MovingPlatform = new CMovingPlatform(platformName, core, l_speed);
@@ -173,7 +172,18 @@ void CRenderableObjectsManager::Load(const std::string &FileName)
                     l_MovingPlatform->SetScale(scale);
                     //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
                     AddResource(platformName, l_MovingPlatform);
-                    //std::string boxName, std::string coreName, std::string userDataName, Vect3f size, Vect3f localPosition)
+                } else if (type == "pinchos") {
+                    std::string l_TriggerName =  m(i).GetPszISOProperty("trigger_name", "", false);
+                    float	l_Offset = m(i).GetFloatProperty("offset", .0f, false);
+                    bool	l_FromX = m(i).GetBoolProperty("from_x", false, false);
+                    bool	l_FromZ = m(i).GetBoolProperty("from_z", false, false);
+                    CPinchosPlatform * l_PinchosPlatform = new CPinchosPlatform(platformName, core, l_TriggerName, l_Offset, l_FromX, l_FromZ);
+                    l_PinchosPlatform->SetYaw(yaw);
+                    l_PinchosPlatform->SetPosition(pos);
+                    l_PinchosPlatform->SetPitch(pitch);
+                    l_PinchosPlatform->SetRoll(roll);
+                    l_PinchosPlatform->SetScale(scale);
+                    AddResource(platformName, l_PinchosPlatform);
                 }
             }
         }
@@ -269,8 +279,7 @@ void CRenderableObjectsManager::Load(CXMLTreeNode & Node)
                 //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
                 AddResource(platformName, l_StaticPlatform);
                 //std::string boxName, std::string coreName, std::string userDataName, Vect3f size, Vect3f localPosition)
-            }
-            if (type == "breakable") {
+            } else if (type == "breakable") {
                 std::string l_TriggerName =  m.GetPszISOProperty("trigger_name", "", false);
                 CBreakablePlatform * l_BreakablePlatform = new CBreakablePlatform(platformName, core, l_TriggerName);
                 l_BreakablePlatform->SetYaw(yaw);
@@ -278,11 +287,8 @@ void CRenderableObjectsManager::Load(CXMLTreeNode & Node)
                 l_BreakablePlatform->SetPitch(pitch);
                 l_BreakablePlatform->SetRoll(roll);
                 l_BreakablePlatform->SetScale(scale);
-                //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
                 AddResource(platformName, l_BreakablePlatform);
-                //std::string boxName, std::string coreName, std::string userDataName, Vect3f size, Vect3f localPosition)
-            }
-            if (type == "moving") {
+            } else if (type == "moving") {
                 float l_speed =  m.GetFloatProperty("speed", 0.0f, false);
                 int l_WpCount = m.GetNumChildren();
                 CMovingPlatform * l_MovingPlatform = new CMovingPlatform(platformName, core, l_speed);
@@ -301,6 +307,18 @@ void CRenderableObjectsManager::Load(CXMLTreeNode & Node)
                 //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
                 AddResource(platformName, l_MovingPlatform);
                 //std::string boxName, std::string coreName, std::string userDataName, Vect3f size, Vect3f localPosition)
+            } else if (type == "pinchos") {
+                std::string l_TriggerName =  m.GetPszISOProperty("trigger_name", "", false);
+                float	l_Offset = m.GetFloatProperty("offset", .0f, false);
+                bool	l_FromX = m.GetBoolProperty("from_x", false, false);
+                bool	l_FromZ = m.GetBoolProperty("from_z", false, false);
+                CPinchosPlatform * l_PinchosPlatform = new CPinchosPlatform(platformName, core, l_TriggerName, l_Offset, l_FromX, l_FromZ);
+                l_PinchosPlatform->SetYaw(yaw);
+                l_PinchosPlatform->SetPosition(pos);
+                l_PinchosPlatform->SetPitch(pitch);
+                l_PinchosPlatform->SetRoll(roll);
+                l_PinchosPlatform->SetScale(scale);
+                AddResource(platformName, l_PinchosPlatform);
             }
         }
         //}

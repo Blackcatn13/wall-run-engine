@@ -14,13 +14,10 @@
 CAIController::CAIController()
     : CObject3D(),
       m_Gravity(13),
-<<<<<<< HEAD
+
       m_Speed (0.5),
       m_TurnSpeed(2.0),
-=======
-      m_Speed (0.03),
-      m_TurnSpeed(0.9),
->>>>>>> 40ed7bcbff48ad8c55d81685d957d3c12cd8fd06
+
       m_JumpForce(1.5),
       m_CurrentJumpForce(0),
       m_isJumping(false)

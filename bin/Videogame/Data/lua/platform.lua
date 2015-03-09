@@ -16,6 +16,18 @@ function update_break_platform(dt, current_time, max_time, platform_name)
 		platform:disable_platform(dt)
 	end
 end
+
+--Pinchos
+
+function on_enter_pinchos(platform_name)
+	local platform = rol_manager:get_default_renderable_object_manager():get_resource(platform_name)
+	platform:falling_into_platform()
+
+end
+
+
+--
+
 -- Moving Platform
 local next_wp = Vect3f(0,0,0)
 instance = CLuaGlobalsWrapper().m_CoreInstance;

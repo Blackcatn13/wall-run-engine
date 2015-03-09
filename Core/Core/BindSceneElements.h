@@ -9,6 +9,7 @@
 #include "SceneElements\StaticPlatform.h"
 #include "SceneElements\BreakablePlatform.h"
 #include "SceneElements\MovingPlatform.h"
+#include "SceneElements\PinchosPlatform.h"
 
 #include "Mesh\MeshInstance.h"
 #include <string>
@@ -48,6 +49,11 @@ void RegisterSceneElements()
         .def(constructor<std::string, std::string, float>())
         .def("move_to_point", &CMovingPlatform::MoveToPoint)
         .def("get_next_wp", &CMovingPlatform::GetNextWP)
+    ];
+    luabind::module(LUA_STATE) [
+        class_<CPinchosPlatform, CBreakablePlatform>("CPinchosPlatform")
+        .def(constructor<std::string, std::string, std::string, float, bool, bool>())
+        .def("falling_into_platform", &CPinchosPlatform::FallingIntoPlatform)
     ];
 }
 
