@@ -91,7 +91,8 @@ function Update2(ElapsedTime)
 	--core:trace(tostring(player_position.x));
 
 	ai_controller:move_to(ElapsedTime, next_wp)
-	if ai_controller:get_position() == next_wp then
+	local wp_distance = get_distance_to_player(ai_controller:get_position(), next_wp)
+	if (wp_distance < 5) then
 		instance.m_string = "Buscar_next_WP"
 	end
 	local player_distance = get_distance_to_player(ai_controller:get_position(), player_position)

@@ -31,6 +31,9 @@ public:
     ~CWPManager();
 	void Load(std::string file);
 	void Reload();
+	int FindClosestWaypoint(std::string ZONEName, Vect3f Position);
+	float GetDistance(Vect3f pos1, Vect3f pos2);
+	Vect3f GetWaypointPosition(int id, std::string ZONEName);
 private:
 	void Load();
 	std::string m_fileName;
