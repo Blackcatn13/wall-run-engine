@@ -40,6 +40,30 @@ int CWPManager::FindClosestWaypoint(std::string ZONEName, Vect3f Position)
 	return l_closestId;
 }
 
+int CWPManager::FindOptimalPath(std::string ZONEName, Vect3f PositionStart, Vect3f PositionDestiny)
+{
+	int l_idWaypointStart = FindClosestWaypoint(ZONEName, PositionStart);
+	int l_idWaypointDestiny = FindClosestWaypoint(ZONEName, PositionDestiny);
+	std::string CurrentPath = "";
+	std::string l_nextWaypoint = FindNExtWaypointOptimal(ZONEName, l_idWaypointStart, l_idWaypointDestiny, CurrentPath);
+	int l_intNextWaypoint = atoi(l_nextWaypoint.substr(0,1).c_str()); //cogemos el primer waypoint del path óptimo (solo funciona de 0 a 9 waypoints)
+	return l_intNextWaypoint;
+	
+}
+std::string CWPManager::FindNExtWaypointOptimal(std::string ZONEName, int WaypointStart, int WaypointDestiny, std::string CurrentPath)
+{
+
+	ZONE * l_currentZone = GetResource(ZONEName);
+	for (std::vector<Link *>::iterator it = l_currentZone->m_Waypoints[WaypointStart]->m_LinkList.begin(); it != l_currentZone->m_Waypoints[WaypointStart]->m_LinkList.end(); ++it) 
+	{
+		std::string l_ThisWaypointToString = boost::lexical_cast<std::string>(WaypointStart);
+		std::string l_CurrentPath = CurrentPath + l_ThisWaypointToString;
+		(*it)->id;
+	}
+	return "";
+}
+
+
 Vect3f CWPManager::GetWaypointPosition(int id, std::string ZONEName)
 {
 	ZONE * l_currentZone = GetResource("ZONEName");
