@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<fsms>
+	<fsm name="MovingPlatform">
+		<initialState name="Parado"/>
+		<state name="Parado">
+			<onEnter lua_funtion="mp_enter_stopped()"/>
+			<onExit lua_funtion="mp_exit_stopped()"/>
+			<Update time=".1" lua_funtion="mp_update_stopped"/>
+		</state>
+		<state name="Andar_WP">
+			<onEnter lua_funtion="mp_enter_moving()"/>
+			<onExit lua_funtion="mp_exit_moving()"/>
+			<Update time=".1" lua_funtion="mp_update_moving"/>
+		</state>
+		<state name="Buscar_next_WP_Plaform">
+			<onEnter lua_funtion="mp_enter_calcwp()"/>
+			<onExit lua_funtion="mp_exit_calcwp()"/>
+			<Update time=".1" lua_funtion="mp_update_calcwp"/>
+		</state>
+	</fsm>
+</fsms>

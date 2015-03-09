@@ -171,6 +171,7 @@ void CTestGameplay::Init()
     CLuaGlobals::getInstance()->getString();
     m_fsmManager = new CFSMManager();
     m_fsmManager->Load("data//AI//Patrulla.xml");
+    m_fsmManager->Load("data//AI//FSMs.xml");
 }
 
 void CTestGameplay::DeInit()

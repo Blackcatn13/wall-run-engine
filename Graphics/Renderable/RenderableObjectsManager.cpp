@@ -8,6 +8,7 @@
 #include "Core\ScriptedController.h"
 #include "SceneElements\BreakablePlatform.h"
 #include "SceneElements\StaticPlatform.h"
+#include "SceneElements\MovingPlatform.h"
 
 #include <assert.h>
 
@@ -154,6 +155,26 @@ void CRenderableObjectsManager::Load(const std::string &FileName)
                     AddResource(platformName, l_BreakablePlatform);
                     //std::string boxName, std::string coreName, std::string userDataName, Vect3f size, Vect3f localPosition)
                 }
+                if (type == "moving") {
+                    float l_speed =  m(i).GetFloatProperty("speed", 0.0f, false);
+                    int l_WpCount = m(i).GetNumChildren();
+                    CMovingPlatform * l_MovingPlatform = new CMovingPlatform(platformName, core, l_speed);
+                    for (int j = 0; j < l_WpCount; ++j) {
+                        std::string name = m(i)(j).GetName();
+                        if (name == "wp") {
+                            Vect3f l_Wp = m(i)(j).GetVect3fProperty("pos", Vect3f(.0f, .0f, .0f), false);
+                            l_MovingPlatform->GetWayPointsVector().push_back(l_Wp);
+                        }
+                    }
+                    l_MovingPlatform->SetYaw(yaw);
+                    l_MovingPlatform->SetPosition(pos);
+                    l_MovingPlatform->SetPitch(pitch);
+                    l_MovingPlatform->SetRoll(roll);
+                    l_MovingPlatform->SetScale(scale);
+                    //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
+                    AddResource(platformName, l_MovingPlatform);
+                    //std::string boxName, std::string coreName, std::string userDataName, Vect3f size, Vect3f localPosition)
+                }
             }
         }
     }
@@ -259,6 +280,26 @@ void CRenderableObjectsManager::Load(CXMLTreeNode & Node)
                 l_BreakablePlatform->SetScale(scale);
                 //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
                 AddResource(platformName, l_BreakablePlatform);
+                //std::string boxName, std::string coreName, std::string userDataName, Vect3f size, Vect3f localPosition)
+            }
+            if (type == "moving") {
+                float l_speed =  m.GetFloatProperty("speed", 0.0f, false);
+                int l_WpCount = m.GetNumChildren();
+                CMovingPlatform * l_MovingPlatform = new CMovingPlatform(platformName, core, l_speed);
+                for (int i = 0; i < l_WpCount; ++i) {
+                    std::string name = m(i).GetName();
+                    if (name == "wp") {
+                        Vect3f l_Wp = m(i).GetVect3fProperty("pos", Vect3f(.0f, .0f, .0f), false);
+                        l_MovingPlatform->GetWayPointsVector().push_back(l_Wp);
+                    }
+                }
+                l_MovingPlatform->SetYaw(yaw);
+                l_MovingPlatform->SetPosition(pos);
+                l_MovingPlatform->SetPitch(pitch);
+                l_MovingPlatform->SetRoll(roll);
+                l_MovingPlatform->SetScale(scale);
+                //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
+                AddResource(platformName, l_MovingPlatform);
                 //std::string boxName, std::string coreName, std::string userDataName, Vect3f size, Vect3f localPosition)
             }
         }

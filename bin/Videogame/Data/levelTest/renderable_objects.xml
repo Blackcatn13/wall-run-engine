@@ -22,5 +22,9 @@
 	
 	<platform name="StaticPlatform001" type="static" core="Box003"  pos="0.000000 3.000000 6.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="2.0 4.0 2.0" />
 	<platform name="BreakablePlatform001" type="breakable" trigger_name="BreakablePlatform_test" core="Box004"  pos="2.000000 4.000000 -3.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="2.0 4.0 2.0" />
+	<platform name="MovingPlatform001" type="moving" speed = "5" core="Box005"  pos="-15.000000 0.000000 15.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="2.0 4.0 2.0" >
+		<wp pos="-15.000000 0.000000 15.000000" />
+		<wp pos="15.000000 0.000000 15.000000" />
+	</platform>
 	
 </renderable_objects>

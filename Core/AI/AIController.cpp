@@ -15,7 +15,7 @@ CAIController::CAIController()
     : CObject3D(),
       m_Gravity(13),
       m_Speed (0.03),
-      m_TurnSpeed(0.3),
+      m_TurnSpeed(0.9),
       m_JumpForce(1.5),
       m_CurrentJumpForce(0),
       m_isJumping(false)
