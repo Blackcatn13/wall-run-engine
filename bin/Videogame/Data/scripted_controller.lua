@@ -151,48 +151,52 @@ function on_update_scripted_controller(l_ElapsedTime)
 	dirNor.y = 0;
 	dirNor = luaUtil:normalize(dirNor);
 	local mov = Vect3f(0,0,0);
-		if act2in:do_action_from_lua("MoveForward") then
-			if player.m_is3D == true then	
-				--mov = mov + Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
-				mov = mov + dir3D * player.m_Speed * l_ElapsedTime;
-			end
+	if act2in:do_action_from_lua("MoveForward") then
+		if player.m_is3D == true then	
+			--mov = mov + Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
+			mov = mov + dir3D * player.m_Speed * l_ElapsedTime;
 		end
-		if act2in:do_action_from_lua("MoveBack") then
-			if player.m_is3D == true then	
-				--mov = mov - Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
-				mov = mov - dir3D * player.m_Speed * l_ElapsedTime;
-			end
+	end
+	if act2in:do_action_from_lua("MoveBack") then
+		if player.m_is3D == true then	
+			--mov = mov - Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
+			mov = mov - dir3D * player.m_Speed * l_ElapsedTime;
 		end
-		if act2in:do_action_from_lua("MoveRigth") then
-			if player.m_is3D == true then	
-				--mov = mov - Vect3f(-1,0,0) * player.m_Speed * l_ElapsedTime;
-				mov = mov - dirNor * player.m_Speed * l_ElapsedTime;
-			else
-				mov = mov + Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
-			end
+	end
+	if act2in:do_action_from_lua("MoveRigth") then
+		if player.m_is3D == true then	
+			--mov = mov - Vect3f(-1,0,0) * player.m_Speed * l_ElapsedTime;
+			mov = mov - dirNor * player.m_Speed * l_ElapsedTime;
+		else
+			mov = mov + Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
 		end
-		if act2in:do_action_from_lua("MoveLeft") then
-			if player.m_is3D == true then	
-				--mov = mov + Vect3f(-1,0,0) * player.m_Speed * l_ElapsedTime;
-				mov = mov + dirNor * player.m_Speed * l_ElapsedTime;
-			else
-				mov = mov - Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
-			end
+	end
+	if act2in:do_action_from_lua("MoveLeft") then
+		if player.m_is3D == true then	
+			--mov = mov + Vect3f(-1,0,0) * player.m_Speed * l_ElapsedTime;
+			mov = mov + dirNor * player.m_Speed * l_ElapsedTime;
+		else
+			mov = mov - Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
 		end
-	if act2in:do_action_from_lua("Jump") then
+	end
+	--[[if player:IsGrounded() == true then
+		--player.m_isJumping = false;
+		--coreInstance:trace("PUC SALTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR");
+	else
+		--coreInstance:trace("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+	end]]
+	if player.m_isJumping == true then
+		if player.m_CurrentJumpForce < 0 then
+			player.m_CurrentJumpForce = player.m_CurrentJumpForce - (player.m_Gravity * l_ElapsedTime);
+		else
+			player.m_CurrentJumpForce = player.m_CurrentJumpForce - (player.m_GravityJump * l_ElapsedTime);
+		end
+		mov.y = player.m_CurrentJumpForce;
+	end
+	if (act2in:do_action_from_lua("Jump")) and (player:IsGrounded() == true) then
 		player.m_isJumping = true;
 		player.m_CurrentJumpForce = player.m_JumpForce;
 		mov.y = player.m_CurrentJumpForce;
-	end
-	if (player.m_isJumping == true) and (player.m_CurrentJumpForce > 0) then
-		player.m_CurrentJumpForce = player.m_CurrentJumpForce - (player.m_Gravity * l_ElapsedTime);
-		mov.y = player.m_CurrentJumpForce;
-	end
-	local grounded = player:IsGrounded();
-	if grounded == true then
-		--coreInstance:trace("SIIIIIIIIIIIIIIIIIIIIIIIIII");
-	else
-		--coreInstance:trace("NOOOOOOOOOOOOOOOOOOOOOOOOOOO");
 	end
 	player.m_PhysicController:move(mov,l_ElapsedTime);
 	player:set_position(player.m_PhysicController:get_position());

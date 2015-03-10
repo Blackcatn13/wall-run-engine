@@ -16,6 +16,7 @@ public:
     GET_SET(CPhysicController*, PhysicController);
     GET_SET(CPhysicUserData*, PhysicUserData);
     GET_SET(float, Gravity);
+	GET_SET(float, GravityJump);
     GET_SET(float, Speed);
     GET_SET(float, JumpForce);
     GET_SET(bool, isJumping);
@@ -27,6 +28,7 @@ private:
     CPhysicController*	m_PhysicController;
     CPhysicUserData*	m_PhysicUserData;
     float				m_Gravity;
+	float				m_GravityJump;
     float				m_Speed;
     float				m_JumpForce;
     float				m_CurrentJumpForce;

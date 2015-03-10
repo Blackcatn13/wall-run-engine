@@ -13,9 +13,10 @@
 
 CPlayerController::CPlayerController()
     : CObject3D(),
-      m_Gravity(13),
+      m_Gravity(2),
+	  m_GravityJump(2),
       m_Speed (15),
-      m_JumpForce(1.5),
+      m_JumpForce(0.65),
       m_CurrentJumpForce(0),
       m_isJumping(false),
       m_is3D(false)
