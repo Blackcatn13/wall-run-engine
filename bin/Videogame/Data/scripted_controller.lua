@@ -141,27 +141,40 @@ function on_update_scripted_controller(l_ElapsedTime)
 			coreInstance.m_CameraController:set_active_camera("3DCam");
 		end
 	end
+	active_camera = cam_Controller:get_active_camera();
+	camObject = active_camera.m_pObject3D;
+	local dir3D = active_camera:get_direction();
+	local dirYaw = camObject:get_yaw();
+	local dirNor = Vect3f(math.cos(dirYaw + (math.pi/2)), 0, (math.sin(dirYaw + (math.pi/2))));
+	dir3D = luaUtil:normalize(dir3D);
+	dir3D.y = 0;
+	dirNor = luaUtil:normalize(dirNor);
+	dirNor.y = 0;
 	local mov = Vect3f(0,0,0);
 		if act2in:do_action_from_lua("MoveForward") then
 			if player.m_is3D == true then	
-				mov = mov + Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
+				--mov = mov + Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
+				mov = mov + dir3D * player.m_Speed * l_ElapsedTime;
 			end
 		end
 		if act2in:do_action_from_lua("MoveBack") then
 			if player.m_is3D == true then	
-				mov = mov - Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
+				--mov = mov - Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
+				mov = mov - dir3D * player.m_Speed * l_ElapsedTime;
 			end
 		end
 		if act2in:do_action_from_lua("MoveRigth") then
 			if player.m_is3D == true then	
-				mov = mov - Vect3f(-1,0,0) * player.m_Speed * l_ElapsedTime;
+				--mov = mov - Vect3f(-1,0,0) * player.m_Speed * l_ElapsedTime;
+				mov = mov - dirNor * player.m_Speed * l_ElapsedTime;
 			else
 				mov = mov + Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
 			end
 		end
 		if act2in:do_action_from_lua("MoveLeft") then
 			if player.m_is3D == true then	
-				mov = mov + Vect3f(-1,0,0) * player.m_Speed * l_ElapsedTime;
+				--mov = mov + Vect3f(-1,0,0) * player.m_Speed * l_ElapsedTime;
+				mov = mov + dirNor * player.m_Speed * l_ElapsedTime;
 			else
 				mov = mov - Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
 			end
