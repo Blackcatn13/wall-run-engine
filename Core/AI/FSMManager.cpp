@@ -80,14 +80,22 @@ void CFSMManager::Update(float dt)
             s->m_onEnter = true;
         }
         s->m_ElapsedTime += dt;
-        if (s->m_ElapsedTime >= s->m_UpdateTime) {
-            char l_InitLevelText[256];
-            _snprintf_s(l_InitLevelText, 256, 256, "%s(%f)", s->onUpdate.c_str(), dt);
-            SCRIPTM->RunCode(l_InitLevelText);
-            s->m_ElapsedTime = 0;
-        }
+        char l_InitLevelText[256];
+		int doComprobation = 0;
+		if(s->m_ElapsedTime >= s->m_UpdateTime)
+		{
+			doComprobation = 1;
+		}
+		_snprintf_s(l_InitLevelText, 256, 256, "%s(%f,%d)", s->onUpdate.c_str(), dt, doComprobation);
+        SCRIPTM->RunCode(l_InitLevelText);
+		if(doComprobation == 1)
+		{
+			s->m_ElapsedTime = 0;
+			doComprobation = 0;
+		}
         bool change = CLuaGlobals::getInstance()->ValueChanged();
         if (change) {
+			s->m_onEnter = false;
             SCRIPTM->RunCode(s->onExit.c_str());
             it->second->m_previousState = it->second->m_currentState;
             it->second->m_currentState = CLuaGlobals::getInstance()->getString();

@@ -30,17 +30,17 @@ function on_enter_patrulla_buscar_next_wp()
 --core:trace(tostring(next_wp.x));
 --local name = CNamed()
 
-	if next_wp == Vect3f(10,0,10) then
+	--if next_wp == Vect3f(10,0,10) then
 	--name:set_name("10")
-		next_wp = Vect3f(-10, 0, -10)	
-	else
+		--next_wp = Vect3f(-10, 0, -10)	
+	--else
 	--name:set_name("-10")
-		next_wp = Vect3f(10,0,10)
-	end
+		--next_wp = Vect3f(10,0,10)
+	--end
 
 		--core:trace(tostring(next_wp.x));
 		--	name:set_name("cambio")
-	instance.m_string = "Andar_WP"
+	--instance.m_string = "Andar_WP"
 end
 
 function on_enter_patrulla_perseguir_player()
@@ -73,62 +73,69 @@ function on_exit_patrulla_perseguir_player()
 	current_time = 0
 end
 
-function on_update_patrulla_parado(ElapsedTime)
+function on_update_patrulla_parado(ElapsedTime, doComprobation)
 -- Update Parado	
 --core:trace("Update Parado");
 	--player_position = Vect3f(19,0,5)
-	player_position = core:get_player_controller():get_position()
---	core:trace(tostring(player_position.x));
-	if current_time >= 0.1 then
-		instance.m_string = "Andar_WP"
-	end
-	local player_distance = get_distance_to_player(ai_controller:get_position(), player_position)
-	if player_distance <= 25 then
-		instance.m_string = "Perseguir_Player"
+	if doComprobation == 1 then
+		player_position = core:get_player_controller():get_position()
+	--	core:trace(tostring(player_position.x));
+		local player_distance = get_distance_to_player(ai_controller:get_position(), player_position)
+		if player_distance <= 49 then
+			instance.m_string = "Perseguir_Player"
+		elseif current_time >= 0.1 then
+			instance.m_string = "Andar_WP"
+		end
+		
 	end
 	current_time = current_time +1 * ElapsedTime
 	return 0
 end
 
-function on_update_patrulla_andar_wp(ElapsedTime)
+function on_update_patrulla_andar_wp(ElapsedTime, doComprobation)
 	-- agafar player , player_position
 -- Update Andar_WP	
 	--andar a wp
 --	core:trace("Update Andar_WP");
 	--player_position = Vect3f(10,0,10)
+	ai_controller:move_to(ElapsedTime, next_wp)
+	
 	player_position = core:get_player_controller():get_position()
 	--core:trace(tostring(player_position.x));
-
-	ai_controller:move_to(ElapsedTime, next_wp)
-	local wp_distance = get_distance_to_player(ai_controller:get_position(), next_wp)
-	if wp_distance < 25 then
-		instance.m_string = "Buscar_next_WP"
+	if doComprobation == 1 then
+		local player_distance = get_distance_to_player(ai_controller:get_position(), player_position)
+		if player_distance < 49 then	
+			instance.m_string = "Perseguir_Player"
+		else
+			local wp_distance = get_distance_to_player(ai_controller:get_position(), next_wp)
+			if wp_distance < 16 then
+				instance.m_string = "Buscar_next_WP"
+			end
+		end
+		
 	end
-	local player_distance = get_distance_to_player(ai_controller:get_position(), player_position)
-	if player_distance < 25 then	
-		instance.m_string = "Perseguir_Player"
-	end
-	
 end
 
-function on_update_patrulla_buscar_next_wp(ElapsedTime)
+function on_update_patrulla_buscar_next_wp(ElapsedTime, doComprobation)
 -- Update Buscar_next_WP	
 --core:trace("Update Buscar_next_WP");
-	if next_wp == Vect3f(10,0,10) then
-
-		next_wp = Vect3f(-10, 0, -10)	
-	else
-
-		next_wp = Vect3f(10,0,10)
-	end
-	instance.m_string = "Andar_WP"
-	local player_distance = get_distance_to_player(ai_controller:get_position(), player_position)
-	if player_distance < 25 then	
-		instance.m_string = "Perseguir_Player"
+	if doComprobation == 1 then
+		local player_distance = get_distance_to_player(ai_controller:get_position(), player_position)
+		if player_distance < 49 then	
+			instance.m_string = "Perseguir_Player"
+		else
+			if next_wp == Vect3f(10,0,10) then
+				next_wp = Vect3f(-10, 0, -10)	
+			else
+				next_wp = Vect3f(10,0,10)
+			end
+			instance.m_string = "Andar_WP"
+		end
+		
 	end
 end
 
-function on_update_patrulla_perseguir_player(ElapsedTime)
+function on_update_patrulla_perseguir_player(ElapsedTime, doComprobation)
 --	core:trace("Update Perseguir_Player");
 -- Update Perseguir_Player 	, player_position
 	-- obtener posicion actual del player
@@ -136,12 +143,14 @@ function on_update_patrulla_perseguir_player(ElapsedTime)
 	--player_position = Vect3f(10,0,10)
 	--player_position = core:get_player_controller():get_position()
 	ai_controller:move_to(ElapsedTime, core:get_player_controller():get_position())
-	local player_distance = get_distance_to_player(ai_controller:get_position(), player_position)
-	if player_distance > 225 then
-		instance.m_string = "Parado"
-	end
-	if player_distance < 1 then
-		instance.m_string = "Parado"
+	if doComprobation == 1 then
+		local player_distance = get_distance_to_player(ai_controller:get_position(), player_position)
+		if player_distance > 225 then
+			instance.m_string = "Parado"
+		end
+		if player_distance < 1 then
+			instance.m_string = "Parado"
+		end
 	end
 end
 

@@ -103,7 +103,7 @@
     </action>
 	
 	<action name="Jump">
-    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_SPACE"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_SPACE"/>
     </action>
 	
 	<action name="ChangeDimension">
