@@ -278,6 +278,9 @@
     <ClCompile Include="SceneElements\PinchosPlatform.cpp">
       <Filter>SceneElements</Filter>
     </ClCompile>
+    <ClCompile Include="SceneElements\PolyPlatform.cpp">
+      <Filter>SceneElements</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
@@ -510,6 +513,9 @@
       <Filter>SceneElements</Filter>
     </ClInclude>
     <ClInclude Include="SceneElements\PinchosPlatform.h">
+      <Filter>SceneElements</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneElements\PolyPlatform.h">
       <Filter>SceneElements</Filter>
     </ClInclude>
   </ItemGroup>

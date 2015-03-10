@@ -13,10 +13,10 @@ function on_update_cameras_lua(l_ElapsedTime)
 	if act2in:do_action_from_lua("Set2DCamera") then
 		coreInstance.m_CameraController:set_active_camera("2DCam");
 	end
-	local name2=CNamed();
-	name2:set_name("UpdatePass1");
+	--local name2=CNamed();
+	--name2:set_name("UpdatePass1");
 	local cam = camController:get_active_camera();
-	name2:set_name("UpdatePass2");
+	--name2:set_name("UpdatePass2");
 	--Update Camera 3D
 	if(cam.m_eTypeCamera == 6) then
 		local pCont = coreInstance:get_player_controller();
@@ -47,5 +47,5 @@ function on_update_cameras_lua(l_ElapsedTime)
 		--cam.m_fFOV = 45.0 * 3.1415 / 180;
 		--cam.m_fAspectRatio = 1;
 	end
-	name2:set_name("UpdatePassFinal");
+	--name2:set_name("UpdatePassFinal");
 end

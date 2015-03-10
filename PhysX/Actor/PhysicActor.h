@@ -69,6 +69,7 @@ public:
 
     //---Activate---
     void				Activate					( bool _bActivate );
+    bool				IsActivated					();
     void				SetKinematic				( bool _bValue );
 
     //---- Properties ( get & Set )---------------------------------------

@@ -285,6 +285,11 @@ void CPhysicActor::Activate ( bool _bActivate)
     }
 }
 
+bool CPhysicActor::IsActivated()
+{
+    return m_pPhXActor->readActorFlag(NX_AF_DISABLE_COLLISION);
+}
+
 void CPhysicActor::AddImpulseAtPos ( const Vect3f& _vDirection, const Vect3f& _vPos, float _fPower, bool _bLocal )
 {
     AddForceAtPos( _vDirection, _vPos, _fPower, NX_IMPULSE, _bLocal);

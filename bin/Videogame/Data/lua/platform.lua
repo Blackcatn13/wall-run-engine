@@ -9,6 +9,14 @@ function init_platform(name, user_data_name, size, position)
 	return platform
 end
 
+function init_poly_platform(name, user_data_name, size, position, activeActor, time_out)
+	local platform = init_platform(name, user_data_name, size, position)
+	platform.m_PlatformActor:activate(activeActor)
+	platform.m_OriginalScale = platform:get_scale()
+	platform.m_TimeOut= time_out
+	return platform
+end
+
 function update_break_platform(dt, current_time, max_time, platform_name)
 
 	if current_time >= max_time then
@@ -33,28 +41,28 @@ local next_wp = Vect3f(0,0,0)
 instance = CLuaGlobalsWrapper().m_CoreInstance;
 
 function mp_enter_stopped()
-	coreInstance:trace("Parando plataforma");
+	--coreInstance:trace("Parando plataforma");
 	--next_wp = Vect3f(-15,0,-15) 
 	instance.m_string = "Buscar_next_WP_Plaform"
 	return 0 
 end
 
 function mp_exit_stopped()
-	coreInstance:trace("Saliendo Platform stopped");
+	--coreInstance:trace("Saliendo Platform stopped");
 
 end
 
 function mp_update_stopped(ElapsedTime)
-	core:trace("Update Platform stopped");
+	--core:trace("Update Platform stopped");
 	instance.m_string = "Buscar_next_WP_Plaform"
 end
 
 function mp_enter_moving()
-	coreInstance:trace("Entering Platform moving State");
+	--coreInstance:trace("Entering Platform moving State");
 end
 
 function mp_exit_moving()
-	coreInstance:trace("Exit Moviendo Plataforma");
+	--coreInstance:trace("Exit Moviendo Plataforma");
 end
 
 function mp_update_moving(ElapsedTime)
@@ -75,8 +83,8 @@ end
 
 function mp_enter_calcwp() -- Pasar el nombre de la plataforma y de ahí que recoja el wp que necesita? 
 -- OnEnter Buscar_next_WP 
-	coreInstance:trace("Entering Buscar Platform next WP");
-	coreInstance:trace(tostring(next_wp.x));
+	--coreInstance:trace("Entering Buscar Platform next WP");
+	--coreInstance:trace(tostring(next_wp.x));
 	--if next_wp == Vect3f(15,0,15) then
 	--	next_wp = Vect3f(-15, 0, 15)	
 	--else
@@ -84,19 +92,52 @@ function mp_enter_calcwp() -- Pasar el nombre de la plataforma y de ahí que rec
 	--end
 	local platform = rol_manager:get_default_renderable_object_manager():get_resource("MovingPlatform001")
 	next_wp = platform:get_next_wp()
-	coreInstance:trace(tostring(next_wp.x));
+	--coreInstance:trace(tostring(next_wp.x));
 	instance.m_string = "Andar_WP"
 end
 
 function mp_exit_calcwp()
-	core:trace("Saliendo Buscar_next_WP Platform");
+	--core:trace("Saliendo Buscar_next_WP Platform");
 end
 
 function mp_update_calcwp(ElapsedTime)
-	core:trace("Update Buscar_next_WP Platform");
+--	core:trace("Update Buscar_next_WP Platform");
 	mp_enter_calcwp()
 end
 --End Moving Platform
+
+
+--Poly Platform
+
+function update_poly_platform(current_poly_time, platform_name)
+	-- Enable Poly Emmerald power
+	local position = coreInstance:get_player_controller():get_position()
+	local platform = rol_manager:get_default_renderable_object_manager():get_resource(platform_name)
+	local platform_position = platform:get_position()
+	local l_distance = position:distance(platform_position)
+	if l_distance < platform.m_ActivationDistance then
+		platform.m_Enabled = true
+	else
+		platform.m_Enabled = false
+	end
+	
+	local act2in = coreInstance:get_action_to_input();
+	
+	if act2in:do_action_from_lua("PolyPowa") == true and platform.m_Enabled then
+		platform:activate_poly()
+		--local new_pos = Vect3f(position + platform.m_RedimScale)
+		coreInstance:get_player_controller().m_PhysicController:set_position(new_pos) 
+	end
+	-- If poly is activated
+	
+	if current_poly_time > platform.m_TimeOut then
+		platform:deactivate_poly()
+	end
+		
+end
+
+--End Poly Platform
+
 
 function get_distance_to_point(current_position, final_position)
 	-- calcular distancia hacia destino

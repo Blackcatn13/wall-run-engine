@@ -1,23 +1,23 @@
 <fsm name="Patrulla">
 	<initialState name="Parado"/>
 	<state name="Parado">
-		<onEnter lua_funtion="Enter1()"/>
-		<onExit lua_funtion="Exit1()"/>
-		<Update time=".1" lua_funtion="Update1"/>
+		<onEnter lua_funtion="on_enter_patrulla_parado()"/>
+		<onExit lua_funtion="on_exit_patrulla_parado()"/>
+		<Update time=".01" lua_funtion="on_update_patrulla_parado"/>
 	</state>
 	<state name="Andar_WP">
-		<onEnter lua_funtion="Enter2()"/>
-		<onExit lua_funtion="Exit2()"/>
-		<Update time=".1" lua_funtion="Update2"/>
+		<onEnter lua_funtion="on_enter_patrulla_andar_wp()"/>
+		<onExit lua_funtion="on_exit_patrulla_andar_wp()"/>
+		<Update time=".01" lua_funtion="on_update_patrulla_andar_wp"/>
 	</state>
 	<state name="Buscar_next_WP">
-		<onEnter lua_funtion="Enter3()"/>
-		<onExit lua_funtion="Exit3()"/>
-		<Update time=".1" lua_funtion="Update3"/>
+		<onEnter lua_funtion="on_enter_patrulla_buscar_next_wp()"/>
+		<onExit lua_funtion="on_exit_patrulla_buscar_next_wp()"/>
+		<Update time=".01" lua_funtion="on_update_patrulla_buscar_next_wp"/>
 	</state>
 	<state name="Perseguir_Player">
-		<onEnter lua_funtion="Enter4()"/>
-		<onExit lua_funtion="Exit4()"/>
-		<Update time=".1" lua_funtion="Update4"/>
+		<onEnter lua_funtion="on_enter_patrulla_perseguir_player()"/>
+		<onExit lua_funtion="on_exit_patrulla_perseguir_player()"/>
+		<Update time=".01" lua_funtion="on_update_patrulla_perseguir_player"/>
 	</state>
 </fsm>

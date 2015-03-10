@@ -6,6 +6,7 @@
 #include "Renderable\RenderableObject.h"
 #include "Renderable\RenderableObjectsLayersManager.h"
 #include "Core\Core.h"
+#include "Utils\Defines.h"
 
 
 CStaticPlatform::CStaticPlatform(std::string platformName, std::string coreName)
@@ -15,7 +16,9 @@ CStaticPlatform::CStaticPlatform(std::string platformName, std::string coreName)
 
 CStaticPlatform::~CStaticPlatform ()
 {
-    //m_PlatorformActor->Destroy();
+    PHYSXM->ReleasePhysicActor(m_PlatorformActor);
+    CHECKED_DELETE(m_PlatorformActor);
+    CHECKED_DELETE(m_PlatformUserData);
 }
 
 

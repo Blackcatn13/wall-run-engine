@@ -350,6 +350,8 @@ void CScriptManager::RegisterLUAFunctions()
         .def("set_pitch", & CObject3D::SetPitch)
         .def("set_roll", & CObject3D::SetRoll)
         .def("set_position", & CObject3D::SetPosition)
+        .def("get_scale", & CObject3D::GetScale)
+        .def("set_scale", & CObject3D::SetScale)
     ];
     luabind::module(LUA_STATE) [
         class_< CRenderableObject, bases<CObject3D, CNamed> >("CRenderableObject")

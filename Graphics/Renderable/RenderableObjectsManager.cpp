@@ -10,6 +10,7 @@
 #include "SceneElements\StaticPlatform.h"
 #include "SceneElements\MovingPlatform.h"
 #include "SceneElements\PinchosPlatform.h"
+#include "SceneElements\PolyPlatform.h"
 
 #include <assert.h>
 
@@ -184,6 +185,17 @@ void CRenderableObjectsManager::Load(const std::string &FileName)
                     l_PinchosPlatform->SetRoll(roll);
                     l_PinchosPlatform->SetScale(scale);
                     AddResource(platformName, l_PinchosPlatform);
+                } else if (type == "poly") {
+                    std::string l_RedimAxis = m(i).GetPszProperty("redim_axis",  "", false);
+                    float	l_RedimScale = m(i).GetFloatProperty("redim_scale",  .0f, false);
+                    float	l_ActivationDistance = m(i).GetFloatProperty("activation_distance", .0f, false);
+                    CPolyPlatform * l_PolyPlatform = new CPolyPlatform(platformName, core, l_RedimAxis, l_RedimScale, l_ActivationDistance);
+                    l_PolyPlatform->SetYaw(yaw);
+                    l_PolyPlatform->SetPosition(pos);
+                    l_PolyPlatform->SetPitch(pitch);
+                    l_PolyPlatform->SetRoll(roll);
+                    l_PolyPlatform->SetScale(scale);
+                    AddResource(platformName, l_PolyPlatform);
                 }
             }
         }
@@ -319,6 +331,17 @@ void CRenderableObjectsManager::Load(CXMLTreeNode & Node)
                 l_PinchosPlatform->SetRoll(roll);
                 l_PinchosPlatform->SetScale(scale);
                 AddResource(platformName, l_PinchosPlatform);
+            } else if (type == "poly") {
+                std::string l_RedimAxis = m.GetPszProperty("redim_axis",  "", false);
+                float	l_RedimScale = m.GetFloatProperty("redim_scale",  .0f, false);
+                float	l_ActivationDistance = m.GetFloatProperty("activation_distance", .0f, false);
+                CPolyPlatform * l_PolyPlatform = new CPolyPlatform(platformName, core, l_RedimAxis, l_RedimScale, l_ActivationDistance);
+                l_PolyPlatform->SetYaw(yaw);
+                l_PolyPlatform->SetPosition(pos);
+                l_PolyPlatform->SetPitch(pitch);
+                l_PolyPlatform->SetRoll(roll);
+                l_PolyPlatform->SetScale(scale);
+                AddResource(platformName, l_PolyPlatform);
             }
         }
         //}

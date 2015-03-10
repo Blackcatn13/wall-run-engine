@@ -4,6 +4,7 @@ function init_level(a)
 	init_platform("BreakablePlatform001","Breakable001UserData", Vect3f(2,0.5,2), Vect3f(0,0.8,0))
 	init_platform("MovingPlatform001","Moving001UserData", Vect3f(2,0.5,2), Vect3f(0,0.8,0))
 	init_platform("PinchosPlatform001","Pinchos001UserData", Vect3f(2,0.5,2), Vect3f(0,0.8,0))
+	init_poly_platform("PolyPlatform001","Poly001UserData", Vect3f(2,0.5,2), Vect3f(0,0.8,0), false, 3.0)
 	--breakable_platform1 = init_breakable_platform("Box004", "Box004UserData", Vect3f(2,0.5,2), Vect3f(0,0.5,0), "BreakablePlatform_test")	
 	
 	return 0

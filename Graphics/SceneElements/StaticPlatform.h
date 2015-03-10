@@ -7,6 +7,7 @@
 #include "Math\Vector3.h"
 #include "Renderable\RenderableObject.h"
 #include "Mesh\MeshInstance.h"
+#include "Utils\Defines.h"
 
 class CPhysicActor;
 class CPhysicUserData;
@@ -22,6 +23,11 @@ public:
     CStaticPlatform(std::string platformName, std::string coreName);
     virtual  ~ CStaticPlatform ();
     void InsertPlatform( std::string userDataName, Vect3f size, Vect3f localPosition);
+    CPhysicActor * GetPlatformActor()
+    {
+        return m_PlatorformActor;
+    }
+
 
 };
 

@@ -15,7 +15,7 @@
 	<mesh_instance name="Box008" core="Box008"  pos="14.657749 1.048002 0.221005" yaw="0.0"  pitch="0.0" roll="-0.312651" scale="1.0 1.0 1.0" />
 	<!--<mesh_instance name="Box009" core="Box009"  pos="14.268936 1.955879 6.406747" yaw="0.0"  pitch="0.0" roll="-0.511853" scale="1.0 1.0 1.0" />-->
 	<mesh_instance name="Box010" core="Box010"  pos="12.438571 2.144835 13.019793" yaw="0.0"  pitch="0.0" roll="-0.839377" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Box011" core="Box011"  pos="14.607794 0.241913 -5.444057" yaw="0.0"  pitch="0.0" roll="-0.127408" scale="1.0 1.0 1.0" />
+	<!--<mesh_instance name="Box011" core="Box011"  pos="14.607794 0.241913 -5.444057" yaw="0.0"  pitch="0.0" roll="-0.127408" scale="1.0 1.0 1.0" />-->
 	<mesh_instance name="Box012" core="Box012"  pos="4.000000 0.000000 13.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<mesh_instance name="Box013" core="Box013"  pos="0.000000 0.000000 15.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<mesh_instance name="Box014" core="Box014"  pos="-3.000000 0.000000 13.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
@@ -27,5 +27,7 @@
 		<wp pos="15.000000 0.000000 15.000000" />
 	</platform>
 	<platform name="PinchosPlatform001" type="pinchos" from_x="true" from_z="false" offset="3.0" core="Box003"  pos="14.268936 0.000000 6.406747" yaw="0.0"  pitch="0.0" roll="0.0" scale="2.0 4.0 2.0" />
+	<platform name="PolyPlatform001" type="poly" redim_axis ="y" redim_scale = "2.0" activation_distance ="10" initial_collision = "false" core="Box003"  pos="14.607794 0.241913 -5.444057" yaw="0.0"  pitch="0.0" roll="0.0" scale="2.0 0.0 2.0" />
+	
 	
 </renderable_objects>
