@@ -63,13 +63,19 @@ std::string CWPManager::FindNExtWaypointOptimal(std::string ZONEName, int Waypoi
 	return "";
 }
 
-int CWPManager::TestFunction(int parametro1)
+int CWPManager::TestFunction(int parametro1, int parametro2)
 {
 	//inputs de Test
 	ZONE * l_currentZone = GetResource("sala_principal");
-	int id_origen = 1;
-	int id_destino = 4;
-	Vect3f posicionDestino = Vect3f(7.000, 0.000, 7.000);
+	int id_origen = parametro1;
+	int id_destino = parametro2;
+	bool l_Busquedafinalizada = false;
+	//caso ya en el destino
+	if (id_origen == id_destino)
+	{
+		return id_origen;
+	}
+	//Vect3f posicionDestino = Vect3f(7.000, 0.000, 7.000);
 
 	//creamos vector de nodos abiertos
 	std::vector<WP *> l_openVector;
@@ -81,16 +87,142 @@ int CWPManager::TestFunction(int parametro1)
 	float temp_H = CalcularH(0, id_origen, id_destino, l_currentZone);
 	float temp_G = 0;
 	float temp_F = temp_H + temp_G;
+	//modificamos los datos del nodo origen 0
+	l_currentZone->m_Waypoints[id_origen]->m_H = temp_H;
+	l_currentZone->m_Waypoints[id_origen]->m_G = temp_G;
+	l_currentZone->m_Waypoints[id_origen]->m_F = temp_F;
 
 	//calculamos todos los vecinos de nodo inicial
 	for (std::vector<Link *>::iterator it = l_currentZone->m_Waypoints[id_origen]->m_LinkList.begin(); it != l_currentZone->m_Waypoints[id_origen]->m_LinkList.end(); ++it) 
 	{
-		l_openVector.push_back(l_currentZone->m_Waypoints[(*it)->id]);
+		if (!l_currentZone->m_Waypoints[(*it)->id]->m_cerrado)
+		{
+			float l_pesoRecorrido = (*it)->weight + temp_G;
+			if (l_currentZone->m_Waypoints[(*it)->id]->m_H == 999.0)
+			{
+				float temp_H = CalcularH(0, (*it)->id, id_destino, l_currentZone);
+				l_currentZone->m_Waypoints[(*it)->id]->m_H = temp_H;
+			}
+			else
+			{
+				float temp_H = l_currentZone->m_Waypoints[(*it)->id]->m_H;
+			}
+			float temp_G = l_pesoRecorrido;
+			float temp_F = temp_H + temp_G;
+			if (temp_F < l_currentZone->m_Waypoints[(*it)->id]->m_F)
+			{
+				l_currentZone->m_Waypoints[(*it)->id]->m_G = temp_G;
+				l_currentZone->m_Waypoints[(*it)->id]->m_F = temp_F;
+				l_currentZone->m_Waypoints[(*it)->id]->m_Padre = l_currentZone->m_Waypoints[id_origen];
+			}
+			if ((*it)->id == id_destino)
+			{
+				l_Busquedafinalizada = true;
+				return CalcularPrimerWaypoint((*it)->id, l_currentZone);
+			}
+			l_openVector.push_back(l_currentZone->m_Waypoints[(*it)->id]);
+		}
+
 	}
 	//cerramos el vector actual
 	l_currentZone->m_Waypoints[id_origen]->m_cerrado = true;
 
-	return 0;
+	//sacamos el nodo origen cerrado del vector de abiertos
+	for (std::vector<WP *>::iterator it = l_openVector.begin(); it != l_openVector.end(); ++it) 
+	{
+		if ( (*it)->m_id == id_origen)
+		{
+			l_openVector.erase(it);
+			break;
+		}
+	}
+
+	//hacemos el bucle para el resto de nodos, siempre que hayan nodos abiertos y no hayamos encontremos la salida
+	while ((l_openVector.size() > 0) && (!l_Busquedafinalizada))
+	{
+		int temp_F_Busqueda = 1000.0;
+		int temp_id = 99;
+		//cogemos el nodo abierto con una F menor
+		for (std::vector<WP *>::iterator it = l_openVector.begin(); it != l_openVector.end(); ++it) 
+		{
+			if ( (*it)->m_F < temp_F_Busqueda)
+			{
+				temp_id = (*it)->m_id;
+				temp_F = (*it)->m_F;
+			}
+		}
+		id_origen = temp_id;
+		temp_G = l_currentZone->m_Waypoints[id_origen]->m_G;
+
+		//repetimos los pasos que con el nodo original
+		for (std::vector<Link *>::iterator it = l_currentZone->m_Waypoints[id_origen]->m_LinkList.begin(); it != l_currentZone->m_Waypoints[id_origen]->m_LinkList.end(); ++it) 
+		{
+			if (!l_currentZone->m_Waypoints[(*it)->id]->m_cerrado)
+			{
+				float l_pesoRecorrido = (*it)->weight + temp_G;
+				if (l_currentZone->m_Waypoints[(*it)->id]->m_H == 999.0)
+				{
+					float temp_H = CalcularH(0, (*it)->id, id_destino, l_currentZone);
+					l_currentZone->m_Waypoints[(*it)->id]->m_H = temp_H;
+				}
+				else
+				{
+					float temp_H = l_currentZone->m_Waypoints[(*it)->id]->m_H;
+				}
+				float temp_G = l_pesoRecorrido;
+				float temp_F = temp_H + temp_G;
+				if (temp_F < l_currentZone->m_Waypoints[(*it)->id]->m_F)
+				{
+					l_currentZone->m_Waypoints[(*it)->id]->m_G = temp_G;
+					l_currentZone->m_Waypoints[(*it)->id]->m_F = temp_F;
+					l_currentZone->m_Waypoints[(*it)->id]->m_Padre = l_currentZone->m_Waypoints[id_origen];
+				}
+				if ((*it)->id == id_destino)
+				{
+					l_Busquedafinalizada = true;
+					return CalcularPrimerWaypoint((*it)->id, l_currentZone);
+				}
+				//miramos que l_currentZone->m_Waypoints[(*it)->id] no esté ya en openVectorf
+				bool idExist = false;
+				for (std::vector<WP *>::iterator it2 = l_openVector.begin(); it2 != l_openVector.end(); ++it2) 
+				{
+					if ( (*it2)->m_id == l_currentZone->m_Waypoints[(*it)->id]->m_id)
+					{
+						idExist = true;
+						break;
+					}
+				}
+
+				if (!idExist) l_openVector.push_back(l_currentZone->m_Waypoints[(*it)->id]);
+			}
+		}
+		//cerramos el vector actual
+		l_currentZone->m_Waypoints[id_origen]->m_cerrado = true;
+
+		//sacamos el nodo origen cerrado del vector de abiertos
+		for (std::vector<WP *>::iterator it = l_openVector.begin(); it != l_openVector.end(); ++it) 
+		{
+			if ( (*it)->m_id == id_origen)
+			{
+				l_openVector.erase(it);
+				break;
+			}
+		}
+	}
+	return 999;
+}
+
+int CWPManager::CalcularPrimerWaypoint(int id_entrada, ZONE * currentZone)
+{
+	ZONE * l_currentZone = currentZone;
+	int l_tempid = id_entrada;
+	int LoopProtector = 50;
+	while ((l_currentZone->m_Waypoints[l_tempid]->m_Padre != NULL) && (l_currentZone->m_Waypoints[l_tempid]->m_Padre->m_Padre != NULL) && (LoopProtector > 0))
+	{
+		l_tempid = l_currentZone->m_Waypoints[l_tempid]->m_Padre->m_id;
+		--LoopProtector;
+	}
+	return l_tempid;
 }
 
 float CWPManager::CalcularH(int pesoEntrada, int id_origen, int id_destino, ZONE * currentZone)

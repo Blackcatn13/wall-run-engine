@@ -43,12 +43,13 @@ public:
 	Vect3f GetWaypointPosition(int id, std::string ZONEName);
 	int FindOptimalPath(std::string ZONEName, Vect3f PositionStart, Vect3f PositionDestiny);
 	std::string FindNExtWaypointOptimal(std::string ZONEName, int WaypointStart, int WaypointDestiny, std::string CurrentPath);
-	int CWPManager::TestFunction(int parametro1);
-	void CWPManager::ResetWPStruct(std::string ZONEName);
+	int TestFunction(int parametro1, int parametro2);
+	void ResetWPStruct(std::string ZONEName);
 private:
 	void Load();
 	std::string m_fileName;
 	float CalcularH (int pesoEntrada, int id_origen, int id_destino, ZONE * currentZone);
+	int CalcularPrimerWaypoint(int id_entrada, ZONE * currentZone);
 };
 
 #endif
