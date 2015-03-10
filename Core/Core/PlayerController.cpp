@@ -7,6 +7,9 @@
 #include "ActionToInput.h"
 #include "Camera\CameraController.h"
 #include "ScriptManager.h"
+#include "PhysicsDefs.h"
+#include "PhysicsManager.h"
+#include "Actor\PhysicActor.h"
 
 CPlayerController::CPlayerController()
     : CObject3D(),
@@ -31,33 +34,15 @@ CPlayerController::~CPlayerController()
 
 void CPlayerController::Move(float dt)
 {
-    /*float deltaX, deltaY, deltaZ;
-    if (ACT2IN->DoAction("yaw", deltaX))
-        SetYaw(GetYaw() - deltaX * dt);
-    if (ACT2IN->DoAction("pitch", deltaY))
-        SetPitch(GetPitch() - deltaY * dt);
-    float yaw = GetYaw();
-    Vect3f dir = CAMCONTM->getActiveCamera()->GetDirection();
-    Vect3f nor = Vect3f(mathUtils::Cos(yaw + ePI2f), 0, (mathUtils::Sin(yaw + ePI2f)));
-    nor.Normalize();
-    Vect3f mov = (0, 0, 0);
-    if (ACT2IN->DoAction("MoveForward"))
-        mov = mov + Vect3f(0, 0, 1) * m_Speed * dt;
-    if (ACT2IN->DoAction("MoveBack"))
-        mov = mov - Vect3f(0, 0, 1) * m_Speed * dt;
-    if (ACT2IN->DoAction("MoveRigth"))
-        mov = mov - Vect3f(-1, 0, 0) * m_Speed * dt;
-    if (ACT2IN->DoAction("MoveLeft"))
-        mov = mov + Vect3f(-1, 0, 0) * m_Speed * dt;
-    if (ACT2IN->DoAction("Jump")) {
-        m_isJumping = true;
-        m_CurrentJumpForce = m_JumpForce;
-        mov.y = m_CurrentJumpForce;
-    }
-    if (m_isJumping && m_CurrentJumpForce > 0) {
-        m_CurrentJumpForce = m_CurrentJumpForce - (m_Gravity * dt);
-        mov.y = m_CurrentJumpForce;
-    }
-    m_PhysicController->Move(mov, dt);
-    SetPosition(m_PhysicController->GetPosition());*/
+	//En lua.
+}
+
+bool CPlayerController::IsGrounded()
+{
+	SCollisionInfo info = SCollisionInfo();
+	CPhysicUserData* hit = CCORE->GetPhysicsManager()->RaycastClosestActor(Vect3f(m_Position.x, m_Position.y-2, m_Position.z), 
+		Vect3f(0,-1,0), 0xffffffff, info);
+	if (hit != NULL && info.m_fDistance <= 0.1)
+		return true;
+	else return false;
 }

@@ -21,6 +21,7 @@ public:
     GET_SET(bool, isJumping);
     GET_SET(float, CurrentJumpForce);
     GET_SET(bool, is3D);
+	bool IsGrounded();
 
 private:
     CPhysicController*	m_PhysicController;
@@ -31,6 +32,7 @@ private:
     float				m_CurrentJumpForce;
     bool				m_isJumping;
     bool				m_is3D;
+	bool				m_isGrounded;
 };
 
 

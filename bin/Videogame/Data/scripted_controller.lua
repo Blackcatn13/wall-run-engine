@@ -188,6 +188,12 @@ function on_update_scripted_controller(l_ElapsedTime)
 		player.m_CurrentJumpForce = player.m_CurrentJumpForce - (player.m_Gravity * l_ElapsedTime);
 		mov.y = player.m_CurrentJumpForce;
 	end
+	local grounded = player:IsGrounded();
+	if grounded == true then
+		--coreInstance:trace("SIIIIIIIIIIIIIIIIIIIIIIIIII");
+	else
+		--coreInstance:trace("NOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+	end
 	player.m_PhysicController:move(mov,l_ElapsedTime);
 	player:set_position(player.m_PhysicController:get_position());
 	
