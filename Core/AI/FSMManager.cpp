@@ -44,9 +44,7 @@ void CFSMManager::Load()
             std::string FSMName = m.GetPszISOProperty("name", "");
             for (int i = 0; i < count; ++i) {
                 std::string name = m(i).GetName();
-                if (name == "initialState") {
-                    newFSM->m_currentState = m(i).GetPszISOProperty("name", "");
-                } else if (name == "state") {
+                if (name == "state") {
                     STATE* s = new STATE();
                     int states = m(i).GetNumChildren();
                     std::string StateName = m(i).GetPszISOProperty("name", "");
@@ -71,10 +69,11 @@ void CFSMManager::Load()
     }
 }
 
-void CFSMManager::Update(float dt)
+std::string CFSMManager::Update(float dt, std::string fsm, std::string state)
 {
-    for (TMapResource::iterator it = m_Resources.begin(); it != m_Resources.end(); ++it) {
-        STATE *s = it->second->m_States.GetResource(it->second->m_currentState);
+    TMapResource::iterator it = m_Resources.find(fsm);
+	std::string ret = state;
+        STATE *s = it->second->m_States.GetResource(state);
         if (s->m_onEnter == false) {
             SCRIPTM->RunCode(s->onEnter.c_str());
             s->m_onEnter = true;
@@ -97,8 +96,8 @@ void CFSMManager::Update(float dt)
         if (change) {
 			s->m_onEnter = false;
             SCRIPTM->RunCode(s->onExit.c_str());
-            it->second->m_previousState = it->second->m_currentState;
-            it->second->m_currentState = CLuaGlobals::getInstance()->getString();
+            ret = CLuaGlobals::getInstance()->getString();
         }
     }
+	return ret
 }

@@ -15,8 +15,6 @@ typedef struct State {
 
 typedef struct Fsm {
     CMapManager<STATE>	m_States;
-    std::string			m_previousState;
-    std::string			m_currentState;
 } FSM;
 
 class CFSMManager : public CMapManager<FSM>
@@ -26,11 +24,10 @@ public:
     ~CFSMManager();
     void Load(std::string file);
     void Reload();
-    void Update(float dt);
+    std::string Update(float dt, std::string fsm, std::string state);
 private:
     void Load();
     std::string m_fileName;
-
 };
 
 #endif
