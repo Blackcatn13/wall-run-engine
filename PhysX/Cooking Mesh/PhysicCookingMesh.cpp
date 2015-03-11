@@ -16,6 +16,7 @@
 #include "Utils\PhysicASELoader.h"
 #include "Cooking Mesh\PhysicCookingMesh.h"
 #include "PhysicsManager.h"
+
 //--------------------------
 
 #if defined( _DEBUG )
@@ -195,9 +196,9 @@ bool CPhysicCookingMesh::CookClothMesh(const NxClothMeshDesc& desc, NxStream& st
 //----------------------------------------------------------------------------
 // Load the ASE File thought ASE Loader
 //----------------------------------------------------------------------------
-bool CPhysicCookingMesh::ReadMeshFromASE ( std::string _FileName, std::vector<Vect3f>& _Vertices, std::vector<unsigned int>& _Faces )
+bool CPhysicCookingMesh::ReadMeshFromASE ( FILE *f, std::vector<Vect3f>& _Vertices, std::vector<unsigned int>& _Faces )
 {
-    bool l_bOK = CPhysicASELoader::ReadMeshFromASE ( _FileName, _Vertices, _Faces );
+    bool l_bOK = CPhysicASELoader::ReadMeshFromASE (f, _Vertices, _Faces );
     return l_bOK;
 }
 
@@ -205,15 +206,12 @@ bool CPhysicCookingMesh::CreateMeshFromASE ( std::string _FileName, std::string 
 {
     std::vector<Vect3f>			l_Vertices;
     std::vector<unsigned int>	l_Faces;
-    if ( ReadMeshFromASE ( _FileName, l_Vertices, l_Faces ) )
-        if ( CreatePhysicMesh ( l_Vertices, l_Faces, _Name ) )
-            return true;
-        else {
-            LOGGER->AddNewLog ( ELL_ERROR, "Error al leer la mesh del fichero ASE: %s", _FileName );
-            return false;
-        }
-    else {
-        LOGGER->AddNewLog ( ELL_ERROR, "Error al leer la mesh del fichero ASE: %s", _FileName );
-        return false;
-    }
+	FILE *f = CPhysicASELoader::open(_FileName);
+	while(ReadMeshFromASE ( f, l_Vertices, l_Faces )) {
+		CreatePhysicMesh ( l_Vertices, l_Faces, _Name );
+		l_Vertices.clear();
+		l_Faces.clear();
+	}
+	CPhysicASELoader::close(f);
+	return true;
 }

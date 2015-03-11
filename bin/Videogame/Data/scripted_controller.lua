@@ -6,6 +6,7 @@ function on_update_scripted_controller(l_ElapsedTime)
 	local xMax = 7.0;
 	local zMin = -3.4;
 	local zMax = 0.7;
+	local m_Speed = 10;
 	deltaX = coreInstance:get_input_manager():get_mouse_delta().x;
 	deltaY = coreInstance:get_input_manager():get_mouse_delta().y;
 	deltaZ = coreInstance:get_input_manager():get_mouse_delta().z;
@@ -132,6 +133,7 @@ function on_update_scripted_controller(l_ElapsedTime)
 	end]]
 	
 	local player = coreInstance:get_player_controller();
+	player.m_JumpForce = 1;
 	if act2in:do_action_from_lua("ChangeDimension") then
 		if player.m_is3D == true then 
 			player.m_is3D = false;

@@ -149,7 +149,7 @@ void CTestGameplay::Init()
     /* CPhysicUserAllocator* m_Alloc = new CPhysicUserAllocator();
      CPhysicCookingMesh* m_CockMesh = new CPhysicCookingMesh();*/
     //m_CockMesh->Init(PHYSXM->GetPhysicsSDK(), m_Alloc);
-    PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/sceneTrainingPiky.ASE", "sceneTraining");
+    PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/volumetry.ASE", "sceneTraining");
     //  m_CockMesh->CreateMeshFromASE("./Data/sceneTrainingPiky.ASE", "sceneTraining");
     m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
     m_PhysicActorCubeFix->AddMeshShape( PHYSXM->GetCookingMesh()->GetPhysicMesh("sceneTraining"));
@@ -171,8 +171,8 @@ void CTestGameplay::Init()
     SCRIPTM->RunCode(toRun.c_str());
     CLuaGlobals::getInstance()->getString();
     m_fsmManager = new CFSMManager();
-    m_fsmManager->Load("data//AI//Patrulla.xml");
-    m_fsmManager->Load("data//AI//FSMs.xml");
+    //m_fsmManager->Load("data//AI//Patrulla.xml");
+    //m_fsmManager->Load("data//AI//FSMs.xml");
     //m_fsmManager = new CFSMManager();
     //m_WPManager = new CWPManager();
     //m_WPManager->Load("data//AI//Waypoints2.xml");

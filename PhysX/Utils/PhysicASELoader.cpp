@@ -2,7 +2,7 @@
 #include "Utils\PhysicASELoader.h"
 #include "Math\Vector3.h"
 #include "Utils\BaseUtils.h"
-#include <stdio.h>
+
 
 #include "Core_Utils/MemLeaks.h"
 
@@ -14,28 +14,39 @@ char* CPhysicASELoader::TrimFront(char* c)
     return c;
 }
 
+FILE* CPhysicASELoader::open(std::string fileName)
+{
+	FILE* m_f = NULL;
+	fopen_s(&m_f, fileName.c_str(), "rb");
+	if (m_f == NULL) {
+        //TODO....printf("File not found: %s\n", filename.c_str());
+    }
+	return m_f;
+}
 
-bool CPhysicASELoader::ReadMeshFromASE(	std::string fileName, std::vector<Vect3f>&vertices,
+bool CPhysicASELoader::close(FILE* m_f)
+{
+	fclose(m_f);
+	return true;
+}
+
+bool CPhysicASELoader::ReadMeshFromASE(FILE* m_f,	std::vector<Vect3f>&vertices,
                                         std::vector<uint32>& faces )
 {
-    FILE* f = NULL;
-    fopen_s(&f, fileName.c_str(), "rb");
-    if (f == NULL) {
-        //TODO....printf("File not found: %s\n", filename.c_str());
-        return false;
-    }
     char line[512];
     int linenbr = 0;
-    while (!feof(f)) {
-        fgets(line, 512, f);
+    while (!feof(m_f)) {
+		fgets(line, 512, m_f);
         char* l = TrimFront(line);
         if (!strncmp(l, "*MESH {", 7)) {
-            ReadMeshFromASE_aux(f, vertices, faces);
+            ReadMeshFromASE_aux(m_f, vertices, faces);
+			return true;
         } else {
             //printf("Line %4d: %s\n", linenbr++, l);
         }
     }
-    fclose(f);
+	if (feof(m_f))
+		return false;
     return true;
 };
 

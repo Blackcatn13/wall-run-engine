@@ -792,7 +792,7 @@ void CGraphicsManager::ClearSceneCommand(float color, float depth, float stencil
         flags = flags | D3DCLEAR_ZBUFFER;
     if (stencil)
         flags = flags | D3DCLEAR_STENCIL;
-    m_pD3DDevice->Clear( 0, NULL, flags, D3DCOLOR_XRGB(255, 255, 255), 1.0f, 0 );
+    m_pD3DDevice->Clear( 0, NULL, flags, D3DCOLOR_XRGB(red, green, blue), 1.0f, 0 );
 }
 
 void CGraphicsManager::BeginRenderCommand()

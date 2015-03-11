@@ -13,6 +13,7 @@
 #include <map>
 #include <vector>
 #include "Math\Vector3.h"
+#include <cstdio>
 
 //---Forward Declarations---
 class CPhysicsManager;
@@ -69,7 +70,7 @@ public:
     void						ReleasePhysicMesh   (const std::string& name);
 
 private:
-    bool						ReadMeshFromASE		( std::string _FileName, std::vector<Vect3f>& _Vertices, std::vector<unsigned int>& _Faces );
+    bool						ReadMeshFromASE		( FILE *f, std::vector<Vect3f>& _Vertices, std::vector<unsigned int>& _Faces );
 //	void						Release				( void );
 
 private:

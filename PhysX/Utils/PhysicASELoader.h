@@ -11,10 +11,13 @@
 
 #include "Math\MathUtils.h"
 #include <vector>
+#include <cstdio>
 class CPhysicASELoader
 {
 public:
-    static bool		ReadMeshFromASE			(	std::string fileName, std::vector<Vect3f>&vertices, std::vector<uint32>& faces );
+    static bool		ReadMeshFromASE			(FILE *f, std::vector<Vect3f>&vertices, std::vector<uint32>& faces );
+	static FILE* open(std::string fileName);
+	static bool close(FILE *f);
 
 private:
     //---------PARA PARSEAR UN ASE-------------
@@ -23,6 +26,7 @@ private:
     static void		ReadFaces						( FILE* f, std::vector<uint32>& faces );
     static char*	TrimFront						( char* c );
     //-------------------------------------------
+	
 };
 
 #endif //INC_PHYSIC_ASE_LOADER_H
