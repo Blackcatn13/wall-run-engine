@@ -1,0 +1,48 @@
+<wp name="Waypoints">
+	<zone name="sala_principal">
+		<waypoint id="0" pos="0.000000 0.000000 20.000000">
+			<link id="1" weight="5" />
+			<link id="2" weight="5" />
+		</waypoint>
+		<waypoint id="1" pos="-10.000000 0.000000 10.000000">
+			<link id="0" weight="5" />
+			<link id="3" weight="5" />
+			<link id="4" weight="5" />
+		</waypoint>
+		<waypoint id="2" pos="10.000000 0.000000 10.000000">
+			<link id="0" weight="5" />
+			<link id="4" weight="5" />
+			<link id="5" weight="5" />
+		</waypoint>
+		<waypoint id="3" pos="-20.000000 0.000000 0.000000">
+			<link id="1" weight="5" />
+			<link id="4" weight="5" />
+			<link id="6" weight="5" />
+		</waypoint>
+		<waypoint id="4" pos="0.000000 0.000000 0.000000">
+			<link id="1" weight="5" />
+			<link id="2" weight="5" />
+			<link id="6" weight="5" />
+			<link id="7" weight="5" />
+		</waypoint>
+		<waypoint id="5" pos="20.000000 0.000000 0.000000">
+			<link id="2" weight="5" />
+			<link id="4" weight="5" />
+			<link id="7" weight="5" />
+		</waypoint>
+		<waypoint id="6" pos="-10.000000 0.000000 -10.000000">
+			<link id="3" weight="5" />
+			<link id="4" weight="5" />
+			<link id="8" weight="5" />
+		</waypoint>
+		<waypoint id="7" pos="10.000000 0.000000 -10.000000">
+			<link id="4" weight="5" />
+			<link id="5" weight="5" />
+			<link id="8" weight="5" />
+		</waypoint>
+		<waypoint id="8" pos="0.000000 0.000000 -20.000000">
+			<link id="6" weight="5" />
+			<link id="7" weight="5" />
+		</waypoint>
+	</zone>
+</wp>

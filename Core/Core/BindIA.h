@@ -19,7 +19,7 @@
 //#include "NxActor.h"
 //#include "NxPhysicsSDK.h"
 #include "AI\AIController.h"
-
+#include "AI\WPManager.h"
 
 extern "C"
 {
@@ -55,6 +55,32 @@ void RegisterAI()
         .def("move", &CAIController::Move)
         .def("move_to", &CAIController::MoveTo)
     ];
+
+	 luabind::module(LUA_STATE) [
+		    class_<ZONE>("ZONE")
+			.def_readwrite("m_Waypoints", &ZONE::m_Waypoints)
+	   ];
+
+	  luabind::module(LUA_STATE) [
+        class_<CMapManager<ZONE>>("CMapManagerZONE")
+        .def("get_resource", &CMapManager< ZONE >::GetResource)
+        .def("existe_resource", &CMapManager< ZONE >::ExisteResource)
+        .def("add_resource", &CMapManager< ZONE >::AddResource)
+        .def("destroy", &CMapManager< ZONE >::Destroy)
+        .property("m_Resources",  &CMapManager< ZONE >::GetResources)
+    ];
+	  
+
+	  luabind::module(LUA_STATE) [
+        class_<CWPManager, CMapManager<ZONE>>("CWPManager")
+        .def(constructor<>())
+        .def("find_closest_waypoint", &CWPManager::FindClosestWaypoint)
+		.def("get_distance", &CWPManager::GetDistance)
+		.def("get_waypoint_position", &CWPManager::GetWaypointPosition)
+		.def("calcular_siguiente_waypoint", &CWPManager::CalcularSiguienteWaypoint)
+	  ];
+
+	
 }
 
 //#endif

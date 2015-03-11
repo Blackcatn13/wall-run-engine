@@ -174,10 +174,10 @@ void CTestGameplay::Init()
     m_fsmManager->Load("data//AI//Patrulla.xml");
     m_fsmManager->Load("data//AI//FSMs.xml");
     //m_fsmManager = new CFSMManager();
-    m_WPManager = new CWPManager();
-    m_WPManager->Load("data//AI//Waypoints2.xml");
-    int j_2 = m_WPManager->TestFunction(7, 8);
-    int _iiii = 0;
+    //m_WPManager = new CWPManager();
+    //m_WPManager->Load("data//AI//Waypoints2.xml");
+   /* int j_2 = m_WPManager->CalcularSiguienteWaypoint(5, 8, "sala_principal");
+    int _iiii = 0;*/
 }
 
 void CTestGameplay::DeInit()

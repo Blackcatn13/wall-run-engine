@@ -27,8 +27,6 @@ typedef struct Waypoint
 typedef struct Zone
 {
 	std::vector<WP *>	m_Waypoints;
-	std::string			m_previousState;
-	std::string			m_currentState;
 } ZONE;
 
 class CWPManager : public CMapManager<ZONE>
@@ -41,9 +39,10 @@ public:
 	int FindClosestWaypoint(std::string ZONEName, Vect3f Position);
 	float GetDistance(Vect3f pos1, Vect3f pos2);
 	Vect3f GetWaypointPosition(int id, std::string ZONEName);
-	int FindOptimalPath(std::string ZONEName, Vect3f PositionStart, Vect3f PositionDestiny);
+	/*int FindOptimalPath(std::string ZONEName, Vect3f PositionStart, Vect3f PositionDestiny);
 	std::string FindNExtWaypointOptimal(std::string ZONEName, int WaypointStart, int WaypointDestiny, std::string CurrentPath);
-	int TestFunction(int parametro1, int parametro2);
+	*/
+	int CalcularSiguienteWaypoint(int wp_actual, int wp_destino, std::string ZONEName);
 	void ResetWPStruct(std::string ZONEName);
 private:
 	void Load();

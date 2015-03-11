@@ -31,6 +31,7 @@ class CTriggerManager;
 class CPlayerController;
 class CLogRender;
 class CStaticPlatform;
+class CWPManager;
 
 #define CCORE			CCore::GetInstance()
 #define GRAPHM			CCore::GetInstance()->GetGraphicsManager()
@@ -54,6 +55,7 @@ class CStaticPlatform;
 #define TRIGGM			CCore::GetInstance()->GetTriggerManager()
 #define PLAYC			CCore::GetInstance()->GetPlayerController()
 #define LOGRNDR         CCore::GetInstance()->GetLogRender()
+#define WPMMGR			CCore::GetInstance()->GetWPManager()
 
 
 class CCore
@@ -90,6 +92,8 @@ private:
     std::string							m_LuaLoadLevelFunc;
     std::string							m_LuaCameras;
     // CMapManager<CStaticPlatform>	*		m_PlatformsMap;
+	CWPManager*							m_WPManager;
+	
 public:
     ~CCore();
     void Update ( float dt );
@@ -204,6 +208,12 @@ public:
     {
         return m_LogRender;
     }
+
+	CWPManager* GetWPManager()
+    {
+        return m_WPManager;
+    }
+
 
     GET_SET(std::string, LuaLoadLevelFunc)
 
