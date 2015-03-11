@@ -26,22 +26,28 @@ void CEnemyManager::Init(const std::string &FileName)
     CXMLTreeNode newFile;
     if (!newFile.LoadFile(FileName.c_str())) {
         printf("ERROR loading the file.");
-    }
-    CXMLTreeNode  m = newFile["enemies"];
-    if (m.Exists()) {
-        int count = m.GetNumChildren();
-        for (int i = 0; i < count; ++i) {
-            if (m(i).GetName() == "enemy") {
-                std::string name = m(i).GetPszISOProperty("type");
-                if (name == "easy")
-                    m_Enemies.push_back(new CEasyEnemy(m(i)));
-                else if (name == "patrol")
-                    m_Enemies.push_back(new CPatrolEnemy(m(i)));
-                else if (name == "boss")
-                    m_Enemies.push_back(new CBossEnemy(m(i)));
-            } else if (m(i).GetName() == "core_enemy") {
-                std::string type = m(i).GetPszISOProperty("type");
-                m_Cores[type] = m(i);
+    } else {
+        CXMLTreeNode  m = newFile["enemies"];
+        if (m.Exists()) {
+            int count = m.GetNumChildren();
+            for (int i = 0; i < count; ++i) {
+                std::string l_Name = m(i).GetName();
+                if (l_Name == "enemy") {
+                    std::string name = m(i).GetPszProperty("type", "", false);
+                    if (name == "easy") {
+                        CEasyEnemy * l_Enemy = new CEasyEnemy(m(i));
+                        m_Enemies.push_back(l_Enemy);
+                    } else if (name == "patrol") {
+                        CPatrolEnemy * l_Enemy = new CPatrolEnemy(m(i));
+                        m_Enemies.push_back(l_Enemy);
+                    } else if (name == "boss") {
+                        CBossEnemy * l_Enemy = new CBossEnemy(m(i));
+                        m_Enemies.push_back(l_Enemy);
+                    }
+                } else if (l_Name == "core_enemy") {
+                    std::string type = m(i).GetPszProperty("type", "", false);
+                    m_Cores[type] = m(i);
+                }
             }
         }
     }

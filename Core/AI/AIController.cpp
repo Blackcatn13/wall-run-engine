@@ -23,9 +23,32 @@ CAIController::CAIController()
     m_PhysicUserData = new CPhysicUserData("AI");
     m_PhysicUserData->SetPaint(true);
     m_PhysicUserData->SetColor(colRED);
-    m_PhysicController = new CPhysicController(1, 2, 0.87, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, Vect3f(-15, 5, -15), -m_Gravity);
+    m_PhysicController = new CPhysicController(0.5, 0.25, 0.87, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, Vect3f(-15, 5, -15), -m_Gravity);
     PHYSXM->AddPhysicController(m_PhysicController);
 }
+
+//CAIController::CAIController(std::string mesh, std::string name, Vect3f position):
+//    CObject3D(),
+//    m_Gravity(13),
+//    m_Speed (0.5),
+//    m_TurnSpeed(2.0),
+//    m_JumpForce(1.5),
+//    m_CurrentJumpForce(0),
+//    m_isJumping(false),
+//    m_Name(name),
+//    m_Mesh(mesh)
+//
+//{
+//    m_Position = position;
+//    std::stringstream ss;
+//    ss << name << "UserData";
+//    std::string l_UserData = ss.str();
+//    m_PhysicUserData = new CPhysicUserData(l_UserData);
+//    m_PhysicUserData->SetPaint(true);
+//    m_PhysicUserData->SetColor(colRED);
+//    m_PhysicController = new CPhysicController(1, 2, 0.87, 0.1, 0.3, ECG_ENEMY, m_PhysicUserData, m_Position, -m_Gravity);
+//    PHYSXM->AddPhysicController(m_PhysicController);
+//}
 
 CAIController::~CAIController()
 {

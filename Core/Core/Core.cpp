@@ -24,6 +24,7 @@
 #include "Core_Utils/MemLeaks.h"
 #include "Core_Utils\LogRender.h"
 #include "AI\WPManager.h"
+#include "EnemyManager.h"
 
 
 CCore* CCore::m_Instance = 0;
@@ -94,13 +95,14 @@ void CCore::Init(HWND handler)
     m_SceneRendererCommandManager = new CSceneRendererCommandManager();
     m_SceneRendererCommandManager->Load(m_Config.SceneRenderCommandsPath);
     m_TriggerManager = new CTriggerManager();
-	m_WPManager = new CWPManager();
-	m_WPManager->Load("data//AI//Waypoints3.xml");
+    m_WPManager = new CWPManager();
+    m_WPManager->Load("data//AI//Waypoints3.xml");
+    m_EnemyManager = CEnemyManager::GetInstance();
+    m_EnemyManager->Init("data//enemies.xml");
     m_ScriptManager->Load(m_Config.LuaPath);
     m_PlayerController = new CPlayerController();
     m_TriggerManager->LoadTriggers("./Data/triggers.xml");
     m_LuaLoadLevelFunc = m_Config.LuaLevelObjectsFunc;
-	
 }
 
 void CCore::DeInit()
@@ -129,7 +131,8 @@ void CCore::DeInit()
     CHECKED_DELETE(m_RenderableObjectTechniqueManager);
     CHECKED_DELETE(m_SceneRendererCommandManager);
     CHECKED_DELETE(m_LogRender);
-	CHECKED_DELETE(m_WPManager);
+    CHECKED_DELETE(m_WPManager);
+    CHECKED_DELETE(m_EnemyManager);
     // m_PlatformsMap->Destroy();
 }
 
@@ -158,6 +161,7 @@ void CCore::Update(float dt)
     m_LogRender->Update(dt);
     m_TriggerManager->Update(dt);
     //m_PlayerController->Move(dt);
+    m_EnemyManager->Update(dt);
 }
 
 

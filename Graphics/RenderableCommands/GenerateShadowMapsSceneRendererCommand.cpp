@@ -23,7 +23,7 @@ void CGenerateShadowMapsSceneRendererCommand::Execute(CGraphicsManager &RM)
         if (it->second->GetGenerateDynamicShadowMap()) {
             eff->ChangeLight(it->second);
             it->second->GenerateShadowMap(&RM);
-            it++;
         }
+        it++;
     }
 }

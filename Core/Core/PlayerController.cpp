@@ -10,11 +10,14 @@
 #include "PhysicsDefs.h"
 #include "PhysicsManager.h"
 #include "Actor\PhysicActor.h"
+#include "Renderable\RenderableObject.h"
+#include "Renderable\RenderableObjectsManager.h"
+#include "Renderable\RenderableObjectsLayersManager.h"
 
 CPlayerController::CPlayerController()
     : CObject3D(),
       m_Gravity(2),
-	  m_GravityJump(2),
+      m_GravityJump(2),
       m_Speed (15),
       m_JumpForce(0.65),
       m_CurrentJumpForce(0),
@@ -25,6 +28,9 @@ CPlayerController::CPlayerController()
     m_PhysicUserData->SetPaint(true);
     m_PhysicController = new CPhysicController(1, 2, 0.87, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, Vect3f(0, 2, 0), -m_Gravity);
     PHYSXM->AddPhysicController(m_PhysicController);
+    CRenderableObject* malla = RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky");
+    malla->SetYaw(m_fYaw);
+    malla->SetPosition(m_PhysicController->GetPosition());
 }
 
 CPlayerController::~CPlayerController()
@@ -35,15 +41,15 @@ CPlayerController::~CPlayerController()
 
 void CPlayerController::Move(float dt)
 {
-	//En lua.
+    //En lua.
 }
 
 bool CPlayerController::IsGrounded()
 {
-	SCollisionInfo info = SCollisionInfo();
-	CPhysicUserData* hit = CCORE->GetPhysicsManager()->RaycastClosestActor(Vect3f(m_Position.x, m_Position.y-2, m_Position.z), 
-		Vect3f(0,-1,0), 0xffffffff, info);
-	if (hit != NULL && info.m_fDistance <= 0.1)
-		return true;
-	else return false;
+    SCollisionInfo info = SCollisionInfo();
+    CPhysicUserData* hit = CCORE->GetPhysicsManager()->RaycastClosestActor(Vect3f(m_Position.x, m_Position.y - 2, m_Position.z),
+                           Vect3f(0, -1, 0), 0xffffffff, info);
+    if (hit != NULL && info.m_fDistance <= 0.1)
+        return true;
+    else return false;
 }

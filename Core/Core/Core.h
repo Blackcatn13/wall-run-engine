@@ -32,6 +32,7 @@ class CPlayerController;
 class CLogRender;
 class CStaticPlatform;
 class CWPManager;
+class CEnemyManager;
 
 #define CCORE			CCore::GetInstance()
 #define GRAPHM			CCore::GetInstance()->GetGraphicsManager()
@@ -92,8 +93,9 @@ private:
     std::string							m_LuaLoadLevelFunc;
     std::string							m_LuaCameras;
     // CMapManager<CStaticPlatform>	*		m_PlatformsMap;
-	CWPManager*							m_WPManager;
-	
+    CWPManager*							m_WPManager;
+    CEnemyManager*						m_EnemyManager;
+
 public:
     ~CCore();
     void Update ( float dt );
@@ -209,9 +211,14 @@ public:
         return m_LogRender;
     }
 
-	CWPManager* GetWPManager()
+    CWPManager* GetWPManager()
     {
         return m_WPManager;
+    }
+
+    CEnemyManager* GetEnemyManager()
+    {
+        return m_EnemyManager;
     }
 
 

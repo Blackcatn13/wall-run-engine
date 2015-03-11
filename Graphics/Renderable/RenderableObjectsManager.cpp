@@ -11,6 +11,7 @@
 #include "SceneElements\MovingPlatform.h"
 #include "SceneElements\PinchosPlatform.h"
 #include "SceneElements\PolyPlatform.h"
+#include "Core\ScriptManager.h"
 
 #include <assert.h>
 
@@ -352,4 +353,9 @@ void CRenderableObjectsManager::Reload()
     Destroy();
     Load(m_FileName);
     Load(m_FileName2);
+    std::stringstream ss;
+    int var = 1;
+    ss << CCORE->getLuaLoadLevelFunc() << "(" << var << ")";
+    std::string toRun = ss.str();
+    SCRIPTM->RunCode(toRun.c_str());
 }
