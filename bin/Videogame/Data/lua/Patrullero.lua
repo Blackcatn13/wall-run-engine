@@ -5,7 +5,11 @@ ai_controller.m_Speed = 0.1
 instance = CLuaGlobalsWrapper().m_CoreInstance;
 
 core = CCoreLuaWrapper().m_CoreInstance;
-
+local wp_manager = core:get_wp_manager()
+local id_next_wp
+local next_wp
+local id_destino_wp
+local id_path_next_wp
 
 function on_enter_patrulla_parado()
 --	core:trace("Entering Parado");
@@ -13,8 +17,15 @@ function on_enter_patrulla_parado()
 --play animation "parado"
   --nameEnter1 = CNamed()
 --core:trace("onEnter1");
-
-  next_wp = Vect3f(10,0,10) 
+  id_next_wp = wp_manager:find_closest_waypoint("sala_principal", ai_controller:get_position())
+  next_wp = wp_manager:get_waypoint_position(id_next_wp, "sala_principal")
+  core:trace("Buscando closest waypoint ");
+  core:trace("ID:");
+  core:trace(tostring(id_next_wp))
+  core:trace("Coords:");
+  core:trace(tostring(next_wp.x))
+  core:trace(tostring(next_wp.y))
+  core:trace(tostring(next_wp.z))
   return 0 
 end
 
@@ -29,7 +40,18 @@ function on_enter_patrulla_buscar_next_wp()
 --core:trace("Entering Buscar_next_WP");
 --core:trace(tostring(next_wp.x));
 --local name = CNamed()
-
+	--core:trace("Creando wpManager ");
+	core:trace(tostring(id_next_wp));
+	id_destino_wp = wp_manager:find_closest_waypoint("sala_principal", core:get_player_controller():get_position())
+	--destino_wp = wp_manager:get_waypoint_position(id_destino_wp, "sala_principal")
+	 
+	id_path_next_wp = wp_manager:calcular_siguiente_waypoint(id_next_wp,id_destino_wp,"sala_principal")
+	id_next_wp = id_path_next_wp
+	core:trace(tostring(id_next_wp));
+	next_wp = wp_manager:get_waypoint_position(id_next_wp, "sala_principal")
+	
+	--core:trace(tostring(resultado))
+	
 	--if next_wp == Vect3f(10,0,10) then
 	--name:set_name("10")
 		--next_wp = Vect3f(-10, 0, -10)	
@@ -40,7 +62,7 @@ function on_enter_patrulla_buscar_next_wp()
 
 		--core:trace(tostring(next_wp.x));
 		--	name:set_name("cambio")
-	--instance.m_string = "Andar_WP"
+	instance.m_string = "Andar_WP"
 end
 
 function on_enter_patrulla_perseguir_player()
@@ -124,11 +146,20 @@ function on_update_patrulla_buscar_next_wp(ElapsedTime, doComprobation)
 		if player_distance < 49 then	
 			instance.m_string = "Perseguir_Player"
 		else
-			if next_wp == Vect3f(10,0,10) then
-				next_wp = Vect3f(-10, 0, -10)	
+			id_destino_wp = wp_manager:find_closest_waypoint("sala_principal", core:get_player_controller():get_position())
+			id_origen_wp = wp_manager:find_closest_waypoint("sala_principal", ai_controller:get_position())
+			local wp_distance = get_distance_to_player(ai_controller:get_position(), origen_wp)
+			
+			if wp_distance > 25 then
+				core:trace("me acerco al WP mas cercano");
+				origen_wp = wp_manager:get_waypoint_position(id_origen_wp, "sala_principal")
+				next_wp = origen_wp
 			else
-				next_wp = Vect3f(10,0,10)
+				core:trace("estoy en WP origen, voy al siguiente");
+				id_next_wp = wp_manager:calcular_siguiente_waypoint(id_origen_wp,id_destino_wp,"sala_principal")
+				next_wp = wp_manager:get_waypoint_position(id_next_wp, "sala_principal")
 			end
+			
 			instance.m_string = "Andar_WP"
 		end
 		
