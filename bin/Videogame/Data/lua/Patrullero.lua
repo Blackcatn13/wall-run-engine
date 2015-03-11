@@ -100,7 +100,7 @@ function on_update_patrulla_parado(ElapsedTime, doComprobation)
 --core:trace("Update Parado");
 	--player_position = Vect3f(19,0,5)
 	if doComprobation == 1 then
-		player_position = core:get_player_controller():get_position()
+		local player_position = core:get_player_controller():get_position()
 	--	core:trace(tostring(player_position.x));
 		local player_distance = get_distance_to_player(ai_controller:get_position(), player_position)
 		if player_distance <= 49 then
@@ -122,7 +122,7 @@ function on_update_patrulla_andar_wp(ElapsedTime, doComprobation)
 	--player_position = Vect3f(10,0,10)
 	ai_controller:move_to(ElapsedTime, next_wp)
 	
-	player_position = core:get_player_controller():get_position()
+	local player_position = core:get_player_controller():get_position()
 	--core:trace(tostring(player_position.x));
 	if doComprobation == 1 then
 		local player_distance = get_distance_to_player(ai_controller:get_position(), player_position)
@@ -141,6 +141,7 @@ end
 function on_update_patrulla_buscar_next_wp(ElapsedTime, doComprobation)
 -- Update Buscar_next_WP	
 --core:trace("Update Buscar_next_WP");
+	local player_position = core:get_player_controller():get_position()
 	if doComprobation == 1 then
 		local player_distance = get_distance_to_player(ai_controller:get_position(), player_position)
 		if player_distance < 49 then	
@@ -148,6 +149,7 @@ function on_update_patrulla_buscar_next_wp(ElapsedTime, doComprobation)
 		else
 			id_destino_wp = wp_manager:find_closest_waypoint("sala_principal", core:get_player_controller():get_position())
 			id_origen_wp = wp_manager:find_closest_waypoint("sala_principal", ai_controller:get_position())
+			local origen_wp = wp_manager:get_waypoint_position(id_origen_wp, "sala_principal")
 			local wp_distance = get_distance_to_player(ai_controller:get_position(), origen_wp)
 			
 			if wp_distance > 25 then
@@ -172,7 +174,7 @@ function on_update_patrulla_perseguir_player(ElapsedTime, doComprobation)
 	-- obtener posicion actual del player
 	--move to posicion del player
 	--player_position = Vect3f(10,0,10)
-	--player_position = core:get_player_controller():get_position()
+	local player_position = core:get_player_controller():get_position()
 	ai_controller:move_to(ElapsedTime, core:get_player_controller():get_position())
 	if doComprobation == 1 then
 		local player_distance = get_distance_to_player(ai_controller:get_position(), player_position)
@@ -185,9 +187,9 @@ function on_update_patrulla_perseguir_player(ElapsedTime, doComprobation)
 	end
 end
 
-function get_distance_to_player(current_position, player_position)
+function get_distance_to_player(current_position, _player_position)
 	-- calcular distancia hacia player
 	local distance = 0
-	distance = ((player_position.x - current_position.x) ^2 + (player_position.y - current_position.y) ^2 + (player_position.z - current_position.z) ^2)
+	distance = ((_player_position.x - current_position.x) ^2 + (_player_position.y - current_position.y) ^2 + (_player_position.z - current_position.z) ^2)
 	return distance
 end

@@ -41,7 +41,7 @@ local next_wp = Vect3f(0,0,0)
 instance = CLuaGlobalsWrapper().m_CoreInstance;
 
 function mp_enter_stopped()
-	--coreInstance:trace("Parando plataforma");
+	coreInstance:trace("Parando plataforma");
 	--next_wp = Vect3f(-15,0,-15) 
 	instance.m_string = "Buscar_next_WP_Plaform"
 	return 0 
@@ -54,7 +54,7 @@ end
 
 function mp_update_stopped(ElapsedTime)
 	--core:trace("Update Platform stopped");
-	instance.m_string = "Buscar_next_WP_Plaform"
+	--instance.m_string = "Buscar_next_WP_Plaform"
 end
 
 function mp_enter_moving()
@@ -70,7 +70,8 @@ function mp_update_moving(ElapsedTime)
 	--local player_position = coreInstance:get_player_controller():get_position()
 	--core:trace(tostring(player_position.x));
 	local platform = rol_manager:get_default_renderable_object_manager():get_resource("MovingPlatform001")-- modificar para poder pasarlo por parametro
-	platform:move_to_point(ElapsedTime, next_wp)
+	platform:move_to_point(ElapsedTime, next_wp, 2)
+	--move_platform_to_point(ElapsedTime, next_wp, platform)
 	local current_pos = platform:get_position()
 	local distance_to_point = get_distance_to_point(current_pos, next_wp)
 	if distance_to_point <= 4 then
@@ -80,16 +81,33 @@ function mp_update_moving(ElapsedTime)
 		
 end
 
+--[[function move_platform_to_point(ElapsedTime, wp, _platform)
+
+local platform_position = _platform:get_position()
+  if wp:distance(platform_position)> 2 then
+        local direction = (wp - _platform:get_position())
+		--local normalized = direction:normalize()
+        _platform:set_position( _platform:get_position() + direction * _platform.m_Speed * ElapsedTime)  --Hay que mirar de normalizar direccion desde aqui
+        _platform.m_PlatorformActor:set_kinematic(true);
+        _platform. m_PlatorformActor:set_global_position(_platform.m_Position);
+        --Vect3f l_VelPos = _platform.m_Position - (Vect3f(GetScale().x / 2, .0f, .0f));
+        --m_PlatorformActor->AddVelocityAtPos(direction.Normalize(), v3fZERO, 10);
+        --m_PlatorformActor->SetLinearVelocity(direction.Normalize() * m_Speed * ElapsedTime);
+    end
+
+end--]]
+
 
 function mp_enter_calcwp() -- Pasar el nombre de la plataforma y de ahí que recoja el wp que necesita? 
 -- OnEnter Buscar_next_WP 
-	--coreInstance:trace("Entering Buscar Platform next WP");
+	coreInstance:trace("Entering Buscar Platform next WP");
 	--coreInstance:trace(tostring(next_wp.x));
 	--if next_wp == Vect3f(15,0,15) then
 	--	next_wp = Vect3f(-15, 0, 15)	
 	--else
 	--	next_wp = Vect3f(15,0,15)
 	--end
+	
 	local platform = rol_manager:get_default_renderable_object_manager():get_resource("MovingPlatform001")
 	next_wp = platform:get_next_wp()
 	--coreInstance:trace(tostring(next_wp.x));
@@ -101,8 +119,8 @@ function mp_exit_calcwp()
 end
 
 function mp_update_calcwp(ElapsedTime)
---	core:trace("Update Buscar_next_WP Platform");
-	mp_enter_calcwp()
+	core:trace("Update Buscar_next_WP Platform");
+	--mp_enter_calcwp()
 end
 --End Moving Platform
 
@@ -126,7 +144,7 @@ function update_poly_platform(current_poly_time, platform_name)
 	if act2in:do_action_from_lua("PolyPowa") == true and platform.m_Enabled then
 		platform:activate_poly()
 		--local new_pos = Vect3f(position + platform.m_RedimScale)
-		coreInstance:get_player_controller().m_PhysicController:set_position(new_pos) 
+		--coreInstance:get_player_controller().m_PhysicController:set_position(new_pos) 
 	end
 	-- If poly is activated
 	

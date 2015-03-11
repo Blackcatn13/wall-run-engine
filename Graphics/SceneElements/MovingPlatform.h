@@ -24,7 +24,7 @@ public:
 
     ~ CMovingPlatform ();
 
-    void MoveToPoint(float dt, Vect3f point);
+    void MoveToPoint(float dt, Vect3f point, float minDistance);
     Vect3f GetNextWP();
     std::vector<Vect3f>& GetWayPointsVector()
     {

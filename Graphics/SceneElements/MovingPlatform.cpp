@@ -28,12 +28,16 @@ CMovingPlatform::~CMovingPlatform ()
 {
 }
 
-void CMovingPlatform::MoveToPoint(float dt,  Vect3f point)
+void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance)
 {
-    if (point.Distance(m_Position) >= 2) {
+    if (point.Distance(m_Position) >= minDistance) {
         Vect3f direction = (point - m_Position);
         m_Position =  m_Position + /*Vect3f(1, 0, 0)*/direction.Normalize() * m_Speed * dt;
+        m_PlatorformActor->SetKinematic(true);
         m_PlatorformActor->SetGlobalPosition(m_Position);
+        //Vect3f l_VelPos = m_Position - (Vect3f(GetScale().x / 2, .0f, .0f));
+        //m_PlatorformActor->AddVelocityAtPos(direction.Normalize(), v3fZERO, 10);
+        //m_PlatorformActor->SetLinearVelocity(direction.Normalize() * m_Speed * dt);
     }
 }
 
