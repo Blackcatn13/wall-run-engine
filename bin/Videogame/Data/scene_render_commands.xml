@@ -15,8 +15,22 @@
 	<set_axis />
 	-->
 	
-	<!--<set_pool_renderable_objects_technique pool="generate_shadow_map_renderable_obejcts_technique"/>-->
-	<!-- <generate_shadow_maps /> -->
+	<set_pool_renderable_objects_technique pool="generate_shadow_map_renderable_obejcts_technique"/>
+	<generate_shadow_maps />
+	<!--<set_render_target name="shadow_render_target">
+		<dynamic_texture stage_id="0" name="ShadowMapTexture" texture_width_as_frame_buffer="true" format_type="R32F"/>
+	</set_render_target>
+	<clear_scene color="true" depth="true" stencil="true"/> 
+	<enable_z_write/>
+	<enable_z_test/>
+	<render_scene layer="solid" active="true"/>
+	<unset_render_target render_target="shadow_render_target"/>
+	<disable_z_write/>
+	<disable_z_test />
+	<set_pool_renderable_objects_technique pool="draw_textured_quad_pool"/>
+	<render_draw_quad> 
+		<texture stage_id="0" file="ShadowMapTexture"/>
+	</render_draw_quad>-->
 	
 	<set_pool_renderable_objects_technique pool="generate_deferred_shading_pool_renderable_object_technique"/>
 
@@ -44,7 +58,7 @@
 		<texture stage_id="0" file="SkyBoxTexture"/>
 	</render_draw_quad>-->
 	<!-- End Skybox -->
-	
+
 	<set_pool_renderable_objects_technique pool="draw_textured_quad_pool"/>
 	<render_draw_quad> 
 		<texture stage_id="0" file="LightMapTexture"/>

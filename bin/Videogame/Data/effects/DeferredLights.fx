@@ -3,24 +3,6 @@
 #include "VertexTypes.fxh"
 
 
-
-struct TGBUFFER_TEXTURED1_VERTEX_PS
-{
-	float4 HPosition : POSITION;
-    float2 UV : TEXCOORD0;
-	float3 Normal : TEXCOORD1;
-	float4 WorldPosition : TEXCOORD2;
-};
-
-// Estructura de píxel que contiene la info de 4 píxeles de salida
-/*struct TMultiRenderTargetPixel
-{
-	float4 RT0 : COLOR0; //Albedo (float3) + (float) SpecularFactor
-	float4 RT1 : COLOR1; //AmbientLight (float3) + (float) SpecularPow
-	float4 RT2 : COLOR2; //Normal (float3) + (float) Not used
-	float4 RT3 : COLOR3; //Depth (float4)
-};*/
-
 float3 Normal2Texture(float3 Normal)
 {
 	return Normal*0.5+0.5;
@@ -46,16 +28,6 @@ float3 GetPositionFromZDepthView(float ZDepthView, float2 UV, float4x4 InverseVi
 	return mul(float4(l_PositionView,1.0), InverseViewMatrix).xyz;
 }
 
-TGBUFFER_TEXTURED1_VERTEX_PS GBufferVS(VertexVS_TTEXTURE_NORMAL_VERTEX IN){
-	
-	TGBUFFER_TEXTURED1_VERTEX_PS OUT = (TGBUFFER_TEXTURED1_VERTEX_PS)0;
-    OUT.UV = IN.UV;
-    OUT.HPosition = mul(float4(IN.Position,1.0), g_WorldViewProjectionMatrix);
-	OUT.Normal = normalize(mul(IN.Normal,(float3x3)g_WorldMatrix));
-	OUT.WorldPosition = OUT.HPosition;
-    return OUT;
-}
-
 float3 Texture2Normal(float3 Color)
 {
 	return (Color-0.5)*2;
@@ -74,7 +46,7 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 	float l_SpecularFactor = l_RT0.w;
 	float4 l_RT1 = tex2D(S1LinearWrapSampler, UV);
 	float3 l_Ambient = l_RT1.xyz;
-	float l_SpecularExponent = l_RT1.w*160;
+	float l_SpecularExponent = l_RT1.w*90000;
 	float3 l_N = tex2D(S2LinearWrapSampler, UV).xyz;
 	float3 l_Nn = normalize(Texture2Normal(l_N));
 	float l_Depth = tex2D(S3LinearWrapSampler, UV).x;
@@ -87,7 +59,7 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 	// Transform by the inverse projection matrix
 	float4 l_PositionVS = mul(l_ProjectedPos, g_InverseProjectionMatrix);
 	
-	
+	//return tex2D(S7LinearClampSampler, UV);
 	if(l_PositionVS.w>=1.0)
 		clip(-1);
 	//return float4(g_LightColor[0]*g_LightIntensity[0], 1.0);
@@ -98,14 +70,20 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 	// los que ya estan hechos, cambiando las variables por las de arriba.
 	
 	float3 l_PositionFromDepth = GetPositionFromZDepthView(l_Depth, UV, g_InverseViewMatrix, g_InverseProjectionMatrix);
-	/*if(g_LightType[0]==1)
-		return float4(1,0,0,1);
-	else
-		return float4(0,0,1,1);*/
+
 	//return float4(l_DiffuseColor*dot(l_Nn, -g_LightDirection[0]), 0.0);
 	//return float4(1.0, 0.0, 0.0, 0.0);
 	float3 finalColor = 0;//l_DiffuseColor.xyz*l_Ambient;
-	
+	l_PositionVS = l_PositionVS / l_PositionVS.w;
+	float3 vPos = mul(float4(l_PositionFromDepth, 1), g_ViewMatrix).xyz;
+	float4 LightPosition = mul(l_PositionVS, g_ViewToLightProjectionMatrix);
+	float2 ShadowTexC = 0.5 * (LightPosition.xy / LightPosition.w) + float2(0.5, 0.5);
+	ShadowTexC.y = 1.0f - ShadowTexC.y;
+	float lightAmount = (tex2D(S7LinearClampSampler, ShadowTexC) + g_ShadowEpsilon < LightPosition.z/LightPosition.w)? 0.0f: 1.0f;
+	if (ShadowTexC.x < 0.0 || ShadowTexC.y < 0.0 || ShadowTexC.x > 1.0 || ShadowTexC.y > 1.0)
+		lightAmount = 1.0;
+	//return float4(lightAmount, lightAmount, lightAmount, 1);
+	//return tex2D(S7LinearClampSampler, ShadowTexC);
 	//if(g_LightEnabled[0]==1)
 	//{
 	if(g_LightType[0]==0) //omni
@@ -150,7 +128,7 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 	}
 	//}
 
-    return float4(finalColor, 1);
+    return float4(finalColor * lightAmount, 1);
 }
 
 

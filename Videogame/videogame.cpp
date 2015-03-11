@@ -82,7 +82,7 @@ int APIENTRY WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance, LPSTR _lpCm
     RegisterClassEx( &wc );
     try {
         // Create the application's window
-        HWND hWnd = CreateWindow(	APPLICATION_NAME, APPLICATION_NAME, WS_OVERLAPPEDWINDOW, 100, 100, 800, 600, NULL, NULL, wc.hInstance, NULL );
+        HWND hWnd = CreateWindow(	APPLICATION_NAME, APPLICATION_NAME, WS_OVERLAPPEDWINDOW, 100, 100, 1280, 720, NULL, NULL, wc.hInstance, NULL );
         // Añadir aquí el Init de la applicacioón
         ShowWindow( hWnd, SW_SHOWDEFAULT );
         UpdateWindow( hWnd );

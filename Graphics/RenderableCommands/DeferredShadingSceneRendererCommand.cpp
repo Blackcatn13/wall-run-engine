@@ -56,6 +56,9 @@ void CDeferredShadingSceneRendererCommand::Execute(CGraphicsManager &RM)
         }
         ++it;
     }
+    bool save = false;
+    if (save)
+        TEXTM->GetResource("DepthMapTexture")->SaveToFile("C:\\test\\depth.png");
 }
 
 void CDeferredShadingSceneRendererCommand::Reload()

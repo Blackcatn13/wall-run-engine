@@ -20,7 +20,7 @@ Vect3f COrthoFixedCamera::GetDirection () const
 Vect3f COrthoFixedCamera::GetLookAt () const
 {
     assert(m_pObject3D);
-    float yaw		= m_pObject3D->GetYaw();
+    float yaw	= m_pObject3D->GetYaw();
     float pitch	= m_pObject3D->GetPitch();
     Vect3f pos	= m_pObject3D->GetPosition();
     //Pasamos de coordenadas esfericas a coordenadas cartesianas

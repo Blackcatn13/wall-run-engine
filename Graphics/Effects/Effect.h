@@ -17,7 +17,7 @@ private:
     std::string m_FileName;
     LPD3DXEFFECT m_Effect;
     BOOL m_LightsEnabled[MAX_LIGHTS_BY_SHADER];
-	int m_LightsType[MAX_LIGHTS_BY_SHADER];
+    int m_LightsType[MAX_LIGHTS_BY_SHADER];
     float m_LightsAngle[MAX_LIGHTS_BY_SHADER];
     float m_LightsFallOff[MAX_LIGHTS_BY_SHADER];
     float m_LightsStartRangeAttenuation[MAX_LIGHTS_BY_SHADER];
@@ -36,7 +36,7 @@ private:
     D3DXHANDLE m_BonesParameter;
     D3DXHANDLE m_TimeParameter;
 
-	CLight* m_Light;
+    CLight* m_Light;
     ////
     D3DXHANDLE m_UseShadowMaskTextureParameter;
     D3DXHANDLE m_UseStaticShadowmapParameter;
@@ -51,10 +51,10 @@ public:
     ~CEffect();
     bool SetLights(size_t NumOfLights);
     bool SetLight();
-	void ChangeLight(CLight *Light) 
-	{
-		m_Light = Light;
-	}
+    void ChangeLight(CLight *Light)
+    {
+        m_Light = Light;
+    }
     bool Load(const std::string &FileName);
     bool Reload();
     void SetShadowMapParameters(bool UseShadowMaskTexture, bool UseStaticShadowmap, bool UseDynamicShadowmap);

@@ -132,9 +132,6 @@
     <ClInclude Include="Core\BindAnimatedModels.h">
       <Filter>ScriptManager</Filter>
     </ClInclude>
-    <ClInclude Include="Core\CoreLuaWrapper.h">
-      <Filter>Core</Filter>
-    </ClInclude>
     <ClInclude Include="Core\MathLuaUtils.h">
       <Filter>ScriptManager</Filter>
     </ClInclude>
@@ -164,6 +161,9 @@
     </ClInclude>
     <ClInclude Include="Core\BindSceneElements.h">
       <Filter>ScriptManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\CoreLuaWrapper.h">
+      <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

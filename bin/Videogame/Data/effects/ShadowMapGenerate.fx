@@ -8,26 +8,25 @@ struct PNormalVertex
 	float2 Depth : TEXCOORD0;
 };
 
-PNormalVertex VertShadow(float4 Pos: POSITION,
-	float3 Normal: NORMAL)
+PNormalVertex VertShadow(float3 Pos : POSITION, float3 Normal : NORMAL)
 {
 	PNormalVertex OUT = (PNormalVertex)0;
-	OUT.oPos = mul(Pos, g_WorldViewProjectionMatrix);
-	OUT.Depth.xy = OUT.oPos.zw;
+	OUT.oPos = mul(float4(Pos, 1.0), g_WorldViewProjectionMatrix);
+	OUT.Depth = OUT.oPos.zw;
 	return OUT;
 }
 
 float4 PixShadow(PNormalVertex IN) : COLOR
 {
-	float4 Color = IN.Depth.x / IN.Depth.y;
-	return Color;
+	//float4 Color = IN.Depth.x / IN.Depth.y;
+	return IN.Depth.x / IN.Depth.y;
 }
 
 technique tec0
 {
     pass p0
     {
-        VertexShader =compile vs_3_0 VertShadow();
+        VertexShader = compile vs_3_0 VertShadow();
         PixelShader = compile ps_3_0 PixShadow();
     }
 }

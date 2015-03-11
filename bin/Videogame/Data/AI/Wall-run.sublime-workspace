@@ -3,19 +3,135 @@
 	{
 		"selected_items":
 		[
+			[
+				"S",
+				"ShadowTexC"
+			],
+			[
+				"tex",
+				"texture_width_as_frame_buffer"
+			],
+			[
+				"l_Po",
+				"l_PositionFromDepth"
+			],
+			[
+				"Li",
+				"LightAmount"
+			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/level2/lights.xml",
+			"settings":
+			{
+				"buffer_size": 3561,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/level2/renderable_objects.xml",
+			"settings":
+			{
+				"buffer_size": 5409,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/scene_render_commands.xml",
+			"settings":
+			{
+				"buffer_size": 9151,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects/DeferredLights.fx",
+			"settings":
+			{
+				"buffer_size": 6226,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/Config.xml",
+			"settings":
+			{
+				"buffer_size": 2235,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/level2/static_meshes.xml",
+			"settings":
+			{
+				"buffer_size": 2477,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects/GBufferColored.fx",
+			"settings":
+			{
+				"buffer_size": 1429,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects/Lights.fx",
+			"settings":
+			{
+				"buffer_size": 4217,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects/Globals.fxh",
+			"settings":
+			{
+				"buffer_size": 1687,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects.xml",
+			"settings":
+			{
+				"buffer_size": 5994,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/Lights.xml",
+			"settings":
+			{
+				"buffer_size": 677,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/effects/functions.fx",
+			"settings":
+			{
+				"buffer_size": 7122,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 0.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			]
 		],
-		"width": 0.0
+		"width": 400.0
 	},
 	"console":
 	{
@@ -35,17 +151,91 @@
 	},
 	"expanded_folders":
 	[
-		"/D/Git/wall-run-engine/bin/Videogame/Data"
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/level2",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/level7"
 	],
 	"file_history":
 	[
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/level7/static_meshes.xml",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/level7/renderable_objects.xml",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/level7/lights.xml",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/Config.xml",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects/ShadowMapGenerate.fx",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/Actions.xml",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Code/Engine/Graphics/Effects/EffectTechnique.cpp",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects/Samplers.fxh",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects/GBufferColored.fx",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects/ShadowMap.fx",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/effects/RenderDefferredForEachLight.fx",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/level2/pool_renderable_objects.xml",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/scripting/scripts/render_level2.lua",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/init.xml",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/main menu/lights.xml",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/scripting/scripts/load.lua",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/scripting/scripts/optimization.lua",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/scripting/scripts/particulas.lua",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/scripting/scripts/player.lua",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/scripting/scripts/render.lua",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/scripting/scripts/render_level1.lua",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/scripting/scripts/automata_dron.lua",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/scripting/scripts/automata_player.lua",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/scripting/scripts/automata_torreta.lua",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/scripting/scripts/automata_zombie.lua",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects/GBufferDiffuse.fx",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/scripting/scripts/blackboard_zombies.lua",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/scripting/scripts/debug.lua",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/scripting/scripts/gameplay.lua",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/scripting/scripts/GUI.lua",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/scripting/scripts/render_main_menu.lua",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/scripting/scripts/trigger.lua",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects.xml",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/level 1/lights.xml",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/level2/lights.xml",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects/VertexTypes.fxh",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects/DeferredLights.fx",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/renderable_object_technique.xml",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects/ShadowMapGenerateColored.fx",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects/GBufferNormalMap.fx",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/scene_render_commands.xml",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/level2/renderable_objects.xml",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/effects/ShadowMap.fx",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/effect_test.xml",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/effects_manager.xml",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/level 2/lights.xml",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/level 2/tracks.xml",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/level 3/lights.xml",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/level 1/tracks.xml",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/level 1/Cajas_Rompibles/caja_madera_LAB02_002.xml",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/level 1/Cajas_Rompibles/caja_madera_LAB04_005.xml",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/level 1/PhysX/Acaja_madera_ZonaRing_004.mesh",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/level 3/tracks.xml",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/scene_renderer_commands.xml",
+		"/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/effects/ShadowMap.o",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects/Lights.fx",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects/Globals.fxh",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects/DrawQuad.fx",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects/GBufferLightMap.fx",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/level2/static_meshes.xml",
+		"/C/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Samples/C++/Direct3D/ShadowMap/shadowmap.fx",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects/Blur.fx",
+		"/C/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Samples/C++/Direct3D/ShadowMap/shadowmap.cpp",
+		"/C/Users/Marc/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/script.lua",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/Graphics/Effects/Effect.cpp",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/level2/lua/initLevel.lua",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/levelTest/lights.xml",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects/Fog.fx",
+		"/C/Users/Marc/Desktop/AStyleExtension-2015-3-5.cfg",
+		"/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/AI/Wall-run.sublime-project",
 		"/D/Git/wall-run-engine/bin/Videogame/Data/AI/Patrulla.xml",
 		"/D/Git/wall-run-engine/bin/Videogame/Data/scripted_controller.lua",
 		"/D/Git/wall-run-engine/bin/Videogame/Data/lua/script.lua"
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -59,6 +249,24 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"level7",
+			"level2",
+			"256",
+			"2048",
+			"512",
+			"2048",
+			"1024",
+			"562",
+			"GetPositionFromZDepthView",
+			"IN.",
+			"VertScene",
+			"VertLight",
+			"RenderScene",
+			"RenderLight",
+			"VertShadow",
+			";",
+			"= NULL",
+			"levelTest",
 			"1",
 			"--",
 			"end",
@@ -85,18 +293,364 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/level2/lights.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3561,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1769,
+								1769
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 180.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/level2/renderable_objects.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5409,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5386,
+								5386
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 300.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/scene_render_commands.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9151,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9111,
+								9111
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2925.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects/DeferredLights.fx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6226,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3503,
+								3503
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Shader Syntax (GLSL HLSL Cg)/High Level SL.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1035.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/Config.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2235,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1272,
+								1272
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/level2/static_meshes.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2477,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2459,
+								2459
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects/GBufferColored.fx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1429,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								616,
+								616
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Shader Syntax (GLSL HLSL Cg)/High Level SL.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 135.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects/Lights.fx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4217,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								752,
+								752
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Shader Syntax (GLSL HLSL Cg)/High Level SL.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 45.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects/Globals.fxh",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1687,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1682,
+								1682
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Shader Syntax (GLSL HLSL Cg)/High Level SL.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 60.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/effects.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5994,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5297,
+								5297
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 585.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "/C/Users/Marc/Desktop/UABEngine/wall-run-engine/bin/Videogame/Data/Lights.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 677,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "/C/Users/Marc/Desktop/UABEngine/co/UABVideojocs/Bin/videogame/Data/effects/functions.fx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7122,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2896,
+								2913
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Shader Syntax (GLSL HLSL Cg)/High Level SL.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 810.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 34.0
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 31.0
 	},
 	"layout":
 	{
@@ -136,16 +690,24 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"de",
+				"effects\\DeferredLights.fx"
+			]
 		],
 		"width": 0.0
 	},
 	"select_project":
 	{
-		"height": 0.0,
+		"height": 500.0,
 		"selected_items":
 		[
+			[
+				"",
+				"C:\\Users\\Marc\\Desktop\\UABEngine\\scripts\\wall-run-maxscript\\UABUtility\\UABUtility.sublime-project"
+			]
 		],
-		"width": 0.0
+		"width": 380.0
 	},
 	"select_symbol":
 	{
@@ -163,7 +725,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 222.0,
+	"side_bar_width": 50.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

@@ -4,17 +4,18 @@
 
 #include <d3d9.h>
 
-#define VERTEX_TYPE_GEOMETRY 0x0001     // D3DFVF_XYZ
-#define VERTEX_TYPE_NORMAL 0x0002       // D3DFVF_NORMAL       
-#define VERTEX_TYPE_TANGENT 0x0004      // D3DFVF_
-#define VERTEX_TYPE_BINORMAL 0x0008     // D3DFVF_
-#define VERTEX_TYPE_TEXTURE1 0x0010     // D3DFVF_TEX1
-#define VERTEX_TYPE_TEXTURE2 0x0020     // D3DFVF_TEX2
-#define VERTEX_TYPE_DIFFUSE 0x0040      // D3DFVF_DIFFUSE
-#define VERTEX_TYPE_WEIGHTS 0x0080      // CAL3D_WEIGHTS
-#define VERTEX_TYPE_INDEXS 0x0100      // CAL3D_INDEXS
-#define VERTEX_TYPE_CUBE 0x0200      // CAL3D_INDEXS
-#define VERTEX_TYPE_SCREEN 0x0800		//DRAW_QUAD_SCREEN
+#define VERTEX_TYPE_GEOMETRY    0x0001      // D3DFVF_XYZ
+#define VERTEX_TYPE_NORMAL      0x0002      // D3DFVF_NORMAL       
+#define VERTEX_TYPE_TANGENT     0x0004      // D3DFVF_
+#define VERTEX_TYPE_BINORMAL    0x0008      // D3DFVF_
+#define VERTEX_TYPE_TEXTURE1    0x0010      // D3DFVF_TEX1
+#define VERTEX_TYPE_TEXTURE2    0x0020      // D3DFVF_TEX2
+#define VERTEX_TYPE_DIFFUSE     0x0040      // D3DFVF_DIFFUSE
+#define VERTEX_TYPE_WEIGHTS     0x0080      // CAL3D_WEIGHTS
+#define VERTEX_TYPE_INDEXS      0x0100      // CAL3D_INDEXS
+#define VERTEX_TYPE_CUBE        0x0200      // CUBE MAP
+#define VERTEX_TYPE_RNM         0x0400      // RNM
+#define VERTEX_TYPE_SCREEN      0x0800		// DRAW_QUAD_SCREEN
 
 #include "GraphicsManager.h"
 #include "Utils\Defines.h"
@@ -262,6 +263,29 @@ struct TTEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX {
     static inline unsigned short GetVertexType()
     {
         return VERTEX_TYPE_GEOMETRY | VERTEX_TYPE_NORMAL | VERTEX_TYPE_TANGENT | VERTEX_TYPE_BINORMAL | VERTEX_TYPE_TEXTURE1 | VERTEX_TYPE_TEXTURE2;
+    }
+    static inline unsigned int GetFVF()
+    {
+        return 0;
+    }
+    static LPDIRECT3DVERTEXDECLARATION9 s_VertexDeclaration;
+    static LPDIRECT3DVERTEXDECLARATION9 & GetVertexDeclaration();
+    static void ReleaseVertexDeclaration()
+    {
+        CHECKED_RELEASE(s_VertexDeclaration);
+    }
+};
+
+struct TTEXTURE2_RNORMALM_TANGET_BINORMAL_VERTEX {
+    float x, y, z;
+    float nx, ny, nz, nw;
+    float tnx, tny, tnz, tnw;
+    float bnx, bny, bnz, bnw;
+    float tu, tv;
+    float tu2, tv2;
+    static inline unsigned short GetVertexType()
+    {
+        return VERTEX_TYPE_GEOMETRY | VERTEX_TYPE_NORMAL | VERTEX_TYPE_TANGENT | VERTEX_TYPE_BINORMAL | VERTEX_TYPE_TEXTURE1 | VERTEX_TYPE_TEXTURE2 | VERTEX_TYPE_RNM;
     }
     static inline unsigned int GetFVF()
     {

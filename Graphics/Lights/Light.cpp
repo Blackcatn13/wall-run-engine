@@ -11,7 +11,7 @@ CLight::CLight()
     : m_StaticShadowMap(NULL),
       m_DynamicShadowMap(NULL),
       m_ShadowMaskTexture(NULL),
-	  m_GenerateDynamicShadowMap (false),
+      m_GenerateDynamicShadowMap (false),
       m_GenerateStaticShadowMap (false),
       m_MustUpdateStaticShadowMap (false)
 {
@@ -19,16 +19,16 @@ CLight::CLight()
 
 void CLight::Init()
 {
-	if (m_GenerateStaticShadowMap) {
-		m_StaticShadowMap = new CTexture();
-		std::string l_StaticShadowMapTextureName = "Static_" + m_Name;
-		m_StaticShadowMap->Create(l_StaticShadowMapTextureName, m_ShadowMapWidth, m_ShadowMapHeigth, 0, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, m_StaticShadowMap->GetFormatTypeFromString(m_FormatType));
-	}
-	if (m_GenerateDynamicShadowMap) {
-		m_DynamicShadowMap = new CTexture();
-		std::string l_DinamicShadowMapTextureName = "Dynamic_" + m_Name;
-		m_DynamicShadowMap->Create(l_DinamicShadowMapTextureName, m_ShadowMapWidth, m_ShadowMapHeigth, 0, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, m_DynamicShadowMap->GetFormatTypeFromString(m_FormatType));
-	}
+    if (m_GenerateStaticShadowMap) {
+        m_StaticShadowMap = new CTexture();
+        std::string l_StaticShadowMapTextureName = "Static_" + m_Name;
+        m_StaticShadowMap->Create(l_StaticShadowMapTextureName, m_ShadowMapWidth, m_ShadowMapHeigth, 0, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, m_StaticShadowMap->GetFormatTypeFromString(m_FormatType));
+    }
+    if (m_GenerateDynamicShadowMap) {
+        m_DynamicShadowMap = new CTexture();
+        std::string l_DinamicShadowMapTextureName = "Dynamic_" + m_Name;
+        m_DynamicShadowMap->Create(l_DinamicShadowMapTextureName, m_ShadowMapWidth, m_ShadowMapHeigth, 0, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, m_DynamicShadowMap->GetFormatTypeFromString(m_FormatType));
+    }
 }
 
 CLight::~CLight()
@@ -83,6 +83,10 @@ void CLight::GenerateShadowMap(CGraphicsManager *RM)
         //   RM->EndRendering();
         RM->EndRenderCommand();
         m_DynamicShadowMap->UnsetAsRenderTarget(0);
+        bool save = false;
+        if ( save) {
+            m_DynamicShadowMap->SaveToFile("C:\\test\\test.png");
+        }
     }
 }
 

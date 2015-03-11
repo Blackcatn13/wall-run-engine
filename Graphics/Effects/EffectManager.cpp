@@ -10,6 +10,7 @@
 #include "Renderable\RenderableObjectsLayersManager.h"
 #include "RenderableCommands\SceneRendererCommandManager.h"
 #include "Core_Utils/MemLeaks.h"
+#include "GraphicsManager.h"
 
 CEffectManager::CEffectManager()
 {

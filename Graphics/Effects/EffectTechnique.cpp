@@ -83,27 +83,19 @@ bool CEffectTechnique::BeginRender()
         Mat44f l_Transform = l_Projection * l_View;
         l_Effect->SetMatrix(m_Effect->GetViewProjectionMatrixParameter(), &l_Transform.GetD3DXMatrix());
     }
+    m_Effect->SetLight();
     if (m_UseViewToLightProjectionMatrix) {
         //ShadowMap
         //Mat44f l_ViewToLightProjectionMatrix=l_ViewMatrix;
         Mat44f l_ViewToLightProjectionMatrix = l_EM->GetViewMatrix();
-        //l_ViewToLightProjectionMatrix.Inverse();
-        l_ViewToLightProjectionMatrix.GetInverted();
-        l_ViewToLightProjectionMatrix = l_ViewToLightProjectionMatrix * l_EM->GetLightViewMatrix();
-        l_ViewToLightProjectionMatrix = l_ViewToLightProjectionMatrix * l_EM->GetShadowProjectionMatrix();
+        l_ViewToLightProjectionMatrix.Invert();
+        l_ViewToLightProjectionMatrix = l_EM->GetLightViewMatrix() * l_ViewToLightProjectionMatrix;
+        l_ViewToLightProjectionMatrix = l_EM->GetShadowProjectionMatrix() * l_ViewToLightProjectionMatrix;
         //l_Effect->SetMatrix(m_Effect->m_ViewToLightProjectionMatrixParameter, &l_ViewToLightProjectionMatrix.GetD3DXMatrix());
         l_Effect->SetMatrix(m_Effect->GetViewToLightProjectionMatrixParameter(), &l_ViewToLightProjectionMatrix.GetD3DXMatrix());
     }
     if (m_UseTime) {
         l_Effect->SetFloat(m_Effect->GetTimeParameter(), rand() / 1000.0f);
-    }
-    if (m_NumOfLights > 0) {
-        m_Effect->SetLight();
-        /*if (m_NumOfLights < 4) {
-            m_Effect->SetLights(m_NumOfLights);
-        } else {
-            m_Effect->SetLights(MAX_LIGHTS_BY_SHADER);
-        }*/
     }
     return true;
 }

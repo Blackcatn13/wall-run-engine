@@ -46,7 +46,7 @@ sampler S5LinearWrapSampler:register(s5) = sampler_state {
 	AddressV = Wrap;
 };
 
-sampler S6LinearWrapSampler:register(s0) = sampler_state {
+sampler S6LinearWrapSampler:register(s6) = sampler_state {
 	MinFilter = Linear;
 	MagFilter = Linear;
 	MipFilter = Linear;
@@ -110,7 +110,7 @@ sampler S5LinearClampSampler:register(s5) = sampler_state {
 	AddressV = Clamp;
 };
 
-sampler S6LinearClampSampler:register(s0) = sampler_state {
+sampler S6LinearClampSampler:register(s6) = sampler_state {
 	MinFilter = Linear;
 	MagFilter = Linear;
 	MipFilter = Linear;
@@ -174,7 +174,7 @@ sampler S5PointWrapSampler:register(s5) = sampler_state {
 	AddressV = Wrap;
 };
 
-sampler S6PointWrapSampler:register(s0) = sampler_state {
+sampler S6PointWrapSampler:register(s6) = sampler_state {
 	MinFilter = Point;
 	MagFilter = Point;
 	MipFilter = Point;
@@ -238,7 +238,7 @@ sampler S5PointClampSampler:register(s5) = sampler_state {
 	AddressV = Clamp;
 };
 
-sampler S6PointClampSampler:register(s0) = sampler_state {
+sampler S6PointClampSampler:register(s6) = sampler_state {
 	MinFilter = Point;
 	MagFilter = Point;
 	MipFilter = Point;

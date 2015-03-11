@@ -191,6 +191,8 @@ bool CStaticMesh::Load (const std::string &FileName)
                     type_size = sizeof(TCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX);
                 if (vertex_type[i] == TCOLORED_TEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexType())
                     type_size = sizeof(TCOLORED_TEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX);
+                if (vertex_type[i] == TTEXTURE2_RNORMALM_TANGET_BINORMAL_VERTEX::GetVertexType())
+                    type_size = sizeof(TTEXTURE2_RNORMALM_TANGET_BINORMAL_VERTEX);
                 if (vertex_type[i] == TCOLORED_NORMAL_VERTEX::GetVertexType())
                     type_size = sizeof(TCOLORED_NORMAL_VERTEX);
                 if (vertex_type[i] == TTEXTURE_CUBE_NORMAL_VERTEX::GetVertexType())
@@ -208,6 +210,9 @@ bool CStaticMesh::Load (const std::string &FileName)
                 }
                 if (vertex_type[i] == TCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexType()) {
                     CalcTangentsAndBinormals(vertex_list, (unsigned short*)index_list, n_vtxs, n_idxs, type_size, 0, 12, 28, 44, 64);
+                }
+                if (vertex_type[i] == TTEXTURE2_RNORMALM_TANGET_BINORMAL_VERTEX::GetVertexType()) {
+                    CalcTangentsAndBinormals(vertex_list, (unsigned short*)index_list, n_vtxs, n_idxs, type_size, 0, 12, 28, 44, 60);
                 }
                 // Creating Renderable vertex
                 CRenderableVertexs *l_rv = NULL;
@@ -237,6 +242,8 @@ bool CStaticMesh::Load (const std::string &FileName)
                     l_rv = new CIndexedVertexs<TCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
                 if (vertex_type[i] == TCOLORED_TEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexType())
                     l_rv = new CIndexedVertexs<TCOLORED_TEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
+                if (vertex_type[i] == TTEXTURE2_RNORMALM_TANGET_BINORMAL_VERTEX::GetVertexType())
+                    l_rv = new CIndexedVertexs<TTEXTURE2_RNORMALM_TANGET_BINORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
                 if (vertex_type[i] == TCOLORED_NORMAL_VERTEX::GetVertexType())
                     l_rv = new CIndexedVertexs<TCOLORED_NORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
                 if (vertex_type[i] == TTEXTURE_CUBE_NORMAL_VERTEX::GetVertexType())
@@ -297,10 +304,9 @@ void CStaticMesh::Render (CGraphicsManager *RM)
         //std::string l_EffectName = EFFECTM->GetTechniqueEffectNameByVertexDefault(m_RVs[i]->GetVertexType());
         //CEffectTechnique *l_EffectTechnique =EFFECTM->GetEffectTechnique(l_EffectName);
         CEffectTechnique *l_EffectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(m_RVs[i]->GetVertexType()))->GetEffectTechnique();
-		for(size_t j=0;j<m_Textures[i].size();++j)
-			m_Textures[i][j]->Activate(j);
-		
-		/*if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_TEXTURE1) == VERTEX_TYPE_TEXTURE1)
+        for (size_t j = 0; j < m_Textures[i].size(); ++j)
+            m_Textures[i][j]->Activate(j);
+        /*if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_TEXTURE1) == VERTEX_TYPE_TEXTURE1)
             m_Textures[i][0]->Activate(0);
         if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_TANGENT) == VERTEX_TYPE_TANGENT)
             m_Textures[i][1]->Activate(1);

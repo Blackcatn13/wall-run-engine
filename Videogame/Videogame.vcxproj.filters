@@ -23,6 +23,9 @@
     <Filter Include="TestGameplay">
       <UniqueIdentifier>{4d72e07f-73f8-4c2e-829c-90f7cc3d39e8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="shaders">
+      <UniqueIdentifier>{8c50cbb0-d75c-40f1-b621-6b4c926ac1ad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="videogame.cpp" />
@@ -97,5 +100,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\bin\Videogame\Data\effects\DeferredLights.fx">
+      <Filter>shaders</Filter>
+    </CustomBuild>
   </ItemGroup>
 </Project>

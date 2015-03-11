@@ -96,7 +96,7 @@ void CTestGameplay::Init()
     m_3DCamera->SetTypeCamera(CCamera::TC_3DCAM);
     m_2DCamera = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_Object2D, 50);
     m_2DCamera->SetTypeCamera(CCamera::TC_2DCAM);
-    m_ThPSCamera = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS, 50);
+    m_ThPSCamera = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS, 200);
     //m_ThPSCamera1 = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_RenderableObject, 10);
     m_FPSCamera = new CFPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectFPS);
     m_ThPSCamera->SetTypeCamera(CCamera::TC_ESF);
@@ -106,7 +106,7 @@ void CTestGameplay::Init()
     CAMCONTM->AddNewCamera("3DCam", m_3DCamera);
     CAMCONTM->AddNewCamera("2DCam", m_2DCamera);
     //m_CameraController->AddNewCamera("ThPS", m_ThPSCamera1);
-    CAMCONTM->setActiveCamera("FPS");
+    CAMCONTM->setActiveCamera("ThPSESF");
     m_Camera = CAMCONTM->getActiveCamera();
     m_PlayerMode = true;
 //	m_ScriptedController = new CScriptedController();
@@ -176,8 +176,8 @@ void CTestGameplay::Init()
     //m_fsmManager = new CFSMManager();
     //m_WPManager = new CWPManager();
     //m_WPManager->Load("data//AI//Waypoints2.xml");
-   /* int j_2 = m_WPManager->CalcularSiguienteWaypoint(5, 8, "sala_principal");
-    int _iiii = 0;*/
+    /* int j_2 = m_WPManager->CalcularSiguienteWaypoint(5, 8, "sala_principal");
+     int _iiii = 0;*/
 }
 
 void CTestGameplay::DeInit()

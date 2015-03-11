@@ -319,6 +319,44 @@ LPDIRECT3DVERTEXDECLARATION9 & TTEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX::GetVerte
     return s_VertexDeclaration;
 }
 
+LPDIRECT3DVERTEXDECLARATION9 TTEXTURE2_RNORMALM_TANGET_BINORMAL_VERTEX::s_VertexDeclaration = NULL;
+LPDIRECT3DVERTEXDECLARATION9 & TTEXTURE2_RNORMALM_TANGET_BINORMAL_VERTEX::GetVertexDeclaration()
+{
+    if (s_VertexDeclaration == NULL) {
+        D3DVERTEXELEMENT9 l_VertexDeclaration[] = {
+            //TODO: CHECK TEXRECORD 0 1 0 1?
+            {
+                0, 0 , D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT,
+                D3DDECLUSAGE_POSITION, 0
+            },
+            {
+                0, 12, D3DDECLTYPE_FLOAT4, D3DDECLMETHOD_DEFAULT,
+                D3DDECLUSAGE_NORMAL, 0
+            },
+            {
+                0, 28, D3DDECLTYPE_FLOAT4, D3DDECLMETHOD_DEFAULT,
+                D3DDECLUSAGE_TANGENT, 0
+            },
+            {
+                0, 44, D3DDECLTYPE_FLOAT4, D3DDECLMETHOD_DEFAULT,
+                D3DDECLUSAGE_BINORMAL, 0
+            },
+            {
+                0, 60, D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT,
+                D3DDECLUSAGE_TEXCOORD, 0
+            },
+            {
+                0, 68, D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT,
+                D3DDECLUSAGE_TEXCOORD, 1
+            },
+            D3DDECL_END()
+        };
+        GRAPHM->GetDevice()->CreateVertexDeclaration(l_VertexDeclaration,
+                &s_VertexDeclaration);
+    }
+    return s_VertexDeclaration;
+}
+
 LPDIRECT3DVERTEXDECLARATION9 TCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX::s_VertexDeclaration = NULL;
 LPDIRECT3DVERTEXDECLARATION9 & TCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexDeclaration()
 {

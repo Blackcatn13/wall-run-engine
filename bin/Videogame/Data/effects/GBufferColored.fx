@@ -36,8 +36,8 @@ TMultiRenderTargetPixel GBufferPS(TGBUFFER_COLORED_NORMAL_VERTEX_PS IN) {
 	// Cálculo de la z en formato color
 	float l_Depth = IN.WorldPosition.z/IN.WorldPosition.w;
 	
-	OUT.RT0=float4(l_DiffuseColor.xyz, 1.0);
-	OUT.RT1=float4(l_DiffuseColor.xyz*g_LightAmbient*g_LightAmbientIntensity, 1.0);
+	OUT.RT0= float4(l_DiffuseColor.xyz, 1.0);
+	OUT.RT1= float4(l_DiffuseColor.xyz*g_LightAmbient*g_LightAmbientIntensity, 1.0);
 	OUT.RT2.xyz=NnScalated;
 	OUT.RT3=l_Depth;  
 	

@@ -792,7 +792,7 @@ void CGraphicsManager::ClearSceneCommand(float color, float depth, float stencil
         flags = flags | D3DCLEAR_ZBUFFER;
     if (stencil)
         flags = flags | D3DCLEAR_STENCIL;
-    m_pD3DDevice->Clear( 0, NULL, flags, D3DCOLOR_XRGB(red, green, blue), 1.0f, 0 );
+    m_pD3DDevice->Clear( 0, NULL, flags, D3DCOLOR_XRGB(255, 255, 255), 1.0f, 0 );
 }
 
 void CGraphicsManager::BeginRenderCommand()
@@ -803,9 +803,9 @@ void CGraphicsManager::BeginRenderCommand()
     m_Rendering = true;
     //assert( SUCCEEDED( hr ) );
     m_pD3DDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CCW);
-    // m_pD3DDevice->SetRenderState( D3DRS_ZENABLE, D3DZB_TRUE);
+    m_pD3DDevice->SetRenderState( D3DRS_ZENABLE, D3DZB_TRUE);
     m_pD3DDevice->SetRenderState( D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
-    //m_pD3DDevice->SetRenderState( D3DRS_ZWRITEENABLE, TRUE);
+    m_pD3DDevice->SetRenderState( D3DRS_ZWRITEENABLE, TRUE);
     m_pD3DDevice->SetRenderState( D3DRS_LIGHTING, FALSE );
     m_pD3DDevice->SetRenderState( D3DRS_DITHERENABLE, TRUE );
     m_pD3DDevice->SetRenderState( D3DRS_SPECULARENABLE, FALSE );

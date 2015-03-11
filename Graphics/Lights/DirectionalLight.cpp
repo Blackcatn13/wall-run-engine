@@ -33,11 +33,27 @@ void CDirectionalLight::Render(CGraphicsManager *RM)
 
 void CDirectionalLight::SetShadowMap(CGraphicsManager *RM)
 {
-    COrthoFixedCameraController l_OrthoFixedCameraController(m_Position - m_Direction,
+    /*COrthoFixedCameraController l_OrthoFixedCameraController(m_Position - m_Direction,
             m_Position, m_OrthoShadowMapSize.x, m_OrthoShadowMapSize.y, 1.0f, m_EndRangeAttenuation);
-    CEffectManager *l_EffectManager = CCORE->GetEffectManager(); //CEffectManager &l_EffectManager=CCORE->GetEffectManager();
+
     COrthoFixedCamera l_Camera = l_OrthoFixedCameraController.GetCamera();
     m_ViewShadowMap = l_Camera.GetViewMatrix();
-    m_ProjectionShadowMap = l_Camera.GetProjectionMatrix();
-    l_EffectManager->ActivateCamera(m_ViewShadowMap, m_ProjectionShadowMap, l_Camera.GetEye());//l_Camera.GetPosition()
+    m_ProjectionShadowMap = l_Camera.GetProjectionMatrix();*/
+    D3DXMATRIX l_view;
+    D3DXMATRIX l_Ortho;
+    D3DXVECTOR3 l_Eye(m_Position.x, m_Position.y, m_Position.z);
+    Vect3f lookAt = m_Position + m_Direction;
+    m_Direction.Normalize();
+    D3DXVECTOR3 l_LookAt(lookAt.x, lookAt.y, lookAt.z);
+    Vect3f l_vRight = (m_Direction ^ Vect3f(0, 1, 0)).Normalize();
+    Vect3f l_vUP = (l_vRight ^ m_Direction).Normalize();
+    D3DXVECTOR3 l_UP = D3DXVECTOR3(l_vUP.x, l_vUP.y, l_vUP.z);
+    D3DXMatrixLookAtLH(&l_view, &l_Eye, &l_LookAt, &l_UP);
+    m_ViewShadowMap = Mat44f(l_view);
+    D3DXMatrixOrthoLH(&l_Ortho, m_OrthoShadowMapSize.x, m_OrthoShadowMapSize.y, 0.01f, m_EndRangeAttenuation);
+    m_ProjectionShadowMap = Mat44f(l_Ortho);
+    CEffectManager *l_EffectManager = CCORE->GetEffectManager();
+    l_EffectManager->ActivateCamera(m_ViewShadowMap, m_ProjectionShadowMap, m_Position);//l_Camera.GetPosition()
+    RM->GetDevice()->SetTransform( D3DTS_VIEW, &l_view );
+    RM->GetDevice()->SetTransform( D3DTS_PROJECTION, &l_Ortho );
 }

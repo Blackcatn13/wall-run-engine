@@ -34,7 +34,7 @@ void CEffect::SetNullParameters()
     m_InverseWorldMatrixParameter = NULL;
     m_InverseViewMatrixParameter = NULL;
     m_InverseProjectionMatrixParameter = NULL;
-    ////
+    m_Light = NULL;
     m_UseShadowMaskTextureParameter = NULL;
     m_UseStaticShadowmapParameter = NULL;
     m_UseDynamicShadowmapParameter = NULL;
@@ -89,6 +89,34 @@ void CEffect::Unload()
 }
 
 CEffect::CEffect()
+    : m_Effect(NULL)
+    , m_WorldMatrixParameter(NULL)
+    , m_ViewMatrixParameter(NULL)
+    , m_ProjectionMatrixParameter(NULL)
+    , m_WorldViewMatrixParameter(NULL)
+    , m_ViewProjectionMatrixParameter(NULL)
+    , m_WorldViewProjectionMatrixParameter(NULL)
+    , m_ViewToLightProjectionMatrixParameter(NULL)
+    , m_LightEnabledParameter(NULL)
+    , m_LightsTypeParameter(NULL)
+    , m_LightsPositionParameter(NULL)
+    , m_LightsDirectionParameter(NULL)
+    , m_LightsAngleParameter(NULL)
+    , m_LightsColorParameter(NULL)
+    , m_LightsFallOffParameter(NULL)
+    , m_LightsStartRangeAttenuationParameter(NULL)
+    , m_LightsEndRangeAttenuationParameter(NULL)
+    , m_LightsIntensityParameter(NULL)
+    , m_CameraPositionParameter(NULL)
+    , m_BonesParameter(NULL)
+    , m_TimeParameter(NULL)
+    , m_InverseWorldMatrixParameter(NULL)
+    , m_InverseViewMatrixParameter(NULL)
+    , m_InverseProjectionMatrixParameter(NULL)
+    , m_Light(NULL)
+    , m_UseShadowMaskTextureParameter(NULL)
+    , m_UseStaticShadowmapParameter(NULL)
+    , m_UseDynamicShadowmapParameter(NULL)
 {
 }
 
@@ -99,46 +127,50 @@ CEffect::~CEffect()
 
 bool CEffect::SetLight()
 {
-    int l_type = m_Light->GetType();
-    m_LightsType[0] = l_type;
-    float l_angle = 0;
-    if (l_type == CLight::TLightType::SPOT) {
-        l_angle = ((CSpotLight*)m_Light)->GetAngle();
+    if (m_Light) {
+        int l_type = m_Light->GetType();
+        m_LightsType[0] = l_type;
+        float l_angle = 0;
+        if (l_type == CLight::TLightType::SPOT) {
+            l_angle = ((CSpotLight*)m_Light)->GetAngle();
+        }
+        m_LightsAngle[0] = l_angle;
+        float l_falloff = 0;
+        if (l_type == CLight::TLightType::SPOT) {
+            l_falloff = ((CSpotLight*)m_Light)->GetFallOff();
+        }
+        m_LightsFallOff[0] = l_falloff;
+        float l_startRangeAtten = m_Light->GetStartRangeAttenuation();
+        m_LightsStartRangeAttenuation[0] = l_startRangeAtten;
+        float l_endRangeAtten = m_Light->GetEndRangeAttenuation();
+        m_LightsEndRangeAttenuation[0] = l_endRangeAtten;
+        float l_intensity = m_Light->GetIntensity();
+        m_LightsIntensity[0] = l_intensity;
+        Vect3f l_pos = m_Light->GetPosition();
+        m_LightsPosition[0] = l_pos;
+        Vect3f l_direction;
+        if (l_type == CLight::TLightType::OMNI) {
+            l_direction = Vect3f(0, 0, 0);
+        } else {
+            l_direction = ((CDirectionalLight*)m_Light)->GetDirection();
+            l_direction = l_direction.Normalize();
+        }
+        m_LightsDirection[0] = l_direction;
+        Vect3f l_color = Vect3f(m_Light->GetColor().GetRed(), m_Light->GetColor().GetGreen(), m_Light->GetColor().GetBlue()) ;
+        m_LightsColor[0] = l_color;
+        m_Effect->SetIntArray(m_LightsTypeParameter, &m_LightsType[0], MAX_LIGHTS_BY_SHADER);
+        m_Effect->SetFloatArray(m_LightsAngleParameter, &m_LightsAngle[0], MAX_LIGHTS_BY_SHADER);
+        m_Effect->SetFloatArray(m_LightsFallOffParameter, &m_LightsFallOff[0], MAX_LIGHTS_BY_SHADER);
+        m_Effect->SetFloatArray(m_LightsIntensityParameter, &m_LightsIntensity[0], MAX_LIGHTS_BY_SHADER);
+        m_Effect->SetFloatArray(m_LightsStartRangeAttenuationParameter, &m_LightsStartRangeAttenuation[0], MAX_LIGHTS_BY_SHADER);
+        m_Effect->SetFloatArray(m_LightsEndRangeAttenuationParameter, &m_LightsEndRangeAttenuation[0], MAX_LIGHTS_BY_SHADER);
+        m_Effect->SetFloatArray(m_LightsPositionParameter, &m_LightsPosition[0].x, MAX_LIGHTS_BY_SHADER * 3);
+        m_Effect->SetFloatArray(m_LightsDirectionParameter, &m_LightsDirection[0].x, MAX_LIGHTS_BY_SHADER * 3);
+        m_Effect->SetFloatArray(m_LightsColorParameter, &m_LightsColor[0].x, MAX_LIGHTS_BY_SHADER * 3);
+        m_Light->BeginRenderEffectManagerShadowMap(this);
+        return true;
     }
-    m_LightsAngle[0] = l_angle;
-    float l_falloff = 0;
-    if (l_type == CLight::TLightType::SPOT) {
-        l_falloff = ((CSpotLight*)m_Light)->GetFallOff();
-    }
-    m_LightsFallOff[0] = l_falloff;
-    float l_startRangeAtten = m_Light->GetStartRangeAttenuation();
-    m_LightsStartRangeAttenuation[0] = l_startRangeAtten;
-    float l_endRangeAtten = m_Light->GetEndRangeAttenuation();
-    m_LightsEndRangeAttenuation[0] = l_endRangeAtten;
-    float l_intensity = m_Light->GetIntensity();
-    m_LightsIntensity[0] = l_intensity;
-    Vect3f l_pos = m_Light->GetPosition();
-    m_LightsPosition[0] = l_pos;
-    Vect3f l_direction;
-    if (l_type == CLight::TLightType::OMNI) {
-        l_direction = Vect3f(0, 0, 0);
-    } else {
-        l_direction = ((CDirectionalLight*)m_Light)->GetDirection();
-        l_direction = l_direction.Normalize();
-    }
-    m_LightsDirection[0] = l_direction;
-    Vect3f l_color = Vect3f(m_Light->GetColor().GetRed(), m_Light->GetColor().GetGreen(), m_Light->GetColor().GetBlue()) ;
-    m_LightsColor[0] = l_color;
-    m_Effect->SetIntArray(m_LightsTypeParameter, &m_LightsType[0], MAX_LIGHTS_BY_SHADER);
-    m_Effect->SetFloatArray(m_LightsAngleParameter, &m_LightsAngle[0], MAX_LIGHTS_BY_SHADER);
-    m_Effect->SetFloatArray(m_LightsFallOffParameter, &m_LightsFallOff[0], MAX_LIGHTS_BY_SHADER);
-    m_Effect->SetFloatArray(m_LightsIntensityParameter, &m_LightsIntensity[0], MAX_LIGHTS_BY_SHADER);
-    m_Effect->SetFloatArray(m_LightsStartRangeAttenuationParameter, &m_LightsStartRangeAttenuation[0], MAX_LIGHTS_BY_SHADER);
-    m_Effect->SetFloatArray(m_LightsEndRangeAttenuationParameter, &m_LightsEndRangeAttenuation[0], MAX_LIGHTS_BY_SHADER);
-    m_Effect->SetFloatArray(m_LightsPositionParameter, &m_LightsPosition[0].x, MAX_LIGHTS_BY_SHADER * 3);
-    m_Effect->SetFloatArray(m_LightsDirectionParameter, &m_LightsDirection[0].x, MAX_LIGHTS_BY_SHADER * 3);
-    m_Effect->SetFloatArray(m_LightsColorParameter, &m_LightsColor[0].x, MAX_LIGHTS_BY_SHADER * 3);
-    return true;
+    return false;
 }
 
 bool CEffect::SetLights(size_t NumOfLights)
