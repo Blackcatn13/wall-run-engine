@@ -40,29 +40,6 @@ int CWPManager::FindClosestWaypoint(std::string ZONEName, Vect3f Position)
 	}
 	return l_closestId;
 }
-/*
-int CWPManager::FindOptimalPath(std::string ZONEName, Vect3f PositionStart, Vect3f PositionDestiny)
-{
-	int l_idWaypointStart = FindClosestWaypoint(ZONEName, PositionStart);
-	int l_idWaypointDestiny = FindClosestWaypoint(ZONEName, PositionDestiny);
-	std::string CurrentPath = "";
-	std::string l_nextWaypoint = FindNExtWaypointOptimal(ZONEName, l_idWaypointStart, l_idWaypointDestiny, CurrentPath);
-	int l_intNextWaypoint = atoi(l_nextWaypoint.substr(0,1).c_str()); //cogemos el primer waypoint del path óptimo (solo funciona de 0 a 9 waypoints)
-	return l_intNextWaypoint;
-	
-}
-std::string CWPManager::FindNExtWaypointOptimal(std::string ZONEName, int WaypointStart, int WaypointDestiny, std::string CurrentPath)
-{
-
-	ZONE * l_currentZone = GetResource(ZONEName);
-	for (std::vector<Link *>::iterator it = l_currentZone->m_Waypoints[WaypointStart]->m_LinkList.begin(); it != l_currentZone->m_Waypoints[WaypointStart]->m_LinkList.end(); ++it) 
-	{
-		std::string l_ThisWaypointToString = boost::lexical_cast<std::string>(WaypointStart);
-		std::string l_CurrentPath = CurrentPath + l_ThisWaypointToString;
-		(*it)->id;
-	}
-	return "";
-}*/
 
 int CWPManager::CalcularSiguienteWaypoint(int wp_actual, int wp_destino, std::string ZONEName)
 {
@@ -88,9 +65,10 @@ int CWPManager::CalcularSiguienteWaypoint(int wp_actual, int wp_destino, std::st
 	l_openVector.push_back(l_currentZone->m_Waypoints[id_origen]);
 
 	//calculamos G H y F para nodo abierto inicial
-	float temp_H = CalcularH(0, id_origen, id_destino, l_currentZone);
-	float temp_G = 0;
+	float temp_H = CalcularH(id_origen, id_destino, l_currentZone);
+	float temp_G = 0.0;
 	float temp_F = temp_H + temp_G;
+	float l_pesoRecorrido = 0.0;
 	//modificamos los datos del nodo origen 0
 	l_currentZone->m_Waypoints[id_origen]->m_H = temp_H;
 	l_currentZone->m_Waypoints[id_origen]->m_G = temp_G;
@@ -101,21 +79,22 @@ int CWPManager::CalcularSiguienteWaypoint(int wp_actual, int wp_destino, std::st
 	{
 		if (!l_currentZone->m_Waypoints[(*it)->id]->m_cerrado)
 		{
-			float l_pesoRecorrido = (*it)->weight + temp_G;
+			//9999 quiere decir que no se ha calculado H aun para este nodo
 			if (l_currentZone->m_Waypoints[(*it)->id]->m_H == 9999.0)
 			{
-				float temp_H = CalcularH(0, (*it)->id, id_destino, l_currentZone);
+				temp_H = CalcularH((*it)->id, id_destino, l_currentZone);
 				l_currentZone->m_Waypoints[(*it)->id]->m_H = temp_H;
 			}
 			else
 			{
-				float temp_H = l_currentZone->m_Waypoints[(*it)->id]->m_H;
+				temp_H = l_currentZone->m_Waypoints[(*it)->id]->m_H;
 			}
-			float temp_G = l_pesoRecorrido;
-			float temp_F = temp_H + temp_G;
+
+			l_pesoRecorrido = (*it)->weight + temp_G;
+			temp_F = temp_H + l_pesoRecorrido;
 			if (temp_F < l_currentZone->m_Waypoints[(*it)->id]->m_F)
 			{
-				l_currentZone->m_Waypoints[(*it)->id]->m_G = temp_G;
+				l_currentZone->m_Waypoints[(*it)->id]->m_G = l_pesoRecorrido;
 				l_currentZone->m_Waypoints[(*it)->id]->m_F = temp_F;
 				l_currentZone->m_Waypoints[(*it)->id]->m_Padre = l_currentZone->m_Waypoints[id_origen];
 			}
@@ -152,7 +131,7 @@ int CWPManager::CalcularSiguienteWaypoint(int wp_actual, int wp_destino, std::st
 			if ( (*it)->m_F < temp_F_Busqueda)
 			{
 				temp_id = (*it)->m_id;
-				temp_F = (*it)->m_F;
+				temp_F_Busqueda = (*it)->m_F;
 			}
 		}
 		id_origen = temp_id;
@@ -163,21 +142,20 @@ int CWPManager::CalcularSiguienteWaypoint(int wp_actual, int wp_destino, std::st
 		{
 			if (!l_currentZone->m_Waypoints[(*it)->id]->m_cerrado)
 			{
-				float l_pesoRecorrido = (*it)->weight + temp_G;
+				l_pesoRecorrido = (*it)->weight + temp_G;
 				if (l_currentZone->m_Waypoints[(*it)->id]->m_H == 9999.0)
 				{
-					float temp_H = CalcularH(0, (*it)->id, id_destino, l_currentZone);
+					temp_H = CalcularH((*it)->id, id_destino, l_currentZone);
 					l_currentZone->m_Waypoints[(*it)->id]->m_H = temp_H;
 				}
 				else
 				{
-					float temp_H = l_currentZone->m_Waypoints[(*it)->id]->m_H;
+					temp_H = l_currentZone->m_Waypoints[(*it)->id]->m_H;
 				}
-				float temp_G = l_pesoRecorrido;
-				float temp_F = temp_H + temp_G;
+				temp_F = temp_H + l_pesoRecorrido;
 				if (temp_F < l_currentZone->m_Waypoints[(*it)->id]->m_F)
 				{
-					l_currentZone->m_Waypoints[(*it)->id]->m_G = temp_G;
+					l_currentZone->m_Waypoints[(*it)->id]->m_G = l_pesoRecorrido;
 					l_currentZone->m_Waypoints[(*it)->id]->m_F = temp_F;
 					l_currentZone->m_Waypoints[(*it)->id]->m_Padre = l_currentZone->m_Waypoints[id_origen];
 				}
@@ -229,10 +207,9 @@ int CWPManager::CalcularPrimerWaypoint(int id_entrada, ZONE * currentZone)
 	return l_tempid;
 }
 
-float CWPManager::CalcularH(int pesoEntrada, int id_origen, int id_destino, ZONE * currentZone)
+float CWPManager::CalcularH(int id_origen, int id_destino, ZONE * currentZone)
 {
-	float l_H = pesoEntrada + GetDistance(currentZone->m_Waypoints[id_origen]->m_pos, currentZone->m_Waypoints[id_destino]->m_pos);
-	l_H = sqrt(l_H);
+	float l_H = GetDistance(currentZone->m_Waypoints[id_origen]->m_pos, currentZone->m_Waypoints[id_destino]->m_pos);
 	return l_H;
 }
 
