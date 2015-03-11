@@ -1,6 +1,7 @@
+local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 function on_update_scripted_controller(l_ElapsedTime)
 --	local name = tostring(l_ElapsedTime);
-	local coreInstance = CCoreLuaWrapper().m_CoreInstance;
+	
 	local deltaX, deltaY, deltaZ;
 	local xMin = 5.0;
 	local xMax = 7.0;
@@ -202,7 +203,17 @@ function on_update_scripted_controller(l_ElapsedTime)
 	end
 	player.m_PhysicController:move(mov,l_ElapsedTime);
 	player:set_position(player.m_PhysicController:get_position());
+	move_character_controller_mesh(player, player:get_position())
 	
 	return 0;
 end
 
+function move_character_controller_mesh(_player, _position)
+	local mesh = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky")
+	mesh:set_yaw(_player:get_yaw())
+	mesh:set_position(_position)
+--[[CRenderableObject* malla = RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky");
+    malla->SetYaw(m_fYaw);
+    malla->SetPosition(m_PhysicController->GetPosition());--]]
+
+end

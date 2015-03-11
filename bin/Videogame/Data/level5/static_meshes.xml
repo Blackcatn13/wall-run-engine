@@ -41,4 +41,8 @@
 	<static_mesh name="Box001_Part_99" filename=".\Data\level5\meshes//Box001_Part_99.mesh"/>
 	<static_mesh name="Box001_Part_100" filename=".\Data\level5\meshes//Box001_Part_100.mesh"/>
 	<static_mesh name="Sphere001" filename=".\Data\level5\meshes//Sphere001.mesh"/>
+	<static_mesh name="SpongePicky" filename=".\Data\level5\meshes//SpongePicky.mesh"/>
+	<static_mesh name="Enemy2" filename=".\Data\level5\meshes//Enemy2.mesh"/>
+	<static_mesh name="Enemy1" filename=".\Data\level5\meshes//Enemy1.mesh"/>
+	<static_mesh name="Enemy3" filename=".\Data\level5\meshes//Enemy3.mesh"/>
 </static_meshes>

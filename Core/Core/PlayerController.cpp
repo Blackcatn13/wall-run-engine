@@ -10,11 +10,14 @@
 #include "PhysicsDefs.h"
 #include "PhysicsManager.h"
 #include "Actor\PhysicActor.h"
+#include "Renderable\RenderableObject.h"
+#include "Renderable\RenderableObjectsManager.h"
+#include "Renderable\RenderableObjectsLayersManager.h"
 
 CPlayerController::CPlayerController()
     : CObject3D(),
       m_Gravity(2),
-	  m_GravityJump(2),
+      m_GravityJump(2),
       m_Speed (15),
       m_JumpForce(0.65),
       m_CurrentJumpForce(0),
@@ -25,6 +28,9 @@ CPlayerController::CPlayerController()
     m_PhysicUserData->SetPaint(true);
     m_PhysicController = new CPhysicController(0.25, 0.5, 1.047, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, Vect3f(0, 5, 0), -m_Gravity);
     PHYSXM->AddPhysicController(m_PhysicController);
+    CRenderableObject* malla = RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky");
+    malla->SetYaw(m_fYaw);
+    malla->SetPosition(m_PhysicController->GetPosition());
 }
 
 CPlayerController::~CPlayerController()
@@ -35,7 +41,7 @@ CPlayerController::~CPlayerController()
 
 void CPlayerController::Move(float dt)
 {
-	//En lua.
+    //En lua.
 }
 
 bool CPlayerController::IsGrounded()

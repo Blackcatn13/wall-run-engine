@@ -32,6 +32,7 @@
 	<static_mesh name="Box017" filename=".\Data\level2\meshes//Box017.mesh"/>
 	<static_mesh name="Box018" filename=".\Data\level2\meshes//Box018.mesh"/>
 	<static_mesh name="Box019" filename=".\Data\level2\meshes//Box019.mesh"/>
+<<<<<<< HEAD
 	<static_mesh name="Escena" filename=".\Data\level2\meshes\Escena.mesh"/>-->
 	<static_mesh name="Cylinder001" filename=".\Data\level2\meshes//Cylinder001.mesh"/>
 	<static_mesh name="PIKY" filename=".\Data\level2\meshes//PIKY.mesh"/>
@@ -176,4 +177,12 @@
 	<static_mesh name="poly022" filename=".\Data\level2\meshes//poly022.mesh"/>
 	<static_mesh name="poly023" filename=".\Data\level2\meshes//poly023.mesh"/>
 	<static_mesh name="poly024" filename=".\Data\level2\meshes//poly024.mesh"/>
+=======
+	<static_mesh name="Escena" filename=".\Data\level2\meshes\Escena.mesh"/>
+	
+	<static_mesh name="SpongePicky" filename=".\Data\level5\meshes//SpongePicky.mesh"/>
+	<static_mesh name="Enemy2" filename=".\Data\level5\meshes//Enemy2.mesh"/>
+	<static_mesh name="Enemy1" filename=".\Data\level5\meshes//Enemy1.mesh"/>
+	<static_mesh name="Enemy3" filename=".\Data\level5\meshes//Enemy3.mesh"/>
+>>>>>>> e61615698b2206f7a34e02b9d98fb16355113a83
 </static_meshes>
