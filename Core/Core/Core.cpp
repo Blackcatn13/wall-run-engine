@@ -98,7 +98,7 @@ void CCore::Init(HWND handler)
     m_WPManager = new CWPManager();
     m_WPManager->Load("data//AI//Waypoints3.xml");
     m_EnemyManager = CEnemyManager::GetInstance();
-    m_EnemyManager->Init("data//enemies.xml");
+   // m_EnemyManager->Init("data//enemies.xml");
     m_ScriptManager->Load(m_Config.LuaPath);
     m_PlayerController = new CPlayerController();
     m_TriggerManager->LoadTriggers("./Data/triggers.xml");

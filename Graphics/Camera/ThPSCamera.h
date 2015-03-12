@@ -11,11 +11,17 @@
 #define INC_SPHERICAL_CAMERA_H_
 
 #include "Camera.h"
+#include <vector>
+#include <string>
 
 class CThPSCamera: public CCamera
 {
 
 public:
+
+	std::vector<Vect3f> m_path;
+	std::string			m_pathFile;
+
 
     CThPSCamera(float zn, float zf, float fov, float aspect, CObject3D* object3D, float zoom);
     CThPSCamera();
@@ -38,6 +44,9 @@ public:
     {
         return m_fZoom;
     }
+
+	//---Interfaz 3DCamera y 2DCamera
+	bool										LoadPathFromFile(std::string filename);
 
 private:
     float		m_fZoom;

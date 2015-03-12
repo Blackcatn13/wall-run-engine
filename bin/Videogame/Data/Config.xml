@@ -16,12 +16,12 @@
   <Actions actionsXML="./Data/Actions.xml"/>
   <GUI initGuiXML="./Data/GUI/initGui_laberynth.xml"/>
   <Sound soundXML="./Data/Sounds/LaberynthSounds.xml"/>
-  <Meshes meshesXML="./Data/levelTest/static_meshes.xml"/>
-  <Renderable renderXML="./Data/levelTest/renderable_objects.xml"/> 
-  <Lights lightsXML="./Data/levelTest/lights.xml"/> 
+  <Meshes meshesXML="./Data/level2/static_meshes.xml"/>
+  <Renderable renderXML="./Data/level2/renderable_objects.xml"/> 
+  <Lights lightsXML="./Data/level2/lights.xml"/> 
   <AnimatedModels modelsXML="./Data/animated_models.xml"/>
   <RendererCommands rendererCommandsXML="./Data/scene_render_commands.xml"/>
-  <PoolRenderableObjects poolRenderableObjects="./Data/levelTest/pool_renderable_objects.xml"/>
+  <PoolRenderableObjects poolRenderableObjects="./Data/level2/pool_renderable_objects.xml"/>
   <Cameras CamerasLvl="No"/>
   <Cinematic CinematicLvl="No"/>
   <Lua LuaFile="./Data/lua_actions.xml"/>

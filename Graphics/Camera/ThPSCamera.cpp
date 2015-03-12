@@ -1,6 +1,7 @@
 #include "ThPSCamera.h"
 #include <assert.h>
 #include "Core_Utils/MemLeaks.h"
+#include "XML\XMLTreeNode.h"
 
 CThPSCamera::CThPSCamera(float zn, float zf, float fov, float aspect, CObject3D* object3D, float zoom)
     : CCamera( zn, zf, fov, aspect, object3D, TC_THPS)
@@ -68,4 +69,33 @@ void CThPSCamera::AddZoom (float zoom)
     } else if ( m_fZoom < m_fZNear * 2.f) {
         m_fZoom = m_fZNear * 2.f;
     }
+}
+bool CThPSCamera::LoadPathFromFile(std::string filename)
+{
+	m_pathFile = filename;
+	m_path = std::vector<Vect3f>();
+    CXMLTreeNode newFile;
+    if (!newFile.LoadFile(filename.c_str())) {
+        printf("ERROR loading the file.");
+    }
+    CXMLTreeNode  m = newFile["camera_path"];
+    int count = m.GetNumChildren();
+    for (int i = 0; i < count; ++i) {
+        std::string name = m(i).GetName();
+        if (name == "spline") {
+            std::string l_lineName = m(i).GetPszISOProperty("name", "");
+            int numPoints = m(i).GetNumChildren();
+            for (int j = 0; j < numPoints; ++j) {
+                std::string namePoint = m(i)(j).GetName();
+				if(namePoint == "point")
+				{
+					std::string pointId = m(i)(j).GetPszISOProperty("id", "");
+					Vect3f pos = m(i)(j).GetVect3fProperty("pos", v3fZERO);
+					m_path.push_back(pos);
+				}
+				
+            }
+        }
+    }
+	return true;
 }
