@@ -134,7 +134,7 @@ void CSceneRendererCommandManager::Load(const std::string &FileName)
                 if (name == "render_debug_lights") {
                     CRenderDebugLightsSceneRenderCommand *l_Command = new CRenderDebugLightsSceneRenderCommand(m(i));
                     m_SceneRendererCommands.AddResource(l_Name, l_Command);
-                }
+                } 
                 //if (name == "render_debug_scene") {
                 //	CRenderDebugSceneSceneRendererCommand *l_Command = new CRenderDebugSceneSceneRendererCommand(m(i));
                 //	m_SceneRendererCommands.AddResource(l_Name,l_Command);

@@ -14,6 +14,13 @@
 	D3DXMatrixOrthoLH(l_D3dMatrix, m_OrthoShadowMapSize.x, m_OrthoShadowMapSize.y, 150.f,0.1f ); //se pillan del jodio XML de la luz!! ZFar Valor de atenuacion
 }*/
 
+CDirectionalLight::CDirectionalLight(CXMLTreeNode &Node)
+	: CLight(Node)
+	
+{
+	m_Type = TLightType::OMNI;
+}
+
 void CDirectionalLight::Render(CGraphicsManager *RM)
 {
     //Debug

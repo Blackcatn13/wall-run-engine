@@ -7,6 +7,7 @@
 #include <vector>
 #include "Utils\Defines.h"
 #include <d3dx9.h>
+#include "XML\XMLTreeNode.h"
 
 class CTexture;
 class CRenderableObjectsManager;
@@ -31,7 +32,8 @@ protected:
     float m_EndRangeAttenuation;
     float m_Intensity;
     static TLightType GetLightTypeByName(const std::string &StrLightType);
-
+	std::vector<std::string> renderableDynamicMaps;
+	std::vector<std::string> renderableStaticMaps;
     /**ADVANCED SHADERS**/
     int m_ShadowMapWidth, m_ShadowMapHeigth;
     bool m_GenerateDynamicShadowMap;
@@ -44,6 +46,7 @@ protected:
     std::string m_FormatType;
 public:
     CLight();
+	CLight(CXMLTreeNode &Node);
     virtual ~CLight();
     void Init();
 
@@ -179,7 +182,9 @@ public:
     GET_SET(int, ShadowMapWidth);
     GET_SET(int, ShadowMapHeigth);
     void BeginRenderEffectManagerShadowMap(CEffect *Effect);
-
+	void addShadowRL(std::string rl) {
+		renderableMaps.push_back(rl);
+	}
 };
 
 

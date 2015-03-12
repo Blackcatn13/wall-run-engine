@@ -5,7 +5,8 @@
 #include "Renderable\RenderableObjectsManager.h"
 #include "Texture\Texture.h"
 #include "Core_Utils/MemLeaks.h"
-
+#include "Renderable\RenderableObjectsLayersManager.h"
+#include "Core\Core.h"
 
 CLight::CLight()
     : m_StaticShadowMap(NULL),
@@ -15,6 +16,60 @@ CLight::CLight()
       m_GenerateStaticShadowMap (false),
       m_MustUpdateStaticShadowMap (false)
 {
+}
+
+CLight::CLight(CXMLTreeNode &Node)
+	: m_Color (Node.GetVect3fProperty("color", (0.0f, 0.0f, 0.0f)))
+	, m_DynamicShadowMap (NULL)
+	, m_EndRangeAttenuation (Node.GetFloatProperty("att_end_range", 0.0f))
+	, m_FormatType (Node.GetPszISOProperty("shadow_map_format_type", "", false))
+	, m_GenerateDynamicShadowMap (Node.GetBoolProperty("generate_shadow_map", false))
+	, m_GenerateStaticShadowMap (Node.GetBoolProperty("generate_static_shadow_map", false))
+	, m_Intensity (Node.GetFloatProperty("intensity", 0.0f))
+	, m_MustUpdateStaticShadowMap (Node.GetBoolProperty("update_static_shadow_map", false, false))
+	, m_Name (Node.GetPszISOProperty("name", ""))
+	, m_ProjectionShadowMap (Mat44f())
+	, m_RenderShadows (false)
+	, m_ShadowMapHeigth (Node.GetIntProperty("shadow_map_height", 0, false))
+	, m_ShadowMapWidth (Node.GetIntProperty("shadow_map_width", 0, false))
+	, m_StartRangeAttenuation (Node.GetFloatProperty("att_start_range", 0.0f))
+	, m_StaticShadowMap (NULL)
+	, m_ViewShadowMap (Mat44f())
+{
+	m_Position = Node.GetVect3fProperty("pos", (0.0f, 0.0f, 0.0f));
+	SetShadowMaskTexture(Node.GetPszISOProperty("shadow_texture_mask", "", false));
+	int childs = Node.GetNumChildren();
+	CRenderableObjectsManager* l_RenderableObjectManager;
+	for (int i = 0; i < childs; ++i) {
+		if (std::string("dynamic") == Node(i).GetName()) {
+			int dynamicChilds = Node(i).GetNumChildren();
+			if (dynamicChilds >= 0) {
+				for (int j = 0; j < dynamicChilds; ++j) {
+					renderableDynamicMaps.push_back(Node(i)(j).GetPszISOProperty("renderable_objects_manager", "", false));
+					l_RenderableObjectManager = RENDLM->GetResource(Node(i)(j).GetPszISOProperty("renderable_objects_manager", "", false));
+					m_DynamicShadowMapRenderableObjectsManagers.push_back(l_RenderableObjectManager);
+				}
+			} else {
+				renderableDynamicMaps.push_back(Node(i).GetPszISOProperty("renderable_objects_manager", "", false));
+				l_RenderableObjectManager = RENDLM->GetResource(Node(i).GetPszISOProperty("renderable_objects_manager", "", false));
+				m_DynamicShadowMapRenderableObjectsManagers.push_back(l_RenderableObjectManager);
+			}
+		}
+		if (std::string("static") == Node(i).GetName()) {
+			int dynamicChilds = Node(i).GetNumChildren();
+			if (dynamicChilds >= 0) {
+				for (int j = 0; j < dynamicChilds; ++j) {
+					renderableStaticMaps.push_back(Node(i)(j).GetPszISOProperty("renderable_objects_manager", "", false));
+					l_RenderableObjectManager = RENDLM->GetResource(Node(i)(j).GetPszISOProperty("renderable_objects_manager", "", false));
+					m_StaticShadowMapRenderableObjectsManagers.push_back(l_RenderableObjectManager);
+				}
+			} else {
+				renderableStaticMaps.push_back(Node(i).GetPszISOProperty("renderable_objects_manager", "", false));	
+				l_RenderableObjectManager = RENDLM->GetResource(Node(i).GetPszISOProperty("renderable_objects_manager", "", false));
+				m_StaticShadowMapRenderableObjectsManagers.push_back(l_RenderableObjectManager);
+			}
+		}
+	}
 }
 
 void CLight::Init()

@@ -3,6 +3,7 @@
 #include "Light.h"
 #include "Math\Vector3.h"
 #include "Math\Vector2.h"
+#include "XML\XMLTreeNode.h"
 
 
 class CGraphicsManager;
@@ -16,6 +17,7 @@ protected:
 
 public:
     CDirectionalLight() : CLight() {}
+	CDirectionalLight(CXMLTreeNode &Node);
     void SetDirection(const /*CPoint3D*/ Vect3f &Direction)
     {
         m_Direction = Direction;
