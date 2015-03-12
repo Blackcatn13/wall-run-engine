@@ -5,8 +5,7 @@
 
 CScriptedController::CScriptedController()
 {
-    SCRIPTM->RunFile(".\\Data\\scripted_controller.lua");
-	//SCRIPTM->RunFile(".\\Data\\lua\\PlayerController.lua");	
+    SCRIPTM->RunFile(".\\Data\\scripted_controller.lua");	
 }
 
 CScriptedController::~CScriptedController() {}
@@ -20,9 +19,9 @@ void CScriptedController::Update(float dt)
 	char l_TextCameras[256];
 	_snprintf_s(l_TextCameras, 256, 256, "on_update_cameras_lua(%f)", dt);
 	SCRIPTM->RunCode(l_TextCameras);
-	
-    //_snprintf_s(l_Text, 256, 256, "on_update_player_controller(%f)", dt);
-    //SCRIPTM->RunCode(l_Text);
+	char l_TextPlayer[256];
+	_snprintf_s(l_TextPlayer, 256, 256, "on_update_player_lua(%f)", dt);
+	SCRIPTM->RunCode(l_TextPlayer);
 }
 
 void CScriptedController::Render(CGraphicsManager *RM)

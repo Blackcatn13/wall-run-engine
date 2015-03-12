@@ -3,6 +3,7 @@
 #include "Utils\PhysicUserData.h"
 #include "Core\Core.h"
 #include "Utils\Defines.h"
+#include "Math\Color.h"
 #include "PhysicsManager.h"
 #include "ActionToInput.h"
 #include "Camera\CameraController.h"
@@ -16,6 +17,7 @@
 
 CPlayerController::CPlayerController()
     : CObject3D(),
+	  m_isGrounded(false),
       m_Gravity(2),
       m_GravityJump(2),
       m_Speed (15),
@@ -26,11 +28,12 @@ CPlayerController::CPlayerController()
 {
     m_PhysicUserData = new CPhysicUserData("Player");
     m_PhysicUserData->SetPaint(true);
-    m_PhysicController = new CPhysicController(0.25, 0.5, 1.047, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, Vect3f(0, 5, 0), -m_Gravity);
-    PHYSXM->AddPhysicController(m_PhysicController);
-    CRenderableObject* malla = RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky");
-    malla->SetYaw(m_fYaw);
-    malla->SetPosition(m_PhysicController->GetPosition());
+    m_PhysicController = new CPhysicController(0.25, 0.5, 1.047, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, Vect3f(0, 5, 0), 0);
+	m_PhysicController->UseGravity(false);
+	PHYSXM->AddPhysicController(m_PhysicController);
+    //CRenderableObject* malla = RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky");
+    //malla->SetYaw(m_fYaw);
+    //malla->SetPosition(m_PhysicController->GetPosition());
 }
 
 CPlayerController::~CPlayerController()
@@ -44,12 +47,14 @@ void CPlayerController::Move(float dt)
     //En lua.
 }
 
-bool CPlayerController::IsGrounded()
+/*bool CPlayerController::IsGrounded()
 {
 	SCollisionInfo info = SCollisionInfo();
 	CPhysicUserData* hit = CCORE->GetPhysicsManager()->RaycastClosestActor(Vect3f(m_Position.x, m_Position.y-0, m_Position.z), 
 		Vect3f(0,-1,0), 0xffffffff, info);
-	if (hit != NULL && info.m_fDistance <= 0.1)
+	if (hit != NULL && info.m_fDistance <= 0.1){
+		m_isJumping = false;
 		return true;
+	}
 	else return false;
-}
+}*/

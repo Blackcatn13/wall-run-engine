@@ -133,7 +133,7 @@ function on_update_scripted_controller(l_ElapsedTime)
 		
 	end]]
 	
-	local player = coreInstance:get_player_controller();
+--[[	local player = coreInstance:get_player_controller();
 	player.m_JumpForce = 1;
 	if act2in:do_action_from_lua("ChangeDimension") then
 		if player.m_is3D == true then 
@@ -182,12 +182,6 @@ function on_update_scripted_controller(l_ElapsedTime)
 			mov = mov - Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
 		end
 	end
-	--[[if player:IsGrounded() == true then
-		--player.m_isJumping = false;
-		--coreInstance:trace("PUC SALTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR");
-	else
-		--coreInstance:trace("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-	end]]
 	if player.m_isJumping == true then
 		if player.m_CurrentJumpForce < 0 then
 			player.m_CurrentJumpForce = player.m_CurrentJumpForce - (player.m_Gravity * l_ElapsedTime);
@@ -203,17 +197,17 @@ function on_update_scripted_controller(l_ElapsedTime)
 	end
 	player.m_PhysicController:move(mov,l_ElapsedTime);
 	player:set_position(player.m_PhysicController:get_position());
-	move_character_controller_mesh(player, player:get_position())
+	move_character_controller_mesh(player, player:get_position())]]
 	
 	return 0;
 end
 
-function move_character_controller_mesh(_player, _position)
+--[[function move_character_controller_mesh(_player, _position)
 	local mesh = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky")
 	mesh:set_yaw(_player:get_yaw())
-	mesh:set_position(_position)
+	mesh:set_position(_position)]]
 --[[CRenderableObject* malla = RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky");
     malla->SetYaw(m_fYaw);
     malla->SetPosition(m_PhysicController->GetPosition());--]]
 
-end
+--end

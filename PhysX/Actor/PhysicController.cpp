@@ -37,7 +37,7 @@ CPhysicController::CPhysicController ( float _fRadius, float _fHeight, float _fS
     , m_fStepOffsetControler		( _fStepOffset )
     , m_fGravity					( _fGravity )
     , m_uCollisionGroups			( _uiCollisionGroups )
-    , m_bUseGravity					( true)
+    , m_bUseGravity					( true )
     , m_Type						( ::CAPSULE )
 
 {
@@ -173,6 +173,41 @@ void CPhysicController::Jump(float ammount)
     m_Jump.StartJump(ammount);
 }
 
+void CPhysicController::MovePlayer ( const Vect3f& _vDirection, float _ElapsedTime, bool &_isGrounded )
+{
+    assert ( m_pPhXController != NULL );
+    /*float l_fDirectionY = _vDirection.y;
+    if ( m_bUseGravity ) {
+        l_fDirectionY += ( m_fGravity * _ElapsedTime );
+    }*/
+    NxVec3 l_Direction ( _vDirection.x, _vDirection.y, _vDirection.z);
+    NxF32 sharpness = 1.0f;
+    NxU32 collisionFlags = 0;
+    //NxU32 Collision = 0;
+    /*float heightDelta = m_Jump.GetHeight( _ElapsedTime );
+    if ( heightDelta != 0.f ) {
+        l_Direction.y += heightDelta;
+        //l_Direction.x *= 0.3f;
+        //l_Direction.z *= 0.3f;
+    }*/
+    int mask = 1 << ECG_PLAYER;
+    mask |= 1 << ECG_DYNAMIC_OBJECTS;
+    mask |= 1 << ECG_STATIC_OBJECTS;
+    mask |= 1 << ECG_ESCENE;
+    mask |= 1 << ECG_ENEMY;
+    mask |= 1 << ECG_LIMITS;
+    m_pPhXController->move( l_Direction , mask, 0.000001f, collisionFlags, sharpness );
+    if ( ( collisionFlags & NXCC_COLLISION_DOWN )){// || ( collisionFlags & NXCC_COLLISION_UP ) ) {
+        //m_Jump.StopJump();
+		_isGrounded = true;
+    }else
+		_isGrounded = false;
+    NxExtendedVec3 tmp;
+    tmp = m_pPhXController->getDebugPosition();
+    SetPosition ( Vect3f ( (float) tmp.x, (float) tmp.y, (float) tmp.z ) );
+    CObject3D::InitMat44();
+}
+
 void CPhysicController::Move ( const Vect3f& _vDirection, float _ElapsedTime )
 {
     assert ( m_pPhXController != NULL );
@@ -180,15 +215,15 @@ void CPhysicController::Move ( const Vect3f& _vDirection, float _ElapsedTime )
     if ( m_bUseGravity ) {
         l_fDirectionY += ( m_fGravity * _ElapsedTime );
     }
-    NxVec3 l_Direction ( _vDirection.x, l_fDirectionY, _vDirection.z);
+    NxVec3 l_Direction ( _vDirection.x, _vDirection.y, _vDirection.z);
     NxF32 sharpness = 1.0f;
     NxU32 collisionFlags = 0;
     //NxU32 Collision = 0;
     float heightDelta = m_Jump.GetHeight( _ElapsedTime );
     if ( heightDelta != 0.f ) {
         l_Direction.y += heightDelta;
-        /*l_Direction.x *= 0.3f;
-        l_Direction.z *= 0.3f;*/
+        //l_Direction.x *= 0.3f;
+        //l_Direction.z *= 0.3f;
     }
     int mask = 1 << ECG_PLAYER;
     mask |= 1 << ECG_DYNAMIC_OBJECTS;
@@ -199,7 +234,7 @@ void CPhysicController::Move ( const Vect3f& _vDirection, float _ElapsedTime )
     m_pPhXController->move( l_Direction , mask, 0.000001f, collisionFlags, sharpness );
     if ( ( collisionFlags & NXCC_COLLISION_DOWN ) || ( collisionFlags & NXCC_COLLISION_UP ) ) {
         m_Jump.StopJump();
-    }
+	}
     NxExtendedVec3 tmp;
     tmp = m_pPhXController->getDebugPosition();
     SetPosition ( Vect3f ( (float) tmp.x, (float) tmp.y, (float) tmp.z ) );

@@ -40,6 +40,7 @@ public:
 
     //---- Main Functions ------------------------------------------------
     void						Move					( const Vect3f& _vDirection, float _fElapsedTime );
+	void						MovePlayer				( const Vect3f& _vDirection, float _fElapsedTime, bool &_isGrounded );
     void						Jump					( float _fAmmount );
     void						CreateController		( NxController* _pController, NxScene* _PScene );
 
