@@ -193,3 +193,5 @@ UpgradeLog*.htm
 FakesAssemblies/
 /.project
 *.fxo
+*.sublime-workspace
+Resultados-Generar.txt
