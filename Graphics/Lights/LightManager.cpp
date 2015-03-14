@@ -72,3 +72,10 @@ void CLightManager::Reload()
     Destroy();
     Load(m_File);
 }
+
+void CLightManager::ReloadRO()
+{
+    for (auto it = m_Resources.begin(); it != m_Resources.end(); ++it) {
+        it->second->ReloadRO();
+    }
+}

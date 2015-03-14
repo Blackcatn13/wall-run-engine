@@ -19,7 +19,7 @@ public:
     void Load(const std::string &FileName);
     void Render(CGraphicsManager *RenderManager);
     void Reload();
-
+    void ReloadRO();
 };
 
 #endif

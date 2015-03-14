@@ -176,4 +176,17 @@ void CLight::BeginRenderEffectManagerShadowMap(CEffect *Effect)
 }
 
 
-
+void CLight::ReloadRO()
+{
+    m_StaticShadowMapRenderableObjectsManagers.clear();
+    m_DynamicShadowMapRenderableObjectsManagers.clear();
+    CRenderableObjectsManager* l_RenderableObjectManager;
+    for (int i = 0; i < renderableDynamicMaps.size(); ++i) {
+        l_RenderableObjectManager = RENDLM->GetResource(renderableDynamicMaps[i]);
+        m_DynamicShadowMapRenderableObjectsManagers.push_back(l_RenderableObjectManager);
+    }
+    for (int i = 0; i < renderableStaticMaps.size(); ++i) {
+        l_RenderableObjectManager = RENDLM->GetResource(renderableStaticMaps[i]);
+        m_StaticShadowMapRenderableObjectsManagers.push_back(l_RenderableObjectManager);
+    }
+}

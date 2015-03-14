@@ -182,6 +182,7 @@ public:
     GET_SET(int, ShadowMapWidth);
     GET_SET(int, ShadowMapHeigth);
     void BeginRenderEffectManagerShadowMap(CEffect *Effect);
+    void ReloadRO();
 };
 
 
