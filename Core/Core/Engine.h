@@ -23,10 +23,14 @@ public:
     ~CEngine(void);
     void Update();
     void Render();
-    void Init(CProcess *p, std::string ConfFile, HWND handler);
+    void Init(CProcess *p, HWND handler);
     void DeInit();
-    void ParseConfFile();
+    void ParseConfFile(std::string file);
     void RenderScene();
+    CONFIG_INFO getConfig()
+    {
+        return m_Conf_info;
+    }
 };
 
 

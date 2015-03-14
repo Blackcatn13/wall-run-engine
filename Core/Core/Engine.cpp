@@ -20,18 +20,18 @@
 #include "RenderableCommands\SceneRendererCommandManager.h"
 #include "Core_Utils/MemLeaks.h"
 
+#define APPLICATION_NAME	"VIDEOGAME"
+
 CEngine::~CEngine(void)
 {
     DeInit();
 }
 
-void CEngine::Init(CProcess *p, std::string ConfFile, HWND handler)
+void CEngine::Init(CProcess *p, HWND handler)
 {
     m_Process = p;
     m_Core = CCORE;
     m_Core->SetProcess(m_Process);
-    m_ConfFile = ConfFile;
-    ParseConfFile();
     m_Core->setConfig (m_Conf_info);
     m_Core->setHandler (handler);
     m_Core->Init (handler);
@@ -113,8 +113,9 @@ void CEngine::RenderScene()
     m_Process->Render();
 }
 
-void CEngine::ParseConfFile()
+void CEngine::ParseConfFile(std::string file)
 {
+    m_ConfFile = file;
     CXMLTreeNode File;
     if (!File.LoadFile(m_ConfFile.c_str())) {
         // log error

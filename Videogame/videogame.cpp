@@ -12,6 +12,7 @@
 #include "cal3d\global.h"
 #include "cal3d\coremodel.h"
 #include "cal3d\model.h"
+#include "Core\EngineDefs.h"
 #include "Core_Utils\MemLeaks.h"
 
 #define APPLICATION_NAME	"VIDEOGAME"
@@ -82,18 +83,20 @@ int APIENTRY WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance, LPSTR _lpCm
     RegisterClassEx( &wc );
     try {
         // Create the application's window
-        HWND hWnd = CreateWindow(	APPLICATION_NAME, APPLICATION_NAME, WS_OVERLAPPEDWINDOW, 100, 100, 800, 600, NULL, NULL, wc.hInstance, NULL );
+        m_Engine = new CEngine();
+        m_Engine->ParseConfFile(".\\Data\\Config.xml");
+        CONFIG_INFO l_Conf = m_Engine->getConfig();
+        HWND hWnd = CreateWindow(APPLICATION_NAME, APPLICATION_NAME, WS_OVERLAPPEDWINDOW, l_Conf.Win_posX, l_Conf.Win_posY, l_Conf.Screen_Width, l_Conf.Screen_Heigth, NULL, NULL, wc.hInstance, NULL );
         // Añadir aquí el Init de la applicacioón
         ShowWindow( hWnd, SW_SHOWDEFAULT );
         UpdateWindow( hWnd );
         MSG msg;
         ZeroMemory( &msg, sizeof(msg) );
-        m_Engine = new CEngine();
         //new CVideoGame_Process()
         //new CTest_Process()
         CProcess *proc = new CTestGameplay();
         //CProcess *proc = new CTestCommands();
-        m_Engine->Init(proc, ".\\Data\\Config.xml", hWnd);
+        m_Engine->Init(proc, hWnd);
         proc->Init();
         // Añadir en el while la condición de salida del programa de la aplicación
         while ( msg.message != WM_QUIT ) {
