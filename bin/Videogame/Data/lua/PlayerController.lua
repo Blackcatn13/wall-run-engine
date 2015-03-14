@@ -13,7 +13,7 @@ function on_update_player_lua(l_ElapsedTime)
 	player.m_Gravity = 0.2;
 	player.m_GravityJump = 0.2;
 	player.m_Speed = 8;
-	player.m_JumpForce = 0.2;
+	player.m_JumpForce = 0.3;
 	--////////////////////////////////////////////////////////
 	
 	if act2in:do_action_from_lua("ChangeDimension") then
@@ -73,7 +73,7 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		mov.y = player.m_CurrentJumpForce;
 	end	
-	if act2in:do_action_from_lua("Jump") then--) and (player.m_isGrounded == true) then
+	if (act2in:do_action_from_lua("Jump")) and (player.m_isJumping == false) then
 		coreInstance:trace("isGrounded: ");
 		player.m_isJumping = true;
 		player.m_CurrentJumpForce = player.m_JumpForce;

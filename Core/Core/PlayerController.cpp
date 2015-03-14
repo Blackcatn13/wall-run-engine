@@ -49,6 +49,8 @@ void CPlayerController::Move(float dt)
 void CPlayerController::IsGrounded(Vect3f direction, float dt)
 {
     bool result = m_PhysicController->MovePlayer(direction, dt);
-    if (result) m_isGrounded = true;
-    else m_isGrounded = false;
+    if (result) {
+        m_isJumping = false;
+        m_isGrounded = true;
+    } else m_isGrounded = false;
 }
