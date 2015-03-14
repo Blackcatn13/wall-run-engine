@@ -3,6 +3,8 @@ function on_update_player_lua(l_ElapsedTime)
 	local luaUtil = CCMathLuaUtils();
 	local act2in = coreInstance:get_action_to_input();
 	local cam_Controller = coreInstance.m_CameraController;
+	local active_camera = cam_Controller:get_active_camera();
+	local camObject = active_camera.m_pObject3D;
 	
 	local player = coreInstance:get_player_controller();
 	--////////////////////////////////////////////////////////
@@ -23,8 +25,7 @@ function on_update_player_lua(l_ElapsedTime)
 			coreInstance.m_CameraController:set_active_camera("3DCam");
 		end
 	end
-	local active_camera = cam_Controller:get_active_camera();
-	local camObject = active_camera.m_pObject3D;
+	
 	local dir3D = active_camera:get_direction();
 	local dirYaw = camObject:get_yaw();
 	local dirNor = Vect3f(math.cos(dirYaw + (math.pi/2)), 0, (math.sin(dirYaw + (math.pi/2))));
@@ -62,6 +63,8 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 	end
 	
+	mov.y = -player.m_Gravity/10;
+	
 	if player.m_isJumping == true then
 		if player.m_CurrentJumpForce < 0 then
 			player.m_CurrentJumpForce = player.m_CurrentJumpForce - (player.m_Gravity * l_ElapsedTime);
@@ -69,15 +72,15 @@ function on_update_player_lua(l_ElapsedTime)
 			player.m_CurrentJumpForce = player.m_CurrentJumpForce - (player.m_GravityJump * l_ElapsedTime);
 		end
 		mov.y = player.m_CurrentJumpForce;
-	else
-		mov.y = 0.1;---player.m_Gravity/10;
-	end
-	if (act2in:do_action_from_lua("Jump")) and (player.m_isGrounded == true) then
+	end	
+	if act2in:do_action_from_lua("Jump") then--) and (player.m_isGrounded == true) then
+		coreInstance:trace("isGrounded: ");
 		player.m_isJumping = true;
 		player.m_CurrentJumpForce = player.m_JumpForce;
 		mov.y = player.m_CurrentJumpForce;
 	end
-	player.m_PhysicController:movePlayer(mov,l_ElapsedTime,player.m_isGrounded);
+	
+	player:is_grounded(mov,l_ElapsedTime);
 	player:set_position(player.m_PhysicController:get_position());
 	--move_character_controller_mesh(player, player:get_position());
 	
