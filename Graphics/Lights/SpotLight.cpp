@@ -9,10 +9,20 @@
 #include "Core_Utils/MemLeaks.h"
 
 
-CSpotLight::CSpotLight() {}
+CSpotLight::CSpotLight()
+    : CDirectionalLight()
+    , m_Angle(0)
+    , m_FallOff(0)
+{}
 
-
-void CSpotLight::SetShadowMap(CGraphicsManager *RM)
+CSpotLight::CSpotLight(CXMLTreeNode &Node)
+    : CDirectionalLight(Node)
+    , m_Angle(Node.GetFloatProperty("angle", 0.0f, false))
+    , m_FallOff(Node.GetFloatProperty("fall_off", 0.0f, false))
+{
+    m_Type = TLightType::SPOT;
+}
+void CSpotLight::SetShadowMap(CGraphicsManager * RM)
 {
     CObject3D *l_Object = new CObject3D(GetPosition(), 0.f, 0.f);
     m_Camera = CFPSCamera(0.1, GetEndRangeAttenuation(), 45.0f * D3DX_PI / 180.0f, 1.f, l_Object);

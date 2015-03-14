@@ -179,5 +179,5 @@
 	<static_mesh name="SpongePicky" filename=".\Data\level5\meshes//SpongePicky.mesh"/>
 	<static_mesh name="Enemy2" filename=".\Data\level5\meshes//Enemy2.mesh"/>
 	<static_mesh name="Enemy1" filename=".\Data\level5\meshes//Enemy1.mesh"/>
-	<static_mesh name="Enemy3" filename=".\Data\level5\meshes//Enemy3.mesh"/>
+	<static_mesh name="Enemy3" filename=".\Data\level5\meshes//Enemy3.mesh"/<name />
 </static_meshes>
