@@ -19,7 +19,7 @@ public:
     }
 
     CTexture * GetResource(const std::string &Name);
-
+    void RemoveResource(const std::string &Name);
     void Reload ();
 };
 

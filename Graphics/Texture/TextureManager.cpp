@@ -25,3 +25,11 @@ CTexture * CTextureManager::GetResource(const std::string &Name)
         }
     }
 }
+
+void CTextureManager::RemoveResource(const std::string &Name)
+{
+    auto it = m_Resources.find(Name);
+    if (it != m_Resources.end()) {
+        m_Resources.erase(it);
+    }
+}

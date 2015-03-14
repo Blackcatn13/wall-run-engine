@@ -12,7 +12,6 @@
 
 CStagedTexturedRendererCommand::CStagedTexturedRendererCommand(CXMLTreeNode &atts)
 {
-	
     for (int i = 0; i < atts.GetNumChildren(); ++i) {
         std::string name = atts(i).GetName();
         if (name == "dynamic_texture") {
@@ -36,10 +35,9 @@ CStagedTexturedRendererCommand::CStagedTexturedRendererCommand(CXMLTreeNode &att
                 l_Texture = new CTexture();
                 l_Texture->Create(l_TextureName, l_Width, l_Height, 1, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, l_Texture->GetFormatTypeFromString(l_FormatType));
                 AddStageTexture(l_StageId, l_Texture);
-				TEXTM->AddResource(l_TextureName, l_Texture);
+                TEXTM->AddResource(l_TextureName, l_Texture);
             }
-            
-			//AddStageTexture(l_StageId, l_Texture);
+            //AddStageTexture(l_StageId, l_Texture);
         } else  if (name == "texture") {
             CTexture* l_Texture;
             Vect3f color = atts.GetVect3fProperty("color", v3fZERO, false);
@@ -81,9 +79,9 @@ void CStagedTexturedRendererCommand::ActivateTextures()
 
 CStagedTexturedRendererCommand::~CStagedTexturedRendererCommand()
 {
-    /*for (int i = 0; i < m_StageTextures.size(); ++i) {
-        CHECKED_DELETE (m_StageTextures[i].m_Texture);
-    }*/
+    for (int i = 0; i < m_StageTextures.size(); ++i) {
+        TEXTM->RemoveResource(m_StageTextures[i].m_Texture->getName());
+    }
     m_StageTextures.clear();
 }
 void CStagedTexturedRendererCommand::AddStageTexture(int StageId, CTexture *Texture)

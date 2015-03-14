@@ -32,6 +32,10 @@ CSetRenderTargetSceneRendererCommand::CSetRenderTargetSceneRendererCommand(CXMLT
      }*/
 }
 
+CSetRenderTargetSceneRendererCommand::~CSetRenderTargetSceneRendererCommand()
+{
+}
+
 void CSetRenderTargetSceneRendererCommand::Execute(CGraphicsManager &RM)
 {
     for (int i = 0; i < m_StageTextures.size(); ++i) {
