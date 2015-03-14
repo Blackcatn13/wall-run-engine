@@ -30,6 +30,7 @@ void CTextureManager::RemoveResource(const std::string &Name)
 {
     auto it = m_Resources.find(Name);
     if (it != m_Resources.end()) {
+        CHECKED_DELETE(it->second);
         m_Resources.erase(it);
     }
 }

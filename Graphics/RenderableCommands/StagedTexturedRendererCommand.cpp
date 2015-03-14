@@ -30,13 +30,12 @@ CStagedTexturedRendererCommand::CStagedTexturedRendererCommand(CXMLTreeNode &att
             }
             CTexture * l_Texture;
             if (TEXTM->ExisteResource(l_TextureName)) {
-                l_Texture = TEXTM->GetResource(l_TextureName);
-            } else {
-                l_Texture = new CTexture();
-                l_Texture->Create(l_TextureName, l_Width, l_Height, 1, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, l_Texture->GetFormatTypeFromString(l_FormatType));
-                AddStageTexture(l_StageId, l_Texture);
-                TEXTM->AddResource(l_TextureName, l_Texture);
+                TEXTM->RemoveResource(l_TextureName);
             }
+            l_Texture = new CTexture();
+            l_Texture->Create(l_TextureName, l_Width, l_Height, 1, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, l_Texture->GetFormatTypeFromString(l_FormatType));
+            AddStageTexture(l_StageId, l_Texture);
+            TEXTM->AddResource(l_TextureName, l_Texture);
             //AddStageTexture(l_StageId, l_Texture);
         } else  if (name == "texture") {
             CTexture* l_Texture;
@@ -48,6 +47,9 @@ CStagedTexturedRendererCommand::CStagedTexturedRendererCommand(CXMLTreeNode &att
             uint32 l_Width, l_Height;
             GRAPHM->GetWidthAndHeight(l_Width, l_Height);
             if (atts(i).GetBoolProperty("load_file", false, false)) {
+                if (TEXTM->ExisteResource(l_TextureName)) {
+                    TEXTM->RemoveResource(l_TextureName);
+                }
                 l_Texture = new CTexture();
                 l_Texture->Load(l_TextureName);
                 TEXTM->AddResource(l_TextureName, l_Texture);
@@ -79,9 +81,6 @@ void CStagedTexturedRendererCommand::ActivateTextures()
 
 CStagedTexturedRendererCommand::~CStagedTexturedRendererCommand()
 {
-    for (int i = 0; i < m_StageTextures.size(); ++i) {
-        TEXTM->RemoveResource(m_StageTextures[i].m_Texture->getName());
-    }
     m_StageTextures.clear();
 }
 void CStagedTexturedRendererCommand::AddStageTexture(int StageId, CTexture *Texture)
