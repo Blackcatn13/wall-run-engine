@@ -10,6 +10,7 @@ CTexture::CTexture()
     , m_OldRenderTarget(NULL)
     , m_RenderTargetTexture(NULL)
     , m_OldDepthStencilRenderTarget(NULL)
+    , m_reloadable(true)
 {
 }
 
@@ -21,8 +22,11 @@ bool CTexture::Load(const std::string &FileName)
 
 bool CTexture::Reload()
 {
-    Unload();
-    return LoadFile();
+    if (m_reloadable) {
+        Unload();
+        return LoadFile();
+    }
+    return false;
 }
 
 void CTexture::Activate(size_t StageId)
@@ -108,6 +112,7 @@ bool CTexture::Create(const std::string &Name, unsigned int Width, unsigned int
                       Height, unsigned int MipMaps, TUsageType UsageType, TPoolType PoolType,
                       TFormatType FormatType)
 {
+    m_reloadable = false;
     setName(Name);
     D3DPOOL l_Pool = D3DPOOL_DEFAULT;
     DWORD l_UsageType = D3DUSAGE_DYNAMIC;

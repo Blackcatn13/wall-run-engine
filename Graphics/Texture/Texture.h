@@ -16,6 +16,7 @@ protected:
     std::string m_FileName;
     virtual bool LoadFile();
     void Unload();
+    bool m_reloadable;
 
     //////
     unsigned int m_Width, m_Height;

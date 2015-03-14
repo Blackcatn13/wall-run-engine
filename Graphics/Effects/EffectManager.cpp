@@ -11,7 +11,6 @@
 #include "RenderableCommands\SceneRendererCommandManager.h"
 #include "Core_Utils/MemLeaks.h"
 #include "GraphicsManager.h"
-#include "Lights\LightManager.h"
 
 CEffectManager::CEffectManager()
 {
@@ -175,7 +174,6 @@ void CEffectManager::Reload()
     RENDTECHM->Reload();
     RENDLM->Reload();
     SCENRENDCOMM->setReload();
-    LIGHTM->ReloadRO();
 }
 std::string CEffectManager::GetTechniqueEffectNameByVertexDefault(unsigned short VertexType)
 {

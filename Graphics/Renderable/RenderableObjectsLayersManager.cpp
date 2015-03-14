@@ -6,6 +6,7 @@
 #include "AnimatedModels\AnimatedInstanceModel.h"
 #include "StaticMeshes\StaticMeshManager.h"
 #include "Core_Utils/MemLeaks.h"
+#include "Lights\LightManager.h"
 
 CRenderableObjectsLayersManager ::CRenderableObjectsLayersManager()
 {
@@ -56,6 +57,7 @@ void CRenderableObjectsLayersManager::Reload()
     SMESHM->Reload();
     Load(m_FileName);
     Load(m_FileName2);
+    LIGHTM->ReloadRO();
 }
 
 CRenderableObjectsManager * CRenderableObjectsLayersManager::GetRenderableObjectManager(CXMLTreeNode &Node)
