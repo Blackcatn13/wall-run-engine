@@ -94,7 +94,7 @@ void CTestGameplay::Init()
     //m_RenderableObject = RENDM->GetResourcesMap().find("Box005")->second.m_Value;
     m_3DCamera = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_Object3D, 50);
     m_3DCamera->SetTypeCamera(CCamera::TC_3DCAM);
-    //m_3DCamera->LoadPathFromFile(".\\Data\\camera_path.xml");
+    m_3DCamera->LoadPathFromFile(".\\Data\\camera_path.xml");
     m_2DCamera = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_Object2D, 50);
     m_2DCamera->SetTypeCamera(CCamera::TC_2DCAM);
     m_ThPSCamera = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS, 200);
