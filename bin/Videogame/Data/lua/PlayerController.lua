@@ -1,5 +1,6 @@
+local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 function on_update_player_lua(l_ElapsedTime)
-	local coreInstance = CCoreLuaWrapper().m_CoreInstance;
+	--local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 	local luaUtil = CCMathLuaUtils();
 	local act2in = coreInstance:get_action_to_input();
 	local cam_Controller = coreInstance.m_CameraController;
@@ -10,10 +11,10 @@ function on_update_player_lua(l_ElapsedTime)
 	--////////////////////////////////////////////////////////
 	-- PARAMETERS
 	--////////////////////////////////////////////////////////
-	player.m_Gravity = 0.2;						--Gravedad que afecta al personaje cuando cae.
-	player.m_GravityJump = 0.2;					--Gravedad que afecta cuando el personaje está impulsándose hacia arriba en el salto.
+	player.m_Gravity = 1;						--Gravedad que afecta al personaje cuando cae.
+	player.m_GravityJump = 1;					--Gravedad que afecta cuando el personaje está impulsándose hacia arriba en el salto.
 	player.m_Speed = 8;							--Velocidad de movimiento.
-	player.m_JumpForce = 0.3;					--Fuerza de salto, impulso.
+	player.m_JumpForce = 0.5;					--Fuerza de salto, impulso.
 	player.m_PhysicController:set_step(0.3); 	--Altura que puede superar (escalones).
 	--////////////////////////////////////////////////////////
 	
@@ -64,7 +65,7 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 	end
 	
-	mov.y = -player.m_Gravity/10;
+	mov.y = -player.m_Gravity;
 	
 	if player.m_isJumping == true then
 		if player.m_CurrentJumpForce < 0 then
@@ -78,11 +79,12 @@ function on_update_player_lua(l_ElapsedTime)
 		player.m_isJumping = true;
 		player.m_CurrentJumpForce = player.m_JumpForce;
 		mov.y = player.m_CurrentJumpForce;
+		mov.z = player.m_CurrentJumpForce
 	end
 	
 	player:is_grounded(mov,l_ElapsedTime);
 	player:set_position(player.m_PhysicController:get_position());
-	--move_character_controller_mesh(player, player:get_position());
+	move_character_controller_mesh(player, player:get_position());
 	
 	return 0;
 end
