@@ -40,7 +40,8 @@ public:
 
     //---- Main Functions ------------------------------------------------
     void						Move					( const Vect3f& _vDirection, float _fElapsedTime );
-    void						Jump					( float _fAmmount );
+    bool						MovePlayer				( const Vect3f& _vDirection, float _fElapsedTime );
+	void						Jump					( float _fAmmount );
     void						CreateController		( NxController* _pController, NxScene* _PScene );
 
     //---- Functions -----------------------------------------------------
@@ -75,7 +76,8 @@ public:
     }
 
     void						SetActive               ( bool _bActive );
-
+	void						SetStepOffset			(float _skin);
+	
     float						GetRadius				( void ) const
     {
         return m_fRadiusControler;

@@ -206,6 +206,29 @@ void CPhysicController::Move ( const Vect3f& _vDirection, float _ElapsedTime )
     CObject3D::InitMat44();
 }
 
+bool CPhysicController::MovePlayer ( const Vect3f& _vDirection, float _ElapsedTime )
+{
+    assert ( m_pPhXController != NULL );
+    bool l_isGrounded = false;
+    NxVec3 l_Direction ( _vDirection.x, _vDirection.y, _vDirection.z);
+    NxF32 sharpness = 1.0f;
+    NxU32 collisionFlags = 0;
+    int mask = 1 << ECG_PLAYER;
+    mask |= 1 << ECG_DYNAMIC_OBJECTS;
+    mask |= 1 << ECG_STATIC_OBJECTS;
+    mask |= 1 << ECG_ESCENE;
+    mask |= 1 << ECG_ENEMY;
+    mask |= 1 << ECG_LIMITS;
+    m_pPhXController->move( l_Direction , mask, 0.000001f, collisionFlags, sharpness );
+    if ( ( collisionFlags & NXCC_COLLISION_DOWN )) // || ( collisionFlags & NXCC_COLLISION_UP ) ) {
+        l_isGrounded = true;
+    NxExtendedVec3 tmp;
+    tmp = m_pPhXController->getDebugPosition();
+    SetPosition ( Vect3f ( (float) tmp.x, (float) tmp.y, (float) tmp.z ) );
+    CObject3D::InitMat44();
+    return l_isGrounded;
+}
+
 void CPhysicController::SetCollision ( bool _bFlag )
 {
     assert ( m_pPhXController );
@@ -278,6 +301,13 @@ void CPhysicController::SetRadius(float _fRadius)
 void CPhysicController::SetActive ( bool _bActive )
 {
     m_pPhXController->setCollision ( _bActive );
+}
+
+void CPhysicController::SetStepOffset(float _step)
+{
+	// Alçada màxima que el controler pot pujar. Massa petit + costa de pujar obstacles.
+	m_fStepOffsetControler = _step;
+	m_pPhXController->setStepOffset(_step);
 }
 
 NxControllerDesc* CPhysicController::GetPhXControllerDesc ( void )
