@@ -1,3 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
 <static_meshes>
-	<static_mesh name="box" filename="./Data/level1/meshes/BOX_Lightmap.mesh"/>
+	<static_mesh name="Plane001" filename=".\Data\level1\meshes//Plane001.mesh"/>
+	<static_mesh name="Wall001" filename=".\Data\level1\meshes//Wall001.mesh"/>
+	<static_mesh name="StaticPlatform001" filename=".\Data\level1\meshes//StaticPlatform001.mesh"/>
+	<static_mesh name="StaticPlatform002" filename=".\Data\level1\meshes//StaticPlatform002.mesh"/>
+	<static_mesh name="BreakablePlatform001" filename=".\Data\level1\meshes//BreakablePlatform001.mesh"/>
+	<static_mesh name="StaticPlatform003" filename=".\Data\level1\meshes//StaticPlatform003.mesh"/>
+	<static_mesh name="Spikes001" filename=".\Data\level1\meshes//Spikes001.mesh"/>
+	<static_mesh name="MovingPlatform001" filename=".\Data\level1\meshes//MovingPlatform001.mesh"/>
+	<static_mesh name="PolyPlatform001" filename=".\Data\level1\meshes//PolyPlatform001.mesh"/>
+	<static_mesh name="PolyPlatform002" filename=".\Data\level1\meshes//PolyPlatform002.mesh"/>
+	<static_mesh name="StaticPlatform004" filename=".\Data\level1\meshes//StaticPlatform004.mesh"/>
+	
+	<static_mesh name="PIKY" filename=".\Data\level2\meshes//PIKY.mesh"/>
+	
+	<static_mesh filename=".\Data\level5\meshes//SpongePicky.mesh" name="SpongePicky"/>
+	<static_mesh filename=".\Data\level5\meshes//Enemy1.mesh" name="Enemy1"/>
+	<static_mesh filename=".\Data\level5\meshes//Enemy2.mesh" name="Enemy2"/>
+	<static_mesh filename=".\Data\level5\meshes//Enemy3.mesh" name="Enemy3"/>
 </static_meshes>

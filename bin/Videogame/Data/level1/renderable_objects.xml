@@ -1,4 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
 <renderable_objects>
-	<mesh_instance name="box1" core="box" pos="0.0 0.0 0.0" yaw="0" pitch="0" roll="0" scale="1 1 1"/>
-	<!--<animated_model name="tuga" core="thug" pos="0.0 0.0 0.0" yaw="0" pitch="0" roll="0" scale="1.0 1.0 1.0"/>-->
+	<layer name="solid" default="true"/>
+	<layer name="alpha_objects"/>
+	<layer name="alpha_blend_objects"/>
+	<layer name="particles"/>
+	
+	<mesh_instance name="Plane001" core="Plane001"  pos="-3.989277 0.000000 132.427643" yaw="3.14159"  pitch="0.0" roll="0.0" scale="0.8 1.0 1.0" />
+	<mesh_instance name="Wall001" core="Wall001"  pos="-26.832058 0.000000 186.038467" yaw="3.14159"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<!--<mesh_instance name="StaticPlatform001" core="StaticPlatform001"  pos="0.254572 0.000000 44.531910" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="StaticPlatform002" core="StaticPlatform002"  pos="10.216469 1.000000 60.109650" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="BreakablePlatform001" core="BreakablePlatform001"  pos="1.421989 2.000000 69.534256" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="StaticPlatform003" core="StaticPlatform003"  pos="5.004929 3.000000 109.774521" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Spikes001" core="Spikes001"  pos="1.934707 -8.751181 238.600952" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="MovingPlatform001" core="MovingPlatform001"  pos="3.644180 1.000000 187.917664" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="PolyPlatform001" core="PolyPlatform001"  pos="3.118870 0.000000 291.008423" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="PolyPlatform002" core="PolyPlatform002"  pos="43.649429 7.109472 489.920868" yaw="0.0"  pitch="-0.0733038" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="StaticPlatform004" core="StaticPlatform004"  pos="42.051456 5.558655 486.325806" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	-->
+	<!--<mesh_instance name="PIKY" core="PIKY"  pos="0.432929 3.000000 -0.654716" yaw="1.0"  pitch="0.0" roll="0.0" scale="2.0 2.0 0.5" />-->
+	<mesh_instance name="SpongePicky" core="SpongePicky"  pos="0.432929 3.000000 -0.654716" yaw="1.0"  pitch="0.0" roll="0.0" scale="2.0 2.0 0.5" /><!--SpongePicky-->
+	<mesh_instance name="Enemy1" core="Enemy1"  pos="0.865036 2.000000 8.068936" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Enemy2" core="Enemy2"  pos="-3.413945 3.000000 5.465974" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Enemy3" core="Enemy3"  pos="-1.591296 2.000000 11.657170" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	
+	<platform name="BreakablePlatform001" core="BreakablePlatform001" type="breakable" trigger_name="BreakablePlatformTrigger001"  pos="1.421989 2.000000 69.534256" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<platform name="MovingPlatform001" core="MovingPlatform001" type="moving" speed= "5"  pos="3.644180 1.000000 187.917664" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" >
+		<wp pos="3.64 1.0 250.0" />
+		<wp pos="3.64 1.0 187.9" />
+	</platform>
+	<platform name="PolyPlatform001" core="PolyPlatform001" type="poly" redim_axis= "y" redim_scale="3" activation_distance= "30" initial_collision="false"  pos="3.118870 0.000000 291.008423" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 0.1 1.0" />
+	<platform name="PolyPlatform002" core="PolyPlatform002" type="poly" redim_axis= "z" redim_scale="30" activation_distance= "20" initial_collision="false"  pos="43.649429 7.109472 490.100" yaw="0.0"  pitch="0.0733038" roll="0.0" scale="1.0 1.0 1.0" />
+	<platform name="Spikes001" core="Spikes001" type="pinchos" from_x="false" from_z="true" back_position="3.64 0.5 170.0" forth_position ="3.64 0.5 260.0"  pos="1.934707 -9.751181 238.600952" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<platform name="StaticPlatform001" core="StaticPlatform001" type="static" pos="0.254572 0.000000 44.531910" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<platform name="StaticPlatform002" core="StaticPlatform002" type="static" pos="5.216469 1.000000 60.109650" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<platform name="StaticPlatform003" core="StaticPlatform003" type="static" pos="3.004929 3.000000 109.774521" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<platform name="StaticPlatform004" core="StaticPlatform004" type="static" pos="42.051456 5.558655 486.325806" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	
+	
 </renderable_objects>

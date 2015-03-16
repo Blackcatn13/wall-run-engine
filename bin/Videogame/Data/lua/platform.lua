@@ -9,6 +9,13 @@ function init_platform(name, user_data_name, size, position)
 	return platform
 end
 
+function init_move_platform(name, user_data_name, size, position)
+	local platform = init_platform(name, user_data_name, size, position)
+	--platform:add_box_controller(Vect3f(3,2,3),0.87,0.1,0.3,0.0)
+	--m_PhysicController = new CPhysicController(1, 2, 0.87, 0.1, 0.3, ECG_DYNAMIC_OBJECTS, m_PlatformUserData, m_PlatorformActor->GetPosition(), .0f);
+    --PHYSXM->AddPhysicController(platorm.m_PhysicController);
+end
+
 function init_poly_platform(name, user_data_name, size, position, activeActor, time_out)
 	local platform = init_platform(name, user_data_name, size, position)
 	platform.m_PlatformActor:activate(activeActor)
@@ -28,8 +35,28 @@ end
 --Pinchos
 
 function on_enter_pinchos(platform_name)
+	--TODO registrar todo lo nuevo
 	local platform = rol_manager:get_default_renderable_object_manager():get_resource(platform_name)
-	platform:falling_into_platform()
+	--platform:falling_into_platform()
+	--calcular direccion del salto
+	local player = coreInstance:get_player_controller()
+	local player_position = player.m_PhysicController:get_position()
+	local platform_position = platform:get_position()
+	local direction = 0.0
+	if platform.m_FromX == true then
+		direction = platform_position.x - player_position.x
+	end
+	if platform.m_FromZ == true then
+		direction = platform_position.z - player_position.z
+	end
+	
+	-- <- set position atrás 
+	-- -> set position delante
+	if direction >= 0 then
+		player.m_PhysicController:set_position(platform.m_ForthPosition)
+	else
+		player.m_PhysicController:set_position(platform.m_BackPosition)
+	end
 
 end
 

@@ -150,10 +150,12 @@ void CTestGameplay::Init()
     /* CPhysicUserAllocator* m_Alloc = new CPhysicUserAllocator();
      CPhysicCookingMesh* m_CockMesh = new CPhysicCookingMesh();*/
     //m_CockMesh->Init(PHYSXM->GetPhysicsSDK(), m_Alloc);
-    PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/volumetry.ASE", "sceneTraining");
+    // PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/volumetry.ASE", "sceneTraining");
+    PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/Level1/trainingPiky2.ASE", "sceneTraining");
     //  m_CockMesh->CreateMeshFromASE("./Data/sceneTrainingPiky.ASE", "sceneTraining");
     m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
     m_PhysicActorCubeFix->AddMeshShape( PHYSXM->GetCookingMesh()->GetPhysicMesh("sceneTraining"));
+    m_PhysicUserDataCube->SetPaint(false);
     PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
     /* m_PhysicActorCubeFix2 = new CPhysicActor(m_PhysicUserDataCube2);
      m_PhysicActorCubeFix2->AddBoxSphape(Vect3f(2, 2, 2), Vect3f(0, 10.2, 4), Vect3f(0, 0, 0.35));
@@ -173,7 +175,7 @@ void CTestGameplay::Init()
     CLuaGlobals::getInstance()->getString();
     m_fsmManager = new CFSMManager();
     //m_fsmManager->Load("data//AI//Patrulla.xml");
-    //m_fsmManager->Load("data//AI//FSMs.xml");
+    m_fsmManager->Load("data//AI//FSMs.xml");
     //m_fsmManager = new CFSMManager();
     //m_WPManager = new CWPManager();
     //m_WPManager->Load("data//AI//Waypoints2.xml");

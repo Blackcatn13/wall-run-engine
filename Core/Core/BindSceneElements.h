@@ -51,6 +51,7 @@ void RegisterSceneElements()
         .def(constructor<std::string, std::string, float>())
         .def("move_to_point", &CMovingPlatform::MoveToPoint)
         .def("get_next_wp", &CMovingPlatform::GetNextWP)
+        .def("add_box_controller", &CMovingPlatform::AddBoxController)
     ];
     luabind::module(LUA_STATE) [
         class_<CPinchosPlatform, CBreakablePlatform>("CPinchosPlatform")

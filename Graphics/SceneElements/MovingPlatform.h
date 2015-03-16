@@ -9,7 +9,7 @@
 
 
 
-
+class CPhysicController;
 class CMovingPlatform : public CStaticPlatform
 {
 protected:
@@ -17,7 +17,7 @@ protected:
     Vect3f				m_Direction;
     std::vector<Vect3f> m_WayPointsVector;
     int					m_CurrentWpId;
-
+    CPhysicController*	m_PhysicController;
 
 public:
     CMovingPlatform(std::string platformName, std::string coreName, float speed);
@@ -31,6 +31,8 @@ public:
         return m_WayPointsVector;
     }
 
+
+    void AddBoxController(Vect3f size, float slope, float skinwidth, float offset, float gravity);
 
 
 };

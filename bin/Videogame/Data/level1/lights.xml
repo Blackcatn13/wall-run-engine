@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <lights>
-	<light name="Omni001" type="omni" pos="-13.7778 44.8889 -1.96216e-006" color="255.0 255.0 255.0" intensity="1.0" att_start_range="80.0" att_end_range="200.0"/>
-	<light name="Direct001" type="directional" pos="-70.3872 6.5709 3.40863e-006" dir="134.341 0.456909 -2.08805e-006" color="255.0 255.0 255.0" intensity="1.0" att_start_range="80.0" att_end_range="200.0"/>
-	<light name="Spot001" type="spot" pos="-1.65132e-006 38.6667 -37.7778" dir="0.0 -55.1111 1.77778" color="255.0 255.0 255.0" intensity="1.0" angle="43.0" fall_off="45.0" att_start_range="80.0" att_end_range="200.0"/>
+
+	<!--<light name="Direct002" type="directional" pos="0 20 0" dir="0 -1.0 0" color="0.8 0.8 0.8" intensity="1" att_start_range="80.0" att_end_range="200.0"/>-->
+
+	
+	<!--<light name="Omni002" type="omni" pos="-20.0000134 5.78802 -5.0719562" color="130.0 155.0 20.0" intensity="0.01" att_start_range="10.0" att_end_range="15.0"/>
+	
+		<light name="Direct001" type="directional" pos="0.302862 0.0 -3.06009" dir="1.346485 0.0 2.2522" color="20.0 11.0 253.0" intensity="0.01" att_start_range="80.0" att_end_range="200.0"/>
+	<light name="Spot001" type="spot" pos="-0.208513 0.642497 7.40568" dir="-3.286777 -0.0659876 -2.08142" color="10.0 100.0 100.0" intensity="0.01" angle="43.0" fall_off="45.0" att_start_range="80.0" att_end_range="200.0"/>
+	-->
+	
+
+
+<!--<light name="Omni002" type="omni" pos="15 5 5" color="0 0 1" intensity="1" att_start_range="20.0" att_end_range="50.0"
+generate_shadow_map="false" shadow_map_format_type="R32F" ortho_shadow_map_width="256" ortho_shadow_map_height="256" shadow_map_width="256" shadow_map_height="256" generate_static_shadow_map="false" static_shadow_map_format_type="R32F" 
+ angle="1.05" fall_off="1.05">
+ <dynamic renderable_objects_manager="solid"/>
+</light>-->
+
+<!--<light name="Omni003" type="omni" pos="-5 5 -5" color="1 0 0" intensity="1" att_start_range="80.0" att_end_range="200.0"
+generate_shadow_map="false" shadow_map_format_type="R32F" ortho_shadow_map_width="256" ortho_shadow_map_height="256" shadow_map_width="256" shadow_map_height="256" generate_static_shadow_map="false" static_shadow_map_format_type="R32F" 
+ angle="1.05" fall_off="1.05">
+ <dynamic renderable_objects_manager="solid"/>
+</light>-->
+
+<light name="Direct002" type="directional" pos="-5 5 0" dir="5 -5 0" color="1 1 1" intensity="1" att_start_range="50.0" att_end_range="200.0" generate_shadow_map="true" shadow_map_format_type="R32F" ortho_shadow_map_width="2048" ortho_shadow_map_height="2048" shadow_map_width="2048" shadow_map_height="2048" generate_static_shadow_map="false" static_shadow_map_format_type="R32F" angle="1.05" fall_off="1.05">
+ <dynamic renderable_objects_manager="solid"/>
+</light>
+
+<!--<light name="Omni004" type="omni" pos="0 30 0" color="1 1 1" intensity="1" att_start_range="400.0" att_end_range="800.0" generate_shadow_map="true" shadow_map_format_type="R32F" ortho_shadow_map_width="1024" ortho_shadow_map_height="1024" shadow_map_width="1024" shadow_map_height="1024" generate_static_shadow_map="false" static_shadow_map_format_type="R32F" angle="1.05" fall_off="1.05">
+ <dynamic renderable_objects_manager="solid"/>
+</light> -->
+
+<!--<light name="Spot001" type="spot" pos="0 30 0" dir="0 -1 0" color="0 0 1" intensity="0.8" angle="43.0" fall_off="45.0" att_start_range="20.0" att_end_range="250.0" generate_shadow_map="true" shadow_map_format_type="R32F" ortho_shadow_map_width="512" ortho_shadow_map_height="512" shadow_map_width="512" shadow_map_height="512" generate_static_shadow_map="false" static_shadow_map_format_type="R32F">
+ <dynamic renderable_objects_manager="solid"/>
+</light>-->
+
+<!--<light name="Spot002" type="spot" pos="0 5 0" dir="0 -1 0" color="1 1 0" intensity="1" angle="43.0" fall_off="45.0" att_start_range="4.0" att_end_range="10.0"
+generate_shadow_map="false" shadow_map_format_type="R32F" ortho_shadow_map_width="256" ortho_shadow_map_height="256" shadow_map_width="256" shadow_map_height="256" generate_static_shadow_map="false" static_shadow_map_format_type="R32F">
+ <dynamic renderable_objects_manager="solid"/>
+</light>-->
+
 </lights>
