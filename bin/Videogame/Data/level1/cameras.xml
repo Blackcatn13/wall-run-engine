@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<cameras>
+	<fixed_camera name="Camera001"  pos="1.02372 2.94662 -52.0851" lookat="1.02373 -50.6889 162.941"  fov="0.785398" near_plane="1.0" far_plane="1000.0" />
+</cameras>
