@@ -192,7 +192,7 @@
 	<mesh_instance name="poly022" core="poly022"  pos="1005.046143 -35.816658 -658.384094" yaw="1.5708"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<mesh_instance name="poly023" core="poly023"  pos="1118.235229 -33.118736 -658.384094" yaw="1.5708"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<mesh_instance name="poly024" core="poly024"  pos="1125.762451 -31.585033 -658.384094" yaw="1.5708"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Escena" core="Escena"  pos="0 10 0" yaw="0.0" pitch="0.0" roll="0.0" scale="15.0 15.0 15.0" />
+	<!--<mesh_instance name="Escena" core="Escena"  pos="0 10 0" yaw="0.0" pitch="0.0" roll="0.0" scale="15.0 15.0 15.0" />-->
 	
 	<!-- characters -->
 	

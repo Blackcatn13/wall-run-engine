@@ -97,5 +97,64 @@ bool CThPSCamera::LoadPathFromFile(std::string filename)
             }
         }
     }
+	m_CurrentWaypoint = 0;
+	if(m_path.size() > 0)
+	{
+		m_NextWaypoint = 1;
+	}else
+	{
+		m_NextWaypoint = 0;
+	}
+
 	return true;
+}
+
+std::vector<Vect3f>	CThPSCamera::GetMPath()
+{
+	return m_path;
+}
+
+Vect3f CThPSCamera::GetPathPoint(int i)
+{
+	Vect3f pos = v3fZERO;
+	if(i<m_path.size())
+	{
+		pos = m_path[i];
+	}
+	return pos;
+}
+
+int CThPSCamera::GetPathSize()
+{
+	return m_path.size();
+}
+
+Vect3f CThPSCamera::GetLastPlayerPos()
+{
+	return m_LastPlayerPos;
+}
+
+void CThPSCamera::SetLastPlayerPos(Vect3f lPos)
+{
+	m_LastPlayerPos = lPos;
+}
+
+int CThPSCamera::GetCurrentWaypoint()
+{
+	return m_CurrentWaypoint;
+}
+
+void CThPSCamera::SetCurrentWaypoint(int i)
+{
+	m_CurrentWaypoint = i;
+}
+
+int CThPSCamera::GetNextWaypoint()
+{
+	return m_NextWaypoint;
+}
+
+void CThPSCamera::SetNextWaypoint(int i)
+{
+	m_NextWaypoint = i;
 }

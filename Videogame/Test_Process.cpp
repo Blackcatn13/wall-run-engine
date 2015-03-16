@@ -10,8 +10,6 @@
 #include "InputManager.h"
 #include "Camera/ThPSCamera.h"
 
-
-
 CTest_Process::CTest_Process(void)
 {
     m_ObjectFPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
