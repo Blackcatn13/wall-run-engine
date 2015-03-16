@@ -115,7 +115,7 @@ void CPhysicController::CreateController ( NxController* _pController, NxScene* 
     assert ( m_pPhXScene );
     assert ( m_pPhXController );
     CHECKED_DELETE ( m_pPhXBoxControllerDesc );
-    CHECKED_DELETE ( m_pPhXCapsuleControllerDesc );
+    //CHECKED_DELETE ( m_pPhXCapsuleControllerDesc );
 }
 
 void CPhysicController::SetPosition	(const Vect3f& pos)
@@ -301,6 +301,13 @@ void CPhysicController::SetRadius(float _fRadius)
 void CPhysicController::SetActive ( bool _bActive )
 {
     m_pPhXController->setCollision ( _bActive );
+}
+
+void CPhysicController::SetStepOffset(float _step)
+{
+	// Alçada màxima que el controler pot pujar. Massa petit + costa de pujar obstacles.
+	m_fStepOffsetControler = _step;
+	m_pPhXController->setStepOffset(_step);
 }
 
 NxControllerDesc* CPhysicController::GetPhXControllerDesc ( void )

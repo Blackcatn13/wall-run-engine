@@ -76,6 +76,7 @@ public:
     }
 
     void						SetActive               ( bool _bActive );
+	void						SetStepOffset			(float _skin);
 
     float						GetRadius				( void ) const
     {
