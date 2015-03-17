@@ -52,6 +52,8 @@ public:
             printf("10\n");
         if (name == "-10") //Test scripting
             printf("-10\n");
+		if (name == "LuaBreak") //Test scripting
+            printf("Break\n");
     }
     std::string getName()
     {

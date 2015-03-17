@@ -109,6 +109,7 @@ void CTestGameplay::Init()
     CAMCONTM->AddNewCamera("2DCam", m_2DCamera);
     //m_CameraController->AddNewCamera("ThPS", m_ThPSCamera1);
     CAMCONTM->setActiveCamera("ThPSESF");
+	SCRIPTM->RunCode("on_init_cameras_lua()");
     m_Camera = CAMCONTM->getActiveCamera();
     m_PlayerMode = true;
 //	m_ScriptedController = new CScriptedController();
@@ -151,8 +152,8 @@ void CTestGameplay::Init()
     /* CPhysicUserAllocator* m_Alloc = new CPhysicUserAllocator();
      CPhysicCookingMesh* m_CockMesh = new CPhysicCookingMesh();*/
     //m_CockMesh->Init(PHYSXM->GetPhysicsSDK(), m_Alloc);
-    //  PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/volumetry.ASE", "sceneTraining");
-    PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/Level1/trainingPiky2.ASE", "sceneTraining");
+    PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/volumetry.ASE", "sceneTraining");
+    //PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/Level1/trainingPiky2.ASE", "sceneTraining");
     //  m_CockMesh->CreateMeshFromASE("./Data/sceneTrainingPiky.ASE", "sceneTraining");
     m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
     m_PhysicActorCubeFix->AddMeshShape( PHYSXM->GetCookingMesh()->GetPhysicMesh("sceneTraining"));
