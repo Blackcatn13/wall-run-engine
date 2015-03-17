@@ -40,18 +40,11 @@ void RegisterSceneElements()
         .def(constructor<std::string, std::string>())
         .def("insert_platform", &CStaticPlatform::InsertPlatform)
         .property("m_PlatformActor", &CStaticPlatform::GetPlatformActor )
-		.property("m_PlatformUserData", &CStaticPlatform::GetPlatformUserData )
-		.property("m_Printable", &CStaticPlatform::GetPrintable,  &CStaticPlatform::SetPrintable)
-		
-
-
     ];
     luabind::module(LUA_STATE) [
         class_<CBreakablePlatform, CStaticPlatform>("CBreakablePlatform")
         .def(constructor<std::string, std::string, std::string>())
         .def("disable_platform", &CBreakablePlatform::DisablePlatform)
-		.property("m_TriggerName", &CBreakablePlatform::GetTriggerName)
-
     ];
     luabind::module(LUA_STATE) [
         class_<CMovingPlatform, CStaticPlatform>("CMovingPlatform")

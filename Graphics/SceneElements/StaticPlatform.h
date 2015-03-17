@@ -27,17 +27,6 @@ public:
     {
         return m_PlatorformActor;
     }
-	 CPhysicUserData * GetPlatformUserData()
-    {
-        return m_PlatformUserData;
-    }
-
-	bool GetPrintable(){
-		return m_Printable;
-	}
-	void SetPrintable(bool printable){
-		m_Printable = printable;
-	}
 
 
 };

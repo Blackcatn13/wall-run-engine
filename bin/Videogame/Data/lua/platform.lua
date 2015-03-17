@@ -1,7 +1,6 @@
 local coreInstance = CCoreLuaWrapper().m_CoreInstance
 local physx_manager = coreInstance:get_phisics_manager()
 local rol_manager = coreInstance:get_renderable_object_layer_manager()
-local falling_force = Vect3f(0.0,-2.0,0.0)
 
 function init_platform(name, user_data_name, size, position)
 	local platform = rol_manager:get_default_renderable_object_manager():get_resource(name)
@@ -35,41 +34,8 @@ function update_break_platform(dt, current_time, max_time, platform_name)
 
 	if current_time >= max_time then
 		local platform = rol_manager:get_default_renderable_object_manager():get_resource(platform_name)
-		platform:disable_platform(dt, Vect3f(falling_force))
-		--break_platform(platform, dt)
+		platform:disable_platform(dt)
 	end
-end
-
-function break_platform(_platform, dt)
-	coreInstance:trace("breaking platform")
-	_platform.m_PlatformUserData:set_paint(false)
-	coreInstance:trace("actor plataforma borrado")
-	_platform.m_PlatformActor:activate(false)
-	coreInstance:trace("plataforma desactivada")
-	_platform.m_Printable = false
-	coreInstance:trace("plataforma borrada")
-	local trigger_manager = coreInstance:get_trigger_manager()
-	local trigger = trigger_manager:get_resource(_platform.m_TriggerName)
-	coreInstance:trace("Tenemos trigger")
-	trigger:set_update(false)
-	coreInstance:trace("Trigger update")
-	trigger:activate(false)
-	coreInstance:trace("Trigger activado")
-	local player_controller = coreInstance:get_player_controller()
-	coreInstance:trace("tenemos controller")
-	local position = player_controller:get_position()
-	coreInstance:trace("get position")
-	coreInstance:get_player_controller().m_PhysicController():move(falling_force, dt)
-	coreInstance:trace("apply force")
---[[
-	m_PlatformUserData->SetPaint(false);
-    m_PlatorformActor->Activate(false);
-    m_Printable = false;
-    TRIGGM->GetResource(m_TriggerName)->setUpdate(false);
-    TRIGGM->GetResource(m_TriggerName)->Activate(false);
-    Vect3f l_CurrentPosition = Vect3f (CCORE->GetPlayerController()->GetPosition());
-    CCORE->GetPlayerController()->getPhysicController()->Move(Vect3f(.0f, -1.f, .0f), dt);
-]]--
 end
 
 --Pinchos
@@ -212,11 +178,11 @@ function update_poly_platform(current_poly_time, dt, platform_name)
 	else
 		platform.m_Enabled = false
 	end
-	 
+	
 	local act2in = coreInstance:get_action_to_input();
 	
 	if act2in:do_action_from_lua("PolyPowa") == true and platform.m_Enabled then
-		platform:activate_poly(falling_force)
+		platform:activate_poly()
 		
 		--activate_poly(platform, dt)
 		--local new_pos = Vect3f(position + platform.m_RedimScale)
@@ -225,12 +191,12 @@ function update_poly_platform(current_poly_time, dt, platform_name)
 	-- If poly is activated
 	
 	if current_poly_time > platform.m_TimeOut then
-		platform:deactivate_poly(falling_force)
+		platform:deactivate_poly()
 	end
 		
 end
 
---[[function activate_poly(_platform, dt)
+function activate_poly(_platform, dt)
 	if _platform.m_Activated == false then
 		core:trace("Activating poly")
 		local new_scale = 0.0
@@ -241,14 +207,13 @@ end
 			new_scale = 0
 			_platform.m_PlatformActor:activate(false)
 			_platform.m_Collission = false
-			_platform:get_redim_axis() 
 			core:trace("Platform with collision")
-			_platform:set_redim_axis("lalala")  
-			local redim_axis = _platform:get_redim_axis()
+			_platform.m_RedimAxis = "lalala"
+			local redim_axis = _platform.m_RedimAxis
 			core:trace("lolo")
-			if _platform:get_redim_axis()=="y" then
+			if _platform.m_RedimAxis=="y" then
 				core:trace("Redim y")
-				coreInstance:get_player_controller().m_PhysicController:move(Vect3f(0.0,falling_force,0.0), dt)
+				coreInstance:get_player_controller().m_PhysicController:move(Vect3f(0.0,-2.0,0.0), dt)
 			end
 		else
 			core:trace("Platform without collision")
@@ -268,7 +233,6 @@ end
 	end
 
 end
-]]--
 --End Poly Platform
 
 

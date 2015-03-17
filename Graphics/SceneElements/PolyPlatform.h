@@ -25,8 +25,8 @@ protected:
 public:
     CPolyPlatform(std::string platformName, std::string coreName, std::string redimAxis, float redimScale, bool initialCollision, float activationDistance);
     virtual  ~ CPolyPlatform ();
-    void ActivatePoly(Vect3f direction);
-    void DeactivatePoly(Vect3f direction);
+    void ActivatePoly();
+    void DeactivatePoly();
     void Update(float ElapsedTime);
 
     bool IsActivated()
