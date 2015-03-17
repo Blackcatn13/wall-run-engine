@@ -22,7 +22,7 @@ CBreakablePlatform::~CBreakablePlatform ()
 {
 }
 
-void CBreakablePlatform::DisablePlatform(float dt)
+void CBreakablePlatform::DisablePlatform(float dt, Vect3f fallingForce)
 {
     m_PlatformUserData->SetPaint(false);
     m_PlatorformActor->Activate(false);
@@ -30,6 +30,6 @@ void CBreakablePlatform::DisablePlatform(float dt)
     TRIGGM->GetResource(m_TriggerName)->setUpdate(false);
     TRIGGM->GetResource(m_TriggerName)->Activate(false);
     Vect3f l_CurrentPosition = Vect3f (CCORE->GetPlayerController()->GetPosition());
-    CCORE->GetPlayerController()->getPhysicController()->Move(Vect3f(.0f, -1.f, .0f), dt);
+    CCORE->GetPlayerController()->getPhysicController()->Move(fallingForce, dt);
 }
 

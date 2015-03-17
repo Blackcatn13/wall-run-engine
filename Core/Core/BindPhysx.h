@@ -66,6 +66,7 @@ void RegisterPhysX()
         .property("m_pActor", &CPhysicUserData::GetActor,  &CPhysicUserData::SetActor )
         .property("m_uiCollisionGroup",  &CPhysicUserData::GetGroup,  &CPhysicUserData::SetGroup )
         .property("m_myCollisionGroup",  &CPhysicUserData::GetMyCollisionGroup,  &CPhysicUserData::SetMyCollisionGroup )
+		.def("set_paint", &CPhysicUserData::SetPaint)
     ];
     luabind::module(LUA_STATE) [
         class_<CPhysicActor>("CPhysicActor")
@@ -186,7 +187,8 @@ void RegisterPhysX()
         .def("execute_on_enter", &CTrigger::ExecuteOnEnter )
         .def("execute_on_stay", &CTrigger::ExecuteOnStay )
         .def("execute_on_exit", &CTrigger::ExecuteOnExit )
-        .property("m_Update",  &CTrigger::getUpdate,  &CTrigger::setUpdate)
+        .property("m_update",  &CTrigger::getUpdate,  &CTrigger::setUpdate)
+
     ];
     luabind::module(LUA_STATE) [
         class_<CPhysicCookingMesh >("CPhysicCookingMesh")

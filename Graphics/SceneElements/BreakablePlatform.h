@@ -5,6 +5,7 @@
 #include <string>
 #include "Math\Vector3.h"
 #include "StaticPlatform.h"
+#include "Utils\Defines.h"
 
 
 class CTrigger;
@@ -17,8 +18,11 @@ public:
     CBreakablePlatform(std::string platformName, std::string coreName, std::string triggerName);
 
     ~ CBreakablePlatform ();
-    void DisablePlatform(float dt);
-
+    void DisablePlatform(float dt, Vect3f fallingForce);
+	
+	std::string GetTriggerName(){
+		return m_TriggerName;
+	}
 
 };
 
