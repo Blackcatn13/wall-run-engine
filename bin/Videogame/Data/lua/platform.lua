@@ -1,6 +1,7 @@
 local coreInstance = CCoreLuaWrapper().m_CoreInstance
 local physx_manager = coreInstance:get_phisics_manager()
 local rol_manager = coreInstance:get_renderable_object_layer_manager()
+local falling_force = Vect3f(0.0, -2.0, 0.0)
 
 function init_platform(name, user_data_name, size, position)
 	local platform = rol_manager:get_default_renderable_object_manager():get_resource(name)
@@ -34,7 +35,7 @@ function update_break_platform(dt, current_time, max_time, platform_name)
 
 	if current_time >= max_time then
 		local platform = rol_manager:get_default_renderable_object_manager():get_resource(platform_name)
-		platform:disable_platform(dt)
+		platform:disable_platform(dt, falling_force)
 	end
 end
 
@@ -182,7 +183,7 @@ function update_poly_platform(current_poly_time, dt, platform_name)
 	local act2in = coreInstance:get_action_to_input();
 	
 	if act2in:do_action_from_lua("PolyPowa") == true and platform.m_Enabled then
-		platform:activate_poly()
+		platform:activate_poly(falling_force)
 		
 		--activate_poly(platform, dt)
 		--local new_pos = Vect3f(position + platform.m_RedimScale)
@@ -191,7 +192,7 @@ function update_poly_platform(current_poly_time, dt, platform_name)
 	-- If poly is activated
 	
 	if current_poly_time > platform.m_TimeOut then
-		platform:deactivate_poly()
+		platform:deactivate_poly(falling_force)
 	end
 		
 end

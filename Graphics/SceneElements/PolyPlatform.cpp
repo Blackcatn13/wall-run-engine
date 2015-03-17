@@ -27,26 +27,17 @@ CPolyPlatform::~CPolyPlatform ()
 }
 
 
-void CPolyPlatform:: ActivatePoly()
+void CPolyPlatform:: ActivatePoly(Vect3f direction)
 {
     if (!m_Activated) {
-        /* Vect3f l_PlayerPosition =  CCORE->GetPlayerController()->getPhysicController()->GetPosition();
-         CCORE->GetPlayerController()->getPhysicController()->SetPosition(l_PlayerPosition + m_RedimScale);*/
         float l_NewScale = 0.0f;
-        /*  if (GetScale() == m_OriginalScale) {
-              m_PlatorformActor->Activate(!m_InitialCollission);
-              l_NewScale = GetScale() + m_RedimScale;
-          } else {
-              l_NewScale = GetScale() - m_RedimScale;
-              m_PlatorformActor->Activate(m_InitialCollission);
-          }*/
         m_Activated = true;
         if (m_Collission) {
             l_NewScale = 0;
             m_PlatorformActor->Activate(false);
             m_Collission = false;
             if (m_RedimAxis == "y")
-                CCORE->GetPlayerController()->getPhysicController()->Move(Vect3f(.0f, -2.0f, .0f), m_Dt);
+                CCORE->GetPlayerController()->getPhysicController()->Move(direction, m_Dt);
         } else {
             l_NewScale = m_RedimScale;
             m_PlatorformActor->Activate(true);
@@ -55,16 +46,6 @@ void CPolyPlatform:: ActivatePoly()
         if (m_RedimAxis == "x") {
             SetScale(Vect3f(l_NewScale, GetScale().y, GetScale().z));
         } else if (m_RedimAxis == "y") {
-            /* if (m_Collission) {
-                 l_NewScale = 0;
-                 m_PlatorformActor->Activate(false);
-                 m_Collission = false;
-                 CCORE->GetPlayerController()->getPhysicController()->Move(Vect3f(.0f, -2.0f, .0f), m_Dt);
-             } else {
-                 l_NewScale = m_RedimScale;
-                 m_PlatorformActor->Activate(true);
-                 m_Collission = true;
-             }*/
             SetScale(Vect3f(GetScale().x, l_NewScale , GetScale().z));
         } else if (m_RedimAxis == "z") {
             SetScale(Vect3f(GetScale().x, GetScale().y , l_NewScale));
@@ -76,7 +57,7 @@ void CPolyPlatform:: ActivatePoly()
 }
 
 
-void CPolyPlatform:: DeactivatePoly()
+void CPolyPlatform:: DeactivatePoly(Vect3f direction)
 {
     if (m_Activated) {
         m_Activated = false;
@@ -85,7 +66,7 @@ void CPolyPlatform:: DeactivatePoly()
         if (m_Collission) {
             m_Collission = false;
             // if (m_RedimAxis == "y")
-            CCORE->GetPlayerController()->getPhysicController()->Move(Vect3f(.0f, -2.0f, .0f), m_Dt);
+            CCORE->GetPlayerController()->getPhysicController()->Move(direction, m_Dt);
         } else {
             m_Collission = true;
             //Hacer que el player suba si es necesario
