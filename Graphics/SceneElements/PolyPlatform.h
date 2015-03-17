@@ -18,12 +18,12 @@ protected:
     float		m_ActivationDistance;
     float		m_TimeOut;
     float		m_ActiveTime;
-    //  bool		m_InitialCollission;
+    bool		m_Collission;
     std::string		m_RedimAxis;
     float		m_Dt;
 
 public:
-    CPolyPlatform(std::string platformName, std::string coreName, std::string redimAxis, float redimScale, float activationDistance);
+    CPolyPlatform(std::string platformName, std::string coreName, std::string redimAxis, float redimScale, bool initialCollision, float activationDistance);
     virtual  ~ CPolyPlatform ();
     void ActivatePoly();
     void DeactivatePoly();
@@ -44,9 +44,16 @@ public:
     GET_SET(float, ActivationDistance)
     GET_SET(float, TimeOut)
     GET_SET(float, ActiveTime)
-//    GET_SET(float, InitialCollission)
-    GET_SET(std::string, RedimAxis)
-
+    GET_SET(float, Collission)
+    //  GET_SET(std::string, RedimAxis)
+    std::string getRedimAxis()
+    {
+        return m_RedimAxis;
+    }
+    void setRedimAxis(std::string redimaxis)
+    {
+        m_RedimAxis = redimaxis;
+    }
 };
 
 #endif

@@ -55,12 +55,16 @@ void RegisterSceneElements()
     ];
     luabind::module(LUA_STATE) [
         class_<CPinchosPlatform, CBreakablePlatform>("CPinchosPlatform")
-        .def(constructor<std::string, std::string, std::string, float, bool, bool>())
+        .def(constructor<std::string, std::string, std::string, Vect3f, Vect3f, bool, bool>())
         .def("falling_into_platform", &CPinchosPlatform::FallingIntoPlatform)
+        .property("m_BackPos",  &CPinchosPlatform::getBackPos, &CPinchosPlatform::setBackPos)
+        .property("m_FrontPos",  &CPinchosPlatform::getFrontPos, &CPinchosPlatform::setFrontPos)
+        .property("m_FromZ",  &CPinchosPlatform::getFromZ, &CPinchosPlatform::setFromZ)
+        .property("m_FromX",  &CPinchosPlatform::getFromX, &CPinchosPlatform::setFromX)
     ];
     luabind::module(LUA_STATE) [
         class_<CPolyPlatform, CStaticPlatform>("CPolyPlatform")
-        .def(constructor<std::string, std::string, std::string,  float, float>())
+        .def(constructor<std::string, std::string, std::string,  float, bool, float>())
         .def("activate_poly", &CPolyPlatform::ActivatePoly)
         .def("deactivate_poly", &CPolyPlatform::DeactivatePoly)
         .property("m_Activated", &CPolyPlatform::IsActivated, &CPolyPlatform::SetActivated )
@@ -69,7 +73,7 @@ void RegisterSceneElements()
         .property("m_Enabled", &CPolyPlatform::getEnabled, &CPolyPlatform::setEnabled )
         .property("m_ActivationDistance", &CPolyPlatform::getActivationDistance, &CPolyPlatform::setActivationDistance )
         .property("m_TimeOut", &CPolyPlatform::getTimeOut, &CPolyPlatform::setTimeOut )
-        // .property("m_InitialCollission", &CPolyPlatform::getInitialCollission, &CPolyPlatform::setInitialCollission )
+        .property("m_Collission", &CPolyPlatform::getCollission, &CPolyPlatform::setCollission )
         .property("m_RedimAxis", &CPolyPlatform::getRedimAxis, &CPolyPlatform::setRedimAxis )
     ];
 }

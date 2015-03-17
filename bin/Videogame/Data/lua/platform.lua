@@ -16,9 +16,15 @@ function init_move_platform(name, user_data_name, size, position)
     --PHYSXM->AddPhysicController(platorm.m_PhysicController);
 end
 
-function init_poly_platform(name, user_data_name, size, position, activeActor, time_out)
+function init_poly_platform(name, user_data_name, size, position, time_out)
 	local platform = init_platform(name, user_data_name, size, position)
-	platform.m_PlatformActor:activate(activeActor)
+	--coreInstance:trace(tostring(platform.m_Collission))
+	local collision = true
+	if platform.m_Collission == 0 then
+		collision = false
+	end
+	coreInstance:trace(tostring(collision))
+	platform.m_PlatformActor:activate(collision)
 	platform.m_OriginalScale = platform:get_scale()
 	platform.m_TimeOut= time_out
 	return platform
@@ -36,26 +42,33 @@ end
 
 function on_enter_pinchos(platform_name)
 	--TODO registrar todo lo nuevo
+	coreInstance:trace("Entrando en Pinchos")
 	local platform = rol_manager:get_default_renderable_object_manager():get_resource(platform_name)
+	coreInstance:trace(platform_name)
 	--platform:falling_into_platform()
 	--calcular direccion del salto
+	
 	local player = coreInstance:get_player_controller()
 	local player_position = player.m_PhysicController:get_position()
 	local platform_position = platform:get_position()
-	local direction = 0.0
+	coreInstance:trace(tostring(player_position.x))
+	coreInstance:trace(tostring(platform_position.x))
+	
 	if platform.m_FromX == true then
 		direction = platform_position.x - player_position.x
 	end
 	if platform.m_FromZ == true then
 		direction = platform_position.z - player_position.z
 	end
-	
+	coreInstance:trace(tostring(direction))
 	-- <- set position atrás 
 	-- -> set position delante
-	if direction >= 0 then
-		player.m_PhysicController:set_position(platform.m_ForthPosition)
+	-- lanzar animacion de daño
+	-- restar corazón
+	if direction <= 0 then
+		player.m_PhysicController:set_position(platform.m_FrontPos)
 	else
-		player.m_PhysicController:set_position(platform.m_BackPosition)
+		player.m_PhysicController:set_position(platform.m_BackPos)
 	end
 
 end
@@ -68,7 +81,7 @@ local next_wp = Vect3f(0,0,0)
 instance = CLuaGlobalsWrapper().m_CoreInstance;
 
 function mp_enter_stopped()
-	coreInstance:trace("Parando plataforma");
+	--coreInstance:trace("Parando plataforma");
 	--next_wp = Vect3f(-15,0,-15) 
 	instance.m_string = "Buscar_next_WP_Plaform"
 	return 0 
@@ -102,7 +115,7 @@ function mp_update_moving(ElapsedTime)
 	local current_pos = platform:get_position()
 	local distance_to_point = get_distance_to_point(current_pos, next_wp)
 	if distance_to_point <= 4 then
-		coreInstance:trace("Destino alcanzado")
+		--coreInstance:trace("Destino alcanzado")
 		instance.m_string = "Parado"
 	end
 		
@@ -127,7 +140,7 @@ end--]]
 
 function mp_enter_calcwp() -- Pasar el nombre de la plataforma y de ahí que recoja el wp que necesita? 
 -- OnEnter Buscar_next_WP 
-	coreInstance:trace("Entering Buscar Platform next WP");
+	--coreInstance:trace("Entering Buscar Platform next WP");
 	--coreInstance:trace(tostring(next_wp.x));
 	--if next_wp == Vect3f(15,0,15) then
 	--	next_wp = Vect3f(-15, 0, 15)	
@@ -146,7 +159,7 @@ function mp_exit_calcwp()
 end
 
 function mp_update_calcwp(ElapsedTime)
-	core:trace("Update Buscar_next_WP Platform");
+	--core:trace("Update Buscar_next_WP Platform");
 	--mp_enter_calcwp()
 end
 --End Moving Platform
@@ -154,7 +167,7 @@ end
 
 --Poly Platform
 
-function update_poly_platform(current_poly_time, platform_name)
+function update_poly_platform(current_poly_time, dt, platform_name)
 	-- Enable Poly Emmerald power
 	local position = coreInstance:get_player_controller():get_position()
 	local platform = rol_manager:get_default_renderable_object_manager():get_resource(platform_name)
@@ -170,6 +183,8 @@ function update_poly_platform(current_poly_time, platform_name)
 	
 	if act2in:do_action_from_lua("PolyPowa") == true and platform.m_Enabled then
 		platform:activate_poly()
+		
+		--activate_poly(platform, dt)
 		--local new_pos = Vect3f(position + platform.m_RedimScale)
 		--coreInstance:get_player_controller().m_PhysicController:set_position(new_pos) 
 	end
@@ -181,6 +196,43 @@ function update_poly_platform(current_poly_time, platform_name)
 		
 end
 
+function activate_poly(_platform, dt)
+	if _platform.m_Activated == false then
+		core:trace("Activating poly")
+		local new_scale = 0.0
+		_platform.m_Activated = true
+		core:trace(tostring(_platform.m_Collission))
+		if _platform.m_Collission == 1 then
+			core:trace("Platform with collision")
+			new_scale = 0
+			_platform.m_PlatformActor:activate(false)
+			_platform.m_Collission = false
+			core:trace("Platform with collision")
+			_platform.m_RedimAxis = "lalala"
+			local redim_axis = _platform.m_RedimAxis
+			core:trace("lolo")
+			if _platform.m_RedimAxis=="y" then
+				core:trace("Redim y")
+				coreInstance:get_player_controller().m_PhysicController:move(Vect3f(0.0,-2.0,0.0), dt)
+			end
+		else
+			core:trace("Platform without collision")
+			new_scale = _platform.m_RedimScale
+			_platform.m_Activated:activate(true)
+			_platform.m_Collission = true
+		
+		end
+		if _platform.m_RedimAxis =="x" then
+			_platform:set_scale(Vect3f(new_scale, _platform:get_scale().y, _platform:get_scale().z))
+		elseif _platform.m_RedimAxis =="y" then 
+			_platform:set_scale(Vect3f(_platform:get_scale().x, new_scale, _platform:get_scale().z))
+		else
+			_platform:set_scale(Vect3f(_platform:get_scale().x, _platform:get_scale().y, new_scale))
+		end
+		
+	end
+
+end
 --End Poly Platform
 
 

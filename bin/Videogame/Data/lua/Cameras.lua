@@ -65,7 +65,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 	local objPos = camObj:get_position();
 	local distanceToWP = objPos:distance(nextWP);
 	if(distanceToWP < 0.2) then
-		if(cam.m_nextWaypoint < cam:get_path_size)
+		if(cam.m_nextWaypoint < cam:get_path_size())
 			cam.m_currentWaypoint = cam.m_nextWaypoint;
 			cam.m_nextWaypoint = cam.m_nextWaypoint + 1;
 	end

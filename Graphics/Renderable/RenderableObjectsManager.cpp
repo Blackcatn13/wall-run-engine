@@ -176,10 +176,11 @@ void CRenderableObjectsManager::Load(const std::string &FileName)
                     AddResource(platformName, l_MovingPlatform);
                 } else if (type == "pinchos") {
                     std::string l_TriggerName =  m(i).GetPszISOProperty("trigger_name", "", false);
-                    float	l_Offset = m(i).GetFloatProperty("offset", .0f, false);
+                    Vect3f l_BackPos = m(i).GetVect3fProperty("back_position", v3fZERO, false);
+                    Vect3f l_FrontPos = m(i).GetVect3fProperty("forth_position", v3fZERO, false);
                     bool	l_FromX = m(i).GetBoolProperty("from_x", false, false);
                     bool	l_FromZ = m(i).GetBoolProperty("from_z", false, false);
-                    CPinchosPlatform * l_PinchosPlatform = new CPinchosPlatform(platformName, core, l_TriggerName, l_Offset, l_FromX, l_FromZ);
+                    CPinchosPlatform * l_PinchosPlatform = new CPinchosPlatform(platformName, core, l_TriggerName, l_BackPos, l_FrontPos,  l_FromX, l_FromZ);
                     l_PinchosPlatform->SetYaw(yaw);
                     l_PinchosPlatform->SetPosition(pos);
                     l_PinchosPlatform->SetPitch(pitch);
@@ -190,7 +191,8 @@ void CRenderableObjectsManager::Load(const std::string &FileName)
                     std::string l_RedimAxis = m(i).GetPszProperty("redim_axis",  "", false);
                     float	l_RedimScale = m(i).GetFloatProperty("redim_scale",  .0f, false);
                     float	l_ActivationDistance = m(i).GetFloatProperty("activation_distance", .0f, false);
-                    CPolyPlatform * l_PolyPlatform = new CPolyPlatform(platformName, core, l_RedimAxis, l_RedimScale, l_ActivationDistance);
+                    bool	l_InitialCollision = m(i).GetBoolProperty("initial_collision", false, false);
+                    CPolyPlatform * l_PolyPlatform = new CPolyPlatform(platformName, core, l_RedimAxis, l_RedimScale, l_InitialCollision, l_ActivationDistance);
                     l_PolyPlatform->SetYaw(yaw);
                     l_PolyPlatform->SetPosition(pos);
                     l_PolyPlatform->SetPitch(pitch);
@@ -322,10 +324,13 @@ void CRenderableObjectsManager::Load(CXMLTreeNode & Node)
                 //std::string boxName, std::string coreName, std::string userDataName, Vect3f size, Vect3f localPosition)
             } else if (type == "pinchos") {
                 std::string l_TriggerName =  m.GetPszISOProperty("trigger_name", "", false);
-                float	l_Offset = m.GetFloatProperty("offset", .0f, false);
+                // float	l_Offset = m.GetFloatProperty("offset", .0f, false);
+                //back_position="3.64 0.5 170.0" forth_position ="3.64 0.5 260.0"
+                Vect3f l_BackPos = m.GetVect3fProperty("back_position", v3fZERO, false);
+                Vect3f l_FrontPos = m.GetVect3fProperty("forth_position", v3fZERO, false);
                 bool	l_FromX = m.GetBoolProperty("from_x", false, false);
                 bool	l_FromZ = m.GetBoolProperty("from_z", false, false);
-                CPinchosPlatform * l_PinchosPlatform = new CPinchosPlatform(platformName, core, l_TriggerName, l_Offset, l_FromX, l_FromZ);
+                CPinchosPlatform * l_PinchosPlatform = new CPinchosPlatform(platformName, core, l_TriggerName, l_BackPos, l_FrontPos,  l_FromX, l_FromZ);
                 l_PinchosPlatform->SetYaw(yaw);
                 l_PinchosPlatform->SetPosition(pos);
                 l_PinchosPlatform->SetPitch(pitch);
@@ -336,7 +341,8 @@ void CRenderableObjectsManager::Load(CXMLTreeNode & Node)
                 std::string l_RedimAxis = m.GetPszProperty("redim_axis",  "", false);
                 float	l_RedimScale = m.GetFloatProperty("redim_scale",  .0f, false);
                 float	l_ActivationDistance = m.GetFloatProperty("activation_distance", .0f, false);
-                CPolyPlatform * l_PolyPlatform = new CPolyPlatform(platformName, core, l_RedimAxis, l_RedimScale, l_ActivationDistance);
+                bool	l_InitialCollision = m.GetBoolProperty("initial_collision", .0f, false);
+                CPolyPlatform * l_PolyPlatform = new CPolyPlatform(platformName, core, l_RedimAxis, l_RedimScale, l_InitialCollision, l_ActivationDistance);
                 l_PolyPlatform->SetYaw(yaw);
                 l_PolyPlatform->SetPosition(pos);
                 l_PolyPlatform->SetPitch(pitch);

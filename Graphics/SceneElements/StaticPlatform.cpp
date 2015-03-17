@@ -17,8 +17,8 @@ CStaticPlatform::CStaticPlatform(std::string platformName, std::string coreName)
 CStaticPlatform::~CStaticPlatform ()
 {
     PHYSXM->ReleasePhysicActor(m_PlatorformActor);
-    CHECKED_DELETE(m_PlatorformActor);
-    CHECKED_DELETE(m_PlatformUserData);
+    //CHECKED_DELETE(m_PlatorformActor);
+    //CHECKED_DELETE(m_PlatformUserData);
 }
 
 

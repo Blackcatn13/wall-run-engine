@@ -8,7 +8,7 @@
 	<trigger name="BreakablePlatformTrigger001" platform_name = "BreakablePlatform001" position="1.421989 3.500000 69.534256" shape="box" size="2.0 0.5 2.0" type_event="enter" script_function="activate_trigger_update" param1="BreakablePlatformTrigger001"
 	max_time="3" update_function="update_break_platform" group="3" paint="true" color="1.0 0.0 0.0" />
 	
-	<trigger name="PinchosPlatform_test" platform_name = "Spikes001" position="1.934707 -8.751181 238.600952" shape="box" size="11.0 1.5 15.0" type_event="enter" script_function="on_enter_pinchos" param1="PinchosPlatform001"
+	<trigger name="PinchosPlatform_test" platform_name = "Spikes001" position="1.934707 -8.751181 238.600952" shape="box" size="11.0 1.5 15.0" type_event="enter" script_function="on_enter_pinchos" param1="Spikes001"
 	group="3" paint="true" color="1.0 0.0 0.0" />
 	
 	
