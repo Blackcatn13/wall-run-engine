@@ -17,12 +17,14 @@
 CPlayerController::CPlayerController()
     : CObject3D(),
       m_isGrounded(false),
+	  m_isTurned(false),
       m_Gravity(2),
       m_GravityJump(2),
       m_Speed (15),
       m_JumpForce(0.65),
       m_CurrentJumpForce(0),
       m_isJumping(false),
+	  m_isJumpingMoving(false),
       m_is3D(false)
 {
     m_PhysicUserData = new CPhysicUserData("Player");
@@ -51,6 +53,7 @@ void CPlayerController::IsGrounded(Vect3f direction, float dt)
     bool result = m_PhysicController->MovePlayer(direction, dt);
     if (result) {
         m_isJumping = false;
+		m_isJumpingMoving = false;
         m_isGrounded = true;
     } else m_isGrounded = false;
 }

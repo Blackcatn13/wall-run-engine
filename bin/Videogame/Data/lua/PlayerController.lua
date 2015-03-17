@@ -14,7 +14,7 @@ function on_update_player_lua(l_ElapsedTime)
 	player.m_Gravity = 1;						--Gravedad que afecta al personaje cuando cae.
 	player.m_GravityJump = 1;					--Gravedad que afecta cuando el personaje está impulsándose hacia arriba en el salto.
 	player.m_Speed = 8;							--Velocidad de movimiento.
-	player.m_JumpForce = 0.5;					--Fuerza de salto, impulso.
+	player.m_JumpForce = 0.35;					--Fuerza de salto, impulso.
 	player.m_PhysicController:set_step(0.3); 	--Altura que puede superar (escalones).
 	--////////////////////////////////////////////////////////
 	
@@ -36,37 +36,50 @@ function on_update_player_lua(l_ElapsedTime)
 	dirNor.y = 0;
 	dirNor = luaUtil:normalize(dirNor);
 	local mov = Vect3f(0,0,0);
-	if act2in:do_action_from_lua("MoveForward") then
-		if player.m_is3D == true then	
-			--mov = mov + Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
-			mov = mov + dir3D * player.m_Speed * l_ElapsedTime;
-		end
-	end
-	if act2in:do_action_from_lua("MoveBack") then
-		if player.m_is3D == true then	
-			--mov = mov - Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
-			mov = mov - dir3D * player.m_Speed * l_ElapsedTime;
-		end
-	end
-	if act2in:do_action_from_lua("MoveRigth") then
-		if player.m_is3D == true then	
-			--mov = mov - Vect3f(-1,0,0) * player.m_Speed * l_ElapsedTime;
-			mov = mov - dirNor * player.m_Speed * l_ElapsedTime;
-		else
-			mov = mov + Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
-		end
-	end
-	if act2in:do_action_from_lua("MoveLeft") then
-		if player.m_is3D == true then	
-			--mov = mov + Vect3f(-1,0,0) * player.m_Speed * l_ElapsedTime;
-			mov = mov + dirNor * player.m_Speed * l_ElapsedTime;
-		else
-			mov = mov - Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
-		end
-	end
 	
+	--///////////////////////////////////////////////////////////
+	-- Movimiento del Player en las distintas direcciones. 
+	--///////////////////////////////////////////////////////////
+	--if player.m_isJumping == false then
+		if act2in:do_action_from_lua("MoveForward") then
+			if player.m_is3D == true then	
+				--mov = mov + Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
+				mov = mov + dir3D * player.m_Speed * l_ElapsedTime;
+			end
+		end
+		if act2in:do_action_from_lua("MoveBack") then
+			if player.m_is3D == true then	
+				--mov = mov - Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
+				mov = mov - dir3D * player.m_Speed * l_ElapsedTime;
+			end
+		end
+		if act2in:do_action_from_lua("MoveRigth") then
+			if player.m_is3D == true then	
+				--mov = mov - Vect3f(-1,0,0) * player.m_Speed * l_ElapsedTime;
+				mov = mov - dirNor * player.m_Speed * l_ElapsedTime;
+			else
+				mov = mov + Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
+				player.m_isTurned = false;
+			end
+		end
+		if act2in:do_action_from_lua("MoveLeft") then
+			if player.m_is3D == true then	
+				--mov = mov + Vect3f(-1,0,0) * player.m_Speed * l_ElapsedTime;
+				mov = mov + dirNor * player.m_Speed * l_ElapsedTime;
+			else
+				mov = mov - Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
+				player.m_isTurned = true;
+			end
+		end
+	--end
+	--///////////////////////////////////////////////////////////
+	-- Gravedad que siempre afecta al Player. 
+	--///////////////////////////////////////////////////////////
 	mov.y = -player.m_Gravity;
 	
+	--///////////////////////////////////////////////////////////
+	-- Cuando el Player está saltando, su velocidad dependerá del tipo de salto realizado. 
+	--///////////////////////////////////////////////////////////
 	if player.m_isJumping == true then
 		if player.m_CurrentJumpForce < 0 then
 			player.m_CurrentJumpForce = player.m_CurrentJumpForce - (player.m_Gravity * l_ElapsedTime);
@@ -74,12 +87,38 @@ function on_update_player_lua(l_ElapsedTime)
 			player.m_CurrentJumpForce = player.m_CurrentJumpForce - (player.m_GravityJump * l_ElapsedTime);
 		end
 		mov.y = player.m_CurrentJumpForce;
+		if player.m_isJumpingMoving == false then
+			mov.y = player.m_CurrentJumpForce*1.75;
+		end
+		if player.m_is3D == false then
+			if player.m_isJumpingMoving == true then
+				if player.m_isTurned == false then
+					mov.z = player.m_JumpForce/1.5;
+				else
+					mov.z = -player.m_JumpForce/1.5;
+				end
+			end
+		end
 	end	
+	
+	--///////////////////////////////////////////////////////////
+	-- Acción de saltar del Player. Puede realizar 2 saltos distintos (de longitud, y salto vertical). 
+	--///////////////////////////////////////////////////////////
 	if (act2in:do_action_from_lua("Jump")) and (player.m_isJumping == false) then
 		player.m_isJumping = true;
 		player.m_CurrentJumpForce = player.m_JumpForce;
 		mov.y = player.m_CurrentJumpForce;
-		mov.z = player.m_CurrentJumpForce
+		if player.m_is3D == false then
+			if act2in:do_action_from_lua("MoveRigth") then
+				mov.z = player.m_JumpForce/1.5;
+				player.m_isJumpingMoving = true;
+			elseif act2in:do_action_from_lua("MoveLeft") then
+				mov.z = -player.m_JumpForce/1.5;
+				player.m_isJumpingMoving = true;
+			else
+				mov.y = player.m_CurrentJumpForce*2;
+			end
+		end
 	end
 	
 	player:is_grounded(mov,l_ElapsedTime);
