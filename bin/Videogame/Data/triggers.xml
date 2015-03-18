@@ -20,6 +20,14 @@
 	<trigger name="Teleport_test2" position="39.649429 8.109472 500.100" shape="box" size="2.0 1.5 2.0" type_event="enter" script_function="activate_teleport" param1="0.432929 3.000000 -0.654716"
 	group="3" paint="true" color="1.0 0.0 0.0" />
 	
+	<!-- holes -->
+	<trigger name="Hole001" position="-2.198 -7.109472 55.345" shape="box" size="10.0 0.5 21.0" type_event="enter" script_function="die_bastard" group="3" paint="true" color="1.0 0.0 0.0" />
+	
+	<!-- CheckPoints-->
+	<trigger name="CheckPoint001" position="0.0 0.0 170.0" shape="box" size="10.0 10.0 0.5" type_event="enter" script_function="set_checkpoint" group="3" paint="true" color="1.0 0.0 0.0" />
+	
+	
+	
 	<!--<trigger name="BreakablePlatform_test" platform_name = "BreakablePlatform001" position="2.000000 7.000000 -3.000000" shape="box" size="2.0 0.5 2.0" type_event="enter" script_function="activate_trigger_update" param1="BreakablePlatform_test"
 	max_time="3" update_function="update_break_platform" group="3" paint="true" color="1.0 0.0 0.0" />
 	

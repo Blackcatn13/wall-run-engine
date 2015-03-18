@@ -1,11 +1,15 @@
 
 function init_level(a)
 	local coreInstance = CCoreLuaWrapper().m_CoreInstance;
-	local player = coreInstance:get_player_controller();
-	player.m_PhysicController:set_position(Vect3f(0.432929, 3.000000, -0.654716));
-	local number = tonumber("3.5002")
-	coreInstance:trace(tostring(number))
+	local player = Player:get_instance()
+	player.get_player_controller():set_position(Vect3f(0.432929, 3.000000, -0.654716));
 	
+	--local lua_player = Player:get_instance()
+	--[[player.num_lives = player.num_lives -1
+	coreInstance:trace(tostring(player.num_lives))
+	local player2 = Player:get_instance()	
+	coreInstance:trace(tostring(player2.num_lives))
+	--]]
 	init_platform("StaticPlatform001","Static001UserData", Vect3f(2,0.5,1.5), Vect3f(0,0.5,0))
 	init_platform("StaticPlatform002","Static002UserData", Vect3f(2,0.5,1.5), Vect3f(0,0.5,0))	
 	init_platform("StaticPlatform003","Static003UserData", Vect3f(2,0.5,1.5), Vect3f(0,0.5,0))		

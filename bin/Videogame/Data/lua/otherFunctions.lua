@@ -23,6 +23,30 @@ function activate_trigger_update(trigger_name)
 
 end 
 
+function die_bastard()
+	local coreInstance = CCoreLuaWrapper().m_CoreInstance;
+	coreInstance:trace("dieeeeee")
+	local player = Player:get_instance()
+	player.player_die()
+end
+
+function set_checkpoint()
+	local coreInstance = CCoreLuaWrapper().m_CoreInstance;
+		coreInstance:trace("enter checkpoint")
+	local player = Player:get_instance()
+	local current_position = Vect3f(player.get_player_controller():get_position())
+	coreInstance:trace("Player Position set")
+	local checkpoint = CheckPoint.new()
+	coreInstance:trace("Checkpoint created")
+	--coreInstance:trace(tostring(checkpoint:is_activated()))
+	--if checkpoint:is_activated() == false then
+	checkpoint.set_checkpoint(player)
+	coreInstance:trace(tostring(checkpoint.is_activated))
+	coreInstance:trace("checkpoint activated")
+--	end
+
+end
+
 function split_str(inputstr, sep)
         if sep == nil then
                 sep = "%s"
