@@ -1,5 +1,11 @@
 
 function init_level(a)
+	local coreInstance = CCoreLuaWrapper().m_CoreInstance;
+	local player = coreInstance:get_player_controller();
+	player.m_PhysicController:set_position(Vect3f(0.432929, 3.000000, -0.654716));
+	local number = tonumber("3.5002")
+	coreInstance:trace(tostring(number))
+	
 	init_platform("StaticPlatform001","Static001UserData", Vect3f(2,0.5,1.5), Vect3f(0,0.5,0))
 	init_platform("StaticPlatform002","Static002UserData", Vect3f(2,0.5,1.5), Vect3f(0,0.5,0))	
 	init_platform("StaticPlatform003","Static003UserData", Vect3f(2,0.5,1.5), Vect3f(0,0.5,0))		
@@ -15,10 +21,3 @@ function init_level(a)
 	return 0
 end
 
-function activate_trigger_update(trigger_name)
-	local coreInstance = CCoreLuaWrapper().m_CoreInstance;
-	local trigger_manager = coreInstance:get_trigger_manager()
-	local trigger = trigger_manager:get_resource(trigger_name)
-	trigger.m_Update=true
-
-end 
