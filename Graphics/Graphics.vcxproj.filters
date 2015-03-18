@@ -284,8 +284,11 @@
     <ClCompile Include="SceneElements\MovingPlatform.cpp">
       <Filter>SceneElements</Filter>
     </ClCompile>
-    <ClCompile Include="Particles\dummy.cpp">
+    <ClCompile Include="Particles\Billboard.cpp">
       <Filter>Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderableCommands\ParticleRendererCommand.cpp">
+      <Filter>RenderableCommands</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -524,8 +527,11 @@
     <ClInclude Include="SceneElements\MovingPlatform.h">
       <Filter>SceneElements</Filter>
     </ClInclude>
-    <ClInclude Include="Particles\dummy.h">
+    <ClInclude Include="Particles\Billboard.h">
       <Filter>Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableCommands\ParticleRendererCommand.h">
+      <Filter>RenderableCommands</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

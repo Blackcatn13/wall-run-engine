@@ -41,7 +41,7 @@
     <ClCompile Include="Lights\SpotLight.cpp" />
     <ClCompile Include="Mesh\MeshInstance.cpp" />
     <ClCompile Include="Object\Object3D.cpp" />
-    <ClCompile Include="Particles\dummy.cpp" />
+    <ClCompile Include="Particles\Billboard.cpp" />
     <ClCompile Include="RenderableCommands\BeginRenderSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\CaptureFrameBufferSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\ClearSceneRendererCommand.cpp" />
@@ -56,6 +56,7 @@
     <ClCompile Include="RenderableCommands\EndRenderSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\GaussianBlurSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\GenerateShadowMapsSceneRendererCommand.cpp" />
+    <ClCompile Include="RenderableCommands\ParticleRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\PresentSceneRenderCommand.cpp" />
     <ClCompile Include="RenderableCommands\RenderableObjectTechniquesSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\RenderDebugInfoSceneRendererCommand.cpp" />
@@ -127,7 +128,7 @@
     <ClInclude Include="Lights\SpotLight.h" />
     <ClInclude Include="Mesh\MeshInstance.h" />
     <ClInclude Include="Object\Object3D.h" />
-    <ClInclude Include="Particles\dummy.h" />
+    <ClInclude Include="Particles\Billboard.h" />
     <ClInclude Include="RenderableCommands\BeginRenderSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\CaptureFrameBufferSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\ClearSceneRendererCommand.h" />
@@ -142,6 +143,7 @@
     <ClInclude Include="RenderableCommands\EndRenderSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\GaussianBlurSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\GenerateShadowMapsSceneRendererCommand.h" />
+    <ClInclude Include="RenderableCommands\ParticleRendererCommand.h" />
     <ClInclude Include="RenderableCommands\PresentSceneRenderCommand.h" />
     <ClInclude Include="RenderableCommands\RenderableObjectTechniquesSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\RenderDebugInfoSceneRendererCommand.h" />
