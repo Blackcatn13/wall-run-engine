@@ -50,6 +50,9 @@
     <Filter Include="SceneElements">
       <UniqueIdentifier>{3465eb9e-2815-4961-8d9f-02eac8acc95a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Particles">
+      <UniqueIdentifier>{cd5720b4-7264-4aed-abfe-6cc43a73d2cd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GraphicsManager.cpp" />
@@ -280,6 +283,9 @@
     </ClCompile>
     <ClCompile Include="SceneElements\MovingPlatform.cpp">
       <Filter>SceneElements</Filter>
+    </ClCompile>
+    <ClCompile Include="Particles\dummy.cpp">
+      <Filter>Particles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -517,6 +523,9 @@
     </ClInclude>
     <ClInclude Include="SceneElements\MovingPlatform.h">
       <Filter>SceneElements</Filter>
+    </ClInclude>
+    <ClInclude Include="Particles\dummy.h">
+      <Filter>Particles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

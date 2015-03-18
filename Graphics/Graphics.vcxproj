@@ -41,6 +41,7 @@
     <ClCompile Include="Lights\SpotLight.cpp" />
     <ClCompile Include="Mesh\MeshInstance.cpp" />
     <ClCompile Include="Object\Object3D.cpp" />
+    <ClCompile Include="Particles\dummy.cpp" />
     <ClCompile Include="RenderableCommands\BeginRenderSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\CaptureFrameBufferSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\ClearSceneRendererCommand.cpp" />
@@ -126,6 +127,7 @@
     <ClInclude Include="Lights\SpotLight.h" />
     <ClInclude Include="Mesh\MeshInstance.h" />
     <ClInclude Include="Object\Object3D.h" />
+    <ClInclude Include="Particles\dummy.h" />
     <ClInclude Include="RenderableCommands\BeginRenderSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\CaptureFrameBufferSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\ClearSceneRendererCommand.h" />
