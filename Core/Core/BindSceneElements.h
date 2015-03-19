@@ -64,17 +64,22 @@ void RegisterSceneElements()
     ];
     luabind::module(LUA_STATE) [
         class_<CPolyPlatform, CStaticPlatform>("CPolyPlatform")
-        .def(constructor<std::string, std::string, std::string,  float, bool, float>())
+        .def(constructor<std::string , std::string ,  Vect3f , Vect3f,  float>())
         .def("activate_poly", &CPolyPlatform::ActivatePoly)
         .def("deactivate_poly", &CPolyPlatform::DeactivatePoly)
         .property("m_Activated", &CPolyPlatform::IsActivated, &CPolyPlatform::SetActivated )
-        .property("m_OriginalScale", &CPolyPlatform::getOriginalScale, &CPolyPlatform::setOriginalScale )
-        .property("m_RedimScale", &CPolyPlatform::getRedimScale, &CPolyPlatform::setRedimScale )
+        .property("m_Direction", &CPolyPlatform::getDirection, &CPolyPlatform::setDirection )
+        .property("m_OriginalPosition", &CPolyPlatform::getOriginalPosition, &CPolyPlatform::setOriginalPosition )
+        .property("m_FinalPosition", &CPolyPlatform::getFinalPosition, &CPolyPlatform::setFinalPosition)
+        .property("m_Speed", &CPolyPlatform::getSpeed, &CPolyPlatform::setSpeed)
+        // .property("m_RedimScale", &CPolyPlatform::getRedimScale, &CPolyPlatform::setRedimScale )
         .property("m_Enabled", &CPolyPlatform::getEnabled, &CPolyPlatform::setEnabled )
         .property("m_ActivationDistance", &CPolyPlatform::getActivationDistance, &CPolyPlatform::setActivationDistance )
         .property("m_TimeOut", &CPolyPlatform::getTimeOut, &CPolyPlatform::setTimeOut )
-        .property("m_Collission", &CPolyPlatform::getCollission, &CPolyPlatform::setCollission )
-        .property("m_RedimAxis", &CPolyPlatform::getRedimAxis, &CPolyPlatform::setRedimAxis )
+        //.property("m_Collission", &CPolyPlatform::getCollission, &CPolyPlatform::setCollission )
+        .property("m_IsMoving", &CPolyPlatform::getIsMoving, &CPolyPlatform::setIsMoving )
+        .property("m_ActiveTime", &CPolyPlatform::getActiveTime, &CPolyPlatform::setActiveTime )
+        // .property("m_RedimAxis", &CPolyPlatform::getRedimAxis, &CPolyPlatform::setRedimAxis )
     ];
 }
 

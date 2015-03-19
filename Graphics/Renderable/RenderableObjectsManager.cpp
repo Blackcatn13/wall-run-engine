@@ -188,11 +188,12 @@ void CRenderableObjectsManager::Load(const std::string &FileName)
                     l_PinchosPlatform->SetScale(scale);
                     AddResource(platformName, l_PinchosPlatform);
                 } else if (type == "poly") {
-                    std::string l_RedimAxis = m(i).GetPszProperty("redim_axis",  "", false);
-                    float	l_RedimScale = m(i).GetFloatProperty("redim_scale",  .0f, false);
+                    Vect3f	l_FinalPosition = m(i).GetVect3fProperty("final_position",  v3fZERO, false);
                     float	l_ActivationDistance = m(i).GetFloatProperty("activation_distance", .0f, false);
-                    bool	l_InitialCollision = m(i).GetBoolProperty("initial_collision", false, false);
-                    CPolyPlatform * l_PolyPlatform = new CPolyPlatform(platformName, core, l_RedimAxis, l_RedimScale, l_InitialCollision, l_ActivationDistance);
+                    // bool	l_InitialCollision = m(i).GetBoolProperty("initial_collision", false, false);
+                    // std::string	l_RedimAxis = m(i).GetPszISOProperty("redim_axis", "", false);
+                    Vect3f	l_Direction = m.GetVect3fProperty("direction",  v3fZERO, false);
+                    CPolyPlatform * l_PolyPlatform = new CPolyPlatform(platformName, core, l_FinalPosition, l_Direction, l_ActivationDistance);
                     l_PolyPlatform->SetYaw(yaw);
                     l_PolyPlatform->SetPosition(pos);
                     l_PolyPlatform->SetPitch(pitch);
@@ -338,13 +339,15 @@ void CRenderableObjectsManager::Load(CXMLTreeNode & Node)
                 l_PinchosPlatform->SetScale(scale);
                 AddResource(platformName, l_PinchosPlatform);
             } else if (type == "poly") {
-                std::string l_RedimAxis = m.GetPszProperty("redim_axis",  "", false);
-                float	l_RedimScale = m.GetFloatProperty("redim_scale",  .0f, false);
+                Vect3f	l_FinalPosition = m.GetVect3fProperty("final_position",  v3fZERO, false);
+                Vect3f	l_Direction = m.GetVect3fProperty("direction",  v3fZERO, false);
                 float	l_ActivationDistance = m.GetFloatProperty("activation_distance", .0f, false);
-                bool	l_InitialCollision = m.GetBoolProperty("initial_collision", .0f, false);
-                CPolyPlatform * l_PolyPlatform = new CPolyPlatform(platformName, core, l_RedimAxis, l_RedimScale, l_InitialCollision, l_ActivationDistance);
+                // bool	l_InitialCollision = m.GetBoolProperty("initial_collision", false, false);
+                //std::string	l_RedimAxis = m.GetPszISOProperty("redim_axis", "", false);
+                CPolyPlatform * l_PolyPlatform = new CPolyPlatform(platformName, core, l_FinalPosition, l_Direction,  l_ActivationDistance);
                 l_PolyPlatform->SetYaw(yaw);
                 l_PolyPlatform->SetPosition(pos);
+                l_PolyPlatform->setOriginalPosition(pos);
                 l_PolyPlatform->SetPitch(pitch);
                 l_PolyPlatform->SetRoll(roll);
                 l_PolyPlatform->SetScale(scale);

@@ -17,7 +17,7 @@ protected:
     Vect3f				m_Direction;
     std::vector<Vect3f> m_WayPointsVector;
     int					m_CurrentWpId;
-    CPhysicController*	m_PhysicController;
+    //CPhysicController*	m_PhysicController;
 
 public:
     CMovingPlatform(std::string platformName, std::string coreName, float speed);

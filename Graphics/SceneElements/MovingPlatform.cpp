@@ -25,12 +25,12 @@ CMovingPlatform::CMovingPlatform(std::string platformName, std::string coreName,
 void CMovingPlatform::AddBoxController(Vect3f size, float slope, float skinwidth, float offset, float gravity)
 {
     //m_PhysicController = new CPhysicController(radius, heigh, slope, skinwidth, offset, ECG_ESCENE, m_PlatformUserData, m_PlatorformActor->GetPosition(), .0f);
-    m_PhysicController = new CPhysicController(size, slope, skinwidth, offset, ECG_DYNAMIC_OBJECTS, m_PlatformUserData, Vect3f(GetPosition().x, GetPosition().y + 1, GetPosition().z));
-    m_PhysicController->SetType(EControleType::BOX);
-    m_PhysicController->UseGravity(false);
-    m_PhysicController->GetUserData()->GetFlags();
+    //m_PhysicController = new CPhysicController(size, slope, skinwidth, offset, ECG_DYNAMIC_OBJECTS, m_PlatformUserData, Vect3f(GetPosition().x, GetPosition().y + 1, GetPosition().z));
+    //m_PhysicController->SetType(EControleType::BOX);
+    //m_PhysicController->UseGravity(false);
+    //m_PhysicController->GetUserData()->GetFlags();
     //  float heigh = m_PhysicController->GetHeight();
-    PHYSXM->AddPhysicController(m_PhysicController);
+    //PHYSXM->AddPhysicController(m_PhysicController);
     m_PlatorformActor->Activate(false);
     // m_PlatorformActor->CreateBody(0.5f);
     //m_PlatorformActor->SetKinematic(true);

@@ -17,17 +17,19 @@ function init_move_platform(name, user_data_name, size, position)
     --PHYSXM->AddPhysicController(platorm.m_PhysicController);
 end
 
-function init_poly_platform(name, user_data_name, size, position, time_out)
+function init_poly_platform(name, user_data_name, size, position, time_out, speed)
 	local platform = init_platform(name, user_data_name, size, position)
+
 	--coreInstance:trace(tostring(platform.m_Collission))
 	local collision = true
 	if platform.m_Collission == 0 then
 		collision = false
 	end
 	coreInstance:trace(tostring(collision))
-	platform.m_PlatformActor:activate(collision)
+	--platform.m_PlatformActor:activate(collision)
 	platform.m_OriginalScale = platform:get_scale()
 	platform.m_TimeOut= time_out
+	platform.m_Speed = speed
 	return platform
 end
 
@@ -182,56 +184,63 @@ function update_poly_platform(current_poly_time, dt, platform_name)
 	
 	local act2in = coreInstance:get_action_to_input();
 	
-	if act2in:do_action_from_lua("PolyPowa") == true and platform.m_Enabled then
-		platform:activate_poly(falling_force)
+	if (act2in:do_action_from_lua("PolyPowa") == true and platform.m_Enabled) or platform.m_IsMoving == true then
+		coreInstance:trace(tostring(platform.m_IsMoving))
+		--platform:activate_poly()
 		
-		--activate_poly(platform, dt)
+		activate_poly(platform, dt)
 		--local new_pos = Vect3f(position + platform.m_RedimScale)
 		--coreInstance:get_player_controller().m_PhysicController:set_position(new_pos) 
 	end
 	-- If poly is activated
 	
 	if current_poly_time > platform.m_TimeOut then
-		platform:deactivate_poly(falling_force)
+		--platform:deactivate_poly()
+		deactivate_poly(platform, dt)
 	end
 		
 end
 
 function activate_poly(_platform, dt)
 	if _platform.m_Activated == false then
-		core:trace("Activating poly")
-		local new_scale = 0.0
-		_platform.m_Activated = true
-		core:trace(tostring(_platform.m_Collission))
-		if _platform.m_Collission == 1 then
-			core:trace("Platform with collision")
-			new_scale = 0
-			_platform.m_PlatformActor:activate(false)
-			_platform.m_Collission = false
-			core:trace("Platform with collision")
-			_platform.m_RedimAxis = "lalala"
-			local redim_axis = _platform.m_RedimAxis
-			core:trace("lolo")
-			if _platform.m_RedimAxis=="y" then
-				core:trace("Redim y")
-				coreInstance:get_player_controller().m_PhysicController:move(Vect3f(0.0,-2.0,0.0), dt)
-			end
+		if _platform:get_position():distance(_platform.m_FinalPosition) >= 0.5 then
+			local new_position = _platform:get_position() + (_platform.m_Direction * _platform.m_Speed * dt)
+			_platform.m_PlatformActor:set_global_position(new_position)
+			_platform:set_position(new_position)
+			_platform.m_IsMoving = true
+			-- Si colisiona con piky (o si debería bajar) que lo desplace
 		else
-			core:trace("Platform without collision")
-			new_scale = _platform.m_RedimScale
-			_platform.m_Activated:activate(true)
-			_platform.m_Collission = true
-		
+			_platform.m_Activated = true
+			_platform.m_IsMoving = false
 		end
-		if _platform.m_RedimAxis =="x" then
-			_platform:set_scale(Vect3f(new_scale, _platform:get_scale().y, _platform:get_scale().z))
-		elseif _platform.m_RedimAxis =="y" then 
-			_platform:set_scale(Vect3f(_platform:get_scale().x, new_scale, _platform:get_scale().z))
-		else
-			_platform:set_scale(Vect3f(_platform:get_scale().x, _platform:get_scale().y, new_scale))
-		end
-		
+	
 	end
+end
+
+function deactivate_poly(_platform, dt)
+	if _platform.m_Activated == true then
+		if _platform:get_position():distance(_platform.m_OriginalPosition) >= 0.5 then
+			local new_position = _platform:get_position() + (_platform.m_Direction * _platform.m_Speed * dt * -1)
+			_platform.m_PlatformActor:set_global_position(new_position)
+			_platform:set_position(new_position)
+			--Si colisiona (o si debería bajar)con Piky => Desplazarle
+		else
+			_platform.m_Activated = false
+			_platform.m_ActiveTime = 0.0
+		end
+	end
+--[[
+ if (m_Activated) {
+        if (m_Position.Distance(m_OriginalPosition) >= 0.5) {
+            Vect3f l_NewPosition =  m_Position + ( m_Direction * m_Speed * m_Dt * -1);
+            m_PlatorformActor->SetGlobalPosition(l_NewPosition);
+            m_Position = l_NewPosition;
+            //Si colisiona con Piky => Desplazarle
+        } else {
+            m_Activated = false;
+            m_ActiveTime = 0.0f;
+        }
+--]]
 
 end
 --End Poly Platform

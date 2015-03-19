@@ -8,16 +8,18 @@
 #include "Utils\Logger.h"
 
 
-CPolyPlatform::CPolyPlatform(std::string platformName, std::string coreName, std::string redimAxis, float redimScale, bool initialCollision,  float activationDistance)
+CPolyPlatform::CPolyPlatform(std::string platformName, std::string coreName,  Vect3f finalPosition, Vect3f direction, float activationDistance)
     : CStaticPlatform(platformName, coreName),
-      m_RedimScale(redimScale),
-      m_OriginalScale(GetScale()),
-      m_RedimAxis(redimAxis),
+      m_FinalPosition(finalPosition),
+      m_Direction(direction),
+      m_OriginalPosition(m_Position),
+      //m_RedimAxis(redimAxis),
       m_Enabled(false),
-      m_Collission(initialCollision),
+      //  m_Collission(initialCollision),
       m_ActivationDistance(activationDistance),
       m_ActiveTime(.0f),
-      m_Activated(false)
+      m_Activated(false),
+      m_IsMoving(false)
 {
 }
 
@@ -27,51 +29,72 @@ CPolyPlatform::~CPolyPlatform ()
 }
 
 
-void CPolyPlatform:: ActivatePoly(Vect3f direction)
+void CPolyPlatform:: ActivatePoly()
 {
     if (!m_Activated) {
-        float l_NewScale = 0.0f;
-        m_Activated = true;
-        if (m_Collission) {
-            l_NewScale = 0;
-            m_PlatorformActor->Activate(false);
-            m_Collission = false;
-            if (m_RedimAxis == "y")
-                CCORE->GetPlayerController()->getPhysicController()->Move(direction, m_Dt);
+        // float l_NewScale = 0.0f;
+        // if (m_Collission) {//bajando
+        // l_NewScale = 0;
+        // m_PlatorformActor->Activate(false);
+        //   m_Collission = false;
+        if (m_Position.Distance(m_FinalPosition) >= 0.5) {
+            Vect3f l_NewPosition =  m_Position + (m_Direction * m_Speed * m_Dt);
+            m_PlatorformActor->SetGlobalPosition(l_NewPosition);
+            m_Position = l_NewPosition;
+            m_IsMoving = true;
+            //Si colisiona con Piky => Desplazarle
         } else {
-            l_NewScale = m_RedimScale;
-            m_PlatorformActor->Activate(true);
-            m_Collission = true;
+            m_Activated = true;
+            m_IsMoving = false;
         }
-        if (m_RedimAxis == "x") {
-            SetScale(Vect3f(l_NewScale, GetScale().y, GetScale().z));
-        } else if (m_RedimAxis == "y") {
-            SetScale(Vect3f(GetScale().x, l_NewScale , GetScale().z));
-        } else if (m_RedimAxis == "z") {
-            SetScale(Vect3f(GetScale().x, GetScale().y , l_NewScale));
-        } else {
-            std::string msg_error = "No redimension Axis defined";
-            LOGGER->AddNewLog(ELL_INFORMATION, msg_error.c_str());
-        }
+        /*} else {
+            m_PlatorformActor->MoveGlobalPosition(-m_Direction);
+        */
     }
+    /* if (m_RedimAxis == "y")
+         CCORE->GetPlayerController()->getPhysicController()->Move(direction, m_Dt);*/
+    // } else {//subiendo
+    // l_NewScale = m_RedimScale;
+    //   m_PlatorformActor->Activate(true);
+    //   m_Collission = true;
+    //}
+    //     if (m_RedimAxis == "x") {
+    //if (m_Position.x <= m_FinalPosition.x){
+    //
+    //}
+    //         //SetScale(Vect3f(l_NewScale, GetScale().y, GetScale().z));
+    //     } else if (m_RedimAxis == "y") {
+    //         //SetScale(Vect3f(GetScale().x, l_NewScale , GetScale().z));
+    //     } else if (m_RedimAxis == "z") {
+    //         //SetScale(Vect3f(GetScale().x, GetScale().y , l_NewScale));
+    //     } else {
+    //         std::string msg_error = "No redimension Axis defined";
+    //         LOGGER->AddNewLog(ELL_INFORMATION, msg_error.c_str());
+    //     }
 }
 
-
-void CPolyPlatform:: DeactivatePoly(Vect3f direction)
+void CPolyPlatform:: DeactivatePoly()
 {
     if (m_Activated) {
-        m_Activated = false;
-        m_ActiveTime = 0.0f;
-        m_PlatorformActor->Activate(!m_Collission);
-        if (m_Collission) {
-            m_Collission = false;
-            // if (m_RedimAxis == "y")
-            CCORE->GetPlayerController()->getPhysicController()->Move(direction, m_Dt);
+        if (m_Position.Distance(m_OriginalPosition) >= 0.5) {
+            Vect3f l_NewPosition =  m_Position + ( m_Direction * m_Speed * m_Dt * -1);
+            m_PlatorformActor->SetGlobalPosition(l_NewPosition);
+            m_Position = l_NewPosition;
+            //Si colisiona con Piky => Desplazarle
         } else {
-            m_Collission = true;
-            //Hacer que el player suba si es necesario
+            m_Activated = false;
+            m_ActiveTime = 0.0f;
         }
-        SetScale(m_OriginalScale);
+        //m_PlatorformActor->Activate(!m_Collission);
+        //if (m_Collission) {
+        //    m_Collission = false;
+        //    // if (m_RedimAxis == "y")
+        //    CCORE->GetPlayerController()->getPhysicController()->Move(direction, m_Dt);
+        //} else {
+        //    m_Collission = true;
+        //    //Hacer que el player suba si es necesario
+        //}
+        //SetScale(m_OriginalScale);
         // m_PlatorformActor->Activate(m_Collission);
     }
     /*if (m_Activated) {
@@ -86,7 +109,6 @@ void CPolyPlatform:: DeactivatePoly(Vect3f direction)
     } else
         m_PlatorformActor->Activate(true);*/
 }
-
 void CPolyPlatform::Update(float ElapsedTime)
 {
     //Esto para el lua de momento

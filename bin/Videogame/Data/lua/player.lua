@@ -37,7 +37,6 @@ function Player.new()
 			--cargar ultimo chekpoint
 			if self.last_checkpoint ~= nil then
 				self.last_checkpoint.load_checkpoint(self)
-				local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 				coreInstance:trace("checkpoint loaded")
 			else 
 				
