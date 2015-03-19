@@ -289,6 +289,11 @@
     </ClCompile>
     <ClCompile Include="RenderableCommands\ParticleRendererCommand.cpp">
       <Filter>RenderableCommands</Filter>
+    <ClCompile Include="Particles\ParticleManager.cpp">
+      <Filter>Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Particles\ParticleEmitter.cpp">
+      <Filter>Particles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -532,6 +537,11 @@
     </ClInclude>
     <ClInclude Include="RenderableCommands\ParticleRendererCommand.h">
       <Filter>RenderableCommands</Filter>
+    <ClInclude Include="Particles\ParticleManager.h">
+      <Filter>Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Particles\ParticleEmitter.h">
+      <Filter>Particles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
