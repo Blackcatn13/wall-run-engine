@@ -26,13 +26,13 @@ private:
     CCameraController*  m_CameraController;
     CObject3D*		    m_ObjectFPS;
     CObject3D*		    m_ObjectThPS;
-	CObject3D*		    m_Object3D;
-	CObject3D*		    m_Object2D;
+    CObject3D*		    m_Object3D;
+    CObject3D*		    m_Object2D;
     CFPSCamera*		    m_FPSCamera;
     CThPSCamera*	    m_ThPSCamera;
     CThPSCamera*	    m_ThPSCamera1;
-	CThPSCamera*	    m_3DCamera;
-	CThPSCamera*	    m_2DCamera;
+    CThPSCamera*	    m_3DCamera;
+    CThPSCamera*	    m_2DCamera;
     CScriptedController * m_ScriptedController;
     CRenderableObject	*m_RenderableObject;
     //CPhysicActor		*m_PhysicActor;
@@ -42,7 +42,7 @@ private:
     CPhysicUserData		*m_PhysicUserDataCube;
     //  CPhysicUserData		*m_PhysicUserDataCube2;
     CFSMManager			*m_fsmManager;
-	CWPManager			*m_WPManager;
+    CWPManager			*m_WPManager;
     // CPhysicMaterial		* m_MyMaterial;
     CGranade			*m_Granade;
     bool			    m_PlayerMode;

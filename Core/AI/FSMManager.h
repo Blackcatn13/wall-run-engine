@@ -19,6 +19,8 @@ typedef struct Fsm {
     std::string			m_currentState;
 } FSM;
 
+
+class CLuaGlobals;
 class CFSMManager : public CMapManager<FSM>
 {
 public:
@@ -31,6 +33,7 @@ private:
     void Load();
     std::string m_fileName;
 
+    CLuaGlobals * m_LuaGlobals;
 };
 
 #endif

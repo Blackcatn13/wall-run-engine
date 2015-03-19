@@ -12,8 +12,9 @@ class CParticleRendererCommand : public CSceneRendererCommand
 {
 public:
     CParticleRendererCommand(CXMLTreeNode &atts);
+    ~CParticleRendererCommand();
     void Execute(CGraphicsManager &RM);
-	CBillboard* b;
+    CBillboard* b;
 };
 
 #endif

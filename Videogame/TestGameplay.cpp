@@ -65,14 +65,16 @@ CTestGameplay::~CTestGameplay(void)
 {
     delete m_ObjectFPS;
     delete m_ObjectThPS;
+    CHECKED_DELETE(m_Object2D);
+    CHECKED_DELETE(m_Object3D);
     //delete m_ThPSCamera;
 //    delete m_ThPSCamera1;
     //delete m_FPSCamera;
     //PHYSXM->ReleaseAllActors();
     /*CHECKED_DELETE(m_PhysicActor);
-    CHECKED_DELETE(m_PhysicUserData);
+    CHECKED_DELETE(m_PhysicUserData);*/
     CHECKED_DELETE(m_PhysicUserDataCube);
-    CHECKED_DELETE(m_PhysicActorCubeFix);*/
+    CHECKED_DELETE(m_PhysicActorCubeFix);
     // CHECKED_DELETE(m_Granade);
     CHECKED_DELETE(m_fsmManager);
 }
