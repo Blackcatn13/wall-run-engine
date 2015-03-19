@@ -12,6 +12,20 @@ CParticle::CParticle(Vect3f Direction1, Vect3f Direction2, float Age, float Spee
 {
 }
 
+CParticle::CParticle()
+	: CBillboard(1, Vect3f(0,0,0))
+	, m_Direction1(Vect3f(0,1,0))
+	, m_Direction2(Vect3f(0,-1,0))
+	, m_Age(5)
+	, m_Speed(2)
+	, m_Color1(CColor(colBLACK))
+	, m_Color2(CColor(colWHITE))
+	, m_Dead(false)
+{
+}
+
+CParticle::~CParticle(){}
+
 void CParticle::Update(float dt)
 {
 }

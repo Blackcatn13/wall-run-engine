@@ -10,6 +10,7 @@ class CGraphicsManager;
 class CParticle : public CBillboard {
 public:
 	CParticle(Vect3f Direction1, Vect3f Direction2, float Age, float Speed, CColor Color1, CColor Color2, Vect3f Position, float size);
+	CParticle();
 	~CParticle();
 	void Update(float dt);
 	bool isDead() {return m_Dead; }

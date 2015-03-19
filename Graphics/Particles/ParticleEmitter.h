@@ -7,14 +7,17 @@
 #include <vector>
 #include "Math\Color.h"
 #include "Math\Vector3.h"
+#include "RecyclingArray.h"
 
 
 
 class CXMLTreeNode;
 class CGraphicsManager;
 
+class CParticle;
 
-class CParcitleEmitter : public CObject3D
+
+class CParticleEmitter : public CObject3D
 {
 private:
    Vect3f			m_vPos;
@@ -36,6 +39,8 @@ private:
    CColor			m_Color1;
    CColor			m_Color2;
    std::string		m_sTexture;
+   CRecyclingArray<CParticle>*	m_Particles;
+
 
  
 
@@ -50,8 +55,8 @@ CRecyclingArray<CParticle, NUMPARTICLES>	m_Particles
    */
 
 public:
-    CParcitleEmitter(CXMLTreeNode  &node);
-    ~CParcitleEmitter();
+    CParticleEmitter(CXMLTreeNode  &node);
+    ~CParticleEmitter();
     void Render(CGraphicsManager *RM);
     void Update(float dt);
 };

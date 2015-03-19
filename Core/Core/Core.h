@@ -33,6 +33,7 @@ class CLogRender;
 class CStaticPlatform;
 class CWPManager;
 class CEnemyManager;
+class CParticleManager;
 
 #define CCORE			CCore::GetInstance()
 #define GRAPHM			CCore::GetInstance()->GetGraphicsManager()
@@ -57,6 +58,8 @@ class CEnemyManager;
 #define PLAYC			CCore::GetInstance()->GetPlayerController()
 #define LOGRNDR         CCore::GetInstance()->GetLogRender()
 #define WPMMGR			CCore::GetInstance()->GetWPManager()
+#define PARTIM			CCore::GetInstance()->GetParticleManager()
+
 
 
 class CCore
@@ -95,6 +98,7 @@ private:
     // CMapManager<CStaticPlatform>	*		m_PlatformsMap;
     CWPManager*							m_WPManager;
     CEnemyManager*						m_EnemyManager;
+	CParticleManager*					m_ParticleManager;
 
 public:
     ~CCore();
@@ -219,6 +223,11 @@ public:
     CEnemyManager* GetEnemyManager()
     {
         return m_EnemyManager;
+    }
+
+	 CParticleManager* ParticleManager()
+    {
+        return m_ParticleManager;
     }
 
 

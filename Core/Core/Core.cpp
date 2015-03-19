@@ -25,6 +25,7 @@
 #include "Core_Utils\LogRender.h"
 #include "AI\WPManager.h"
 #include "EnemyManager.h"
+#include "Particles\ParticleManager.h"
 
 
 CCore* CCore::m_Instance = 0;
@@ -98,11 +99,13 @@ void CCore::Init(HWND handler)
     m_WPManager = new CWPManager();
     m_WPManager->Load("data//AI//Waypoints3.xml");
     m_EnemyManager = CEnemyManager::GetInstance();
-    // m_EnemyManager->Init("data//enemies.xml");
+    m_EnemyManager->Init("data//enemies.xml");
     m_ScriptManager->Load(m_Config.LuaPath);
     m_PlayerController = new CPlayerController();
     m_TriggerManager->LoadTriggers("./Data/triggers.xml");
     m_LuaLoadLevelFunc = m_Config.LuaLevelObjectsFunc;
+	m_ParticleManager = new CParticleManager();
+	m_ParticleManager->Load("./Data/particles.xml");
 }
 
 void CCore::DeInit()

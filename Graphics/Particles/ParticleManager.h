@@ -4,10 +4,10 @@
 #include <string>
 #include "Utils\TemplatedVectorMapManager.h"
 
-class CParcitleEmitter;
+class CParticleEmitter;
 class CGraphicsManager;
 
-class CParticleManager : public CTemplatedVectorMapManager<CParcitleEmitter>
+class CParticleManager : public CTemplatedVectorMapManager<CParticleEmitter>
 {
 private:
 	std::string m_fileName;

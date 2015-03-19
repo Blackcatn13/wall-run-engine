@@ -33,11 +33,13 @@ void CParticleManager::Load()
 		if (m.Exists()) {
 			int count = m.GetNumChildren();
 			for (int i = 0; i < count; ++i) {
-
-				CParcitleEmitter* newEmitter = new CParcitleEmitter(m(i));
-				std::string EmitterName = m(i).GetPszISOProperty("name", "");
-				//newEmitter->Load(m(i));
-				AddResource(EmitterName, newEmitter);
+				std::string l_Name = m(i).GetName();
+				if(l_Name == "particle"){
+					CParticleEmitter* newEmitter = new CParticleEmitter(m(i));
+					std::string EmitterName = m(i).GetPszISOProperty("name", "");
+					//newEmitter->Load(m(i));
+					AddResource(EmitterName, newEmitter);
+				}
 			}
 		}
 	}
