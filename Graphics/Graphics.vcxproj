@@ -41,6 +41,7 @@
     <ClCompile Include="Lights\SpotLight.cpp" />
     <ClCompile Include="Mesh\MeshInstance.cpp" />
     <ClCompile Include="Object\Object3D.cpp" />
+    <ClCompile Include="Particles\Billboard.cpp" />
     <ClCompile Include="Particles\dummy.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -60,6 +61,7 @@
     <ClCompile Include="RenderableCommands\EndRenderSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\GaussianBlurSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\GenerateShadowMapsSceneRendererCommand.cpp" />
+    <ClCompile Include="RenderableCommands\ParticleRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\PresentSceneRenderCommand.cpp" />
     <ClCompile Include="RenderableCommands\RenderableObjectTechniquesSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\RenderDebugInfoSceneRendererCommand.cpp" />
@@ -131,6 +133,7 @@
     <ClInclude Include="Lights\SpotLight.h" />
     <ClInclude Include="Mesh\MeshInstance.h" />
     <ClInclude Include="Object\Object3D.h" />
+    <ClInclude Include="Particles\Billboard.h" />
     <ClInclude Include="Particles\dummy.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
@@ -150,6 +153,7 @@
     <ClInclude Include="RenderableCommands\EndRenderSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\GaussianBlurSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\GenerateShadowMapsSceneRendererCommand.h" />
+    <ClInclude Include="RenderableCommands\ParticleRendererCommand.h" />
     <ClInclude Include="RenderableCommands\PresentSceneRenderCommand.h" />
     <ClInclude Include="RenderableCommands\RenderableObjectTechniquesSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\RenderDebugInfoSceneRendererCommand.h" />

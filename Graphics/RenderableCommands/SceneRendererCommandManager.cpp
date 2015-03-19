@@ -32,6 +32,7 @@
 #include "RenderableCommands\DisableAlphaBlendCommand.h"
 #include "RenderableCommands\RenderDebugInfoSceneRendererCommand.h"
 #include "RenderableCommands\GaussianBlurSceneRendererCommand.h"
+#include "RenderableCommands\ParticleRendererCommand.h"
 #include "Core_Utils/MemLeaks.h"
 
 
@@ -188,6 +189,10 @@ void CSceneRendererCommandManager::Load(const std::string &FileName)
                     CRenderDebugInfoSceneRendererCommand *l_Command = new CRenderDebugInfoSceneRendererCommand(m(i));
                     m_SceneRendererCommands.AddResource(l_Name, l_Command);
                 }
+				if (name == "particle_render") {
+					CParticleRendererCommand *l_Command = new CParticleRendererCommand(m(i));
+					m_SceneRendererCommands.AddResource(l_Name, l_Command);
+				}
             }
         }
     }

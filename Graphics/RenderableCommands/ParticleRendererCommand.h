@@ -1,0 +1,19 @@
+#pragma once
+#ifndef PARTICLE_RENDERER_COMMAND_H_
+#define PARTICLE_RENDERER_COMMAND_H_
+
+#include "RenderableCommands\SceneRendererCommand.h"
+
+class CXMLTreeNode;
+class CBillboard;
+class CGraphicsManager;
+
+class CParticleRendererCommand : public CSceneRendererCommand
+{
+public:
+    CParticleRendererCommand(CXMLTreeNode &atts);
+    void Execute(CGraphicsManager &RM);
+	CBillboard* b;
+};
+
+#endif
