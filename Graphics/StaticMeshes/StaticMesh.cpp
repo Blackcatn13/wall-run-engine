@@ -262,7 +262,7 @@ bool CStaticMesh::Load (const std::string &FileName)
             5- zmax
             */
             float* float_list = (float*)malloc(10 * sizeof(float));
-            fread(float_list , 10 * sizeof(unsigned short), 1, f);
+            fread(float_list , 10 * sizeof(float), 1, f);
             m_BBox = BoundingBox();
             m_BBox.SetMinPos(Vect3f(float_list[0], float_list[1], float_list[2]));
             m_BBox.SetMaxPos(Vect3f(float_list[3], float_list[4], float_list[5]));
