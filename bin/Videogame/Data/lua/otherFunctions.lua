@@ -23,6 +23,11 @@ function activate_trigger_update(trigger_name)
 
 end 
 
+function set_player_respawn_spikes_point()
+	local player = Player:get_instance()
+	player.last_spikes_position = Vect3f(player.get_player_controller():get_position())
+end
+
 function player_die()
 	local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 	coreInstance:trace("dieeeeee")

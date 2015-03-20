@@ -45,7 +45,7 @@ end
 
 function on_enter_pinchos(platform_name)
 	--TODO registrar todo lo nuevo
-	coreInstance:trace("Entrando en Pinchos")
+	--[[coreInstance:trace("Entrando en Pinchos")
 	local platform = rol_manager:get_default_renderable_object_manager():get_resource(platform_name)
 	coreInstance:trace(platform_name)
 	--platform:falling_into_platform()
@@ -73,6 +73,11 @@ function on_enter_pinchos(platform_name)
 	else
 		player.m_PhysicController:set_position(platform.m_BackPos)
 	end
+	--]]
+	local player = Player:get_instance()
+	player.player_take_damage()
+	-- Hacer cosas
+	player.get_player_controller():set_position(player.last_spikes_position)
 
 end
 
@@ -203,7 +208,7 @@ end
 
 function activate_poly(_platform, dt)
 	if _platform.m_Activated == false then
-		if _platform:get_position():distance(_platform.m_FinalPosition) >= 0.5 then
+		if _platform:get_position():distance(_platform.m_FinalPosition) >= 0.9 then
 			local new_position = _platform:get_position() + (_platform.m_Direction * _platform.m_Speed * dt)
 			_platform.m_PlatformActor:set_global_position(new_position)
 			_platform:set_position(new_position)
@@ -219,7 +224,7 @@ end
 
 function deactivate_poly(_platform, dt)
 	if _platform.m_Activated == true then
-		if _platform:get_position():distance(_platform.m_OriginalPosition) >= 0.5 then
+		if _platform:get_position():distance(_platform.m_OriginalPosition) >= 0.9 then
 			local new_position = _platform:get_position() + (_platform.m_Direction * _platform.m_Speed * dt * -1)
 			_platform.m_PlatformActor:set_global_position(new_position)
 			_platform:set_position(new_position)
