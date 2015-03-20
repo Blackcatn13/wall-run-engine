@@ -203,7 +203,7 @@ end
 
 function activate_poly(_platform, dt)
 	if _platform.m_Activated == false then
-		if _platform:get_position():distance(_platform.m_FinalPosition) >= 0.5 then
+		if _platform:get_position():distance(_platform.m_FinalPosition) >= 0.9 then
 			local new_position = _platform:get_position() + (_platform.m_Direction * _platform.m_Speed * dt)
 			_platform.m_PlatformActor:set_global_position(new_position)
 			_platform:set_position(new_position)
@@ -219,7 +219,7 @@ end
 
 function deactivate_poly(_platform, dt)
 	if _platform.m_Activated == true then
-		if _platform:get_position():distance(_platform.m_OriginalPosition) >= 0.5 then
+		if _platform:get_position():distance(_platform.m_OriginalPosition) >= 0.9 then
 			local new_position = _platform:get_position() + (_platform.m_Direction * _platform.m_Speed * dt * -1)
 			_platform.m_PlatformActor:set_global_position(new_position)
 			_platform:set_position(new_position)
