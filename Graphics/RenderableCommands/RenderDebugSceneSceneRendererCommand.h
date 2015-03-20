@@ -16,6 +16,7 @@ private:
     bool		m_PaintTriggers;
     bool		m_PaintAllPhysx;
     bool		m_DebugMode;
+    bool		m_PaintCharacterControllers;
 public:
     CRenderDebugSceneSceneRendererCommand(CXMLTreeNode &atts);
     void Execute(CGraphicsManager &RM);

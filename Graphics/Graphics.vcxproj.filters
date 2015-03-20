@@ -297,6 +297,9 @@
       <Filter>Particles</Filter>
     </ClCompile>
     <ClCompile Include="Particles\dummy.cpp" />
+    <ClCompile Include="Particles\Particle.cpp">
+      <Filter>Particles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
@@ -547,5 +550,8 @@
       <Filter>Particles</Filter>
     </ClInclude>
     <ClInclude Include="Particles\dummy.h" />
+    <ClInclude Include="Particles\Particle.h">
+      <Filter>Particles</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

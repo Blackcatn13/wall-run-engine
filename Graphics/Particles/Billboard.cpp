@@ -2,6 +2,8 @@
 #include "GraphicsManager.h"
 #include "Core\Core.h"
 #include "Camera\CameraController.h"
+#include "Texture\TextureManager.h"
+#include "Texture\Texture.h"
 
 CBillboard::CBillboard()
 	: m_size(1)

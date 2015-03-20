@@ -9,11 +9,15 @@
 #include "ActionToInput.h"
 #include "TriggerManager\Trigger.h"
 #include "TriggerManager\TriggerManager.h"
+#include "EnemyManager.h"
+#include "Core\PlayerController.h"
+
 
 CRenderDebugSceneSceneRendererCommand::CRenderDebugSceneSceneRendererCommand(CXMLTreeNode &atts):
     m_PaintTriggers(false),
     m_PaintAllPhysx(false),
-    m_DebugMode(true)
+    m_DebugMode(true),
+    m_PaintCharacterControllers(false)
 {
     m_Layer = atts.GetPszProperty("layer", "solid", false);
     m_Active = atts.GetBoolProperty("active", true, false);
@@ -35,7 +39,12 @@ void CRenderDebugSceneSceneRendererCommand::Execute(CGraphicsManager &RM)
             }
             if (ACT2IN->DoAction("ToggleDebugAllPhysx")) {
                 m_PaintAllPhysx = !m_PaintAllPhysx;
-                PHYSXM->SetPaintAllActors(m_PaintAllPhysx);
+                PHYSXM->SetPaintAllActors(m_PaintAllPhysx,  m_CookingMeshName,  m_PaintCookingMesh);
+            }
+            if (ACT2IN->DoAction("ToggleDebugCharacters")) {
+                m_PaintCharacterControllers = !m_PaintCharacterControllers;
+                CCORE->GetEnemyManager()->SetPaintEnemies(m_PaintCharacterControllers);
+                CCORE->GetPlayerController()->getPhysicUserData()->SetPaint(m_PaintCharacterControllers);
             }
             if (ACT2IN->DoAction("ToggleDebugTriggers")) {
                 m_PaintTriggers = !m_PaintTriggers;

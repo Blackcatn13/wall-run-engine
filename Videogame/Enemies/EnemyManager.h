@@ -30,6 +30,7 @@ public:
     void Reload();
     static CEnemyManager* GetInstance();
     const CXMLTreeNode & GetCoreEnemy(const std::string &type);
+    void SetPaintEnemies(bool paint);
 };
 
 #endif

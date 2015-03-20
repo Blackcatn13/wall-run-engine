@@ -767,7 +767,6 @@ void CGraphicsManager::DrawQuad3D (	const Vect3f& ul, const Vect3f& ur, const Ve
 }
 
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // COMMANDS
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -827,6 +826,27 @@ void CGraphicsManager::PresentSceneCommand()
 {
     // Present the backbuffer contents to the display
     m_pD3DDevice->Present( NULL, NULL, NULL, NULL );
+}
+
+void CGraphicsManager::DrawQuad3D (	const Vect3f& ul, const Vect3f& ur, const Vect3f& dl, const Vect3f& dr, CTexture *Texture, CColor Color)
+{
+	unsigned short indices[6] = {0, 2, 1, 1, 2, 3};
+    D3DCOLOR l_Color = D3DCOLOR_COLORVALUE(Color.GetRed(), Color.GetGreen(), Color.GetBlue(), Color.GetAlpha());
+    float U0 = 0;
+    float U1 = 1;
+    float V0 = 0;
+    float V1 = 1;
+    SCREEN_TEXTURED_COLORED_VERTEX v[4] = {
+          { ul.x, ul.y,	ul.z, 1, l_Color, U0, V0} //(x,y) up_left.
+		, { ur.x, ur.y,	ur.z, 1, l_Color, U1, V0} //(x,y) up_right.
+        , { dl.x, dl.y,	dl.z, 1, l_Color, U0, V1} //(x,y) down_left.
+        , { dr.x, dr.y,	dr.z, 1, l_Color, U1, V1} //(x,y) down_right.
+    };
+    m_pD3DDevice->SetFVF( SCREEN_TEXTURED_COLORED_VERTEX::GetFVF() );
+	//m_pD3DDevice->SetTexture(0, NULL);
+	Texture->Activate(0);
+    //m_pD3DDevice->DrawIndexedPrimitiveUP( D3DPT_TRIANGLELIST, 0, 4, 2, indices, D3DFMT_INDEX16, v, sizeof( SCREEN_TEXTURED_COLORED_VERTEX ) );
+	m_pD3DDevice->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP, 2, v, sizeof( SCREEN_TEXTURED_COLORED_VERTEX ) );
 }
 
 

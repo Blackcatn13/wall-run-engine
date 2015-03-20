@@ -31,6 +31,7 @@
 	<enable_z_write/>
 	<enable_z_test/>
 	<render_scene layer="solid" active="true"/>
+
 	<unset_render_target render_target="deferred_multiple_render_target"/>
 	<disable_z_write/>
 	<disable_z_test />
@@ -60,6 +61,7 @@
 		<texture stage_id="2" file="NormalMapTexture"/>
 		<texture stage_id="3" file="DepthMapTexture"/>
 	</render_deferred_shading >
+	<particle_render/>
 	<disable_alpha_blend />
 	<render_debug_scene layer="phisics" active="true" paint_cooking_mesh="false" cooking_mesh_name="fixbox" />
 	<!--Fog-->
@@ -204,7 +206,7 @@
 	<disable_z_test/>
 	<disable_z_write/>
 	<enable_alpha_blend/>
-	<particle_render/>
+	
 	<render_debug_info/>
 	<disable_alpha_blend /> 
 	<!-- <capture_frame_buffer> 

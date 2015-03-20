@@ -10,21 +10,21 @@
 	max_time="3" update_function="update_break_platform" group="3" paint="true" color="1.0 0.0 0.0" />
 	
 	<trigger name="PinchosPlatform_test" platform_name = "Spikes001" position="1.934707 -8.751181 238.600952" shape="box" size="11.0 1.5 15.0" type_event="enter" script_function="on_enter_pinchos" param1="Spikes001"
-	group="3" paint="true" color="1.0 0.0 0.0" />
+	group="3" paint="true" color="1.0 1.0 0.0" />
 	
 	
 	<!-- teleport triggers-->
 	<trigger name="Teleport_test" position="3.432929 1.300000 -4.654716" shape="sphere" radius = "1" type_event="enter" script_function="activate_teleport" param1="3.118870 1.00000 281.008423"
-	 paint="true" color="1.0 0.0 0.0" />
+	 paint="true" color="1.0 0.0 1.0" />
 	
 	<trigger name="Teleport_test2" position="39.649429 8.109472 500.100" shape="box" size="2.0 1.5 2.0" type_event="enter" script_function="activate_teleport" param1="0.432929 3.000000 -0.654716"
-	group="3" paint="true" color="1.0 0.0 0.0" />
+	group="3" paint="true" color="1.0 0.0 1.0" />
 	
 	<!-- holes -->
-	<trigger name="Hole001" position="-2.198 -7.109472 55.345" shape="box" size="10.0 0.5 21.0" type_event="enter" script_function="die_bastard" group="3" paint="true" color="1.0 0.0 0.0" />
+	<trigger name="Hole001" position="-2.198 -7.109472 55.345" shape="box" size="10.0 0.5 21.0" type_event="enter" script_function="player_die" group="3" paint="true" color="1.0 0.0 0.0" />
 	
 	<!-- CheckPoints-->
-	<trigger name="CheckPoint001" position="0.0 0.0 170.0" shape="box" size="10.0 10.0 0.5" type_event="enter" script_function="set_checkpoint" group="3" paint="true" color="1.0 0.0 0.0" />
+	<trigger name="CheckPoint001" position="0.0 0.0 170.0" shape="box" size="10.0 10.0 0.5" type_event="enter" script_function="set_checkpoint" group="3" paint="true" color="0.0 1.0 0.0" />
 	
 	
 	

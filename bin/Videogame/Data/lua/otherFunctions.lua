@@ -23,7 +23,7 @@ function activate_trigger_update(trigger_name)
 
 end 
 
-function die_bastard()
+function player_die()
 	local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 	coreInstance:trace("dieeeeee")
 	local player = Player:get_instance()

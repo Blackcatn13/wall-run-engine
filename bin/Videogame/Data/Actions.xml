@@ -237,12 +237,12 @@
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_2"/>
 	</action>
 	
-	<action name="ToggleDebugAllPhysx">
+	<action name="ToggleDebugMode">
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_1"/>
 	</action>
 	
-	<action name="ToggleDebugMode">
+	<action name="ToggleDebugAllPhysx">
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_2"/>
 	</action>
@@ -250,6 +250,11 @@
 	<action name="ToggleDebugTriggers">
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_3"/>
+	</action>
+	
+	<action name="ToggleDebugCharacters">
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_4"/>
 	</action>
 	
 </Actions>

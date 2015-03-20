@@ -46,6 +46,11 @@ public:
     // get & set
     // set(const <type> &name)
     // const <type> & get
+
+    CPhysicUserData*	GetUserData()
+    {
+        return m_PhysicUserData;
+    }
 };
 
 #endif

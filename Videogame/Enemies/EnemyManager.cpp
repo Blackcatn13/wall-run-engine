@@ -6,6 +6,7 @@
 #include "EasyEnemy.h"
 #include "PatrolEnemy.h"
 #include <map>
+#include "Utils\PhysicUserData.h"
 
 CEnemyManager* CEnemyManager::m_Singleton = 0;
 
@@ -94,4 +95,12 @@ CEnemyManager* CEnemyManager::GetInstance()
 const CXMLTreeNode & CEnemyManager::GetCoreEnemy(const std::string &type)
 {
     return m_Cores[type];
+}
+
+
+void CEnemyManager::SetPaintEnemies(bool paint)
+{
+    for (int i = 0; i < m_Enemies.size(); ++i) {
+        m_Enemies[i]->GetUserData()->SetPaint(paint);
+    }
 }
