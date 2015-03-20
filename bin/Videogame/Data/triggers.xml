@@ -26,7 +26,9 @@
 	<!-- CheckPoints-->
 	<trigger name="CheckPoint001" position="0.0 0.0 170.0" shape="box" size="10.0 10.0 0.5" type_event="enter" script_function="set_checkpoint" group="3" paint="true" color="0.0 1.0 0.0" />
 	
-	
+	<!-- Spike triggers -->
+	<trigger name="SpikesTrigger001" position="3.64 0.5 170.0" shape="box" size="10.0 10.0 0.5" type_event="enter" script_function="set_player_respawn_spikes_point" group="3" paint="true" color="0.0 0.0 1.0" />
+	<trigger name="SpikesTrigger002" position="3.64 0.5 260.0" shape="box" size="10.0 10.0 0.5" type_event="enter" script_function="set_player_respawn_spikes_point" group="3" paint="true" color="0.0 0.0 1.0" />
 	
 	<!--<trigger name="BreakablePlatform_test" platform_name = "BreakablePlatform001" position="2.000000 7.000000 -3.000000" shape="box" size="2.0 0.5 2.0" type_event="enter" script_function="activate_trigger_update" param1="BreakablePlatform_test"
 	max_time="3" update_function="update_break_platform" group="3" paint="true" color="1.0 0.0 0.0" />

@@ -45,7 +45,7 @@ end
 
 function on_enter_pinchos(platform_name)
 	--TODO registrar todo lo nuevo
-	coreInstance:trace("Entrando en Pinchos")
+	--[[coreInstance:trace("Entrando en Pinchos")
 	local platform = rol_manager:get_default_renderable_object_manager():get_resource(platform_name)
 	coreInstance:trace(platform_name)
 	--platform:falling_into_platform()
@@ -73,6 +73,11 @@ function on_enter_pinchos(platform_name)
 	else
 		player.m_PhysicController:set_position(platform.m_BackPos)
 	end
+	--]]
+	local player = Player:get_instance()
+	player.player_take_damage()
+	-- Hacer cosas
+	player.get_player_controller():set_position(player.last_spikes_position)
 
 end
 
