@@ -141,7 +141,7 @@ public:
     }
     CPhysicActor*			GetActor						( std::string _ActorName );
 
-    void					SetPaintAllActors				(bool paint);
+    void					SetPaintAllActors				(bool paint, std::string meshName, bool paintMesh);
     void					SetPaintByActorName				(std::string name, bool paint);
     void					SetTriggerReport				( CPhysicTriggerReport* _pReport );
     void					SetCollisionReport				( CPhysicCollisionReport* _pReport );

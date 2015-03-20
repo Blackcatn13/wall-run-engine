@@ -1012,7 +1012,7 @@ CPhysicActor* CPhysicsManager::GetActor ( std::string _ActorName )
     }
     return l_pActor;
 }
-void CPhysicsManager::SetPaintAllActors(bool paint)
+void CPhysicsManager::SetPaintAllActors(bool paint, std::string meshName, bool paintMesh)
 {
     std::vector<CPhysicActor*> l_Actors;
     assert ( m_pScene );
@@ -1030,7 +1030,10 @@ void CPhysicsManager::SetPaintAllActors(bool paint)
         assert(l_pPhysicUserData);
         // if ( l_pPhysicUserData->getName() == _ActorName ) {
         //	l_pActor = new CPhysicActor(l_pPhysicActor);
-        l_pPhysicUserData->SetPaint(paint); // Linea de código añadida por XMA
+        if (l_pPhysicUserData->getName() != meshName)
+            l_pPhysicUserData->SetPaint(paint); // Linea de código añadida por XMA
+        else
+            l_pPhysicUserData->SetPaint(paintMesh);
         //   break;
         // }
     }
