@@ -33,44 +33,52 @@ function on_update_cameras_lua(l_ElapsedTime)
 	local pCont = coreInstance:get_player_controller();
 	local currentPlayerPos = pCont:get_position();
 	local playerVec = currentPlayerPos - currentWP;
-	local playerVecN = playerVec;
+	local playerVecZX = playerVec;
+	playerVecZX.y = 0;
+	local playerVecZXN = playerVecZX;
 	local tratar = 1;
-	if(playerVecN.x==0)then
-		if(playerVecN.y==0)then
-			if(playerVecN.z==0)then
+	if(playerVecZXN.x==0)then
+		if(playerVecZXN.y==0)then
+			if(playerVecZXN.z==0)then
 				tratar = 0;
 			end
 		end
 	end
 	if (tratar == 1) then
-		playerVecN:normalize(1);
+		playerVecZXN:normalize(1);
 	end
 	local cameraVec = nextWP - currentWP;
-	local cameraVecN = cameraVec;
-	if(cameraVecN.x==0)then
-		if(cameraVecN.y==0)then
-			if(cameraVecN.z==0)then
+	local cameraVecZX = cameraVec;
+	cameraVecZX.y = 0;
+	local cameraVecZXN = cameraVecZX;
+	if(cameraVecZXN.x==0)then
+		if(cameraVecZXN.y==0)then
+			if(cameraVecZXN.z==0)then
 				tratar = 0;
 			end
 		end
 	end
 	if (tratar == 1) then
-		cameraVecN:normalize(1);
+		cameraVecZXN:normalize(1);
 	end
 	local dot = 0;
 	if(tratar == 1) then
-		dot = playerVecN * cameraVecN;
+		dot = playerVecZXN * cameraVecZXN;
 	end
-	local modul = playerVecN:length();
-	local moviment = dot * modul;
-	local newPos = currentWP + (cameraVecN * moviment);
+	local modul = playerVecZX:length();
+	local movimentZX = dot * modul;
+	local lengthVecZX = cameraVecZX:length();
+	local percent = movimentZX / lengthVecZX;
+	local newY = (currentWP.y) * (1 - percent) + (nextWP.y) * (percent);
+	local newPos = currentWP + (cameraVecZXN * movimentZX);
+	newPos.y = newY;
 	--Update Camera 3D
 	if(cam.m_eTypeCamera == 6) then
 		local obj = cam.m_pObject3D;
 		local name = CNamed();
 		name:set_name("LuaBreak");
 		obj:set_position(Vect3f(newPos.x, newPos.y, newPos.z));
-		local yaw = math.atan(cameraVecN.z, cameraVecN.x);
+		local yaw = math.atan(cameraVecZXN.z, cameraVecZXN.x);
 		obj:set_yaw(yaw);
 		obj:set_pitch(-0.25);
 		obj:set_roll(0);
@@ -95,10 +103,10 @@ function on_update_cameras_lua(l_ElapsedTime)
 		--cam.m_fAspectRatio = 1;
 	end
 	--cam.m_lastPlayerPos = currentPlayerPos;
-	local camObj = cam.m_pObject3D;
-	local objPos = camObj:get_position();
-	local distanceToWP = objPos:distance(nextWP);
-	if(distanceToWP < 0.2) then
+	local lengthPos = newPos:length();
+	local lengthWP = cameraVec:length();
+	local distanceToWP = lengthWP - lengthPos;
+	if(distanceToWP < 0.1) then
 		if(cam.m_nextWaypoint < cam:get_path_size()) then
 			cam.m_currentWaypoint = cam.m_nextWaypoint;
 			cam.m_nextWaypoint = cam.m_nextWaypoint + 1;
