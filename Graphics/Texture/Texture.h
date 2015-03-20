@@ -17,6 +17,7 @@ protected:
     virtual bool LoadFile();
     void Unload();
     bool m_reloadable;
+	bool m_DepthStencil;
 
     //////
     unsigned int m_Width, m_Height;
@@ -58,7 +59,7 @@ public:
     };
     bool Create(const std::string &Name, unsigned int Width, unsigned int
                 Height, unsigned int MipMaps, TUsageType UsageType, TPoolType PoolType,
-                TFormatType FormatType); //UsageType RenderTarget, 0
+                TFormatType FormatType, bool new_stencil = false); //UsageType RenderTarget, 0
 
 
     void Deactivate(size_t Stage);

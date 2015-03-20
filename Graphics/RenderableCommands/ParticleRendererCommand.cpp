@@ -7,7 +7,7 @@
 CParticleRendererCommand::CParticleRendererCommand(CXMLTreeNode &atts)
     : CSceneRendererCommand(atts)
 {
-    b = new CBillboard(30, Vect3f(-10, 15, -500));
+    b = new CBillboard(30, Vect3f(0, 0, 0));
 }
 
 CParticleRendererCommand::~CParticleRendererCommand()

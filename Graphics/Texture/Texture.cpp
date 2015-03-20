@@ -11,6 +11,7 @@ CTexture::CTexture()
     , m_RenderTargetTexture(NULL)
     , m_OldDepthStencilRenderTarget(NULL)
     , m_reloadable(true)
+	, m_DepthStencil(false)
 {
 }
 
@@ -65,8 +66,9 @@ bool CTexture::SetAsRenderTarget(size_t IdStage)
     if (FAILED( l_Device->GetDepthStencilSurface(
                     &m_OldDepthStencilRenderTarget ) ) )
         return false;
-    l_Device->SetDepthStencilSurface(
-        m_DepthStencilRenderTargetTexture );
+	if (m_DepthStencil) {
+		l_Device->SetDepthStencilSurface(m_DepthStencilRenderTargetTexture);
+	}
     return true;
 }
 
@@ -110,7 +112,7 @@ CTexture::TFormatType CTexture::GetFormatTypeFromString(const std::string &Forma
 
 bool CTexture::Create(const std::string &Name, unsigned int Width, unsigned int
                       Height, unsigned int MipMaps, TUsageType UsageType, TPoolType PoolType,
-                      TFormatType FormatType)
+                      TFormatType FormatType, bool new_stencil)
 {
     m_reloadable = false;
     setName(Name);
@@ -123,7 +125,10 @@ bool CTexture::Create(const std::string &Name, unsigned int Width, unsigned int
         l_UsageType = D3DUSAGE_DYNAMIC;
         break;
     case RENDERTARGET:
-        l_CreateDepthStencilSurface = true;
+		if (new_stencil) {
+			l_CreateDepthStencilSurface = true;
+			m_DepthStencil = true;
+		}
         l_UsageType = D3DUSAGE_RENDERTARGET;
         break;
     }

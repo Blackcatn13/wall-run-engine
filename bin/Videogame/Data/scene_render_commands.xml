@@ -31,7 +31,7 @@
 	<enable_z_write/>
 	<enable_z_test/>
 	<render_scene layer="solid" active="true"/>
-
+	
 	<unset_render_target render_target="deferred_multiple_render_target"/>
 	<disable_z_write/>
 	<disable_z_test />
@@ -61,9 +61,13 @@
 		<texture stage_id="2" file="NormalMapTexture"/>
 		<texture stage_id="3" file="DepthMapTexture"/>
 	</render_deferred_shading >
-	<particle_render/>
+	
 	<disable_alpha_blend />
+	<enable_z_write/>
+	<enable_z_test />
 	<render_debug_scene layer="phisics" active="true" paint_cooking_mesh="false" cooking_mesh_name="fixbox" />
+	<particle_render/>
+	
 	<!--Fog-->
 <!--	<enable_alpha_blend blendOp ="add" blendSrc="srcalpha" destBlend="invsrcalpha" />
 	<set_pool_renderable_objects_technique pool="fog_pool"/>
