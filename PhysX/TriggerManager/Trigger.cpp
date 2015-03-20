@@ -5,6 +5,7 @@
 #include "Utils\Defines.h"
 #include "Core\Core.h"
 #include "TriggerManager\TriggerManager.h"
+#include "Utils\PhysicUserData.h"
 
 CTrigger::CTrigger(CXMLTreeNode& node, CPhysicUserData* _pUserData)
     : CPhysicActor(_pUserData)
@@ -18,6 +19,7 @@ CTrigger::CTrigger(CXMLTreeNode& node, CPhysicUserData* _pUserData)
     else if (l_sType == "sphere")
         CreateSphereTrigger(node.GetVect3fProperty("position", v3fZERO, false), node.GetFloatProperty("radius", 0.f, false), ECG_TRIGGERS);
     SetTriggerGroup(ECG_TRIGGERS);
+    _pUserData->SetPaint(false);
     PHYSXM->AddPhysicActor(this);
     PHYSXM->SetTriggerReport(TRIGGM->getTriggerReport());
     //Events & scripts

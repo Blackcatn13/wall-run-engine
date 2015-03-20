@@ -4,6 +4,7 @@
 	<layer name="alpha_objects"/>
 	<layer name="alpha_blend_objects"/>
 	<layer name="particles"/>
+	<layer name="phisics"/>
 	
 	<mesh_instance layer="solid" name="Plane001" core="Plane001"  pos="-3.989277 0.000000 132.427643" yaw="3.14159"  pitch="0.0" roll="0.0" scale="0.8 1.0 1.0" />
 	<mesh_instance name="Wall001" core="Wall001"  pos="-26.832058 0.000000 186.038467" yaw="3.14159"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />

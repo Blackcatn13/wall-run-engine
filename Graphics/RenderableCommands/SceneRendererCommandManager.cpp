@@ -136,10 +136,10 @@ void CSceneRendererCommandManager::Load(const std::string &FileName)
                     CRenderDebugLightsSceneRenderCommand *l_Command = new CRenderDebugLightsSceneRenderCommand(m(i));
                     m_SceneRendererCommands.AddResource(l_Name, l_Command);
                 }
-                //if (name == "render_debug_scene") {
-                //	CRenderDebugSceneSceneRendererCommand *l_Command = new CRenderDebugSceneSceneRendererCommand(m(i));
-                //	m_SceneRendererCommands.AddResource(l_Name,l_Command);
-                //}
+                if (name == "render_debug_scene") {
+                    CRenderDebugSceneSceneRendererCommand *l_Command = new CRenderDebugSceneSceneRendererCommand(m(i));
+                    m_SceneRendererCommands.AddResource(l_Name, l_Command);
+                }
                 //if (name == "render_debug_shadow_maps") {
                 //	CRenderDebugShadowMapsSceneRendererCommand *l_Command = new CRenderDebugShadowMapsSceneRendererCommand(m(i));
                 //	m_SceneRendererCommands.AddResource(l_Name,l_Command);
@@ -189,10 +189,10 @@ void CSceneRendererCommandManager::Load(const std::string &FileName)
                     CRenderDebugInfoSceneRendererCommand *l_Command = new CRenderDebugInfoSceneRendererCommand(m(i));
                     m_SceneRendererCommands.AddResource(l_Name, l_Command);
                 }
-				if (name == "particle_render") {
-					CParticleRendererCommand *l_Command = new CParticleRendererCommand(m(i));
-					m_SceneRendererCommands.AddResource(l_Name, l_Command);
-				}
+                if (name == "particle_render") {
+                    CParticleRendererCommand *l_Command = new CParticleRendererCommand(m(i));
+                    m_SceneRendererCommands.AddResource(l_Name, l_Command);
+                }
             }
         }
     }

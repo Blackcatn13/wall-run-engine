@@ -296,6 +296,7 @@
     <ClCompile Include="Particles\ParticleEmitter.cpp">
       <Filter>Particles</Filter>
     </ClCompile>
+    <ClCompile Include="Particles\dummy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
@@ -545,5 +546,6 @@
     <ClInclude Include="Particles\ParticleEmitter.h">
       <Filter>Particles</Filter>
     </ClInclude>
+    <ClInclude Include="Particles\dummy.h" />
   </ItemGroup>
 </Project>

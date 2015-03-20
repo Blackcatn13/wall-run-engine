@@ -66,9 +66,7 @@
     <ClCompile Include="RenderableCommands\RenderableObjectTechniquesSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\RenderDebugInfoSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\RenderDebugLightsSceneRendererCommand.cpp" />
-    <ClCompile Include="RenderableCommands\RenderDebugSceneSceneRendererCommand.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="RenderableCommands\RenderDebugSceneSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\RenderDebugShadowMapsSceneRendererCommand.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -158,9 +156,7 @@
     <ClInclude Include="RenderableCommands\RenderableObjectTechniquesSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\RenderDebugInfoSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\RenderDebugLightsSceneRendererCommand.h" />
-    <ClInclude Include="RenderableCommands\RenderDebugSceneSceneRendererCommand.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
+    <ClInclude Include="RenderableCommands\RenderDebugSceneSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\RenderDebugShadowMapsSceneRendererCommand.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>

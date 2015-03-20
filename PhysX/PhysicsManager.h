@@ -21,6 +21,7 @@
 #include "Utils\Named.h"
 #include "PhysicsDefs.h"
 
+
 //#include "Script/ScriptRegister.h"
 
 //---Forward Declarations---//
@@ -140,6 +141,8 @@ public:
     }
     CPhysicActor*			GetActor						( std::string _ActorName );
 
+    void					SetPaintAllActors				(bool paint);
+    void					SetPaintByActorName				(std::string name, bool paint);
     void					SetTriggerReport				( CPhysicTriggerReport* _pReport );
     void					SetCollisionReport				( CPhysicCollisionReport* _pReport );
 

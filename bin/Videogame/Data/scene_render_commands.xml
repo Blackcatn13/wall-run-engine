@@ -61,7 +61,7 @@
 		<texture stage_id="3" file="DepthMapTexture"/>
 	</render_deferred_shading >
 	<disable_alpha_blend />
-	
+	<render_debug_scene layer="phisics" active="true" paint_cooking_mesh="false" cooking_mesh_name="fixbox" />
 	<!--Fog-->
 <!--	<enable_alpha_blend blendOp ="add" blendSrc="srcalpha" destBlend="invsrcalpha" />
 	<set_pool_renderable_objects_technique pool="fog_pool"/>

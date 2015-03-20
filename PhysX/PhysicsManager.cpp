@@ -1012,6 +1012,52 @@ CPhysicActor* CPhysicsManager::GetActor ( std::string _ActorName )
     }
     return l_pActor;
 }
+void CPhysicsManager::SetPaintAllActors(bool paint)
+{
+    std::vector<CPhysicActor*> l_Actors;
+    assert ( m_pScene );
+    //NxActor** l_ppActorList = m_pScene->getActors();
+    //NxU32 l_TotalActors	  = m_pScene->getNbActors();
+    //
+    CPhysicActor * l_pActor = NULL;
+    int nbActors = m_pScene->getNbActors();
+    NxActor** l_pActors = m_pScene->getActors();
+    while ( nbActors-- ) {
+        NxActor* l_pPhysicActor = *l_pActors++;
+        CPhysicUserData* l_pPhysicUserData = NULL;
+        l_pPhysicUserData = ( CPhysicUserData* ) l_pPhysicActor->userData;
+        //Si está petando aquí quiere decir que se ha registrado un objeto físico sin proporcionarle UserData
+        assert(l_pPhysicUserData);
+        // if ( l_pPhysicUserData->getName() == _ActorName ) {
+        //	l_pActor = new CPhysicActor(l_pPhysicActor);
+        l_pPhysicUserData->SetPaint(paint); // Linea de código añadida por XMA
+        //   break;
+        // }
+    }
+}
+
+void CPhysicsManager::SetPaintByActorName(std::string name, bool paint)
+{
+    assert ( m_pScene );
+    //NxActor** l_ppActorList = m_pScene->getActors();
+    //NxU32 l_TotalActors	  = m_pScene->getNbActors();
+    //
+    CPhysicActor * l_pActor = NULL;
+    int nbActors = m_pScene->getNbActors();
+    NxActor** l_pActors = m_pScene->getActors();
+    while ( nbActors-- ) {
+        NxActor* l_pPhysicActor = *l_pActors++;
+        CPhysicUserData* l_pPhysicUserData = NULL;
+        l_pPhysicUserData = ( CPhysicUserData* ) l_pPhysicActor->userData;
+        //Si está petando aquí quiere decir que se ha registrado un objeto físico sin proporcionarle UserData
+        assert(l_pPhysicUserData);
+        if ( l_pPhysicUserData->getName() == name ) {
+            l_pPhysicUserData->SetPaint(paint);
+            break;
+        }
+    }
+}
+
 
 int CPhysicsManager::GetCollisionGroup( const std::string& _szGroup )
 {
