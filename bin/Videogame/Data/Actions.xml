@@ -1,35 +1,35 @@
 <Actions>
     <action name="CommutationCamera">
    	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_C"/>
-   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP"  Code="KEY_TAB"/>
+   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_TAB"/>
     </action>
  
     <action name="Logger">
    	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
-   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP"  Code="KEY_F1"/>
+   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_F1"/>
     </action>
 	
 	<action name="LoggerOpen">
    	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
-   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP"  Code="KEY_F3"/>
+   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_F3"/>
     </action>
 
     <action name="LoggerPageUP">
-    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_PGUP"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_PGUP"/>
     </action>
 
     <action name="LoggerPageDown">
-    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_PGDOWN"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_PGDOWN"/>
     </action>
 	
 	<action name="LoggerUP">
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
-    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_UP"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_UP"/>
     </action>
 
     <action name="LoggerDown">
     	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
-    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_DOWN"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_DOWN"/>
     </action>
 
     <action name="LoggerUPCont">
@@ -44,29 +44,29 @@
 
 	<action name="Save2File">
    	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
-   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP"  Code="KEY_F2"/>
+   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_F2"/>
     </action>
 
     <action name="LoadLanguages">
     	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_F5"/>
-    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_L"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_L"/>
     </action>
 
     <action name="ChangeCatalan">
-    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_F1"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_F1"/>
     </action>
 
     <action name="ChangeCastellano">
-    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_F2"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_F2"/>
     </action>
 
     <action name="ChangeIngles">
-    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_F3"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_F3"/>
     </action>
 
     <action name="ReloadActions">
     	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_F5"/>
-    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_A"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_A"/>
     </action>
 
     <action name="yaw">
@@ -107,11 +107,11 @@
     </action>
 	
 	<action name="ChangeDimension">
-		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP"  Code="KEY_X"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_X"/>
     </action>
 	
 	<action name="KeyMoveForward">
-    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_UP"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_UP"/>
     </action>
 
     <action name="KeyMoveBack">
@@ -123,7 +123,7 @@
     </action>
 
     <action name="KeyMoveLeft">
-    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_LEFT"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_LEFT"/>
     </action>
 	
 	<action name="PanX">
@@ -148,51 +148,51 @@
 	
 	<action name="ToggleFPSCam">
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_C"/>
-		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP"  Code="KEY_0"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_0"/>
 	</action>
 	
 	
 	<action name="FlyMode">
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
-		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_C"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_C"/>
 	</action>
 
     <action name="ReloadMeshes">
-        <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_F9"/>
+        <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_F9"/>
     </action>
 
     <action name="ReloadTextures">
-        <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_F8"/>
+        <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_F8"/>
     </action>
 	
 	<action name="ReloadScripts">
-		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_F7"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_F7"/>
 	</action>
 	
 	<action name="ReloadScriptedController">
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
-		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_7"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_7"/>
 	</action>
 	
 	<action name="ReloadEffects">
-		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_F6"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_F6"/>
 	</action>
 	
 	<action name="PolyPowa">
-		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_M"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_M"/>
 	</action>
 	
 	<action name="ReloadLights">
-		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_F5"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_F5"/>
 	</action>
 	
 	<action name="DestroyActor">
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
-		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_P"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_P"/>
 	</action>
 	
 	<action name="CreateActor">
-		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_P"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_P"/>
 	</action>
 	
 	<action name="AcumulateForce">
@@ -200,15 +200,15 @@
 	</action>
 	
 	<action name="ThrowGrenade">
-		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_SPACE"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_SPACE"/>
 	</action>
 	
 	<action name="Shot">
-		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_I"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_I"/>
 	</action>
 	
 	<action name="ReloadBoxes">
-		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_O"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_O"/>
 	</action>
 	
 	<action name="PointClick">
@@ -216,45 +216,45 @@
 	</action>
 	
 	<action name="ReloadRenderCommands">
-		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_F4"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_F4"/>
 	</action>
 
 	<action name="ForwardMotor">
-		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_M"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_M"/>
 	</action>
 	
 	<action name="BackwardMotor">
-		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_N"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_N"/>
 	</action>
 	
 	<action name="Set3DCamera">
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_C"/>
-		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_3"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_3"/>
 	</action>
 	
 	<action name="Set2DCamera">
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_C"/>
-		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_2"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_2"/>
 	</action>
 	
 	<action name="ToggleDebugMode">
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
-		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_1"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_1"/>
 	</action>
 	
 	<action name="ToggleDebugAllPhysx">
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
-		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_2"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_2"/>
 	</action>
 	
 	<action name="ToggleDebugTriggers">
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
-		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_3"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_3"/>
 	</action>
 	
 	<action name="ToggleDebugCharacters">
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
-		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_4"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_4"/>
 	</action>
 	
 </Actions>
