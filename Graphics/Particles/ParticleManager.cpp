@@ -29,7 +29,7 @@ void CParticleManager::Load() {
       int count = m.GetNumChildren();
       for (int i = 0; i < count; ++i) {
         std::string l_Name = m(i).GetName();
-        if (l_Name == "particle") {
+        if (l_Name == "emitter") {
           CParticleEmitter *newEmitter = new CParticleEmitter(m(i));
           std::string EmitterName = m(i).GetPszISOProperty("name", "");
           AddResource(EmitterName, newEmitter);

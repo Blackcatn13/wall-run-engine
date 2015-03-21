@@ -1,21 +1,18 @@
 #include "RenderableCommands\ParticleRendererCommand.h"
 #include "GraphicsManager.h"
 #include "Core_Utils/MemLeaks.h"
-#include "Particles\Billboard.h"
+#include "Core\Core.h"
+#include "Particles\ParticleManager.h"
+#include "Particles\ParticleEmitter.h"
 #include "Utils\Defines.h"
 
 CParticleRendererCommand::CParticleRendererCommand(CXMLTreeNode &atts)
-    : CSceneRendererCommand(atts)
-{
-    b = new CBillboard(30, Vect3f(0, 0, 0));
+  : CSceneRendererCommand(atts) {
 }
 
-CParticleRendererCommand::~CParticleRendererCommand()
-{
-    CHECKED_DELETE(b);
+CParticleRendererCommand::~CParticleRendererCommand() {
 }
 
-void CParticleRendererCommand::Execute(CGraphicsManager &RM)
-{
-    b->Render(&RM);
+void CParticleRendererCommand::Execute(CGraphicsManager &RM) {
+  PARTIM->Render(&RM);
 }

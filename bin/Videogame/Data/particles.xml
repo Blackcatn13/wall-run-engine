@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <particles>
-	<particle name="particle0000001" min_speed="3.0" max_speed="3.5" max_particles="100" min_emission_time="0.4" max_emission_time="2.0" min_age="3.0" max_age="3.5" min_size="0.2" max_size="0.3" 
-	color_1="1.0 0.0 0.0" color_2="0.0 1.0 0.0"  v_Pos ="3.0 0.5 50.0" spawn_dir1="1.0 0.5 1.0" spawn_dir2="0.5 1.0 1.0" texture="./Data/level2/face.png" />
+	<emitter name="particle0000001" type="ESF" min_speed="3.0" max_speed="3.5" max_particles="100" min_emission_time="0.4" max_emission_time="2.0" min_age="3.0" max_age="3.5" min_size="2" max_size="5" color_1="0.0 0.0 0.0" color_2="1.0 1.0 1.0" v_Pos="3.0 0.5 0.0" spawn_dir1="1.0 0.5 1.0" spawn_dir2="0.5 1.0 1.0" texture="./Data/level2/face.png"/>
 		
 	
 </particles>

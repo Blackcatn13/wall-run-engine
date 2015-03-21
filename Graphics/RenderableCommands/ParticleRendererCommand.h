@@ -5,16 +5,13 @@
 #include "RenderableCommands\SceneRendererCommand.h"
 
 class CXMLTreeNode;
-class CBillboard;
 class CGraphicsManager;
 
-class CParticleRendererCommand : public CSceneRendererCommand
-{
-public:
-    CParticleRendererCommand(CXMLTreeNode &atts);
-    ~CParticleRendererCommand();
-    void Execute(CGraphicsManager &RM);
-    CBillboard* b;
+class CParticleRendererCommand : public CSceneRendererCommand {
+ public:
+  CParticleRendererCommand(CXMLTreeNode &atts);
+  ~CParticleRendererCommand();
+  void Execute(CGraphicsManager &RM);
 };
 
 #endif
