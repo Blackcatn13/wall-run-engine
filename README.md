@@ -13,3 +13,7 @@ To run the project you need to add boost, and have installed PhysX.
 | PhysX Runtime | [PhysX Runtime](http://www.nvidia.com/object/physx-9.14.0702-driver.html) | Install it and reboot |
 
 With all of this now you can compile the project without any problem.
+
+AStyle configuration of the project:
+
+--style=google -s2 -xG -S -O -o -k3 -H -p
