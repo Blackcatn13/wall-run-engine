@@ -126,7 +126,7 @@ template<class T>
 
 void CRecyclingArray<T>::ParticleDeleteOld(float age) {
   for (uint32 i = 0; i < m_uiTotalElements; i++) {
-    if (m_vRecyclingArrayStatus[i]) {
+    if (!m_vRecyclingArrayStatus[i]) {
       if ((&(m_vRecyclingArray[i]))->takeLife(age) <= 0) {
         Free(i);
       }
@@ -138,7 +138,7 @@ template<class T>
 
 void CRecyclingArray<T>::ParticleUpdate(float dt) {
   for (uint32 i = 0; i < m_uiTotalElements; i++) {
-    if (m_vRecyclingArrayStatus[i]) {
+    if (!m_vRecyclingArrayStatus[i]) {
       (&(m_vRecyclingArray[i]))->Update(dt);
     }
   }

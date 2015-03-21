@@ -79,4 +79,12 @@ void CParticleEmitter::PopulateParticle(CParticle *p) {
   p->setSize(size);
   p->setAge(age);
   p->setPosition(m_vPos);
+  p->setColor1(col1);
+  p->setDirection1(m_vSpawnDir1);
+  switch (m_Type) {
+    case EMITTER_ESF:
+      break;
+    case EMITTER_PLANE:
+      break;
+  }
 }

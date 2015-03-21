@@ -28,7 +28,6 @@ class CParticle : public CBillboard {
   Vect3f	m_Direction2;
   float	  m_Age;
   float	  m_Speed;
-  CColor	m_Color1;
   CColor	m_Color2;
   bool    m_Dead;
 };

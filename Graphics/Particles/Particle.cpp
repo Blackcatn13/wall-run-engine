@@ -6,9 +6,9 @@ CParticle::CParticle(Vect3f Direction1, Vect3f Direction2, float Age, float Spee
   , m_Direction2(Direction2)
   , m_Age(Age)
   , m_Speed(Speed)
-  , m_Color1(Color1)
   , m_Color2(Color2)
   , m_Dead(false) {
+  m_Color1 = Color1;
 }
 
 CParticle::CParticle()
@@ -17,14 +17,15 @@ CParticle::CParticle()
   , m_Direction2(Vect3f(0, -1, 0))
   , m_Age(5)
   , m_Speed(2)
-  , m_Color1(CColor(colBLACK))
   , m_Color2(CColor(colWHITE))
   , m_Dead(false) {
+  m_Color1 = colBLACK;
 }
 
 CParticle::~CParticle() {}
 
 void CParticle::Update(float dt) {
+  m_position += m_Direction1.Normalize() * m_Speed * dt;
 }
 
 float CParticle::takeLife(float dt) {
