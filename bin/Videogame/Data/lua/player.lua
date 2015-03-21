@@ -5,6 +5,7 @@ local num_lives = 0
 local instance = 0
 local last_checkpoint = nil
 local last_spikes_position = nil
+--local visited_checkpoints = {}
 
 
 function Player.new()
@@ -17,6 +18,7 @@ function Player.new()
 	self.instance = self
 	self.last_spikes_position = Vect3f(0.0, 0.0, 0.0)
 	self.coreInstance = CCoreLuaWrapper().m_CoreInstance;
+	self.visited_checkpoints = {}
 	
 	------	 PLAYER FUNCTIONS -----
 	function self.get_player_controller()
@@ -57,6 +59,22 @@ function Player.new()
 		end
 
 	end
+	
+	function self.check_visited_checkpoints(trigger_name)
+		-- recorrer array de checkpoints visitados del player
+		-- si coincide con este checkpoint retornar true
+		self.coreInstance:trace("Searching CheckPoint")
+		for i = 1, table.getn(self.visited_checkpoints) do
+			self.coreInstance:trace(".")
+			if self.visited_checkpoints[i].name == trigger_name then
+				self.coreInstance:trace("Encontrado!!")
+				return true
+			end	
+		end
+		self.coreInstance:trace("No Encontrado")
+		return false
+	end
+	
     return self
 end
 -----	GETTERS & SETTERS -----	

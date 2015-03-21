@@ -24,7 +24,8 @@
 	<trigger name="Hole001" position="-2.198 -7.109472 55.345" shape="box" size="10.0 0.5 21.0" type_event="enter" script_function="player_die" group="3" paint="true" color="1.0 0.0 0.0" />
 	
 	<!-- CheckPoints-->
-	<trigger name="CheckPoint001" position="0.0 0.0 170.0" shape="box" size="10.0 10.0 0.5" type_event="enter" script_function="set_checkpoint" group="3" paint="true" color="0.0 1.0 0.0" />
+	<trigger name="CheckPoint001" position="0.0 0.0 170.0" shape="box" size="10.0 10.0 0.5" type_event="enter" script_function="set_checkpoint" param1="CheckPoint001" group="3" paint="true" color="0.0 1.0 0.0" />
+	<trigger name="CheckPoint002" position="0.0 0.0 270.0" shape="box" size="10.0 10.0 0.5" type_event="enter" script_function="set_checkpoint" param1="CheckPoint002" group="3" paint="true" color="0.0 1.0 0.0" />
 	
 	<!-- Spike triggers -->
 	<trigger name="SpikesTrigger001" position="3.64 0.5 170.0" shape="box" size="10.0 10.0 0.5" type_event="enter" script_function="set_player_respawn_spikes_point" group="3" paint="true" color="0.0 0.0 1.0" />

@@ -35,7 +35,7 @@ function player_die()
 	player.player_die()
 end
 
-function set_checkpoint()
+function set_checkpoint(trigger_name)
 	local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 		coreInstance:trace("enter checkpoint")
 	local player = Player:get_instance()
@@ -45,7 +45,9 @@ function set_checkpoint()
 	coreInstance:trace("Checkpoint created")
 	--coreInstance:trace(tostring(checkpoint:is_activated()))
 	--if checkpoint:is_activated() == false then
-	checkpoint.set_checkpoint(player)
+	if player.check_visited_checkpoints(trigger_name) == false then
+		checkpoint.set_checkpoint(player, trigger_name)
+	end
 	coreInstance:trace(tostring(checkpoint.is_activated))
 	coreInstance:trace("checkpoint activated")
 --	end
