@@ -1,0 +1,6 @@
+<animated_model name="picky">
+	<texture file="gray.jpg"/>
+	<skeleton file="piky.csf"/>
+	<mesh file="picky-model.cmf"/>
+	<animation name="piky_walk" file="move.caf"/>
+</animated_model>
