@@ -97,7 +97,7 @@ void CEngine::Render() {
   m_Process->Render();
   /*gm->DisableZBuffering();
   gm->EnableAlphaBlend();*/
-  m_Process->RenderDebugInfo(true, m_Timer.GetElapsedTime());
+// m_Process->RenderDebugInfo(true, m_Timer.GetElapsedTime());
   /* m_LogRender->Render(gm, FONTM);
    gm->DisableAlphaBlend();
    gm->EnableZBuffering();*/

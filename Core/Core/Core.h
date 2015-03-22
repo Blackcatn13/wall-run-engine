@@ -60,7 +60,7 @@ class CParticleManager;
 #define WPMMGR			CCore::GetInstance()->GetWPManager()
 #define PARTIM			CCore::GetInstance()->GetParticleManager()
 #define ENEMYM			CCore::GetInstance()->GetEnemyManager()
-
+#define PROCESS			CCore::GetInstance()->GetProcess()
 
 
 class CCore {
