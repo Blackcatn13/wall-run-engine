@@ -100,6 +100,7 @@ void CTestGameplay::Init()
     m_3DCamera->GetObject3D()->SetPosition(m_3DCamera->GetPathPoint(0));
     m_2DCamera = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_Object2D, 50);
     m_2DCamera->SetTypeCamera(CCamera::TC_2DCAM);
+	m_2DCamera->LoadPathFromFile(".\\Data\\camera_path.xml");
     m_ThPSCamera = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS, 200);
     //m_ThPSCamera1 = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_RenderableObject, 10);
     m_FPSCamera = new CFPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectFPS);

@@ -27,14 +27,33 @@ function on_update_cameras_lua(l_ElapsedTime)
 	--name2:set_name("UpdatePass1");
 	local cam = camController:get_active_camera();
 	local currentWP = cam:get_path_point(cam.m_currentWaypoint);
+	coreInstance:trace("currentWP");
+	coreInstance:trace(tostring(currentWP.x));
+	coreInstance:trace(tostring(currentWP.y));
+	coreInstance:trace(tostring(currentWP.z));
 	local nextWP = cam:get_path_point(cam.m_nextWaypoint);
+	coreInstance:trace("nextWP");
+	coreInstance:trace(tostring(nextWP.x));
+	coreInstance:trace(tostring(nextWP.y));
+	coreInstance:trace(tostring(nextWP.z));
 	--name2:set_name("UpdatePass2");
 	--local lastPlayerPos = cam.m_lastPlayerPos;
 	local pCont = coreInstance:get_player_controller();
 	local currentPlayerPos = pCont:get_position();
+	coreInstance:trace("currentPlayerPos");
+	coreInstance:trace(tostring(currentPlayerPos.x));
+	coreInstance:trace(tostring(currentPlayerPos.y));
+	coreInstance:trace(tostring(currentPlayerPos.z));
 	local playerVec = currentPlayerPos - currentWP;
+	coreInstance:trace("playerVec");
+	coreInstance:trace(tostring(playerVec.x));
+	coreInstance:trace(tostring(playerVec.y));
+	coreInstance:trace(tostring(playerVec.z));
 	local playerVecZX = playerVec;
 	playerVecZX.y = 0;
+	local modul = playerVecZX:length();
+	coreInstance:trace("modul");
+	coreInstance:trace(tostring(modul));
 	local playerVecZXN = playerVecZX;
 	local tratar = 1;
 	if(playerVecZXN.x==0)then
@@ -44,12 +63,21 @@ function on_update_cameras_lua(l_ElapsedTime)
 			end
 		end
 	end
+	coreInstance:trace("tratar normalize playerVecZXN");
+	coreInstance:trace(tostring(tratar));
 	if (tratar == 1) then
 		playerVecZXN:normalize(1);
 	end
 	local cameraVec = nextWP - currentWP;
+	coreInstance:trace("cameraVec");
+	coreInstance:trace(tostring(cameraVec.x));
+	coreInstance:trace(tostring(cameraVec.y));
+	coreInstance:trace(tostring(cameraVec.z));
 	local cameraVecZX = cameraVec;
 	cameraVecZX.y = 0;
+	local lengthVecZX = cameraVecZX:length();
+	coreInstance:trace("lengthVecZX");
+	coreInstance:trace(tostring(lengthVecZX));
 	local cameraVecZXN = cameraVecZX;
 	if(cameraVecZXN.x==0)then
 		if(cameraVecZXN.y==0)then
@@ -58,27 +86,55 @@ function on_update_cameras_lua(l_ElapsedTime)
 			end
 		end
 	end
+	coreInstance:trace("tratar normalize cameraVecZXN");
+	coreInstance:trace(tostring(tratar));
 	if (tratar == 1) then
 		cameraVecZXN:normalize(1);
 	end
 	local dot = 0;
+	coreInstance:trace("tratar dot");
+	coreInstance:trace(tostring(tratar));
 	if(tratar == 1) then
 		dot = playerVecZXN * cameraVecZXN;
 	end
-	local modul = playerVecZX:length();
+	coreInstance:trace("dot");
+	coreInstance:trace(tostring(dot));
 	local movimentZX = dot * modul;
-	local lengthVecZX = cameraVecZX:length();
+	coreInstance:trace("movimentZX");
+	coreInstance:trace(tostring(movimentZX));
 	local percent = movimentZX / lengthVecZX;
+	coreInstance:trace("percent");
+	coreInstance:trace(tostring(percent));
 	local newY = (currentWP.y) * (1 - percent) + (nextWP.y) * (percent);
+	coreInstance:trace("newY");
+	coreInstance:trace(tostring(newY));
 	local newPos = currentWP + (cameraVecZXN * movimentZX);
 	newPos.y = newY;
+	coreInstance:trace("newPos");
+	coreInstance:trace(tostring(newPos.x));
+	coreInstance:trace(tostring(newPos.y));
+	coreInstance:trace(tostring(newPos.z));
 	--Update Camera 3D
 	if(cam.m_eTypeCamera == 6) then
 		local obj = cam.m_pObject3D;
-		local name = CNamed();
-		name:set_name("LuaBreak");
 		obj:set_position(Vect3f(newPos.x, newPos.y, newPos.z));
 		local yaw = math.atan(cameraVecZXN.z, cameraVecZXN.x);
+		if(percent > 0.9) then
+			if(cam.m_nextWaypoint < cam:get_path_size())then
+				local probar = CNamed();
+				probar:set_name("entra1");
+				local nextVector = cam:get_path_point(cam.m_nextWaypoint + 1) - cam:get_path_point(cam.m_currentWaypoint + 1);
+				probar:set_name("entra2");
+				nextVector:normalize(1);
+				probar:set_name("entra3");
+				nextyaw = math.atan(nextVector.z,nextVector.x);
+				probar:set_name("entra4");
+				local yawpercent = (percent - 0.9) / (1 - 0.9);
+				probar:set_name("entra5");
+				yaw = yaw * (1-yawpercent) + nextyaw * yawpercent;
+				probar:set_name("entra6");
+			end
+		end
 		obj:set_yaw(yaw);
 		obj:set_pitch(-0.25);
 		obj:set_roll(0);
@@ -92,8 +148,25 @@ function on_update_cameras_lua(l_ElapsedTime)
 	if(cam.m_eTypeCamera == 5) then
 		local positionController = pCont:get_position();
 		local obj = cam.m_pObject3D;
-		obj:set_position(Vect3f(0, 1, positionController.z));
-		obj:set_yaw(3.1415);
+		obj:set_position(Vect3f(newPos.x, newPos.y, newPos.z));
+		local yaw = math.atan(cameraVecZXN.x, cameraVecZXN.z);
+		if(percent > 0.9) then
+			if(cam.m_nextWaypoint < cam:get_path_size())then
+				local probar = CNamed();
+				probar:set_name("entra1");
+				local nextVector = cam:get_path_point(cam.m_nextWaypoint + 1) - cam:get_path_point(cam.m_currentWaypoint + 1);
+				probar:set_name("entra2");
+				nextVector:normalize(1);
+				probar:set_name("entra3");
+				nextyaw = math.atan(nextVector.x,nextVector.z);
+				probar:set_name("entra4");
+				local yawpercent = (percent - 0.9) / (1 - 0.9);
+				probar:set_name("entra5");
+				yaw = yaw * (1-yawpercent) + nextyaw * yawpercent;
+				probar:set_name("entra6");
+			end
+		end
+		obj:set_yaw(yaw);
 		obj:set_pitch(-0.1);
 		obj:set_roll(0);
 		cam:set_zoom(50);
@@ -103,14 +176,45 @@ function on_update_cameras_lua(l_ElapsedTime)
 		--cam.m_fAspectRatio = 1;
 	end
 	--cam.m_lastPlayerPos = currentPlayerPos;
-	local lengthPos = newPos:length();
-	local lengthWP = cameraVec:length();
-	local distanceToWP = lengthWP - lengthPos;
-	if(distanceToWP < 0.1) then
-		if(cam.m_nextWaypoint < cam:get_path_size()) then
-			cam.m_currentWaypoint = cam.m_nextWaypoint;
-			cam.m_nextWaypoint = cam.m_nextWaypoint + 1;
+	local vecPos = newPos - currentWP;
+	local lengthPos = vecPos:length();
+	coreInstance:trace("lengthPos");
+	coreInstance:trace(tostring(lengthPos));
+	local auxVec = nextWP - currentWP;
+	local lengthWP = auxVec:length();
+	coreInstance:trace("lengthWP");
+	coreInstance:trace(tostring(lengthWP));
+	if(dot > 0) then
+		if(lengthWP < lengthPos) then
+			if(cam.m_nextWaypoint < cam:get_path_size()) then
+				coreInstance:trace("currentWaypoint before");
+				coreInstance:trace(tostring(cam.m_currentWaypoint));
+				cam.m_currentWaypoint = cam.m_nextWaypoint;
+				coreInstance:trace("currentWaypoint after");
+				coreInstance:trace(tostring(cam.m_currentWaypoint));
+				coreInstance:trace("nextWaypoint before");
+				coreInstance:trace(tostring(cam.m_nextWaypoint));
+				cam.m_nextWaypoint = cam.m_nextWaypoint + 1;
+				coreInstance:trace("nextWaypoint after");
+				coreInstance:trace(tostring(cam.m_nextWaypoint));
+			end
 		end
 	end
+	if (dot<0) then
+		if(cam.m_currentWaypoint > 0) then
+			coreInstance:trace("nextWaypoint before");
+			coreInstance:trace(tostring(cam.m_nextWaypoint));
+			cam.m_nextWaypoint = cam.m_currentWaypoint;
+			coreInstance:trace("nextWaypoint after");
+			coreInstance:trace(tostring(cam.m_nextWaypoint));
+			coreInstance:trace("currentWaypoint before");
+			coreInstance:trace(tostring(cam.m_currentWaypoint));
+			cam.m_currentWaypoint = cam.m_currentWaypoint - 1;
+			coreInstance:trace("currentWaypoint after");
+			coreInstance:trace(tostring(cam.m_currentWaypoint));
+		end
+	end
+	local name = CNamed();
+	name:set_name("LuaBreak");
 	--name2:set_name("UpdatePassFinal");
 end
