@@ -26,7 +26,7 @@
 #include "AI\WPManager.h"
 #include "EnemyManager.h"
 #include "Particles\ParticleManager.h"
-
+#include "Particles\BillboardManager.h"
 
 CCore *CCore::m_Instance = 0;
 
@@ -101,6 +101,8 @@ void CCore::Init(HWND handler) {
   m_PlayerController = new CPlayerController();
   m_TriggerManager->LoadTriggers("./Data/triggers.xml");
   m_LuaLoadLevelFunc = m_Config.LuaLevelObjectsFunc;
+  m_BillboardManager = new CBillboardManager();
+  m_BillboardManager->Load("./Data/billboards.xml");
   m_ParticleManager = new CParticleManager();
   m_ParticleManager->Load("./Data/particles.xml");
 }
@@ -132,6 +134,9 @@ void CCore::DeInit() {
   CHECKED_DELETE(m_LogRender);
   CHECKED_DELETE(m_WPManager);
   CHECKED_DELETE(m_EnemyManager);
+  CHECKED_DELETE(m_BillboardManager);
+  CHECKED_DELETE(m_ParticleManager);
+  
   // m_PlatformsMap->Destroy();
 }
 

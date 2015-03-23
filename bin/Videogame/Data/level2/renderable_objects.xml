@@ -1,214 +1,144 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <renderable_objects>
 	<layer name="solid" default="true"/>
+	<layer name="skybox"/>
 	<layer name="alpha_objects"/>
 	<layer name="alpha_blend_objects"/>
 	<layer name="particles"/>
-	
-	
-	<!--<mesh_instance name="Reflection" core="CubeMap" pos="10.0 0.0 7.0" yaw="0.0" pitch="0.0" roll="0.0" scale="0.5 0.5 0.5"/>-->
-	<!--<mesh_instance name="Sphere002" core="Sphere002"  pos="-5.0 0.0 -5.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" />-->
-	<!--<mesh_instance name="Plane001" core="Plane001"  pos="0.000000 -5.000000 0.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1 1 1"/>-->
-	<!--<mesh_instance name="Box003" core="Box002"  pos="0.000000 0.000000 0.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />-->
-	<!--<mesh_instance name="Box002" core="Box002"  pos="5.000000 0.000000 1.000000" yaw="0.34"  pitch="0.0" roll="0.0" scale="2.0 0.5 0.5" />-->
-	<!--<mesh_instance name="Box003" core="Box002"  pos="0.000000 -1.000000 0.000000" yaw="0.34"  pitch="0.0" roll="0.0" scale="50.0 0.0 50.0" />-->
-	<!--<mesh_instance name="Plane001" core="Plane001"  pos="0.000000 -2.000000 0.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1 1 1"/>-->
-	<!--<mesh_instance name="Sphere002" core="Sphere002"  pos="-5.0 0.0 -5.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" />-->
-	<!--mesh_instance name="Box001LobyW" core="Box001LobyW"  pos="0.000000 0.000000 0.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="100.0 100.0 100.0" />-->
-	<!-- <mesh_instance name="Plane001" core="Plane001"  pos="8.000000 1.000000 0.000000" yaw="5.0"  pitch="0.0" roll="-5.0" scale="0.1 0.1 0.1" />
-	<mesh_instance name="Low" core="LOW001"  pos="5.000000 0.000000 5.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1 1 1" /> -->
-	<!--
-	<mesh_instance name="Box001" core="Box001"  pos="-5.0 0.0 5.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="4.0 4.0 4.0" /> 
-	<mesh_instance name="Sphere001" core="Sphere001"  pos="5.0 0.0 5.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" />
-	
-	<mesh_instance name="Reflection" core="CubeMap" pos="0.0 0.0 0.0" yaw="0.0" pitch="0.0" roll="0.0" scale="0.5 0.5 0.5"/>
-	<mesh_instance name="Cofre" core="COFRE" pos="5.0 0.0 -5.0" yaw="0.0" pitch="0.0" roll="0.0" scale="0.8 0.8 0.8"/>
-	<mesh_instance name="Box002" core="Box002"  pos="5.000000 0.000000 1.000000" yaw="0.34"  pitch="0.0" roll="0.0" scale="2.0 2.0 2.0" />
-	<mesh_instance name="Box003" core="Box002"  pos="15.000000 0.000000 15.000000" yaw="0.34"  pitch="0.0" roll="0.0" scale="3.0 3.0 3.0" />
-	-->
-	<!--<mesh_instance name="Sphere002" core="Sphere002"  pos="0 3.0 0.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" />
-	<mesh_instance name="Sphere002" core="Sphere002"  pos="-5.0 3.0 0.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" />
-	<mesh_instance name="Plane001" core="Plane001"  pos="-0.106308 0.000000 0.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Box001" core="Box001"  pos="55.000000 5.000000 5.000000" yaw="0"  pitch="0" roll="0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Box002" core="Box002"  pos="35.000000 5.000000 5.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Box003" core="Box003"  pos="32.500000 5.000000 35.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Box004" core="Box004"  pos="57.500000 5.000000 35.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Box005" core="Box005"  pos="30.000000 5.000000 65.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Box006" core="Box006"  pos="60.000000 5.000000 65.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Box007" core="Box007"  pos="-35.000000 5.000000 55.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Box008" core="Box008"  pos="-45.000000 5.000000 55.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Box009" core="Box009"  pos="-55.000000 5.000000 55.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Box010" core="Box010"  pos="-65.000000 5.000000 55.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Box011" core="Box011"  pos="-75.000000 5.000000 55.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Box012" core="Box012"  pos="-25.000000 5.000000 55.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Box013" core="Box013"  pos="-15.000000 5.000000 55.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Box014" core="Box014"  pos="-5.000000 5.000000 55.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Box015" core="Box015"  pos="5.000000 5.000000 55.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Box016" core="Box016"  pos="30.000000 5.000000 -25.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Box017" core="Box017"  pos="55.000000 5.000000 -25.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Box018" core="Box018"  pos="55.000000 5.000000 -55.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Box019" core="Box019"  pos="25.000000 5.000000 -55.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Escena" core="Escena"  pos="0 10 0" yaw="0.0" pitch="0.0" roll="0.0" scale="15.0 15.0 15.0" />-->
-	<mesh_instance name="Cylinder001" core="Cylinder001"  pos="0.567447 0.000000 0.259852" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="PIKY" core="PIKY"  pos="26.391855 0.399766 0.345415" yaw="3.14159"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="CHUCKY-CHUCKY " core="CHUCKY-CHUCKY "  pos="3.774744 0.767351 -0.446604" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Cone003" core="Cone003"  pos="-2.369819 0.000000 -2.514220" yaw="-0.519391"  pitch="0.0" roll="0.0" scale="1.0 2.30644 1.0" />
-	<mesh_instance name="Cone005" core="Cone005"  pos="-2.515358 0.000000 0.110247" yaw="-0.988825"  pitch="0.0" roll="0.0" scale="1.0 2.30644 1.0" />
-	<mesh_instance name="Cone007" core="Cone007"  pos="-0.809091 0.000000 1.641586" yaw="-1.28824"  pitch="0.0" roll="0.0" scale="1.0 2.30644 1.0" />
-	<mesh_instance name="Cone009" core="Cone009"  pos="1.159804 0.000000 1.269572" yaw="-0.893965"  pitch="0.0" roll="0.0" scale="1.0 2.30644 1.0" />
-	<mesh_instance name="Cone011" core="Cone011"  pos="1.880283 0.000000 -0.436630" yaw="0.893963"  pitch="0.0" roll="0.0" scale="1.0 2.30644 1.0" />
-	<mesh_instance name="Cone013" core="Cone013"  pos="0.788157 0.000000 -2.080345" yaw="1.28824"  pitch="0.0" roll="0.0" scale="1.0 2.30644 1.0" />
-	<mesh_instance name="Cone015" core="Cone015"  pos="-1.380192 0.000000 -2.072557" yaw="0.988825"  pitch="0.0" roll="0.0" scale="1.0 2.30644 1.0" />
-	<mesh_instance name="Cone017" core="Cone017"  pos="-3.155849 0.000000 -0.221540" yaw="0.519392"  pitch="0.0" roll="0.0" scale="1.0 2.30644 1.0" />
-	<mesh_instance name="Cone019" core="Cone019"  pos="-2.715215 0.000000 2.837224" yaw="5.87082e-007"  pitch="0.0" roll="0.0" scale="1.0 2.30644 1.0" />
-	<mesh_instance name="Columnas" core="Columnas"  pos="0.976917 5.002471 0.000001" yaw="0.312625"  pitch="0.0" roll="0.0" scale="0.249117 0.175286 0.249117" />
-	<mesh_instance name="CÃºpula" core="CÃºpula"  pos="0.976917 5.295332 0.000001" yaw="0.295112"  pitch="0.0" roll="0.0" scale="0.227141 0.159823 0.227141" />
-	<mesh_instance name="Altar" core="Altar"  pos="-4.908772 0.600966 -0.080386" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Cylinder002" core="Cylinder002"  pos="125.518593 0.995162 3.065983" yaw="0.0"  pitch="1.5708" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Cylinder003" core="Cylinder003"  pos="175.952698 0.995162 3.065983" yaw="0.0"  pitch="1.5708" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Cylinder004" core="Cylinder004"  pos="192.630173 0.995162 3.065983" yaw="0.0"  pitch="1.5708" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Cylinder005" core="Cylinder005"  pos="200.522095 0.995162 3.065983" yaw="0.0"  pitch="1.5708" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Object001" core="Object001"  pos="0.567447 0.000000 0.259852" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Object002" core="Object002"  pos="0.567447 0.000000 0.259852" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="poly" core="poly"  pos="0.567447 0.000000 0.259852" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="romplibe" core="romplibe"  pos="358.794891 9.019676 -105.692986" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="poly2" core="poly2"  pos="369.886566 16.095112 -90.807541" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="poly3" core="poly3"  pos="354.699982 15.202876 -89.084190" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Cylinder007" core="Cylinder007"  pos="354.202484 7.539630 -153.449112" yaw="-1.5708"  pitch="1.5708" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="poly004" core="poly004"  pos="354.215179 9.559990 -170.576447" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Prism001" core="Prism001"  pos="352.072601 4.590259 -165.958038" yaw="-1.59591"  pitch="1.54568" roll="-0.0257552" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism002" core="Prism002"  pos="352.072601 4.590259 -167.113403" yaw="-1.59591"  pitch="1.54568" roll="-0.0257552" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism003" core="Prism003"  pos="352.072601 4.590259 -168.268768" yaw="-1.59591"  pitch="1.54568" roll="-0.0257552" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism004" core="Prism004"  pos="352.072601 4.590259 -169.424103" yaw="-1.59591"  pitch="1.54568" roll="-0.0257552" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism005" core="Prism005"  pos="352.072601 4.590259 -170.579498" yaw="-1.59591"  pitch="1.54568" roll="-0.0257552" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism006" core="Prism006"  pos="352.072601 4.590259 -171.734833" yaw="-1.59591"  pitch="1.54568" roll="-0.0257552" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism007" core="Prism007"  pos="352.072601 4.590259 -172.890198" yaw="-1.59591"  pitch="1.54568" roll="-0.0257552" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism008" core="Prism008"  pos="352.072601 4.590259 -174.045563" yaw="-1.59591"  pitch="1.54568" roll="-0.0257552" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Cylinder008" core="Cylinder008"  pos="354.202484 14.595966 -267.734070" yaw="-1.5708"  pitch="1.5708" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="poly005" core="poly005"  pos="354.215179 10.131899 -222.023087" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Cylinder013" core="Cylinder013"  pos="413.020508 7.433805 -658.529785" yaw="0.0"  pitch="1.5708" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Prism009" core="Prism009"  pos="544.354614 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism010" core="Prism010"  pos="543.199219 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism011" core="Prism011"  pos="545.510010 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism012" core="Prism012"  pos="546.665283 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism013" core="Prism013"  pos="547.820679 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism014" core="Prism014"  pos="548.976074 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism015" core="Prism015"  pos="550.131409 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism016" core="Prism016"  pos="551.286743 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="poly006" core="poly006"  pos="441.662079 9.559990 -658.384094" yaw="1.5708"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="poly007" core="poly007"  pos="529.046204 19.170790 -658.507019" yaw="1.9096"  pitch="0.0" roll="0.0" scale="1.82533 1.0 1.0" />
-	<mesh_instance name="Cylinder014" core="Cylinder014"  pos="574.076294 16.112906 -658.507202" yaw="0.0"  pitch="1.5708" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Cylinder015" core="Cylinder015"  pos="583.908020 16.112906 -658.507202" yaw="0.0"  pitch="1.5708" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Cylinder016" core="Cylinder016"  pos="593.739746 16.112906 -658.507202" yaw="0.0"  pitch="1.5708" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Prism017" core="Prism017"  pos="441.638367 4.520210 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism018" core="Prism018"  pos="438.172272 4.520210 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism019" core="Prism019"  pos="437.016907 4.520210 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism020" core="Prism020"  pos="439.327637 4.520210 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism021" core="Prism021"  pos="440.482971 4.520210 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism022" core="Prism022"  pos="442.793701 4.520210 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism023" core="Prism023"  pos="443.949066 4.520210 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism024" core="Prism024"  pos="445.104431 4.520210 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism025" core="Prism025"  pos="635.217285 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism026" core="Prism026"  pos="629.440491 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism027" core="Prism027"  pos="628.285156 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism028" core="Prism028"  pos="630.595825 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism029" core="Prism029"  pos="631.751221 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism030" core="Prism030"  pos="632.906555 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism031" core="Prism031"  pos="634.061890 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism032" core="Prism032"  pos="636.372681 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="poly008" core="poly008"  pos="632.883423 17.788685 -658.384094" yaw="1.5708"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Prism033" core="Prism033"  pos="660.188904 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism034" core="Prism034"  pos="654.412109 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism035" core="Prism035"  pos="653.256714 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism036" core="Prism036"  pos="655.567505 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism037" core="Prism037"  pos="656.722778 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism038" core="Prism038"  pos="657.878174 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism039" core="Prism039"  pos="659.033569 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism040" core="Prism040"  pos="661.344238 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="poly009" core="poly009"  pos="660.908203 17.788685 -658.384094" yaw="2.10311"  pitch="0.0" roll="0.0" scale="1.0 1.0 2.49922" />
-	<mesh_instance name="Prism043" core="Prism043"  pos="663.767761 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism044" core="Prism044"  pos="662.612427 12.713813 -660.526611" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism045" core="Prism045"  pos="664.923096 12.713813 -660.526733" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism046" core="Prism046"  pos="666.078491 12.713813 -660.526611" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism047" core="Prism047"  pos="667.233826 12.713813 -660.526611" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="poly010" core="poly010"  pos="699.188660 17.788685 -658.384094" yaw="2.10311"  pitch="0.0" roll="0.0" scale="1.0 1.0 2.49922" />
-	<mesh_instance name="Cylinder017" core="Cylinder017"  pos="715.222107 16.112906 -658.507202" yaw="0.0"  pitch="1.5708" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="poly011" core="poly011"  pos="547.805115 17.788685 -658.384094" yaw="1.5708"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Prism048" core="Prism048"  pos="745.937744 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism049" core="Prism049"  pos="747.093079 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism050" core="Prism050"  pos="741.316284 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism051" core="Prism051"  pos="740.160889 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism052" core="Prism052"  pos="742.471680 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism053" core="Prism053"  pos="743.626953 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism054" core="Prism054"  pos="744.782349 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism055" core="Prism055"  pos="748.248413 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="poly012" core="poly012"  pos="744.124084 17.788685 -658.384094" yaw="1.5708"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Prism056" core="Prism056"  pos="755.264404 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism057" core="Prism057"  pos="756.419800 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism058" core="Prism058"  pos="750.643005 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism059" core="Prism059"  pos="749.487671 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism060" core="Prism060"  pos="751.798340 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism061" core="Prism061"  pos="752.953735 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism062" core="Prism062"  pos="754.109070 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism063" core="Prism063"  pos="757.575195 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="poly013" core="poly013"  pos="751.651367 19.298948 -658.384094" yaw="1.5708"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Prism064" core="Prism064"  pos="764.591187 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism065" core="Prism065"  pos="765.746521 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism066" core="Prism066"  pos="759.969727 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism067" core="Prism067"  pos="758.814331 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism068" core="Prism068"  pos="761.125122 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism069" core="Prism069"  pos="762.280396 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism070" core="Prism070"  pos="763.435791 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism071" core="Prism071"  pos="766.901855 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="poly014" core="poly014"  pos="759.590088 21.700951 -658.384094" yaw="1.5708"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Prism080" core="Prism080"  pos="773.898315 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism081" core="Prism081"  pos="775.053650 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism082" core="Prism082"  pos="769.276855 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism083" core="Prism083"  pos="768.121460 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism084" core="Prism084"  pos="770.432251 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism085" core="Prism085"  pos="771.587524 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism086" core="Prism086"  pos="772.742920 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism087" core="Prism087"  pos="776.208984 12.713813 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="poly015" core="poly015"  pos="766.978882 19.298948 -658.384094" yaw="1.5708"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="poly016" core="poly016"  pos="774.493286 17.788685 -658.384094" yaw="1.5708"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Prism076" core="Prism076"  pos="777.448242 12.713813 -660.526611" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism088" core="Prism088"  pos="844.903076 7.397182 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism091" core="Prism091"  pos="843.747681 7.397182 -660.526611" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism092" core="Prism092"  pos="846.058472 7.397182 -660.526733" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism093" core="Prism093"  pos="853.920288 14.368021 -660.526733" yaw="3.14159"  pitch="-2.21676" roll="-2.09326e-007" scale="0.949757 1.0 2.91154" />
-	<mesh_instance name="Prism094" core="Prism094"  pos="855.075684 14.368021 -660.526672" yaw="3.14159"  pitch="-2.21676" roll="-2.09326e-007" scale="0.949757 1.0 2.91154" />
-	<mesh_instance name="Prism095" core="Prism095"  pos="856.231079 14.368021 -660.526611" yaw="3.14159"  pitch="-2.21676" roll="-2.09326e-007" scale="0.949757 1.0 2.91154" />
-	<mesh_instance name="Prism096" core="Prism096"  pos="864.089966 7.397182 -660.526733" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism097" core="Prism097"  pos="862.934570 7.397182 -660.526672" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism098" core="Prism098"  pos="861.779175 7.397182 -660.526611" yaw="0.0"  pitch="1.59624" roll="0.0" scale="0.949757 1.0 1.0" />
-	<mesh_instance name="Prism099" core="Prism099"  pos="871.951660 14.368021 -660.526733" yaw="3.14159"  pitch="-2.21676" roll="-2.09326e-007" scale="0.949757 1.0 2.91154" />
-	<mesh_instance name="Prism100" core="Prism100"  pos="873.107056 14.368021 -660.526672" yaw="3.14159"  pitch="-2.21676" roll="-2.09326e-007" scale="0.949757 1.0 2.91154" />
-	<mesh_instance name="Prism101" core="Prism101"  pos="874.262451 14.368021 -660.526611" yaw="3.14159"  pitch="-2.21676" roll="-2.09326e-007" scale="0.949757 1.0 2.91154" />
-	<mesh_instance name="poly017" core="poly017"  pos="900.498352 7.890951 -658.384094" yaw="1.5708"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="poly018" core="poly018"  pos="908.025635 7.930850 -658.384094" yaw="1.5708"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="poly019" core="poly019"  pos="915.964355 7.935070 -658.384094" yaw="1.5708"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="poly020" core="poly020"  pos="944.258240 10.699608 -658.384094" yaw="1.5708"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="poly021" core="poly021"  pos="954.522156 18.114401 -658.384094" yaw="1.5708"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="poly022" core="poly022"  pos="1005.046143 -35.816658 -658.384094" yaw="1.5708"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="poly023" core="poly023"  pos="1118.235229 -33.118736 -658.384094" yaw="1.5708"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="poly024" core="poly024"  pos="1125.762451 -31.585033 -658.384094" yaw="1.5708"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<!--<mesh_instance name="Escena" core="Escena"  pos="0 10 0" yaw="0.0" pitch="0.0" roll="0.0" scale="15.0 15.0 15.0" />-->
-	
-	<!-- characters -->
-	
-	<mesh_instance name="SpongePicky" core="SpongePicky"  pos="0.432929 3.000000 -0.654716" yaw="1.0"  pitch="0.0" roll="0.0" scale="2.0 2.0 0.5" />
+	<mesh_instance name="SpongePicky" core="SpongePicky"  pos="0.432929 2.000000 -0.654716" yaw="1.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 0.5" /><!--SpongePicky-->
 	<mesh_instance name="Enemy1" core="Enemy1"  pos="0.865036 2.000000 8.068936" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<mesh_instance name="Enemy2" core="Enemy2"  pos="-3.413945 3.000000 5.465974" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<mesh_instance name="Enemy3" core="Enemy3"  pos="-1.591296 2.000000 11.657170" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	
-	<!-- platforms -->
-	
-	<!--<platform name="StaticPlatform001" type="static" core="Box003"  pos="0.000000 3.000000 6.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="2.0 4.0 2.0" />
-	<platform name="BreakablePlatform001" type="breakable" trigger_name="BreakablePlatform_test" core="Box004"  pos="2.000000 4.000000 -3.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="2.0 4.0 2.0" />
-	<platform name="MovingPlatform001" type="moving" speed = "5" core="Box005"  pos="-15.000000 0.000000 15.000000" yaw="0.0"  pitch="0.0" roll="0.0" scale="2.0 4.0 2.0" >
-		<wp pos="-15.000000 0.000000 15.000000" />
-		<wp pos="15.000000 0.000000 15.000000" />
-	</platform>
-	<platform name="PinchosPlatform001" type="pinchos" from_x="true" from_z="false" offset="3.0" core="Box003"  pos="14.268936 0.000000 6.406747" yaw="0.0"  pitch="0.0" roll="0.0" scale="2.0 4.0 2.0" />
-	<platform name="PolyPlatform001" type="poly" redim_axis ="y" redim_scale = "2.0" activation_distance ="10" initial_collision = "false" core="Box003"  pos="14.607794 0.241913 -5.444057" yaw="0.0"  pitch="0.0" roll="0.0" scale="2.0 0.0 2.0" />-->
+	<mesh_instance name="CHUCKY-CHUCKY " core="CHUCKY-CHUCKY " pos="26.218029 0.767351 -0.533913" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SALA0" core="SALA0" pos="0.567447 0.000000 0.259852" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA006" core="ANTORCHA006" pos="-2.369819 0.000000 -2.514220" yaw="-0.519391" pitch="0.0" roll="0.0" scale="1.0 2.30644 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA009" core="ANTORCHA009" pos="-2.515358 0.000000 0.110247" yaw="-0.988825" pitch="0.0" roll="0.0" scale="1.0 2.30644 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA008" core="ANTORCHA008" pos="-0.809091 0.000000 1.641586" yaw="-1.28824" pitch="0.0" roll="0.0" scale="1.0 2.30644 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA002" core="ANTORCHA002" pos="1.159804 0.000000 1.269572" yaw="-0.893965" pitch="0.0" roll="0.0" scale="1.0 2.30644 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA001" core="ANTORCHA001" pos="1.880283 0.000000 -0.436630" yaw="0.893964" pitch="0.0" roll="0.0" scale="1.0 2.30644 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA003" core="ANTORCHA003" pos="0.788157 0.000000 -2.080345" yaw="1.28824" pitch="0.0" roll="0.0" scale="1.0 2.30644 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA004" core="ANTORCHA004" pos="-1.380192 0.000000 -2.072557" yaw="0.988825" pitch="0.0" roll="0.0" scale="1.0 2.30644 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA007" core="ANTORCHA007" pos="-3.155849 0.000000 -0.221540" yaw="0.519391" pitch="0.0" roll="0.0" scale="1.0 2.30644 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA005" core="ANTORCHA005" pos="-2.715215 0.000000 2.837224" yaw="5.87082e-007" pitch="0.0" roll="0.0" scale="1.0 2.30644 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="COLUMNES" core="COLUMNES" pos="0.976917 5.002470 0.000001" yaw="0.312625" pitch="0.0" roll="0.0" scale="0.249117 0.175286 0.249117" visible="false" layer="solid"/>
+	<mesh_instance name="ALTAR" core="ALTAR" pos="-4.908772 0.600965 -0.080386" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="CÚPULA SALA0" core="CÚPULA SALA0" pos="0.976917 5.295332 0.000001" yaw="0.295112" pitch="0.0" roll="0.0" scale="0.227141 0.159823 0.227141" visible="false" layer="solid"/>
+	<mesh_instance name="SALA 3" core="SALA 3" pos="140.106232 3.500001 11.438778" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="POLY PLAT. VERT." core="POLY PLAT. VERT." pos="481.534515 8.440789 -53.357197" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="POLY PLAT. HORTZ001" core="POLY PLAT. HORTZ001" pos="491.250610 19.190563 -85.249710" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PLATAFORMA FRAGIL" core="PLATAFORMA FRAGIL" pos="481.015015 6.126996 -103.267532" yaw="1.5708" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="POLY PLAT. HORTZ002" core="POLY PLAT. HORTZ002" pos="480.762634 18.994476 -59.492310" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SALA 4" core="SALA 4" pos="480.762634 18.994476 -59.492310" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PUNXES006" core="PUNXES006" pos="480.322266 7.437759 -204.908264" yaw="1.49905" pitch="0.0" roll="0.0" scale="0.96165 1.0 0.899762" visible="false" layer="solid"/>
+	<mesh_instance name="OBSTACLE003" core="OBSTACLE003" pos="480.324951 13.215740 -310.135742" yaw="-1.5708" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="POLY. PLAT. HORTZ001" core="POLY. PLAT. HORTZ001" pos="482.581909 11.301159 -266.873108" yaw="-2.22319" pitch="1.74738" roll="0.354313" scale="0.695955 0.253811 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="OBSTACLE 003" core="OBSTACLE 003" pos="480.324951 9.867796 -220.923492" yaw="-1.5708" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="OBSTACLE 004" core="OBSTACLE 004" pos="480.324951 9.867796 -167.781372" yaw="-1.5708" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="POLY. PLAT. HORTZ002" core="POLY. PLAT. HORTZ002" pos="482.581909 12.130049 -204.838715" yaw="-2.22319" pitch="1.74738" roll="0.354313" scale="0.695955 0.253811 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SALA 5" core="SALA 5" pos="479.441650 18.994476 -59.492310" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PLATAFORMA010" core="PLATAFORMA010" pos="480.066284 12.351784 -363.800659" yaw="0.0" pitch="1.50212" roll="0.0" scale="0.553727 0.450532 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PLATAFORMA MOV" core="PLATAFORMA MOV" pos="451.404419 -0.514528 -492.598145" yaw="0.0" pitch="1.27147" roll="0.0" scale="0.114118 0.255357 0.566789" visible="false" layer="solid"/>
+	<mesh_instance name="PLATAFORMA MOV" core="OK" pos="489.415039 12.351784 -363.800659" yaw="0.0" pitch="1.75818" roll="0.0" scale="0.201342 0.450532 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PLATAFORMA004" core="PLATAFORMA004" pos="488.127380 9.080521 -380.581909" yaw="0.0" pitch="1.50212" roll="0.0" scale="0.553727 0.450532 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PLATAFORMA MOV" core="OK" pos="489.415039 12.351784 -399.284180" yaw="0.0" pitch="1.75818" roll="0.0" scale="0.201342 0.450532 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PLATAFORMA003" core="PLATAFORMA003" pos="480.066284 10.203497 -419.792603" yaw="0.0" pitch="1.50212" roll="0.0" scale="0.553727 0.450532 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PLATAFORMA009" core="PLATAFORMA009" pos="461.425537 11.192902 -399.756958" yaw="0.0" pitch="1.02781" roll="0.0" scale="0.274683 0.223492 0.496063" visible="false" layer="solid"/>
+	<mesh_instance name="PLATAFORMA MOV" core="OK" pos="485.770874 6.751482 -431.438904" yaw="0.0" pitch="1.75818" roll="0.0" scale="0.201342 0.450532 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PLATAFORMA MOV001" core="PLATAFORMA MOV001" pos="465.637146 1.314384 -473.781738" yaw="0.0" pitch="1.27147" roll="0.0" scale="0.114118 0.255357 0.566789" visible="false" layer="solid"/>
+	<mesh_instance name="PLATAFORMA MOV002" core="PLATAFORMA MOV002" pos="460.982971 3.515548 -490.078247" yaw="0.0" pitch="1.27147" roll="0.0" scale="0.114118 0.255357 0.566789" visible="false" layer="solid"/>
+	<mesh_instance name="PLATAFORMA002" core="PLATAFORMA002" pos="467.181396 5.788351 -514.667786" yaw="0.0" pitch="1.60521" roll="0.0" scale="0.401458 0.450532 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PLATAFORMA001" core="PLATAFORMA001" pos="445.277954 2.132825 -505.680664" yaw="0.0" pitch="1.50212" roll="0.0" scale="0.553727 0.450532 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SALA 6" core="SALA 6" pos="480.317749 16.679119 -348.660156" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="OBSTACLE 007" core="OBSTACLE 007" pos="92.218491 0.000004 -5.311916" yaw="1.41347" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SALA1" core="SALA1" pos="32.936810 3.500000 0.259848" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="OBSTACLE 008" core="OBSTACLE 008" pos="269.174561 0.000004 11.441704" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="OBSTACLE 002" core="OBSTACLE 002" pos="280.166656 0.000004 11.441704" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="OBSTACLE 006" core="OBSTACLE 006" pos="200.815430 0.000004 11.441704" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="OBSTACLE 005" core="OBSTACLE 005" pos="244.343750 0.000004 11.441704" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SALA 2" core="SALA 2" pos="140.106262 3.500000 11.438778" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PUNXES005" core="PUNXES005" pos="331.439056 23.127060 -570.223022" yaw="-3.14159" pitch="0.0" roll="0.0" scale="0.96165 1.0 0.899762" visible="false" layer="solid"/>
+	<mesh_instance name="SALA 7" core="SALA 7" pos="468.827606 11.866175 -550.819336" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="OBSTACLE006" core="OBSTACLE006" pos="378.175018 25.042391 -570.240234" yaw="-3.14159" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="OBSTACLE004" core="OBSTACLE004" pos="215.801758 30.344244 -570.240234" yaw="-3.14159" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="OBSTACLE005" core="OBSTACLE005" pos="205.207581 30.344244 -570.240234" yaw="-3.14159" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="OBSTACLE001" core="OBSTACLE001" pos="194.921982 30.344244 -570.240234" yaw="-3.14159" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PUNXES010" core="PUNXES010" pos="120.465012 28.517717 -570.298462" yaw="-3.14159" pitch="0.0" roll="0.0" scale="0.96165 1.0 0.899762" visible="false" layer="solid"/>
+	<mesh_instance name="PUNXES007" core="PUNXES007" pos="87.235275 28.517717 -570.298462" yaw="-3.14159" pitch="0.0" roll="0.0" scale="0.96165 1.0 0.899762" visible="false" layer="solid"/>
+	<mesh_instance name="OBSTACLE002" core="OBSTACLE002" pos="27.548018 30.344244 -570.240234" yaw="-3.14159" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PUNXES004" core="PUNXES004" pos="240.757690 28.517717 -570.298462" yaw="-3.14159" pitch="0.0" roll="0.0" scale="0.877319 1.0 0.899762" visible="false" layer="solid"/>
+	<mesh_instance name="PLAT POLY012" core="PLAT POLY012" pos="331.341278 27.261595 -567.767090" yaw="-3.14159" pitch="0.172521" roll="0.0" scale="1.0 22.1281 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PLAT POLY011" core="PLAT POLY011" pos="240.975403 32.188210 -567.767090" yaw="-3.14159" pitch="0.172521" roll="0.0" scale="1.0 22.1281 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PLAT POLY009" core="PLAT POLY009" pos="120.512680 32.188210 -567.767090" yaw="-3.14159" pitch="0.172521" roll="0.0" scale="1.0 22.1281 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PLAT POLY010" core="PLAT POLY010" pos="87.313950 32.188210 -567.767090" yaw="-3.14159" pitch="0.172521" roll="0.0" scale="1.0 22.1281 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PLATAFORMA007" core="PLATAFORMA007" pos="44.612595 32.188210 -568.423828" yaw="-3.14159" pitch="0.172521" roll="0.0" scale="1.0 22.1281 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PUNXES001" core="PUNXES001" pos="-18.019363 28.517717 -570.298462" yaw="-3.14159" pitch="0.0" roll="0.0" scale="0.96165 1.0 0.899762" visible="false" layer="solid"/>
+	<mesh_instance name="PUNXES002" core="PUNXES002" pos="-32.559769 28.517717 -570.298462" yaw="-3.14159" pitch="0.0" roll="0.0" scale="0.96165 1.0 0.899762" visible="false" layer="solid"/>
+	<mesh_instance name="PUNXES003" core="PUNXES003" pos="-47.100174 28.517717 -570.298462" yaw="-3.14159" pitch="0.0" roll="0.0" scale="0.96165 1.0 0.899762" visible="false" layer="solid"/>
+	<mesh_instance name="PUNXES012" core="PUNXES012" pos="-61.640579 28.517717 -570.298462" yaw="-3.14159" pitch="0.0" roll="0.0" scale="0.96165 1.0 0.899762" visible="false" layer="solid"/>
+	<mesh_instance name="PLATAFORMA006" core="PLATAFORMA006" pos="-17.361526 32.188210 -567.767090" yaw="-3.14159" pitch="0.172521" roll="0.0" scale="1.0 22.1281 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PLAT POLY013" core="PLAT POLY013" pos="-28.449722 34.117783 -567.767090" yaw="-3.14159" pitch="0.172521" roll="0.0" scale="1.0 22.1281 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PLATAFORMA005" core="PLATAFORMA005" pos="-39.537918 35.907623 -567.767090" yaw="-3.14159" pitch="0.172521" roll="0.0" scale="1.0 22.1281 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PLAT POLY014" core="PLAT POLY014" pos="-50.626114 34.117783 -567.767090" yaw="-3.14159" pitch="0.172521" roll="0.0" scale="1.0 22.1281 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PLATAFORMA008" core="PLATAFORMA008" pos="-61.714310 32.188210 -567.767090" yaw="-3.14159" pitch="0.172521" roll="0.0" scale="1.0 22.1281 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PUNXES013" core="PUNXES013" pos="-139.772232 19.450396 -570.298462" yaw="-3.14159" pitch="0.0" roll="0.0" scale="0.96165 1.0 0.899762" visible="false" layer="solid"/>
+	<mesh_instance name="PUNXES014" core="PUNXES014" pos="-157.154312 19.450396 -570.298462" yaw="-3.14159" pitch="0.0" roll="0.0" scale="0.96165 1.0 0.899762" visible="false" layer="solid"/>
+	<mesh_instance name="PLAT POLY008" core="PLAT POLY008" pos="-198.636627 16.191813 -567.767090" yaw="-3.14159" pitch="0.172521" roll="0.0" scale="1.0 22.1281 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PLAT POLY002" core="PLAT POLY002" pos="-208.329437 17.904886 -567.767090" yaw="-3.14159" pitch="0.172521" roll="0.0" scale="1.0 22.1281 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PLAT POLY001" core="PLAT POLY001" pos="-217.924530 19.775610 -567.767090" yaw="-3.14159" pitch="0.172521" roll="0.0" scale="1.0 22.1281 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PLAT POLY006" core="PLAT POLY006" pos="-229.136627 18.228872 -567.767090" yaw="-3.14159" pitch="0.172521" roll="0.0" scale="1.0 22.1281 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PLAT POLY003" core="PLAT POLY003" pos="-276.506500 20.519407 -567.767090" yaw="-3.14159" pitch="0.172521" roll="0.0" scale="1.0 22.1281 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PLAT POLY007" core="PLAT POLY007" pos="-284.568115 23.741446 -567.767090" yaw="-3.14159" pitch="0.172521" roll="0.0" scale="1.0 22.1281 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PLAT POLY004" core="PLAT POLY004" pos="-321.778870 -34.637245 -567.767090" yaw="-3.14159" pitch="0.172521" roll="0.0" scale="1.0 22.1281 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PLAT POLY005" core="PLAT POLY005" pos="258.602692 30.588957 -567.767090" yaw="-3.14159" pitch="0.172521" roll="0.0" scale="1.0 22.1281 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PUNXES011" core="PUNXES011" pos="-329.832306 -41.854347 -570.298462" yaw="-3.14159" pitch="0.0" roll="0.0" scale="0.96165 1.0 0.899762" visible="false" layer="solid"/>
+	<mesh_instance name="COLUMNA001" core="COLUMNA001" pos="44.589218 33.521118 -567.691284" yaw="-1.85242" pitch="0.0" roll="0.0" scale="1.0 1.0 1.66066" visible="false" layer="solid"/>
+	<mesh_instance name="COLUMNA002" core="COLUMNA002" pos="87.177658 33.521118 -570.259399" yaw="-3.14159" pitch="0.0" roll="0.0" scale="1.0 1.0 1.66066" visible="false" layer="solid"/>
+	<mesh_instance name="PUNXES008" core="PUNXES008" pos="-148.463272 23.583357 -570.298462" yaw="0.0" pitch="3.14159" roll="0.0" scale="0.96165 3.09739 0.899762" visible="false" layer="solid"/>
+	<mesh_instance name="PUNXES009" core="PUNXES009" pos="-165.845352 23.583357 -570.298462" yaw="0.0" pitch="3.14159" roll="2.05712e-007" scale="0.96165 3.09739 0.899762" visible="false" layer="solid"/>
+	<mesh_instance name="PIKY" core="PIKY" pos="38.884430 0.196228 -0.350765" yaw="3.14159" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box043" core="Box043" pos="-471.580109 -5.056721 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box001" core="Box001" pos="-421.483734 -33.909439 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box002" core="Box002" pos="-428.372711 -32.124588 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box003" core="Box003" pos="-436.860504 -30.339737 -573.611389" yaw="3.14159" pitch="1.4794" roll="0.0" scale="1.66589 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box004" core="Box004" pos="-447.023407 -28.554886 -573.611389" yaw="3.14159" pitch="1.4794" roll="0.0" scale="1.66589 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box005" core="Box005" pos="-456.277496 -26.770035 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box006" core="Box006" pos="-463.166534 -24.985184 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box007" core="Box007" pos="-470.055450 -23.200333 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box008" core="Box008" pos="-464.701324 -19.870163 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box009" core="Box009" pos="-458.041962 -17.301144 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box010" core="Box010" pos="-451.382599 -14.732124 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box011" core="Box011" pos="-444.723175 -12.163109 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box012" core="Box012" pos="-436.999298 -10.024597 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box013" core="Box013" pos="-428.809357 -10.024597 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box014" core="Box014" pos="-434.716827 -3.021040 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box015" core="Box015" pos="-441.407135 -0.513620 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box016" core="Box016" pos="-448.097443 1.993799 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box017" core="Box017" pos="-454.787750 4.501220 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box018" core="Box018" pos="-448.002716 7.543943 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box019" core="Box019" pos="-441.217682 10.586667 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box020" core="Box020" pos="-434.432648 13.629391 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box021" core="Box021" pos="-441.232574 16.439144 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box022" core="Box022" pos="-448.032562 19.248901 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box023" core="Box023" pos="-454.832550 22.058659 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box024" core="Box024" pos="-461.632477 24.868412 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box025" core="Box025" pos="-468.517303 27.352062 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box026" core="Box026" pos="-477.131927 27.508656 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box027" core="Box027" pos="-468.517303 36.662060 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box028" core="Box028" pos="-461.942047 39.831390 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box029" core="Box029" pos="-455.366852 43.000721 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box030" core="Box030" pos="-462.041412 46.160210 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box031" core="Box031" pos="-462.041412 52.599144 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box032" core="Box032" pos="-455.366852 49.439659 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box033" core="Box033" pos="-462.041412 59.038078 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box034" core="Box034" pos="-455.366852 55.878593 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box035" core="Box035" pos="-462.041412 65.477013 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box036" core="Box036" pos="-455.366852 62.317528 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box037" core="Box037" pos="-469.150177 68.084175 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box038" core="Box038" pos="-478.466217 70.581985 -573.611389" yaw="3.14159" pitch="1.4794" roll="0.0" scale="1.66589 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box039" core="Box039" pos="-471.016998 49.802078 -573.611389" yaw="3.14159" pitch="1.4794" roll="0.0" scale="1.66589 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box040" core="Box040" pos="-464.835114 -14.004135 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box041" core="Box041" pos="-471.628204 -10.707123 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box042" core="Box042" pos="-478.421295 -7.410112 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="Box044" core="Box044" pos="-463.353180 -5.056721 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SALA 8" core="SALA 8" pos="-367.776642 -32.750999 -570.241760" yaw="-1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 </renderable_objects>

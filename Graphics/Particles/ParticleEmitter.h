@@ -21,6 +21,7 @@ class CParticleEmitter : public CObject3D {
   ~CParticleEmitter();
   void Render(CGraphicsManager *RM);
   void Update(float dt);
+
  private:
   void PopulateParticle(CParticle *p);
   EmitterType                  m_Type;
