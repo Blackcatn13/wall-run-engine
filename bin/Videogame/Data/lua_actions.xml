@@ -4,7 +4,7 @@
 	<script name="platform" file="Data/lua/platform.lua" auto_run = "true"/>
 	<script name="player" file="Data/lua/player.lua" auto_run = "true"/>
 	<script name="checkpoint" file="Data/lua/checkpoint.lua" auto_run = "true"/>
-	<script name="initLevel" file="Data/level1/lua/initLevel.lua" auto_run = "true"/>
+	<script name="initLevel" file="Data/level2/lua/initLevel.lua" auto_run = "true"/>
 	<script name="otherFunctions" file="Data/lua/otherFunctions.lua" auto_run = "true"/>
 	<script name="patrullero" file="Data/lua/patrullero.lua" auto_run = "true"/>
 	<script name="CamerasLua" file="Data/lua/Cameras.lua" auto_run = "true"/>

@@ -66,7 +66,7 @@
 	<enable_z_write/>
 	<enable_z_test />
 	<render_debug_scene layer="phisics" active="true" paint_cooking_mesh="false" cooking_mesh_name="fixbox" />
-	<!--<particle_render/>-->
+	<particle_render/>
 	
 	<!--Fog-->
 <!--	<enable_alpha_blend blendOp ="add" blendSrc="srcalpha" destBlend="invsrcalpha" />
