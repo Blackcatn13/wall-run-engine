@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<triggers>
+<trigger name="break" platform_name="" pos="481.044708 14.148376 -103.300575" shape="box" size="5.0 0.000100136 4.0" type_event="enter" script_function="activate_trigger_update" param1="break" group="3" paint="true" color="87.0 225.0 87.0" max_time="3" update_function=""/>
+</triggers>
