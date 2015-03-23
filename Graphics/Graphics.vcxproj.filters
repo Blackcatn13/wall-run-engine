@@ -553,5 +553,8 @@
     <ClInclude Include="Particles\Particle.h">
       <Filter>Particles</Filter>
     </ClInclude>
+    <ClInclude Include="Particles\RecyclingArray.h">
+      <Filter>Particles</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

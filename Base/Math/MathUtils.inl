@@ -26,19 +26,18 @@
 ///
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename TA, typename TB>
-inline int Compare( const TA& a, const TB& b, const TA epsilon)
-{
-    if ( a >= b ) {
-        if ((a - epsilon) > b)
-            return 1; // es mayor
-        else
-            return 0; // es igual
-    } else {
-        if ((b - epsilon) > a)
-            return -1; // es menor
-        else
-            return 0; // es igual
-    }
+inline int Compare( const TA &a, const TB &b, const TA epsilon) {
+  if ( a >= b ) {
+    if ((a - epsilon) > b)
+      return 1; // es mayor
+    else
+      return 0; // es igual
+  } else {
+    if ((b - epsilon) > a)
+      return -1; // es menor
+    else
+      return 0; // es igual
+  }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -46,73 +45,72 @@ inline int Compare( const TA& a, const TB& b, const TA epsilon)
 /// un epsilon de margen de tolerancia
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename T>
-inline bool EqualEpsilon (const T a, const T b, const T epsilon)
-{
-    return ((a > b - epsilon) && (a < b + epsilon));
+inline bool EqualEpsilon (const T a, const T b, const T epsilon) {
+  return ((a > b - epsilon) && (a < b + epsilon));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Comprueba si una magnitud es igual a cero, usando un epsilon de margen de tolerancia
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename T>
-inline bool ZeroEpsilon (const T a, const T epsilon)
-{
-    return ((a > -epsilon) && (a < epsilon));
+inline bool ZeroEpsilon (const T a, const T epsilon) {
+  return ((a > -epsilon) && (a < epsilon));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Igual que 'EqualEpsilon' pero con un epsilon relativo a la magnitud de los valores
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename T>
-inline bool EqualRelatEpsilon (const T a, const T b, const T epsilon)
-{
-    T epsilon_rel = epsilon * (a + b) * Half<T>();
-    return ((a > b - epsilon_rel) && (a < b + epsilon_rel));
+inline bool EqualRelatEpsilon (const T a, const T b, const T epsilon) {
+  T epsilon_rel = epsilon * (a + b) * Half<T>();
+  return ((a > b - epsilon_rel) && (a < b + epsilon_rel));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Igual que 'ZeroEpsilon pero con un epsilon relativo a la magnitud del valor
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename T>
-inline bool ZeroRelatEpsilon (const T a, const T epsilon)
-{
-    T epsilon_rel = epsilon * a;
-    return ((a > -epsilon_rel) && (a < epsilon_rel));
+inline bool ZeroRelatEpsilon (const T a, const T epsilon) {
+  T epsilon_rel = epsilon * a;
+  return ((a > -epsilon_rel) && (a < epsilon_rel));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Número PI multiplicado por una magnitud
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename T>
-inline T PiTimes (T _times)
-{
-    return ((T)DOUBLE_PI_VALUE) * _times;
+inline T PiTimes (T _times) {
+  return ((T)DOUBLE_PI_VALUE) * _times;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Conversión de grados a radianes
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<typename T> inline T Deg2Rad (T deg)
-{
-    return ( deg * PiTimes((T)1) ) * (T)(1.0 / 180.0);
+template<typename T> inline T Deg2Rad (T deg) {
+  return ( deg * PiTimes((T)1) ) * (T)(1.0 / 180.0);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Conversión de radianes a grados
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename T>
-inline T Rad2Deg( T rad )
-{
-    return ((rad * (T)180.0) / PiTimes((T)1));
+inline T Rad2Deg( T rad ) {
+  return ((rad * (T)180.0) / PiTimes((T)1));
 }
 
 
 //////////////////////////////////////////////////////////////////////////
 // Pone el angulo entre -Pi y Pi
 //////////////////////////////////////////////////////////////////////////
-void CanonizeAngle (float& fAngle)
-{
-    fAngle = fmod (fAngle, e2PIf);
-    if (fAngle >  ePIf) fAngle -= e2PIf;
-    if (fAngle < -ePIf) fAngle += e2PIf;
+void CanonizeAngle (float &fAngle) {
+  fAngle = fmod (fAngle, e2PIf);
+  if (fAngle >  ePIf) fAngle -= e2PIf;
+  if (fAngle < -ePIf) fAngle += e2PIf;
+}
+
+float RandomFloatRange (float min, float max) {
+  return ((max - min) * ((float)rand() / RAND_MAX)) + min;
+}
+inline int RandomIntRange (int min, int space) {
+  return (rand() % space) + min;
 }

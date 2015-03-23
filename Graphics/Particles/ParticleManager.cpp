@@ -3,62 +3,54 @@
 #include "Particles\ParticleEmitter.h"
 
 CParticleManager::CParticleManager()
-	: m_fileName ("")
-{
+  : m_fileName ("") {
 }
 
-CParticleManager::~CParticleManager()
-{
+CParticleManager::~CParticleManager() {
 }
 
-void CParticleManager::Load(std::string file)
-{
-	m_fileName = file;
-	Load();
+void CParticleManager::Load(std::string file) {
+  m_fileName = file;
+  Load();
 }
 
-void CParticleManager::Reload()
-{
-	Destroy();
-	Load();
-}
-	
-void CParticleManager::Load()
-{
-    CXMLTreeNode newFile;
-    if (!newFile.LoadFile(m_fileName.c_str())) {
-        printf("ERROR loading the file.");
-    } else {
-		CXMLTreeNode  m = newFile["particles"];
-		if (m.Exists()) {
-			int count = m.GetNumChildren();
-			for (int i = 0; i < count; ++i) {
-				std::string l_Name = m(i).GetName();
-				if(l_Name == "particle"){
-					CParticleEmitter* newEmitter = new CParticleEmitter(m(i));
-					std::string EmitterName = m(i).GetPszISOProperty("name", "");
-					//newEmitter->Load(m(i));
-					AddResource(EmitterName, newEmitter);
-				}
-			}
-		}
-	}
+void CParticleManager::Reload() {
+  Destroy();
+  Load();
 }
 
-
-void CParticleManager::Update(float ElapsedTime)
-{
-    for (int i = 0; i < m_ResourcesVector.size(); ++i) {
-        m_ResourcesVector[i]->Update(ElapsedTime);
+void CParticleManager::Load() {
+  CXMLTreeNode newFile;
+  if (!newFile.LoadFile(m_fileName.c_str())) {
+    printf("ERROR loading the file.");
+  } else {
+    CXMLTreeNode  m = newFile["particles"];
+    if (m.Exists()) {
+      int count = m.GetNumChildren();
+      for (int i = 0; i < count; ++i) {
+        std::string l_Name = m(i).GetName();
+        if (l_Name == "emitter") {
+          CParticleEmitter *newEmitter = new CParticleEmitter(m(i));
+          std::string EmitterName = m(i).GetPszISOProperty("name", "");
+          AddResource(EmitterName, newEmitter);
+        }
+      }
     }
+  }
 }
 
-void CParticleManager::Render(CGraphicsManager *RM)
-{
-    int test = m_ResourcesVector.size();
-    for (int i = 0; i < m_ResourcesVector.size(); ++i) {
-        m_ResourcesVector[i]->Render(RM);
-    }
+
+void CParticleManager::Update(float ElapsedTime) {
+  for (int i = 0; i < m_ResourcesVector.size(); ++i) {
+    m_ResourcesVector[i]->Update(ElapsedTime);
+  }
+}
+
+void CParticleManager::Render(CGraphicsManager *RM) {
+  int test = m_ResourcesVector.size();
+  for (int i = 0; i < m_ResourcesVector.size(); ++i) {
+    m_ResourcesVector[i]->Render(RM);
+  }
 }
 
 

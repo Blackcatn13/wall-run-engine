@@ -60,13 +60,13 @@
 		<texture stage_id="1" file="LightMapTexture"/>
 		<texture stage_id="2" file="NormalMapTexture"/>
 		<texture stage_id="3" file="DepthMapTexture"/>
-	</render_deferred_shading >
+	</render_deferred_shading>
 	
 	<disable_alpha_blend />
 	<enable_z_write/>
 	<enable_z_test />
 	<render_debug_scene layer="phisics" active="true" paint_cooking_mesh="false" cooking_mesh_name="fixbox" />
-	<!--<particle_render/>-->
+	<particle_render/>
 	
 	<!--Fog-->
 <!--	<enable_alpha_blend blendOp ="add" blendSrc="srcalpha" destBlend="invsrcalpha" />

@@ -54,22 +54,22 @@ function on_update_player_lua(l_ElapsedTime)
 			end
 		end
 		if act2in:do_action_from_lua("MoveRigth") then
-			if player.m_is3D == true then	
+			--if player.m_is3D == true then	
 				--mov = mov - Vect3f(-1,0,0) * player.m_Speed * l_ElapsedTime;
 				mov = mov - dirNor * player.m_Speed * l_ElapsedTime;
-			else
-				mov = mov + Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
+			--else
+				--mov = mov + Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
 				player.m_isTurned = false;
-			end
+			--end
 		end
 		if act2in:do_action_from_lua("MoveLeft") then
-			if player.m_is3D == true then	
+			--if player.m_is3D == true then	
 				--mov = mov + Vect3f(-1,0,0) * player.m_Speed * l_ElapsedTime;
 				mov = mov + dirNor * player.m_Speed * l_ElapsedTime;
-			else
-				mov = mov - Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
+			--else
+				--mov = mov - Vect3f(0,0,1) * player.m_Speed * l_ElapsedTime;
 				player.m_isTurned = true;
-			end
+			--end
 		end
 	--end
 	--///////////////////////////////////////////////////////////

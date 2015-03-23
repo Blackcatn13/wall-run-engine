@@ -5,6 +5,7 @@
 		<default_technique vertex_type="31" technique="NormalMapTechnique"/>
 		<default_technique vertex_type="51" technique="LightMapTechnique"/>
 		<default_technique vertex_type="67" technique=""/>
+		<default_technique vertex_type="415" technique=""/>
 		<default_technique vertex_type="531" technique="CubeMapTechnique"/>
 		<default_technique vertex_type="1087" technique=""/>		
 		<default_technique vertex_type="2048" technique=""/>
@@ -15,6 +16,7 @@
 		<default_technique vertex_type="31" technique="GenerateShadowMap"/>
 		<default_technique vertex_type="51" technique="GenerateShadowMap"/>
 		<default_technique vertex_type="67" technique="GenerateShadowMap"/>
+		<default_technique vertex_type="415" technique="GenerateShadowMap"/>
 		<default_technique vertex_type="531" technique="GenerateShadowMap"/>
 		<default_technique vertex_type="1087" technique="GenerateShadowMap"/>		
 	</pool_renderable_object_technique> 
@@ -24,6 +26,7 @@
 		<default_technique vertex_type="31" technique="GBufferNormalMapTechnique"/>
 		<default_technique vertex_type="51" technique="GBufferLightMapTechnique"/>
 		<default_technique vertex_type="67" technique="GBufferColoredTechnique"/>
+		<default_technique vertex_type="415" technique="GBufferCal3DTechnique"/>
 		<default_technique vertex_type="531" technique="GBufferCubeMapTechnique"/>
 		<default_technique vertex_type="1087" technique="GBufferRNMTechnique"/>
 	</pool_renderable_object_technique> 

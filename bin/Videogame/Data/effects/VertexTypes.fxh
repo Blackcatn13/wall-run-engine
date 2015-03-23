@@ -118,10 +118,10 @@ struct CAL3D_HW_VERTEX_PS
 {
 	float4 HPosition : POSITION;
 	float2 UV : TEXCOORD0;
-	float3 WorldNormal : TEXCOORD1;
-	float3 WorldPosition : TEXCOORD2;
-	// float3 WorldTangent : TEXCOORD3;
-	// float3 WorldBinormal : TEXCOORD4;
+	float4 WorldNormal : TEXCOORD1;
+	float4 WorldPosition : TEXCOORD2;
+	// float4 WorldTangent : TEXCOORD3;
+	// float4 WorldBinormal : TEXCOORD4;
 };
 
 //Texture quad

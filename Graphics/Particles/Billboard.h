@@ -2,23 +2,25 @@
 #define BILLBOARD_H_
 
 #include "Math\Vector3.h"
+#include "Math\Color.h"
 
 class CGraphicsManager;
 
 class CBillboard {
-public:
-	CBillboard();
-	CBillboard(int size);
-	CBillboard(int size, Vect3f pos);
-	~CBillboard();
-	void Render(CGraphicsManager* GM);
-	int getSize() {return m_size;}
-	void setSize(int size) {m_size = size;}
-	Vect3f getPosition() {return m_position;}
-	void setPosition(Vect3f position) {m_position = position;}
-private:
-	int		m_size;
-	Vect3f	m_position;
+ public:
+  CBillboard();
+  CBillboard(float size);
+  CBillboard(float size, Vect3f pos);
+  ~CBillboard();
+  void Render(CGraphicsManager *GM);
+  float getSize() {return m_size;}
+  void setSize(float size) {m_size = size;}
+  Vect3f getPosition() {return m_position;}
+  void setPosition(Vect3f position) {m_position = position;}
+ protected:
+  float		  m_size;
+  Vect3f	m_position;
+  CColor  m_Color1;
 };
 
 #endif // BILLBOARD_H_

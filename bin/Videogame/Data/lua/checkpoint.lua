@@ -7,8 +7,9 @@ function CheckPoint.new()
    local self = {}    -- the new instance
    -- setmetatable( new_inst, Player_mt ) -- all instances share the same metatable
 	self.is_activated = false
+	self.name = ""
 	------	 CHECKPOINT FUNCTIONS -----
-	function self.set_checkpoint(player)
+	function self.set_checkpoint(player, trigger_name)
 		local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 		if self.is_activated == false then
 			local player_controller = player.get_player_controller()
@@ -17,8 +18,10 @@ function CheckPoint.new()
 			player.last_checkpoint = self
 			coreInstance:trace("last checkpoint set")
 			self.is_activated = true
+			self.name = trigger_name
 			coreInstance:trace("checkpoint activated")
-			local coreInstance = CCoreLuaWrapper().m_CoreInstance;
+			table.insert(player.visited_checkpoints, self)
+			
 			coreInstance:trace("checkpoint set")
 		end
 	end

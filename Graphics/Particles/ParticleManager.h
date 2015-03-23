@@ -7,19 +7,18 @@
 class CParticleEmitter;
 class CGraphicsManager;
 
-class CParticleManager : public CTemplatedVectorMapManager<CParticleEmitter>
-{
-private:
-	std::string m_fileName;
-	void Load();
+class CParticleManager : public CTemplatedVectorMapManager<CParticleEmitter> {
+ private:
+  std::string m_fileName;
+  void Load();
 
-public:
-    CParticleManager();
-    ~CParticleManager();
-	void Load(std::string file);
-	void Reload();
-	void Update(float ElapsedTime);
-    void Render(CGraphicsManager *RM);
+ public:
+  CParticleManager();
+  ~CParticleManager();
+  void Load(std::string file);
+  void Reload();
+  void Update(float ElapsedTime);
+  void Render(CGraphicsManager *RM);
 };
 
 #endif
