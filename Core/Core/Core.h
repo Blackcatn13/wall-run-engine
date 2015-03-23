@@ -34,6 +34,7 @@ class CStaticPlatform;
 class CWPManager;
 class CEnemyManager;
 class CParticleManager;
+class CBillboardManager;
 
 #define CCORE			  CCore::GetInstance()
 #define GRAPHM			CCore::GetInstance()->GetGraphicsManager()
@@ -59,6 +60,7 @@ class CParticleManager;
 #define LOGRNDR     CCore::GetInstance()->GetLogRender()
 #define WPMMGR			CCore::GetInstance()->GetWPManager()
 #define PARTIM			CCore::GetInstance()->GetParticleManager()
+#define BILLBM			CCore::GetInstance()->GetBillboardManager()
 #define ENEMYM			CCore::GetInstance()->GetEnemyManager()
 #define PROCESS			CCore::GetInstance()->GetProcess()
 
@@ -99,6 +101,7 @@ class CCore {
   CWPManager							*m_WPManager;
   CEnemyManager						*m_EnemyManager;
   CParticleManager					*m_ParticleManager;
+  CBillboardManager                 *m_BillboardManager;
 
 
 
@@ -204,6 +207,9 @@ class CCore {
     return m_ParticleManager;
   }
 
+   CBillboardManager *GetBillboardManager() {
+	   return m_BillboardManager;
+  }
 
   GET_SET(std::string, LuaLoadLevelFunc)
 

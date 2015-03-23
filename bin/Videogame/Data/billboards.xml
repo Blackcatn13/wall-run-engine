@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<billboards>
+	<billboard name="billboard001" size="0.5" position="0.0 0.0 5.0" color="1.0 0.0 1.0 1.0" texture="./Data/level2/face.png"/>
+		
+	
+</billboards>

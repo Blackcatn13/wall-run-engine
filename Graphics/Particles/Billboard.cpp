@@ -4,10 +4,18 @@
 #include "Camera\CameraController.h"
 #include "Texture\TextureManager.h"
 #include "Texture\Texture.h"
+#include "XML\XMLTreeNode.h"
+#include "Texture\Texture.h"
+#include "Math\Color.h"
 
-CBillboard::CBillboard()
-  : m_size(1)
-  , m_position(v3fZERO) {
+CBillboard::CBillboard(CXMLTreeNode &node)
+	: m_size(node.GetFloatProperty("size", .0f	, false))
+  , m_position(node.GetVect3fProperty("position", v3fZERO	, false))
+  , m_Color1(CColor((node.GetVect4fProperty("color", v4fZERO	, false))))
+  
+{
+	m_Texture = new CTexture();
+	m_Texture->Load(node.GetPszISOProperty("texture", ""	, false));
 }
 
 CBillboard::CBillboard(float size)
@@ -34,4 +42,8 @@ void CBillboard::Render(CGraphicsManager *GM) {
   Vect3f dl = m_position - up - right;
   Vect3f dr = m_position - up + right;
   GM->DrawQuad3D(ul, ur, dl, dr, m_Color1);
+}
+
+
+void CBillboard::Update(float ElapsedTime) {
 }

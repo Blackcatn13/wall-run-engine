@@ -5,22 +5,27 @@
 #include "Math\Color.h"
 
 class CGraphicsManager;
+class CXMLTreeNode;
+class CTexture;
 
 class CBillboard {
  public:
-  CBillboard();
+	 CBillboard(){}
+  CBillboard(CXMLTreeNode &node);
   CBillboard(float size);
   CBillboard(float size, Vect3f pos);
   ~CBillboard();
+  void Update(float ElapsedTime);
   void Render(CGraphicsManager *GM);
   float getSize() {return m_size;}
   void setSize(float size) {m_size = size;}
   Vect3f getPosition() {return m_position;}
   void setPosition(Vect3f position) {m_position = position;}
  protected:
-  float		  m_size;
-  Vect3f	m_position;
-  CColor  m_Color1;
+  float			m_size;
+  Vect3f		m_position;
+  CTexture		*m_Texture;
+  CColor		m_Color1;
 };
 
 #endif // BILLBOARD_H_
