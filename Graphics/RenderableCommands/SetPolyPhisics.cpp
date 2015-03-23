@@ -10,9 +10,9 @@ CSetPolyPhisicsCommand::CSetPolyPhisicsCommand(CXMLTreeNode &atts)
   : CSceneRendererCommand(atts) {
   m_Room = atts.GetPszISOProperty("room", "", false);
   std::stringstream ss;
-  ss << "init_polis()"; //<< "(" << m_Room << ")";
+  ss << "init_polis" << "(\"" << m_Room << "\")";
   std::string toRun = ss.str();
-  SCRIPTM->RunCode("init_polis()");
+  SCRIPTM->RunCode(toRun.c_str());
 }
 
 void CSetPolyPhisicsCommand::Execute(CGraphicsManager &RM) {

@@ -3,7 +3,7 @@ local physx_manager = coreInstance:get_phisics_manager()
 
 function activate_teleport(player_position)
 	local player = coreInstance:get_player_controller()
-	core:trace(player_position)
+	coreInstance:trace(player_position)
 	local vec_array = split_str(player_position, "%s")
 	local vec3f_array = Vect3f(tonumber(vec_array[1]), tonumber(vec_array[2]), tonumber(vec_array[3]))
 	player.m_PhysicController:set_position(vec3f_array)

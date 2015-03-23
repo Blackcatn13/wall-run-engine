@@ -6,7 +6,7 @@
 	<script name="checkpoint" file="Data/lua/checkpoint.lua" auto_run = "true"/>
 	<script name="initLevel" file="Data/level1/lua/initLevel.lua" auto_run = "true"/>
 	<script name="otherFunctions" file="Data/lua/otherFunctions.lua" auto_run = "true"/>
-	<script name="patrullero" file="Data/lua/patrullero.lua" auto_run = "true"/>
+	<script name="patrullero" file="Data/lua/patrullero.lua" auto_run = "false"/>
 	<script name="CamerasLua" file="Data/lua/Cameras.lua" auto_run = "true"/>
 	<script name="PlayerController" file="Data/lua/PlayerController.lua" auto_run = "true"/>
 	<renderable_script name="scriptedController" file="Data/scripted_controller.lua" />

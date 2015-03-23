@@ -3,7 +3,7 @@ function init_level(a)
 	local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 	local player = Player:get_instance()
 	player.get_player_controller():set_position(Vect3f(0.432929, 3.000000, -0.654716));
-	core:trace("Aun no hay polis");
+	coreInstance:trace("Aun no hay polis");
 	--local lua_player = Player:get_instance()
 	--[[player.num_lives = player.num_lives -1
 	coreInstance:trace(tostring(player.num_lives))
@@ -25,12 +25,12 @@ function init_level(a)
 	return 0
 end
 
-function init_polis()
-	--if room == "1" then
-	local coreInstance = CCoreLuaWrapper().m_CoreInstance;
-	core:trace("metiendo polis");
+function init_polis(room)
+	if room == "1" then
+		local coreInstance = CCoreLuaWrapper().m_CoreInstance;
+		coreInstance:trace("metiendo polis");
 		init_poly_platform("PolyPlatform001","Poly001UserData", Vect3f(2,2,2), Vect3f(0,0.8,0), 3.0, 50.0)
 		init_poly_platform("PolyPlatform002","Poly002UserData", Vect3f(2,0.5,2), Vect3f(0,0.8,0), 3.0, 50.0)
-	--end
+	end
 	return 0
 end
