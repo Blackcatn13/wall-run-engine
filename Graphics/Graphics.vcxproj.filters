@@ -300,6 +300,9 @@
     <ClCompile Include="Particles\Particle.cpp">
       <Filter>Particles</Filter>
     </ClCompile>
+    <ClCompile Include="RenderableCommands\SetPolyPhisics.cpp">
+      <Filter>RenderableCommands</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
@@ -555,6 +558,9 @@
     </ClInclude>
     <ClInclude Include="Particles\RecyclingArray.h">
       <Filter>Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableCommands\SetPolyPhisics.h">
+      <Filter>RenderableCommands</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -18,7 +18,8 @@ function init_move_platform(name, user_data_name, size, position)
 end
 
 function init_poly_platform(name, user_data_name, size, position, time_out, speed)
-	local platform = init_platform(name, user_data_name, size, position)
+	local platform = rol_manager:get_renderable_objects_manager_by_str("poly"):get_resource(name)
+	platform:insert_platform(user_data_name, size, position)
 
 	--coreInstance:trace(tostring(platform.m_Collission))
 	local collision = true
@@ -178,7 +179,7 @@ end
 function update_poly_platform(current_poly_time, dt, platform_name)
 	-- Enable Poly Emmerald power
 	local position = coreInstance:get_player_controller():get_position()
-	local platform = rol_manager:get_default_renderable_object_manager():get_resource(platform_name)
+	local platform = rol_manager:get_renderable_objects_manager_by_str("poly"):get_resource(platform_name)
 	local platform_position = platform:get_position()
 	local l_distance = position:distance(platform_position)
 	if l_distance < platform.m_ActivationDistance then

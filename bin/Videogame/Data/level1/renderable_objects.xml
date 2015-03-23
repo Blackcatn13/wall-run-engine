@@ -5,6 +5,7 @@
 	<layer name="alpha_blend_objects"/>
 	<layer name="particles"/>
 	<layer name="phisics"/>
+	<layer name="poly" />
 	
 	<mesh_instance layer="solid" name="Plane001" core="Plane001"  pos="-3.989277 0.000000 132.427643" yaw="3.14159"  pitch="0.0" roll="0.0" scale="0.8 1.0 1.0" />
 	<mesh_instance name="Wall001" core="Wall001"  pos="-26.832058 0.000000 186.038467" yaw="3.14159"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
@@ -30,8 +31,8 @@
 		<wp pos="3.64 1.0 250.0" />
 		<wp pos="3.64 1.0 187.9" />
 	</platform>
-	<platform name="PolyPlatform001" core="PolyPlatform001" type="poly" final_position="3.118870 -2.000000 291.008423" direction ="0.0 -1.0 0.0" activation_distance= "30"  pos="3.118870 0.000000 291.008423" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<platform name="PolyPlatform002" core="PolyPlatform002" type="poly" final_position="43.649429 7.109472 487.100" direction ="0.0 0.0 -1.0" activation_distance= "20"  pos="43.649429 7.109472 490.100" yaw="0.0"  pitch="0.0733038" roll="0.0" scale="1.0 1.0 1.0" />
+	<platform name="PolyPlatform001" core="PolyPlatform001" type="poly" final_position="3.118870 -2.000000 291.008423" direction ="0.0 -1.0 0.0" activation_distance= "30"  pos="3.118870 0.000000 291.008423" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="poly" />
+	<platform name="PolyPlatform002" core="PolyPlatform002" type="poly" final_position="43.649429 7.109472 487.100" direction ="0.0 0.0 -1.0" activation_distance= "20"  pos="43.649429 7.109472 490.100" yaw="0.0"  pitch="0.0733038" roll="0.0" scale="1.0 1.0 1.0" layer="poly" />
 	<platform name="Spikes001" core="Spikes001" type="pinchos" pos="1.934707 -9.751181 238.600952" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<platform name="StaticPlatform001" core="StaticPlatform001" type="static" pos="0.254572 0.000000 44.531910" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<platform name="StaticPlatform002" core="StaticPlatform002" type="static" pos="5.216469 1.000000 60.109650" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />

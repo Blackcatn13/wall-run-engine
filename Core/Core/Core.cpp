@@ -90,6 +90,7 @@ void CCore::Init(HWND handler) {
   m_PhysicsManager = new CPhysicsManager();
   m_PhysicsManager->Init();
   m_LogRender = new CLogRender();
+  m_ScriptManager->Load(m_Config.LuaPath);
   m_SceneRendererCommandManager = new CSceneRendererCommandManager();
   m_SceneRendererCommandManager->Load(m_Config.SceneRenderCommandsPath);
   m_TriggerManager = new CTriggerManager();
@@ -97,7 +98,6 @@ void CCore::Init(HWND handler) {
   m_WPManager->Load("data//AI//Waypoints3.xml");
   m_EnemyManager = CEnemyManager::GetInstance();
   m_EnemyManager->Init("data//enemies.xml");
-  m_ScriptManager->Load(m_Config.LuaPath);
   m_PlayerController = new CPlayerController();
   m_TriggerManager->LoadTriggers("./Data/triggers.xml");
   m_LuaLoadLevelFunc = m_Config.LuaLevelObjectsFunc;

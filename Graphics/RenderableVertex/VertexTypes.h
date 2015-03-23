@@ -16,6 +16,7 @@
 #define VERTEX_TYPE_CUBE        0x0200      // CUBE MAP
 #define VERTEX_TYPE_RNM         0x0400      // RNM
 #define VERTEX_TYPE_SCREEN      0x0800		// DRAW_QUAD_SCREEN
+#define VERTEX_TYPE_POLY		0x0900		// POLY
 
 #include "GraphicsManager.h"
 #include "Utils\Defines.h"
@@ -42,6 +43,23 @@ struct TTEXTURE_VERTEX {
   float tu, tv;
   static inline unsigned short GetVertexType() {
     return VERTEX_TYPE_GEOMETRY | VERTEX_TYPE_TEXTURE1;
+  }
+  static inline unsigned int GetFVF() {
+    return D3DFVF_XYZ | D3DFVF_TEX1;
+  }
+  static LPDIRECT3DVERTEXDECLARATION9 s_VertexDeclaration;
+  static LPDIRECT3DVERTEXDECLARATION9 &GetVertexDeclaration();
+  static void ReleaseVertexDeclaration() {
+    CHECKED_RELEASE(s_VertexDeclaration);
+  }
+};
+
+// G POLY T1
+struct TTEXTURE_POLY_VERTEX {
+  float x, y, z;
+  float tu, tv;
+  static inline unsigned short GetVertexType() {
+    return VERTEX_TYPE_GEOMETRY | VERTEX_TYPE_TEXTURE1 | VERTEX_TYPE_POLY;
   }
   static inline unsigned int GetFVF() {
     return D3DFVF_XYZ | D3DFVF_TEX1;
@@ -87,6 +105,25 @@ struct TTEXTURE_CUBE_NORMAL_VERTEX {
     CHECKED_RELEASE(s_VertexDeclaration);
   }
 };
+
+// G N POLY T1
+struct TTEXTURE_POLY_NORMAL_VERTEX {
+  float x, y, z;
+  float nx, ny, nz;
+  float tu, tv;
+  static inline unsigned short GetVertexType() {
+    return VERTEX_TYPE_GEOMETRY | VERTEX_TYPE_NORMAL | VERTEX_TYPE_TEXTURE1 | VERTEX_TYPE_POLY;
+  }
+  static inline unsigned int GetFVF() {
+    return D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1;
+  }
+  static LPDIRECT3DVERTEXDECLARATION9 s_VertexDeclaration;
+  static LPDIRECT3DVERTEXDECLARATION9 &GetVertexDeclaration();
+  static void ReleaseVertexDeclaration() {
+    CHECKED_RELEASE(s_VertexDeclaration);
+  }
+};
+
 
 // G D T1
 struct TCOLOR_TEXTURE_VERTEX {
