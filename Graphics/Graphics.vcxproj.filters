@@ -300,6 +300,9 @@
     <ClCompile Include="Particles\Particle.cpp">
       <Filter>Particles</Filter>
     </ClCompile>
+    <ClCompile Include="Particles\BillboardManager.cpp">
+      <Filter>Particles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
@@ -554,6 +557,9 @@
       <Filter>Particles</Filter>
     </ClInclude>
     <ClInclude Include="Particles\RecyclingArray.h">
+      <Filter>Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Particles\BillboardManager.h">
       <Filter>Particles</Filter>
     </ClInclude>
   </ItemGroup>

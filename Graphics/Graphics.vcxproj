@@ -42,6 +42,7 @@
     <ClCompile Include="Mesh\MeshInstance.cpp" />
     <ClCompile Include="Object\Object3D.cpp" />
     <ClCompile Include="Particles\Billboard.cpp" />
+    <ClCompile Include="Particles\BillboardManager.cpp" />
     <ClCompile Include="Particles\dummy.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -134,6 +135,7 @@
     <ClInclude Include="Mesh\MeshInstance.h" />
     <ClInclude Include="Object\Object3D.h" />
     <ClInclude Include="Particles\Billboard.h" />
+    <ClInclude Include="Particles\BillboardManager.h" />
     <ClInclude Include="Particles\dummy.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
