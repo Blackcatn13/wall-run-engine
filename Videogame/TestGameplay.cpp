@@ -58,6 +58,11 @@ CTestGameplay::CTestGameplay(void) {
   m_textPosition(10, 30);
   m_printInfo = false;
   m_FPSMode = false;
+  m_PaintPhisicActors = false;
+  m_PaintPhisicTriggers = false;
+  m_PaintPhisics = false;
+  m_DebugPhisics = false;
+  m_Color =  CColor(0.1, 0.1, 0.1, 0.2);
 }
 
 CTestGameplay::~CTestGameplay(void) {
@@ -187,32 +192,36 @@ void CTestGameplay::Init() {
 void CTestGameplay::DeInit() {
 }
 
-Vect2i CTestGameplay::RenderDebugInfo(bool render, float dt) {
+Vect2i CTestGameplay::RenderDebugInfo(bool render/*, float dt*/) {
   Vect2i size;
   if (m_printInfo) {
     // get Process debug size
-    size = CProcess::RenderDebugInfo(false, m_Dt);
+    size = CProcess::RenderDebugInfo(false/*, m_Dt*/);
+
     // get this process debug size
-    size.Add_Max(FONTM->GetDefaultTextSize(size.x, size.y, colWHITE, "Info from %s", __FILE__));
+    // size.Add_Max(FONTM->GetDefaultTextSize(size.x, size.y, colWHITE, "Info from %s", __FILE__));
+    int aux_x = size.x;
     // print quad
     // print Process debug info
-    /*size = */CProcess::RenderDebugInfo(true, m_Dt);
+    size = CProcess::RenderDebugInfo(true/*, m_Dt*/);
     // print this process debug info
-    size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Info from %s", __FILE__));
-    if (GRAPHM->isSphereVisible(Vect3f(15, 0, 0), 2))
-      size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Drawing 3"));
-    else
-      size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Drawing 2"));
+    // size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Info from %s", __FILE__));
+
+    /* if (GRAPHM->isSphereVisible(Vect3f(15, 0, 0), 2))
+       size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Drawing 3"));
+     else
+       size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Drawing 2"));*/
     size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de vertices: %d", m_totalVertices));
     size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de caras: %d", m_totalFaces));
     size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de primitivas: %d", m_numPrimitives));
-    GRAPHM->DrawRectangle2D (m_textPosition, size.x, size.y , CColor(0, 1, 0, 0.2), 2, 2, CColor(0, 0, 0, 1));
+    aux_x = max(aux_x, 220);
+    GRAPHM->DrawRectangle2D (m_textPosition, aux_x, size.y , m_Color, 2, 2, CColor(0, 0, 0, 1));
   } else {
     // print a message asking for key to open the menu
 
     Vect2i aux = m_textPosition;
     aux.Add_Max(FONTM->GetLiteralSize(aux.x, aux.y, "OpenDebug"));
-    GRAPHM->DrawRectangle2D (m_textPosition, aux.x, aux.y , CColor(0, 1, 0, 0.2), 2, 2, CColor(0, 0, 0, 1));
+    GRAPHM->DrawRectangle2D (m_textPosition, aux.x, aux.y , m_Color, 2, 2, CColor(0, 0, 0, 1));
     FONTM->DrawLiteral(m_textPosition.x, m_textPosition.y, "OpenDebug");
     /* if (GRAPHM->isSphereVisible(Vect3f(15, 0, 0), 2))
        size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Drawing 3"));
@@ -312,6 +321,7 @@ void CTestGameplay::Render() {
   m_numPrimitives = 0;
   m_totalVertices = 0;
   m_totalFaces = 0;
+
   /* Mat44f t;
    t.SetIdentity();
    GRAPHM->SetTransform(t);

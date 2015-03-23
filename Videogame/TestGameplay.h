@@ -55,6 +55,7 @@ class CTestGameplay : public CProcess {
   int					m_numPrimitives, m_totalVertices, m_totalFaces;
   CPlayerController  *m_PlayerController;
   std::string			m_LuaInitLevelFunc;
+  CColor		m_Color;
  public:
   CTestGameplay(void);
   ~CTestGameplay(void);
@@ -62,7 +63,7 @@ class CTestGameplay : public CProcess {
   void Render();
   void Init();
   void DeInit();
-  Vect2i RenderDebugInfo(bool render, float dt);
+  Vect2i RenderDebugInfo(bool render/*, float dt*/);
 };
 
 #endif

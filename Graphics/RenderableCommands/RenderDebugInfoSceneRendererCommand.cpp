@@ -12,5 +12,5 @@ CRenderDebugInfoSceneRendererCommand::CRenderDebugInfoSceneRendererCommand(CXMLT
 
 void CRenderDebugInfoSceneRendererCommand::Execute(CGraphicsManager &RM) {
   m_LogRender->Render(&RM, FONTM);
-  PROCESS->RenderDebugInfo(PROCESS->getPrintInfo(), PROCESS->GetDt());
+  PROCESS->RenderDebugInfo(PROCESS->getPrintInfo()/*, PROCESS->GetDt()*/);
 }

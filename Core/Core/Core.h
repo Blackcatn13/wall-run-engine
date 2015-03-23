@@ -100,6 +100,8 @@ class CCore {
   CEnemyManager						*m_EnemyManager;
   CParticleManager					*m_ParticleManager;
 
+
+
  public:
   ~CCore();
   void Update ( float dt );
@@ -209,7 +211,7 @@ class CCore {
     {
         return m_PlatformsMap;
     }*/
-};
 
+};
 
 #endif
