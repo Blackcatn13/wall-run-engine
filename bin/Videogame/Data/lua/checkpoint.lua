@@ -28,7 +28,7 @@ function CheckPoint.new()
 
 	function self.load_checkpoint(player)
 		local coreInstance = CCoreLuaWrapper().m_CoreInstance;
-			coreInstance:trace("activating checkpoint")
+			coreInstance:trace("activating checkpoint!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
 		local player_controller = player:get_player_controller()
 		player_controller:set_position(self.last_position)
 	end

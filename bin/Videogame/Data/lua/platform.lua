@@ -76,10 +76,14 @@ function on_enter_pinchos(platform_name)
 	end
 	--]]
 	local player = Player:get_instance()
+	coreInstance:trace(tostring(player.num_hearts))
+	if player.num_hearts > 0 then
+		player.get_player_controller():set_position(player.last_spikes_position)
+	end
 	player.player_take_damage()
+	
 	-- Hacer cosas
-	player.get_player_controller():set_position(player.last_spikes_position)
-
+	
 end
 
 

@@ -88,107 +88,107 @@ void CTestGameplay::Init() {
 //
 //	SCRIPTM->RunFile(SCRIPTM->GetScriptsMap().find("test2")->second);
 
-    /*float l_ElapsedTime=0.3f;
-    char l_Text[256];
-    _snprintf_s(l_Text, 256, 256, "on_update_scripted_controller(%f)", l_ElapsedTime);
-    SCRIPTM->RunCode(l_Text);*/
-    m_ObjectFPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
-    m_ObjectThPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
-    m_Object3D = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
-    m_Object2D = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
-    //m_RenderableObject = RENDM->GetResourcesMap().find("Box005")->second.m_Value;
-    m_3DCamera = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_Object3D, 50);
-    m_3DCamera->SetTypeCamera(CCamera::TC_3DCAM);
-    m_3DCamera->LoadPathFromFile(".\\Data\\camera_path.xml");
-    m_3DCamera->GetObject3D()->SetPosition(m_3DCamera->GetPathPoint(0));
-    m_2DCamera = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_Object2D, 50);
-    m_2DCamera->SetTypeCamera(CCamera::TC_2DCAM);
-	m_2DCamera->LoadPathFromFile(".\\Data\\camera_path.xml");
-    m_ThPSCamera = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS, 200);
-    //m_ThPSCamera1 = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_RenderableObject, 10);
-    m_FPSCamera = new CFPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectFPS);
-    m_ThPSCamera->SetTypeCamera(CCamera::TC_ESF);
-    //m_CameraController = new CCameraController();
-    CAMCONTM->AddNewCamera("FPS", m_FPSCamera);
-    CAMCONTM->AddNewCamera("ThPSESF", m_ThPSCamera);
-    CAMCONTM->AddNewCamera("3DCam", m_3DCamera);
-    CAMCONTM->AddNewCamera("2DCam", m_2DCamera);
-    //m_CameraController->AddNewCamera("ThPS", m_ThPSCamera1);
-    CAMCONTM->setActiveCamera("ThPSESF");
-    SCRIPTM->RunCode("on_init_cameras_lua()");
-    m_Camera = CAMCONTM->getActiveCamera();
-    m_PlayerMode = true;
+  /*float l_ElapsedTime=0.3f;
+  char l_Text[256];
+  _snprintf_s(l_Text, 256, 256, "on_update_scripted_controller(%f)", l_ElapsedTime);
+  SCRIPTM->RunCode(l_Text);*/
+  m_ObjectFPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
+  m_ObjectThPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
+  m_Object3D = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
+  m_Object2D = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
+  //m_RenderableObject = RENDM->GetResourcesMap().find("Box005")->second.m_Value;
+  m_3DCamera = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_Object3D, 50);
+  m_3DCamera->SetTypeCamera(CCamera::TC_3DCAM);
+  m_3DCamera->LoadPathFromFile(".\\Data\\camera_path.xml");
+  m_3DCamera->GetObject3D()->SetPosition(m_3DCamera->GetPathPoint(0));
+  m_2DCamera = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_Object2D, 50);
+  m_2DCamera->SetTypeCamera(CCamera::TC_2DCAM);
+  m_2DCamera->LoadPathFromFile(".\\Data\\camera_path.xml");
+  m_ThPSCamera = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS, 200);
+  //m_ThPSCamera1 = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_RenderableObject, 10);
+  m_FPSCamera = new CFPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectFPS);
+  m_ThPSCamera->SetTypeCamera(CCamera::TC_ESF);
+  //m_CameraController = new CCameraController();
+  CAMCONTM->AddNewCamera("FPS", m_FPSCamera);
+  CAMCONTM->AddNewCamera("ThPSESF", m_ThPSCamera);
+  CAMCONTM->AddNewCamera("3DCam", m_3DCamera);
+  CAMCONTM->AddNewCamera("2DCam", m_2DCamera);
+  //m_CameraController->AddNewCamera("ThPS", m_ThPSCamera1);
+  CAMCONTM->setActiveCamera("ThPSESF");
+  SCRIPTM->RunCode("on_init_cameras_lua()");
+  m_Camera = CAMCONTM->getActiveCamera();
+  m_PlayerMode = true;
 //	m_ScriptedController = new CScriptedController();
 //	RENDM->AddResource("ScriptedController", m_ScriptedController);
-    //Lights
-    //LIGHTM->Load(".\\Data\\lights.xml");
-    //SCRIPTM->Load(".\\Data\\lua_actions.xml");
-    //EFFECTM->Load(".\\Data\\effects.xml");
-    // m_PhysicUserDataCube = new CPhysicUserData("fixbox");
-    // m_PhysicUserDataCube->SetPaint(true);
-    // m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
-    // m_PhysicActorCubeFix->AddPlaneShape(Vect3f(0, 1, 0), 0);
-    // PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
-    /*CPhysicUserData* m_TriggerData = new CPhysicUserData("trigger");
-    m_TriggerData->SetPaint(true);
-    m_TriggerData->SetColor(colMAGENTA);
-    CPhysicActor* m_Trigger = new CPhysicActor(m_TriggerData);
-    m_Trigger->CreateBoxTrigger(Vect3f(5.f, 5.f, 5.f), Vect3f(2.f, 2.f, 2.f));
-    PHYSXM->AddPhysicActor(m_Trigger);
-    PHYSXM->SetTriggerReport((CPhysicTriggerReport*)TRIGGM);*/
-    /*CPhysicActor* m_PhysicActorCubeFix;
-    CPhysicUserData* m_PhysicUserDataCube;
-    */ m_PhysicUserDataCube = new CPhysicUserData("fixbox");
-    m_PhysicUserDataCube->SetPaint(true);
-    /*m_PhysicUserDataCube2 = new CPhysicUserData("fixbox2");
-       m_PhysicUserDataCube2->SetPaint(true);
-        m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
-         m_PhysicActorCubeFix->AddBoxSphape(Vect3f(15, 1, 15));
-         PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
-         m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
-         m_PhysicActorCubeFix->AddBoxSphape(Vect3f(5, .2, 5), Vect3f(0, 1, 3));
-         PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
-         m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
-         m_PhysicActorCubeFix->AddBoxSphape(Vect3f(5, .2, 5), Vect3f(0, 1.2, 4));
-         PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
-         m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
-         m_PhysicActorCubeFix->AddBoxSphape(Vect3f(5, .2, 5), Vect3f(0, 1.2, 4), v3fZERO, Vect3f(0, 0, 0.35));
-         PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);*/
-    //m_Granade = new CGranade();
-    /* CPhysicUserAllocator* m_Alloc = new CPhysicUserAllocator();
-     CPhysicCookingMesh* m_CockMesh = new CPhysicCookingMesh();*/
-    //m_CockMesh->Init(PHYSXM->GetPhysicsSDK(), m_Alloc);
-    PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/volumetry.ASE", "sceneTraining");
-    //PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/Level1/trainingPiky2.ASE", "sceneTraining");
-    //  m_CockMesh->CreateMeshFromASE("./Data/sceneTrainingPiky.ASE", "sceneTraining");
-    m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
-    m_PhysicActorCubeFix->AddMeshShape( PHYSXM->GetCookingMesh()->GetPhysicMesh("sceneTraining"));
-    m_PhysicUserDataCube->SetPaint(false);
-    PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
-    /* m_PhysicActorCubeFix2 = new CPhysicActor(m_PhysicUserDataCube2);
-     m_PhysicActorCubeFix2->AddBoxSphape(Vect3f(2, 2, 2), Vect3f(0, 10.2, 4), Vect3f(0, 0, 0.35));
-     m_PhysicActorCubeFix2->CreateBody(0.5f);
-     PHYSXM->AddPhysicActor(m_PhysicActorCubeFix2);*/
-    m_LuaInitLevelFunc = CCORE->getLuaLoadLevelFunc();
-    //PHYSXM->ReleasePhysicActor(m_PhysicActorCubeFix2);
-    /*  char l_InitLevelText[256];
-      _snprintf_s(l_InitLevelText, 256, 256, m_LuaInitLevelFunc.c_str());
-      SCRIPTM->RunCode(l_InitLevelText);
-    */
-    std::stringstream ss;
-    int var = 1;
-    ss << CCORE->getLuaLoadLevelFunc() << "(" << var << ")";
-    std::string toRun = ss.str();
-    SCRIPTM->RunCode(toRun.c_str());
-    CLuaGlobals::getInstance()->getString();
-    m_fsmManager = new CFSMManager();
-    //m_fsmManager->Load("data//AI//Patrulla.xml");
-    m_fsmManager->Load("data//AI//FSMs.xml");
-    //m_fsmManager = new CFSMManager();
-    //m_WPManager = new CWPManager();
-    //m_WPManager->Load("data//AI//Waypoints2.xml");
-    /* int j_2 = m_WPManager->CalcularSiguienteWaypoint(5, 8, "sala_principal");
-     int _iiii = 0;*/
+  //Lights
+  //LIGHTM->Load(".\\Data\\lights.xml");
+  //SCRIPTM->Load(".\\Data\\lua_actions.xml");
+  //EFFECTM->Load(".\\Data\\effects.xml");
+  // m_PhysicUserDataCube = new CPhysicUserData("fixbox");
+  // m_PhysicUserDataCube->SetPaint(true);
+  // m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+  // m_PhysicActorCubeFix->AddPlaneShape(Vect3f(0, 1, 0), 0);
+  // PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
+  /*CPhysicUserData* m_TriggerData = new CPhysicUserData("trigger");
+  m_TriggerData->SetPaint(true);
+  m_TriggerData->SetColor(colMAGENTA);
+  CPhysicActor* m_Trigger = new CPhysicActor(m_TriggerData);
+  m_Trigger->CreateBoxTrigger(Vect3f(5.f, 5.f, 5.f), Vect3f(2.f, 2.f, 2.f));
+  PHYSXM->AddPhysicActor(m_Trigger);
+  PHYSXM->SetTriggerReport((CPhysicTriggerReport*)TRIGGM);*/
+  /*CPhysicActor* m_PhysicActorCubeFix;
+  CPhysicUserData* m_PhysicUserDataCube;
+  */ m_PhysicUserDataCube = new CPhysicUserData("fixbox");
+  m_PhysicUserDataCube->SetPaint(true);
+  /*m_PhysicUserDataCube2 = new CPhysicUserData("fixbox2");
+     m_PhysicUserDataCube2->SetPaint(true);
+      m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+       m_PhysicActorCubeFix->AddBoxSphape(Vect3f(15, 1, 15));
+       PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
+       m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+       m_PhysicActorCubeFix->AddBoxSphape(Vect3f(5, .2, 5), Vect3f(0, 1, 3));
+       PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
+       m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+       m_PhysicActorCubeFix->AddBoxSphape(Vect3f(5, .2, 5), Vect3f(0, 1.2, 4));
+       PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
+       m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+       m_PhysicActorCubeFix->AddBoxSphape(Vect3f(5, .2, 5), Vect3f(0, 1.2, 4), v3fZERO, Vect3f(0, 0, 0.35));
+       PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);*/
+  //m_Granade = new CGranade();
+  /* CPhysicUserAllocator* m_Alloc = new CPhysicUserAllocator();
+   CPhysicCookingMesh* m_CockMesh = new CPhysicCookingMesh();*/
+  //m_CockMesh->Init(PHYSXM->GetPhysicsSDK(), m_Alloc);
+  //PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/volumetry.ASE", "sceneTraining");
+  PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/Level1/trainingPiky2.ASE", "sceneTraining");
+  //  m_CockMesh->CreateMeshFromASE("./Data/sceneTrainingPiky.ASE", "sceneTraining");
+  m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
+  m_PhysicActorCubeFix->AddMeshShape( PHYSXM->GetCookingMesh()->GetPhysicMesh("sceneTraining"));
+  m_PhysicUserDataCube->SetPaint(false);
+  PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
+  /* m_PhysicActorCubeFix2 = new CPhysicActor(m_PhysicUserDataCube2);
+   m_PhysicActorCubeFix2->AddBoxSphape(Vect3f(2, 2, 2), Vect3f(0, 10.2, 4), Vect3f(0, 0, 0.35));
+   m_PhysicActorCubeFix2->CreateBody(0.5f);
+   PHYSXM->AddPhysicActor(m_PhysicActorCubeFix2);*/
+  m_LuaInitLevelFunc = CCORE->getLuaLoadLevelFunc();
+  //PHYSXM->ReleasePhysicActor(m_PhysicActorCubeFix2);
+  /*  char l_InitLevelText[256];
+    _snprintf_s(l_InitLevelText, 256, 256, m_LuaInitLevelFunc.c_str());
+    SCRIPTM->RunCode(l_InitLevelText);
+  */
+  std::stringstream ss;
+  int var = 1;
+  ss << CCORE->getLuaLoadLevelFunc() << "(" << var << ")";
+  std::string toRun = ss.str();
+  SCRIPTM->RunCode(toRun.c_str());
+  CLuaGlobals::getInstance()->getString();
+  m_fsmManager = new CFSMManager();
+  //m_fsmManager->Load("data//AI//Patrulla.xml");
+  m_fsmManager->Load("data//AI//FSMs.xml");
+  //m_fsmManager = new CFSMManager();
+  //m_WPManager = new CWPManager();
+  //m_WPManager->Load("data//AI//Waypoints2.xml");
+  /* int j_2 = m_WPManager->CalcularSiguienteWaypoint(5, 8, "sala_principal");
+   int _iiii = 0;*/
 
 //  /*float l_ElapsedTime=0.3f;
 //  char l_Text[256];

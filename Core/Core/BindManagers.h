@@ -99,6 +99,7 @@ void RegisterManagers() {
     .def("load_ttfs", &CFontManager::LoadTTFs)
     .def("get_ttf_id", &CFontManager::GetTTF_Id)
     .def("create_font", &CFontManager::CreateFont)
+    .def("draw_lua_text", &CFontManager::DrawLuaText)
     //.def("draw_default_text", &CFontManager::DrawDefaultText)
     //.def("draw_text", &CFontManager::DrawText)
     /*	.def("draw_literal", &CFontManager::DrawLiteral)
