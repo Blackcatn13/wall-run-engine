@@ -160,42 +160,14 @@ function on_update_player_lua(l_ElapsedTime)
 		mov.y = player.m_CurrentJumpForce;
 		if player.m_is3D == false then
 			if act2in:do_action_from_lua("MoveRigth") then
-				mov = mov - dirNor * player.m_JumpForce/1.5;
 				player.m_isJumpingMoving = true;
 			elseif act2in:do_action_from_lua("MoveLeft") then
-				mov = mov + dirNor * player.m_JumpForce/1.5;
 				player.m_isJumpingMoving = true;
 			else
 				mov.y = player.m_CurrentJumpForce*2;
 			end
 		else
-			if player.m_JumpType == 1 then --Forward
-				mov = mov + dir3D * player.m_JumpForce/1.5;
-				player.m_isJumpingMoving = true;
-			elseif player.m_JumpType == 2 then --Right
-				mov = mov - dirNor * player.m_JumpForce/1.5;
-				player.m_isJumpingMoving = true;
-			elseif player.m_JumpType == 3 then --Back
-				mov = mov - dir3D * player.m_JumpForce/1.5;
-				player.m_isJumpingMoving = true;
-			elseif player.m_JumpType == 4 then --Left
-				mov = mov + dirNor * player.m_JumpForce/1.5;
-				player.m_isJumpingMoving = true;
-			elseif player.m_JumpType == 5 then --Forward-Right
-				mov = mov + dir3D * player.m_JumpForce/1.5;
-				mov = mov - dirNor * player.m_JumpForce/1.5;
-				player.m_isJumpingMoving = true;
-			elseif player.m_JumpType == 6 then --Back-Right
-				mov = mov - dir3D * player.m_JumpForce/1.5;
-				mov = mov - dirNor * player.m_JumpForce/1.5;
-				player.m_isJumpingMoving = true;
-			elseif player.m_JumpType == 7 then --Back-Left
-				mov = mov - dir3D * player.m_JumpForce/1.5;
-				mov = mov + dirNor * player.m_JumpForce/1.5;
-				player.m_isJumpingMoving = true;
-			elseif player.m_JumpType == 8 then --Forward-Left
-				mov = mov + dir3D * player.m_JumpForce/1.5;
-				mov = mov + dirNor * player.m_JumpForce/1.5;
+			if player.m_JumpType >= 1 then
 				player.m_isJumpingMoving = true;
 			else
 				mov.y = player.m_CurrentJumpForce*2;
