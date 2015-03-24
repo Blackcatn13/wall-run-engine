@@ -76,8 +76,6 @@
 	<disable_alpha_blend />
 	<!--<disable_alpha_blend />-->
 	
-
-	<set_poly_phisics room="1" />
 	<render_debug_scene layer="phisics" active="true" paint_cooking_mesh="false" cooking_mesh_name="fixbox" />
 	<particle_render/>
 	

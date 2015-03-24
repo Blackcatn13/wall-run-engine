@@ -13,14 +13,14 @@ CCheckEnabledPolyRenderCommand::CCheckEnabledPolyRenderCommand(CXMLTreeNode &att
 void CCheckEnabledPolyRenderCommand::Execute(CGraphicsManager &RM) {
 
   CRenderableObjectsManager *l_Rom = RENDLM->GetRenderableObjectsManagerByStr("poly");
-  l_Rom->GetResourcesVector();
-  for (int i = 0; i < l_Rom->GetResourcesVector().size(); ++i) {
-    CPolyPlatform *poly = (CPolyPlatform *) l_Rom->GetResourcesVector()[i];
-    if (poly->getEnabled()) {
-      m_Effect->SetActivePoly(poly);
-      poly->Render(&RM);
-    }
+  if(l_Rom != NULL){
+	  for (int i = 0; i < l_Rom->GetResourcesVector().size(); ++i) {
+		CPolyPlatform *poly = (CPolyPlatform *) l_Rom->GetResourcesVector()[i];
+		if (poly->getEnabled()) {
+		  m_Effect->SetActivePoly(poly);
+		  poly->Render(&RM);
+		}
+	  }
   }
-
 
 }
