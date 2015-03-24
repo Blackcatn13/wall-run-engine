@@ -66,6 +66,7 @@
 	<enable_z_write/>
 	<enable_z_test />
 	
+
 	<!--<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>-->
 	
 	<render_scene layer="poly" active="true" />
@@ -74,7 +75,8 @@
 	<check_active_poly />
 	<disable_alpha_blend />
 	<!--<disable_alpha_blend />-->
-	<render_debug_scene layer="phisics" active="true" paint_cooking_mesh="false" cooking_mesh_name="fixbox" />
+	
+	<render_debug_scene layer="phisics" active="true" paint_cooking_mesh="true" cooking_mesh_name="fixbox" />
 	<particle_render/>
 	
 	<!--Fog-->

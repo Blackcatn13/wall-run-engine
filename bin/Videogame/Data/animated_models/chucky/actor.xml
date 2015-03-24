@@ -1,0 +1,6 @@
+<animated_model name="chuky">
+	<texture file="purple.jpg"/>
+	<skeleton file="chuky.csf"/>
+	<mesh file="chuky.cmf"/>
+	<animation name="chuky_hi" file="chuky_hi.caf"/>
+</animated_model>
