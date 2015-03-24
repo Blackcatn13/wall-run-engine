@@ -18,15 +18,17 @@ function on_update_cameras_lua(l_ElapsedTime)
 	local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 	local act2in = coreInstance:get_action_to_input();
 	local camController = coreInstance.m_CameraController;
+	local cam = camController:get_active_camera();
 	if act2in:do_action_from_lua("Set3DCamera") then
-		coreInstance.m_CameraController:set_active_camera("3DCam");
+		--coreInstance.m_CameraController:set_active_camera("3DCam");
+		cam.m_eTypeCamera = 6;
 	end
 	if act2in:do_action_from_lua("Set2DCamera") then
-		coreInstance.m_CameraController:set_active_camera("2DCam");
+		--coreInstance.m_CameraController:set_active_camera("2DCam");
+		cam.m_eTypeCamera = 5;
 	end
 	--local name2=CNamed();
 	--name2:set_name("UpdatePass1");
-	local cam = camController:get_active_camera();
 	local currentWP = cam:get_path_point(cam.m_currentWaypoint);
 	coreInstance:trace("currentWP");
 	coreInstance:trace(tostring(currentWP.x));
@@ -115,31 +117,24 @@ function on_update_cameras_lua(l_ElapsedTime)
 	coreInstance:trace(tostring(newPos.x));
 	coreInstance:trace(tostring(newPos.y));
 	coreInstance:trace(tostring(newPos.z));
+	local obj = cam.m_pObject3D;
+	obj:set_position(Vect3f(newPos.x, newPos.y, newPos.z));
 	--Update Camera 3D
 	if(cam.m_eTypeCamera == 6) then
-		local obj = cam.m_pObject3D;
-		obj:set_position(Vect3f(newPos.x, newPos.y, newPos.z));
 		local yaw = math.atan2(cameraVecZXN.z, cameraVecZXN.x);
 		if(percent > 0.9) then
 			if(cam.m_nextWaypoint < cam:get_path_size())then
-				local probar = CNamed();
-				probar:set_name("entra1");
 				local nextVector = cam:get_path_point(cam.m_nextWaypoint + 1) - cam:get_path_point(cam.m_currentWaypoint + 1);
-				probar:set_name("entra2");
 				nextVector:normalize(1);
-				probar:set_name("entra3");
 				nextyaw = math.atan2(nextVector.z,nextVector.x);
-				probar:set_name("entra4");
 				local yawpercent = (percent - 0.9) / (1 - 0.9);
-				probar:set_name("entra5");
 				yaw = yaw * (1-yawpercent) + nextyaw * yawpercent;
-				probar:set_name("entra6");
 			end
 		end
 		obj:set_yaw(yaw);
-		obj:set_pitch(-0.25);
+		obj:set_pitch(-0.40);
 		obj:set_roll(0);
-		cam:set_zoom(25);
+		cam:set_zoom(15);
 		cam.m_fZNear = 0.1;
 		cam.m_fZFar = 1000;
 		--cam.m_fFOV = 45.0 * 3.1415 / 180;
@@ -147,30 +142,22 @@ function on_update_cameras_lua(l_ElapsedTime)
 	end
 	--Update Camera 2D
 	if(cam.m_eTypeCamera == 5) then
-		local positionController = pCont:get_position();
-		local obj = cam.m_pObject3D;
-		obj:set_position(Vect3f(newPos.x, newPos.y, newPos.z));
-		local yaw = math.atan2(cameraVecZXN.x, cameraVecZXN.z);
+		local yaw = math.atan2(cameraVecZXN.z, cameraVecZXN.x);
+		yaw = yaw + (math.pi / 2);
 		if(percent > 0.9) then
 			if(cam.m_nextWaypoint < cam:get_path_size())then
-				local probar = CNamed();
-				probar:set_name("entra1");
 				local nextVector = cam:get_path_point(cam.m_nextWaypoint + 1) - cam:get_path_point(cam.m_currentWaypoint + 1);
-				probar:set_name("entra2");
 				nextVector:normalize(1);
-				probar:set_name("entra3");
-				nextyaw = math.atan2(nextVector.x,nextVector.z);
-				probar:set_name("entra4");
+				local nextyaw = math.atan2(nextVector.z,nextVector.x);
+				nextyaw = nextyaw + (math.pi / 2);
 				local yawpercent = (percent - 0.9) / (1 - 0.9);
-				probar:set_name("entra5");
 				yaw = yaw * (1-yawpercent) + nextyaw * yawpercent;
-				probar:set_name("entra6");
 			end
 		end
 		obj:set_yaw(yaw);
-		obj:set_pitch(-0.1);
+		obj:set_pitch(-0.2);
 		obj:set_roll(0);
-		cam:set_zoom(50);
+		cam:set_zoom(20);
 		cam.m_fZNear = 0.1;
 		cam.m_fZFar = 1000;
 		--cam.m_fFOV = 45.0 * 3.1415 / 180;

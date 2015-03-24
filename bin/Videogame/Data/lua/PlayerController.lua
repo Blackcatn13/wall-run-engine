@@ -21,9 +21,13 @@ function on_update_player_lua(l_ElapsedTime)
 	if act2in:do_action_from_lua("ChangeDimension") then
 		if player.m_is3D == true then 
 			player.m_is3D = false;
-			coreInstance.m_CameraController:set_active_camera("2DCam");
+			local cam = coreInstance.m_CameraController:get_resource("3DCam");
+			cam.m_eTypeCamera = 5;
+			coreInstance.m_CameraController:set_active_camera("3DCam");
 		else
 			player.m_is3D = true;
+			local cam = coreInstance.m_CameraController:get_resource("3DCam");
+			cam.m_eTypeCamera = 6;
 			coreInstance.m_CameraController:set_active_camera("3DCam");
 		end
 	end
