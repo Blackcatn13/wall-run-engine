@@ -68,7 +68,7 @@
 	<render_scene layer="poly" active="true" />
 	
 	<set_poly_phisics room="1" />
-	<render_debug_scene layer="phisics" active="true" paint_cooking_mesh="false" cooking_mesh_name="fixbox" />
+	<render_debug_scene layer="phisics" active="true" paint_cooking_mesh="true" cooking_mesh_name="fixbox" />
 	<particle_render/>
 	
 	<!--Fog-->
