@@ -7,7 +7,6 @@
 	<default_technique vertex_type="51" technique="LightMapTechnique"/>
 	<default_technique vertex_type="19" technique="GBufferDiffuseMapTechnique"/>
 	<default_technique vertex_type="2048" technique="DrawQuadSolidTechnique"/>
-	<default_technique vertex_type="2321" technique="PolyTechnique"/>
 	
 	<!--<effect name="BasicEffect" file="data/effects/BasicEffect.fx"/>-->
 	<effect name="LightsEffect" file="data/effects/Lights.fx"/>
@@ -60,6 +59,6 @@
 	<technique name="CombineBloomTechnique" effect="CombineBloomEffect" use_world_matrix="true" use_world_view_projection_matrix="true" />
 	<technique name="GaussianBlurTechnique" effect="GaussianBlurEffect" use_world_matrix="true" use_world_view_projection_matrix="true" />
 	
-	<technique name="PolyTechnique" effect="PolyEffect"  use_inverse_projection_matrix="true" use_inverse_view_matrix="true"/>
+	<technique name="PolyTechnique" effect="PolyEffect"  use_world_matrix="true" use_view_matrix="true" use_inverse_view_matrix="true" use_projection_matrix="true"/>
 
 </effects>

@@ -16,6 +16,9 @@
 	<!-- teleport triggers-->
 	<trigger name="Teleport_test" position="3.432929 1.300000 -4.654716" shape="sphere" radius = "1" type_event="enter" script_function="activate_teleport" param1="3.118870 1.00000 281.008423"
 	 paint="true" color="1.0 0.0 1.0" />
+	 
+	 <trigger name="Teleport_patata" position="30.649429 8.109472 350.100" shape="box" size="2.0 1.5 2.0" type_event="enter" script_function="activate_teleport" param1="0.432929 3.000000 -0.654716"
+	group="3" paint="true" color="1.0 0.0 1.0" />
 	
 	<trigger name="Teleport_test2" position="39.649429 8.109472 500.100" shape="box" size="2.0 1.5 2.0" type_event="enter" script_function="activate_teleport" param1="0.432929 3.000000 -0.654716"
 	group="3" paint="true" color="1.0 0.0 1.0" />

@@ -304,6 +304,7 @@ void CStaticMesh::Render (CGraphicsManager *RM) {
     // TODO modificar esto para que coja el effectTechnique del TechniqueManager a partir del vertexType
     //std::string l_EffectName = EFFECTM->GetTechniqueEffectNameByVertexDefault(m_RVs[i]->GetVertexType());
     //CEffectTechnique *l_EffectTechnique =EFFECTM->GetEffectTechnique(l_EffectName);
+
     CEffectTechnique *l_EffectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(m_RVs[i]->GetVertexType()))->GetEffectTechnique();
     for (size_t j = 0; j < m_Textures[i].size(); ++j)
       m_Textures[i][j]->Activate(j);
@@ -319,6 +320,7 @@ void CStaticMesh::Render (CGraphicsManager *RM) {
         RM->GetDevice()->SetTexture(0, 0);*/
     m_RVs[i]->Render(RM, l_EffectTechnique);
   }
+
 }
 
 
