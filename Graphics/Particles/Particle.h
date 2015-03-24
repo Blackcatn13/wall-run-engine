@@ -23,6 +23,10 @@ class CParticle : public CBillboard {
   void setColor2(CColor Color) { m_Color2 = Color; }
   void setSize(float size) { m_size = size; }
   void setPosition(Vect3f Position) { m_position = Position; }
+  void setGravity(float Gravity) { m_Gravity = Gravity; }
+  void setVectorOndulacion(Vect3f VectorOndulacion) { m_VectorOndulacion = VectorOndulacion; }
+  void setVelocidadOndulacion(float VelocidadOndulacion) { m_VelocidadOndulacion = VelocidadOndulacion; }
+  void setInicioOndulacion(float InicioOndulacion) { m_InicioOndulacion = InicioOndulacion; }
  private:
   Vect3f	m_Direction1;
   Vect3f	m_Direction2;
@@ -30,6 +34,10 @@ class CParticle : public CBillboard {
   float	  m_Speed;
   CColor	m_Color2;
   bool    m_Dead;
+  float		m_Gravity;
+  Vect3f	m_VectorOndulacion;
+  float		m_VelocidadOndulacion;
+  float		m_InicioOndulacion;
 };
 
 #endif // PARTICLE_H_

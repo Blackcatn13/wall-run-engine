@@ -25,8 +25,13 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
   , m_vPos(node.GetVect3fProperty("v_Pos", v3fZERO, false))
   , m_vSpawnDir1(node.GetVect3fProperty("spawn_dir1", v3fZERO, false))
   , m_vSpawnDir2(node.GetVect3fProperty("spawn_dir2", v3fZERO, false))
+  , m_Gravity(node.GetFloatProperty("Gravity", 0.0f, false))
+  , m_MaxVelocidadOndulacion(node.GetFloatProperty("max_speed_ondulacion", 0.0f, false))
+  , m_MinVelocidadOndulacion(node.GetFloatProperty("min_speed_ondulacion", 0.0f, false))
+  , m_vOndulacion1(node.GetVect3fProperty("ondulacion_vec1", v3fZERO, false))
+  , m_vOndulacion2(node.GetVect3fProperty("ondulacion_vec2", v3fZERO, false))
   , m_sTexture(node.GetPszISOProperty("texture", "", false)) {
-  std::string type = node.GetPszISOProperty("type", "", false);
+  std::string type = node.GetPszISOProperty("type", "PLANE", false);
   if (type == "ESF")
     m_Type = EMITTER_ESF;
   else if (type == "PLANE")
@@ -80,11 +85,40 @@ void CParticleEmitter::PopulateParticle(CParticle *p) {
   p->setAge(age);
   p->setPosition(m_vPos);
   p->setColor1(col1);
-  p->setDirection1(m_vSpawnDir1);
+  p->setGravity(m_Gravity);
+  p->setVelocidadOndulacion(mathUtils::RandomFloatRange(m_MinVelocidadOndulacion, m_MaxVelocidadOndulacion));
+
+  float o1x = m_vOndulacion1.x;
+  float o2x = m_vOndulacion2.x;
+  float o1y = m_vOndulacion1.y;
+  float o2y = m_vOndulacion2.y;
+  float o1z = m_vOndulacion1.z;
+  float o2z = m_vOndulacion2.z;
+
+  p->setVectorOndulacion(Vect3f(mathUtils::RandomFloatRange(o1x,o2x),mathUtils::RandomFloatRange(o1y,o2y),mathUtils::RandomFloatRange(o1z,o2z)));
+  p->setInicioOndulacion(mathUtils::RandomFloatRange(0, 360));
+  Vect3f dirFinal = Vect3f(0,1.0,0);
   switch (m_Type) {
-    case EMITTER_ESF:
+    case EMITTER_ESF:	
+		//Simulamos un generador de particulas esferico indicando un vector posicion central y un vector desviación
+		dirFinal = m_vSpawnDir1;
+		dirFinal.x += m_vSpawnDir2.x*mathUtils::RandomFloatRange(-1.0,1.0);
+		dirFinal.y += m_vSpawnDir2.y*mathUtils::RandomFloatRange(-1.0,1.0);
+		dirFinal.z += m_vSpawnDir2.z*mathUtils::RandomFloatRange(-1.0,1.0);
+		dirFinal = dirFinal.Normalize();
       break;
     case EMITTER_PLANE:
+	  //Cambiamos para que en vez de generar particulas siempre en SpawnDir1 se coja un random entre SpawnDir1, SpawnDir2
+	  //p->setDirection1(m_vSpawnDir1);
+		  float d1x = m_vSpawnDir1.x;
+		  float d2x = m_vSpawnDir2.x;
+		  float d1y = m_vSpawnDir1.y;
+		  float d2y = m_vSpawnDir2.y;
+		  float d1z = m_vSpawnDir1.z;
+		  float d2z = m_vSpawnDir2.z;
+
+		  dirFinal = Vect3f(mathUtils::RandomFloatRange(d1x, d2x), mathUtils::RandomFloatRange(d1y, d2y), mathUtils::RandomFloatRange(d1z, d2z)).Normalize();
       break;
   }
+  p->setDirection1(dirFinal);
 }

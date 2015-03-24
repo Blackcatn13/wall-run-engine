@@ -25,7 +25,15 @@ CParticle::CParticle()
 CParticle::~CParticle() {}
 
 void CParticle::Update(float dt) {
-  m_position += m_Direction1.Normalize() * m_Speed * dt;
+  //Gravedad de XML
+  //VelocidadOndulacion Maxima y minima
+  //VectorOndulacion Maximo y minimo
+  Vect3f l_SumaOndulacion = m_VectorOndulacion * sin(dt*m_VelocidadOndulacion+m_InicioOndulacion);
+  Vect3f l_DirGravity = Vect3f(0,-1,0);
+  m_Direction1 = m_Direction1.Normalize() * m_Speed + l_DirGravity * m_Gravity * dt;
+  m_position += m_Direction1.Normalize() * m_Speed * dt + l_SumaOndulacion * dt;
+  //m_position += m_Direction1.Normalize() * m_Speed * dt + Vect3f(0.0,-1.0,0.0) * m_Gravity * dt*dt;
+  
 }
 
 float CParticle::takeLife(float dt) {
