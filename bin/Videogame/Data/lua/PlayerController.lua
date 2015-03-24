@@ -11,10 +11,10 @@ function on_update_player_lua(l_ElapsedTime)
 	--////////////////////////////////////////////////////////
 	-- PARAMETERS
 	--////////////////////////////////////////////////////////
-	player.m_Gravity = 1;						--Gravedad que afecta al personaje cuando cae.
-	player.m_GravityJump = 1;					--Gravedad que afecta cuando el personaje está impulsándose hacia arriba en el salto.
-	player.m_Speed = 8;							--Velocidad de movimiento.
-	player.m_JumpForce = 0.35;					--Fuerza de salto, impulso.
+	player.m_Gravity = 0.6;						--Gravedad que afecta al personaje cuando cae.
+	player.m_GravityJump = 0.6;					--Gravedad que afecta cuando el personaje está impulsándose hacia arriba en el salto.
+	player.m_Speed = 10;						--Velocidad de movimiento.
+	player.m_JumpForce = 0.7;					--Fuerza de salto, impulso.
 	player.m_PhysicController:set_step(0.3); 	--Altura que puede superar (escalones).
 	--////////////////////////////////////////////////////////
 	
@@ -41,7 +41,7 @@ function on_update_player_lua(l_ElapsedTime)
 	--///////////////////////////////////////////////////////////
 	-- Movimiento del Player en las distintas direcciones. 
 	--///////////////////////////////////////////////////////////
-	--if player.m_isJumping == false then
+	if player.m_isJumpingMoving == false then
 		if act2in:do_action_from_lua("MoveForward") then
 			if player.m_is3D == true then
 				mov = mov + dir3D * player.m_Speed * l_ElapsedTime;
@@ -49,12 +49,15 @@ function on_update_player_lua(l_ElapsedTime)
 					player:set_yaw(PlayerYaw + 0.7854); -- 45º
 					mov = mov - dirNor * player.m_Speed * l_ElapsedTime;
 					player.m_isTurned = false;
+					player.m_JumpType = 5;
 				elseif act2in:do_action_from_lua("MoveLeft") then
 					player:set_yaw(PlayerYaw + 5.497); -- 315º
 					mov = mov + dirNor * player.m_Speed * l_ElapsedTime;
 					player.m_isTurned = true;
+					player.m_JumpType = 8;
 				else
 					player:set_yaw(PlayerYaw); -- 0º
+					player.m_JumpType = 1;
 				end
 			end
 		elseif act2in:do_action_from_lua("MoveBack") then
@@ -64,17 +67,21 @@ function on_update_player_lua(l_ElapsedTime)
 					player:set_yaw(PlayerYaw + 2.356); -- 135º
 					mov = mov - dirNor * player.m_Speed * l_ElapsedTime;
 					player.m_isTurned = false;
+					player.m_JumpType = 6;
 				elseif act2in:do_action_from_lua("MoveLeft") then
 					player:set_yaw(PlayerYaw + 3.926); -- 225º
 					mov = mov + dirNor * player.m_Speed * l_ElapsedTime;
 					player.m_isTurned = true;
+					player.m_JumpType = 7;
 				else
 					player:set_yaw(PlayerYaw + 3.1415); -- 180º
+					player.m_JumpType = 3;
 				end
 			end
 		elseif act2in:do_action_from_lua("MoveRigth") then
 			if player.m_is3D == true then	
 				player:set_yaw(PlayerYaw + 1.57); -- 90º
+				player.m_JumpType = 2;
 			else
 				player:set_yaw(PlayerYaw); -- 0º
 			end	
@@ -83,6 +90,7 @@ function on_update_player_lua(l_ElapsedTime)
 		elseif act2in:do_action_from_lua("MoveLeft") then
 			if player.m_is3D == true then	
 				player:set_yaw(PlayerYaw + 4.712); -- 270º
+				player.m_JumpType = 4;
 			else
 				player:set_yaw(PlayerYaw + 3.1415); -- 180º
 			end	
@@ -90,8 +98,9 @@ function on_update_player_lua(l_ElapsedTime)
 			player.m_isTurned = true;
 		else
 			player:set_yaw(PlayerYaw);
+			player.m_JumpType = 0;
 		end
-	--end
+	end
 	--///////////////////////////////////////////////////////////
 	-- Gravedad que siempre afecta al Player. 
 	--///////////////////////////////////////////////////////////
@@ -109,13 +118,34 @@ function on_update_player_lua(l_ElapsedTime)
 		mov.y = player.m_CurrentJumpForce;
 		if player.m_isJumpingMoving == false then
 			mov.y = player.m_CurrentJumpForce*1.75;
-		end
-		if player.m_is3D == false then
-			if player.m_isJumpingMoving == true then
+		else
+			if player.m_is3D == false then
 				if player.m_isTurned == false then
 					mov.z = player.m_JumpForce/1.5;
 				else
 					mov.z = -player.m_JumpForce/1.5;
+				end
+			else
+				if player.m_JumpType == 1 then --Forward
+					mov = mov + dir3D * player.m_JumpForce/1.5;
+				elseif player.m_JumpType == 2 then --Right
+					mov = mov - dirNor * player.m_JumpForce/1.5;
+				elseif player.m_JumpType == 3 then --Back
+					mov = mov - dir3D * player.m_JumpForce/1.5;
+				elseif player.m_JumpType == 4 then --Left
+					mov = mov + dirNor * player.m_JumpForce/1.5;
+				elseif player.m_JumpType == 5 then --Forward-Right
+					mov = mov + dir3D * player.m_JumpForce/1.5;
+					mov = mov - dirNor * player.m_JumpForce/1.5;
+				elseif player.m_JumpType == 6 then --Back-Right
+					mov = mov - dir3D * player.m_JumpForce/1.5;
+					mov = mov - dirNor * player.m_JumpForce/1.5;
+				elseif player.m_JumpType == 7 then --Back-Left
+					mov = mov - dir3D * player.m_JumpForce/1.5;
+					mov = mov + dirNor * player.m_JumpForce/1.5;
+				elseif player.m_JumpType == 8 then --Forward-Left
+					mov = mov + dir3D * player.m_JumpForce/1.5;
+					mov = mov + dirNor * player.m_JumpForce/1.5;
 				end
 			end
 		end
@@ -139,12 +169,37 @@ function on_update_player_lua(l_ElapsedTime)
 				mov.y = player.m_CurrentJumpForce*2;
 			end
 		else
-			--[[if (act2in:do_action_from_lua("MoveRigth")) or (act2in:do_action_from_lua("MoveLeft")) then
-				mov.z = dirNor + player.m_JumpForce/1.5;
+			if player.m_JumpType == 1 then --Forward
+				mov = mov + dir3D * player.m_JumpForce/1.5;
+				player.m_isJumpingMoving = true;
+			elseif player.m_JumpType == 2 then --Right
+				mov = mov - dirNor * player.m_JumpForce/1.5;
+				player.m_isJumpingMoving = true;
+			elseif player.m_JumpType == 3 then --Back
+				mov = mov - dir3D * player.m_JumpForce/1.5;
+				player.m_isJumpingMoving = true;
+			elseif player.m_JumpType == 4 then --Left
+				mov = mov + dirNor * player.m_JumpForce/1.5;
+				player.m_isJumpingMoving = true;
+			elseif player.m_JumpType == 5 then --Forward-Right
+				mov = mov + dir3D * player.m_JumpForce/1.5;
+				mov = mov - dirNor * player.m_JumpForce/1.5;
+				player.m_isJumpingMoving = true;
+			elseif player.m_JumpType == 6 then --Back-Right
+				mov = mov - dir3D * player.m_JumpForce/1.5;
+				mov = mov - dirNor * player.m_JumpForce/1.5;
+				player.m_isJumpingMoving = true;
+			elseif player.m_JumpType == 7 then --Back-Left
+				mov = mov - dir3D * player.m_JumpForce/1.5;
+				mov = mov + dirNor * player.m_JumpForce/1.5;
+				player.m_isJumpingMoving = true;
+			elseif player.m_JumpType == 8 then --Forward-Left
+				mov = mov + dir3D * player.m_JumpForce/1.5;
+				mov = mov + dirNor * player.m_JumpForce/1.5;
 				player.m_isJumpingMoving = true;
 			else
 				mov.y = player.m_CurrentJumpForce*2;
-			end]]
+			end
 		end
 	end
 	
