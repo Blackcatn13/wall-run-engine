@@ -5,10 +5,10 @@
 	<layer name="alpha_objects"/>
 	<layer name="alpha_blend_objects"/>
 	<layer name="particles"/>
-	<mesh_instance name="SpongePicky" core="SpongePicky"  pos="0.865036 50.000000 8.068936" yaw="1.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 0.5" /><!--SpongePicky-->
-	<mesh_instance name="Enemy1" core="Enemy1"  pos="0.865036 2.000000 8.068936" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Enemy2" core="Enemy2"  pos="-3.413945 3.000000 5.465974" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
-	<mesh_instance name="Enemy3" core="Enemy3"  pos="-1.591296 2.000000 11.657170" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="SpongePicky" core="SpongePicky"  pos="-1.591296 50.000000 11.657170" yaw="1.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 0.5" /><!--SpongePicky-->
+	<mesh_instance name="Enemy1" core="Enemy1"  pos="22.4882 0.0 0.160919" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Enemy2" core="Enemy2"  pos="0 0 0" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Enemy3" core="Enemy3"  pos="0 0 0" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<mesh_instance name="CHUCKY-CHUCKY " core="CHUCKY-CHUCKY " pos="26.218029 0.767351 -0.533913" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="SALA0" core="SALA0" pos="0.567447 0.000000 0.259852" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="ANTORCHA006" core="ANTORCHA006" pos="-2.369819 0.000000 -2.514220" yaw="-0.519391" pitch="0.0" roll="0.0" scale="1.0 2.30644 1.0" visible="false" layer="solid"/>
@@ -95,7 +95,7 @@
 	<mesh_instance name="COLUMNA002" core="COLUMNA002" pos="87.177658 33.521118 -570.259399" yaw="-3.14159" pitch="0.0" roll="0.0" scale="1.0 1.0 1.66066" visible="false" layer="solid"/>
 	<mesh_instance name="PUNXES008" core="PUNXES008" pos="-148.463272 23.583357 -570.298462" yaw="0.0" pitch="3.14159" roll="0.0" scale="0.96165 3.09739 0.899762" visible="false" layer="solid"/>
 	<mesh_instance name="PUNXES009" core="PUNXES009" pos="-165.845352 23.583357 -570.298462" yaw="0.0" pitch="3.14159" roll="2.05712e-007" scale="0.96165 3.09739 0.899762" visible="false" layer="solid"/>
-	<mesh_instance name="PIKY" core="PIKY" pos="38.884430 0.196228 -0.350765" yaw="3.14159" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PIKY" core="PIKY" pos="22.4882 0.0 0.160919" yaw="3.14159" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="Box043" core="Box043" pos="-471.580109 -5.056721 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="Box001" core="Box001" pos="-421.483734 -33.909439 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="Box002" core="Box002" pos="-428.372711 -32.124588 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>

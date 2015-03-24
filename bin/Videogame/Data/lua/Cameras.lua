@@ -8,6 +8,7 @@ function on_init_cameras_lua()
 	local player = coreInstance:get_player_controller();
 	local cam = coreInstance.m_CameraController:get_resource("3DCam");
 	local fWP = cam:get_path_point(0);
+	fWP.y = fWP.y+5;
 	player.m_PhysicController:set_position(fWP);
 	player:set_position(player.m_PhysicController:get_position());
 	move_character_controller_mesh(player, player:get_position());
@@ -118,7 +119,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 	if(cam.m_eTypeCamera == 6) then
 		local obj = cam.m_pObject3D;
 		obj:set_position(Vect3f(newPos.x, newPos.y, newPos.z));
-		local yaw = math.atan(cameraVecZXN.z, cameraVecZXN.x);
+		local yaw = math.atan2(cameraVecZXN.z, cameraVecZXN.x);
 		if(percent > 0.9) then
 			if(cam.m_nextWaypoint < cam:get_path_size())then
 				local probar = CNamed();
@@ -127,7 +128,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 				probar:set_name("entra2");
 				nextVector:normalize(1);
 				probar:set_name("entra3");
-				nextyaw = math.atan(nextVector.z,nextVector.x);
+				nextyaw = math.atan2(nextVector.z,nextVector.x);
 				probar:set_name("entra4");
 				local yawpercent = (percent - 0.9) / (1 - 0.9);
 				probar:set_name("entra5");
@@ -149,7 +150,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 		local positionController = pCont:get_position();
 		local obj = cam.m_pObject3D;
 		obj:set_position(Vect3f(newPos.x, newPos.y, newPos.z));
-		local yaw = math.atan(cameraVecZXN.x, cameraVecZXN.z);
+		local yaw = math.atan2(cameraVecZXN.x, cameraVecZXN.z);
 		if(percent > 0.9) then
 			if(cam.m_nextWaypoint < cam:get_path_size())then
 				local probar = CNamed();
@@ -158,7 +159,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 				probar:set_name("entra2");
 				nextVector:normalize(1);
 				probar:set_name("entra3");
-				nextyaw = math.atan(nextVector.x,nextVector.z);
+				nextyaw = math.atan2(nextVector.x,nextVector.z);
 				probar:set_name("entra4");
 				local yawpercent = (percent - 0.9) / (1 - 0.9);
 				probar:set_name("entra5");
