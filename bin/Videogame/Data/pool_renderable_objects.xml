@@ -78,7 +78,7 @@
 	</pool_renderable_object_technique>
 	
 	<pool_renderable_object_technique name="poly_pool">
-		 <default_technique vertex_type="2048" technique="GaussianBlurTechnique"/>
+		 <default_technique vertex_type="19" technique="PolyTechnique"/>
 	</pool_renderable_object_technique>
 	
 </renderable_object_techniques>

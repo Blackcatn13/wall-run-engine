@@ -33,7 +33,8 @@
 #include "RenderableCommands\RenderDebugInfoSceneRendererCommand.h"
 #include "RenderableCommands\GaussianBlurSceneRendererCommand.h"
 #include "RenderableCommands\ParticleRendererCommand.h"
-#include "RenderableCommands\SetPolyPhisics.h"
+#include "RenderableCommands\CheckEnabledPolyRenderCommand.h"
+
 #include "Core_Utils/MemLeaks.h"
 
 
@@ -189,10 +190,12 @@ void CSceneRendererCommandManager::Load(const std::string &FileName) {
           CParticleRendererCommand *l_Command = new CParticleRendererCommand(m(i));
           m_SceneRendererCommands.AddResource(l_Name, l_Command);
         }
-        if (name == "set_poly_phisics") {
-          CSetPolyPhisicsCommand *l_Command = new CSetPolyPhisicsCommand(m(i));
+
+        if (name == "check_active_poly") {
+          CCheckEnabledPolyRenderCommand *l_Command = new CCheckEnabledPolyRenderCommand(m(i));
           m_SceneRendererCommands.AddResource(l_Name, l_Command);
         }
+
       }
     }
   }

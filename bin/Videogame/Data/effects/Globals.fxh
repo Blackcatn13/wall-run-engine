@@ -1,5 +1,6 @@
 #define MAXBONES 40
 #define MAXLIGHTS 4
+#define MAXPOLYS 10
 
 float4x4 g_WorldMatrix : WORLD;
 float4x4 g_ViewMatrix : VIEW;
@@ -24,7 +25,7 @@ float g_LightIntensity[MAXLIGHTS] : LIGHTSINTENSITY;
 float g_NearAtten[MAXLIGHTS] : LIGHTSSTARTRANGEATTENUATION;
 float g_FarAtten[MAXLIGHTS] : LIGHTSENDRANGEATTENUATION;
 float g_FallOff[MAXLIGHTS] : LIGHTSFALLOFF;
-float g_PolyEnabled : POLYENABLED;
+float g_PolyEnabled[MAXPOLYS] : POLYENABLED;
 
 float g_ZBlurFocalStart = 7.0;
 float g_ZBlurFocalEnd = 10.5;
