@@ -43,8 +43,10 @@ void CRenderDebugSceneSceneRendererCommand::Execute(CGraphicsManager &RM) {
       }
       if (ACT2IN->DoAction("ToggleDebugCharacters")) {
         m_PaintCharacterControllers = !m_PaintCharacterControllers;
-        CCORE->GetEnemyManager()->SetPaintEnemies(m_PaintCharacterControllers);
-        CCORE->GetPlayerController()->getPhysicUserData()->SetPaint(m_PaintCharacterControllers);
+        // CCORE->GetEnemyManager()->SetPaintEnemies(m_PaintCharacterControllers);
+        //CCORE->GetPlayerController()->getPhysicUserData()->SetPaint(m_PaintCharacterControllers);
+
+        PHYSXM->SetPaintAllPhysicControllers(m_PaintCharacterControllers);
         PROCESS->setPaintPhisicActors(m_PaintCharacterControllers);
       }
       if (ACT2IN->DoAction("ToggleDebugTriggers")) {

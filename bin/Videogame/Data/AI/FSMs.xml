@@ -18,4 +18,25 @@
 			<Update time=".01" lua_funtion="mp_update_calcwp"/>
 		</state>
 	</fsm>
+	
+	<fsm name="Enemy">
+		<initialState name="Parado"/>
+		<state name="Parado">
+			<onEnter lua_funtion="enemy_enter_stopped()"/>
+			<onExit lua_funtion="enemy_exit_stopped()"/>
+			<Update time=".01" lua_funtion="enemy_update_stopped"/>
+		</state>
+		<state name="Andar_WP">
+			<onEnter lua_funtion="enemy_enter_moving()"/>
+			<onExit lua_funtion="enemy_exit_moving()"/>
+			<Update time="01" lua_funtion="enemy_update_moving"/>
+		</state>
+		<state name="Buscar_next_WP_Plaform">
+			<onEnter lua_funtion="enemy_enter_calcwp()"/>
+			<onExit lua_funtion="enemy_exit_calcwp()"/>
+			<Update time=".01" lua_funtion="enemy_update_calcwp"/>
+		</state>
+	</fsm>
+	
+	
 </fsms>

@@ -35,6 +35,7 @@
     <ClInclude Include="Core\BindCameraKeys.h" />
     <ClInclude Include="Core\BindCameras.h" />
     <ClInclude Include="Core\BindCinematics.h" />
+    <ClInclude Include="Core\BindColor.h" />
     <ClInclude Include="Core\BindCore.h" />
     <ClInclude Include="Core\BindEffects.h" />
     <ClInclude Include="Core\BindIA.h" />

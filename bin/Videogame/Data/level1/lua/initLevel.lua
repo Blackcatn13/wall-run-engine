@@ -3,13 +3,7 @@ function init_level(a)
 	local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 	local player = Player:get_instance()
 	player.get_player_controller():set_position(Vect3f(0.432929, 3.000000, -0.654716));
-	coreInstance:trace("Aun no hay polis");
-	--local lua_player = Player:get_instance()
-	--[[player.num_lives = player.num_lives -1
-	coreInstance:trace(tostring(player.num_lives))
-	local player2 = Player:get_instance()	
-	coreInstance:trace(tostring(player2.num_lives))
-	--]]
+	local enemy = Enemy.new(Vect3f(-3.0,2.0,10.0), "MikMik")	
 	init_platform("StaticPlatform001","Static001UserData", Vect3f(2,0.5,1.5), Vect3f(0,0.5,0))
 	init_platform("StaticPlatform002","Static002UserData", Vect3f(2,0.5,1.5), Vect3f(0,0.5,0))	
 	init_platform("StaticPlatform003","Static003UserData", Vect3f(2,0.5,1.5), Vect3f(0,0.5,0))		

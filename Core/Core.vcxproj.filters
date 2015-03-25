@@ -165,5 +165,8 @@
     <ClInclude Include="Core\CoreLuaWrapper.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="Core\BindColor.h">
+      <Filter>ScriptManager</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
