@@ -106,6 +106,10 @@
     	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_SPACE"/>
     </action>
 	
+	<action name="SuperJump">
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_J"/>
+    </action>
+	
 	<action name="ChangeDimension">
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_X"/>
     </action>
