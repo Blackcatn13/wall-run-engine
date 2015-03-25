@@ -47,13 +47,13 @@
 	<!-- End Skybox -->
 	<set_pool_renderable_objects_technique pool="draw_textured_quad_pool"/>
 	<render_draw_quad> 
-		<texture stage_id="0" file="LightMapTexture"/>
+		<texture stage_id="0" file="DiffuseMapTexture"/>
 	</render_draw_quad>
 	
 
 	
 	<!--<deferred_shading/>-->
-	<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
+	<!--<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
 	<set_pool_renderable_objects_technique pool="deferred_lights_pool"/>
 	<render_deferred_shading>
 		<texture stage_id="0" file="DiffuseMapTexture"/>
@@ -64,20 +64,20 @@
 	
 	<disable_alpha_blend />
 	<enable_z_write/>
-	<enable_z_test />
+	<enable_z_test />-->
 	
 
 	<!--<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>-->
 	
-	<render_scene layer="poly" active="true" />
+	<!--<render_scene layer="poly" active="true" />
 	<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
 	<set_pool_renderable_objects_technique pool="poly_pool"/>
 	<check_active_poly />
-	<disable_alpha_blend />
+	<disable_alpha_blend />-->
 	<!--<disable_alpha_blend />-->
 	
-	<render_debug_scene layer="phisics" active="true" paint_cooking_mesh="false" cooking_mesh_name="fixbox" />
-	<particle_render/>
+	<!--<render_debug_scene layer="phisics" active="true" paint_cooking_mesh="false" cooking_mesh_name="fixbox" />
+	<particle_render/>-->
 	
 	<!--Fog-->
 <!--	<enable_alpha_blend blendOp ="add" blendSrc="srcalpha" destBlend="invsrcalpha" />

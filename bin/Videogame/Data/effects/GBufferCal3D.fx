@@ -9,6 +9,7 @@ float3 CalcAnimtedPos(float4 Position, float4 Indices, float4 Weight)
 	l_Position += mul(g_Bones[Indices.y], Position) * Weight.y;
 	l_Position += mul(g_Bones[Indices.z], Position) * Weight.z;
 	l_Position += mul(g_Bones[Indices.w], Position) * Weight.w;
+	l_Position.x = -l_Position.x;
 	return l_Position;
 }
 
@@ -51,7 +52,8 @@ void CalcAnimatedNormalTangent(float3 Normal, float3 Tangent, float4 Indices, fl
 	
 	OutNormal += mul(m, Normal.xyz)* Weight.w;
 	OutTangent += mul(m, Tangent.xyz)* Weight.w;
-	
+	OutNormal = -OutNormal;
+	OutTangent.x = -OutTangent.x;
 	OutNormal = normalize(OutNormal);
 	OutTangent = normalize(OutTangent);
 }
@@ -68,13 +70,15 @@ CAL3D_HW_VERTEX_PS RenderCal3DHWVS(CAL3D_HW_VERTEX_VS IN)
 	float4 l_WorldPosition=float4(l_Position, 1.0);
 	
 	OUT.WorldPosition=mul(l_WorldPosition,g_WorldMatrix);
-	OUT.WorldNormal=float4(normalize(mul(l_Normal,(float3x3)g_WorldMatrix)), 1);
+	OUT.WorldNormal=normalize(mul(l_Normal,(float3x3)g_WorldMatrix));
 	//OUT.WorldTangent=normalize(mul(l_Tangent,g_WorldMatrix));
 	//OUT.WorldBinormal=mul(cross(l_Tangent,l_Normal),(float3x3)g_WorldMatrix);
-	OUT.UV = IN.TexCoord.xy;
+
+	OUT.UV.x = IN.TexCoord.x;
+	OUT.UV.y = 1 - IN.TexCoord.y;
+	//OUT.UV = IN.TexCoord.xy;
 	
 	OUT.HPosition = mul(l_WorldPosition, g_WorldViewProjectionMatrix );
-	
 	return OUT;
 }
 
@@ -82,7 +86,8 @@ TMultiRenderTargetPixel RenderCal3DHWPS(CAL3D_HW_VERTEX_PS IN)
 {
 	TMultiRenderTargetPixel OUT = (TMultiRenderTargetPixel)0;
 	float l_Depth = IN.WorldPosition.z / IN.WorldPosition.w;
-	float3 NnScaled = Normal2Texture(IN.WorldNormal.xyz);
+	float3 l_Nn = normalize(IN.WorldNormal);
+	float3 NnScaled = Normal2Texture(l_Nn);
 	float3 l_DiffuseColor = tex2D(S0LinearWrapSampler, IN.UV);
 
 	OUT.RT0 = float4(l_DiffuseColor, 1.0);
@@ -97,6 +102,7 @@ technique Cal3DTechnique
 {
 	pass p0
 	{
+		CullMode = NONE;
 		VertexShader = compile vs_3_0 RenderCal3DHWVS();
 		PixelShader = compile ps_3_0 RenderCal3DHWPS();
 	}

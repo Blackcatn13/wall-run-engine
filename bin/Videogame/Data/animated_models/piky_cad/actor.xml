@@ -1,0 +1,6 @@
+<animated_model name="piky">
+	<texture file="DIF2.tga"/>
+	<skeleton file="Skeleton_Piky.CSF"/>
+	<mesh file="Mesh_Piky.CMF"/>
+	<animation name="piky_walk" file="Animation_Piky.CAF"/>
+</animated_model>
