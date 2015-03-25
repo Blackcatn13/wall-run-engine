@@ -36,7 +36,8 @@ function on_update_cameras_lua(l_ElapsedTime)
 	local heightCameraOffset = 5;
 	
 	--______ GENERALES _______________________
-	local distanciaGiro = 1;
+	local distanciaGiro = 3;
+	
 	--****************************************************************************
 	--****************************************************************************
 	local coreInstance = CCoreLuaWrapper().m_CoreInstance;
@@ -97,6 +98,10 @@ function on_update_cameras_lua(l_ElapsedTime)
 		end
 		local movimentZX = dot * modul;
 		local percent = movimentZX / lengthVecZX;
+		local percentToRotation = 0.5;
+		if(lengthVecZX > 2 * distanciaGiro) then
+			percentToRotation = distanciaGiro / lengthVecZX;
+		end
 		local newY = (currentWP.y) * (1 - percent) + (nextWP.y) * (percent);
 		local newPos = currentWP + (cameraVecZXN * movimentZX);
 		newPos.y = newY;
@@ -107,13 +112,24 @@ function on_update_cameras_lua(l_ElapsedTime)
 			local offsetPosVec = newPos + (cameraVecZXN * distToCameraOffset);
 			obj:set_position(Vect3f(offsetPosVec.x, offsetPosVec.y, offsetPosVec.z));
 			local yaw = math.atan2(cameraVecZXN.z, cameraVecZXN.x);
-			if(percent > 0.9) then
+			if(percent >= 1 - percentToRotation) then
 				if(cam.m_nextWaypoint < cam:get_path_size())then
 					local nextVector = cam:get_path_point(cam.m_nextWaypoint + 1) - cam:get_path_point(cam.m_currentWaypoint + 1);
 					nextVector:normalize(1);
 					nextyaw = math.atan2(nextVector.z,nextVector.x);
-					local yawpercent = (percent - 0.9) / (1 - 0.9);
+					local yawpercent = (percent - (1 - percentToRotation)) / (1 - (1 - percentToRotation));
+					yawpercent = yawpercent / 2;
 					yaw = yaw * (1-yawpercent) + nextyaw * yawpercent;
+				end
+			end
+			if(percent < percentToRotation) then
+				if(cam.m_currentWaypoint > 0) then
+					local previousVector = cam:get_path_point(cam.m_nextWaypoint - 1) - cam:get_path_point(cam.m_currentWaypoint - 1);
+					previousVector:normalize(1);
+					previousyaw = math.atan2(previousVector.z,previousVector.x);
+					local yawpercent = percent / percentToRotation;
+					yawpercent = 0.5 + (yawpercent / 2);
+					yaw = yaw * yawpercent + previousyaw * (1-yawpercent);
 				end
 			end
 			obj:set_yaw(yaw);
@@ -131,14 +147,26 @@ function on_update_cameras_lua(l_ElapsedTime)
 			obj:set_position(Vect3f(offsetPosVec.x, offsetPosVec.y, offsetPosVec.z));
 			local yaw = math.atan2(cameraVecZXN.z, cameraVecZXN.x);
 			yaw = yaw + (math.pi / 2);
-			if(percent > 0.9) then
+			if(percent >= 1 - percentToRotation) then
 				if(cam.m_nextWaypoint < cam:get_path_size())then
 					local nextVector = cam:get_path_point(cam.m_nextWaypoint + 1) - cam:get_path_point(cam.m_currentWaypoint + 1);
 					nextVector:normalize(1);
 					local nextyaw = math.atan2(nextVector.z,nextVector.x);
 					nextyaw = nextyaw + (math.pi / 2);
-					local yawpercent = (percent - 0.9) / (1 - 0.9);
+					local yawpercent = (percent - (1 - percentToRotation)) / (1 - (1 - percentToRotation));
+					yawpercent = yawpercent / 2;
 					yaw = yaw * (1-yawpercent) + nextyaw * yawpercent;
+				end
+			end
+			if(percent < percentToRotation) then
+				if(cam.m_currentWaypoint > 0) then
+					local previousVector = cam:get_path_point(cam.m_nextWaypoint - 1) - cam:get_path_point(cam.m_currentWaypoint - 1);
+					previousVector:normalize(1);
+					previousyaw = math.atan2(previousVector.z,previousVector.x);
+					nextyaw = nextyaw + (math.pi / 2);
+					local yawpercent = percent / percentToRotation;
+					yawpercent = 0.5 + (yawpercent / 2);
+					yaw = yaw * yawpercent + previousyaw * (1-yawpercent);
 				end
 			end
 			obj:set_yaw(yaw);
