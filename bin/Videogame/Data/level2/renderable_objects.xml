@@ -5,7 +5,8 @@
 	<layer name="alpha_objects"/>
 	<layer name="alpha_blend_objects"/>
 	<layer name="particles"/>
-	<mesh_instance name="SpongePicky" core="SpongePicky"  pos="-1.591296 50.000000 11.657170" yaw="1.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 0.5" /><!--SpongePicky-->
+	<!--<mesh_instance name="SpongePicky" core="SpongePicky"  pos="-1.591296 50.000000 11.657170" yaw="1.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 0.5" />--><!--SpongePicky-->
+	<animated_model name="SpongePicky" core="piky" pos="0 0 20" yaw="1.7" pitch="0" roll="0" scale="1 1 1"/>
 	<mesh_instance name="Enemy1" core="Enemy1"  pos="22.4882 0.0 0.160919" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<mesh_instance name="Enemy2" core="Enemy2"  pos="0 0 0" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<mesh_instance name="Enemy3" core="Enemy3"  pos="0 0 0" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
