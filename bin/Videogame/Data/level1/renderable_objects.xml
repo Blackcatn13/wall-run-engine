@@ -25,6 +25,7 @@
 	<mesh_instance name="Enemy1" core="Enemy1"  pos="0.865036 2.000000 8.068936" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<mesh_instance name="Enemy2" core="Enemy2"  pos="-3.413945 3.000000 5.465974" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<mesh_instance name="Enemy3" core="Enemy3"  pos="-1.591296 2.000000 11.657170" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Enemy4" core="Enemy1"  pos="-1.591296 2.000000 11.657170" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	
 	<platform name="BreakablePlatform001" core="BreakablePlatform001" type="breakable" trigger_name="BreakablePlatformTrigger001"  pos="1.421989 2.000000 69.534256" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<platform name="MovingPlatform001" core="MovingPlatform001" type="moving" speed= "5"  pos="3.644180 1.000000 187.917664" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" >
