@@ -54,7 +54,7 @@ void CalcAnimatedNormalTangent(float3 Normal, float3 Tangent, float4 Indices, fl
 	
 	OutNormal += mul(m, Normal.xyz)* Weight.w;
 	OutTangent += mul(m, Tangent.xyz)* Weight.w;
-	OutNormal = -OutNormal;
+	OutNormal.x = -OutNormal.x;
 	OutTangent.x = -OutTangent.x;
 	OutNormal = normalize(OutNormal);
 	OutTangent = normalize(OutTangent);
@@ -99,7 +99,7 @@ TMultiRenderTargetPixel RenderCal3DHWPS(CAL3D_HW_VERTEX_PS IN)
 	float3 l_DiffuseColor = tex2D(S0LinearClampSampler, IN.UV);
 
 	OUT.RT0 = float4(l_DiffuseColor, 1.0);
-	OUT.RT1 = float4(l_DiffuseColor, 1.0);
+	OUT.RT1 = float4(l_DiffuseColor*g_LightAmbientIntensity*g_LightAmbient, 1.0);
 	OUT.RT2.xyz = NnScaled;
 	OUT.RT3 = l_Depth;
 

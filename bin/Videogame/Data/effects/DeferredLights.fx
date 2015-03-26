@@ -46,7 +46,7 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 	float l_SpecularFactor = l_RT0.w;
 	float4 l_RT1 = tex2D(S1LinearWrapSampler, UV);
 	float3 l_Ambient = l_RT1.xyz;
-	float l_SpecularExponent = l_RT1.w*90000;
+	float l_SpecularExponent = l_RT1.w*900;
 	float3 l_N = tex2D(S2LinearWrapSampler, UV).xyz;
 	float3 l_Nn = normalize(Texture2Normal(l_N));
 	float l_Depth = tex2D(S3LinearWrapSampler, UV).x;
@@ -74,14 +74,18 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 	//return float4(l_DiffuseColor*dot(l_Nn, -g_LightDirection[0]), 0.0);
 	//return float4(1.0, 0.0, 0.0, 0.0);
 	float3 finalColor = 0;//l_DiffuseColor.xyz*l_Ambient;
-	l_PositionVS = l_PositionVS / l_PositionVS.w;
-	float3 vPos = mul(float4(l_PositionFromDepth, 1), g_ViewMatrix).xyz;
-	float4 LightPosition = mul(l_PositionVS, g_ViewToLightProjectionMatrix);
-	float2 ShadowTexC = 0.5 * (LightPosition.xy / LightPosition.w) + float2(0.5, 0.5);
-	ShadowTexC.y = 1.0f - ShadowTexC.y;
-	float lightAmount = (tex2D(S7LinearClampSampler, ShadowTexC) + g_ShadowEpsilon < LightPosition.z/LightPosition.w)? 0.0f: 1.0f;
-	if (ShadowTexC.x < 0.0 || ShadowTexC.y < 0.0 || ShadowTexC.x > 1.0 || ShadowTexC.y > 1.0)
-		lightAmount = 1.0;
+	float lightAmount = 1.0;
+	if (g_useShadowMap) {
+		l_PositionVS = l_PositionVS / l_PositionVS.w;
+		float3 vPos = mul(float4(l_PositionFromDepth, 1), g_ViewMatrix).xyz;
+		float4 LightPosition = mul(l_PositionVS, g_ViewToLightProjectionMatrix);
+		float2 ShadowTexC = 0.5 * (LightPosition.xy / LightPosition.w) + float2(0.5, 0.5);
+		ShadowTexC.y = 1.0f - ShadowTexC.y;
+		lightAmount = (tex2D(S7LinearClampSampler, ShadowTexC) + g_ShadowEpsilon < LightPosition.z/LightPosition.w)? 0.0f: 1.0f;
+		if (ShadowTexC.x < 0.0 || ShadowTexC.y < 0.0 || ShadowTexC.x > 1.0 || ShadowTexC.y > 1.0)
+			lightAmount = 1.0;
+	}
+	
 	//return float4(lightAmount, lightAmount, lightAmount, 1);
 	//return tex2D(S7LinearClampSampler, ShadowTexC);
 	//if(g_LightEnabled[0]==1)
@@ -128,7 +132,7 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 	}
 	//}
 
-    return float4(finalColor * lightAmount, 1);
+    return float4(finalColor, 1);
 }
 
 

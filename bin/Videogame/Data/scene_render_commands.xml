@@ -15,8 +15,8 @@
 	<set_axis />
 	-->
 	
-	<set_pool_renderable_objects_technique pool="generate_shadow_map_renderable_obejcts_technique"/>
-	<generate_shadow_maps />
+	<!--<set_pool_renderable_objects_technique pool="generate_shadow_map_renderable_obejcts_technique"/>
+	<generate_shadow_maps />-->
 	
 	<set_pool_renderable_objects_technique pool="generate_deferred_shading_pool_renderable_object_technique"/>
 
@@ -69,7 +69,7 @@
 
 	<!--<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>-->
 	
-	<render_scene layer="poly" active="true" />
+	<!--<render_scene layer="poly" active="true" />
 	<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
 	<set_pool_renderable_objects_technique pool="poly_pool"/>
 	<check_active_poly />
@@ -77,7 +77,7 @@
 	<disable_alpha_blend />
 	
 	<render_debug_scene layer="phisics" active="true" paint_cooking_mesh="false" cooking_mesh_name="fixbox" />
-	<particle_render/>
+	<particle_render/>-->
 	
 	<!--Fog-->
 <!--	<enable_alpha_blend blendOp ="add" blendSrc="srcalpha" destBlend="invsrcalpha" />
