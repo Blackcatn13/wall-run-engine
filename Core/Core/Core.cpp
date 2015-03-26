@@ -136,7 +136,7 @@ void CCore::DeInit() {
   CHECKED_DELETE(m_EnemyManager);
   CHECKED_DELETE(m_BillboardManager);
   CHECKED_DELETE(m_ParticleManager);
-  
+
   // m_PlatformsMap->Destroy();
 }
 
@@ -152,6 +152,7 @@ void CCore::Render() {
   // m_LightManager->Render(m_GraphicsManager);
   m_PhysicsManager->DebugRender(m_GraphicsManager);
   m_SoundManager->Render();
+
 }
 
 void CCore::Update(float dt) {
@@ -164,6 +165,7 @@ void CCore::Update(float dt) {
   //m_PlayerController->Move(dt);
   m_EnemyManager->Update(dt);
   m_ParticleManager->Update(dt);
+  m_BillboardManager->Update(dt);
 }
 
 

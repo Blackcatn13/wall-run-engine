@@ -54,6 +54,13 @@ function set_checkpoint(trigger_name)
 
 end
 
+function get_distance_between_points(current_position, _player_position)
+	-- calcular distancia hacia player
+	local distance = 0
+	distance = ((_player_position.x - current_position.x) ^2 + (_player_position.y - current_position.y) ^2 + (_player_position.z - current_position.z) ^2)
+	return distance
+end
+
 function split_str(inputstr, sep)
         if sep == nil then
                 sep = "%s"

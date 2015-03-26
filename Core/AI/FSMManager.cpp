@@ -6,100 +6,94 @@
 #include "Utils\Defines.h"
 
 CFSMManager::CFSMManager()
-    : m_fileName ("")
-{
-    m_LuaGlobals = CLuaGlobals::getInstance();
+  : m_fileName ("") {
+  m_LuaGlobals = CLuaGlobals::getInstance();
 }
 
-CFSMManager::~CFSMManager()
-{
-    CMapManager<FSM>::TMapResource::iterator it = GetResources().begin();
-    while (it != GetResources().end() ) {
-        it->second->m_States.Destroy();
-        ++it;
-    }
-    Destroy();
-    CHECKED_DELETE(m_LuaGlobals);
+CFSMManager::~CFSMManager() {
+  CMapManager<FSM>::TMapResource::iterator it = GetResources().begin();
+  while (it != GetResources().end() ) {
+    it->second->m_States.Destroy();
+    ++it;
+  }
+  Destroy();
+  CHECKED_DELETE(m_LuaGlobals);
 }
 
-void CFSMManager::Load(std::string file)
-{
-    m_fileName = file;
-    Load();
+void CFSMManager::Load(std::string file) {
+  m_fileName = file;
+  Load();
 }
 
-void CFSMManager::Reload()
-{
-    Destroy();
-    Load();
+void CFSMManager::Reload() {
+  Destroy();
+  Load();
 }
 
-void CFSMManager::Load()
-{
-    CXMLTreeNode newFile;
-    if (!newFile.LoadFile(m_fileName.c_str())) {
-        printf("ERROR loading the file.");
-    } else {
-        CXMLTreeNode  m = newFile["fsm"];
-        if (m.Exists()) {
-            FSM* newFSM = new FSM();
-            int count = m.GetNumChildren();
-            std::string FSMName = m.GetPszISOProperty("name", "");
-            for (int i = 0; i < count; ++i) {
-                std::string name = m(i).GetName();
-                if (name == "initialState") {
-                    newFSM->m_currentState = m(i).GetPszISOProperty("name", "");
-                } else if (name == "state") {
-                    STATE* s = new STATE();
-                    int states = m(i).GetNumChildren();
-                    std::string StateName = m(i).GetPszISOProperty("name", "");
-                    for (int j = 0; j < states; ++j) {
-                        std::string StateType = m(i)(j).GetName();
-                        if (StateType == "onEnter") {
-                            s->onEnter = m(i)(j).GetPszISOProperty("lua_funtion", "");
-                        } else if (StateType == "onExit") {
-                            s->onExit = m(i)(j).GetPszISOProperty("lua_funtion", "");
-                        } else if (StateType == "Update") {
-                            s->onUpdate = m(i)(j).GetPszISOProperty("lua_funtion", "");
-                            s->m_UpdateTime = m(i)(j).GetFloatProperty("time");
-                        }
-                        s->m_ElapsedTime = 0;
-                        s->m_onEnter = false;
-                    }
-                    newFSM->m_States.AddResource(StateName, s);
-                }
+void CFSMManager::Load() {
+  CXMLTreeNode newFile;
+  if (!newFile.LoadFile(m_fileName.c_str())) {
+    printf("ERROR loading the file.");
+  } else {
+    CXMLTreeNode  m = newFile["fsm"];
+    if (m.Exists()) {
+      FSM *newFSM = new FSM();
+      int count = m.GetNumChildren();
+      std::string FSMName = m.GetPszISOProperty("name", "");
+      for (int i = 0; i < count; ++i) {
+        std::string name = m(i).GetName();
+        if (name == "initialState") {
+          newFSM->m_currentState = m(i).GetPszISOProperty("name", "");
+        } else if (name == "state") {
+          STATE *s = new STATE();
+          int states = m(i).GetNumChildren();
+          std::string StateName = m(i).GetPszISOProperty("name", "");
+          for (int j = 0; j < states; ++j) {
+            std::string StateType = m(i)(j).GetName();
+            if (StateType == "onEnter") {
+              s->onEnter = m(i)(j).GetPszISOProperty("lua_funtion", "");
+            } else if (StateType == "onExit") {
+              s->onExit = m(i)(j).GetPszISOProperty("lua_funtion", "");
+            } else if (StateType == "Update") {
+              s->onUpdate = m(i)(j).GetPszISOProperty("lua_funtion", "");
+              s->m_UpdateTime = m(i)(j).GetFloatProperty("time");
             }
-            AddResource(FSMName, newFSM);
+            s->m_ElapsedTime = 0;
+            s->m_onEnter = false;
+          }
+          newFSM->m_States.AddResource(StateName, s);
         }
+      }
+      AddResource(FSMName, newFSM);
     }
+  }
 }
 
-void CFSMManager::Update(float dt)
-{
-    for (TMapResource::iterator it = m_Resources.begin(); it != m_Resources.end(); ++it) {
-        STATE *s = it->second->m_States.GetResource(it->second->m_currentState);
-        if (s->m_onEnter == false) {
-            SCRIPTM->RunCode(s->onEnter.c_str());
-            s->m_onEnter = true;
-        }
-        s->m_ElapsedTime += dt;
-        char l_InitLevelText[256];
-        int doComprobation = 0;
-        if (s->m_ElapsedTime >= s->m_UpdateTime) {
-            doComprobation = 1;
-        }
-        _snprintf_s(l_InitLevelText, 256, 256, "%s(%f,%d)", s->onUpdate.c_str(), dt, doComprobation);
-        SCRIPTM->RunCode(l_InitLevelText);
-        if (doComprobation == 1) {
-            s->m_ElapsedTime = 0;
-            doComprobation = 0;
-        }
-        bool change = CLuaGlobals::getInstance()->ValueChanged();
-        if (change) {
-            s->m_onEnter = false;
-            SCRIPTM->RunCode(s->onExit.c_str());
-            it->second->m_previousState = it->second->m_currentState;
-            it->second->m_currentState = CLuaGlobals::getInstance()->getString();
-        }
+void CFSMManager::Update(float dt) {
+  for (TMapResource::iterator it = m_Resources.begin(); it != m_Resources.end(); ++it) {
+    STATE *s = it->second->m_States.GetResource(it->second->m_currentState);
+    if (s->m_onEnter == false) {
+      SCRIPTM->RunCode(s->onEnter.c_str());
+      s->m_onEnter = true;
     }
+    s->m_ElapsedTime += dt;
+    char l_InitLevelText[256];
+    int doComprobation = 0;
+    if (s->m_ElapsedTime >= s->m_UpdateTime) {
+      doComprobation = 1;
+    }
+    _snprintf_s(l_InitLevelText, 256, 256, "%s(%f,%d)", s->onUpdate.c_str(), dt, doComprobation);
+    SCRIPTM->RunCode(l_InitLevelText);
+    if (doComprobation == 1) {
+      s->m_ElapsedTime = 0;
+      doComprobation = 0;
+    }
+    bool change = CLuaGlobals::getInstance()->ValueChanged();
+    if (change) {
+      s->m_onEnter = false;
+      SCRIPTM->RunCode(s->onExit.c_str());
+      it->second->m_previousState = it->second->m_currentState;
+      it->second->m_currentState = CLuaGlobals::getInstance()->getString();
+    }
+  }
 }

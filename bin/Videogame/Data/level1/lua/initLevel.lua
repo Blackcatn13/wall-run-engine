@@ -4,6 +4,7 @@ function init_level(a)
 	local player = Player:get_instance()
 	player.get_player_controller():set_position(Vect3f(0.432929, 3.000000, -0.654716));
 	local enemy = Enemy.new(Vect3f(-3.0,2.0,10.0), "MikMik")	
+	set_enemy(enemy)
 	init_platform("StaticPlatform001","Static001UserData", Vect3f(2,0.5,1.5), Vect3f(0,0.5,0))
 	init_platform("StaticPlatform002","Static002UserData", Vect3f(2,0.5,1.5), Vect3f(0,0.5,0))	
 	init_platform("StaticPlatform003","Static003UserData", Vect3f(2,0.5,1.5), Vect3f(0,0.5,0))		

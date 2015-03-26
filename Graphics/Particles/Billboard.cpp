@@ -9,13 +9,18 @@
 #include "Math\Color.h"
 
 CBillboard::CBillboard(CXMLTreeNode &node)
-	: m_size(node.GetFloatProperty("size", .0f	, false))
+  : m_size(node.GetFloatProperty("size", .0f	, false))
   , m_position(node.GetVect3fProperty("position", v3fZERO	, false))
   , m_Color1(CColor((node.GetVect4fProperty("color", v4fZERO	, false))))
-  
+
 {
-	m_Texture = new CTexture();
-	m_Texture->Load(node.GetPszISOProperty("texture", ""	, false));
+  std::string tempText = node.GetPszISOProperty("texture", ""	, false);
+  if (tempText != "") {
+    m_Texture = new CTexture();
+    m_Texture->Load(node.GetPszISOProperty("texture", ""	, false));
+  } else {
+    m_Texture = NULL;
+  }
 }
 
 CBillboard::CBillboard(float size)
@@ -41,7 +46,12 @@ void CBillboard::Render(CGraphicsManager *GM) {
   Vect3f ur = m_position + up + right;
   Vect3f dl = m_position - up - right;
   Vect3f dr = m_position - up + right;
-  GM->DrawQuad3D(ul, ur, dl, dr, m_Color1);
+  //GM->DrawQuad3D(ul, ur, dl, dr, m_Color1);
+
+  if (m_Texture != NULL)
+    GM->DrawQuad3D(ul, ur, dl, dr,  m_Texture, m_Color1);
+  else
+    GM->DrawQuad3D(ul, ur, dl, dr, m_Color1);
 }
 
 
