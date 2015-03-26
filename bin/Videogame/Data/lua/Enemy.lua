@@ -56,11 +56,10 @@ end
 
 function enemy_update_moving(ElapsedTime, doComprobation)
 	if enemy ~= nil then
-		coreInstance:trace("Moving Enemy!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 		if currentwp == nil then
 			currentwp = wp1
 		end
-		coreInstance:trace(tostring(currentwp.z))
+		
 		enemy:move_to(ElapsedTime, currentwp)
 		
 		--local player_position = core:get_player_controller():get_position()
@@ -68,7 +67,6 @@ function enemy_update_moving(ElapsedTime, doComprobation)
 		
 		local wp_distance = get_distance_between_points(enemy:get_position(), currentwp)
 		if wp_distance < 16 then
-			coreInstance:trace("A buscar WP!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 			instance.m_string = "Buscar_next_WP"
 		end
 	else
@@ -79,7 +77,6 @@ end
 
 function enemy_enter_calcwp()
 	if enemy ~= nil then
-		coreInstance:trace("Calculando WP!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 		if currentwp.z == wp2.z then
 			currentwp = wp
 		else
@@ -103,7 +100,6 @@ end
 
 function enemy_update_calcwp(ElapsedTime, doComprobation)
 	if enemy ~= nil then
-		coreInstance:trace("Calculando WP!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 		--[[if enemy.wp.z == 15 then
 			enemy.wp = Vect3f(2.0,2.0,-15.0)
 		else
