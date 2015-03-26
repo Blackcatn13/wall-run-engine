@@ -2,6 +2,8 @@
 #include "Globals.fxh"
 #include "Samplers.fxh"
 
+float g_Bump = 3.0;
+
 float3 CalcAnimtedPos(float4 Position, float4 Indices, float4 Weight)
 {
 	float3 l_Position=0;
@@ -65,14 +67,14 @@ CAL3D_HW_VERTEX_PS RenderCal3DHWVS(CAL3D_HW_VERTEX_VS IN)
 	float3 l_Normal= 0;
 	float3 l_Tangent=0;
 
-	CalcAnimatedNormalTangent(IN.Normal.xyz, /*IN.Tangent.xyz*/0, IN.Indices, IN.Weight, l_Normal, l_Tangent);
+	CalcAnimatedNormalTangent(IN.Normal.xyz, IN.Tangent.xyz, IN.Indices, IN.Weight, l_Normal, l_Tangent);
 	float3 l_Position=CalcAnimtedPos(float4(IN.Position.xyz,1.0), IN.Indices, IN.Weight);
 	float4 l_WorldPosition=float4(l_Position, 1.0);
 	
 	OUT.WorldPosition=mul(l_WorldPosition,g_WorldMatrix);
 	OUT.WorldNormal=normalize(mul(l_Normal,(float3x3)g_WorldMatrix));
-	//OUT.WorldTangent=normalize(mul(l_Tangent,g_WorldMatrix));
-	//OUT.WorldBinormal=mul(cross(l_Tangent,l_Normal),(float3x3)g_WorldMatrix);
+	OUT.WorldTangent=normalize(mul(l_Tangent,(float3x3)g_WorldMatrix));
+	OUT.WorldBinormal=normalize(mul(cross(l_Normal, l_Tangent),(float3x3)g_WorldMatrix));
 
 	OUT.UV.x = IN.TexCoord.x;
 	OUT.UV.y = 1 - IN.TexCoord.y;
@@ -86,9 +88,15 @@ TMultiRenderTargetPixel RenderCal3DHWPS(CAL3D_HW_VERTEX_PS IN)
 {
 	TMultiRenderTargetPixel OUT = (TMultiRenderTargetPixel)0;
 	float l_Depth = IN.WorldPosition.z / IN.WorldPosition.w;
-	float3 l_Nn = normalize(IN.WorldNormal);
+	float3 l_WNn = normalize(IN.WorldNormal);
+	float3 l_Tan = normalize(IN.WorldTangent);
+	float3 l_Binormal = normalize(IN.WorldBinormal);
+	float4 l_NormText = tex2D(S1LinearClampSampler, IN.UV);
+	float3 l_Bump = g_Bump * (l_NormText.rgb - float3(0.5,0.5,0.5));
+	float3 l_Nn = l_WNn + l_Bump.x * l_Tan + l_Bump.y * l_Binormal;
+	l_Nn = normalize(l_Nn);
 	float3 NnScaled = Normal2Texture(l_Nn);
-	float3 l_DiffuseColor = tex2D(S0LinearWrapSampler, IN.UV);
+	float3 l_DiffuseColor = tex2D(S0LinearClampSampler, IN.UV);
 
 	OUT.RT0 = float4(l_DiffuseColor, 1.0);
 	OUT.RT1 = float4(l_DiffuseColor, 1.0);

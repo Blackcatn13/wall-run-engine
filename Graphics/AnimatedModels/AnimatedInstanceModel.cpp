@@ -199,6 +199,9 @@ void CAnimatedInstanceModel::RenderModelByHardware(CGraphicsManager *RM) {
     l_EffectTechnique->BeginRender();
     CalHardwareModel *l_CalHardwareModel = m_AnimatedCoreModel->GetCalHardwareModel();
     D3DXMATRIX transformation[MAXBONES];
+    for (int i = 0; i < m_TextureList.size(); ++i) {
+      m_TextureList[i]->Activate(i);
+    }
     for (int hardwareMeshId = 0; hardwareMeshId < l_CalHardwareModel->getHardwareMeshCount(); hardwareMeshId++) {
       l_CalHardwareModel->selectHardwareMesh(hardwareMeshId);
       for (int boneId = 0; boneId < l_CalHardwareModel->getBoneCount(); boneId++) {
@@ -214,7 +217,7 @@ void CAnimatedInstanceModel::RenderModelByHardware(CGraphicsManager *RM) {
         memcpy(&l_Matrix[b * 3 * 4], &transformation[b], sizeof(float) * 3 * 4);
       }
       l_Effect->SetFloatArray(m_Effect->GetBonesParameter(),	(float *)l_Matrix, (l_CalHardwareModel->getBoneCount()) * 3 * 4);
-      m_TextureList[l_CalHardwareModel->getVectorHardwareMesh()[hardwareMeshId].meshId]->Activate(0);
+      //m_TextureList[l_CalHardwareModel->getVectorHardwareMesh()[hardwareMeshId].meshId]->Activate(0);
       //m_NormalTextureList[0]->Activate(1);
       m_AnimatedCoreModel->GetRenderableVertexs()->Render(GRAPHM, l_EffectTechnique, l_CalHardwareModel->getBaseVertexIndex(), 0,
           l_CalHardwareModel->getVertexCount(), l_CalHardwareModel->getStartIndex(), l_CalHardwareModel->getFaceCount() * 3);
