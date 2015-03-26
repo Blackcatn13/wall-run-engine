@@ -7,11 +7,12 @@ CBillboardManager::CBillboardManager()
 }
 
 CBillboardManager::~CBillboardManager() {
+  Destroy();
 }
 
 void CBillboardManager::Load(std::string file) {
- m_fileName = file;
- CXMLTreeNode newFile;
+  m_fileName = file;
+  CXMLTreeNode newFile;
   if (!newFile.LoadFile(m_fileName.c_str())) {
     printf("ERROR loading the file.");
   } else {
@@ -38,7 +39,7 @@ void CBillboardManager::Reload() {
 }
 
 void CBillboardManager::Load() {
-   
+
   Load(m_fileName);
 }
 

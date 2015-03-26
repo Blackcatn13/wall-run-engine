@@ -58,7 +58,7 @@ class CBillboardManager;
 #define TRIGGM			CCore::GetInstance()->GetTriggerManager()
 #define PLAYC			  CCore::GetInstance()->GetPlayerController()
 #define LOGRNDR     CCore::GetInstance()->GetLogRender()
-#define WPMMGR			CCore::GetInstance()->GetWPManager()
+//#define WPMMGR			CCore::GetInstance()->GetWPManager()
 #define PARTIM			CCore::GetInstance()->GetParticleManager()
 #define BILLBM			CCore::GetInstance()->GetBillboardManager()
 #define ENEMYM			CCore::GetInstance()->GetEnemyManager()
@@ -98,7 +98,7 @@ class CCore {
   std::string							m_LuaLoadLevelFunc;
   std::string							m_LuaCameras;
   // CMapManager<CStaticPlatform>	*		m_PlatformsMap;
-  CWPManager							*m_WPManager;
+// CWPManager							*m_WPManager;
   CEnemyManager						*m_EnemyManager;
   CParticleManager					*m_ParticleManager;
   CBillboardManager                 *m_BillboardManager;
@@ -195,9 +195,9 @@ class CCore {
     return m_LogRender;
   }
 
-  CWPManager *GetWPManager() {
-    return m_WPManager;
-  }
+  /* CWPManager *GetWPManager() {
+     return m_WPManager;
+   }*/
 
   CEnemyManager *GetEnemyManager() {
     return m_EnemyManager;
@@ -207,8 +207,8 @@ class CCore {
     return m_ParticleManager;
   }
 
-   CBillboardManager *GetBillboardManager() {
-	   return m_BillboardManager;
+  CBillboardManager *GetBillboardManager() {
+    return m_BillboardManager;
   }
 
   GET_SET(std::string, LuaLoadLevelFunc)

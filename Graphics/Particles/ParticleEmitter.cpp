@@ -6,6 +6,7 @@
 #include "Math\MathUtils.h"
 #include "GraphicsManager.h"
 #include "Particle.h"
+#include "Utils\Defines.h"
 
 CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
   : m_CurrentTime(.0f)
@@ -40,7 +41,13 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
   m_TimeNextParticle = mathUtils::RandomFloatRange(m_MinEmissionTime, m_MaxEmissionTime);
 }
 
-CParticleEmitter::~CParticleEmitter() {}
+CParticleEmitter::~CParticleEmitter() {
+  m_Particles->DeleteAllElements();
+  for (int i = 0; i < m_Particles->GetNumFreeElements(); ++i)
+    m_Particles->Free(i);
+
+  CHECKED_DELETE(m_Particles);
+}
 
 void CParticleEmitter::Render(CGraphicsManager *RM) {
   for (int i = 0; i < m_MaxParticles; i++) {
@@ -95,29 +102,29 @@ void CParticleEmitter::PopulateParticle(CParticle *p) {
   float o1z = m_vOndulacion1.z;
   float o2z = m_vOndulacion2.z;
 
-  p->setVectorOndulacion(Vect3f(mathUtils::RandomFloatRange(o1x,o2x),mathUtils::RandomFloatRange(o1y,o2y),mathUtils::RandomFloatRange(o1z,o2z)));
+  p->setVectorOndulacion(Vect3f(mathUtils::RandomFloatRange(o1x, o2x), mathUtils::RandomFloatRange(o1y, o2y), mathUtils::RandomFloatRange(o1z, o2z)));
   p->setInicioOndulacion(mathUtils::RandomFloatRange(0, 360));
-  Vect3f dirFinal = Vect3f(0,1.0,0);
+  Vect3f dirFinal = Vect3f(0, 1.0, 0);
   switch (m_Type) {
-    case EMITTER_ESF:	
-		//Simulamos un generador de particulas esferico indicando un vector posicion central y un vector desviación
-		dirFinal = m_vSpawnDir1;
-		dirFinal.x += m_vSpawnDir2.x*mathUtils::RandomFloatRange(-1.0,1.0);
-		dirFinal.y += m_vSpawnDir2.y*mathUtils::RandomFloatRange(-1.0,1.0);
-		dirFinal.z += m_vSpawnDir2.z*mathUtils::RandomFloatRange(-1.0,1.0);
-		dirFinal = dirFinal.Normalize();
+    case EMITTER_ESF:
+      //Simulamos un generador de particulas esferico indicando un vector posicion central y un vector desviación
+      dirFinal = m_vSpawnDir1;
+      dirFinal.x += m_vSpawnDir2.x * mathUtils::RandomFloatRange(-1.0, 1.0);
+      dirFinal.y += m_vSpawnDir2.y * mathUtils::RandomFloatRange(-1.0, 1.0);
+      dirFinal.z += m_vSpawnDir2.z * mathUtils::RandomFloatRange(-1.0, 1.0);
+      dirFinal = dirFinal.Normalize();
       break;
     case EMITTER_PLANE:
-	  //Cambiamos para que en vez de generar particulas siempre en SpawnDir1 se coja un random entre SpawnDir1, SpawnDir2
-	  //p->setDirection1(m_vSpawnDir1);
-		  float d1x = m_vSpawnDir1.x;
-		  float d2x = m_vSpawnDir2.x;
-		  float d1y = m_vSpawnDir1.y;
-		  float d2y = m_vSpawnDir2.y;
-		  float d1z = m_vSpawnDir1.z;
-		  float d2z = m_vSpawnDir2.z;
+      //Cambiamos para que en vez de generar particulas siempre en SpawnDir1 se coja un random entre SpawnDir1, SpawnDir2
+      //p->setDirection1(m_vSpawnDir1);
+      float d1x = m_vSpawnDir1.x;
+      float d2x = m_vSpawnDir2.x;
+      float d1y = m_vSpawnDir1.y;
+      float d2y = m_vSpawnDir2.y;
+      float d1z = m_vSpawnDir1.z;
+      float d2z = m_vSpawnDir2.z;
 
-		  dirFinal = Vect3f(mathUtils::RandomFloatRange(d1x, d2x), mathUtils::RandomFloatRange(d1y, d2y), mathUtils::RandomFloatRange(d1z, d2z)).Normalize();
+      dirFinal = Vect3f(mathUtils::RandomFloatRange(d1x, d2x), mathUtils::RandomFloatRange(d1y, d2y), mathUtils::RandomFloatRange(d1z, d2z)).Normalize();
       break;
   }
   p->setDirection1(dirFinal);

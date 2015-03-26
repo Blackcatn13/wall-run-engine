@@ -7,6 +7,7 @@
 #include "XML\XMLTreeNode.h"
 #include "Texture\Texture.h"
 #include "Math\Color.h"
+#include "Utils\Defines.h"
 
 CBillboard::CBillboard(CXMLTreeNode &node)
   : m_size(node.GetFloatProperty("size", .0f	, false))
@@ -34,6 +35,7 @@ CBillboard::CBillboard(float size, Vect3f pos)
 }
 
 CBillboard::~CBillboard() {
+  CHECKED_DELETE(m_Texture);
 }
 
 void CBillboard::Render(CGraphicsManager *GM) {

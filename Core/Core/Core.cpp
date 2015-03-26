@@ -94,8 +94,8 @@ void CCore::Init(HWND handler) {
   m_SceneRendererCommandManager = new CSceneRendererCommandManager();
   m_SceneRendererCommandManager->Load(m_Config.SceneRenderCommandsPath);
   m_TriggerManager = new CTriggerManager();
-  m_WPManager = new CWPManager();
-  m_WPManager->Load("data//AI//Waypoints3.xml");
+// m_WPManager = new CWPManager();
+  //m_WPManager->Load("data//AI//Waypoints3.xml");
   m_EnemyManager = CEnemyManager::GetInstance();
   m_EnemyManager->Init("data//enemies.xml");
   m_PlayerController = new CPlayerController();
@@ -132,7 +132,7 @@ void CCore::DeInit() {
   CHECKED_DELETE(m_SceneRendererCommandManager);
   CHECKED_DELETE(m_TextureManager);
   CHECKED_DELETE(m_LogRender);
-  CHECKED_DELETE(m_WPManager);
+// CHECKED_DELETE(m_WPManager);
   CHECKED_DELETE(m_EnemyManager);
   CHECKED_DELETE(m_BillboardManager);
   CHECKED_DELETE(m_ParticleManager);
