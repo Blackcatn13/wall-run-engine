@@ -123,12 +123,17 @@ function mp_update_moving(ElapsedTime)
 	--local player_position = coreInstance:get_player_controller():get_position()
 	--core:trace(tostring(player_position.x));
 	local platform = rol_manager:get_default_renderable_object_manager():get_resource("MovingPlatform001")-- modificar para poder pasarlo por parametro
-	platform:move_to_point(ElapsedTime, next_wp, 2)
-	--move_platform_to_point(ElapsedTime, next_wp, platform)
-	local current_pos = platform:get_position()
-	local distance_to_point = get_distance_to_point(current_pos, next_wp)
-	if distance_to_point <= 4 then
-		--coreInstance:trace("Destino alcanzado")
+	if platform ~= nil then
+	
+		platform:move_to_point(ElapsedTime, next_wp, 2)
+		--move_platform_to_point(ElapsedTime, next_wp, platform)
+		local current_pos = platform:get_position()
+		local distance_to_point = get_distance_to_point(current_pos, next_wp)
+		if distance_to_point <= 4 then
+			--coreInstance:trace("Destino alcanzado")
+			instance.m_string = "Parado"
+		end
+	else
 		instance.m_string = "Parado"
 	end
 		
@@ -162,9 +167,13 @@ function mp_enter_calcwp() -- Pasar el nombre de la plataforma y de ahí que rec
 	--end
 	
 	local platform = rol_manager:get_default_renderable_object_manager():get_resource("MovingPlatform001")
-	next_wp = platform:get_next_wp()
-	--coreInstance:trace(tostring(next_wp.x));
-	instance.m_string = "Andar_WP"
+	if platform ~= nil then
+		next_wp = platform:get_next_wp()
+		--coreInstance:trace(tostring(next_wp.x));
+		instance.m_string = "Andar_WP"
+	else
+		instance.m_string = "Parado"
+	end
 end
 
 function mp_exit_calcwp()

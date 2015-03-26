@@ -192,6 +192,7 @@ end
 
 function move_character_controller_mesh(_player, _position)
 	local mesh = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky")
+	coreInstance:trace(tostring(mesh:get_position().z))
 	mesh:set_yaw(_player:get_yaw())
 	mesh:set_position(_position)
 --[[CRenderableObject* malla = RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky");

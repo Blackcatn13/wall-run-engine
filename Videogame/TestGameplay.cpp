@@ -159,8 +159,8 @@ void CTestGameplay::Init() {
   /* CPhysicUserAllocator* m_Alloc = new CPhysicUserAllocator();
    CPhysicCookingMesh* m_CockMesh = new CPhysicCookingMesh();*/
   //m_CockMesh->Init(PHYSXM->GetPhysicsSDK(), m_Alloc);
-  PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/VolFinal.ASE", "sceneTraining");
-  //PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/Level1/trainingPiky2.ASE", "sceneTraining");
+  //PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/VolFinal.ASE", "sceneTraining");
+  PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/Level1/trainingPiky2.ASE", "sceneTraining");
   //  m_CockMesh->CreateMeshFromASE("./Data/sceneTrainingPiky.ASE", "sceneTraining");
   m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
   m_PhysicActorCubeFix->AddMeshMap( PHYSXM->GetCookingMesh()->GetPhysicMeshMap());

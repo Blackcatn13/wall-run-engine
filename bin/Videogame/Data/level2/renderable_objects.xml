@@ -10,6 +10,7 @@
 	<mesh_instance name="Enemy1" core="Enemy1"  pos="22.4882 0.0 0.160919" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<mesh_instance name="Enemy2" core="Enemy2"  pos="0 0 0" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<mesh_instance name="Enemy3" core="Enemy3"  pos="0 0 0" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="Enemy4" core="Enemy1"  pos="-1.591296 2.000000 11.657170" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<mesh_instance name="CHUCKY-CHUCKY " core="CHUCKY-CHUCKY " pos="26.218029 0.767351 -0.533913" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="SALA0" core="SALA0" pos="0.567447 0.000000 0.259852" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="ANTORCHA006" core="ANTORCHA006" pos="-2.369819 0.000000 -2.514220" yaw="-0.519391" pitch="0.0" roll="0.0" scale="1.0 2.30644 1.0" visible="false" layer="solid"/>
