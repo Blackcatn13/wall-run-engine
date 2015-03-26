@@ -82,6 +82,7 @@ bool CEffect::LoadEffect() {
   GetParameterBySemantic("BONES", m_BonesParameter);
   GetParameterBySemantic("TIME", m_TimeParameter);
   GetParameterBySemantic("POLYENABLED", m_PolyEnabledParameter);
+  GetParameterBySemantic("USESHADOWMAP", m_UseDynamicShadowmapParameter);
   return isOK;
 }
 void CEffect::Unload() {

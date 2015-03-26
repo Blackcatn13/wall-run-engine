@@ -1,5 +1,5 @@
 <animated_model name="chuky">
-	<texture file="purple.jpg"/>
+	<texture file="DIFF_CHUCKY.tga"/>
 	<texture file="CHUCKY-CHUCKYNormalsMapFINAL.tga"/>
 	<skeleton file="chuky.csf"/>
 	<mesh file="chuky.cmf"/>

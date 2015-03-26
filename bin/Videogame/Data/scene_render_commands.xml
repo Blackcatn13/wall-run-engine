@@ -15,8 +15,8 @@
 	<set_axis />
 	-->
 	
-	<set_pool_renderable_objects_technique pool="generate_shadow_map_renderable_obejcts_technique"/>
-	<generate_shadow_maps />
+	<!--<set_pool_renderable_objects_technique pool="generate_shadow_map_renderable_obejcts_technique"/>
+	<generate_shadow_maps />-->
 	
 	<set_pool_renderable_objects_technique pool="generate_deferred_shading_pool_renderable_object_technique"/>
 
@@ -69,8 +69,13 @@
 
 	<!--<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>-->
 	
+
 	<check_active_poly />
 	<render_scene layer="poly" active="true" />
+
+	<render_scene layer="poly" active="true" />
+	<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
+
 	<set_pool_renderable_objects_technique pool="poly_pool"/>
 	
 	<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
