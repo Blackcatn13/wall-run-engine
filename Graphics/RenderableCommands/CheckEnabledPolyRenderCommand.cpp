@@ -12,15 +12,28 @@ CCheckEnabledPolyRenderCommand::CCheckEnabledPolyRenderCommand(CXMLTreeNode &att
 }
 void CCheckEnabledPolyRenderCommand::Execute(CGraphicsManager &RM) {
 
-  CRenderableObjectsManager *l_Rom = RENDLM->GetRenderableObjectsManagerByStr("poly");
-  if(l_Rom != NULL){
-	  for (int i = 0; i < l_Rom->GetResourcesVector().size(); ++i) {
-		CPolyPlatform *poly = (CPolyPlatform *) l_Rom->GetResourcesVector()[i];
-		if (poly->getEnabled()) {
-		  m_Effect->SetActivePoly(poly);
-		  poly->Render(&RM);
-		}
-	  }
-  }
+  CRenderableObjectsManager *l_RomPoly = RENDLM->GetRenderableObjectsManagerByStr("poly");
+  CRenderableObjectsManager *l_RomPolyEnabled = RENDLM->GetRenderableObjectsManagerByStr("enabled_poly");
+  CheckLayerChange(l_RomPoly, l_RomPolyEnabled, true );
 
+  CheckLayerChange(l_RomPolyEnabled, l_RomPoly, false);
+
+}
+
+
+void CCheckEnabledPolyRenderCommand::CheckLayerChange(CRenderableObjectsManager *rolm1, CRenderableObjectsManager *rolm2, bool polyEnabled) {
+
+  if (rolm1 != NULL) {
+    for (int i = 0; i < rolm1->GetResourcesVector().size(); ++i) {
+      CPolyPlatform *poly = (CPolyPlatform *) rolm1->GetResourcesVector()[i];
+      if (poly->getEnabled() == polyEnabled) {
+        // m_Effect->SetActivePoly(poly);
+        //poly->Render(&RM);
+        if (rolm2->GetResource(poly->getName()) == NULL) {
+          rolm2->AddResource(poly->getName(), poly);
+          rolm1->RemoveFromResource(poly->getName());
+        }
+      }
+    }
+  }
 }

@@ -121,3 +121,4 @@ void CPolyPlatform::Update(float ElapsedTime) {
   std::string toRun = ss.str();
   SCRIPTM->RunCode(toRun.c_str());
 }
+

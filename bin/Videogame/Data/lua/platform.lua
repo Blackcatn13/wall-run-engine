@@ -19,6 +19,9 @@ end
 
 function init_poly_platform(name, user_data_name, size, position, time_out, speed)
 	local platform = rol_manager:get_renderable_objects_manager_by_str("poly"):get_resource(name)
+	if platform == nil then
+		platform = rol_manager:get_renderable_objects_manager_by_str("enabled_poly"):get_resource(name)
+	end		
 	platform:insert_platform(user_data_name, size, position)
 
 	--coreInstance:trace(tostring(platform.m_Collission))
@@ -193,8 +196,14 @@ function update_poly_platform(current_poly_time, dt, platform_name)
 	-- Enable Poly Emmerald power
 	local position = coreInstance:get_player_controller():get_position()
 	local platform = rol_manager:get_renderable_objects_manager_by_str("poly"):get_resource(platform_name)
+	if platform == nil then
+		platform = rol_manager:get_renderable_objects_manager_by_str("enabled_poly"):get_resource(platform_name)
+	end
 	local platform_position = platform:get_position()
 	local l_distance = position:distance(platform_position)
+	coreInstance:trace("________________________________________________________")
+	coreInstance:trace(tostring(platform.m_Enabled))
+	coreInstance:trace("________________________________________________________")
 	if l_distance < platform.m_ActivationDistance then
 		platform.m_Enabled = true
 	else

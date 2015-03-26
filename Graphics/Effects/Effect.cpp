@@ -40,6 +40,7 @@ void CEffect::SetNullParameters() {
   m_UseShadowMaskTextureParameter = NULL;
   m_UseStaticShadowmapParameter = NULL;
   m_UseDynamicShadowmapParameter = NULL;
+  m_PolyEnabledParameter = NULL;
 }
 
 void CEffect::GetParameterBySemantic(const std::string &SemanticName, D3DXHANDLE &l_Handle) {
