@@ -10,6 +10,8 @@
 #include "Renderable\RenderableObject.h"
 #include "Renderable\RenderableObjectsManager.h"
 #include "Renderable\RenderableObjectsLayersManager.h"
+#include <sstream>
+#include "Math\Vector3.h"
 
 CAIController::CAIController()
   : CObject3D(),
@@ -19,6 +21,7 @@ CAIController::CAIController()
     m_JumpForce(1.5),
     m_CurrentJumpForce(0),
     m_isJumping(false) {
+
   m_PhysicUserData = new CPhysicUserData("AI");
   m_PhysicUserData->SetPaint(true);
   m_PhysicUserData->SetColor(colRED);
@@ -26,6 +29,24 @@ CAIController::CAIController()
   PHYSXM->AddPhysicController(m_PhysicController);
 }
 
+CAIController::CAIController(std::string mesh, std::string name, Vect3f position, float speed, float turnSpeed, float gravity):
+  CObject3D (),
+  m_Gravity(gravity),
+  m_Speed(speed),
+  m_TurnSpeed(turnSpeed),
+  m_JumpForce(0),
+  m_CurrentJumpForce(0),
+  m_isJumping(false),
+  m_Mesh(mesh) {
+  std::stringstream ss;
+  ss << name << "UserData";
+  std::string userDataName = ss.str();
+  m_PhysicUserData = new CPhysicUserData(userDataName);
+  m_PhysicUserData->SetPaint(false);
+  m_PhysicUserData->SetColor(colRED);
+  m_PhysicController = new CPhysicController(0.5, 0.25, 0.87, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, position, -gravity);
+  PHYSXM->AddPhysicController(m_PhysicController);
+}
 //CAIController::CAIController(std::string mesh, std::string name, Vect3f position):
 //    CObject3D(),
 //    m_Gravity(13),

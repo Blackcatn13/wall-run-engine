@@ -8,29 +8,40 @@
 #include "Actor\PhysicController.h"
 
 CEnemy::CEnemy(CXMLTreeNode &info1)
-  :
-  m_Mesh((info1.GetPszISOProperty("mesh", "", false)))
-  //  CAIController(info1.GetPszISOProperty("mesh", "", false), m_Name, m_Position)
+  : CAIController(info1.GetPszISOProperty("mesh", "", false),
+                  info1.GetPszISOProperty("name", "", false),
+                  info1.GetVect3fProperty("position", v3fZERO, false),
+                  info1.GetFloatProperty("speed", .0f, false),
+                  info1.GetFloatProperty("turn_speed", .0f, false),
+                  info1.GetFloatProperty("gravity", .0f, false))
+
+    //  CAIController(info1.GetPszISOProperty("mesh", "", false), m_Name, m_Position)
 {
   // ask for it to enemyManager
   //m_Life(info2.GetFloatProperty("life"))
   //m_ShootAccuracy(info2.GetFloatProperty("shoot_accuracy"))
   //, m_TimeToShoot(info2.GetFloatProperty("time_to_shoot"))
   //, m_TimeToSpawn(info2.GetFloatProperty("time_to_spawn"))
+// setMesh(info1.GetPszISOProperty("mesh", "", false));
   m_fYaw = info1.GetFloatProperty("yaw",  .0f, false);
-  m_Name = info1.GetPszISOProperty("name", "", false);
+  //setName (info1.GetPszISOProperty("name", "", false));
   m_Position = info1.GetVect3fProperty("pos", Vect3f(), false);
 }
 
-void CEnemy::SetMesh(std::string mesh) {
-  CRenderableObject *malla = RENDLM->GetDefaultRenderableObjectManager()->GetResource(mesh);
-  malla->SetYaw(m_fYaw);
-  Vect3f position = Vect3f(m_PhysicController->GetPosition());
-  bool visible = malla->getVisible();
-  malla->SetPosition(m_PhysicController->GetPosition());
+
+CEnemy::CEnemy(std::string mesh, std::string name, Vect3f position,  float speed, float turnSpeed, float gravity, float yaw) :
+  CAIController(mesh, name, position, speed, turnSpeed, gravity) {
+  m_fYaw = yaw;
 }
 
-CEnemy::~CEnemy() {
-  CHECKED_DELETE(m_PhysicUserData);
-  CHECKED_DELETE(m_PhysicController);
+
+void CEnemy::Init() {
+
 }
+
+void CEnemy::Update(float elapsedTime) {
+}
+
+void CEnemy::Render() {
+}
+

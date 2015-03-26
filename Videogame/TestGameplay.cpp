@@ -186,6 +186,7 @@ void CTestGameplay::Init() {
   //m_fsmManager->Load("data//AI//Patrulla.xml");
   m_fsmManager->Load("data//AI//FSMs.xml");
   m_fsmManager->Load("data//AI//EnemyFSM.xml");
+  SCRIPTM->RunFile("Data/lua/Enemy.lua");
   //m_fsmManager = new CFSMManager();
   //m_WPManager = new CWPManager();
   //m_WPManager->Load("data//AI//Waypoints2.xml");

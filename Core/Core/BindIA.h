@@ -20,6 +20,8 @@
 //#include "NxPhysicsSDK.h"
 #include "AI\AIController.h"
 #include "AI\WPManager.h"
+#include "Enemy.h"
+#include "EasyEnemy.h"
 
 extern "C"
 {
@@ -38,49 +40,66 @@ extern "C"
 
 using namespace luabind;
 
-void RegisterAI()
-{
-    luabind::module(LUA_STATE) [
-        class_<CAIController, CObject3D>("CAIController")
-        .def(constructor<>())
-        .property("m_PhysicController", &CAIController::getPhysicController,  &CAIController::setPhysicController )
-        .property("m_PhysicUserData", &CAIController::getPhysicUserData,  &CAIController::setPhysicUserData )
-        .property("m_Gravity", &CAIController::getGravity,  &CAIController::setGravity )
-        .property("m_Gravity", &CAIController::getGravity,  &CAIController::setGravity )
-        .property("m_Speed", &CAIController::getSpeed,  &CAIController::setSpeed )
-        //.property("m_TurnSpeed", &CAIController::getTurnSpeed,  &CAIController::setTurnSpeed )
-        .property("m_JumpForce", &CAIController::getJumpForce,  &CAIController::setJumpForce )
-        .property("m_CurrentJumpForce", &CAIController::getCurrentJumpForce,  &CAIController::setCurrentJumpForce )
-        .property("m_isJumping", &CAIController::getisJumping,  &CAIController::setisJumping )
-        .def("move", &CAIController::Move)
-        .def("move_to", &CAIController::MoveTo)
-    ];
+void RegisterAI() {
+  luabind::module(LUA_STATE) [
+    class_<CAIController, CObject3D>("CAIController")
+    .def(constructor<>())
+    .def(constructor<std::string, std::string, Vect3f, float, float, float >())
+    .property("m_PhysicController", &CAIController::getPhysicController,  &CAIController::setPhysicController )
+    .property("m_PhysicUserData", &CAIController::getPhysicUserData,  &CAIController::setPhysicUserData )
+    .property("m_Gravity", &CAIController::getGravity,  &CAIController::setGravity )
+    .property("m_Gravity", &CAIController::getGravity,  &CAIController::setGravity )
+    .property("m_Speed", &CAIController::getSpeed,  &CAIController::setSpeed )
+    //.property("m_TurnSpeed", &CAIController::getTurnSpeed,  &CAIController::setTurnSpeed )
+    .property("m_JumpForce", &CAIController::getJumpForce,  &CAIController::setJumpForce )
+    .property("m_CurrentJumpForce", &CAIController::getCurrentJumpForce,  &CAIController::setCurrentJumpForce )
+    .property("m_isJumping", &CAIController::getisJumping,  &CAIController::setisJumping )
+    .def("move", &CAIController::Move)
+    .def("move_to", &CAIController::MoveTo)
+  ];
 
-	 luabind::module(LUA_STATE) [
-		    class_<ZONE>("ZONE")
-			.def_readwrite("m_Waypoints", &ZONE::m_Waypoints)
-	   ];
+  luabind::module(LUA_STATE) [
+    class_<CEnemy, CAIController>("CEnemy")
+    .def(constructor<CXMLTreeNode>())
+    .def(constructor<std::string, std::string, Vect3f, float, float, float , float >())
+    /* .def("update", &CEnemy::Update)
+     .def("render", &CEnemy::Render)*/
+  ];
 
-	  luabind::module(LUA_STATE) [
-        class_<CMapManager<ZONE>>("CMapManagerZONE")
-        .def("get_resource", &CMapManager< ZONE >::GetResource)
-        .def("existe_resource", &CMapManager< ZONE >::ExisteResource)
-        .def("add_resource", &CMapManager< ZONE >::AddResource)
-        .def("destroy", &CMapManager< ZONE >::Destroy)
-        .property("m_Resources",  &CMapManager< ZONE >::GetResources)
-    ];
-	  
+  luabind::module(LUA_STATE) [
+    class_<CEasyEnemy, CEnemy>("CEasyEnemy")
+    .def(constructor<CXMLTreeNode>())
+    .def(constructor<std::string, std::string, Vect3f, float, float, float , float >())
+    // .def("init", &CEasyEnemy::Init)
+    //.def("update", &CEasyEnemy::Update)
+    //.def("render", &CEasyEnemy::Render)
+  ];
 
-	  luabind::module(LUA_STATE) [
-        class_<CWPManager, CMapManager<ZONE>>("CWPManager")
-        .def(constructor<>())
-        .def("find_closest_waypoint", &CWPManager::FindClosestWaypoint)
-		.def("get_distance", &CWPManager::GetDistance)
-		.def("get_waypoint_position", &CWPManager::GetWaypointPosition)
-		.def("calcular_siguiente_waypoint", &CWPManager::CalcularSiguienteWaypoint)
-	  ];
+  luabind::module(LUA_STATE) [
+    class_<ZONE>("ZONE")
+    .def_readwrite("m_Waypoints", &ZONE::m_Waypoints)
+  ];
 
-	
+  luabind::module(LUA_STATE) [
+    class_<CMapManager<ZONE>>("CMapManagerZONE")
+    .def("get_resource", &CMapManager< ZONE >::GetResource)
+    .def("existe_resource", &CMapManager< ZONE >::ExisteResource)
+    .def("add_resource", &CMapManager< ZONE >::AddResource)
+    .def("destroy", &CMapManager< ZONE >::Destroy)
+    .property("m_Resources",  &CMapManager< ZONE >::GetResources)
+  ];
+
+
+  luabind::module(LUA_STATE) [
+    class_<CWPManager, CMapManager<ZONE>>("CWPManager")
+    .def(constructor<>())
+    .def("find_closest_waypoint", &CWPManager::FindClosestWaypoint)
+    .def("get_distance", &CWPManager::GetDistance)
+    .def("get_waypoint_position", &CWPManager::GetWaypointPosition)
+    .def("calcular_siguiente_waypoint", &CWPManager::CalcularSiguienteWaypoint)
+  ];
+
+
 }
 
 //#endif
