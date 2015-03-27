@@ -12,7 +12,7 @@
 	
 
 
-<light name="Omni002" type="omni" pos="-100 30 30" color="0 0 1" intensity="1" att_start_range="200.0" att_end_range="500.0" generate_shadow_map="false" shadow_map_format_type="R32F" ortho_shadow_map_width="256" ortho_shadow_map_height="256" shadow_map_width="256" shadow_map_height="256" generate_static_shadow_map="false" static_shadow_map_format_type="R32F" 
+<light name="Omni002" type="omni" pos="-100 30 30" color="1 1 1" intensity="1" att_start_range="200.0" att_end_range="500.0" generate_shadow_map="false" shadow_map_format_type="R32F" ortho_shadow_map_width="256" ortho_shadow_map_height="256" shadow_map_width="256" shadow_map_height="256" generate_static_shadow_map="false" static_shadow_map_format_type="R32F" 
  angle="1.05" fall_off="1.05">
  <dynamic renderable_objects_manager="solid"/>
 </light>

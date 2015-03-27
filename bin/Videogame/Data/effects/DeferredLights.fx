@@ -46,7 +46,7 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 	float l_SpecularFactor = l_RT0.w;
 	float4 l_RT1 = tex2D(S1LinearWrapSampler, UV);
 	float3 l_Ambient = l_RT1.xyz;
-	float l_SpecularExponent = l_RT1.w*900;
+	float l_SpecularExponent = l_RT1.w*90;
 	float3 l_N = tex2D(S2LinearWrapSampler, UV).xyz;
 	float3 l_Nn = normalize(Texture2Normal(l_N));
 	float l_Depth = tex2D(S3LinearWrapSampler, UV).x;

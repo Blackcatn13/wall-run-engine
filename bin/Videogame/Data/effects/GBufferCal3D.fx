@@ -54,8 +54,8 @@ void CalcAnimatedNormalTangent(float3 Normal, float3 Tangent, float4 Indices, fl
 	
 	OutNormal += mul(m, Normal.xyz)* Weight.w;
 	OutTangent += mul(m, Tangent.xyz)* Weight.w;
-	OutNormal.x = -OutNormal.x;
-	OutTangent.x = -OutTangent.x;
+	OutNormal.z = -OutNormal.z;
+	OutTangent.z = -OutTangent.z;
 	OutNormal = normalize(OutNormal);
 	OutTangent = normalize(OutTangent);
 }
@@ -110,7 +110,7 @@ technique Cal3DTechnique
 {
 	pass p0
 	{
-		CullMode = NONE;
+		CullMode = CW;
 		VertexShader = compile vs_3_0 RenderCal3DHWVS();
 		PixelShader = compile ps_3_0 RenderCal3DHWPS();
 	}
