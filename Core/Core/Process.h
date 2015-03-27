@@ -18,6 +18,7 @@ class CProcess {
   bool	m_PaintPhisicTriggers;
   bool	m_PaintPhisics;
   bool	m_DebugPhisics;
+  int	m_aux_x;
  public:
   CProcess(void);
   virtual ~CProcess(void);
@@ -25,6 +26,7 @@ class CProcess {
   virtual void Render() = 0;
   virtual void Init();
   Vect2i WriteBoolInfo(bool varInfo, std::string text, Vect2i pos);
+  Vect2i WriteStrInfo(std::string varInfo, std::string text, Vect2i pos);
 
   void DeInit();
   CCamera *GetCamera() {
