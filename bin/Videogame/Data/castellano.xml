@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <Language id="castellano">
 	<literal id="OpenDebug"  font="arial"  color="1 1 1 0.9" value="Pulsa 'Logger' per obtener info de debug"/>
+	<literal id="poly_enabled"  font="gotic"  color="1 1 1 0.9" value="Pulsa 'M' para activar la Poly Emmerald"/>
 </Language>

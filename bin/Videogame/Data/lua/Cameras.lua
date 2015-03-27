@@ -96,7 +96,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 		if(tratar == 1) then
 			dot = playerVecZXN * cameraVecZXN;
 		end
-		coreInstance:trace(dot:tostring());
+		coreInstance:trace(tostring(dot));
 		local movimentZX = dot * modul;
 		local percent = movimentZX / lengthVecZX;
 		local percentToRotation = 0.5;
@@ -133,7 +133,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 					yaw = yaw * yawpercent + previousyaw * (1-yawpercent);
 				end
 			end
-			coreInstance:trace(yaw:tostring());
+			coreInstance:trace(tostring(yaw));
 			obj:set_yaw(yaw);
 			obj:set_pitch(pitch3D);
 			obj:set_roll(0);

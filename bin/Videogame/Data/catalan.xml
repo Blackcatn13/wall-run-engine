@@ -2,6 +2,6 @@
 <Language id="catalan">
 
  <literal id="OpenDebug"  font="arial"  color="1 1 1 0.9" value="Prem 'Logger' per obtenir info de debug"/>
- 
+ <literal id="poly_enabled"  font="gotic"  color="1 1 1 0.9" value="Prem 'M' per activar la Poly Emmerald"/>
  
 </Language>

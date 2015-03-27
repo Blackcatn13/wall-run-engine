@@ -14,7 +14,7 @@ class CCheckEnabledPolyRenderCommand : public CSceneRendererCommand {
   CEffect 	*m_Effect;
  public:
   CCheckEnabledPolyRenderCommand(CXMLTreeNode &atts);
-  void CheckLayerChange(CRenderableObjectsManager *rolm1, CRenderableObjectsManager *rolm2, bool polyEnabled);
+  void CheckLayerChange(CRenderableObjectsManager *rolm1, CRenderableObjectsManager *rolm2, bool polyEnabled, CGraphicsManager *RM);
   void Execute(CGraphicsManager &RM);
 };
 #endif
