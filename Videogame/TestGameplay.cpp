@@ -63,6 +63,7 @@ CTestGameplay::CTestGameplay(void) {
   m_PaintPhisics = false;
   m_DebugPhisics = false;
   m_Color =  CColor(0.1, 0.1, 0.1, 0.2);
+  m_aux_x = 180;
 }
 
 CTestGameplay::~CTestGameplay(void) {
@@ -70,6 +71,8 @@ CTestGameplay::~CTestGameplay(void) {
   delete m_ObjectThPS;
   CHECKED_DELETE(m_Object2D);
   CHECKED_DELETE(m_Object3D);
+  CHECKED_DELETE(m_ObjectThPSEsf);
+// CHECKED_DELETE(tempCam);
   //delete m_ThPSCamera;
 //    delete m_ThPSCamera1;
   //delete m_FPSCamera;
@@ -94,6 +97,7 @@ void CTestGameplay::Init() {
   SCRIPTM->RunCode(l_Text);*/
   m_ObjectFPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
   m_ObjectThPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
+  m_ObjectThPSEsf = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
   m_Object3D = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
   m_Object2D = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
   //m_RenderableObject = RENDM->GetResourcesMap().find("Box005")->second.m_Value;
@@ -104,21 +108,24 @@ void CTestGameplay::Init() {
   m_2DCamera = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_Object2D, 50);
   m_2DCamera->SetTypeCamera(CCamera::TC_2DCAM);
   m_2DCamera->LoadPathFromFile(".\\Data\\camera_path.xml");
-  m_ThPSCamera = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS, 200);
+  m_ThPSCamera = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPSEsf /*RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky")*/, 200);
+  m_ThPSCamera1 = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS /*RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky")*/, 10);
   //m_ThPSCamera1 = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_RenderableObject, 10);
-  m_FPSCamera = new CFPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectFPS);
+  m_FPSCamera = new CFPSCamera(2.5f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectFPS);
   m_ThPSCamera->SetTypeCamera(CCamera::TC_ESF);
   //m_CameraController = new CCameraController();
   CAMCONTM->AddNewCamera("FPS", m_FPSCamera);
   CAMCONTM->AddNewCamera("ThPSESF", m_ThPSCamera);
   CAMCONTM->AddNewCamera("3DCam", m_3DCamera);
   CAMCONTM->AddNewCamera("2DCam", m_2DCamera);
+  CAMCONTM->AddNewCamera("ThPS", m_ThPSCamera1);
   //m_CameraController->AddNewCamera("ThPS", m_ThPSCamera1);
   CAMCONTM->setActiveCamera("ThPSESF");
   SCRIPTM->RunCode("on_init_cameras_lua()");
   m_Camera = CAMCONTM->getActiveCamera();
   Vect3f l_eye = m_Camera->GetEye();
   m_PlayerMode = true;
+  CCamera *tempCam = m_Camera;
 //	m_ScriptedController = new CScriptedController();
 //	RENDM->AddResource("ScriptedController", m_ScriptedController);
   //Lights
@@ -159,8 +166,8 @@ void CTestGameplay::Init() {
   /* CPhysicUserAllocator* m_Alloc = new CPhysicUserAllocator();
    CPhysicCookingMesh* m_CockMesh = new CPhysicCookingMesh();*/
   //m_CockMesh->Init(PHYSXM->GetPhysicsSDK(), m_Alloc);
-  PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/VolFinal.ASE", "sceneTraining");
-  //PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/Level1/trainingPiky2.ASE", "sceneTraining");
+// PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/VolFinal.ASE", "sceneTraining");
+  PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/Level1/trainingPiky2.ASE", "sceneTraining");
   //  m_CockMesh->CreateMeshFromASE("./Data/sceneTrainingPiky.ASE", "sceneTraining");
   m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
   m_PhysicActorCubeFix->AddMeshMap( PHYSXM->GetCookingMesh()->GetPhysicMeshMap());
@@ -321,7 +328,7 @@ Vect2i CTestGameplay::RenderDebugInfo(bool render/*, float dt*/) {
     size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de vertices: %d", m_totalVertices));
     size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de caras: %d", m_totalFaces));
     size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de primitivas: %d", m_numPrimitives));
-    aux_x = max(aux_x, 220);
+    aux_x = max(aux_x, 240);
     GRAPHM->DrawRectangle2D (m_textPosition, aux_x, size.y , m_Color, 2, 2, CColor(0, 0, 0, 1));
   } else {
     // print a message asking for key to open the menu
@@ -348,6 +355,10 @@ void CTestGameplay::Update(float dt) {
   //float deltaX =  im->GetMouseDelta().x;
   //float deltaY = im->GetMouseDelta().y;
   //float deltaZ = im->GetMouseDelta().z;
+  Vect3f l_Position = RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky")->GetPosition();
+  m_ObjectFPS->SetPosition(Vect3f(l_Position.x, l_Position.y + 1.0f, l_Position.z ));
+  m_ObjectThPS->SetPosition(l_Position);
+// m_ObjectThPS->SetYaw(RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky")->GetYaw());
   if (ACT2IN->DoAction("ChangeCatalan")) {
     LANGM->SetCurrentLanguage("catalan");
     // CAMCONTM->setActiveCamera("Camera002");
@@ -375,7 +386,18 @@ void CTestGameplay::Update(float dt) {
       CAMCONTM->setActiveCamera("FPS");
     }
   }
-  // CCORE->GetCinematicController()->Update(dt);
+
+  if (ACT2IN->DoAction("ToogleTHPSCamera")) {
+    if (CAMCONTM->GetCameraName(CAMCONTM->getActiveCamera()) != "ThPS") {
+      //  m_CameraController->setActiveCamera("ThPSESF");
+      tempCam =  CAMCONTM->getActiveCamera();
+      CAMCONTM->setActiveCamera("ThPS");
+    } else {
+      CAMCONTM->setActiveCamera(tempCam);
+    }
+  }
+
+// CCORE->GetCinematicController()->Update(dt);
   m_Camera = CAMCONTM->getActiveCamera();
   /*  m_Granade->Update(dt);
   //	m_ScriptedController->Update(dt);*/
@@ -415,9 +437,9 @@ void CTestGameplay::Update(float dt) {
     //SCRIPTM->RunFile(".\\Data\\scripted_controller.lua");
   }
   skip += dt;
-  //tTerra1_yaw += dt * 30 * 0.005;
-  //tTerra2_yaw += dt * 80 * 0.005;
-  //tlluna1_yaw -= dt * 60 * 0.05;
+//tTerra1_yaw += dt * 30 * 0.005;
+//tTerra2_yaw += dt * 80 * 0.005;
+//tlluna1_yaw -= dt * 60 * 0.05;
   m_Dt = dt;
   m_fsmManager->Update(dt);
   RENDLM->Update(dt);

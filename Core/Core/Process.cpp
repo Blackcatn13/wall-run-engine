@@ -28,8 +28,7 @@ Vect2i CProcess::RenderDebugInfo(bool render/*, float dt*/) {
     pos = WriteBoolInfo(m_PaintPhisicActors, "Draw Phisic actors: ", pos);
     pos = WriteBoolInfo(m_PaintPhisicTriggers, "Draw Triggers: ", pos);
     pos = WriteBoolInfo(m_PaintPhisics, "Draw all Phisics: ", pos);
-
-
+    pos = WriteStrInfo(CAMCONTM->GetCameraName(CAMCONTM->getActiveCamera()), "Active Camera: ", pos);
   }
   return pos;
 }
@@ -38,12 +37,18 @@ Vect2i CProcess::WriteBoolInfo(bool varInfo, std::string text, Vect2i pos) {
 // std::string l_text = "Debug Phisics: ";
   int l_aux_i = pos.y;
   pos.Add_Max(FONTM->DrawDefaultText(pos.x, pos.y, colWHITE, text.c_str()));
-
-  int l_aux_x = 180;
   if (!varInfo)
-    FONTM->DrawDefaultText(l_aux_x, l_aux_i, colRED, "%s", "false");
+    FONTM->DrawDefaultText(m_aux_x, l_aux_i, colRED, "%s", "false");
   else
-    FONTM->DrawDefaultText(l_aux_x, l_aux_i, colBLUE, "%s", "true");
+    FONTM->DrawDefaultText(m_aux_x, l_aux_i, colBLUE, "%s", "true");
+
+  return pos;
+}
+
+Vect2i CProcess::WriteStrInfo(std::string varInfo, std::string text, Vect2i pos) {
+  int l_aux_i = pos.y;
+  pos.Add_Max(FONTM->DrawDefaultText(pos.x, pos.y, colWHITE, text.c_str()));
+  FONTM->DrawDefaultText(m_aux_x, l_aux_i, colYELLOW, "%s", varInfo.c_str());
 
   return pos;
 }

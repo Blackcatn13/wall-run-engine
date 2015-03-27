@@ -155,6 +155,10 @@
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_0"/>
 	</action>
 	
+	<action name="ToogleTHPSCamera">
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_C"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_1"/>
+	</action>
 	
 	<action name="FlyMode">
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>

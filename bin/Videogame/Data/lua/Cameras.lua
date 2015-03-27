@@ -54,7 +54,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 	end
 	--local name2=CNamed();
 	--name2:set_name("UpdatePass1");
-	if cam.m_eTypeCamera ~= 2 then
+	if cam.m_eTypeCamera ~= 2 and cam.m_eTypeCamera ~= 1 then
 		local currentWP = cam:get_path_point(cam.m_currentWaypoint);
 		local nextWP = cam:get_path_point(cam.m_nextWaypoint);
 		--name2:set_name("UpdatePass2");
