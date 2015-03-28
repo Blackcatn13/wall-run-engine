@@ -27,6 +27,7 @@
 #include "EnemyManager.h"
 #include "Particles\ParticleManager.h"
 #include "Particles\BillboardManager.h"
+#include "AI\FSMManager.h"
 
 CCore *CCore::m_Instance = 0;
 
@@ -66,6 +67,8 @@ void CCore::Init(HWND handler) {
   m_AnimatedModelManager = new CAnimatedModelManager();
   m_AnimatedModelManager->Load(m_Config.AnimatedMeshPath);
   //Cargamos Technique pools
+  m_FSMManager = new CFSMManager();
+  m_FSMManager->Load("data//AI//FSMs.xml");
   m_RenderableObjectTechniqueManager = new CRenderableObjectTechniqueManager();
   m_RenderableObjectTechniqueManager->Load(m_Config.PoolRenderableObjects);
   //Cargando Layers
@@ -125,6 +128,7 @@ void CCore::DeInit() {
   CHECKED_DELETE(m_CinematicManager);
   CHECKED_DELETE(m_EffectManager);
   CHECKED_DELETE(m_TriggerManager);
+  CHECKED_DELETE(m_FSMManager);
   CHECKED_DELETE(m_PlayerController);
   CHECKED_DELETE(m_PhysicsManager);
   //CHECKED_DELETE(m_Process);
@@ -162,10 +166,11 @@ void CCore::Update(float dt) {
   m_InputManager->Update();
   m_LogRender->Update(dt);
   m_TriggerManager->Update(dt);
+  //m_FSMManager->Update(dt);
   //m_PlayerController->Move(dt);
   m_EnemyManager->Update(dt);
-  m_ParticleManager->Update(dt);
-  m_BillboardManager->Update(dt);
+// m_ParticleManager->Update(dt);
+// m_BillboardManager->Update(dt);
 }
 
 

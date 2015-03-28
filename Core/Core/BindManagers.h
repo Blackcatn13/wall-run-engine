@@ -12,6 +12,7 @@
 #include "GraphicsManager.h"
 #include "Language\LanguageManager.h"
 #include "TriggerManager\TriggerManager.h"
+#include "EnemyManager.h"
 
 #include "StaticMeshes\StaticMeshManager.h"
 #include "Renderable\RenderableObjectsLayersManager.h"
@@ -196,6 +197,15 @@ void RegisterManagers() {
     .def("load", &CRenderableObjectsLayersManager::Load)
     .def("get_renderable_objects_manager_by_str", &CRenderableObjectsLayersManager::GetRenderableObjectsManagerByStr)
     .property("m_CurrentLayer", &CRenderableObjectsLayersManager::getCurrentLayer, &CRenderableObjectsLayersManager::setCurrentLayer)
+  ];
+
+  luabind::module(LUA_STATE) [
+    class_<CEnemyManager>("CEnemyManager")
+    .def(constructor<>())
+    .def("get_instance", &CEnemyManager::GetInstance)
+    .def("insert_enemy", &CEnemyManager::InsertEnemy)
+    .def("get_enemy", &CEnemyManager::GetEnemy)
+
   ];
 }
 

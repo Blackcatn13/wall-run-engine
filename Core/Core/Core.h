@@ -35,6 +35,7 @@ class CWPManager;
 class CEnemyManager;
 class CParticleManager;
 class CBillboardManager;
+class CFSMManager;
 
 #define CCORE			  CCore::GetInstance()
 #define GRAPHM			CCore::GetInstance()->GetGraphicsManager()
@@ -63,6 +64,7 @@ class CBillboardManager;
 #define BILLBM			CCore::GetInstance()->GetBillboardManager()
 #define ENEMYM			CCore::GetInstance()->GetEnemyManager()
 #define PROCESS			CCore::GetInstance()->GetProcess()
+#define FSMMGR			CCore::GetInstance()->GetFSMManager()
 
 
 class CCore {
@@ -102,6 +104,7 @@ class CCore {
   CEnemyManager						*m_EnemyManager;
   CParticleManager					*m_ParticleManager;
   CBillboardManager                 *m_BillboardManager;
+  CFSMManager						*m_FSMManager;
 
 
 
@@ -209,6 +212,10 @@ class CCore {
 
   CBillboardManager *GetBillboardManager() {
     return m_BillboardManager;
+  }
+
+  CFSMManager *GetFSMManager() {
+    return m_FSMManager;
   }
 
   GET_SET(std::string, LuaLoadLevelFunc)

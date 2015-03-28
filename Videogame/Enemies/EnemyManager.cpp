@@ -94,3 +94,16 @@ void CEnemyManager::SetPaintEnemies(bool paint) {
     m_Enemies[i]->getPhysicUserData()->SetPaint(paint);
   }
 }
+
+void CEnemyManager::InsertEnemy(CEnemy *enemy) {
+
+  m_Enemies.push_back(enemy);
+}
+
+CEnemy *CEnemyManager::GetEnemy(std::string enemyName) {
+  for (int i = 0; i < m_Enemies.size(); ++ i) {
+    if (m_Enemies[i]->getName() == enemyName)
+      return m_Enemies[i];
+  }
+  return NULL;
+}

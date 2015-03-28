@@ -82,7 +82,7 @@ CTestGameplay::~CTestGameplay(void) {
   CHECKED_DELETE(m_PhysicUserDataCube);
   CHECKED_DELETE(m_PhysicActorCubeFix);
   // CHECKED_DELETE(m_Granade);
-  CHECKED_DELETE(m_fsmManager);
+// CHECKED_DELETE(m_fsmManager);
 }
 
 void CTestGameplay::Init() {
@@ -189,10 +189,10 @@ void CTestGameplay::Init() {
   std::string toRun = ss.str();
   SCRIPTM->RunCode(toRun.c_str());
   CLuaGlobals::getInstance()->getString();
-  m_fsmManager = new CFSMManager();
+// m_fsmManager = new CFSMManager();
   //m_fsmManager->Load("data//AI//Patrulla.xml");
-  m_fsmManager->Load("data//AI//FSMs.xml");
-  m_fsmManager->Load("data//AI//EnemyFSM.xml");
+// m_fsmManager->Load("data//AI//FSMs.xml");
+// m_fsmManager->Load("data//AI//EnemyFSM.xml");
   SCRIPTM->RunFile("Data/lua/Enemy.lua");
   //m_fsmManager = new CFSMManager();
   //m_WPManager = new CWPManager();
@@ -441,7 +441,7 @@ void CTestGameplay::Update(float dt) {
 //tTerra2_yaw += dt * 80 * 0.005;
 //tlluna1_yaw -= dt * 60 * 0.05;
   m_Dt = dt;
-  m_fsmManager->Update(dt);
+// m_fsmManager->Update(dt);
   RENDLM->Update(dt);
 }
 
