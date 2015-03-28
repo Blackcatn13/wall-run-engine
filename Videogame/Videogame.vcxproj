@@ -100,12 +100,14 @@
     <ClCompile Include="Enemies\PatrolEnemy.cpp" />
     <ClCompile Include="TestCommands.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Granade.cpp" />
     <ClCompile Include="TestGameplay.cpp" />
     <ClCompile Include="Test_Process.cpp" />
     <ClCompile Include="Test_Space.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="videogame.cpp" />
     <ClCompile Include="VideoGame_Process.cpp" />
@@ -118,12 +120,14 @@
     <ClInclude Include="Enemies\PatrolEnemy.h" />
     <ClInclude Include="TestCommands.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="Granade.h" />
     <ClInclude Include="TestGameplay.h" />
     <ClInclude Include="Test_Process.h" />
     <ClInclude Include="Test_Space.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="VideoGame_Process.h" />
   </ItemGroup>

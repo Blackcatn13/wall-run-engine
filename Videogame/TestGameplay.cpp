@@ -48,6 +48,7 @@
 #include "Utils\LuaGlobals.h"
 #include "AI\FSMManager.h"
 #include "AI\WPManager.h"
+#include <sstream>
 
 CTestGameplay::CTestGameplay(void) {
   tTerra1_yaw = 0;
