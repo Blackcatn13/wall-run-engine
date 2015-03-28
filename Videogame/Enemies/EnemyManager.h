@@ -10,27 +10,34 @@
 class CEnemy;
 class CXMLTreeNode;
 
-class CEnemyManager
-{
-private:
-    std::vector<CEnemy *>						m_Enemies;
-    std::string									m_File;
-    std::map<std::string, CXMLTreeNode>			m_Cores;
+class CEnemyManager {
+ private:
+  std::vector<CEnemy *>						m_Enemies;
+  std::string									m_File;
+  std::map<std::string, CXMLTreeNode>			m_Cores;
 
-    CEnemyManager();
-protected:
-    static CEnemyManager*		m_Singleton;
 
-public:
-    ~CEnemyManager();
-    void Init(const std::string &FileName);
-    void Update(float elapsedTime);
-    void Render();
-    void Destroy();
-    void Reload();
-    static CEnemyManager* GetInstance();
-    const CXMLTreeNode & GetCoreEnemy(const std::string &type);
-    void SetPaintEnemies(bool paint);
+ protected:
+  static CEnemyManager		*m_Singleton;
+
+ public:
+  CEnemyManager();
+  ~CEnemyManager();
+  void Init(const std::string &FileName);
+  void Update(float elapsedTime);
+  void Render();
+  void Destroy();
+  void Reload();
+  void InsertEnemy(CEnemy *enemy);
+  CEnemy *GetEnemy(std::string enemyName);
+
+  static CEnemyManager *GetInstance();
+  const CXMLTreeNode &GetCoreEnemy(const std::string &type);
+  void SetPaintEnemies(bool paint);
+  std::vector<CEnemy *> GetEnemies() {
+    return m_Enemies;
+  }
+
 };
 
 #endif

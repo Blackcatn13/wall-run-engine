@@ -37,6 +37,7 @@ CAIController::CAIController(std::string mesh, std::string name, Vect3f position
   m_JumpForce(0),
   m_CurrentJumpForce(0),
   m_isJumping(false),
+  m_Name(name),
   m_Mesh(mesh) {
   std::stringstream ss;
   ss << name << "UserData";

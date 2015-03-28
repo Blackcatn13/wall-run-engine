@@ -96,7 +96,7 @@ end
 local next_wp = Vect3f(0,0,0)
 instance = CLuaGlobalsWrapper().m_CoreInstance;
 
-function mp_enter_stopped()
+function mp_enter_stopped(name)
 	--coreInstance:trace("Parando plataforma");
 	--next_wp = Vect3f(-15,0,-15) 
 	instance.m_string = "Buscar_next_WP_Plaform"
@@ -108,12 +108,12 @@ function mp_exit_stopped()
 
 end
 
-function mp_update_stopped(ElapsedTime)
+function mp_update_stopped(ElapsedTime, name)
 	--core:trace("Update Platform stopped");
 	--instance.m_string = "Buscar_next_WP_Plaform"
 end
 
-function mp_enter_moving()
+function mp_enter_moving(name)
 	--coreInstance:trace("Entering Platform moving State");
 end
 
@@ -121,11 +121,11 @@ function mp_exit_moving()
 	--coreInstance:trace("Exit Moviendo Plataforma");
 end
 
-function mp_update_moving(ElapsedTime)
+function mp_update_moving(ElapsedTime, name)
 	
 	--local player_position = coreInstance:get_player_controller():get_position()
 	--core:trace(tostring(player_position.x));
-	local platform = rol_manager:get_default_renderable_object_manager():get_resource("MovingPlatform001")-- modificar para poder pasarlo por parametro
+	local platform = rol_manager:get_default_renderable_object_manager():get_resource(name)-- modificar para poder pasarlo por parametro
 	if platform ~= nil then
 	
 		platform:move_to_point(ElapsedTime, next_wp, 2)
@@ -159,7 +159,7 @@ local platform_position = _platform:get_position()
 end--]]
 
 
-function mp_enter_calcwp() -- Pasar el nombre de la plataforma y de ahí que recoja el wp que necesita? 
+function mp_enter_calcwp(name) -- Pasar el nombre de la plataforma y de ahí que recoja el wp que necesita? 
 -- OnEnter Buscar_next_WP 
 	--coreInstance:trace("Entering Buscar Platform next WP");
 	--coreInstance:trace(tostring(next_wp.x));
@@ -169,7 +169,7 @@ function mp_enter_calcwp() -- Pasar el nombre de la plataforma y de ahí que rec
 	--	next_wp = Vect3f(15,0,15)
 	--end
 	
-	local platform = rol_manager:get_default_renderable_object_manager():get_resource("MovingPlatform001")
+	local platform = rol_manager:get_default_renderable_object_manager():get_resource(name)
 	if platform ~= nil then
 		next_wp = platform:get_next_wp()
 		--coreInstance:trace(tostring(next_wp.x));
@@ -183,7 +183,7 @@ function mp_exit_calcwp()
 	--core:trace("Saliendo Buscar_next_WP Platform");
 end
 
-function mp_update_calcwp(ElapsedTime)
+function mp_update_calcwp(ElapsedTime, name)
 	--core:trace("Update Buscar_next_WP Platform");
 	--mp_enter_calcwp()
 end
@@ -201,9 +201,9 @@ function update_poly_platform(current_poly_time, dt, platform_name)
 	end
 	local platform_position = platform:get_position()
 	local l_distance = position:distance(platform_position)
-	coreInstance:trace("________________________________________________________")
+	--[[coreInstance:trace("________________________________________________________")
 	coreInstance:trace(tostring(platform.m_Enabled))
-	coreInstance:trace("________________________________________________________")
+	coreInstance:trace("________________________________________________________")--]]
 	if l_distance < platform.m_ActivationDistance then
 		platform.m_Enabled = true
 	else

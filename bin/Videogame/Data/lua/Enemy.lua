@@ -12,6 +12,7 @@ core = CCoreLuaWrapper().m_CoreInstance;
 --local id_path_next_wp
 
 local enemy = CEasyEnemy("Enemy4", "MikMikTest001", Vect3f(-3.0,2.0,10.0), 0.5, 2.0, 13, 0.0)	
+local enemy_manager = core:get_enemy_manager():insert_enemy(enemy)
 local wp1 = Vect3f(-3.0,2.0,15.0) 
 local wp2 = Vect3f(-3.0,2.0,-15.0)
 local currentwp = wp1
@@ -29,7 +30,7 @@ function enemy_exit_stopped()
 	current_time = 0
 end
 
-function enemy_update_stopped(ElapsedTime, doComprobation)
+function enemy_update_stopped(ElapsedTime, doComprobation, name)
 	if enemy ~= nil then
 		if current_time >= 0.1 then
 			instance.m_string = "Andar_WP"
@@ -54,7 +55,7 @@ function enemy_exit_moving()
 	end
 end
 
-function enemy_update_moving(ElapsedTime, doComprobation)
+function enemy_update_moving(ElapsedTime, doComprobation, name)
 	if enemy ~= nil then
 		if currentwp == nil then
 			currentwp = wp1
@@ -98,7 +99,7 @@ function enemy_exit_calcwp()
 	end
 end
 
-function enemy_update_calcwp(ElapsedTime, doComprobation)
+function enemy_update_calcwp(ElapsedTime, doComprobation, name)
 	if enemy ~= nil then
 		--[[if enemy.wp.z == 15 then
 			enemy.wp = Vect3f(2.0,2.0,-15.0)

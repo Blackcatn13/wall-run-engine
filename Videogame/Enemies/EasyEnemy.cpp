@@ -25,9 +25,11 @@ void CEasyEnemy::Init() {
   malla->SetYaw(m_fYaw);
   bool visible = malla->getVisible();
   malla->SetPosition(m_Position);
+  m_Fsm = FSMMGR->GetResource("Enemy");
 }
 
 void CEasyEnemy::Update(float elapsedTime) {
+  UpdateFSM(elapsedTime);
 }
 
 void CEasyEnemy::Render() {
