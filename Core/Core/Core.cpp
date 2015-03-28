@@ -169,8 +169,8 @@ void CCore::Update(float dt) {
   //m_FSMManager->Update(dt);
   //m_PlayerController->Move(dt);
   m_EnemyManager->Update(dt);
-// m_ParticleManager->Update(dt);
-// m_BillboardManager->Update(dt);
+  m_ParticleManager->Update(dt);
+  m_BillboardManager->Update(dt);
 }
 
 
