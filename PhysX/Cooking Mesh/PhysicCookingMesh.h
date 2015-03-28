@@ -58,9 +58,11 @@ class CPhysicCookingMesh {
 
   bool						CreatePhysicMesh	( const std::string &_BinFilename, const std::string &_NameMesh );
   bool						CreatePhysicMesh	( const std::vector<Vect3f> &_Vertices, const std::vector<uint32> &_Faces, const std::string &_NameMesh );
+  bool						CreatePhysicMesh	( void *&_Vertices, void *&_Faces, const unsigned short n_vtx, const unsigned short n_indx, const std::string &_NameMesh );
   bool						SavePhysicMesh		( const std::vector<Vect3f> &_Vertices, const std::vector<uint32> &_Faces, const std::string &_BinFilename );
   bool						CreateMeshFromASE	( std::string _FileName, std::string _Name );
   bool						CookClothMesh		( const NxClothMeshDesc &_Desc, NxStream &_Stream);
+  bool            LoadFromXML (const std::string _FileName);
 
   /* Movido desde private por XMA */
   void						Release				( void );

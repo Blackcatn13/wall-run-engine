@@ -1,5 +1,6 @@
 #define __DONT_INCLUDE_MEM_LEAKS__
 #include <string>
+#include <cstdio>
 
 #include "Utils\Logger.h"
 #include "Utils\BaseUtils.h"
@@ -16,6 +17,7 @@
 #include "Utils\PhysicASELoader.h"
 #include "Cooking Mesh\PhysicCookingMesh.h"
 #include "PhysicsManager.h"
+#include "XML\XMLTreeNode.h"
 
 //--------------------------
 
@@ -152,6 +154,35 @@ bool CPhysicCookingMesh::CreatePhysicMesh (	const std::vector<Vect3f> &_Vertices
 }
 
 //----------------------------------------------------------------------------
+// Creating a PhysicMesh from void buffers
+//----------------------------------------------------------------------------
+bool CPhysicCookingMesh::CreatePhysicMesh (void *&_Vertices, void *&_Faces, const unsigned short n_vtx, const unsigned short n_indx, const std::string &_NameMesh ) {
+  bool isOk = false;
+  std::map<std::string, NxTriangleMesh *>::iterator it = m_TriangleMeshes.find(_NameMesh);
+  if ( it == m_TriangleMeshes.end() ) {
+    // Build physical model
+    NxTriangleMeshDesc triangleMeshDesc;
+    triangleMeshDesc.numVertices			= (NxU32) n_vtx;
+    triangleMeshDesc.numTriangles			= (NxU32) n_indx / 3;
+    triangleMeshDesc.pointStrideBytes		= sizeof(float) * 3;
+    triangleMeshDesc.triangleStrideBytes	= 3 * sizeof(unsigned short);
+    triangleMeshDesc.points					= _Vertices;
+    triangleMeshDesc.triangles				= _Faces;
+    triangleMeshDesc.flags					= NX_MF_16_BIT_INDICES;
+    assert(m_pCooking); //by if the flies...
+    CPhysicMemoryWriteBuffer buf;
+    if (m_pCooking->NxCookTriangleMesh(triangleMeshDesc, buf)) {
+      NxTriangleMesh *l_TriangleMesh = NULL;
+      l_TriangleMesh = m_pPhysicSDK->createTriangleMesh(CPhysicMemoryReadBuffer(buf.data));
+      isOk = (l_TriangleMesh != NULL);
+      if (isOk) {
+        m_TriangleMeshes.insert( std::pair<std::string, NxTriangleMesh *>(_NameMesh, l_TriangleMesh));
+      }
+    }
+  }
+  return isOk;
+}
+//----------------------------------------------------------------------------
 // Save a PhysicMesh in a bin file
 //----------------------------------------------------------------------------
 bool CPhysicCookingMesh::SavePhysicMesh ( const std::vector<Vect3f> &_Vertices, const std::vector<uint32> &_Faces,
@@ -202,4 +233,62 @@ bool CPhysicCookingMesh::CreateMeshFromASE ( std::string _FileName, std::string 
   }
   CPhysicASELoader::close(f);
   return true;
+}
+
+bool ReadMesh(const std::string file, void *&pos, void *&index, unsigned short *n_vtxs, unsigned short *n_idxs) {
+  FILE *f = fopen(file.c_str(), "rb");
+  if (f != NULL) {
+    unsigned short header;
+    fread(&header, sizeof header, 1, f);
+    if (header == 0x55ff) {
+      unsigned short n_mat;
+      fread(&n_mat, sizeof n_mat, 1, f);
+      for (int i = 0; i < n_mat; ++i) {
+        //unsigned short n_vtxs;
+        fread(n_vtxs, sizeof(unsigned short), 1, f);
+        void *pos_aux = (void *)malloc((*n_vtxs) * 3 * sizeof(float));
+        fread(pos_aux, (*n_vtxs) * 3 * sizeof(float), 1, f);
+        //unsigned short n_idxs;
+        fread(n_idxs, sizeof(unsigned short), 1, f);
+        void *index_aux = (void *)malloc((*n_idxs) * sizeof(unsigned short));
+        fread(index_aux, (*n_idxs) * sizeof(unsigned short), 1, f);
+        pos = pos_aux;
+        index = index_aux;
+      }
+      unsigned short footer;
+      fread(&footer, sizeof footer, 1, f);
+      if (footer != 0xff55) {
+        fclose(f);
+        return false;
+      } else
+        fclose(f);
+      return true;
+    }
+  }
+}
+
+bool CPhysicCookingMesh::LoadFromXML(const std::string _FileName) {
+  CXMLTreeNode newFile;
+  if (!newFile.LoadFile(_FileName.c_str())) {
+    printf("ERROR loading the file.");
+  } else {
+    CXMLTreeNode  m = newFile["Physx_meshes"];
+    if (m.Exists()) {
+      int count = m.GetNumChildren();
+      for (int i = 0; i < count; ++i) {
+        std::string name = m(i).GetName();
+        if (name == "Physx_mesh") {
+          void *vertex = 0;
+          void *index = 0;
+          unsigned short n_vtx = 0;
+          unsigned short n_indx = 0;
+          ReadMesh(m(i).GetPszISOProperty("filename", "", false), vertex, index, &n_vtx, &n_indx);
+          CreatePhysicMesh(vertex, index, n_vtx, n_indx, m(i).GetPszISOProperty("name", "", false));
+          delete(vertex);
+          delete(index);
+        }
+      }
+      return true;
+    }
+  }
 }

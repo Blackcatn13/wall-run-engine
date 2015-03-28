@@ -168,6 +168,7 @@ void CTestGameplay::Init() {
   //m_CockMesh->Init(PHYSXM->GetPhysicsSDK(), m_Alloc);
 // PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/VolFinal.ASE", "sceneTraining");
   PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/Level1/trainingPiky2.ASE", "sceneTraining");
+// PHYSXM->GetCookingMesh()->LoadFromXML("./Data/level1/LevelCooking.xml");
   //  m_CockMesh->CreateMeshFromASE("./Data/sceneTrainingPiky.ASE", "sceneTraining");
   m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
   m_PhysicActorCubeFix->AddMeshMap( PHYSXM->GetCookingMesh()->GetPhysicMeshMap());
