@@ -23,105 +23,102 @@ CEngine	*m_Engine = 0;
 // Name: MsgProc()
 // Desc: The window's message handler
 //-----------------------------------------------------------------------------
-LRESULT WINAPI MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam )
-{
-    switch ( msg ) {
+LRESULT WINAPI MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam ) {
+  switch ( msg ) {
     case WM_DESTROY: {
-            PostQuitMessage( 0 );
-            return 0;
-        }
-        break;
+      PostQuitMessage( 0 );
+      return 0;
+    }
+    break;
     case WM_KEYDOWN: {
-            switch ( wParam ) {
-            case VK_ESCAPE:
-                //Cleanup();
-                PostQuitMessage( 0 );
-                return 0;
-                break;
-            }
-        }
-        break;
+      switch ( wParam ) {
+        case VK_ESCAPE:
+          //Cleanup();
+          PostQuitMessage( 0 );
+          return 0;
+          break;
+      }
+    }
+    break;
     case WM_SIZE: {
-            if (m_Engine != 0) {
-                GRAPHM->GetWindowRect(hWnd);
-            }
-        }
-        break;
-    }//end switch( msg )
-    return DefWindowProc( hWnd, msg, wParam, lParam );
+      if (m_Engine != 0) {
+        GRAPHM->GetWindowRect(hWnd);
+      }
+    }
+    break;
+  }//end switch( msg )
+  return DefWindowProc( hWnd, msg, wParam, lParam );
 }
 
-void ShowErrorMessage (const std::string& message)
-{
-    bool logSaved = false;
-    logSaved = LOGGER->SaveLogsInFile();
-    std::string end_message = "";
-    if (logSaved) {
-        end_message += "Sorry, Application failed. Logs saved\n";
-    } else {
-        end_message += "Sorry, Application failed. Logs could not be saved\n";
-    }
-    end_message += message;
-    MessageBox(0, end_message.c_str(), "FlostiProject Report", MB_OK | MB_ICONERROR);
+void ShowErrorMessage (const std::string &message) {
+  bool logSaved = false;
+  logSaved = LOGGER->SaveLogsInFile();
+  std::string end_message = "";
+  if (logSaved) {
+    end_message += "Sorry, Application failed. Logs saved\n";
+  } else {
+    end_message += "Sorry, Application failed. Logs could not be saved\n";
+  }
+  end_message += message;
+  MessageBox(0, end_message.c_str(), "FlostiProject Report", MB_OK | MB_ICONERROR);
 }
 
 //-----------------------------------------------------------------------
 // WinMain
 //-----------------------------------------------------------------------
 
-int APIENTRY WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance, LPSTR _lpCmdLine, int _nCmdShow)
-{
-    AllocConsole();
-    freopen("CONOUT$", "w", stdout);
+int APIENTRY WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance, LPSTR _lpCmdLine, int _nCmdShow) {
+  AllocConsole();
+  freopen("CONOUT$", "w", stdout);
 #ifdef _DEBUG
-    {
-        MemLeaks::MemoryBegin();
-    }
+  {
+    MemLeaks::MemoryBegin();
+  }
 #endif
-    // Register the window class
-    WNDCLASSEX wc = {	sizeof(WNDCLASSEX), CS_CLASSDC, MsgProc, 0L, 0L, GetModuleHandle(NULL), NULL, NULL, NULL, NULL, APPLICATION_NAME, NULL };
-    RegisterClassEx( &wc );
-    try {
-        // Create the application's window
-        m_Engine = new CEngine();
-        m_Engine->ParseConfFile(".\\Data\\Config.xml");
-        CONFIG_INFO l_Conf = m_Engine->getConfig();
-        HWND hWnd = CreateWindow(APPLICATION_NAME, APPLICATION_NAME, WS_OVERLAPPEDWINDOW, l_Conf.Win_posX, l_Conf.Win_posY, l_Conf.Screen_Width, l_Conf.Screen_Heigth, NULL, NULL, wc.hInstance, NULL );
-        // Añadir aquí el Init de la applicacioón
-        ShowWindow( hWnd, SW_SHOWDEFAULT );
-        UpdateWindow( hWnd );
-        MSG msg;
-        ZeroMemory( &msg, sizeof(msg) );
-        //new CVideoGame_Process()
-        //new CTest_Process()
-        CProcess *proc = new CTestGameplay();
-        //CProcess *proc = new CTestCommands();
-        m_Engine->Init(proc, hWnd);
-        proc->Init();
-        // Añadir en el while la condición de salida del programa de la aplicación
-        while ( msg.message != WM_QUIT ) {
-            if ( PeekMessage( &msg, NULL, 0U, 0U, PM_REMOVE ) ) {
-                TranslateMessage( &msg );
-                DispatchMessage( &msg );
-            } else {
-                m_Engine->Update();
-                m_Engine->Render();
-                // Main loop: Añadir aquí el Update y Render de la aplicación principal
-            }
-        }
-    } catch (CException& e) {
-        ShowErrorMessage(e.GetDescription());
-    } catch (...) {
-        ShowErrorMessage("Exception Occured");
+  // Register the window class
+  WNDCLASSEX wc = {	sizeof(WNDCLASSEX), CS_CLASSDC, MsgProc, 0L, 0L, GetModuleHandle(NULL), NULL, NULL, NULL, NULL, APPLICATION_NAME, NULL };
+  RegisterClassEx( &wc );
+  try {
+    // Create the application's window
+    m_Engine = new CEngine();
+    m_Engine->ParseConfFile(".\\Data\\Config.xml");
+    CONFIG_INFO l_Conf = m_Engine->getConfig();
+    HWND hWnd = CreateWindow(APPLICATION_NAME, APPLICATION_NAME, WS_OVERLAPPEDWINDOW, l_Conf.Win_posX, l_Conf.Win_posY, l_Conf.Screen_Width, l_Conf.Screen_Heigth, NULL, NULL, wc.hInstance, NULL );
+    // Añadir aquí el Init de la applicacioón
+    //new CVideoGame_Process()
+    //new CTest_Process()
+    CProcess *proc = new CTestGameplay();
+    //CProcess *proc = new CTestCommands();
+    m_Engine->Init(proc, hWnd);
+    proc->Init();
+    // Añadir en el while la condición de salida del programa de la aplicación
+    ShowWindow( hWnd, SW_SHOWDEFAULT );
+    UpdateWindow( hWnd );
+    MSG msg;
+    ZeroMemory( &msg, sizeof(msg) );
+    while ( msg.message != WM_QUIT ) {
+      if ( PeekMessage( &msg, NULL, 0U, 0U, PM_REMOVE ) ) {
+        TranslateMessage( &msg );
+        DispatchMessage( &msg );
+      } else {
+        m_Engine->Update();
+        m_Engine->Render();
+        // Main loop: Añadir aquí el Update y Render de la aplicación principal
+      }
     }
-    UnregisterClass( APPLICATION_NAME, wc.hInstance );
-    delete m_Engine;
+  } catch (CException &e) {
+    ShowErrorMessage(e.GetDescription());
+  } catch (...) {
+    ShowErrorMessage("Exception Occured");
+  }
+  UnregisterClass( APPLICATION_NAME, wc.hInstance );
+  delete m_Engine;
 #ifdef _DEBUG
-    {
-        MemLeaks::MemoryEnd();
-    }
+  {
+    MemLeaks::MemoryEnd();
+  }
 #endif
-    //  MemLeaks::MemoryEnd();
-    // Añadir una llamada a la alicación para finalizar/liberar memoria de todos sus datos
-    return 0;
+  //  MemLeaks::MemoryEnd();
+  // Añadir una llamada a la alicación para finalizar/liberar memoria de todos sus datos
+  return 0;
 }
