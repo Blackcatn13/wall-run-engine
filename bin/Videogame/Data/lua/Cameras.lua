@@ -128,12 +128,25 @@ function on_update_cameras_lua(l_ElapsedTime)
 					local nextVector = cam:get_path_point(cam.m_nextWaypoint + 1) - cam:get_path_point(cam.m_currentWaypoint + 1);
 					nextVector:normalize(1);
 					nextyaw = math.atan2(nextVector.z,nextVector.x);
+					local diferenciaYaw = math.abs(yaw-nextyaw);
+					if(diferenciaYaw > math.pi) then
+						if(nextyaw < yaw) then
+							nextyaw = nextyaw + 2*math.pi;
+						else
+							yaw = yaw + 2*math.pi;
+						end
+					end
+					coreInstance:trace("nextyaw");
+					coreInstance:trace(tostring(nextyaw));
 					local yawpercent = (percent - (1 - percentToRotation)) / (1 - (1 - percentToRotation));
 					yawpercent = yawpercent / 2;
 					if (percent>1) then
 						yawpercent = 0.5;
 					end
 					yaw = yaw * (1-yawpercent) + nextyaw * yawpercent;
+					if(yaw > math.pi) then
+						yaw = yaw - 2 * math.pi;
+					end
 				end
 			end
 			if(percent < percentToRotation) then
@@ -141,14 +154,27 @@ function on_update_cameras_lua(l_ElapsedTime)
 					local previousVector = cam:get_path_point(cam.m_nextWaypoint - 1) - cam:get_path_point(cam.m_currentWaypoint - 1);
 					previousVector:normalize(1);
 					previousyaw = math.atan2(previousVector.z,previousVector.x);
+					local diferenciaYaw = math.abs(yaw-previousyaw);
+					if(diferenciaYaw > math.pi) then
+						if(previousyaw < yaw) then
+							previousyaw = previousyaw + 2*math.pi;
+						else
+							yaw = yaw + 2 * math.pi;
+						end
+					end
 					local yawpercent = percent / percentToRotation;
 					yawpercent = 0.5 + (yawpercent / 2);
 					if (percent < 0) then
 						yawpercent = 0.5;
 					end
 					yaw = yaw * yawpercent + previousyaw * (1-yawpercent);
+					if(yaw > math.pi) then
+						yaw = yaw - 2 * math.pi;
+					end
 				end
 			end
+			coreInstance:trace("yaw");
+			coreInstance:trace(tostring(yaw));
 			obj:set_yaw(yaw);
 			obj:set_pitch(pitch3D);
 			obj:set_roll(0);
@@ -170,12 +196,23 @@ function on_update_cameras_lua(l_ElapsedTime)
 					nextVector:normalize(1);
 					local nextyaw = math.atan2(nextVector.z,nextVector.x);
 					nextyaw = nextyaw + (math.pi / 2);
+					local diferenciaYaw = math.abs(yaw-nextyaw);
+					if(diferenciaYaw > math.pi) then
+						if(nextyaw < yaw) then
+							nextyaw = nextyaw + 2*math.pi;
+						else
+							yaw = yaw + 2*math.pi;
+						end
+					end
 					local yawpercent = (percent - (1 - percentToRotation)) / (1 - (1 - percentToRotation));
 					yawpercent = yawpercent / 2;
 					if (percent>1) then
 						yawpercent = 0.5;
 					end
 					yaw = yaw * (1-yawpercent) + nextyaw * yawpercent;
+					if(yaw > math.pi) then
+						yaw = yaw - 2 * math.pi;
+					end
 				end
 			end
 			if(percent < percentToRotation) then
@@ -184,12 +221,23 @@ function on_update_cameras_lua(l_ElapsedTime)
 					previousVector:normalize(1);
 					previousyaw = math.atan2(previousVector.z,previousVector.x);
 					previousyaw = previousyaw + (math.pi / 2);
+					local diferenciaYaw = math.abs(yaw-previousyaw);
+					if(diferenciaYaw > math.pi) then
+						if(previousyaw < yaw) then
+							previousyaw = previousyaw + 2*math.pi;
+						else
+							yaw = yaw + 2*math.pi;
+						end
+					end
 					local yawpercent = percent / percentToRotation;
 					yawpercent = 0.5 + (yawpercent / 2);
 					if (percent < 0) then
 						yawpercent = 0.5;
 					end
 					yaw = yaw * yawpercent + previousyaw * (1-yawpercent);
+					if(yaw > math.pi) then
+						yaw = yaw - 2 * math.pi;
+					end
 				end
 			end
 			obj:set_yaw(yaw);
