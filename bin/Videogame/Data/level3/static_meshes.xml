@@ -1,3 +1,102 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <static_meshes>
+	<!-- Fora sala -->
+	<static_mesh filename=".\Data\level5\meshes//Enemy1.mesh" name="Enemy1"/>
+	<static_mesh filename=".\Data\level5\meshes//Enemy2.mesh" name="Enemy2"/>
+	<static_mesh filename=".\Data\level5\meshes//Enemy3.mesh" name="Enemy3"/>
+	<!-- -->
+	<static_mesh name="ARCADA" filename="Data\level3\meshes\ARCADA.mesh"/>
+	<static_mesh name="SOTRE_PARED" filename="Data\level3\meshes\SOTRE_PARED.mesh"/>
+	<static_mesh name="Cylinder001" filename="Data\level3\meshes\Cylinder001.mesh"/>
+	<static_mesh name="PARED_23" filename="Data\level3\meshes\PARED_23.mesh"/>
+	<static_mesh name="PARED_13" filename="Data\level3\meshes\PARED_13.mesh"/>
+	<static_mesh name="PARED_11" filename="Data\level3\meshes\PARED_11.mesh"/>
+	<static_mesh name="PARED22" filename="Data\level3\meshes\PARED22.mesh"/>
+	<static_mesh name="PARED21" filename="Data\level3\meshes\PARED21.mesh"/>
+	<static_mesh name="PARED20" filename="Data\level3\meshes\PARED20.mesh"/>
+	<static_mesh name="PARED19" filename="Data\level3\meshes\PARED19.mesh"/>
+	<static_mesh name="PARED18" filename="Data\level3\meshes\PARED18.mesh"/>
+	<static_mesh name="PARED17" filename="Data\level3\meshes\PARED17.mesh"/>
+	<static_mesh name="PARED16" filename="Data\level3\meshes\PARED16.mesh"/>
+	<static_mesh name="PARED15" filename="Data\level3\meshes\PARED15.mesh"/>
+	<static_mesh name="PARED14" filename="Data\level3\meshes\PARED14.mesh"/>
+	<static_mesh name="PARED12" filename="Data\level3\meshes\PARED12.mesh"/>
+	<static_mesh name="PARED10" filename="Data\level3\meshes\PARED10.mesh"/>
+	<static_mesh name="PARED9" filename="Data\level3\meshes\PARED9.mesh"/>
+	<static_mesh name="PARED8" filename="Data\level3\meshes\PARED8.mesh"/>
+	<static_mesh name="PARED6" filename="Data\level3\meshes\PARED6.mesh"/>
+	<static_mesh name="PARED5" filename="Data\level3\meshes\PARED5.mesh"/>
+	<static_mesh name="PARED4" filename="Data\level3\meshes\PARED4.mesh"/>
+	<static_mesh name="PARED3" filename="Data\level3\meshes\PARED3.mesh"/>
+	<static_mesh name="PARED2" filename="Data\level3\meshes\PARED2.mesh"/>
+	<static_mesh name="PARED1" filename="Data\level3\meshes\PARED1.mesh"/>
+	<static_mesh name="SUPORT ANTORCHA_018" filename="Data\level3\meshes\SUPORT ANTORCHA_018.mesh"/>
+	<static_mesh name="ANTORCHA_018" filename="Data\level3\meshes\ANTORCHA_018.mesh"/>
+	<static_mesh name="COLUMNA_INTERIOR_020" filename="Data\level3\meshes\COLUMNA_INTERIOR_020.mesh"/>
+	<static_mesh name="SUPORT ANTORCHA_030" filename="Data\level3\meshes\SUPORT ANTORCHA_030.mesh"/>
+	<static_mesh name="COLUMNA_INTERIOR_032" filename="Data\level3\meshes\COLUMNA_INTERIOR_032.mesh"/>
+	<static_mesh name="ANTORCHA_030" filename="Data\level3\meshes\ANTORCHA_030.mesh"/>
+	<static_mesh name="ANTORCHA_023" filename="Data\level3\meshes\ANTORCHA_023.mesh"/>
+	<static_mesh name="SUPORT ANTORCHA_024" filename="Data\level3\meshes\SUPORT ANTORCHA_024.mesh"/>
+	<static_mesh name="COLUMNA_INTERIOR_026" filename="Data\level3\meshes\COLUMNA_INTERIOR_026.mesh"/>
+	<static_mesh name="ANTORCHA_027" filename="Data\level3\meshes\ANTORCHA_027.mesh"/>
+	<static_mesh name="SUPORT ANTORCHA_028" filename="Data\level3\meshes\SUPORT ANTORCHA_028.mesh"/>
+	<static_mesh name="COLUMNA_INTERIOR_030" filename="Data\level3\meshes\COLUMNA_INTERIOR_030.mesh"/>
+	<static_mesh name="SUPORT ANTORCHA_027" filename="Data\level3\meshes\SUPORT ANTORCHA_027.mesh"/>
+	<static_mesh name="ANTORCHA_026" filename="Data\level3\meshes\ANTORCHA_026.mesh"/>
+	<static_mesh name="COLUMNA_INTERIOR_029" filename="Data\level3\meshes\COLUMNA_INTERIOR_029.mesh"/>
+	<static_mesh name="ANTORCHA_025" filename="Data\level3\meshes\ANTORCHA_025.mesh"/>
+	<static_mesh name="SUPORT ANTORCHA_026" filename="Data\level3\meshes\SUPORT ANTORCHA_026.mesh"/>
+	<static_mesh name="COLUMNA_INTERIOR_028" filename="Data\level3\meshes\COLUMNA_INTERIOR_028.mesh"/>
+	<static_mesh name="SUPORT ANTORCHA_025" filename="Data\level3\meshes\SUPORT ANTORCHA_025.mesh"/>
+	<static_mesh name="ANTORCHA_024" filename="Data\level3\meshes\ANTORCHA_024.mesh"/>
+	<static_mesh name="COLUMNA_INTERIOR_027" filename="Data\level3\meshes\COLUMNA_INTERIOR_027.mesh"/>
+	<static_mesh name="COLUMNA_INTERIOR_023" filename="Data\level3\meshes\COLUMNA_INTERIOR_023.mesh"/>
+	<static_mesh name="SUPORT ANTORCHA_021" filename="Data\level3\meshes\SUPORT ANTORCHA_021.mesh"/>
+	<static_mesh name="ANTORCHA_028" filename="Data\level3\meshes\ANTORCHA_028.mesh"/>
+	<static_mesh name="ANTORCHA_022" filename="Data\level3\meshes\ANTORCHA_022.mesh"/>
+	<static_mesh name="SUPORT ANTORCHA_023" filename="Data\level3\meshes\SUPORT ANTORCHA_023.mesh"/>
+	<static_mesh name="COLUMNA_INTERIOR_025" filename="Data\level3\meshes\COLUMNA_INTERIOR_025.mesh"/>
+	<static_mesh name="SUPORT ANTORCHA_022" filename="Data\level3\meshes\SUPORT ANTORCHA_022.mesh"/>
+	<static_mesh name="ANTORCHA_021" filename="Data\level3\meshes\ANTORCHA_021.mesh"/>
+	<static_mesh name="COLUMNA_INTERIOR_024" filename="Data\level3\meshes\COLUMNA_INTERIOR_024.mesh"/>
+	<static_mesh name="COLUMNA_INTERIOR_022" filename="Data\level3\meshes\COLUMNA_INTERIOR_022.mesh"/>
+	<static_mesh name="SUPORT ANTORCHA_020" filename="Data\level3\meshes\SUPORT ANTORCHA_020.mesh"/>
+	<static_mesh name="ANTORCHA_020" filename="Data\level3\meshes\ANTORCHA_020.mesh"/>
+	<static_mesh name="COLUMNA_INTERIOR_031" filename="Data\level3\meshes\COLUMNA_INTERIOR_031.mesh"/>
+	<static_mesh name="SUPORT ANTORCHA_029" filename="Data\level3\meshes\SUPORT ANTORCHA_029.mesh"/>
+	<static_mesh name="ANTORCHA_029" filename="Data\level3\meshes\ANTORCHA_029.mesh"/>
+	<static_mesh name="ANTORCHA_014" filename="Data\level3\meshes\ANTORCHA_014.mesh"/>
+	<static_mesh name="SUPORT ANTORCHA_015" filename="Data\level3\meshes\SUPORT ANTORCHA_015.mesh"/>
+	<static_mesh name="COLUMNA_INTERIOR_017" filename="Data\level3\meshes\COLUMNA_INTERIOR_017.mesh"/>
+	<static_mesh name="SUPORT ANTORCHA_014" filename="Data\level3\meshes\SUPORT ANTORCHA_014.mesh"/>
+	<static_mesh name="ANTORCHA_015" filename="Data\level3\meshes\ANTORCHA_015.mesh"/>
+	<static_mesh name="COLUMNA_INTERIOR_016" filename="Data\level3\meshes\COLUMNA_INTERIOR_016.mesh"/>
+	<static_mesh name="ANTORCHA_012" filename="Data\level3\meshes\ANTORCHA_012.mesh"/>
+	<static_mesh name="SUPORT ANTORCHA_013" filename="Data\level3\meshes\SUPORT ANTORCHA_013.mesh"/>
+	<static_mesh name="COLUMNA_INTERIOR_015" filename="Data\level3\meshes\COLUMNA_INTERIOR_015.mesh"/>
+	<static_mesh name="SUPORT ANTORCHA_012" filename="Data\level3\meshes\SUPORT ANTORCHA_012.mesh"/>
+	<static_mesh name="ANTORCHA_013" filename="Data\level3\meshes\ANTORCHA_013.mesh"/>
+	<static_mesh name="COLUMNA_INTERIOR_014" filename="Data\level3\meshes\COLUMNA_INTERIOR_014.mesh"/>
+	<static_mesh name="ANTORCHA_010" filename="Data\level3\meshes\ANTORCHA_010.mesh"/>
+	<static_mesh name="SUPORT ANTORCHA_011" filename="Data\level3\meshes\SUPORT ANTORCHA_011.mesh"/>
+	<static_mesh name="COLUMNA_INTERIOR_013" filename="Data\level3\meshes\COLUMNA_INTERIOR_013.mesh"/>
+	<static_mesh name="SUPORT ANTORCHA_016" filename="Data\level3\meshes\SUPORT ANTORCHA_016.mesh"/>
+	<static_mesh name="COLUMNA_INTERIOR_018" filename="Data\level3\meshes\COLUMNA_INTERIOR_018.mesh"/>
+	<static_mesh name="ANTORCHA_016" filename="Data\level3\meshes\ANTORCHA_016.mesh"/>
+	<static_mesh name="ANTORCHA_008" filename="Data\level3\meshes\ANTORCHA_008.mesh"/>
+	<static_mesh name="SUPORT ANTORCHA_009" filename="Data\level3\meshes\SUPORT ANTORCHA_009.mesh"/>
+	<static_mesh name="COLUMNA_INTERIOR_011" filename="Data\level3\meshes\COLUMNA_INTERIOR_011.mesh"/>
+	<static_mesh name="SUPORT ANTORCHA_008" filename="Data\level3\meshes\SUPORT ANTORCHA_008.mesh"/>
+	<static_mesh name="ANTORCHA_009" filename="Data\level3\meshes\ANTORCHA_009.mesh"/>
+	<static_mesh name="COLUMNA_INTERIOR_010" filename="Data\level3\meshes\COLUMNA_INTERIOR_010.mesh"/>
+	<static_mesh name="COLUMNA_INTERIOR_004" filename="Data\level3\meshes\COLUMNA_INTERIOR_004.mesh"/>
+	<static_mesh name="SUPORT ANTORCHA_002" filename="Data\level3\meshes\SUPORT ANTORCHA_002.mesh"/>
+	<static_mesh name="ANTORCHA_002" filename="Data\level3\meshes\ANTORCHA_002.mesh"/>
+	<static_mesh name="COLUMNA_INTERIOR_007" filename="Data\level3\meshes\COLUMNA_INTERIOR_007.mesh"/>
+	<static_mesh name="SUPORT ANTORCHA_005" filename="Data\level3\meshes\SUPORT ANTORCHA_005.mesh"/>
+	<static_mesh name="ANTORCHA_005" filename="Data\level3\meshes\ANTORCHA_005.mesh"/>
+	<static_mesh name="SUPORT ANTORCHA_019" filename="Data\level3\meshes\SUPORT ANTORCHA_019.mesh"/>
+	<static_mesh name="ANTORCHA_019" filename="Data\level3\meshes\ANTORCHA_019.mesh"/>
+	<static_mesh name="COLUMNA_INTERIOR_021" filename="Data\level3\meshes\COLUMNA_INTERIOR_021.mesh"/>
 </static_meshes>

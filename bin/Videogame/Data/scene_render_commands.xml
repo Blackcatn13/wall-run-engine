@@ -15,8 +15,8 @@
 	<set_axis />
 	-->
 	
-	<set_pool_renderable_objects_technique pool="generate_shadow_map_renderable_obejcts_technique"/>
-	<generate_shadow_maps />
+	<!--<set_pool_renderable_objects_technique pool="generate_shadow_map_renderable_obejcts_technique"/>
+	<generate_shadow_maps />-->
 	
 	<set_pool_renderable_objects_technique pool="generate_deferred_shading_pool_renderable_object_technique"/>
 
@@ -70,7 +70,7 @@
 	<!--<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>-->
 	
 
-	<check_active_poly />
+	<!--<check_active_poly />
 	<render_scene layer="poly" active="true" />
 
 	<render_scene layer="poly" active="true" />
@@ -83,8 +83,8 @@
 	<disable_alpha_blend />
 	
 	
-	<render_debug_scene layer="phisics" active="true" paint_cooking_mesh="true" cooking_mesh_name="fixbox" />
-	<particle_render/>
+	<render_debug_scene layer="phisics" active="true" paint_cooking_mesh="false" cooking_mesh_name="fixbox" />
+	<particle_render/>-->
 	
 	<!--Fog-->
 <!--	<enable_alpha_blend blendOp ="add" blendSrc="srcalpha" destBlend="invsrcalpha" />
@@ -99,13 +99,13 @@
 	<!-- Bloom pas 1	-->
 	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
 	
-	<capture_frame_buffer>
+	<!--<capture_frame_buffer>
 			<dynamic_texture stage_id="0" name="BloomCombineTexture1" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 	</capture_frame_buffer>
 	<set_pool_renderable_objects_technique pool="apply_bloomeffect"/>
 	<render_draw_quad technique_name="BloomEffect">
 			<texture stage_id="0" file="DiffuseMapTexture"/>
-	</render_draw_quad>	
+	</render_draw_quad>-->
 	
 	
 	
@@ -113,7 +113,7 @@
 	<!-- Bloom pas 2	-->
 	<!-- ///////////////////////////-///////////////////////////////////////////////////////////////////// -->
 	
-	<capture_frame_buffer>
+	<!--<capture_frame_buffer>
 		<dynamic_texture stage_id="0" name="SceneTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 	</capture_frame_buffer>
 	
@@ -132,7 +132,7 @@
 	
 	<capture_frame_buffer>
 		<dynamic_texture stage_id="0" name="TextureToCombine" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
-	</capture_frame_buffer>
+	</capture_frame_buffer>-->
 	
 	
 	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -187,12 +187,12 @@
 	<!-- Bloom pas 3 -->
 	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
 	
-	<disable_alpha_blend/>
+	<!--<disable_alpha_blend/>
 	<set_pool_renderable_objects_technique pool="apply_combinebloomeffect"/>
 	<render_draw_quad>
 			<texture stage_id="0" file="BloomCombineTexture1"/>
 			<texture stage_id="1" file="TextureToCombine"/>
-	</render_draw_quad>
+	</render_draw_quad>-->
 	
 	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
 	
@@ -210,7 +210,7 @@
 	<set_pool_renderable_objects_technique pool="dummy_manager"/>
 	<render_scene layer="solid" active="true"/>
 	-->
-	<capture_frame_buffer>
+	<!--<capture_frame_buffer>
 		<dynamic_texture stage_id="0" name="FrameBuffer" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 	</capture_frame_buffer>
 	<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>
@@ -219,7 +219,7 @@
 		<texture stage_id="0" file="FrameBuffer"/>
 		<texture stage_id="1" file="./data/level1/textures/noise2d.png" load_file="true"/>
 		<texture stage_id="2" file="./data/level1/textures/Vignetting.tga" load_file="true"/>
-	</render_draw_quad>
+	</render_draw_quad>-->
 
 	<!--<enable_z_test/> -->
 
