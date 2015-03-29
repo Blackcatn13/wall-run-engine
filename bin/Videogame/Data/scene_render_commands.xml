@@ -69,7 +69,7 @@
 
 	<!--<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>-->
 	
-
+	<render_debug_scene layer="phisics" active="true" paint_cooking_mesh="false" cooking_mesh_name="fixbox" />
 	<!--<check_active_poly />
 	<render_scene layer="poly" active="true" />
 
@@ -83,7 +83,7 @@
 	<disable_alpha_blend />
 	
 	
-	<render_debug_scene layer="phisics" active="true" paint_cooking_mesh="false" cooking_mesh_name="fixbox" />
+
 	<particle_render/>-->
 	<!--Fog-->
 <!--	<enable_alpha_blend blendOp ="add" blendSrc="srcalpha" destBlend="invsrcalpha" />

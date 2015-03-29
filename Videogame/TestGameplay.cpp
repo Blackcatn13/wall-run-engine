@@ -170,7 +170,7 @@ void CTestGameplay::Init() {
 // PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/VolFinal.ASE", "sceneTraining");
   //PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/Level1/trainingPiky2.ASE", "sceneTraining");
   //PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/Sala0.ASE", "sceneTraining");
-  PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/VolFinal.ASE", "sceneTraining");
+  PHYSXM->GetCookingMesh()->CreateMeshFromASE(CCORE->getLevelPhisicsFile(), "sceneTraining");
   //PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/Level1/trainingPiky2.ASE", "sceneTraining");
 // PHYSXM->GetCookingMesh()->LoadFromXML("./Data/level1/LevelCooking.xml");
   //  m_CockMesh->CreateMeshFromASE("./Data/sceneTrainingPiky.ASE", "sceneTraining");

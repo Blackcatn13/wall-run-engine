@@ -104,6 +104,7 @@ void CCore::Init(HWND handler) {
   m_PlayerController = new CPlayerController();
   m_TriggerManager->LoadTriggers("./Data/triggers.xml");
   m_LuaLoadLevelFunc = m_Config.LuaLevelObjectsFunc;
+  m_LevelPhisicsFile = m_Config.LevelPhisics;
   m_BillboardManager = new CBillboardManager();
   m_BillboardManager->Load("./Data/billboards.xml");
   m_ParticleManager = new CParticleManager();

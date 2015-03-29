@@ -99,6 +99,7 @@ class CCore {
   CLogRender                         *m_LogRender;
   std::string							m_LuaLoadLevelFunc;
   std::string							m_LuaCameras;
+  std::string							m_LevelPhisicsFile;
   // CMapManager<CStaticPlatform>	*		m_PlatformsMap;
 // CWPManager							*m_WPManager;
   CEnemyManager						*m_EnemyManager;
@@ -219,6 +220,7 @@ class CCore {
   }
 
   GET_SET(std::string, LuaLoadLevelFunc)
+  GET_SET(std::string, LevelPhisicsFile)
 
   /*  CMapManager<CStaticPlatform>	*GetPlatformsMap()
     {
