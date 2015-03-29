@@ -59,7 +59,10 @@ function on_update_scripted_controller(l_ElapsedTime)
 			camObject:set_yaw(camObject:get_yaw() + deltaX * l_ElapsedTime);
 		end
 		if act2in:do_action_from_lua("pitch", deltaY) then
-			camObject:set_pitch(camObject:get_pitch() + deltaY * l_ElapsedTime);
+			local new_pitch = camObject:get_pitch() + deltaY * l_ElapsedTime
+			if  new_pitch > -1.0 and new_pitch <0.5 then
+				camObject:set_pitch(new_pitch);
+			end
 		end
 		local yaw = camObject: get_yaw();
 
