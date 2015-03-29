@@ -7,6 +7,8 @@ function init_level(a)
 	init_poly_platform("PolyPlatform001","Poly001UserData", Vect3f(2,0.5,2), Vect3f(0,0.8,0), false, 3.0)
 	--breakable_platform1 = init_breakable_platform("Box004", "Box004UserData", Vect3f(2,0.5,2), Vect3f(0,0.5,0), "BreakablePlatform_test")	
 	--]]
+	local player = Player:get_instance()
+	player.get_player_controller():set_position(Vect3f(0.432929, 3.000000, -0.654716));
 	local enemy = Enemy.new(Vect3f(-3.0,2.0,10.0), "MikMik")	
 	set_enemy(enemy)
 	return 0

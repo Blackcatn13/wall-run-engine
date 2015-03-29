@@ -11,8 +11,28 @@ function activate_teleport(player_position)
 		
 	camera.m_pObject3D:set_position(Vect3f(camera.m_pObject3D:get_position().x, camera.m_pObject3D:get_position().y, vec3f_array.z - 10))
 	--camera.m_pObject3D:set_position(Vect3f(3.118870, 20.0, 271.008423))
-	
-	
+end
+
+function trigger_change_view()
+	local player = coreInstance:get_player_controller();
+	if player.m_is3D == true then 
+		player.m_is3D = false;
+		local cam = coreInstance.m_CameraController:get_resource("3DCam");
+		cam.m_eTypeCamera = 5;
+		coreInstance.m_CameraController:set_active_camera("3DCam");
+	else
+		player.m_is3D = true;
+		local cam = coreInstance.m_CameraController:get_resource("3DCam");
+		cam.m_eTypeCamera = 6;
+		coreInstance.m_CameraController:set_active_camera("3DCam");
+	end	
+end
+
+function trigger_set_3D()
+	local player = coreInstance:get_player_controller();
+	player.m_is3D = true;
+	coreInstance.m_CameraController:set_active_camera("3DCam");
+
 end
 
 function activate_trigger_update(trigger_name)

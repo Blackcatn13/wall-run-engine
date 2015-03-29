@@ -13,8 +13,8 @@ core = CCoreLuaWrapper().m_CoreInstance;
 
 local enemy = CEasyEnemy("Enemy4", "MikMikTest001", Vect3f(-3.0,2.0,10.0), 0.1, 2.5, 13, 0.0)	
 local enemy_manager = core:get_enemy_manager():insert_enemy(enemy)
-local wp1 = Vect3f(-3.0,2.0,15.0) 
-local wp2 = Vect3f(-3.0,2.0,-15.0)
+local wp1 = Vect3f(-3.0,2.0,10.0) 
+local wp2 = Vect3f(-3.0,2.0,-10.0)
 local currentwp = wp1
 local instance = CLuaGlobalsWrapper().m_CoreInstance;
 --[[function set_enemy(_enemy)

@@ -121,7 +121,7 @@ void CTestGameplay::Init() {
   CAMCONTM->AddNewCamera("2DCam", m_2DCamera);
   CAMCONTM->AddNewCamera("ThPS", m_ThPSCamera1);
   //m_CameraController->AddNewCamera("ThPS", m_ThPSCamera1);
-  CAMCONTM->setActiveCamera("ThPSESF");
+  CAMCONTM->setActiveCamera("ThPS");
   SCRIPTM->RunCode("on_init_cameras_lua()");
   m_Camera = CAMCONTM->getActiveCamera();
   Vect3f l_eye = m_Camera->GetEye();

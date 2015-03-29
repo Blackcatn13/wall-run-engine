@@ -107,6 +107,7 @@ void RegisterCameraController() {
     .def("update", (void (CCameraController::*)(float dt)) & CCameraController::Update)
     .def("update", (void (CCameraController::*)(std::string, float)) & CCameraController::Update)
     .def("get_active_camera", & CCameraController::getActiveCamera)
+    .def("get_camera_name", & CCameraController::GetCameraName)
     .def("set_active_camera", (void (CCameraController::*)(CCamera * cam)) & CCameraController::setActiveCamera)
     .def("set_active_camera", (void (CCameraController::*)(std::string cam)) & CCameraController::setActiveCamera)
     //CINEMATICS

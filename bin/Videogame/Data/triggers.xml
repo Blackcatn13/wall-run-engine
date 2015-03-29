@@ -34,6 +34,13 @@
 	<trigger name="SpikesTrigger001" position="3.64 0.5 180.0" shape="box" size="10.0 10.0 0.5" type_event="enter" script_function="set_player_respawn_spikes_point" group="3" paint="true" color="0.0 0.0 1.0" />
 	<trigger name="SpikesTrigger002" position="3.64 0.5 260.0" shape="box" size="10.0 10.0 0.5" type_event="enter" script_function="set_player_respawn_spikes_point" group="3" paint="true" color="0.0 0.0 1.0" />
 	
+	
+	
+<trigger name="TriggerCam001" platform_name="" position="19.685730 0.000000 0.627625" shape="box" size="0.352905 6.61286 8.30127" type_event="enter" script_function="trigger_set_3D" param1="" group="3" paint="true" color="1.0 1.0 0.5"/>
+<trigger name="TriggerCam002" platform_name="" position="133.307861 0.000000 11.385376" shape="box" size="0.161621 7.014 6.93677" type_event="enter" script_function="trigger_change_view" param1="" group="3" paint="true" color="1.0 1.0 0.5"/>
+<trigger name="TriggerCam003" platform_name="" position="351.445679 8.848907 9.600783" shape="box" size="0.286804 8.1295 9.87744" type_event="enter" script_function="trigger_change_view" param1="" group="3" paint="true" color="1.0 1.0 0.5"/>
+<trigger name="TriggerCam004" platform_name="" position="482.550903 15.107889 -64.058060" shape="box" size="21.436 7.05036 1.23926" type_event="enter" script_function="trigger_change_view" param1="" group="3" paint="true" color="1.0 1.0 0.5"/>
+	
 	<!--<trigger name="BreakablePlatform_test" platform_name = "BreakablePlatform001" position="2.000000 7.000000 -3.000000" shape="box" size="2.0 0.5 2.0" type_event="enter" script_function="activate_trigger_update" param1="BreakablePlatform_test"
 	max_time="3" update_function="update_break_platform" group="3" paint="true" color="1.0 0.0 0.0" />
 	
