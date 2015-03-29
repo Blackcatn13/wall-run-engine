@@ -187,7 +187,7 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt)
 			}
 			else
 			{
-				PLAYC->setGravity(2.0);
+				PLAYC->setGravity(11.0);
 			}
 		}
 	}

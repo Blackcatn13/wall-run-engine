@@ -124,7 +124,7 @@ void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
 			}
 			else
 			{
-				PLAYC->setGravity(2.0);
+				PLAYC->setGravity(11.0);
 			}
 		}
 	}
