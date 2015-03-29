@@ -30,6 +30,7 @@
 	<static_mesh name="PARED3" filename="Data\level3\meshes\PARED3.mesh"/>
 	<static_mesh name="PARED2" filename="Data\level3\meshes\PARED2.mesh"/>
 	<static_mesh name="PARED1" filename="Data\level3\meshes\PARED1.mesh"/>
+	<static_mesh name="PARED100" filename="Data\level3\meshes\PARED100.mesh"/>
 	<static_mesh name="SUPORT ANTORCHA_018" filename="Data\level3\meshes\SUPORT ANTORCHA_018.mesh"/>
 	<static_mesh name="ANTORCHA_018" filename="Data\level3\meshes\ANTORCHA_018.mesh"/>
 	<static_mesh name="COLUMNA_INTERIOR_020" filename="Data\level3\meshes\COLUMNA_INTERIOR_020.mesh"/>

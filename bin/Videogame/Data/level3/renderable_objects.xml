@@ -37,8 +37,8 @@
 	<mesh_instance name="PARED4" core="PARED4" pos="-18.793663 4.002563 -44.473488" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false"/>
 	<mesh_instance name="PARED3" core="PARED3" pos="-6.521683 4.002563 -48.020195" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false"/>
 	<mesh_instance name="PARED2" core="PARED2" pos="6.277786 4.000115 -48.052406" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false"/>
-	<mesh_instance name="PARED1" core="PARED1" pos="23.598122 4.000113 -41.180420" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false"/>
-	<mesh_instance name="PARED1" core="OK" pos="-45.262291 4.002568 -18.082367" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false"/>
+	<mesh_instance name="PARED100" core="PARED100" pos="23.598122 4.000113 -41.180420" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false"/>
+	<mesh_instance name="PARED1" core="PARED1" pos="-45.262291 4.002568 -18.082367" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false"/>
 	<mesh_instance name="SUPORT ANTORCHA_018" core="SUPORT ANTORCHA_018" pos="137.488785 3.739168 48.462517" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false"/>
 	<mesh_instance name="ANTORCHA_018" core="ANTORCHA_018" pos="137.518829 3.568788 47.984917" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false"/>
 	<mesh_instance name="COLUMNA_INTERIOR_020" core="COLUMNA_INTERIOR_020" pos="137.488785 0.000004 49.662514" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false"/>

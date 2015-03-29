@@ -109,7 +109,6 @@ void CAnimatedInstanceModel::Update(float ElapsedTime) {
 void CAnimatedInstanceModel::Render(CGraphicsManager *RM) {
   //TODO renderObject?
   RM->SetTransform(getTransform());
-  RM->DrawAxis(8.0f);
   RenderModelByHardware(RM);
 }
 
