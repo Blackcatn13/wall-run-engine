@@ -8,11 +8,11 @@
 	<layer name="poly" />
 	<layer name="enabled_poly" />
 	
-	<mesh_instance layer="solid" name="Plane001" core="Plane001" pos="-3.989277 0.000000 132.427643" yaw="-1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
-	<mesh_instance name="Wall001" core="Wall001" pos="-27.166157 0.000000 186.038467" yaw="-1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
-	<animated_model name="SpongePicky" core="piky" pos="0 0 20" yaw="1.7" pitch="0" roll="0" scale="1 1 1"/>
-	<animated_model name="piky" core="piky" pos="0 0 0" yaw="1.7" pitch="0" roll="0" scale="10 10 10"/>
-	<animated_model name="thug1" core="chuky" pos="0 0 40" yaw="1.7" pitch="0" roll="0" scale="10 10 10"/>
+	<mesh_instance layer="solid" name="Plane001" core="Plane001" pos="-3.989277 0.000000 132.427643" yaw="3.14159" pitch="0.0" roll="0.0" scale="0.8 1.0 1.0"/>
+	<mesh_instance name="Wall001" core="Wall001" pos="-26.832058 0.000000 186.038467" yaw="3.14159" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	<animated_model name="SpongePicky" core="piky" pos="0 0 0" yaw="1.7" pitch="0" roll="0" scale="1 1 1"/>
+	<animated_model name="piky" core="piky" pos="0 0 30" yaw="1.7" pitch="0" roll="0" scale="10 10 10"/>
+	<animated_model name="thug1" core="chuky" pos="0 0 60" yaw="1.7" pitch="0" roll="0" scale="10 10 10"/>
 
 	<!--<mesh_instance name="StaticPlatform001" core="StaticPlatform001"  pos="0.254572 0.000000 44.531910" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<mesh_instance name="StaticPlatform002" core="StaticPlatform002"  pos="10.216469 1.000000 60.109650" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />

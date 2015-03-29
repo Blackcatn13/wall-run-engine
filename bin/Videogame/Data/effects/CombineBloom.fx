@@ -3,9 +3,9 @@
 #include "VertexTypes.fxh"
 
 float OriginalIntensity = 1.0;
-float BloomSaturation = 1.0;
+float BloomSaturation = 0.6;
 float OriginalSaturation = 1.0;
-float BloomIntensity = 2.0;
+float BloomIntensity = 1.0;
 
 // This combines the bloom texture with the original scene texture.
 

@@ -3,7 +3,7 @@
 #include "VertexTypes.fxh"
 
 float BloomThreshold = 0.9;
-float BloomIntensity = 3.0;
+float BloomIntensity = 1.0;
 
 //float4 BloomPixelShader(float2 texCoord : TEXCOORD0) : COLOR0
 float4 BloomPixelShader(in float2 UV:TEXCOORD0) : COLOR

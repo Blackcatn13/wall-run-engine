@@ -190,7 +190,6 @@ void CSceneRendererCommandManager::Load(const std::string &FileName) {
           CParticleRendererCommand *l_Command = new CParticleRendererCommand(m(i));
           m_SceneRendererCommands.AddResource(l_Name, l_Command);
         }
-
         if (name == "check_active_poly") {
           CCheckEnabledPolyRenderCommand *l_Command = new CCheckEnabledPolyRenderCommand(m(i));
           m_SceneRendererCommands.AddResource(l_Name, l_Command);
