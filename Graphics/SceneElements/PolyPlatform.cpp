@@ -122,3 +122,73 @@ void CPolyPlatform::Update(float ElapsedTime) {
   SCRIPTM->RunCode(toRun.c_str());
 }
 
+
+void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) 
+{
+	direction = direction.Normalize();
+	SCollisionInfo info = SCollisionInfo();
+	Vect3f l_playerPosition = PLAYC->GetPosition();
+	Vect3f dirRay = (m_Position - l_playerPosition);
+	//solo hacemos los calculos de colisiones si la plataforma esta a una distancia minima (optimización)
+	if (abs(dirRay.x) + abs(dirRay.z) < 8)
+	{
+		//para saber si es movimiento horizontal o vertical
+		if ((abs(direction.z) + abs(direction.x)) > abs(direction.y))
+		{
+			dirRay.Normalize();
+			Vect3f dirRayBounding = dirRay * 0.4;
+			CPhysicUserData *hit = CCORE->GetPhysicsManager()->RaycastClosestActor(Vect3f(l_playerPosition.x + dirRayBounding.x, l_playerPosition.y + dirRayBounding.y, l_playerPosition.z + dirRayBounding.z),
+									dirRay, 0xffffffff, info);
+
+			//Intentando arreglar que al saltar debajado de la plataforma el personaje se queda incrustado
+			if ((dirRay.y > (0.15)) && (hit != NULL && hit->getName().substr(0, 6) == "Moving" && info.m_fDistance <= 0.9)) {
+			PLAYC->getPhysicController()->Move(Vect3f(0.0, -1.0, 0.0) * m_Speed    * dt , dt);
+			PLAYC->setCurrentJumpForce(0.0);
+			PLAYC->setisJumping(false);
+			PLAYC->setisGrounded(false);
+			} 
+			else if (hit != NULL && hit->getName().substr(0, 4) == "Poly" && info.m_fDistance <= 0.8) {
+			PLAYC->getPhysicController()->Move(direction.Normalize() * m_Speed * dt / 1.0, dt);
+			}
+		 }
+		else
+		{
+			 dirRay.Normalize();
+			//Vect3f dirRayBounding = dirRay * 0.4;
+			Vect3f dirRayBounding = Vect3f(0,-0.4,0);
+			CPhysicUserData* hit = CCORE->GetPhysicsManager()->RaycastClosestActor(Vect3f(l_playerPosition.x + dirRayBounding.x, l_playerPosition.y + dirRayBounding.y, l_playerPosition.z + dirRayBounding.z),
+								Vect3f(0,-1,0), 0xffffffff, info);
+
+			//Intentando arreglar que al saltar debajado de la plataforma el personaje se queda incrustado
+			/*if ((dirRay.y > (0.15)) && (hit != NULL && hit->getName().substr(0,6) == "Moving" && info.m_fDistance <= 0.9))
+			{
+				PLAYC->getPhysicController()->Move(Vect3f(0.0, -1.0, 0.0) * m_Speed    * dt , dt);
+				PLAYC->setCurrentJumpForce(0.0);
+				PLAYC->setisJumping(false);
+				PLAYC->setisGrounded(false);
+			}
+			else*/
+			if (hit != NULL && hit->getName().substr(0,4) == "Poly" && info.m_fDistance <= 6)
+			{
+				//PLAYC->getPhysicController()->MovePlayer(direction.Normalize() * m_Speed * dt + PLAYC->getGravity() * Vect3f(0,1,0) * 1.2 * dt, dt);
+				//PLAYC->IsGrounded(direction.Normalize() * m_Speed * dt / 1.0, dt);
+				if (!PLAYC->getisJumping() || PLAYC->getCurrentJumpForce() < 0)
+				{
+					PLAYC->setGravity(0.0);
+					Vect3f l_PlayerPosition = PLAYC->getPhysicController()->GetPosition();
+					l_playerPosition.y = m_Position.y + 3;
+					PLAYC->getPhysicController()->SetPosition(l_playerPosition);
+					PLAYC->SetPosition(l_playerPosition);
+					PLAYC->setisJumping(false);
+					PLAYC->setisGrounded(false);
+					PLAYC->setCurrentJumpForce(0.0);
+					PLAYC->setisJumpingMoving(false);
+				}
+			}
+			else
+			{
+				PLAYC->setGravity(2.0);
+			}
+		}
+	}
+}

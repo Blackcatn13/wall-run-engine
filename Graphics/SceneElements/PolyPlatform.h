@@ -32,6 +32,7 @@ class CPolyPlatform : public CStaticPlatform {
   void ActivatePoly();
   void DeactivatePoly();
   void Update(float ElapsedTime);
+  void ApplyPhysicsToPlayer(Vect3f direction, float ElapsedTime);
 
   bool IsActivated() {
     return m_Activated;
