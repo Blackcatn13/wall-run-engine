@@ -50,6 +50,7 @@ TMultiRenderTargetPixel GBufferPS(TGBUFFER_TEXTURED1_VERTEX_PS IN) {
 	//OUT.RT1=float4(l_Color*g_LightAmbient*g_LightAmbientIntensity, 1.0);
 	OUT.RT1=float4(l_Cube.xyz,1);
 	OUT.RT2.xyz=NnScalated;
+	OUT.RT2.w = 1;
 	OUT.RT3=l_Depth;  
 	
 	return OUT;

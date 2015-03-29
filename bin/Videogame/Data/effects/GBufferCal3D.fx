@@ -101,6 +101,7 @@ TMultiRenderTargetPixel RenderCal3DHWPS(CAL3D_HW_VERTEX_PS IN)
 	OUT.RT0 = float4(l_DiffuseColor, 1.0);
 	OUT.RT1 = float4(l_DiffuseColor*g_LightAmbientIntensity*g_LightAmbient, 1.0);
 	OUT.RT2.xyz = NnScaled;
+	OUT.RT2.w = l_NormText.a;
 	OUT.RT3 = l_Depth;
 
 	return OUT;
