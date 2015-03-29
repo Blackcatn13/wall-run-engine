@@ -46,7 +46,7 @@ void CLogger::AddNewLog( ELOG_LEVEL ll, const char *format, ... ) {
     }
     m_vLogs.push_back(newLog);
   }
-  std::cout << buffer << std::endl;
+  //std::cout << buffer << std::endl;
   delete buffer;
 }
 

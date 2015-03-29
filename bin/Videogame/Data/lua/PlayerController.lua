@@ -13,8 +13,8 @@ function on_update_player_lua(l_ElapsedTime)
 	--////////////////////////////////////////////////////////
 	player.m_Gravity = 1;						--Gravedad que afecta al personaje cuando cae.
 	player.m_GravityJump = 1;					--Gravedad que afecta cuando el personaje está impulsándose hacia arriba en el salto.
-	player.m_Speed = 12;						--Velocidad de movimiento.
-	player.m_JumpForce = 0.4;					--Fuerza de salto, impulso.
+	player.m_Speed = 8;						--Velocidad de movimiento.
+	player.m_JumpForce = 0.6;					--Fuerza de salto, impulso.
 	superjumForce = 2;					 	--SUPERSALTO CHEAT
 	player.m_PhysicController:set_step(0.3); 	--Altura que puede superar (escalones).
 	--////////////////////////////////////////////////////////
@@ -192,7 +192,7 @@ end
 
 function move_character_controller_mesh(_player, _position)
 	local mesh = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky")
-	coreInstance:trace(tostring(mesh:get_position().z))
+	--coreInstance:trace(tostring(mesh:get_position().z))
 	mesh:set_yaw(_player:get_yaw())
 	mesh:set_position(_position)
 --[[CRenderableObject* malla = RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky");

@@ -22,11 +22,11 @@ function on_update_cameras_lua(l_ElapsedTime)
 	--****************************************************************************
 	--*********** PARAMETROS VARIABLES *******************************************
 	--______ CAMERA 3D _______________________
-	local pitch3D = -0.45;
-	local zoom3D = 15;
+	local pitch3D = -0.40;
+	local zoom3D = 8;
 	local fov3D = 45.0 * 3.1415 / 180;
 	local aspect3D = 1;
-	local distToCameraOffset = 5;
+	local distToCameraOffset = 3;
 	
 	--______ CAMERA 2D _______________________
 	local pitch2D = -0.2;
@@ -96,7 +96,6 @@ function on_update_cameras_lua(l_ElapsedTime)
 		if(tratar == 1) then
 			dot = playerVecZXN * cameraVecZXN;
 		end
-		coreInstance:trace(tostring(dot));
 		local movimentZX = dot * modul;
 		local percent = movimentZX / lengthVecZX;
 		local percentToRotation = 0.5;
@@ -106,12 +105,23 @@ function on_update_cameras_lua(l_ElapsedTime)
 		local newY = (currentWP.y) * (1 - percent) + (nextWP.y) * (percent);
 		local newPos = currentWP + (cameraVecZXN * movimentZX);
 		newPos.y = newY;
+		local newPosReal = Vect3f(0,0,0);
+		if(percent > 1) then
+			newPosReal = nextWP;
+		else
+			if (percent < 0) then
+				newPosReal = currentWP;
+			else
+				newPosReal = newPos;
+			end
+		end
 		local obj = cam.m_pObject3D;
-		obj:set_position(Vect3f(newPos.x, newPos.y, newPos.z));
+		obj:set_position(Vect3f(newPosReal.x, newPosReal.y, newPosReal.z));
 		--Update Camera 3D
 		if(cam.m_eTypeCamera == 6) then
-			local offsetPosVec = newPos + (cameraVecZXN * distToCameraOffset);
+			local offsetPosVec = newPosReal + Vect3f(0, distToCameraOffset, 0);
 			obj:set_position(Vect3f(offsetPosVec.x, offsetPosVec.y, offsetPosVec.z));
+			--obj:set_position(Vect3f(newPosReal.x, newPosReal.y, newPosReal.z));
 			local yaw = math.atan2(cameraVecZXN.z, cameraVecZXN.x);
 			if(percent >= 1 - percentToRotation) then
 				if(cam.m_nextWaypoint < cam:get_path_size())then
@@ -120,6 +130,9 @@ function on_update_cameras_lua(l_ElapsedTime)
 					nextyaw = math.atan2(nextVector.z,nextVector.x);
 					local yawpercent = (percent - (1 - percentToRotation)) / (1 - (1 - percentToRotation));
 					yawpercent = yawpercent / 2;
+					if (percent>1) then
+						yawpercent = 0.5;
+					end
 					yaw = yaw * (1-yawpercent) + nextyaw * yawpercent;
 				end
 			end
@@ -130,10 +143,12 @@ function on_update_cameras_lua(l_ElapsedTime)
 					previousyaw = math.atan2(previousVector.z,previousVector.x);
 					local yawpercent = percent / percentToRotation;
 					yawpercent = 0.5 + (yawpercent / 2);
+					if (percent < 0) then
+						yawpercent = 0.5;
+					end
 					yaw = yaw * yawpercent + previousyaw * (1-yawpercent);
 				end
 			end
-			coreInstance:trace(tostring(yaw));
 			obj:set_yaw(yaw);
 			obj:set_pitch(pitch3D);
 			obj:set_roll(0);
@@ -145,7 +160,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 		end
 		--Update Camera 2D
 		if(cam.m_eTypeCamera == 5) then
-			local offsetPosVec = newPos + Vect3f(0, heightCameraOffset, 0);
+			local offsetPosVec = newPosReal + Vect3f(0, heightCameraOffset, 0);
 			obj:set_position(Vect3f(offsetPosVec.x, offsetPosVec.y, offsetPosVec.z));
 			local yaw = math.atan2(cameraVecZXN.z, cameraVecZXN.x);
 			yaw = yaw + (math.pi / 2);
@@ -157,6 +172,9 @@ function on_update_cameras_lua(l_ElapsedTime)
 					nextyaw = nextyaw + (math.pi / 2);
 					local yawpercent = (percent - (1 - percentToRotation)) / (1 - (1 - percentToRotation));
 					yawpercent = yawpercent / 2;
+					if (percent>1) then
+						yawpercent = 0.5;
+					end
 					yaw = yaw * (1-yawpercent) + nextyaw * yawpercent;
 				end
 			end
@@ -165,9 +183,12 @@ function on_update_cameras_lua(l_ElapsedTime)
 					local previousVector = cam:get_path_point(cam.m_nextWaypoint - 1) - cam:get_path_point(cam.m_currentWaypoint - 1);
 					previousVector:normalize(1);
 					previousyaw = math.atan2(previousVector.z,previousVector.x);
-					nextyaw = nextyaw + (math.pi / 2);
+					previousyaw = previousyaw + (math.pi / 2);
 					local yawpercent = percent / percentToRotation;
 					yawpercent = 0.5 + (yawpercent / 2);
+					if (percent < 0) then
+						yawpercent = 0.5;
+					end
 					yaw = yaw * yawpercent + previousyaw * (1-yawpercent);
 				end
 			end
