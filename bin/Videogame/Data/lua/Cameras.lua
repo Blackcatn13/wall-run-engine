@@ -136,8 +136,6 @@ function on_update_cameras_lua(l_ElapsedTime)
 							yaw = yaw + 2*math.pi;
 						end
 					end
-					coreInstance:trace("nextyaw");
-					coreInstance:trace(tostring(nextyaw));
 					local yawpercent = (percent - (1 - percentToRotation)) / (1 - (1 - percentToRotation));
 					yawpercent = yawpercent / 2;
 					if (percent>1) then
@@ -173,8 +171,6 @@ function on_update_cameras_lua(l_ElapsedTime)
 					end
 				end
 			end
-			coreInstance:trace("yaw");
-			coreInstance:trace(tostring(yaw));
 			obj:set_yaw(yaw);
 			obj:set_pitch(pitch3D);
 			obj:set_roll(0);
