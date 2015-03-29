@@ -67,11 +67,10 @@
 	<enable_z_test />
 	
 
-	<!--<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>-->
+	<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
 	
 	<render_debug_scene layer="phisics" active="true" paint_cooking_mesh="false" cooking_mesh_name="fixbox" />
-	<!--<check_active_poly />
-	<render_scene layer="poly" active="true" />
+	<check_active_poly />
 
 	<render_scene layer="poly" active="true" />
 	<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
@@ -84,7 +83,7 @@
 	
 	
 
-	<particle_render/>-->
+	<particle_render/>
 	<!--Fog-->
 <!--	<enable_alpha_blend blendOp ="add" blendSrc="srcalpha" destBlend="invsrcalpha" />
 	<set_pool_renderable_objects_technique pool="fog_pool"/>
