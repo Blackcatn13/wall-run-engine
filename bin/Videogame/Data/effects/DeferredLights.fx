@@ -52,7 +52,7 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 	float l_Depth = tex2D(S3LinearWrapSampler, UV).x;
 	//l_SpecularFactor=1.0;
 	//l_SpecularExponent=200;
-	
+	float SpecPower = tex2D(S2LinearWrapSampler, UV).a;
 	float x = UV.x * 2 - 1;
 	float y = (1 - UV.y) * 2 - 1;
 	float4 l_ProjectedPos = float4(x, y, l_Depth, 1.0);
@@ -98,14 +98,14 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 		float3 l_DirVector = normalize(l_DirVectorNoNormal);
 		float3 l_DiffuseContribution = saturate(dot(l_Nn,-l_DirVector));
 		float3 l_HV = normalize(normalize(l_EyePos - l_PositionFromDepth)-l_DirVector);
-		float3 l_SpecularComponent = pow(saturate(dot(l_Nn,l_HV)), l_SpecularExponent);
+		float3 l_SpecularComponent = pow(saturate(dot(l_Nn,l_HV)), l_SpecularExponent) * SpecPower;
 		finalColor = ((l_DiffuseColor*g_LightIntensity[0])*(l_DiffuseContribution*g_LightColor[0]*l_Attenuation) +l_SpecularComponent*g_LightIntensity[0]*l_SpecularFactor*l_Attenuation);
 	}
 	else if(g_LightType[0]==1) //directional
 	{			
 		float l_LightContrib = saturate(dot(l_Nn, -g_LightDirection[0]));
 		float3 l_HV = normalize(normalize(l_EyePos - l_PositionFromDepth)-g_LightDirection[0]);
-		float3 l_SpecularComponent = pow(saturate(dot(l_Nn,l_HV)), l_SpecularExponent);
+		float3 l_SpecularComponent = pow(saturate(dot(l_Nn,l_HV)), l_SpecularExponent) * SpecPower;
 	
 		finalColor = (l_DiffuseColor*l_LightContrib*g_LightColor[0]*g_LightIntensity[0]+l_SpecularComponent*g_LightIntensity[0]*l_SpecularFactor);
 	}
@@ -123,7 +123,7 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 
 		float l_LightContrib = saturate(dot(l_Nn, -g_LightDirection[0]));
 		float3 l_HV = normalize(normalize(l_EyePos - l_PositionFromDepth)-g_LightDirection[0]);
-		float3 l_SpecularComponent = pow(saturate(dot(l_Nn,l_HV)), l_SpecularExponent);
+		float3 l_SpecularComponent = pow(saturate(dot(l_Nn,l_HV)), l_SpecularExponent) * SpecPower;
 		float3 l_DifuseContrib = l_DiffuseColor*l_LightContrib*g_LightColor[0];
 
 		if(dot(l_Nn, -g_LightDirection[0]) >= cos(l_HalfAngle+g_FallOff[0]) ){

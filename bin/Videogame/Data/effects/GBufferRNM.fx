@@ -69,6 +69,7 @@ TMultiRenderTargetPixel GBufferPS(TGBUFFER_TEXTURED2_TANGENT_BINORMAL_VERTEX_PS 
 	OUT.RT0=float4(l_DiffuseColor.xyz, 1.0);
 	OUT.RT1=float4(l_intensity*g_LightAmbientIntensity, 1.0);
 	OUT.RT2.xyz=NnScalated;
+	OUT.RT2.w = l_NormalTex.a;
 	OUT.RT3=l_Depth;  
 	
 	return OUT;

@@ -1,7 +1,7 @@
 <animated_model name="chuky">
 	<texture file="DIFF_CHUCKY.tga"/>
 	<texture file="CHUCKY-CHUCKYNormalsMapFINAL.tga"/>
-	<skeleton file="chuky.csf"/>
-	<mesh file="chuky.cmf"/>
-	<animation name="chuky_hi" file="chuky_hi.caf"/>
+	<skeleton file="Chucky_Skeleton.CSF"/>
+	<mesh file="Chucky_Mesh.cmf"/>
+	<animation name="Chucky_IDLE" file="Chucky_Animation.caf"/>
 </animated_model>

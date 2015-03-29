@@ -68,11 +68,12 @@ void ShowErrorMessage (const std::string &message) {
 //-----------------------------------------------------------------------
 
 int APIENTRY WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance, LPSTR _lpCmdLine, int _nCmdShow) {
-  AllocConsole();
-  freopen("CONOUT$", "w", stdout);
+
 #ifdef _DEBUG
   {
     MemLeaks::MemoryBegin();
+    AllocConsole();
+    freopen("CONOUT$", "w", stdout);
   }
 #endif
   // Register the window class
