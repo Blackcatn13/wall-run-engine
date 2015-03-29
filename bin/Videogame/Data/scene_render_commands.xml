@@ -83,7 +83,7 @@
 	<disable_alpha_blend />
 	
 	
-	<render_debug_scene layer="phisics" active="true" paint_cooking_mesh="true" cooking_mesh_name="fixbox" />
+	<render_debug_scene layer="phisics" active="true" paint_cooking_mesh="false" cooking_mesh_name="fixbox" />
 	<particle_render/>
 	
 	<!--Fog-->
@@ -217,8 +217,8 @@
 	<set_pool_renderable_objects_technique pool="draw_vignetting"/>
 	<render_draw_quad>
 		<texture stage_id="0" file="FrameBuffer"/>
-		<texture stage_id="1" file="./data/level1/textures/noise2d.png" load_file="true"/>
-		<texture stage_id="2" file="./data/level1/textures/Vignetting.tga" load_file="true"/>
+		<texture stage_id="1" file="./data/level2/textures/noise2d.png" load_file="true"/>
+		<texture stage_id="2" file="./data/level2/textures/Vignetting.tga" load_file="true"/>
 	</render_draw_quad>
 
 	<!--<enable_z_test/> -->
