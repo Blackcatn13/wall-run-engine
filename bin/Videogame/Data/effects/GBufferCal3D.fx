@@ -71,7 +71,8 @@ CAL3D_HW_VERTEX_PS RenderCal3DHWVS(CAL3D_HW_VERTEX_VS IN)
 	float3 l_Position=CalcAnimtedPos(float4(IN.Position.xyz,1.0), IN.Indices, IN.Weight);
 	float4 l_WorldPosition=float4(l_Position, 1.0);
 	
-	OUT.WorldPosition=mul(l_WorldPosition,g_WorldMatrix);
+	OUT.HPosition = mul(l_WorldPosition, g_WorldViewProjectionMatrix );
+	OUT.WorldPosition=OUT.HPosition;
 	OUT.WorldNormal=normalize(mul(l_Normal,(float3x3)g_WorldMatrix));
 	OUT.WorldTangent=normalize(mul(l_Tangent,(float3x3)g_WorldMatrix));
 	OUT.WorldBinormal=normalize(mul(cross(l_Normal, l_Tangent),(float3x3)g_WorldMatrix));
@@ -80,7 +81,6 @@ CAL3D_HW_VERTEX_PS RenderCal3DHWVS(CAL3D_HW_VERTEX_VS IN)
 	OUT.UV.y = 1 - IN.TexCoord.y;
 	//OUT.UV = IN.TexCoord.xy;
 	
-	OUT.HPosition = mul(l_WorldPosition, g_WorldViewProjectionMatrix );
 	return OUT;
 }
 
