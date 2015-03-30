@@ -8,8 +8,9 @@ function activate_teleport(player_position)
 	local vec3f_array = Vect3f(tonumber(vec_array[1]), tonumber(vec_array[2]), tonumber(vec_array[3]))
 	player.m_PhysicController:set_position(vec3f_array)
 	local camera = coreInstance.m_CameraController:get_active_camera()
-		
+		coreInstance:trace("laaaaaa")
 	camera.m_pObject3D:set_position(Vect3f(camera.m_pObject3D:get_position().x, camera.m_pObject3D:get_position().y, vec3f_array.z - 10))
+
 	--camera.m_pObject3D:set_position(Vect3f(3.118870, 20.0, 271.008423))
 end
 

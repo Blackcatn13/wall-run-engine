@@ -143,4 +143,5 @@
 	<mesh_instance name="Box042" core="Box042" pos="-478.421295 -7.410112 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="Box044" core="Box044" pos="-463.353180 -5.056721 -573.611389" yaw="3.14159" pitch="1.20063" roll="0.0" scale="1.0 1.9214 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="SALA 8" core="SALA 8" pos="-367.776642 -32.750999 -570.241760" yaw="-1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="TeleportBox" core="TeleportBox" pos="297.357178 0.000000 9.885010" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 </renderable_objects>
