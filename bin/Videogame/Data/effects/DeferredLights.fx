@@ -132,7 +132,7 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 	}
 	//}
 
-    return float4(finalColor, 1);
+    return float4(finalColor * lightAmount, 1);
 }
 
 

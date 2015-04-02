@@ -15,8 +15,8 @@
 	<set_axis />
 	-->
 	
-	<!--<set_pool_renderable_objects_technique pool="generate_shadow_map_renderable_obejcts_technique"/>
-	<generate_shadow_maps />-->
+	<set_pool_renderable_objects_technique pool="generate_shadow_map_renderable_obejcts_technique"/>
+	<generate_shadow_maps />
 	
 	<set_pool_renderable_objects_technique pool="generate_deferred_shading_pool_renderable_object_technique"/>
 
