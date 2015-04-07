@@ -25,15 +25,15 @@ function on_update_cameras_lua(l_ElapsedTime)
 	local pitch3D = -0.40;
 	local zoom3D = 8;
 	local fov3D = 45.0 * 3.1415 / 180;
-	local aspect3D = 1;
+	local aspect3D = 16/9;
 	local distToCameraOffset = 3;
 	
 	--______ CAMERA 2D _______________________
 	local pitch2D = -0.2;
 	local zoom2D = 18;
 	local fov2D = 45.0 * 3.1415 / 180;
-	local aspect2D = 1;
-	local heightCameraOffset = 5;
+	local aspect2D = 16/9;
+	local heightCameraOffset = 3;
 	
 	--______ GENERALES _______________________
 	local distanciaGiro = 3;

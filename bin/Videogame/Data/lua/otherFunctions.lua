@@ -13,6 +13,12 @@ function activate_teleport(player_position)
 
 	--camera.m_pObject3D:set_position(Vect3f(3.118870, 20.0, 271.008423))
 end
+function set_is_3D()
+	local player = coreInstance:get_player_controller();
+	player.m_is3D = true;
+	coreInstance.m_CameraController:set_active_camera("3DCam");
+
+end
 
 function trigger_change_view()
 	local player = coreInstance:get_player_controller();
@@ -32,7 +38,7 @@ end
 function trigger_set_3D()
 	local player = coreInstance:get_player_controller();
 	player.m_is3D = true;
-	coreInstance.m_CameraController:set_active_camera("3DCam");
+	coreInstance.m_CameraController:set_active_camera("ThPS");
 
 end
 
