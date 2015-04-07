@@ -42,13 +42,13 @@ using namespace luabind;
 
 
 void RegisterManagers() {
-  luabind::module(LUA_STATE) [
+/*  luabind::module(LUA_STATE) [
     class_<CSoundManager>("CSoundManager")
     .def(constructor<>())
     .def("update", &CSoundManager::Update)
     .def("init", &CSoundManager::Init)
     .def("de_init", &CSoundManager::DeInit)
-  ];
+  ];*/
   luabind::module(LUA_STATE) [
     class_<CGraphicsManager>("CGraphicsManager")
     .def(constructor<>())

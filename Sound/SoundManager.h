@@ -10,13 +10,21 @@
 #pragma once
 #ifndef INC_SOUND_MANAGER_H_
 #define INC_SOUND_MANAGER_H_
-#include "al.h"
+#include "OpenAL\include\al.h"
 #include <map>
 #include <vector>
 //#include "Script/ScriptRegister.h"
 #include "Utils/LerpAnimator1D.h"
 #include "Math\Vector3.h"
-class CSoundManager//:public CScriptRegister
+#include "Utils\TemplatedVectorMapManager.h"
+#include "Utils\Named.h"
+
+typedef struct StSound{
+	std::string id;
+	std::string path;
+}Sound;
+
+class CSoundManager :public CTemplatedVectorMapManager<Sound>//:public CScriptRegister
 {
 public:
 	//----Init and End protocols------------------------------------
@@ -29,7 +37,7 @@ public:
 	//----CScriptRegister interface-------------------
 	//virtual void	RegisterFunctions				(CScriptManager* scriptManager);
 	//-----------GENERAL FUNCTIONS---------------------
-	void	Update		(float delatTime);
+	void	Update		(float deltaTime);
 	bool	LoadSounds	(const std::string& xmlSoundsFile);
 	void	Reset		();
 	void	Pause		();
