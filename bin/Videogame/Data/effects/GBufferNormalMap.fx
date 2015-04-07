@@ -48,7 +48,7 @@ TMultiRenderTargetPixel GBufferPS(TGBUFFER_TEXTURED1_VERTEX_PS IN) {
 	float3 l_TangentNormalized = normalize(IN.WorldTangent);
 	float3 l_WNn= normalize(IN.WorldNormal);
 	float3 l_BinormalNormalized = normalize(IN.WorldBinormal);
-	float4 l_NormalTex = tex2D(S1LinearClampSampler, IN.UV);
+	float4 l_NormalTex = tex2D(S1LinearWrapSampler, IN.UV);
 	float3 l_Bump = g_Bump * (l_NormalTex.rgb - float3 (0.5,0.5,0.5));
 	float3 l_Nn = l_WNn + l_Bump.x*l_TangentNormalized + l_Bump.y*l_BinormalNormalized;
 	l_Nn = normalize(l_Nn);
