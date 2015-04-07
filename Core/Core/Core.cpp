@@ -102,7 +102,7 @@ void CCore::Init(HWND handler) {
   m_EnemyManager = CEnemyManager::GetInstance();
   m_EnemyManager->Init("data//enemies.xml");
   m_PlayerController = new CPlayerController();
-  m_TriggerManager->LoadTriggers("./Data/triggers.xml");
+  m_TriggerManager->LoadTriggers(m_Config.TriggersPath);
   m_LuaLoadLevelFunc = m_Config.LuaLevelObjectsFunc;
   m_LevelPhisicsFile = m_Config.LevelPhisics;
   m_BillboardManager = new CBillboardManager();

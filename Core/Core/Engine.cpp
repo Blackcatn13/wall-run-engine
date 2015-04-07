@@ -167,6 +167,8 @@ void CEngine::ParseConfFile(std::string file) {
             m_Conf_info.LuaLevelCamFunc = n(i).GetPszISOProperty("LuaInitCamerasFunc", "", false);
           } else if (name == "LevelPhisicsFile") {
             m_Conf_info.LevelPhisics = n(i).GetPszISOProperty("PhisicsFile", "./Data/level1/trainingPiky2.ASE", false);
+          } else if (name == "Triggers") {
+            m_Conf_info.TriggersPath = n(i).GetPszISOProperty("TriggersFile", "./Data/level1/triggers.xml", false);
           }
         }
       }

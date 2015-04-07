@@ -1,3 +1,34 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<triggers>
+<triggers>	
+	<!-- platform triggers -->
+	<trigger name="BreakablePlatformTrigger001" platform_name = "BreakablePlatform001" position="124.696 3.000000 11.011" shape="box" size="2.0 1.5 2.0" type_event="enter" script_function="activate_trigger_update" param1="BreakablePlatformTrigger001"
+	max_time="3" update_function="update_break_platform" group="3" paint="true" color="1.0 0.0 0.0" />
+		
+	<trigger name="PinchosPlatform_2" platform_name = "Spikes002" position="160.806 1.3 11.4" shape="box" size="2.1 0.5 2.7" type_event="enter" script_function="on_enter_pinchos" param1="Spikes001"
+	group="3" paint="true" color="1.0 1.0 0.0" />
+	
+	
+	<!-- teleport triggers-->
+	<trigger name="Teleport_test" position="361.52 8.921 12.674" shape="sphere" radius = "2" type_event="enter" script_function="activate_teleport" param1="0.432929 3.000000 -0.654716"
+	 paint="true" color="1.0 0.0 1.0" />
+	
+	<!-- holes -->
+	<!--<trigger name="Hole001" position="-2.198 -7.109472 55.345" shape="box" size="10.0 0.5 21.0" type_event="enter" script_function="player_die" group="3" paint="true" color="1.0 0.0 0.0" />
+	-->
+	<!-- CheckPoints-->
+	<trigger name="CheckPoint001" position="25.685730 0.000000 0.627625" shape="box" size="0.352905 6.61286 4.30127" type_event="enter" script_function="set_checkpoint" param1="CheckPoint001" group="3" paint="true" color="0.0 1.0 0.0" />
+	
+	<!-- Spike triggers -->
+	<trigger name="SpikesTrigger003" position="162.806 0.0 11.4" shape="box" size="10.0 10.0 0.5" type_event="enter" script_function="set_player_respawn_spikes_point" group="3" paint="true" color="0.0 0.0 1.0" />
+	<trigger name="SpikesTrigger004" position="157.21 0.0 11.4" shape="box" size="10.0 10.0 0.5" type_event="enter" script_function="set_player_respawn_spikes_point" group="3" paint="true" color="0.0 0.0 1.0" />
+	<!-- Camera triggers -->
+
+	<trigger name="TriggerCam000" platform_name="" position="0.432929 3.000000 -0.654716" shape="box" size="0.352905 0.51286 0.50127" type_event="enter" script_function="trigger_set_3D" param1="" group="3" paint="true" color="1.0 1.0 0.5"/>
+	
+	<trigger name="TriggerCam001" platform_name="" position="19.685730 0.000000 0.627625" shape="box" size="0.352905 6.61286 8.30127" type_event="enter" script_function="set_is_3D" param1="" group="3" paint="true" color="1.0 1.0 0.5"/>
+	<trigger name="TriggerCam002" platform_name="" position="133.307861 0.000000 11.385376" shape="box" size="0.161621 7.014 6.93677" type_event="enter" script_function="trigger_change_view" param1="" group="3" paint="true" color="1.0 1.0 0.5"/>
+	<trigger name="TriggerCam003" platform_name="" position="351.445679 8.848907 9.600783" shape="box" size="0.286804 8.1295 9.87744" type_event="enter" script_function="trigger_change_view" param1="" group="3" paint="true" color="1.0 1.0 0.5"/>
+	<trigger name="TriggerCam004" platform_name="" position="482.550903 15.107889 -64.058060" shape="box" size="21.436 7.05036 1.23926" type_event="enter" script_function="trigger_change_view" param1="" group="3" paint="true" color="1.0 1.0 0.5"/>
+	
+	
 </triggers>

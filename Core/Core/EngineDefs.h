@@ -29,6 +29,7 @@ typedef struct Conf_info {
   std::string					PoolRenderableObjects;
   std::string					AnimatedMeshPath;
   std::string					LevelPhisics;
+  std::string					TriggersPath;
 } CONFIG_INFO;
 
 
