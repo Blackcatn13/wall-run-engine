@@ -1,4 +1,5 @@
 local coreInstance = CCoreLuaWrapper().m_CoreInstance;
+local is_init=true;
 function on_update_player_lua(l_ElapsedTime)
 	--local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 	local luaUtil = CCMathLuaUtils();
@@ -14,11 +15,14 @@ function on_update_player_lua(l_ElapsedTime)
 	player.m_Gravity = 11;						--Gravedad que afecta al personaje cuando cae.
 	player.m_GravityJump = 11;					--Gravedad que afecta cuando el personaje está impulsándose hacia arriba en el salto.
 	player.m_Speed = 8;							--Velocidad de movimiento.
-	player.m_JumpForce = 5.5;						--Fuerza de salto, impulso.
-	superjumForce = 11;						 	--SUPERSALTO CHEAT
+	player.m_JumpForce = 5.5;					--Fuerza de salto, impulso.
+	superjumForce = 10;						 	--SUPERSALTO CHEAT
 	player.m_PhysicController:set_step(0.3); 	--Altura que puede superar (escalones).
 	--////////////////////////////////////////////////////////
-	
+	if is_init == true then
+		is_init = false
+		player.m_is3D = true
+	end
 	if act2in:do_action_from_lua("ChangeDimension") then
 		if player.m_is3D == true then 
 			player.m_is3D = false;
@@ -129,7 +133,7 @@ function on_update_player_lua(l_ElapsedTime)
 	--///////////////////////////////////////////////////////////
 	-- Gravedad que siempre afecta al Player. 
 	--///////////////////////////////////////////////////////////
-	mov.y = -player.m_Gravity;
+	mov.y = -player.m_Gravity * l_ElapsedTime;
 	
 	--///////////////////////////////////////////////////////////
 	-- Cuando el Player está saltando, su velocidad dependerá del tipo de salto realizado. 
@@ -180,9 +184,6 @@ function on_update_player_lua(l_ElapsedTime)
 	-- Acción de saltar del Player. Puede realizar 2 saltos distintos (de longitud, y salto vertical). 
 	--///////////////////////////////////////////////////////////
 	if (act2in:do_action_from_lua("Jump")) and (player.m_isJumping == false) then
-		if (act2in:do_action_from_lua("SuperJump")) then
-			player.m_JumpForce = superjumForce * l_ElapsedTime;
-		end
 		player.m_isJumping = true;
 		player.m_CurrentJumpForce = player.m_JumpForce;
 		mov.y = player.m_CurrentJumpForce*1.75 * l_ElapsedTime;
@@ -200,6 +201,10 @@ function on_update_player_lua(l_ElapsedTime)
 			else
 				mov.y = player.m_CurrentJumpForce*2 * l_ElapsedTime;
 			end
+		end
+		if (act2in:do_action_from_lua("SuperJump")) then
+			mov.y = superjumForce*2 * l_ElapsedTime;
+			player.m_CurrentJumpForce = superjumForce*2;
 		end
 	end
 	
