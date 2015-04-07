@@ -6,6 +6,126 @@
 
 void CSoundManager::Done(){}
 
+bool CSoundManager::_initAL()
+{
+   ALenum error;
+   ALCdevice* pDevice;
+   ALCcontext* pContext;
+
+   // Get handle to default device.
+   pDevice = alcOpenDevice(NULL);
+
+   // Get the device specifier.
+   //const ALCubyte* deviceSpecifier = alcGetString(pDevice, ALC_DEVICE_SPECIFIER);
+
+   // Create audio context.
+   pContext = alcCreateContext(pDevice, NULL);
+
+   // Set active context.
+   alcMakeContextCurrent(pContext);
+
+   // Check for an error.
+   if ((error=alcGetError(pDevice)) != ALC_NO_ERROR)
+   {
+  	 std::string description = "Can't create openAL context (" + _getALErrorString(error) + ")";
+  	 LOGGER->AddNewLog(ELL_ERROR, "CSoundManager:: %s", description.c_str());
+  	 return false;
+   }
+   return true;
+}
+
+void CSoundManager::_finalizeAL()
+{
+   _clear();
+   
+   ALCcontext* pCurContext;
+   ALCdevice* pCurDevice;
+
+   // Get the current context.
+   pCurContext = alcGetCurrentContext();
+
+   // Get the device used by that context.
+   pCurDevice = alcGetContextsDevice(pCurContext);
+
+   // Reset the current context to NULL.
+   alcMakeContextCurrent(NULL);
+
+   // Release the context and the device.
+   alcDestroyContext(pCurContext);
+   alcCloseDevice(pCurDevice);
+}
+
+bool CSoundManager::_loadSound (const std::string& file, tIdBuffer& buffer)
+{
+   // Variables to load into.
+   FILE *fd;
+   ALenum format;
+   ALenum error;
+   ALsizei size;
+   ALvoid* data;
+   ALsizei freq;
+   ALboolean loop;
+   
+   // Load wav data into buffers.
+   alGenBuffers(1, &buffer);
+
+   if((error=alGetError()) != AL_NO_ERROR)
+   {    
+  	 alDeleteBuffers(1,&buffer);
+  	 std::string description = "Error: Can't create openAL Buffer (" + _getALErrorString(error)  + ")";
+  	 LOGGER->AddNewLog(ELL_ERROR, "CSoundManager:: %s", description.c_str());
+  	 return false;    
+   }
+
+   // Check if the file exists
+   if ((fd=fopen(file.c_str(),"r"))==NULL)
+   {
+  	 alDeleteBuffers(1,&buffer);
+  	 std::string description = "Error: Can't open file " + file;
+  	 LOGGER->AddNewLog(ELL_ERROR, "CSoundManager:: %s", description.c_str());
+  	 return false;
+   }
+   else
+   {
+  	 fclose(fd);
+   }
+   alutLoadWAVFile((ALbyte*)file.c_str(), &format, &data, &size, &freq, &loop);
+   alBufferData(buffer, format, data, size, freq);
+   alutUnloadWAV(format, data, size, freq);
+   if ((error=alGetError()) != AL_NO_ERROR)
+   {   	 
+  	 alDeleteBuffers(1,&buffer);
+  	 std::string description = "Error: Can't load sound file " + file + " (" + _getALErrorString(error)  + ")";
+  	 LOGGER->AddNewLog(ELL_ERROR, "CSoundManager:: %s", description.c_str());
+  	 return false;
+   }   	 
+   return true;
+}
+
+std::string 	CSoundManager::_getALErrorString	(ALenum err){return "";}
+void CSoundManager::_clear ()
+{
+   // Delete AL objets
+   ALuint aux;    
+   std::map<tAction, tIdBuffer>::iterator itBuffer;
+   for( itBuffer = m_Buffers.begin(); itBuffer != m_Buffers.end(); ++itBuffer )
+   {
+  	 aux = (*itBuffer).second;
+  	 alDeleteBuffers (1,&aux);
+   }
+   
+   std::vector<tInfoSource>::iterator itSource;
+   for( itSource = m_Sources.begin(); itSource != m_Sources.end(); ++itSource )
+   {
+  	 aux = (*itSource).m_uSource;
+  	 alDeleteSources (1,&aux);
+   }
+   
+   m_Buffers.clear();
+   m_Sources.clear();
+}
+
+
 bool CSoundManager::LoadSounds(const std::string& xmlSoundsFile)
 {
 	CXMLTreeNode newFile;
