@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<sounds>
+	<Sound path="./Data/Sounds/Sounds_Laberynth/gui_next.wav" soundId="guiNext"/>
+	<Sound path="./Data/Sounds/Sounds_Laberynth/gui_over.wav" soundId="guiOver"/> 
+	<Sound path="./Data/Sounds/Sounds_Laberynth/gui_back.wav" soundId="guiBack"/> 
+</sounds>

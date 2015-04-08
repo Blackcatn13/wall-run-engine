@@ -28,6 +28,7 @@
 #include "Particles\ParticleManager.h"
 #include "Particles\BillboardManager.h"
 #include "AI\FSMManager.h"
+#include "SoundManager.h"
 
 CCore *CCore::m_Instance = 0;
 
@@ -109,6 +110,9 @@ void CCore::Init(HWND handler) {
   m_BillboardManager->Load("./Data/billboards.xml");
   m_ParticleManager = new CParticleManager();
   m_ParticleManager->Load("./Data/particles.xml");
+  m_SoundManager = new CSoundManager();
+  m_SoundManager->Init();
+  m_SoundManager->LoadSounds("./Data/sounds.xml");
 }
 
 void CCore::DeInit() {

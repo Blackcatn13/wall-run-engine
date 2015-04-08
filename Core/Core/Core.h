@@ -36,6 +36,7 @@ class CEnemyManager;
 class CParticleManager;
 class CBillboardManager;
 class CFSMManager;
+class CSoundManager;
 
 #define CCORE			  CCore::GetInstance()
 #define GRAPHM			CCore::GetInstance()->GetGraphicsManager()
@@ -65,7 +66,7 @@ class CFSMManager;
 #define ENEMYM			CCore::GetInstance()->GetEnemyManager()
 #define PROCESS			CCore::GetInstance()->GetProcess()
 #define FSMMGR			CCore::GetInstance()->GetFSMManager()
-
+#define SNDMGR			CCore::GetInstance()->GetSoundManager()
 
 class CCore {
  protected:
@@ -106,7 +107,6 @@ class CCore {
   CParticleManager					*m_ParticleManager;
   CBillboardManager                 *m_BillboardManager;
   CFSMManager						*m_FSMManager;
-
 
 
  public:
