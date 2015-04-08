@@ -8,6 +8,7 @@
 #include "Utils\Defines.h"
 
 class CGraphicsManager;
+class CLight;
 class CPolyPlatform : public CStaticPlatform {
  protected:
   // std::string	m_RedimensionAxis;
@@ -25,6 +26,9 @@ class CPolyPlatform : public CStaticPlatform {
   //std::string		m_RedimAxis;
   float		m_Dt;
   Vect3f		m_FinalPosition;
+  CLight	 *m_Light;
+  std::string m_LightName;
+  Vect3f	m_LightOriginalPosition;
 
  public:
   CPolyPlatform(std::string platformName, std::string coreName,  Vect3f finalPosition, Vect3f direction,  float activationDistance);
@@ -51,6 +55,11 @@ class CPolyPlatform : public CStaticPlatform {
   GET_SET(float, TimeOut)
   GET_SET(float, Speed)
   GET_SET(float, ActiveTime)
+  GET_SET(std::string, LightName)
+  GET_SET(Vect3f, LightOriginalPosition)
+
+  CLight *GetLight() {return m_Light;}
+  void SetLight(CLight *light) {m_Light = light;}
   //GET_SET(float, Collission)
   // GET_SET(std::string, RedimAxis)
   /* std::string getRedimAxis()

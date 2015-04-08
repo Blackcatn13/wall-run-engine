@@ -67,8 +67,6 @@
 	<enable_z_test />
 	
 
-	<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
-	
 	<render_debug_scene layer="phisics" active="true" paint_cooking_mesh="false" cooking_mesh_name="fixbox" />
 	<check_active_poly />
 
@@ -77,7 +75,7 @@
 
 	<set_pool_renderable_objects_technique pool="poly_pool"/>
 	
-	<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
+	<!--<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>-->
 	<render_scene layer="enabled_poly" active="true" />
 	<disable_alpha_blend />
 	
