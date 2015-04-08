@@ -158,6 +158,7 @@ void CRenderableObjectsManager::Load(const std::string &FileName) {
               l_MovingPlatform->GetWayPointsVector().push_back(l_Wp);
             }
           }
+          l_MovingPlatform->SetNextWPVector(l_MovingPlatform->GetWayPointsVector()[1]);
           l_MovingPlatform->SetYaw(yaw);
           l_MovingPlatform->SetPosition(pos);
           l_MovingPlatform->SetPitch(pitch);
@@ -306,6 +307,7 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node) {
             l_MovingPlatform->GetWayPointsVector().push_back(l_Wp);
           }
         }
+        l_MovingPlatform->SetNextWPVector(l_MovingPlatform->GetWayPointsVector()[1]);
         l_MovingPlatform->SetYaw(yaw);
         l_MovingPlatform->SetPosition(pos);
         l_MovingPlatform->SetPitch(pitch);

@@ -239,6 +239,12 @@
 		<wp pos="110.862 1.000000 11.299" />
 		<wp pos="120.862 1.000000 11.299" />
 	</platform>
+	
+	<platform name="MovingPlatform002" core="MovingPlatform001" type="moving" speed= "5"  pos="100.862 1.000000 11.299" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" >
+		<wp pos="100.862 10.000000 11.299" />
+		<wp pos="100.862 1.000000 11.299" />
+	</platform>
+	
 	<platform name="Spikes001" core="Spikes001" type="pinchos" pos="160.806 0.0 11.4" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.2 1.0 0.1" />
 	
 	<platform name="BreakablePlatform001" core="BreakablePlatform001" type="breakable" trigger_name="BreakablePlatformTrigger001"  pos="124.696 3.000000 11.011" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />

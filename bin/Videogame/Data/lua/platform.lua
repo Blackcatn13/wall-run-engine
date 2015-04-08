@@ -95,7 +95,6 @@ end
 --
 
 -- Moving Platform
-local next_wp = Vect3f(0,0,0)
 instance = CLuaGlobalsWrapper().m_CoreInstance;
 
 function mp_enter_stopped(name)
@@ -129,7 +128,7 @@ function mp_update_moving(ElapsedTime, name)
 	--core:trace(tostring(player_position.x));
 	local platform = rol_manager:get_default_renderable_object_manager():get_resource(name)-- modificar para poder pasarlo por parametro
 	if platform ~= nil then
-	
+		local next_wp = platform.m_NextWP
 		platform:move_to_point(ElapsedTime, next_wp, 2)
 		--move_platform_to_point(ElapsedTime, next_wp, platform)
 		local current_pos = platform:get_position()
@@ -173,7 +172,7 @@ function mp_enter_calcwp(name) -- Pasar el nombre de la plataforma y de ahí que
 	
 	local platform = rol_manager:get_default_renderable_object_manager():get_resource(name)
 	if platform ~= nil then
-		next_wp = platform:get_next_wp()
+		platform.m_NextWP = platform:get_next_wp()
 		--coreInstance:trace(tostring(next_wp.x));
 		instance.m_string = "Andar_WP"
 	else

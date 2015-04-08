@@ -51,6 +51,7 @@ void RegisterSceneElements() {
     .def("move_to_point", &CMovingPlatform::MoveToPoint)
     .def("get_next_wp", &CMovingPlatform::GetNextWP)
     .def("add_box_controller", &CMovingPlatform::AddBoxController)
+    .property("m_NextWP",  &CMovingPlatform::GetNextWPVector, &CMovingPlatform::SetNextWPVector)
   ];
   luabind::module(LUA_STATE) [
     class_<CPinchosPlatform, CBreakablePlatform>("CPinchosPlatform")
@@ -82,6 +83,9 @@ void RegisterSceneElements() {
     .property("m_LightName", &CPolyPlatform::getLightName, &CPolyPlatform::setLightName)
     .property("m_Light", &CPolyPlatform::GetLight, &CPolyPlatform::SetLight)
     .property("m_LightOriginalPosition", &CPolyPlatform::getLightOriginalPosition, &CPolyPlatform::setLightOriginalPosition)
+
+
+
     // .property("m_RedimAxis", &CPolyPlatform::getRedimAxis, &CPolyPlatform::setRedimAxis )
   ];
 }

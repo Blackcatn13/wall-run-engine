@@ -18,6 +18,7 @@ class CMovingPlatform : public CStaticPlatform {
   std::vector<Vect3f> m_WayPointsVector;
   int					m_CurrentWpId;
   FSM			*m_Fsm;
+  Vect3f		m_NextWP;
   //CPhysicController*	m_PhysicController;
 
  public:
@@ -34,7 +35,13 @@ class CMovingPlatform : public CStaticPlatform {
   void Update(float ElapsedTime);
   void AddBoxController(Vect3f size, float slope, float skinwidth, float offset, float gravity);
   void UpdateFSM(float elapsedTime);
+  void SetNextWPVector(Vect3f NextWp) {
+    m_NextWP = NextWp;
+  }
 
+  Vect3f GetNextWPVector() {
+    return m_NextWP;
+  }
 };
 
 #endif
