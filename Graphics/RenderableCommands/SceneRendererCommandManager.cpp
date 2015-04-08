@@ -34,6 +34,7 @@
 #include "RenderableCommands\GaussianBlurSceneRendererCommand.h"
 #include "RenderableCommands\ParticleRendererCommand.h"
 #include "RenderableCommands\CheckEnabledPolyRenderCommand.h"
+#include "RenderableCommands\SetTextureInSpecificStageCommand.h"
 
 #include "Core_Utils/MemLeaks.h"
 
@@ -135,6 +136,10 @@ void CSceneRendererCommandManager::Load(const std::string &FileName) {
         }
         if (name == "render_debug_scene") {
           CRenderDebugSceneSceneRendererCommand *l_Command = new CRenderDebugSceneSceneRendererCommand(m(i));
+          m_SceneRendererCommands.AddResource(l_Name, l_Command);
+        }
+		 if (name == "set_texture_in_stage") {
+          CSetTextureInSpecificStageCommand *l_Command = new CSetTextureInSpecificStageCommand(m(i));
           m_SceneRendererCommands.AddResource(l_Name, l_Command);
         }
         //if (name == "render_debug_shadow_maps") {

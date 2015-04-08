@@ -53,8 +53,10 @@
 
 	
 	<!--<deferred_shading/>-->
+	<set_texture_in_stage texture_name="./Data/g_Textures/celshade.tga" stage_id="5"/>
 	<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
-	<set_pool_renderable_objects_technique pool="deferred_lights_pool"/>
+	<!--<set_pool_renderable_objects_technique pool="deferred_lights_pool"/>-->
+	<set_pool_renderable_objects_technique pool="deferred_celshade_pool"/>
 	<render_deferred_shading>
 		<texture stage_id="0" file="DiffuseMapTexture"/>
 		<texture stage_id="1" file="LightMapTexture"/>
@@ -67,6 +69,8 @@
 	<enable_z_test />
 	
 
+	<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
+	
 	<render_debug_scene layer="phisics" active="true" paint_cooking_mesh="false" cooking_mesh_name="fixbox" />
 	<check_active_poly />
 
@@ -75,7 +79,7 @@
 
 	<set_pool_renderable_objects_technique pool="poly_pool"/>
 	
-	<!--<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>-->
+	<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
 	<render_scene layer="enabled_poly" active="true" />
 	<disable_alpha_blend />
 	
