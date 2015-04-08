@@ -83,6 +83,7 @@
     <ClCompile Include="RenderableCommands\SetAxisRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\SetMatricesSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\SetRenderTargetSceneRendererCommand.cpp" />
+    <ClCompile Include="RenderableCommands\SetTextureInSpecificStageCommand.cpp" />
     <ClCompile Include="RenderableCommands\StagedTexturedRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\UnsetRenderTargetSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableVertex\VertexTypes.cpp" />
@@ -178,6 +179,7 @@
     <ClInclude Include="RenderableCommands\SetAxisRendererCommand.h" />
     <ClInclude Include="RenderableCommands\SetMatricesSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\SetRenderTargetSceneRendererCommand.h" />
+    <ClInclude Include="RenderableCommands\SetTextureInSpecificStageCommand.h" />
     <ClInclude Include="RenderableCommands\StagedTexturedRendererCommand.h" />
     <ClInclude Include="RenderableCommands\UnsetRenderTargetSceneRendererCommand.h" />
     <ClInclude Include="RenderableVertex\IndexedVertexs.h" />

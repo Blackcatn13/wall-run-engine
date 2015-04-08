@@ -234,11 +234,17 @@
 	<mesh_instance name="SUELO" core="SUELO" pos="-28.606689 0.000000 0.467094" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="TeleportBox" core="TeleportBox" pos="361.52 8.921 12.674" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	
-	<platform name="PolyPlatform001" core="PolyPlatform001" type="poly" final_position="213.862 0.000 11.299" direction ="0.0 0.0 -1.0" activation_distance= "10"  pos="213.862 0.000 16.299" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="poly" />
+	<platform name="PolyPlatform001" core="PolyPlatform001" type="poly" final_position="213.862 0.000 11.299" direction ="0.0 0.0 -1.0" activation_distance= "10"  pos="213.862 0.000 16.299" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="poly" light="OmniPoly001" />
 	<platform name="MovingPlatform001" core="MovingPlatform001" type="moving" speed= "5"  pos="118.862 1.000000 11.299" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" >
 		<wp pos="110.862 1.000000 11.299" />
 		<wp pos="120.862 1.000000 11.299" />
 	</platform>
+	
+	<platform name="MovingPlatform002" core="MovingPlatform001" type="moving" speed= "5"  pos="100.862 1.000000 11.299" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" >
+		<wp pos="100.862 10.000000 11.299" />
+		<wp pos="100.862 1.000000 11.299" />
+	</platform>
+	
 	<platform name="Spikes001" core="Spikes001" type="pinchos" pos="160.806 0.0 11.4" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.2 1.0 0.1" />
 	
 	<platform name="BreakablePlatform001" core="BreakablePlatform001" type="breakable" trigger_name="BreakablePlatformTrigger001"  pos="124.696 3.000000 11.011" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />

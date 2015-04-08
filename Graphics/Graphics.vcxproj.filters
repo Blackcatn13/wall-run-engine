@@ -306,6 +306,9 @@
     <ClCompile Include="RenderableCommands\CheckEnabledPolyRenderCommand.cpp">
       <Filter>RenderableCommands</Filter>
     </ClCompile>
+    <ClCompile Include="RenderableCommands\SetTextureInSpecificStageCommand.cpp">
+      <Filter>RenderableCommands</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
@@ -566,6 +569,9 @@
       <Filter>Particles</Filter>
     </ClInclude>
     <ClInclude Include="RenderableCommands\CheckEnabledPolyRenderCommand.h">
+      <Filter>RenderableCommands</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableCommands\SetTextureInSpecificStageCommand.h">
       <Filter>RenderableCommands</Filter>
     </ClInclude>
   </ItemGroup>

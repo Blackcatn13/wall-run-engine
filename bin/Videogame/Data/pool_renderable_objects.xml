@@ -57,6 +57,10 @@
         <default_technique vertex_type="2048" technique="DeferredLightsTechnique"/>
     </pool_renderable_object_technique>
 	
+	<pool_renderable_object_technique name="deferred_celshade_pool">
+        <default_technique vertex_type="2048" technique="DeferredCelshadeTechnique"/>
+    </pool_renderable_object_technique>
+	
 	<pool_renderable_object_technique name="fog_pool">
         <default_technique vertex_type="2048" technique="FogTechnique"/>
     </pool_renderable_object_technique>

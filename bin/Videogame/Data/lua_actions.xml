@@ -2,6 +2,7 @@
 	<!--<script name="test2" file="Data/test2.lua" />-->
 	<script name="test" file="Data/test.lua" auto_run = "false"/>
 	<script name="platform" file="Data/lua/platform.lua" auto_run = "true"/>
+	<script name="globalTextures" file="Data/lua/LoadGlobalTextures.lua" auto_run = "true"/>
 	<script name="player" file="Data/lua/player.lua" auto_run = "true"/>
 	<script name="checkpoint" file="Data/lua/checkpoint.lua" auto_run = "true"/>
 	<script name="initLevel" file="Data/level3/lua/initLevel.lua" auto_run = "true"/>

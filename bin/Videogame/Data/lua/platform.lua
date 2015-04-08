@@ -23,7 +23,9 @@ function init_poly_platform(name, user_data_name, size, position, time_out, spee
 		platform = rol_manager:get_renderable_objects_manager_by_str("enabled_poly"):get_resource(name)
 	end		
 	platform:insert_platform(user_data_name, size, position)
-
+	--light = coreInstance:get_light_manager():get_resource(platform.m_LightName)
+	platform.m_Light = coreInstance:get_light_manager():get_resource(platform.m_LightName)
+	platform.m_LightOriginalPosition = platform.m_Light:get_position()
 	--coreInstance:trace(tostring(platform.m_Collission))
 	local collision = true
 	if platform.m_Collission == 0 then
@@ -93,7 +95,6 @@ end
 --
 
 -- Moving Platform
-local next_wp = Vect3f(0,0,0)
 instance = CLuaGlobalsWrapper().m_CoreInstance;
 
 function mp_enter_stopped(name)
@@ -127,7 +128,7 @@ function mp_update_moving(ElapsedTime, name)
 	--core:trace(tostring(player_position.x));
 	local platform = rol_manager:get_default_renderable_object_manager():get_resource(name)-- modificar para poder pasarlo por parametro
 	if platform ~= nil then
-	
+		local next_wp = platform.m_NextWP
 		platform:move_to_point(ElapsedTime, next_wp, 2)
 		--move_platform_to_point(ElapsedTime, next_wp, platform)
 		local current_pos = platform:get_position()
@@ -171,7 +172,7 @@ function mp_enter_calcwp(name) -- Pasar el nombre de la plataforma y de ahí que
 	
 	local platform = rol_manager:get_default_renderable_object_manager():get_resource(name)
 	if platform ~= nil then
-		next_wp = platform:get_next_wp()
+		platform.m_NextWP = platform:get_next_wp()
 		--coreInstance:trace(tostring(next_wp.x));
 		instance.m_string = "Andar_WP"
 	else
@@ -214,7 +215,7 @@ function update_poly_platform(current_poly_time, dt, platform_name)
 	
 	if (act2in:do_action_from_lua("PolyPowa") == true and platform.m_Enabled) or platform.m_IsMoving == true then
 		coreInstance:trace(tostring(platform.m_IsMoving))
-		platform:activate_poly()
+		--platform:activate_poly()
 		
 		activate_poly(platform, dt)
 		--local new_pos = Vect3f(position + platform.m_RedimScale)
@@ -223,7 +224,7 @@ function update_poly_platform(current_poly_time, dt, platform_name)
 	-- If poly is activated
 	
 	if current_poly_time > platform.m_TimeOut then
-		platform:deactivate_poly()
+		--platform:deactivate_poly()
 		deactivate_poly(platform, dt)
 	end
 		
@@ -231,13 +232,18 @@ end
 
 function activate_poly(_platform, dt)
 	if _platform.m_Activated == false then
-		if _platform:get_position():distance(_platform.m_FinalPosition) >= 0.9 then
+		max_distance = _platform.m_OriginalPosition:distance(_platform.m_FinalPosition)
+		
+		if _platform:get_position():distance(_platform.m_FinalPosition) >= 0.9 and _platform:get_position():distance(_platform.m_FinalPosition) <= max_distance then
 			local new_position = _platform:get_position() + (_platform.m_Direction * _platform.m_Speed * dt)
 			_platform.m_PlatformActor:set_global_position(new_position)
 			_platform:set_position(new_position)
+			_platform.m_Light:set_position(new_position)
 			_platform.m_IsMoving = true
 			-- Si colisiona con piky (o si debería bajar) que lo desplace
 		else
+			_platform.m_Light:set_position(_platform.m_FinalPosition)
+			_platform:set_position(_platform.m_FinalPosition)
 			_platform.m_Activated = true
 			_platform.m_IsMoving = false
 		end
@@ -247,12 +253,16 @@ end
 
 function deactivate_poly(_platform, dt)
 	if _platform.m_Activated == true then
-		if _platform:get_position():distance(_platform.m_OriginalPosition) >= 0.9 then
+		max_distance = _platform.m_OriginalPosition:distance(_platform.m_FinalPosition)
+		if _platform:get_position():distance(_platform.m_OriginalPosition) >= 0.9 and _platform:get_position():distance(_platform.m_OriginalPosition) <= max_distance+10 then
 			local new_position = _platform:get_position() + (_platform.m_Direction * _platform.m_Speed * dt * -1)
 			_platform.m_PlatformActor:set_global_position(new_position)
 			_platform:set_position(new_position)
+			_platform.m_Light:set_position(new_position)
 			--Si colisiona (o si debería bajar)con Piky => Desplazarle
 		else
+			_platform.m_Light:set_position(_platform.m_LightOriginalPosition)
+			_platform:set_position(_platform.m_OriginalPosition)
 			_platform.m_Activated = false
 			_platform.m_ActiveTime = 0.0
 		end

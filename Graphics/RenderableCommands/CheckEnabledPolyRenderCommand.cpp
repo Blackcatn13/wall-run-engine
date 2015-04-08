@@ -8,6 +8,7 @@
 #include "Renderable\RenderableObjectsLayersManager.h"
 #include "Font\FontManager.h"
 #include "Math\Vector2.h"
+#include "Lights\Light.h"
 
 CCheckEnabledPolyRenderCommand::CCheckEnabledPolyRenderCommand(CXMLTreeNode &atts) {
   m_Effect = EFFECTM->GetEffect("PolyEffect");
@@ -43,6 +44,11 @@ void CCheckEnabledPolyRenderCommand::CheckLayerChange(CRenderableObjectsManager 
         std::string poly_text = "poly_enabled";
         Vect2i textSize = FONTM->GetLiteralSize(width, height, poly_text);
         FONTM->DrawLiteral((width / 2) - textSize.x / 2, height - 30, poly_text);
+        if (poly->GetLight() != NULL)
+          poly->GetLight()->SetIntensity(0.3f);
+      } else {
+        if (poly->GetLight() != NULL)
+          poly->GetLight()->SetIntensity(0.0f);
       }
     }
 

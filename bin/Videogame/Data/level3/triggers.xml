@@ -19,8 +19,8 @@
 	<trigger name="CheckPoint001" position="25.685730 0.000000 0.627625" shape="box" size="0.352905 6.61286 4.30127" type_event="enter" script_function="set_checkpoint" param1="CheckPoint001" group="3" paint="true" color="0.0 1.0 0.0" />
 	
 	<!-- Spike triggers -->
-	<trigger name="SpikesTrigger003" position="162.806 0.0 11.4" shape="box" size="10.0 10.0 0.5" type_event="enter" script_function="set_player_respawn_spikes_point" group="3" paint="true" color="0.0 0.0 1.0" />
-	<trigger name="SpikesTrigger004" position="157.21 0.0 11.4" shape="box" size="10.0 10.0 0.5" type_event="enter" script_function="set_player_respawn_spikes_point" group="3" paint="true" color="0.0 0.0 1.0" />
+	<trigger name="SpikesTrigger003" position="163.806 0.0 11.4" shape="box" size="0.5 10.0 5.0" type_event="enter" script_function="set_player_respawn_spikes_point" group="3" paint="true" color="0.0 0.0 1.0" />
+	<trigger name="SpikesTrigger004" position="157.21 0.0 11.4" shape="box" size="0.5 10.0 5.0" type_event="enter" script_function="set_player_respawn_spikes_point" group="3" paint="true" color="0.0 0.0 1.0" />
 	<!-- Camera triggers -->
 
 	<trigger name="TriggerCam000" platform_name="" position="0.432929 3.000000 -0.654716" shape="box" size="0.352905 0.51286 0.50127" type_event="enter" script_function="trigger_set_3D" param1="" group="3" paint="true" color="1.0 1.0 0.5"/>
