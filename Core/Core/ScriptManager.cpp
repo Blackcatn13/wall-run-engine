@@ -387,8 +387,23 @@ void CScriptManager::RegisterLUAFunctions() {
     .def("load", (void (CRenderableObjectsManager::*)(CXMLTreeNode & Node)) &CRenderableObjectsManager::Load)
     .def("reload", & CRenderableObjectsManager::Reload)
   ];
+
+  luabind::module(LUA_STATE) [
+    class_<CTexture>("CTexture")
+    .def(constructor<>())
+    .property("m_FileName", &CTexture::GetFileName)
+  ];
   //Si queremos registrar una clase templatizada como la clase CTextureManager debemos primero
   //registrar su clase base con la clases templatizada y después la clase
+  /*
+    const std::string & GetFileName() const
+    {
+        return m_FileName;
+    }
+    bool Load(const std::string &FileName);
+    bool Reload();
+    void Activate(size_t StageId);
+  */
   luabind::module(LUA_STATE) [
     class_<CMapManager<CTexture>>("CMapManagerTexture")
     .def("get_resource", &CMapManager< CTexture >::GetResource)
