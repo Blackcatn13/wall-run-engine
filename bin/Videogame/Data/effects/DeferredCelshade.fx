@@ -96,12 +96,22 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 		float l_distance = length(l_PositionFromDepth-g_LightPosition[0]);
 		float l_Attenuation = 1-saturate((l_distance-g_NearAtten[0])/(g_FarAtten[0]-g_NearAtten[0]));
 		float3 l_DirVector = normalize(l_DirVectorNoNormal);
-		float3 l_DiffuseContribution = saturate(dot(l_Nn,-l_DirVector));
+		float l_DiffuseContribution = saturate(dot(l_Nn,-l_DirVector));
 		float3 l_HV = normalize(normalize(l_EyePos - l_PositionFromDepth)-l_DirVector);
 		float3 l_SpecularComponent = pow(saturate(dot(l_Nn,l_HV)), l_SpecularExponent) * SpecPower;
 		float3 l_SpecularFinalContrib = l_SpecularComponent*g_LightIntensity[0]*l_SpecularFactor*l_Attenuation;
-		float3 l_LigthFinalContrib = g_LightIntensity[0]*l_DiffuseContribution*l_Attenuation;
-		finalColor = (l_DiffuseColor*g_LightColor[0]*l_LigthFinalContrib + l_SpecularFinalContrib);
+		float3 l_CelshadeSpecular = float3(0,0,0);
+		if(l_SpecularFinalContrib.x > 0.9)
+		{
+			l_CelshadeSpecular = float3(0.9,0.9,0.9);
+		}
+		float l_LightFinalContrib = g_LightIntensity[0]*l_DiffuseContribution*l_Attenuation;
+		float3 l_CelshadeLight = tex1D(S5LinearClampSampler,l_LightFinalContrib);
+		//float3 l_CelshadeLight = tex1D(S5LinearClampSampler,0);
+		finalColor = (l_DiffuseColor*g_LightColor[0]*l_CelshadeLight + l_CelshadeSpecular);
+		//finalColor = l_CelshadeLight;
+		//finalColor = (l_DiffuseColor);
+		//finalColor = l_LightFinalContrib;
 	}
 	else if(g_LightType[0]==1) //directional
 	{			
@@ -109,8 +119,17 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 		float3 l_HV = normalize(normalize(l_EyePos - l_PositionFromDepth)-g_LightDirection[0]);
 		float3 l_SpecularComponent = pow(saturate(dot(l_Nn,l_HV)), l_SpecularExponent) * SpecPower;
 		float3 l_SpecularFinalContrib = l_SpecularComponent*g_LightIntensity[0]*l_SpecularFactor;
-		float3 l_LightFinalContrib = l_LightContrib*g_LightIntensity[0];
-		finalColor = (l_DiffuseColor*g_LightColor[0]*l_LightFinalContrib+l_SpecularFinalContrib);
+		float3 l_CelshadeSpecular = float3(0,0,0);
+		if(l_SpecularFinalContrib.x > 0.8)
+		{
+			l_CelshadeSpecular = float3(0.9,0.9,0.9);
+		}
+		float l_LightFinalContrib = l_LightContrib*g_LightIntensity[0];
+		float3 l_CelshadeLight = tex1D(S5LinearClampSampler,l_LightFinalContrib);
+		//float3 l_CelshadeLight = tex1D(S5LinearClampSampler,0);
+		finalColor = (l_DiffuseColor*g_LightColor[0]*l_CelshadeLight+l_CelshadeSpecular);
+		//finalColor = l_CelshadeLight;
+		//finalColor = l_LightFinalContrib;
 	}
 	else if(g_LightType[0]==2) //spot
 	{
@@ -127,11 +146,19 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 		float l_LightContrib = saturate(dot(l_Nn, -g_LightDirection[0]));
 		float3 l_HV = normalize(normalize(l_EyePos - l_PositionFromDepth)-g_LightDirection[0]);
 		float3 l_SpecularComponent = pow(saturate(dot(l_Nn,l_HV)), l_SpecularExponent) * SpecPower;
-		float3 l_LightFinalContrib = l_LightContrib*g_LightIntensity[0]*l_AngAttenuation*l_Attenuation;
+		float l_LightFinalContrib = l_LightContrib*g_LightIntensity[0]*l_AngAttenuation*l_Attenuation;
+		float3 l_CelshadeLight = tex1D(S5LinearClampSampler,l_LightFinalContrib);
+		//float3 l_CelshadeLight = tex1D(S5LinearWrapSampler,0);
 		float3 l_SpecularFinalContrib = l_SpecularComponent*g_LightIntensity[0]*l_SpecularFactor*l_Attenuation;
+		float3 l_CelshadeSpecular = float3(0,0,0);
+		if(l_SpecularFinalContrib.x > 0.9)
+		{
+			l_CelshadeSpecular = float3(0.9,0.9,0.9);
+		}
 
 		if(dot(l_Nn, -g_LightDirection[0]) >= cos(l_HalfAngle+g_FallOff[0]) ){
-			finalColor = (l_DiffuseColor*g_LightColor[0]*l_LightFinalContrib + l_SpecularFinalContrib);
+			finalColor = (l_DiffuseColor*g_LightColor[0]*l_CelshadeLight + l_CelshadeSpecular);
+			//finalColor = (l_DiffuseColor);
 		}				
 	}
 	//}
