@@ -26,9 +26,9 @@
 	<trigger name="TriggerCam000" platform_name="" position="0.432929 3.000000 -0.654716" shape="box" size="0.352905 0.51286 0.50127" type_event="enter" script_function="trigger_set_3D" param1="" group="3" paint="true" color="1.0 1.0 0.5"/>
 	
 	<trigger name="TriggerCam001" platform_name="" position="19.685730 0.000000 0.627625" shape="box" size="0.352905 6.61286 8.30127" type_event="enter" script_function="set_is_3D" param1="" group="3" paint="true" color="1.0 1.0 0.5"/>
-	<trigger name="TriggerCam002" platform_name="" position="133.307861 0.000000 11.385376" shape="box" size="0.161621 7.014 6.93677" type_event="enter" script_function="trigger_change_view" param1="" group="3" paint="true" color="1.0 1.0 0.5"/>
-	<trigger name="TriggerCam003" platform_name="" position="351.445679 8.848907 9.600783" shape="box" size="0.286804 8.1295 9.87744" type_event="enter" script_function="trigger_change_view" param1="" group="3" paint="true" color="1.0 1.0 0.5"/>
-	<trigger name="TriggerCam004" platform_name="" position="482.550903 15.107889 -64.058060" shape="box" size="21.436 7.05036 1.23926" type_event="enter" script_function="trigger_change_view" param1="" group="3" paint="true" color="1.0 1.0 0.5"/>
+	<trigger name="TriggerCam002" platform_name="" position="133.307861 0.000000 11.385376" shape="box" size="0.161621 7.014 6.93677" type_event="enter" script_function="trigger_change_view" param1="z" group="3" paint="true" color="1.0 1.0 0.5"/>
+	<trigger name="TriggerCam003" platform_name="" position="351.445679 8.848907 9.600783" shape="box" size="0.286804 8.1295 9.87744" type_event="enter" script_function="trigger_change_view" param1="z" group="3" paint="true" color="1.0 1.0 0.5"/>
+	<trigger name="TriggerCam004" platform_name="" position="482.550903 15.107889 -64.058060" shape="box" size="21.436 7.05036 1.23926" type_event="enter" script_function="trigger_change_view" param1="x" group="3" paint="true" color="1.0 1.0 0.5"/>
 	
 	
 </triggers>

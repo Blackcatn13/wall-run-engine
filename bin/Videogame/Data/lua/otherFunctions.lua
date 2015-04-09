@@ -20,13 +20,37 @@ function set_is_3D()
 
 end
 
-function trigger_change_view()
+function trigger_change_view(offset_axis)
 	local player = coreInstance:get_player_controller();
 	if player.m_is3D == true then 
 		player.m_is3D = false;
 		local cam = coreInstance.m_CameraController:get_resource("3DCam");
 		cam.m_eTypeCamera = 5;
 		coreInstance.m_CameraController:set_active_camera("3DCam");
+		if player.m_isTurned == true then
+			player.m_isTurned = false
+		end
+		
+		--player:set_yaw(coreInstance.m_CameraController:get_active_camera().m_pObject3D:get_yaw())
+		--coreInstance:trace(tostring(player:get_yaw()))
+		local camera_object = coreInstance.m_CameraController:get_active_camera().m_pObject3D
+		local pos_x =  player:get_position().x
+		local pos_z =  player:get_position().z
+		if offset_axis == "x" then
+			pos_x = camera_object:get_position().x
+		elseif offset_axis == "z" then
+			pos_z = camera_object:get_position().z
+		else
+			pos_x = camera_object:get_position().x
+			pos_z = camera_object:get_position().z
+		end
+		
+		local position_2d = Vect3f(pos_x, player:get_position().y ,pos_z)
+		coreInstance:trace(tostring(player:get_position().z))
+		
+		player.m_PhysicController:set_position(position_2d)
+		move_character_controller_mesh(player, position_2d);
+		coreInstance:trace(tostring(position_2d.z))
 	else
 		player.m_is3D = true;
 		local cam = coreInstance.m_CameraController:get_resource("3DCam");
