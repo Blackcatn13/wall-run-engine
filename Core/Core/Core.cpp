@@ -21,7 +21,7 @@
 #include "RenderableCommands\SceneRendererCommandManager.h"
 #include "TriggerManager\TriggerManager.h"
 #include "PlayerController.h"
-#include "Core_Utils/MemLeaks.h"
+//#include "Core_Utils/MemLeaks.h"
 #include "Core_Utils\LogRender.h"
 #include "AI\WPManager.h"
 #include "EnemyManager.h"
@@ -29,6 +29,7 @@
 #include "Particles\BillboardManager.h"
 #include "AI\FSMManager.h"
 #include "SoundManager.h"
+#include "WWSoundManager.h"
 
 CCore *CCore::m_Instance = 0;
 
@@ -113,6 +114,8 @@ void CCore::Init(HWND handler) {
   m_SoundManager = new CSoundManager();
   m_SoundManager->Init();
   m_SoundManager->LoadSounds("./Data/sounds.xml");
+  m_WWSoundManager = new CWWSoundManager();
+  m_WWSoundManager->Init();
 }
 
 void CCore::DeInit() {
@@ -145,7 +148,7 @@ void CCore::DeInit() {
   CHECKED_DELETE(m_EnemyManager);
   CHECKED_DELETE(m_BillboardManager);
   CHECKED_DELETE(m_ParticleManager);
-
+  CHECKED_DELETE(m_WWSoundManager);
   // m_PlatformsMap->Destroy();
 }
 
@@ -160,7 +163,7 @@ void CCore::Render() {
   //m_GraphicsManager->Render();
   // m_LightManager->Render(m_GraphicsManager);
   m_PhysicsManager->DebugRender(m_GraphicsManager);
-
+  m_WWSoundManager->Render();
 
 }
 

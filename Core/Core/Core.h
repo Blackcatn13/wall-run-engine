@@ -37,6 +37,7 @@ class CParticleManager;
 class CBillboardManager;
 class CFSMManager;
 class CSoundManager;
+class CWWSoundManager;
 
 #define CCORE			  CCore::GetInstance()
 #define GRAPHM			CCore::GetInstance()->GetGraphicsManager()
@@ -107,7 +108,7 @@ class CCore {
   CParticleManager					*m_ParticleManager;
   CBillboardManager                 *m_BillboardManager;
   CFSMManager						*m_FSMManager;
-
+  CWWSoundManager					*m_WWSoundManager;
 
  public:
   ~CCore();
@@ -217,6 +218,10 @@ class CCore {
 
   CFSMManager *GetFSMManager() {
     return m_FSMManager;
+  }
+
+  CWWSoundManager *GetWWSoundManager() {
+    return m_WWSoundManager;
   }
 
   GET_SET(std::string, LuaLoadLevelFunc)

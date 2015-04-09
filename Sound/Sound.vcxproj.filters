@@ -5,11 +5,62 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{4eed33ad-df8a-4b47-9183-c13023b4391b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="WWSoundManager.cpp" />
+    <ClCompile Include="AkDefaultIOHookBlocking.cpp" />
+    <ClCompile Include="AkDefaultIOHookDeferred.cpp" />
+    <ClCompile Include="Common\AkDefaultLowLevelIODispatcher.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\AkFileLocationBase.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\AkFilePackage.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\AkFilePackageLUT.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SoundManager.h" />
+    <ClInclude Include="WWSoundManager.h" />
+    <ClInclude Include="AkDefaultIOHookBlocking.h" />
+    <ClInclude Include="AkDefaultIOHookDeferred.h" />
+    <ClInclude Include="AkFileHelpers.h" />
+    <ClInclude Include="AkFilePackageLowLevelIOBlocking.h" />
+    <ClInclude Include="AkFilePackageLowLevelIODeferred.h" />
+    <ClInclude Include="AkSoundEngineExports.h" />
+    <ClInclude Include="Common\AkDefaultLowLevelIODispatcher.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\AkFileLocationBase.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\AkFilePackage.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\AkFilePackageLowLevelIO.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\AkFilePackageLUT.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\AkMultipleFileLocation.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Common\AkFilePackageLowLevelIO.inl">
+      <Filter>Common</Filter>
+    </None>
+    <None Include="Common\AkMultipleFileLocation.inl">
+      <Filter>Common</Filter>
+    </None>
   </ItemGroup>
 </Project>
