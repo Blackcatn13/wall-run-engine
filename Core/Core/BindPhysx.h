@@ -169,8 +169,12 @@ void RegisterPhysX() {
     .property("m_isJumping", &CPlayerController::getisJumping, &CPlayerController::setisJumping )
     .property("m_isJumpingMoving", &CPlayerController::getisJumpingMoving, &CPlayerController::setisJumpingMoving )
     .property("m_is3D", &CPlayerController::getis3D, &CPlayerController::setis3D )
+	.property("m_isAttack", &CPlayerController::getisAttack, &CPlayerController::setisAttack )
+	.property("m_AttackForce", &CPlayerController::getAttackForce, &CPlayerController::setAttackForce )
+	.property("m_CurrentAttackForce", &CPlayerController::getCurrentAttackForce, &CPlayerController::setCurrentAttackForce )
     .property("m_JumpType", &CPlayerController::getJumpType, &CPlayerController::setJumpType )
     .property("m_CurrentJumpForce", &CPlayerController::getCurrentJumpForce, &CPlayerController::setCurrentJumpForce )
+	.property("m_Direction3D", &CPlayerController::getDirection3D, &CPlayerController::setDirection3D )
   ];
   luabind::module(LUA_STATE) [
     class_<CPhysicsManager>("CPhysicsManager")

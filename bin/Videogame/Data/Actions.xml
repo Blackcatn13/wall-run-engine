@@ -114,6 +114,10 @@
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_X"/>
     </action>
 	
+	<action name="Attack">
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_E"/>
+    </action>
+	
 	<action name="KeyMoveForward">
     	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_UP"/>
     </action>

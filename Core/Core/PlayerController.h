@@ -26,7 +26,11 @@ public:
     GET_SET(bool, isJumpingMoving);
     GET_SET(float, CurrentJumpForce);
     GET_SET(bool, is3D);
+	GET_SET(bool, isAttack);
+	GET_SET(float, AttackForce);
+	GET_SET(float, CurrentAttackForce);
     GET_SET(int, JumpType);
+	GET_SET(Vect3f, Direction3D);
 
 private:
     CPhysicController*	m_PhysicController;
@@ -41,7 +45,11 @@ private:
     bool				m_isJumping;
     bool				m_isJumpingMoving;
     bool				m_is3D;
+	bool				m_isAttack;
+	float				m_AttackForce;
+	float				m_CurrentAttackForce;
     int					m_JumpType;
+	Vect3f				m_Direction3D;
 };
 
 
