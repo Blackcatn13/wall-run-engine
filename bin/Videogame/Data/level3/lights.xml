@@ -12,23 +12,23 @@
 	
 
 
-<light name="Omni002" type="omni" pos="0 0 0" color="1 1 1" intensity="0.1" att_start_range="100.0" att_end_range="400.0" generate_shadow_map="false" shadow_map_format_type="R32F" ortho_shadow_map_width="256" ortho_shadow_map_height="256" shadow_map_width="256" shadow_map_height="256" generate_static_shadow_map="false" static_shadow_map_format_type="R32F" 
+<light name="Omni002" type="omni" pos="0 5 0" color="1 1 1" intensity="0.7" att_start_range="10.0" att_end_range="50.0" generate_shadow_map="false" shadow_map_format_type="R32F" ortho_shadow_map_width="256" ortho_shadow_map_height="256" shadow_map_width="256" shadow_map_height="256" generate_static_shadow_map="false" static_shadow_map_format_type="R32F" 
  angle="1.05" fall_off="1.05">
  <dynamic renderable_objects_manager="solid"/>
 </light>
 
-<light name="Omni003" type="omni" pos="480 10 -19" color="1 1 1" intensity="0.1" att_start_range="100.0" att_end_range="300.0" generate_shadow_map="false" shadow_map_format_type="R32F" ortho_shadow_map_width="256" ortho_shadow_map_height="256" shadow_map_width="256" shadow_map_height="256" generate_static_shadow_map="false" static_shadow_map_format_type="R32F" 
+<light name="Omni003" type="omni" pos="480 10 -19" color="1 1 1" intensity="0.1" att_start_range="10.0" att_end_range="50.0" generate_shadow_map="false" shadow_map_format_type="R32F" ortho_shadow_map_width="256" ortho_shadow_map_height="256" shadow_map_width="256" shadow_map_height="256" generate_static_shadow_map="false" static_shadow_map_format_type="R32F" 
  angle="1.05" fall_off="1.05">
  <dynamic renderable_objects_manager="solid"/>
 </light>
 
-<light name="Omni004" type="omni" pos="129 -5 33" color="1 1 1" intensity="0.1" att_start_range="100.0" att_end_range="300.0" generate_shadow_map="false" shadow_map_format_type="R32F" ortho_shadow_map_width="256" ortho_shadow_map_height="256" shadow_map_width="256" shadow_map_height="256" generate_static_shadow_map="false" static_shadow_map_format_type="R32F" 
+<light name="Omni004" type="omni" pos="129 -5 33" color="1 1 1" intensity="0.1" att_start_range="10.0" att_end_range="50.0" generate_shadow_map="false" shadow_map_format_type="R32F" ortho_shadow_map_width="256" ortho_shadow_map_height="256" shadow_map_width="256" shadow_map_height="256" generate_static_shadow_map="false" static_shadow_map_format_type="R32F" 
  angle="1.05" fall_off="1.05">
  <dynamic renderable_objects_manager="solid"/>
 </light>
 
 
-<light name="OmniPoly001" type="omni" pos="213.862 1.000 11.299" color="0 1 0" intensity="0" att_start_range="3.0" att_end_range="5.0" generate_shadow_map="false" shadow_map_format_type="R32F" ortho_shadow_map_width="256" ortho_shadow_map_height="256" shadow_map_width="256" shadow_map_height="256" generate_static_shadow_map="false" static_shadow_map_format_type="R32F" 
+<light name="OmniPoly001" type="omni" pos="213.862 1.000 11.299" color="1 1 1" intensity="0" att_start_range="3.0" att_end_range="5.0" generate_shadow_map="false" shadow_map_format_type="R32F" ortho_shadow_map_width="256" ortho_shadow_map_height="256" shadow_map_width="256" shadow_map_height="256" generate_static_shadow_map="false" static_shadow_map_format_type="R32F" 
  angle="1.05" fall_off="1.05">
  <dynamic renderable_objects_manager="solid"/>
 </light>

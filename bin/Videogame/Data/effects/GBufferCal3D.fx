@@ -11,7 +11,8 @@ float3 CalcAnimtedPos(float4 Position, float4 Indices, float4 Weight)
 	l_Position += mul(g_Bones[Indices.y], Position) * Weight.y;
 	l_Position += mul(g_Bones[Indices.z], Position) * Weight.z;
 	l_Position += mul(g_Bones[Indices.w], Position) * Weight.w;
-	l_Position.x = -l_Position.x;
+	//l_Position.x = -l_Position.x;
+	l_Position.z = -l_Position.z;
 	return l_Position;
 }
 

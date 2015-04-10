@@ -17,6 +17,7 @@ function on_update_player_lua(l_ElapsedTime)
 	player.m_Speed = 8;							--Velocidad de movimiento.
 	player.m_JumpForce = 5.5;					--Fuerza de salto, impulso.
 	superjumForce = 10;						 	--SUPERSALTO CHEAT
+	player.m_AttackForce = 3;					--Impulse force for the attack.
 	player.m_PhysicController:set_step(0.3); 	--Altura que puede superar (escalones).
 	--////////////////////////////////////////////////////////
 	if is_init == true then
@@ -50,18 +51,21 @@ function on_update_player_lua(l_ElapsedTime)
 	--///////////////////////////////////////////////////////////
 	-- Movimiento del Player en las distintas direcciones. 
 	--///////////////////////////////////////////////////////////
-	if player.m_isJumpingMoving == false then
+	if (player.m_isJumpingMoving == false) and (player.m_isAttack == false) then
 		if act2in:do_action_from_lua("MoveForward") then
 			if player.m_is3D == true then
 				mov = mov + dir3D * player.m_Speed * l_ElapsedTime;
+				player.m_Direction3D = dir3D;
 				if act2in:do_action_from_lua("MoveRigth") then
 					player:set_yaw(PlayerYaw + 0.7854); -- 45º
 					mov = mov - dirNor * player.m_Speed * l_ElapsedTime;
+					player.m_Direction3D = dir3D - dirNor;
 					player.m_isTurned = false;
 					player.m_JumpType = 5;
 				elseif act2in:do_action_from_lua("MoveLeft") then
 					player:set_yaw(PlayerYaw + 5.497); -- 315º
 					mov = mov + dirNor * player.m_Speed * l_ElapsedTime;
+					player.m_Direction3D = dir3D + dirNor;
 					player.m_isTurned = true;
 					player.m_JumpType = 8;
 				else
@@ -75,14 +79,17 @@ function on_update_player_lua(l_ElapsedTime)
 		elseif act2in:do_action_from_lua("MoveBack") then
 			if player.m_is3D == true then
 				mov = mov - dir3D * player.m_Speed * l_ElapsedTime;
+				player.m_Direction3D = Vect3f(0,0,0) - dir3D;
 				if act2in:do_action_from_lua("MoveRigth") then
 					player:set_yaw(PlayerYaw + 2.356); -- 135º
 					mov = mov - dirNor * player.m_Speed * l_ElapsedTime;
+					player.m_Direction3D = Vect3f(0,0,0) - dir3D - dirNor;
 					player.m_isTurned = false;
 					player.m_JumpType = 6;
 				elseif act2in:do_action_from_lua("MoveLeft") then
 					player:set_yaw(PlayerYaw + 3.926); -- 225º
 					mov = mov + dirNor * player.m_Speed * l_ElapsedTime;
+					player.m_Direction3D = Vect3f(0,0,0) - dir3D + dirNor;
 					player.m_isTurned = true;
 					player.m_JumpType = 7;
 				else
@@ -101,6 +108,7 @@ function on_update_player_lua(l_ElapsedTime)
 				player:set_yaw(PlayerYaw); -- 0º
 			end	
 			mov = mov - dirNor * player.m_Speed * l_ElapsedTime;
+			player.m_Direction3D = Vect3f(0,0,0) - dirNor;
 			if player.m_isJumping == true then
 				mov = mov * 0.75;
 			end
@@ -113,6 +121,7 @@ function on_update_player_lua(l_ElapsedTime)
 				player:set_yaw(PlayerYaw + 3.1415); -- 180º
 			end	
 			mov = mov + dirNor * player.m_Speed * l_ElapsedTime;
+			player.m_Direction3D = dirNor;
 			if player.m_isJumping == true then
 				mov = mov * 0.75;
 			end
@@ -180,6 +189,18 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 	end	
 	
+	if player.m_isAttack == true then
+		if player.m_CurrentAttackForce > 0.5 then	
+			player.m_CurrentAttackForce = player.m_CurrentAttackForce - (player.m_Gravity*2 * l_ElapsedTime);
+			mov = player.m_Direction3D * player.m_CurrentAttackForce;
+			mov.y = 0.0;
+		else
+			local mesh = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky");
+			mesh:set_position(player:get_position());
+			player.m_isAttack = false;
+		end
+	end
+	
 	--///////////////////////////////////////////////////////////
 	-- Acción de saltar del Player. Puede realizar 2 saltos distintos (de longitud, y salto vertical). 
 	--///////////////////////////////////////////////////////////
@@ -208,6 +229,16 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 	end
 	
+	--///////////////////////////////////////////////////////////
+	-- Acción de atacar del Player. Realiza un impulso hacia adelante. 
+	--///////////////////////////////////////////////////////////
+	if act2in:do_action_from_lua("Attack") then--) and (player.m_isAttack == false) then
+		player.m_CurrentAttackForce = player.m_AttackForce;
+		mov = player.m_Direction3D * player.m_CurrentAttackForce;
+		mov.y = 0.0;
+		player.m_isAttack = true;
+	end
+	
 	player:is_grounded(mov,l_ElapsedTime);
 	player:set_position(player.m_PhysicController:get_position());
 	move_character_controller_mesh(player, player:get_position());
@@ -218,7 +249,7 @@ end
 function move_character_controller_mesh(_player, _position)
 	local mesh = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky")
 	--coreInstance:trace(tostring(mesh:get_position().z))
-	mesh:set_yaw(_player:get_yaw())
+	mesh:set_yaw(_player:get_yaw() + math.pi)
 	local mesh_position = Vect3f(_position.x, _position.y-0.4, _position.z)
 	mesh:set_position(mesh_position)
 --[[CRenderableObject* malla = RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky");
