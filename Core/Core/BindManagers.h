@@ -7,7 +7,7 @@
 #include "Core\Core.h"
 #include "InputManager.h"
 #include "ActionToInput.h"
-#include "SoundManager.h"
+//#include "SoundManager.h"
 #include "Font\FontManager.h"
 #include "GraphicsManager.h"
 #include "Language\LanguageManager.h"
@@ -42,13 +42,13 @@ using namespace luabind;
 
 
 void RegisterManagers() {
-/*  luabind::module(LUA_STATE) [
-    class_<CSoundManager>("CSoundManager")
-    .def(constructor<>())
-    .def("update", &CSoundManager::Update)
-    .def("init", &CSoundManager::Init)
-    .def("de_init", &CSoundManager::DeInit)
-  ];*/
+  /*  luabind::module(LUA_STATE) [
+      class_<CSoundManager>("CSoundManager")
+      .def(constructor<>())
+      .def("update", &CSoundManager::Update)
+      .def("init", &CSoundManager::Init)
+      .def("de_init", &CSoundManager::DeInit)
+    ];*/
   luabind::module(LUA_STATE) [
     class_<CGraphicsManager>("CGraphicsManager")
     .def(constructor<>())

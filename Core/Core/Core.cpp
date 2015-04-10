@@ -1,7 +1,7 @@
 #include "Core.h"
 #include "GraphicsManager.h"
 #include "Effects\EffectManager.h"
-#include "SoundManager.h"
+//#include "SoundManager.h"
 #include "Utils/Defines.h"
 #include "InputManager.h"
 #include "Language/LanguageManager.h"
@@ -28,7 +28,7 @@
 #include "Particles\ParticleManager.h"
 #include "Particles\BillboardManager.h"
 #include "AI\FSMManager.h"
-#include "SoundManager.h"
+//#include "SoundManager.h"
 #include "WWSoundManager.h"
 
 CCore *CCore::m_Instance = 0;
@@ -43,7 +43,7 @@ CCore::~CCore() {
 void CCore::Init(HWND handler) {
   m_GraphicsManager = new CGraphicsManager();
   m_GraphicsManager->Init(handler, m_Config.FullScreen, m_Config.Screen_Width, m_Config.Screen_Heigth);
-  m_SoundManager = new CSoundManager();
+  //m_SoundManager = new CSoundManager();
   m_EffectManager = new CEffectManager();
   m_EffectManager->Load(m_Config.EffectPath);
   //m_RenderableObjectTechniqueManager = new CRenderableObjectTechniqueManager();
@@ -111,16 +111,16 @@ void CCore::Init(HWND handler) {
   m_BillboardManager->Load("./Data/billboards.xml");
   m_ParticleManager = new CParticleManager();
   m_ParticleManager->Load("./Data/particles.xml");
-  m_SoundManager = new CSoundManager();
-  m_SoundManager->Init();
-  m_SoundManager->LoadSounds("./Data/sounds.xml");
+  //m_SoundManager = new CSoundManager();
+  //m_SoundManager->Init();
+  //m_SoundManager->LoadSounds("./Data/sounds.xml");
   m_WWSoundManager = new CWWSoundManager();
   m_WWSoundManager->Init();
 }
 
 void CCore::DeInit() {
   CHECKED_DELETE(m_GraphicsManager);
-  CHECKED_DELETE(m_SoundManager);
+  //CHECKED_DELETE(m_SoundManager);
   m_InputManager->Done();
   CHECKED_DELETE(m_InputManager);
   CHECKED_DELETE(m_LanguageManager);
@@ -170,7 +170,7 @@ void CCore::Render() {
 void CCore::Update(float dt) {
   m_GraphicsManager->Update();
   m_PhysicsManager->Update(dt);
-  m_SoundManager->Update(dt);
+  //m_SoundManager->Update(dt);
   m_InputManager->Update();
   m_LogRender->Update(dt);
   m_TriggerManager->Update(dt);

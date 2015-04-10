@@ -17,7 +17,6 @@
     <ClCompile Include="Common\AkFileLocationBase.cpp" />
     <ClCompile Include="Common\AkFilePackage.cpp" />
     <ClCompile Include="Common\AkFilePackageLUT.cpp" />
-    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="WWSoundManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -33,7 +32,6 @@
     <ClInclude Include="Common\AkFilePackageLowLevelIO.h" />
     <ClInclude Include="Common\AkFilePackageLUT.h" />
     <ClInclude Include="Common\AkMultipleFileLocation.h" />
-    <ClInclude Include="SoundManager.h" />
     <ClInclude Include="WWSoundManager.h" />
   </ItemGroup>
   <ItemGroup>

@@ -10,7 +10,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="WWSoundManager.cpp" />
     <ClCompile Include="AkDefaultIOHookBlocking.cpp" />
     <ClCompile Include="AkDefaultIOHookDeferred.cpp" />
@@ -28,7 +27,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SoundManager.h" />
     <ClInclude Include="WWSoundManager.h" />
     <ClInclude Include="AkDefaultIOHookBlocking.h" />
     <ClInclude Include="AkDefaultIOHookDeferred.h" />

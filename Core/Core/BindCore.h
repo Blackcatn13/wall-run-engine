@@ -35,7 +35,7 @@ void RegisterCore() {
     .def("de_init", &CCore::DeInit)
     .def("get_instance", &CCore::GetInstance)
     .def("get_graphics_manager", &CCore::GetGraphicsManager)
-    .def("get_sound_manager", &CCore::GetSoundManager)
+    //.def("get_sound_manager", &CCore::GetSoundManager)
     .def("get_input_manager", &CCore::GetInputManager)
     .def("get_language_manager", &CCore::GetLanguageManager)
     .def("get_font_manager", &CCore::GetFontManager)

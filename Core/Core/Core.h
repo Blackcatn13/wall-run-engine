@@ -9,7 +9,7 @@
 
 class CLanguageManager;
 class CGraphicsManager;
-class CSoundManager;
+//class CSoundManager;
 class CInputManager;
 class CFontManager;
 class CActionToInput;
@@ -36,12 +36,12 @@ class CEnemyManager;
 class CParticleManager;
 class CBillboardManager;
 class CFSMManager;
-class CSoundManager;
+//class CSoundManager;
 class CWWSoundManager;
 
 #define CCORE			  CCore::GetInstance()
 #define GRAPHM			CCore::GetInstance()->GetGraphicsManager()
-#define SOUNDM			CCore::GetInstance()->GetSoundManager()
+//#define SOUNDM			CCore::GetInstance()->GetSoundManager()
 #define INPUTM			CCore::GetInstance()->GetInputManager()
 #define LANGM			  CCore::GetInstance()->GetLanguageManager()
 #define FONTM			  CCore::GetInstance()->GetFontManager()
@@ -67,7 +67,8 @@ class CWWSoundManager;
 #define ENEMYM			CCore::GetInstance()->GetEnemyManager()
 #define PROCESS			CCore::GetInstance()->GetProcess()
 #define FSMMGR			CCore::GetInstance()->GetFSMManager()
-#define SNDMGR			CCore::GetInstance()->GetSoundManager()
+//#define SNDMGR			CCore::GetInstance()->GetSoundManager()
+#define WWSNDMGR		CCore::GetInstance()->GetWWSoundManager()
 
 class CCore {
  protected:
@@ -75,7 +76,7 @@ class CCore {
   CCore();
  private:
   CGraphicsManager		            *m_GraphicsManager;
-  CSoundManager			            *m_SoundManager;
+  //CSoundManager			            *m_SoundManager;
   CInputManager                      *m_InputManager;
   CLanguageManager		            *m_LanguageManager;
   HWND					            m_Handler;
@@ -121,9 +122,9 @@ class CCore {
   CGraphicsManager *GetGraphicsManager() {
     return m_GraphicsManager;
   }
-  CSoundManager *GetSoundManager() {
+  /*CSoundManager *GetSoundManager() {
     return m_SoundManager;
-  }
+  }*/
   CInputManager *GetInputManager() {
     return m_InputManager;
   }
