@@ -10,6 +10,7 @@
 #include <AK/Plugin/AllPluginsRegistrationHelpers.h>
 #include <Windows.h>
 #include <assert.h>
+#include "Utils\Logger.h"
 
 namespace AK {
 #ifdef WIN32
@@ -129,7 +130,7 @@ bool CWWSoundManager::Init() {
 
   m_lowLevelIO->SetBasePath( L"./Data/" );
   ////////
-  AkBankID bankID;
+  /*AkBankID bankID;
   if ( AK::SoundEngine::LoadBank( "Init.bnk", AK_DEFAULT_POOL_ID, bankID ) != AK_Success ) {
     //SetLoadFileErrorMessage( "Init.bnk" );
     return false;
@@ -139,18 +140,38 @@ bool CWWSoundManager::Init() {
   if ( AK::SoundEngine::LoadBank( "InteractiveMusic.bnk", AK_DEFAULT_POOL_ID, bankID ) != AK_Success ) {
     //SetLoadFileErrorMessage( "InteractiveMusic.bnk" );
     return false;
+  }*/
+
+}
+
+void CWWSoundManager::Render() {
+  AK::SoundEngine::RenderAudio();
+}
+
+void CWWSoundManager::Load(std::string file) {
+  m_fileName = file;
+  CXMLTreeNode newFile;
+  if (!newFile.LoadFile(file.c_str())) {
+    printf("ERROR loading the file.");
+  } else {
+    CXMLTreeNode  m = newFile["Banks"];
+    if (m.Exists()) {
+      int count = m.GetNumChildren();
+      AkBankID bankID;
+      for (int i = 0; i < count; ++i) {
+        std::string bnkName = m(i).GetPszISOProperty("bnkName", "", false);
+        if (AK::SoundEngine::LoadBank(bnkName.c_str(), AK_DEFAULT_POOL_ID, bankID) != AK_Success) {
+          LOGGER->AddNewLog(ELL_ERROR, "Bank %s not correctly loaded", bnkName.c_str());
+        }
+      }
+    }
   }
   static const AkGameObjectID GAME_OBJECT_MUSIC = 100;
   AK::SoundEngine::RegisterGameObj( GAME_OBJECT_MUSIC, "Music" );
-
   //Start the interactive music
   static const AkUniqueID IM_START = 3952084898U;
   AkPlayingID m_iPlayingID = AK::SoundEngine::PostEvent(
                                IM_START,
                                GAME_OBJECT_MUSIC,
                                AK_EnableGetMusicPlayPosition );
-}
-
-void CWWSoundManager::Render() {
-  AK::SoundEngine::RenderAudio();
 }

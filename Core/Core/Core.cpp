@@ -116,6 +116,7 @@ void CCore::Init(HWND handler) {
   //m_SoundManager->LoadSounds("./Data/sounds.xml");
   m_WWSoundManager = new CWWSoundManager();
   m_WWSoundManager->Init();
+  m_WWSoundManager->Load("./Data/WWSounds.xml");
 }
 
 void CCore::DeInit() {

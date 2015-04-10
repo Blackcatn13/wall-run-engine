@@ -11,12 +11,8 @@
 #ifndef INC_WW_SOUND_MANAGER_H_
 #define INC_WW_SOUND_MANAGER_H_
 
-#include <AK/SoundEngine/Common/AkSoundEngine.h>
-#include <AK/MusicEngine/Common/AkMusicEngine.h>
-#include <AK/SoundEngine/Common/AkModule.h>
-#include <AK/SoundEngine/Common/AkStreamMgrModule.h>
+#include <string>
 
-#include "AkSoundEngineExports.h"
 #include "AkDefaultIOHookBlocking.h"
 
 class CWWSoundManager {
@@ -28,5 +24,8 @@ class CWWSoundManager {
   void	Done		();
   CAkDefaultIOHookBlocking *m_lowLevelIO;
   void Render();
+  void Load(std::string file);
+ private:
+  std::string m_fileName;
 };
 #endif // INC_SOUND_MANAGER_H_
