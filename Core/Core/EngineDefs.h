@@ -30,6 +30,7 @@ typedef struct Conf_info {
   std::string					AnimatedMeshPath;
   std::string					LevelPhisics;
   std::string					TriggersPath;
+  std::string					PuzzlesPath;
 } CONFIG_INFO;
 
 

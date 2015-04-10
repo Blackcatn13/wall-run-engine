@@ -8,7 +8,7 @@ function activate_teleport(player_position)
 	local vec3f_array = Vect3f(tonumber(vec_array[1]), tonumber(vec_array[2]), tonumber(vec_array[3]))
 	player.m_PhysicController:set_position(vec3f_array)
 	local camera = coreInstance.m_CameraController:get_active_camera()
-		coreInstance:trace("laaaaaa")
+	--	coreInstance:trace("laaaaaa")
 	camera.m_pObject3D:set_position(Vect3f(camera.m_pObject3D:get_position().x, camera.m_pObject3D:get_position().y, vec3f_array.z - 10))
 
 	--camera.m_pObject3D:set_position(Vect3f(3.118870, 20.0, 271.008423))
@@ -18,6 +18,43 @@ function set_is_3D()
 	player.m_is3D = true;
 	coreInstance.m_CameraController:set_active_camera("3DCam");
 
+end
+
+function toogle_switch(trigger_name, puzzle_name)
+	coreInstance:trace("Enter switch")
+	local player = Player:get_instance()
+	coreInstance:trace(puzzle_name)
+	local puzzle = coreInstance:get_puzzle_manager():get_resource(puzzle_name)
+	--local total_switches = puzzle.m_MinActivatedSwitches
+	
+	if player ~= nil then
+		local player_controller = player.get_controller()
+		if player_controller.m_isAttack == true or player_controller.m_isJumping == true then
+			local trigger_manager = coreInstance:get_trigger_manager()
+			local trigger = trigger_manager:get_resource(trigger_name)
+			--coreInstance:trace("Toogle switch")
+			if trigger ~= nil then		
+				if trigger.m_IsSwitched ~= true then
+					trigger.m_IsSwitched = true
+					coreInstance:trace(tostring(trigger.m_IsSwitched))
+					puzzle.m_ActivatedSwitches = puzzle.m_ActivatedSwitches + 1
+				else 
+					trigger.m_IsSwitched = false
+					coreInstance:trace(tostring(trigger.m_IsSwitched))
+					puzzle.m_ActivatedSwitches = puzzle.m_ActivatedSwitches - 1
+				end
+			end
+		end
+	end
+	coreInstance:trace(tostring(puzzle.m_ActivatedSwitches))
+	--if activated_switches == total_switches then --TODO obtener datos del puzzle en si
+		--coreInstance:trace("all switches activated")
+		--open_door()
+	--end
+end
+
+function open_door()
+	coreInstance:trace("Opening door")
 end
 
 function trigger_change_view(offset_axis)

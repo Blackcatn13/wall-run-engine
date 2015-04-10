@@ -30,6 +30,7 @@
 #include "AI\FSMManager.h"
 //#include "SoundManager.h"
 #include "WWSoundManager.h"
+#include "AI\PuzzleManager.h"
 
 CCore *CCore::m_Instance = 0;
 
@@ -105,6 +106,8 @@ void CCore::Init(HWND handler) {
   m_EnemyManager->Init("data//enemies.xml");
   m_PlayerController = new CPlayerController();
   m_TriggerManager->LoadTriggers(m_Config.TriggersPath);
+  m_PuzzleManager  = new CPuzzleManager();
+  m_PuzzleManager->Load(m_Config.PuzzlesPath);
   m_LuaLoadLevelFunc = m_Config.LuaLevelObjectsFunc;
   m_LevelPhisicsFile = m_Config.LevelPhisics;
   m_BillboardManager = new CBillboardManager();
@@ -150,6 +153,7 @@ void CCore::DeInit() {
   CHECKED_DELETE(m_BillboardManager);
   CHECKED_DELETE(m_ParticleManager);
   CHECKED_DELETE(m_WWSoundManager);
+  CHECKED_DELETE(m_PuzzleManager);
   // m_PlatformsMap->Destroy();
 }
 
@@ -180,6 +184,7 @@ void CCore::Update(float dt) {
   m_EnemyManager->Update(dt);
   m_ParticleManager->Update(dt);
   m_BillboardManager->Update(dt);
+  m_PuzzleManager->Update(dt);
 }
 
 

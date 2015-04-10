@@ -19,6 +19,7 @@
 #include "Renderable\RenderableObjectsLayersManager.h"
 #include "RenderableCommands\SceneRendererCommandManager.h"
 #include "Core_Utils/MemLeaks.h"
+#include "AI\PuzzleManager.h"
 
 #define APPLICATION_NAME	"VIDEOGAME"
 
@@ -83,6 +84,8 @@ void CEngine::Update() {
     SCENRENDCOMM->Reload();
   if (ACT2IN->DoAction("RenderDebugInfo"))
     m_Process->SetPrintInfo(!m_Process->getPrintInfo());
+  if (ACT2IN->DoAction("ReloadPuzzles"))
+    PUZZLEM->Reload();
   //m_LogRender->Update(m_Timer.GetElapsedTime());
 }
 
@@ -169,6 +172,8 @@ void CEngine::ParseConfFile(std::string file) {
             m_Conf_info.LevelPhisics = n(i).GetPszISOProperty("PhisicsFile", "./Data/level1/trainingPiky2.ASE", false);
           } else if (name == "Triggers") {
             m_Conf_info.TriggersPath = n(i).GetPszISOProperty("TriggersFile", "./Data/level1/triggers.xml", false);
+          } else if (name == "Puzzles") {
+            m_Conf_info.PuzzlesPath = n(i).GetPszISOProperty("PuzzlesFile", "./Data/level1/puzzles.xml", false);
           }
         }
       }

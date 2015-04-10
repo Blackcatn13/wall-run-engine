@@ -38,6 +38,7 @@ class CBillboardManager;
 class CFSMManager;
 //class CSoundManager;
 class CWWSoundManager;
+class CPuzzleManager;
 
 #define CCORE			  CCore::GetInstance()
 #define GRAPHM			CCore::GetInstance()->GetGraphicsManager()
@@ -59,8 +60,8 @@ class CWWSoundManager;
 #define RENDLM			CCore::GetInstance()->GetRenderableObjectsLayersManager()
 #define SCENRENDCOMM	CCore::GetInstance()->GetSceneRendererCommandManager()
 #define TRIGGM			CCore::GetInstance()->GetTriggerManager()
-#define PLAYC			  CCore::GetInstance()->GetPlayerController()
-#define LOGRNDR     CCore::GetInstance()->GetLogRender()
+#define PLAYC			CCore::GetInstance()->GetPlayerController()
+#define LOGRNDR			CCore::GetInstance()->GetLogRender()
 //#define WPMMGR			CCore::GetInstance()->GetWPManager()
 #define PARTIM			CCore::GetInstance()->GetParticleManager()
 #define BILLBM			CCore::GetInstance()->GetBillboardManager()
@@ -69,6 +70,7 @@ class CWWSoundManager;
 #define FSMMGR			CCore::GetInstance()->GetFSMManager()
 //#define SNDMGR			CCore::GetInstance()->GetSoundManager()
 #define WWSNDMGR		CCore::GetInstance()->GetWWSoundManager()
+#define PUZZLEM			CCore::GetInstance()->GetPuzzleManager()
 
 class CCore {
  protected:
@@ -100,6 +102,7 @@ class CCore {
   CTriggerManager					*m_TriggerManager;
   CPlayerController					*m_PlayerController;
   CLogRender                         *m_LogRender;
+  CPuzzleManager					*m_PuzzleManager;
   std::string							m_LuaLoadLevelFunc;
   std::string							m_LuaCameras;
   std::string							m_LevelPhisicsFile;
@@ -224,6 +227,12 @@ class CCore {
   CWWSoundManager *GetWWSoundManager() {
     return m_WWSoundManager;
   }
+
+  CPuzzleManager *GetPuzzleManager() {
+    return m_PuzzleManager;
+  }
+
+
 
   GET_SET(std::string, LuaLoadLevelFunc)
   GET_SET(std::string, LevelPhisicsFile)

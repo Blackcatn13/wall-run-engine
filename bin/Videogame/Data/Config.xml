@@ -20,7 +20,8 @@
   <Renderable renderXML="./Data/level3/renderable_objects.xml"/> 
   <Lights lightsXML="./Data/level3/lights.xml"/> 
   <Triggers TriggersFile="./Data/level3/triggers.xml" />
-  <LevelPhisicsFile PhisicsFile="./Data/VolFinalFinal.ASE" />
+  <Puzzles PuzzlesFile="./Data/level3/puzzles.xml" />
+  <LevelPhisicsFile PhisicsFile="./Data/VolFinal.ASE" />
   <AnimatedModels modelsXML="./Data/animated_models.xml"/>
   <RendererCommands rendererCommandsXML="./Data/scene_render_commands.xml"/>
   <PoolRenderableObjects poolRenderableObjects="./Data/pool_renderable_objects.xml"/>

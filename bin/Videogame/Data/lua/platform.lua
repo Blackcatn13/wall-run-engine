@@ -25,7 +25,9 @@ function init_poly_platform(name, user_data_name, size, position, time_out, spee
 	platform:insert_platform(user_data_name, size, position)
 	--light = coreInstance:get_light_manager():get_resource(platform.m_LightName)
 	platform.m_Light = coreInstance:get_light_manager():get_resource(platform.m_LightName)
-	platform.m_LightOriginalPosition = platform.m_Light:get_position()
+	if platform.m_Light ~= nil then
+		platform.m_LightOriginalPosition = platform.m_Light:get_position()
+	end
 	--coreInstance:trace(tostring(platform.m_Collission))
 	local collision = true
 	if platform.m_Collission == 0 then

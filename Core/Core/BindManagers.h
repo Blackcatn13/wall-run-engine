@@ -13,6 +13,8 @@
 #include "Language\LanguageManager.h"
 #include "TriggerManager\TriggerManager.h"
 #include "EnemyManager.h"
+#include "AI\WPManager.h"
+#include "AI\PuzzleManager.h"
 
 #include "StaticMeshes\StaticMeshManager.h"
 #include "Renderable\RenderableObjectsLayersManager.h"
@@ -200,6 +202,29 @@ void RegisterManagers() {
   ];
 
   luabind::module(LUA_STATE) [
+    class_<ZONE>("ZONE")
+    .def_readwrite("m_Waypoints", &ZONE::m_Waypoints)
+  ];
+
+  luabind::module(LUA_STATE) [
+    class_<CMapManager<ZONE>>("CMapManagerZONE")
+    .def("get_resource", &CMapManager< ZONE >::GetResource)
+    .def("existe_resource", &CMapManager< ZONE >::ExisteResource)
+    .def("add_resource", &CMapManager< ZONE >::AddResource)
+    .def("destroy", &CMapManager< ZONE >::Destroy)
+    .property("m_Resources",  &CMapManager< ZONE >::GetResources)
+  ];
+
+  luabind::module(LUA_STATE) [
+    class_<CWPManager, CMapManager<ZONE>>("CWPManager")
+    .def(constructor<>())
+    .def("find_closest_waypoint", &CWPManager::FindClosestWaypoint)
+    .def("get_distance", &CWPManager::GetDistance)
+    .def("get_waypoint_position", &CWPManager::GetWaypointPosition)
+    .def("calcular_siguiente_waypoint", &CWPManager::CalcularSiguienteWaypoint)
+  ];
+
+  luabind::module(LUA_STATE) [
     class_<CEnemyManager>("CEnemyManager")
     .def(constructor<>())
     .def("get_instance", &CEnemyManager::GetInstance)
@@ -207,6 +232,20 @@ void RegisterManagers() {
     .def("get_enemy", &CEnemyManager::GetEnemy)
 
   ];
+
+  luabind::module(LUA_STATE) [
+    class_<CMapManager<CPuzzle>>("CMapManagerPuzzle")
+    .def("get_resource", &CMapManager< CPuzzle >::GetResource)
+    .def("existe_resource", &CMapManager< CPuzzle >::ExisteResource)
+    .def("add_resource", &CMapManager< CPuzzle >::AddResource)
+    .def("destroy", &CMapManager< CPuzzle >::Destroy)
+    .property("m_Resources",  &CMapManager< CPuzzle >::GetResources)
+  ];
+  luabind::module(LUA_STATE) [
+    class_<CPuzzleManager, CMapManager<CPuzzle>>("CPuzzleManager")
+    .def(constructor<>())
+  ];
+
 }
 
 //#endif

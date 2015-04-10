@@ -13,6 +13,8 @@
   <ItemGroup>
     <ClCompile Include="AI\AIController.cpp" />
     <ClCompile Include="AI\FSMManager.cpp" />
+    <ClCompile Include="AI\Puzzle.cpp" />
+    <ClCompile Include="AI\PuzzleManager.cpp" />
     <ClCompile Include="AI\WPManager.cpp" />
     <ClCompile Include="Core\Core.cpp" />
     <ClCompile Include="Core\CoreLuaWrapper.cpp" />
@@ -29,6 +31,8 @@
   <ItemGroup>
     <ClInclude Include="AI\AIController.h" />
     <ClInclude Include="AI\FSMManager.h" />
+    <ClInclude Include="AI\Puzzle.h" />
+    <ClInclude Include="AI\PuzzleManager.h" />
     <ClInclude Include="AI\WPManager.h" />
     <ClInclude Include="Core\BindAdvancedShaders.h" />
     <ClInclude Include="Core\BindAnimatedModels.h" />

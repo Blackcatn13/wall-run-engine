@@ -55,6 +55,7 @@ void RegisterCore() {
     //.def("get_scene_render_commands_manager", &CCore::GetSceneRendererCommandManager)
     .def("get_trigger_manager", &CCore::GetTriggerManager)
     .def("get_enemy_manager", &CCore::GetEnemyManager)
+    .def("get_puzzle_manager",  &CCore::GetPuzzleManager)
 //        .def("get_wp_manager", &CCore::GetWPManager)
     .def("trace", &CCore::Trace)
     // .def("get_log_render", &CCore::GetLogRender)

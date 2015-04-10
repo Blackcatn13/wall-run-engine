@@ -27,6 +27,10 @@ function Player.new()
 		return player_controller 
 	end
 
+	function self.get_controller()
+		return self.coreInstance:get_player_controller()
+	end
+	
 	function self.player_take_damage()
 		self.num_hearts = self.num_hearts -1
 		
