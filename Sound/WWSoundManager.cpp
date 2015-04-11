@@ -42,7 +42,9 @@ void VirtualFreeHook(
 #endif
 }
 
-
+CWWSoundManager::CWWSoundManager() :
+  m_LastId(0x00000001)
+{}
 
 void CWWSoundManager::Done() {
   AK::MusicEngine::Term();
@@ -154,24 +156,64 @@ void CWWSoundManager::Load(std::string file) {
   if (!newFile.LoadFile(file.c_str())) {
     printf("ERROR loading the file.");
   } else {
-    CXMLTreeNode  m = newFile["Banks"];
+    CXMLTreeNode  m = newFile["WWise"];
     if (m.Exists()) {
       int count = m.GetNumChildren();
       AkBankID bankID;
       for (int i = 0; i < count; ++i) {
-        std::string bnkName = m(i).GetPszISOProperty("bnkName", "", false);
-        if (AK::SoundEngine::LoadBank(bnkName.c_str(), AK_DEFAULT_POOL_ID, bankID) != AK_Success) {
-          LOGGER->AddNewLog(ELL_ERROR, "Bank %s not correctly loaded", bnkName.c_str());
+        std::string name = m(i).GetName();
+        if (name == "Bank") {
+          std::string bnkName = m(i).GetPszISOProperty("bnkName", "", false);
+          if (AK::SoundEngine::LoadBank(bnkName.c_str(), AK_DEFAULT_POOL_ID, bankID) != AK_Success) {
+            LOGGER->AddNewLog(ELL_ERROR, "Bank %s not correctly loaded", bnkName.c_str());
+          }
+        } else if (name == "GameObject") {
+          std::string goName = m(i).GetPszISOProperty("goName", "", false);
+          m_GameObjects[goName] = ++m_LastId;
         }
       }
     }
   }
-  static const AkGameObjectID GAME_OBJECT_MUSIC = 100;
-  AK::SoundEngine::RegisterGameObj( GAME_OBJECT_MUSIC, "Music" );
+  //static const AkGameObjectID GAME_OBJECT_MUSIC = 100;
+  for (auto it = m_GameObjects.begin(); it != m_GameObjects.end(); ++it) {
+    AK::SoundEngine::RegisterGameObj(it->second);
+  }
+  AkSoundPosition soundPos;
+  soundPos.Position.X = 0;
+  soundPos.Position.Y = 1;
+  soundPos.Position.Z = 0;
+  soundPos.Orientation.X = -1;
+  soundPos.Orientation.Y = soundPos.Orientation.Z = 0;
+  AK::SoundEngine::SetPosition(m_GameObjects["Music"], soundPos);
   //Start the interactive music
   static const AkUniqueID IM_START = 3952084898U;
   AkPlayingID m_iPlayingID = AK::SoundEngine::PostEvent(
-                               IM_START,
-                               GAME_OBJECT_MUSIC,
+                               L"BackGround",
+                               m_GameObjects["Music"],
                                AK_EnableGetMusicPlayPosition );
+}
+
+void CWWSoundManager::SetListenerPosition(Vect3f pos) {
+  AkListenerPosition lpos;
+  lpos.OrientationFront.X = 1;
+  lpos.OrientationFront.Y = 0;
+  lpos.OrientationFront.Z = 0;
+  lpos.OrientationTop.X = 0;
+  lpos.OrientationTop.Y = 1;
+  lpos.OrientationTop.Z = 0;
+  lpos.Position.X = pos.x;
+  lpos.Position.Y = pos.y;
+  lpos.Position.Z = pos.z;
+  AK::SoundEngine::SetListenerPosition(lpos);
+  AkSoundPosition soundPos;
+  soundPos.Position.X = -pos.x;
+  soundPos.Position.Y = pos.y;
+  soundPos.Position.Z = -pos.z;
+  soundPos.Orientation.X = -1;
+  soundPos.Orientation.Y = soundPos.Orientation.Z = 0;
+  AK::SoundEngine::SetPosition(m_GameObjects["Music"], soundPos);
+}
+
+void CWWSoundManager::PlayEvent(std::string eventName, std::string GameObject) {
+  AkPlayingID m_iPID = AK::SoundEngine::PostEvent(eventName.c_str(), m_GameObjects[GameObject]);
 }

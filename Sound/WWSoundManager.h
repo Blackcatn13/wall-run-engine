@@ -12,20 +12,25 @@
 #define INC_WW_SOUND_MANAGER_H_
 
 #include <string>
-
+#include <map>
 #include "AkDefaultIOHookBlocking.h"
+#include "Math\Vector3.h"
 
 class CWWSoundManager {
  public:
   //----Init and End protocols------------------------------------
-  CWWSoundManager() {}
+  CWWSoundManager();
   virtual ~CWWSoundManager() {Done();}
   bool	Init		();
   void	Done		();
   CAkDefaultIOHookBlocking *m_lowLevelIO;
   void Render();
   void Load(std::string file);
+  void SetListenerPosition(Vect3f pos);
+  void PlayEvent(std::string eventName, std::string GameObject);
  private:
   std::string m_fileName;
+  std::map<std::string, AkGameObjectID> m_GameObjects;
+  AkGameObjectID m_LastId;
 };
 #endif // INC_SOUND_MANAGER_H_

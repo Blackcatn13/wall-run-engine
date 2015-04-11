@@ -49,6 +49,7 @@
 #include "AI\FSMManager.h"
 #include "AI\WPManager.h"
 #include <sstream>
+#include "WWSoundManager.h"
 
 CTestGameplay::CTestGameplay(void) {
   tTerra1_yaw = 0;
@@ -363,11 +364,13 @@ void CTestGameplay::Update(float dt) {
   //float deltaY = im->GetMouseDelta().y;
   //float deltaZ = im->GetMouseDelta().z;
   Vect3f l_Position = RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky")->GetPosition();
+  WWSNDMGR->SetListenerPosition(l_Position);
   m_ObjectFPS->SetPosition(Vect3f(l_Position.x, l_Position.y + 1.0f, l_Position.z ));
   m_ObjectThPS->SetPosition(l_Position);
 // m_ObjectThPS->SetYaw(RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky")->GetYaw());
   if (ACT2IN->DoAction("ChangeCatalan")) {
     LANGM->SetCurrentLanguage("catalan");
+    WWSNDMGR->PlayEvent("Noise", "Sounds");
     // CAMCONTM->setActiveCamera("Camera002");
     //CAMCONTM->Play(true);
     //CCORE->GetCinematicController()->GetResource("DestroyW")->Play(true);
