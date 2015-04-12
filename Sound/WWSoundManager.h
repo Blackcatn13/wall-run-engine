@@ -15,6 +15,13 @@
 #include <map>
 #include "AkDefaultIOHookBlocking.h"
 #include "Math\Vector3.h"
+#include <vector>
+
+struct EventInfo {
+  std::string Event;
+  AkGameObjectID GameObjectID;
+  AkPlayingID PlayindID;
+};
 
 class CWWSoundManager {
  public:
@@ -32,5 +39,6 @@ class CWWSoundManager {
   std::string m_fileName;
   std::map<std::string, AkGameObjectID> m_GameObjects;
   AkGameObjectID m_LastId;
+  std::vector<EventInfo *> m_events;
 };
 #endif // INC_SOUND_MANAGER_H_

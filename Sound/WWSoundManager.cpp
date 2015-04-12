@@ -130,20 +130,7 @@ bool CWWSoundManager::Init() {
 
   AK::SoundEngine::RegisterAllPlugins();
 
-  m_lowLevelIO->SetBasePath( L"./Data/" );
-  ////////
-  /*AkBankID bankID;
-  if ( AK::SoundEngine::LoadBank( "Init.bnk", AK_DEFAULT_POOL_ID, bankID ) != AK_Success ) {
-    //SetLoadFileErrorMessage( "Init.bnk" );
-    return false;
-  }
-
-  //AkBankID bankID; // Not used
-  if ( AK::SoundEngine::LoadBank( "InteractiveMusic.bnk", AK_DEFAULT_POOL_ID, bankID ) != AK_Success ) {
-    //SetLoadFileErrorMessage( "InteractiveMusic.bnk" );
-    return false;
-  }*/
-
+  m_lowLevelIO->SetBasePath(L"./Data/");
 }
 
 void CWWSoundManager::Render() {
@@ -163,34 +150,45 @@ void CWWSoundManager::Load(std::string file) {
       for (int i = 0; i < count; ++i) {
         std::string name = m(i).GetName();
         if (name == "Bank") {
-          std::string bnkName = m(i).GetPszISOProperty("bnkName", "", false);
+          std::string bnkName = m(i).GetPszISOProperty("Name", "", false);
           if (AK::SoundEngine::LoadBank(bnkName.c_str(), AK_DEFAULT_POOL_ID, bankID) != AK_Success) {
             LOGGER->AddNewLog(ELL_ERROR, "Bank %s not correctly loaded", bnkName.c_str());
           }
-        } else if (name == "GameObject") {
-          std::string goName = m(i).GetPszISOProperty("goName", "", false);
+        } else if (name == "GameObject2D") {
+          std::string goName = m(i).GetPszISOProperty("Name", "", false);
           m_GameObjects[goName] = ++m_LastId;
+        } else if (name == "GameObject3D") {
+          std::string goName = m(i).GetPszISOProperty("Name", "", false);
+          Vect3f pos = m(i).GetVect3fProperty("pos", v3fZERO, false);
+          Vect3f dir = m(i).GetVect3fProperty("dir", v3fZERO, false);
+          m_GameObjects[goName] = ++m_LastId;
+          AkSoundPosition soundPos;
+          soundPos.Position.X = pos.x;
+          soundPos.Position.Y = pos.y;
+          soundPos.Position.Z = pos.z;
+          soundPos.Orientation.X = dir.x;
+          soundPos.Orientation.Y = dir.y;
+          soundPos.Orientation.Z = dir.z;
+          AK::SoundEngine::SetPosition(m_GameObjects[goName], soundPos);
+        } else if (name == "InitEvent") {
+          std::string eventName = m(i).GetPszISOProperty("event", "", false);
+          std::string goName = m(i).GetPszISOProperty("GameObject", "", false);
+          EventInfo *ei = new EventInfo();
+          ei->Event = eventName;
+          ei->GameObjectID = m_GameObjects[goName];
+          m_events.push_back(ei);
         }
       }
     }
   }
-  //static const AkGameObjectID GAME_OBJECT_MUSIC = 100;
+  // Register all the game objects
   for (auto it = m_GameObjects.begin(); it != m_GameObjects.end(); ++it) {
     AK::SoundEngine::RegisterGameObj(it->second);
   }
-  AkSoundPosition soundPos;
-  soundPos.Position.X = 0;
-  soundPos.Position.Y = 1;
-  soundPos.Position.Z = 0;
-  soundPos.Orientation.X = -1;
-  soundPos.Orientation.Y = soundPos.Orientation.Z = 0;
-  AK::SoundEngine::SetPosition(m_GameObjects["Music"], soundPos);
-  //Start the interactive music
-  static const AkUniqueID IM_START = 3952084898U;
-  AkPlayingID m_iPlayingID = AK::SoundEngine::PostEvent(
-                               L"BackGround",
-                               m_GameObjects["Music"],
-                               AK_EnableGetMusicPlayPosition );
+  // Init all the events listed in the WWSounds.xml
+  for (int i = 0; i < m_events.size(); ++i) {
+    m_events[i]->PlayindID = AK::SoundEngine::PostEvent(m_events[i]->Event.c_str(), m_events[i]->GameObjectID);
+  }
 }
 
 void CWWSoundManager::SetListenerPosition(Vect3f pos) {
@@ -205,13 +203,7 @@ void CWWSoundManager::SetListenerPosition(Vect3f pos) {
   lpos.Position.Y = pos.y;
   lpos.Position.Z = pos.z;
   AK::SoundEngine::SetListenerPosition(lpos);
-  AkSoundPosition soundPos;
-  soundPos.Position.X = -pos.x;
-  soundPos.Position.Y = pos.y;
-  soundPos.Position.Z = -pos.z;
-  soundPos.Orientation.X = -1;
-  soundPos.Orientation.Y = soundPos.Orientation.Z = 0;
-  AK::SoundEngine::SetPosition(m_GameObjects["Music"], soundPos);
+
 }
 
 void CWWSoundManager::PlayEvent(std::string eventName, std::string GameObject) {

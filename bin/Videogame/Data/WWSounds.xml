@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <WWise>
-	<Bank bnkName="Init.bnk"/>
-	<Bank bnkName="Test.bnk"/> 
-	<GameObject goName="Music"/>
-	<GameObject goName="Sounds"/>
+	<Bank Name="Init.bnk"/>
+	<Bank Name="Test.bnk"/> 
+	<GameObject2D Name="Music"/>
+	<GameObject3D Name="Sounds" pos="0 0 0" dir="-1 0 0"/>
+	<InitEvent event="BackGround" GameObject="Music"/>
 </WWise>
