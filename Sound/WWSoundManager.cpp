@@ -50,10 +50,16 @@ void CWWSoundManager::Done() {
   AK::MusicEngine::Term();
   AK::SoundEngine::Term();
   m_lowLevelIO->Term();
-
+  delete m_lowLevelIO;
   if ( AK::IAkStreamMgr::Get() )
     AK::IAkStreamMgr::Get()->Destroy();
   AK::MemoryMgr::Term();
+
+  m_GameObjects.clear();
+  for (int i = 0; i < m_events.size(); ++i) {
+    delete (m_events[i]);
+  }
+  m_events.clear();
 }
 
 
