@@ -377,12 +377,15 @@ void CTestGameplay::Update(float dt) {
   }
   if (ACT2IN->DoAction("ChangeCastellano")) {
     LANGM->SetCurrentLanguage("castellano");
+    WWSNDMGR->SetState("UnderWater", "Pitching");
     //CCORE->GetCinematicController()->GetResource("DestroyW")->Stop();
     // CAMCONTM->Stop();
     //CAMCONTM->setActiveCamera("FPS");
   }
   if (ACT2IN->DoAction("ChangeIngles")) {
     LANGM->SetCurrentLanguage("ingles");
+    WWSNDMGR->SetState("UnderWater", "None");
+    WWSNDMGR->PlayEvent("Jump", "Piky");
     // CAMCONTM->Pause();
     // CCORE->GetCinematicController()->GetResource("DestroyW")->Pause();
   }

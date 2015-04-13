@@ -25,6 +25,7 @@
 #include "Math\Color.h"
 #include "Math\Vector2.h"
 #include "Math\MathTypes.h"
+#include "WWSoundManager.h"
 
 extern "C"
 {
@@ -230,7 +231,6 @@ void RegisterManagers() {
     .def("get_instance", &CEnemyManager::GetInstance)
     .def("insert_enemy", &CEnemyManager::InsertEnemy)
     .def("get_enemy", &CEnemyManager::GetEnemy)
-
   ];
 
   luabind::module(LUA_STATE) [
@@ -244,6 +244,18 @@ void RegisterManagers() {
   luabind::module(LUA_STATE) [
     class_<CPuzzleManager, CMapManager<CPuzzle>>("CPuzzleManager")
     .def(constructor<>())
+  ];
+
+  luabind::module(LUA_STATE) [
+    class_<CWWSoundManager>("CWWSoundManager")
+    .def(constructor<>())
+    .def("SetListenerPosition", &CWWSoundManager::SetListenerPosition)
+    .def("PlayEvent", &CWWSoundManager::PlayEvent)
+    .def("SetSwitch", &CWWSoundManager::SetSwitch)
+    .def("SetTrigger", &CWWSoundManager::SetTrigger)
+    .def("RegisterGameObject", &CWWSoundManager::RegisterGameObject)
+    .def("UnregisterGameObject", &CWWSoundManager::UnregisterGameObject)
+    .def("SetState", &CWWSoundManager::SetState)
   ];
 
 }

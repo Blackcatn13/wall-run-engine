@@ -205,6 +205,7 @@ function on_update_player_lua(l_ElapsedTime)
 	-- Acción de saltar del Player. Puede realizar 2 saltos distintos (de longitud, y salto vertical). 
 	--///////////////////////////////////////////////////////////
 	if (act2in:do_action_from_lua("Jump")) and (player.m_isJumping == false) then
+		coreInstance:getWWSoundManager():PlayEvent("Jump", "Piky");
 		player.m_isJumping = true;
 		player.m_CurrentJumpForce = player.m_JumpForce;
 		mov.y = player.m_CurrentJumpForce*1.75 * l_ElapsedTime;

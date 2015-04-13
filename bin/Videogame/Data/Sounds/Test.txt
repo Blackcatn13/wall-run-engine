@@ -1,9 +1,21 @@
 Event	ID	Name			Wwise Object Path	Notes
 	33408553	Noise			\Default Work Unit\Noise	
 	3650723969	BackGround			\Default Work Unit\BackGround	
+	3833651337	Jump			\Default Work Unit\Jump	
+
+State Group	ID	Name			Wwise Object Path	Notes
+	2213237662	UnderWater			\Default Work Unit\UnderWater	
+
+State	ID	Name	State Group			Notes
+	748895195	None	UnderWater			
+	1241958783	Pitching	UnderWater			
+
+Custom State	ID	Name	State Group	Owner		Notes
+	493223222	Pitching	UnderWater	\Actor-Mixer Hierarchy\Default Work Unit\5841		
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	167897012	NoiseSample	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\NoiseSample_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\NoiseSample		3528064
+	383283907	5841	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\5841_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\5841		1709632
 	443041849	flame	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\flame_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\flame		1551156
+	878227735	power_suriken	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\power_suriken_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\power_suriken		69312
 	973950990	engine_loop_clickfix3_pitch	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\engine_loop_clickfix3_pitch_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\engine_loop_clickfix3_pitch		222336
 

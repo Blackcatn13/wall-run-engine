@@ -58,6 +58,7 @@ void RegisterCore() {
     .def("get_puzzle_manager",  &CCore::GetPuzzleManager)
 //        .def("get_wp_manager", &CCore::GetWPManager)
     .def("trace", &CCore::Trace)
+    .def("getWWSoundManager", &CCore::GetWWSoundManager)
     // .def("get_log_render", &CCore::GetLogRender)
     .property("m_CameraController", &CCore::GetCameraController, &CCore::SetCameraController)
     //.property("m_PlatformsMap", &CCore::GetPlatformsMap)
