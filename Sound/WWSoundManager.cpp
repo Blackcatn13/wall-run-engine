@@ -136,7 +136,7 @@ bool CWWSoundManager::Init() {
 
   AK::SoundEngine::RegisterAllPlugins();
 
-  m_lowLevelIO->SetBasePath(L"./Data/");
+  m_lowLevelIO->SetBasePath(L"./Data/Sounds/");
 
   return true;
 }
