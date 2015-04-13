@@ -12,6 +12,11 @@
 #include <assert.h>
 #include "Utils\Logger.h"
 
+#ifndef AK_OPTIMIZED
+#include <AK/Comm/AkCommunication.h>
+#endif // AK_OPTIMIZED
+
+
 namespace AK {
 #ifdef WIN32
 void *AllocHook( size_t in_size ) {
@@ -47,6 +52,13 @@ CWWSoundManager::CWWSoundManager() :
 {}
 
 void CWWSoundManager::Done() {
+#ifndef AK_OPTIMIZED
+  //
+  // Terminate Communication Services
+  //
+  AK::Comm::Term();
+#endif // AK_OPTIMIZED
+
   AK::MusicEngine::Term();
   AK::SoundEngine::Term();
   m_lowLevelIO->Term();
@@ -60,6 +72,7 @@ void CWWSoundManager::Done() {
     delete (m_events[i]);
   }
   m_events.clear();
+
 }
 
 
@@ -137,6 +150,19 @@ bool CWWSoundManager::Init() {
   AK::SoundEngine::RegisterAllPlugins();
 
   m_lowLevelIO->SetBasePath(L"./Data/Sounds/");
+
+#ifndef AK_OPTIMIZED
+  //
+  // Initialize communications (not in release build!)
+  //
+  AkCommSettings commSettings;
+  AK::Comm::GetDefaultInitSettings( commSettings );
+  if ( AK::Comm::Init( commSettings ) != AK_Success ) {
+    assert( ! "Could not initialize communication." );
+    return false;
+  }
+#endif // AK_OPTIMIZED
+
 
   return true;
 }
