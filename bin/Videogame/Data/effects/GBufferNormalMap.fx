@@ -13,6 +13,7 @@ struct TGBUFFER_TEXTURED1_VERTEX_PS
 	float3 WorldTangent : TEXCOORD2;
 	float3 WorldBinormal : TEXCOORD3;
 	float4 WorldPosition : TEXCOORD4;
+	float3 RealWorldPosition: TEXCOORD5;
 };
 
 float3 Normal2Texture(float3 Normal)
@@ -30,6 +31,7 @@ TGBUFFER_TEXTURED1_VERTEX_PS GBufferVS(VertexVS_TTEXTURE_NORMAL_TANGET_BINORMAL_
 	OUT.WorldBinormal = normalize(mul(IN.Binormal.xyz, (float3x3) g_WorldMatrix));
 	OUT.UV = IN.UV;
 	OUT.WorldPosition = OUT.HPosition;
+	OUT.RealWorldPosition = mul(float4(IN.Position.xyz, 1.0), g_WorldMatrix).xyz;
 	
 	/*float3 l_WorldNormal = normalize(mul(IN.Normal,(float3x3)g_WorldMatrix));
 	float3 l_WorldTangent = normalize(mul(IN.Tangent.xyz, (float3x3)g_WorldMatrix));
@@ -58,6 +60,16 @@ TMultiRenderTargetPixel GBufferPS(TGBUFFER_TEXTURED1_VERTEX_PS IN) {
 	float3 NnScaled = Normal2Texture(l_Nn);
 	// Cálculo de la z en formato color
 	float l_Depth = IN.WorldPosition.z/IN.WorldPosition.w;
+	
+	// CONTOUR ------------------------------------------------
+	//float3 l_EyePos = g_InverseViewMatrix[3].xyz;
+	//float3 l_CameraToPixel=normalize(l_EyePos-IN.RealWorldPosition.xyz);
+	//float l_normalDiff =dot(l_Nn,l_CameraToPixel);
+	//if(l_normalDiff < g_ContourNormalThickness)
+	//{
+	//	l_DiffuseColor = float4(0.0,0.0,0.0,1.0);
+	//}
+	//---------------------------------------------------------
 	
 	OUT.RT0=float4(l_DiffuseColor.xyz,1.0);
 	OUT.RT1=float4(l_DiffuseColor.xyz*g_LightAmbient*g_LightAmbientIntensity,1.0);

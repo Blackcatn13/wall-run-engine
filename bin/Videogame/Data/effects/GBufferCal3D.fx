@@ -77,6 +77,7 @@ CAL3D_HW_VERTEX_PS RenderCal3DHWVS(CAL3D_HW_VERTEX_VS IN)
 	OUT.WorldNormal=normalize(mul(l_Normal,(float3x3)g_WorldMatrix));
 	OUT.WorldTangent=normalize(mul(l_Tangent,(float3x3)g_WorldMatrix));
 	OUT.WorldBinormal=normalize(mul(cross(l_Normal, l_Tangent),(float3x3)g_WorldMatrix));
+	OUT.RealWorldPosition = mul(float4(l_Position, 1.0), g_WorldMatrix).xyz;
 
 	OUT.UV.x = IN.TexCoord.x;
 	OUT.UV.y = 1 - IN.TexCoord.y;
@@ -98,6 +99,16 @@ TMultiRenderTargetPixel RenderCal3DHWPS(CAL3D_HW_VERTEX_PS IN)
 	l_Nn = normalize(l_Nn);
 	float3 NnScaled = Normal2Texture(l_Nn);
 	float3 l_DiffuseColor = tex2D(S0LinearClampSampler, IN.UV);
+	
+	// CONTOUR ------------------------------------------------
+	float3 l_EyePos = g_InverseViewMatrix[3].xyz;
+	float3 l_CameraToPixel=normalize(l_EyePos-IN.RealWorldPosition.xyz);
+	float l_normalDiff = saturate(dot(l_Nn,l_CameraToPixel));
+	if(l_normalDiff < g_ContourNormalThickness)
+	{
+		l_DiffuseColor = float3(0.0,0.0,0.0);
+	}
+	//---------------------------------------------------------
 
 	OUT.RT0 = float4(l_DiffuseColor, 1.0);
 	OUT.RT1 = float4(l_DiffuseColor*g_LightAmbientIntensity*g_LightAmbient, 1.0);

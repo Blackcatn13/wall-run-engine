@@ -101,6 +101,7 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 		float3 l_SpecularComponent = pow(saturate(dot(l_Nn,l_HV)), l_SpecularExponent) * SpecPower;
 		float3 l_SpecularFinalContrib = l_SpecularComponent*g_LightIntensity[0]*l_SpecularFactor*l_Attenuation;
 		float3 l_CelshadeSpecular = float3(0,0,0);
+		
 		if(l_SpecularFinalContrib.x > 0.9)
 		{
 			l_CelshadeSpecular = float3(0.9,0.9,0.9);
@@ -162,7 +163,14 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 		}				
 	}
 	//}
-
+	// CONTOUR ---------------------------------------------------
+	//float3 l_EyeNVec = normalize(l_EyePos - l_PositionFromDepth);
+	//float l_normalDiff = saturate(dot(l_Nn,l_EyeNVec));
+	//if(l_normalDiff < g_ContourNormalThickness)
+	//{
+	//	finalColor = float3(0,0,0);
+	//}
+	//------------------------------------------------------------
     return float4(finalColor * lightAmount, 1);
 }
 
