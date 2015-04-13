@@ -12,6 +12,8 @@
 #include "SceneElements\PinchosPlatform.h"
 #include "SceneElements\PolyPlatform.h"
 #include "Core\ScriptManager.h"
+#include "Collectibles\Cromo.h"
+#include "Collectibles\Pixelite.h"
 
 #include <assert.h>
 
@@ -194,7 +196,39 @@ void CRenderableObjectsManager::Load(const std::string &FileName) {
           l_PolyPlatform->SetScale(scale);
           AddResource(platformName, l_PolyPlatform);
         }
-      }
+      }else if(name == "collectible"){
+			std::string meshName = m(i).GetPszISOProperty("name", "", false);
+			std::string core = m(i).GetPszISOProperty("core", "", false);
+			Vect3f pos = m(i).GetVect3fProperty("pos", v3fZERO, false);
+			float yaw = m(i).GetFloatProperty("yaw", false);
+			float pitch = m(i).GetFloatProperty("pitch", false);
+			float roll = m(i).GetFloatProperty("roll", false);
+			Vect3f scale = m(i).GetVect3fProperty("scale", v3fONE, false);
+			std::string type = m(i).GetPszISOProperty("type", "", false);
+			std::string layer = m(i).GetPszISOProperty("layer", "", false);
+			std::string luaCode = m(i).GetPszISOProperty("lua_code", "", false);
+			std::string userDataName = m(i).GetPszISOProperty("user_data_name", "", false);
+			if(type == "pixelite") {
+				CPixelite *l_Pixelite = new CPixelite(core, meshName, layer, userDataName, luaCode);
+				l_Pixelite->SetYaw(yaw);
+				l_Pixelite->SetPosition(pos);
+				l_Pixelite->SetPitch(pitch);
+				l_Pixelite->SetRoll(roll);
+				l_Pixelite->SetScale(scale);
+				AddResource(meshName, l_Pixelite);
+
+			}else if (type =="cromo")
+			{
+				CCromo *l_Cromo = new CCromo(core, meshName, layer,userDataName, luaCode);
+				l_Cromo->SetYaw(yaw);
+				l_Cromo->SetPosition(pos);
+				l_Cromo->SetPitch(pitch);
+				l_Cromo->SetRoll(roll);
+				l_Cromo->SetScale(scale);
+				AddResource(meshName, l_Cromo);
+			}
+
+	  }
     }
   }
   if (m2.Exists()) {
@@ -222,7 +256,39 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node) {
     //int count = m.GetNumChildren();
     //for (int i = 0; i < count; ++i) {
     std::string name = m.GetName();
-    if (name == "mesh_instance") {
+	if(name == "collectible"){
+			std::string meshName = m.GetPszISOProperty("name", "", false);
+			std::string core = m.GetPszISOProperty("core", "", false);
+			Vect3f pos = m.GetVect3fProperty("pos", v3fZERO, false);
+			float yaw = m.GetFloatProperty("yaw", false);
+			float pitch = m.GetFloatProperty("pitch", false);
+			float roll = m.GetFloatProperty("roll", false);
+			Vect3f scale = m.GetVect3fProperty("scale", v3fONE, false);
+			std::string type = m.GetPszISOProperty("type", "", false);
+			std::string layer = m.GetPszISOProperty("layer", "", false);
+			std::string luaCode = m.GetPszISOProperty("lua_code", "", false);
+			std::string userDataName = m.GetPszISOProperty("user_data_name", "", false);
+			if(type == "pixelite") {
+				CPixelite *l_Pixelite = new CPixelite(core, meshName, layer, userDataName, luaCode);
+				l_Pixelite->SetYaw(yaw);
+				l_Pixelite->SetPosition(pos);
+				l_Pixelite->SetPitch(pitch);
+				l_Pixelite->SetRoll(roll);
+				l_Pixelite->SetScale(scale);
+				AddResource(meshName, l_Pixelite);
+
+			}else if (type =="cromo")
+			{
+				CCromo *l_Cromo = new CCromo(core, meshName, layer,userDataName, luaCode);
+				l_Cromo->SetYaw(yaw);
+				l_Cromo->SetPosition(pos);
+				l_Cromo->SetPitch(pitch);
+				l_Cromo->SetRoll(roll);
+				l_Cromo->SetScale(scale);
+				AddResource(meshName, l_Cromo);
+			}
+		
+	  }else if (name == "mesh_instance") {
       //TODO poder pasar XMLTreeNode
       std::string meshName = m.GetPszISOProperty("name", "box1");
       std::string core = m.GetPszISOProperty("core", "box");
@@ -347,7 +413,7 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node) {
         l_PolyPlatform->SetScale(scale);
         AddResource(platformName, l_PolyPlatform);
       }
-    }
+	}
     //}
   }
 }

@@ -20,6 +20,13 @@ function set_is_3D()
 
 end
 
+function roll_object(objectName, layer_name, dt)
+	local object_manager = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str(layer_name)
+	local object = object_manager:get_resource(objectName)
+	local new_yaw = object:get_yaw()+ 1* dt
+	object:set_yaw(new_yaw)
+end
+
 function toogle_switch(trigger_name, puzzle_name)
 	coreInstance:trace("Enter switch")
 	local player = Player:get_instance()

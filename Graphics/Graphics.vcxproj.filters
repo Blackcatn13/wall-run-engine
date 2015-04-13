@@ -53,6 +53,9 @@
     <Filter Include="Particles">
       <UniqueIdentifier>{cd5720b4-7264-4aed-abfe-6cc43a73d2cd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Collectibles">
+      <UniqueIdentifier>{448151e2-98f6-4d0c-aec1-003d632b488c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GraphicsManager.cpp" />
@@ -308,6 +311,15 @@
     </ClCompile>
     <ClCompile Include="RenderableCommands\SetTextureInSpecificStageCommand.cpp">
       <Filter>RenderableCommands</Filter>
+    </ClCompile>
+    <ClCompile Include="Collectibles\Collectible.cpp">
+      <Filter>Collectibles</Filter>
+    </ClCompile>
+    <ClCompile Include="Collectibles\Cromo.cpp">
+      <Filter>Collectibles</Filter>
+    </ClCompile>
+    <ClCompile Include="Collectibles\Pixelite.cpp">
+      <Filter>Collectibles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -573,6 +585,15 @@
     </ClInclude>
     <ClInclude Include="RenderableCommands\SetTextureInSpecificStageCommand.h">
       <Filter>RenderableCommands</Filter>
+    </ClInclude>
+    <ClInclude Include="Collectibles\Collectible.h">
+      <Filter>Collectibles</Filter>
+    </ClInclude>
+    <ClInclude Include="Collectibles\Cromo.h">
+      <Filter>Collectibles</Filter>
+    </ClInclude>
+    <ClInclude Include="Collectibles\Pixelite.h">
+      <Filter>Collectibles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

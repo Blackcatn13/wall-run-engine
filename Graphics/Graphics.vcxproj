@@ -29,6 +29,9 @@
     <ClCompile Include="Cinematics\CinematicObject.cpp" />
     <ClCompile Include="Cinematics\CinematicObjectKeyFrame.cpp" />
     <ClCompile Include="Cinematics\CinematicPlayer.cpp" />
+    <ClCompile Include="Collectibles\Collectible.cpp" />
+    <ClCompile Include="Collectibles\Cromo.cpp" />
+    <ClCompile Include="Collectibles\Pixelite.cpp" />
     <ClCompile Include="Effects\Effect.cpp" />
     <ClCompile Include="Effects\EffectManager.cpp" />
     <ClCompile Include="Effects\EffectTechnique.cpp" />
@@ -124,6 +127,9 @@
     <ClInclude Include="Cinematics\CinematicObject.h" />
     <ClInclude Include="Cinematics\CinematicObjectKeyFrame.h" />
     <ClInclude Include="Cinematics\CinematicPlayer.h" />
+    <ClInclude Include="Collectibles\Collectible.h" />
+    <ClInclude Include="Collectibles\Cromo.h" />
+    <ClInclude Include="Collectibles\Pixelite.h" />
     <ClInclude Include="Effects\Effect.h" />
     <ClInclude Include="Effects\EffectManager.h" />
     <ClInclude Include="Effects\EffectTechnique.h" />

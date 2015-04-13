@@ -71,6 +71,8 @@ void CCore::Init(HWND handler) {
   m_AnimatedModelManager->Load(m_Config.AnimatedMeshPath);
   //Cargamos Technique pools
   m_FSMManager = new CFSMManager();
+  m_PhysicsManager = new CPhysicsManager();
+  m_PhysicsManager->Init();
   m_FSMManager->Load("data//AI//FSMs.xml");
   m_RenderableObjectTechniqueManager = new CRenderableObjectTechniqueManager();
   m_RenderableObjectTechniqueManager->Load(m_Config.PoolRenderableObjects);
@@ -93,8 +95,7 @@ void CCore::Init(HWND handler) {
   m_ScriptManager = new CScriptManager();
   m_ScriptManager->Initialize();
   m_LightManager = new CLightManager();*/
-  m_PhysicsManager = new CPhysicsManager();
-  m_PhysicsManager->Init();
+
   m_LogRender = new CLogRender();
   m_ScriptManager->Load(m_Config.LuaPath);
   m_SceneRendererCommandManager = new CSceneRendererCommandManager();

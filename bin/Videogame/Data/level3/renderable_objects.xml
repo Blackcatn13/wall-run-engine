@@ -9,6 +9,8 @@
 	<layer name="poly" />
 	<layer name="enabled_poly" />
 	
+	<collectible name="pixelite1" type ="pixelite" core="SpongePicky" pos="10 2 2" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" lua_code="roll_object(pixelite1, solid," user_data_name="pixeliteUserData001"/>
+
 	<!-- Fora sala -->
 	<animated_model name="SpongePicky" core="piky" pos="0 0 20" yaw="1.7" pitch="0" roll="0" scale="1 1 1"/>
 	<animated_model name="Chucky" core="chuky" pos="5 0 0" yaw="0" pitch="0" roll="0" scale="1 1 1"/>
@@ -249,4 +251,5 @@
 	
 	<platform name="BreakablePlatform001" core="BreakablePlatform001" type="breakable" trigger_name="BreakablePlatformTrigger001"  pos="124.696 3.000000 11.011" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	
+
 	</renderable_objects>
