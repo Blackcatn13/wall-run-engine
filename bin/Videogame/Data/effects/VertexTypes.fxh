@@ -122,6 +122,7 @@ struct CAL3D_HW_VERTEX_PS
 	float4 WorldPosition : TEXCOORD2;
 	float3 WorldTangent : TEXCOORD3;
 	float3 WorldBinormal : TEXCOORD4;
+	float3 RealWorldPosition: TEXCOORD5;
 };
 
 //Texture quad

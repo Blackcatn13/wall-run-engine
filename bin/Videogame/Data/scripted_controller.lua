@@ -32,6 +32,7 @@ function on_update_scripted_controller(l_ElapsedTime)
 		if act2in:do_action_from_lua("pitch", deltaY) then
 			camObject:set_pitch(camObject:get_pitch() - deltaY * l_ElapsedTime);
 		end
+		active_camera.m_fAspectRatio = 16/9;
 		local yaw = camObject:get_yaw();
 		local dir = active_camera:get_direction();
 		local nor = Vect3f(math.cos(yaw + (math.pi/2)), 0, (math.sin(yaw + (math.pi/2))));
@@ -64,6 +65,7 @@ function on_update_scripted_controller(l_ElapsedTime)
 				camObject:set_pitch(new_pitch);
 			end
 		end
+		active_camera.m_fAspectRatio = 16/9;
 		local yaw = camObject: get_yaw();
 
 		local dir = active_camera:get_direction();
@@ -95,8 +97,9 @@ function on_update_scripted_controller(l_ElapsedTime)
 		elseif act2in:do_action_from_lua("scroll", deltaZ) then
 			active_camera:add_zoom(-deltaZ * cam_Controller.m_BigZoom * l_ElapsedTime)			
 		end
+		active_camera.m_fAspectRatio = 16/9;
 		local yaw = camObject: get_yaw();
-
+		
 		local dir = active_camera:get_direction();
 		local norX = Vect3f(math.cos(yaw + (math.pi/2)), 0, (math.sin(yaw + (math.pi/2))));
 		norX = luaUtil:normalize(norX);
