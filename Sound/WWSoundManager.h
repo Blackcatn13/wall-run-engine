@@ -33,8 +33,14 @@ class CWWSoundManager {
   CAkDefaultIOHookBlocking *m_lowLevelIO;
   void Render();
   void Load(std::string file);
+  void Reload();
   void SetListenerPosition(Vect3f pos);
   void PlayEvent(std::string eventName, std::string GameObject);
+  void SetSwitch(std::string group, std::string switch_, std::string gameObject);
+  void SetTrigger(std::string trigger, std::string gameObject);
+  void RegisterGameObject(std::string gameObject);
+  void UnregisterGameObject(std::string gameObject);
+  void SetState(std::string group, std::string state);
  private:
   std::string m_fileName;
   std::map<std::string, AkGameObjectID> m_GameObjects;

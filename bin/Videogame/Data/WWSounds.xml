@@ -2,7 +2,7 @@
 <WWise>
 	<Bank Name="Init.bnk"/>
 	<Bank Name="Test.bnk"/> 
-	<GameObject2D Name="Music"/>
-	<GameObject3D Name="Sounds" pos="0 0 0" dir="-1 0 0"/>
+	<GameObject2D Name="Music" register="true"/>
+	<GameObject3D Name="Sounds" pos="0 0 0" dir="-1 0 0" register="true"/>
 	<InitEvent event="BackGround" GameObject="Music"/>
 </WWise>

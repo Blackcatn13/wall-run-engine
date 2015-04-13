@@ -1,9 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	33408553	Noise			\Default Work Unit\Noise	
-	3650723969	BackGround			\Default Work Unit\BackGround	
-
-In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	167897012	NoiseSample	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\NoiseSample_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\NoiseSample		3528064
-	443041849	flame	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\flame_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\flame		1551156
-	973950990	engine_loop_clickfix3_pitch	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\engine_loop_clickfix3_pitch_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\engine_loop_clickfix3_pitch		222336
-

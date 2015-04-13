@@ -165,6 +165,10 @@ void CWWSoundManager::Load(std::string file) {
         } else if (name == "GameObject2D") {
           std::string goName = m(i).GetPszISOProperty("Name", "", false);
           m_GameObjects[goName] = ++m_LastId;
+          bool register_ = m(i).GetBoolProperty("register", false, false);
+          if (register_) {
+            AK::SoundEngine::RegisterGameObj(m_GameObjects[goName]);
+          }
         } else if (name == "GameObject3D") {
           std::string goName = m(i).GetPszISOProperty("Name", "", false);
           Vect3f pos = m(i).GetVect3fProperty("pos", v3fZERO, false);
@@ -178,6 +182,10 @@ void CWWSoundManager::Load(std::string file) {
           soundPos.Orientation.Y = dir.y;
           soundPos.Orientation.Z = dir.z;
           AK::SoundEngine::SetPosition(m_GameObjects[goName], soundPos);
+          bool register_ = m(i).GetBoolProperty("register", false, false);
+          if (register_) {
+            AK::SoundEngine::RegisterGameObj(m_GameObjects[goName]);
+          }
         } else if (name == "InitEvent") {
           std::string eventName = m(i).GetPszISOProperty("event", "", false);
           std::string goName = m(i).GetPszISOProperty("GameObject", "", false);
@@ -188,10 +196,6 @@ void CWWSoundManager::Load(std::string file) {
         }
       }
     }
-  }
-  // Register all the game objects
-  for (auto it = m_GameObjects.begin(); it != m_GameObjects.end(); ++it) {
-    AK::SoundEngine::RegisterGameObj(it->second);
   }
   // Init all the events listed in the WWSounds.xml
   for (int i = 0; i < m_events.size(); ++i) {
@@ -216,4 +220,30 @@ void CWWSoundManager::SetListenerPosition(Vect3f pos) {
 
 void CWWSoundManager::PlayEvent(std::string eventName, std::string GameObject) {
   AkPlayingID m_iPID = AK::SoundEngine::PostEvent(eventName.c_str(), m_GameObjects[GameObject]);
+}
+
+void CWWSoundManager::SetSwitch(std::string group, std::string switch_, std::string gameObject) {
+  AK::SoundEngine::SetSwitch(group.c_str(), switch_.c_str(), m_GameObjects[gameObject]);
+}
+
+void CWWSoundManager::SetTrigger(std::string trigger, std::string gameObject) {
+  AK::SoundEngine::PostTrigger(trigger.c_str(), m_GameObjects[gameObject]);
+}
+
+void CWWSoundManager::RegisterGameObject(std::string gameObject) {
+  AK::SoundEngine::RegisterGameObj(m_GameObjects[gameObject]);
+}
+
+void CWWSoundManager::UnregisterGameObject(std::string gameObject) {
+  AK::SoundEngine::UnregisterGameObj(m_GameObjects[gameObject]);
+}
+
+void CWWSoundManager::SetState(std::string group, std::string state) {
+  AK::SoundEngine::SetState(group.c_str(), state.c_str());
+}
+
+void CWWSoundManager::Reload() {
+  AK::SoundEngine::UnregisterAllGameObj();
+  AK::SoundEngine::ClearBanks();
+  Load(m_fileName);
 }
