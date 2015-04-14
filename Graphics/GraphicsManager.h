@@ -94,6 +94,7 @@ class CGraphicsManager {
   void EnableZBuffering ();
   void DisableZBuffering ();
   bool isSphereVisible(Vect3f pos, float rad);
+  bool isBoxVisible(Vect3f min, Vect3f max);
   void DrawRectangle2D ( const Vect2i &pos, uint32 w, uint32 h, CColor &backGroundColor, uint32 edge_w, uint32 edge_h, CColor &edgeColor );
   void GetRay (const Vect2i &mousePos, Vect3f &posRay, Vect3f &dirRay);
   void GetWidthAndHeight(uint32 &widthScreen, uint32 &heightScreen);

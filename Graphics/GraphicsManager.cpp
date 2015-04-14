@@ -584,6 +584,10 @@ bool CGraphicsManager::isSphereVisible(Vect3f pos, float rad) {
   return m_Frustum.SphereVisible(D3DXVECTOR3(pos.x, pos.y, pos.z), rad);
 }
 
+bool CGraphicsManager::isBoxVisible(Vect3f min, Vect3f max) {
+  return m_Frustum.BoxVisible(D3DXVECTOR3(max.x, max.y, max.z), D3DXVECTOR3(min.x, min.y, min.z));
+}
+
 void CGraphicsManager::DrawRectangle2D (	const Vect2i &pos, uint32 w, uint32 h, CColor &backGroundColor,
     uint32 edge_w, uint32 edge_h, CColor &edgeColor ) {
   //Draw background quad2D:
