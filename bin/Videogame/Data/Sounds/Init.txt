@@ -1,7 +1,11 @@
 State Group	ID	Name			Wwise Object Path	Notes
+	1595203709	BackGroundGrup			\Default Work Unit\BackGroundGrup	
 	2213237662	UnderWater			\Default Work Unit\UnderWater	
 
 State	ID	Name	State Group			Notes
+	748895195	None	BackGroundGrup			
+	2772520553	Back1	BackGroundGrup			
+	2772520554	Back2	BackGroundGrup			
 	748895195	None	UnderWater			
 	1241958783	Pitching	UnderWater			
 
