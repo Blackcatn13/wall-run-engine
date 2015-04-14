@@ -97,6 +97,18 @@ bool CEffectTechnique::BeginRender()
     if (m_UseTime) {
         l_Effect->SetFloat(m_Effect->GetTimeParameter(), rand() / 1000.0f);
     }
+	if(m_UseScreenSize)
+	{
+		int l_Width = 0;
+		int l_Height = 0;
+		D3DVIEWPORT9 *l_viewPort = new D3DVIEWPORT9();
+        GRAPHM->GetDevice()->GetViewport(l_viewPort);
+        l_Width = l_viewPort->Width;
+        l_Height = l_viewPort->Height;
+		int l_screenSize[2] = {l_Width, l_Height};
+		l_Effect->SetIntArray(m_Effect->GetScreenSizeParameter(), l_screenSize, 2);
+        CHECKED_DELETE(l_viewPort);
+	}
     return true;
 }
 bool CEffectTechnique::Refresh()

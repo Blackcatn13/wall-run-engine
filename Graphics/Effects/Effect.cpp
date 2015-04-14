@@ -33,6 +33,7 @@ void CEffect::SetNullParameters() {
   m_CameraPositionParameter = NULL;
   m_BonesParameter = NULL;
   m_TimeParameter = NULL;
+  m_ScreenSizeParameter = NULL;
   m_InverseWorldMatrixParameter = NULL;
   m_InverseViewMatrixParameter = NULL;
   m_InverseProjectionMatrixParameter = NULL;
@@ -81,6 +82,7 @@ bool CEffect::LoadEffect() {
   GetParameterBySemantic("CAMERAPOSITION", m_CameraPositionParameter);
   GetParameterBySemantic("BONES", m_BonesParameter);
   GetParameterBySemantic("TIME", m_TimeParameter);
+  GetParameterBySemantic("SCREENSIZE", m_ScreenSizeParameter);
   GetParameterBySemantic("POLYENABLED", m_PolyEnabledParameter);
   GetParameterBySemantic("USESHADOWMAP", m_UseDynamicShadowmapParameter);
   return isOK;
@@ -112,6 +114,7 @@ CEffect::CEffect()
   , m_CameraPositionParameter(NULL)
   , m_BonesParameter(NULL)
   , m_TimeParameter(NULL)
+  , m_ScreenSizeParameter(NULL)
   , m_InverseWorldMatrixParameter(NULL)
   , m_InverseViewMatrixParameter(NULL)
   , m_InverseProjectionMatrixParameter(NULL)

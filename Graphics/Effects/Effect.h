@@ -36,6 +36,7 @@ class CEffect {
   D3DXHANDLE m_CameraPositionParameter;
   D3DXHANDLE m_BonesParameter;
   D3DXHANDLE m_TimeParameter;
+  D3DXHANDLE m_ScreenSizeParameter;
 
   CLight *m_Light;
   ////
@@ -164,6 +165,9 @@ class CEffect {
   }
   D3DXHANDLE GetInverseProjectionMatrixParameter() {
     return m_InverseProjectionMatrixParameter;
+  }
+  D3DXHANDLE GetScreenSizeParameter() {
+    return m_ScreenSizeParameter;
   }
 };
 

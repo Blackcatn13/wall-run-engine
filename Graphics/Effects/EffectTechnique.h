@@ -25,6 +25,7 @@ private:
     bool m_UseViewProjectionMatrix;
     bool m_UseViewToLightProjectionMatrix;
     bool m_UseTime;
+	bool m_UseScreenSize;
     CEffect *m_Effect;
     D3DXHANDLE m_D3DTechnique;
     std::string m_TechniqueName;
@@ -105,6 +106,10 @@ public:
     {
         return m_UseTime;
     }
+	bool GetUseScreenSize()
+    {
+        return m_UseScreenSize;
+    }
 
     void SetUseCameraPosition(bool value)
     {
@@ -165,6 +170,10 @@ public:
     void SetUseTime(bool value)
     {
         m_UseTime = value;
+    }
+	void SetUseScreenSize(bool value)
+    {
+        m_UseScreenSize = value;
     }
 	void SetTechniqueName(const std::string &TechniqueName)
 	{

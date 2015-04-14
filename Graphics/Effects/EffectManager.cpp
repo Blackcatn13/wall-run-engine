@@ -137,6 +137,7 @@ void CEffectManager::Load(const std::string &FileName)
                     bool UseViewProjectionMatrix = m(i).GetBoolProperty("use__view_projection_matrix", false, false);
                     bool UseViewToLightProjectionMatrix = m(i).GetBoolProperty("use_view_to_light_projection_matrix", false, false);
                     bool UseTime = m(i).GetBoolProperty("use_time", false, false);
+					bool UseScreenSize = m(i).GetBoolProperty("use_screen_size",false,false);
                     CEffect * effect = m_Effects.GetResource(effectName);
                     if (effect != NULL) {
                         CEffectTechnique *effectTechnique = new CEffectTechnique();
@@ -157,6 +158,7 @@ void CEffectManager::Load(const std::string &FileName)
                         effectTechnique->SetUseViewProjectionMatrix(UseViewProjectionMatrix);
                         effectTechnique->SetUseViewToLightProjectionMatrix(UseViewToLightProjectionMatrix);
                         effectTechnique->SetUseTime(UseTime);
+						effectTechnique->SetUseScreenSize(UseScreenSize);
                         effectTechnique->Refresh();
                         AddResource(techniqueName, effectTechnique);
                     } else {
