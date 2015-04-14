@@ -184,19 +184,19 @@ void CWWSoundManager::Load(std::string file) {
       for (int i = 0; i < count; ++i) {
         std::string name = m(i).GetName();
         if (name == "Bank") {
-          std::string bnkName = m(i).GetPszISOProperty("Name", "", false);
+          std::string bnkName = m(i).GetPszISOProperty("name", "", false);
           if (AK::SoundEngine::LoadBank(bnkName.c_str(), AK_DEFAULT_POOL_ID, bankID) != AK_Success) {
             LOGGER->AddNewLog(ELL_ERROR, "Bank %s not correctly loaded", bnkName.c_str());
           }
         } else if (name == "GameObject2D") {
-          std::string goName = m(i).GetPszISOProperty("Name", "", false);
+          std::string goName = m(i).GetPszISOProperty("name", "", false);
           m_GameObjects[goName] = ++m_LastId;
           bool register_ = m(i).GetBoolProperty("register", false, false);
           if (register_) {
             AK::SoundEngine::RegisterGameObj(m_GameObjects[goName]);
           }
         } else if (name == "GameObject3D") {
-          std::string goName = m(i).GetPszISOProperty("Name", "", false);
+          std::string goName = m(i).GetPszISOProperty("name", "", false);
           Vect3f pos = m(i).GetVect3fProperty("pos", v3fZERO, false);
           Vect3f dir = m(i).GetVect3fProperty("dir", v3fZERO, false);
           m_GameObjects[goName] = ++m_LastId;
