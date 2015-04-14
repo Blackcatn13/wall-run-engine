@@ -5,6 +5,7 @@
 #include "StaticMeshes\StaticMesh.h"
 #include "StaticMeshes\StaticMeshManager.h"
 #include "Core_Utils/MemLeaks.h"
+#include "GraphicsManager.h"
 
 
 CMeshInstance::CMeshInstance(const std::string &Name, const std::string &CoreName) {
@@ -24,7 +25,8 @@ void CMeshInstance::Render(CGraphicsManager *RM) {
     Mat44f t = m44fIDENTITY;
     RM->SetTransform(t);
     RM->SetTransform(getTransform());
-    m_StaticMesh->Render(RM);
+    if (GRAPHM->isSphereVisible(m_Position, m_StaticMesh->GetBoundingSphere().GetRadius()))
+      m_StaticMesh->Render(RM);
   }
 }
 
