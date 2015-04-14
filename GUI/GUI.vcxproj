@@ -11,7 +11,42 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dummy.cpp" />
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="CheckButton.cpp" />
+    <ClCompile Include="DialogBox.cpp" />
+    <ClCompile Include="EditableTextBox.cpp" />
+    <ClCompile Include="GuiElement.cpp" />
+    <ClCompile Include="GUIManager.cpp" />
+    <ClCompile Include="Image.cpp" />
+    <ClCompile Include="PointerMouse.cpp" />
+    <ClCompile Include="ProgressBar.cpp" />
+    <ClCompile Include="RadioBox.cpp" />
+    <ClCompile Include="Slider.cpp" />
+    <ClCompile Include="StaticText.cpp" />
+    <ClCompile Include="TextBox.cpp" />
+    <ClCompile Include="Windows.cpp" />
+    <ClCompile Include="__PCH_GUI.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="CheckButton.h" />
+    <ClInclude Include="DialogBox.h" />
+    <ClInclude Include="EditableTextBox.h" />
+    <ClInclude Include="GuiElement.h" />
+    <ClInclude Include="GUIManager.h" />
+    <ClInclude Include="Image.h" />
+    <ClInclude Include="PointerMouse.h" />
+    <ClInclude Include="ProgressBar.h" />
+    <ClInclude Include="RadioBox.h" />
+    <ClInclude Include="Slider.h" />
+    <ClInclude Include="StaticText.h" />
+    <ClInclude Include="TextBox.h" />
+    <ClInclude Include="Windows.h" />
+    <ClInclude Include="__PCH_GUI.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{F1709957-380B-494A-B9BE-742B94952236}</ProjectGuid>
@@ -63,6 +98,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Base;$(SolutionDir)\Input;$(SolutionDir)\Core;$(SolutionDir)\Graphics;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)\3dParty\libxml2-2.7.2.win32\include;$(SolutionDir)\3dParty\iconv-1.9.2.win32\include;$(SolutionDir)\3dParty\Lua\src;$(SolutionDir)\3dParty\LuaBind;$(SolutionDir)\3dParty\Boost;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -82,6 +118,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Base;$(SolutionDir)\Input;$(SolutionDir)\Core;$(SolutionDir)\Graphics;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(SolutionDir)\3dParty\libxml2-2.7.2.win32\include;$(SolutionDir)\3dParty\iconv-1.9.2.win32\include;$(SolutionDir)\3dParty\Lua\src;$(SolutionDir)\3dParty\LuaBind;$(SolutionDir)\3dParty\Boost;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
