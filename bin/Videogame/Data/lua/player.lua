@@ -16,11 +16,17 @@ function Player.new()
 	self.num_hearts = self.MAXHEARTS
 	self.num_lives = self.MAXLIVES
 	self.instance = self
+	self.pixelites = 0
 	self.last_spikes_position = Vect3f(0.0, 0.0, 0.0)
 	self.coreInstance = CCoreLuaWrapper().m_CoreInstance;
 	self.visited_checkpoints = {}
 	
 	------	 PLAYER FUNCTIONS -----
+	function self.add_pixelites(inc_pixelites)
+		self.num_pixelites = self.num_pixelites + inc_pixelites
+		coreInstance:trace(tostring(self.num_pixelites))
+	end
+	
 	function self.get_player_controller()
 		local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 		local player_controller = coreInstance:get_player_controller().m_PhysicController;

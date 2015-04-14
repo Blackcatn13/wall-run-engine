@@ -8,8 +8,9 @@
 	<layer name="phisics"/>
 	<layer name="poly" />
 	<layer name="enabled_poly" />
+	<layer name="collectible" />
 	
-	<collectible name="pixelite1" type ="pixelite" core="SpongePicky" pos="10 2 2" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" lua_code="roll_object(pixelite1, solid," user_data_name="pixeliteUserData001"/>
+	<collectible name="pixelite1" type ="pixelite" core="SpongePicky" pos="10.0 2.0 2.0" yaw="0.0" pitch="0.0" roll="0.0" scale="0.5 0.5 0.1" visible="true" lua_code="roll_object" user_data_name="pixeliteUserData001" layer="collectible" />
 
 	<!-- Fora sala -->
 	<animated_model name="SpongePicky" core="piky" pos="0 0 20" yaw="1.7" pitch="0" roll="0" scale="1 1 1"/>
