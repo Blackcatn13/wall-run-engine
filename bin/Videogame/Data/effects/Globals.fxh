@@ -21,6 +21,7 @@ float3 g_LightColor[MAXLIGHTS] : LIGHTSCOLOR;
 float3 g_CameraPosition : CAMERAPOSITION;
 float3x4 g_Bones[MAXBONES] : BONES;
 float g_Time : TIME;
+int g_ScreenSize[2] : SCREENSIZE;
 float g_LightIntensity[MAXLIGHTS] : LIGHTSINTENSITY;
 float g_NearAtten[MAXLIGHTS] : LIGHTSSTARTRANGEATTENUATION;
 float g_FarAtten[MAXLIGHTS] : LIGHTSENDRANGEATTENUATION;
