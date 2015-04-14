@@ -3,19 +3,16 @@ Event	ID	Name			Wwise Object Path	Notes
 	3650723969	BackGround			\Default Work Unit\BackGround	
 	3833651337	Jump			\Default Work Unit\Jump	
 
-State Group	ID	Name			Wwise Object Path	Notes
-	2213237662	UnderWater			\Default Work Unit\UnderWater	
-
-State	ID	Name	State Group			Notes
-	748895195	None	UnderWater			
-	1241958783	Pitching	UnderWater			
-
-Custom State	ID	Name	State Group	Owner		Notes
-	493223222	Pitching	UnderWater	\Actor-Mixer Hierarchy\Default Work Unit\5841		
+Trigger	ID	Name			Wwise Object Path	Notes
+	3833651337	Jump			\Default Work Unit\Jump	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	383283907	5841	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\5841_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\5841		1709632
+	16479579	synth_20110	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\synth_20111_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\Back\New Music Segment\synth_20110		147520
+	385537755	synth_20110	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\synth_20113_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\Back\New Music Segment\synth_20110		230464
 	443041849	flame	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\flame_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\flame		1551156
+	567882138	synth_20110	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\synth_20110_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\Back\New Music Segment\synth_20110		235072
+	745542144	bass_18247	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\bass_18247_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\Back\New Music Segment\bass_18247		382528
+	802308973	drum_21487	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\drum_21487_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\Back\New Music Segment\drum_21487		377920
 	878227735	power_suriken	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\power_suriken_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\power_suriken		69312
 	973950990	engine_loop_clickfix3_pitch	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\engine_loop_clickfix3_pitch_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\engine_loop_clickfix3_pitch		222336
 
