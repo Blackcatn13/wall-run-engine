@@ -524,6 +524,30 @@ void CGraphicsManager::DrawQuad2D (const Vect2i &pos, uint32 w, uint32 h, ETypeA
   m_pD3DDevice->SetTexture(0, NULL);
   m_pD3DDevice->DrawIndexedPrimitiveUP( D3DPT_TRIANGLELIST, 0, 4, 2, indices, D3DFMT_INDEX16, v, sizeof( SCREEN_COLOR_VERTEX ) );
 }
+
+void CGraphicsManager::DrawQuad2D (const Vect2i &pos, uint32 w, uint32 h, ETypeAlignment alignment, CTexture *texture, ETypeFlip flipe){
+	Vect2i finalPos = pos;
+  CalculateAlignment(w, h, alignment, finalPos);
+  // finalPos = [0]
+  //
+  //  [0]------[2]
+  //   |        |
+  //   |        |
+  //   |        |
+  //  [1]------[3]
+  D3DCOLOR l_color = D3DCOLOR_COLORVALUE(255,255,255,255);
+  unsigned short indices[6] = {0, 2, 1, 1, 2, 3};
+  SCREEN_TEXTURED_COLORED_VERTEX v[4] = {
+    { (float)finalPos.x,		(float)finalPos.y,		0, 1, l_color, 0, 0} //(x,y) sup_esq.
+    ,	{ (float)finalPos.x,		(float)finalPos.y + h,	0, 1, l_color, 1, 0} //(x,y) inf_esq.
+    , { (float)finalPos.x + w,	(float)finalPos.y,		0, 1, l_color, 0, 1} //(x,y) sup_dr.
+    ,	{ (float)finalPos.x + w,	(float)finalPos.y + h,	0, 1, l_color, 1, 1} //(x,y) inf_dr.
+  };
+  m_pD3DDevice->SetFVF( SCREEN_COLOR_VERTEX::getFlags() );
+  texture->Activate(0);
+  m_pD3DDevice->DrawIndexedPrimitiveUP( D3DPT_TRIANGLELIST, 0, 4, 2, indices, D3DFMT_INDEX16, v, sizeof( SCREEN_TEXTURED_COLORED_VERTEX ) );
+}
+
 void CGraphicsManager::CalculateAlignment (uint32 w, uint32 h, ETypeAlignment alignment, Vect2i &finalPos) {
   switch (alignment) {
     case CENTER: {
