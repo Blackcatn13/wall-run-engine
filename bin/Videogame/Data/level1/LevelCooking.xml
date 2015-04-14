@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Physx_meshes>
+	<Physx_mesh name="Plane001" filename="Data\level1\meshes\Plane001.phsx"/>
+	<Physx_mesh name="Wall001" filename="Data\level1\meshes\Wall001.phsx"/>
+</Physx_meshes>
