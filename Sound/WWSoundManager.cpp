@@ -84,7 +84,7 @@ bool CWWSoundManager::Init() {
   //
 
   AkMemSettings memSettings;
-  memSettings.uMaxNumPools = 20;
+  memSettings.uMaxNumPools = 50;
 
   if ( AK::MemoryMgr::Init( &memSettings ) != AK_Success ) {
     assert( ! "Could not create the memory manager." );
@@ -204,6 +204,7 @@ void CWWSoundManager::Load(std::string file) {
           soundPos.Position.X = pos.x;
           soundPos.Position.Y = pos.y;
           soundPos.Position.Z = pos.z;
+          dir.Normalize();
           soundPos.Orientation.X = dir.x;
           soundPos.Orientation.Y = dir.y;
           soundPos.Orientation.Z = dir.z;

@@ -18,5 +18,4 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	555342904	Generdyn - INSTLoops - 04	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Generdyn - INSTLoops - 04_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\BackGround\Back2\TetstSound\Generdyn - INSTLoops - 04		330816
 	747286263	Generdyn - INSTLoops - 05	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Generdyn - INSTLoops - 05_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\BackGround\Back2\TetstSound\Generdyn - INSTLoops - 05		1323064
 	878227735	power_suriken	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\power_suriken_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\power_suriken		69312
-	973950990	engine_loop_clickfix3_pitch	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\engine_loop_clickfix3_pitch_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\engine_loop_clickfix3_pitch		222336
 
