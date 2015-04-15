@@ -166,26 +166,19 @@ CCore *CCore::GetInstance() {
 }
 
 void CCore::Render() {
-  //m_GraphicsManager->Render();
-  // m_LightManager->Render(m_GraphicsManager);
-  m_PhysicsManager->DebugRender(m_GraphicsManager);
-  m_WWSoundManager->Render();
-
 }
 
 void CCore::Update(float dt) {
   m_GraphicsManager->Update();
   m_PhysicsManager->Update(dt);
-  //m_SoundManager->Update(dt);
   m_InputManager->Update();
   m_LogRender->Update(dt);
   m_TriggerManager->Update(dt);
-  //m_FSMManager->Update(dt);
-  //m_PlayerController->Move(dt);
   m_EnemyManager->Update(dt);
   m_ParticleManager->Update(dt);
   m_BillboardManager->Update(dt);
   m_PuzzleManager->Update(dt);
+  m_WWSoundManager->Render();
 }
 
 
