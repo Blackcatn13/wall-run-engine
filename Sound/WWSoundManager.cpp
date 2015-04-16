@@ -200,6 +200,10 @@ void CWWSoundManager::Load(std::string file) {
           Vect3f pos = m(i).GetVect3fProperty("pos", v3fZERO, false);
           Vect3f dir = m(i).GetVect3fProperty("dir", v3fZERO, false);
           m_GameObjects[goName] = ++m_LastId;
+          bool register_ = m(i).GetBoolProperty("register", false, false);
+          if (register_) {
+            AK::SoundEngine::RegisterGameObj(m_GameObjects[goName]);
+          }
           AkSoundPosition soundPos;
           soundPos.Position.X = pos.x;
           soundPos.Position.Y = pos.y;
@@ -209,10 +213,6 @@ void CWWSoundManager::Load(std::string file) {
           soundPos.Orientation.Y = dir.y;
           soundPos.Orientation.Z = dir.z;
           AK::SoundEngine::SetPosition(m_GameObjects[goName], soundPos);
-          bool register_ = m(i).GetBoolProperty("register", false, false);
-          if (register_) {
-            AK::SoundEngine::RegisterGameObj(m_GameObjects[goName]);
-          }
         } else if (name == "InitEvent") {
           std::string eventName = m(i).GetPszISOProperty("event", "", false);
           std::string goName = m(i).GetPszISOProperty("GameObject", "", false);
@@ -230,14 +230,14 @@ void CWWSoundManager::Load(std::string file) {
   }
 }
 
-void CWWSoundManager::SetListenerPosition(Vect3f pos) {
+void CWWSoundManager::SetListenerPosition(Vect3f pos, Vect3f direction, Vect3f up) {
   AkListenerPosition lpos;
-  lpos.OrientationFront.X = 1;
-  lpos.OrientationFront.Y = 0;
-  lpos.OrientationFront.Z = 0;
-  lpos.OrientationTop.X = 0;
-  lpos.OrientationTop.Y = 1;
-  lpos.OrientationTop.Z = 0;
+  lpos.OrientationFront.X = direction.x;
+  lpos.OrientationFront.Y = direction.y;
+  lpos.OrientationFront.Z = direction.z;
+  lpos.OrientationTop.X = up.x;
+  lpos.OrientationTop.Y = up.y;
+  lpos.OrientationTop.Z = up.z;
   lpos.Position.X = pos.x;
   lpos.Position.Y = pos.y;
   lpos.Position.Z = pos.z;

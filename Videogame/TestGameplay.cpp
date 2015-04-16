@@ -366,7 +366,11 @@ void CTestGameplay::Update(float dt) {
   Vect3f l_Position = RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky")->GetPosition();
   Vect3f auxPos = l_Position;
   auxPos.z = -auxPos.z;
-  WWSNDMGR->SetListenerPosition(auxPos);
+  Vect3f dir = CAMCONTM->GetResource("FPS")->GetDirection();
+  dir.z = -dir.z;
+  Vect3f up = CAMCONTM->GetResource("FPS")->GetVecUp();
+  up.z = -up.z;
+  WWSNDMGR->SetListenerPosition(auxPos, dir, up);
   m_ObjectFPS->SetPosition(Vect3f(l_Position.x, l_Position.y + 1.0f, l_Position.z ));
   m_ObjectThPS->SetPosition(l_Position);
 // m_ObjectThPS->SetYaw(RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky")->GetYaw());

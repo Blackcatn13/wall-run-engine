@@ -34,7 +34,7 @@ class CWWSoundManager {
   void Render();
   void Load(std::string file);
   void Reload();
-  void SetListenerPosition(Vect3f pos);
+  void SetListenerPosition(Vect3f pos, Vect3f direction = Vect3f(1, 0, 0), Vect3f up = Vect3f(0, 1, 0));
   void PlayEvent(std::string eventName, std::string GameObject);
   void SetSwitch(std::string group, std::string switch_, std::string gameObject);
   void SetTrigger(std::string trigger, std::string gameObject);
