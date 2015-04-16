@@ -39,6 +39,7 @@ class CFSMManager;
 //class CSoundManager;
 class CWWSoundManager;
 class CPuzzleManager;
+class CGUIManager;
 
 #define CCORE			  CCore::GetInstance()
 #define GRAPHM			CCore::GetInstance()->GetGraphicsManager()
@@ -71,6 +72,7 @@ class CPuzzleManager;
 //#define SNDMGR			CCore::GetInstance()->GetSoundManager()
 #define WWSNDMGR		CCore::GetInstance()->GetWWSoundManager()
 #define PUZZLEM			CCore::GetInstance()->GetPuzzleManager()
+//#define GUIM			CCore::GetInstance()->GetGuiManager()
 
 class CCore {
  protected:
@@ -113,6 +115,7 @@ class CCore {
   CBillboardManager                 *m_BillboardManager;
   CFSMManager						*m_FSMManager;
   CWWSoundManager					*m_WWSoundManager;
+  CGUIManager						*m_GuiManager;
 
  public:
   ~CCore();
@@ -230,6 +233,9 @@ class CCore {
 
   CPuzzleManager *GetPuzzleManager() {
     return m_PuzzleManager;
+  }
+  CGUIManager *GetGuiManager() {
+    return m_GuiManager;
   }
 
 

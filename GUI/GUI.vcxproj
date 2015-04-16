@@ -11,42 +11,36 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Button.cpp" />
-    <ClCompile Include="CheckButton.cpp" />
-    <ClCompile Include="DialogBox.cpp" />
-    <ClCompile Include="EditableTextBox.cpp" />
-    <ClCompile Include="GuiElement.cpp" />
-    <ClCompile Include="GUIManager.cpp" />
-    <ClCompile Include="Image.cpp" />
-    <ClCompile Include="PointerMouse.cpp" />
-    <ClCompile Include="ProgressBar.cpp" />
-    <ClCompile Include="RadioBox.cpp" />
-    <ClCompile Include="Slider.cpp" />
-    <ClCompile Include="StaticText.cpp" />
-    <ClCompile Include="TextBox.cpp" />
-    <ClCompile Include="Windows.cpp" />
-    <ClCompile Include="__PCH_GUI.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="GUI\Button.cpp" />
+    <ClCompile Include="GUI\CheckButton.cpp" />
+    <ClCompile Include="GUI\DialogBox.cpp" />
+    <ClCompile Include="GUI\EditableTextBox.cpp" />
+    <ClCompile Include="GUI\GuiElement.cpp" />
+    <ClCompile Include="GUI\GUIManager.cpp" />
+    <ClCompile Include="GUI\Image.cpp" />
+    <ClCompile Include="GUI\PointerMouse.cpp" />
+    <ClCompile Include="GUI\ProgressBar.cpp" />
+    <ClCompile Include="GUI\RadioBox.cpp" />
+    <ClCompile Include="GUI\Slider.cpp" />
+    <ClCompile Include="GUI\StaticText.cpp" />
+    <ClCompile Include="GUI\TextBox.cpp" />
+    <ClCompile Include="GUI\Windows.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Button.h" />
-    <ClInclude Include="CheckButton.h" />
-    <ClInclude Include="DialogBox.h" />
-    <ClInclude Include="EditableTextBox.h" />
-    <ClInclude Include="GuiElement.h" />
-    <ClInclude Include="GUIManager.h" />
-    <ClInclude Include="Image.h" />
-    <ClInclude Include="PointerMouse.h" />
-    <ClInclude Include="ProgressBar.h" />
-    <ClInclude Include="RadioBox.h" />
-    <ClInclude Include="Slider.h" />
-    <ClInclude Include="StaticText.h" />
-    <ClInclude Include="TextBox.h" />
-    <ClInclude Include="Windows.h" />
-    <ClInclude Include="__PCH_GUI.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
+    <ClInclude Include="GUI\Button.h" />
+    <ClInclude Include="GUI\CheckButton.h" />
+    <ClInclude Include="GUI\DialogBox.h" />
+    <ClInclude Include="GUI\EditableTextBox.h" />
+    <ClInclude Include="GUI\GuiElement.h" />
+    <ClInclude Include="GUI\GUIManager.h" />
+    <ClInclude Include="GUI\Image.h" />
+    <ClInclude Include="GUI\PointerMouse.h" />
+    <ClInclude Include="GUI\ProgressBar.h" />
+    <ClInclude Include="GUI\RadioBox.h" />
+    <ClInclude Include="GUI\Slider.h" />
+    <ClInclude Include="GUI\StaticText.h" />
+    <ClInclude Include="GUI\TextBox.h" />
+    <ClInclude Include="GUI\Windows.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{F1709957-380B-494A-B9BE-742B94952236}</ProjectGuid>

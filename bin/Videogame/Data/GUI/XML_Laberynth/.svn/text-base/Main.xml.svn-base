@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Windows OnLoadWindows="_guiM:playImage('main_bolaGiro',0.1,true)"
+         OnSaveWindows=""
+         OnUpdateWindows="if getCore():isEndTimer('main_discoBall',10)== true then                            
+                            _guiM:playImage('main_discoBall',0.1,false)
+                          end">
+
+  <Image name="main_fondo" posx="0.00" posy="0.00" height="100.00" width="100.00" visible="true" active="true"
+         default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="img1" name_texture="./Data/GUI/Textures_LaberynthGame/f_pral2.png"/>
+  </Image>
+  
+  <Image name="main_columna_left" posx=".0.00" posy="0.00" height="100.00" width="50.00" visible="true" active="true"
+         default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="img1" name_texture="./Data/GUI/Textures_LaberynthGame/columna.png"/>
+  </Image>
+
+  <Image name="main_columna_right" posx="50.00" posy="0.00" height="100.00" width="50.00" visible="true" active="true"
+       default="img1" OnLoadValue="" OnSaveValue="" flip="FLIP_Y" backGround="false">
+    <texture name="img1" name_texture="./Data/GUI/Textures_LaberynthGame/columna.png"/>
+  </Image>
+
+  
+  <Image name="main_laberynth" posx="25.00" posy="20.00" height="10.00" width="50.00" visible="false" active="true"
+       default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="img1" name_texture="./Data/GUI/Textures_LaberynthGame/laberynth.png"/>
+  </Image> 
+  
+  <Image name="main_discoBall" posx="10.00" posy="12.00" height="25.00" width="80.00" visible="true" active="true"
+        default="0" 
+        OnLoadValue=""
+        OnSaveValue=""
+        flip="" backGround="false">
+    <texture name="0" name_texture="./Data/GUI/Textures_LaberynthGame/disco/logodisc_000.png"/>
+    <texture name="1" name_texture="./Data/GUI/Textures_LaberynthGame/disco/logodisc_001.png"/>
+    <texture name="2" name_texture="./Data/GUI/Textures_LaberynthGame/disco/logodisc_002.png"/>
+    <texture name="3" name_texture="./Data/GUI/Textures_LaberynthGame/disco/logodisc_003.png"/>
+    <texture name="4" name_texture="./Data/GUI/Textures_LaberynthGame/disco/logodisc_004.png"/>
+    <texture name="5" name_texture="./Data/GUI/Textures_LaberynthGame/disco/logodisc_005.png"/>
+    <texture name="6" name_texture="./Data/GUI/Textures_LaberynthGame/disco/logodisc_006.png"/>
+    <texture name="7" name_texture="./Data/GUI/Textures_LaberynthGame/disco/logodisc_007.png"/>
+    <texture name="8" name_texture="./Data/GUI/Textures_LaberynthGame/disco/logodisc_008.png"/>
+    <texture name="9" name_texture="./Data/GUI/Textures_LaberynthGame/disco/logodisc_009.png"/>
+    <texture name="10" name_texture="./Data/GUI/Textures_LaberynthGame/disco/logodisc_010.png"/>
+    <texture name="11" name_texture="./Data/GUI/Textures_LaberynthGame/disco/logodisc_011.png"/>
+    <texture name="12" name_texture="./Data/GUI/Textures_LaberynthGame/disco/logodisc_012.png"/>
+    <texture name="13" name_texture="./Data/GUI/Textures_LaberynthGame/disco/logodisc_013.png"/>
+    <texture name="14" name_texture="./Data/GUI/Textures_LaberynthGame/disco/logodisc_014.png"/>
+    <texture name="15" name_texture="./Data/GUI/Textures_LaberynthGame/disco/logodisc_015.png"/>
+    <texture name="16" name_texture="./Data/GUI/Textures_LaberynthGame/disco/logodisc_016.png"/>
+    <texture name="17" name_texture="./Data/GUI/Textures_LaberynthGame/disco/logodisc_017.png"/>
+    <texture name="18" name_texture="./Data/GUI/Textures_LaberynthGame/disco/logodisc_018.png"/>
+    <texture name="19" name_texture="./Data/GUI/Textures_LaberynthGame/disco/logodisc_019.png"/>
+    <texture name="20" name_texture="./Data/GUI/Textures_LaberynthGame/disco/logodisc_020.png"/>
+    <texture name="21" name_texture="./Data/GUI/Textures_LaberynthGame/disco/logodisc_021.png"/>
+    <texture name="22" name_texture="./Data/GUI/Textures_LaberynthGame/disco/logodisc_022.png"/>
+    <texture name="23" name_texture="./Data/GUI/Textures_LaberynthGame/disco/logodisc_023.png"/>   
+  </Image>
+
+  <Image name="main_bolaGiro" posx="40.00" posy="12.00" height="25.00" width="20.00" visible="true" active="true"
+      default="0" 
+      OnLoadValue=""
+      OnSaveValue=""
+      flip="" backGround="false">
+    <texture name="0" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_000.dds"/>
+    <texture name="1" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_001.dds"/>
+    <texture name="2" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_002.dds"/>
+    <texture name="3" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_003.dds"/>
+    <texture name="4" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_004.dds"/>
+    <texture name="5" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_005.dds"/>
+    <texture name="6" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_006.dds"/>
+    <texture name="7" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_007.dds"/>
+    <texture name="8" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_008.dds"/>
+    <texture name="9" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_009.dds"/>
+    <texture name="10" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_010.dds"/>
+    <texture name="11" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_011.dds"/>
+    <texture name="12" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_012.dds"/>
+    <texture name="13" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_013.dds"/>
+    <texture name="14" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_014.dds"/>
+    <texture name="15" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_015.dds"/>
+    <texture name="16" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_016.dds"/>
+    <texture name="17" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_017.dds"/>
+    <texture name="18" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_018.dds"/>
+    <texture name="19" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_019.dds"/>
+    <texture name="20" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_020.dds"/>
+    <texture name="21" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_021.dds"/>
+    <texture name="22" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_022.dds"/>
+    <texture name="23" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_023.dds"/>
+    <texture name="24" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_024.dds"/>
+    <texture name="25" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_025.dds"/>
+    <texture name="26" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_026.dds"/>
+    <texture name="27" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_027.dds"/>
+    <texture name="28" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_028.dds"/>
+    <texture name="29" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_029.dds"/>
+    <texture name="30" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_030.dds"/>
+    <texture name="31" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_031.dds"/>
+    <texture name="32" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_032.dds"/>
+    <texture name="33" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_033.dds"/>
+    <texture name="34" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_034.dds"/>
+    <texture name="35" name_texture="./Data/GUI/Textures_LaberynthGame/bolagiro/bolagiro_035.dds"/>
+  </Image>
+
+  
+  <Button name="Play" posx="40.00" posy="37.00" height="15.00" width="26.00" visible="true" 
+          active="true" texture_normal="./Data/GUI/Textures_LaberynthGame/play_normal.png"
+          texture_over="./Data/GUI/Textures_LaberynthGame/play_over.png"
+          texture_clicked="./Data/GUI/Textures_LaberynthGame/play_press.png"
+          texture_deactivated="./Data/GUI/Textures_LaberynthGame/play_press.png"
+          OnClickedAction=" _soundM:playAction2D('guiNext')
+                            _guiM:activeWindowsWithEffect('Game.xml',0,1)
+                            getGameLaberynth():start(true)"
+          OnOverAction="_soundM:playAction2D('guiOver')"/>
+  
+  <Button name="Setup" posx="39.00" posy="54.00" height="10.00" width="25.00" visible="true" active="true" 
+          texture_normal="./Data/GUI/Textures_LaberynthGame/setup_normal.png"
+          texture_over="./Data/GUI/Textures_LaberynthGame/setup_over.png" 
+          texture_clicked="./Data/GUI/Textures_LaberynthGame/setup_press.png"
+          texture_deactivated= "./Data/GUI/Textures_LaberynthGame/setup_normal.png"
+          OnClickedAction=" _guiM:pushWindows('Setup.xml')
+                            _soundM:playAction2D('guiNext')"
+          OnOverAction="_soundM:playAction2D('guiNext')"/>
+
+  <Button name="Credits" posx="38.00" posy="68.00" height="12.00" width="25.00" visible="true" active="true" 
+          texture_normal="./Data/GUI/Textures_LaberynthGame/credits_normal.png"
+          texture_over="./Data/GUI/Textures_LaberynthGame/credits_over.png"
+          texture_clicked="./Data/GUI/Textures_LaberynthGame/credits_press.png" 
+          texture_deactivated="./Data/GUI/Textures_LaberynthGame/credits_normal.png"
+          OnClickedAction=" _guiM:activeWindows('Credits.xml')
+                            _soundM:playAction2D('guiNext')"
+          OnOverAction="_soundM:playAction2D('guiOver')"/>
+  
+  <Button name="Exit" posx="43.00" posy="85.00" height="10.00" width="18.00" visible="true" active="true" 
+          texture_normal="./Data/GUI/Textures_LaberynthGame/exit_normal.png"
+          texture_over="./Data/GUI/Textures_LaberynthGame/exit_over.png"
+          texture_clicked="./Data/GUI/Textures_LaberynthGame/exit_press.png"
+          texture_deactivated="./Data/GUI/Textures_LaberynthGame/exit_normal.png"
+          OnClickedAction=" _guiM:activeWindows('Exit.xml')
+                            _soundM:playAction2D('guiNext')"
+          OnOverAction="_soundM:playAction2D('guiOver')"/>
+</Windows>

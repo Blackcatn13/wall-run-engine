@@ -1,0 +1,5 @@
+La bola será una animación constante que irá muy lenta; a 6 fotogramas x segundo.
+
+Encima de bola se irán poniendo los brillos de la carpeta "brillitos sobre bola". 
+
+

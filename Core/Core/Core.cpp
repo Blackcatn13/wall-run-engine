@@ -31,6 +31,7 @@
 //#include "SoundManager.h"
 #include "WWSoundManager.h"
 #include "AI\PuzzleManager.h"
+#include "GUI\GUIManager.h"
 
 CCore *CCore::m_Instance = 0;
 
@@ -121,6 +122,10 @@ void CCore::Init(HWND handler) {
   m_WWSoundManager = new CWWSoundManager();
   m_WWSoundManager->Init();
   m_WWSoundManager->Load("./Data/WWSounds.xml");
+
+  m_GuiManager = new CGUIManager(Vect2i(m_Config.Screen_Width, m_Config.Screen_Heigth)); 
+  m_GuiManager->Init("./Data/GUI/initGui_laberynth.xml");
+  m_GuiManager->LoadGuiFiles("./Data/GUI/XML_Laberynth");
 }
 
 void CCore::DeInit() {
@@ -155,6 +160,7 @@ void CCore::DeInit() {
   CHECKED_DELETE(m_ParticleManager);
   CHECKED_DELETE(m_WWSoundManager);
   CHECKED_DELETE(m_PuzzleManager);
+  CHECKED_DELETE(m_GuiManager);
   // m_PlatformsMap->Destroy();
 }
 
@@ -166,6 +172,10 @@ CCore *CCore::GetInstance() {
 }
 
 void CCore::Render() {
+  //m_GraphicsManager->Render();
+  // m_LightManager->Render(m_GraphicsManager);
+  //m_PhysicsManager->DebugRender(m_GraphicsManager);
+  m_WWSoundManager->Render();
 }
 
 void CCore::Update(float dt) {
@@ -178,7 +188,11 @@ void CCore::Update(float dt) {
   m_ParticleManager->Update(dt);
   m_BillboardManager->Update(dt);
   m_PuzzleManager->Update(dt);
+<<<<<<< Updated upstream
   m_WWSoundManager->Render();
+=======
+  m_GuiManager->Update(dt);
+>>>>>>> Stashed changes
 }
 
 

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Windows OnLoadWindows="source = _soundM:createSource()
+                        _soundM:playSource2D(source,'loop',true)
+                        getGameLaberynth():setInBoardSettings(true)"
+         OnSaveWindows="_soundM:stopSource(source)
+                        _soundM:deleteSource(source)
+                        getGameLaberynth():setInBoardSettings(false)"
+         OnUpdateWindows="if getCore():isEndTimer('setup_destello1',10)== true then                            
+                            _guiM:playImage('setup_destello1',0.1,false)
+                          end
+                          
+                          if getCore():isEndTimer('setup_destello2',12)== true then                            
+                            _guiM:playImage('setup_destello2',0.1,false)
+                          end
+                          
+                          if getCore():isEndTimer('setup_destello3',20)== true then                            
+                            _guiM:playImage('setup_destello3',0.1,false)
+                          end">
+
+  <Image name="setup_fondo_left" posx="0.00" posy="0.00" height="100.00" width="50.0" visible="true" active="true"
+         default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="true">
+    <texture name="img1" name_texture="./Data/GUI/Textures_LaberynthGame/f_helpa.png"/>
+  </Image>
+
+  <Image name="setup_fondo_right" posx="50.0" posy="0.00" height="100.00" width="50.00" visible="true" active="true"
+         default="img1" OnLoadValue="" OnSaveValue="" flip="FLIP_Y" backGround="true">
+    <texture name="img1" name_texture="./Data/GUI/Textures_LaberynthGame/f_helpa.png"/>
+  </Image>
+
+  <Image name="setup_title" posx="32.00" posy="8.00" height="13.00" width="30.0" visible="true" active="true"
+         default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="img1" name_texture="./Data/GUI/Textures_LaberynthGame/setup.png"/>
+  </Image>
+
+
+  <Image name="setup_soundVolume" posx="5.0" posy="40.00" height="5.0" width="18.00" visible="true" active="true"
+         default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="img1" name_texture="./Data/GUI/Textures_LaberynthGame/soundVolume.png"/>
+  </Image>
+
+  <Slider	name="Volume" posx="25" posy="41" height="2" width="15" visible="true" active="true" value="0.5" buttonH="3" buttonW="3"
+     button_normal="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal.png"
+     button_over="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_over.png"
+     button_clicked="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_over.png"
+     button_deactivated="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal.png"
+     quad="./Data/GUI/Textures_LaberynthGame/gui_sliderback.png"
+     OnOverAction=""
+     OnClickedAction=""
+     OnChangeValue="_soundM:setGain(_guiM:getStateSlider('Volume'))"
+     OnSaveValue="_soundM:setGain(_guiM:getStateSlider('Volume'))"
+     OnLoadValue="_guiM:setStateSlider('Volume',_soundM:getGain())"/>
+
+  <Image name="setup_visibleWebCam" posx="15.0" posy="30.00" height="5.0" width="20.00" visible="true" active="true"
+         default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="img1" name_texture="./Data/GUI/Textures_LaberynthGame/visibleWebCam.png"/>
+  </Image>
+
+  <CheckButton name="setup_visibleWebCamCheckButton" posx="35" posy="31" height="3" width="4" visible="true" active="true" isOn="true"
+      texture_on="./Data/GUI/Textures_LaberynthGame/gui_checkbutton_on.png"
+      texture_off="./Data/GUI/Textures_LaberynthGame/gui_checkbutton_off.png"
+      texture_deactivated="./Data/GUI/Textures_LaberynthGame/gui_checkbutton_on.png"
+      OnCheckOn="" OnCheckOff="" OnOverButton=""
+      OnSaveValue=""
+      OnLoadValue=""/>
+
+  <Image name="setup_TimeOut" posx="15.0" posy="35.00" height="5.00" width="15.00" visible="true" active="true"
+           default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="img1" name_texture="./Data/GUI/Textures_LaberynthGame/setTimeOut.png"/>
+  </Image>
+
+  <CheckButton name="setup_checkTimeOut" posx="30" posy="37" height="3" width="4" visible="true" active="true" isOn="true"
+      texture_on="./Data/GUI/Textures_LaberynthGame/gui_checkbutton_on.png"
+      texture_off="./Data/GUI/Textures_LaberynthGame/gui_checkbutton_off.png"
+      texture_deactivated="./Data/GUI/Textures_LaberynthGame/gui_checkbutton_on.png"
+      OnCheckOn="" OnCheckOff="" OnOverButton=""
+      OnSaveValue=""
+      OnLoadValue=""/>
+
+
+  <Image name="setup_Force1" posx="5.0" posy="45.00" height="6.00" width="25.00" visible="true" active="true"
+         default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="img1" name_texture="./Data/GUI/Textures_LaberynthGame/boardForce_right.png"/>
+  </Image>
+
+  <Slider	name="setup_SliderForce1" posx="32" posy="55" height="2" width="15" visible="true" active="true" value="0.2" buttonH="3" buttonW="3"
+     button_normal="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal.png"
+     button_over="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_over.png"
+     button_clicked="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_over.png"
+     button_deactivated="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal.png"
+     quad="./Data/GUI/Textures_LaberynthGame/gui_sliderback.png"
+     OnOverAction=""
+     OnClickedAction=""
+     OnChangeValue="getGameLaberynth():setForceRJ1(_guiM:getStateSlider('setup_SliderForce1'))"
+     OnSaveValue="getGameLaberynth():setForceRJ1(_guiM:getStateSlider('setup_SliderForce1'))"
+     OnLoadValue="_guiM:setStateSlider('setup_SliderForce1',getGameLaberynth():getForceRJ1())"/>
+
+  <Image name="setup_Force2" posx="5.0" posy="52.00" height="6.00" width="25.00" visible="true" active="true"
+        default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="img1" name_texture="./Data/GUI/Textures_LaberynthGame/boardForce_up.png"/>
+  </Image>
+
+  <Slider	name="setup_SliderForce2" posx="32" posy="48" height="2" width="15" visible="true" active="true" value="0.2" buttonH="3" buttonW="3"
+     button_normal="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal.png"
+     button_over="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_over.png"
+     button_clicked="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_over.png"
+     button_deactivated="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal.png"
+     quad="./Data/GUI/Textures_LaberynthGame/gui_sliderback.png"
+     OnOverAction=""
+     OnClickedAction=""
+     OnChangeValue="getGameLaberynth():setForceRJ2(_guiM:getStateSlider('setup_SliderForce2'))"
+     OnSaveValue="getGameLaberynth():setForceRJ2(_guiM:getStateSlider('setup_SliderForce2'))"
+     OnLoadValue="_guiM:setStateSlider('setup_SliderForce2',getGameLaberynth():getForceRJ2())"/>
+
+  <RadioBox name="Level" posx="16" posy="63" height="15" width="25" default_checkButton="level_1" visible="true" active="true"
+      texture_back="" columns="2" rows="2" OnCheckOn="" OnCheckOff="" OnOverButton=""
+      OnSaveValue="getGameLaberynth():setLevel( _guiM:getButtonCheckInRadioBox('Level') )"
+      OnLoadValue="_guiM:setButtonCheckInRadioBox('Level', getGameLaberynth():getLevel())">
+
+    <texture name="level_1"
+             on="./Data/GUI/Textures_LaberynthGame/gui_level1_on.png"
+             off="./Data/GUI/Textures_LaberynthGame/gui_level1_off.png"
+             deactivated="./Data/GUI/Textures_LaberynthGame/gui_level1_off.png" />
+    <texture name="level_2"
+             on="./Data/GUI/Textures_LaberynthGame/gui_level1_on.png"
+             off="./Data/GUI/Textures_LaberynthGame/gui_level1_off.png"
+             deactivated="./Data/GUI/Textures_LaberynthGame/gui_level1_off.png" />
+    <texture name="level_3"
+             on="./Data/GUI/Textures_LaberynthGame/gui_level1_on.png"
+             off="./Data/GUI/Textures_LaberynthGame/gui_level1_off.png"
+             deactivated="./Data/GUI/Textures_LaberynthGame/gui_level1_on.png" />
+    <texture name="level_4"
+             on="./Data/GUI/Textures_LaberynthGame/gui_level1_on.png"
+             off="./Data/GUI/Textures_LaberynthGame/gui_level1_off.png"
+             deactivated="./Data/GUI/Textures_LaberynthGame/gui_level1_off.png" />
+  </RadioBox>
+
+  <Image name="Level_image" posx="5.0" posy="65.00" height="6.00" width="10.00" visible="true" active="true"
+        default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="img1" name_texture="./Data/GUI/Textures_LaberynthGame/level.png"/>
+  </Image>
+
+  <Image name="setup_destello1" posx="8.00" posy="20.00" height="10.00" width="10.00" visible="true" active="true"
+      default="11"
+      OnLoadValue=""
+      OnSaveValue=""
+      flip="" backGround="false">
+    <texture name="0" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_000.dds"/>
+    <texture name="1" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_001.dds"/>
+    <texture name="2" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_002.dds"/>
+    <texture name="3" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_003.dds"/>
+    <texture name="4" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_004.dds"/>
+    <texture name="5" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_005.dds"/>
+    <texture name="6" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_006.dds"/>
+    <texture name="7" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_007.dds"/>
+    <texture name="8" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_008.dds"/>
+    <texture name="9" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_009.dds"/>
+    <texture name="10" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_010.dds"/>
+  </Image>
+
+
+  <Image name="setup_destello2" posx="55.00" posy="10.00" height="10.00" width="10.00" visible="true" active="true"
+      default="11"
+      OnLoadValue=""
+      OnSaveValue=""
+      flip="" backGround="false">
+    <texture name="0" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_000.dds"/>
+    <texture name="1" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_001.dds"/>
+    <texture name="2" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_002.dds"/>
+    <texture name="3" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_003.dds"/>
+    <texture name="4" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_004.dds"/>
+    <texture name="5" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_005.dds"/>
+    <texture name="6" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_006.dds"/>
+    <texture name="7" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_007.dds"/>
+    <texture name="8" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_008.dds"/>
+    <texture name="9" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_009.dds"/>
+    <texture name="10" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_010.dds"/>
+  </Image>
+
+  <Image name="setup_destello3" posx="85.00" posy="80.00" height="10.00" width="10.00" visible="true" active="true"
+      default="11"
+      OnLoadValue=""
+      OnSaveValue=""
+      flip="" backGround="false">
+    <texture name="0" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_000.dds"/>
+    <texture name="1" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_001.dds"/>
+    <texture name="2" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_002.dds"/>
+    <texture name="3" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_003.dds"/>
+    <texture name="4" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_004.dds"/>
+    <texture name="5" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_005.dds"/>
+    <texture name="6" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_006.dds"/>
+    <texture name="7" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_007.dds"/>
+    <texture name="8" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_008.dds"/>
+    <texture name="9" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_009.dds"/>
+    <texture name="10" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_010.dds"/>
+  </Image>
+
+  <Button name="Setup_2_Main" posx="40.00" posy="86.00" height="9.00" width="21.00" visible="true" active="true"
+      texture_normal="./Data/GUI/Textures_LaberynthGame/back_normal.png"
+      texture_over="./Data/GUI/Textures_LaberynthGame/back_over.png"
+      texture_clicked="./Data/GUI/Textures_LaberynthGame/back_press.png"
+      texture_deactivated="./Data/GUI/Textures_LaberynthGame/back_normal.png"
+      OnClickedAction=" _guiM:popWindows()
+                        _soundM:playAction2D('guiBack')"
+      OnOverAction="_soundM:playAction2D('guiOver')"/>
+</Windows>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Gui_config>
+  <GuiFiles path="./Data/Gui/XML_Laberynth"/>
+  <TextBox  posx="30" posy="30" width="35" height="35" button_width="5" button_height="5"
+            buttonClose_normal=     "./Data/GUI/Textures_Test/CloseDialegBox.jpg"
+            buttonClose_over=       "./Data/GUI/Textures_Test/CloseDialegBoxO.jpg"
+            buttonClose_clicked=    "./Data/GUI/Textures_Test/CloseDialegBoxC.jpg"
+            buttonClose_deactivated="./Data/GUI/Textures_Test/CloseDialegBoxC.jpg" 
+            buttonMove_normal=      "./Data/GUI/Textures_Test/ButtonDialegBoxN.jpg"
+            buttonMove_over=        "./Data/GUI/Textures_Test/ButtonDialegBoxO.jpg"
+            buttonMove_clicked=     "./Data/GUI/Textures_Test/ButtonDialegBoxC.jpg"
+            buttonMove_deactivated= "./Data/GUI/Textures_Test/ButtonDialegBoxC.jpg"
+            quad=                   "./Data/GUI/Textures_Test/BaseDialegBox.jpg"/>
+  
+  <PointerMouse posx="5" posy="5" width="5" height="5" 
+                texture="./Data/GUI/Textures_Test/gui_pointer_mouse.tga" isQuadrant="true"/>
+</Gui_config>

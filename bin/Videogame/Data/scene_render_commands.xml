@@ -229,7 +229,7 @@
 	 <!--<render_debug_scene layer="solid" active="true"/>-->
 	<disable_z_test/>
 	<disable_z_write/>
-	<enable_alpha_blend/>
+	<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>
 	
 	<render_debug_info/>
 	<disable_alpha_blend /> 
