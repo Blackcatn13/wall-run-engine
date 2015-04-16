@@ -217,17 +217,17 @@ function update_poly_platform(current_poly_time, dt, platform_name)
 	
 	if (act2in:do_action_from_lua("PolyPowa") == true and platform.m_Enabled) or platform.m_IsMoving == true then
 		coreInstance:trace(tostring(platform.m_IsMoving))
-		--platform:activate_poly()
+		platform:activate_poly()
 		
-		activate_poly(platform, dt)
+		--activate_poly(platform, dt)
 		--local new_pos = Vect3f(position + platform.m_RedimScale)
 		--coreInstance:get_player_controller().m_PhysicController:set_position(new_pos) 
 	end
 	-- If poly is activated
 	
 	if current_poly_time > platform.m_TimeOut then
-		--platform:deactivate_poly()
-		deactivate_poly(platform, dt)
+		platform:deactivate_poly()
+		--deactivate_poly(platform, dt)
 	end
 		
 end

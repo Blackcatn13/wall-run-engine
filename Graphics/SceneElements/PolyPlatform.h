@@ -37,6 +37,8 @@ class CPolyPlatform : public CStaticPlatform {
   void DeactivatePoly();
   void Update(float ElapsedTime);
   void ApplyPhysicsToPlayer(Vect3f direction, float ElapsedTime);
+  bool isAround(Vect3f vector1, Vect3f vector2);
+  bool isInside(Vect3f vector1, Vect3f vector2);
 
   bool IsActivated() {
     return m_Activated;
