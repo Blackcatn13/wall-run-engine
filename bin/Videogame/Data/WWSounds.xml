@@ -5,29 +5,31 @@
 	<GameObject2D name="Music" register="true"/>
 	<GameObject2D name="Piky" register="true"/>
 	<GameObject3D name="Sounds" pos="0 0 0" dir="-1 0 0" register="true"/>
-	<GameObject3D name="ANTORCHA_018" pos="16.895958 3.568798 11.723488" dir="-16.895958 -3.568798 -11.723488" register="true"/>
-	<GameObject3D name="ANTORCHA_023" pos="-41.513931 3.571247 45.175423" dir="41.513931 -3.571247 -45.175" register="true"/>
-	<GameObject3D name="ANTORCHA_019" pos="17.077599 3.568794 -12.376488" dir="-17.077599 -3.568794 12.37648" register="true"/>
-	<GameObject3D name="ANTORCHA_030" pos="12.085777 3.571239 23.207085" dir="-12.085777 -3.571239 -23.2070" register="true"/>
-	<GameObject3D name="ANTORCHA_027" pos="4.494644 3.571239 33.021767" dir="-4.494644 -3.571239 -33.02176" register="true"/>
-	<GameObject3D name="ANTORCHA_010" pos="-40.878845 3.570019 -46.720757" dir="40.878845 -3.570019 46.7207" register="true"/>
-	<GameObject3D name="ANTORCHA_013" pos="-52.395401 3.570019 -42.062035" dir="52.395401 -3.570019 42.0620" register="true"/>
-	<GameObject3D name="ANTORCHA_012" pos="-62.290924 3.570019 -34.610191" dir="62.290924 -3.570019 34.6101" register="true"/>
-	<GameObject3D name="ANTORCHA_015" pos="-69.940155 3.570015 -24.842155" dir="69.940155 -3.570015 24.8421" register="true"/>
-	<GameObject3D name="ANTORCHA_014" pos="-74.815353 3.570019 -13.404289" dir="74.815353 -3.570019 13.4042" register="true"/>
-	<GameObject3D name="ANTORCHA_029" pos="-76.542847 3.570015 -1.075157" dir="76.542847 -3.570015 1.07515" register="true"/>
-	<GameObject3D name="ANTORCHA_020" pos="-75.005432 3.570015 11.265846" dir="75.005432 -3.570015 -11.265" register="true"/>
-	<GameObject3D name="ANTORCHA_021" pos="-70.326736 3.570015 22.773964" dir="70.326736 -3.570015 -22.773" register="true"/>
-	<GameObject3D name="ANTORCHA_022" pos="-62.857681 3.570591 32.656471" dir="62.857681 -3.570591 -32.656" register="true"/>
-	<GameObject3D name="ANTORCHA_028" pos="-53.076035 3.570595 40.288811" dir="53.076035 -3.570595 -40.288" register="true"/>
-	<GameObject3D name="ANTORCHA_024" pos="-29.177567 3.571247 46.850410" dir="29.177567 -3.571247 -46.850" register="true"/>
-	<GameObject3D name="ANTORCHA_025" pos="-16.843536 3.571243 45.259956" dir="16.843536 -3.571243 -45.259" register="true"/>
-	<GameObject3D name="ANTORCHA_026" pos="-5.356064 3.571243 40.532692" dir="5.356064 -3.571243 -40.5326" register="true"/>
-	<GameObject3D name="ANTORCHA_005" pos="12.467537 3.568790 -23.913445" dir="-12.467537 -3.568790 23.91344" register="true"/>
-	<GameObject3D name="ANTORCHA_016" pos="-28.415222 3.569366 -48.235008" dir="28.415222 -3.569366 48.2350" register="true"/>
-	<GameObject3D name="ANTORCHA_008" pos="-16.093597 3.569368 -46.455009" dir="16.093597 -3.569368 46.4550" register="true"/>
-	<GameObject3D name="ANTORCHA_009" pos="-4.676979 3.568789 -41.530724" dir="4.676979 -3.568789 41.53072" register="true"/>
-	<GameObject3D name="ANTORCHA_002" pos="5.057762 3.568789 -33.840477" dir="-5.057762 -3.568789 33.840477" register="true"/>
+	<GameObject3D name="ANTORCHA" register="true" type="MultiSource">
+		<Source pos="16.895958 3.568798 11.723488" dir="-16.895958 -3.568798 -11.723488"/> 
+		<Source pos="-41.513931 3.571247 45.175423" dir="41.513931 -3.571247 -45.175"/> 
+		<Source pos="17.077599 3.568794 -12.376488" dir="-17.077599 -3.568794 12.37648"/> 
+		<Source pos="12.085777 3.571239 23.207085" dir="-12.085777 -3.571239 -23.2070"/> 
+		<Source pos="4.494644 3.571239 33.021767" dir="-4.494644 -3.571239 -33.02176"/> 
+		<Source pos="-40.878845 3.570019 -46.720757" dir="40.878845 -3.570019 46.7207"/> 
+		<Source pos="-52.395401 3.570019 -42.062035" dir="52.395401 -3.570019 42.0620"/> 
+		<Source pos="-62.290924 3.570019 -34.610191" dir="62.290924 -3.570019 34.6101"/> 
+		<Source pos="-69.940155 3.570015 -24.842155" dir="69.940155 -3.570015 24.8421"/> 
+		<Source pos="-74.815353 3.570019 -13.404289" dir="74.815353 -3.570019 13.4042"/> 
+		<Source pos="-76.542847 3.570015 -1.075157" dir="76.542847 -3.570015 1.07515"/> 
+		<Source pos="-75.005432 3.570015 11.265846" dir="75.005432 -3.570015 -11.265"/> 
+		<Source pos="-70.326736 3.570015 22.773964" dir="70.326736 -3.570015 -22.773"/> 
+		<Source pos="-62.857681 3.570591 32.656471" dir="62.857681 -3.570591 -32.656"/> 
+		<Source pos="-53.076035 3.570595 40.288811" dir="53.076035 -3.570595 -40.288"/> 
+		<Source pos="-29.177567 3.571247 46.850410" dir="29.177567 -3.571247 -46.850"/> 
+		<Source pos="-16.843536 3.571243 45.259956" dir="16.843536 -3.571243 -45.259"/> 
+		<Source pos="-5.356064 3.571243 40.532692" dir="5.356064 -3.571243 -40.5326"/> 
+		<Source pos="12.467537 3.568790 -23.913445" dir="-12.467537 -3.568790 23.91344"/> 
+		<Source pos="-28.415222 3.569366 -48.235008" dir="28.415222 -3.569366 48.2350"/> 
+		<Source pos="-16.093597 3.569368 -46.455009" dir="16.093597 -3.569368 46.4550"/> 
+		<Source pos="-4.676979 3.568789 -41.530724" dir="4.676979 -3.568789 41.53072"/> 
+		<Source pos="5.057762 3.568789 -33.840477" dir="-5.057762 -3.568789 33.840477"/> 
+	</GameObject3D>
 
 	<InitEvent event="BackGround" GameObject="Music"/>
 </WWise>

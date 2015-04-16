@@ -197,22 +197,47 @@ void CWWSoundManager::Load(std::string file) {
           }
         } else if (name == "GameObject3D") {
           std::string goName = m(i).GetPszISOProperty("name", "", false);
-          Vect3f pos = m(i).GetVect3fProperty("pos", v3fZERO, false);
-          Vect3f dir = m(i).GetVect3fProperty("dir", v3fZERO, false);
           m_GameObjects[goName] = ++m_LastId;
           bool register_ = m(i).GetBoolProperty("register", false, false);
           if (register_) {
             AK::SoundEngine::RegisterGameObj(m_GameObjects[goName]);
           }
-          AkSoundPosition soundPos;
-          soundPos.Position.X = pos.x;
-          soundPos.Position.Y = pos.y;
-          soundPos.Position.Z = pos.z;
-          dir.Normalize();
-          soundPos.Orientation.X = dir.x;
-          soundPos.Orientation.Y = dir.y;
-          soundPos.Orientation.Z = dir.z;
-          AK::SoundEngine::SetPosition(m_GameObjects[goName], soundPos);
+          int positions = m(i).GetNumChildren();
+          if (positions > 0) {
+            AkSoundPosition *posList = new (std::nothrow) AkSoundPosition[positions];
+            for (int j = 0; j < positions; ++j) {
+              Vect3f pos = m(i)(j).GetVect3fProperty("pos", v3fZERO, false);
+              Vect3f dir = m(i)(j).GetVect3fProperty("dir", v3fZERO, false);
+              posList[j].Position.X = pos.x;
+              posList[j].Position.Y = pos.y;
+              posList[j].Position.Z = pos.z;
+              dir.Normalize();
+              posList[j].Orientation.X = dir.x;
+              posList[j].Orientation.Y = dir.y;
+              posList[j].Orientation.Z = dir.z;
+
+            }
+            std::string type = m(i).GetPszISOProperty("type", "", false);
+            AK::SoundEngine::MultiPositionType type_pos;
+            if (type == "MultiSource") {
+              type_pos = AK::SoundEngine::MultiPositionType::MultiPositionType_MultiSources;
+            } else {
+              type_pos = AK::SoundEngine::MultiPositionType::MultiPositionType_MultiDirections;
+            }
+            AK::SoundEngine::SetMultiplePositions(m_GameObjects[goName], posList, positions, type_pos);
+          } else {
+            Vect3f pos = m(i).GetVect3fProperty("pos", v3fZERO, false);
+            Vect3f dir = m(i).GetVect3fProperty("dir", v3fZERO, false);
+            AkSoundPosition soundPos;
+            soundPos.Position.X = pos.x;
+            soundPos.Position.Y = pos.y;
+            soundPos.Position.Z = pos.z;
+            dir.Normalize();
+            soundPos.Orientation.X = dir.x;
+            soundPos.Orientation.Y = dir.y;
+            soundPos.Orientation.Z = dir.z;
+            AK::SoundEngine::SetPosition(m_GameObjects[goName], soundPos);
+          }
         } else if (name == "InitEvent") {
           std::string eventName = m(i).GetPszISOProperty("event", "", false);
           std::string goName = m(i).GetPszISOProperty("GameObject", "", false);
