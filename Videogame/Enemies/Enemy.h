@@ -33,7 +33,7 @@ class CEnemy : public CAIController { //CAIController
   CEnemy(CXMLTreeNode &info1);
   CEnemy(std::string mesh, std::string name, Vect3f position,  float speed, float turnSpeed, float gravity, float yaw);
   CEnemy(CRenderableObject *renderableObject);
-  ~CEnemy();
+  //~CEnemy();
 
 
   //virtual ~CEnemy();

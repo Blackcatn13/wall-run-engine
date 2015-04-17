@@ -68,10 +68,10 @@ void CEnemy::Update(float elapsedTime) {
 
 void CEnemy::Render() {
 }
-CEnemy::~CEnemy() {
+/*CEnemy::~CEnemy() {
   //CHECKED_DELETE(m_Fsm);
   //CHECKED_DELETE(m_RenderableObject);
-}
+}*/
 
 void CEnemy::UpdateFSM(float elapsedTime) {
 // for (TMapResource::iterator it = m_Resources.begin(); it != m_Resources.end(); ++it) {

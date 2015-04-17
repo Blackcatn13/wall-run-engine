@@ -19,6 +19,7 @@ CEnemyManager::CEnemyManager() {
 
 
 CEnemyManager::~CEnemyManager() {
+  Destroy();
 }
 
 void CEnemyManager::InitEnemies(std::string layerName) {

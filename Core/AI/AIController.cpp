@@ -93,8 +93,10 @@ CAIController::CAIController(CRenderableObject *rond, float speed, float turnSpe
 //}
 
 CAIController::~CAIController() {
+
   CHECKED_DELETE(m_PhysicUserData);
   CHECKED_DELETE(m_PhysicController);
+
 }
 
 void CAIController::Move(float dt) {
