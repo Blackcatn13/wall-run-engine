@@ -124,7 +124,7 @@ void CCore::Init(HWND handler) {
   m_WWSoundManager->Init();
   m_WWSoundManager->Load("./Data/WWSounds.xml");
 
-  m_GuiManager = new CGUIManager(Vect2i(m_Config.Screen_Width, m_Config.Screen_Heigth)); 
+  m_GuiManager = new CGUIManager(Vect2i(m_Config.Screen_Width, m_Config.Screen_Heigth));
   m_GuiManager->Init("./Data/GUI/initGui_laberynth.xml");
   m_GuiManager->LoadGuiFiles("./Data/GUI/XML_Laberynth");
 }
@@ -189,11 +189,9 @@ void CCore::Update(float dt) {
   m_ParticleManager->Update(dt);
   m_BillboardManager->Update(dt);
   m_PuzzleManager->Update(dt);
-<<<<<<< Updated upstream
   m_WWSoundManager->Render();
-=======
   m_GuiManager->Update(dt);
->>>>>>> Stashed changes
+
 }
 
 
