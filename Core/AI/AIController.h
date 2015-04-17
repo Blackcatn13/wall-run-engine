@@ -7,11 +7,15 @@
 
 class CPhysicController;
 class CPhysicUserData;
+class CRenderableObject;
 
 class CAIController : public CObject3D {
  public:
   CAIController();
   CAIController(std::string mesh, std::string name, Vect3f position,  float speed, float turnSpeed, float gravity);
+  CAIController(  CRenderableObject *rond, float speed, float turnSpeed, float gravity);
+
+
   virtual ~CAIController();
   void Move(float dt);
   void MoveTo(float dt, Vect3f point);
@@ -41,6 +45,7 @@ class CAIController : public CObject3D {
   bool				m_isJumping;
   std::string			m_Mesh;
   std::string			m_Name;
+  CRenderableObject *m_RenderableObject;
 };
 
 

@@ -9,16 +9,17 @@
 	<layer name="poly" />
 	<layer name="enabled_poly" />
 	<layer name="collectible" />
+	<layer name="enemies" />
 	
 	<collectible name="pixelite1" type ="pixelite" core="SpongePicky" pos="10.0 2.0 2.0" yaw="0.0" pitch="0.0" roll="0.0" scale="0.5 0.5 0.1" visible="true" lua_code="roll_object" user_data_name="pixeliteUserData001" layer="collectible" />
 
 	<!-- Fora sala -->
 	<animated_model name="SpongePicky" core="piky" pos="0 0 20" yaw="1.7" pitch="0" roll="0" scale="1 1 1"/>
 	<animated_model name="Chucky" core="chuky" pos="5 0 0" yaw="0" pitch="0" roll="0" scale="1 1 1"/>
-	<mesh_instance name="Enemy1" core="Enemy1"  pos="22.4882 -10.0 0.160919" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<mesh_instance name="MikMik1" core="Enemy1"  pos="-3.0 2.0 10.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />
 	<!--<mesh_instance name="Enemy2" core="Enemy2"  pos="0 0 0" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<mesh_instance name="Enemy3" core="Enemy3"  pos="0 0 0" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />-->
-	<mesh_instance name="Enemy4" core="Enemy1"  pos="-1.591296 2.000000 11.657170" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
+	<!--<mesh_instance name="Enemy4" core="Enemy1"  pos="-1.591296 2.000000 11.657170" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />-->
 	<!-- -->
 		<mesh_instance name="OBSTACLE 007" core="OBSTACLE 007" pos="92.218491 0.000004 -5.311916" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="SALA1" core="SALA1" pos="32.936810 3.500000 0.259848" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>

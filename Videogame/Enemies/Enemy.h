@@ -9,27 +9,33 @@
 #include "AI\AIController.h"
 //#include "Object\Object3D.h"
 #include "AI\FSMManager.h"
+#include "Mesh\MeshInstance.h"
 
 class CXMLTreeNode;
 class CPhysicController;
 class CPhysicUserData;
+class CRenderableObject;
 
 class CEnemy : public CAIController { //CAIController
  protected:
 
-  float			m_Life;
-  float			m_TimeToSpawn;
-  float			m_TimeToShoot;
-  float			m_ShootAccuracy;
-  //std::string		m_Mesh;
-  //std::string		m_Name;
-  FSM			*m_Fsm;
+  float				m_Life;
+  float				m_TimeToSpawn;
+  float				m_TimeToShoot;
+  float				m_ShootAccuracy;
+  //std::string			m_Mesh;
+  //std::string			m_Name;
+  FSM				*m_Fsm;
+  CRenderableObject *m_RenderableObject;
 
   CEnemy();
  public:
   CEnemy(CXMLTreeNode &info1);
   CEnemy(std::string mesh, std::string name, Vect3f position,  float speed, float turnSpeed, float gravity, float yaw);
+  CEnemy(CRenderableObject *renderableObject);
   ~CEnemy();
+
+
   //virtual ~CEnemy();
   virtual void Init() /*= 0*/;
   virtual void Update(float elapsedTime) /*= 0*/;

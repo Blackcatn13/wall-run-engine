@@ -19,18 +19,20 @@ CEasyEnemy::CEasyEnemy(std::string mesh, std::string name, Vect3f position,  flo
   Init();
 }
 
-
-void CEasyEnemy::Init() {
-  CRenderableObject *malla = RENDLM->GetDefaultRenderableObjectManager()->GetResource(getMesh());
-  malla->SetYaw(m_fYaw);
-  bool visible = malla->getVisible();
-  malla->SetPosition(m_Position);
-  m_Fsm = FSMMGR->GetResource("Enemy");
+CEasyEnemy::CEasyEnemy(CRenderableObject *renderableObject) :
+  CEnemy(renderableObject) {
+  Init();
 }
+
+
 
 void CEasyEnemy::Update(float elapsedTime) {
   UpdateFSM(elapsedTime);
 }
 
 void CEasyEnemy::Render() {
+}
+
+void CEasyEnemy::MoveEnemy(float ElapsedTime, Vect3f wp) {
+  MoveTo(ElapsedTime, wp);
 }

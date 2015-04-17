@@ -2,8 +2,9 @@
 	<core_enemy type="easy" life="50.0" time_to_spawn="3.0" time_to_shoot="5.0" shoot_accuracy="0.35"/>
 	<core_enemy type="patrol" life="75.0" time_to_spawn="1.0" time_to_shoot="2.5" shoot_accuracy="0.45"/>
 	<core_enemy type="boss" life="250.0" time_to_spawn="0.0" time_to_shoot="2.0" shoot_accuracy="0.75"/>
-	<!--<enemy name="Enemy1" type="easy" pos="10.0 2.0 3.0" yaw="0.0" mesh="Enemy1" />
-	<enemy name="Enemy2" type="easy" pos="8.0 2.0 -2.0" yaw="0.0" mesh="Enemy2" />
+	
+	<instance_enemy name="Enemy1" />
+	<!--<enemy name="Enemy2" type="easy" pos="8.0 2.0 -2.0" yaw="0.0" mesh="Enemy2" />
 	<enemy name="Enemy3" type="easy" pos="4.0 2.0 7.0" yaw="0.0" mesh="Enemy3" />-->
 	<!--<enemy name="Enemy4" type="easy" pos="5.0 2.0 3.0" yaw="0.0"/>
 	<enemy name="Enemy5" type="easy" pos="5.0 2.0 3.0" yaw="0.0"/>

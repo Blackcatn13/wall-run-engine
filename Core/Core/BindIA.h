@@ -70,6 +70,7 @@ void RegisterAI() {
     class_<CEasyEnemy, CEnemy>("CEasyEnemy")
     .def(constructor<CXMLTreeNode>())
     .def(constructor<std::string, std::string, Vect3f, float, float, float , float >())
+    .def("move_enemy", &CEasyEnemy::MoveEnemy)
     // .def("init", &CEasyEnemy::Init)
     //.def("update", &CEasyEnemy::Update)
     //.def("render", &CEasyEnemy::Render)

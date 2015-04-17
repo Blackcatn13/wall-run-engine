@@ -15,6 +15,7 @@
 #include "Collectibles\Cromo.h"
 #include "Collectibles\Pixelite.h"
 
+
 #include <assert.h>
 
 #include "Core_Utils/MemLeaks.h"
@@ -426,4 +427,5 @@ void CRenderableObjectsManager::Reload() {
   ss << CCORE->getLuaLoadLevelFunc() << "(" << var << ")";
   std::string toRun = ss.str();
   SCRIPTM->RunCode(toRun.c_str());
+// ENEMYM->Reload();
 }

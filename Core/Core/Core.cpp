@@ -106,6 +106,7 @@ void CCore::Init(HWND handler) {
   //m_WPManager->Load("data//AI//Waypoints3.xml");
   m_EnemyManager = CEnemyManager::GetInstance();
   m_EnemyManager->Init("data//enemies.xml");
+  m_EnemyManager->InitEnemies("enemies");
   m_PlayerController = new CPlayerController();
   m_TriggerManager->LoadTriggers(m_Config.TriggersPath);
   m_PuzzleManager  = new CPuzzleManager();

@@ -7,6 +7,10 @@
 #include "PatrolEnemy.h"
 #include <map>
 #include "Utils\PhysicUserData.h"
+#include "Renderable\RenderableObjectsLayersManager.h"
+#include "Renderable\RenderableObjectsManager.h"
+#include "Core\Core.h"
+#include "Utils\Defines.h"
 
 CEnemyManager *CEnemyManager::m_Singleton = 0;
 
@@ -17,7 +21,19 @@ CEnemyManager::CEnemyManager() {
 CEnemyManager::~CEnemyManager() {
 }
 
+void CEnemyManager::InitEnemies(std::string layerName) {
+  m_LayerName = layerName;
+  CRenderableObjectsManager *l_Rom = RENDLM->GetRenderableObjectsManagerByStr(layerName);
+  for (int i = 0; i < l_Rom->GetResourcesVector().size(); ++i) {
+    for (int j = 0; j < m_EnemyInstances.size(); ++j) {
+      if (l_Rom->GetResourcesVector()[i]->getName().find(m_EnemyInstances[j])) {
+        CEasyEnemy *Enemy = new CEasyEnemy(l_Rom->GetResourcesVector()[i]);
+        m_Enemies.push_back(Enemy);
+      }
+    }
+  }
 
+}
 
 void CEnemyManager::Init(const std::string &FileName) {
   m_File = FileName;
@@ -45,10 +61,14 @@ void CEnemyManager::Init(const std::string &FileName) {
         } else if (l_Name == "core_enemy") {
           std::string type = m(i).GetPszProperty("type", "", false);
           m_Cores[type] = m(i);
+        } else if (l_Name == "instance_enemy") {
+          std::string instanceEnemy = m(i).GetPszISOProperty("name", "", false);
+          m_EnemyInstances.push_back(instanceEnemy);
         }
       }
     }
   }
+
 }
 
 void CEnemyManager::Update(float elapsedTime) {
@@ -65,7 +85,7 @@ void CEnemyManager::Render() {
 
 void CEnemyManager::Destroy() {
   for (std::vector<CEnemy *>::iterator it = m_Enemies.begin(); it != m_Enemies.end(); ++it) {
-    delete(&it);
+    CHECKED_DELETE(*it);
   }
   m_Enemies.clear();
 }
@@ -73,6 +93,7 @@ void CEnemyManager::Destroy() {
 void CEnemyManager::Reload() {
   Destroy();
   Init(m_File);
+  InitEnemies(m_LayerName);
 }
 
 CEnemyManager *CEnemyManager::GetInstance() {

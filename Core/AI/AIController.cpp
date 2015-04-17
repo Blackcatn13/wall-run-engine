@@ -20,7 +20,8 @@ CAIController::CAIController()
     m_TurnSpeed(2.0),
     m_JumpForce(1.5),
     m_CurrentJumpForce(0),
-    m_isJumping(false) {
+    m_isJumping(false),
+    m_RenderableObject(NULL) {
 
   m_PhysicUserData = new CPhysicUserData("AI");
   m_PhysicUserData->SetPaint(true);
@@ -38,7 +39,8 @@ CAIController::CAIController(std::string mesh, std::string name, Vect3f position
   m_CurrentJumpForce(0),
   m_isJumping(false),
   m_Name(name),
-  m_Mesh(mesh) {
+  m_Mesh(mesh),
+  m_RenderableObject(NULL) {
   std::stringstream ss;
   ss << name << "UserData";
   std::string userDataName = ss.str();
@@ -46,6 +48,25 @@ CAIController::CAIController(std::string mesh, std::string name, Vect3f position
   m_PhysicUserData->SetPaint(false);
   m_PhysicUserData->SetColor(colRED);
   m_PhysicController = new CPhysicController(0.5, 0.25, 0.87, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, position, -gravity);
+  PHYSXM->AddPhysicController(m_PhysicController);
+}
+CAIController::CAIController(CRenderableObject *rond, float speed, float turnSpeed, float gravity):
+  CObject3D (),
+  m_Gravity(gravity),
+  m_Speed(speed),
+  m_TurnSpeed(turnSpeed),
+  m_JumpForce(0),
+  m_CurrentJumpForce(0),
+  m_isJumping(false),
+  m_Name(rond->getName()),
+  m_RenderableObject(rond) {
+  std::stringstream ss;
+  ss << rond->getName() << "UserData";
+  std::string userDataName = ss.str();
+  m_PhysicUserData = new CPhysicUserData(userDataName);
+  m_PhysicUserData->SetPaint(false);
+  m_PhysicUserData->SetColor(colRED);
+  m_PhysicController = new CPhysicController(0.5, 0.25, 0.87, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, rond->GetPosition(), -gravity);
   PHYSXM->AddPhysicController(m_PhysicController);
 }
 //CAIController::CAIController(std::string mesh, std::string name, Vect3f position):
@@ -117,9 +138,20 @@ void CAIController::MoveTo(float dt, Vect3f point) {
     //m_Position = m_Position + Vect3f(1,0,0).RotateZ(m_fYaw) * m_Speed * dt;
     m_PhysicController->Move( Vect3f(1, 0, 0).RotateY(m_fYaw) * m_Speed, dt);
     SetPosition(m_PhysicController->GetPosition());
-    CRenderableObject *malla = RENDLM->GetDefaultRenderableObjectManager()->GetResource("Enemy4");
-    malla->SetYaw(m_fYaw);
-    malla->SetPosition(m_PhysicController->GetPosition());
+    Vect3f l_Position = (m_PhysicController->GetPosition());
+    if (m_RenderableObject == NULL) { //TODO eliminar esto cuando funcione el nuevo sistema de Enemigos
+      CRenderableObject *malla = RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("Enemy4");
+      malla->SetYaw(m_fYaw);
+      Vect3f position2 = malla->GetPosition();
+      bool visible = malla->getVisible();
+      malla->SetPosition(m_PhysicController->GetPosition());
+
+      //FIN TODO
+    } else {
+      m_RenderableObject->SetYaw(m_fYaw);
+      m_RenderableObject->SetPosition(m_PhysicController->GetPosition());
+    }
+
   }
 }
 

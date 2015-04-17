@@ -15,7 +15,8 @@ class CEnemyManager {
   std::vector<CEnemy *>						m_Enemies;
   std::string									m_File;
   std::map<std::string, CXMLTreeNode>			m_Cores;
-
+  std::vector<std::string>					m_EnemyInstances;
+  std::string									m_LayerName;
 
  protected:
   static CEnemyManager		*m_Singleton;
@@ -24,6 +25,7 @@ class CEnemyManager {
   CEnemyManager();
   ~CEnemyManager();
   void Init(const std::string &FileName);
+  void InitEnemies(std::string layerName);
   void Update(float elapsedTime);
   void Render();
   void Destroy();
