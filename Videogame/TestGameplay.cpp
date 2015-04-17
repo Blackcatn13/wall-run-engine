@@ -377,8 +377,8 @@ void CTestGameplay::Update(float dt) {
   if (ACT2IN->DoAction("ChangeCatalan")) {
     LANGM->SetCurrentLanguage("catalan");
     //WWSNDMGR->PlayEvent("Noise", "Sounds");
-    WWSNDMGR->PlayEvent("Noise", "ANTORCHA_018");
-    WWSNDMGR->PlayEvent("Noise", "ANTORCHA_023");
+    WWSNDMGR->PlayEvent("Noise", "ANTORCHA");
+    /*WWSNDMGR->PlayEvent("Noise", "ANTORCHA_023");
     WWSNDMGR->PlayEvent("Noise", "ANTORCHA_019");
     WWSNDMGR->PlayEvent("Noise", "ANTORCHA_030");
     WWSNDMGR->PlayEvent("Noise", "ANTORCHA_027");
@@ -399,7 +399,7 @@ void CTestGameplay::Update(float dt) {
     WWSNDMGR->PlayEvent("Noise", "ANTORCHA_016");
     WWSNDMGR->PlayEvent("Noise", "ANTORCHA_008");
     WWSNDMGR->PlayEvent("Noise", "ANTORCHA_009");
-    WWSNDMGR->PlayEvent("Noise", "ANTORCHA_002");
+    WWSNDMGR->PlayEvent("Noise", "ANTORCHA_002");*/
     // CAMCONTM->setActiveCamera("Camera002");
     //CAMCONTM->Play(true);
     //CCORE->GetCinematicController()->GetResource("DestroyW")->Play(true);
