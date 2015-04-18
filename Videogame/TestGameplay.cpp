@@ -367,7 +367,7 @@ void CTestGameplay::Update(float dt) {
   Vect3f auxPos = l_Position;
   auxPos.z = -auxPos.z;
   Vect3f dir = CAMCONTM->GetResource("FPS")->GetDirection();
-  dir.z = -dir.z;
+  dir.z = dir.z;
   Vect3f up = CAMCONTM->GetResource("FPS")->GetVecUp();
   up.z = -up.z;
   WWSNDMGR->SetListenerPosition(auxPos, dir, up);
@@ -376,45 +376,18 @@ void CTestGameplay::Update(float dt) {
 // m_ObjectThPS->SetYaw(RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky")->GetYaw());
   if (ACT2IN->DoAction("ChangeCatalan")) {
     LANGM->SetCurrentLanguage("catalan");
-    //WWSNDMGR->PlayEvent("Noise", "Sounds");
-    WWSNDMGR->PlayEvent("Noise", "ANTORCHA");
-    /*WWSNDMGR->PlayEvent("Noise", "ANTORCHA_023");
-    WWSNDMGR->PlayEvent("Noise", "ANTORCHA_019");
-    WWSNDMGR->PlayEvent("Noise", "ANTORCHA_030");
-    WWSNDMGR->PlayEvent("Noise", "ANTORCHA_027");
-    WWSNDMGR->PlayEvent("Noise", "ANTORCHA_010");
-    WWSNDMGR->PlayEvent("Noise", "ANTORCHA_013");
-    WWSNDMGR->PlayEvent("Noise", "ANTORCHA_012");
-    WWSNDMGR->PlayEvent("Noise", "ANTORCHA_015");
-    WWSNDMGR->PlayEvent("Noise", "ANTORCHA_014");
-    WWSNDMGR->PlayEvent("Noise", "ANTORCHA_029");
-    WWSNDMGR->PlayEvent("Noise", "ANTORCHA_020");
-    WWSNDMGR->PlayEvent("Noise", "ANTORCHA_021");
-    WWSNDMGR->PlayEvent("Noise", "ANTORCHA_022");
-    WWSNDMGR->PlayEvent("Noise", "ANTORCHA_028");
-    WWSNDMGR->PlayEvent("Noise", "ANTORCHA_024");
-    WWSNDMGR->PlayEvent("Noise", "ANTORCHA_025");
-    WWSNDMGR->PlayEvent("Noise", "ANTORCHA_026");
-    WWSNDMGR->PlayEvent("Noise", "ANTORCHA_005");
-    WWSNDMGR->PlayEvent("Noise", "ANTORCHA_016");
-    WWSNDMGR->PlayEvent("Noise", "ANTORCHA_008");
-    WWSNDMGR->PlayEvent("Noise", "ANTORCHA_009");
-    WWSNDMGR->PlayEvent("Noise", "ANTORCHA_002");*/
     // CAMCONTM->setActiveCamera("Camera002");
     //CAMCONTM->Play(true);
     //CCORE->GetCinematicController()->GetResource("DestroyW")->Play(true);
   }
   if (ACT2IN->DoAction("ChangeCastellano")) {
     LANGM->SetCurrentLanguage("castellano");
-    WWSNDMGR->SetState("UnderWater", "Pitching");
     //CCORE->GetCinematicController()->GetResource("DestroyW")->Stop();
     // CAMCONTM->Stop();
     //CAMCONTM->setActiveCamera("FPS");
   }
   if (ACT2IN->DoAction("ChangeIngles")) {
     LANGM->SetCurrentLanguage("ingles");
-    WWSNDMGR->SetState("UnderWater", "None");
-    WWSNDMGR->PlayEvent("Jump", "Piky");
     // CAMCONTM->Pause();
     // CCORE->GetCinematicController()->GetResource("DestroyW")->Pause();
   }

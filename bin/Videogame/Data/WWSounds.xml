@@ -4,8 +4,7 @@
 	<Bank name="Test.bnk"/> 
 	<GameObject2D name="Music" register="true"/>
 	<GameObject2D name="Piky" register="true"/>
-	<GameObject3D name="Sounds" pos="0 0 0" dir="-1 0 0" register="true"/>
-	<GameObject3D name="ANTORCHA" register="true" type="MultiSource1">
+	<GameObject3D name="Torch" register="true" type="MultiSource">
 		<Source pos="16.895958 3.568798 11.723488" dir="-16.895958 -3.568798 -11.723488"/> 
 		<Source pos="-41.513931 3.571247 45.175423" dir="41.513931 -3.571247 -45.175"/> 
 		<Source pos="17.077599 3.568794 -12.376488" dir="-17.077599 -3.568794 12.37648"/> 

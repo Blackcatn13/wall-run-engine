@@ -1,7 +1,7 @@
 Event	ID	Name			Wwise Object Path	Notes
-	33408553	Noise			\Default Work Unit\Noise	
-	3650723969	BackGround			\Default Work Unit\BackGround	
-	3833651337	Jump			\Default Work Unit\Jump	
+	2607556080	Menu			\Default Work Unit\Background\Menu	
+	2615352377	Torches			\Default Work Unit\FX\Torches	
+	3833651337	Jump			\Default Work Unit\FX\Jump	
 
 State Group	ID	Name			Wwise Object Path	Notes
 	1595203709	BackGroundGrup			\Default Work Unit\BackGroundGrup	
@@ -14,9 +14,8 @@ State	ID	Name	State Group			Notes
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	225374597	Generdyn - ATMOS - 02	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Generdyn - ATMOS - 02_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\BackGround\Back2\TetstSound\Generdyn - ATMOS - 02		7950124
 	334338896	Generdyn - INSTLoops - 03	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Generdyn - INSTLoops - 03_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\BackGround\Back2\TetstSound\Generdyn - INSTLoops - 03		1323064
-	443041849	flame	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\flame_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\flame		1551156
+	425213579	Jump4	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Jump4_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\FX\Jump4		64590
+	443041849	flame	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\flame_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\FX\flame		1551156
 	555342904	Generdyn - INSTLoops - 04	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Generdyn - INSTLoops - 04_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\BackGround\Back2\TetstSound\Generdyn - INSTLoops - 04		330816
 	747286263	Generdyn - INSTLoops - 05	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Generdyn - INSTLoops - 05_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\BackGround\Back2\TetstSound\Generdyn - INSTLoops - 05		1323064
-	878227735	power_suriken	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\power_suriken_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\power_suriken		69312
-	973950990	engine_loop_clickfix3_pitch	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\engine_loop_clickfix3_pitch_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\engine_loop_clickfix3_pitch		222336
 
