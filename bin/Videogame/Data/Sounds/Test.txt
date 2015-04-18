@@ -12,10 +12,14 @@ State	ID	Name	State Group			Notes
 	2772520554	Back2	BackGroundGrup			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	36911512	Voice	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Voice_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\BackGround\Back2\TestSound2\Voice		531976
 	225374597	Generdyn - ATMOS - 02	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Generdyn - ATMOS - 02_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\BackGround\Back2\TetstSound\Generdyn - ATMOS - 02		7950124
 	334338896	Generdyn - INSTLoops - 03	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Generdyn - INSTLoops - 03_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\BackGround\Back2\TetstSound\Generdyn - INSTLoops - 03		1323064
 	425213579	Jump4	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Jump4_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\FX\Jump4		64590
 	443041849	flame	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\flame_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\FX\flame		1551156
 	555342904	Generdyn - INSTLoops - 04	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Generdyn - INSTLoops - 04_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\BackGround\Back2\TetstSound\Generdyn - INSTLoops - 04		330816
+	613283217	Prop2	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Prop2_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\BackGround\Back2\TestSound2\Prop2		715954
 	747286263	Generdyn - INSTLoops - 05	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Generdyn - INSTLoops - 05_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\BackGround\Back2\TetstSound\Generdyn - INSTLoops - 05		1323064
+	835769357	Prop1	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Prop1_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\BackGround\Back2\TestSound2\Prop1		529256
+	989506191	Bass	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Bass_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\BackGround\Back2\TestSound2\Bass		1464974
 
