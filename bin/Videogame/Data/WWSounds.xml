@@ -30,5 +30,5 @@
 		<Source pos="5.057762 3.568789 -33.840477" dir="-5.057762 -3.568789 33.840477"/> 
 	</GameObject3D>
 
-	<InitEvent event="BackGround" GameObject="Music"/>
+	<!--<InitEvent event="BackGround" GameObject="Music"/>-->
 </WWise>
