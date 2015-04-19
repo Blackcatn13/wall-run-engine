@@ -93,7 +93,7 @@ CAIController::CAIController(CRenderableObject *rond, float speed, float turnSpe
 //}
 
 CAIController::~CAIController() {
-
+  PHYSXM->ReleasePhysicController(m_PhysicController);
   CHECKED_DELETE(m_PhysicUserData);
   CHECKED_DELETE(m_PhysicController);
 

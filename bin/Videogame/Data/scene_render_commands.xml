@@ -80,7 +80,7 @@
 	<render_scene layer="poly" active="true" />
 	<!--<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>-->
 
-	<set_pool_renderable_objects_technique pool="poly_pool"/>
+	<!--<set_pool_renderable_objects_technique pool="poly_pool"/>-->
 	
 	<!--<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>-->
 	<render_scene layer="enabled_poly" active="true" />

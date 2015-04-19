@@ -705,6 +705,10 @@ void			CPhysicsManager::SetPaintAllPhysicControllers	(bool paint) {
 }
 
 bool CPhysicsManager::ReleasePhysicController ( CPhysicController *_pController ) {
+  if (_pController == NULL)
+    return true;
+  if (m_pControllerManager == NULL)
+    return true;
   assert ( _pController != NULL );
   assert ( m_pControllerManager != NULL );
   bool l_bIsOk = false;

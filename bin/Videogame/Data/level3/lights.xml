@@ -30,7 +30,7 @@
 -->
 <light name="OmniPoly001" type="omni" pos="213.862 1.000 11.299" color="0 1 0" intensity="0" att_start_range="3.0" att_end_range="5.0" generate_shadow_map="false" shadow_map_format_type="R32F" ortho_shadow_map_width="256" ortho_shadow_map_height="256" shadow_map_width="256" shadow_map_height="256" generate_static_shadow_map="false" static_shadow_map_format_type="R32F" 
  angle="1.05" fall_off="1.05">
- <dynamic renderable_objects_manager="solid"/>
+ <dynamic renderable_objects_manager="enabled_poly"/>
 </light>
 <!--<light name="Omni003" type="omni" pos="0 5 100" color="1 0 0" intensity="1" att_start_range="200.0" att_end_range="800.0"
 generate_shadow_map="false" shadow_map_format_type="R32F" ortho_shadow_map_width="256" ortho_shadow_map_height="256" shadow_map_width="256" shadow_map_height="256" generate_static_shadow_map="false" static_shadow_map_format_type="R32F" 

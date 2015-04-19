@@ -17,6 +17,7 @@ CCollectible::CCollectible(std::string coreName, std::string name, std::string l
 
 
 CCollectible::~CCollectible() {
+  PHYSXM->ReleasePhysicActor(m_CollectibleActor);
   CHECKED_DELETE(m_CollectibleActor);
   CHECKED_DELETE(m_CollectibleUserData);
 }

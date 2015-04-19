@@ -149,7 +149,7 @@ void CCore::DeInit() {
   CHECKED_DELETE(m_TriggerManager);
   CHECKED_DELETE(m_FSMManager);
   CHECKED_DELETE(m_PlayerController);
-  CHECKED_DELETE(m_PhysicsManager);
+
   //CHECKED_DELETE(m_Process);
   CHECKED_DELETE(m_RenderableObjectTechniqueManager);
   CHECKED_DELETE(m_SceneRendererCommandManager);
@@ -162,6 +162,7 @@ void CCore::DeInit() {
   CHECKED_DELETE(m_WWSoundManager);
   CHECKED_DELETE(m_PuzzleManager);
   CHECKED_DELETE(m_GuiManager);
+  CHECKED_DELETE(m_PhysicsManager);
   // m_PlatformsMap->Destroy();
 }
 
