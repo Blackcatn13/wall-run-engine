@@ -74,12 +74,20 @@ function enemy_update_moving(ElapsedTime, doComprobation, name)
 	--	coreInstance:trace(tostring(currentwp.x))
 		enemy:move_to(ElapsedTime, enemy.m_CurrentWp)
 	--		coreInstance:trace("Am I moving??")
-		--local player_position = core:get_player_controller():get_position()
+		local player_position = coreInstance:get_player_controller():get_position()
 		--core:trace(tostring(player_position.x));
 		
-		local wp_distance = get_distance_between_points(enemy:get_position(), enemy.m_CurrentWp)
-		if wp_distance < 16 then
-			instance.m_string = "Buscar_next_WP"
+		local player_distance = get_distance_to_player(enemy:get_position(), player_position)
+		coreInstance:trace(tostring(player_distance))
+		if player_distance <= 49 then
+			coreInstance:trace("Vamos a perseguir")
+			instance.m_string = "Perseguir_Player"
+		else
+		
+			local wp_distance = get_distance_between_points(enemy:get_position(), enemy.m_CurrentWp)
+			if wp_distance < 16 then
+				instance.m_string = "Buscar_next_WP"
+			end
 		end
 	else
 		instance.m_string = "Parado"
@@ -132,4 +140,34 @@ function enemy_update_calcwp(ElapsedTime, doComprobation, name)
 	end
 end
 
+function enemy_enter_perseguir_player(name)
+	coreInstance:trace("Entering Perseguir_PLayer");
 
+end
+
+function enemy_exit_perseguir_player(name)
+	current_time = 0
+end
+
+function enemy_update_perseguir_player(ElapsedTime, doComprobation, name)
+--player_position = Vect3f(10,0,10)
+	local player_position = coreInstance:get_player_controller():get_position()
+	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
+	enemy:move_to(ElapsedTime, core:get_player_controller():get_position())
+	if doComprobation == 1 then
+		local player_distance = get_distance_to_player(enemy:get_position(), player_position)
+		if player_distance > 225 then
+			instance.m_string = "Parado"
+		end
+		if player_distance < 1 then
+			instance.m_string = "Parado"
+		end
+	end
+end
+
+function get_distance_to_player(current_position, _player_position)
+	-- calcular distancia hacia player
+	local distance = 0
+	distance = ((_player_position.x - current_position.x) ^2 + (_player_position.y - current_position.y) ^2 + (_player_position.z - current_position.z) ^2)
+	return distance
+end

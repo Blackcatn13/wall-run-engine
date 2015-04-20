@@ -35,6 +35,11 @@
 			<onExit lua_funtion="enemy_exit_calcwp"/>
 			<Update time=".01" lua_funtion="enemy_update_calcwp"/>
 		</state>
+		<state name="Perseguir_Player">
+			<onEnter lua_funtion="enemy_enter_perseguir_player"/>
+			<onExit lua_funtion="enemy_exit_perseguir_player"/>
+			<Update time=".01" lua_funtion="enemy_update_perseguir_player"/>
+		</state>
 	</fsm>
 
 	
