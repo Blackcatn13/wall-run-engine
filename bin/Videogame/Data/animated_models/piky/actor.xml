@@ -1,6 +1,7 @@
-<animated_model name="picky">
-	<texture file="gray.jpg"/>
-	<skeleton file="Piky_Skeleton.csf"/>
-	<mesh file="Piky_Mesh.cmf"/>
-	<animation name="Piky_IDLE" file="Piky_animation.caf"/>
+<animated_model name="piky">
+	<texture file="DIF2.tga"/>
+	<texture file="NRM_Piky.tga"/>
+	<skeleton file="Piky_Skeleton.CSF"/>
+	<mesh file="Piky_Mesh.CMF"/>
+	<animation name="Piky_IDLE" file="Piky_run.CAF"/>
 </animated_model>
