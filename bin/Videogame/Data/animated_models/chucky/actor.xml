@@ -3,5 +3,5 @@
 	<texture file="CHUCKY-CHUCKYNormalsMapFINAL.tga"/>
 	<skeleton file="Chucky_Skeleton.CSF"/>
 	<mesh file="Chucky_Mesh.cmf"/>
-	<animation name="Chucky_IDLE" file="Chucky_Animation.caf"/>
+	<animation name="Chucky_IDLE" file="Chucky_run.caf"/>
 </animated_model>
