@@ -17,8 +17,8 @@ function init_level(a)
 	local player = Player:get_instance()
 	--player.get_player_controller():set_position(Vect3f(0.432929, 3.000000, -0.654716));
 	--player.m_is3D = true;
-	coreInstance:getWWSoundManager():PlayEvent("Menu", "Music");
-	coreInstance:getWWSoundManager():PlayEvent("Torches", "Torch");
+	--coreInstance:getWWSoundManager():PlayEvent("Menu", "Music");
+	--coreInstance:getWWSoundManager():PlayEvent("Torches", "Torch");
 	return 0
 end
 

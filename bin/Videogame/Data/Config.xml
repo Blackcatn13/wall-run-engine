@@ -6,7 +6,7 @@
   <Rendermode fullscreenMode="false"/>          
   <!--Rendermode fullscreenMode="true"/-->
   <Console_Logger activateConsole="true" Log_Level="INFORMATION" activateLogger="true" linesPerPageInLogger="20"/>
-  <Mouse exclusiveModeinMouse="false"  drawPointerMouse="true" />
+  <Mouse exclusiveModeinMouse="true"  drawPointerMouse="false" />
   <Languages current="ingles">
     <lang XMLfile="./Data/catalan.xml"/>
     <lang XMLfile="./Data/castellano.xml"/>

@@ -544,10 +544,12 @@ void CGUIManager::SetMessageBox( const std::string& text )
 		assert(m_TextBox);
 		if( !m_TextBox->IsVisible() )
 		{
+			m_TextBox->SetWidthPercent(170);
+			m_TextBox->SetHeightPercent(10);
 			m_TextBox->SetMessage( text );
 			m_TextBox->SetVisible( true );
 			m_TextBox->SetActive( true );
-			m_TextBox->SetPosition(Vect2i(30,30));
+			m_TextBox->SetPosition(Vect2i(5,510));
 		}
 	}
 }

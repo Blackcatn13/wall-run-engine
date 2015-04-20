@@ -274,6 +274,8 @@
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_P"/>
 	</action>
 	
-	
+	<action name="ReloadGUI">
+        <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_F10"/>
+    </action>
 	
 </Actions>

@@ -26,6 +26,7 @@
 #include "Math\Vector2.h"
 #include "Math\MathTypes.h"
 #include "WWSoundManager.h"
+#include "GUI\GUIManager.h"
 
 extern "C"
 {
@@ -257,6 +258,13 @@ void RegisterManagers() {
     .def("RegisterGameObject", &CWWSoundManager::RegisterGameObject)
     .def("UnregisterGameObject", &CWWSoundManager::UnregisterGameObject)
     .def("SetState", &CWWSoundManager::SetState)
+  ];
+  
+  luabind::module(LUA_STATE) [
+    class_<CGUIManager>("CGUIManager")
+    .def("push_windows", &CGUIManager::PushWindows)
+    .def("pop_windows", &CGUIManager::PopWindows)
+	.def("set_message_box", &CGUIManager::SetMessageBox)
   ];
 
 }

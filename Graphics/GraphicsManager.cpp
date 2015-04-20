@@ -573,24 +573,32 @@ void CGraphicsManager::DrawQuad2D (const Vect2i& pos, uint32 w, uint32 h, ETypeA
 		break;
 	case FLIP_X:
 		//Pintamos primero el quad de la izquierda:
-		w_aux = (uint32)(w*0.5);
+		coord_text[0].x = 1.f;	coord_text[0].y = 0.f;
+		coord_text[1].x = 1.f;	coord_text[1].y = 1.f;
+		coord_text[2].x = 0.f;	coord_text[2].y = 0.f;
+		coord_text[3].x = 0.f;	coord_text[3].y = 1.f;
+		/*w_aux = (uint32)(w*0.5);
 		DrawQuad2D(finalPos, w_aux, h, UPPER_LEFT, texture, NONE_FLIP);
 		finalPos.x += w_aux;
 		w = w - w_aux;
 		coord_text[0].x = 0.99f;	coord_text[0].y = 0.f;
 		coord_text[1].x = 0.99f;	coord_text[1].y = 1.f;
 		coord_text[2].x = 0.f;		coord_text[2].y = 0.f;
-		coord_text[3].x = 0.f;		coord_text[3].y = 1.f;
+		coord_text[3].x = 0.f;		coord_text[3].y = 1.f;*/
 		break;
 	case FLIP_Y:
-		h_aux = (uint32)(h*0.5);
+		coord_text[0].x = 0.f;	coord_text[0].y = 1.f;
+		coord_text[1].x = 0.f;	coord_text[1].y = 0.f;
+		coord_text[2].x = 1.f;	coord_text[2].y = 1.f;
+		coord_text[3].x = 1.f;	coord_text[3].y = 0.f;
+		/*h_aux = (uint32)(h*0.5);
 		DrawQuad2D(finalPos, w, h_aux, UPPER_LEFT, texture, NONE_FLIP);
 		finalPos.y += h_aux + 1;
 		h = h - h_aux -1;
 		coord_text[0].x = 1.f;	coord_text[0].y = 0.f;
 		coord_text[1].x = 1.f;	coord_text[1].y = 1.f;
 		coord_text[2].x = 0.f;	coord_text[2].y = 0.f;
-		coord_text[3].x = 0.f;	coord_text[3].y = 1.f;
+		coord_text[3].x = 0.f;	coord_text[3].y = 1.f;*/
 		break;
 	default:
 		{

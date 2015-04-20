@@ -16,7 +16,7 @@
   </Image>
 
   <Image name="main_columna_right" posx="50.00" posy="0.00" height="100.00" width="50.00" visible="true" active="true"
-       default="img1" OnLoadValue="" OnSaveValue="" flip="FLIP_Y" backGround="false">
+       default="img1" OnLoadValue="" OnSaveValue="" flip="FLIP_X" backGround="false">
     <texture name="img1" name_texture="./Data/GUI/Textures_LaberynthGame/columna.png"/>
   </Image>
 
@@ -106,19 +106,18 @@
           texture_over="./Data/GUI/Textures_LaberynthGame/play_over.png"
           texture_clicked="./Data/GUI/Textures_LaberynthGame/play_press.png"
           texture_deactivated="./Data/GUI/Textures_LaberynthGame/play_press.png"
-          OnClickedAction=" _soundM:playAction2D('guiNext')
-                            _guiM:activeWindowsWithEffect('Game.xml',0,1)
-                            getGameLaberynth():start(true)"
-          OnOverAction="_soundM:playAction2D('guiOver')"/>
+          OnClickedAction="	CCoreLuaWrapper().m_CoreInstance:getGUIManager():set_message_box('I love my tests');
+							CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music');"
+          OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music')"/>
   
   <Button name="Setup" posx="39.00" posy="54.00" height="10.00" width="25.00" visible="true" active="true" 
           texture_normal="./Data/GUI/Textures_LaberynthGame/setup_normal.png"
           texture_over="./Data/GUI/Textures_LaberynthGame/setup_over.png" 
           texture_clicked="./Data/GUI/Textures_LaberynthGame/setup_press.png"
           texture_deactivated= "./Data/GUI/Textures_LaberynthGame/setup_normal.png"
-          OnClickedAction=" _guiM:pushWindows('Setup.xml')
-                            _soundM:playAction2D('guiNext')"
-          OnOverAction="_soundM:playAction2D('guiNext')"/>
+          OnClickedAction=" CCoreLuaWrapper().m_CoreInstance:getGUIManager():push_windows('Setup.xml')
+                            CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music')"
+          OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music')"/>
 
   <Button name="Credits" posx="38.00" posy="68.00" height="12.00" width="25.00" visible="true" active="true" 
           texture_normal="./Data/GUI/Textures_LaberynthGame/credits_normal.png"
@@ -126,8 +125,8 @@
           texture_clicked="./Data/GUI/Textures_LaberynthGame/credits_press.png" 
           texture_deactivated="./Data/GUI/Textures_LaberynthGame/credits_normal.png"
           OnClickedAction=" _guiM:activeWindows('Credits.xml')
-                            _soundM:playAction2D('guiNext')"
-          OnOverAction="_soundM:playAction2D('guiOver')"/>
+                            CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music')"
+          OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music')"/>
   
   <Button name="Exit" posx="43.00" posy="85.00" height="10.00" width="18.00" visible="true" active="true" 
           texture_normal="./Data/GUI/Textures_LaberynthGame/exit_normal.png"
@@ -135,6 +134,6 @@
           texture_clicked="./Data/GUI/Textures_LaberynthGame/exit_press.png"
           texture_deactivated="./Data/GUI/Textures_LaberynthGame/exit_normal.png"
           OnClickedAction=" _guiM:activeWindows('Exit.xml')
-                            _soundM:playAction2D('guiNext')"
-          OnOverAction="_soundM:playAction2D('guiOver')"/>
+                            CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music')"
+          OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music')"/>
 </Windows>

@@ -72,7 +72,7 @@ class CGUIManager;
 //#define SNDMGR			CCore::GetInstance()->GetSoundManager()
 #define WWSNDMGR		CCore::GetInstance()->GetWWSoundManager()
 #define PUZZLEM			CCore::GetInstance()->GetPuzzleManager()
-//#define GUIM			CCore::GetInstance()->GetGuiManager()
+#define GUIM			CCore::GetInstance()->GetGuiManager()
 
 class CCore {
  protected:

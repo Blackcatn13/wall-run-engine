@@ -23,7 +23,7 @@
   </Image>
 
   <Image name="setup_fondo_right" posx="50.0" posy="0.00" height="100.00" width="50.00" visible="true" active="true"
-         default="img1" OnLoadValue="" OnSaveValue="" flip="FLIP_Y" backGround="true">
+         default="img1" OnLoadValue="" OnSaveValue="" flip="FLIP_X" backGround="true">
     <texture name="img1" name_texture="./Data/GUI/Textures_LaberynthGame/f_helpa.png"/>
   </Image>
 
@@ -199,7 +199,7 @@
       texture_over="./Data/GUI/Textures_LaberynthGame/back_over.png"
       texture_clicked="./Data/GUI/Textures_LaberynthGame/back_press.png"
       texture_deactivated="./Data/GUI/Textures_LaberynthGame/back_normal.png"
-      OnClickedAction=" _guiM:popWindows()
-                        _soundM:playAction2D('guiBack')"
-      OnOverAction="_soundM:playAction2D('guiOver')"/>
+      OnClickedAction=" CCoreLuaWrapper().m_CoreInstance:getGUIManager():pop_windows()
+                        CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music')"
+      OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music')"/>
 </Windows>

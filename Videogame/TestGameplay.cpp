@@ -51,6 +51,8 @@
 #include <sstream>
 #include "WWSoundManager.h"
 
+#include "GUI\GUIManager.h"
+
 CTestGameplay::CTestGameplay(void) {
   tTerra1_yaw = 0;
   tTerra2_yaw = 0;
@@ -458,6 +460,12 @@ void CTestGameplay::Update(float dt) {
   m_Dt = dt;
 // m_fsmManager->Update(dt);
   RENDLM->Update(dt);
+
+  if (ACT2IN->DoAction("ReloadGUI")) {
+	  GUIM->ReloadGuiFiles();
+    // CAMCONTM->Pause();
+    // CCORE->GetCinematicController()->GetResource("DestroyW")->Pause();
+  }
 }
 
 void CTestGameplay::Render() {
