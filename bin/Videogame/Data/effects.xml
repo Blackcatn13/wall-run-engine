@@ -30,6 +30,7 @@
 	<effect name="FogEffect" file="data/effects/Fog.fx"/>
 	<effect name="SkyBoxEffect" file="data/effects/SkyBox.fx"/>
 	<effect name="BloomEffect" file="data/effects/Bloom.fx"/>
+	<effect name="SobelEffect" file="data/effects/Sobel.fx"/>
 	<effect name="CombineBloomEffect" file="data/effects/CombineBloom.fx"/>
 	<effect name="GaussianBlurEffect" file="data/effects/GaussianBlur.fx"/>
 	<effect name="PolyEffect" file="data/effects/PolyEffect.fx"/>
@@ -58,6 +59,7 @@
 	<technique name="FogTechnique" effect="FogEffect"  use_inverse_projection_matrix="true" use_inverse_view_matrix="true"/>
 	<technique name="SkyBoxTechnique" effect="SkyBoxEffect"  use_world_matrix="true" use_view_matrix="true" use_inverse_view_matrix="true" use_projection_matrix="true" />
 	<technique name="BloomTechnique" effect="BloomEffect" use_world_matrix="true" use_world_view_projection_matrix="true" />
+	<technique name="SobelTechnique" effect="SobelEffect" use_world_matrix="true" use_world_view_projection_matrix="true" use_screen_size="true"/>
 	<technique name="CombineBloomTechnique" effect="CombineBloomEffect" use_world_matrix="true" use_world_view_projection_matrix="true" />
 	<technique name="GaussianBlurTechnique" effect="GaussianBlurEffect" use_world_matrix="true" use_world_view_projection_matrix="true" />
 	
