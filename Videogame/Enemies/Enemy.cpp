@@ -48,18 +48,18 @@ CEnemy::CEnemy(std::string mesh, std::string name, Vect3f position,  float speed
 
 
 void CEnemy::Init() {
-  if (m_RenderableObject == NULL) {
+  if (m_RenderableObject == NULL) { //Si se usa el sistema viejo
     CRenderableObject *malla = RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource(getMesh());
     malla->SetYaw(m_fYaw);
     bool visible = malla->getVisible();
     malla->SetPosition(m_Position);
-  } else {
+  } else { //Si se usa el nuevo
     m_RenderableObject->SetYaw(m_fYaw);
     m_RenderableObject->SetPosition(m_Position);
     bool visible = m_RenderableObject->getVisible();
 
   }
-  m_Fsm = FSMMGR->GetResource("Enemy");
+  m_Fsm = FSMMGR->GetResource("Enemy"); //TODO: pasar nombre de FSM por el XML de enemyManager
 }
 
 void CEnemy::Update(float elapsedTime) {

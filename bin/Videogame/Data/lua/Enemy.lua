@@ -13,21 +13,22 @@ core = CCoreLuaWrapper().m_CoreInstance;
 
 --local enemy = CEasyEnemy("Enemy4", "MikMikTest001", Vect3f(-3.0,2.0,10.0), 0.1, 2.5, 13, 0.0)	
 --local enemy_manager = core:get_enemy_manager():insert_enemy(enemy)
-local wp1 = Vect3f(-3.0,2.0,15.0) 
-local wp2 = Vect3f(-3.0,2.0,-15.0)
-local currentwp = wp1
+--local wp1 = Vect3f(-3.0,2.0,15.0) 
+--local wp2 = Vect3f(-3.0,2.0,-15.0)
+--local currentwp = Vect3f(0.0,0.0,0.0)
 local instance = CLuaGlobalsWrapper().m_CoreInstance;
 --[[function set_enemy(_enemy)
 	enemy = _enemy
 end
 --]]
 function enemy_enter_stopped(name)
-	currentwp = wp1
+	--local enemy = coreInstance:get_enemy_manager():get_enemy(name)
+	--currentwp = wp1
 	return 0
 end
 
 function enemy_exit_stopped(name)
-coreInstance:trace("Exit Stopped")
+
 	current_time = 0
 end
 
@@ -46,7 +47,7 @@ end
 
 
 function enemy_enter_moving(name)
-coreInstance:trace("enter moving")
+	return 0;
 end
 
 function enemy_exit_moving(name)
@@ -65,18 +66,18 @@ function enemy_update_moving(ElapsedTime, doComprobation, name)
 	--local enemy = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("enemies"):get_resource(name)
 	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
 	if enemy ~= nil then
-		if currentwp == nil then
+		if enemy.m_CurrentWp == nil then
 		--	coreInstance:trace("I have a breakpoint")
-			currentwp = wp1
+			enemy.m_CurrentWp = enemy:get_next_wp()
 		end
 		
 	--	coreInstance:trace(tostring(currentwp.x))
-		enemy:move_to(ElapsedTime, currentwp)
+		enemy:move_to(ElapsedTime, enemy.m_CurrentWp)
 	--		coreInstance:trace("Am I moving??")
 		--local player_position = core:get_player_controller():get_position()
 		--core:trace(tostring(player_position.x));
 		
-		local wp_distance = get_distance_between_points(enemy:get_position(), currentwp)
+		local wp_distance = get_distance_between_points(enemy:get_position(), enemy.m_CurrentWp)
 		if wp_distance < 16 then
 			instance.m_string = "Buscar_next_WP"
 		end
@@ -92,11 +93,12 @@ function enemy_enter_calcwp(name)
 	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
 	
 	if enemy ~= nil then
-		if currentwp.z == wp2.z then
+		--[[if currentwp.z == wp2.z then
 			currentwp = wp
 		else
 			currentwp = wp2
-		end
+		end--]]
+		enemy.m_CurrentWp = enemy:get_next_wp()
 		instance.m_string = "Andar_WP"
 	else
 		instance.m_string = "Parado"

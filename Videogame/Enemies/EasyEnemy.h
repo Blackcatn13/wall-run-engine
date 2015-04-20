@@ -5,10 +5,15 @@
 
 #include "Enemy.h"
 
+
 class CXMLTreeNode;
 class CRenderableObject;
 
 class CEasyEnemy : public CEnemy {
+ private:
+  std::vector<Vect3f>	m_WpVector;
+  Vect3f				m_CurrentWp;
+  int					m_CurrentWpId;
  public:
   CEasyEnemy(CXMLTreeNode &info1);
   CEasyEnemy(CRenderableObject *renderableObject);
@@ -18,6 +23,16 @@ class CEasyEnemy : public CEnemy {
   virtual void Update(float elapsedTime);
   virtual void Render();
   void MoveEnemy(float ElapsedTime, Vect3f wp);
+  Vect3f GetNextWp();
+  void InitWpVector(int numWp, int max_distance);
+  void SetCurrentWp(Vect3f CurrentWp) {
+    m_CurrentWp = CurrentWp;
+  }
+
+  Vect3f GetCurrentWp() {
+    return m_CurrentWp;
+  }
+
 };
 
 #endif

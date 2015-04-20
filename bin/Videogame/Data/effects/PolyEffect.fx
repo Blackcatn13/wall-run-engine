@@ -4,7 +4,7 @@
 
 
 
-float4 RenderPolyPS(in float2 UV : TEXCOORD0) : COLOR
+float4 RenderPolyPS() : COLOR
 {
 	return float4(0,1,0,0.5);	
 }
@@ -16,6 +16,7 @@ technique PolyTechnique
 		BlendOp=Add;
 		SrcBlend=SrcAlpha;
 		DestBlend=InvSrcAlpha;*/
+		VertexShader = null;
 		PixelShader=compile ps_3_0 RenderPolyPS();
 	}
 }
