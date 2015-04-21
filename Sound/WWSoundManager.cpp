@@ -48,7 +48,8 @@ void VirtualFreeHook(
 }
 
 CWWSoundManager::CWWSoundManager() :
-  m_LastId(0x00000001)
+  m_LastId(0x00000001),
+  m_lowLevelIO(NULL)
 {}
 
 void CWWSoundManager::Done() {

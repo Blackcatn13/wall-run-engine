@@ -51,8 +51,7 @@ LRESULT WINAPI MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam ) {
 }
 
 void ShowErrorMessage (const std::string &message) {
-  bool logSaved = false;
-  logSaved = LOGGER->SaveLogsInFile();
+  bool logSaved = LOGGER->SaveLogsInFile();
   std::string end_message = "";
   if (logSaved) {
     end_message += "Sorry, Application failed. Logs saved\n";
