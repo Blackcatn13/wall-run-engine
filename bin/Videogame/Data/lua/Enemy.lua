@@ -34,6 +34,7 @@ end
 
 function enemy_update_stopped(ElapsedTime, doComprobation, name)
 	--local enemy = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("enemies"):get_resource(name)
+	coreInstance:trace("Estoy parado")
 	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
 	if enemy ~= nil then
 		if current_time >= 0.1 then
@@ -85,7 +86,8 @@ function enemy_update_moving(ElapsedTime, doComprobation, name)
 		else
 		
 			local wp_distance = get_distance_between_points(enemy:get_position(), enemy.m_CurrentWp)
-			if wp_distance < 16 then
+			if wp_distance < 4 then
+				coreInstance:trace("Ya he llegado y a por otro")
 				instance.m_string = "Buscar_next_WP"
 			end
 		end
@@ -142,7 +144,6 @@ end
 
 function enemy_enter_perseguir_player(name)
 	coreInstance:trace("Entering Perseguir_PLayer");
-
 end
 
 function enemy_exit_perseguir_player(name)
@@ -151,6 +152,7 @@ end
 
 function enemy_update_perseguir_player(ElapsedTime, doComprobation, name)
 --player_position = Vect3f(10,0,10)
+	coreInstance:trace("Persiguiendo");
 	local player_position = coreInstance:get_player_controller():get_position()
 	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
 	enemy:move_to(ElapsedTime, core:get_player_controller():get_position())
