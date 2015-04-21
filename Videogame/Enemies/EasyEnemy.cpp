@@ -55,14 +55,22 @@ void CEasyEnemy::InitWpVector(int numWp, int max_distance) { //TODO: Que estos v
   float l_AuxZ = 0.0f;
   srand (time(NULL));
   m_WpVector.clear();
+  bool wasSum = false;
   for (int i = 0; i < numWp; ++i) {
-    if ((rand() % 2) == 0) {
+	  int random = (rand() % 2);
+    if (random == 0 && !wasSum) {
       l_AuxX = rand() % max_distance + m_Position.x;
       l_AuxZ = rand() % max_distance + m_Position.z;
-    } else {
+	  wasSum = true;
+    } else if(random == 1 || wasSum){
       l_AuxX = rand() % max_distance - m_Position.x;
       l_AuxZ = rand() % max_distance - m_Position.z;
+	  wasSum = false;
     }
+	else{
+		l_AuxX = rand() % max_distance - m_Position.x;
+		l_AuxZ = rand() % max_distance + m_Position.z;
+	}
     m_WpVector.push_back(Vect3f(l_AuxX, m_Position.y, l_AuxZ));
   }
 }

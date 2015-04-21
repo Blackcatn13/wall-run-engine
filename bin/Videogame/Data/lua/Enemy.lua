@@ -54,7 +54,7 @@ end
 function enemy_exit_moving(name)
 	--local enemy = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("enemies"):get_resource(name)
 	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
-	instance.m_string = "Buscar_next_WP"
+	--instance.m_string = "Buscar_next_WP"
 	if enemy ~= nil then
 		current_time = 0
 	else
@@ -79,7 +79,7 @@ function enemy_update_moving(ElapsedTime, doComprobation, name)
 		--core:trace(tostring(player_position.x));
 		
 		local player_distance = get_distance_to_player(enemy:get_position(), player_position)
-		coreInstance:trace(tostring(player_distance))
+		--coreInstance:trace(tostring(player_distance))
 		if player_distance <= 49 then
 			coreInstance:trace("Vamos a perseguir")
 			instance.m_string = "Perseguir_Player"
@@ -143,10 +143,13 @@ function enemy_update_calcwp(ElapsedTime, doComprobation, name)
 end
 
 function enemy_enter_perseguir_player(name)
+
 	coreInstance:trace("Entering Perseguir_PLayer");
+	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
 end
 
 function enemy_exit_perseguir_player(name)
+	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
 	current_time = 0
 end
 

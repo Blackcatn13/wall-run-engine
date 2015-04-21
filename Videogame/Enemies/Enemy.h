@@ -27,6 +27,7 @@ class CEnemy : public CAIController { //CAIController
   //std::string			m_Name;
   FSM				*m_Fsm;
   CRenderableObject *m_RenderableObject;
+  float				m_Speed;
 
 
   CEnemy();
@@ -50,6 +51,7 @@ class CEnemy : public CAIController { //CAIController
   GET_SET(float, TimeToSpawn);
   GET_SET(float, TimeToShoot);
   GET_SET(float, ShootAccuracy);
+  GET_SET(float, Speed);
   // get & set
   // set(const <type> &name)
   // const <type> & get

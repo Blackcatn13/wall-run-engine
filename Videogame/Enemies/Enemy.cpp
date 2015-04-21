@@ -35,6 +35,7 @@ CEnemy::CEnemy(CXMLTreeNode &info1)
 CEnemy::CEnemy(CRenderableObject *renderableObject, float speed, float life):
   m_RenderableObject(renderableObject),
   m_Life(life),
+  m_Speed(speed),
   CAIController(renderableObject, speed, 2.5f, 13.0f ) {
   m_fYaw = m_RenderableObject->GetYaw();
   m_Position = m_RenderableObject->GetPosition();
