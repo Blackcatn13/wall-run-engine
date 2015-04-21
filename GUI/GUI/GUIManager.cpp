@@ -72,6 +72,7 @@ void CGUIManager::Release ()
 	m_WindowsMap.clear();
 
 	CHECKED_DELETE(m_TextBox);
+	CHECKED_DELETE(m_Console);
 	CHECKED_DELETE(m_PointerMouse);
 
 	LOGGER->AddNewLog(ELL_INFORMATION, "GUIManager:: offline (ok)");
@@ -162,6 +163,34 @@ bool CGUIManager::Init (const std::string& initGuiXML)
 				throw CException(__FILE__, __LINE__, msg_error);
 			}
 
+			m = parser["Console"];
+			if (m.Exists())
+			{
+				float posx										= m.GetFloatProperty("posx", 30.f);
+				float posy										= m.GetFloatProperty("posy", 30.f);
+				float w											= m.GetFloatProperty("width", 35.f);
+				float h											= m.GetFloatProperty("height", 35.f);
+				float button_w									= m.GetFloatProperty("button_width", 5.f);
+				float button_h									= m.GetFloatProperty("button_height", 5.f);
+				std::string quad								= m.GetPszProperty("quad",	"./Data/GUI/Textures_Test/BaseDialegBox.jpg");
+
+				CTexture* back									= textureM->GetResource(quad);
+				/*CConsole( 
+			uint32 fontID, std::string lit, uint32 textHeightOffset, uint32 textWidthOffset, 
+			bool isVisible = true,  bool isActive = true);*/
+				m_Console =	new CConsole(m_ScreenResolution.x, m_ScreenResolution.y, h, w, Vect2f(posx,posy), colBLUE, 1);
+				assert(m_Console);
+				m_Console->SetName("Console");
+				m_Console->SetVisible(false);
+				m_Console->SetBackGroundTexture(back);
+			}
+			else
+			{
+				std::string msg_error = "CGUIManager::Init-> Error al intentar leer el tag <Console> del archivo de configuracion GUI: " + initGuiXML;
+				LOGGER->AddNewLog(ELL_ERROR, msg_error.c_str());
+				throw CException(__FILE__, __LINE__, msg_error);
+			}
+
 			m = parser["PointerMouse"];
 			if (m.Exists())
 			{
@@ -237,6 +266,7 @@ void CGUIManager::Render (CGraphicsManager *renderManager, CFontManager* fm)
 		//Siempre los últimos en pintarse
 		assert(m_TextBox);
 		m_TextBox->Render(renderManager, fm);
+		m_Console->Render(renderManager, fm);
 		RenderPointerMouse(renderManager,fm);
 		
 	}//END if (m_bIsOk)
@@ -278,6 +308,7 @@ void CGUIManager::Update (float elapsedTime)
 
 		m_TextBox->Update(intputManager, elapsedTime);
 
+		m_Console->Update(intputManager, elapsedTime);
 
 		if( !m_TextBox->IsVisible() && m_bLoadedGuiFiles)
 		{
@@ -991,4 +1022,20 @@ void CGUIManager::RegisterFunctions (CScriptManager* scriptManager)
 						&CGUIManager::PlayImage)
     ];*/
 
+}
+
+
+void CGUIManager::SetConsole(){
+	if (m_bIsOk)
+	{
+		assert(m_Console);
+		if( !m_Console->IsVisible() )
+		{
+			m_Console->SetWidthPercent(170);
+			m_Console->SetHeightPercent(10);
+			m_Console->SetVisible( true );
+			m_Console->SetActive( true );
+			m_Console->SetPosition(Vect2i(5,50));
+		}
+	}
 }

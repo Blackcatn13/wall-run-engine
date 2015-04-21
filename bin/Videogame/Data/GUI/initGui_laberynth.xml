@@ -11,6 +11,9 @@
             buttonMove_clicked=     "./Data/GUI/Textures_Test/ButtonDialegBoxC.jpg"
             buttonMove_deactivated= "./Data/GUI/Textures_Test/ButtonDialegBoxC.jpg"
             quad=                   "./Data/GUI/Textures_Test/BaseDialegBox.jpg"/>
+			
+  <Console  posx="30" posy="30" width="35" height="35" button_width="5" button_height="5"
+            quad=                   "./Data/GUI/Textures_Test/Console.jpg"/>
   
   <PointerMouse posx="5" posy="5" width="5" height="5" 
                 texture="./Data/GUI/Textures_Test/gui_pointer_mouse.tga" isQuadrant="true"/>

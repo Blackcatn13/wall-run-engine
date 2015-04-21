@@ -16,6 +16,7 @@
 #include "Math/Vector2.h"
 #include "Math/Color.h"
 #include "TextBox.h"
+#include "Console.h"
 //#include "Core/ScriptRegister.h"
 
 //---Forward Declarations---
@@ -66,7 +67,9 @@ public:
   void                PushWindows               (const std::string& inNameWindow);
   void                PopWindows                ();
 	void								ActiveWindowsWithEffect		(const std::string& inNameWindow, EtypeTransitionEffect type, float transitionTime );
-	void								SetVisiblePointerMouse		(bool flag)																					{m_bVisiblePointerMouse = flag;}
+	void								SetVisiblePointerMouse		(bool flag)	{m_bVisiblePointerMouse = flag;}
+
+	void								SetConsole();
 	
 
 	//----CScriptRegister interface--------------------------------------------
@@ -118,6 +121,7 @@ private:
 	bool																m_bUpdateError;
 	CPointerMouse*											m_PointerMouse;
 	CTextBox*														m_TextBox;
+	CConsole*														m_Console;
 	bool																m_bLoadedGuiFiles;
 	std::string													m_sLastLoadpathGUI_XML;
 	TransitionEffect										m_sTransitionEffect;

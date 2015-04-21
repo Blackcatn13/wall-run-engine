@@ -123,11 +123,11 @@
     </action>
 
     <action name="KeyMoveBack">
-    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_DOWN"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_DOWN"/>
     </action>
 
     <action name="KeyMoveRigth">
-    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_RIGHT"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_RIGHT"/>
     </action>
 
     <action name="KeyMoveLeft">
@@ -276,6 +276,20 @@
 	
 	<action name="ReloadGUI">
         <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_F10"/>
+    </action>
+	
+	<action name="Console">
+        <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_L"/>
+    </action>
+	<action name="ConsoleEnter">
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_RETURN"/>
+    </action>
+	<action name="ConsoleEnd">
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_END"/>
+    </action>
+	<action name="ConsoleStart">
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_HOME"/>
     </action>
 	
 </Actions>

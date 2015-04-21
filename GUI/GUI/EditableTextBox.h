@@ -46,11 +46,11 @@ public:
 	void								AddBuffer							(const std::string& buffer) {m_sBuffer += buffer; }
 	bool								IsReturnPress					();
 
-private:
+protected:
 	void								ProcessNewEntries			(CInputManager* inputManager);
 	void								Remove1character			();
 
-private:
+protected:
 	uint32				m_uFontID;
 	CColor				m_TextColor;
 	CTexture*			m_pBackGroundTexture;

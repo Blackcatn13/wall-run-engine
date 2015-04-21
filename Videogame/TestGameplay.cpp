@@ -448,10 +448,16 @@ void CTestGameplay::Update(float dt) {
     CAMCONTM->Update("FPS", dt);
   else
     CAMCONTM->Update(dt);
+
+
   if (ACT2IN->DoAction("ReloadScriptedController")) {
     SCRIPTM->Reload(".\\Data\\scripted_controller.lua");
     //	SCRIPTM->RunFile(SCRIPTM->GetScriptsMap().find("test2")->second);
     //SCRIPTM->RunFile(".\\Data\\scripted_controller.lua");
+  }
+
+  if (ACT2IN->DoAction("Console")) {
+    GUIM->SetConsole();
   }
   skip += dt;
 //tTerra1_yaw += dt * 30 * 0.005;

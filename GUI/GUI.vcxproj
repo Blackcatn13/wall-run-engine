@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="GUI\Button.cpp" />
     <ClCompile Include="GUI\CheckButton.cpp" />
+    <ClCompile Include="GUI\Console.cpp" />
     <ClCompile Include="GUI\DialogBox.cpp" />
     <ClCompile Include="GUI\EditableTextBox.cpp" />
     <ClCompile Include="GUI\GuiElement.cpp" />
@@ -29,6 +30,7 @@
   <ItemGroup>
     <ClInclude Include="GUI\Button.h" />
     <ClInclude Include="GUI\CheckButton.h" />
+    <ClInclude Include="GUI\Console.h" />
     <ClInclude Include="GUI\DialogBox.h" />
     <ClInclude Include="GUI\EditableTextBox.h" />
     <ClInclude Include="GUI\GuiElement.h" />
