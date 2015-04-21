@@ -49,10 +49,11 @@ void CAnimatedCoreModel::Load(const std::string &Path) {
     printf("ERROR loading the file.");
   }
   CXMLTreeNode  m = newFile["animated_model"];
+  int count;
   if (m.Exists()) {
     std::string l_Name = m.GetPszISOProperty("name", "");
     m_CalCoreModel = new CalCoreModel(l_Name);
-    int count = m.GetNumChildren();
+    count = m.GetNumChildren();
     for (int i = 0; i < count; ++i) {
       std::string l_Element(m(i).GetName());
       if ( l_Element == "skeleton") {
