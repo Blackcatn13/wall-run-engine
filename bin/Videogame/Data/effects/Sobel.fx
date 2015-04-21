@@ -33,7 +33,7 @@ float4 SobelPS(in float2 UV : TEXCOORD0) : COLOR
 	float l_SobelX = dot(g_SobelX[0], l_I[0]) + dot(g_SobelX[1], l_I[1]) + dot(g_SobelX[2], l_I[2]);
 	float l_SobelY = dot(g_SobelY[0], l_I[0]) + dot(g_SobelY[1], l_I[1]) + dot(g_SobelY[2], l_I[2]);
        
-    if(sqrt(l_SobelX * l_SobelX + l_SobelY * l_SobelY) > 0.5) return float4(0.0, 0.0, 0.0, 1.0);
+    if(sqrt(l_SobelX * l_SobelX + l_SobelY * l_SobelY) > 0.6) return float4(0.0, 0.0, 0.0, 1.0);
     else return float4(1.0, 1.0, 1.0, 1.0);
 }
 

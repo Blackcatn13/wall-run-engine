@@ -85,6 +85,10 @@
 		 <default_technique vertex_type="2048" technique="SobelTechnique"/>
 	</pool_renderable_object_technique>
 	
+	<pool_renderable_object_technique name="antialiasing_pool">
+		 <default_technique vertex_type="2048" technique="AntialiasingTechnique"/>
+	</pool_renderable_object_technique>
+	
 	<pool_renderable_object_technique name="poly_pool">
 		 <default_technique vertex_type="19" technique="PolyTechnique"/>
 	</pool_renderable_object_technique>
