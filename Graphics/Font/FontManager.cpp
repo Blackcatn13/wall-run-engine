@@ -153,6 +153,7 @@ uint32 CFontManager::DrawDefaultText(uint32 x, uint32 y, CColor color, const cha
   // pintarlo
   m_Fonts[0]->DrawText( NULL, buffer, -1, &rect, DT_LEFT, color_aux );
   free( buffer );
+  va_end(args);
   return (rect.bottom  - rect.top);
 }
 
@@ -170,6 +171,7 @@ Vect2i CFontManager::GetDefaultTextSize(uint32 x, uint32 y, CColor color, const 
   assert(m_Fonts.size() > 0);
   m_Fonts[0]->DrawText( NULL, buffer, -1, &rect, DT_CALCRECT, color_aux );
   free(buffer);
+  va_end(args);
   return Vect2i(rect.right - rect.left, rect.bottom - rect.top);
 }
 
@@ -190,6 +192,7 @@ uint32 CFontManager::DrawText(uint32 x, uint32 y, CColor color, uint32 idFont, c
   // pintarlo
   m_Fonts[idFont]->DrawText( NULL, buffer, -1, &rect, DT_LEFT, color_aux );
   free( buffer );
+  va_end(args);
   return (rect.bottom  - rect.top);
 }
 
@@ -208,6 +211,7 @@ Vect2i CFontManager::GetTextSize(uint32 x, uint32 y, CColor color, uint32 idFont
   assert(m_Fonts.size() > idFont );
   m_Fonts[idFont]->DrawText( NULL, buffer, -1, &rect, DT_CALCRECT, color_aux );
   free(buffer);
+  va_end(args);
   return Vect2i(rect.right - rect.left, rect.bottom - rect.top);
 }
 
@@ -252,6 +256,7 @@ uint32 CFontManager::SizeX (const char *format, uint32 idFont) {
   assert(m_Fonts.size() > idFont );
   m_Fonts[idFont]->DrawText( NULL, buffer, -1, &rect, DT_CALCRECT, 0xff000000 );
   free( buffer );
+  va_end(args);
   return (rect.right  - rect.left);
 }
 
@@ -267,6 +272,7 @@ uint32 CFontManager::SizeY (const char *format, uint32 idFont) {
   assert(m_Fonts.size() > idFont );
   m_Fonts[idFont]->DrawText( NULL, buffer, -1, &rect, DT_CALCRECT, 0xff000000 );
   free( buffer );
+  va_end(args);
   return (rect.bottom  - rect.top);
 }
 

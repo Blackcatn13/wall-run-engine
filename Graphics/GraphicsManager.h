@@ -99,7 +99,7 @@ class CGraphicsManager {
   void DrawQuad2D (const Vect2i &pos, uint32 w, uint32 h, ETypeAlignment alignment, CColor color = colBLUE);
   void DrawQuad2D (const Vect2i &pos, uint32 w, uint32 h, ETypeAlignment alignment, CTexture *texture, ETypeFlip flipe = NONE_FLIP);
   //void DrawQuad2D (const Vect2i& pos, uint32 w, uint32 h, ETypeAlignment alignment, CTexture* texture, SRectangle2D& coordText);
-  
+
   void CalculateAlignment (uint32 w, uint32 h, ETypeAlignment alignment, Vect2i &finalPos);
   void EnableAlphaBlend (DWORD opblend = D3DBLENDOP_ADD, DWORD srcblend = D3DBLEND_SRCALPHA, DWORD destblend = D3DBLEND_INVSRCALPHA);
   void DisableAlphaBlend ();

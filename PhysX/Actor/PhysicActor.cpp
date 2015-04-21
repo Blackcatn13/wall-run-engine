@@ -47,7 +47,7 @@ void CPhysicActor::Destroy ( void ) {
     while (it != itEnd) {
       NxBoxShapeDesc *shapeDesc = *it;
       CHECKED_DELETE(shapeDesc);
-      it++;
+      ++it;
     }
     m_vBoxDesc.clear();
   }
@@ -57,7 +57,7 @@ void CPhysicActor::Destroy ( void ) {
     while (it != itEnd) {
       NxTriangleMeshShapeDesc *shapeDesc = *it;
       CHECKED_DELETE(shapeDesc);
-      it++;
+      ++it;
     }
     m_vMeshDesc.clear();
   }
@@ -67,7 +67,7 @@ void CPhysicActor::Destroy ( void ) {
     while (it != itEnd) {
       NxCapsuleShapeDesc *shapeDesc = *it;
       CHECKED_DELETE(shapeDesc);
-      it++;
+      ++it;
     }
     m_vCapsuleDesc.clear();
   }
@@ -77,7 +77,7 @@ void CPhysicActor::Destroy ( void ) {
     while (it != itEnd) {
       NxSphereShapeDesc *shapeDesc = *it;
       CHECKED_DELETE(shapeDesc);
-      it++;
+      ++it;
     }
     m_vSphereDesc.clear();
   }
@@ -87,7 +87,7 @@ void CPhysicActor::Destroy ( void ) {
     while (it != itEnd) {
       NxPlaneShapeDesc *shapeDesc = *it;
       CHECKED_DELETE(shapeDesc);
-      it++;
+      ++it;
     }
     m_vPlaneDesc.clear();
   }
@@ -483,8 +483,8 @@ Mat33f CPhysicActor::GetInertiaTensor ( void ) {
     NxF32 m_aux[9];
     l_nxTensor.getRowMajor(m_aux);
     return Mat33f( m_aux[0], m_aux[1], m_aux[2],
-                   m_aux[4], m_aux[5], m_aux[6],
-                   m_aux[7], m_aux[8], m_aux[9]
+                   m_aux[3], m_aux[4], m_aux[5],
+                   m_aux[6], m_aux[7], m_aux[8]
                  );
   }
   return m33fIDENTITY;

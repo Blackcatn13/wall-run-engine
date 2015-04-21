@@ -61,9 +61,10 @@ int Alert(/*IN */lua_State *State) {
   return true;
 }
 
-CScriptManager::CScriptManager() {
-  m_DeleteMap = false;
-  m_FileName = "";
+CScriptManager::CScriptManager() :
+  m_DeleteMap(false),
+  m_FileName(""),
+  m_LS(NULL) {
   m_ScriptsMap.clear();
 }
 
@@ -137,7 +138,7 @@ void CScriptManager::Load(const std::string &XMLFile) {
 
 void CScriptManager::Reload() {
   if (m_DeleteMap)
-    for (std::map<std::string, std::string>::iterator it = m_ScriptsMap.begin(); it != m_ScriptsMap.end(); it++) {
+    for (std::map<std::string, std::string>::iterator it = m_ScriptsMap.begin(); it != m_ScriptsMap.end(); ++it) {
       it->second.clear();
     }
   m_ScriptsMap.clear();

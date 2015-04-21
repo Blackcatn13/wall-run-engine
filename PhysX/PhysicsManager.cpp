@@ -49,7 +49,13 @@ CPhysicsManager::CPhysicsManager( void )
   , m_pControllerManager	( NULL )
   , m_pMyAllocator		( NULL )
   , m_pCookingMesh		( NULL )
-  , m_InitParams			( ) {
+  , m_InitParams			( )
+  , m_bfrustum (false)
+  , m_bFront (false)
+  , m_bNames(false)
+  , m_bRays(false)
+  , m_bRenderDebugPositions(false)
+  , m_bDistancesSheres(false) {
 }
 
 // -----------------------------------------
@@ -198,7 +204,7 @@ void CPhysicsManager::ReleaseToReload () {
 }
 
 void CPhysicsManager::ReleaseElement ( const std::string &_ase ) {
-  unsigned int l_id;
+  unsigned int l_id = 0;
   std::map<std::string, unsigned int>::iterator it = m_vIds.find(_ase);
   if (it != m_vIds.end() ) {
     l_id = it->second;
@@ -339,7 +345,6 @@ void CPhysicsManager::DrawActor ( NxActor *_pActor, CGraphicsManager *_RM ) {
   }
   NxShape *const *shapes = _pActor->getShapes();
   NxU32 nShapes = _pActor->getNbShapes();
-  nShapes = _pActor->getNbShapes();
   while (nShapes--) {
     switch (shapes[nShapes]->getType()) {
       case NX_SHAPE_PLANE: {
@@ -491,7 +496,6 @@ bool CPhysicsManager::ReleasePhysicActor ( CPhysicActor *_pActor ) {
   assert ( _pActor != NULL );
   assert ( m_pScene != NULL );
   assert ( m_pPhysicsSDK != NULL );
-  bool isOk = false;
   NxActor *nxActor = _pActor->GetPhXActor();
   if ( nxActor != 0) {
     NxArray<NxCCDSkeleton *> skeletons;
@@ -711,7 +715,6 @@ bool CPhysicsManager::ReleasePhysicController ( CPhysicController *_pController 
     return true;
   assert ( _pController != NULL );
   assert ( m_pControllerManager != NULL );
-  bool l_bIsOk = false;
   NxController *l_NxController = _pController->GetPhXController();
   if ( l_NxController != NULL ) {
     m_pControllerManager->releaseController( *l_NxController );
@@ -862,7 +865,7 @@ void CPhysicsManager::OverlapSphereActor ( float _fRadiusSphere, const Vect3f &_
         _ImpactObjects.push_back ( l_pPhysicObject );
     }
   }
-  delete shapes;
+  delete[] shapes;
 }
 
 void CPhysicsManager::OverlapSphereActorGrenade (float radiusSphere, const Vect3f &posSphere, std::vector<CPhysicUserData *> impactObjects, float _fPower) {
@@ -899,7 +902,7 @@ void CPhysicsManager::OverlapSphereActorGrenade (float radiusSphere, const Vect3
     }
     //delete &shapes[i];
   }
-  delete shapes;
+  delete[] shapes;
   /*for (NxU32 i = 0; i < nbShapes; i++)
   {
   delete &shapes[i];
@@ -998,12 +1001,12 @@ CPhysicActor *CPhysicsManager::GetActor ( std::string _ActorName ) {
   return l_pActor;
 }
 void CPhysicsManager::SetPaintAllActors(bool paint, std::string meshName, bool paintMesh) {
-  std::vector<CPhysicActor *> l_Actors;
+  //std::vector<CPhysicActor *> l_Actors;
   assert ( m_pScene );
   //NxActor** l_ppActorList = m_pScene->getActors();
   //NxU32 l_TotalActors	  = m_pScene->getNbActors();
   //
-  CPhysicActor *l_pActor = NULL;
+  //CPhysicActor *l_pActor = NULL;
   int nbActors = m_pScene->getNbActors();
   NxActor **l_pActors = m_pScene->getActors();
   while ( nbActors-- ) {
@@ -1028,7 +1031,7 @@ void CPhysicsManager::SetPaintByActorName(std::string name, bool paint) {
   //NxActor** l_ppActorList = m_pScene->getActors();
   //NxU32 l_TotalActors	  = m_pScene->getNbActors();
   //
-  CPhysicActor *l_pActor = NULL;
+  //CPhysicActor *l_pActor = NULL;
   int nbActors = m_pScene->getNbActors();
   NxActor **l_pActors = m_pScene->getActors();
   while ( nbActors-- ) {

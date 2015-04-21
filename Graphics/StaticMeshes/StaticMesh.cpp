@@ -138,7 +138,7 @@ bool CStaticMesh::Load (const std::string &FileName) {
           char *buff = (char *)malloc(aux_size * sizeof(char) + 1);
           size_t len = fread(buff, sizeof(char), aux_size + 1, f);
           std::string aux_name(buff);
-          delete(buff);
+          free(buff);
           CTexture *aux_text;
           if (TEXTM->ExisteResource(aux_name)) {
             aux_text = TEXTM->GetResource(aux_name);
@@ -252,8 +252,8 @@ bool CStaticMesh::Load (const std::string &FileName) {
         if (vertex_type[i] == TTEXTURE_POLY_VERTEX::GetVertexType())
           l_rv = new CIndexedVertexs<TTEXTURE_POLY_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
         m_RVs.push_back(l_rv);
-        delete(vertex_list);
-        delete(index_list);
+        free(vertex_list);
+        free(index_list);
       }
       /*BoundingBox y BoundingSphere, 10 floats (6 BBox + 4 BShpere)
       BoundingBox			BoundingSphere
@@ -272,7 +272,7 @@ bool CStaticMesh::Load (const std::string &FileName) {
       m_BSphere = BoundingSphere();
       m_BSphere.SetCenterPos(Vect3f(float_list[6], float_list[7], float_list[8]));
       m_BSphere.SetRadius(float_list[9]);
-      delete(float_list);
+      free(float_list);
       unsigned short footer;
       fread(&footer, sizeof footer, 1, f);
       if (footer != 0xff55) {

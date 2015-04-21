@@ -260,9 +260,10 @@ bool ReadMesh(const std::string file, void *&pos, void *&index, unsigned short *
       if (footer != 0xff55) {
         fclose(f);
         return false;
-      } else
+      } else {
         fclose(f);
-      return true;
+        return true;
+      }
     }
   }
 }
