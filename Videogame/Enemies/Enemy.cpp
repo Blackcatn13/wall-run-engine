@@ -32,9 +32,10 @@ CEnemy::CEnemy(CXMLTreeNode &info1)
   m_Position = info1.GetVect3fProperty("pos", Vect3f(), false);
 }
 
-CEnemy::CEnemy(CRenderableObject *renderableObject):
+CEnemy::CEnemy(CRenderableObject *renderableObject, float speed, float life):
   m_RenderableObject(renderableObject),
-  CAIController(renderableObject, 0.1f, 2.5f, 13.0f ) {
+  m_Life(life),
+  CAIController(renderableObject, speed, 2.5f, 13.0f ) {
   m_fYaw = m_RenderableObject->GetYaw();
   m_Position = m_RenderableObject->GetPosition();
 }

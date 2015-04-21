@@ -28,13 +28,13 @@ CEasyEnemy::CEasyEnemy(std::string mesh, std::string name, Vect3f position,  flo
   InitWpVector(2, 4);
 }
 //Nuevo sistema
-CEasyEnemy::CEasyEnemy(CRenderableObject *renderableObject) :
-  CEnemy(renderableObject),
+CEasyEnemy::CEasyEnemy(CRenderableObject *renderableObject, int numWp, int distWp, float speed, float life) :
+  CEnemy(renderableObject, speed, life),
   m_WpVector(NULL),
   m_CurrentWp(NULL),
   m_CurrentWpId(0) {
   Init();
-  InitWpVector(2, 4);
+  InitWpVector(numWp, distWp);
 }
 
 

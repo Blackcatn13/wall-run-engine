@@ -28,11 +28,12 @@ class CEnemy : public CAIController { //CAIController
   FSM				*m_Fsm;
   CRenderableObject *m_RenderableObject;
 
+
   CEnemy();
  public:
   CEnemy(CXMLTreeNode &info1);
   CEnemy(std::string mesh, std::string name, Vect3f position,  float speed, float turnSpeed, float gravity, float yaw);
-  CEnemy(CRenderableObject *renderableObject);
+  CEnemy(CRenderableObject *renderableObject, float speed, float life);
   //~CEnemy();
 
 

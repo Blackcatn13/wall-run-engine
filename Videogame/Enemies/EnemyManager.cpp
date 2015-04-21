@@ -27,8 +27,13 @@ void CEnemyManager::InitEnemies(std::string layerName) {
   CRenderableObjectsManager *l_Rom = RENDLM->GetRenderableObjectsManagerByStr(layerName);
   for (int i = 0; i < l_Rom->GetResourcesVector().size(); ++i) {
     for (int j = 0; j < m_EnemyInstances.size(); ++j) {
-      if (l_Rom->GetResourcesVector()[i]->getName().find(m_EnemyInstances[j])) {
-        CEasyEnemy *Enemy = new CEasyEnemy(l_Rom->GetResourcesVector()[i]);
+      if (l_Rom->GetResourcesVector()[i]->getName().find(m_EnemyInstances[j].instanceName)) {
+        std::string nam = m_Cores.find(m_EnemyInstances[j].instanceType)->first;
+        int l_NumWp = m_Cores.find(m_EnemyInstances[j].instanceType)->second.NumWp;
+        float l_DistWp = m_Cores.find(m_EnemyInstances[j].instanceType)->second.DistPlayer;
+        float l_Speed = m_Cores.find(m_EnemyInstances[j].instanceType)->second.Speed;
+        int l_Life = m_Cores.find(m_EnemyInstances[j].instanceType)->second.life;
+        CEasyEnemy *Enemy = new CEasyEnemy(l_Rom->GetResourcesVector()[i], l_NumWp, l_DistWp, l_Speed, l_Life);
         m_Enemies.push_back(Enemy);
       }
     }
@@ -61,10 +66,18 @@ void CEnemyManager::Init(const std::string &FileName) {
           }
         } else if (l_Name == "core_enemy") {
           std::string type = m(i).GetPszProperty("type", "", false);
-          m_Cores[type] = m(i);
+          StatsStr l_Stats;
+          l_Stats.NumWp = m(i).GetIntProperty("num_wp", 0, false);
+          l_Stats.DistPlayer = m(i).GetFloatProperty("dist_wp", 0.0f, false);
+          l_Stats.life = m(i).GetIntProperty("life", 1 , false);
+          l_Stats.ShootSpeed = m(i).GetFloatProperty("shoot_speed", 0.0f , false);
+          l_Stats.Speed = m(i).GetFloatProperty("speed", 0.0f , false);
+          m_Cores.insert(std::pair<std::string, StatsStr>(type, l_Stats));
         } else if (l_Name == "instance_enemy") {
-          std::string instanceEnemy = m(i).GetPszISOProperty("name", "", false);
-          m_EnemyInstances.push_back(instanceEnemy);
+          EnemiesStr l_Enemy;
+          l_Enemy.instanceName = m(i).GetPszISOProperty("name", "", false);
+          l_Enemy.instanceType = m(i).GetPszISOProperty("type", "", false);
+          m_EnemyInstances.push_back(l_Enemy);
         }
       }
     }
@@ -106,7 +119,7 @@ CEnemyManager *CEnemyManager::GetInstance() {
   return m_Singleton;
 }
 
-const CXMLTreeNode &CEnemyManager::GetCoreEnemy(const std::string &type) {
+const EnemyStats &CEnemyManager::GetCoreEnemy(const std::string &type) {
   return m_Cores[type];
 }
 

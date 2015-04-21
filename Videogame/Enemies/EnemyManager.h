@@ -10,13 +10,29 @@
 class CEnemy;
 class CXMLTreeNode;
 
+typedef struct EnemyStruct {
+  std::string		instanceName;
+  std::string		instanceType;
+
+} EnemiesStr;
+
+typedef struct EnemyStats {
+  int		NumWp;
+  float		DistPlayer;
+  float		Speed;
+  float		ShootSpeed;
+  int		life;
+
+} StatsStr;
+
 class CEnemyManager {
  private:
   std::vector<CEnemy *>						m_Enemies;
   std::string									m_File;
-  std::map<std::string, CXMLTreeNode>			m_Cores;
-  std::vector<std::string>					m_EnemyInstances;
+  std::map<std::string, StatsStr>			m_Cores;
+  std::vector<EnemiesStr>					m_EnemyInstances;
   std::string									m_LayerName;
+
 
  protected:
   static CEnemyManager		*m_Singleton;
@@ -34,7 +50,7 @@ class CEnemyManager {
   CEnemy *GetEnemy(std::string enemyName);
 
   static CEnemyManager *GetInstance();
-  const CXMLTreeNode &GetCoreEnemy(const std::string &type);
+  const EnemyStats &GetCoreEnemy(const std::string &type);
   void SetPaintEnemies(bool paint);
   std::vector<CEnemy *> GetEnemies() {
     return m_Enemies;
