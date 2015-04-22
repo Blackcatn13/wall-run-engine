@@ -36,7 +36,8 @@ bool CAnimatedCoreModel::LoadSkeleton(const std::string &Filename) {
   return true;
 }
 bool CAnimatedCoreModel::LoadAnimation(const std::string &Name, const std::string &Filename) {
-  if (m_CalCoreModel->loadCoreAnimation(Filename, Name) == 0)
+  int aux = m_CalCoreModel->loadCoreAnimation(Filename, Name);
+  if ( aux == -1)
     return false;
   return true;
 }

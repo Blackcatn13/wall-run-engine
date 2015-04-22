@@ -176,7 +176,7 @@ CCore *CCore::GetInstance() {
 void CCore::Render() {
   //m_GraphicsManager->Render();
   // m_LightManager->Render(m_GraphicsManager);
-  //m_PhysicsManager->DebugRender(m_GraphicsManager);
+  m_PhysicsManager->DebugRender(m_GraphicsManager);
   m_WWSoundManager->Render();
 }
 

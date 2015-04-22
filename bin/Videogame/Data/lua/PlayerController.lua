@@ -150,6 +150,9 @@ function on_update_player_lua(l_ElapsedTime)
 	if player.m_isJumping == true then
 		if player.m_CurrentJumpForce < 0 then
 			player.m_CurrentJumpForce = player.m_CurrentJumpForce - (player.m_Gravity * l_ElapsedTime);
+			coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky"):execute_action(3,0,0,0,false);
+			--coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky"):blend_cycle(2,0,0.5);
+			--coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky"):blend_cycle(3,1,0.5);
 		else
 			player.m_CurrentJumpForce = player.m_CurrentJumpForce - (player.m_GravityJump * l_ElapsedTime);
 		end
@@ -187,7 +190,10 @@ function on_update_player_lua(l_ElapsedTime)
 				end
 			end
 		end
-	end	
+	else
+		--coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky"):blend_cycle(3,0,0);
+		--coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky"):blend_cycle(1,1,0);
+	end
 	
 	if player.m_isAttack == true then
 		if player.m_CurrentAttackForce > 0.5 then	
@@ -206,6 +212,8 @@ function on_update_player_lua(l_ElapsedTime)
 	--///////////////////////////////////////////////////////////
 	if (act2in:do_action_from_lua("Jump")) and (player.m_isJumping == false) then
 		coreInstance:getWWSoundManager():PlayEvent("Jump", "Piky");
+		coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky"):execute_action(2,0,0,0,false);
+		coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky"):blend_cycle(1,0,0);
 		player.m_isJumping = true;
 		player.m_CurrentJumpForce = player.m_JumpForce;
 		mov.y = player.m_CurrentJumpForce*1.75 * l_ElapsedTime;

@@ -53,6 +53,7 @@ void CAnimatedInstanceModel::Initialize(CAnimatedCoreModel *AnimatedCoreModel, C
 //	LoadVertexBuffer(RM);
   LoadTextures();
   BlendCycle(0, 1.0f, 0.0f);
+
   m_CalModel->update(0.0f);
 }
 
