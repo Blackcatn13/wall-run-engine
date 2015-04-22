@@ -63,46 +63,38 @@ void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
 	Vect3f l_playerPosition = PLAYC->GetPosition();
 	Vect3f dirRay = (m_Position - l_playerPosition);
 	//solo hacemos los calculos de colisiones si la plataforma esta a una distancia minima (optimización)
-	if (abs(dirRay.x) + abs(dirRay.z) < 4)
+	if (abs(dirRay.x) + abs(dirRay.z) < (GetPhysicsSize().x + GetPhysicsSize().z + 1.0))
 	{
-		float l_MargenBugAlturaPlayerSuelo = 1.0;
 		SCollisionInfo info = SCollisionInfo();
-		Vect3f dirRay2 = (m_Position  - (l_playerPosition + Vect3f(0,l_MargenBugAlturaPlayerSuelo,0)));
 		float l_RadioPhysicsPlayer = 0.5;
-		float l_AlturaPlataformaDesdeOrigen = 2.0;
+		float l_AlturaPlataformaDesdeOrigen = GetPhysicsSize().y + 1.5;
 		float l_MargenLateralPlataforma = 1.0;
-		float l_DesplazamientoVerticalPlataforma = 2.0;
-		float l_PosicionMinSobrePlat = 1.0;
-		float l_PosicionMaxSobrePlat = 2.5;
+		float l_DesplazamientoVerticalPlataforma = GetPhysicsSize().y + 1.5;
+		float l_PosicionMinSobrePlat = GetPhysicsSize().y + 0.5;
+		float l_PosicionMaxSobrePlat = GetPhysicsSize().y + 2.0;
 
 		//para saber si es movimiento horizontal o vertical
 		//Caso horizontal
 		if ((abs(direction.z) + abs(direction.x)) > abs(direction.y))
 		{
 			bool PhysicsApplied = false;
-	  		dirRay = dirRay.Normalize();
-			dirRay2 = dirRay2.Normalize();
+			dirRay = dirRay.Normalize() * 0.4;
+			Vect3f dirRayBounding = Vect3f(dirRay.x,-l_RadioPhysicsPlayer,dirRay.z);
+			//Vect3f dirRayBounding = dirRay * l_RadioPhysicsPlayer;
 
-			Vect3f dirRayBounding = dirRay * l_RadioPhysicsPlayer;
-			Vect3f dirRayBounding2 = dirRay2 * l_RadioPhysicsPlayer; 
-
-			CPhysicUserData *hit = CCORE->GetPhysicsManager()->RaycastClosestActor(Vect3f(l_playerPosition.x, l_playerPosition.y - l_RadioPhysicsPlayer, l_playerPosition.z),
+			CPhysicUserData *hit = CCORE->GetPhysicsManager()->RaycastClosestActor(Vect3f(l_playerPosition.x + dirRayBounding.x, l_playerPosition.y + dirRayBounding.y, l_playerPosition.z + dirRayBounding.z),
 									Vect3f(0,-1,0), 0xffffffff, info);
 
 			//Intentando arreglar que al saltar debajado de la plataforma el personaje se queda incrustado
-			if (hit != NULL && hit->getName().substr(0, 6) == "Moving" && info.m_fDistance <= 0.8) {
+			if (hit != NULL && hit->getName().substr(0, 6) == "Moving" && info.m_fDistance <= 1.2) {
 				PLAYC->getPhysicController()->Move(direction.Normalize() * m_Speed * dt / 1.0, dt);
 				PhysicsApplied = true;
 			}
 
-			CPhysicUserData *hit2 = CCORE->GetPhysicsManager()->RaycastClosestActor(Vect3f(l_playerPosition.x + dirRayBounding2.x, l_playerPosition.y + l_MargenBugAlturaPlayerSuelo + dirRayBounding2.y, l_playerPosition.z + dirRayBounding2.z),
-									dirRay2 , 0xffffffff, info);
-
-		  //if ((PhysicsApplied == false) && ((l_playerPosition.y < (m_Position.y + l_AlturaPlataformaDesdeOrigen)) && (hit2 != NULL && hit2->getName().substr(0, 6) == "Moving" && info.m_fDistance <= l_MargenLateralPlataforma))) {
 		  if ((PhysicsApplied == false) && (isAround(l_playerPosition, m_Position)))
 		  {
 			
-				PLAYC->getPhysicController()->Move(-dirRay.Normalize() * m_Speed * 3 * dt / 1.0, dt);
+				PLAYC->getPhysicController()->Move(-dirRay.Normalize() * m_Speed * 3 * dt  + direction.Normalize() * m_Speed * dt, dt);
 				//PLAYC->setCurrentJumpForce(0.0);
 				//PLAYC->setisJumping(false);
 				//PLAYC->setisGrounded(false);
@@ -117,16 +109,15 @@ void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
 
 			if (isInside(l_playerPosition, m_Position)){
 				//Hola
-				float l_margenInferiorPlataforma = 0.5;
+				float l_margenInferiorPlataforma = GetPhysicsSize().y * 2;
 				PLAYC->getPhysicController()->SetPosition(l_playerPosition + Vect3f(0,-l_margenInferiorPlataforma, 0));
 			}
 		}
 		//Caso vertical
 		else
 		{
-			dirRay.Normalize();
-			//Vect3f dirRayBounding = dirRay * 0.4;
-			Vect3f dirRayBounding = Vect3f(0,-l_RadioPhysicsPlayer,0);
+			dirRay = dirRay.Normalize() * 0.5;
+			Vect3f dirRayBounding = Vect3f(dirRay.x,-l_RadioPhysicsPlayer,dirRay.z);
 			CPhysicUserData* hit = CCORE->GetPhysicsManager()->RaycastClosestActor(Vect3f(l_playerPosition.x + dirRayBounding.x, l_playerPosition.y + dirRayBounding.y, l_playerPosition.z + dirRayBounding.z),
 								Vect3f(0,-1,0), 0xffffffff, info);
 
@@ -139,7 +130,7 @@ void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
 				PLAYC->setisGrounded(false);
 			}
 			else*/
-			if ((l_playerPosition.y > (m_Position.y + l_PosicionMinSobrePlat) && (l_playerPosition.y < (m_Position.y + l_PosicionMaxSobrePlat)) && (hit != NULL && hit->getName().substr(0,6) == "Moving" && info.m_fDistance <= 2.0)))
+			if ((l_playerPosition.y > (m_Position.y + l_PosicionMinSobrePlat) && (l_playerPosition.y < (m_Position.y + l_PosicionMaxSobrePlat)) && (hit != NULL && hit->getName().substr(0,6) == "Moving" && info.m_fDistance <= 3.0)))
 			{
 				//PLAYC->getPhysicController()->MovePlayer(direction.Normalize() * m_Speed * dt + PLAYC->getGravity() * Vect3f(0,1,0) * 1.2 * dt, dt);
 				//PLAYC->IsGrounded(direction.Normalize() * m_Speed * dt / 1.0, dt);
@@ -160,13 +151,6 @@ void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
 			{
 				PLAYC->setGravity(11.0);
 
-				dirRay2 = dirRay2.Normalize();
-				Vect3f dirRayBounding2 = dirRay2 * l_RadioPhysicsPlayer;
-
-				CPhysicUserData *hit2 = CCORE->GetPhysicsManager()->RaycastClosestActor(Vect3f(l_playerPosition.x + dirRayBounding2.x, l_playerPosition.y + l_MargenBugAlturaPlayerSuelo + dirRayBounding2.y, l_playerPosition.z + dirRayBounding2.z),
-									dirRay2 , 0xffffffff, info);
-
-				//if ((l_playerPosition.y < (m_Position.y + l_AlturaPlataformaDesdeOrigen)) && (hit2 != NULL && hit2->getName().substr(0, 6) == "Moving" && info.m_fDistance <= l_MargenLateralPlataforma)) {
 				if (isAround(l_playerPosition, m_Position))
 				{
 					PLAYC->getPhysicController()->Move(-dirRay.Normalize() * m_Speed * 3 * dt / 1.0, dt);
@@ -183,7 +167,7 @@ void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
 				} 
 				if (isInside(l_playerPosition, m_Position)){
 					//Hola
-					float l_margenInferiorPlataforma = 0.5;
+					float l_margenInferiorPlataforma = GetPhysicsSize().y * 2;
 					PLAYC->getPhysicController()->SetPosition(l_playerPosition + Vect3f(0,-l_margenInferiorPlataforma, 0));
 				}
 			}
@@ -206,9 +190,9 @@ void CMovingPlatform::Update(float ElapsedTime) {
 
 bool CMovingPlatform::isInside(Vect3f vector1, Vect3f vector2)
 {
-	float l_margenx = 1.5;
-	float l_margenz = 1.5;
-	float l_margeny = 0.5;
+	float l_margenx = GetPhysicsSize().x;
+	float l_margenz = GetPhysicsSize().z;
+	float l_margeny = GetPhysicsSize().y;
 	if ((vector1.x > vector2.x - l_margenx) && (vector1.x < vector2.x + l_margenx) && (vector1.y > vector2.y - l_margeny) && (vector1.y < vector2.y + l_margeny) && (vector1.z > vector2.z - l_margenz) && (vector1.z < vector2.z + l_margenz))
 		return true;
 	else
@@ -247,9 +231,9 @@ void CMovingPlatform::UpdateFSM(float elapsedTime) {
 
 bool CMovingPlatform::isAround(Vect3f vector1, Vect3f vector2)
 {
-	float l_margenx = 2.5;
-	float l_margenz = 2.5;
-	float l_margeny = 1.0;
+	float l_margenx = GetPhysicsSize().x + 0.5;
+	float l_margenz = GetPhysicsSize().z + 0.5;
+	float l_margeny = GetPhysicsSize().y + 0.5;
 	bool l_isInside = false;
 	l_isInside = isInside(vector1, vector2);
 	if ((vector1.x > vector2.x - l_margenx) && (vector1.x < vector2.x + l_margenx) && (vector1.y > vector2.y - l_margeny) && (vector1.y < vector2.y + l_margeny) && (vector1.z > vector2.z - l_margenz) && (vector1.z < vector2.z + l_margenz))

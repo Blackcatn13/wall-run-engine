@@ -28,6 +28,7 @@ void CStaticPlatform::InsertPlatform(std::string userDataName, Vect3f size, Vect
     m_PlatformUserData = new CPhysicUserData(userDataName);
     m_PlatformUserData->SetPaint(false);
     m_PlatorformActor = new CPhysicActor(m_PlatformUserData);
+	m_PlatformPhysicsSize = Vect3f(size.x, size.y, size.z);
     // m_PlatorformActor->AddBoxSphape(size, m_RenderableObject->GetPosition(), localPosition);
     m_PlatorformActor->AddBoxSphape(size, m_Position, localPosition);
     //m_RenderableObject->SetYaw(m_fYaw);
