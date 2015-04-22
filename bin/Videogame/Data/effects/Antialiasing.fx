@@ -4,6 +4,7 @@
 
 // Sampler0 -> frame
 // Sampler1 -> sobel
+int g_kSize = 3; // Size del kernel alrededor del pixel (g_kSize x g_kSize) TIENE QUE SER IMPAR
 float4 AntialiasingPS(in float2 UV : TEXCOORD0):COLOR
 {
 	float3x3 l_I;
@@ -17,14 +18,14 @@ float4 AntialiasingPS(in float2 UV : TEXCOORD0):COLOR
 	}
 	else
 	{
-		for(int i = 0; i < 3; i++)
+		for(int i = 0; i < g_kSize; i++)
 		{
-			for(int j = 0; j < 3; j++)
+			for(int j = 0; j < g_kSize; j++)
 			{
-				finalColor += tex2D(S0LinearClampSampler, UV + float2(i * l_UV.x - l_UV.x, j * l_UV.y - l_UV.y));
+				finalColor += tex2D(S0LinearClampSampler, UV + float2(i * l_UV.x - (((g_kSize-1) / 2) * l_UV.x), j * l_UV.y - (((g_kSize-1) / 2) * l_UV.y)));
 			}
 		}
-		finalColor = finalColor / 9;
+		finalColor = finalColor / (g_kSize * g_kSize);
 	}
 	
 	return finalColor;
