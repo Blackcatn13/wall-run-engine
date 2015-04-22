@@ -25,4 +25,4 @@ private:
 	int							m_bufferPos;
 };
 
-#endif //INC_IMAGE_H
+#endif //INC_CONSOLE_H

@@ -19,6 +19,7 @@
     <ClCompile Include="GUI\GuiElement.cpp" />
     <ClCompile Include="GUI\GUIManager.cpp" />
     <ClCompile Include="GUI\Image.cpp" />
+    <ClCompile Include="GUI\LifeGUI.cpp" />
     <ClCompile Include="GUI\PointerMouse.cpp" />
     <ClCompile Include="GUI\ProgressBar.cpp" />
     <ClCompile Include="GUI\RadioBox.cpp" />
@@ -36,6 +37,7 @@
     <ClInclude Include="GUI\GuiElement.h" />
     <ClInclude Include="GUI\GUIManager.h" />
     <ClInclude Include="GUI\Image.h" />
+    <ClInclude Include="GUI\LifeGUI.h" />
     <ClInclude Include="GUI\PointerMouse.h" />
     <ClInclude Include="GUI\ProgressBar.h" />
     <ClInclude Include="GUI\RadioBox.h" />

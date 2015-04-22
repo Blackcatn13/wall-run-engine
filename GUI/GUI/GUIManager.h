@@ -17,6 +17,7 @@
 #include "Math/Color.h"
 #include "TextBox.h"
 #include "Console.h"
+#include "LifeGUI.h"
 //#include "Core/ScriptRegister.h"
 
 //---Forward Declarations---
@@ -122,6 +123,7 @@ private:
 	CPointerMouse*											m_PointerMouse;
 	CTextBox*														m_TextBox;
 	CConsole*														m_Console;
+	CLifeGUI*														m_LifeGUI;
 	bool																m_bLoadedGuiFiles;
 	std::string													m_sLastLoadpathGUI_XML;
 	TransitionEffect										m_sTransitionEffect;

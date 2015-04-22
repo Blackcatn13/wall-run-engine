@@ -1,46 +1,66 @@
-#include "Console.h"
-#include "Core\Core.h"
-#include "Core\ScriptManager.h"
+#include "LifeGUI.h"
+#include "Image.h"
+#include "Texture/Texture.h"
+#include "GraphicsManager.h"
 #include "InputManager.h"
 #include "Font\FontManager.h"
 
 //---Constructor
-CConsole::CConsole( uint32 windowsHeight, uint32 windowsWidth, float height_precent, float witdh_percent,
-												const Vect2f position_percent, CColor textColor, uint32 fontID, 
-												std::string lit, uint32 textHeightOffset, uint32 textWidthOffset, 
-												bool isVisible,  bool isActive)
-: CEditableTextBox(	windowsHeight, windowsWidth, height_precent, witdh_percent,	position_percent, textColor, fontID, 
-				lit, textHeightOffset, textWidthOffset, isVisible, isActive),
-m_bufferPos(0)
+CLifeGUI::CLifeGUI( uint32 windowsHeight, uint32 windowsWidth, float height_precent, float witdh_percent,
+							 const Vect2f position_percent, std::string lit, uint32 textHeightOffset, 
+							 uint32 textWidthOffset, bool isVisible, bool isActive)
+: CGuiElement( windowsHeight, windowsWidth, height_precent, witdh_percent, position_percent, IMAGE, lit, 
+		textHeightOffset, textWidthOffset, isVisible,isActive)
+, m_back(new CImage(windowsHeight, windowsWidth, height_precent, witdh_percent, position_percent))
+, m_heart(new CImage(windowsHeight, windowsWidth, height_precent, witdh_percent, position_percent))
+, m_sActiveTexture( "default" )
+, m_bAnimated(false)
+, m_bLoop(false)
+, m_fTimePerImage(0.f)
+, m_fCounter(0.f)
+, m_eFlip(NONE_FLIP)
+, m_life(0)
 {}
 
-bool CConsole::IsReturnPress (){
-	if( m_bReturnPress && m_sBuffer != "")
-	{
-		if (!IsDuplicate(m_sBuffer)){
-			SCRIPTM->RunCode(m_sBuffer);
-			m_bufferPos = m_buffers.size();
-			m_buffers.push_back(m_sBuffer);
-			m_sBuffer = "";
-			m_uCursorPos = 0;
-			m_bReturnPress = false;
-			return true;
-		}else
-			return false;
-	}
-	else
-		return false;
+void CLifeGUI::UpdateGUI(CInputManager* input, float elapsedTime)
+{
+	Update(input, elapsedTime);
+	m_back->Update(input, elapsedTime);
+	m_back->SetPosition(Vect2i(5,150));
+	m_heart->Update(input, elapsedTime);
+	m_heart->SetPosition(Vect2i(5,150));
+
 }
 
-bool CConsole::IsDuplicate(std::string input){
-	for (int i = 0; i < m_buffers.size(); i++){
-		if (m_buffers[i].compare(input)==0)
-			return true;
-	}
-	return false;
+void CLifeGUI::RenderGUI(CGraphicsManager* render, CFontManager* fm)
+{
+	Render(render, fm);
+	m_back->Render(render, fm);
+	m_heart->Render(render, fm);
 }
 
-void CConsole::Update(CInputManager* intputManager, float elapsedTime)
+void CLifeGUI::SetBackgroundTexture(CTexture* back, std::string path)
+{
+	m_back->SetTexture(back, path);
+}
+
+void CLifeGUI::SetHeartTexture(CTexture* heart, std::string path)
+{
+	m_heart->SetTexture(heart, path);
+}
+
+void CLifeGUI::SetHeartVisible(bool visible)
+{
+	m_heart->SetVisible(visible);
+}
+
+void CLifeGUI::SetBackgroundVisible(bool visible)
+{
+	m_back->SetVisible(visible);
+}
+
+/*
+void CLifeGUI::Update(CInputManager* intputManager, float elapsedTime)
 {
 	std::string buffer_prev = m_sBuffer;
 
@@ -173,3 +193,4 @@ void CConsole::Update(CInputManager* intputManager, float elapsedTime)
 	}
 }
 
+*/

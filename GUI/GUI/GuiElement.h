@@ -40,7 +40,7 @@ public:
 	virtual void				Render								(CGraphicsManager* render, CFontManager* fm);
 	virtual void				RenderText						(CGraphicsManager* render, CFontManager* fm);
 	virtual void				Update								(CInputManager* input, float elapsedTime);
-	virtual void				OnClickedChild				(const std::string& name) = 0;
+	virtual void				OnClickedChild				(const std::string& name){};
 	
 	void								OnLoadValue						();
 	void								OnSaveValue						();
