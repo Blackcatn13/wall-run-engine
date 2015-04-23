@@ -2,7 +2,19 @@
 <Windows OnLoadWindows=""
          OnSaveWindows=""
          OnUpdateWindows="if CCoreLuaWrapper().m_CoreInstance:get_action_to_input():do_action_from_lua('Attack') then                            
-                            CCoreLuaWrapper().m_CoreInstance:getGUIManager():set_image('LifeGUI','Life2')
+                            if CCoreLuaWrapper().m_CoreInstance:getGUIManager():get_active_image('LifeGUI') == 'Life3' then
+								CCoreLuaWrapper().m_CoreInstance:getGUIManager():set_image('LifeGUI','Life2')
+							else
+								if CCoreLuaWrapper().m_CoreInstance:getGUIManager():get_active_image('LifeGUI') == 'Life2' then
+									CCoreLuaWrapper().m_CoreInstance:getGUIManager():set_image('LifeGUI','Life1')
+								else
+									if CCoreLuaWrapper().m_CoreInstance:getGUIManager():get_active_image('LifeGUI') == 'Life1' then
+										CCoreLuaWrapper().m_CoreInstance:getGUIManager():set_image('LifeGUI','Life0')
+									else
+										CCoreLuaWrapper().m_CoreInstance:getGUIManager():set_image('LifeGUI','Life3')
+									end
+								end	
+							end
                           end">
 
   <Image name="main_fondo" posx="0.00" posy="0.00" height="100.00" width="100.00" visible="true" active="true"
