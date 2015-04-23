@@ -15,7 +15,7 @@ CEasyEnemy::CEasyEnemy(CXMLTreeNode &info1) : CEnemy(info1),
   m_WpVector(NULL),
   m_CurrentWp(NULL),
   m_CurrentWpId(0) {
-  Init();
+  Init("NoFSM");
   InitWpVector(2, 4);
 }
 
@@ -24,16 +24,16 @@ CEasyEnemy::CEasyEnemy(std::string mesh, std::string name, Vect3f position,  flo
   m_WpVector(NULL),
   m_CurrentWp(NULL),
   m_CurrentWpId(0) {
-  Init();
+  Init("NoFSM");
   InitWpVector(2, 4);
 }
 //Nuevo sistema
-CEasyEnemy::CEasyEnemy(CRenderableObject *renderableObject, int numWp, int distWp, float speed, float life) :
+CEasyEnemy::CEasyEnemy(CRenderableObject *renderableObject, int numWp, int distWp, float speed, float life, std::string fsmName) :
   CEnemy(renderableObject, speed, life),
   m_WpVector(NULL),
   m_CurrentWp(NULL),
   m_CurrentWpId(0) {
-  Init();
+  Init(fsmName);
   InitWpVector(numWp, distWp);
 }
 

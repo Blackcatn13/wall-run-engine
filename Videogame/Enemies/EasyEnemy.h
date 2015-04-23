@@ -16,7 +16,7 @@ class CEasyEnemy : public CEnemy {
   int					m_CurrentWpId;
  public:
   CEasyEnemy(CXMLTreeNode &info1);
-  CEasyEnemy(CRenderableObject *renderableObject, int numWp, int distWp, float speed, float life);
+  CEasyEnemy(CRenderableObject *renderableObject, int numWp, int distWp, float speed, float life, std::string fsmName);
   CEasyEnemy(std::string mesh, std::string name, Vect3f position,  float speed, float turnSpeed, float gravity, float yaw) ;
   //~CEasyEnemy();
 

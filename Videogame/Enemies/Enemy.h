@@ -15,6 +15,7 @@ class CXMLTreeNode;
 class CPhysicController;
 class CPhysicUserData;
 class CRenderableObject;
+class CFSMInstance;
 
 class CEnemy : public CAIController { //CAIController
  protected:
@@ -25,9 +26,11 @@ class CEnemy : public CAIController { //CAIController
   float				m_ShootAccuracy;
   //std::string			m_Mesh;
   //std::string			m_Name;
-  FSM				*m_Fsm;
+  CFSMInstance		*m_Fsm;
   CRenderableObject *m_RenderableObject;
   float				m_Speed;
+  float				m_CurrentTime;
+  std::string		m_FsmName;
 
 
   CEnemy();
@@ -39,10 +42,13 @@ class CEnemy : public CAIController { //CAIController
 
 
   //virtual ~CEnemy();
-  virtual void Init() /*= 0*/;
+  virtual void Init(std::string fsmName) /*= 0*/;
   virtual void Update(float elapsedTime) /*= 0*/;
   virtual void Render() /*= 0*/;
   void UpdateFSM(float elapsedTime);
+  std::string GetEnemyName(){
+	  return getName();
+  }
   //void SetMesh(std::string mesh);
   GET_SET(float, Life);
   /*GET_SET(float, Yaw);
@@ -52,6 +58,7 @@ class CEnemy : public CAIController { //CAIController
   GET_SET(float, TimeToShoot);
   GET_SET(float, ShootAccuracy);
   GET_SET(float, Speed);
+  GET_SET(float, CurrentTime);
   // get & set
   // set(const <type> &name)
   // const <type> & get

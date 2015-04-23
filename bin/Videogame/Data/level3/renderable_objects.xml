@@ -17,6 +17,7 @@
 	<animated_model name="SpongePicky" core="chuky" pos="0 0 20" yaw="0" pitch="0" roll="0" scale="1 1 1"/>
 	<animated_model name="Chucky" core="chuky" pos="5 0 0" yaw="0" pitch="0" roll="0" scale="1 1 1"/>
 	<mesh_instance name="MikMik1" core="Enemy1"  pos="-3.0 2.0 10.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />
+	<mesh_instance name="MikMik2" core="Enemy1"  pos="-15.0 2.0 -10.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />
 	
 	<!--<mesh_instance name="Enemy2" core="Enemy2"  pos="0 0 0" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />
 	<mesh_instance name="Enemy3" core="Enemy3"  pos="0 0 0" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" />-->

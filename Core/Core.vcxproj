@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AI\AIController.cpp" />
+    <ClCompile Include="AI\FSMInstance.cpp" />
     <ClCompile Include="AI\FSMManager.cpp" />
     <ClCompile Include="AI\Puzzle.cpp" />
     <ClCompile Include="AI\PuzzleManager.cpp" />
@@ -30,6 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AI\AIController.h" />
+    <ClInclude Include="AI\FSMInstance.h" />
     <ClInclude Include="AI\FSMManager.h" />
     <ClInclude Include="AI\Puzzle.h" />
     <ClInclude Include="AI\PuzzleManager.h" />

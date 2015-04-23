@@ -9,6 +9,7 @@
 #include "Core\ScriptManager.h"
 #include "Utils\LuaGlobals.h"
 #include "Utils\Defines.h"
+#include "AI\FSMInstance.h"
 
 CEnemy::CEnemy(CXMLTreeNode &info1)
   : CAIController(info1.GetPszISOProperty("mesh", "", false),
@@ -17,7 +18,8 @@ CEnemy::CEnemy(CXMLTreeNode &info1)
                   info1.GetFloatProperty("speed", .0f, false),
                   info1.GetFloatProperty("turn_speed", .0f, false),
                   info1.GetFloatProperty("gravity", .0f, false)),
-    m_RenderableObject(NULL)
+    m_RenderableObject(NULL),
+	m_CurrentTime(0.0f)
 
     //  CAIController(info1.GetPszISOProperty("mesh", "", false), m_Name, m_Position)
 {
@@ -36,32 +38,35 @@ CEnemy::CEnemy(CRenderableObject *renderableObject, float speed, float life):
   m_RenderableObject(renderableObject),
   m_Life(life),
   m_Speed(speed),
+  m_CurrentTime(0.0f),
   CAIController(renderableObject, speed, 2.5f, 13.0f ) {
   m_fYaw = m_RenderableObject->GetYaw();
   m_Position = m_RenderableObject->GetPosition();
 }
 CEnemy::CEnemy(std::string mesh, std::string name, Vect3f position,  float speed, float turnSpeed, float gravity, float yaw) :
   CAIController(mesh, name, position, speed, turnSpeed, gravity) ,
-  m_RenderableObject(NULL) {
+  m_RenderableObject(NULL) ,
+  m_CurrentTime(0.0f){
   m_fYaw = yaw;
   m_Position = position;
 
 }
 
 
-void CEnemy::Init() {
-  if (m_RenderableObject == NULL) { //Si se usa el sistema viejo
+void CEnemy::Init(std::string fsmName) {
+ /* if (m_RenderableObject == NULL) { //Si se usa el sistema viejo
     CRenderableObject *malla = RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource(getMesh());
     malla->SetYaw(m_fYaw);
     bool visible = malla->getVisible();
     malla->SetPosition(m_Position);
   } else { //Si se usa el nuevo
-    m_RenderableObject->SetYaw(m_fYaw);
+   */ m_RenderableObject->SetYaw(m_fYaw);
     m_RenderableObject->SetPosition(m_Position);
     bool visible = m_RenderableObject->getVisible();
 
-  }
-  m_Fsm = FSMMGR->GetResource("Enemy"); //TODO: pasar nombre de FSM por el XML de enemyManager
+  //}
+  if(fsmName != "NoFSM")
+	  m_Fsm = new CFSMInstance(FSMMGR->GetResource(fsmName)); //TODO: pasar nombre de FSM por el XML de enemyManager
 }
 
 void CEnemy::Update(float elapsedTime) {
@@ -77,22 +82,23 @@ void CEnemy::Render() {
 
 void CEnemy::UpdateFSM(float elapsedTime) {
 // for (TMapResource::iterator it = m_Resources.begin(); it != m_Resources.end(); ++it) {
-  STATE *s = m_Fsm->m_States.GetResource(m_Fsm->m_currentState);
+ // for (TMapResource::iterator it = m_Resources.begin(); it != m_Resources.end(); ++it) {
+  STATE *s = m_Fsm->getStates().GetResource(m_Fsm->getCurrentState());
+  char l_EnterFunction[256];
   if (s->m_onEnter == false) {
-    char l_LuaFunc[256];
-    _snprintf_s(l_LuaFunc, 256, 256, "%s(\"%s\")", s->onEnter.c_str(), getName().c_str());
-    SCRIPTM->RunCode(l_LuaFunc);
-
+    _snprintf_s(l_EnterFunction, 256, 256, "%s(\"%s\")", s->onEnter.c_str(), getName().c_str());
+    SCRIPTM->RunCode(l_EnterFunction);
     s->m_onEnter = true;
   }
   s->m_ElapsedTime += elapsedTime;
-  char l_InitLevelText[256];
+// char l_InitLevelText[256];
   int doComprobation = 0;
   if (s->m_ElapsedTime >= s->m_UpdateTime) {
     doComprobation = 1;
   }
-  _snprintf_s(l_InitLevelText, 256, 256, "%s(%f,%d,\"%s\")", s->onUpdate.c_str(), elapsedTime, doComprobation, getName().c_str());
-  SCRIPTM->RunCode(l_InitLevelText);
+  char l_UpdateFunction[256];
+  _snprintf_s(l_UpdateFunction, 256, 256, "%s(%f,%d,\"%s\")", s->onUpdate.c_str(), elapsedTime,doComprobation, getName().c_str());
+  SCRIPTM->RunCode(l_UpdateFunction);
   if (doComprobation == 1) {
     s->m_ElapsedTime = 0;
     doComprobation = 0;
@@ -100,14 +106,13 @@ void CEnemy::UpdateFSM(float elapsedTime) {
   bool change = CLuaGlobals::getInstance()->ValueChanged();
   if (change) {
     s->m_onEnter = false;
-    char l_LuaExitFunc[256];
-    _snprintf_s(l_LuaExitFunc, 256, 256, "%s(\"%s\")", s->onExit.c_str(), getName().c_str());
-    SCRIPTM->RunCode(l_LuaExitFunc);
-
-    m_Fsm->m_previousState = m_Fsm->m_currentState;
-    m_Fsm->m_currentState = CLuaGlobals::getInstance()->getString();
+	char l_ExitFunction[256];
+    _snprintf_s(l_ExitFunction, 256, 256, "%s(\"%s\")", s->onExit.c_str(), getName().c_str());
+    SCRIPTM->RunCode(l_ExitFunction);
+    m_Fsm->setPreviousState( m_Fsm->getCurrentState());
+    m_Fsm->setCurrentState( CLuaGlobals::getInstance()->getString());
   }
-// }
 }
+
 
 

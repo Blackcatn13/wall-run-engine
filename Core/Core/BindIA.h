@@ -62,7 +62,10 @@ void RegisterAI() {
     class_<CEnemy, CAIController>("CEnemy")
     .def(constructor<CXMLTreeNode>())
     .def(constructor<std::string, std::string, Vect3f, float, float, float , float >())
-	 .property("m_Speed", &CEnemy::getSpeed, &CEnemy::setSpeed)
+	.property("m_Speed", &CEnemy::getSpeed, &CEnemy::setSpeed)
+	.property("m_CurrentTime", &CEnemy::getCurrentTime, &CEnemy::setCurrentTime)
+	.def("get_name",  &CEnemy::GetEnemyName)
+
     /* .def("update", &CEnemy::Update)
      .def("render", &CEnemy::Render)*/
   ];

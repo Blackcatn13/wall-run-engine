@@ -17,11 +17,12 @@ typedef struct EnemyStruct {
 } EnemiesStr;
 
 typedef struct EnemyStats {
-  int		NumWp;
-  float		DistPlayer;
-  float		Speed;
-  float		ShootSpeed;
-  int		life;
+  int			NumWp;
+  float			DistPlayer;
+  float			Speed;
+  float			ShootSpeed;
+  int			life;
+  std::string 	FsmName;
 
 } StatsStr;
 
