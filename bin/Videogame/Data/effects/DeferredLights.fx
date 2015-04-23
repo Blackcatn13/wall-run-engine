@@ -84,7 +84,13 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 		lightAmount = (tex2D(S7LinearClampSampler, ShadowTexC) + g_ShadowEpsilon < LightPosition.z/LightPosition.w)? 0.0f: 1.0f;
 		if (ShadowTexC.x < 0.0 || ShadowTexC.y < 0.0 || ShadowTexC.x > 1.0 || ShadowTexC.y > 1.0)
 			lightAmount = 1.0;
+		//lightAmount = 1.0;
+
+		if (ShadowTexC.x <=0.0 || ShadowTexC.y<=0.0 || ShadowTexC.x >=1.0 || ShadowTexC.y>=1.0)
+			lightAmount=0.0;
 	}
+
+
 	
 	//return float4(lightAmount, lightAmount, lightAmount, 1);
 	//return tex2D(S7LinearClampSampler, ShadowTexC);
