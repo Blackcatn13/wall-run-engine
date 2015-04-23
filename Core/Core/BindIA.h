@@ -54,6 +54,7 @@ void RegisterAI() {
     .property("m_JumpForce", &CAIController::getJumpForce,  &CAIController::setJumpForce )
     .property("m_CurrentJumpForce", &CAIController::getCurrentJumpForce,  &CAIController::setCurrentJumpForce )
     .property("m_isJumping", &CAIController::getisJumping,  &CAIController::setisJumping )
+	.property("m_SpeedModified", &CAIController::getSpeedModified, &CAIController::setSpeedModified )
     .def("move", &CAIController::Move)
     .def("move_to", &CAIController::MoveTo)
   ];
@@ -62,8 +63,9 @@ void RegisterAI() {
     class_<CEnemy, CAIController>("CEnemy")
     .def(constructor<CXMLTreeNode>())
     .def(constructor<std::string, std::string, Vect3f, float, float, float , float >())
-	.property("m_Speed", &CEnemy::getSpeed, &CEnemy::setSpeed)
+	//.property("m_Speed", &CEnemy::getSpeed, &CEnemy::setSpeed)
 	.property("m_CurrentTime", &CEnemy::getCurrentTime, &CEnemy::setCurrentTime)
+	.property("m_OriginalPosition", &CEnemy::GetOriginalPosition)
 	.def("get_name",  &CEnemy::GetEnemyName)
 
     /* .def("update", &CEnemy::Update)

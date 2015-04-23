@@ -37,8 +37,9 @@ CEnemy::CEnemy(CXMLTreeNode &info1)
 CEnemy::CEnemy(CRenderableObject *renderableObject, float speed, float life):
   m_RenderableObject(renderableObject),
   m_Life(life),
-  m_Speed(speed),
+ // m_Speed(speed),
   m_CurrentTime(0.0f),
+  m_OriginalPosition(m_RenderableObject->GetPosition()),
   CAIController(renderableObject, speed, 2.5f, 13.0f ) {
   m_fYaw = m_RenderableObject->GetYaw();
   m_Position = m_RenderableObject->GetPosition();
@@ -46,7 +47,8 @@ CEnemy::CEnemy(CRenderableObject *renderableObject, float speed, float life):
 CEnemy::CEnemy(std::string mesh, std::string name, Vect3f position,  float speed, float turnSpeed, float gravity, float yaw) :
   CAIController(mesh, name, position, speed, turnSpeed, gravity) ,
   m_RenderableObject(NULL) ,
-  m_CurrentTime(0.0f){
+  m_CurrentTime(0.0f),
+  m_OriginalPosition(position){
   m_fYaw = yaw;
   m_Position = position;
 
@@ -79,6 +81,10 @@ void CEnemy::Render() {
   //CHECKED_DELETE(m_Fsm);
   //CHECKED_DELETE(m_RenderableObject);
 }*/
+
+Vect3f CEnemy::GetOriginalPosition(){
+	return m_OriginalPosition;
+}
 
 void CEnemy::UpdateFSM(float elapsedTime) {
 // for (TMapResource::iterator it = m_Resources.begin(); it != m_Resources.end(); ++it) {

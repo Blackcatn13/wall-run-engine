@@ -32,6 +32,7 @@ class CAIController : public CObject3D {
   //GET_SET(std::string, Mesh)
   //GET_SET(std::string, Name);
   GET_SET(Vect3f, Position);
+  GET_SET(bool, SpeedModified);
 
  private:
   float getAngleDiff(Vect3f A, Vect3f B);
@@ -46,6 +47,7 @@ class CAIController : public CObject3D {
   std::string			m_Mesh;
   std::string			m_Name;
   CRenderableObject *m_RenderableObject;
+  bool				m_SpeedModified;
 };
 
 

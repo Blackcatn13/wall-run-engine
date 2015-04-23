@@ -4,6 +4,7 @@ local coreInstance = CCoreLuaWrapper().m_CoreInstance
 --ai_controller = CAIController()
 --ai_controller.m_Speed = 0.1
 local instance = CLuaGlobalsWrapper().m_CoreInstance;
+local speed_modifier = 2;
 
 --local wp_manager = core:get_wp_manager()
 --local id_next_wp
@@ -38,16 +39,22 @@ function enemy_update_stopped(ElapsedTime, doComprobation, name)
 	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
 	
 	if enemy ~= nil then
-	
-		local wp_distance = get_distance_between_points(enemy.m_CurrentWp, enemy:get_next_wp())
-	--	coreInstance:trace(tostring(wp_distance))
-		if wp_distance > 4 then
-			if enemy.m_CurrentTime >= 0.1 then
-					instance.m_string = "Andar_WP"
+		-- En caso de acabar de perseguir o llegar a un WP si la distancia al siguiente es muy corta vuelve a la posicion original
+		if enemy.m_CurrentWp ~= nil then
+			local wp_distance = get_distance_between_points(enemy.m_CurrentWp, enemy:get_next_wp())
+		--	coreInstance:trace(tostring(wp_distance))
+			if wp_distance < 4 then
+				enemy.m_CurrentWp = enemy:get_original_position()
 			end
-			enemy.m_CurrentTime = enemy.m_CurrentTime +1 * ElapsedTime
 		end
 		
+		if enemy.m_CurrentTime >= 0.1 then
+			instance.m_string = "Andar_WP"
+		end
+		
+		enemy.m_CurrentTime = enemy.m_CurrentTime +1 * ElapsedTime
+			
+		-- Si le Player se acerca atacaarl
 		if check_attack(enemy) == true then
 		--	coreInstance:trace("Vamos a perseguir")
 			instance.m_string = "Perseguir_Player"
@@ -65,6 +72,8 @@ function check_attack (_enemy)
 	local player_distance = get_distance_to_player(_enemy:get_position(), player_position)
 	--coreInstance:trace(tostring(player_distance))
 	if player_distance <= 49 then
+		coreInstance:trace("Attack!!")
+		coreInstance:trace(_enemy:get_name())
 		return true
 	end
 	return false
@@ -166,12 +175,13 @@ function enemy_enter_perseguir_player(name)
 
 	--coreInstance:trace("Entering Perseguir_PLayer");
 	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
-	enemy.m_Speed = enemy.m_Speed * 4
+	
 end
 
 function enemy_exit_perseguir_player(name)
 	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
-	enemy.m_Speed = enemy.m_Speed / 4
+	enemy.m_Speed = enemy.m_Speed / speed_modifier
+	enemy.m_SpeedModified = false
 	enemy.m_CurrentTime = 0
 end
 
@@ -180,17 +190,28 @@ function enemy_update_perseguir_player(ElapsedTime, doComprobation, name)
 	--coreInstance:trace("Persiguiendo");
 	local player_position = coreInstance:get_player_controller():get_position()
 	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
+	if enemy.m_SpeedModified == false then
+		enemy.m_Speed = enemy.m_Speed * speed_modifier
+		enemy.m_SpeedModified = true	
+	end
+	
 	enemy:move_to(ElapsedTime, coreInstance:get_player_controller():get_position())
-	if doComprobation == 1 then
+	
+	--if doComprobation == 1 then
 		local player_distance = get_distance_to_player(enemy:get_position(), player_position)
 		if player_distance > 225 then
 			instance.m_string = "Parado"
+		--	enemy.m_Speed = enemy.m_Speed / speed_modifier
 		end
 		if player_distance < 1 then
+		-- Aqui meter impacto del ataque
 			instance.m_string = "Parado"
+		--	enemy.m_Speed = enemy.m_Speed / speed_modifier
 		end
-	end
+		
+	--end
 end
+
 
 function get_distance_to_player(current_position, _player_position)
 	-- calcular distancia hacia player

@@ -21,7 +21,8 @@ CAIController::CAIController()
     m_JumpForce(1.5),
     m_CurrentJumpForce(0),
     m_isJumping(false),
-    m_RenderableObject(NULL) {
+    m_RenderableObject(NULL),
+	m_SpeedModified(false){
 
   m_PhysicUserData = new CPhysicUserData("AI");
   m_PhysicUserData->SetPaint(true);
@@ -40,7 +41,8 @@ CAIController::CAIController(std::string mesh, std::string name, Vect3f position
   m_isJumping(false),
   m_Name(name),
   m_Mesh(mesh),
-  m_RenderableObject(NULL) {
+  m_RenderableObject(NULL),
+  m_SpeedModified(false){
   std::stringstream ss;
   ss << name << "UserData";
   std::string userDataName = ss.str();
@@ -59,7 +61,8 @@ CAIController::CAIController(CRenderableObject *rond, float speed, float turnSpe
   m_CurrentJumpForce(0),
   m_isJumping(false),
   m_Name(rond->getName()),
-  m_RenderableObject(rond) {
+  m_RenderableObject(rond),
+  m_SpeedModified(false){
   std::stringstream ss;
   ss << rond->getName() << "UserData";
   std::string userDataName = ss.str();
