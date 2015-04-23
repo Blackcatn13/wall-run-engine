@@ -265,6 +265,7 @@ void RegisterManagers() {
     .def("push_windows", &CGUIManager::PushWindows)
     .def("pop_windows", &CGUIManager::PopWindows)
 	.def("set_message_box", &CGUIManager::SetMessageBox)
+	.def("set_image", &CGUIManager::SetImage)
   ];
 
 }

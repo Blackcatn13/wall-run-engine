@@ -7,56 +7,63 @@
 
 //---Constructor
 CLifeGUI::CLifeGUI( uint32 windowsHeight, uint32 windowsWidth, float height_precent, float witdh_percent,
-							 const Vect2f position_percent, std::string lit, uint32 textHeightOffset, 
-							 uint32 textWidthOffset, bool isVisible, bool isActive)
-: CGuiElement( windowsHeight, windowsWidth, height_precent, witdh_percent, position_percent, IMAGE, lit, 
-		textHeightOffset, textWidthOffset, isVisible,isActive)
-, m_back(new CImage(windowsHeight, windowsWidth, height_precent, witdh_percent, position_percent))
-, m_heart(new CImage(windowsHeight, windowsWidth, height_precent, witdh_percent, position_percent))
-, m_sActiveTexture( "default" )
-, m_bAnimated(false)
-, m_bLoop(false)
-, m_fTimePerImage(0.f)
-, m_fCounter(0.f)
-, m_eFlip(NONE_FLIP)
-, m_life(0)
+                    const Vect2f position_percent, std::string lit, uint32 textHeightOffset,
+                    uint32 textWidthOffset, bool isVisible, bool isActive)
+    : CGuiElement( windowsHeight, windowsWidth, height_precent, witdh_percent, position_percent, IMAGE, lit,
+                   textHeightOffset, textWidthOffset, isVisible, isActive)
+    , m_back(new CImage(windowsHeight, windowsWidth, height_precent, witdh_percent, position_percent))
+    , m_heart(new CImage(windowsHeight, windowsWidth, 50, 50, position_percent))
+    , m_sActiveTexture( "default" )
+    , m_bAnimated(false)
+    , m_bLoop(false)
+    , m_fTimePerImage(0.f)
+    , m_fCounter(0.f)
+    , m_eFlip(NONE_FLIP)
+    , m_life(0)
 {}
+
+CLifeGUI::~CLifeGUI()
+{
+    CHECKED_DELETE(m_back);
+    CHECKED_DELETE(m_heart);
+}
 
 void CLifeGUI::UpdateGUI(CInputManager* input, float elapsedTime)
 {
-	Update(input, elapsedTime);
-	m_back->Update(input, elapsedTime);
-	m_back->SetPosition(Vect2i(5,150));
-	m_heart->Update(input, elapsedTime);
-	m_heart->SetPosition(Vect2i(5,150));
-
+    Update(input, elapsedTime);
+    m_back->Update(input, elapsedTime);
+    m_heart->Update(input, elapsedTime);
 }
 
 void CLifeGUI::RenderGUI(CGraphicsManager* render, CFontManager* fm)
 {
-	Render(render, fm);
-	m_back->Render(render, fm);
-	m_heart->Render(render, fm);
+    Render(render, fm);
+    m_back->Render(render, fm);
+    m_heart->Render(render, fm);
 }
 
 void CLifeGUI::SetBackgroundTexture(CTexture* back, std::string path)
 {
-	m_back->SetTexture(back, path);
+    m_back->SetTexture(back, path);
+    m_back->SetActiveTexture("Background");
+    m_back->SetPosition(Vect2i(5, 150));
 }
 
 void CLifeGUI::SetHeartTexture(CTexture* heart, std::string path)
 {
-	m_heart->SetTexture(heart, path);
+    m_heart->SetTexture(heart, path);
+    m_heart->SetActiveTexture("Heart");
+    m_heart->SetPosition(Vect2i(15, 150));
 }
 
 void CLifeGUI::SetHeartVisible(bool visible)
 {
-	m_heart->SetVisible(visible);
+    m_heart->SetVisible(visible);
 }
 
 void CLifeGUI::SetBackgroundVisible(bool visible)
 {
-	m_back->SetVisible(visible);
+    m_back->SetVisible(visible);
 }
 
 /*
@@ -81,11 +88,11 @@ void CLifeGUI::Update(CInputManager* intputManager, float elapsedTime)
 	if (CGuiElement::m_bFocus)
 	{
 		m_bShift = (intputManager->IsDown(IDV_KEYBOARD, KEY_RSHIFT) || intputManager->IsDown(IDV_KEYBOARD, KEY_LSHIFT) );
-		
+
 		if( intputManager->IsUpDown(IDV_KEYBOARD, KEY_LEFT) )
 		{
-			
-			if (m_uCursorPos > 0) 
+
+			if (m_uCursorPos > 0)
 			{
 				m_uCursorPos--;
 			}
@@ -126,7 +133,7 @@ void CLifeGUI::Update(CInputManager* intputManager, float elapsedTime)
 					Remove1character();
 					m_BackTime2 = 0.f;
 				}
-			}		
+			}
 		}
 		else
 		{
@@ -142,8 +149,8 @@ void CLifeGUI::Update(CInputManager* intputManager, float elapsedTime)
 			}
 		}
 
-	
-		
+
+
 		m_fTimeCount += elapsedTime;
 		if( m_fTimeCount > m_fTime )
 		{

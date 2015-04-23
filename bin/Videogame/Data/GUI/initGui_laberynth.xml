@@ -15,9 +15,9 @@
   <Console  posx="30" posy="30" width="35" height="35" button_width="5" button_height="5"
             quad=                   "./Data/GUI/Textures_Test/Console.jpg"/>
 			
-  <LifeGUI  name="Life" posx="0.00" posy="0.00" height="100.00" width="50.0" visible="true" active="true"
+  <!--<LifeGUI  name="Life" posx="0.00" posy="0.00" height="100.00" width="50.0" visible="true" active="true"
             background=                   "./Data/GUI/GoPixelGo/Life.jpg"
-			heart=                   "./Data/GUI/GoPixelGo/Heart.jpg"/>
+			heart=                   "./Data/GUI/GoPixelGo/Heart.jpg"/>-->
   
   <PointerMouse posx="5" posy="5" width="5" height="5" 
                 texture="./Data/GUI/Textures_Test/gui_pointer_mouse.tga" isQuadrant="true"/>
