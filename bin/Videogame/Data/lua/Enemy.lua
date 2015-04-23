@@ -4,7 +4,6 @@ local coreInstance = CCoreLuaWrapper().m_CoreInstance
 --ai_controller = CAIController()
 --ai_controller.m_Speed = 0.1
 local instance = CLuaGlobalsWrapper().m_CoreInstance;
-local speed_modifier = 2;
 
 --local wp_manager = core:get_wp_manager()
 --local id_next_wp
@@ -171,27 +170,27 @@ function enemy_update_calcwp(ElapsedTime, doComprobation, name)
 	end
 end
 
-function enemy_enter_perseguir_player(name)
+function enemy_enter_attack_player(name)
 
 	--coreInstance:trace("Entering Perseguir_PLayer");
 	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
 	
 end
 
-function enemy_exit_perseguir_player(name)
+function enemy_exit_attack_player(name)
 	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
-	enemy.m_Speed = enemy.m_Speed / speed_modifier
+	enemy.m_Speed = enemy.m_OriginalSpeed
 	enemy.m_SpeedModified = false
 	enemy.m_CurrentTime = 0
 end
 
-function enemy_update_perseguir_player(ElapsedTime, doComprobation, name)
+function enemy_update_attack_player(ElapsedTime, doComprobation, name)
 --player_position = Vect3f(10,0,10)
 	--coreInstance:trace("Persiguiendo");
 	local player_position = coreInstance:get_player_controller():get_position()
 	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
 	if enemy.m_SpeedModified == false then
-		enemy.m_Speed = enemy.m_Speed * speed_modifier
+		enemy.m_Speed = enemy.m_AttackSpeed
 		enemy.m_SpeedModified = true	
 	end
 	

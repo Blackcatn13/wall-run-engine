@@ -18,7 +18,7 @@
 			<Update time=".01" lua_funtion="mp_update_calcwp"/>
 		</state>
 	</fsm>
-	<fsm name="Enemy">
+	<fsm name="MikMik">
 		<initialState name="Parado"/>
 		<state name="Parado">
 			<onEnter lua_funtion="enemy_enter_stopped"/>
@@ -36,9 +36,9 @@
 			<Update time=".01" lua_funtion="enemy_update_calcwp"/>
 		</state>
 		<state name="Perseguir_Player">
-			<onEnter lua_funtion="enemy_enter_perseguir_player"/>
-			<onExit lua_funtion="enemy_exit_perseguir_player"/>
-			<Update time=".01" lua_funtion="enemy_update_perseguir_player"/>
+			<onEnter lua_funtion="enemy_enter_attack_player"/>
+			<onExit lua_funtion="enemy_exit_attack_player"/>
+			<Update time=".01" lua_funtion="enemy_update_attack_player"/>
 		</state>
 	</fsm>
 

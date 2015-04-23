@@ -80,6 +80,8 @@ void RegisterAI() {
     .def("get_next_wp", &CEasyEnemy::GetNextWp)
     .def("init_wp_vector", &CEasyEnemy::InitWpVector)
     .property("m_CurrentWp", &CEasyEnemy::GetCurrentWp, &CEasyEnemy::SetCurrentWp)
+	.property("m_AttackSpeed", &CEasyEnemy::GetAttackSpeed )
+	.property("m_OriginalSpeed", &CEasyEnemy::GetOriginalSpeed )
     // .def("init", &CEasyEnemy::Init)
     //.def("update", &CEasyEnemy::Update)
     //.def("render", &CEasyEnemy::Render)

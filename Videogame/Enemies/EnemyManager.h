@@ -20,6 +20,7 @@ typedef struct EnemyStats {
   int			NumWp;
   float			DistPlayer;
   float			Speed;
+  float			SpeedAttack;
   float			ShootSpeed;
   int			life;
   std::string 	FsmName;

@@ -29,13 +29,16 @@ void CEnemyManager::InitEnemies(std::string layerName) {
     for (int j = 0; j < m_EnemyInstances.size(); ++j) {
       if (l_Rom->GetResourcesVector()[i]->getName().find(m_EnemyInstances[j].instanceName)) {
         std::string nam = m_Cores.find(m_EnemyInstances[j].instanceType)->first;
-        int l_NumWp = m_Cores.find(m_EnemyInstances[j].instanceType)->second.NumWp;
-        float l_DistWp = m_Cores.find(m_EnemyInstances[j].instanceType)->second.DistPlayer;
-        float l_Speed = m_Cores.find(m_EnemyInstances[j].instanceType)->second.Speed;
-        int l_Life = m_Cores.find(m_EnemyInstances[j].instanceType)->second.life;
-		std::string l_FsmName = m_Cores.find(m_EnemyInstances[j].instanceType)->second.FsmName;
-        CEasyEnemy *Enemy = new CEasyEnemy(l_Rom->GetResourcesVector()[i], l_NumWp, l_DistWp, l_Speed, l_Life, l_FsmName);
-        m_Enemies.push_back(Enemy);
+		if(nam.find("mikmik") != std::string::npos){
+			int l_NumWp = m_Cores.find(m_EnemyInstances[j].instanceType)->second.NumWp;
+			float l_DistWp = m_Cores.find(m_EnemyInstances[j].instanceType)->second.DistPlayer;
+			float l_Speed = m_Cores.find(m_EnemyInstances[j].instanceType)->second.Speed;
+			float l_AttackSpeed = m_Cores.find(m_EnemyInstances[j].instanceType)->second.SpeedAttack;
+			int l_Life = m_Cores.find(m_EnemyInstances[j].instanceType)->second.life;
+			std::string l_FsmName = m_Cores.find(m_EnemyInstances[j].instanceType)->second.FsmName;
+			CEasyEnemy *Enemy = new CEasyEnemy(l_Rom->GetResourcesVector()[i], l_NumWp, l_DistWp, l_Speed, l_AttackSpeed, l_Life, l_FsmName);
+			m_Enemies.push_back(Enemy);
+		}
       }
     }
   }
@@ -73,6 +76,7 @@ void CEnemyManager::Init(const std::string &FileName) {
           l_Stats.life = m(i).GetIntProperty("life", 1 , false);
           l_Stats.ShootSpeed = m(i).GetFloatProperty("shoot_speed", 0.0f , false);
           l_Stats.Speed = m(i).GetFloatProperty("speed", 0.0f , false);
+		  l_Stats.SpeedAttack = m(i).GetFloatProperty("speed_attack", 0.0f , false);
 		  l_Stats.FsmName = m(i).GetPszISOProperty("fsm", "NoFSM", false);
           m_Cores.insert(std::pair<std::string, StatsStr>(type, l_Stats));
         } else if (l_Name == "instance_enemy") {
