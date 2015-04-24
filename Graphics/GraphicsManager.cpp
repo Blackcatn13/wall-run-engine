@@ -217,6 +217,10 @@ void CGraphicsManager::SetupMatrices(CCamera *camera) {
   m_pD3DDevice->SetTransform( D3DTS_PROJECTION, &m_matProject );
 }
 
+void CGraphicsManager::UpdateFrustum(const D3DXMATRIX &viewproj) {
+  m_Frustum.Update(viewproj);
+}
+
 void CGraphicsManager::SetTransform	(D3DXMATRIX &matrix) {
   m_pD3DDevice->SetTransform(D3DTS_WORLD, &matrix);
   EFFECTM->SetWorldMatrix(matrix);

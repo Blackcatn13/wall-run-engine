@@ -61,4 +61,5 @@ void CDirectionalLight::SetShadowMap(CGraphicsManager *RM) {
   l_EffectManager->ActivateCamera(m_ViewShadowMap, m_ProjectionShadowMap, m_Position);//l_Camera.GetPosition()
   RM->GetDevice()->SetTransform( D3DTS_VIEW, &l_view );
   RM->GetDevice()->SetTransform( D3DTS_PROJECTION, &l_Ortho );
+  RM->UpdateFrustum(l_view * l_Ortho);
 }
