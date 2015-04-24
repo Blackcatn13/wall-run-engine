@@ -54,19 +54,21 @@ void RegisterAI() {
     .property("m_JumpForce", &CAIController::getJumpForce,  &CAIController::setJumpForce )
     .property("m_CurrentJumpForce", &CAIController::getCurrentJumpForce,  &CAIController::setCurrentJumpForce )
     .property("m_isJumping", &CAIController::getisJumping,  &CAIController::setisJumping )
-	.property("m_SpeedModified", &CAIController::getSpeedModified, &CAIController::setSpeedModified )
+    .property("m_SpeedModified", &CAIController::getSpeedModified, &CAIController::setSpeedModified )
     .def("move", &CAIController::Move)
     .def("move_to", &CAIController::MoveTo)
+    .def("rotate_or_move", &CAIController::RotateOrMove)
+    .def("rotate_yaw", &CAIController::RotateYaw)
   ];
 
   luabind::module(LUA_STATE) [
     class_<CEnemy, CAIController>("CEnemy")
     .def(constructor<CXMLTreeNode>())
     .def(constructor<std::string, std::string, Vect3f, float, float, float , float >())
-	//.property("m_Speed", &CEnemy::getSpeed, &CEnemy::setSpeed)
-	.property("m_CurrentTime", &CEnemy::getCurrentTime, &CEnemy::setCurrentTime)
-	.property("m_OriginalPosition", &CEnemy::GetOriginalPosition)
-	.def("get_name",  &CEnemy::GetEnemyName)
+    //.property("m_Speed", &CEnemy::getSpeed, &CEnemy::setSpeed)
+    .property("m_CurrentTime", &CEnemy::getCurrentTime, &CEnemy::setCurrentTime)
+    .property("m_OriginalPosition", &CEnemy::GetOriginalPosition)
+    .def("get_name",  &CEnemy::GetEnemyName)
 
     /* .def("update", &CEnemy::Update)
      .def("render", &CEnemy::Render)*/
@@ -78,10 +80,13 @@ void RegisterAI() {
     .def(constructor<std::string, std::string, Vect3f, float, float, float , float >())
     .def("move_enemy", &CEasyEnemy::MoveEnemy)
     .def("get_next_wp", &CEasyEnemy::GetNextWp)
-    .def("init_wp_vector", &CEasyEnemy::InitWpVector)
+    // .def("init_wp_vector", &CEasyEnemy::InitWpVector)
     .property("m_CurrentWp", &CEasyEnemy::GetCurrentWp, &CEasyEnemy::SetCurrentWp)
-	.property("m_AttackSpeed", &CEasyEnemy::GetAttackSpeed )
-	.property("m_OriginalSpeed", &CEasyEnemy::GetOriginalSpeed )
+    .property("m_AttackSpeed", &CEasyEnemy::GetAttackSpeed )
+    .property("m_OriginalSpeed", &CEasyEnemy::GetOriginalSpeed )
+    .property("m_Returning", &CEasyEnemy::getReturning, &CEasyEnemy::setReturning)
+    .def("get_wp_vector_size", &CEasyEnemy::GetWPVectorSize )
+
     // .def("init", &CEasyEnemy::Init)
     //.def("update", &CEasyEnemy::Update)
     //.def("render", &CEasyEnemy::Render)

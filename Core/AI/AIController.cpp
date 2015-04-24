@@ -22,7 +22,7 @@ CAIController::CAIController()
     m_CurrentJumpForce(0),
     m_isJumping(false),
     m_RenderableObject(NULL),
-	m_SpeedModified(false){
+    m_SpeedModified(false) {
 
   m_PhysicUserData = new CPhysicUserData("AI");
   m_PhysicUserData->SetPaint(true);
@@ -42,7 +42,7 @@ CAIController::CAIController(std::string mesh, std::string name, Vect3f position
   m_Name(name),
   m_Mesh(mesh),
   m_RenderableObject(NULL),
-  m_SpeedModified(false){
+  m_SpeedModified(false) {
   std::stringstream ss;
   ss << name << "UserData";
   std::string userDataName = ss.str();
@@ -62,7 +62,7 @@ CAIController::CAIController(CRenderableObject *rond, float speed, float turnSpe
   m_isJumping(false),
   m_Name(rond->getName()),
   m_RenderableObject(rond),
-  m_SpeedModified(false){
+  m_SpeedModified(false) {
   std::stringstream ss;
   ss << rond->getName() << "UserData";
   std::string userDataName = ss.str();
@@ -136,28 +136,59 @@ void CAIController::Move(float dt) {
 
 void CAIController::MoveTo(float dt, Vect3f point) {
   if (point.Distance(m_Position) >= 2) {
-    Vect3f direction = (point - m_Position);
-    Vect3f diff = Vect3f(1, 0, 0).RotateY(m_fYaw);
-    float angle = getAngleDiff(direction, diff);
-    m_fYaw = m_fYaw - angle * m_TurnSpeed * dt;
-    //m_Position = m_Position + Vect3f(1,0,0).RotateZ(m_fYaw) * m_Speed * dt;
+    RotateYaw(dt, point);
+
     m_PhysicController->Move( Vect3f(1, 0, 0).RotateY(m_fYaw) * m_Speed, dt);
     SetPosition(m_PhysicController->GetPosition());
     Vect3f l_Position = (m_PhysicController->GetPosition());
-    if (m_RenderableObject == NULL) { //TODO eliminar esto cuando funcione el nuevo sistema de Enemigos
-      CRenderableObject *malla = RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("Enemy4");
-      malla->SetYaw(m_fYaw);
-      Vect3f position2 = malla->GetPosition();
-      bool visible = malla->getVisible();
-      malla->SetPosition(m_PhysicController->GetPosition());
+    /*if (m_RenderableObject == NULL) { //TODO eliminar esto cuando funcione el nuevo sistema de Enemigos
+         CRenderableObject *malla = RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("Enemy4");
+         malla->SetYaw(m_fYaw);
+         Vect3f position2 = malla->GetPosition();
+         bool visible = malla->getVisible();
+         malla->SetPosition(m_PhysicController->GetPosition());
 
-      //FIN TODO
-    } else {
-      m_RenderableObject->SetYaw(m_fYaw);
+         //FIN TODO
+       } else {
+      */
+    if (m_RenderableObject != NULL)
       m_RenderableObject->SetPosition(m_PhysicController->GetPosition());
-    }
-
   }
+
+}
+
+
+void CAIController::RotateOrMove(float dt, Vect3f point) {
+  if (point.Distance(m_Position) >= 2) {
+    Vect3f direction = (point - m_Position);
+    Vect3f diff = Vect3f(1, 0, 0).RotateY(m_fYaw);
+    float angle = getAngleDiff(direction, diff);
+    if (angle > 0.5f)
+      RotateYaw(dt, point);
+    else {
+      m_PhysicController->Move( direction.Normalize() * m_Speed, dt);
+      SetPosition(m_PhysicController->GetPosition());
+      Vect3f l_Position = (m_PhysicController->GetPosition());
+      if (m_RenderableObject != NULL) {
+        m_RenderableObject->SetPosition(m_PhysicController->GetPosition());
+      }
+    }
+  }
+}
+
+void CAIController::RotateYaw(float dt, Vect3f point) {
+  Vect3f direction = (point - m_Position);
+  Vect3f diff = Vect3f(1, 0, 0).RotateY(m_fYaw);
+  float angle = getAngleDiff(direction, diff);
+  RotateRenderable(dt, angle);
+  //m_Position = m_Position + Vect3f(1,0,0).RotateZ(m_fYaw) * m_Speed * dt;
+}
+
+void CAIController::RotateRenderable(float dt, float angle) {
+  m_fYaw = m_fYaw - angle * m_TurnSpeed * dt;
+  //m_PhysicController->Move( Vect3f(1, 0, 0).RotateY(m_fYaw) * m_Speed, dt);
+  if (m_RenderableObject != NULL)
+    m_RenderableObject->SetYaw(m_fYaw);
 }
 
 float CAIController::getAngleDiff(Vect3f A, Vect3f B) {

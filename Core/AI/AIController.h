@@ -19,6 +19,10 @@ class CAIController : public CObject3D {
   virtual ~CAIController();
   void Move(float dt);
   void MoveTo(float dt, Vect3f point);
+  void RotateYaw(float dt, Vect3f point);
+  void RotateRenderable(float dt, float angle);
+  void RotateOrMove(float dt, Vect3f point);
+
   GET_SET(CPhysicController *, PhysicController);
   GET_SET(CPhysicUserData *, PhysicUserData);
   GET_SET(float, Gravity);

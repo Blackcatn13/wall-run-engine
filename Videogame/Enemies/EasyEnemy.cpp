@@ -18,7 +18,7 @@ CEasyEnemy::CEasyEnemy(CXMLTreeNode &info1) : CEnemy(info1),
   m_OriginalSpeed(NULL),
   m_CurrentWpId(0) {
   Init("NoFSM");
-  InitWpVector(2, 4);
+  //InitWpVector(2, 4);
 }
 
 CEasyEnemy::CEasyEnemy(std::string mesh, std::string name, Vect3f position,  float speed, float turnSpeed, float gravity, float yaw) :
@@ -29,18 +29,18 @@ CEasyEnemy::CEasyEnemy(std::string mesh, std::string name, Vect3f position,  flo
   m_OriginalSpeed(speed),
   m_CurrentWpId(0) {
   Init("NoFSM");
-  InitWpVector(2, 4);
+  //InitWpVector(2, 4);
 }
 //Nuevo sistema
-CEasyEnemy::CEasyEnemy(CRenderableObject *renderableObject, int numWp, int distWp, float speed, float speedAttack, float life, std::string fsmName) :
+CEasyEnemy::CEasyEnemy(CRenderableObject *renderableObject, std::vector<Vect3f> wayPoints, float speed, float speedAttack, float life, std::string fsmName) :
   CEnemy(renderableObject, speed, life),
-  m_WpVector(NULL),
+  m_WpVector(wayPoints),
   m_CurrentWp(NULL),
   m_AttackSpeed(speedAttack),
   m_OriginalSpeed(speed),
   m_CurrentWpId(0) {
   Init(fsmName);
-  InitWpVector(numWp, distWp);
+  //InitWpVector(numWp, distWp);
 }
 
 
@@ -56,38 +56,44 @@ void CEasyEnemy::MoveEnemy(float ElapsedTime, Vect3f wp) {
   MoveTo(ElapsedTime, wp);
 }
 
-void CEasyEnemy::InitWpVector(int numWp, int max_distance) {
+/*void CEasyEnemy::InitWpVector(int numWp, int max_distance) {
   float l_AuxX = 0.0f;
   float l_AuxZ = 0.0f;
   srand (time(NULL));
   m_WpVector.clear();
   bool wasSum = false;
   for (int i = 0; i < numWp; ++i) {
-	  int random = (rand() % 2);
+    int random = (rand() % 2);
     if (random == 0 && !wasSum) {
       l_AuxX = rand() % max_distance + m_Position.x;
       l_AuxZ = rand() % max_distance + m_Position.z;
-	  wasSum = true;
-    } else if(random == 1 || wasSum){
+      wasSum = true;
+    } else if (random == 1 || wasSum) {
       l_AuxX = rand() % max_distance - m_Position.x;
       l_AuxZ = rand() % max_distance - m_Position.z;
-	  wasSum = false;
+      wasSum = false;
+    } else {
+      l_AuxX = rand() % max_distance - m_Position.x;
+      l_AuxZ = rand() % max_distance + m_Position.z;
     }
-	else{
-		l_AuxX = rand() % max_distance - m_Position.x;
-		l_AuxZ = rand() % max_distance + m_Position.z;
-	}
     m_WpVector.push_back(Vect3f(l_AuxX, m_Position.y, l_AuxZ));
   }
 }
 
+*/
 
-
+int CEasyEnemy::GetWPVectorSize() {
+  return m_WpVector.size();
+}
 
 Vect3f CEasyEnemy::GetNextWp() {
-  Vect3f  l_NextWp = m_WpVector[m_CurrentWpId];
-  ++ m_CurrentWpId;
-  if ( m_CurrentWpId == m_WpVector.size())
-    m_CurrentWpId = 0;
-  return l_NextWp;
+  if (m_WpVector.size() > 0) {
+    Vect3f  l_NextWp = m_WpVector[m_CurrentWpId];
+    ++ m_CurrentWpId;
+    if ( m_CurrentWpId == m_WpVector.size())
+      m_CurrentWpId = 0;
+    return l_NextWp;
+  }
+  return v3fZERO;
+
 }

@@ -16,12 +16,13 @@ class CEasyEnemy : public CEnemy {
   int					m_CurrentWpId;
   float					m_AttackSpeed;
   float					m_OriginalSpeed;
+  bool					m_Returning;
 
-  
+
 
  public:
   CEasyEnemy(CXMLTreeNode &info1);
-  CEasyEnemy(CRenderableObject *renderableObject, int numWp, int distWp, float speed, float speedAttack, float life, std::string fsmName);
+  CEasyEnemy(CRenderableObject *renderableObject, std::vector<Vect3f> wayPoints, float speed, float speedAttack, float life, std::string fsmName);
   CEasyEnemy(std::string mesh, std::string name, Vect3f position,  float speed, float turnSpeed, float gravity, float yaw) ;
   //~CEasyEnemy();
 
@@ -29,7 +30,7 @@ class CEasyEnemy : public CEnemy {
   virtual void Render();
   void MoveEnemy(float ElapsedTime, Vect3f wp);
   Vect3f GetNextWp();
-  void InitWpVector(int numWp, int max_distance);
+// void InitWpVector(int numWp, int max_distance);
 
   void SetCurrentWp(Vect3f CurrentWp) {
     m_CurrentWp = CurrentWp;
@@ -39,14 +40,17 @@ class CEasyEnemy : public CEnemy {
     return m_CurrentWp;
   }
 
-  float GetAttackSpeed(){
-	  return m_AttackSpeed;
+  float GetAttackSpeed() {
+    return m_AttackSpeed;
   }
 
-   float GetOriginalSpeed(){
-	  return m_OriginalSpeed;
+  float GetOriginalSpeed() {
+    return m_OriginalSpeed;
   }
 
+  int GetWPVectorSize();
+
+  GET_SET(bool, Returning)
 
 };
 

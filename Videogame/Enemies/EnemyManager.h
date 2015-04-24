@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include <map>
+#include "Math\Vector3.h"
 
 class CEnemy;
 class CXMLTreeNode;
@@ -13,6 +14,7 @@ class CXMLTreeNode;
 typedef struct EnemyStruct {
   std::string		instanceName;
   std::string		instanceType;
+  std::vector<Vect3f>		waypoints;
 
 } EnemiesStr;
 

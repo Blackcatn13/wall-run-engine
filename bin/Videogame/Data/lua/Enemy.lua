@@ -38,26 +38,32 @@ function enemy_update_stopped(ElapsedTime, doComprobation, name)
 	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
 	
 	if enemy ~= nil then
-		-- En caso de acabar de perseguir o llegar a un WP si la distancia al siguiente es muy corta vuelve a la posicion original
-		if enemy.m_CurrentWp ~= nil then
-			local wp_distance = get_distance_between_points(enemy.m_CurrentWp, enemy:get_next_wp())
-		--	coreInstance:trace(tostring(wp_distance))
-			if wp_distance < 4 then
-				enemy.m_CurrentWp = enemy:get_original_position()
+		if enemy:get_wp_vector_size() > 0 then --Si tiene waypoints para moverse
+			-- En caso de acabar de perseguir o llegar a un WP si la distancia al siguiente es muy corta vuelve a la posicion original
+						
+			if enemy.m_CurrentTime >= 0.1 then
+				instance.m_string = "Buscar_next_WP"
 			end
-		end
-		
-		if enemy.m_CurrentTime >= 0.1 then
-			instance.m_string = "Andar_WP"
-		end
-		
-		enemy.m_CurrentTime = enemy.m_CurrentTime +1 * ElapsedTime
-			
+						
+		else --En caso de no tener waypoints que mire al player
+			if enemy.m_CurrentWp == enemy.m_OriginalPosition and enemy.m_Returning == true then
+				instance.m_string = "Andar_WP"
+				enemy.m_Returning = false
+			else 
+				local player_position = coreInstance:get_player_controller():get_position()
+				local player_distance = get_distance_to_player(enemy:get_position(), player_position)
+				if player_distance < 500 then
+					-- Animacion de andar
+					enemy:rotate_yaw(ElapsedTime, player_position)
+				end
+			end
+		end	
 		-- Si le Player se acerca atacaarl
-		if check_attack(enemy) == true then
+		if check_attack(enemy) == true and enemy.m_CurrentTime >= 2 then
 		--	coreInstance:trace("Vamos a perseguir")
 			instance.m_string = "Perseguir_Player"
 		end
+		enemy.m_CurrentTime = enemy.m_CurrentTime +1 * ElapsedTime
 	else
 		instance.m_string = "Parado"
 	end
@@ -106,7 +112,8 @@ function enemy_update_moving(ElapsedTime, doComprobation, name)
 		
 	--	coreInstance:trace(tostring(currentwp.x))
 		
-		enemy:move_to(ElapsedTime, enemy.m_CurrentWp)
+	--	enemy:move_to(ElapsedTime, enemy.m_CurrentWp)
+		move_enemy(ElapsedTime, enemy.m_CurrentWp, enemy)
 	--		coreInstance:trace("Am I moving??")
 		if check_attack(enemy) == true then
 		--	coreInstance:trace("Vamos a perseguir")
@@ -130,7 +137,7 @@ function enemy_enter_calcwp(name)
 	--local enemy = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("enemies"):get_resource(name)
 	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
 	
-	if enemy ~= nil then
+	if enemy ~= nil and enemy:get_wp_vector_size() > 0 then
 		--[[if currentwp.z == wp2.z then
 			currentwp = wp
 		else
@@ -158,7 +165,7 @@ end
 function enemy_update_calcwp(ElapsedTime, doComprobation, name)
 	--local enemy = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("enemies"):get_resource(name)
 	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
-	if enemy ~= nil then
+	if enemy ~= nil and enemy:get_wp_vector_size() > 0 then
 		--[[if enemy.wp.z == 15 then
 			enemy.wp = Vect3f(2.0,2.0,-15.0)
 		else
@@ -182,6 +189,10 @@ function enemy_exit_attack_player(name)
 	enemy.m_Speed = enemy.m_OriginalSpeed
 	enemy.m_SpeedModified = false
 	enemy.m_CurrentTime = 0
+	if enemy:get_wp_vector_size() == 0 then
+		enemy.m_CurrentWp = enemy.m_OriginalPosition
+		enemy.m_Returning = true
+	end
 end
 
 function enemy_update_attack_player(ElapsedTime, doComprobation, name)
@@ -194,7 +205,7 @@ function enemy_update_attack_player(ElapsedTime, doComprobation, name)
 		enemy.m_SpeedModified = true	
 	end
 	
-	enemy:move_to(ElapsedTime, coreInstance:get_player_controller():get_position())
+	move_enemy(ElapsedTime, player_position, enemy)
 	
 	--if doComprobation == 1 then
 		local player_distance = get_distance_to_player(enemy:get_position(), player_position)
@@ -211,6 +222,14 @@ function enemy_update_attack_player(ElapsedTime, doComprobation, name)
 	--end
 end
 
+function move_enemy(ElapsedTime, _point, Enemy)
+	local player =  coreInstance:get_player_controller()
+	if player.m_is3D == true then 
+		Enemy:move_to(ElapsedTime, _point)
+	else
+		Enemy:rotate_or_move(ElapsedTime, _point)
+	end
+end
 
 function get_distance_to_player(current_position, _player_position)
 	-- calcular distancia hacia player

@@ -4,7 +4,13 @@
 	<core_enemy type="boss" life="250.0" time_to_spawn="0.0" time_to_shoot="2.0" shoot_accuracy="0.75"/>-->
 	<core_enemy type="mikmik_easy" speed="0.1" speed_attack="0.2" num_wp="2" dist_wp="3" fsm="MikMik"/>
 	
-	<instance_enemy name="Enemy1" type="mikmik_easy" />
+	<instance_enemy name="MikMik1" type="mikmik_easy" >
+	
+	</instance_enemy>
+	<instance_enemy name="MikMik2" type="mikmik_easy" >
+		<wp position = "-1.0 2.0 -10.0" />
+		<wp position = "-15.0 2.0 -10.0" />
+	</instance_enemy>
 	<!--<enemy name="Enemy2" type="easy" pos="8.0 2.0 -2.0" yaw="0.0" mesh="Enemy2" />
 	<enemy name="Enemy3" type="easy" pos="4.0 2.0 7.0" yaw="0.0" mesh="Enemy3" />-->
 	<!--<enemy name="Enemy4" type="easy" pos="5.0 2.0 3.0" yaw="0.0"/>
