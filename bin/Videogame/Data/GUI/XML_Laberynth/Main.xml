@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<Windows OnLoadWindows="_guiM:playImage('main_bolaGiro',0.1,true)"
+<Windows OnLoadWindows="CCoreLuaWrapper().m_CoreInstance:getGUIManager():playImage('main_bolaGiro',0.1,true)"
          OnSaveWindows=""
          OnUpdateWindows="if getCore():isEndTimer('main_discoBall',10)== true then                            
                             _guiM:playImage('main_discoBall',0.1,false)

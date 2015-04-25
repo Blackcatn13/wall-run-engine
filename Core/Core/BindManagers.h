@@ -79,7 +79,7 @@ void RegisterManagers() {
     .def("get_sphere", &CGraphicsManager::DrawSphere)
     .def("get_camera", &CGraphicsManager::DrawCamera)
     .def("get_quad2D", (void (CGraphicsManager::*)(const Vect2i &, uint32, uint32, ETypeAlignment, CColor)) &CGraphicsManager::DrawQuad2D)
-	.def("get_quad2DT", (void (CGraphicsManager::*)(const Vect2i &, uint32, uint32, ETypeAlignment, CTexture *, ETypeFlip)) &CGraphicsManager::DrawQuad2D)
+    .def("get_quad2DT", (void (CGraphicsManager::*)(const Vect2i &, uint32, uint32, ETypeAlignment, CTexture *, ETypeFlip)) &CGraphicsManager::DrawQuad2D)
     .def("calculate_alignment", &CGraphicsManager::CalculateAlignment)
     //.def("enable_alpha_blend", &CGraphicsManager::EnableAlphaBlend)
     .def("disable_alpha_blend", &CGraphicsManager::DisableAlphaBlend)
@@ -259,14 +259,15 @@ void RegisterManagers() {
     .def("UnregisterGameObject", &CWWSoundManager::UnregisterGameObject)
     .def("SetState", &CWWSoundManager::SetState)
   ];
-  
+
   luabind::module(LUA_STATE) [
     class_<CGUIManager>("CGUIManager")
     .def("push_windows", &CGUIManager::PushWindows)
     .def("pop_windows", &CGUIManager::PopWindows)
-	.def("set_message_box", &CGUIManager::SetMessageBox)
-	.def("set_image", &CGUIManager::SetImage)
-	.def("get_active_image", &CGUIManager::GetImage)
+    .def("set_message_box", &CGUIManager::SetMessageBox)
+    .def("set_image", &CGUIManager::SetImage)
+    .def("get_active_image", &CGUIManager::GetImage)
+    .def("playImage", &CGUIManager::PlayImage)
   ];
 
 }
