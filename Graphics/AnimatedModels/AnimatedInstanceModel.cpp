@@ -15,6 +15,10 @@
 #include "RenderableVertex\RenderableVertexs.h"
 #include "Core_Utils/MemLeaks.h"
 #include "Renderable\RenderableObjectTechniqueManager.h"
+#include "cal3d\skeleton.h"
+#include "cal3d\coreskeleton.h"
+#include "cal3d\corebone.h"
+#include "cal3d\bone.h"
 
 struct VERTEX {
   D3DXVECTOR3    pos;
@@ -30,7 +34,13 @@ struct VERTEX {
 #define CORE_MODEL m_AnimatedCoreModel->GetCoreModel()
 //#define D3DFVF_CUSTOMVERTEX (D3DFVF_XYZ|D3DFVF_DIFFUSE)
 
-CAnimatedInstanceModel::CAnimatedInstanceModel() {
+CAnimatedInstanceModel::CAnimatedInstanceModel() :
+  m_CalModel(NULL),
+  m_AnimatedCoreModel(NULL),
+  m_EffectTechnique(NULL),
+  m_NumFaces(0),
+  m_NumVtxs(0),
+  m_oldPosition(0) {
 }
 
 
@@ -53,13 +63,13 @@ void CAnimatedInstanceModel::Initialize(CAnimatedCoreModel *AnimatedCoreModel, C
 //	LoadVertexBuffer(RM);
   LoadTextures();
   BlendCycle(0, 1.0f, 0.0f);
-
   m_CalModel->update(0.0f);
+  m_oldPosition = m_CalModel->getSkeleton()->getCoreSkeleton()->getCoreBone("Base HumanPelvis")->getTranslation().y;
 }
 
 
 void CAnimatedInstanceModel::ExecuteAction(int Id, float DelayIn, float DelayOut, float WeightTarget, bool AutoLock) {
-  m_CalModel->getMixer()->executeAction(Id, DelayIn, DelayOut);
+  m_CalModel->getMixer()->executeAction(Id, DelayIn, DelayOut, WeightTarget, AutoLock);
 }
 
 void CAnimatedInstanceModel::BlendCycle(int Id, float Weight, float DelayIn) {
@@ -223,4 +233,12 @@ void CAnimatedInstanceModel::RenderModelByHardware(CGraphicsManager *RM) {
           l_CalHardwareModel->getVertexCount(), l_CalHardwareModel->getStartIndex(), l_CalHardwareModel->getFaceCount() * 3);
     }
   }
+}
+
+Vect3f CAnimatedInstanceModel::GetBonePosition() {
+  CalVector AnimatedBone = m_CalModel->getSkeleton()->getBone(0)->getTranslation();
+  float position = AnimatedBone.y - m_oldPosition;
+  m_oldPosition = AnimatedBone.y;
+  if (position < 0.001 && position > -0.001) position = 0;
+  return Vect3f(0, position, 0);
 }

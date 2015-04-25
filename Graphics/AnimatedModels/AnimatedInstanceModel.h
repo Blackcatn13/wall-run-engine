@@ -10,6 +10,7 @@
 #include "Renderable\RenderableObject.h"
 #include <vector>
 #include "Texture\Texture.h"
+#include "Math\Vector3.h"
 
 class CEffectTechnique;
 
@@ -26,6 +27,7 @@ class CAnimatedInstanceModel : public CRenderableObject {
   int m_NumFaces;
   //bool LoadVertexBuffer(CGraphicsManager *RM);
   void LoadTextures();
+  float m_oldPosition;
  public:
   CAnimatedInstanceModel();
   ~CAnimatedInstanceModel();
@@ -40,6 +42,7 @@ class CAnimatedInstanceModel : public CRenderableObject {
   void ClearCycle(int Id, float DelayOut);
   bool IsCycleAnimationActive(int Id) const;
   bool IsActionAnimationActive(int Id) const;
+  Vect3f GetBonePosition();
 };
 
 #endif

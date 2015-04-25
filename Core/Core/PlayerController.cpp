@@ -26,9 +26,10 @@ CPlayerController::CPlayerController()
     m_isJumping(false),
     m_isJumpingMoving(false),
     m_is3D(true),
-	m_isAttack(false),
-	m_AttackForce(5.0),
-	m_CurrentAttackForce(5.0) {
+    m_isAttack(false),
+    m_AttackForce(5.0),
+    m_CurrentAttackForce(5.0),
+    m_JumpingTime(0) {
   m_PhysicUserData = new CPhysicUserData("Player");
   m_PhysicUserData->SetPaint(false);
   m_PhysicController = new CPhysicController(0.25, 0.5, 1.047, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, Vect3f(0, 5, 0), 0);
@@ -44,8 +45,8 @@ CPlayerController::~CPlayerController() {
   CHECKED_DELETE(m_PhysicController);
 }
 
-void CPlayerController::Move(float dt) {
-  //En lua.
+void CPlayerController::Move(Vect3f direction, float dt) {
+  m_PhysicController->MovePlayer(direction, dt);
 }
 
 void CPlayerController::IsGrounded(Vect3f direction, float dt) {
@@ -54,5 +55,7 @@ void CPlayerController::IsGrounded(Vect3f direction, float dt) {
     m_isJumping = false;
     m_isJumpingMoving = false;
     m_isGrounded = true;
-  } else m_isGrounded = false;
+  } else {
+    m_isGrounded = false;
+  }
 }
