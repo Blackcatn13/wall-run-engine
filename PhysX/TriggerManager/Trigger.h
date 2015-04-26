@@ -48,7 +48,11 @@ class CTrigger: public CPhysicActor {
     return m_ElapsedTime;
   }
 
-  GET_SET(bool, Update)
+// GET_SET(bool, Update)
+  bool getUpdate() {
+    return m_Update;
+  }
+  void setUpdate(bool update);
   GET_SET(bool, IsSwitched)
 };
 

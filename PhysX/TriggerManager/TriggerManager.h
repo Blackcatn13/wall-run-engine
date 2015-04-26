@@ -23,6 +23,9 @@ class CTriggerManager : public CTemplatedVectorMapManager<CTrigger>, public CPhy
   CPhysicTriggerReport *getTriggerReport() {
     return this;
   }
+
+  std::vector<CTrigger *> &GetUpdateTriggersVector() {
+  }
   /* std::vector<CPhysicUserData *>		&GetUserDataVector() {
      return m_UserData;
    }
@@ -31,6 +34,7 @@ class CTriggerManager : public CTemplatedVectorMapManager<CTrigger>, public CPhy
   std::string							m_FileName;
 //  std::vector	<CPhysicUserData *>		m_UserData;
   float								ElapsedTime;
+  std::vector<CTrigger *>			m_UpdateTriggersVector;
 
 };
 

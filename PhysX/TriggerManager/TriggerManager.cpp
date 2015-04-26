@@ -14,6 +14,10 @@ CTriggerManager::~CTriggerManager() {
 }
 
 void CTriggerManager::Clear() {
+  for (size_t i = 0; i < m_UpdateTriggersVector.size(); ++ i) {
+    m_UpdateTriggersVector.erase(m_UpdateTriggersVector.begin() + i);
+  }
+  m_UpdateTriggersVector.clear();
   Destroy();
 //  for (size_t i = 0; i < m_UserData.size(); ++i) {
 ////    PHYSXM->ReleasePhysicActor(m_UserData[i]->GetActor());
@@ -81,8 +85,8 @@ bool CTriggerManager::Reload(const std::string &FileName) {
 }
 
 void CTriggerManager::Update(float dt) {
-  for (int i = 0; i < GetResourcesVector().size(); ++i) {
-    if (GetResourcesVector()[i]->getUpdate())
-      GetResourcesVector()[i]->Update(dt);
+  for (int i = 0; i < m_UpdateTriggersVector.size(); ++i) {
+    if (m_UpdateTriggersVector[i]->getUpdate())
+      m_UpdateTriggersVector[i]->Update(dt);
   }
 }

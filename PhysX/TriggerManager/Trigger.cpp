@@ -166,3 +166,14 @@ std::string CTrigger::SetString(std::string function, std::string param1) {
   ss << function << "(\"" << param1  << "\" )";
   return ss.str();
 }
+
+void CTrigger::setUpdate(bool update) {
+  m_Update = update;
+  if (update == true)
+    TRIGGM->GetUpdateTriggersVector().push_back(this);
+  else {
+    for (int i = 0; i <  TRIGGM->GetUpdateTriggersVector().size(); ++ i) {
+      TRIGGM->GetUpdateTriggersVector().erase(TRIGGM->GetUpdateTriggersVector().begin() + i);
+    }
+  }
+}
