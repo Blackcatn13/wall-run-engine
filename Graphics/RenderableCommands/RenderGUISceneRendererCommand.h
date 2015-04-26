@@ -8,8 +8,6 @@
 
 class CRenderGUISceneRendererCommand : public CSceneRendererCommand
 {
-private:
-    //CGUI *m_GUI;
 public:
     CRenderGUISceneRendererCommand(CXMLTreeNode &atts);
     void Execute(CGraphicsManager &RM);

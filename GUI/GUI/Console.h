@@ -22,10 +22,17 @@ public:
     bool IsReturnPress ();
     void Update(CInputManager* intputManager, float elapsedTime);
     bool IsDuplicate(std::string input);
+    std::string SearchString(int init, std::string input);
+    void LoadWords(const std::string &FileName);
 
 private:
     std::vector<std::string>	m_buffers;
     int							m_bufferPos;
+    std::string					m_FileName;
+    std::vector<std::string>	m_words;			//Vector of words.
+    std::string					m_completeBuffer;	//Original word before pressing TAB.
+    int							m_completeCount;	//Number of the last word used using TAB.
+    int							m_previousSize;		//Size to detect if any character is written using TABs.
 };
 
 #endif //INC_CONSOLE_H

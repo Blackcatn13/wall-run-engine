@@ -155,7 +155,10 @@ bool CGUIManager::Init (const std::string& initGuiXML)
                 m_Console =	new CConsole(m_ScreenResolution.x, m_ScreenResolution.y, h, w, Vect2f(posx, posy), colBLUE, 1);
                 assert(m_Console);
                 m_Console->SetName("Console");
+                m_Console->SetPosition(Vect2i(posx, posy));
+                m_Console->SetFont(colWHITE);
                 m_Console->SetVisible(false);
+                m_Console->SetActive(false);
                 m_Console->SetBackGroundTexture(back);
             } else {
                 std::string msg_error = "CGUIManager::Init-> Error al intentar leer el tag <Console> del archivo de configuracion GUI: " + initGuiXML;
@@ -887,7 +890,7 @@ void CGUIManager::SetConsole()
             m_Console->SetHeightPercent(10);
             m_Console->SetVisible( true );
             m_Console->SetActive( true );
-            m_Console->SetPosition(Vect2i(5, 50));
+            m_Console->GainFocus();
             /*m_LifeGUI->SetWidthPercent(170);
             m_LifeGUI->SetHeightPercent(10);
             m_LifeGUI->SetVisible( true );
@@ -895,6 +898,10 @@ void CGUIManager::SetConsole()
             m_LifeGUI->SetHeartVisible(true);
             m_LifeGUI->SetActive( true );
             m_LifeGUI->SetPosition(Vect2i(5, 150));*/
+        } else {
+            m_Console->SetVisible( false );
+            m_Console->SetActive( false );
+            m_Console->LoseFocus();
         }
     }
 }

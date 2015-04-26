@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<ConsoleWords>
+
+ <word string = "CCoreLuaWrapper()."/>
+ <word string = "m_CoreInstance:"/>
+ <word string = "getGUIManager():"/>
+ <word string = "push_windows"/>
+ <word string = "pop_windows"/>
+ 
+</ConsoleWords>

@@ -1,20 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<Windows OnLoadWindows=""
+<Windows OnLoadWindows="CCoreLuaWrapper().m_CoreInstance:getGUIManager():play_image('main_bolaGiro',0.1,true)"
          OnSaveWindows=""
-         OnUpdateWindows="if CCoreLuaWrapper().m_CoreInstance:get_action_to_input():do_action_from_lua('Attack') then                            
-                            if CCoreLuaWrapper().m_CoreInstance:getGUIManager():get_active_image('LifeGUI') == 'Life3' then
-								CCoreLuaWrapper().m_CoreInstance:getGUIManager():set_image('LifeGUI','Life2')
-							else
-								if CCoreLuaWrapper().m_CoreInstance:getGUIManager():get_active_image('LifeGUI') == 'Life2' then
-									CCoreLuaWrapper().m_CoreInstance:getGUIManager():set_image('LifeGUI','Life1')
-								else
-									if CCoreLuaWrapper().m_CoreInstance:getGUIManager():get_active_image('LifeGUI') == 'Life1' then
-										CCoreLuaWrapper().m_CoreInstance:getGUIManager():set_image('LifeGUI','Life0')
-									else
-										CCoreLuaWrapper().m_CoreInstance:getGUIManager():set_image('LifeGUI','Life3')
-									end
-								end	
-							end
+         OnUpdateWindows="if getCore():isEndTimer('main_discoBall',10)== true then                            
+                            _guiM:playImage('main_discoBall',0.1,false)
                           end">
 
   <Image name="main_fondo" posx="0.00" posy="0.00" height="100.00" width="100.00" visible="true" active="true"
@@ -148,12 +136,4 @@
           OnClickedAction=" _guiM:activeWindows('Exit.xml')
                             CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music')"
           OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music')"/>
-		  
-  <Image name="LifeGUI" posx="5.00" posy="40.00" height="20.00" width="20.00" visible="true" active="true"
-         default="Life3" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
-    <texture name="Life3" name_texture="./Data/GUI/GoPixelGo/Life3.png"/>
-	<texture name="Life2" name_texture="./Data/GUI/GoPixelGo/Life2.png"/>
-	<texture name="Life1" name_texture="./Data/GUI/GoPixelGo/Life1.png"/>
-	<texture name="Life0" name_texture="./Data/GUI/GoPixelGo/Life0.png"/>
-  </Image>
 </Windows>

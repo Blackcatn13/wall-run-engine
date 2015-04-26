@@ -267,7 +267,7 @@ void RegisterManagers() {
     .def("set_message_box", &CGUIManager::SetMessageBox)
     .def("set_image", &CGUIManager::SetImage)
     .def("get_active_image", &CGUIManager::GetImage)
-    .def("playImage", &CGUIManager::PlayImage)
+    .def("play_image", &CGUIManager::PlayImage)
   ];
 
 }
