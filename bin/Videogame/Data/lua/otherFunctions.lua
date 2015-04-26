@@ -138,21 +138,19 @@ function player_die()
 end
 
 function get_pixelite(pixelite_name)
-	local trigger_name = pixelite_name + "_Trigger"
-	local trigger = trigger_manager:get_resource(trigger_name)
+	local trigger_name = pixelite_name .. "_UserData"
+	local trigger = coreInstance:get_trigger_manager():get_resource(trigger_name)
 	if trigger.m_IsSwitched == false then
-		local player = Player.get_instance()
-		player.add_pixelites(1)
+		Player:get_instance().add_pixelites(1)
 		deactivate_collectible(trigger,"collectible", pixelite_name)
 	end
 end
 
 function get_sticker(sticker_name)
-	local trigger_name = pixelite_name + "_Trigger"
-	local trigger = trigger_manager:get_resource(trigger_name)
+	local trigger_name = pixelite_name .. "_UserData"
+	local trigger = coreInstance:get_trigger_manager():get_resource(trigger_name)
 	if trigger.m_IsSwitched == false then
-		local player = Player.get_instance()
-		player.add_sticker()
+		Player:get_instance().add_sticker()
 		deactivate_collectible(trigger,"collectible", sticker_name)
 	end
 end
@@ -162,7 +160,7 @@ function deactivate_collectible (_trigger, layer_name, obj_name)
 	_trigger.m_IsSwitched = true
 	local object_manager = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str(layer_name)
 	local object = object_manager:get_resource(obj_name)
-	object:set_visible(false)
+	object.m_Printable = false
 end
 
 function set_checkpoint(trigger_name)

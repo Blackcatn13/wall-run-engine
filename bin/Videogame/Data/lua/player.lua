@@ -25,18 +25,18 @@ function Player.new()
 	
 	------	 PLAYER FUNCTIONS -----
 	function self.add_pixelites(inc_pixelites)
-		self.num_pixelites = self.num_pixelites + inc_pixelites
-		coreInstance:trace(tostring(self.num_pixelites))
+		self.pixelites = self.pixelites + inc_pixelites
+		coreInstance:trace("Num Pixelites: "..tostring(self.pixelites))
 	end
 	
 	function self.add_sticker()
 		self.stickers = self.stickers + 1
-		coreInstance:trace(tostring(self.stickers))
+		coreInstance:trace("Num Stickers: "..tostring(self.stickers))
 	end
 	
 	function self.inc_score(value)
 		self.score = self.score + value
-		coreInstance:trace(tostring(self.score))
+		coreInstance:trace("Score: "..tostring(self.score))
 	end
 	
 	function self.get_player_controller()

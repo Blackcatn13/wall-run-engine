@@ -31,7 +31,7 @@ CCollectible::CCollectible(CRenderableObject *RendObj, std::string layerMame, st
   std::stringstream ss2;
   ss2 << RendObj->getName() << "_Trigger";
   std::string name2 = ss2.str();
-  TRIGGM->AddResource(name2, m_Trigger);
+  TRIGGM->AddResource(name, m_Trigger);
 }
 
 

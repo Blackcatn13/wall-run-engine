@@ -22,6 +22,7 @@ class CRenderableObject : public CObject3D, public CNamed {
     else
       m_Printable = false;
   }
+  GET_SET(bool, Printable);
   virtual void Render(CGraphicsManager *RM) = 0;
 };
 
