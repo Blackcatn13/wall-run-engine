@@ -25,6 +25,7 @@ class CTriggerManager : public CTemplatedVectorMapManager<CTrigger>, public CPhy
   }
 
   std::vector<CTrigger *> &GetUpdateTriggersVector() {
+    return m_UpdateTriggersVector;
   }
   /* std::vector<CPhysicUserData *>		&GetUserDataVector() {
      return m_UserData;

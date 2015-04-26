@@ -24,9 +24,10 @@ typedef struct CollectibleTypes {
 class CCollectibleManager : public CTemplatedVectorMapManager<CCollectible> {
 
  private:
-  std::string					m_FileName;
-  std::vector<StrCollectibles>	m_VectorCollectibleTypes;
-  std::string					m_Layer;
+  std::string									m_FileName;
+  std::vector<StrCollectibles>					m_VectorCollectibleTypes;
+  std::string									m_Layer;
+  std::map<std::string, std::string>			m_Unlockables;
  public:
   CCollectibleManager();
   ~CCollectibleManager();

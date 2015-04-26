@@ -28,9 +28,6 @@ CCollectible::CCollectible(CRenderableObject *RendObj, std::string layerMame, st
   std::string l_Param1 = m_RenderableObject->getName();
   Vect3f l_TriggerPosition = Vect3f(m_RenderableObject->GetPosition().x, m_RenderableObject->GetPosition().y + 0.2, m_RenderableObject->GetPosition().z);
   m_Trigger = new CTrigger("box", l_TriggerPosition, triggerSize, 0.0f, Vect3f(0.0f, 1.5f, 1.5f), "enter", TriggerLuaCode, l_Param1, param2, l_pUserData);
-  std::stringstream ss2;
-  ss2 << RendObj->getName() << "_Trigger";
-  std::string name2 = ss2.str();
   TRIGGM->AddResource(name, m_Trigger);
 }
 

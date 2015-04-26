@@ -28,10 +28,8 @@ function roll_object(objectName, layer_name, dt)
 end
 
 
-
-
 function unlock_image(image_path)
-	coreInstance:trace("Image Unclocked!!")
+	coreInstance:trace("Image ".. image_path .."Unclocked!!")
 end
 
 function toogle_switch(trigger_name, puzzle_name)
@@ -146,11 +144,12 @@ function get_pixelite(pixelite_name)
 	end
 end
 
-function get_sticker(sticker_name)
-	local trigger_name = pixelite_name .. "_UserData"
+function get_sticker(sticker_name, img_path)
+	local trigger_name = sticker_name .. "_UserData"
 	local trigger = coreInstance:get_trigger_manager():get_resource(trigger_name)
 	if trigger.m_IsSwitched == false then
 		Player:get_instance().add_sticker()
+		unlock_image(img_path)
 		deactivate_collectible(trigger,"collectible", sticker_name)
 	end
 end

@@ -23,8 +23,11 @@ void CCollectibleManager::InitCollectibles(std::string layerName) {
   for (int i = 0; i < l_Rom->GetResourcesVector().size(); ++i) {
     for (int j = 0; j < m_VectorCollectibleTypes.size(); ++j) {
       if (((CMeshInstance *)l_Rom->GetResourcesVector()[i])->GetCoreName() == m_VectorCollectibleTypes[j].CoreMesh) {
-        //if (m_VectorCollectibleTypes[j].Name == "pixelite") {
-        CCollectible *l_Collectible  = new CCollectible(l_Rom->GetResourcesVector()[i], m_Layer, m_VectorCollectibleTypes[j].MeshLuaFunction, m_VectorCollectibleTypes[j].TriggerFunction, m_VectorCollectibleTypes[j].TriggerSize, ""  );
+        std::string path = "";
+        if (m_VectorCollectibleTypes[j].Name == "card")
+          path = m_Unlockables.find(l_Rom->GetResourcesVector()[i]->getName())->second;
+
+        CCollectible *l_Collectible = new CCollectible(l_Rom->GetResourcesVector()[i], m_Layer, m_VectorCollectibleTypes[j].MeshLuaFunction, m_VectorCollectibleTypes[j].TriggerFunction, m_VectorCollectibleTypes[j].TriggerSize, path  );
         AddResource(l_Rom->GetResourcesVector()[i]->getName(), l_Collectible);
 
         /*  } else if ((m_VectorCollectibleTypes[j].Name == "sticker")) {
@@ -57,6 +60,10 @@ void CCollectibleManager::Load(std::string &FileName) {
           m_VectorCollectibleTypes.push_back(l_CollectibleType);
         } else if (l_name == "layer") {
           m_Layer = m(i).GetPszISOProperty("name", "collectible", false);
+        } else if (l_name == "unlockable-card") {
+          std::string l_meshName = m(i).GetPszISOProperty("mesh_name", "", false);
+          std::string l_imgSrc = m(i).GetPszISOProperty("img_src", "", false);
+          m_Unlockables.insert(std::pair<std::string, std::string>(l_meshName, l_imgSrc));
         }
       }
     }
@@ -75,6 +82,7 @@ void CCollectibleManager::Reload() {
 }
 
 void CCollectibleManager::DeInit() {
+  m_Unlockables.clear();
   m_VectorCollectibleTypes.clear();
   Destroy();
 }
