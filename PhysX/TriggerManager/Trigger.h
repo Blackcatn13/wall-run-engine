@@ -26,8 +26,13 @@ class CTrigger: public CPhysicActor {
   std::string		m_ScriptParam;
   std::string		m_PlatformName;
   bool			m_IsSwitched;
+  CPhysicUserData *m_UserData;
+
  public:
   CTrigger(CXMLTreeNode &node, CPhysicUserData *_pUserData);
+  CTrigger( std::string type, Vect3f position, Vect3f size, float radius, Vect3f color, std::string triggerEvent, std::string scriptFunction, std::string param1, std::string param2, CPhysicUserData *_pUserData);
+
+
   ~CTrigger(void);
 
   void ExecuteOnEnter	();

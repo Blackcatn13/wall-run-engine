@@ -9,6 +9,8 @@
 #include "Lights\LightManager.h"
 #include "Core\ScriptManager.h"
 #include "EnemyManager.h"
+#include "Collectibles\CollectibleManager.h"
+
 
 CRenderableObjectsLayersManager ::CRenderableObjectsLayersManager() {
   m_DefaultRenderableObjectManager = NULL;
@@ -60,6 +62,8 @@ void CRenderableObjectsLayersManager::Reload() {
   SCRIPTM->RunCode(toRun.c_str());
   LIGHTM->ReloadRO();
   ENEMYM->Reload();
+  COLM->Reload();
+
 }
 
 CRenderableObjectsManager *CRenderableObjectsLayersManager::GetRenderableObjectManager(CXMLTreeNode &Node) {

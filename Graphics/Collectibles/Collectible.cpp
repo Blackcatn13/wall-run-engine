@@ -6,37 +6,42 @@
 #include "Utils\PhysicUserData.h"
 #include "Actor\PhysicActor.h"
 #include "Utils\Defines.h"
+#include "TriggerManager\Trigger.h"
+#include "TriggerManager\TriggerManager.h"
 
-CCollectible::CCollectible(std::string coreName, std::string name, std::string layerName,  std::string userDataName, std::string luaCode):
-  CMeshInstance(name, coreName),
-  m_LayerName(layerName),
-  m_LuaCode(luaCode),
-  m_UserDataName(userDataName) {
+
+
+
+CCollectible::CCollectible(CRenderableObject *RendObj, std::string layerMame, std::string MeshLuaCode, std::string TriggerLuaCode, std::string param1, std::string param2):
+  m_RenderableObject(RendObj),
+  m_LuaCode(MeshLuaCode),
+// m_TriggerLuaCode(TriggerLuaCode),
+  m_LayerName(layerMame) {
+  std::stringstream ss;
+  ss << RendObj->getName() << "_UserData";
+  std::string name = ss.str();
+  CPhysicUserData *l_pUserData = new CPhysicUserData(name);
+  l_pUserData->SetPaint(false);
+  l_pUserData->SetColor(CColor(Vect3f(0.0f, 1.5f, 1.5f)));
+  l_pUserData->SetGroup(ECG_TRIGGERS);
+//  TRIGGM->GetUserDataVector().push_back( l_pUserData );
+  m_Trigger = new CTrigger("box", m_RenderableObject->GetPosition() , Vect3f(0.5f, 0.5f, 0.1f), 0.0f, Vect3f(0.0f, 1.5f, 1.5f), "enter", TriggerLuaCode, param1, param2, l_pUserData);
+  std::stringstream ss2;
+  ss2 << RendObj->getName() << "_Trigger";
+  std::string name2 = ss2.str();
+  TRIGGM->AddResource(name2, m_Trigger);
 }
 
 
-
 CCollectible::~CCollectible() {
-  PHYSXM->ReleasePhysicActor(m_CollectibleActor);
-  CHECKED_DELETE(m_CollectibleActor);
-  CHECKED_DELETE(m_CollectibleUserData);
 }
 
 void CCollectible::Update(float dt) {
   std::stringstream ss;
-
-  ss << m_LuaCode << "(\"" << m_Name << "\", \"" << m_LayerName << "\",  " <<  dt << ")";
+// ss << m_LuaCode << "(" << m_RenderableObject << "," << dt << ")";
+  ss << m_LuaCode << "(\"" << m_RenderableObject->getName() << "\", \"" << m_LayerName << "\",  " <<  dt << ")";
   std::string toRun = ss.str();
   SCRIPTM->RunCode(toRun.c_str());
   //SCRIPTM->RunCode(m_LuaCode);
 }
 
-void CCollectible::SetActor() {
-  m_CollectibleUserData = new CPhysicUserData(m_UserDataName);
-  m_CollectibleUserData->SetPaint(false);
-  m_CollectibleActor = new CPhysicActor(m_CollectibleUserData);
-  m_CollectibleActor->AddBoxSphape(Vect3f(0.5f, 0.5f, 0.1f), m_Position, Vect3f(0.0f, 0.0f, 0.0f));
-  //m_RenderableObject->SetYaw(m_fYaw);
-  // m_PlatorformActor->CreateBody(0.5f);
-  PHYSXM->AddPhysicActor(m_CollectibleActor);
-}

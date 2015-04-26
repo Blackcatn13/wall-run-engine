@@ -11,8 +11,8 @@
 	<layer name="collectible" />
 	<layer name="enemies" />
 	
-	<collectible name="pixelite1" type ="pixelite" core="SpongePicky" pos="10.0 2.0 2.0" yaw="0.0" pitch="0.0" roll="0.0" scale="0.5 0.5 0.1" visible="true" lua_code="roll_object" user_data_name="pixeliteUserData001" layer="collectible" />
-
+	<!--<collectible name="pixelite1" type ="pixelite" core="SpongePicky" pos="10.0 2.0 2.0" yaw="0.0" pitch="0.0" roll="0.0" scale="0.5 0.5 0.1" visible="true" lua_code="roll_object" user_data_name="pixeliteUserData001" layer="collectible" /> -->
+	<mesh_instance name="pixelite1" core="SpongePicky" pos="10.0 2.0 2.0" yaw="0.0" pitch="0.0" roll="0.0" scale="0.5 0.5 0.1" visible="true" layer="collectible" />
 	<!-- Fora sala -->
 	<animated_model name="SpongePicky" core="chuky" pos="0 0 20" yaw="0" pitch="0" roll="0" scale="1 1 1"/>
 	<animated_model name="Chucky" core="chuky" pos="5 0 0" yaw="0" pitch="0" roll="0" scale="1 1 1"/>

@@ -13,7 +13,7 @@ class CCromo: public CCollectible {
 
 
  public:
-  CCromo(std::string coreName, std::string name, std::string layerName,  std::string userDataName, std::string luaCode);
+  CCromo(CRenderableObject *RendObj, std::string layerName, std::string MeshLuaCode, std::string TriggerLuaCode);
 
 
   void update(float dt);

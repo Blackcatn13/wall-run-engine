@@ -19,7 +19,7 @@ CEnemy::CEnemy(CXMLTreeNode &info1)
                   info1.GetFloatProperty("turn_speed", .0f, false),
                   info1.GetFloatProperty("gravity", .0f, false)),
     m_RenderableObject(NULL),
-	m_CurrentTime(0.0f)
+    m_CurrentTime(0.0f)
 
     //  CAIController(info1.GetPszISOProperty("mesh", "", false), m_Name, m_Position)
 {
@@ -37,7 +37,7 @@ CEnemy::CEnemy(CXMLTreeNode &info1)
 CEnemy::CEnemy(CRenderableObject *renderableObject, float speed, float life):
   m_RenderableObject(renderableObject),
   m_Life(life),
- // m_Speed(speed),
+// m_Speed(speed),
   m_CurrentTime(0.0f),
   m_OriginalPosition(m_RenderableObject->GetPosition()),
   CAIController(renderableObject, speed, 2.5f, 13.0f ) {
@@ -48,7 +48,7 @@ CEnemy::CEnemy(std::string mesh, std::string name, Vect3f position,  float speed
   CAIController(mesh, name, position, speed, turnSpeed, gravity) ,
   m_RenderableObject(NULL) ,
   m_CurrentTime(0.0f),
-  m_OriginalPosition(position){
+  m_OriginalPosition(position) {
   m_fYaw = yaw;
   m_Position = position;
 
@@ -56,19 +56,19 @@ CEnemy::CEnemy(std::string mesh, std::string name, Vect3f position,  float speed
 
 
 void CEnemy::Init(std::string fsmName) {
- /* if (m_RenderableObject == NULL) { //Si se usa el sistema viejo
-    CRenderableObject *malla = RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource(getMesh());
-    malla->SetYaw(m_fYaw);
-    bool visible = malla->getVisible();
-    malla->SetPosition(m_Position);
-  } else { //Si se usa el nuevo
-   */ m_RenderableObject->SetYaw(m_fYaw);
-    m_RenderableObject->SetPosition(m_Position);
-    bool visible = m_RenderableObject->getVisible();
+  /* if (m_RenderableObject == NULL) { //Si se usa el sistema viejo
+     CRenderableObject *malla = RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource(getMesh());
+     malla->SetYaw(m_fYaw);
+     bool visible = malla->getVisible();
+     malla->SetPosition(m_Position);
+   } else { //Si se usa el nuevo
+    */ m_RenderableObject->SetYaw(m_fYaw);
+  m_RenderableObject->SetPosition(m_Position);
+  bool visible = m_RenderableObject->getVisible();
 
   //}
-  if(fsmName != "NoFSM")
-	  m_Fsm = new CFSMInstance(FSMMGR->GetResource(fsmName)); //TODO: pasar nombre de FSM por el XML de enemyManager
+  if (fsmName != "NoFSM")
+    m_Fsm = new CFSMInstance(FSMMGR->GetResource(fsmName)); //TODO: pasar nombre de FSM por el XML de enemyManager
 }
 
 void CEnemy::Update(float elapsedTime) {
@@ -77,18 +77,18 @@ void CEnemy::Update(float elapsedTime) {
 
 void CEnemy::Render() {
 }
-/*CEnemy::~CEnemy() {
-  //CHECKED_DELETE(m_Fsm);
+CEnemy::~CEnemy() {
+  CHECKED_DELETE(m_Fsm);
   //CHECKED_DELETE(m_RenderableObject);
-}*/
+}
 
-Vect3f CEnemy::GetOriginalPosition(){
-	return m_OriginalPosition;
+Vect3f CEnemy::GetOriginalPosition() {
+  return m_OriginalPosition;
 }
 
 void CEnemy::UpdateFSM(float elapsedTime) {
 // for (TMapResource::iterator it = m_Resources.begin(); it != m_Resources.end(); ++it) {
- // for (TMapResource::iterator it = m_Resources.begin(); it != m_Resources.end(); ++it) {
+// for (TMapResource::iterator it = m_Resources.begin(); it != m_Resources.end(); ++it) {
   STATE *s = m_Fsm->getStates().GetResource(m_Fsm->getCurrentState());
   char l_EnterFunction[256];
   if (s->m_onEnter == false) {
@@ -103,7 +103,7 @@ void CEnemy::UpdateFSM(float elapsedTime) {
     doComprobation = 1;
   }
   char l_UpdateFunction[256];
-  _snprintf_s(l_UpdateFunction, 256, 256, "%s(%f,%d,\"%s\")", s->onUpdate.c_str(), elapsedTime,doComprobation, getName().c_str());
+  _snprintf_s(l_UpdateFunction, 256, 256, "%s(%f,%d,\"%s\")", s->onUpdate.c_str(), elapsedTime, doComprobation, getName().c_str());
   SCRIPTM->RunCode(l_UpdateFunction);
   if (doComprobation == 1) {
     s->m_ElapsedTime = 0;
@@ -112,7 +112,7 @@ void CEnemy::UpdateFSM(float elapsedTime) {
   bool change = CLuaGlobals::getInstance()->ValueChanged();
   if (change) {
     s->m_onEnter = false;
-	char l_ExitFunction[256];
+    char l_ExitFunction[256];
     _snprintf_s(l_ExitFunction, 256, 256, "%s(\"%s\")", s->onExit.c_str(), getName().c_str());
     SCRIPTM->RunCode(l_ExitFunction);
     m_Fsm->setPreviousState( m_Fsm->getCurrentState());

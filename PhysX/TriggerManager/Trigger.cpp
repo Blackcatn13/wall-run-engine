@@ -10,7 +10,8 @@
 
 CTrigger::CTrigger(CXMLTreeNode &node, CPhysicUserData *_pUserData)
   : CPhysicActor(_pUserData),
-    m_IsSwitched(false) {
+    m_IsSwitched(false),
+    m_UserData(_pUserData) {
   m_Time = 0;
   m_Update = false;
   std::string l_sType = node.GetPszProperty("shape", "box", false);
@@ -59,7 +60,66 @@ CTrigger::CTrigger(CXMLTreeNode &node, CPhysicUserData *_pUserData)
   }
 }
 
+CTrigger::CTrigger(std::string type, Vect3f position, Vect3f size, float radius, Vect3f color, std::string triggerEvent, std::string scriptFunction, std::string param1, std::string param2, CPhysicUserData *_pUserData)
+  : CPhysicActor(_pUserData),
+    m_UserData(_pUserData),
+    m_IsSwitched(false),
+    m_ScriptParam(param1),
+    //  m_ScriptFile(""),
+    m_PlatformName(""),
+    m_UpdateFunction(""),
+    m_MaxTime(0) {
+  m_Time = 0;
+  m_Update = false;
+  std::string l_sType = type;
+  //int group = node.GetIntProperty("group", 1, false);
+  if (l_sType == "box")
+    CreateBoxTrigger(position, size);
+  else if (l_sType == "sphere")
+    CreateSphereTrigger(position, radius, ECG_TRIGGERS);
+  SetTriggerGroup(ECG_TRIGGERS);
+  _pUserData->SetColor(CColor(color));
+  _pUserData->SetPaint(false);
+  PHYSXM->AddPhysicActor(this);
+  PHYSXM->SetTriggerReport(TRIGGM->getTriggerReport());
+  //Events & scripts
+// std::string triggerEvent = triggerEvent;
+  //std::string scriptFile = node.GetPszISOProperty("script_file", "", false);
+// std::string l_scriptFunction = scriptFunction;
+// m_ScriptParam = param1;
+// std::string l_Param2 = node.GetPszISOProperty("param2", "", false);
+// m_PlatformName = node.GetPszISOProperty("platform_name", "", false);
+  //useElapsedTime = node.GetFloatProperty("uses_elapsed_time", false);
+// m_UpdateFunction =  node.GetPszISOProperty("update_function", "", false);
+// m_MaxTime =  node.GetIntProperty("max_time", 0, false);
+  if (triggerEvent == "enter") {
+    /* if (scriptFile != "")
+       m_OnEnter = scriptFile;
+     else*/ if (param2 == "") {
+      m_OnEnter = SetString(scriptFunction, m_ScriptParam);
+    } else {
+      m_OnEnter = SetString(scriptFunction, m_ScriptParam, param2);
+    }
+  } else if (triggerEvent == "stay") {
+    /* if (scriptFile != "")
+       m_OnStay = scriptFile;
+     else*/ if (param2 == "")
+      m_OnStay = SetString(scriptFunction, m_ScriptParam);
+    else
+      m_OnStay = SetString(scriptFunction, m_ScriptParam, param2);
+  } else if (triggerEvent == "leave") {
+    /*if (scriptFile != "")
+      m_OnExit = scriptFile;
+    else*/ if (param2 == "")
+      m_OnExit = SetString(scriptFunction, m_ScriptParam);
+    else
+      m_OnExit = SetString(scriptFunction, m_ScriptParam, param2);
+  }
+}
+
 CTrigger::~CTrigger() {
+  CHECKED_DELETE(m_UserData);
+  PHYSXM->ReleasePhysicActor(this);
 }
 
 
