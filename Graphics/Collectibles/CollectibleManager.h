@@ -15,6 +15,7 @@ typedef struct CollectibleTypes {
   std::string		CoreMesh;
   std::string		MeshLuaFunction;
   std::string		TriggerFunction;
+  Vect3f			TriggerSize;
   std::string		Name;
 
 } StrCollectibles;

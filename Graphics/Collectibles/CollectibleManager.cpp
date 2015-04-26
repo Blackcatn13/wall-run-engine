@@ -24,7 +24,7 @@ void CCollectibleManager::InitCollectibles(std::string layerName) {
     for (int j = 0; j < m_VectorCollectibleTypes.size(); ++j) {
       if (((CMeshInstance *)l_Rom->GetResourcesVector()[i])->GetCoreName() == m_VectorCollectibleTypes[j].CoreMesh) {
         //if (m_VectorCollectibleTypes[j].Name == "pixelite") {
-        CCollectible *l_Collectible  = new CCollectible(l_Rom->GetResourcesVector()[i], m_Layer, m_VectorCollectibleTypes[j].MeshLuaFunction, m_VectorCollectibleTypes[j].TriggerFunction, "", ""  );
+        CCollectible *l_Collectible  = new CCollectible(l_Rom->GetResourcesVector()[i], m_Layer, m_VectorCollectibleTypes[j].MeshLuaFunction, m_VectorCollectibleTypes[j].TriggerFunction, m_VectorCollectibleTypes[j].TriggerSize, ""  );
         AddResource(l_Rom->GetResourcesVector()[i]->getName(), l_Collectible);
 
         /*  } else if ((m_VectorCollectibleTypes[j].Name == "sticker")) {
@@ -53,6 +53,7 @@ void CCollectibleManager::Load(std::string &FileName) {
           l_CollectibleType.CoreMesh = m(i).GetPszISOProperty("core_mesh", "", false);
           l_CollectibleType.MeshLuaFunction = m(i).GetPszISOProperty("mesh_lua_function", "", false);
           l_CollectibleType.TriggerFunction = m(i).GetPszISOProperty("trigger_function", "", false);
+          l_CollectibleType.TriggerSize = m(i).GetVect3fProperty("trigger_size", v3fZERO, false);
           m_VectorCollectibleTypes.push_back(l_CollectibleType);
         } else if (l_name == "layer") {
           m_Layer = m(i).GetPszISOProperty("name", "collectible", false);

@@ -22,7 +22,7 @@ class CCollectible : public CNamed {
   CTrigger				*m_Trigger;
  public:
   //CCollectible(std::string coreName, std::string name, std::string layerName, std::string userDataName, std::string luaCode);
-  CCollectible(CRenderableObject *RendObj, std::string layerMame, std::string MeshLuaCode, std::string TriggerLuaCode, std::string param1, std::string param2);
+  CCollectible(CRenderableObject *RendObj, std::string layerMame, std::string MeshLuaCode, std::string TriggerLuaCode,  Vect3f triggerSize, std::string param2);
   virtual  ~ CCollectible ();
 
 

@@ -2,7 +2,8 @@
 <collectibles>
 	<layer name="collectible" />
 	
-	<collectible-type name ="pixelite"  core_mesh="SpongePicky" mesh_lua_function ="roll_object" trigger_function ="get_pixelite" />
+	<collectible-type name ="pixelite"  core_mesh="SpongePicky" mesh_lua_function ="roll_object" trigger_function ="get_pixelite" trigger_size = "0.10 0.20 0.05"/>
+	
 	<!-- <collectible-type name ="card"  core_mesh="" mesh_lua_function ="roll_object" on_enter_function ="get_pixelite" /> -->
 
 </collectibles>

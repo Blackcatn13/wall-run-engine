@@ -20,11 +20,23 @@ function Player.new()
 	self.last_spikes_position = Vect3f(0.0, 0.0, 0.0)
 	self.coreInstance = CCoreLuaWrapper().m_CoreInstance;
 	self.visited_checkpoints = {}
+	self.score = 0
+	self.stickers = 0
 	
 	------	 PLAYER FUNCTIONS -----
 	function self.add_pixelites(inc_pixelites)
 		self.num_pixelites = self.num_pixelites + inc_pixelites
 		coreInstance:trace(tostring(self.num_pixelites))
+	end
+	
+	function self.add_sticker()
+		self.stickers = self.stickers + 1
+		coreInstance:trace(tostring(self.stickers))
+	end
+	
+	function self.inc_score(value)
+		self.score = self.score + value
+		coreInstance:trace(tostring(self.score))
 	end
 	
 	function self.get_player_controller()
