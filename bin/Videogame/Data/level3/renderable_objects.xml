@@ -24,6 +24,7 @@
 	<!--<mesh_instance name="Enemy4" core="Enemy1"  pos="-1.591296 2.000000 11.657170" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />-->
 	<!-- -->
 		<mesh_instance name="OBSTACLE 007" core="OBSTACLE 007" pos="92.218491 0.000004 -5.311916" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+		<mesh_instance name="OBSTACLE 00004" core="OBSTACLE 007" pos="0 0.00000F 0" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.666 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="SALA1" core="SALA1" pos="32.936810 3.500000 0.259848" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="SALA 3" core="SALA 3" pos="140.106232 3.500001 11.438778" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="POLY PLAT. VERT." core="POLY PLAT. VERT." pos="481.534515 8.440789 -53.357197" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>

@@ -80,6 +80,10 @@ void CAnimatedInstanceModel::ClearCycle(int Id, float DelayOut) {
   m_CalModel->getMixer()->clearCycle(Id, DelayOut);
 }
 
+void CAnimatedInstanceModel::RemoveAction(int Id) {
+  m_CalModel->getMixer()->removeAction(Id);
+}
+
 void CAnimatedInstanceModel::Update(float ElapsedTime) {
   //TODO => Revisar el update (onIdle?)
   m_CalModel->update(ElapsedTime);
@@ -235,7 +239,17 @@ void CAnimatedInstanceModel::RenderModelByHardware(CGraphicsManager *RM) {
   }
 }
 
+Vect3f CAnimatedInstanceModel::GetAnimationBonePosition() {
+  CalVector CBone = m_CalModel->getSkeleton()->getBone(0)->getTranslation();
+  return Vect3f(0, CBone.y, 0);
+}
+
 Vect3f CAnimatedInstanceModel::GetBonePosition() {
+  CalVector CBone = m_CalModel->getSkeleton()->getCoreSkeleton()->getCoreBone(0)->getTranslation();
+  return Vect3f(0, CBone.y, 0);
+}
+
+Vect3f CAnimatedInstanceModel::GetBoneMovement() {
   CalVector AnimatedBone = m_CalModel->getSkeleton()->getBone(0)->getTranslation();
   float position = AnimatedBone.y - m_oldPosition;
   m_oldPosition = AnimatedBone.y;

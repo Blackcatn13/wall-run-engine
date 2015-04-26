@@ -44,7 +44,10 @@ void RegisterAnimatedModels() {
     .def("execute_action", &CAnimatedInstanceModel::ExecuteAction)
     .def("blend_cycle", &CAnimatedInstanceModel::BlendCycle)
     .def("clear_cycle", &CAnimatedInstanceModel::ClearCycle)
-    .def("getBonePositoin", &CAnimatedInstanceModel::GetBonePosition)
+    .def("remove_action", &CAnimatedInstanceModel::RemoveAction)
+    .def("getAnimationBonePosition", &CAnimatedInstanceModel::GetAnimationBonePosition)
+    .def("getBonePosition", &CAnimatedInstanceModel::GetBonePosition)
+    .def("getBoneMovement", &CAnimatedInstanceModel::GetBoneMovement)
     //.def("is_cycle_animation_active", &CAnimatedInstanceModel::IsCycleAnimationActive)
     //.def("is_action_animation_active", &CAnimatedInstanceModel::IsActionAnimationActive)
   ];

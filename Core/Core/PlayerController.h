@@ -26,6 +26,7 @@ class CPlayerController : public CObject3D {
   GET_SET(float, CurrentJumpForce);
   GET_SET(bool, is3D);
   GET_SET(bool, isAttack);
+  GET_SET(bool, isFalling);
   GET_SET(float, AttackForce);
   GET_SET(float, CurrentAttackForce);
   GET_SET(float, JumpingTime);
@@ -51,6 +52,7 @@ class CPlayerController : public CObject3D {
   int					m_JumpType;
   Vect3f			m_Direction3D;
   float       m_JumpingTime;
+  bool        m_isFalling;
 };
 
 

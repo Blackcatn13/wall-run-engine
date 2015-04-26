@@ -40,9 +40,12 @@ class CAnimatedInstanceModel : public CRenderableObject {
   void ExecuteAction(int Id, float DelayIn, float DelayOut, float WeightTarget = 1.0f, bool AutoLock = true);
   void BlendCycle(int Id, float Weight, float DelayIn);
   void ClearCycle(int Id, float DelayOut);
+  void RemoveAction(int Id);
   bool IsCycleAnimationActive(int Id) const;
   bool IsActionAnimationActive(int Id) const;
+  Vect3f GetBoneMovement();
   Vect3f GetBonePosition();
+  Vect3f GetAnimationBonePosition();
 };
 
 #endif

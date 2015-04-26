@@ -1,5 +1,6 @@
 local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 local is_init=true;
+local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky");
 function on_update_player_lua(l_ElapsedTime)
 	--local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 	local luaUtil = CCMathLuaUtils();
@@ -7,20 +8,18 @@ function on_update_player_lua(l_ElapsedTime)
 	local cam_Controller = coreInstance.m_CameraController;
 	local active_camera = cam_Controller:get_active_camera();
 	local camObject = active_camera.m_pObject3D;
-	
 	local player = coreInstance:get_player_controller();
 	--////////////////////////////////////////////////////////
 	-- PARAMETERS
 	--////////////////////////////////////////////////////////
-	player.m_Gravity = 11;						--Gravedad que afecta al personaje cuando cae.
+	player.m_Gravity = 9;						--Gravedad que afecta al personaje cuando cae.
 	player.m_GravityJump = 11;					--Gravedad que afecta cuando el personaje está impulsándose hacia arriba en el salto.
 	player.m_Speed = 8;							--Velocidad de movimiento.
 	player.m_JumpForce = 5.5;					--Fuerza de salto, impulso.
 	superjumForce = 10;						 	--SUPERSALTO CHEAT
 	player.m_AttackForce = 3;					--Impulse force for the attack.
 	player.m_PhysicController:set_step(0.3); 	--Altura que puede superar (escalones).
-	--player.m_isJumpingMoving = true;
-	local AirTime = 5;
+	local AirTime = 0.8;						-- Time into the air, playing air loop
 	--////////////////////////////////////////////////////////
 	if is_init == true then
 		is_init = false
@@ -141,44 +140,37 @@ function on_update_player_lua(l_ElapsedTime)
 			player:set_yaw(PlayerYaw + 4.712); -- 270º
 		end
 	end
-	--///////////////////////////////////////////////////////////
+
+	-- --///////////////////////////////////////////////////////////
 	-- Gravedad que siempre afecta al Player. 
 	--///////////////////////////////////////////////////////////
-	--mov.y = -player.m_Gravity/4 * l_ElapsedTime;
+	mov.y = -player.m_Gravity * l_ElapsedTime;
 	
 	--///////////////////////////////////////////////////////////
 	-- Cuando el Player está saltando, su velocidad dependerá del tipo de salto realizado. 
 	--///////////////////////////////////////////////////////////
-	--coreInstance:trace(tostring(player.m_isJumping))
-	if player.m_isJumping == true then
+	if (player.m_isJumping == true) or (player.m_isFalling) then
 		
 		if player.m_CurrentJumpForce < 0 then
 			player.m_CurrentJumpForce = player.m_CurrentJumpForce - (player.m_Gravity * l_ElapsedTime);
-			--coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky"):execute_action(3,0,0,1,true);
-			--coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky"):blend_cycle(2,0,0.5);
-			--coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky"):blend_cycle(3,1,0.5);
 		else
 			player.m_CurrentJumpForce = player.m_CurrentJumpForce - (player.m_GravityJump * l_ElapsedTime);
 		end
-		--mov.y = player.m_CurrentJumpForce * l_ElapsedTime;
-		--if player.m_isJumpingMoving == false then
-			--mov.y = player.m_CurrentJumpForce*2 * l_ElapsedTime;
-			--coreInstance:trace(tostring(mov.y))
-		mov.y = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky"):getBonePositoin().y;
+
+		if player.m_isJumping then
+			mov.y = playerRenderable:getBoneMovement().y;
+		end
 		if mov.y == 0 then
-			--coreInstance:trace(tostring(l_ElapsedTime))
-			--coreInstance:trace(tostring(player.m_JumpingTime))
-			--coreInstance:trace(tostring(AirTime))
-			if player.m_JumpingTime > AirTime then
-				player.m_isJumping = false;
-				coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky"):execute_action(3,0,0,1,true);
-			else
-				--coreInstance:trace("not enought")
-				--coreInstance:trace(tostring(player.m_JumpingTime))
-				player.m_JumpingTime = player.m_JumpingTime + l_ElapsedTime;
-				--coreInstance:trace(tostring(player.m_JumpingTime))
+			player.m_isJumpingMoving = false;
+		end
+		if player.m_JumpingTime > AirTime then
+			player.m_isJumping = false;
+			playerRenderable:remove_action(2);
+		else
+			if player.m_isFalling == false then
 			end
-			
+			player.m_JumpingTime = player.m_JumpingTime + l_ElapsedTime;
+			--playerRenderable:execute_action(3, 0, 0, 1, false);
 		end
 		if player.m_isJumpingMoving == true then
 			if player.m_is3D == false then
@@ -211,10 +203,6 @@ function on_update_player_lua(l_ElapsedTime)
 				end
 			end
 		end
-	else
-		--coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky"):blend_cycle(3,0,0);
-		--coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky"):blend_cycle(1,1,0);
-		mov.y = -player.m_Gravity * l_ElapsedTime;
 	end
 	
 	if player.m_isAttack == true then
@@ -223,7 +211,7 @@ function on_update_player_lua(l_ElapsedTime)
 			mov = player.m_Direction3D * player.m_CurrentAttackForce;
 			mov.y = 0.0;
 		else
-			local mesh = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky");
+			local mesh = playerRenderable;
 			mesh:set_position(player:get_position());
 			player.m_isAttack = false;
 		end
@@ -233,32 +221,23 @@ function on_update_player_lua(l_ElapsedTime)
 	-- Acción de saltar del Player. Puede realizar 2 saltos distintos (de longitud, y salto vertical). 
 	--///////////////////////////////////////////////////////////
 	if (act2in:do_action_from_lua("Jump")) and (player.m_isJumping == false) then
-		coreInstance:trace("jumping")
 		coreInstance:getWWSoundManager():PlayEvent("Jump", "Piky");
 		player.m_JumpingTime = 0;
-		--coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky"):getBonePositoin();
-		coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky"):execute_action(2,0,0,1,true);
-		coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky"):blend_cycle(1,0,0);
+		playerRenderable:execute_action(2,0,0,1,true);
 		player.m_isJumping = true;
 		player.m_CurrentJumpForce = player.m_JumpForce;
-		--mov.y = player.m_CurrentJumpForce*1.75 * l_ElapsedTime;
 		if player.m_is3D == false then
 			if act2in:do_action_from_lua("MoveRigth") then
 				player.m_isJumpingMoving = true;
 			elseif act2in:do_action_from_lua("MoveLeft") then
 				player.m_isJumpingMoving = true;
-			else
-				--mov.y = player.m_CurrentJumpForce*2 * l_ElapsedTime;
 			end
 		else
 			if player.m_JumpType >= 1 then
 				player.m_isJumpingMoving = true;
-			else
-				--mov.y = player.m_CurrentJumpForce*2 * l_ElapsedTime;
 			end
 		end
 		if (act2in:do_action_from_lua("SuperJump")) then
-			--mov.y = superjumForce*2 * l_ElapsedTime;
 			player.m_CurrentJumpForce = superjumForce*2;
 		end
 	end
@@ -278,22 +257,27 @@ function on_update_player_lua(l_ElapsedTime)
 	else
 		player:is_grounded(mov,l_ElapsedTime);
 	end
-	--player.m_isJumping = true;
 	player:set_position(player.m_PhysicController:get_position());
-	move_character_controller_mesh(player, player:get_position());
-	
+	move_character_controller_mesh(player, player:get_position(), player.m_isJumping);
+	if mov.x == 0 and mov.z == 0 then
+		playerRenderable:blend_cycle(1,0,0);
+		playerRenderable:blend_cycle(0,1,0);
+	else
+		playerRenderable:blend_cycle(0,0,0);
+		playerRenderable:blend_cycle(1,1,0);
+	end
 	return 0;
 end
 
-function move_character_controller_mesh(_player, _position)
-	local mesh = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky")
+function move_character_controller_mesh(_player, _position, _jumping)
+	local mesh = playerRenderable
 	mesh:set_yaw(_player:get_yaw() + math.pi)
-
-	local mesh_position = Vect3f(_position.x, _position.y-0.4, _position.z)
-	CCoreLuaWrapper().m_CoreInstance:coreInstance:trace(tostring(mesh_position))
+	local pos;
+	if _jumping then
+		pos = playerRenderable:getAnimationBonePosition().y;
+	else
+		pos = playerRenderable:getBonePosition().y;
+	end
+	local mesh_position = Vect3f(_position.x, _position.y - pos - 1, _position.z)
 	mesh:set_position(mesh_position)
---[[CRenderableObject* malla = RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky");
-    malla->SetYaw(m_fYaw);
-    malla->SetPosition(m_PhysicController->GetPosition());--]]
-
 end
