@@ -45,7 +45,9 @@
     <ClInclude Include="Reports\PhysicsControllerHitReport.h" />
     <ClInclude Include="Reports\PhysicTriggerReport.h" />
     <ClInclude Include="TriggerManager\Trigger.h" />
-    <ClInclude Include="TriggerManager\TriggerManager.h" />
+    <ClInclude Include="TriggerManager\TriggerManager.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="Utils\PhysicASELoader.h" />
     <ClInclude Include="Utils\PhysicStream.h" />
     <ClInclude Include="Utils\PhysicUserAllocator.h" />

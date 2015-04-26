@@ -31,6 +31,7 @@ typedef struct Conf_info {
   std::string					LevelPhisics;
   std::string					TriggersPath;
   std::string					PuzzlesPath;
+  std::string					CollectiblesPath;
 } CONFIG_INFO;
 
 

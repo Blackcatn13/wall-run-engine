@@ -8,7 +8,8 @@
 #include "GraphicsManager.h"
 
 
-CMeshInstance::CMeshInstance(const std::string &Name, const std::string &CoreName) {
+CMeshInstance::CMeshInstance(const std::string &Name, const std::string &CoreName):
+  m_CoreName(CoreName) {
   m_StaticMesh = SMESHM->GetResource(CoreName);
   setName(Name);
 }

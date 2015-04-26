@@ -32,6 +32,7 @@
 #include "WWSoundManager.h"
 #include "AI\PuzzleManager.h"
 #include "GUI\GUIManager.h"
+#include "Collectibles\CollectibleManager.h"
 
 CCore *CCore::m_Instance = 0;
 
@@ -127,6 +128,10 @@ void CCore::Init(HWND handler) {
   m_GuiManager = new CGUIManager(Vect2i(m_Config.Screen_Width, m_Config.Screen_Heigth));
   m_GuiManager->Init("./Data/GUI/initGui_laberynth.xml");
   m_GuiManager->LoadGuiFiles("./Data/GUI/XML_Laberynth");
+
+  m_CollectibleManager = new CCollectibleManager();
+  m_CollectibleManager->Load(m_Config.CollectiblesPath);
+  m_CollectibleManager->InitCollectibles(m_CollectibleManager->GetCollectiblesLayerName());
 }
 
 void CCore::DeInit() {
@@ -163,6 +168,7 @@ void CCore::DeInit() {
   CHECKED_DELETE(m_PuzzleManager);
   CHECKED_DELETE(m_GuiManager);
   CHECKED_DELETE(m_PhysicsManager);
+  CHECKED_DELETE(m_CollectibleManager);
   // m_PlatformsMap->Destroy();
 }
 
@@ -192,7 +198,7 @@ void CCore::Update(float dt) {
   m_PuzzleManager->Update(dt);
   m_WWSoundManager->Render();
   m_GuiManager->Update(dt);
-
+  m_CollectibleManager->Update(dt);
 }
 
 

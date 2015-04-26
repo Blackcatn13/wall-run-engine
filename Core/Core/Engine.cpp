@@ -21,6 +21,7 @@
 #include "Core_Utils/MemLeaks.h"
 #include "AI\PuzzleManager.h"
 
+
 #define APPLICATION_NAME	"VIDEOGAME"
 
 CEngine::~CEngine(void) {
@@ -86,6 +87,7 @@ void CEngine::Update() {
     m_Process->SetPrintInfo(!m_Process->getPrintInfo());
   if (ACT2IN->DoAction("ReloadPuzzles"))
     PUZZLEM->Reload();
+
   //m_LogRender->Update(m_Timer.GetElapsedTime());
 }
 
@@ -174,7 +176,11 @@ void CEngine::ParseConfFile(std::string file) {
             m_Conf_info.TriggersPath = n(i).GetPszISOProperty("TriggersFile", "./Data/level1/triggers.xml", false);
           } else if (name == "Puzzles") {
             m_Conf_info.PuzzlesPath = n(i).GetPszISOProperty("PuzzlesFile", "./Data/level1/puzzles.xml", false);
+          } else if (name == "Collectibles") {
+            m_Conf_info.CollectiblesPath = n(i).GetPszISOProperty("CollectiblesFile", "./Data/level1/collectibles.xml", false);
           }
+
+
         }
       }
     }

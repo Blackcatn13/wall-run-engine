@@ -39,7 +39,7 @@ class CEnemy : public CAIController { //CAIController
   CEnemy(CXMLTreeNode &info1);
   CEnemy(std::string mesh, std::string name, Vect3f position,  float speed, float turnSpeed, float gravity, float yaw);
   CEnemy(CRenderableObject *renderableObject, float speed, float life);
-  //~CEnemy();
+  virtual ~CEnemy();
 
 
   //virtual ~CEnemy();
@@ -48,8 +48,8 @@ class CEnemy : public CAIController { //CAIController
   virtual void Render() /*= 0*/;
   void UpdateFSM(float elapsedTime);
   Vect3f GetOriginalPosition();
-  std::string GetEnemyName(){
-	  return getName();
+  std::string GetEnemyName() {
+    return getName();
   }
   //void SetMesh(std::string mesh);
   GET_SET(float, Life);
@@ -59,7 +59,7 @@ class CEnemy : public CAIController { //CAIController
   GET_SET(float, TimeToSpawn);
   GET_SET(float, TimeToShoot);
   GET_SET(float, ShootAccuracy);
- // GET_SET(float, Speed);
+// GET_SET(float, Speed);
   GET_SET(float, CurrentTime);
   // get & set
   // set(const <type> &name)

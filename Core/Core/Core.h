@@ -40,6 +40,7 @@ class CFSMManager;
 class CWWSoundManager;
 class CPuzzleManager;
 class CGUIManager;
+class CCollectibleManager;
 
 #define CCORE			  CCore::GetInstance()
 #define GRAPHM			CCore::GetInstance()->GetGraphicsManager()
@@ -73,6 +74,7 @@ class CGUIManager;
 #define WWSNDMGR		CCore::GetInstance()->GetWWSoundManager()
 #define PUZZLEM			CCore::GetInstance()->GetPuzzleManager()
 #define GUIM			CCore::GetInstance()->GetGuiManager()
+#define COLM			CCore::GetInstance()->GetCollectibleManager()
 
 class CCore {
  protected:
@@ -116,6 +118,7 @@ class CCore {
   CFSMManager						*m_FSMManager;
   CWWSoundManager					*m_WWSoundManager;
   CGUIManager						*m_GuiManager;
+  CCollectibleManager				*m_CollectibleManager;
 
  public:
   ~CCore();
@@ -238,7 +241,9 @@ class CCore {
     return m_GuiManager;
   }
 
-
+  CCollectibleManager *GetCollectibleManager() {
+    return m_CollectibleManager;
+  }
 
   GET_SET(std::string, LuaLoadLevelFunc)
   GET_SET(std::string, LevelPhisicsFile)

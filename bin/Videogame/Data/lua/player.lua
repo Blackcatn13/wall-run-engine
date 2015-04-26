@@ -43,7 +43,7 @@ function Player.new()
 		self.coreInstance:trace("Taking damage")
 		if self.num_hearts == 0 then
 			self.num_hearts = 3
-			--self.player_die()
+			self.player_die()
 			--self.coreInstance:trace("PLAYER DEEEEEEEEEEEEEEEEEEEEEEEEEAD")
 		end
 	end

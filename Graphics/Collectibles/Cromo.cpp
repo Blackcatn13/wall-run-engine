@@ -1,7 +1,6 @@
 #include "Cromo.h"
 
 
-CCromo::CCromo(std::string coreName, std::string name,std::string layerName, std::string userDataName,std::string luaCode):
-CCollectible(coreName, name, layerName,userDataName,luaCode)
-{
+CCromo::CCromo(CRenderableObject *RendObj, std::string layerName, std::string MeshLuaCode, std::string TriggerLuaCode):
+  CCollectible(RendObj, layerName, MeshLuaCode, TriggerLuaCode) {
 }

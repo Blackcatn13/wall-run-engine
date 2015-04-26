@@ -321,6 +321,9 @@
     <ClCompile Include="Collectibles\Pixelite.cpp">
       <Filter>Collectibles</Filter>
     </ClCompile>
+    <ClCompile Include="Collectibles\CollectibleManager.cpp">
+      <Filter>Collectibles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
@@ -593,6 +596,9 @@
       <Filter>Collectibles</Filter>
     </ClInclude>
     <ClInclude Include="Collectibles\Pixelite.h">
+      <Filter>Collectibles</Filter>
+    </ClInclude>
+    <ClInclude Include="Collectibles\CollectibleManager.h">
       <Filter>Collectibles</Filter>
     </ClInclude>
   </ItemGroup>

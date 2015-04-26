@@ -27,6 +27,9 @@ function roll_object(objectName, layer_name, dt)
 	object:set_yaw(new_yaw)
 end
 
+
+
+
 function unlock_image(image_path)
 	coreInstance:trace("Image Unclocked!!")
 end
