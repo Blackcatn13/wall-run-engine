@@ -29,7 +29,7 @@ void CEnemyManager::InitEnemies(std::string layerName) {
     for (int j = 0; j < m_EnemyInstances.size(); ++j) {
       if (l_Rom->GetResourcesVector()[i]->getName() == m_EnemyInstances[j].instanceName) {
         std::string nam = m_Cores.find(m_EnemyInstances[j].instanceType)->first;
-        if (nam.find("mikmik") != std::string::npos) {
+        if ((nam.find("mikmik") != std::string::npos) || (nam.find("pumpum") != std::string::npos)) {
           int l_NumWp = m_Cores.find(m_EnemyInstances[j].instanceType)->second.NumWp;
           float l_DistWp = m_Cores.find(m_EnemyInstances[j].instanceType)->second.DistPlayer;
           float l_Speed = m_Cores.find(m_EnemyInstances[j].instanceType)->second.Speed;

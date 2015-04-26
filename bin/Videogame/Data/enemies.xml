@@ -3,7 +3,13 @@
 	<core_enemy type="patrol" life="75.0" time_to_spawn="1.0" time_to_shoot="2.5" shoot_accuracy="0.45"/>
 	<core_enemy type="boss" life="250.0" time_to_spawn="0.0" time_to_shoot="2.0" shoot_accuracy="0.75"/>-->
 	<core_enemy type="mikmik_easy" speed="0.1" speed_attack="0.2" num_wp="2" dist_wp="3" fsm="MikMik"/>
+	<core_enemy type="pumpum_easy" speed="0.1" speed_attack="0.2" num_wp="2" dist_wp="3" fsm="PumPum"/>
 	
+	<instance_enemy name="MikMik3" type="pumpum_easy" >
+		<wp position = "-3.0 2.0 -10.0" />
+		<wp position = "-12.0 2.0 -10.0" />
+	</instance_enemy>
+	 
 	<instance_enemy name="MikMik1" type="mikmik_easy" >
 	
 	</instance_enemy>
