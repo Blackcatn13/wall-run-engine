@@ -3,5 +3,10 @@
 	<texture file="NRM_Piky.tga"/>
 	<skeleton file="Piky_Skeleton.CSF"/>
 	<mesh file="Piky_Mesh.CMF"/>
-	<animation name="Piky_IDLE" file="Piky_run.CAF"/>
+	<animation name="idle" file="Piky_idle.CAF"/>
+	<animation name="run" file="Piky_run.CAF"/>
+	<animation name="jump_init" file="Piky_jump_start.CAF"/>
+	<animation name="jump_loop" file="Piky_jump_loop.CAF"/>
+	<animation name="jump_fall" file="Piky_jump_end.CAF"/>
+	<animation name="attack" file="Piky_attack.CAF"/>
 </animated_model>

@@ -162,12 +162,13 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		if mov.y == 0 then
 			player.m_isJumpingMoving = false;
+			player.m_isFalling = true;
 		end
 		if player.m_JumpingTime > AirTime then
 			player.m_isJumping = false;
 			playerRenderable:remove_action(2);
 		else
-			if player.m_isFalling == false then
+			if player.m_isFalling then
 			end
 			player.m_JumpingTime = player.m_JumpingTime + l_ElapsedTime;
 			--playerRenderable:execute_action(3, 0, 0, 1, false);
@@ -278,6 +279,6 @@ function move_character_controller_mesh(_player, _position, _jumping)
 	else
 		pos = playerRenderable:getBonePosition().y;
 	end
-	local mesh_position = Vect3f(_position.x, _position.y - pos - 1, _position.z)
+	local mesh_position = Vect3f(_position.x, _position.y - pos - 0.2, _position.z)
 	mesh:set_position(mesh_position)
 end

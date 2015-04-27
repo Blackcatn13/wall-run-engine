@@ -15,6 +15,6 @@ CParticleRendererCommand::~CParticleRendererCommand() {
 }
 
 void CParticleRendererCommand::Execute(CGraphicsManager &RM) {
-  //PARTIM->Render(&RM);
+  PARTIM->Render(&RM);
   //BILLBM->Render(&RM);
 }
