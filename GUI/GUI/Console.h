@@ -22,8 +22,10 @@ public:
     bool IsReturnPress ();
     void Update(CInputManager* intputManager, float elapsedTime);
     bool IsDuplicate(std::string input);
-    std::string SearchString(int init, std::string input);
+    std::string SearchString(int init, std::string input, bool forward = true);
+	std::string DetectInitOfString(std::string input);
     void LoadWords(const std::string &FileName);
+	bool GetIsFocus();
 
 private:
     std::vector<std::string>	m_buffers;
@@ -33,6 +35,10 @@ private:
     std::string					m_completeBuffer;	//Original word before pressing TAB.
     int							m_completeCount;	//Number of the last word used using TAB.
     int							m_previousSize;		//Size to detect if any character is written using TABs.
+	bool						m_doAutoCompleteBack;   //Value to avoid the duplicate results during AutoComplete.
+	bool						m_doAutoComplete;   //Value to avoid the duplicate results during AutoCompleteBack.
+	bool						m_firstWord;		//Value to know if the autocompleted word is the unique one.
+	bool						m_secondTry;		//Value to know if this autocomplete is the first one with this word.
 };
 
 #endif //INC_CONSOLE_H

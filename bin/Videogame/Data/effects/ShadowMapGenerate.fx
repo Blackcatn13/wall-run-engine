@@ -19,10 +19,11 @@ PNormalVertex VertShadow(float3 Pos : POSITION, float3 Normal : NORMAL)
 float4 PixShadow(PNormalVertex IN) : COLOR
 {
 	//float4 Color = IN.Depth.x / IN.Depth.y;
+	//return float4(0,0,1,1);
 	return IN.Depth.x / IN.Depth.y;
 }
 
-technique tec0
+technique GenerateShadowMap
 {
     pass p0
     {

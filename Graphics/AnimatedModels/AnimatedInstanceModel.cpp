@@ -64,7 +64,7 @@ void CAnimatedInstanceModel::Initialize(CAnimatedCoreModel *AnimatedCoreModel, C
   LoadTextures();
   BlendCycle(0, 1.0f, 0.0f);
   m_CalModel->update(0.0f);
-  m_oldPosition = m_CalModel->getSkeleton()->getCoreSkeleton()->getCoreBone("Base HumanPelvis")->getTranslation().y;
+  m_oldPosition = m_CalModel->getSkeleton()->getCoreSkeleton()->getCoreBone(0)->getTranslation().y;
 }
 
 

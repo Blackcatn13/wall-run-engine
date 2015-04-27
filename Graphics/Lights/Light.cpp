@@ -74,12 +74,12 @@ void CLight::Init() {
   if (m_GenerateStaticShadowMap) {
     m_StaticShadowMap = new CTexture();
     std::string l_StaticShadowMapTextureName = "Static_" + m_Name;
-    m_StaticShadowMap->Create(l_StaticShadowMapTextureName, m_ShadowMapWidth, m_ShadowMapHeigth, 0, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, m_StaticShadowMap->GetFormatTypeFromString(m_FormatType), true);
+    m_StaticShadowMap->Create(l_StaticShadowMapTextureName, m_ShadowMapWidth, m_ShadowMapHeigth, 1, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, m_StaticShadowMap->GetFormatTypeFromString(m_FormatType), true);
   }
   if (m_GenerateDynamicShadowMap) {
     m_DynamicShadowMap = new CTexture();
     std::string l_DinamicShadowMapTextureName = "Dynamic_" + m_Name;
-    m_DynamicShadowMap->Create(l_DinamicShadowMapTextureName, m_ShadowMapWidth, m_ShadowMapHeigth, 0, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, m_DynamicShadowMap->GetFormatTypeFromString(m_FormatType), true);
+    m_DynamicShadowMap->Create(l_DinamicShadowMapTextureName, m_ShadowMapWidth, m_ShadowMapHeigth, 1, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, m_DynamicShadowMap->GetFormatTypeFromString(m_FormatType), true);
   }
 }
 

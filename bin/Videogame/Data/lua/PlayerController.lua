@@ -1,6 +1,6 @@
 local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 local is_init=true;
-local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky");
+
 function on_update_player_lua(l_ElapsedTime)
 	--local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 	local luaUtil = CCMathLuaUtils();
@@ -9,6 +9,7 @@ function on_update_player_lua(l_ElapsedTime)
 	local active_camera = cam_Controller:get_active_camera();
 	local camObject = active_camera.m_pObject3D;
 	local player = coreInstance:get_player_controller();
+	local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky");
 	--////////////////////////////////////////////////////////
 	-- PARAMETERS
 	--////////////////////////////////////////////////////////
@@ -162,12 +163,13 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		if mov.y == 0 then
 			player.m_isJumpingMoving = false;
+			player.m_isFalling = true;
 		end
 		if player.m_JumpingTime > AirTime then
 			player.m_isJumping = false;
 			playerRenderable:remove_action(2);
 		else
-			if player.m_isFalling == false then
+			if player.m_isFalling then
 			end
 			player.m_JumpingTime = player.m_JumpingTime + l_ElapsedTime;
 			--playerRenderable:execute_action(3, 0, 0, 1, false);
@@ -270,14 +272,14 @@ function on_update_player_lua(l_ElapsedTime)
 end
 
 function move_character_controller_mesh(_player, _position, _jumping)
-	local mesh = playerRenderable
+	local mesh = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky")
 	mesh:set_yaw(_player:get_yaw() + math.pi)
 	local pos;
 	if _jumping then
-		pos = playerRenderable:getAnimationBonePosition().y;
+		pos = mesh:getAnimationBonePosition().y;
 	else
-		pos = playerRenderable:getBonePosition().y;
+		pos = mesh:getBonePosition().y;
 	end
-	local mesh_position = Vect3f(_position.x, _position.y - pos - 1, _position.z)
+	local mesh_position = Vect3f(_position.x, _position.y - pos - 0.2, _position.z)
 	mesh:set_position(mesh_position)
 end
