@@ -15,7 +15,11 @@ CConsole::CConsole( uint32 windowsHeight, uint32 windowsWidth, float height_prec
       m_FileName(""),
       m_completeBuffer(""),
       m_completeCount(0),
-      m_previousSize(0)
+      m_previousSize(0),
+	  m_doAutoComplete(false),
+	  m_doAutoCompleteBack(false),
+	  m_firstWord(false),
+	  m_secondTry(false)
 {
     LoadWords("./Data/ConsoleDictionary.xml");
 }
@@ -48,17 +52,64 @@ bool CConsole::IsDuplicate(std::string input)
     return false;
 }
 
-std::string CConsole::SearchString(int init, std::string input)
+std::string CConsole::SearchString(int init, std::string input, bool forward)
 {
     std::string result = "";
-    for (int i = init; i < m_words.size(); i++) {
-        if (std::string(m_words[i]).find(input) != std::string::npos) {
-            result = m_words[i];
-            m_completeCount = i + 1;
-            return result;
-        }
-    }
+	std::string inputAux = DetectInitOfString(input);
+	int initAux = init;
+    if (forward){
+		if (m_doAutoCompleteBack)
+			initAux = initAux+2;
+		if (initAux > m_words.size()-1)
+			initAux = 0;
+		for (int i = initAux; i < m_words.size(); i++) {
+			//if (std::string(m_words[i]).find(input) != std::string::npos) {
+			if ( std::string(m_words[i]).substr(0,inputAux.size()).compare(inputAux) == 0 ){
+				result = m_words[i];
+				m_completeCount = i+1;
+				m_doAutoComplete = true;
+				m_doAutoCompleteBack = false;
+				return result;
+			}
+		}
+	}
+	else{
+		if (m_doAutoComplete)
+			initAux = initAux-2;
+		if (initAux < 0)
+			initAux = m_words.size()-1;
+		for (int i = initAux; i >= 0; i--) {
+			if ( std::string(m_words[i]).substr(0,inputAux.size()).compare(inputAux) == 0 ){
+				result = m_words[i];
+				m_completeCount = i-1;
+				m_doAutoComplete = false;
+				m_doAutoCompleteBack = true;
+				return result;
+			}
+		}
+	}
     return result;
+}
+
+std::string CConsole::DetectInitOfString(std::string input){
+	std::string result = "";
+	std::string inputAux;
+	if (!m_secondTry)
+		inputAux = input;
+	else inputAux = m_completeBuffer;
+	for (int i = inputAux.size()-1; i >= 0; i--){
+		std::string aux;
+		aux.push_back(inputAux[i]);
+		if (std::string(aux).compare(".")==0 || std::string(aux).compare(":")==0 ){
+			result = inputAux.substr(i+1, inputAux.size()-1);
+			m_sBuffer = inputAux.substr(0, (inputAux.size()-result.size()));
+			m_firstWord = false;
+			return result;
+		}
+		aux.pop_back();
+	}
+	m_firstWord = true;
+	return input;
 }
 
 void CConsole::Update(CInputManager* intputManager, float elapsedTime)
@@ -143,22 +194,49 @@ void CConsole::Update(CInputManager* intputManager, float elapsedTime)
         if (ACT2IN->DoAction("ConsoleEnd")) {
             m_uCursorPos = m_sBuffer.size();
         }
-        if (ACT2IN->DoAction("ConsoleComplete")) {
+        if (ACT2IN->DoAction("ConsoleCompleteBack")) {
             std::string bufferAux = m_sBuffer.substr(0, m_sBuffer.size() - 1);
-            if (m_previousSize != bufferAux.size())
+            if (m_previousSize != bufferAux.size()){
                 m_completeBuffer = bufferAux;
-            std::string search = SearchString(m_completeCount, m_completeBuffer);
+				m_secondTry = false;
+			}else
+				m_secondTry = true;
+            std::string search = SearchString(m_completeCount, m_completeBuffer, false);
             if (search.compare("") != 0) {
-                m_sBuffer = search;
+                if (!m_firstWord)
+					m_sBuffer += search;
+				else m_sBuffer = search;
                 m_uCursorPos = m_sBuffer.size();
-                m_previousSize = search.size();
+                m_previousSize = m_sBuffer.size();
             } else {
                 m_sBuffer = m_completeBuffer;
-                m_uCursorPos = m_completeBuffer.size();
+                m_uCursorPos = m_sBuffer.size();
                 m_completeCount = 0;
                 m_previousSize = 0;
             }
-        }
+        }else{
+			if (ACT2IN->DoAction("ConsoleComplete")) {
+				std::string bufferAux = m_sBuffer.substr(0, m_sBuffer.size() - 1);
+				if (m_previousSize != bufferAux.size()){
+					m_completeBuffer = bufferAux;
+					m_secondTry = false;
+				}else
+					m_secondTry = true;
+				std::string search = SearchString(m_completeCount, m_completeBuffer);
+				if (search.compare("") != 0) {
+					if (!m_firstWord)
+						m_sBuffer += search;
+					else m_sBuffer = search;
+					m_uCursorPos = m_sBuffer.size();
+					m_previousSize = m_sBuffer.size();
+				} else {
+					m_sBuffer = m_completeBuffer;
+					m_uCursorPos = m_sBuffer.size();
+					m_completeCount = 0;
+					m_previousSize = 0;
+				}
+			}
+		}
     }// End if (CGuiElement::m_bFocus)
     std::string temp = m_sBuffer + m_sFocusObject;
     CFontManager* fm = CCORE->GetFontManager();
@@ -189,3 +267,6 @@ void CConsole::LoadWords(const std::string &FileName)
     }
 }
 
+bool CConsole::GetIsFocus(){
+	return m_bFocus;
+}

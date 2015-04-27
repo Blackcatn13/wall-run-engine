@@ -44,18 +44,18 @@ class CXMLTreeNode {
   const char					*GetName            	();
 
   // To get properties from xml file
-  int									GetIntProperty     	(const char *_pszKey, int _iDefault = 0, bool warningDefault = true) const;
-  float								GetFloatProperty   	(const char *_pszKey, float _fDefault = 0.0, bool warningDefault = true) const;
-  bool								GetBoolProperty    	(const char *_pszKey, bool _bDefault = false, bool warningDefault = true) const;
-  const char					*GetPszProperty     	(const char *_pszKey, const char *_pszDefault = NULL, bool warningDefault = true) const;
-  std::string					GetPszISOProperty		(const char *_pszKey, const char *_pszDefault = NULL,	bool warningDefault = true) const;
-  Vect2f							GetVect2fProperty  	(const char *_pszKey, const Vect2f &_Default, bool warningDefault = true) const;
-  Vect3f							GetVect3fProperty  	(const char *_pszKey, const Vect3f &_Default, bool warningDefault = true) const;
-  Vect4f							GetVect4fProperty  	(const char *_pszKey, const Vect4f &_Default, bool warningDefault = true) const;
-  Vect2i							GetVect2iProperty  	(const char *_pszKey, const Vect2i &_Default, bool warningDefault = true) const;
-  Vect3i							GetVect3iProperty  	(const char *_pszKey, const Vect3i &_Default, bool warningDefault = true) const;
-  Vect4i							GetVect4iProperty  	(const char *_pszKey, const Vect4i &_Default, bool warningDefault = true) const;
-  CColor							GetCColorProperty  	(const char *_pszKey, const CColor &_Default, bool warningDefault = true) const;
+  int									GetIntProperty     	(const char *_pszKey, int _iDefault = 0, bool warningDefault = false) const;
+  float								GetFloatProperty   	(const char *_pszKey, float _fDefault = 0.0, bool warningDefault = false) const;
+  bool								GetBoolProperty    	(const char *_pszKey, bool _bDefault = false, bool warningDefault = false) const;
+  const char					*GetPszProperty     	(const char *_pszKey, const char *_pszDefault = NULL, bool warningDefault = false) const;
+  std::string					GetPszISOProperty		(const char *_pszKey, const char *_pszDefault = NULL,	bool warningDefault = false) const;
+  Vect2f							GetVect2fProperty  	(const char *_pszKey, const Vect2f &_Default, bool warningDefault = false) const;
+  Vect3f							GetVect3fProperty  	(const char *_pszKey, const Vect3f &_Default, bool warningDefault = false) const;
+  Vect4f							GetVect4fProperty  	(const char *_pszKey, const Vect4f &_Default, bool warningDefault = false) const;
+  Vect2i							GetVect2iProperty  	(const char *_pszKey, const Vect2i &_Default, bool warningDefault = false) const;
+  Vect3i							GetVect3iProperty  	(const char *_pszKey, const Vect3i &_Default, bool warningDefault = false) const;
+  Vect4i							GetVect4iProperty  	(const char *_pszKey, const Vect4i &_Default, bool warningDefault = false) const;
+  CColor							GetCColorProperty  	(const char *_pszKey, const CColor &_Default, bool warningDefault = false) const;
 
   // To get keywords from xml file
   int									GetIntKeyword      	(const char *_pszKey, int _iDefault = 0) const;
