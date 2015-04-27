@@ -10,6 +10,7 @@
 #include "Renderable\RenderableObject.h"
 #include "Renderable\RenderableObjectsManager.h"
 #include "Renderable\RenderableObjectsLayersManager.h"
+#include "Core\PlayerController.h"
 #include <sstream>
 #include "Math\Vector3.h"
 
@@ -20,7 +21,13 @@ CAIController::CAIController()
     m_TurnSpeed(2.0),
     m_JumpForce(1.5),
 	m_IsOnCooldown(false),
-    m_CooldownTimer(0),
+    m_CooldownTimer(5),
+	m_ProjectileHitbox(0.5),
+	m_EnemyHitbox(0.5),
+	m_CurrentCooldown(0),
+	m_tiempoVidaDisparo(2.0),
+	m_minAngleDisparo(0.2),
+	m_BalaSpeed(5),
     m_CurrentJumpForce(0),
     m_isJumping(false),
     m_RenderableObject(NULL),
@@ -39,9 +46,15 @@ CAIController::CAIController(std::string mesh, std::string name, Vect3f position
   m_Speed(speed),
   m_TurnSpeed(turnSpeed),
   m_JumpForce(0),
+  m_tiempoVidaDisparo(2.0),
+  m_minAngleDisparo(0.2),
+  m_BalaSpeed(5),
   m_CurrentJumpForce(0),
   m_IsOnCooldown(false),
-  m_CooldownTimer(0),
+  m_CooldownTimer(5),
+  m_ProjectileHitbox(0.5),
+  m_EnemyHitbox(0.5),
+  m_CurrentCooldown(0),
   m_isJumping(false),
   m_Name(name),
   m_Mesh(mesh),
@@ -62,9 +75,15 @@ CAIController::CAIController(CRenderableObject *rond, float speed, float turnSpe
   m_Speed(speed),
   m_TurnSpeed(turnSpeed),
   m_JumpForce(0),
+  m_tiempoVidaDisparo(2.0),
+  m_minAngleDisparo(0.2),
+  m_BalaSpeed(5),
   m_CurrentJumpForce(0),
   m_IsOnCooldown(false),
-  m_CooldownTimer(0),
+  m_CooldownTimer(5),
+  m_ProjectileHitbox(0.5),
+  m_EnemyHitbox(0.5),
+  m_CurrentCooldown(0),
   m_isJumping(false),
   m_Name(rond->getName()),
   m_RenderableObject(rond),
@@ -187,7 +206,6 @@ void CAIController::OnlyRotate(float dt, Vect3f point) {
     Vect3f direction = (point - m_Position);
     Vect3f diff = Vect3f(1, 0, 0).RotateY(m_fYaw);
     float angle = getAngleDiff(direction, diff);
-	float l_tiempoVidaDisparo = 2.0;
 	
     //if (angle > 0.5f)
       RotateYaw(dt, point);
@@ -195,7 +213,7 @@ void CAIController::OnlyRotate(float dt, Vect3f point) {
 	  {
 		  //DISPARO, cooldown 500 ms
 		  m_IsOnCooldown = true;
-		  m_CooldownTimer = 5.0;
+		  m_CurrentCooldown = m_CooldownTimer;
 		  ShotToVector(dt, m_Position);
 		  m_DireccionBala = direction;
 	  }
@@ -203,19 +221,24 @@ void CAIController::OnlyRotate(float dt, Vect3f point) {
 	  {
 
 		  
-		  m_CooldownTimer = m_CooldownTimer - dt;
-		  if (m_CooldownTimer < 0.0)
+		  m_CurrentCooldown = m_CurrentCooldown - dt;
+		  if (m_CurrentCooldown < 0.0)
 		  {
 			  m_IsOnCooldown = false;
 			  DestruirDisparo();
 		  }
-		  else if (m_CooldownTimer < (5.0 - l_tiempoVidaDisparo))
+		  else if (m_CurrentCooldown < (m_CooldownTimer - m_tiempoVidaDisparo))
 		  {
 			  DestruirDisparo();
 		  }
 		  else
 		  {
 			  ActualizarDisparo(dt, direction);
+			  if (CheckPlayerShotCollision())
+			  {
+				  DestruirDisparo();
+				  //AddDamagePlayer();
+			  }
 		  }
 	  }
     /*else {
@@ -232,21 +255,39 @@ void CAIController::OnlyRotate(float dt, Vect3f point) {
 
 void CAIController::ShotToVector(float dt, Vect3f point)
 {
-	RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo1")->setVisible(true);
-	RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo1")->setPrintable(true);
+	
+	RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->setPrintable(true);
 	m_PosicionBala = m_Position;
 }
 void CAIController::ActualizarDisparo(float dt, Vect3f direction)
 {
-	float l_BalaSpeed = 5;
-	m_PosicionBala = m_PosicionBala + m_DireccionBala.Normalize() * l_BalaSpeed * dt;
-	RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo1")->SetPosition(m_PosicionBala);
+	m_PosicionBala = m_PosicionBala + m_DireccionBala.Normalize() * m_BalaSpeed * dt;
+	RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->SetPosition(m_PosicionBala);
 }
 
 void CAIController::DestruirDisparo()
 {
-	RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo1")->setVisible(false);
-	RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo1")->setPrintable(false);
+	RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->setPrintable(false);
+}
+
+bool CAIController::CheckPlayerShotCollision()
+{
+	
+	if ((RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->getPrintable()) && (m_PosicionBala.Distance(PLAYC->GetPosition()) < m_ProjectileHitbox))
+	{
+		return true;
+	}
+	return false;
+}
+
+bool CAIController::CheckPlayerCollision()
+{
+	
+	if ((RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource(getName())->getPrintable()) && (m_PosicionBala.Distance(PLAYC->GetPosition()) < m_EnemyHitbox))
+	{
+		return true;
+	}
+	return false;
 }
 
 void CAIController::RotateYaw(float dt, Vect3f point) {

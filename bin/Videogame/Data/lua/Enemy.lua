@@ -216,6 +216,7 @@ function enemy_update_attack_player(ElapsedTime, doComprobation, name)
 		if player_distance < 1 then
 		-- Aqui meter impacto del ataque
 			instance.m_string = "Parado"
+			check_hitbox(ElapsedTime, player_position, enemy)
 		--	enemy.m_Speed = enemy.m_Speed / speed_modifier
 		end
 		
@@ -229,6 +230,10 @@ function move_enemy(ElapsedTime, _point, Enemy)
 	else
 		Enemy:rotate_or_move(ElapsedTime, _point)
 	end
+end
+
+function check_hitbox(ElapsedTime, player_position, enemy)
+	
 end
 
 function get_distance_to_player(current_position, _player_position)

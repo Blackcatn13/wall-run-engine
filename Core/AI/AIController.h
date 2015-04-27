@@ -26,6 +26,8 @@ class CAIController : public CObject3D {
   void ShotToVector(float dt, Vect3f point);
   void ActualizarDisparo(float dt, Vect3f direction);
   void DestruirDisparo();
+  bool CheckPlayerCollision();
+  bool CheckPlayerShotCollision();
 
   GET_SET(CPhysicController *, PhysicController);
   GET_SET(CPhysicUserData *, PhysicUserData);
@@ -60,6 +62,12 @@ class CAIController : public CObject3D {
   float				m_CooldownTimer;
   Vect3f			m_PosicionBala;
   Vect3f			m_DireccionBala;
+  float             m_BalaSpeed;
+  float				m_CurrentCooldown;
+  float				m_tiempoVidaDisparo;
+  float				m_minAngleDisparo;
+  float				m_ProjectileHitbox;
+  float				m_EnemyHitbox;
 };
 
 #endif
