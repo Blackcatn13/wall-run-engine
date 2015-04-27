@@ -73,6 +73,7 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 
 	//return float4(l_DiffuseColor*dot(l_Nn, -g_LightDirection[0]), 0.0);
 	//return float4(1.0, 0.0, 0.0, 0.0);
+	float4 l_UABColor=float4(0,1,0,1);
 	float3 finalColor = 0;//l_DiffuseColor.xyz*l_Ambient;
 	float lightAmount = 1.0;
 	if (g_useShadowMap) {
@@ -82,12 +83,17 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 		float2 ShadowTexC = 0.5 * (LightPosition.xy / LightPosition.w) + float2(0.5, 0.5);
 		ShadowTexC.y = 1.0f - ShadowTexC.y;
 		lightAmount = (tex2D(S7LinearClampSampler, ShadowTexC) + g_ShadowEpsilon < LightPosition.z/LightPosition.w)? 0.0f: 1.0f;
-		if (ShadowTexC.x < 0.0 || ShadowTexC.y < 0.0 || ShadowTexC.x > 1.0 || ShadowTexC.y > 1.0)
-			lightAmount = 1.0;
+		/*if (ShadowTexC.x < 0.0 || ShadowTexC.y < 0.0 || ShadowTexC.x > 1.0 || ShadowTexC.y > 1.0)
+			lightAmount = 1.0;*/
 		//lightAmount = 1.0;
 
 		if (ShadowTexC.x <=0.0 || ShadowTexC.y<=0.0 || ShadowTexC.x >=1.0 || ShadowTexC.y>=1.0)
+		{
+			l_UABColor=float4(1,0,0,1);
 			lightAmount=1.0;
+		}
+		else
+			l_UABColor=tex2D(S7LinearClampSampler, ShadowTexC);
 	}
 
 
@@ -137,7 +143,7 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 		}				
 	}
 	//}
-
+	//return l_UABColor;
     return float4(finalColor * lightAmount, 1);
 }
 
@@ -146,7 +152,9 @@ technique RenderLightDeferredShadingTechnique
 {
 	pass p0
 	{
-		//AlphaBlendEnable = true;
+		AlphaBlendEnable = true;
+		//ZEnable = false;
+		//ZWriteEnable = false;
 		//BlendOp=Add;
 		//SrcBlend = one;
 		//DestBlend = one;
