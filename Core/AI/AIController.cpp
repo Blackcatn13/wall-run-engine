@@ -19,6 +19,8 @@ CAIController::CAIController()
     m_Speed (0.5),
     m_TurnSpeed(2.0),
     m_JumpForce(1.5),
+	m_IsOnCooldown(false),
+    m_CooldownTimer(0),
     m_CurrentJumpForce(0),
     m_isJumping(false),
     m_RenderableObject(NULL),
@@ -38,6 +40,8 @@ CAIController::CAIController(std::string mesh, std::string name, Vect3f position
   m_TurnSpeed(turnSpeed),
   m_JumpForce(0),
   m_CurrentJumpForce(0),
+  m_IsOnCooldown(false),
+  m_CooldownTimer(0),
   m_isJumping(false),
   m_Name(name),
   m_Mesh(mesh),
@@ -59,6 +63,8 @@ CAIController::CAIController(CRenderableObject *rond, float speed, float turnSpe
   m_TurnSpeed(turnSpeed),
   m_JumpForce(0),
   m_CurrentJumpForce(0),
+  m_IsOnCooldown(false),
+  m_CooldownTimer(0),
   m_isJumping(false),
   m_Name(rond->getName()),
   m_RenderableObject(rond),
@@ -181,8 +187,37 @@ void CAIController::OnlyRotate(float dt, Vect3f point) {
     Vect3f direction = (point - m_Position);
     Vect3f diff = Vect3f(1, 0, 0).RotateY(m_fYaw);
     float angle = getAngleDiff(direction, diff);
+	float l_tiempoVidaDisparo = 2.0;
+	
     //if (angle > 0.5f)
       RotateYaw(dt, point);
+	  if ((!m_IsOnCooldown) && angle < 0.2)
+	  {
+		  //DISPARO, cooldown 500 ms
+		  m_IsOnCooldown = true;
+		  m_CooldownTimer = 5.0;
+		  ShotToVector(dt, m_Position);
+		  m_DireccionBala = direction;
+	  }
+	  else if (m_IsOnCooldown)
+	  {
+
+		  
+		  m_CooldownTimer = m_CooldownTimer - dt;
+		  if (m_CooldownTimer < 0.0)
+		  {
+			  m_IsOnCooldown = false;
+			  DestruirDisparo();
+		  }
+		  else if (m_CooldownTimer < (5.0 - l_tiempoVidaDisparo))
+		  {
+			  DestruirDisparo();
+		  }
+		  else
+		  {
+			  ActualizarDisparo(dt, direction);
+		  }
+	  }
     /*else {
       m_PhysicController->Move( direction.Normalize() * m_Speed, dt);
       SetPosition(m_PhysicController
@@ -193,6 +228,25 @@ void CAIController::OnlyRotate(float dt, Vect3f point) {
       }
     }*/
   }
+}
+
+void CAIController::ShotToVector(float dt, Vect3f point)
+{
+	RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo1")->setVisible(true);
+	RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo1")->setPrintable(true);
+	m_PosicionBala = m_Position;
+}
+void CAIController::ActualizarDisparo(float dt, Vect3f direction)
+{
+	float l_BalaSpeed = 5;
+	m_PosicionBala = m_PosicionBala + m_DireccionBala.Normalize() * l_BalaSpeed * dt;
+	RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo1")->SetPosition(m_PosicionBala);
+}
+
+void CAIController::DestruirDisparo()
+{
+	RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo1")->setVisible(false);
+	RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo1")->setPrintable(false);
 }
 
 void CAIController::RotateYaw(float dt, Vect3f point) {

@@ -23,6 +23,9 @@ class CAIController : public CObject3D {
   void RotateRenderable(float dt, float angle);
   void RotateOrMove(float dt, Vect3f point);
   void OnlyRotate(float dt, Vect3f point);
+  void ShotToVector(float dt, Vect3f point);
+  void ActualizarDisparo(float dt, Vect3f direction);
+  void DestruirDisparo();
 
   GET_SET(CPhysicController *, PhysicController);
   GET_SET(CPhysicUserData *, PhysicUserData);
@@ -53,7 +56,10 @@ class CAIController : public CObject3D {
   std::string			m_Name;
   CRenderableObject *m_RenderableObject;
   bool				m_SpeedModified;
+  bool				m_IsOnCooldown;
+  float				m_CooldownTimer;
+  Vect3f			m_PosicionBala;
+  Vect3f			m_DireccionBala;
 };
-
 
 #endif
