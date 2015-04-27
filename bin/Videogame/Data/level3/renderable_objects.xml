@@ -10,6 +10,14 @@
 	<layer name="enabled_poly" />
 	<layer name="collectible" />
 	<layer name="enemies" />
+	<layer name="switches_on" />
+	<layer name="switches_off" />
+	
+	<mesh_instance name="switch001" core="Sphere002" pos="3.806 1.5 10.4" yaw="0.0" pitch="0.0" roll="0.0" scale="0.05 0.05 0.05" visible="true" layer="solid"/>
+	<mesh_instance name="switch002" core="Sphere002" pos="7.806 1.5 15.4" yaw="0.0" pitch="0.0" roll="0.0" scale="0.05 0.05 0.05" visible="true" layer="solid"/>
+	<mesh_instance name="switch003" core="Sphere002" pos="2.806 1.5 20.4" yaw="0.0" pitch="0.0" roll="0.0" scale="0.05 0.05 0.05" visible="true" layer="solid"/>
+	<!-- <mesh_instance name="Sphere002" core="Sphere001" pos="46.479233 0.000000 0.737213" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/> -->
+	
 	
 	<!--<collectible name="pixelite1" type ="pixelite" core="SpongePicky" pos="10.0 2.0 2.0" yaw="0.0" pitch="0.0" roll="0.0" scale="0.5 0.5 0.1" visible="true" lua_code="roll_object" user_data_name="pixeliteUserData001" layer="collectible" /> -->
 	<mesh_instance name="pixelite1" core="SpongePicky" pos="10.0 2.0 2.0" yaw="0.0" pitch="0.0" roll="0.0" scale="0.5 0.5 0.1" visible="true" layer="collectible" />
