@@ -48,8 +48,14 @@ function toogle_switch(trigger_name, puzzle_name)
 			if trigger ~= nil then		
 				if trigger.m_IsSwitched ~= true then
 					trigger.m_IsSwitched = true
-					coreInstance:trace(tostring(trigger.m_IsSwitched))
+					coreInstance:trace("Trigger activado?" ..tostring(trigger.m_IsSwitched))
 					puzzle.m_ActivatedSwitches = puzzle.m_ActivatedSwitches + 1
+					local switch_mesh = get_renderable_object("switches", trigger_name)
+					coreInstance:trace("hay objeto")
+					local new_position = Vect3f(switch_mesh:get_position().x,switch_mesh:get_position().y - 0.5,switch_mesh:get_position().z )
+					coreInstance:trace("hay nueva posicion")
+					switch_mesh:set_position(new_position)
+					coreInstance:trace("cambio de posicion hecho")
 				else 
 					trigger.m_IsSwitched = false
 					coreInstance:trace(tostring(trigger.m_IsSwitched))
@@ -63,6 +69,12 @@ function toogle_switch(trigger_name, puzzle_name)
 		--coreInstance:trace("all switches activated")
 		--open_door()
 	--end
+end
+
+function get_renderable_object(layer_name, _objectName)
+	local object_manager = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str(layer_name)
+	local object = object_manager:get_resource(_objectName)
+	return object
 end
 
 function open_door()
