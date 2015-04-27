@@ -176,6 +176,25 @@ void CAIController::RotateOrMove(float dt, Vect3f point) {
   }
 }
 
+void CAIController::OnlyRotate(float dt, Vect3f point) {
+  if (point.Distance(m_Position) >= 2) {
+    Vect3f direction = (point - m_Position);
+    Vect3f diff = Vect3f(1, 0, 0).RotateY(m_fYaw);
+    float angle = getAngleDiff(direction, diff);
+    //if (angle > 0.5f)
+      RotateYaw(dt, point);
+    /*else {
+      m_PhysicController->Move( direction.Normalize() * m_Speed, dt);
+      SetPosition(m_PhysicController
+	  ->GetPosition());
+      Vect3f l_Position = (m_PhysicController->GetPosition());
+      if (m_RenderableObject != NULL) {
+        m_RenderableObject->SetPosition(m_PhysicController->GetPosition());
+      }
+    }*/
+  }
+}
+
 void CAIController::RotateYaw(float dt, Vect3f point) {
   Vect3f direction = (point - m_Position);
   Vect3f diff = Vect3f(1, 0, 0).RotateY(m_fYaw);

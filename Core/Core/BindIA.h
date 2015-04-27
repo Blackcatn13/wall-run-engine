@@ -58,6 +58,7 @@ void RegisterAI() {
     .def("move", &CAIController::Move)
     .def("move_to", &CAIController::MoveTo)
     .def("rotate_or_move", &CAIController::RotateOrMove)
+	.def("only_rotate", &CAIController::OnlyRotate)
     .def("rotate_yaw", &CAIController::RotateYaw)
   ];
 

@@ -22,6 +22,7 @@ class CAIController : public CObject3D {
   void RotateYaw(float dt, Vect3f point);
   void RotateRenderable(float dt, float angle);
   void RotateOrMove(float dt, Vect3f point);
+  void OnlyRotate(float dt, Vect3f point);
 
   GET_SET(CPhysicController *, PhysicController);
   GET_SET(CPhysicUserData *, PhysicUserData);

@@ -113,7 +113,7 @@ function pumpum_update_moving(ElapsedTime, doComprobation, name)
 	--	coreInstance:trace(tostring(currentwp.x))
 		
 	--	enemy:move_to(ElapsedTime, enemy.m_CurrentWp)
-		move_enemy(ElapsedTime, enemy.m_CurrentWp, enemy)
+		--move_enemy_pumpum(ElapsedTime, enemy.m_CurrentWp, enemy)
 	--		coreInstance:trace("Am I moving??")
 		if check_attack(enemy) == true then
 		--	coreInstance:trace("Vamos a perseguir")
@@ -205,8 +205,8 @@ function pumpum_update_attack_player(ElapsedTime, doComprobation, name)
 		enemy.m_SpeedModified = true	
 	end
 	--local random_destino = Vect3f(10,0,10)
-	--move_enemy(ElapsedTime, random_destino, enemy)
-	move_enemy(ElapsedTime, player_position, enemy)
+	--move_enemy_pumpum(ElapsedTime, random_destino, enemy)
+	move_enemy_pumpum(ElapsedTime, player_position, enemy)
 	
 	--if doComprobation == 1 then
 		local player_distance = get_distance_to_player(enemy:get_position(), player_position)
@@ -223,12 +223,12 @@ function pumpum_update_attack_player(ElapsedTime, doComprobation, name)
 	--end
 end
 
-function move_enemy(ElapsedTime, _point, Enemy)
+function move_enemy_pumpum(ElapsedTime, _point, Enemy)
 	local player =  coreInstance:get_player_controller()
 	if player.m_is3D == true then 
-		Enemy:move_to(ElapsedTime, _point)
+		Enemy:only_rotate(ElapsedTime, _point)
 	else
-		Enemy:rotate_or_move(ElapsedTime, _point)
+		Enemy:only_rotate(ElapsedTime, _point)
 	end
 end
 
