@@ -1,6 +1,7 @@
 local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 local is_init=true;
-
+local topPosition = -1000;
+local inLoop = false;
 function on_update_player_lua(l_ElapsedTime)
 	--local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 	local luaUtil = CCMathLuaUtils();
@@ -161,15 +162,26 @@ function on_update_player_lua(l_ElapsedTime)
 		if player.m_isJumping then
 			mov.y = playerRenderable:getBoneMovement().y;
 		end
-		if mov.y == 0 then
-			player.m_isJumpingMoving = false;
+		if mov.y == 0 and inLoop == false then
 			player.m_isFalling = true;
+			--coreInstance:trace(tostring(topPosition));
+			player.m_isJumpingMoving = false;
 		end
 		if player.m_JumpingTime > AirTime then
 			player.m_isJumping = false;
-			playerRenderable:remove_action(2);
+			playerRenderable:clear_cycle(3,0);
+			inLoop = false;
+			topPosition = -1000;
 		else
 			if player.m_isFalling then
+				local positionOld = playerRenderable:get_position();
+				local auxPosition = playerRenderable:getAnimationBonePosition().y; 
+				local newPosition = Vect3f(positionOld.x, auxPosition, positionOld.z);
+				playerRenderable:set_position(newPosition);
+				playerRenderable:remove_action(2);
+				playerRenderable:blend_cycle(3,1,0);
+				player.m_isFalling = false;
+				inLoop = true;
 			end
 			player.m_JumpingTime = player.m_JumpingTime + l_ElapsedTime;
 			--playerRenderable:execute_action(3, 0, 0, 1, false);
@@ -262,10 +274,10 @@ function on_update_player_lua(l_ElapsedTime)
 	player:set_position(player.m_PhysicController:get_position());
 	move_character_controller_mesh(player, player:get_position(), player.m_isJumping);
 	if mov.x == 0 and mov.z == 0 then
-		playerRenderable:blend_cycle(1,0,0);
+		playerRenderable:clear_cycle(1,0);
 		playerRenderable:blend_cycle(0,1,0);
 	else
-		playerRenderable:blend_cycle(0,0,0);
+		playerRenderable:clear_cycle(0,0);
 		playerRenderable:blend_cycle(1,1,0);
 	end
 	return 0;
@@ -277,9 +289,14 @@ function move_character_controller_mesh(_player, _position, _jumping)
 	local pos;
 	if _jumping then
 		pos = mesh:getAnimationBonePosition().y;
+		local oldPosition = mesh:get_position();
+		local mesh_position = Vect3f(_position.x, oldPosition.y, _position.z)
+		mesh:set_position(mesh_position)
 	else
 		pos = mesh:getBonePosition().y;
+		--coreInstance:trace(tostring(pos));
+		local mesh_position = Vect3f(_position.x, _position.y - pos - 0.2, _position.z)
+		mesh:set_position(mesh_position)
 	end
-	local mesh_position = Vect3f(_position.x, _position.y - pos - 0.2, _position.z)
-	mesh:set_position(mesh_position)
+	
 end
