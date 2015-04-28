@@ -48,6 +48,7 @@ void RegisterAnimatedModels() {
     .def("getAnimationBonePosition", &CAnimatedInstanceModel::GetAnimationBonePosition)
     .def("getBonePosition", &CAnimatedInstanceModel::GetBonePosition)
     .def("getBoneMovement", &CAnimatedInstanceModel::GetBoneMovement)
+    .def("updateSkeleton", &CAnimatedInstanceModel::UpdateSkeleton)
     //.def("is_cycle_animation_active", &CAnimatedInstanceModel::IsCycleAnimationActive)
     //.def("is_action_animation_active", &CAnimatedInstanceModel::IsActionAnimationActive)
   ];

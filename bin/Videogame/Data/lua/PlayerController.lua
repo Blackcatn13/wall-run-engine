@@ -21,7 +21,7 @@ function on_update_player_lua(l_ElapsedTime)
 	superjumForce = 10;						 	--SUPERSALTO CHEAT
 	player.m_AttackForce = 3;					--Impulse force for the attack.
 	player.m_PhysicController:set_step(0.3); 	--Altura que puede superar (escalones).
-	local AirTime = 0.8;						-- Time into the air, playing air loop
+	local AirTime = 2;						-- Time into the air, playing air loop
 	--////////////////////////////////////////////////////////
 	if is_init == true then
 		is_init = false

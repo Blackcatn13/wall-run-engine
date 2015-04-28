@@ -256,3 +256,8 @@ Vect3f CAnimatedInstanceModel::GetBoneMovement() {
   if (position < 0.001 && position > -0.001) position = 0;
   return Vect3f(0, position, 0);
 }
+
+void CAnimatedInstanceModel::UpdateSkeleton() {
+  m_CalModel->getMixer()->updateAnimation();
+  m_CalModel->getMixer()->updateSkeleton();
+}

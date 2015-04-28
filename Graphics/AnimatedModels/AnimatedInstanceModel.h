@@ -43,6 +43,7 @@ class CAnimatedInstanceModel : public CRenderableObject {
   void RemoveAction(int Id);
   bool IsCycleAnimationActive(int Id) const;
   bool IsActionAnimationActive(int Id) const;
+  void UpdateSkeleton();
   Vect3f GetBoneMovement();
   Vect3f GetBonePosition();
   Vect3f GetAnimationBonePosition();
