@@ -49,7 +49,7 @@ function toogle_switch(trigger_name, puzzle_name)
 				local switch_mesh = get_renderable_object("switches", trigger_name)
 				if trigger.m_IsSwitched ~= true then
 					trigger.m_IsSwitched = true
-					coreInstance:trace("Trigger activado?" ..tostring(trigger.m_IsSwitched))
+				--	coreInstance:trace("Trigger activado?" ..tostring(trigger.m_IsSwitched))
 					puzzle.m_ActivatedSwitches = puzzle.m_ActivatedSwitches + 1	
 					local new_position = Vect3f(switch_mesh:get_position().x,switch_mesh:get_position().y - 0.3,switch_mesh:get_position().z )
 					change_object_position(switch_mesh, new_position)
