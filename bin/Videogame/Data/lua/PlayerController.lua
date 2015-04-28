@@ -23,7 +23,7 @@ function on_update_player_lua(l_ElapsedTime)
 	superjumForce = 10;						 	--SUPERSALTO CHEAT
 	player.m_AttackForce = 3;					--Impulse force for the attack.
 	player.m_PhysicController:set_step(0.3); 	--Altura que puede superar (escalones).
-	local AirTime = 0.8;						-- Time into the air, playing air loop
+	local AirTime = 2;						-- Time into the air, playing air loop
 	--////////////////////////////////////////////////////////
 	if is_init == true then
 		is_init = false
@@ -182,7 +182,10 @@ function on_update_player_lua(l_ElapsedTime)
 				local newPosition = Vect3f(positionOld.x, auxPosition, positionOld.z);
 				playerRenderable:set_position(newPosition);
 				playerRenderable:remove_action(2);
+				playerRenderable:clear_cycle(0,0);
+				playerRenderable:clear_cycle(1,0);
 				playerRenderable:blend_cycle(3,1,0);
+				playerRenderable:updateSkeleton(l_ElapsedTime);
 				player.m_isFalling = false;
 				inLoop = true;
 			end
@@ -276,12 +279,14 @@ function on_update_player_lua(l_ElapsedTime)
 	end
 	player:set_position(player.m_PhysicController:get_position());
 	move_character_controller_mesh(player, player:get_position(), player.m_isJumping);
-	if mov.x == 0 and mov.z == 0 then
-		playerRenderable:clear_cycle(1,0);
-		playerRenderable:blend_cycle(0,1,0);
-	else
-		playerRenderable:clear_cycle(0,0);
-		playerRenderable:blend_cycle(1,1,0);
+	if not player.m_isJumping then
+		if mov.x == 0 and mov.z == 0 then
+			playerRenderable:clear_cycle(1,0);
+			playerRenderable:blend_cycle(0,1,0);
+		else
+			playerRenderable:clear_cycle(0,0);
+			playerRenderable:blend_cycle(1,1,0);
+		end
 	end
 	return 0;
 end

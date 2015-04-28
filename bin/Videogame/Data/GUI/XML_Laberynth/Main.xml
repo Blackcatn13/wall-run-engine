@@ -17,7 +17,7 @@
 							end
                           end">
 		  
-  <Image name="LifeGUI" posx="75.00" posy="2.00" height="15.00" width="17.50" visible="true" active="true"
+  <Image name="LifeGUI" posx="75.00" posy="2.00" height="17.50" width="17.50" visible="true" active="true"
          default="Life3" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
     <texture name="Life3" name_texture="./Data/GUI/GoPixelGo/Life3.png"/>
 	<texture name="Life2" name_texture="./Data/GUI/GoPixelGo/Life2.png"/>
