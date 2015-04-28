@@ -12,6 +12,8 @@
 #include "SceneElements\PinchosPlatform.h"
 #include "SceneElements\PolyPlatform.h"
 #include "SceneElements\Switch.h"
+#include "SceneElements\SceneElement.h"
+#include "SceneElements\Door.h"
 
 #include "Mesh\MeshInstance.h"
 #include <string>
@@ -88,11 +90,23 @@ void RegisterSceneElements() {
   ];
 
   luabind::module(LUA_STATE) [
-    class_<CSwitch, CMeshInstance>("CSwitch")
+    class_<CSceneElement, CMeshInstance>("CSceneElement")
     .def(constructor < std::string , std::string>())
-    .def("insert_phisic_switch", &CSwitch::InsertPhisicSwitch)
-    .property("m_SwitchActor", &CSwitch::GetSwitchActor)
-    .property("m_SwitchPhysicsSize", &CSwitch::GetPhysicsSize)
+    .def("insert_phisic", &CSceneElement::InsertPhisic)
+    .property("m_Actor", &CSceneElement::GetActor)
+    .property("m_PhysicsSize", &CSceneElement::GetPhysicsSize)
+  ];
+
+  luabind::module(LUA_STATE) [
+    class_<CSwitch, CSceneElement>("CSwitch")
+    .def(constructor < std::string , std::string>())
+  ];
+
+  luabind::module(LUA_STATE) [
+    class_<CDoor, CSceneElement>("CDoor")
+    .def(constructor < std::string , std::string, std::string, Vect3f>())
+    .property("m_IsOpening", &CDoor::getIsOpening, &CDoor::setIsOpening)
+    .property("m_FinalPosition", &CDoor::getFinalPosition, &CDoor::setFinalPosition)
   ];
 }
 

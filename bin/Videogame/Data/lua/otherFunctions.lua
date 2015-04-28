@@ -74,7 +74,7 @@ function change_object_position(_object, _position)
 	--local switch_mesh = get_renderable_object("switches", trigger_name)
 	--local new_position = Vect3f(switch_mesh:get_position().x,switch_mesh:get_position().y - 0.3,switch_mesh:get_position().z )
 	_object:set_position(_position)
-	_object.m_SwitchActor:set_global_position(_position)
+	_object.m_Actor:set_global_position(_position)
 end
 
 function get_renderable_object(layer_name, _objectName)
@@ -83,8 +83,10 @@ function get_renderable_object(layer_name, _objectName)
 	return object
 end
 
-function open_door()
+function open_door(_objectName)
 	coreInstance:trace("Opening door")
+	local door = get_renderable_object("doors", _objectName)
+	door.m_IsOpening =true
 end
 
 function trigger_change_view(offset_axis)

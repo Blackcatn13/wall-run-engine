@@ -15,6 +15,7 @@
 #include "Collectibles\Cromo.h"
 #include "Collectibles\Pixelite.h"
 #include "SceneElements\Switch.h"
+#include "SceneElements\Door.h"
 
 
 #include <assert.h>
@@ -118,7 +119,7 @@ void CRenderableObjectsManager::Load(const std::string &FileName) {
         l_AnimatedInstanceModel->SetScale(scale);
         //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
         AddResource(meshName, l_AnimatedInstanceModel);
-	  }else if (name == "switch_instance") {
+      } else if (name == "switch_instance") {
         std::string meshName = m(i).GetPszISOProperty("name", "box1");
         std::string core = m(i).GetPszISOProperty("core", "box");
         Vect3f pos = m(i).GetVect3fProperty("pos", v3fZERO);
@@ -126,18 +127,42 @@ void CRenderableObjectsManager::Load(const std::string &FileName) {
         float pitch = m(i).GetFloatProperty("pitch");
         float roll = m(i).GetFloatProperty("roll");
         float scale = m(i).GetFloatProperty("scale");
-		CSwitch *l_Switch  = new CSwitch(meshName, core);
+        CSwitch *l_Switch  = new CSwitch(meshName, core);
         l_Switch->SetYaw(yaw);
         l_Switch->SetPosition(pos);
         l_Switch->SetPitch(pitch);
         l_Switch->SetRoll(roll);
         l_Switch->SetScale(scale);
-		std::stringstream ss;
-		ss << meshName << "_UserData";
-		std::string userDataName = ss.str();
-		l_Switch->InsertPhisicSwitch(userDataName, Vect3f(0.5f,0.5f,0.5f), v3fZERO);
+        std::stringstream ss;
+        ss << meshName << "_UserData";
+        std::string userDataName = ss.str();
+        Vect3f l_ShapeSize = m.GetVect3fProperty("phisic_size", v3fZERO, false);
+        l_Switch->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
         AddResource(meshName, l_Switch);
-      } else  if (name == "platform") {
+      } else if (name == "door") {
+        std::string meshName = m(i).GetPszISOProperty("name", "box1");
+        std::string core = m(i).GetPszISOProperty("core", "box");
+        Vect3f pos = m(i).GetVect3fProperty("pos", v3fZERO);
+        float yaw = m(i).GetFloatProperty("yaw");
+        float pitch = m(i).GetFloatProperty("pitch");
+        float roll = m(i).GetFloatProperty("roll");
+        float scale = m(i).GetFloatProperty("scale");
+        std::string l_LuaFunc = m(i).GetPszISOProperty("lua_function", "", false);
+        Vect3f l_FinalPos = m(i).GetVect3fProperty("final_position", v3fZERO, false);
+        CDoor *l_Door  = new CDoor(meshName, core, l_LuaFunc, l_FinalPos);
+        l_Door->SetYaw(yaw);
+        l_Door->SetPosition(pos);
+        l_Door->SetPitch(pitch);
+        l_Door->SetRoll(roll);
+        l_Door->SetScale(scale);
+        std::stringstream ss;
+        ss << meshName << "_UserData";
+        std::string userDataName = ss.str();
+        Vect3f l_ShapeSize = m.GetVect3fProperty("phisic_size", v3fZERO, false);
+        l_Door->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
+        AddResource(meshName, l_Door);
+
+      }  else  if (name == "platform") {
         //TODO
         std::string platformName = m(i).GetPszISOProperty("name", "box1");
         std::string core = m(i).GetPszISOProperty("core", "box");
@@ -281,27 +306,52 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node) {
       l_AnimatedInstanceModel->SetScale(scale);
       //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
       AddResource(meshName, l_AnimatedInstanceModel);
-    }else if (name == "switch_instance") {
-        std::string meshName = m.GetPszISOProperty("name", "box1");
-        std::string core = m.GetPszISOProperty("core", "box");
-        Vect3f pos = m.GetVect3fProperty("pos", v3fZERO);
-        float yaw = m.GetFloatProperty("yaw");
-        float pitch = m.GetFloatProperty("pitch");
-        float roll = m.GetFloatProperty("roll");
-        float scale = m.GetFloatProperty("scale");
-		CSwitch *l_Switch  = new CSwitch(meshName, core);
-        l_Switch->SetYaw(yaw);
-        l_Switch->SetPosition(pos);
-        l_Switch->SetPitch(pitch);
-        l_Switch->SetRoll(roll);
-        l_Switch->SetScale(scale);
-		std::stringstream ss;
-		ss << meshName << "_UserData";
-		std::string userDataName = ss.str();
-		l_Switch->InsertPhisicSwitch(userDataName, Vect3f(0.5f,0.5f,0.5f), v3fZERO);
-        AddResource(meshName, l_Switch); 
+    } else if (name == "switch_instance") {
+      std::string meshName = m.GetPszISOProperty("name", "box1");
+      std::string core = m.GetPszISOProperty("core", "box");
+      Vect3f pos = m.GetVect3fProperty("pos", v3fZERO);
+      float yaw = m.GetFloatProperty("yaw");
+      float pitch = m.GetFloatProperty("pitch");
+      float roll = m.GetFloatProperty("roll");
+      float scale = m.GetFloatProperty("scale");
+      CSwitch *l_Switch  = new CSwitch(meshName, core);
+      l_Switch->SetYaw(yaw);
+      l_Switch->SetPosition(pos);
+      l_Switch->SetPitch(pitch);
+      l_Switch->SetRoll(roll);
+      l_Switch->SetScale(scale);
+      std::stringstream ss;
+      ss << meshName << "_UserData";
+      std::string userDataName = ss.str();
+      Vect3f l_ShapeSize = m.GetVect3fProperty("phisic_size", v3fZERO, false);
+      l_Switch->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
+      AddResource(meshName, l_Switch);
 
-	}else  if (name == "renderable_script") {
+    } else if (name == "door") {
+      std::string meshName = m.GetPszISOProperty("name", "box1");
+      std::string core = m.GetPszISOProperty("core", "box");
+      Vect3f pos = m.GetVect3fProperty("pos", v3fZERO);
+      float yaw = m.GetFloatProperty("yaw");
+      float pitch = m.GetFloatProperty("pitch");
+      float roll = m.GetFloatProperty("roll");
+      float scale = m.GetFloatProperty("scale");
+      std::string l_LuaFunc = m.GetPszISOProperty("lua_function", "", false);
+      Vect3f l_FinalPos = m.GetVect3fProperty("final_position", v3fZERO, false);
+      CDoor *l_Door  = new CDoor(meshName, core, l_LuaFunc, l_FinalPos);
+      l_Door->SetYaw(yaw);
+      l_Door->SetPosition(pos);
+      l_Door->SetPitch(pitch);
+      l_Door->SetRoll(roll);
+      l_Door->SetScale(scale);
+      std::stringstream ss;
+      ss << meshName << "_UserData";
+      std::string userDataName = ss.str();
+      Vect3f l_ShapeSize = m.GetVect3fProperty("phisic_size", v3fZERO, false);
+      l_Door->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
+
+      AddResource(meshName, l_Door);
+
+    } else  if (name == "renderable_script") {
       std::string l_name = m.GetPszISOProperty("name", "");
       std::string l_file = m.GetPszISOProperty("file", "");
       if (l_name == "scriptedController") {

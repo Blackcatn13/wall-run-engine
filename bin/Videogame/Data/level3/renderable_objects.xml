@@ -11,12 +11,14 @@
 	<layer name="collectible" />
 	<layer name="enemies" />
 	<layer name="switches" />
+	<layer name="doors" />
 	
 	
-	<switch_instance name="switch_001" core="Switch001" pos="3.806 0.0 10.4" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="switches"/>
-	<switch_instance name="switch_002" core="Switch001" pos="7.806 0.0 15.4" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="switches"/>
-	<switch_instance name="switch_003" core="Switch001" pos="2.806 0.0 20.4" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="switches"/>
+	<switch_instance name="switch_001" core="Switch001" phisic_size="0.5 0.25 0.5" pos="3.806 0.0 10.4" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="switches"/>
+	<switch_instance name="switch_002" core="Switch001" phisic_size="0.5 0.25 0.5" pos="7.806 0.0 15.4" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="switches"/>
+	<switch_instance name="switch_003" core="Switch001" phisic_size="0.5 0.25 0.5" pos="2.806 0.0 20.4" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="switches"/>
 	
+	<door name="door_001" core="door_001" phisic_size="1.5 2.0 0.5" lua_function="move_door" final_position="0.617355 3.000000 -4.872604" pos="0.617355 0.000000 -4.872604" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="doors"/>
 	
 	<!-- <mesh_instance name="Sphere002" core="Sphere001" pos="46.479233 0.000000 0.737213" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/> -->
 	

@@ -327,6 +327,12 @@
     <ClCompile Include="SceneElements\Switch.cpp">
       <Filter>SceneElements</Filter>
     </ClCompile>
+    <ClCompile Include="SceneElements\SceneElement.cpp">
+      <Filter>SceneElements</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneElements\Door.cpp">
+      <Filter>SceneElements</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
@@ -605,6 +611,12 @@
       <Filter>Collectibles</Filter>
     </ClInclude>
     <ClInclude Include="SceneElements\Switch.h">
+      <Filter>SceneElements</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneElements\SceneElement.h">
+      <Filter>SceneElements</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneElements\Door.h">
       <Filter>SceneElements</Filter>
     </ClInclude>
   </ItemGroup>

@@ -38,6 +38,7 @@ void CPuzzleManager::Load(std::string file) {
           int l_NumActivatedSwitches = m(i).GetIntProperty("min_activated_switches", 0, false);
           newPuzzle->setLuaCode(l_LuaCode);
           newPuzzle->setMinActivatedSwitches(l_NumActivatedSwitches);
+          newPuzzle->setSceneElement(m(i).GetPszISOProperty("scene_element", "", false));
           for (int j = 0; j < m(i).GetNumChildren(); ++j) {
             CTrigger *l_Trigger = TRIGGM->GetResource(m(i)(j).GetPszISOProperty("name", "", false));
             if (l_Trigger != NULL)

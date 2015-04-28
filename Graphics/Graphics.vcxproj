@@ -100,9 +100,11 @@
     <ClCompile Include="Renderable\RenderableObjectTechnique.cpp" />
     <ClCompile Include="Renderable\RenderableObjectTechniqueManager.cpp" />
     <ClCompile Include="SceneElements\BreakablePlatform.cpp" />
+    <ClCompile Include="SceneElements\Door.cpp" />
     <ClCompile Include="SceneElements\MovingPlatform.cpp" />
     <ClCompile Include="SceneElements\PinchosPlatform.cpp" />
     <ClCompile Include="SceneElements\PolyPlatform.cpp" />
+    <ClCompile Include="SceneElements\SceneElement.cpp" />
     <ClCompile Include="SceneElements\StaticPlatform.cpp" />
     <ClCompile Include="SceneElements\Switch.cpp" />
     <ClCompile Include="StaticMeshes\StaticMesh.cpp" />
@@ -205,9 +207,11 @@
     <ClInclude Include="Renderable\RenderableObjectTechnique.h" />
     <ClInclude Include="Renderable\RenderableObjectTechniqueManager.h" />
     <ClInclude Include="SceneElements\BreakablePlatform.h" />
+    <ClInclude Include="SceneElements\Door.h" />
     <ClInclude Include="SceneElements\MovingPlatform.h" />
     <ClInclude Include="SceneElements\PinchosPlatform.h" />
     <ClInclude Include="SceneElements\PolyPlatform.h" />
+    <ClInclude Include="SceneElements\SceneElement.h" />
     <ClInclude Include="SceneElements\StaticPlatform.h" />
     <ClInclude Include="SceneElements\Switch.h" />
     <ClInclude Include="StaticMeshes\StaticMesh.h" />

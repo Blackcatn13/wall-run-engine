@@ -21,7 +21,10 @@ CPuzzle::~CPuzzle() {
 void CPuzzle::Update(float dt) {
 
   if (m_ActivatedSwitches == m_MinActivatedSwitches && !m_Done) {
-    SCRIPTM->RunCode(m_LuaCode);
+    std::stringstream ss;
+    ss << m_LuaCode << "(\"" << m_SceneElement << "\")";
+    std::string l_Code = ss.str();
+    SCRIPTM->RunCode(l_Code);
     m_Done = true;
   }
 }
