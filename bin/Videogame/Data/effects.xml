@@ -14,6 +14,7 @@
 	<effect name="CubeMapEffect" file="data/effects/CubeMap.fx"/>
 	<effect name="LightMapEffect" file="data/effects/LightMapEffect.fx"/>
 	<effect name="ShadowMapGenerate" file="data/effects/ShadowMapGenerate.fx"/>
+	<effect name="ShadowMapGenerateCal3D" file="data/effects/ShadowMapGenerateCal3D.fx"/>
 	<effect name="GBufferDiffuseEffect" file="data/effects/GBufferDiffuse.fx"/>
 	<effect name="GBufferColoredEffect" file="data/effects/GBufferColored.fx"/>
 	<effect name="GBufferNormalMapEffect" file="data/effects/GBufferNormalMap.fx"/>
@@ -42,6 +43,7 @@
 	<technique name="CubeMapTechnique" effect="CubeMapEffect" use_view_to_light_projection_matrix="true" use_world_matrix="true" use_world_view_projection_matrix="true" num_of_lights="4" use_lights="true" use_light_ambient_color="true" use_inverse_view_matrix="true" />
 	<technique name="LightMapTechnique" effect="LightMapEffect" use_view_to_light_projection_matrix="true" use_world_matrix="true" use_world_view_projection_matrix="true" num_of_lights="4" use_lights="true" use_light_ambient_color="true" use_inverse_view_matrix="true" />
 	<technique name="GenerateShadowMap" effect="ShadowMapGenerate" use_view_to_light_projection_matrix="true" use_world_matrix="true" use_world_view_projection_matrix="true" num_of_lights="4" use_lights="true" use_light_ambient_color="true" use_inverse_view_matrix="true" />
+	<technique name="GenerateShadowMapCal3D" effect="ShadowMapGenerateCal3D" use_view_to_light_projection_matrix="true" use_world_matrix="true" use_world_view_projection_matrix="true" num_of_lights="4" use_lights="true" use_light_ambient_color="true" use_inverse_view_matrix="true" />
 	<technique name="GBufferDiffuseMapTechnique" effect="GBufferDiffuseEffect"  use_world_matrix="true" use_world_view_projection_matrix="true" />
 	<technique name="GBufferColoredTechnique" effect="GBufferColoredEffect"  use_world_matrix="true" use_world_view_projection_matrix="true" use_view_to_light_projection_matrix="true"/>
 	<technique name="GBufferNormalMapTechnique" effect="GBufferNormalMapEffect"  use_world_matrix="true" use_world_view_projection_matrix="true" use_inverse_view_matrix="true"/>

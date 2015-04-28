@@ -32,6 +32,7 @@
 	<enable_z_test/>
 	<render_scene layer="enemies" active="true" />
 	<render_scene layer="collectible" active="true" />
+	<render_scene layer="switches" active="true" />
 	<render_scene layer="solid" active="true"/>
 	
 	<unset_render_target render_target="deferred_multiple_render_target"/>

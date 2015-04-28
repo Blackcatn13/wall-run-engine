@@ -31,9 +31,9 @@
 	<trigger name="TriggerCam004" platform_name="" position="482.550903 15.107889 -64.058060" shape="box" size="21.436 7.05036 1.23926" type_event="enter" script_function="trigger_change_view" param1="x" group="3" paint="true" color="1.0 1.0 0.5"/>
 	
 	<!-- Switches -->
-	<trigger name="switch_001" position="3.806 1.5 10.4" shape="sphere"  radius = "1.2" type_event="enter" script_function="toogle_switch" group="3" param1="switch_001" param2="puzzle001" paint="true" color="0.5 0.5 1.0" />
-	<trigger name="switch_002" position="7.806 1.5 15.4" shape="sphere"  radius = "1.2" type_event="enter" script_function="toogle_switch" group="3" param1="switch_002" param2="puzzle001" paint="true" color="0.5 0.5 1.0" />
-	<trigger name="switch_003" position="2.806 1.5 20.4" shape="sphere"  radius = "1.2" type_event="enter" script_function="toogle_switch" group="3" param1="switch_003" param2="puzzle001" paint="true" color="0.5 0.5 1.0" />
+	<trigger name="switch_001" position="3.806 0.9 10.4" shape="box"  size="0.4 0.1 0.4" type_event="enter" script_function="toogle_switch" group="3" param1="switch_001" param2="puzzle001" paint="true" color="0.5 0.5 1.0" />
+	<trigger name="switch_002" position="7.806 0.9 15.4" shape="box"  size="0.4 0.1 0.4" type_event="enter" script_function="toogle_switch" group="3" param1="switch_002" param2="puzzle001" paint="true" color="0.5 0.5 1.0" />
+	<trigger name="switch_003" position="2.806 0.9 20.4" shape="box"  size="0.4 0.1 0.4" type_event="enter" script_function="toogle_switch" group="3" param1="switch_003" param2="puzzle001" paint="true" color="0.5 0.5 1.0" />
 	
 	
 	

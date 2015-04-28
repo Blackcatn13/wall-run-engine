@@ -10,12 +10,14 @@
 	<layer name="enabled_poly" />
 	<layer name="collectible" />
 	<layer name="enemies" />
-	<layer name="switches_on" />
-	<layer name="switches_off" />
+	<layer name="switches" />
 	
-	<mesh_instance name="switch001" core="Sphere002" pos="3.806 1.5 10.4" yaw="0.0" pitch="0.0" roll="0.0" scale="0.05 0.05 0.05" visible="true" layer="solid"/>
-	<mesh_instance name="switch002" core="Sphere002" pos="7.806 1.5 15.4" yaw="0.0" pitch="0.0" roll="0.0" scale="0.05 0.05 0.05" visible="true" layer="solid"/>
-	<mesh_instance name="switch003" core="Sphere002" pos="2.806 1.5 20.4" yaw="0.0" pitch="0.0" roll="0.0" scale="0.05 0.05 0.05" visible="true" layer="solid"/>
+	
+	<switch_instance name="switch_001" core="Switch001" pos="3.806 0.0 10.4" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="switches"/>
+	<switch_instance name="switch_002" core="Switch001" pos="7.806 0.0 15.4" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="switches"/>
+	<switch_instance name="switch_003" core="Switch001" pos="2.806 0.0 20.4" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="switches"/>
+	
+	
 	<!-- <mesh_instance name="Sphere002" core="Sphere001" pos="46.479233 0.000000 0.737213" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/> -->
 	
 	
