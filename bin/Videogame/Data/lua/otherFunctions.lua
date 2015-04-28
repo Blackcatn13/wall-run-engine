@@ -86,7 +86,8 @@ end
 function open_door(_objectName)
 	coreInstance:trace("Opening door")
 	local door = get_renderable_object("puzzle", _objectName)
-	door.m_IsOpening =true
+	--door.m_IsOpening =true
+	--play animacion subir puerta
 end
 
 function trigger_change_view(offset_axis)
