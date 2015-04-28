@@ -33,9 +33,9 @@ function unlock_image(image_path)
 end
 
 function toogle_switch(trigger_name, puzzle_name)
-	coreInstance:trace("Enter switch")
+	--coreInstance:trace("Enter switch")
 	local player = Player:get_instance()
-	coreInstance:trace(puzzle_name)
+	--coreInstance:trace(puzzle_name)
 	local puzzle = coreInstance:get_puzzle_manager():get_resource(puzzle_name)
 	--local total_switches = puzzle.m_MinActivatedSwitches
 	
@@ -46,7 +46,7 @@ function toogle_switch(trigger_name, puzzle_name)
 			local trigger = trigger_manager:get_resource(trigger_name)
 			--coreInstance:trace("Toogle switch")
 			if trigger ~= nil then		
-				local switch_mesh = get_renderable_object("switches", trigger_name)
+				local switch_mesh = get_renderable_object("puzzle", trigger_name)
 				if trigger.m_IsSwitched ~= true then
 					trigger.m_IsSwitched = true
 				--	coreInstance:trace("Trigger activado?" ..tostring(trigger.m_IsSwitched))
@@ -64,7 +64,7 @@ function toogle_switch(trigger_name, puzzle_name)
 			end
 		end
 	end
-	coreInstance:trace(tostring(puzzle.m_ActivatedSwitches))
+	--coreInstance:trace(tostring(puzzle.m_ActivatedSwitches))
 	--if activated_switches == total_switches then --TODO obtener datos del puzzle en si
 		--coreInstance:trace("all switches activated")
 		--open_door()
@@ -85,7 +85,7 @@ end
 
 function open_door(_objectName)
 	coreInstance:trace("Opening door")
-	local door = get_renderable_object("doors", _objectName)
+	local door = get_renderable_object("puzzle", _objectName)
 	door.m_IsOpening =true
 end
 
