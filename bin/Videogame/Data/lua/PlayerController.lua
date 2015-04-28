@@ -10,6 +10,8 @@ function on_update_player_lua(l_ElapsedTime)
 	local active_camera = cam_Controller:get_active_camera();
 	local camObject = active_camera.m_pObject3D;
 	local player = coreInstance:get_player_controller();
+	local lightM = coreInstance:get_light_manager();
+	local directionalLight = lightM:get_resource("Direct002");
 	local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky");
 	--////////////////////////////////////////////////////////
 	-- PARAMETERS
@@ -40,7 +42,8 @@ function on_update_player_lua(l_ElapsedTime)
 			coreInstance.m_CameraController:set_active_camera("3DCam");
 		end
 	end
-	
+	-- MOVER LA LUZ DEL SHADOWMAP
+	directionalLight:set_position(Vect3f(player:get_position().x,directionalLight:get_position().y,player:get_position().z));
 	local dir3D = active_camera:get_direction();
 	local dirYaw = camObject:get_yaw();
 	local dirNor = Vect3f(math.cos(dirYaw + (math.pi/2)), 0, (math.sin(dirYaw + (math.pi/2))));
