@@ -58,7 +58,7 @@ void RegisterAI() {
     .def("move", &CAIController::Move)
     .def("move_to", &CAIController::MoveTo)
     .def("rotate_or_move", &CAIController::RotateOrMove)
-	.def("only_rotate", &CAIController::OnlyRotate)
+    .def("only_rotate", &CAIController::OnlyRotate)
     .def("rotate_yaw", &CAIController::RotateYaw)
   ];
 
@@ -100,7 +100,7 @@ void RegisterAI() {
     .def(constructor<std::string, int >())
     .property("m_MinActivatedSwitches",  &CPuzzle::getMinActivatedSwitches, &CPuzzle::setMinActivatedSwitches )
     .property("m_ActivatedSwitches",  &CPuzzle::getActivatedSwitches, &CPuzzle::setActivatedSwitches )
-
+    .property("m_Done",  &CPuzzle::getDone, &CPuzzle::setDone)
   ];
 
 

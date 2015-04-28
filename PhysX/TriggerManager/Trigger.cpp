@@ -139,7 +139,7 @@ void CTrigger::ExecuteOnStay() {
 
 void CTrigger::ExecuteOnExit() {
   //Executing in EXIT type
-  if (m_OnStay != "")
+  if (m_OnExit != "")
     // SCRIPTM->RunFile(m_OnExit);
     SCRIPTM->RunCode(m_OnExit);
 }

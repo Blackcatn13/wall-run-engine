@@ -22,6 +22,7 @@ class CPuzzle {
   GET_SET(std::string, LuaCode)
   GET_SET(int, MinActivatedSwitches)
   GET_SET(int, ActivatedSwitches)
+  GET_SET(bool, Done)
  private:
   std::vector<CTrigger *> m_Switches;
   std::string m_LuaCode;

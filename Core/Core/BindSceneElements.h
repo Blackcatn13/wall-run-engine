@@ -11,6 +11,7 @@
 #include "SceneElements\MovingPlatform.h"
 #include "SceneElements\PinchosPlatform.h"
 #include "SceneElements\PolyPlatform.h"
+#include "SceneElements\Switch.h"
 
 #include "Mesh\MeshInstance.h"
 #include <string>
@@ -83,10 +84,15 @@ void RegisterSceneElements() {
     .property("m_LightName", &CPolyPlatform::getLightName, &CPolyPlatform::setLightName)
     .property("m_Light", &CPolyPlatform::GetLight, &CPolyPlatform::SetLight)
     .property("m_LightOriginalPosition", &CPolyPlatform::getLightOriginalPosition, &CPolyPlatform::setLightOriginalPosition)
-
-
-
     // .property("m_RedimAxis", &CPolyPlatform::getRedimAxis, &CPolyPlatform::setRedimAxis )
+  ];
+
+  luabind::module(LUA_STATE) [
+    class_<CSwitch, CMeshInstance>("CSwitch")
+    .def(constructor < std::string , std::string>())
+    .def("insert_phisic_switch", &CSwitch::InsertPhisicSwitch)
+    .property("m_SwitchActor", &CSwitch::GetSwitchActor)
+    .property("m_SwitchPhysicsSize", &CSwitch::GetPhysicsSize)
   ];
 }
 

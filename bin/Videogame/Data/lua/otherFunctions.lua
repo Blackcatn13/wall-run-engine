@@ -46,20 +46,20 @@ function toogle_switch(trigger_name, puzzle_name)
 			local trigger = trigger_manager:get_resource(trigger_name)
 			--coreInstance:trace("Toogle switch")
 			if trigger ~= nil then		
+				local switch_mesh = get_renderable_object("switches", trigger_name)
 				if trigger.m_IsSwitched ~= true then
 					trigger.m_IsSwitched = true
 					coreInstance:trace("Trigger activado?" ..tostring(trigger.m_IsSwitched))
-					puzzle.m_ActivatedSwitches = puzzle.m_ActivatedSwitches + 1
-					local switch_mesh = get_renderable_object("switches", trigger_name)
-					coreInstance:trace("hay objeto")
-					local new_position = Vect3f(switch_mesh:get_position().x,switch_mesh:get_position().y - 0.5,switch_mesh:get_position().z )
-					coreInstance:trace("hay nueva posicion")
-					switch_mesh:set_position(new_position)
-					coreInstance:trace("cambio de posicion hecho")
-				else 
+					puzzle.m_ActivatedSwitches = puzzle.m_ActivatedSwitches + 1	
+					local new_position = Vect3f(switch_mesh:get_position().x,switch_mesh:get_position().y - 0.3,switch_mesh:get_position().z )
+					change_object_position(switch_mesh, new_position)
+				--[[else 
 					trigger.m_IsSwitched = false
 					coreInstance:trace(tostring(trigger.m_IsSwitched))
 					puzzle.m_ActivatedSwitches = puzzle.m_ActivatedSwitches - 1
+					local new_position = Vect3f(switch_mesh:get_position().x,switch_mesh:get_position().y + 0.3,switch_mesh:get_position().z )
+					change_object_position(switch_mesh, new_position)
+					--]]
 				end
 			end
 		end
@@ -69,6 +69,12 @@ function toogle_switch(trigger_name, puzzle_name)
 		--coreInstance:trace("all switches activated")
 		--open_door()
 	--end
+end
+function change_object_position(_object, _position)
+	--local switch_mesh = get_renderable_object("switches", trigger_name)
+	--local new_position = Vect3f(switch_mesh:get_position().x,switch_mesh:get_position().y - 0.3,switch_mesh:get_position().z )
+	_object:set_position(_position)
+	_object.m_SwitchActor:set_global_position(_position)
 end
 
 function get_renderable_object(layer_name, _objectName)
