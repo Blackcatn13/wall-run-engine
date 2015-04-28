@@ -257,7 +257,7 @@ Vect3f CAnimatedInstanceModel::GetBoneMovement() {
   return Vect3f(0, position, 0);
 }
 
-void CAnimatedInstanceModel::UpdateSkeleton() {
-  m_CalModel->getMixer()->updateAnimation();
+void CAnimatedInstanceModel::UpdateSkeleton(float dt) {
+  m_CalModel->getMixer()->updateAnimation(dt);
   m_CalModel->getMixer()->updateSkeleton();
 }
