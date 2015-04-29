@@ -298,7 +298,7 @@ function move_character_controller_mesh(_player, _position, _jumping)
 	local mesh = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky")
 	mesh:set_yaw(_player:get_yaw() + math.pi)
 	local pos;
-	if _jumping then
+	if _jumping and not inLoop then
 		pos = mesh:getAnimationBonePosition().y;
 		local oldPosition = mesh:get_position();
 		local mesh_position = Vect3f(_position.x, oldPosition.y, _position.z)
