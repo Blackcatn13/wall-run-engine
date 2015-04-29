@@ -3,11 +3,14 @@
 #include "GraphicsManager.h"
 #include "Lights\LightManager.h"
 #include "Lights\Light.h"
+#include "Lights\DirectionalLight.h"
 #include "Effects\Effect.h"
 #include "Effects\EffectManager.h"
 #include "Core_Utils/MemLeaks.h"
 #include "Renderable\RenderableObjectTechniqueManager.h"
 #include "Renderable\RenderableObjectTechnique.h"
+
+
 
 CGenerateShadowMapsSceneRendererCommand::CGenerateShadowMapsSceneRendererCommand(CXMLTreeNode &atts)
 {

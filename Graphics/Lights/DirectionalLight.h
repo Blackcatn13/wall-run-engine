@@ -35,7 +35,7 @@ public:
         m_OrthoShadowMapSize = VectSize;
     }
 
-    Vect2f GetOrthoShadowMapSize(Vect2f VectSize)
+    Vect2f GetOrthoShadowMapSize()
     {
         return m_OrthoShadowMapSize;
     }

@@ -72,6 +72,7 @@
     <ClCompile Include="RenderableCommands\EnableZWriteSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\EndRenderSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\GaussianBlurSceneRendererCommand.cpp" />
+    <ClCompile Include="RenderableCommands\GenerateCascadeShadowMapsSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\GenerateShadowMapsSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\ParticleRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\PresentSceneRenderCommand.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="RenderableCommands\EnableZWriteSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\EndRenderSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\GaussianBlurSceneRendererCommand.h" />
+    <ClInclude Include="RenderableCommands\GenerateCascadeShadowMapsSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\GenerateShadowMapsSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\ParticleRendererCommand.h" />
     <ClInclude Include="RenderableCommands\PresentSceneRenderCommand.h" />

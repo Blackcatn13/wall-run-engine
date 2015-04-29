@@ -333,6 +333,9 @@
     <ClCompile Include="SceneElements\Door.cpp">
       <Filter>SceneElements</Filter>
     </ClCompile>
+    <ClCompile Include="RenderableCommands\GenerateCascadeShadowMapsSceneRendererCommand.cpp">
+      <Filter>RenderableCommands</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
@@ -618,6 +621,9 @@
     </ClInclude>
     <ClInclude Include="SceneElements\Door.h">
       <Filter>SceneElements</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableCommands\GenerateCascadeShadowMapsSceneRendererCommand.h">
+      <Filter>RenderableCommands</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
