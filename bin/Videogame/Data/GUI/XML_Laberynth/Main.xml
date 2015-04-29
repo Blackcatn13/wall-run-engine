@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <Windows OnLoadWindows=""
          OnSaveWindows=""
-         OnUpdateWindows="if CCoreLuaWrapper().m_CoreInstance:get_action_to_input():do_action_from_lua('Attack') then                            
-                            if CCoreLuaWrapper().m_CoreInstance:getGUIManager():get_active_image('LifeGUI') == 'Life3' then
-								CCoreLuaWrapper().m_CoreInstance:getGUIManager():set_image('LifeGUI','Life2')
-							else
-								if CCoreLuaWrapper().m_CoreInstance:getGUIManager():get_active_image('LifeGUI') == 'Life2' then
-									CCoreLuaWrapper().m_CoreInstance:getGUIManager():set_image('LifeGUI','Life1')
-								else
-									if CCoreLuaWrapper().m_CoreInstance:getGUIManager():get_active_image('LifeGUI') == 'Life1' then
-										CCoreLuaWrapper().m_CoreInstance:getGUIManager():set_image('LifeGUI','Life0')
-									else
-										CCoreLuaWrapper().m_CoreInstance:getGUIManager():set_image('LifeGUI','Life3')
-									end
-								end	
-							end
-                          end">
+         OnUpdateWindows="">
 		  
   <Image name="LifeGUI" posx="75.00" posy="2.00" height="17.50" width="17.50" visible="true" active="true"
          default="Life3" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
