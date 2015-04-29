@@ -15,7 +15,7 @@ CConsole::CConsole( uint32 windowsHeight, uint32 windowsWidth, float height_prec
       m_FileName(""),
       m_completeBuffer(""),
       m_completeCount(0),
-      m_previousSize(0),
+      m_previousWord(""),
 	  m_doAutoComplete(false),
 	  m_doAutoCompleteBack(false),
 	  m_firstWord(false),
@@ -60,8 +60,7 @@ std::string CConsole::SearchString(int init, std::string input, bool forward)
     if (forward){
 		if (m_doAutoCompleteBack)
 			initAux = initAux+2;
-		if (initAux > m_words.size()-1)
-			initAux = 0;
+		
 		for (int i = initAux; i < m_words.size(); i++) {
 			//if (std::string(m_words[i]).find(input) != std::string::npos) {
 			if ( std::string(m_words[i]).substr(0,inputAux.size()).compare(inputAux) == 0 ){
@@ -70,14 +69,20 @@ std::string CConsole::SearchString(int init, std::string input, bool forward)
 				m_doAutoComplete = true;
 				m_doAutoCompleteBack = false;
 				return result;
+			}else{
+				m_completeCount += 1;
 			}
 		}
+		if (m_completeCount > m_words.size()-1)
+			m_completeCount = 0;
+		m_doAutoComplete = true;
+		m_doAutoCompleteBack = false;
 	}
 	else{
 		if (m_doAutoComplete)
 			initAux = initAux-2;
 		if (initAux < 0)
-			initAux = m_words.size()-1;
+			initAux = 0;
 		for (int i = initAux; i >= 0; i--) {
 			if ( std::string(m_words[i]).substr(0,inputAux.size()).compare(inputAux) == 0 ){
 				result = m_words[i];
@@ -85,8 +90,14 @@ std::string CConsole::SearchString(int init, std::string input, bool forward)
 				m_doAutoComplete = false;
 				m_doAutoCompleteBack = true;
 				return result;
+			}else{
+				m_completeCount -= 1;
 			}
 		}
+		if (m_completeCount <= 0)
+			m_completeCount = m_words.size()-1;
+		m_doAutoComplete = false;
+		m_doAutoCompleteBack = true;
 	}
     return result;
 }
@@ -196,9 +207,12 @@ void CConsole::Update(CInputManager* intputManager, float elapsedTime)
         }
         if (ACT2IN->DoAction("ConsoleCompleteBack")) {
             std::string bufferAux = m_sBuffer.substr(0, m_sBuffer.size() - 1);
-            if (m_previousSize != bufferAux.size()){
+			if (m_previousWord.compare(bufferAux) != 0){
                 m_completeBuffer = bufferAux;
+				m_completeCount = m_sBuffer.size()-1;
 				m_secondTry = false;
+				m_doAutoComplete = false;
+				m_doAutoCompleteBack = false;
 			}else
 				m_secondTry = true;
             std::string search = SearchString(m_completeCount, m_completeBuffer, false);
@@ -207,19 +221,21 @@ void CConsole::Update(CInputManager* intputManager, float elapsedTime)
 					m_sBuffer += search;
 				else m_sBuffer = search;
                 m_uCursorPos = m_sBuffer.size();
-                m_previousSize = m_sBuffer.size();
+                m_previousWord = m_sBuffer;
             } else {
                 m_sBuffer = m_completeBuffer;
                 m_uCursorPos = m_sBuffer.size();
-                m_completeCount = 0;
-                m_previousSize = 0;
+                m_previousWord = m_completeBuffer;
             }
         }else{
 			if (ACT2IN->DoAction("ConsoleComplete")) {
 				std::string bufferAux = m_sBuffer.substr(0, m_sBuffer.size() - 1);
-				if (m_previousSize != bufferAux.size()){
+				if (m_previousWord.compare(bufferAux) != 0){
 					m_completeBuffer = bufferAux;
+					m_completeCount = 0;
 					m_secondTry = false;
+					m_doAutoComplete = false;
+					m_doAutoCompleteBack = false;
 				}else
 					m_secondTry = true;
 				std::string search = SearchString(m_completeCount, m_completeBuffer);
@@ -228,12 +244,11 @@ void CConsole::Update(CInputManager* intputManager, float elapsedTime)
 						m_sBuffer += search;
 					else m_sBuffer = search;
 					m_uCursorPos = m_sBuffer.size();
-					m_previousSize = m_sBuffer.size();
+					m_previousWord = m_sBuffer;
 				} else {
 					m_sBuffer = m_completeBuffer;
 					m_uCursorPos = m_sBuffer.size();
-					m_completeCount = 0;
-					m_previousSize = 0;
+					m_previousWord = m_completeBuffer;
 				}
 			}
 		}

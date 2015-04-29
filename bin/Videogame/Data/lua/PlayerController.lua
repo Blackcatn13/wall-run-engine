@@ -46,7 +46,12 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 	end
 	-- MOVER LA LUZ DEL SHADOWMAP
-	directionalLight:set_position(Vect3f(player:get_position().x,directionalLight:get_position().y,player:get_position().z));
+	local lightDirection = directionalLight:get_direction();
+	local altura = directionalLight:get_position().y - player:get_position().y;
+	local offsetx = lightDirection.x*altura;
+	local offsetz = lightDirection.z*altura;
+	directionalLight:set_position(Vect3f(player:get_position().x-offsetx,player:get_position().y+altura,player:get_position().z-offsetz));
+	--directionalLight:set_position(Vect3f(player:get_position().x,player:get_position().y+altura,player:get_position().z));
 	local dir3D = active_camera:get_direction();
 	local dirYaw = camObject:get_yaw();
 	local dirNor = Vect3f(math.cos(dirYaw + (math.pi/2)), 0, (math.sin(dirYaw + (math.pi/2))));
