@@ -98,6 +98,7 @@
     <ClCompile Include="Enemies\Enemy.cpp" />
     <ClCompile Include="Enemies\EnemyManager.cpp" />
     <ClCompile Include="Enemies\PatrolEnemy.cpp" />
+    <ClCompile Include="Enemies\RunnerEnemy.cpp" />
     <ClCompile Include="TestCommands.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -118,6 +119,7 @@
     <ClInclude Include="Enemies\Enemy.h" />
     <ClInclude Include="Enemies\EnemyManager.h" />
     <ClInclude Include="Enemies\PatrolEnemy.h" />
+    <ClInclude Include="Enemies\RunnerEnemy.h" />
     <ClInclude Include="TestCommands.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>

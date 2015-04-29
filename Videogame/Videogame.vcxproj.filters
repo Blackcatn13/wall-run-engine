@@ -62,6 +62,9 @@
     <ClCompile Include="TestGameplay.cpp">
       <Filter>TestGameplay</Filter>
     </ClCompile>
+    <ClCompile Include="Enemies\RunnerEnemy.cpp">
+      <Filter>Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enemies\EasyEnemy.h">
@@ -96,6 +99,9 @@
     </ClInclude>
     <ClInclude Include="TestGameplay.h">
       <Filter>TestGameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemies\RunnerEnemy.h">
+      <Filter>Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -13,7 +13,7 @@ class CAIController : public CObject3D {
  public:
   CAIController();
   CAIController(std::string mesh, std::string name, Vect3f position,  float speed, float turnSpeed, float gravity);
-  CAIController(  CRenderableObject *rond, float speed, float turnSpeed, float gravity);
+  CAIController(  CRenderableObject *rond, float speed, float turnSpeed, float gravity, Vect2f controller_size);
 
 
   virtual ~CAIController();

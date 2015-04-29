@@ -13,5 +13,6 @@
 	<script name="Enemy" file="Data/lua/Enemy.lua" auto_run = "false"/>
 	<script name="PumPum" file="Data/lua/PumPum.lua" auto_run = "false"/>
 	<renderable_script name="scriptedController" file="Data/scripted_controller.lua" />
+	<script name="ChuckyRunner" file="Data/lua/ChuckyRunner.lua" auto_run = "true"/>
 </lua_scripts>
 

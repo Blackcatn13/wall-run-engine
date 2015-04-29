@@ -117,6 +117,7 @@ void CRenderableObjectsManager::Load(const std::string &FileName) {
         l_AnimatedInstanceModel->SetPitch(pitch);
         l_AnimatedInstanceModel->SetRoll(roll);
         l_AnimatedInstanceModel->SetScale(scale);
+        l_AnimatedInstanceModel->setName(meshName);
         //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
         AddResource(meshName, l_AnimatedInstanceModel);
       } else if (name == "switch_instance") {
@@ -304,6 +305,7 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node) {
       l_AnimatedInstanceModel->SetPitch(pitch);
       l_AnimatedInstanceModel->SetRoll(roll);
       l_AnimatedInstanceModel->SetScale(scale);
+      l_AnimatedInstanceModel->setName(meshName);
       //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
       AddResource(meshName, l_AnimatedInstanceModel);
     } else if (name == "switch_instance") {

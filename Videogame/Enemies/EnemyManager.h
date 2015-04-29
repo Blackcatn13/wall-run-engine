@@ -7,6 +7,7 @@
 #include <string>
 #include <map>
 #include "Math\Vector3.h"
+#include "Math\Vector2.h"
 
 class CEnemy;
 class CXMLTreeNode;
@@ -26,6 +27,7 @@ typedef struct EnemyStats {
   float			ShootSpeed;
   int			life;
   std::string 	FsmName;
+  Vect2f		ControllerSize;
 
 } StatsStr;
 
