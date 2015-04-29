@@ -34,6 +34,7 @@ CPlayerController::CPlayerController()
   m_PhysicUserData = new CPhysicUserData("Player");
   m_PhysicUserData->SetPaint(false);
   m_PhysicController = new CPhysicController(0.5, 1, 1.047, 0.001, 0.3, ECG_ESCENE, m_PhysicUserData, Vect3f(0, 1.001, 0), 0);
+  m_PhysicUserData->SetMyCollisionGroup(ECG_PLAYER);
   PHYSXM->AddPhysicController(m_PhysicController);
   //CRenderableObject* malla = RENDLM->GetDefaultRenderableObjectManager()->GetResource("PIKY");
   CRenderableObject *malla = RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky");

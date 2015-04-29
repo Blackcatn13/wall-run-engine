@@ -25,6 +25,8 @@ CTrigger::CTrigger(CXMLTreeNode &node, CPhysicUserData *_pUserData)
   _pUserData->SetPaint(false);
   PHYSXM->AddPhysicActor(this);
   PHYSXM->SetTriggerReport(TRIGGM->getTriggerReport());
+  int l_CollisionGroup = node.GetIntProperty("group", 3, false);
+  _pUserData->SetMyCollisionGroup(static_cast<ECollisionGroup>(l_CollisionGroup));
   //Events & scripts
   std::string triggerEvent = node.GetPszISOProperty("type_event", "enter", false);
   std::string scriptFile = node.GetPszISOProperty("script_file", "", false);
