@@ -34,7 +34,7 @@ private:
     std::vector<std::string>	m_words;			//Vector of words.
     std::string					m_completeBuffer;	//Original word before pressing TAB.
     int							m_completeCount;	//Number of the last word used using TAB.
-    int							m_previousSize;		//Size to detect if any character is written using TABs.
+    std::string					m_previousWord;		//Last word tabuled.
 	bool						m_doAutoCompleteBack;   //Value to avoid the duplicate results during AutoComplete.
 	bool						m_doAutoComplete;   //Value to avoid the duplicate results during AutoCompleteBack.
 	bool						m_firstWord;		//Value to know if the autocompleted word is the unique one.
