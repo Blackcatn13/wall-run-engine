@@ -179,14 +179,22 @@ void RegisterPhysX() {
     .property("m_Direction3D", &CPlayerController::getDirection3D, &CPlayerController::setDirection3D )
   ];
   luabind::module(LUA_STATE) [
+    class_<SCollisionInfo>("SCollisionInfo")
+    .def(constructor<>())
+    .def_readwrite("m_fDistance", &SCollisionInfo::m_fDistance)
+    .def_readwrite("m_Normal", &SCollisionInfo::m_Normal)
+    .def_readwrite("m_CollisionPoint", &SCollisionInfo::m_CollisionPoint)
+  ];
+  luabind::module(LUA_STATE) [
     class_<CPhysicsManager>("CPhysicsManager")
     .def(constructor<>())
     .def("add_physic_actor", &CPhysicsManager::AddPhysicActor )
     .def("set_trigger_report", &CPhysicsManager::SetTriggerReport )
     .def("add_physic_controller", &CPhysicsManager::AddPhysicController)
     .def("create_spherical_phisic_controller", &CPhysicsManager::CreateSphericalPhisicController)
+    .def("raycast_closest_actor", &CPhysicsManager::RaycastClosestActor)
     // .def("get_physics_sdk", &CPhysicsManager::GetPhysicsSDK )
-    //TODO afegir la resta a mesura que calgui / hi hagi temps
+    //TODO afegir la resta a mesura que calgui / hi hagi temps ¬¬
   ];
   luabind::module(LUA_STATE) [
     class_<CTrigger, CPhysicActor >("CTrigger")

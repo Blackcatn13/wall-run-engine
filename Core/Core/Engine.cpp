@@ -24,6 +24,14 @@
 
 #define APPLICATION_NAME	"VIDEOGAME"
 
+CEngine::CEngine() :
+  m_Timer(50),
+  m_Process(NULL),
+  m_Core(NULL),
+  m_Conf_info(),
+  m_speed(1)
+{}
+
 CEngine::~CEngine(void) {
   DeInit();
 }
@@ -51,8 +59,9 @@ void CEngine::DeInit() {
 
 void CEngine::Update() {
   m_Timer.Update();
-  m_Core->Update (m_Timer.GetElapsedTime());
-  m_Process->Update (m_Timer.GetElapsedTime());
+  float dt = m_Timer.GetElapsedTime() * m_speed;
+  m_Core->Update (dt);
+  m_Process->Update (dt);
   if (ACT2IN->DoAction("LoadLanguages"))
     LANGM->LoadXMLs();
   if (ACT2IN->DoAction("Logger"))

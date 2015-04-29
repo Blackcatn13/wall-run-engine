@@ -2,8 +2,11 @@ local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 local is_init=true;
 local topPosition = -1000;
 local inLoop = false;
+local _land = false;
+local _fallPosition = Vect3f(-10000, -10000, -10000);
 function on_update_player_lua(l_ElapsedTime)
 	--local coreInstance = CCoreLuaWrapper().m_CoreInstance;
+
 	local luaUtil = CCMathLuaUtils();
 	local act2in = coreInstance:get_action_to_input();
 	local cam_Controller = coreInstance.m_CameraController;
@@ -154,6 +157,22 @@ function on_update_player_lua(l_ElapsedTime)
 	--///////////////////////////////////////////////////////////
 	-- Cuando el Player está saltando, su velocidad dependerá del tipo de salto realizado. 
 	--///////////////////////////////////////////////////////////
+	if _land then
+		local fallPos = player:get_position();
+		coreInstance:trace(tostring(fallPos.x))
+		coreInstance:trace(tostring(fallPos.y))
+		coreInstance:trace(tostring(fallPos.z))
+		coreInstance:trace(tostring(_fallPosition.x))
+		coreInstance:trace(tostring(_fallPosition.y))
+		coreInstance:trace(tostring(_fallPosition.z))
+		local distance = (fallPos.x - _fallPosition.x) * (fallPos.x - _fallPosition.x) + (fallPos.y - _fallPosition.y) * (fallPos.y - _fallPosition.y) + (fallPos.z - _fallPosition.z) * (fallPos.z - _fallPosition.z);
+		coreInstance:trace(tostring(distance));
+		if distance <= 0.4 then
+			playerRenderable:clear_cycle(3,0);
+			playerRenderable:execute_action(4,0,0,1,false);
+			_land = false;
+		end
+	end
 	if (player.m_isJumping == true) or (player.m_isFalling) then
 		
 		if player.m_CurrentJumpForce < 0 then
@@ -175,9 +194,14 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		if player.m_JumpingTime > AirTime then
 			player.m_isJumping = false;
-			playerRenderable:clear_cycle(3,0);
+			--playerRenderable:clear_cycle(3,0);
 			inLoop = false;
 			topPosition = -1000;
+			_land = true;
+			local info = SCollisionInfo();
+			local _dirRay = Vect3f(0,-1,0);
+			coreInstance:get_phisics_manager():raycast_closest_actor(player:get_position() - 0.4, _dirRay, 1, info, 1000);
+			_fallPosition = info.m_CollisionPoint;
 		else
 			if player.m_isFalling then
 				local positionOld = playerRenderable:get_position();

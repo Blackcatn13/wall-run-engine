@@ -282,18 +282,22 @@
         <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_L"/>
     </action>
+	
 	<action name="ConsoleEnd">
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_END"/>
     </action>
+	
 	<action name="ConsoleStart">
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_HOME"/>
     </action>
+	
 	<action name="ConsoleComplete">
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_TAB"/>
     </action>
+	
 	<action name="ConsoleCompleteBack">
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_TAB"/>
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LSHIFT"/>
     </action>
-	
+
 </Actions>
