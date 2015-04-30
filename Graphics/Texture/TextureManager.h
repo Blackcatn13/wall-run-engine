@@ -18,7 +18,7 @@ public:
         Destroy();
     }
 
-    CTexture * GetResource(const std::string &Name);
+    CTexture * GetResource(const std::string &Name, bool gui = false);
     void RemoveResource(const std::string &Name);
     void Reload ();
 };

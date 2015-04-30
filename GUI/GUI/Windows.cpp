@@ -371,10 +371,10 @@ CButton* CWindows::LoadButton (CXMLTreeNode& pNewNode, const Vect2i& screenResol
 	float				widthOffsetPercent	= pNewNode.GetFloatProperty("widthOffset", 0.f);
 	float				heightOffsetPercent	= pNewNode.GetFloatProperty("heightOffset", 0.f);
 
-	CTexture* normal			= tm->GetResource(texture_normal);//GetTexture(texture_normal);
-	CTexture* over				= tm->GetResource(texture_over);
-	CTexture* clicked			= tm->GetResource(texture_clicked);
-	CTexture* deactivated	= tm->GetResource(texture_deactivated);
+	CTexture* normal			= tm->GetResource(texture_normal,true);//GetTexture(texture_normal);
+	CTexture* over				= tm->GetResource(texture_over,true);
+	CTexture* clicked			= tm->GetResource(texture_clicked,true);
+	CTexture* deactivated	= tm->GetResource(texture_deactivated,true);
 
 	uint32 widthOffset	= (uint32) (screenResolution.x	* 0.01f * widthOffsetPercent );
 	uint32 heightOffset	= (uint32) (screenResolution.y	* 0.01f * heightOffsetPercent );
@@ -415,9 +415,9 @@ CCheckButton* CWindows::LoadCheckButton ( CXMLTreeNode& pNewNode, const Vect2i& 
 	float				heightOffsetPercent		= pNewNode.GetFloatProperty("heightOffset", 0.f);
 
 
-	CTexture* on					= tm->GetResource(texture_on);//GetTexture(texture_on);
-	CTexture* off					= tm->GetResource(texture_off);
-	CTexture* deactivated	= tm->GetResource(texture_deactivated);
+	CTexture* on					= tm->GetResource(texture_on,true);//GetTexture(texture_on);
+	CTexture* off					= tm->GetResource(texture_off,true);
+	CTexture* deactivated	= tm->GetResource(texture_deactivated,true);
 
 	uint32 widthOffset	= (uint32) (screenResolution.x	* 0.01f * widthOffsetPercent );
 	uint32 heightOffset	= (uint32) (screenResolution.y	* 0.01f * heightOffsetPercent );
@@ -463,11 +463,11 @@ CSlider* CWindows::LoadSlider ( CXMLTreeNode& pNewNode, const Vect2i& screenReso
 	float				widthOffsetPercent	= pNewNode.GetFloatProperty("widthOffset", 0.f);
 	float				heightOffsetPercent	= pNewNode.GetFloatProperty("heightOffset", 0.f);
 
-	CTexture* normal	= tm->GetResource(button_normal);//GetTexture(button_normal);
-	CTexture* over		= tm->GetResource(button_over);
-	CTexture* deac		= tm->GetResource(button_deactivated);
-	CTexture* clicked	= tm->GetResource(button_clicked);
-	CTexture* back		= tm->GetResource(quad);
+	CTexture* normal	= tm->GetResource(button_normal,true);//GetTexture(button_normal);
+	CTexture* over		= tm->GetResource(button_over,true);
+	CTexture* deac		= tm->GetResource(button_deactivated,true);
+	CTexture* clicked	= tm->GetResource(button_clicked,true);
+	CTexture* back		= tm->GetResource(quad,true);
 
 	uint32 widthOffset	= (uint32) (screenResolution.x	* 0.01f * widthOffsetPercent );
 	uint32 heightOffset	= (uint32) (screenResolution.y	* 0.01f * heightOffsetPercent );
@@ -513,15 +513,15 @@ CDialogBox*	CWindows::LoadDialogBox			(CXMLTreeNode& pNewNode, const Vect2i& scr
 	float				widthOffsetPercent			= pNewNode.GetFloatProperty("widthOffset", 0.f);
 	float				heightOffsetPercent			= pNewNode.GetFloatProperty("heightOffset", 0.f);
 
-	CTexture* Close_normal			= tm->GetResource(buttonClose_normal);//GetTexture(buttonClose_normal);
-	CTexture* Close_over				= tm->GetResource(buttonClose_over);
-	CTexture* Close_clicked			= tm->GetResource(buttonClose_clicked);
-	CTexture* Close_deactivated	= tm->GetResource(buttonClose_deactivated);
-	CTexture* Move_normal				= tm->GetResource(buttonMove_normal);
-	CTexture* Move_over					= tm->GetResource(buttonMove_over);
-	CTexture* Move_clicked			= tm->GetResource(buttonMove_clicked);
-	CTexture* Move_deactivated	= tm->GetResource(buttonMove_deactivated);
-	CTexture* back							= tm->GetResource(quad);
+	CTexture* Close_normal			= tm->GetResource(buttonClose_normal,true);//GetTexture(buttonClose_normal);
+	CTexture* Close_over				= tm->GetResource(buttonClose_over,true);
+	CTexture* Close_clicked			= tm->GetResource(buttonClose_clicked,true);
+	CTexture* Close_deactivated	= tm->GetResource(buttonClose_deactivated,true);
+	CTexture* Move_normal				= tm->GetResource(buttonMove_normal,true);
+	CTexture* Move_over					= tm->GetResource(buttonMove_over,true);
+	CTexture* Move_clicked			= tm->GetResource(buttonMove_clicked,true);
+	CTexture* Move_deactivated	= tm->GetResource(buttonMove_deactivated,true);
+	CTexture* back							= tm->GetResource(quad,true);
 
 	uint32 widthOffset	= (uint32) (screenResolution.x	* 0.01f * widthOffsetPercent );
 	uint32 heightOffset	= (uint32) (screenResolution.y	* 0.01f * heightOffsetPercent );
@@ -565,7 +565,7 @@ CEditableTextBox*	CWindows::LoadEditableTextBox (CXMLTreeNode& pNewNode, const V
 	uint32 widthOffset	= (uint32) (screenResolution.x	* 0.01f * widthOffsetPercent );
 	uint32 heightOffset	= (uint32) (screenResolution.y	* 0.01f * heightOffsetPercent );
 
-	CTexture* quad_texture	= tm->GetResource(quad);//GetTexture(quad);
+	CTexture* quad_texture	= tm->GetResource(quad,true);//GetTexture(quad);
 
 	CEditableTextBox* editableTextBox = new CEditableTextBox(	screenResolution.y,screenResolution.x,h, w, Vect2f(posx,posy),
 																					CColor(color_font_r,color_font_g,color_font_b),idFont, l_literal,
@@ -618,7 +618,7 @@ CRadioBox*	CWindows::LoadRadioBox( CXMLTreeNode& pNewNode, const Vect2i& screenR
 														l_literal, heightOffset, widthOffset, visible, activated);
 	if (texture_back!="")
 	{
-		CTexture* quad	= tm->GetResource(texture_back);//GetTexture(texture_back);
+		CTexture* quad	= tm->GetResource(texture_back,true);//GetTexture(texture_back);
 		radioBox->SetTextureBack(quad);
 	}
 	radioBox->SetName(name);
@@ -637,9 +637,9 @@ CRadioBox*	CWindows::LoadRadioBox( CXMLTreeNode& pNewNode, const Vect2i& screenR
 			std::string off					= pTexture.GetPszProperty("off");
 			std::string deactivated = pTexture.GetPszProperty("deactivated");
 
-			CTexture* texture_on					= tm->GetResource(on);//GetTexture(on);
-			CTexture* texture_off					= tm->GetResource(off);
-			CTexture* texture_deactivated	= tm->GetResource(deactivated);
+			CTexture* texture_on					= tm->GetResource(on,true);//GetTexture(on);
+			CTexture* texture_off					= tm->GetResource(off,true);
+			CTexture* texture_deactivated	= tm->GetResource(deactivated,true);
 			radioBox->SetCheckButton(name, texture_on, texture_off, texture_deactivated);
 		}
 	}
@@ -704,7 +704,7 @@ CImage*	CWindows::_LoadImage( CXMLTreeNode& pNewNode, const Vect2i& screenResolu
 			std::string name				=  pNewNode(j).GetPszProperty("name");
 			std::string texture			=  pNewNode(j).GetPszProperty("name_texture");
 
-			CTexture* texture_image		= tm->GetResource(texture);//GetTexture(texture);
+			CTexture* texture_image		= tm->GetResource(texture,true);//GetTexture(texture);
 			image->SetTexture(texture_image, name);
 		}
 	}
@@ -737,8 +737,8 @@ CProgressBar*	CWindows::LoadProgressBar( CXMLTreeNode& pNewNode, const Vect2i& s
 	float				widthOffsetPercent	= pNewNode.GetFloatProperty("widthOffset", 0.f);
 	float				heightOffsetPercent	= pNewNode.GetFloatProperty("heightOffset", 0.f);
 
-	CTexture* bar					= tm->GetResource(texture_bar);//GetTexture(texture_bar);
-	CTexture* back				= tm->GetResource(texture_back);
+	CTexture* bar					= tm->GetResource(texture_bar,true);//GetTexture(texture_bar);
+	CTexture* back				= tm->GetResource(texture_back,true);
 
 	uint32 widthOffset	= (uint32) (screenResolution.x	* 0.01f * widthOffsetPercent );
 	uint32 heightOffset	= (uint32) (screenResolution.y	* 0.01f * heightOffsetPercent );

@@ -15,6 +15,7 @@ protected:
     IDirect3DBaseTexture9* m_Texture;
     std::string m_FileName;
     virtual bool LoadFile();
+	virtual bool LoadFileGUI();
     void Unload();
     bool m_reloadable;
 	bool m_DepthStencil;
@@ -33,6 +34,7 @@ public:
         return m_FileName;
     }
     bool Load(const std::string &FileName);
+	bool LoadGUI(const std::string &FileName);
     bool Reload();
     void Activate(size_t StageId);
 
