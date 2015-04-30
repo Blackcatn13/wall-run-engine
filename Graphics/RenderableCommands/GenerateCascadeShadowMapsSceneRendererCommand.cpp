@@ -31,6 +31,7 @@ void CGenerateCascadeShadowMapsSceneRendererCommand::Execute(CGraphicsManager &R
 	for(int i = 0; i<m_loops; i++){
 		while (it != LIGHTM->GetResources().end()) {
 			if (it->second->GetGenerateDynamicShadowMap()) {
+				it->second->SetNShadowmap(m_loops);
 				scaleOrthoLoop *= i;
 				scaleTextureLoop *= i;
 				if(scaleOrthoLoop > 0 && scaleTextureLoop > 0)
@@ -54,7 +55,7 @@ void CGenerateCascadeShadowMapsSceneRendererCommand::Execute(CGraphicsManager &R
 
 				}
 				eff->ChangeLight(it->second);
-				it->second->GenerateShadowMap(&RM);
+				it->second->GenerateShadowMap(&RM, i);
 			}
 			it++;
 		}

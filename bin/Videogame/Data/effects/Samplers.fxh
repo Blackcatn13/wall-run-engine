@@ -190,6 +190,71 @@ sampler S7PointWrapSampler:register(s7) = sampler_state {
 	AddressV = Wrap;
 };
 
+sampler S8PointWrapSampler:register(s8) = sampler_state {
+	MinFilter = Point;
+	MagFilter = Point;
+	MipFilter = Point;
+	AddressU = Wrap;
+	AddressV = Wrap;
+};
+
+sampler S9PointWrapSampler:register(s9) = sampler_state {
+	MinFilter = Point;
+	MagFilter = Point;
+	MipFilter = Point;
+	AddressU = Wrap;
+	AddressV = Wrap;
+};
+
+sampler S10PointWrapSampler:register(s10) = sampler_state {
+	MinFilter = Point;
+	MagFilter = Point;
+	MipFilter = Point;
+	AddressU = Wrap;
+	AddressV = Wrap;
+};
+
+sampler S11PointWrapSampler:register(s11) = sampler_state {
+	MinFilter = Point;
+	MagFilter = Point;
+	MipFilter = Point;
+	AddressU = Wrap;
+	AddressV = Wrap;
+};
+
+sampler S12PointWrapSampler:register(s12) = sampler_state {
+	MinFilter = Point;
+	MagFilter = Point;
+	MipFilter = Point;
+	AddressU = Wrap;
+	AddressV = Wrap;
+};
+
+sampler S13PointWrapSampler:register(s13) = sampler_state {
+	MinFilter = Point;
+	MagFilter = Point;
+	MipFilter = Point;
+	AddressU = Wrap;
+	AddressV = Wrap;
+};
+
+sampler S14PointWrapSampler:register(s14) = sampler_state {
+	MinFilter = Point;
+	MagFilter = Point;
+	MipFilter = Point;
+	AddressU = Wrap;
+	AddressV = Wrap;
+};
+
+sampler S15PointWrapSampler:register(s15) = sampler_state {
+	MinFilter = Point;
+	MagFilter = Point;
+	MipFilter = Point;
+	AddressU = Wrap;
+	AddressV = Wrap;
+};
+
+
 sampler S0PointClampSampler:register(s0) = sampler_state {
 	MinFilter = Point;
 	MagFilter = Point;
@@ -247,6 +312,70 @@ sampler S6PointClampSampler:register(s6) = sampler_state {
 };
 
 sampler S7PointClampSampler:register(s7) = sampler_state {
+	MinFilter = Point;
+	MagFilter = Point;
+	MipFilter = Point;
+	AddressU = Clamp;
+	AddressV = Clamp;
+};
+
+sampler S8PointClampSampler:register(s8) = sampler_state {
+	MinFilter = Point;
+	MagFilter = Point;
+	MipFilter = Point;
+	AddressU = Clamp;
+	AddressV = Clamp;
+};
+
+sampler S9PointClampSampler:register(s9) = sampler_state {
+	MinFilter = Point;
+	MagFilter = Point;
+	MipFilter = Point;
+	AddressU = Clamp;
+	AddressV = Clamp;
+};
+
+sampler S10PointClampSampler:register(s10) = sampler_state {
+	MinFilter = Point;
+	MagFilter = Point;
+	MipFilter = Point;
+	AddressU = Clamp;
+	AddressV = Clamp;
+};
+
+sampler S11PointClampSampler:register(s11) = sampler_state {
+	MinFilter = Point;
+	MagFilter = Point;
+	MipFilter = Point;
+	AddressU = Clamp;
+	AddressV = Clamp;
+};
+
+sampler S12PointClampSampler:register(s12) = sampler_state {
+	MinFilter = Point;
+	MagFilter = Point;
+	MipFilter = Point;
+	AddressU = Clamp;
+	AddressV = Clamp;
+};
+
+sampler S13PointClampSampler:register(s13) = sampler_state {
+	MinFilter = Point;
+	MagFilter = Point;
+	MipFilter = Point;
+	AddressU = Clamp;
+	AddressV = Clamp;
+};
+
+sampler S14PointClampSampler:register(s14) = sampler_state {
+	MinFilter = Point;
+	MagFilter = Point;
+	MipFilter = Point;
+	AddressU = Clamp;
+	AddressV = Clamp;
+};
+
+sampler S15PointClampSampler:register(s15) = sampler_state {
 	MinFilter = Point;
 	MagFilter = Point;
 	MipFilter = Point;

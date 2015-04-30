@@ -1,6 +1,8 @@
 #ifndef CLIGHT_H
 #define CLIGHT_H
 
+#define MAX_SHADOWMAPS 4
+
 #include "Object\Object3D.h"
 #include "Math\Color.h"
 #include <string>
@@ -39,7 +41,10 @@ protected:
     bool m_GenerateDynamicShadowMap;
     bool m_GenerateStaticShadowMap;
     bool m_MustUpdateStaticShadowMap;
-    CTexture *m_StaticShadowMap, *m_DynamicShadowMap, *m_ShadowMaskTexture;
+	int m_nShadowmaps;
+    CTexture* m_StaticShadowMap[MAX_SHADOWMAPS];
+	CTexture* m_DynamicShadowMap[MAX_SHADOWMAPS]; 
+	CTexture* m_ShadowMaskTexture;
     std::vector<CRenderableObjectsManager *> m_StaticShadowMapRenderableObjectsManagers,
         m_DynamicShadowMapRenderableObjectsManagers;
     Mat44f m_ViewShadowMap, m_ProjectionShadowMap;
@@ -110,6 +115,16 @@ public:
     /**ADVANCED SHADERS**/
     virtual void SetShadowMap(CGraphicsManager *RM) = 0; //<= Si se deja como virtual puro peta al registrarlo en Lua
 
+	void SetNShadowmap(int nshadowmaps)
+	{
+		m_nShadowmaps = nshadowmaps;
+	}
+
+	int GetNShadowmap()
+	{
+		return m_nShadowmaps;
+	}
+
     void SetGenerateDynamicShadowMap(bool GenerateDynamicShadowMap)
     {
         m_GenerateDynamicShadowMap = GenerateDynamicShadowMap;
@@ -139,15 +154,15 @@ public:
         return m_MustUpdateStaticShadowMap;
     }
 
-    CTexture * GetStaticShadowMap() const
+    CTexture * GetStaticShadowMap(int i=0) const
     {
-        return m_StaticShadowMap;
+        return m_StaticShadowMap[i];
     }
-    CTexture * GetDynamicShadowMap() const
+    CTexture * GetDynamicShadowMap(int i=0) const
     {
-        return m_DynamicShadowMap;
+        return m_DynamicShadowMap[i];
     }
-    CTexture * GetShadowMaskTexture() const
+    CTexture * GetShadowMaskTexture(int i=0) const
     {
         return m_ShadowMaskTexture;
     }
@@ -163,7 +178,7 @@ public:
         return m_DynamicShadowMapRenderableObjectsManagers;
     }
 
-    void GenerateShadowMap(CGraphicsManager *RM);
+    void GenerateShadowMap(CGraphicsManager *RM, int index = 0);
 
     const Mat44f & GetViewShadowMap() const
     {

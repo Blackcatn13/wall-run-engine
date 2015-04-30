@@ -6,7 +6,8 @@
 #include "Core_Utils/MemLeaks.h"
 
 CTexture::CTexture()
-  : m_DepthStencilRenderTargetTexture(NULL)
+  : m_Texture(NULL)
+  , m_DepthStencilRenderTargetTexture(NULL)
   , m_OldRenderTarget(NULL)
   , m_RenderTargetTexture(NULL)
   , m_OldDepthStencilRenderTarget(NULL)
@@ -18,6 +19,12 @@ bool CTexture::Load(const std::string &FileName) {
   m_Name = FileName;
   m_FileName = FileName;
   return LoadFile();
+}
+
+bool CTexture::LoadGUI(const std::string &FileName) {
+  m_Name = FileName;
+  m_FileName = FileName;
+  return LoadFileGUI();
 }
 
 bool CTexture::Reload() {
@@ -34,6 +41,17 @@ void CTexture::Activate(size_t StageId) {
 
 bool CTexture::LoadFile() {
   HRESULT l_HR = D3DXCreateTextureFromFile(GRAPHM->GetDevice(), m_FileName.c_str(), (LPDIRECT3DTEXTURE9 *)&m_Texture);
+
+  return m_Texture != NULL;
+  return S_OK(l_HR);
+}
+
+bool CTexture::LoadFileGUI() {
+  //HRESULT l_HR = D3DXCreateTextureFromFile(GRAPHM->GetDevice(), m_FileName.c_str(), (LPDIRECT3DTEXTURE9 *)&m_Texture);
+
+  HRESULT l_HR = D3DXCreateTextureFromFileEx(GRAPHM->GetDevice(), m_FileName.c_str(), 0, 0, 1, 0, D3DFMT_A8R8G8B8, 
+	  D3DPOOL_MANAGED, D3DX_FILTER_LINEAR|D3DX_FILTER_MIRROR_U|D3DX_FILTER_MIRROR_V, D3DX_FILTER_LINEAR|D3DX_FILTER_MIRROR_U|D3DX_FILTER_MIRROR_V, 0, NULL, NULL, (LPDIRECT3DTEXTURE9 *)&m_Texture);
+
   return m_Texture != NULL;
   return S_OK(l_HR);
 }

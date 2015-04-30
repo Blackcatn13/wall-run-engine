@@ -9,14 +9,16 @@ void CTextureManager::Reload()
     }
 }
 
-CTexture * CTextureManager::GetResource(const std::string &Name)
+CTexture * CTextureManager::GetResource(const std::string &Name, bool gui)
 {
     TMapResource::iterator it = m_Resources.find(Name);
     if (it != m_Resources.end()) {
         return it->second;
     } else {
         CTexture* newTexture = new CTexture();
-        bool loaded = newTexture->Load(Name);
+		bool loaded;
+		if (gui) loaded = newTexture->LoadGUI(Name);
+		else loaded = newTexture->Load(Name);
         if (loaded) {
             AddResource(Name, newTexture);
             return newTexture;

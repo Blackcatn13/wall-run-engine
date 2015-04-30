@@ -28,6 +28,7 @@ float g_FarAtten[MAXLIGHTS] : LIGHTSENDRANGEATTENUATION;
 float g_FallOff[MAXLIGHTS] : LIGHTSFALLOFF;
 float g_PolyEnabled[MAXPOLYS] : POLYENABLED;
 bool g_useShadowMap : USESHADOWMAP;
+int g_nShadowmaps : NSHADOWMAPS;
 
 float g_ZBlurFocalStart = 7.0;
 float g_ZBlurFocalEnd = 10.5;

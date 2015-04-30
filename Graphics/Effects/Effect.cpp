@@ -41,6 +41,7 @@ void CEffect::SetNullParameters() {
   m_UseShadowMaskTextureParameter = NULL;
   m_UseStaticShadowmapParameter = NULL;
   m_UseDynamicShadowmapParameter = NULL;
+  m_NShadowmapsParameter = NULL;
   m_PolyEnabledParameter = NULL;
 }
 
@@ -85,6 +86,7 @@ bool CEffect::LoadEffect() {
   GetParameterBySemantic("SCREENSIZE", m_ScreenSizeParameter);
   GetParameterBySemantic("POLYENABLED", m_PolyEnabledParameter);
   GetParameterBySemantic("USESHADOWMAP", m_UseDynamicShadowmapParameter);
+  GetParameterBySemantic("NSHADOWMAPS", m_NShadowmapsParameter);
   return isOK;
 }
 void CEffect::Unload() {
@@ -121,7 +123,8 @@ CEffect::CEffect()
   , m_Light(NULL)
   , m_UseShadowMaskTextureParameter(NULL)
   , m_UseStaticShadowmapParameter(NULL)
-  , m_UseDynamicShadowmapParameter(NULL) {
+  , m_UseDynamicShadowmapParameter(NULL)
+  , m_NShadowmapsParameter(NULL){
 }
 
 CEffect::~CEffect() {
@@ -249,8 +252,9 @@ D3DXHANDLE CEffect::GetTechniqueByName(const std::string &TechniqueName) {
   return m_Effect == NULL ? NULL : m_Effect->GetTechniqueByName(TechniqueName.c_str());
 }
 
-void CEffect::SetShadowMapParameters(bool UseShadowMaskTexture, bool UseStaticShadowmap, bool UseDynamicShadowmap) {
+void CEffect::SetShadowMapParameters(bool UseShadowMaskTexture, bool UseStaticShadowmap, bool UseDynamicShadowmap, int nshadowmaps) {
   m_Effect->SetBool(m_UseShadowMaskTextureParameter, UseShadowMaskTexture ? TRUE : FALSE);
   m_Effect->SetBool(m_UseStaticShadowmapParameter, UseStaticShadowmap ? TRUE : FALSE);
   m_Effect->SetBool(m_UseDynamicShadowmapParameter, UseDynamicShadowmap ? TRUE : FALSE);
+  m_Effect->SetInt(m_NShadowmapsParameter, nshadowmaps);
 }

@@ -50,7 +50,6 @@ function Player.new()
 	end
 	
 	function self.player_take_damage()
-		local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 		self.num_hearts = self.num_hearts -1
 		self.coreInstance:trace("Taking damage. Ouch! I lost a heart.")                           
 		if CCoreLuaWrapper().m_CoreInstance:getGUIManager():get_active_image('LifeGUI') == 'Life3' then
