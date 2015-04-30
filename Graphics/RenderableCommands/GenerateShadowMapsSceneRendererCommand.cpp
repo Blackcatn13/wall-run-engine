@@ -25,6 +25,7 @@ void CGenerateShadowMapsSceneRendererCommand::Execute(CGraphicsManager &RM)
     while (it != LIGHTM->GetResources().end()) {
         if (it->second->GetGenerateDynamicShadowMap()) {
             eff->ChangeLight(it->second);
+			it->second->SetNShadowmap(1);
             it->second->GenerateShadowMap(&RM);
         }
         it++;

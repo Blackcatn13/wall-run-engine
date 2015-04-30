@@ -43,6 +43,7 @@ class CEffect {
   D3DXHANDLE m_UseShadowMaskTextureParameter;
   D3DXHANDLE m_UseStaticShadowmapParameter;
   D3DXHANDLE m_UseDynamicShadowmapParameter;
+  D3DXHANDLE m_NShadowmapsParameter;
 
   BOOL m_PolyEnabled[MAX_POLYS];
   D3DXHANDLE m_PolyEnabledParameter;
@@ -63,7 +64,7 @@ class CEffect {
   bool Load(const std::string &FileName);
   bool Reload();
   bool SetActivePoly (CPolyPlatform *poly);
-  void SetShadowMapParameters(bool UseShadowMaskTexture, bool UseStaticShadowmap, bool UseDynamicShadowmap);
+  void SetShadowMapParameters(bool UseShadowMaskTexture, bool UseStaticShadowmap, bool UseDynamicShadowmap, int nshadomaps);
   //Getters
   BOOL *GetLightsEnabled() {
     return m_LightsEnabled;
@@ -165,6 +166,9 @@ class CEffect {
   }
   D3DXHANDLE GetInverseProjectionMatrixParameter() {
     return m_InverseProjectionMatrixParameter;
+  }
+  D3DXHANDLE GetNShadowmapsParameter() {
+    return m_NShadowmapsParameter;
   }
   D3DXHANDLE GetScreenSizeParameter() {
     return m_ScreenSizeParameter;
