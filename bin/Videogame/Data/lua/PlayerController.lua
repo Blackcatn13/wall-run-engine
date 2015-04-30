@@ -21,10 +21,11 @@ function on_update_player_lua(l_ElapsedTime)
 	--////////////////////////////////////////////////////////
 	player.m_Gravity = 9;						--Gravedad que afecta al personaje cuando cae.
 	player.m_GravityJump = 11;					--Gravedad que afecta cuando el personaje está impulsándose hacia arriba en el salto.
+	local m_AttackGravity = 25;
 	player.m_Speed = 8;							--Velocidad de movimiento.
 	player.m_JumpForce = 5.5;					--Fuerza de salto, impulso.
 	superjumForce = 10;						 	--SUPERSALTO CHEAT
-	player.m_AttackForce = 3;					--Impulse force for the attack.
+	player.m_AttackForce = 2;					--Impulse force for the attack.
 	player.m_PhysicController:set_step(0.3); 	--Altura que puede superar (escalones).
 	local AirTime = 0.6;						-- Time into the air, playing air loop
 	--////////////////////////////////////////////////////////
@@ -266,7 +267,7 @@ function on_update_player_lua(l_ElapsedTime)
 	
 	if player.m_isAttack == true then
 		if player.m_CurrentAttackForce > 0.5 then	
-			player.m_CurrentAttackForce = player.m_CurrentAttackForce - (player.m_Gravity*2 * l_ElapsedTime);
+			player.m_CurrentAttackForce = player.m_CurrentAttackForce - (m_AttackGravity * l_ElapsedTime);
 			mov = player.m_Direction3D * player.m_CurrentAttackForce;
 			mov.y = 0.0;
 		else
@@ -279,7 +280,7 @@ function on_update_player_lua(l_ElapsedTime)
 	--///////////////////////////////////////////////////////////
 	-- Acción de saltar del Player. Puede realizar 2 saltos distintos (de longitud, y salto vertical). 
 	--///////////////////////////////////////////////////////////
-	if (act2in:do_action_from_lua("Jump")) and (player.m_isJumping == false) then
+	if (act2in:do_action_from_lua("Jump")) and (player.m_isJumping == false and _land == false) then
 		coreInstance:getWWSoundManager():PlayEvent("Jump", "Piky");
 		player.m_JumpingTime = 0;
 		playerRenderable:clear_cycle(0,0);
@@ -311,6 +312,7 @@ function on_update_player_lua(l_ElapsedTime)
 		mov = player.m_Direction3D * player.m_CurrentAttackForce;
 		mov.y = 0.0;
 		player.m_isAttack = true;
+		playerRenderable:execute_action(5,0,0.7,1,false);
 	end
 	
 	if player.m_isJumping then

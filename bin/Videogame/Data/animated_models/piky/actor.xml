@@ -8,5 +8,5 @@
 	<animation name="jump_init" file="Piky_jump_start.CAF"/>
 	<animation name="jump_loop" file="Piky_jump_loop.CAF"/>
 	<animation name="jump_fall" file="Piky_jump_end.CAF"/>
-	<animation name="attack" file="Piky_attack.CAF"/>
+	<animation name="attack" file="Piky_kick.CAF"/>
 </animated_model>

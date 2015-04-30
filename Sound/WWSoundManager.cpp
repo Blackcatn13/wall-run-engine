@@ -226,6 +226,7 @@ void CWWSoundManager::Load(std::string file) {
               type_pos = AK::SoundEngine::MultiPositionType::MultiPositionType_MultiDirections;
             }
             AK::SoundEngine::SetMultiplePositions(m_GameObjects[goName], posList, positions, type_pos);
+            delete[] posList;
           } else {
             Vect3f pos = m(i).GetVect3fProperty("pos", v3fZERO, false);
             Vect3f dir = m(i).GetVect3fProperty("dir", v3fZERO, false);
