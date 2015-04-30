@@ -30,16 +30,17 @@ CPlayerController::CPlayerController()
     m_AttackForce(5.0),
     m_CurrentAttackForce(5.0),
     m_JumpingTime(0),
-    m_isFalling(false) {
+    m_isFalling(false),
+    m_mesh(NULL) {
   m_PhysicUserData = new CPhysicUserData("Player");
   m_PhysicUserData->SetPaint(false);
   m_PhysicController = new CPhysicController(0.5, 1, 1.047, 0.001, 0.3, ECG_ESCENE, m_PhysicUserData, Vect3f(0, 1.001, 0), 0);
   m_PhysicUserData->SetMyCollisionGroup(ECG_PLAYER);
   PHYSXM->AddPhysicController(m_PhysicController);
   //CRenderableObject* malla = RENDLM->GetDefaultRenderableObjectManager()->GetResource("PIKY");
-  CRenderableObject *malla = RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky");
-  malla->SetYaw(m_fYaw);
-  malla->SetPosition(m_PhysicController->GetPosition());
+  m_mesh = RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky");
+  m_mesh->SetYaw(m_fYaw);
+  m_mesh->SetPosition(m_PhysicController->GetPosition());
 }
 
 CPlayerController::~CPlayerController() {

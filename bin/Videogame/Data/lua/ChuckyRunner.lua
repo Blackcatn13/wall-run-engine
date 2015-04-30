@@ -2,6 +2,10 @@ local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 local player = Player:get_instance()
 local playerController = player.get_player_controller()
 
+
+-- Chucky Variables --
+local Chucky_runnung_speed = 4;
+
 -- Chucky Stopped --
 function chucky_runner_enter_stopped(name)
 
@@ -18,7 +22,7 @@ end
 -- Chucky Running --
 
 function chucky_runner_enter_running(name)
-
+	local 
 end
 
 function chucky_runner_exit_running(name)

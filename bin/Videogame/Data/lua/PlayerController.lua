@@ -4,6 +4,8 @@ local topPosition = -1000;
 local inLoop = false;
 local _land = false;
 local _fallPosition = Vect3f(-10000, -10000, -10000);
+--coreInstance:get_player_controller().m_mesh = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky");
+--coreInstance:get_player_controller().m_mesh:set_yaw(coreInstance:get_player_controller():get_yaw());
 function on_update_player_lua(l_ElapsedTime)
 
 	local luaUtil = CCMathLuaUtils();

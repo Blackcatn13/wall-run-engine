@@ -177,6 +177,7 @@ void RegisterPhysX() {
     .property("m_JumpType", &CPlayerController::getJumpType, &CPlayerController::setJumpType )
     .property("m_CurrentJumpForce", &CPlayerController::getCurrentJumpForce, &CPlayerController::setCurrentJumpForce )
     .property("m_Direction3D", &CPlayerController::getDirection3D, &CPlayerController::setDirection3D )
+    .property("m_mesh", &CPlayerController::getmesh, &CPlayerController::setmesh)
   ];
   luabind::module(LUA_STATE) [
     class_<SCollisionInfo>("SCollisionInfo")
