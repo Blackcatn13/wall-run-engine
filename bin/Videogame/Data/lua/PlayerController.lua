@@ -5,7 +5,6 @@ local inLoop = false;
 local _land = false;
 local _fallPosition = Vect3f(-10000, -10000, -10000);
 function on_update_player_lua(l_ElapsedTime)
-	--local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 
 	local luaUtil = CCMathLuaUtils();
 	local act2in = coreInstance:get_action_to_input();
@@ -164,22 +163,12 @@ function on_update_player_lua(l_ElapsedTime)
 	-- Cuando el Player está saltando, su velocidad dependerá del tipo de salto realizado. 
 	--///////////////////////////////////////////////////////////
 	if _land then
-		--mov.x = 0;
-		--mov.z = 0;
 		local info = SCollisionInfo();
 		local _dirRay = Vect3f(0,-1,0);
 		coreInstance:get_phisics_manager():raycast_closest_actor(player:get_position() - 0.4, _dirRay, 1, info, 1000);
 		_fallPosition = info.m_CollisionPoint;
 		local fallPos = player:get_position();
-		-- coreInstance:trace(tostring(fallPos.x))
-		-- coreInstance:trace(tostring(fallPos.y))
-		-- coreInstance:trace(tostring(fallPos.z))
-		-- coreInstance:trace(tostring(_fallPosition.x))
-		-- coreInstance:trace(tostring(_fallPosition.y))
-		-- coreInstance:trace(tostring(_fallPosition.z))
 		local distance = (fallPos.x - _fallPosition.x) * (fallPos.x - _fallPosition.x) + (fallPos.y - _fallPosition.y) * (fallPos.y - _fallPosition.y) + (fallPos.z - _fallPosition.z) * (fallPos.z - _fallPosition.z);
-		coreInstance:trace("distance")
-		coreInstance:trace(tostring(distance));
 		if distance <= 5 then
 			playerRenderable:clear_cycle(3,0.3);
 			playerRenderable:execute_action(4,0,1,1,false);
@@ -202,12 +191,10 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		if mov.y == 0 and inLoop == false then
 			player.m_isFalling = true;
-			--coreInstance:trace(tostring(topPosition));
 			player.m_isJumpingMoving = false;
 		end
 		if player.m_JumpingTime > AirTime then
 			player.m_isJumping = false;
-			--playerRenderable:clear_cycle(3,0);
 			inLoop = false;
 			topPosition = -1000;
 			_land = true;
@@ -230,7 +217,6 @@ function on_update_player_lua(l_ElapsedTime)
 				inLoop = true;
 			end
 			player.m_JumpingTime = player.m_JumpingTime + l_ElapsedTime;
-			--playerRenderable:execute_action(3, 0, 0, 1, false);
 		end
 		if player.m_isJumpingMoving == true then
 			if player.m_is3D == false then
@@ -345,7 +331,6 @@ function move_character_controller_mesh(_player, _position, _jumping)
 		mesh:set_position(mesh_position)
 	else
 		pos = mesh:getBonePosition().y;
-		--coreInstance:trace(tostring(pos));
 		local mesh_position = Vect3f(_position.x, _position.y - pos - 0.2, _position.z)
 		mesh:set_position(mesh_position)
 	end
