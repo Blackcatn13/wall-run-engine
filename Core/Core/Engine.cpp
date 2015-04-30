@@ -96,6 +96,12 @@ void CEngine::Update() {
     m_Process->SetPrintInfo(!m_Process->getPrintInfo());
   if (ACT2IN->DoAction("ReloadPuzzles"))
     PUZZLEM->Reload();
+  if (ACT2IN->DoAction("AddSlowMotion"))
+    m_speed -= 0.1;
+  if (ACT2IN->DoAction("AddFastMotion"))
+    m_speed += 0.1;
+  if (ACT2IN->DoAction("ResetMotion"))
+    m_speed = 1;
 
   //m_LogRender->Update(m_Timer.GetElapsedTime());
 }

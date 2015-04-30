@@ -300,4 +300,19 @@
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LSHIFT"/>
     </action>
 
+    <action name="AddSlowMotion">
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_U"/>
+    </action>
+
+    <action name="AddFastMotion">
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_I"/>
+    </action>
+
+    <action name="ResetMotion">
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_O"/>
+    </action>
+
 </Actions>

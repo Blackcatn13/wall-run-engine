@@ -26,7 +26,7 @@ function on_update_player_lua(l_ElapsedTime)
 	superjumForce = 10;						 	--SUPERSALTO CHEAT
 	player.m_AttackForce = 3;					--Impulse force for the attack.
 	player.m_PhysicController:set_step(0.3); 	--Altura que puede superar (escalones).
-	local AirTime = 0.7;						-- Time into the air, playing air loop
+	local AirTime = 0.6;						-- Time into the air, playing air loop
 	--////////////////////////////////////////////////////////
 	if is_init == true then
 		is_init = false
@@ -164,17 +164,18 @@ function on_update_player_lua(l_ElapsedTime)
 	--///////////////////////////////////////////////////////////
 	if _land then
 		local fallPos = player:get_position();
-		coreInstance:trace(tostring(fallPos.x))
-		coreInstance:trace(tostring(fallPos.y))
-		coreInstance:trace(tostring(fallPos.z))
-		coreInstance:trace(tostring(_fallPosition.x))
-		coreInstance:trace(tostring(_fallPosition.y))
-		coreInstance:trace(tostring(_fallPosition.z))
+		-- coreInstance:trace(tostring(fallPos.x))
+		-- coreInstance:trace(tostring(fallPos.y))
+		-- coreInstance:trace(tostring(fallPos.z))
+		-- coreInstance:trace(tostring(_fallPosition.x))
+		-- coreInstance:trace(tostring(_fallPosition.y))
+		-- coreInstance:trace(tostring(_fallPosition.z))
 		local distance = (fallPos.x - _fallPosition.x) * (fallPos.x - _fallPosition.x) + (fallPos.y - _fallPosition.y) * (fallPos.y - _fallPosition.y) + (fallPos.z - _fallPosition.z) * (fallPos.z - _fallPosition.z);
+		coreInstance:trace("distance")
 		coreInstance:trace(tostring(distance));
-		if distance <= 0.4 then
-			playerRenderable:clear_cycle(3,0);
-			playerRenderable:execute_action(4,0,0,1,false);
+		if distance <= 2.0 then
+			playerRenderable:clear_cycle(3,0.5);
+			playerRenderable:execute_action(4,0,1,1,false);
 			_land = false;
 		end
 	end
@@ -216,7 +217,7 @@ function on_update_player_lua(l_ElapsedTime)
 				playerRenderable:remove_action(2);
 				playerRenderable:clear_cycle(0,0);
 				playerRenderable:clear_cycle(1,0);
-				playerRenderable:blend_cycle(3,1,0);
+				playerRenderable:blend_cycle(3,1,0.5);
 				playerRenderable:updateSkeleton(l_ElapsedTime);
 				player.m_isFalling = false;
 				inLoop = true;
@@ -275,6 +276,8 @@ function on_update_player_lua(l_ElapsedTime)
 	if (act2in:do_action_from_lua("Jump")) and (player.m_isJumping == false) then
 		coreInstance:getWWSoundManager():PlayEvent("Jump", "Piky");
 		player.m_JumpingTime = 0;
+		playerRenderable:clear_cycle(0,0);
+		playerRenderable:clear_cycle(1,0);
 		playerRenderable:execute_action(2,0,0,1,true);
 		player.m_isJumping = true;
 		player.m_CurrentJumpForce = player.m_JumpForce;
@@ -311,7 +314,7 @@ function on_update_player_lua(l_ElapsedTime)
 	end
 	player:set_position(player.m_PhysicController:get_position());
 	move_character_controller_mesh(player, player:get_position(), player.m_isJumping);
-	if not player.m_isJumping then
+	if not player.m_isJumping and not _land then
 		if mov.x == 0 and mov.z == 0 then
 			playerRenderable:clear_cycle(1,0);
 			playerRenderable:blend_cycle(0,1,0);
