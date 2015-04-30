@@ -163,6 +163,12 @@ function on_update_player_lua(l_ElapsedTime)
 	-- Cuando el Player está saltando, su velocidad dependerá del tipo de salto realizado. 
 	--///////////////////////////////////////////////////////////
 	if _land then
+		--mov.x = 0;
+		--mov.z = 0;
+		local info = SCollisionInfo();
+		local _dirRay = Vect3f(0,-1,0);
+		coreInstance:get_phisics_manager():raycast_closest_actor(player:get_position() - 0.4, _dirRay, 1, info, 1000);
+		_fallPosition = info.m_CollisionPoint;
 		local fallPos = player:get_position();
 		-- coreInstance:trace(tostring(fallPos.x))
 		-- coreInstance:trace(tostring(fallPos.y))
@@ -173,8 +179,8 @@ function on_update_player_lua(l_ElapsedTime)
 		local distance = (fallPos.x - _fallPosition.x) * (fallPos.x - _fallPosition.x) + (fallPos.y - _fallPosition.y) * (fallPos.y - _fallPosition.y) + (fallPos.z - _fallPosition.z) * (fallPos.z - _fallPosition.z);
 		coreInstance:trace("distance")
 		coreInstance:trace(tostring(distance));
-		if distance <= 2.0 then
-			playerRenderable:clear_cycle(3,0.5);
+		if distance <= 5 then
+			playerRenderable:clear_cycle(3,0.3);
 			playerRenderable:execute_action(4,0,1,1,false);
 			_land = false;
 		end
