@@ -38,10 +38,18 @@ using namespace luabind;
 
 void RegisterSceneElements() {
   luabind::module(LUA_STATE) [
-    class_<CStaticPlatform, CMeshInstance>("CStaticPlatform")
+    class_<CSceneElement, CMeshInstance>("CSceneElement")
+    .def(constructor < std::string , std::string>())
+    .def("insert_phisic", &CSceneElement::InsertPhisic)
+    .property("m_Actor", &CSceneElement::GetActor)
+    .property("m_PhysicsSize", &CSceneElement::GetPhysicsSize)
+  ];
+
+  luabind::module(LUA_STATE) [
+    class_<CStaticPlatform, CSceneElement>("CStaticPlatform")
     .def(constructor<std::string, std::string>())
-    .def("insert_platform", &CStaticPlatform::InsertPlatform)
-    .property("m_PlatformActor", &CStaticPlatform::GetPlatformActor )
+    /* .def("insert_platform", &CStaticPlatform::InsertPlatform)
+     .property("m_PlatformActor", &CStaticPlatform::GetPlatformActor )*/
   ];
   luabind::module(LUA_STATE) [
     class_<CBreakablePlatform, CStaticPlatform>("CBreakablePlatform")
@@ -58,16 +66,16 @@ void RegisterSceneElements() {
   ];
   luabind::module(LUA_STATE) [
     class_<CPinchosPlatform, CBreakablePlatform>("CPinchosPlatform")
-    .def(constructor<std::string, std::string, std::string, Vect3f, Vect3f, bool, bool>())
+    .def(constructor<std::string, std::string, std::string/*, Vect3f, Vect3f, bool, bool*/>())
     .def("falling_into_platform", &CPinchosPlatform::FallingIntoPlatform)
-    .property("m_BackPos",  &CPinchosPlatform::getBackPos, &CPinchosPlatform::setBackPos)
-    .property("m_FrontPos",  &CPinchosPlatform::getFrontPos, &CPinchosPlatform::setFrontPos)
-    .property("m_FromZ",  &CPinchosPlatform::getFromZ, &CPinchosPlatform::setFromZ)
-    .property("m_FromX",  &CPinchosPlatform::getFromX, &CPinchosPlatform::setFromX)
+    /*  .property("m_BackPos",  &CPinchosPlatform::getBackPos, &CPinchosPlatform::setBackPos)
+      .property("m_FrontPos",  &CPinchosPlatform::getFrontPos, &CPinchosPlatform::setFrontPos)
+      .property("m_FromZ",  &CPinchosPlatform::getFromZ, &CPinchosPlatform::setFromZ)
+      .property("m_FromX",  &CPinchosPlatform::getFromX, &CPinchosPlatform::setFromX)*/
   ];
   luabind::module(LUA_STATE) [
     class_<CPolyPlatform, CStaticPlatform>("CPolyPlatform")
-    .def(constructor<std::string , std::string ,  Vect3f , Vect3f,  float>())
+    .def(constructor<std::string , std::string ,  Vect3f , Vect3f,  float, float, float>())
     .def("activate_poly", &CPolyPlatform::ActivatePoly)
     .def("deactivate_poly", &CPolyPlatform::DeactivatePoly)
     .def("apply_physics_to_player", &CPolyPlatform::ApplyPhysicsToPlayer)
@@ -89,13 +97,6 @@ void RegisterSceneElements() {
     // .property("m_RedimAxis", &CPolyPlatform::getRedimAxis, &CPolyPlatform::setRedimAxis )
   ];
 
-  luabind::module(LUA_STATE) [
-    class_<CSceneElement, CMeshInstance>("CSceneElement")
-    .def(constructor < std::string , std::string>())
-    .def("insert_phisic", &CSceneElement::InsertPhisic)
-    .property("m_Actor", &CSceneElement::GetActor)
-    .property("m_PhysicsSize", &CSceneElement::GetPhysicsSize)
-  ];
 
   luabind::module(LUA_STATE) [
     class_<CSwitch, CSceneElement>("CSwitch")

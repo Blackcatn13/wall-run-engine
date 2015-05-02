@@ -56,6 +56,10 @@ class CTemplatedVectorMapManager {
     }
   }
 
+  int GetSize() {
+    return m_ResourcesVector.size();
+  }
+
   void RemoveFromResource(const std::string &Name) {
     TMapResources::iterator it = m_ResourcesMap.find(Name);
     if (it != m_ResourcesMap.end()) {

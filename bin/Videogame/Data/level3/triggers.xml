@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <triggers>	
 	<!-- platform triggers -->
-	<trigger name="BreakablePlatformTrigger001" platform_name = "BreakablePlatform001" position="124.696 3.000000 11.011" shape="box" size="2.0 1.5 2.0" type_event="enter" script_function="activate_trigger_update" param1="BreakablePlatformTrigger001"
+	<trigger name="BreakablePlatformTrigger001" platform_name = "BreakablePlatform001" position="124.696 4.500000 11.011" shape="box" size="1.9 0.2 1.4" type_event="enter" script_function="activate_trigger_update" param1="BreakablePlatformTrigger001"
 	max_time="3" update_function="update_break_platform" group="1" paint="true" color="1.0 0.0 0.0" />
 		
-	<trigger name="PinchosPlatform_2" platform_name = "Spikes002" position="160.806 1.3 11.4" shape="box" size="2.1 0.5 2.7" type_event="enter" script_function="on_enter_pinchos" param1="Spikes001"
-	group="1" paint="true" color="1.0 1.0 0.0" />
+	<!--<trigger name="PinchosPlatform_2" platform_name = "Spikes002" position="160.806 1.3 11.4" shape="box" size="2.1 0.5 2.7" type_event="enter" script_function="on_enter_pinchos" param1="Spikes001"
+	group="1" paint="true" color="1.0 1.0 0.0" /> De momento este fuera hasta que se pongan los pinchos de verdad--> 
 	
 	
 	<!-- teleport triggers-->

@@ -22,7 +22,7 @@ end
 -- Chucky Running --
 
 function chucky_runner_enter_running(name)
-	local 
+	--local 
 end
 
 function chucky_runner_exit_running(name)

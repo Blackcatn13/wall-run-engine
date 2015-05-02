@@ -31,14 +31,15 @@ class CPolyPlatform : public CStaticPlatform {
   Vect3f	m_LightOriginalPosition;
 
  public:
-  CPolyPlatform(std::string platformName, std::string coreName,  Vect3f finalPosition, Vect3f direction,  float activationDistance);
-  virtual  ~ CPolyPlatform ();
+  CPolyPlatform(std::string platformName, std::string coreName,  Vect3f finalPosition, Vect3f direction,  float activationDistance, float timeOut, float speed);
+// virtual  ~ CPolyPlatform ();
   void ActivatePoly();
   void DeactivatePoly();
   void Update(float ElapsedTime);
   void ApplyPhysicsToPlayer(Vect3f direction, float ElapsedTime);
   bool isAround(Vect3f vector1, Vect3f vector2);
   bool isInside(Vect3f vector1, Vect3f vector2);
+  void InitPolyPlatform(Vect3f size);
 
   bool IsActivated() {
     return m_Activated;
@@ -46,6 +47,7 @@ class CPolyPlatform : public CStaticPlatform {
   void SetActivated(bool activated) {
     m_Activated = activated;
   }
+
 
   GET_SET(Vect3f, OriginalPosition)
   GET_SET(Vect3f, FinalPosition)

@@ -33,15 +33,15 @@ function unlock_image(image_path)
 end
 
 function toogle_switch(trigger_name, puzzle_name)
-	--coreInstance:trace("Enter switch")
+	coreInstance:trace("Enter switch")
 	local player = Player:get_instance()
-	--coreInstance:trace(puzzle_name)
+	coreInstance:trace(tostring(player.get_controller().m_isJumping))
 	local puzzle = coreInstance:get_puzzle_manager():get_resource(puzzle_name)
 	--local total_switches = puzzle.m_MinActivatedSwitches
 	
 	if player ~= nil then
 		local player_controller = player.get_controller()
-		if player_controller.m_isAttack == true or player_controller.m_isJumping == true then
+		--if player_controller.m_isAttack == true or player_controller.m_isJumping == true then
 			local trigger_manager = coreInstance:get_trigger_manager()
 			local trigger = trigger_manager:get_resource(trigger_name)
 			--coreInstance:trace("Toogle switch")
@@ -62,7 +62,7 @@ function toogle_switch(trigger_name, puzzle_name)
 					--]]
 				end
 			end
-		end
+		--end
 	end
 	--coreInstance:trace(tostring(puzzle.m_ActivatedSwitches))
 	--if activated_switches == total_switches then --TODO obtener datos del puzzle en si

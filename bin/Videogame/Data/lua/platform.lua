@@ -3,7 +3,7 @@ local physx_manager = coreInstance:get_phisics_manager()
 local rol_manager = coreInstance:get_renderable_object_layer_manager()
 local falling_force = Vect3f(0.0, -2.0, 0.0)
 
-function init_platform(name, user_data_name, size, position)
+--[[function init_platform(name, user_data_name, size, position)
 	local platform = rol_manager:get_default_renderable_object_manager():get_resource(name)
 	platform:insert_platform(user_data_name, size, position)
 	coreInstance:trace(name)
@@ -15,8 +15,27 @@ function init_move_platform(name, user_data_name, size, position)
 	--platform:add_box_controller(Vect3f(3,2,3),0.87,0.1,0.3,0.0)
 	--m_PhysicController = new CPhysicController(1, 2, 0.87, 0.1, 0.3, ECG_DYNAMIC_OBJECTS, m_PlatformUserData, m_PlatorformActor->GetPosition(), .0f);
     --PHYSXM->AddPhysicController(platorm.m_PhysicController);
-end
+end --]]
+--[[function set_platforms_lights()
+	
 
+	coreInstance:trace("A poner luces")
+	local poly_platforms =  rol_manager:get_renderable_objects_manager_by_str("poly")
+		coreInstance:trace("Tenemos El rob manager")
+	local poly_vector = poly_platforms:get_resource_vector()
+		coreInstance:trace("Tenemos El vector")
+	local light_manager = coreInstance:get_light_manager()
+	coreInstance:trace("Tenemos los managers")
+	for i = 0,  poly_platforms:get_size() do
+		coreInstance:trace(poly_vector[i].m_LightName)
+		poly_vector[i].m_Light = light_manager:get_resource(poly_vector[i].m_LightName)
+		if poly_vector[i].m_Light ~= nil then
+			poly_vector[i].m_LightOriginalPosition = poly_vector[i].m_Light:get_position()
+		end
+	end
+	
+end
+--]]
 function init_poly_platform(name, user_data_name, size, position, time_out, speed)
 	local platform = rol_manager:get_renderable_objects_manager_by_str("poly"):get_resource(name)
 	if platform == nil then
@@ -238,7 +257,7 @@ function activate_poly(_platform, dt)
 		
 		if _platform:get_position():distance(_platform.m_FinalPosition) >= 0.9 and _platform:get_position():distance(_platform.m_FinalPosition) <= max_distance then
 			local new_position = _platform:get_position() + (_platform.m_Direction * _platform.m_Speed * dt)
-			_platform.m_PlatformActor:set_global_position(new_position)
+			_platform.m_Actor:set_global_position(new_position)
 			_platform:set_position(new_position)
 			_platform.m_Light:set_position(new_position)
 			_platform.m_IsMoving = true
@@ -258,7 +277,7 @@ function deactivate_poly(_platform, dt)
 		max_distance = _platform.m_OriginalPosition:distance(_platform.m_FinalPosition)
 		if _platform:get_position():distance(_platform.m_OriginalPosition) >= 0.9 and _platform:get_position():distance(_platform.m_OriginalPosition) <= max_distance+10 then
 			local new_position = _platform:get_position() + (_platform.m_Direction * _platform.m_Speed * dt * -1)
-			_platform.m_PlatformActor:set_global_position(new_position)
+			_platform.m_Actor:set_global_position(new_position)
 			_platform:set_position(new_position)
 			_platform.m_Light:set_position(new_position)
 			--Si colisiona (o si debería bajar)con Piky => Desplazarle

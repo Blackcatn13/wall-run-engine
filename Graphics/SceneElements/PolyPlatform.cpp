@@ -7,9 +7,10 @@
 #include "Core\ScriptManager.h"
 #include "Utils\Logger.h"
 #include "Lights\Light.h"
+#include "Lights\LightManager.h"
 
 
-CPolyPlatform::CPolyPlatform(std::string platformName, std::string coreName,  Vect3f finalPosition, Vect3f direction, float activationDistance)
+CPolyPlatform::CPolyPlatform(std::string platformName, std::string coreName,  Vect3f finalPosition, Vect3f direction, float activationDistance, float timeOut, float speed)
   : CStaticPlatform(platformName, coreName),
     m_FinalPosition(finalPosition),
     m_Direction(direction),
@@ -20,13 +21,30 @@ CPolyPlatform::CPolyPlatform(std::string platformName, std::string coreName,  Ve
     m_ActivationDistance(activationDistance),
     m_ActiveTime(.0f),
     m_Activated(false),
-	m_Light(NULL),
+    m_Light(NULL),
     m_LightOriginalPosition(NULL),
-    m_IsMoving(false) {
+    m_IsMoving(false),
+    m_TimeOut(timeOut),
+    m_Speed(speed) {
 }
 
-CPolyPlatform::~CPolyPlatform () {
-  //PHYSXM->ReleasePhysicActor(m_PlatorformActor);
+//CPolyPlatform::~CPolyPlatform () {
+//  //PHYSXM->ReleasePhysicActor(m_PlatorformActor);
+//}
+void CPolyPlatform::InitPolyPlatform(Vect3f size) {
+  std::stringstream ss;
+  ss << getName() << "_UserData";
+  std::string l_UserDataName = ss.str();
+  InsertPhisic(l_UserDataName, size, Vect3f(0.0f, size.y, 0.0f));
+  /* m_Light = LIGHTM->GetResource(m_LightName);
+   if (m_Light != NULL)
+     m_LightOriginalPosition = m_Light->GetPosition();
+  */
+  /* bool l_Collision = true;
+   if (m_Collission == false)
+    l_Collision = false;*/
+
+  //m_OriginalScale = GetScale();
 }
 
 
@@ -40,9 +58,9 @@ void CPolyPlatform:: ActivatePoly() {
     if (m_Position.Distance(m_FinalPosition) >= 0.9) {
       Vect3f l_NewPosition =  m_Position + (m_Direction * m_Speed * m_Dt);
       ApplyPhysicsToPlayer(m_Direction, m_Dt);
-      m_PlatorformActor->SetGlobalPosition(l_NewPosition);
+      m_Actor->SetGlobalPosition(l_NewPosition);
       m_Position = l_NewPosition;
-	  if (m_Light != NULL)
+      if (m_Light != NULL)
         m_Light->SetPosition(l_NewPosition);
       m_IsMoving = true;
       //Si colisiona con Piky => Desplazarle
@@ -81,17 +99,17 @@ void CPolyPlatform:: DeactivatePoly() {
     if (m_Position.Distance(m_OriginalPosition) >= 0.9) {
       Vect3f l_NewPosition =  m_Position + ( m_Direction * m_Speed * m_Dt * -1);
       ApplyPhysicsToPlayer(m_Direction * -1, m_Dt);
-      m_PlatorformActor->SetGlobalPosition(l_NewPosition);
+      m_Actor->SetGlobalPosition(l_NewPosition);
       m_Position = l_NewPosition;
-	  if (m_Light != NULL)
+      if (m_Light != NULL)
         m_Light->SetPosition(l_NewPosition);
       //Si colisiona con Piky => Desplazarle
     } else {
       m_Activated = false;
       m_ActiveTime = 0.0f;
       m_Position = m_OriginalPosition;
-      m_PlatorformActor->SetGlobalPosition(m_OriginalPosition);
-	  if (m_Light != NULL && m_LightOriginalPosition != NULL)
+      m_Actor->SetGlobalPosition(m_OriginalPosition);
+      if (m_Light != NULL && m_LightOriginalPosition != NULL)
         m_Light->SetPosition(m_LightOriginalPosition);
     }
     //m_PlatorformActor->Activate(!m_Collission);

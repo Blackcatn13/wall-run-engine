@@ -127,6 +127,7 @@ class CCore {
   void Render();
   void Init ( HWND handler );
   void DeInit();
+  void SetLightsToPlatforms(std::string layer);
   static CCore *GetInstance();
   CGraphicsManager *GetGraphicsManager() {
     return m_GraphicsManager;

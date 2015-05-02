@@ -358,6 +358,7 @@ void CScriptManager::RegisterLUAFunctions() {
     .def("update", & CRenderableObject::Update)
     .def("render", & CRenderableObject::Render)
   ];
+
   luabind::module(LUA_STATE) [
     class_<CTemplatedVectorMapManager<CRenderableObject>>("CTemplatedVectorMapManagerRenderableObject")
     .def(constructor<>())
@@ -367,6 +368,8 @@ void CScriptManager::RegisterLUAFunctions() {
       .def(constructor<>())
       .def_readwrite("m_Value", & CTemplatedVectorMapManager<CRenderableObject>::CMapResourceValue::m_Value)
       .def_readwrite("m_Id", & CTemplatedVectorMapManager<CRenderableObject>::CMapResourceValue::m_Id)
+
+
     ]
     //.def("remove_resource", &CTemplatedVectorMapManager<CRenderableObject>::RemoveResource) // <= m_Id identificador no declarado xq está en clase interna
     .def("get_resource", &CTemplatedVectorMapManager<CRenderableObject>::GetResource)
@@ -375,6 +378,7 @@ void CScriptManager::RegisterLUAFunctions() {
     .def("destroy", &CTemplatedVectorMapManager<CRenderableObject>::Destroy)
     .def("get_resource_map", &CTemplatedVectorMapManager<CRenderableObject>::GetResourcesMap)
     .def("get_resource_vector", &CTemplatedVectorMapManager<CRenderableObject>::GetResourcesVector)
+    .def("get_size", &CTemplatedVectorMapManager<CRenderableObject>::GetSize)
   ];
   luabind:: module(LUA_STATE) [
     class_< CRenderableObjectsManager, CTemplatedVectorMapManager<CRenderableObject> >("CRenderableObjectsManager")
