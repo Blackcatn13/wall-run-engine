@@ -13,6 +13,7 @@
 	<script name="Enemy" file="Data/lua/Enemy.lua" auto_run = "true"/>
 	<script name="PumPum" file="Data/lua/PumPum.lua" auto_run = "true"/>
 	<script name="ChuckyRunner" file="Data/lua/ChuckyRunner.lua" auto_run = "true"/>
+	<script name="Card" file="Data/lua/Card.lua" auto_run = "true"/>
 	
 	<renderable_script name="scriptedController" file="Data/scripted_controller.lua" />
 

@@ -28,8 +28,15 @@ function roll_object(objectName, layer_name, dt)
 end
 
 
-function unlock_image(image_path)
-	coreInstance:trace("Image ".. image_path .."Unclocked!!")
+function unlock_image(image_name)
+	for i = 1, table.maxn(Cards_Vector) do
+		if Cards_Vector[i]:get_name() == image_name then
+			Cards_Vector[i]:set_unlocked(true)
+			coreInstance:trace("Image ".. image_name .."Unclocked!!")
+			return 0
+		end
+	end
+	coreInstance:trace("Image Not found")
 end
 
 function toogle_switch(trigger_name, puzzle_name)
@@ -165,12 +172,11 @@ function get_pixelite(pixelite_name)
 	end
 end
 
-function get_sticker(sticker_name, img_path)
+function get_sticker(sticker_name, img_name)
 	local trigger_name = sticker_name .. "_UserData"
 	local trigger = coreInstance:get_trigger_manager():get_resource(trigger_name)
 	if trigger.m_IsSwitched == false then
 		Player:get_instance().add_sticker()
-		unlock_image(img_path)
 		deactivate_collectible(trigger,"collectible", sticker_name)
 	end
 end
@@ -207,6 +213,12 @@ function get_distance_between_points(current_position, _player_position)
 	local distance = 0
 	distance = ((_player_position.x - current_position.x) ^2 + (_player_position.y - current_position.y) ^2 + (_player_position.z - current_position.z) ^2)
 	return distance
+end
+
+function clear_array(Array_Name)
+	for i = 1, table.maxn(Array_Name) do
+		table.remove(Array_Name, i)
+	end
 end
 
 function split_str(inputstr, sep)

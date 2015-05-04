@@ -31,6 +31,7 @@ function Player.new()
 	
 	function self.add_sticker()
 		self.stickers = self.stickers + 1
+		unlock_image(img_name)
 		coreInstance:trace("Num Stickers: "..tostring(self.stickers))
 	end
 	
