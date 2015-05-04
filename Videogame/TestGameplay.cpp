@@ -203,8 +203,9 @@ void CTestGameplay::Init() {
   //m_fsmManager->Load("data//AI//Patrulla.xml");
 // m_fsmManager->Load("data//AI//FSMs.xml");
 // m_fsmManager->Load("data//AI//EnemyFSM.xml");
-  SCRIPTM->RunFile("Data/lua/Enemy.lua");
-  SCRIPTM->RunFile("Data/lua/PumPum.lua");
+  /* SCRIPTM->RunFile("Data/lua/Enemy.lua");
+   SCRIPTM->RunFile("Data/lua/PumPum.lua");
+   SCRIPTM->RunFile("Data/lua/ChuckyRunner.lua");*/
   //m_fsmManager = new CFSMManager();
   //m_WPManager = new CWPManager();
   //m_WPManager->Load("data//AI//Waypoints2.xml");
@@ -469,7 +470,7 @@ void CTestGameplay::Update(float dt) {
   RENDLM->Update(dt);
 
   if (ACT2IN->DoAction("ReloadGUI")) {
-	  GUIM->ReloadGuiFiles();
+    GUIM->ReloadGuiFiles();
     // CAMCONTM->Pause();
     // CCORE->GetCinematicController()->GetResource("DestroyW")->Pause();
   }

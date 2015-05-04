@@ -421,7 +421,7 @@ void CScriptManager::RegisterLUAFunctions() {
   luabind::module(LUA_STATE) [
     class_< CTextureManager/*<CTexture>*/, CMapManager<CTexture>>("CTextureManager")
     .def(constructor<>())
-    .def("get_resource", & CTextureManager::GetResource)
+    .def("get_texture_resource", & CTextureManager::GetResource)
     .def("reload", & CTextureManager::Reload)
   ];
   luabind::module(LUA_STATE) [
