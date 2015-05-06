@@ -203,8 +203,9 @@ function on_update_player_lua(l_ElapsedTime)
 			local info = SCollisionInfo();
 			local _dirRay = Vect3f(0,-1,0);
 			coreInstance:get_phisics_manager():raycast_closest_actor(player:get_position() - 0.4, _dirRay, 1, info, 1000);
-			playerRenderable:clear_cycle(3,0.1);
-			playerRenderable:execute_action(4,0.2,0.3,1,false);
+			playerRenderable:clear_cycle(3,0.5);
+			playerRenderable:updateSkeleton(l_ElapsedTime);
+			playerRenderable:execute_action(4,0,0.3,1,false);
 			_fallPosition = info.m_CollisionPoint;
 		else
 			if player.m_isFalling then
@@ -212,10 +213,11 @@ function on_update_player_lua(l_ElapsedTime)
 				local auxPosition = playerRenderable:getAnimationBonePosition().y; 
 				local newPosition = Vect3f(positionOld.x, auxPosition, positionOld.z);
 				playerRenderable:set_position(newPosition);
+				playerRenderable:blend_cycle(3,1,0.5);
+				playerRenderable:updateSkeleton(l_ElapsedTime);
 				playerRenderable:remove_action(2);
 				playerRenderable:clear_cycle(0,0);
 				playerRenderable:clear_cycle(1,0);
-				playerRenderable:blend_cycle(3,1,0.5);
 				playerRenderable:updateSkeleton(l_ElapsedTime);
 				player.m_isFalling = false;
 				inLoop = true;
@@ -273,9 +275,9 @@ function on_update_player_lua(l_ElapsedTime)
 	if (act2in:do_action_from_lua("Jump")) and (player.m_isJumping == false and _land == false) then
 		coreInstance:getWWSoundManager():PlayEvent("Jump", "Piky");
 		player.m_JumpingTime = 0;
-		playerRenderable:clear_cycle(0,0);
-		playerRenderable:clear_cycle(1,0);
-		playerRenderable:execute_action(2,0,0,1,true);
+		playerRenderable:clear_cycle(0,0.2);
+		playerRenderable:clear_cycle(1,0.2);
+		playerRenderable:execute_action(2,0.2,0,1,true);
 		player.m_isJumping = true;
 		player.m_CurrentJumpForce = player.m_JumpForce;
 		if player.m_is3D == false then
