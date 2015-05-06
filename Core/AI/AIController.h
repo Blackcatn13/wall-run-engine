@@ -30,7 +30,7 @@ class CAIController : public CObject3D {
   bool CheckPlayerShotCollision();
   void AddDamagePlayer();
   void ActualizarHitboxEnemigo();
-  void CAIController::AddDamageEnemy();
+  void AddDamageEnemy();
 
 
   GET_SET(CPhysicController *, PhysicController);
