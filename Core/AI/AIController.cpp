@@ -20,14 +20,16 @@ CAIController::CAIController()
     m_Speed (0.5),
     m_TurnSpeed(2.0),
     m_JumpForce(1.5),
-    m_IsOnCooldown(false),
+	m_IsOnCooldown(false),
     m_CooldownTimer(5),
-    m_ProjectileHitbox(0.5),
-    m_EnemyHitbox(0.5),
-    m_CurrentCooldown(0),
-    m_tiempoVidaDisparo(2.0),
-    m_minAngleDisparo(0.2),
-    m_BalaSpeed(5),
+	m_ProjectileHitbox(0.5),
+	m_isAlive(true),
+	m_life(1),
+	m_EnemyHitbox(2.0),
+	m_CurrentCooldown(0),
+	m_tiempoVidaDisparo(2.0),
+	m_minAngleDisparo(0.2),
+	m_BalaSpeed(5),
     m_CurrentJumpForce(0),
     m_isJumping(false),
     m_RenderableObject(NULL),
@@ -53,7 +55,9 @@ CAIController::CAIController(std::string mesh, std::string name, Vect3f position
   m_IsOnCooldown(false),
   m_CooldownTimer(5),
   m_ProjectileHitbox(0.5),
-  m_EnemyHitbox(0.5),
+  m_isAlive(true),
+  m_life(1),
+  m_EnemyHitbox(2.0),
   m_CurrentCooldown(0),
   m_isJumping(false),
   m_Name(name),
@@ -79,10 +83,12 @@ CAIController::CAIController(CRenderableObject *rond, float speed, float turnSpe
   m_minAngleDisparo(0.2),
   m_BalaSpeed(5),
   m_CurrentJumpForce(0),
-  m_IsOnCooldown(false),
+  m_IsOnCooldown(false),	
   m_CooldownTimer(5),
   m_ProjectileHitbox(0.5),
-  m_EnemyHitbox(0.5),
+  m_isAlive(true),
+  m_life(1),
+  m_EnemyHitbox(2.0),
   m_CurrentCooldown(0),
   m_isJumping(false),
   m_Name(rond->getName()),
@@ -94,8 +100,7 @@ CAIController::CAIController(CRenderableObject *rond, float speed, float turnSpe
   m_PhysicUserData = new CPhysicUserData(userDataName);
   m_PhysicUserData->SetPaint(false);
   m_PhysicUserData->SetColor(colRED);
-  Vect3f newPosition = Vect3f(rond->GetPosition().x, rond->GetPosition().y + controller_size.y, rond->GetPosition().z);
-  m_PhysicController = new CPhysicController(controller_size.x, controller_size.y, 0.87, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, newPosition, -gravity);//0.5,0.25
+  m_PhysicController = new CPhysicController(0.5, 0.25, 0.87, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, rond->GetPosition(), -gravity);
   PHYSXM->AddPhysicController(m_PhysicController);
 }
 //CAIController::CAIController(std::string mesh, std::string name, Vect3f position):
@@ -207,36 +212,25 @@ void CAIController::OnlyRotate(float dt, Vect3f point) {
     Vect3f direction = (point - m_Position);
     Vect3f diff = Vect3f(1, 0, 0).RotateY(m_fYaw);
     float angle = getAngleDiff(direction, diff);
-
+	
     //if (angle > 0.5f)
-    RotateYaw(dt, point);
-    if ((!m_IsOnCooldown) && angle < 0.2) {
-      //DISPARO, cooldown 500 ms
-      m_IsOnCooldown = true;
-      m_CurrentCooldown = m_CooldownTimer;
-      ShotToVector(dt, m_Position);
-      m_DireccionBala = direction;
-    } else if (m_IsOnCooldown) {
+      RotateYaw(dt, point);
+	  if ((!m_IsOnCooldown) && angle < 0.2)
+	  {
+		  //DISPARO, cooldown 500 ms
+		  m_IsOnCooldown = true;
+		  m_CurrentCooldown = m_CooldownTimer;
+		  ShotToVector(dt, m_Position);
+		  m_DireccionBala = direction;
+	  }
 
-
-      m_CurrentCooldown = m_CurrentCooldown - dt;
-      if (m_CurrentCooldown < 0.0) {
-        m_IsOnCooldown = false;
-        DestruirDisparo();
-      } else if (m_CurrentCooldown < (m_CooldownTimer - m_tiempoVidaDisparo)) {
-        DestruirDisparo();
-      } else {
-        ActualizarDisparo(dt, direction);
-        if (CheckPlayerShotCollision()) {
-          DestruirDisparo();
-          //AddDamagePlayer();
-        }
-      }
-    }
+	  //ActualizarDisparo(dt);
+	  
+	  
     /*else {
       m_PhysicController->Move( direction.Normalize() * m_Speed, dt);
       SetPosition(m_PhysicController
-    ->GetPosition());
+	  ->GetPosition());
       Vect3f l_Position = (m_PhysicController->GetPosition());
       if (m_RenderableObject != NULL) {
         m_RenderableObject->SetPosition(m_PhysicController->GetPosition());
@@ -245,38 +239,118 @@ void CAIController::OnlyRotate(float dt, Vect3f point) {
   }
 }
 
-void CAIController::ShotToVector(float dt, Vect3f point) {
-
-  RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->setPrintable(true);
-  m_PosicionBala = m_Position;
+void CAIController::ShotToVector(float dt, Vect3f point)
+{
+	if (m_isAlive)
+	{
+		m_PosicionBala = m_Position;
+		RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->SetPosition(m_PosicionBala);
+		RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->setPrintable(true);
+	}
 }
-void CAIController::ActualizarDisparo(float dt, Vect3f direction) {
-  m_PosicionBala = m_PosicionBala + m_DireccionBala.Normalize() * m_BalaSpeed * dt;
-  RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->SetPosition(m_PosicionBala);
+void CAIController::ActualizarDisparo(float dt)
+{
+	if (m_IsOnCooldown)
+	  {
+		  m_CurrentCooldown = m_CurrentCooldown - dt;
+		  if (m_CurrentCooldown < 0.0)
+		  {
+			  m_IsOnCooldown = false;
+			  DestruirDisparo();
+		  }
+		  else if (m_CurrentCooldown < (m_CooldownTimer - m_tiempoVidaDisparo))
+		  {
+			  DestruirDisparo();
+		  }
+		  else
+		  {
+			  m_PosicionBala = m_PosicionBala + m_DireccionBala.Normalize() * m_BalaSpeed * dt;
+			  RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->SetPosition(m_PosicionBala);
+			  if (CheckPlayerShotCollision())
+			  {
+				  DestruirDisparo();
+				  AddDamagePlayer();
+			  }
+		  }
+	  }
 }
 
-void CAIController::DestruirDisparo() {
-  RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->setPrintable(false);
+void CAIController::ActualizarHitboxEnemigo()
+{
+	switch (CheckPlayerCollision())
+	{
+	
+		case 1:
+			AddDamageEnemy();
+		break;
+		case 2:
+			AddDamagePlayer();
+		break;
+		case 3:
+
+		break;
+		default:
+		break;
+	}
 }
 
-bool CAIController::CheckPlayerShotCollision() {
-
-  if ((RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->getPrintable()) && (m_PosicionBala.Distance(PLAYC->GetPosition()) < m_ProjectileHitbox)) {
-    return true;
-  }
-  return false;
+void CAIController::AddDamagePlayer()
+{
+	PLAYC->SetPosition(Vect3f(PLAYC->GetPosition().x, PLAYC->GetPosition().y, PLAYC->GetPosition().z + 5.0));
 }
 
-bool CAIController::CheckPlayerCollision() {
+void CAIController::AddDamageEnemy()
+{
+	m_life = m_life - 1;
+	if (m_life <= 0)
+	{
+		m_isAlive = false;
+		m_RenderableObject->setPrintable(false);
+		PLAYC->SetPosition(Vect3f(PLAYC->GetPosition().x, PLAYC->GetPosition().y + 10, PLAYC->GetPosition().z));
+	}
+	
+}
 
-  if ((RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource(getName())->getPrintable()) && (m_PosicionBala.Distance(PLAYC->GetPosition()) < m_EnemyHitbox)) {
-    return true;
-  }
-  return false;
+
+void CAIController::DestruirDisparo()
+{
+	RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->setPrintable(false);
+}
+
+bool CAIController::CheckPlayerShotCollision()
+{
+	
+	if ((RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->getPrintable()) && (m_PosicionBala.Distance(PLAYC->GetPosition()) < m_ProjectileHitbox))
+	{
+		return true;
+	}
+	return false;
+}
+
+int CAIController::CheckPlayerCollision()
+{
+	//returns:
+		//1 if player hits
+		//2 if player gets hit
+		//0 if no hit
+	if ((RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource(getName())->getPrintable()) && (m_Position.Distance(PLAYC->GetPosition()) < m_EnemyHitbox))
+	{
+		if (PLAYC->GetPosition().y > m_Position.y)
+		{
+			return 1;
+		}
+		else
+		{
+			return 2;
+		}
+	}
+	return 0;
 }
 
 void CAIController::RotateYaw(float dt, Vect3f point) {
   Vect3f direction = (point - m_Position);
+  direction.y = 0;
+  direction = direction.Normalize();
   Vect3f diff = Vect3f(1, 0, 0).RotateY(m_fYaw);
   float angle = getAngleDiff(direction, diff);
   RotateRenderable(dt, angle);
@@ -284,15 +358,17 @@ void CAIController::RotateYaw(float dt, Vect3f point) {
 }
 
 void CAIController::RotateRenderable(float dt, float angle) {
-  m_fYaw = m_fYaw - angle * m_TurnSpeed * dt;
+  float l_DynamicTurnSpeed = m_TurnSpeed;
+  m_fYaw = m_fYaw - angle * l_DynamicTurnSpeed * dt;
   //m_PhysicController->Move( Vect3f(1, 0, 0).RotateY(m_fYaw) * m_Speed, dt);
   if (m_RenderableObject != NULL)
     m_RenderableObject->SetYaw(m_fYaw);
 }
 
 float CAIController::getAngleDiff(Vect3f A, Vect3f B) {
-  float angle = A * B;
-  angle = mathUtils::ACos(mathUtils::Deg2Rad(angle));
+  float degangle = ((A.x * B.x + A.y * B.y + A.z * B.z) / (sqrt(A.x*A.x + A.y*A.y + A.z*A.z) * sqrt(B.x*B.x + B.y*B.y + B.z*B.z)));
+  //float angle = mathUtils::ACos(mathUtils::Deg2Rad(degangle));
+  float angle = mathUtils::ACos(degangle);
   float dir = (A ^ B).y >= 0 ? 1 : -1;
   return (angle * dir);
 }

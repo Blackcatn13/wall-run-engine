@@ -55,11 +55,14 @@ void RegisterAI() {
     .property("m_CurrentJumpForce", &CAIController::getCurrentJumpForce,  &CAIController::setCurrentJumpForce )
     .property("m_isJumping", &CAIController::getisJumping,  &CAIController::setisJumping )
     .property("m_SpeedModified", &CAIController::getSpeedModified, &CAIController::setSpeedModified )
+	.property("m_isAlive", &CAIController::getisAlive,  &CAIController::setisAlive )
     .def("move", &CAIController::Move)
     .def("move_to", &CAIController::MoveTo)
     .def("rotate_or_move", &CAIController::RotateOrMove)
-    .def("only_rotate", &CAIController::OnlyRotate)
+	.def("only_rotate", &CAIController::OnlyRotate)
     .def("rotate_yaw", &CAIController::RotateYaw)
+	.def("actualizar_disparo", &CAIController::ActualizarDisparo)
+	.def("actualizar_hitbox", &CAIController::ActualizarHitboxEnemigo)
   ];
 
   luabind::module(LUA_STATE) [
@@ -100,7 +103,7 @@ void RegisterAI() {
     .def(constructor<std::string, int >())
     .property("m_MinActivatedSwitches",  &CPuzzle::getMinActivatedSwitches, &CPuzzle::setMinActivatedSwitches )
     .property("m_ActivatedSwitches",  &CPuzzle::getActivatedSwitches, &CPuzzle::setActivatedSwitches )
-    .property("m_Done",  &CPuzzle::getDone, &CPuzzle::setDone)
+
   ];
 
 

@@ -36,8 +36,7 @@ function pumpum_update_stopped(ElapsedTime, doComprobation, name)
 	--local enemy = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("enemies"):get_resource(name)
 	--coreInstance:trace("Estoy parado")
 	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
-	
-	if enemy ~= nil then
+	if (enemy ~= nil) and (enemy.m_isAlive == true) then
 		if enemy:get_wp_vector_size() > 0 then --Si tiene waypoints para moverse
 			-- En caso de acabar de perseguir o llegar a un WP si la distancia al siguiente es muy corta vuelve a la posicion original
 						
@@ -64,6 +63,8 @@ function pumpum_update_stopped(ElapsedTime, doComprobation, name)
 			instance.m_string = "Perseguir_Player"
 		end
 		enemy.m_CurrentTime = enemy.m_CurrentTime +1 * ElapsedTime
+		enemy:actualizar_disparo(ElapsedTime)
+		enemy:actualizar_hitbox()
 	else
 		instance.m_string = "Parado"
 	end
@@ -93,8 +94,10 @@ function pumpum_exit_moving(name)
 	--local enemy = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("enemies"):get_resource(name)
 	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
 	--instance.m_string = "Buscar_next_WP"
-	if enemy ~= nil then
+	if (enemy ~= nil) and (enemy.m_isAlive == true) then
 		enemy.m_CurrentTime = 0 
+		enemy:actualizar_disparo(ElapsedTime)
+		enemy:actualizar_hitbox()
 	else
 		instance.m_string = "Parado"
 	end
@@ -104,7 +107,7 @@ function pumpum_update_moving(ElapsedTime, doComprobation, name)
 
 	--local enemy = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("enemies"):get_resource(name)
 	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
-	if enemy ~= nil then
+	if (enemy ~= nil) and (enemy.m_isAlive == true) then
 		if enemy.m_CurrentWp == nil then
 		--	coreInstance:trace("I have a breakpoint")
 			enemy.m_CurrentWp = enemy:get_next_wp()
@@ -126,6 +129,8 @@ function pumpum_update_moving(ElapsedTime, doComprobation, name)
 				instance.m_string = "Buscar_next_WP"
 			end
 		end
+		enemy:actualizar_disparo(ElapsedTime)
+		enemy:actualizar_hitbox()
 	else
 		instance.m_string = "Parado"
 	end
@@ -137,7 +142,7 @@ function pumpum_enter_calcwp(name)
 	--local enemy = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("enemies"):get_resource(name)
 	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
 	
-	if enemy ~= nil and enemy:get_wp_vector_size() > 0 then
+	if (enemy ~= nil) and (enemy:get_wp_vector_size() > 0) and (enemy.m_isAlive == true) then
 		--[[if currentwp.z == wp2.z then
 			currentwp = wp
 		else
@@ -145,6 +150,8 @@ function pumpum_enter_calcwp(name)
 		end--]]
 		enemy.m_CurrentWp = enemy:get_next_wp()
 		instance.m_string = "Andar_WP"
+		enemy:actualizar_disparo(ElapsedTime)
+		enemy:actualizar_hitbox()
 	else
 		instance.m_string = "Parado"
 	end
@@ -155,8 +162,10 @@ function pumpum_exit_calcwp(name)
 -- OnExit Buscar_next_WP
 	--local enemy = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("enemies"):get_resource(name)
 	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
-	if enemy ~= nil then
+	if (enemy ~= nil) and (enemy.m_isAlive == true) then
 		 enemy.m_CurrentTime = 0
+		 enemy:actualizar_disparo(ElapsedTime)
+		 enemy:actualizar_hitbox()
 	else
 		instance.m_string = "Parado"
 	end
@@ -165,7 +174,9 @@ end
 function pumpum_update_calcwp(ElapsedTime, doComprobation, name)
 	--local enemy = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("enemies"):get_resource(name)
 	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
-	if enemy ~= nil and enemy:get_wp_vector_size() > 0 then
+	if (enemy ~= nil) and (enemy.m_isAlive == true) and enemy:get_wp_vector_size() > 0 then
+		enemy:actualizar_disparo(ElapsedTime)
+		enemy:actualizar_hitbox()
 		--[[if enemy.wp.z == 15 then
 			enemy.wp = Vect3f(2.0,2.0,-15.0)
 		else
@@ -193,6 +204,10 @@ function pumpum_exit_attack_player(name)
 		enemy.m_CurrentWp = enemy.m_OriginalPosition
 		enemy.m_Returning = true
 	end
+	if (enemy ~= nil) and (enemy.m_isAlive == true) then
+		enemy:actualizar_disparo(ElapsedTime)	
+		enemy:actualizar_hitbox()
+	end
 end
 
 function pumpum_update_attack_player(ElapsedTime, doComprobation, name)
@@ -200,6 +215,7 @@ function pumpum_update_attack_player(ElapsedTime, doComprobation, name)
 	--coreInstance:trace("Persiguiendo");
 	local player_position = coreInstance:get_player_controller():get_position()
 	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
+	
 	if enemy.m_SpeedModified == false then
 		enemy.m_Speed = enemy.m_AttackSpeed
 		enemy.m_SpeedModified = true	
@@ -219,7 +235,10 @@ function pumpum_update_attack_player(ElapsedTime, doComprobation, name)
 			instance.m_string = "Parado"
 		--	enemy.m_Speed = enemy.m_Speed / speed_modifier
 		end
-		
+	if (enemy ~= nil) then
+		enemy:actualizar_disparo(ElapsedTime)	
+		enemy:actualizar_hitbox()
+	end
 	--end
 end
 
