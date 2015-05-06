@@ -28,7 +28,7 @@ function on_update_player_lua(l_ElapsedTime)
 	superjumForce = 10;						 	--SUPERSALTO CHEAT
 	player.m_AttackForce = 2;					--Impulse force for the attack.
 	player.m_PhysicController:set_step(0.3); 	--Altura que puede superar (escalones).
-	local AirTime = 0.6;						-- Time into the air, playing air loop
+	local AirTime = 0.7;						-- Time into the air, playing air loop
 	--////////////////////////////////////////////////////////
 	if is_init == true then
 		is_init = false
@@ -171,9 +171,9 @@ function on_update_player_lua(l_ElapsedTime)
 		_fallPosition = info.m_CollisionPoint;
 		local fallPos = player:get_position();
 		local distance = (fallPos.x - _fallPosition.x) * (fallPos.x - _fallPosition.x) + (fallPos.y - _fallPosition.y) * (fallPos.y - _fallPosition.y) + (fallPos.z - _fallPosition.z) * (fallPos.z - _fallPosition.z);
-		if distance <= 5 then
-			playerRenderable:clear_cycle(3,0.3);
-			playerRenderable:execute_action(4,0,1,1,false);
+		if distance <= 15 then
+			
+			--playerRenderable:execute_action(4,0,0.3,1,false);
 			_land = false;
 		end
 	end
@@ -203,6 +203,8 @@ function on_update_player_lua(l_ElapsedTime)
 			local info = SCollisionInfo();
 			local _dirRay = Vect3f(0,-1,0);
 			coreInstance:get_phisics_manager():raycast_closest_actor(player:get_position() - 0.4, _dirRay, 1, info, 1000);
+			playerRenderable:clear_cycle(3,0.1);
+			playerRenderable:execute_action(4,0.2,0.3,1,false);
 			_fallPosition = info.m_CollisionPoint;
 		else
 			if player.m_isFalling then
