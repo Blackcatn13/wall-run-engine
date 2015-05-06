@@ -96,8 +96,6 @@ function pumpum_exit_moving(name)
 	--instance.m_string = "Buscar_next_WP"
 	if (enemy ~= nil) and (enemy.m_isAlive == true) then
 		enemy.m_CurrentTime = 0 
-		enemy:actualizar_disparo(ElapsedTime)
-		enemy:actualizar_hitbox()
 	else
 		instance.m_string = "Parado"
 	end
@@ -150,8 +148,6 @@ function pumpum_enter_calcwp(name)
 		end--]]
 		enemy.m_CurrentWp = enemy:get_next_wp()
 		instance.m_string = "Andar_WP"
-		enemy:actualizar_disparo(ElapsedTime)
-		enemy:actualizar_hitbox()
 	else
 		instance.m_string = "Parado"
 	end
@@ -164,8 +160,6 @@ function pumpum_exit_calcwp(name)
 	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
 	if (enemy ~= nil) and (enemy.m_isAlive == true) then
 		 enemy.m_CurrentTime = 0
-		 enemy:actualizar_disparo(ElapsedTime)
-		 enemy:actualizar_hitbox()
 	else
 		instance.m_string = "Parado"
 	end
@@ -203,10 +197,6 @@ function pumpum_exit_attack_player(name)
 	if enemy:get_wp_vector_size() == 0 then
 		enemy.m_CurrentWp = enemy.m_OriginalPosition
 		enemy.m_Returning = true
-	end
-	if (enemy ~= nil) and (enemy.m_isAlive == true) then
-		enemy:actualizar_disparo(ElapsedTime)	
-		enemy:actualizar_hitbox()
 	end
 end
 
