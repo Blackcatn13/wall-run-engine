@@ -7,6 +7,7 @@
 #include "Mesh\MeshInstance.h"
 #include "Pixelite.h"
 #include "Cromo.h"
+#include "Core\ScriptManager.h"
 
 
 CCollectibleManager::CCollectibleManager():
@@ -65,6 +66,10 @@ void CCollectibleManager::Load(std::string &FileName) {
           std::string l_meshName = m(i).GetPszISOProperty("mesh_name", "", false);
           std::string l_imgSrc = m(i).GetPszISOProperty("img_src", "", false);
           m_Unlockables.insert(std::pair<std::string, std::string>(l_meshName, l_imgSrc));
+          std::stringstream ss;
+          ss << "Card.new(\"" << l_meshName << "\"," << "\"" << l_imgSrc << "\")";
+          std::string l_Code = ss.str();
+          SCRIPTM->RunCode(l_Code);
         }
       }
     }

@@ -216,8 +216,8 @@ function get_distance_between_points(current_position, _player_position)
 end
 
 function clear_array(Array_Name)
-	for i = 1, table.maxn(Array_Name) do
-		table.remove(Array_Name, i)
+	for i = 1, table.getn(Array_Name) do
+		table.remove(Array_Name)
 	end
 end
 
