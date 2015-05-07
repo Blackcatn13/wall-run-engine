@@ -29,7 +29,9 @@ end
 
 
 function unlock_image(image_name)
+	coreInstance:trace("Imagen a obtener: "  ..image_name)
 	for i = 1, table.maxn(Cards_Vector) do
+	coreInstance:trace("Imagen segun el vector: " ..Cards_Vector[i]:get_name())
 		if Cards_Vector[i]:get_name() == image_name then
 			Cards_Vector[i]:set_unlocked(true)
 			coreInstance:trace("Image ".. image_name .."Unclocked!!")
@@ -176,7 +178,7 @@ function get_sticker(sticker_name, img_name)
 	local trigger_name = sticker_name .. "_UserData"
 	local trigger = coreInstance:get_trigger_manager():get_resource(trigger_name)
 	if trigger.m_IsSwitched == false then
-		Player:get_instance().add_sticker()
+		Player:get_instance().add_sticker(img_name)
 		deactivate_collectible(trigger,"collectible", sticker_name)
 	end
 end

@@ -26,23 +26,22 @@ function Player.new()
 	------	 PLAYER FUNCTIONS -----
 	function self.add_pixelites(inc_pixelites)
 		self.pixelites = self.pixelites + inc_pixelites
-		coreInstance:trace("Num Pixelites: "..tostring(self.pixelites))
+		self.coreInstance:trace("Num Pixelites: "..tostring(self.pixelites))
 	end
 	
-	function self.add_sticker()
+	function self.add_sticker(img_name)
 		self.stickers = self.stickers + 1
 		unlock_image(img_name)
-		coreInstance:trace("Num Stickers: "..tostring(self.stickers))
+		self.coreInstance:trace("Num Stickers: "..tostring(self.stickers))
 	end
 	
 	function self.inc_score(value)
 		self.score = self.score + value
-		coreInstance:trace("Score: "..tostring(self.score))
+		self.coreInstance:trace("Score: "..tostring(self.score))
 	end
 	
 	function self.get_player_controller()
-		local coreInstance = CCoreLuaWrapper().m_CoreInstance;
-		local player_controller = coreInstance:get_player_controller().m_PhysicController;
+		local player_controller = self.coreInstance:get_player_controller().m_PhysicController;
 		return player_controller 
 	end
 

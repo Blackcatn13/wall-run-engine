@@ -115,6 +115,7 @@ void CEnemyManager::Destroy() {
     CHECKED_DELETE(*it);
   }
   m_Enemies.clear();
+  m_EnemyInstances.clear();
 }
 
 void CEnemyManager::Reload() {
