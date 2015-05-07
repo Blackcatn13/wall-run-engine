@@ -75,6 +75,7 @@ class CAIController : public CObject3D {
   float				m_EnemyHitbox;
   bool				m_isAlive;
   int				m_life;
+  float				m_Angle;
 };
 
 #endif
