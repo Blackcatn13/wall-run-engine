@@ -118,6 +118,11 @@ void CEnemy::UpdateFSM(float elapsedTime) {
     m_Fsm->setPreviousState( m_Fsm->getCurrentState());
     m_Fsm->setCurrentState( CLuaGlobals::getInstance()->getString());
   }
+
+  /* std::stringstream ss;
+   ss << "Posicion de " << getName() << ": " << m_RenderableObject->GetPosition().x << ", " << m_RenderableObject->GetPosition().y << ", " << m_RenderableObject->GetPosition().z ;
+   std::string str = ss.str();
+   CCORE->Trace(str);*/
 }
 
 

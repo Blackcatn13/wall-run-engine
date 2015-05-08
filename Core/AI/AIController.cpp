@@ -13,6 +13,7 @@
 #include "Core\PlayerController.h"
 #include <sstream>
 #include "Math\Vector3.h"
+#include "Core\ScriptManager.h"
 
 CAIController::CAIController()
   : CObject3D(),
@@ -79,7 +80,7 @@ CAIController::CAIController(CRenderableObject *rond, float speed, float turnSpe
   CObject3D (),
   m_Gravity(gravity),
   m_Speed(speed),
-  m_TurnSpeed(turnSpeed),
+  m_TurnSpeed(turnSpeed * 2 ),
   m_JumpForce(0),
   m_tiempoVidaDisparo(2.0),
   m_minAngleDisparo(0.2),
@@ -292,6 +293,7 @@ void CAIController::ActualizarHitboxEnemigo() {
 
 void CAIController::AddDamagePlayer() {
 //	PLAYC->SetPosition(Vect3f(PLAYC->GetPosition().x, PLAYC->GetPosition().y, PLAYC->GetPosition().z + 5.0));
+  SCRIPTM->RunCode("Player:get_instance().player_take_damage()");
 }
 
 void CAIController::AddDamageEnemy() {
@@ -343,8 +345,8 @@ void CAIController::RotateYaw(float dt, Vect3f point) {
 }
 
 void CAIController::RotateRenderable(float dt, float angle) {
-  float l_DynamicTurnSpeed = m_TurnSpeed;
-  m_fYaw = m_fYaw - angle * l_DynamicTurnSpeed * dt;
+  m_fYaw =  m_fYaw - angle * m_TurnSpeed * dt;
+
   //m_PhysicController->Move( Vect3f(1, 0, 0).RotateY(m_fYaw) * m_Speed, dt);
   if (m_RenderableObject != NULL)
     m_RenderableObject->SetYaw(m_fYaw);
@@ -353,17 +355,32 @@ void CAIController::RotateRenderable(float dt, float angle) {
 float CAIController::getAngleDiff(Vect3f A, Vect3f B) {
   float angle = m_Angle;
   float divisor = sqrt(A.x * A.x + A.y * A.y + A.z * A.z) * sqrt(B.x * B.x + B.y * B.y + B.z * B.z);
+
   if (divisor != 0) {
     float degangle = ((A.x * B.x + A.y * B.y + A.z * B.z) / divisor);
     //float angle = mathUtils::ACos(mathUtils::Deg2Rad(degangle));
+    if (degangle > 1.0f)
+      degangle = 1.0f;
+
+    if (degangle < -1.0f)
+      degangle = -1.0f;
+
     angle = mathUtils::ACos(degangle);
+    m_Angle = angle;
   }
+
   //float degangle = ((A.x * B.x + A.y * B.y + A.z * B.z) / divisor);
   ////float angle = mathUtils::ACos(mathUtils::Deg2Rad(degangle));
   //float angle = mathUtils::ACos(degangle);
   /* float angle = A * B;
    angle = mathUtils::ACos(mathUtils::Deg2Rad(angle));
   */
+  //std::stringstream ss;
+  //ss << angle;
+  //std::string str = ss.str();
+  //if (str.find("IND") != std::string::npos) {
+  //  printf("FUUUK");
+  //}
 
   float dir = (A ^ B).y >= 0 ? 1 : -1;
   return (angle * dir);
