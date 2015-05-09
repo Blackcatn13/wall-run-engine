@@ -7,6 +7,8 @@
 	<script name="globalTextures" file="Data/lua/LoadGlobalTextures.lua" auto_run = "true"/>
 	<script name="checkpoint" file="Data/lua/checkpoint.lua" auto_run = "true"/>
 	<script name="initLevel" file="Data/level3/lua/initLevel.lua" auto_run = "true"/>
+	<script name="triggerFunctions" file="Data/lua/TriggerFunctions.lua" auto_run = "true"/>
+	<script name="collectibleFunctions" file="Data/lua/Collectibles.lua" auto_run = "true"/>
 	<script name="otherFunctions" file="Data/lua/otherFunctions.lua" auto_run = "true"/>
 	<script name="patrullero" file="Data/lua/patrullero.lua" auto_run = "false"/>
 	<script name="CamerasLua" file="Data/lua/Cameras.lua" auto_run = "true"/>
