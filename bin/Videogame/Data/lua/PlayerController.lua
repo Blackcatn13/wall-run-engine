@@ -8,13 +8,13 @@ local _fallPosition = Vect3f(-10000, -10000, -10000);
 --coreInstance:get_player_controller().m_mesh:set_yaw(coreInstance:get_player_controller():get_yaw());
 function on_update_player_lua(l_ElapsedTime)
 
-	local luaUtil = CCMathLuaUtils();
+	--[[local luaUtil = CCMathLuaUtils();
 	local act2in = coreInstance:get_action_to_input();
-	local cam_Controller = coreInstance.m_CameraController;
+	local cam_Controller = coreInstance.m_CameraController;--]]
 	local active_camera = cam_Controller:get_active_camera();
 	local camObject = active_camera.m_pObject3D;
 	--local player_controller = coreInstance:get_player_controller();
-	local lightM = coreInstance:get_light_manager();
+	--local lightM = coreInstance:get_light_manager();
 	local directionalLight = lightM:get_resource("Direct002");
 	local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky");
 	--////////////////////////////////////////////////////////
