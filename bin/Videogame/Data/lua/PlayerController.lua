@@ -171,19 +171,18 @@ function on_update_player_lua(l_ElapsedTime)
 		_fallPosition = info.m_CollisionPoint;
 		local fallPos = player_controller:get_position();
 		local distance = (fallPos.x - _fallPosition.x) * (fallPos.x - _fallPosition.x) + (fallPos.y - _fallPosition.y) * (fallPos.y - _fallPosition.y) + (fallPos.z - _fallPosition.z) * (fallPos.z - _fallPosition.z);
-		if distance <= 15 then
-			
-			--playerRenderable:execute_action(4,0,0.3,1,false);
+		coreInstance:trace(tostring(distance))
+		if distance <= 1.34 then
 			_land = false;
 		end
 	end
 	if (player_controller.m_isJumping == true) or (player_controller.m_isFalling) then
 		
-		if player_controller.m_CurrentJumpForce < 0 then
-			player_controller.m_CurrentJumpForce = player_controller.m_CurrentJumpForce - (player_controller.m_Gravity * l_ElapsedTime);
-		else
-			player_controller.m_CurrentJumpForce = player_controller.m_CurrentJumpForce - (player_controller.m_GravityJump * l_ElapsedTime);
-		end
+		--if player_controller.m_CurrentJumpForce < 0 then
+			--player_controller.m_CurrentJumpForce = player_controller.m_CurrentJumpForce - (player_controller.m_Gravity * l_ElapsedTime);
+		--else
+			--player_controller.m_CurrentJumpForce = player_controller.m_CurrentJumpForce - (player_controller.m_GravityJump * l_ElapsedTime);
+		--end
 
 		if player_controller.m_isJumping then
 			mov.y = playerRenderable:getBoneMovement().y;
@@ -273,13 +272,17 @@ function on_update_player_lua(l_ElapsedTime)
 	-- Acción de saltar del Player. Puede realizar 2 saltos distintos (de longitud, y salto vertical). 
 	--///////////////////////////////////////////////////////////
 	if (act2in:do_action_from_lua("Jump")) and (player_controller.m_isJumping == false and _land == false) then
+		coreInstance:trace(tostring(player_controller.m_isJumping));
+		coreInstance:trace(tostring(_land));
 		coreInstance:getWWSoundManager():PlayEvent("Jump", "Piky");
 		player_controller.m_JumpingTime = 0;
 		playerRenderable:clear_cycle(0,0.2);
 		playerRenderable:clear_cycle(1,0.2);
-		playerRenderable:execute_action(2,0.2,0,1,true);
+		playerRenderable:updateSkeleton(l_ElapsedTime);
+		playerRenderable:execute_action(2,0.1,0,1,true);
+		playerRenderable:updateSkeleton(l_ElapsedTime);
 		player_controller.m_isJumping = true;
-		player_controller.m_CurrentJumpForce = player_controller.m_JumpForce;
+		--player_controller.m_CurrentJumpForce = player_controller.m_JumpForce;
 		if player_controller.m_is3D == false then
 			if act2in:do_action_from_lua("MoveRigth") then
 				player_controller.m_isJumpingMoving = true;
