@@ -14,35 +14,33 @@
 #include <map>
 
 struct SLiteral {
-    std::string	m_sFontId;
-    CColor			m_cColor;
-    std::string	m_value;
+  std::string	m_sFontId;
+  CColor			m_cColor;
+  std::string	m_value;
 };
 
 
-class CLanguageManager
-{
-public:
-    CLanguageManager();
-    virtual ~CLanguageManager(void)
-    {
-        /*Nothing*/;
-    }
+class CLanguageManager {
+ public:
+  CLanguageManager();
+  virtual ~CLanguageManager(void) {
+    /*Nothing*/;
+  }
 
-    void						LoadXMLs						();																//se puede hacer un reload
-    void						SetXmlFile					(const std::string& pathFile);
-    bool						GetLiteral					(const std::string& id, SLiteral& sliteral) const;
-    void						SetCurrentLanguage	(const std::string& id);
+  void						LoadXMLs						();																//se puede hacer un reload
+  void						SetXmlFile					(const std::string &pathFile);
+  bool						GetLiteral					(const std::string &id, SLiteral &sliteral) const;
+  void						SetCurrentLanguage	(const std::string &id);
 
-private:
-    void						LoadXML							(const std::string& pathFile);
+ private:
+  void						LoadXML							(const std::string &pathFile);
 
-private:
-    typedef std::map<std::string, SLiteral>      TLanguage;
+ private:
+  typedef std::map<std::string, SLiteral>      TLanguage;
 
-    std::vector<std::string>					m_vXML_Files;
-    std::map<std::string, TLanguage>	m_Languages;
-    std::string												m_sCurrentLanguage;
+  std::vector<std::string>					m_vXML_Files;
+  std::map<std::string, TLanguage>	m_Languages;
+  std::string												m_sCurrentLanguage;
 
 
 };

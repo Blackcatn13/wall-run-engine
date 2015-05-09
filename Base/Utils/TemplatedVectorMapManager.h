@@ -31,9 +31,7 @@ class CTemplatedVectorMapManager {
   TVectorResources	m_ResourcesVector;
   TMapResources		m_ResourcesMap;
  public:
-  CTemplatedVectorMapManager() {
-    m_ResourcesVector = TVectorResources();
-    m_ResourcesMap = TMapResources();
+  CTemplatedVectorMapManager() : m_ResourcesMap() , m_ResourcesVector() {
   }
 
   virtual ~CTemplatedVectorMapManager() {
