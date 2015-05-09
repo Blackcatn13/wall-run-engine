@@ -14,6 +14,7 @@
 	<script name="CamerasLua" file="Data/lua/Cameras.lua" auto_run = "true"/>
 	<script name="PlayerController" file="Data/lua/PlayerController.lua" auto_run = "true"/>
 	<script name="Enemy" file="Data/lua/Enemy.lua" auto_run = "true"/>
+	<script name="MikMik" file="Data/lua/MikMik.lua" auto_run = "true"/>
 	<script name="PumPum" file="Data/lua/PumPum.lua" auto_run = "true"/>
 	<script name="ChuckyRunner" file="Data/lua/ChuckyRunner.lua" auto_run = "true"/>
 	<script name="Card" file="Data/lua/Card.lua" auto_run = "true"/>

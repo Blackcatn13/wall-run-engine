@@ -1,10 +1,10 @@
-local coreInstance = CCoreLuaWrapper().m_CoreInstance
-local physx_manager = coreInstance:get_phisics_manager()
-local rol_manager = coreInstance:get_renderable_object_layer_manager()
+--local coreInstance = CCoreLuaWrapper().m_CoreInstance
+--local physx_manager = coreInstance:get_phisics_manager()
+local renderable_objects_layer_manager = coreInstance:get_renderable_object_layer_manager()
 local falling_force = Vect3f(0.0, -2.0, 0.0)
 
 --[[function init_platform(name, user_data_name, size, position)
-	local platform = rol_manager:get_default_renderable_object_manager():get_resource(name)
+	local platform = renderable_objects_layer_manager:get_default_renderable_object_manager():get_resource(name)
 	platform:insert_platform(user_data_name, size, position)
 	coreInstance:trace(name)
 	return platform
@@ -20,7 +20,7 @@ end --]]
 	
 
 	coreInstance:trace("A poner luces")
-	local poly_platforms =  rol_manager:get_renderable_objects_manager_by_str("poly")
+	local poly_platforms =  renderable_objects_layer_manager:get_renderable_objects_manager_by_str("poly")
 		coreInstance:trace("Tenemos El rob manager")
 	local poly_vector = poly_platforms:get_resource_vector()
 		coreInstance:trace("Tenemos El vector")
@@ -37,9 +37,9 @@ end --]]
 end
 --]]
 function init_poly_platform(name, user_data_name, size, position, time_out, speed)
-	local platform = rol_manager:get_renderable_objects_manager_by_str("poly"):get_resource(name)
+	local platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str("poly"):get_resource(name)
 	if platform == nil then
-		platform = rol_manager:get_renderable_objects_manager_by_str("enabled_poly"):get_resource(name)
+		platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str("enabled_poly"):get_resource(name)
 	end		
 	platform:insert_platform(user_data_name, size, position)
 	--light = coreInstance:get_light_manager():get_resource(platform.m_LightName)
@@ -63,7 +63,7 @@ end
 function update_break_platform(dt, current_time, max_time, platform_name)
 
 	if current_time >= max_time then
-		local platform = rol_manager:get_default_renderable_object_manager():get_resource(platform_name)
+		local platform = renderable_objects_layer_manager:get_default_renderable_object_manager():get_resource(platform_name)
 		platform:disable_platform(dt, falling_force)
 	end
 end
@@ -73,7 +73,7 @@ end
 function on_enter_pinchos(platform_name)
 	--TODO registrar todo lo nuevo
 	--[[coreInstance:trace("Entrando en Pinchos")
-	local platform = rol_manager:get_default_renderable_object_manager():get_resource(platform_name)
+	local platform = renderable_objects_layer_manager:get_default_renderable_object_manager():get_resource(platform_name)
 	coreInstance:trace(platform_name)
 	--platform:falling_into_platform()
 	--calcular direccion del salto
@@ -147,7 +147,7 @@ function mp_update_moving(ElapsedTime, name)
 	
 	--local player_position = coreInstance:get_player_controller():get_position()
 	--core:trace(tostring(player_position.x));
-	local platform = rol_manager:get_default_renderable_object_manager():get_resource(name)-- modificar para poder pasarlo por parametro
+	local platform = renderable_objects_layer_manager:get_default_renderable_object_manager():get_resource(name)-- modificar para poder pasarlo por parametro
 	if platform ~= nil then
 		local next_wp = platform.m_NextWP
 		platform:move_to_point(ElapsedTime, next_wp, 2)
@@ -191,7 +191,7 @@ function mp_enter_calcwp(name) -- Pasar el nombre de la plataforma y de ahí que
 	--	next_wp = Vect3f(15,0,15)
 	--end
 	
-	local platform = rol_manager:get_default_renderable_object_manager():get_resource(name)
+	local platform = renderable_objects_layer_manager:get_default_renderable_object_manager():get_resource(name)
 	if platform ~= nil then
 		platform.m_NextWP = platform:get_next_wp()
 		--coreInstance:trace(tostring(next_wp.x));
@@ -217,9 +217,9 @@ end
 function update_poly_platform(current_poly_time, dt, platform_name)
 	-- Enable Poly Emmerald power
 	local position = coreInstance:get_player_controller():get_position()
-	local platform = rol_manager:get_renderable_objects_manager_by_str("poly"):get_resource(platform_name)
+	local platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str("poly"):get_resource(platform_name)
 	if platform == nil then
-		platform = rol_manager:get_renderable_objects_manager_by_str("enabled_poly"):get_resource(platform_name)
+		platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str("enabled_poly"):get_resource(platform_name)
 	end
 	local platform_position = platform:get_position()
 	local l_distance = position:distance(platform_position)
