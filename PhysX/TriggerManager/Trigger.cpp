@@ -174,7 +174,7 @@ void CTrigger::setUpdate(bool update) {
   if (update == true)
     TRIGGM->GetUpdateTriggersVector().push_back(this);
   else {
-    for (int i = 0; i <  TRIGGM->GetUpdateTriggersVector().size(); ++ i) {
+    for (size_t i = 0; i <  TRIGGM->GetUpdateTriggersVector().size(); ++ i) {
       TRIGGM->GetUpdateTriggersVector().erase(TRIGGM->GetUpdateTriggersVector().begin() + i);
     }
   }

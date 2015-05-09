@@ -85,7 +85,7 @@ bool CTriggerManager::Reload(const std::string &FileName) {
 }
 
 void CTriggerManager::Update(float dt) {
-  for (int i = 0; i < m_UpdateTriggersVector.size(); ++i) {
+  for (size_t i = 0; i < m_UpdateTriggersVector.size(); ++i) {
     if (m_UpdateTriggersVector[i]->getUpdate())
       m_UpdateTriggersVector[i]->Update(dt);
   }

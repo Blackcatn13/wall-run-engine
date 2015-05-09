@@ -90,8 +90,8 @@ void CEnemy::UpdateFSM(float elapsedTime) {
 // for (TMapResource::iterator it = m_Resources.begin(); it != m_Resources.end(); ++it) {
 // for (TMapResource::iterator it = m_Resources.begin(); it != m_Resources.end(); ++it) {
   STATE *s = m_Fsm->getStates().GetResource(m_Fsm->getCurrentState());
-  char l_EnterFunction[256];
   if (s->m_onEnter == false) {
+    char l_EnterFunction[256];
     _snprintf_s(l_EnterFunction, 256, 256, "%s(\"%s\")", s->onEnter.c_str(), getName().c_str());
     SCRIPTM->RunCode(l_EnterFunction);
     s->m_onEnter = true;

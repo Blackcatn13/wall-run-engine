@@ -701,7 +701,7 @@ bool CPhysicsManager::AddPhysicController ( CPhysicController *_pController, ECo
 
 void			CPhysicsManager::SetPaintAllPhysicControllers	(bool paint) {
 
-  for (int i = 0; i < m_pControllerManager->getNbControllers(); ++i) {
+  for (size_t i = 0; i < m_pControllerManager->getNbControllers(); ++i) {
     CPhysicUserData *l_pPhysicUserData = NULL;
     l_pPhysicUserData = ( CPhysicUserData *) m_pControllerManager->getController(i)->getActor()->userData;
     l_pPhysicUserData->SetPaint(paint);

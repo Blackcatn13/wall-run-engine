@@ -69,7 +69,7 @@ void CWWSoundManager::Done() {
   AK::MemoryMgr::Term();
 
   m_GameObjects.clear();
-  for (int i = 0; i < m_events.size(); ++i) {
+  for (size_t i = 0; i < m_events.size(); ++i) {
     delete (m_events[i]);
   }
   m_events.clear();
@@ -252,7 +252,7 @@ void CWWSoundManager::Load(std::string file) {
     }
   }
   // Init all the events listed in the WWSounds.xml
-  for (int i = 0; i < m_events.size(); ++i) {
+  for (size_t i = 0; i < m_events.size(); ++i) {
     m_events[i]->PlayindID = AK::SoundEngine::PostEvent(m_events[i]->Event.c_str(), m_events[i]->GameObjectID);
   }
 }

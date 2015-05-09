@@ -197,8 +197,7 @@ bool CPhysicCookingMesh::SavePhysicMesh ( const std::vector<Vect3f> &_Vertices, 
   triangleMeshDesc.triangles				= &_Faces[0];
   triangleMeshDesc.flags					= 0;
   assert(m_pCooking);
-  bool isOk = false;
-  isOk = m_pCooking->NxCookTriangleMesh(triangleMeshDesc, CPhysicUserStream( _BinFilename.c_str(), false));
+  bool isOk = m_pCooking->NxCookTriangleMesh(triangleMeshDesc, CPhysicUserStream( _BinFilename.c_str(), false));
   return isOk;
 }
 
@@ -207,8 +206,7 @@ bool CPhysicCookingMesh::SavePhysicMesh ( const std::vector<Vect3f> &_Vertices, 
 //----------------------------------------------------------------------------
 bool CPhysicCookingMesh::CookClothMesh(const NxClothMeshDesc &desc, NxStream &stream) {
   assert(m_pCooking);
-  bool isOk = false;
-  isOk = m_pCooking->NxCookClothMesh(desc, stream);
+  bool isOk = m_pCooking->NxCookClothMesh(desc, stream);
   return isOk;
 }
 
@@ -266,12 +264,14 @@ bool ReadMesh(const std::string file, void *&pos, void *&index, unsigned short *
       }
     }
   }
+  return false;
 }
 
 bool CPhysicCookingMesh::LoadFromXML(const std::string _FileName) {
   CXMLTreeNode newFile;
   if (!newFile.LoadFile(_FileName.c_str())) {
     printf("ERROR loading the file.");
+    return false;
   } else {
     CXMLTreeNode  m = newFile["Physx_meshes"];
     if (m.Exists()) {

@@ -13,13 +13,12 @@ void CActionToInput::GetActionInfo(std::string actionName, std::string &strInfo)
     VecInfoInputs aux = m_String2Actions[actionName];
 
     int size = aux.size();
-    for (int i = 0; i < aux.size(); ++ i) {
+    for (size_t i = 0; i < size; ++ i) {
       std::map<std::string, uint32>::iterator it = m_String2Code.begin();
-      int code = aux[i].Code;
       for (it; it != m_String2Code.end(); ++it) {
         if (it->second == aux[i].Code) {
           str_aux.append(it->first);
-          if (i + 1 != aux.size() )
+          if (i + 1 != size )
             str_aux.append(" + ");
         }
 
@@ -65,17 +64,17 @@ bool CActionToInput::DoAction(const std::string &action_name, float &amount) {
     for (uint32 i = 0; i < aux.size(); ++i) {
       switch (aux[i].axisType) {
         case AXIS_MOUSE_X:
-          amount = m_InputManager->GetMouseDelta().x;
+          amount = (float)m_InputManager->GetMouseDelta().x;
           action &= amount != 0;
           if (!action) return false;
           break;
         case AXIS_MOUSE_Y:
-          amount = m_InputManager->GetMouseDelta().y;
+          amount = (float)m_InputManager->GetMouseDelta().y;
           action &= amount != 0;
           if (!action) return false;
           break;
         case AXIS_MOUSE_Z:
-          amount = m_InputManager->GetMouseDelta().z;
+          amount = (float)m_InputManager->GetMouseDelta().z;
           action &= amount != 0 ;
           if (!action) return false;
           break;
@@ -124,7 +123,6 @@ bool CActionToInput::ReloadXML() {
 }
 
 bool CActionToInput::LoadXML (const std::string &xmlFile) {
-  int counter = 0;
   m_fileName = xmlFile;
   CXMLTreeNode newFile;
   if (!newFile.LoadFile(xmlFile.c_str())) {
@@ -133,6 +131,7 @@ bool CActionToInput::LoadXML (const std::string &xmlFile) {
   CXMLTreeNode m = newFile["Actions"];
   if (m.Exists()) {
     int count = m.GetNumChildren();
+    int counter = 0;
     for (int i = 0; i < count; ++i) {
       std::string name = m(i).GetName();
       if (name == "action") {
