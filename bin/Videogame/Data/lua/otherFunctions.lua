@@ -1,12 +1,12 @@
-local coreInstance = CCoreLuaWrapper().m_CoreInstance
-local physx_manager = coreInstance:get_phisics_manager()
+--local coreInstance = CCoreLuaWrapper().m_CoreInstance
+--local physx_manager = coreInstance:get_phisics_manager()
 
 function activate_teleport(player_position)
-	local player = coreInstance:get_player_controller()
+	--local player = coreInstance:get_player_controller()
 	coreInstance:trace(player_position)
 	local vec_array = split_str(player_position, "%s")
 	local vec3f_array = Vect3f(tonumber(vec_array[1]), tonumber(vec_array[2]), tonumber(vec_array[3]))
-	player.m_PhysicController:set_position(vec3f_array)
+	player_controller.m_PhysicController:set_position(vec3f_array)
 	local camera = coreInstance.m_CameraController:get_active_camera()
 	--	coreInstance:trace("laaaaaa")
 	camera.m_pObject3D:set_position(Vect3f(camera.m_pObject3D:get_position().x, camera.m_pObject3D:get_position().y, vec3f_array.z - 10))
@@ -14,14 +14,14 @@ function activate_teleport(player_position)
 	--camera.m_pObject3D:set_position(Vect3f(3.118870, 20.0, 271.008423))
 end
 function set_is_3D()
-	local player = coreInstance:get_player_controller();
-	player.m_is3D = true;
+	--local player = coreInstance:get_player_controller();
+	player_controller.m_is3D = true;
 	coreInstance.m_CameraController:set_active_camera("3DCam");
 
 end
 
 function roll_object(objectName, layer_name, dt)
-	local object_manager = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str(layer_name)
+	local object_manager = renderable_objects_layer_manager:get_renderable_objects_manager_by_str(layer_name)
 	local object = object_manager:get_resource(objectName)
 	local new_yaw = object:get_yaw()+ 1* dt
 	object:set_yaw(new_yaw)
@@ -43,15 +43,15 @@ end
 
 function toogle_switch(trigger_name, puzzle_name)
 	coreInstance:trace("Enter switch")
-	local player = Player:get_instance()
+	--local player = Player:get_instance()
 	coreInstance:trace(tostring(player.get_controller().m_isJumping))
 	local puzzle = coreInstance:get_puzzle_manager():get_resource(puzzle_name)
 	--local total_switches = puzzle.m_MinActivatedSwitches
 	
 	if player ~= nil then
-		local player_controller = player.get_controller()
+		--local player_controller = player.get_controller()
 		--if player_controller.m_isAttack == true or player_controller.m_isJumping == true then
-			local trigger_manager = coreInstance:get_trigger_manager()
+			--local trigger_manager = coreInstance:get_trigger_manager()
 			local trigger = trigger_manager:get_resource(trigger_name)
 			--coreInstance:trace("Toogle switch")
 			if trigger ~= nil then		
@@ -87,7 +87,7 @@ function change_object_position(_object, _position)
 end
 
 function get_renderable_object(layer_name, _objectName)
-	local object_manager = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str(layer_name)
+	local object_manager = renderable_objects_layer_manager:get_renderable_objects_manager_by_str(layer_name)
 	local object = object_manager:get_resource(_objectName)
 	return object
 end
@@ -100,21 +100,21 @@ function open_door(_objectName)
 end
 
 function trigger_change_view(offset_axis)
-	local player = coreInstance:get_player_controller();
-	if player.m_is3D == true then 
-		player.m_is3D = false;
+	local player_controller = coreInstance:get_player_controller();
+	if player_controller.m_is3D == true then 
+		player_controller.m_is3D = false;
 		local cam = coreInstance.m_CameraController:get_resource("3DCam");
 		cam.m_eTypeCamera = 5;
 		coreInstance.m_CameraController:set_active_camera("3DCam");
-		if player.m_isTurned == true then
-			player.m_isTurned = false
+		if player_controller.m_isTurned == true then
+			player_controller.m_isTurned = false
 		end
 		
 		--player:set_yaw(coreInstance.m_CameraController:get_active_camera().m_pObject3D:get_yaw())
 		--coreInstance:trace(tostring(player:get_yaw()))
 		local camera_object = coreInstance.m_CameraController:get_active_camera().m_pObject3D
-		local pos_x =  player:get_position().x
-		local pos_z =  player:get_position().z
+		local pos_x =  player_controller:get_position().x
+		local pos_z =  player_controller:get_position().z
 		if offset_axis == "x" then
 			pos_x = camera_object:get_position().x
 		elseif offset_axis == "z" then
@@ -124,14 +124,14 @@ function trigger_change_view(offset_axis)
 			pos_z = camera_object:get_position().z
 		end
 		
-		local position_2d = Vect3f(pos_x, player:get_position().y ,pos_z)
-		coreInstance:trace(tostring(player:get_position().z))
+		local position_2d = Vect3f(pos_x, player_controller:get_position().y ,pos_z)
+		coreInstance:trace(tostring(player_controller:get_position().z))
 		
-		player.m_PhysicController:set_position(position_2d)
-		move_character_controller_mesh(player, position_2d);
+		player_controller.m_PhysicController:set_position(position_2d)
+		move_character_controller_mesh(player_controller, position_2d);
 		coreInstance:trace(tostring(position_2d.z))
 	else
-		player.m_is3D = true;
+		player_controller.m_is3D = true;
 		local cam = coreInstance.m_CameraController:get_resource("3DCam");
 		cam.m_eTypeCamera = 6;
 		coreInstance.m_CameraController:set_active_camera("3DCam");
@@ -139,46 +139,46 @@ function trigger_change_view(offset_axis)
 end
 
 function trigger_set_3D()
-	local player = coreInstance:get_player_controller();
-	player.m_is3D = true;
+	--local player_controller = coreInstance:get_player_controller();
+	player_controller.m_is3D = true;
 	coreInstance.m_CameraController:set_active_camera("ThPS");
 
 end
 
 function activate_trigger_update(trigger_name)
 	local coreInstance = CCoreLuaWrapper().m_CoreInstance;
-	local trigger_manager = coreInstance:get_trigger_manager()
+	--local trigger_manager = coreInstance:get_trigger_manager()
 	local trigger = trigger_manager:get_resource(trigger_name)
 	trigger.m_Update=true
 
 end 
 
 function set_player_respawn_spikes_point()
-	local player = Player:get_instance()
+	--local player = Player:get_instance()
 	player.last_spikes_position = Vect3f(player.get_player_controller():get_position())
 end
 
 function player_die()
-	local coreInstance = CCoreLuaWrapper().m_CoreInstance;
+	--local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 	coreInstance:trace("dieeeeee")
-	local player = Player:get_instance()
+	--local player = Player:get_instance()
 	player.player_die()
 end
 
 function get_pixelite(pixelite_name)
 	local trigger_name = pixelite_name .. "_UserData"
-	local trigger = coreInstance:get_trigger_manager():get_resource(trigger_name)
+	local trigger = trigger_manager:get_resource(trigger_name)
 	if trigger.m_IsSwitched == false then
-		Player:get_instance().add_pixelites(1)
+		player.add_pixelites(1)
 		deactivate_collectible(trigger,"collectible", pixelite_name)
 	end
 end
 
 function get_sticker(sticker_name, img_name)
 	local trigger_name = sticker_name .. "_UserData"
-	local trigger = coreInstance:get_trigger_manager():get_resource(trigger_name)
+	local trigger = trigger_manager:get_resource(trigger_name)
 	if trigger.m_IsSwitched == false then
-		Player:get_instance().add_sticker(img_name)
+		player.add_sticker(img_name)
 		deactivate_collectible(trigger,"collectible", sticker_name)
 	end
 end
@@ -186,15 +186,15 @@ end
 
 function deactivate_collectible (_trigger, layer_name, obj_name)
 	_trigger.m_IsSwitched = true
-	local object_manager = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str(layer_name)
+	local object_manager = renderable_objects_layer_manager:get_renderable_objects_manager_by_str(layer_name)
 	local object = object_manager:get_resource(obj_name)
 	object.m_Printable = false
 end
 
 function set_checkpoint(trigger_name)
-	local coreInstance = CCoreLuaWrapper().m_CoreInstance;
+	--local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 		coreInstance:trace("enter checkpoint")
-	local player = Player:get_instance()
+	--local player = Player:get_instance()
 	local current_position = Vect3f(player.get_player_controller():get_position())
 	coreInstance:trace("Player Position set")
 	local checkpoint = CheckPoint.new()

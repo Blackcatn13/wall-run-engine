@@ -100,7 +100,8 @@ void CCore::Init(HWND handler) {
   m_LightManager = new CLightManager();*/
 
   m_LogRender = new CLogRender();
-  m_ScriptManager->Load(m_Config.LuaPath);
+  m_PlayerController = new CPlayerController();
+
   m_SceneRendererCommandManager = new CSceneRendererCommandManager();
   m_SceneRendererCommandManager->Load(m_Config.SceneRenderCommandsPath);
   m_TriggerManager = new CTriggerManager();
@@ -109,7 +110,7 @@ void CCore::Init(HWND handler) {
   m_EnemyManager = CEnemyManager::GetInstance();
   m_EnemyManager->Init("data//enemies.xml");
   m_EnemyManager->InitEnemies("enemies");
-  m_PlayerController = new CPlayerController();
+
   m_TriggerManager->LoadTriggers(m_Config.TriggersPath);
   m_PuzzleManager  = new CPuzzleManager();
   m_PuzzleManager->Load(m_Config.PuzzlesPath);
@@ -131,8 +132,12 @@ void CCore::Init(HWND handler) {
   m_GuiManager->LoadGuiFiles("./Data/GUI/XML_Laberynth");
 
   m_CollectibleManager = new CCollectibleManager();
+
+  m_ScriptManager->Load(m_Config.LuaPath);
   m_CollectibleManager->Load(m_Config.CollectiblesPath);
   m_CollectibleManager->InitCollectibles(m_CollectibleManager->GetCollectiblesLayerName());
+
+
 }
 
 void CCore::DeInit() {

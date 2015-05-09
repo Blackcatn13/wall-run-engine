@@ -1,9 +1,9 @@
-local coreInstance = CCoreLuaWrapper().m_CoreInstance
+--local coreInstance = CCoreLuaWrapper().m_CoreInstance
 
 --local current_time = 0
 --ai_controller = CAIController()
 --ai_controller.m_Speed = 0.1
-local instance = CLuaGlobalsWrapper().m_CoreInstance;
+--local instance = CLuaGlobalsWrapper().m_CoreInstance;
 
 --local wp_manager = core:get_wp_manager()
 --local id_next_wp

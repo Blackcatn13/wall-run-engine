@@ -52,14 +52,14 @@ function Player.new()
 	function self.player_take_damage()
 		self.num_hearts = self.num_hearts -1
 		self.coreInstance:trace("Taking damage. Ouch! I lost a heart.")                           
-		if CCoreLuaWrapper().m_CoreInstance:getGUIManager():get_active_image('LifeGUI') == 'Life3' then
-			CCoreLuaWrapper().m_CoreInstance:getGUIManager():set_image('LifeGUI','Life2')
+		if gui_manager:get_active_image('LifeGUI') == 'Life3' then
+			gui_manager:set_image('LifeGUI','Life2')
 		else
-			if CCoreLuaWrapper().m_CoreInstance:getGUIManager():get_active_image('LifeGUI') == 'Life2' then
-				CCoreLuaWrapper().m_CoreInstance:getGUIManager():set_image('LifeGUI','Life1')
+			if gui_manager:get_active_image('LifeGUI') == 'Life2' then
+				gui_manager:set_image('LifeGUI','Life1')
 			else
-				if CCoreLuaWrapper().m_CoreInstance:getGUIManager():get_active_image('LifeGUI') == 'Life1' then
-					CCoreLuaWrapper().m_CoreInstance:getGUIManager():set_image('LifeGUI','Life0')
+				if gui_manager:get_active_image('LifeGUI') == 'Life1' then
+					gui_manager:set_image('LifeGUI','Life0')
 				end
 			end	
 		end
@@ -74,7 +74,7 @@ function Player.new()
 		local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 		self.coreInstance:trace("player dies")
 		self.num_lives = self.num_lives -1
-		coreInstance:getGUIManager():set_image('LifeGUI','Life3')
+		gui_manager:set_image('LifeGUI','Life3')
 		if self.num_lives == 0 then
 			--game over
 			self.coreInstance:trace("game over")
