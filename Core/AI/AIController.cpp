@@ -80,7 +80,7 @@ CAIController::CAIController(CRenderableObject *rond, float speed, float turnSpe
   CObject3D (),
   m_Gravity(gravity),
   m_Speed(speed),
-  m_TurnSpeed(turnSpeed * 2 ),
+  m_TurnSpeed(turnSpeed),
   m_JumpForce(0),
   m_tiempoVidaDisparo(2.0),
   m_minAngleDisparo(0.2),

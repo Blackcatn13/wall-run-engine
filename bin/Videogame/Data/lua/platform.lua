@@ -101,7 +101,7 @@ function on_enter_pinchos(platform_name)
 		player.m_PhysicController:set_position(platform.m_BackPos)
 	end
 	--]]
-	local player = Player:get_instance()
+	--local player = Player:get_instance()
 	coreInstance:trace(tostring(player.num_hearts))
 	if player.num_hearts > 0 then
 		player.get_player_controller():set_position(player.last_spikes_position)
@@ -232,7 +232,7 @@ function update_poly_platform(current_poly_time, dt, platform_name)
 		platform.m_Enabled = false
 	end
 	
-	local act2in = coreInstance:get_action_to_input();
+	--local act2in = coreInstance:get_action_to_input();
 	
 	if (act2in:do_action_from_lua("PolyPowa") == true and platform.m_Enabled) or platform.m_IsMoving == true then
 		coreInstance:trace(tostring(platform.m_IsMoving))

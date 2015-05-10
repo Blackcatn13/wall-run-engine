@@ -32,8 +32,8 @@ CEasyEnemy::CEasyEnemy(std::string mesh, std::string name, Vect3f position,  flo
   //InitWpVector(2, 4);
 }
 //Nuevo sistema
-CEasyEnemy::CEasyEnemy(CRenderableObject *renderableObject, std::vector<Vect3f> wayPoints, float speed, float speedAttack, float life, std::string fsmName, Vect2f characterSize) :
-  CEnemy(renderableObject, speed, life, characterSize),
+CEasyEnemy::CEasyEnemy(CRenderableObject *renderableObject, std::vector<Vect3f> wayPoints, float speed, float turnSpeed, float speedAttack, float life, std::string fsmName, Vect2f characterSize) :
+  CEnemy(renderableObject, speed, turnSpeed, life, characterSize),
   m_WpVector(wayPoints),
   m_CurrentWp(NULL),
   m_AttackSpeed(speedAttack),

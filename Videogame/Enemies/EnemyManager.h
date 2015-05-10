@@ -25,6 +25,7 @@ typedef struct EnemyStats {
   float			Speed;
   float			SpeedAttack;
   float			ShootSpeed;
+  float			TurnSpeed;
   int			life;
   std::string 	FsmName;
   Vect2f		ControllerSize;

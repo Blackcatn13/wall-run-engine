@@ -34,13 +34,13 @@ CEnemy::CEnemy(CXMLTreeNode &info1)
   m_Position = info1.GetVect3fProperty("pos", Vect3f(), false);
 }
 
-CEnemy::CEnemy(CRenderableObject *renderableObject, float speed, float life, Vect2f controller_size):
+CEnemy::CEnemy(CRenderableObject *renderableObject, float speed, float turnSpeed, float life, Vect2f controller_size):
   m_RenderableObject(renderableObject),
   m_Life(life),
 // m_Speed(speed),
   m_CurrentTime(0.0f),
   m_OriginalPosition(m_RenderableObject->GetPosition()),
-  CAIController(renderableObject, speed, 2.5f, 13.0f, controller_size ) {
+  CAIController(renderableObject, speed, turnSpeed, 13.0f, controller_size ) {
   m_fYaw = m_RenderableObject->GetYaw();
   m_Position = m_RenderableObject->GetPosition();
 }

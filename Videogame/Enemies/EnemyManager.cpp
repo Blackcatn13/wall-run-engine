@@ -36,8 +36,9 @@ void CEnemyManager::InitEnemies(std::string layerName) {
         if ((nam.find("_easy") != std::string::npos)) {
           float l_AttackSpeed = m_Cores.find(m_EnemyInstances[j].instanceType)->second.SpeedAttack;
           int l_Life = m_Cores.find(m_EnemyInstances[j].instanceType)->second.life;
+          float l_TurnSpeed = m_Cores.find(m_EnemyInstances[j].instanceType)->second.TurnSpeed;
           std::vector<Vect3f> l_WayPoints = m_EnemyInstances[j].waypoints;
-          CEasyEnemy *Enemy = new CEasyEnemy(l_Rom->GetResourcesVector()[i], l_WayPoints, l_Speed, l_AttackSpeed, l_Life, l_FsmName, l_ControllerSize);
+          CEasyEnemy *Enemy = new CEasyEnemy(l_Rom->GetResourcesVector()[i], l_WayPoints, l_Speed, l_TurnSpeed, l_AttackSpeed, l_Life, l_FsmName, l_ControllerSize);
           m_Enemies.push_back(Enemy);
         } else if (nam.find("_runner") != std::string::npos) {
           CRunnerEnemy *Enemy = new CRunnerEnemy(l_Rom->GetResourcesVector()[i], l_Speed, l_FsmName, l_ControllerSize);
@@ -81,6 +82,7 @@ void CEnemyManager::Init(const std::string &FileName) {
           l_Stats.SpeedAttack = m(i).GetFloatProperty("speed_attack", 0.0f , false);
           l_Stats.FsmName = m(i).GetPszISOProperty("fsm", "NoFSM", false);
           l_Stats.ControllerSize = m(i).GetVect2fProperty("controller_size", v2fZERO, false);
+          l_Stats.TurnSpeed = m(i).GetFloatProperty("turn_speed", 0.2f , false);
           m_Cores.insert(std::pair<std::string, StatsStr>(type, l_Stats));
         } else if (l_Name == "instance_enemy") {
           EnemiesStr l_Enemy;
