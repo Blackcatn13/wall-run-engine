@@ -12,22 +12,20 @@
 
 
 
-CGenerateShadowMapsSceneRendererCommand::CGenerateShadowMapsSceneRendererCommand(CXMLTreeNode &atts)
-{
+CGenerateShadowMapsSceneRendererCommand::CGenerateShadowMapsSceneRendererCommand(CXMLTreeNode &atts) {
 }
 
-void CGenerateShadowMapsSceneRendererCommand::Execute(CGraphicsManager &RM)
-{
-    CLightManager::TMapResource::iterator it = LIGHTM->GetResources().begin();
-    std::map<std::string, CLight*> resources = LIGHTM->GetResources();
-    //CRenderableObjectTechniqueManager::TMapResource::iterator it2 = RENDTECHM->GetResources().begin();
-    CEffect *eff = EFFECTM->GetEffect("ShadowMapGenerate");
-    while (it != LIGHTM->GetResources().end()) {
-        if (it->second->GetGenerateDynamicShadowMap()) {
-            eff->ChangeLight(it->second);
-			it->second->SetNShadowmap(1);
-            it->second->GenerateShadowMap(&RM);
-        }
-        it++;
+void CGenerateShadowMapsSceneRendererCommand::Execute(CGraphicsManager &RM) {
+  CLightManager::TMapResource::iterator it = LIGHTM->GetResources().begin();
+  //std::map<std::string, CLight *> resources = LIGHTM->GetResources();
+  //CRenderableObjectTechniqueManager::TMapResource::iterator it2 = RENDTECHM->GetResources().begin();
+  CEffect *eff = EFFECTM->GetEffect("ShadowMapGenerate");
+  while (it != LIGHTM->GetResources().end()) {
+    if (it->second->GetGenerateDynamicShadowMap()) {
+      eff->ChangeLight(it->second);
+      it->second->SetNShadowmap(1);
+      it->second->GenerateShadowMap(&RM);
     }
+    ++it;
+  }
 }

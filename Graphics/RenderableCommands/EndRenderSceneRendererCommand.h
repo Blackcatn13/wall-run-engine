@@ -7,11 +7,10 @@
 
 class CGraphicsManagers;
 
-class CEndRenderSceneRendererCommand : public CSceneRendererCommand
-{
-public:
-    CEndRenderSceneRendererCommand (CXMLTreeNode &atts);
-    void Execute(CGraphicsManager &RM);
+class CEndRenderSceneRendererCommand : public CSceneRendererCommand {
+ public:
+  CEndRenderSceneRendererCommand (CXMLTreeNode &atts);
+  void Execute(CGraphicsManager &RM);
 };
 
 #endif

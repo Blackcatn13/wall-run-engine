@@ -43,7 +43,7 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
 
 CParticleEmitter::~CParticleEmitter() {
   m_Particles->DeleteAllElements();
-  for (int i = 0; i < m_Particles->GetNumFreeElements(); ++i)
+  for (size_t i = 0; i < m_Particles->GetNumFreeElements(); ++i)
     m_Particles->Free(i);
 
   CHECKED_DELETE(m_Particles);

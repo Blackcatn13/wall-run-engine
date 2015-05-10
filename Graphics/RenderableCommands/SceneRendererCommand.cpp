@@ -1,18 +1,14 @@
 #include "RenderableCommands\SceneRendererCommand.h"
 #include "Core_Utils/MemLeaks.h"
 
-CSceneRendererCommand::CSceneRendererCommand()
-{
+CSceneRendererCommand::CSceneRendererCommand() {
 }
 
-CSceneRendererCommand::CSceneRendererCommand(CXMLTreeNode &atts)
-{
+CSceneRendererCommand::CSceneRendererCommand(CXMLTreeNode &atts) {
 }
 
-CSceneRendererCommand::~CSceneRendererCommand()
-{
+CSceneRendererCommand::~CSceneRendererCommand() {
 }
 
-void CSceneRendererCommand::Reload()
-{
+void CSceneRendererCommand::Reload() {
 }

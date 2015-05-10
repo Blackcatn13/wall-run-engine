@@ -7,13 +7,12 @@
 #include "XML\XMLTreeNode.h"
 #include "Renderable\RenderableObjectsManager.h"
 
-class CRenderDebugLightsSceneRenderCommand : public CSceneRendererCommand
-{
-private:
-    bool m_Active;
-public:
-    CRenderDebugLightsSceneRenderCommand(CXMLTreeNode &atts);
-    void Execute(CGraphicsManager &RM);
+class CRenderDebugLightsSceneRenderCommand : public CSceneRendererCommand {
+ private:
+  bool m_Active;
+ public:
+  CRenderDebugLightsSceneRenderCommand(CXMLTreeNode &atts);
+  void Execute(CGraphicsManager &RM);
 };
 
 #endif

@@ -9,11 +9,10 @@
 class CGraphicsManager;
 class CXMLTreeNode;
 
-class CGenerateShadowMapsSceneRendererCommand : public CSceneRendererCommand
-{
-public:
-    CGenerateShadowMapsSceneRendererCommand(CXMLTreeNode &atts);
-    void Execute(CGraphicsManager &RM);
+class CGenerateShadowMapsSceneRendererCommand : public CSceneRendererCommand {
+ public:
+  CGenerateShadowMapsSceneRendererCommand(CXMLTreeNode &atts);
+  void Execute(CGraphicsManager &RM);
 };
 
 #endif

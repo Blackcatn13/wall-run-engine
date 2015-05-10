@@ -124,7 +124,7 @@ CEffect::CEffect()
   , m_UseShadowMaskTextureParameter(NULL)
   , m_UseStaticShadowmapParameter(NULL)
   , m_UseDynamicShadowmapParameter(NULL)
-  , m_NShadowmapsParameter(NULL){
+  , m_NShadowmapsParameter(NULL) {
 }
 
 CEffect::~CEffect() {
@@ -187,9 +187,9 @@ bool CEffect::SetLight() {
 
 bool CEffect::SetLights(size_t NumOfLights) {
   CLightManager::TMapResource::iterator it = LIGHTM->GetResources().begin();
-  //std::map<std::string, CLight*>::iterator it = LIGHTM->GetResources().begin();
+  // std::map<std::string, CLight*>::iterator it = LIGHTM->GetResources().begin();
   int l_lightIndex = 0;
-  std::map<std::string, CLight *> resources = LIGHTM->GetResources();
+  // std::map<std::string, CLight *> resources = LIGHTM->GetResources();
   while (it != LIGHTM->GetResources().end() && l_lightIndex < NumOfLights) {
     m_LightsEnabled[l_lightIndex] = 1;
     int l_type = it->second->GetType();
@@ -222,7 +222,7 @@ bool CEffect::SetLights(size_t NumOfLights) {
     m_LightsDirection[l_lightIndex] = l_direction;
     Vect3f l_color = Vect3f(it->second->GetColor().GetRed(), it->second->GetColor().GetGreen(), it->second->GetColor().GetBlue()) ;
     m_LightsColor[l_lightIndex] = l_color;
-    it++;
+    ++it;
     l_lightIndex += 1;
   }
   m_Effect->SetIntArray(m_LightsTypeParameter, &m_LightsType[0], MAX_LIGHTS_BY_SHADER);

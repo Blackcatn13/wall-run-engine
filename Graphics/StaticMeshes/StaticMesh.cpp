@@ -136,7 +136,7 @@ bool CStaticMesh::Load (const std::string &FileName) {
           unsigned short aux_size;
           fread(&aux_size, sizeof aux_size, 1, f);
           char *buff = (char *)malloc(aux_size * sizeof(char) + 1);
-          size_t len = fread(buff, sizeof(char), aux_size + 1, f);
+          fread(buff, sizeof(char), aux_size + 1, f);
           std::string aux_name(buff);
           free(buff);
           CTexture *aux_text;
@@ -298,7 +298,7 @@ void CStaticMesh::Render (CGraphicsManager *RM) {
   //CEffectTechnique *l_EffectTechnique = EFFECTM->GetEffectTechnique("NormalMapTechnique");
   //CEffectTechnique *l_EffectTechnique = EFFECTM->GetEffectTechnique("CubeMapTechnique");
   // CEffectTechnique *l_EffectTechnique = EFFECTM->GetEffectTechnique("LightMapTechnique");
-  for (int i = 0; i < m_RVs.size(); ++i) {
+  for (size_t i = 0; i < m_RVs.size(); ++i) {
     // TODO iterate m_textures
     // TODO cambiar a esto
     // TODO modificar esto para que coja el effectTechnique del TechniqueManager a partir del vertexType

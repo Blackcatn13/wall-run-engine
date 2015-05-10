@@ -32,13 +32,13 @@ CRenderableObjectsManager ::~CRenderableObjectsManager() {
 }
 
 void CRenderableObjectsManager::Update(float ElapsedTime) {
-  for (int i = 0; i < m_ResourcesVector.size(); ++i) {
+  for (size_t i = 0; i < m_ResourcesVector.size(); ++i) {
     m_ResourcesVector[i]->Update(ElapsedTime);
   }
 }
 
 void CRenderableObjectsManager::Render(CGraphicsManager *RM) {
-  for (int i = 0; i < m_ResourcesVector.size(); ++i) {
+  for (size_t i = 0; i < m_ResourcesVector.size(); ++i) {
     m_ResourcesVector[i]->Render(RM);
   }
 }
@@ -260,7 +260,7 @@ void CRenderableObjectsManager::Load(const std::string &FileName) {
       std::string name = m2(i).GetName();
       if (name == "renderable_script") {
         std::string l_name = m2(i).GetPszISOProperty("name", "");
-        std::string l_file = m2(i).GetPszISOProperty("file", "");
+        //std::string l_file = m2(i).GetPszISOProperty("file", "");
         if (l_name == "scriptedController") {
           CScriptedController *l_ScriptedController = new CScriptedController();
           AddResource(l_name, l_ScriptedController);
@@ -361,7 +361,7 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node) {
 
     } else  if (name == "renderable_script") {
       std::string l_name = m.GetPszISOProperty("name", "");
-      std::string l_file = m.GetPszISOProperty("file", "");
+      //std::string l_file = m.GetPszISOProperty("file", "");
       if (l_name == "scriptedController") {
         CScriptedController *l_ScriptedController = new CScriptedController();
         AddResource(l_name, l_ScriptedController);
@@ -426,8 +426,8 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node) {
         //back_position="3.64 0.5 170.0" forth_position ="3.64 0.5 260.0"
         Vect3f l_BackPos = m.GetVect3fProperty("back_position", v3fZERO, false);
         Vect3f l_FrontPos = m.GetVect3fProperty("forth_position", v3fZERO, false);
-        bool	l_FromX = m.GetBoolProperty("from_x", false, false);
-        bool	l_FromZ = m.GetBoolProperty("from_z", false, false);
+        //bool	l_FromX = m.GetBoolProperty("from_x", false, false);
+        //bool	l_FromZ = m.GetBoolProperty("from_z", false, false);
         CPinchosPlatform *l_PinchosPlatform = new CPinchosPlatform(platformName, core, l_TriggerName/*, l_BackPos, l_FrontPos,  l_FromX, l_FromZ*/);
         l_PinchosPlatform->SetYaw(yaw);
         l_PinchosPlatform->SetPosition(pos);

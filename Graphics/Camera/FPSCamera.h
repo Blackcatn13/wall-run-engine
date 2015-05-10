@@ -12,26 +12,24 @@
 
 #include "Camera.h"
 
-class CFPSCamera: public CCamera
-{
+class CFPSCamera: public CCamera {
 
-public:
+ public:
 
-    CFPSCamera(float zn, float zf, float fov, float aspect, CObject3D* object3D);
-    CFPSCamera();
-    virtual ~CFPSCamera()
-    {
-        ;
-    }
+  CFPSCamera(float zn, float zf, float fov, float aspect, CObject3D *object3D);
+  CFPSCamera();
+  virtual ~CFPSCamera() {
+    ;
+  }
 
-    //---Interfaz de CCamera
-    virtual Vect3f					GetDirection		() const;
-    virtual Vect3f					GetLookAt				() const;
-    virtual Vect3f					GetEye					() const;
-    virtual Vect3f					GetVecUp				() const;
+  //---Interfaz de CCamera
+  virtual Vect3f					GetDirection		() const;
+  virtual Vect3f					GetLookAt				() const;
+  virtual Vect3f					GetEye					() const;
+  virtual Vect3f					GetVecUp				() const;
 
-    //---Interfaz de CFPSCamera
-    //...
+  //---Interfaz de CFPSCamera
+  //...
 
 };
 

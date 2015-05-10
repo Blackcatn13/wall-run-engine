@@ -26,7 +26,7 @@ CDeferredShadingSceneRendererCommand::CDeferredShadingSceneRendererCommand(CXMLT
         l_Texture->Load(l_TextureName);
       } else {
         l_Texture = TEXTM->GetResource(l_TextureName);
-        int width = l_Texture->GetWidth();
+        //int width = l_Texture->GetWidth();
         if (l_Texture == NULL) {
           l_Texture = new CTexture();
           l_Texture->Create(l_TextureName, l_Width, l_Height, 0, CTexture::RENDERTARGET, CTexture::DEFAULT, CTexture::A8R8G8B8);

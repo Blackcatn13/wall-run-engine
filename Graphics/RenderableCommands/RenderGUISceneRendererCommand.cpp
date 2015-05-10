@@ -4,7 +4,6 @@
 
 CRenderGUISceneRendererCommand::CRenderGUISceneRendererCommand(CXMLTreeNode &atts) {}
 
-void CRenderGUISceneRendererCommand::Execute(CGraphicsManager &RM)
-{
-    CCORE->GetGuiManager()->Render(&RM, FONTM);
+void CRenderGUISceneRendererCommand::Execute(CGraphicsManager &RM) {
+  CCORE->GetGuiManager()->Render(&RM, FONTM);
 }

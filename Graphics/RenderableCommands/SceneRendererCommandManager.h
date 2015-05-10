@@ -11,23 +11,22 @@ class CSceneRendererCommand;
 //class CTemplatedVectorMapManager<CSceneRendererCommand>;
 class CGraphicsManager;
 
-class CSceneRendererCommandManager
-{
-private:
-    CTemplatedVectorMapManager<CSceneRendererCommand> m_SceneRendererCommands;
-    std::string m_FileName;
-    void CleanUp();
-    std::string GetNextName();
-	bool m_needReload;
+class CSceneRendererCommandManager {
+ private:
+  CTemplatedVectorMapManager<CSceneRendererCommand> m_SceneRendererCommands;
+  std::string m_FileName;
+  void CleanUp();
+  std::string GetNextName();
+  bool m_needReload;
 
-    void GetSetRenderTargetSceneRendererCommand(CSetRenderTargetSceneRendererCommand *SceneRendererCommand);
-public:
-    CSceneRendererCommandManager();
-    ~CSceneRendererCommandManager();
-    void Load(const std::string &FileName);
-    void Execute(CGraphicsManager& RM);
-    void Reload();
-	void setReload() {m_needReload = true;}
+  void GetSetRenderTargetSceneRendererCommand(CSetRenderTargetSceneRendererCommand *SceneRendererCommand);
+ public:
+  CSceneRendererCommandManager();
+  ~CSceneRendererCommandManager();
+  void Load(const std::string &FileName);
+  void Execute(CGraphicsManager &RM);
+  void Reload();
+  void setReload() {m_needReload = true;}
 
 };
 //XML a parsear scene_renderer_commands.xml pag 17 pdf

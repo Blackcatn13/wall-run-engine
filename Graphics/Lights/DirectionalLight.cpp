@@ -17,7 +17,7 @@
 CDirectionalLight::CDirectionalLight(CXMLTreeNode &Node)
   : CLight(Node)
   , m_Direction(Node.GetVect3fProperty("dir", (0.0f, 0.0f, 0.0f)))
-  , m_OrthoShadowMapSize(Vect2f(Node.GetIntProperty("ortho_shadow_map_width", 0, false), Node.GetIntProperty("ortho_shadow_map_height", 0, false))) {
+  , m_OrthoShadowMapSize(Vect2f(Node.GetIntProperty("ortho_shadow_map_width", 0.f, false), Node.GetIntProperty("ortho_shadow_map_height", 0.f, false))) {
   m_Type = TLightType::DIRECTIONAL;
 }
 

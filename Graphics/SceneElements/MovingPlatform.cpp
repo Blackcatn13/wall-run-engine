@@ -66,17 +66,17 @@ void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
   if (abs(dirRay.x) + abs(dirRay.z) < (GetPhysicsSize().x + GetPhysicsSize().z + 1.0)) {
     SCollisionInfo info = SCollisionInfo();
     float l_RadioPhysicsPlayer = 0.5;
-    float l_AlturaPlataformaDesdeOrigen = GetPhysicsSize().y + 1.5;
-    float l_MargenLateralPlataforma = 1.0;
-    float l_DesplazamientoVerticalPlataforma = GetPhysicsSize().y + 1.5;
-    float l_PosicionMinSobrePlat = GetPhysicsSize().y + 0.5;
-    float l_PosicionMaxSobrePlat = GetPhysicsSize().y + 2.0;
+    //float l_AlturaPlataformaDesdeOrigen = GetPhysicsSize().y + 1.5;
+    //float l_MargenLateralPlataforma = 1.0;
+    float l_DesplazamientoVerticalPlataforma = GetPhysicsSize().y + 1.5f;
+    float l_PosicionMinSobrePlat = GetPhysicsSize().y + 0.5f;
+    float l_PosicionMaxSobrePlat = GetPhysicsSize().y + 2.0f;
 
     //para saber si es movimiento horizontal o vertical
     //Caso horizontal
     if ((abs(direction.z) + abs(direction.x)) > abs(direction.y)) {
       bool PhysicsApplied = false;
-      dirRay = dirRay.Normalize() * 0.4;
+      dirRay = dirRay.Normalize() * 0.4f;
       Vect3f dirRayBounding = Vect3f(dirRay.x, -l_RadioPhysicsPlayer, dirRay.z);
       //Vect3f dirRayBounding = dirRay * l_RadioPhysicsPlayer;
 
@@ -220,11 +220,10 @@ void CMovingPlatform::UpdateFSM(float elapsedTime) {
 }
 
 bool CMovingPlatform::isAround(Vect3f vector1, Vect3f vector2) {
-  float l_margenx = GetPhysicsSize().x + 0.5;
-  float l_margenz = GetPhysicsSize().z + 0.5;
-  float l_margeny = GetPhysicsSize().y + 0.5;
-  bool l_isInside = false;
-  l_isInside = isInside(vector1, vector2);
+  float l_margenx = GetPhysicsSize().x + 0.5f;
+  float l_margenz = GetPhysicsSize().z + 0.5f;
+  float l_margeny = GetPhysicsSize().y + 0.5f;
+  // bool l_isInside = isInside(vector1, vector2);
   if ((vector1.x > vector2.x - l_margenx) && (vector1.x < vector2.x + l_margenx) && (vector1.y > vector2.y - l_margeny) && (vector1.y < vector2.y + l_margeny) && (vector1.z > vector2.z - l_margenz) && (vector1.z < vector2.z + l_margenz))
     return true;
   else

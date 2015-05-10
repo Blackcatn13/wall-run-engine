@@ -2,7 +2,6 @@
 #include "Core_Utils/MemLeaks.h"
 
 CDisableAlphaBlendSceneRendererCommand::CDisableAlphaBlendSceneRendererCommand(CXMLTreeNode &atts) {}
-void CDisableAlphaBlendSceneRendererCommand::Execute(CGraphicsManager &RM)
-{
-    RM.DisableAlphaBlend();
+void CDisableAlphaBlendSceneRendererCommand::Execute(CGraphicsManager &RM) {
+  RM.DisableAlphaBlend();
 }

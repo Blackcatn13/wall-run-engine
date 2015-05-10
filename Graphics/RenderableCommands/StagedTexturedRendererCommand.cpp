@@ -62,7 +62,7 @@ CStagedTexturedRendererCommand::CStagedTexturedRendererCommand(CXMLTreeNode &att
 }
 
 void CStagedTexturedRendererCommand::ActivateTextures() {
-  for (int i = 0; i < m_StageTextures.size(); ++i) {
+  for (size_t i = 0; i < m_StageTextures.size(); ++i) {
     if (TEXTM->ExisteResource(m_StageTextures[i].m_Texture->getName()))
       m_StageTextures[i].m_Texture->Activate(m_StageTextures[i].m_StageId);
   }

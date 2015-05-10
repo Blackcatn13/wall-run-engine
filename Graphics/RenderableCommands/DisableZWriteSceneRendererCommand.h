@@ -6,10 +6,9 @@
 #include "GraphicsManager.h"
 #include "XML\XMLTreeNode.h"
 
-class CDisableZWriteSceneRendererCommand : public CSceneRendererCommand
-{
-public:
-    CDisableZWriteSceneRendererCommand(CXMLTreeNode &atts);
-    void Execute(CGraphicsManager &RM);
+class CDisableZWriteSceneRendererCommand : public CSceneRendererCommand {
+ public:
+  CDisableZWriteSceneRendererCommand(CXMLTreeNode &atts);
+  void Execute(CGraphicsManager &RM);
 };
 #endif

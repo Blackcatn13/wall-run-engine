@@ -24,7 +24,8 @@ CGraphicsManager::CGraphicsManager() :
   m_pitch(0),
   m_bPaintSolid(true),
   m_bIsOk(false),
-  m_Rendering(false) {
+  m_Rendering(false),
+  m_Handler (NULL) {
   m_BackbufferColor_debug.Set(0.49804f, 1.f, 0.83137f, 1.f);
   m_BackbufferColor_release.Set(0.f, 0.f, 0.f, 1.f);
 }
@@ -369,7 +370,7 @@ void CGraphicsManager::DrawSphere(float Radius, CColor Color, uint32 Aristas, ET
         l_fAngle2	= mathUtils::Deg2Rad(mathUtils::Lerp(0.f, 180.f, l_fLambda2));
         break;
     }
-    std::vector<Vect3f> l_ring;
+    //std::vector<Vect3f> l_ring;
     float l_RadiusRing = Radius * sin(l_fAngle);
     Vect3f l_PosAux = v3fZERO;
     Vect3f l_PosAux2, l_PosAux3;
@@ -448,7 +449,7 @@ void CGraphicsManager::DrawCamera (CCamera *camera) {
   float aspect = camera->GetAspectRatio();
   float d = camera->GetViewD();
   float zNear = camera->GetZn();
-  float zFar = camera->GetZf();
+  //float zFar = camera->GetZf();
   float h_near = zNear * tan ( fov * 0.5f );
   float k_near = h_near * aspect;
   float h_far = d * tan ( fov * 0.5f );
@@ -626,7 +627,7 @@ void CGraphicsManager::DrawQuad2D (const Vect2i &pos, uint32 w, uint32 h, ETypeA
   m_pD3DDevice->SetSamplerState(0, D3DSAMP_ADDRESSV, D3DTADDRESS_CLAMP);
   //m_pD3DDevice->SetTexture(0, texture);
   m_pD3DDevice->DrawIndexedPrimitiveUP( D3DPT_TRIANGLELIST, 0, 4, 2, indices, D3DFMT_INDEX16, v, sizeof( SCREEN_TEXTURE_VERTEX ) );
-  
+
   m_pD3DDevice->SetSamplerState(0, D3DSAMP_ADDRESSU, D3DTADDRESS_WRAP);
   m_pD3DDevice->SetSamplerState(0, D3DSAMP_ADDRESSV, D3DTADDRESS_WRAP);
 }
@@ -750,11 +751,10 @@ void CGraphicsManager::DrawCylinder (float Top_Radius, float Bottom_Radius, floa
     color_aux = colWHITE;
   }
   std::vector< std::vector<Vect3f> > l_AllPoints;
-  float currentRadius, currentHeight;
   for (uint32 i = 0; i < Aristas; ++i) {
     std::vector<Vect3f> l_currentCircle;
-    currentRadius = mathUtils::Lerp(Top_Radius, Bottom_Radius, (float)i / (float)(Aristas - 1));
-    currentHeight = mathUtils::Lerp(h * 0.5f, -h * 0.5f, (float)i / (float)(Aristas - 1));
+    float currentRadius = mathUtils::Lerp(Top_Radius, Bottom_Radius, (float)i / (float)(Aristas - 1));
+    float currentHeight = mathUtils::Lerp(h * 0.5f, -h * 0.5f, (float)i / (float)(Aristas - 1));
     for (uint32 t = 0; t < Aristas; ++t) {
       float angle = mathUtils::Deg2Rad(360.0f * ((float)t) / ((float)Aristas));
       Vect3f l_PosA(	currentRadius * cos(angle), currentHeight, currentRadius * sin(angle) );
@@ -875,7 +875,7 @@ void CGraphicsManager::ClearSceneCommand(float color, float depth, float stencil
 void CGraphicsManager::BeginRenderCommand() {
   // Begin the scene
   //if (!m_Rendering) {
-  HRESULT hr = m_pD3DDevice->BeginScene();
+  m_pD3DDevice->BeginScene();
   m_Rendering = true;
   //assert( SUCCEEDED( hr ) );
   m_pD3DDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_CCW);

@@ -52,7 +52,7 @@ void CRenderDebugSceneSceneRendererCommand::Execute(CGraphicsManager &RM) {
       if (ACT2IN->DoAction("ToggleDebugTriggers")) {
         m_PaintTriggers = !m_PaintTriggers;
         TRIGGM->GetResourcesVector();
-        for (int i = 0; i < TRIGGM->GetResourcesVector().size(); ++i) {
+        for (size_t i = 0; i < TRIGGM->GetResourcesVector().size(); ++i) {
           TRIGGM->GetResourcesVector().at(i)->GetUserData()->SetPaint(m_PaintTriggers);
         }
         PROCESS->setPaintPhisicTriggers(m_PaintTriggers);

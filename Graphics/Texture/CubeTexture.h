@@ -4,10 +4,9 @@
 
 #include "Texture.h"
 
-class CCubeTexture : public CTexture
-{
-protected:
-    bool LoadFile();
+class CCubeTexture : public CTexture {
+ protected:
+  bool LoadFile();
 };
 
 #endif

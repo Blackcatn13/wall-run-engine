@@ -11,15 +11,14 @@ class CEffectTechnique;
 class CTexture;
 class CGraphicsManager;
 
-class CGaussianBlueSceneRendererCommand : public CStagedTexturedRendererCommand
-{
-protected:
-	int m_GaussianLoops;
-	CColor m_Color;
-	std::string m_TechniqueName;
-public:
-    CGaussianBlueSceneRendererCommand(CXMLTreeNode &atts);
-    void Execute(CGraphicsManager &RM);
+class CGaussianBlueSceneRendererCommand : public CStagedTexturedRendererCommand {
+ protected:
+  int m_GaussianLoops;
+  //CColor m_Color;
+  //std::string m_TechniqueName;
+ public:
+  CGaussianBlueSceneRendererCommand(CXMLTreeNode &atts);
+  void Execute(CGraphicsManager &RM);
 };
 
 

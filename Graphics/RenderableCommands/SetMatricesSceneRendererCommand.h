@@ -6,10 +6,9 @@
 #include "XML\XMLTreeNode.h"
 #include "GraphicsManager.h"
 
-class CSetMatricesSceneRendererCommand : public CSceneRendererCommand
-{
-public:
-    CSetMatricesSceneRendererCommand(CXMLTreeNode &atts);
-    virtual void Execute(CGraphicsManager &RM);
+class CSetMatricesSceneRendererCommand : public CSceneRendererCommand {
+ public:
+  CSetMatricesSceneRendererCommand(CXMLTreeNode &atts);
+  virtual void Execute(CGraphicsManager &RM);
 };
 #endif

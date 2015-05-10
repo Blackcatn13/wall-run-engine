@@ -6,10 +6,9 @@
 #include "GraphicsManager.h"
 #include "XML\XMLTreeNode.h"
 
-class CRenderGUISceneRendererCommand : public CSceneRendererCommand
-{
-public:
-    CRenderGUISceneRendererCommand(CXMLTreeNode &atts);
-    void Execute(CGraphicsManager &RM);
+class CRenderGUISceneRendererCommand : public CSceneRendererCommand {
+ public:
+  CRenderGUISceneRendererCommand(CXMLTreeNode &atts);
+  void Execute(CGraphicsManager &RM);
 };
 #endif

@@ -7,11 +7,10 @@
 class CGraphicsManager;
 class CXMLTreeNode;
 
-class CCaptureFrameBufferSceneRendererCommand : public CStagedTexturedRendererCommand
-{
-public:
-    CCaptureFrameBufferSceneRendererCommand(CXMLTreeNode &atts);
-    void Execute(CGraphicsManager &RM);
+class CCaptureFrameBufferSceneRendererCommand : public CStagedTexturedRendererCommand {
+ public:
+  CCaptureFrameBufferSceneRendererCommand(CXMLTreeNode &atts);
+  void Execute(CGraphicsManager &RM);
 };
 
 #endif

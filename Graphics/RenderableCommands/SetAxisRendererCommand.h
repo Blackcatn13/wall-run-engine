@@ -8,11 +8,10 @@ class CXMLTreeNode;
 
 class CGraphicsManager;
 
-class CSetAxisRendererCommand : public CSceneRendererCommand
-{
-public:
-    CSetAxisRendererCommand(CXMLTreeNode &atts);
-    void Execute(CGraphicsManager &RM);
+class CSetAxisRendererCommand : public CSceneRendererCommand {
+ public:
+  CSetAxisRendererCommand(CXMLTreeNode &atts);
+  void Execute(CGraphicsManager &RM);
 };
 
 #endif

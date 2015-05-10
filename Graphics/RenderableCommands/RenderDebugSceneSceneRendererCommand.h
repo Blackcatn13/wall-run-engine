@@ -6,20 +6,19 @@
 #include "GraphicsManager.h"
 #include "XML\XMLTreeNode.h"
 
-class CRenderDebugSceneSceneRendererCommand : public CSceneRendererCommand
-{
-private:
-    std::string m_Layer;
-    bool		m_Active;
-    bool		m_PaintCookingMesh;
-    std::string m_CookingMeshName;
-    bool		m_PaintTriggers;
-    bool		m_PaintAllPhysx;
-    bool		m_DebugMode;
-    bool		m_PaintCharacterControllers;
-public:
-    CRenderDebugSceneSceneRendererCommand(CXMLTreeNode &atts);
-    void Execute(CGraphicsManager &RM);
+class CRenderDebugSceneSceneRendererCommand : public CSceneRendererCommand {
+ private:
+  std::string m_Layer;
+  bool		m_Active;
+  bool		m_PaintCookingMesh;
+  std::string m_CookingMeshName;
+  bool		m_PaintTriggers;
+  bool		m_PaintAllPhysx;
+  bool		m_DebugMode;
+  bool		m_PaintCharacterControllers;
+ public:
+  CRenderDebugSceneSceneRendererCommand(CXMLTreeNode &atts);
+  void Execute(CGraphicsManager &RM);
 };
 
 #endif

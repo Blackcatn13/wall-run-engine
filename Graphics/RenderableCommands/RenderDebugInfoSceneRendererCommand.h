@@ -8,13 +8,12 @@
 
 class CLogRender;
 
-class CRenderDebugInfoSceneRendererCommand : public CSceneRendererCommand
-{
-protected:
-    CLogRender* m_LogRender;
-public:
-    CRenderDebugInfoSceneRendererCommand(CXMLTreeNode &atts);
-    void Execute(CGraphicsManager &RM);
+class CRenderDebugInfoSceneRendererCommand : public CSceneRendererCommand {
+ protected:
+  CLogRender *m_LogRender;
+ public:
+  CRenderDebugInfoSceneRendererCommand(CXMLTreeNode &atts);
+  void Execute(CGraphicsManager &RM);
 };
 
 

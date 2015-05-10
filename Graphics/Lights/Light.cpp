@@ -13,12 +13,11 @@ CLight::CLight()
     m_GenerateDynamicShadowMap (false),
     m_GenerateStaticShadowMap (false),
     m_MustUpdateStaticShadowMap (false) {
-	
-	for(int i = 0; i<MAX_SHADOWMAPS; i++)
-	{
-		m_DynamicShadowMap[i] = NULL;
-		m_StaticShadowMap[i] = NULL;
-	}
+
+  for (int i = 0; i < MAX_SHADOWMAPS; i++) {
+    m_DynamicShadowMap[i] = NULL;
+    m_StaticShadowMap[i] = NULL;
+  }
 }
 
 CLight::CLight(CXMLTreeNode &Node)
@@ -37,12 +36,11 @@ CLight::CLight(CXMLTreeNode &Node)
   , m_StartRangeAttenuation (Node.GetFloatProperty("att_start_range", 0.0f))
   , m_nShadowmaps(0)
   , m_ViewShadowMap (Mat44f()) {
-	
-	for(int i = 0; i<MAX_SHADOWMAPS; i++)
-	{
-		m_DynamicShadowMap[i] = NULL;
-		m_StaticShadowMap[i] = NULL;
-	}
+
+  for (int i = 0; i < MAX_SHADOWMAPS; i++) {
+    m_DynamicShadowMap[i] = NULL;
+    m_StaticShadowMap[i] = NULL;
+  }
   m_Position = Node.GetVect3fProperty("pos", (0.0f, 0.0f, 0.0f));
   SetShadowMaskTexture(Node.GetPszISOProperty("shadow_texture_mask", "", false));
   int childs = Node.GetNumChildren();
@@ -81,29 +79,26 @@ CLight::CLight(CXMLTreeNode &Node)
 
 void CLight::Init() {
   if (m_GenerateStaticShadowMap) {
-	  for(int i = 0; i<MAX_SHADOWMAPS; i++)
-	  {
-		m_StaticShadowMap[i] = new CTexture();
-		std::string l_StaticShadowMapTextureName = "Static_" + m_Name;
-		m_StaticShadowMap[i]->Create(l_StaticShadowMapTextureName, m_ShadowMapWidth, m_ShadowMapHeigth, 1, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, m_StaticShadowMap[i]->GetFormatTypeFromString(m_FormatType), true);
-	  }
+    for (int i = 0; i < MAX_SHADOWMAPS; i++) {
+      m_StaticShadowMap[i] = new CTexture();
+      std::string l_StaticShadowMapTextureName = "Static_" + m_Name;
+      m_StaticShadowMap[i]->Create(l_StaticShadowMapTextureName, m_ShadowMapWidth, m_ShadowMapHeigth, 1, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, m_StaticShadowMap[i]->GetFormatTypeFromString(m_FormatType), true);
+    }
   }
   if (m_GenerateDynamicShadowMap) {
-	  for(int i = 0; i<MAX_SHADOWMAPS; i++)
-	  {
-		m_DynamicShadowMap[i] = new CTexture();
-		std::string l_DinamicShadowMapTextureName = "Dynamic_" + m_Name;
-		m_DynamicShadowMap[i]->Create(l_DinamicShadowMapTextureName, m_ShadowMapWidth, m_ShadowMapHeigth, 1, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, m_DynamicShadowMap[i]->GetFormatTypeFromString(m_FormatType), true);
-	  }
+    for (int i = 0; i < MAX_SHADOWMAPS; i++) {
+      m_DynamicShadowMap[i] = new CTexture();
+      std::string l_DinamicShadowMapTextureName = "Dynamic_" + m_Name;
+      m_DynamicShadowMap[i]->Create(l_DinamicShadowMapTextureName, m_ShadowMapWidth, m_ShadowMapHeigth, 1, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, m_DynamicShadowMap[i]->GetFormatTypeFromString(m_FormatType), true);
+    }
   }
 }
 
 CLight::~CLight() {
-	for(int i=0; i<MAX_SHADOWMAPS; i++)
-	{
-		  CHECKED_DELETE(m_StaticShadowMap[i]);
-		  CHECKED_DELETE(m_DynamicShadowMap[i]);
-	}
+  for (int i = 0; i < MAX_SHADOWMAPS; i++) {
+    CHECKED_DELETE(m_StaticShadowMap[i]);
+    CHECKED_DELETE(m_DynamicShadowMap[i]);
+  }
   CHECKED_DELETE(m_ShadowMaskTexture);
 }
 
@@ -174,27 +169,23 @@ void CLight::BeginRenderEffectManagerShadowMap(CEffect *Effect) {
   CEffectManager *l_EM = CCORE->GetEffectManager();
   l_EM->SetLightViewMatrix(m_ViewShadowMap);
   l_EM->SetShadowProjectionMatrix(m_ProjectionShadowMap);
-  if (m_ShadowMaskTexture != NULL)  
-		m_ShadowMaskTexture->Activate(5/*SHADOW_MAP_MASK_STAGE*/);
-	
-  if (m_GenerateStaticShadowMap)
-  {
-	  for(int i = 0; i<m_nShadowmaps; ++i)
-	  {
-		m_StaticShadowMap[0]->Activate(2*i+6/*STATIC_SHADOW_MAP_STAGE*/);
-	  }
+  if (m_ShadowMaskTexture != NULL)
+    m_ShadowMaskTexture->Activate(5/*SHADOW_MAP_MASK_STAGE*/);
+
+  if (m_GenerateStaticShadowMap) {
+    for (int i = 0; i < m_nShadowmaps; ++i) {
+      m_StaticShadowMap[0]->Activate(2 * i + 6/*STATIC_SHADOW_MAP_STAGE*/);
+    }
   }
-  if (m_GenerateDynamicShadowMap)
-  {
-	  for(int i = 0; i<m_nShadowmaps; ++i)
-	  {
-		m_DynamicShadowMap[0]->Activate(2*i+7/*DYNAMIC_SHADOW_MAP_STAGE*/);
-	  }
+  if (m_GenerateDynamicShadowMap) {
+    for (int i = 0; i < m_nShadowmaps; ++i) {
+      m_DynamicShadowMap[0]->Activate(2 * i + 7/*DYNAMIC_SHADOW_MAP_STAGE*/);
+    }
   }
   Effect->SetShadowMapParameters(m_ShadowMaskTexture != NULL,
                                  m_GenerateStaticShadowMap, m_GenerateDynamicShadowMap &&
                                  m_DynamicShadowMapRenderableObjectsManagers.size() != 0,
-								 m_nShadowmaps);
+                                 m_nShadowmaps);
 }
 
 
@@ -202,11 +193,11 @@ void CLight::ReloadRO() {
   m_StaticShadowMapRenderableObjectsManagers.clear();
   m_DynamicShadowMapRenderableObjectsManagers.clear();
   CRenderableObjectsManager *l_RenderableObjectManager;
-  for (int i = 0; i < renderableDynamicMaps.size(); ++i) {
+  for (size_t i = 0; i < renderableDynamicMaps.size(); ++i) {
     l_RenderableObjectManager = RENDLM->GetResource(renderableDynamicMaps[i]);
     m_DynamicShadowMapRenderableObjectsManagers.push_back(l_RenderableObjectManager);
   }
-  for (int i = 0; i < renderableStaticMaps.size(); ++i) {
+  for (size_t i = 0; i < renderableStaticMaps.size(); ++i) {
     l_RenderableObjectManager = RENDLM->GetResource(renderableStaticMaps[i]);
     m_StaticShadowMapRenderableObjectsManagers.push_back(l_RenderableObjectManager);
   }

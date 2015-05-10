@@ -10,7 +10,7 @@ class CTexture;
 
 class CBillboard {
  public:
-	 CBillboard(){}
+  CBillboard() {}
   CBillboard(CXMLTreeNode &node);
   CBillboard(float size);
   CBillboard(float size, Vect3f pos);

@@ -3,11 +3,9 @@
 #include "Core_Utils/MemLeaks.h"
 
 CPresentSceneRendererCommand::CPresentSceneRendererCommand(CXMLTreeNode &atts)
-    : CSceneRendererCommand(atts)
-{
+  : CSceneRendererCommand(atts) {
 }
 
-void CPresentSceneRendererCommand::Execute(CGraphicsManager &RM)
-{
-    RM.PresentSceneCommand();
+void CPresentSceneRendererCommand::Execute(CGraphicsManager &RM) {
+  RM.PresentSceneCommand();
 }

@@ -97,9 +97,9 @@ void CEngine::Update() {
   if (ACT2IN->DoAction("ReloadPuzzles"))
     PUZZLEM->Reload();
   if (ACT2IN->DoAction("AddSlowMotion"))
-    m_speed -= 0.1;
+    m_speed -= 0.1f;
   if (ACT2IN->DoAction("AddFastMotion"))
-    m_speed += 0.1;
+    m_speed += 0.1f;
   if (ACT2IN->DoAction("ResetMotion"))
     m_speed = 1;
 

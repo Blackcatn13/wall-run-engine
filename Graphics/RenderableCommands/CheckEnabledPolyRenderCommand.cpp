@@ -27,7 +27,7 @@ void CCheckEnabledPolyRenderCommand::Execute(CGraphicsManager &RM) {
 void CCheckEnabledPolyRenderCommand::CheckLayerChange(CRenderableObjectsManager *rolm1, CRenderableObjectsManager *rolm2, bool polyEnabled, CGraphicsManager *RM) {
 
   if (rolm1 != NULL) {
-    for (int i = 0; i < rolm1->GetResourcesVector().size(); ++i) {
+    for (size_t i = 0; i < rolm1->GetResourcesVector().size(); ++i) {
       CPolyPlatform *poly = (CPolyPlatform *) rolm1->GetResourcesVector()[i];
       if (poly->getEnabled() == polyEnabled) {
         // m_Effect->SetActivePoly(poly);

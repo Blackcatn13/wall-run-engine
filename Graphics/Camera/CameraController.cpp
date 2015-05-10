@@ -68,8 +68,8 @@ void CCameraController::Update(float dt) {
 //
   float deltaX, deltaY, deltaZ;
   CCamera::ETypeCamera camType = m_ActiveCamera->GetTypeCamera();
-  CObject3D *camObject = m_ActiveCamera->GetObject3D();
-  CActionToInput *ATI = ACT2IN;
+  //CObject3D *camObject = m_ActiveCamera->GetObject3D();
+// CActionToInput *ATI = ACT2IN;
   /*  if (ATI->DoAction("FlyMode"))
         m_FlyMode = !m_FlyMode;
     if (camType == CCamera::TC_FPS) {

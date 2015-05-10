@@ -4,11 +4,10 @@
 
 #include "SceneRendererCommand.h"
 
-class CEnableZTestSceneRendererCommand : public CSceneRendererCommand
-{
-public:
-    CEnableZTestSceneRendererCommand(CXMLTreeNode &atts);
-    void Execute(CGraphicsManager &RM);
+class CEnableZTestSceneRendererCommand : public CSceneRendererCommand {
+ public:
+  CEnableZTestSceneRendererCommand(CXMLTreeNode &atts);
+  void Execute(CGraphicsManager &RM);
 };
 
 #endif

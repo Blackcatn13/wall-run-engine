@@ -14,7 +14,11 @@
 
 
 CAnimatedCoreModel::CAnimatedCoreModel()
-  : m_CalCoreModel(NULL) {
+  : m_CalCoreModel(NULL)
+  , m_CalHardwareModel(NULL)
+  , m_RenderableVertexs(NULL)
+  , m_NumFaces(0)
+  , m_NumVtxs(0) {
 }
 
 
@@ -50,11 +54,10 @@ void CAnimatedCoreModel::Load(const std::string &Path) {
     printf("ERROR loading the file.");
   }
   CXMLTreeNode  m = newFile["animated_model"];
-  int count;
   if (m.Exists()) {
     std::string l_Name = m.GetPszISOProperty("name", "");
     m_CalCoreModel = new CalCoreModel(l_Name);
-    count = m.GetNumChildren();
+    int count = m.GetNumChildren();
     for (int i = 0; i < count; ++i) {
       std::string l_Element(m(i).GetName());
       if ( l_Element == "skeleton") {

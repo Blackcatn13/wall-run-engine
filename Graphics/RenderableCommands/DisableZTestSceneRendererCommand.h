@@ -7,10 +7,9 @@
 class CGraphicsManager;
 class CXMLTreeNode;
 
-class CDisableZTestSceneRendererCommand : public CSceneRendererCommand
-{
-public:
-    CDisableZTestSceneRendererCommand(CXMLTreeNode &atts);
-    void Execute(CGraphicsManager &RM);
+class CDisableZTestSceneRendererCommand : public CSceneRendererCommand {
+ public:
+  CDisableZTestSceneRendererCommand(CXMLTreeNode &atts);
+  void Execute(CGraphicsManager &RM);
 };
 #endif

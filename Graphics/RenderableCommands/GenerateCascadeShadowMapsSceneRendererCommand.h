@@ -9,15 +9,14 @@
 class CGraphicsManager;
 class CXMLTreeNode;
 
-class CGenerateCascadeShadowMapsSceneRendererCommand : public CSceneRendererCommand
-{
-protected:
-	float m_orthoScale;
-	float m_textureScale;
-	int m_loops;
-public:
-    CGenerateCascadeShadowMapsSceneRendererCommand(CXMLTreeNode &atts);
-    void Execute(CGraphicsManager &RM);
+class CGenerateCascadeShadowMapsSceneRendererCommand : public CSceneRendererCommand {
+ protected:
+  float m_orthoScale;
+  float m_textureScale;
+  int m_loops;
+ public:
+  CGenerateCascadeShadowMapsSceneRendererCommand(CXMLTreeNode &atts);
+  void Execute(CGraphicsManager &RM);
 };
 
 #endif

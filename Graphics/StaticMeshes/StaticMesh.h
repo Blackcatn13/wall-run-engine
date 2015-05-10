@@ -29,7 +29,7 @@ class BoundingSphere {
   Vect3f m_centerPos;
   float m_radius;
  public:
-  BoundingSphere() {}
+  BoundingSphere() : m_radius(0) {}
   ~BoundingSphere() {}
   Vect3f GetCenterPos() {
     return m_centerPos;

@@ -7,10 +7,9 @@
 class CGraphicsManager;
 class CXMLTreeNode;
 
-class CDisableAlphaBlendSceneRendererCommand : public CSceneRendererCommand
-{
-public:
-    CDisableAlphaBlendSceneRendererCommand(CXMLTreeNode &atts);
-    void Execute(CGraphicsManager &RM);
+class CDisableAlphaBlendSceneRendererCommand : public CSceneRendererCommand {
+ public:
+  CDisableAlphaBlendSceneRendererCommand(CXMLTreeNode &atts);
+  void Execute(CGraphicsManager &RM);
 };
 #endif

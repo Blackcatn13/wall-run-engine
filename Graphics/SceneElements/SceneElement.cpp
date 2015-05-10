@@ -10,7 +10,9 @@
 
 
 CSceneElement::CSceneElement(std::string switchName, std::string coreName)
-  : CMeshInstance(switchName, coreName) {
+  : CMeshInstance(switchName, coreName)
+  , m_Actor(NULL)
+  , m_UserData(NULL) {
 }
 
 CSceneElement::~CSceneElement () {

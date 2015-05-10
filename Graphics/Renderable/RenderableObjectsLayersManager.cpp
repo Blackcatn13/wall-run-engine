@@ -22,15 +22,15 @@ CRenderableObjectsLayersManager ::~CRenderableObjectsLayersManager() {
 }
 
 void CRenderableObjectsLayersManager::Update(float ElapsedTime) {
-  for (int i = 0; i < m_ResourcesVector.size(); ++i) {
+  for (size_t i = 0; i < m_ResourcesVector.size(); ++i) {
     m_ResourcesVector[i]->Update(ElapsedTime);
   }
 }
 
 void CRenderableObjectsLayersManager::Render(CGraphicsManager *RM) {
-  int test = m_ResourcesVector.size();
-  for (int i = 0; i < m_ResourcesVector.size(); ++i) {
-    int test2 = i;
+  //int test = m_ResourcesVector.size();
+  for (size_t i = 0; i < m_ResourcesVector.size(); ++i) {
+    //int test2 = i;
     m_ResourcesVector[i]->Render(RM);
   }
 }

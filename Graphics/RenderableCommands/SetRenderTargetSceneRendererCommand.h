@@ -7,14 +7,13 @@
 class CXMLTreeNode;
 class CGraphicsManager;
 
-class CSetRenderTargetSceneRendererCommand : public CStagedTexturedRendererCommand
-{
-public:
-    CSetRenderTargetSceneRendererCommand() {}
-    ~CSetRenderTargetSceneRendererCommand();
-    CSetRenderTargetSceneRendererCommand(CXMLTreeNode &atts);
-    void Execute(CGraphicsManager &RM);
-    void UnsetRenderTarget();
+class CSetRenderTargetSceneRendererCommand : public CStagedTexturedRendererCommand {
+ public:
+  CSetRenderTargetSceneRendererCommand() {}
+  ~CSetRenderTargetSceneRendererCommand();
+  CSetRenderTargetSceneRendererCommand(CXMLTreeNode &atts);
+  void Execute(CGraphicsManager &RM);
+  void UnsetRenderTarget();
 };
 
 #endif

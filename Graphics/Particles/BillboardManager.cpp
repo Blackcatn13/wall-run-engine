@@ -45,14 +45,14 @@ void CBillboardManager::Load() {
 
 
 void CBillboardManager::Update(float ElapsedTime) {
-  for (int i = 0; i < m_ResourcesVector.size(); ++i) {
+  for (size_t i = 0; i < m_ResourcesVector.size(); ++i) {
     m_ResourcesVector[i]->Update(ElapsedTime);
   }
 }
 
 void CBillboardManager::Render(CGraphicsManager *RM) {
-  int test = m_ResourcesVector.size();
-  for (int i = 0; i < m_ResourcesVector.size(); ++i) {
+  //int test = m_ResourcesVector.size();
+  for (size_t i = 0; i < m_ResourcesVector.size(); ++i) {
     m_ResourcesVector[i]->Render(RM);
   }
 }

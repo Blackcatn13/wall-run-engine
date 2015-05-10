@@ -11,14 +11,13 @@ class CEffectTechnique;
 class CTexture;
 class CGraphicsManager;
 
-class CSetTextureInSpecificStageCommand : public CSceneRendererCommand
-{
-protected:
-	std::string m_TextureName;
-	size_t			m_Stage;
-public:
-    CSetTextureInSpecificStageCommand(CXMLTreeNode &atts);
-    void Execute(CGraphicsManager &RM);
+class CSetTextureInSpecificStageCommand : public CSceneRendererCommand {
+ protected:
+  std::string m_TextureName;
+  size_t			m_Stage;
+ public:
+  CSetTextureInSpecificStageCommand(CXMLTreeNode &atts);
+  void Execute(CGraphicsManager &RM);
 };
 
 //explicación pagina 22:: Esta clase nos permitirá renderizar un cuadro en 2D según un color. El código

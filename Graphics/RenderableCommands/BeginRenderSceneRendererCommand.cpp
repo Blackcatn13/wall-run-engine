@@ -3,11 +3,9 @@
 #include "Core_Utils/MemLeaks.h"
 
 CBeginRenderSceneRendererCommand::CBeginRenderSceneRendererCommand(CXMLTreeNode &atts)
-    : CSceneRendererCommand(atts)
-{
+  : CSceneRendererCommand(atts) {
 }
 
-void CBeginRenderSceneRendererCommand::Execute(CGraphicsManager &RM)
-{
-    RM.BeginRenderCommand();
+void CBeginRenderSceneRendererCommand::Execute(CGraphicsManager &RM) {
+  RM.BeginRenderCommand();
 }

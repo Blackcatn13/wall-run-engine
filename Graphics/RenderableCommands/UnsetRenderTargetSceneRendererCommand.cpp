@@ -5,12 +5,10 @@
 #include "Utils\Defines.h"
 #include "Core_Utils/MemLeaks.h"
 
-CUnsetRenderTargetSceneRendererCommand::CUnsetRenderTargetSceneRendererCommand(CSetRenderTargetSceneRendererCommand *SetRenderTargetRendererCommand, CXMLTreeNode &atts)
-{
-    m_SetRenderTargetRendererCommand = SetRenderTargetRendererCommand;
+CUnsetRenderTargetSceneRendererCommand::CUnsetRenderTargetSceneRendererCommand(CSetRenderTargetSceneRendererCommand *SetRenderTargetRendererCommand, CXMLTreeNode &atts) {
+  m_SetRenderTargetRendererCommand = SetRenderTargetRendererCommand;
 }
-void CUnsetRenderTargetSceneRendererCommand::Execute(CGraphicsManager &RM)
-{
-    m_SetRenderTargetRendererCommand->UnsetRenderTarget();
+void CUnsetRenderTargetSceneRendererCommand::Execute(CGraphicsManager &RM) {
+  m_SetRenderTargetRendererCommand->UnsetRenderTarget();
 }
 

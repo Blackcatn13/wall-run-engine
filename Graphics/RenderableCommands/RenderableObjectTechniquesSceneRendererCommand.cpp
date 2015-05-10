@@ -6,18 +6,15 @@
 #include "Core\Core.h"
 #include "Core_Utils/MemLeaks.h"
 
-CRenderableObjectTechniquesSceneRendererCommand::CRenderableObjectTechniquesSceneRendererCommand(CXMLTreeNode &atts)
-{
-    m_PoolName = atts.GetPszProperty("pool", "");
-    m_PoolRenderableObjectTechnique = RENDTECHM->GetPoolRenderableObjectTechniques().GetResource(m_PoolName);
+CRenderableObjectTechniquesSceneRendererCommand::CRenderableObjectTechniquesSceneRendererCommand(CXMLTreeNode &atts) {
+  m_PoolName = atts.GetPszProperty("pool", "");
+  m_PoolRenderableObjectTechnique = RENDTECHM->GetPoolRenderableObjectTechniques().GetResource(m_PoolName);
 }
-void CRenderableObjectTechniquesSceneRendererCommand::Execute(CGraphicsManager &RM)
-{
-    if (m_PoolRenderableObjectTechnique != NULL)
-        m_PoolRenderableObjectTechnique->Apply();
+void CRenderableObjectTechniquesSceneRendererCommand::Execute(CGraphicsManager &RM) {
+  if (m_PoolRenderableObjectTechnique != NULL)
+    m_PoolRenderableObjectTechnique->Apply();
 }
 
-void CRenderableObjectTechniquesSceneRendererCommand::Reload()
-{
-    m_PoolRenderableObjectTechnique = RENDTECHM->GetPoolRenderableObjectTechniques().GetResource(m_PoolName);
+void CRenderableObjectTechniquesSceneRendererCommand::Reload() {
+  m_PoolRenderableObjectTechnique = RENDTECHM->GetPoolRenderableObjectTechniques().GetResource(m_PoolName);
 }

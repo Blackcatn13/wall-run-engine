@@ -10,62 +10,62 @@
 class CCameraKey;
 class CCameraInfo;
 
-class CCameraKeyController: public CCamera
-{
-private:
-    std::vector<CCameraKey *>			m_Keys;
-    size_t								m_CurrentKey, m_NextKey;
-    float								m_CurrentTime, m_TotalTime;
-    bool								m_IsPlaying;
-    bool								m_Once;
-    bool								m_Cycle;
-    bool								m_Reverse;
-    bool								m_IsReversing;
-    CObject3D							*m_Object;
+class CCameraKeyController: public CCamera {
+ private:
+  std::vector<CCameraKey *>			m_Keys;
+  size_t								        m_CurrentKey;
+  size_t                        m_NextKey;
+  float								          m_CurrentTime;
+  float                         m_TotalTime;
+  bool								          m_IsPlaying;
+  bool								          m_Once;
+  bool								          m_Cycle;
+  bool								          m_Reverse;
+  bool								          m_IsReversing;
+  CObject3D							        *m_Object;
 
-    Vect3f								m_PosInterpolated;
-    float								m_YawInterpolated;
-    float								m_PitchInterpolated;
+  Vect3f								        m_PosInterpolated;
+  float								          m_YawInterpolated;
+  float								          m_PitchInterpolated;
 
-    Vect3f								m_PositionInit;
-    float								m_YawInit;
-    float								m_PitchInit;
+  Vect3f								        m_PositionInit;
+  float								          m_YawInit;
+  float								          m_PitchInit;
 
-    void GetCurrentKey();
-public:
-    CCameraKeyController();
-    CCameraKeyController(CXMLTreeNode &atts);
-    ~CCameraKeyController();
-    void LoadXML(const std::string &FileName);
-    void Update(float ElapsedTime);
-    void SetCurrentTime(float CurrentTime);
-    void ResetTime(bool reverse);
-    float GetTotalTime();
-    bool IsOnce() const;
-    void SetOnce(bool Once);
-    bool IsCycle() const;
-    void SetCycle(bool Cycle);
-    bool IsReverse() const;
-    void SetReverse(bool Reverse);
+  void GetCurrentKey();
+ public:
+  CCameraKeyController();
+  CCameraKeyController(CXMLTreeNode &atts);
+  ~CCameraKeyController();
+  void LoadXML(const std::string &FileName);
+  void Update(float ElapsedTime);
+  void SetCurrentTime(float CurrentTime);
+  void ResetTime(bool reverse);
+  float GetTotalTime();
+  bool IsOnce() const;
+  void SetOnce(bool Once);
+  bool IsCycle() const;
+  void SetCycle(bool Cycle);
+  bool IsReverse() const;
+  void SetReverse(bool Reverse);
 
-    void Play();
-    void Pause();
-    void Stop();
-    bool IsPlayOn();
+  void Play();
+  void Pause();
+  void Stop();
+  bool IsPlayOn();
 
-    void InterpolatePosition(Vect3f PointA, Vect3f PointB, float TimeA, float TimeB, float ElapsedTime);
-    void InterpolateYaw(float YawA, float YawB, float TimeA, float TimeB, float ElapsedTime);
-    void InterpolatePitch(float PitchA, float PitchB, float TimeA, float TimeB, float ElapsedTime);
+  void InterpolatePosition(Vect3f PointA, Vect3f PointB, float TimeA, float TimeB, float ElapsedTime);
+  void InterpolateYaw(float YawA, float YawB, float TimeA, float TimeB, float ElapsedTime);
+  void InterpolatePitch(float PitchA, float PitchB, float TimeA, float TimeB, float ElapsedTime);
 
-    virtual Vect3f GetDirection() const;
-    virtual Vect3f GetLookAt() const;
-    virtual Vect3f GetEye() const;
-    virtual Vect3f GetVecUp() const;
+  virtual Vect3f GetDirection() const;
+  virtual Vect3f GetLookAt() const;
+  virtual Vect3f GetEye() const;
+  virtual Vect3f GetVecUp() const;
 
-    CObject3D * GetObject3D()
-    {
-        return m_Object;
-    }
+  CObject3D *GetObject3D() {
+    return m_Object;
+  }
 };
 
 #endif

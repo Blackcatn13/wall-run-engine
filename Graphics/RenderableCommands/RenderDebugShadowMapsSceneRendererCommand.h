@@ -6,14 +6,13 @@
 #include "GraphicsManager.h"
 #include "XML\XMLTreeNode.h"
 
-class CRenderDebugShadowMapsSceneRendererCommand : public CSceneRendererCommand
-{
-protected:
-    float m_ScreenWidth, m_ScreenHeight;
-    void AdvanceTexturePosition(Vect2f &Position);
-public:
-    CRenderDebugShadowMapsSceneRendererCommand(CXMLTreeNode &atts);
-    void Execute(CGraphicsManager &RM);
+class CRenderDebugShadowMapsSceneRendererCommand : public CSceneRendererCommand {
+ protected:
+  float m_ScreenWidth, m_ScreenHeight;
+  void AdvanceTexturePosition(Vect2f &Position);
+ public:
+  CRenderDebugShadowMapsSceneRendererCommand(CXMLTreeNode &atts);
+  void Execute(CGraphicsManager &RM);
 };
 //pagina 26 métodos Render en CPROC y métodos CTexture
 

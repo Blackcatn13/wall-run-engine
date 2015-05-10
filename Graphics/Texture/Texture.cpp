@@ -12,7 +12,9 @@ CTexture::CTexture()
   , m_RenderTargetTexture(NULL)
   , m_OldDepthStencilRenderTarget(NULL)
   , m_reloadable(true)
-  , m_DepthStencil(false) {
+  , m_DepthStencil(false)
+  , m_Width(0)
+  , m_Height(0) {
 }
 
 bool CTexture::Load(const std::string &FileName) {
@@ -40,20 +42,16 @@ void CTexture::Activate(size_t StageId) {
 }
 
 bool CTexture::LoadFile() {
-  HRESULT l_HR = D3DXCreateTextureFromFile(GRAPHM->GetDevice(), m_FileName.c_str(), (LPDIRECT3DTEXTURE9 *)&m_Texture);
-
+  D3DXCreateTextureFromFile(GRAPHM->GetDevice(), m_FileName.c_str(), (LPDIRECT3DTEXTURE9 *)&m_Texture);
   return m_Texture != NULL;
-  return S_OK(l_HR);
 }
 
 bool CTexture::LoadFileGUI() {
   //HRESULT l_HR = D3DXCreateTextureFromFile(GRAPHM->GetDevice(), m_FileName.c_str(), (LPDIRECT3DTEXTURE9 *)&m_Texture);
 
-  HRESULT l_HR = D3DXCreateTextureFromFileEx(GRAPHM->GetDevice(), m_FileName.c_str(), 0, 0, 1, 0, D3DFMT_A8R8G8B8, 
-	  D3DPOOL_MANAGED, D3DX_FILTER_LINEAR|D3DX_FILTER_MIRROR_U|D3DX_FILTER_MIRROR_V, D3DX_FILTER_LINEAR|D3DX_FILTER_MIRROR_U|D3DX_FILTER_MIRROR_V, 0, NULL, NULL, (LPDIRECT3DTEXTURE9 *)&m_Texture);
-
+  D3DXCreateTextureFromFileEx(GRAPHM->GetDevice(), m_FileName.c_str(), 0, 0, 1, 0, D3DFMT_A8R8G8B8,
+                              D3DPOOL_MANAGED, D3DX_FILTER_LINEAR | D3DX_FILTER_MIRROR_U | D3DX_FILTER_MIRROR_V, D3DX_FILTER_LINEAR | D3DX_FILTER_MIRROR_U | D3DX_FILTER_MIRROR_V, 0, NULL, NULL, (LPDIRECT3DTEXTURE9 *)&m_Texture);
   return m_Texture != NULL;
-  return S_OK(l_HR);
 }
 
 void CTexture::Unload() {

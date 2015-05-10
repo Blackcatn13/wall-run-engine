@@ -4,7 +4,6 @@
 
 CEnableZWriteSceneRendererCommand::CEnableZWriteSceneRendererCommand(CXMLTreeNode &atts) {}
 
-void CEnableZWriteSceneRendererCommand::Execute(CGraphicsManager &RM)
-{
-    RM.GetDevice()->SetRenderState( D3DRS_ZWRITEENABLE, TRUE );
+void CEnableZWriteSceneRendererCommand::Execute(CGraphicsManager &RM) {
+  RM.GetDevice()->SetRenderState( D3DRS_ZWRITEENABLE, TRUE );
 }

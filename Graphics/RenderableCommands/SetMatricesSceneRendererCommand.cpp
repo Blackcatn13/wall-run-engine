@@ -4,11 +4,9 @@
 #include "Camera\CameraController.h"
 #include "Core_Utils/MemLeaks.h"
 
-CSetMatricesSceneRendererCommand::CSetMatricesSceneRendererCommand(CXMLTreeNode &atts)
-{
+CSetMatricesSceneRendererCommand::CSetMatricesSceneRendererCommand(CXMLTreeNode &atts) {
 }
 
-void CSetMatricesSceneRendererCommand::Execute(CGraphicsManager &RM)
-{
-    RM.SetupMatrices(CAMCONTM->getActiveCamera());
+void CSetMatricesSceneRendererCommand::Execute(CGraphicsManager &RM) {
+  RM.SetupMatrices(CAMCONTM->getActiveCamera());
 }

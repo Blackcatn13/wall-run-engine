@@ -16,10 +16,10 @@ class CTrigger;
 class CCollectible : public CNamed {
  private:
   CRenderableObject		*m_RenderableObject;
-  std::string			m_LuaCode;
-  std::string			m_TriggerLuaCode;
-  std::string			m_LayerName;
-  CTrigger				*m_Trigger;
+  std::string			    m_LuaCode;
+  std::string			    m_TriggerLuaCode;
+  std::string			    m_LayerName;
+  CTrigger				    *m_Trigger;
  public:
   //CCollectible(std::string coreName, std::string name, std::string layerName, std::string userDataName, std::string luaCode);
   CCollectible(CRenderableObject *RendObj, std::string layerMame, std::string MeshLuaCode, std::string TriggerLuaCode,  Vect3f triggerSize, std::string param2);

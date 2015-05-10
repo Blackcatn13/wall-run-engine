@@ -2,25 +2,21 @@
 #include "Core_Utils/MemLeaks.h"
 
 CRenderableObjectTechnique::CRenderableObjectTechnique()
-    : m_EffectTechnique(NULL)
-{
+  : m_EffectTechnique(NULL) {
 }
 
-CRenderableObjectTechnique::CRenderableObjectTechnique(const std::string &Name, CEffectTechnique*EffectTechnique)
-{
-    setName(Name);
-    m_EffectTechnique = EffectTechnique;
+CRenderableObjectTechnique::CRenderableObjectTechnique(const std::string &Name, CEffectTechnique *EffectTechnique) {
+  setName(Name);
+  m_EffectTechnique = EffectTechnique;
 }
 
 
-void CRenderableObjectTechnique::SetEffectTechnique(CEffectTechnique *EffectTechnique)
-{
-    m_EffectTechnique = EffectTechnique;
+void CRenderableObjectTechnique::SetEffectTechnique(CEffectTechnique *EffectTechnique) {
+  m_EffectTechnique = EffectTechnique;
 }
 
-CEffectTechnique * CRenderableObjectTechnique::GetEffectTechnique() const
-{
-    return m_EffectTechnique;
+CEffectTechnique *CRenderableObjectTechnique::GetEffectTechnique() const {
+  return m_EffectTechnique;
 }
 
 /*La clase CRenderableObjectTechnique nos permitirá enlazar un

@@ -21,20 +21,20 @@ CPlayerController::CPlayerController()
     m_Gravity(2),
     m_GravityJump(2),
     m_Speed (15),
-    m_JumpForce(0.65),
+    m_JumpForce(0.65f),
     m_CurrentJumpForce(0),
     m_isJumping(false),
     m_isJumpingMoving(false),
     m_is3D(true),
     m_isAttack(false),
-    m_AttackForce(5.0),
-    m_CurrentAttackForce(5.0),
+    m_AttackForce(5.0f),
+    m_CurrentAttackForce(5.0f),
     m_JumpingTime(0),
     m_isFalling(false),
     m_mesh(NULL) {
   m_PhysicUserData = new CPhysicUserData("Player");
   m_PhysicUserData->SetPaint(false);
-  m_PhysicController = new CPhysicController(0.5, 1, 1.047, 0.001, 0.3, ECG_ESCENE, m_PhysicUserData, Vect3f(0, 1.001, 0), 0);
+  m_PhysicController = new CPhysicController(0.5f, 1, 1.047f, 0.001f, 0.3f, ECG_ESCENE, m_PhysicUserData, Vect3f(0, 1.001f, 0), 0);
   m_PhysicUserData->SetMyCollisionGroup(ECG_PLAYER);
   PHYSXM->AddPhysicController(m_PhysicController);
   //CRenderableObject* malla = RENDLM->GetDefaultRenderableObjectManager()->GetResource("PIKY");

@@ -3,11 +3,9 @@
 #include "Core_Utils/MemLeaks.h"
 
 CEndRenderSceneRendererCommand::CEndRenderSceneRendererCommand (CXMLTreeNode &atts)
-    : CSceneRendererCommand(atts)
-{
+  : CSceneRendererCommand(atts) {
 }
 
-void CEndRenderSceneRendererCommand::Execute(CGraphicsManager &RM)
-{
-    RM.EndRenderCommand();
+void CEndRenderSceneRendererCommand::Execute(CGraphicsManager &RM) {
+  RM.EndRenderCommand();
 }
