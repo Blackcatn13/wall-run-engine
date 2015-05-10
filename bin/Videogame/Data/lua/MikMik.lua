@@ -2,6 +2,10 @@ function mikmik_enter_stopped(name)
 	--local enemy = enemy_manager:get_enemy(name)
 	--currentwp = wp1
 	--coreInstance:trace("Entro y Estoy parado")
+	local enemy = enemy_manager:get_enemy(name)
+	if enemy.m_CurrentTime ~= 0 then
+		enemy.m_CurrentTime = 0
+	end
 	return 0
 end
 

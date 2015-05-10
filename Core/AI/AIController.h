@@ -37,20 +37,24 @@ class CAIController : public CObject3D {
   GET_SET(CPhysicUserData *, PhysicUserData);
   GET_SET(float, Gravity);
   GET_SET(float, Speed);
+  GET_SET(float, TurnSpeed);
+
   GET_SET(float, JumpForce);
   GET_SET(bool, isJumping);
   GET_SET(float, CurrentJumpForce);
   GET_SET(std::string, Mesh);
   GET_SET(std::string, Name);
   GET_SET(bool, isAlive);
+  GET_SET(CRenderableObject *, RenderableObject)
 
   //GET_SET(std::string, Mesh)
   //GET_SET(std::string, Name);
   GET_SET(Vect3f, Position);
   GET_SET(bool, SpeedModified);
+  float getAngleDiff(Vect3f A, Vect3f B);
 
  private:
-  float getAngleDiff(Vect3f A, Vect3f B);
+
   CPhysicController	*m_PhysicController;
   CPhysicUserData	*m_PhysicUserData;
   float				m_Gravity;

@@ -4,7 +4,7 @@
 	<script name="player" file="Data/lua/player.lua" auto_run = "true"/>
 	<script name="globals" file="Data/lua/Globals.lua" auto_run = "true"/>
 	<script name="platform" file="Data/lua/platform.lua" auto_run = "true"/>
-	<script name="globalTextures" file="Data/lua/LoadGlobalTextures.lua" auto_run = "true"/>
+	<script name="globalTextures" file="Data/lua/LoadGlobalTextures.lua" auto_run = "false"/>
 	<script name="checkpoint" file="Data/lua/checkpoint.lua" auto_run = "true"/>
 	<script name="initLevel" file="Data/level3/lua/initLevel.lua" auto_run = "true"/>
 	<script name="triggerFunctions" file="Data/lua/TriggerFunctions.lua" auto_run = "true"/>

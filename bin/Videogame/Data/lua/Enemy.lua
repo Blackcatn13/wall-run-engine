@@ -39,9 +39,62 @@ end
 function move_enemy(ElapsedTime, _point, Enemy)
 	local player =  coreInstance:get_player_controller()
 	if player.m_is3D == true then 
-		Enemy:move_to(ElapsedTime, _point)
+		--Enemy:move_to(ElapsedTime, _point)
+		move_to(Enemy, ElapsedTime, _point)
 	else
-		Enemy:rotate_or_move(ElapsedTime, _point)
+		--Enemy:rotate_or_move(ElapsedTime, _point)
+		rotate_or_move(Enemy, ElapsedTime, _point)
+	end
+end
+
+
+function move_to(_enemy, ElapsedTime, _point)
+	if _point:distance(_enemy:get_position()) >= 2 then
+		rotate_yaw (_enemy, ElapsedTime, _point)
+	
+		_enemy.m_PhysicController:move(Vect3f(1, 0, 0):rotate_y(_enemy:get_yaw()) * _enemy.m_Speed, ElapsedTime)
+		move_enemy_renderable(_enemy)	
+	end
+end
+
+
+function rotate_or_move(_enemy, ElapsedTime, _point)
+	if _point:distance(_enemy:get_position()) >= 2 then
+		local direction = Vect3f(_point - _enemy:get_position())
+		direction = direction:normalize(1.0)
+		local diff = Vect3f(1.0,0.0,0.0):rotate_y(_enemy:get_yaw())
+		local angle = _enemy:get_angle_diff(direction, diff)
+		if angle > 0.5 then
+			rotate_yaw(_enemy, ElapsedTime, _point)
+		else
+			_enemy.m_PhysicController:move(direction * _enemy.m_Speed, ElapsedTime)
+			move_enemy_renderable(_enemy)
+		end
+	end
+end
+
+function move_enemy_renderable(_enemy)
+	local l_position = _enemy.m_PhysicController:get_position()
+	_enemy:set_position(l_position)
+	if _enemy.m_RenderableObject ~= nil then
+		_enemy.m_RenderableObject:set_position(l_position)
+	end		
+end
+
+function rotate_yaw(_enemy, ElapsedTime, _point)
+	local direction = Vect3f(_point - _enemy:get_position())
+	direction.y = 0
+	direction = direction:normalize(1.0)
+	local diff = Vect3f(1.0,0.0,0.0):rotate_y(_enemy:get_yaw())
+	local angle = _enemy:get_angle_diff(direction, diff)
+	rotate_renderable(ElapsedTime, angle, _enemy)
+end
+
+function rotate_renderable(ElapsedTime, angle, _enemy)
+	_enemy:set_yaw(_enemy:get_yaw() - angle * _enemy.m_TurnSpeed * ElapsedTime)
+
+	if _enemy.m_RenderableObject ~= nil then
+		_enemy.m_RenderableObject:set_yaw(_enemy:get_yaw())
 	end
 end
 

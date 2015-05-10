@@ -50,11 +50,12 @@ void RegisterAI() {
     .property("m_Gravity", &CAIController::getGravity,  &CAIController::setGravity )
     .property("m_Gravity", &CAIController::getGravity,  &CAIController::setGravity )
     .property("m_Speed", &CAIController::getSpeed,  &CAIController::setSpeed )
-    //.property("m_TurnSpeed", &CAIController::getTurnSpeed,  &CAIController::setTurnSpeed )
+    .property("m_TurnSpeed", &CAIController::getTurnSpeed,  &CAIController::setTurnSpeed )
     .property("m_JumpForce", &CAIController::getJumpForce,  &CAIController::setJumpForce )
     .property("m_CurrentJumpForce", &CAIController::getCurrentJumpForce,  &CAIController::setCurrentJumpForce )
     .property("m_isJumping", &CAIController::getisJumping,  &CAIController::setisJumping )
     .property("m_SpeedModified", &CAIController::getSpeedModified, &CAIController::setSpeedModified )
+    .property("m_RenderableObject", &CAIController::getRenderableObject,  &CAIController::setRenderableObject )
     .property("m_isAlive", &CAIController::getisAlive,  &CAIController::setisAlive )
     .def("move", &CAIController::Move)
     .def("move_to", &CAIController::MoveTo)
@@ -63,6 +64,7 @@ void RegisterAI() {
     .def("rotate_yaw", &CAIController::RotateYaw)
     .def("actualizar_disparo", &CAIController::ActualizarDisparo)
     .def("actualizar_hitbox", &CAIController::ActualizarHitboxEnemigo)
+    .def("get_angle_diff", &CAIController::getAngleDiff)
   ];
 
   luabind::module(LUA_STATE) [
