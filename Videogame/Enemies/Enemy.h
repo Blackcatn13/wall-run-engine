@@ -27,7 +27,7 @@ class CEnemy : public CAIController { //CAIController
   //std::string			m_Mesh;
   //std::string			m_Name;
   CFSMInstance		*m_Fsm;
-  CRenderableObject *m_RenderableObject;
+// CRenderableObject *m_RenderableObject;
   //float				m_Speed;
   float				m_CurrentTime;
   std::string		m_FsmName;

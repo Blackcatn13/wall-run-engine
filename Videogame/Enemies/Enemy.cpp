@@ -18,7 +18,7 @@ CEnemy::CEnemy(CXMLTreeNode &info1)
                   info1.GetFloatProperty("speed", .0f, false),
                   info1.GetFloatProperty("turn_speed", .0f, false),
                   info1.GetFloatProperty("gravity", .0f, false)),
-    m_RenderableObject(NULL),
+    // m_RenderableObject(NULL),
     m_CurrentTime(0.0f)
 
     //  CAIController(info1.GetPszISOProperty("mesh", "", false), m_Name, m_Position)
@@ -35,18 +35,18 @@ CEnemy::CEnemy(CXMLTreeNode &info1)
 }
 
 CEnemy::CEnemy(CRenderableObject *renderableObject, float speed, float turnSpeed, float life, Vect2f controller_size):
-  m_RenderableObject(renderableObject),
+  //m_RenderableObject(renderableObject),
   m_Life(life),
 // m_Speed(speed),
   m_CurrentTime(0.0f),
-  m_OriginalPosition(m_RenderableObject->GetPosition()),
+  m_OriginalPosition(renderableObject->GetPosition()),
   CAIController(renderableObject, speed, turnSpeed, 13.0f, controller_size ) {
-  m_fYaw = m_RenderableObject->GetYaw();
-  m_Position = m_RenderableObject->GetPosition();
+  m_fYaw = renderableObject->GetYaw();
+  m_Position = renderableObject->GetPosition();
 }
 CEnemy::CEnemy(std::string mesh, std::string name, Vect3f position,  float speed, float turnSpeed, float gravity, float yaw) :
   CAIController(mesh, name, position, speed, turnSpeed, gravity) ,
-  m_RenderableObject(NULL) ,
+  //m_RenderableObject(NULL) ,
   m_CurrentTime(0.0f),
   m_OriginalPosition(position) {
   m_fYaw = yaw;
@@ -62,9 +62,9 @@ void CEnemy::Init(std::string fsmName) {
      bool visible = malla->getVisible();
      malla->SetPosition(m_Position);
    } else { //Si se usa el nuevo
-    */ m_RenderableObject->SetYaw(m_fYaw);
-  m_RenderableObject->SetPosition(m_Position);
-  bool visible = m_RenderableObject->getVisible();
+    */ getRenderableObject()->SetYaw(m_fYaw);
+  getRenderableObject()->SetPosition(m_Position);
+  bool visible = getRenderableObject()->getVisible();
 
   //}
   if (fsmName != "NoFSM")
