@@ -22,6 +22,7 @@ function Player.new()
 	self.visited_checkpoints = {}
 	self.score = 0
 	self.stickers = 0
+	self.is_hit = false
 	
 	------	 PLAYER FUNCTIONS -----
 	function self.add_pixelites(inc_pixelites)
@@ -50,23 +51,26 @@ function Player.new()
 	end
 	
 	function self.player_take_damage()
-		self.num_hearts = self.num_hearts -1
-		self.coreInstance:trace("Taking damage. Ouch! I lost a heart.")                           
-		if gui_manager:get_active_image('LifeGUI') == 'Life3' then
-			gui_manager:set_image('LifeGUI','Life2')
-		else
-			if gui_manager:get_active_image('LifeGUI') == 'Life2' then
-				gui_manager:set_image('LifeGUI','Life1')
+		if self.is_hit == false then
+			self.num_hearts = self.num_hearts -1
+			self.coreInstance:trace("Taking damage. Ouch! I lost a heart.")     
+			self.is_hit = true
+			if gui_manager:get_active_image('LifeGUI') == 'Life3' then
+				gui_manager:set_image('LifeGUI','Life2')
 			else
-				if gui_manager:get_active_image('LifeGUI') == 'Life1' then
-					gui_manager:set_image('LifeGUI','Life0')
-				end
-			end	
-		end
-		if self.num_hearts == 0 then
-			--self.num_hearts = 3
-			self.player_die()
-			--self.coreInstance:trace("PLAYER DEEEEEEEEEEEEEEEEEEEEEEEEEAD")
+				if gui_manager:get_active_image('LifeGUI') == 'Life2' then
+					gui_manager:set_image('LifeGUI','Life1')
+				else
+					if gui_manager:get_active_image('LifeGUI') == 'Life1' then
+						gui_manager:set_image('LifeGUI','Life0')
+					end
+				end	
+			end
+			if self.num_hearts == 0 then
+				--self.num_hearts = 3
+				self.player_die()
+				--self.coreInstance:trace("PLAYER DEEEEEEEEEEEEEEEEEEEEEEEEEAD")
+			end
 		end
 	end
 

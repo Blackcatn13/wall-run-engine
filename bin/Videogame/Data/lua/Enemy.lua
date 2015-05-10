@@ -23,22 +23,22 @@ end
 
 
 function check_attack (_enemy)
-	local player_position = coreInstance:get_player_controller():get_position()
+	local player_position = player_controller:get_position()
 	--core:trace(tostring(player_position.x));
 		
 	local player_distance = get_distance_to_player(_enemy:get_position(), player_position)
 	--coreInstance:trace(tostring(player_distance))
-	if player_distance <= 49 then
-		coreInstance:trace("Attack!!")
-		coreInstance:trace(_enemy:get_name())
+	if player_distance <= 49 and player.is_hit == false then
+		--coreInstance:trace("Attack!!")
+		--coreInstance:trace(_enemy:get_name())
 		return true
 	end
 	return false
 end
 
 function move_enemy(ElapsedTime, _point, Enemy)
-	local player =  coreInstance:get_player_controller()
-	if player.m_is3D == true then 
+	--local player =  coreInstance:get_player_controller()
+	if player_controller.m_is3D == true then 
 		--Enemy:move_to(ElapsedTime, _point)
 		move_to(Enemy, ElapsedTime, _point)
 	else

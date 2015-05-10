@@ -1,3 +1,4 @@
+local min_player_distance = 49
 function mikmik_enter_stopped(name)
 	--local enemy = enemy_manager:get_enemy(name)
 	--currentwp = wp1
@@ -18,31 +19,34 @@ function mikmik_update_stopped(ElapsedTime, doComprobation, name)
 	--local enemy = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("enemies"):get_resource(name)
 	--coreInstance:trace("Estoy parado")
 	local enemy = enemy_manager:get_enemy(name)
-	
+	local player_position = player_controller:get_position()
+	local player_distance = get_distance_to_player(enemy:get_position(), player_position)
+				
 	if enemy ~= nil then
-		if enemy:get_wp_vector_size() > 0 then --Si tiene waypoints para moverse
-			-- En caso de acabar de perseguir o llegar a un WP si la distancia al siguiente es muy corta vuelve a la posicion original
-						
-			if enemy.m_CurrentTime >= 0.1 then
-				instance.m_string = "Buscar_next_WP"
-			end
-						
-		else --En caso de no tener waypoints que mire al player
-			if enemy.m_CurrentWp == enemy.m_OriginalPosition and enemy.m_Returning == true then
-				instance.m_string = "Andar_WP"
-				enemy.m_Returning = false
-			else 
-				local player_position = player_controller:get_position()
-				local player_distance = get_distance_to_player(enemy:get_position(), player_position)
-				if player_distance < 500 then
-					-- Animacion de andar
-					enemy:rotate_yaw(ElapsedTime, player_position)
+		if player_distance > min_player_distance then
+			if enemy:get_wp_vector_size() > 0 then --Si tiene waypoints para moverse
+				-- En caso de acabar de perseguir o llegar a un WP si la distancia al siguiente es muy corta vuelve a la posicion original
+							
+				if enemy.m_CurrentTime >= 0.1 then
+					instance.m_string = "Buscar_next_WP"
 				end
-			end
-		end	
+							
+			else --En caso de no tener waypoints que mire al player
+				if enemy.m_CurrentWp == enemy.m_OriginalPosition and enemy.m_Returning == true then
+					instance.m_string = "Andar_WP"
+					enemy.m_Returning = false
+				else 
+					
+					if player_distance < 500 then
+						-- Animacion de andar
+						rotate_yaw(enemy, ElapsedTime, player_position)
+						--enemy:rotate_yaw(ElapsedTime, player_position)
+					end
+				end
+			end	
 		-- Si le Player se acerca atacaarl
-		if check_attack(enemy) == true and enemy.m_CurrentTime >= 2 then
-		--	coreInstance:trace("Vamos a perseguir")
+		elseif check_attack(enemy) == true then
+			coreInstance:trace("Vamos a perseguir")
 			instance.m_string = "Perseguir_Player"
 		end
 		enemy.m_CurrentTime = enemy.m_CurrentTime +1 * ElapsedTime
@@ -163,7 +167,7 @@ end
 
 function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 --player_position = Vect3f(10,0,10)
-	--coreInstance:trace("Persiguiendo");
+	coreInstance:trace("Persiguiendo");
 	local player_position = player_controller:get_position()
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy.m_SpeedModified == false then
@@ -179,9 +183,14 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 			instance.m_string = "Parado"
 		--	enemy.m_Speed = enemy.m_Speed / speed_modifier
 		end
-		if player_distance < 1 then
+		coreInstance:trace(tostring(player_distance))
+		if player_distance < 4 then -- Hacer por colision
 		-- Aqui meter impacto del ataque
+			coreInstance:trace("tocado!!")
 			instance.m_string = "Parado"
+			--player.player_take_damage()
+			player.is_hit = true --Temporal => Para que se pare el MikMik al tocarle. De momento Piky no recibe daño para no palmar 
+			--coreInstance:trace("Player hit "..tostring(player.is_hit))
 			check_hitbox(ElapsedTime, player_position, enemy)
 		--	enemy.m_Speed = enemy.m_Speed / speed_modifier
 		end

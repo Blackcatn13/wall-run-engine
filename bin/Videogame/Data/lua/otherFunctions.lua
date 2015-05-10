@@ -15,8 +15,12 @@ function get_renderable_object(layer_name, _objectName)
 end
 
 function open_door(_objectName)
-	coreInstance:trace("Opening door")
+	coreInstance:trace("Opening door ".. _objectName)
 	local door = get_renderable_object("puzzle", _objectName)
+	if door ~= nil then
+		door.m_Printable = false
+		door.m_Actor:activate(false)
+	end
 	--door.m_IsOpening =true
 	--play animacion subir puerta
 end

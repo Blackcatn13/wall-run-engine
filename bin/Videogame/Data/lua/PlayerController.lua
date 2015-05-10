@@ -4,6 +4,7 @@ local topPosition = -1000;
 local inLoop = false;
 local _land = false;
 local _fallPosition = Vect3f(-10000, -10000, -10000);
+local timer = 0.0
 --coreInstance:get_player_controller().m_mesh = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky");
 --coreInstance:get_player_controller().m_mesh:set_yaw(coreInstance:get_player_controller():get_yaw());
 function on_update_player_lua(l_ElapsedTime)
@@ -63,6 +64,17 @@ function on_update_player_lua(l_ElapsedTime)
 	dirNor = luaUtil:normalize(dirNor);
 	local mov = Vect3f(0,0,0);
 	local PlayerYaw =  - dirYaw + 1.57;
+	
+	-- Si dañan al player
+	if player.is_hit == true then
+		timer = timer +1 * l_ElapsedTime
+		--coreInstance:trace("Time "..tostring(timer))
+		if timer > 3 then
+			player.is_hit = false
+			timer = 0.0
+			--coreInstance:trace("Player hit "..tostring(player.is_hit))
+		end
+	end
 	
 	--///////////////////////////////////////////////////////////
 	-- Movimiento del Player en las distintas direcciones. 

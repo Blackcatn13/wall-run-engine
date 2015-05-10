@@ -10,6 +10,6 @@ CDoor::CDoor(std::string switchName, std::string coreName, std::string lua_funct
 
 void CDoor::Update(float dt) {
   if (m_IsOpening) {
-
+    //A ver como se hace al final
   }
 }

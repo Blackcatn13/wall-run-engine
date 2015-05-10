@@ -71,21 +71,6 @@ function pumpum_update_stopped(ElapsedTime, doComprobation, name)
 	
 end
 
-function check_attack (_enemy)
-	local player_position = coreInstance:get_player_controller():get_position()
-	--core:trace(tostring(player_position.x));
-		
-	local player_distance = get_distance_to_player(_enemy:get_position(), player_position)
-	--coreInstance:trace(tostring(player_distance))
-	if player_distance <= 49 then
-		coreInstance:trace("Attack!!")
-		coreInstance:trace(_enemy:get_name())
-		return true
-	end
-	return false
-end
-
-
 function pumpum_enter_moving(name)
 	return 0;
 end
