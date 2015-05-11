@@ -6,6 +6,8 @@ local _land = false;
 local _fallPosition = Vect3f(-10000, -10000, -10000);
 local timer = 0.0
 local player_moving = false
+local player_is_moving_forward = false
+local player_is_moving_back = false
 --////////////////////////////////////////////////////////
 -- GLOBAL PARAMETERS
 --////////////////////////////////////////////////////////
@@ -89,6 +91,15 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 	end
 	
+	
+	if act2in:do_action_from_lua("StopMovePlayerBack") then
+		player_is_moving_back = false
+	end
+	
+	if act2in:do_action_from_lua("StopMovePlayerForward") then
+		player_is_moving_forward = false
+	end
+	
 	--///////////////////////////////////////////////////////////
 	-- Movimiento del Player en las distintas direcciones. 
 	--///////////////////////////////////////////////////////////
@@ -124,6 +135,7 @@ function on_update_player_lua(l_ElapsedTime)
 					mov = mov * 0.75;
 				end
 				player_controller.m_isTurned = false;
+				player_is_moving_forward = true
 			end
 		elseif act2in:do_action_from_lua("MoveBack") then
 			if player_controller.m_is3D == true then
@@ -156,6 +168,7 @@ function on_update_player_lua(l_ElapsedTime)
 					mov = mov * 0.75;
 				end
 				player_controller.m_isTurned = true;
+				player_is_moving_back = true
 			end
 		elseif act2in:do_action_from_lua("MoveRigth") then
 			if player_controller.m_is3D == true then	

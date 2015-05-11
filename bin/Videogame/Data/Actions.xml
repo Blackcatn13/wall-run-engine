@@ -121,6 +121,14 @@
 	<action name="KeyMoveForward">
     	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_UP"/>
     </action>
+	
+	<action name="StopMovePlayerForward">
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_D"/>
+    </action>
+	
+	<action name="StopMovePlayerBack">
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_S"/>
+    </action>
 
     <action name="KeyMoveBack">
     	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_DOWN"/>
