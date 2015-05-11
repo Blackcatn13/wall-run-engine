@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Windows OnLoadWindows=""
+         OnSaveWindows=""
+         OnUpdateWindows="">
+		  
+  <Image name="CollectiblesGUI" posx="0.00" posy="0.00" height="100" width="100" visible="true" active="true"
+         default="CollectibleBase" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="CollectibleBase" name_texture="./Data/GUI/GoPixelGo/CollectiblesScreenBase.png"/>
+  </Image>
+ <Image name="Collectible1" posx="5.00" posy="7.00" height="38" width="15" visible="true" active="true"
+         default="ImgLocked" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="ImgLocked" name_texture="./Data/GUI/GoPixelGo/ImgLocked.png"/>
+	<texture name="ImgUnLocked" name_texture="./Data/GUI/GoPixelGo/ImgUnLocked.png"/>
+  </Image>
+</Windows>

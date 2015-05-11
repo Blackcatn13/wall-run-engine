@@ -5,6 +5,7 @@ local inLoop = false;
 local _land = false;
 local _fallPosition = Vect3f(-10000, -10000, -10000);
 local timer = 0.0
+local player_moving = false
 --////////////////////////////////////////////////////////
 -- GLOBAL PARAMETERS
 --////////////////////////////////////////////////////////
@@ -112,6 +113,14 @@ function on_update_player_lua(l_ElapsedTime)
 				if player_controller.m_isJumping == true then
 					mov = mov * 0.75;
 				end
+			elseif player_controller.m_is3D == false then
+				player_controller:set_yaw(PlayerYaw);
+				mov = mov - dirNor * player_controller.m_Speed * l_ElapsedTime;
+				player_controller.m_Direction3D = Vect3f(0,0,0) - dirNor;
+				if player_controller.m_isJumping == true then
+					mov = mov * 0.75;
+				end
+				player_controller.m_isTurned = false;
 			end
 		elseif act2in:do_action_from_lua("MoveBack") then
 			if player_controller.m_is3D == true then
@@ -136,6 +145,14 @@ function on_update_player_lua(l_ElapsedTime)
 				if player_controller.m_isJumping == true then
 					mov = mov * 0.75;
 				end
+			elseif player_controller.m_is3D == false then
+				player_controller:set_yaw(PlayerYaw);
+				mov = mov + dirNor * player_controller.m_Speed * l_ElapsedTime;
+				player_controller.m_Direction3D = Vect3f(0,0,0) + dirNor;
+				if player_controller.m_isJumping == true then
+					mov = mov * 0.75;
+				end
+				player_controller.m_isTurned = true;
 			end
 		elseif act2in:do_action_from_lua("MoveRigth") then
 			if player_controller.m_is3D == true then	
