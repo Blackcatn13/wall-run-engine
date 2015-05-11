@@ -322,9 +322,8 @@ function on_update_player_lua(l_ElapsedTime)
 	
 	--///////////////////////////////////////////////////////////
 	-- Acción de atacar del Player. Realiza un impulso hacia adelante. 
-	--///////////////////////////////////////////////////////////
-	if act2in:do_action_from_lua("Attack") then--) and (player_controller.m_isAttack == false) then
-		m_AttackGravity = AttackGravityStart;
+	--/////////////////////////////////////////////////////////// 
+	if (act2in:do_action_from_lua("Attack") and not player_controller.m_isJumping and not _land) then--) and (player_controller.m_isAttack == false) then
 		player_controller.m_CurrentAttackForce = player_controller.m_AttackForce;
 		mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce;
 		mov.y = 0.0;
