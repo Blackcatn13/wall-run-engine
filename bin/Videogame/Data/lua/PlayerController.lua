@@ -5,6 +5,12 @@ local inLoop = false;
 local _land = false;
 local _fallPosition = Vect3f(-10000, -10000, -10000);
 local timer = 0.0
+--////////////////////////////////////////////////////////
+-- GLOBAL PARAMETERS
+--////////////////////////////////////////////////////////
+local AttackGravityStart = 0.40;
+local AtackGravityModifier = 0.02;
+local m_AttackGravity = AttackGravityStart;
 --coreInstance:get_player_controller().m_mesh = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky");
 --coreInstance:get_player_controller().m_mesh:set_yaw(coreInstance:get_player_controller():get_yaw());
 function on_update_player_lua(l_ElapsedTime)
@@ -23,11 +29,11 @@ function on_update_player_lua(l_ElapsedTime)
 	--////////////////////////////////////////////////////////
 	player_controller.m_Gravity = 9;						--Gravedad que afecta al personaje cuando cae.
 	player_controller.m_GravityJump = 11;					--Gravedad que afecta cuando el personaje está impulsándose hacia arriba en el salto.
-	local m_AttackGravity = 25;
+	
 	player_controller.m_Speed = 8;							--Velocidad de movimiento.
 	player_controller.m_JumpForce = 5.5;					--Fuerza de salto, impulso.
 	superjumForce = 10;						 	--SUPERSALTO CHEAT
-	player_controller.m_AttackForce = 2;					--Impulse force for the attack.
+	player_controller.m_AttackForce = 0.8;					--Impulse force for the attack.
 	player_controller.m_PhysicController:set_step(0.3); 	--Altura que puede superar (escalones).
 	local AirTime = 0.7;						-- Time into the air, playing air loop
 	--////////////////////////////////////////////////////////
@@ -273,6 +279,9 @@ function on_update_player_lua(l_ElapsedTime)
 			player_controller.m_CurrentAttackForce = player_controller.m_CurrentAttackForce - (m_AttackGravity * l_ElapsedTime);
 			mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce;
 			mov.y = 0.0;
+			m_AttackGravity = m_AttackGravity + AtackGravityModifier;
+			--l_ElapsedTime = l_ElapsedTime / AtackGravityModifier;
+			--AtackGravityModifier = AtackGravityModifier * 2;
 		else
 			local mesh = playerRenderable;
 			mesh:set_position(player_controller:get_position());
@@ -283,7 +292,7 @@ function on_update_player_lua(l_ElapsedTime)
 	--///////////////////////////////////////////////////////////
 	-- Acción de saltar del Player. Puede realizar 2 saltos distintos (de longitud, y salto vertical). 
 	--///////////////////////////////////////////////////////////
-	if (act2in:do_action_from_lua("Jump")) and (player_controller.m_isJumping == false and _land == false) then
+	if (act2in:do_action_from_lua("Jump")) and (player_controller.m_isJumping == false and _land == false and player_controller.m_isAttack == false) then
 		coreInstance:trace(tostring(player_controller.m_isJumping));
 		coreInstance:trace(tostring(_land));
 		coreInstance:getWWSoundManager():PlayEvent("Jump", "Piky");
@@ -315,6 +324,7 @@ function on_update_player_lua(l_ElapsedTime)
 	-- Acción de atacar del Player. Realiza un impulso hacia adelante. 
 	--///////////////////////////////////////////////////////////
 	if act2in:do_action_from_lua("Attack") then--) and (player_controller.m_isAttack == false) then
+		m_AttackGravity = AttackGravityStart;
 		player_controller.m_CurrentAttackForce = player_controller.m_AttackForce;
 		mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce;
 		mov.y = 0.0;
