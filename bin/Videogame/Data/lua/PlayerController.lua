@@ -11,6 +11,9 @@ local timer = 0.0
 local AttackGravityStart = 0.40;
 local AtackGravityModifier = 0.02;
 local m_AttackGravity = AttackGravityStart;
+local AttackStartSpeed = 0.8;
+local AttackSpeed = AttackStartSpeed;
+local AttackDismin = 0.035;
 --coreInstance:get_player_controller().m_mesh = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky");
 --coreInstance:get_player_controller().m_mesh:set_yaw(coreInstance:get_player_controller():get_yaw());
 function on_update_player_lua(l_ElapsedTime)
@@ -277,7 +280,10 @@ function on_update_player_lua(l_ElapsedTime)
 	if player_controller.m_isAttack == true then
 		if player_controller.m_CurrentAttackForce > 0.5 then	
 			player_controller.m_CurrentAttackForce = player_controller.m_CurrentAttackForce - (m_AttackGravity * l_ElapsedTime);
-			mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce;
+			mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce * AttackSpeed;
+			if AttackSpeed > 0.05 then
+				AttackSpeed = AttackSpeed - AttackDismin;
+			end
 			mov.y = 0.0;
 			m_AttackGravity = m_AttackGravity + AtackGravityModifier;
 			--l_ElapsedTime = l_ElapsedTime / AtackGravityModifier;
@@ -324,8 +330,10 @@ function on_update_player_lua(l_ElapsedTime)
 	-- Acción de atacar del Player. Realiza un impulso hacia adelante. 
 	--/////////////////////////////////////////////////////////// 
 	if (act2in:do_action_from_lua("Attack") and not player_controller.m_isJumping and not _land) then--) and (player_controller.m_isAttack == false) then
+		m_AttackGravity = AttackGravityStart;
+		AttackSpeed = AttackStartSpeed;
 		player_controller.m_CurrentAttackForce = player_controller.m_AttackForce;
-		mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce;
+		mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce * AttackSpeed;
 		mov.y = 0.0;
 		player_controller.m_isAttack = true;
 		playerRenderable:execute_action(5,0,0.7,1,false);
