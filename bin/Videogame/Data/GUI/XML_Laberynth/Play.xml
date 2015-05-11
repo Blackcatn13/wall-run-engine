@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Windows OnLoadWindows=""
+         OnSaveWindows=""
+         OnUpdateWindows="">
+		  
+  <Image name="LifeGUI" posx="75.00" posy="2.00" height="17.50" width="17.50" visible="true" active="true"
+         default="Life3" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="Life3" name_texture="./Data/GUI/GoPixelGo/Life3.png"/>
+	<texture name="Life2" name_texture="./Data/GUI/GoPixelGo/Life2.png"/>
+	<texture name="Life1" name_texture="./Data/GUI/GoPixelGo/Life1.png"/>
+	<texture name="Life0" name_texture="./Data/GUI/GoPixelGo/Life0.png"/>
+  </Image>
+</Windows>
