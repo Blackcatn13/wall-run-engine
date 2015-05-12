@@ -6,8 +6,7 @@ local _land = false;
 local _fallPosition = Vect3f(-10000, -10000, -10000);
 local timer = 0.0
 local player_moving = false
-local player_is_moving_forward = false
-local player_is_moving_back = false
+local move_3D = true
 --////////////////////////////////////////////////////////
 -- GLOBAL PARAMETERS
 --////////////////////////////////////////////////////////
@@ -92,13 +91,14 @@ function on_update_player_lua(l_ElapsedTime)
 	end
 	
 	
-	if act2in:do_action_from_lua("StopMovePlayerBack") then
-		player_is_moving_back = false
+	if act2in:do_action_from_lua("StopMovePlayerBack") or act2in:do_action_from_lua("StopMovePlayerForward") then
+		 if player_controller.m_is3D == true then
+			move_3D = true 
+		end
+		
 	end
 	
-	if act2in:do_action_from_lua("StopMovePlayerForward") then
-		player_is_moving_forward = false
-	end
+	
 	
 	--///////////////////////////////////////////////////////////
 	-- Movimiento del Player en las distintas direcciones. 
@@ -108,13 +108,13 @@ function on_update_player_lua(l_ElapsedTime)
 			if player_controller.m_is3D == true then
 				mov = mov + dir3D * player_controller.m_Speed * l_ElapsedTime;
 				player_controller.m_Direction3D = dir3D;
-				if act2in:do_action_from_lua("MoveRigth") then
+				if act2in:do_action_from_lua("MoveRigth")  then
 					player_controller:set_yaw(PlayerYaw + 0.7854); -- 45º
 					mov = mov - dirNor * player_controller.m_Speed * l_ElapsedTime;
 					player_controller.m_Direction3D = dir3D - dirNor;
 					player_controller.m_isTurned = false;
 					player_controller.m_JumpType = 5;
-				elseif act2in:do_action_from_lua("MoveLeft") then
+				elseif act2in:do_action_from_lua("MoveLeft")  then
 					player_controller:set_yaw(PlayerYaw + 5.497); -- 315º
 					mov = mov + dirNor * player_controller.m_Speed * l_ElapsedTime;
 					player_controller.m_Direction3D = dir3D + dirNor;
@@ -131,17 +131,18 @@ function on_update_player_lua(l_ElapsedTime)
 				player_controller:set_yaw(PlayerYaw);
 				mov = mov - dirNor * player_controller.m_Speed * l_ElapsedTime;
 				player_controller.m_Direction3D = Vect3f(0,0,0) - dirNor;
+				--move_3D = false
 				if player_controller.m_isJumping == true then
 					mov = mov * 0.75;
 				end
 				player_controller.m_isTurned = false;
-				player_is_moving_forward = true
+				
 			end
 		elseif act2in:do_action_from_lua("MoveBack") then
 			if player_controller.m_is3D == true then
 				mov = mov - dir3D * player_controller.m_Speed * l_ElapsedTime;
 				player_controller.m_Direction3D = Vect3f(0,0,0) - dir3D;
-				if act2in:do_action_from_lua("MoveRigth") then
+				if act2in:do_action_from_lua("MoveRigth")  then
 					player_controller:set_yaw(PlayerYaw + 2.356); -- 135º
 					mov = mov - dirNor * player_controller.m_Speed * l_ElapsedTime;
 					player_controller.m_Direction3D = Vect3f(0,0,0) - dir3D - dirNor;
@@ -164,18 +165,20 @@ function on_update_player_lua(l_ElapsedTime)
 				player_controller:set_yaw(PlayerYaw);
 				mov = mov + dirNor * player_controller.m_Speed * l_ElapsedTime;
 				player_controller.m_Direction3D = Vect3f(0,0,0) + dirNor;
+				--move_3D = false
 				if player_controller.m_isJumping == true then
 					mov = mov * 0.75;
 				end
 				player_controller.m_isTurned = true;
-				player_is_moving_back = true
+				
 			end
-		elseif act2in:do_action_from_lua("MoveRigth") then
-			if player_controller.m_is3D == true then	
+		elseif act2in:do_action_from_lua("MoveRigth")  then
+			if player_controller.m_is3D == true and move_3D == true then	
 				player_controller:set_yaw(PlayerYaw + 1.57); -- 90º
 				player_controller.m_JumpType = 2;
 			else
 				player_controller:set_yaw(PlayerYaw); -- 0º
+				move_3D = false
 			end	
 			mov = mov - dirNor * player_controller.m_Speed * l_ElapsedTime;
 			player_controller.m_Direction3D = Vect3f(0,0,0) - dirNor;
@@ -183,12 +186,14 @@ function on_update_player_lua(l_ElapsedTime)
 				mov = mov * 0.75;
 			end
 			player_controller.m_isTurned = false;
-		elseif act2in:do_action_from_lua("MoveLeft") then
-			if player_controller.m_is3D == true then	
+			
+		elseif act2in:do_action_from_lua("MoveLeft")   then
+			if player_controller.m_is3D == true and move_3D == true then	
 				player_controller:set_yaw(PlayerYaw + 4.712); -- 270º
 				player_controller.m_JumpType = 4;
 			else
 				player_controller:set_yaw(PlayerYaw + 3.1415); -- 180º
+				move_3D = false
 			end	
 			mov = mov + dirNor * player_controller.m_Speed * l_ElapsedTime;
 			player_controller.m_Direction3D = dirNor;
@@ -196,6 +201,7 @@ function on_update_player_lua(l_ElapsedTime)
 				mov = mov * 0.75;
 			end
 			player_controller.m_isTurned = true;
+		
 		else
 			--player_controller:set_yaw(PlayerYaw);
 			player_controller.m_JumpType = 0;
