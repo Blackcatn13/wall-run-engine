@@ -30,7 +30,8 @@
           texture_over="./Data/GUI/GoPixelGo/ExtrasButtonHover.png"
           texture_clicked="./Data/GUI/GoPixelGo/ExtrasButton.png"
           texture_deactivated="./Data/GUI/GoPixelGo/ExtrasButton.png"
-          OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music');"
+          OnClickedAction=" CCoreLuaWrapper().m_CoreInstance:getGUIManager():push_windows('Collectibles.xml')
+			CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music');"
           OnOverAction=""/>
 
 </Windows>

@@ -5,6 +5,6 @@
 	<collectible-type name ="pixelite"  core_mesh="SpongePicky" mesh_lua_function ="roll_object" trigger_function ="get_pixelite" trigger_size = "0.10 0.20 0.05"/>
 	<collectible-type name ="card"  core_mesh="Enemy1" mesh_lua_function ="roll_object" trigger_function ="get_sticker"  trigger_size = "0.10 0.20 0.05" />
 	<!-- <collectible-type name ="card"  core_mesh="" mesh_lua_function ="roll_object" on_enter_function ="get_pixelite" /> -->
-	<unlockable-card mesh_name="cromo1" img_src="Data/imgs/cromo1.png" />
+	<unlockable-card mesh_name="Collectible1" img_src="./Data/GUI/GoPixelGo/ImgUnLocked.png" />
 
 </collectibles>

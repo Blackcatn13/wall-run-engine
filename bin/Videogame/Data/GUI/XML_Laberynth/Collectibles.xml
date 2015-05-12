@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<Windows OnLoadWindows=""
+<Windows OnLoadWindows="check_collectibles()"
          OnSaveWindows=""
          OnUpdateWindows="">
 		  
@@ -7,9 +7,64 @@
          default="CollectibleBase" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
     <texture name="CollectibleBase" name_texture="./Data/GUI/GoPixelGo/CollectiblesScreenBase.png"/>
   </Image>
- <Image name="Collectible1" posx="5.00" posy="7.00" height="38" width="15" visible="true" active="true"
+ <Image name="Collectible1" posx="4.50" posy="7.00" height="38" width="15" visible="true" active="true"
          default="ImgLocked" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
     <texture name="ImgLocked" name_texture="./Data/GUI/GoPixelGo/ImgLocked.png"/>
 	<texture name="ImgUnLocked" name_texture="./Data/GUI/GoPixelGo/ImgUnLocked.png"/>
   </Image>
+  
+  <Image name="Collectible2" posx="28.50" posy="7.00" height="38" width="15" visible="true" active="true"
+         default="ImgLocked" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="ImgLocked" name_texture="./Data/GUI/GoPixelGo/ImgLocked.png"/>
+	<texture name="ImgUnLocked" name_texture="./Data/GUI/GoPixelGo/ImgUnLocked.png"/>
+  </Image>
+  
+  <Image name="Collectible3" posx="52.50" posy="7.00" height="38" width="15" visible="true" active="true"
+         default="ImgLocked" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="ImgLocked" name_texture="./Data/GUI/GoPixelGo/ImgLocked.png"/>
+	<texture name="ImgUnLocked" name_texture="./Data/GUI/GoPixelGo/ImgUnLocked.png"/>
+  </Image>
+  
+   <Image name="Collectible4" posx="76.50" posy="7.00" height="38" width="15" visible="true" active="true"
+         default="ImgLocked" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="ImgLocked" name_texture="./Data/GUI/GoPixelGo/ImgLocked.png"/>
+	<texture name="ImgUnLocked" name_texture="./Data/GUI/GoPixelGo/ImgUnLocked.png"/>
+  </Image>
+  
+  <Image name="Collectible5" posx="4.50" posy="52.00" height="38" width="15" visible="true" active="true"
+         default="ImgLocked" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="ImgLocked" name_texture="./Data/GUI/GoPixelGo/ImgLocked.png"/>
+	<texture name="ImgUnLocked" name_texture="./Data/GUI/GoPixelGo/ImgUnLocked.png"/>
+  </Image>
+  
+   <Image name="Collectible6" posx="28.50" posy="52.00" height="38" width="15" visible="true" active="true"
+         default="ImgLocked" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="ImgLocked" name_texture="./Data/GUI/GoPixelGo/ImgLocked.png"/>
+	<texture name="ImgUnLocked" name_texture="./Data/GUI/GoPixelGo/ImgUnLocked.png"/>
+  </Image>
+  
+  <Image name="Collectible7" posx="52.50" posy="52.00" height="38" width="15" visible="true" active="true"
+         default="ImgLocked" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="ImgLocked" name_texture="./Data/GUI/GoPixelGo/ImgLocked.png"/>
+	<texture name="ImgUnLocked" name_texture="./Data/GUI/GoPixelGo/ImgUnLocked.png"/>
+  </Image>
+  
+   <Image name="Collectible8" posx="76.50" posy="52.00" height="38" width="15" visible="true" active="true"
+         default="ImgLocked" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="ImgLocked" name_texture="./Data/GUI/GoPixelGo/ImgLocked.png"/>
+	<texture name="ImgUnLocked" name_texture="./Data/GUI/GoPixelGo/ImgUnLocked.png"/>
+  </Image>
+  
+  
+  
+	<Button name="Back" posx="94" posy="89" height="5.00" width="5.00" visible="true" 
+          active="true" texture_normal="./Data/GUI/GoPixelGo/go-back-button.png"
+          texture_over="./Data/GUI/GoPixelGo/go-back-button-hover.png"
+          texture_clicked="./Data/GUI/GoPixelGo/go-back-button.png"
+          texture_deactivated="./Data/GUI/GoPixelGo/go-back-button.png"
+          OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getGUIManager():push_windows('Main.xml')
+							CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music');"
+          OnOverAction=""/>
+
+	
 </Windows>
