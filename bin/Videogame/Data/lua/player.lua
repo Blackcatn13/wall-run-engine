@@ -23,6 +23,7 @@ function Player.new()
 	self.score = 0
 	self.stickers = 0
 	self.is_hit = false
+	self.vector_damage = Vect3f(0.0,0.0,0.0)
 	
 	------	 PLAYER FUNCTIONS -----
 	function self.add_pixelites(inc_pixelites)
@@ -50,8 +51,11 @@ function Player.new()
 		return self.coreInstance:get_player_controller()
 	end
 	
-	function self.player_take_damage()
+	function self.player_take_damage(direction, elapsed_time)
 		if self.is_hit == false then
+			if direction.x ~= 0 or direction.y ~= 0 or direction.z ~= 0 then
+				self.vector_damage = direction
+			end
 			self.num_hearts = self.num_hearts -1
 			self.coreInstance:trace("Taking damage. Ouch! I lost a heart.")     
 			self.is_hit = true

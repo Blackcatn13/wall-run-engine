@@ -106,7 +106,7 @@ function on_enter_pinchos(platform_name)
 	if player.num_hearts > 0 then
 		player.get_player_controller():set_position(player.last_spikes_position)
 	end
-	player.player_take_damage()
+	player.player_take_damage(Vect3f(0,0,0), 0)
 	
 	-- Hacer cosas
 	

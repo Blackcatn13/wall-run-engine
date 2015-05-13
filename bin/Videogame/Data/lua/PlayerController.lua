@@ -44,6 +44,8 @@ function on_update_player_lua(l_ElapsedTime)
 	player_controller.m_AttackForce = 0.8;					--Impulse force for the attack.
 	player_controller.m_PhysicController:set_step(0.3); 	--Altura que puede superar (escalones).
 	local AirTime = 0.7;						-- Time into the air, playing air loop
+	local m_damageFeedBackSpeed = 13;
+	local m_damageTime = 0.6;
 	--////////////////////////////////////////////////////////
 	if is_init == true then
 		is_init = false
@@ -81,9 +83,10 @@ function on_update_player_lua(l_ElapsedTime)
 	
 	-- Si dañan al player
 	if player.is_hit == true then
-		timer = timer +1 * l_ElapsedTime
+		timer = timer + l_ElapsedTime
+		mov = player.vector_damage * m_damageFeedBackSpeed * l_ElapsedTime
 		--coreInstance:trace("Time "..tostring(timer))
-		if timer > 3 then
+		if timer > m_damageTime then
 			player.is_hit = false
 			timer = 0.0
 			--coreInstance:trace("Player hit "..tostring(player.is_hit))
@@ -100,7 +103,7 @@ function on_update_player_lua(l_ElapsedTime)
 	--///////////////////////////////////////////////////////////
 	-- Movimiento del Player en las distintas direcciones. 
 	--///////////////////////////////////////////////////////////
-	if (player_controller.m_isJumpingMoving == false) and (player_controller.m_isAttack == false) then
+	if (player_controller.m_isJumpingMoving == false) and (player_controller.m_isAttack == false) and (player.is_hit == false) then
 		if act2in:do_action_from_lua("MoveForward") then
 			if player_controller.m_is3D == true then
 				mov = mov + dir3D * player_controller.m_Speed * l_ElapsedTime;
@@ -370,7 +373,7 @@ function on_update_player_lua(l_ElapsedTime)
 	--///////////////////////////////////////////////////////////
 	-- Acción de saltar del Player. Puede realizar 2 saltos distintos (de longitud, y salto vertical). 
 	--///////////////////////////////////////////////////////////
-	if (act2in:do_action_from_lua("Jump")) and (player_controller.m_isJumping == false and _land == false and player_controller.m_isAttack == false) then
+	if (act2in:do_action_from_lua("Jump")) and (player_controller.m_isJumping == false and _land == false and player_controller.m_isAttack == false and player.is_hit == false) then
 		coreInstance:trace(tostring(player_controller.m_isJumping));
 		coreInstance:trace(tostring(_land));
 		coreInstance:getWWSoundManager():PlayEvent("Jump", "Piky");
@@ -401,7 +404,7 @@ function on_update_player_lua(l_ElapsedTime)
 	--///////////////////////////////////////////////////////////
 	-- Acción de atacar del Player. Realiza un impulso hacia adelante. 
 	--/////////////////////////////////////////////////////////// 
-	if (act2in:do_action_from_lua("Attack") and not player_controller.m_isJumping and not _land and player_controller.m_isAttack == false and canAttack == true) then--) and (player_controller.m_isAttack == false) then
+	if (act2in:do_action_from_lua("Attack") and not player_controller.m_isJumping and not _land and player_controller.m_isAttack == false and canAttack == true and player.is_hit == false) then--) and (player_controller.m_isAttack == false) then
 		canAttack = false;
 		contador = 0;
 		m_AttackGravity = AttackGravityStart;
@@ -425,8 +428,13 @@ function on_update_player_lua(l_ElapsedTime)
 			playerRenderable:clear_cycle(1,0);
 			playerRenderable:blend_cycle(0,1,0);
 		else
-			playerRenderable:clear_cycle(0,0);
-			playerRenderable:blend_cycle(1,1,0);
+			if player.is_hit then
+				--AQUI VA LA ANIMACION DE RECIBIR DAMAGE
+				playerRenderable:clear_cycle(0,0);
+			else
+				playerRenderable:clear_cycle(0,0);
+				playerRenderable:blend_cycle(1,1,0);
+			end
 		end
 	end
 	return 0;

@@ -293,7 +293,7 @@ void CAIController::ActualizarHitboxEnemigo() {
 
 void CAIController::AddDamagePlayer() {
 //	PLAYC->SetPosition(Vect3f(PLAYC->GetPosition().x, PLAYC->GetPosition().y, PLAYC->GetPosition().z + 5.0));
-  SCRIPTM->RunCode("Player:get_instance().player_take_damage()");
+  //SCRIPTM->RunCode("Player:get_instance().player_take_damage()");
 }
 
 void CAIController::AddDamageEnemy() {
