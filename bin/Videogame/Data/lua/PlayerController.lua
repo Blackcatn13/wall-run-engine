@@ -91,11 +91,8 @@ function on_update_player_lua(l_ElapsedTime)
 	end
 	
 	
-	if act2in:do_action_from_lua("StopMovePlayerBack") or act2in:do_action_from_lua("StopMovePlayerForward") then
-		 if player_controller.m_is3D == true then
+	if act2in:do_action_from_lua("StopMovePlayerBack") or act2in:do_action_from_lua("StopMovePlayerForward")  then
 			move_3D = true 
-		end
-		
 	end
 	
 	
@@ -114,12 +111,18 @@ function on_update_player_lua(l_ElapsedTime)
 					player_controller.m_Direction3D = dir3D - dirNor;
 					player_controller.m_isTurned = false;
 					player_controller.m_JumpType = 5;
+					if move_3D == false then
+						move_3D = true
+					end
 				elseif act2in:do_action_from_lua("MoveLeft")  then
 					player_controller:set_yaw(PlayerYaw + 5.497); -- 315º
 					mov = mov + dirNor * player_controller.m_Speed * l_ElapsedTime;
 					player_controller.m_Direction3D = dir3D + dirNor;
 					player_controller.m_isTurned = true;
 					player_controller.m_JumpType = 8;
+					if move_3D == false then
+						move_3D = true
+					end
 				else
 					player_controller:set_yaw(PlayerYaw); -- 0º
 					player_controller.m_JumpType = 1;
@@ -148,12 +151,18 @@ function on_update_player_lua(l_ElapsedTime)
 					player_controller.m_Direction3D = Vect3f(0,0,0) - dir3D - dirNor;
 					player_controller.m_isTurned = false;
 					player_controller.m_JumpType = 6;
+					if move_3D == false then
+						move_3D = true
+					end
 				elseif act2in:do_action_from_lua("MoveLeft") then
 					player_controller:set_yaw(PlayerYaw + 3.926); -- 225º
 					mov = mov + dirNor * player_controller.m_Speed * l_ElapsedTime;
 					player_controller.m_Direction3D = Vect3f(0,0,0) - dir3D + dirNor;
 					player_controller.m_isTurned = true;
 					player_controller.m_JumpType = 7;
+					if move_3D == false then
+						move_3D = true
+					end
 				else
 					player_controller:set_yaw(PlayerYaw + 3.1415); -- 180º
 					player_controller.m_JumpType = 3;
@@ -173,30 +182,48 @@ function on_update_player_lua(l_ElapsedTime)
 				
 			end
 		elseif act2in:do_action_from_lua("MoveRigth")  then
-			if player_controller.m_is3D == true and move_3D == true then	
+			if player_controller.m_is3D == true then	
 				player_controller:set_yaw(PlayerYaw + 1.57); -- 90º
 				player_controller.m_JumpType = 2;
+				if move_3D == true then
+					mov = mov - dirNor * player_controller.m_Speed * l_ElapsedTime;
+					player_controller.m_Direction3D = Vect3f(0,0,0) - dirNor;
+				else
+					player_controller:set_yaw(PlayerYaw);
+					mov = mov + dir3D * player_controller.m_Speed * l_ElapsedTime;
+					player_controller.m_Direction3D = Vect3f(0,0,0) + dir3D;
+				end
 			else
 				player_controller:set_yaw(PlayerYaw); -- 0º
 				move_3D = false
-			end	
-			mov = mov - dirNor * player_controller.m_Speed * l_ElapsedTime;
-			player_controller.m_Direction3D = Vect3f(0,0,0) - dirNor;
+				mov = mov - dirNor * player_controller.m_Speed * l_ElapsedTime;
+				player_controller.m_Direction3D = Vect3f(0,0,0) - dirNor;
+			end
 			if player_controller.m_isJumping == true then
 				mov = mov * 0.75;
 			end
 			player_controller.m_isTurned = false;
 			
 		elseif act2in:do_action_from_lua("MoveLeft")   then
-			if player_controller.m_is3D == true and move_3D == true then	
+			if player_controller.m_is3D == true then	
 				player_controller:set_yaw(PlayerYaw + 4.712); -- 270º
 				player_controller.m_JumpType = 4;
+				if move_3D == true then
+					mov = mov + dirNor * player_controller.m_Speed * l_ElapsedTime;
+					player_controller.m_Direction3D = Vect3f(0,0,0) + dirNor;
+				else
+					player_controller:set_yaw(PlayerYaw + 3.1415); -- 180º
+					mov = mov - dir3D * player_controller.m_Speed * l_ElapsedTime;
+					player_controller.m_Direction3D = Vect3f(0,0,0) - dir3D;
+				
+				end
 			else
 				player_controller:set_yaw(PlayerYaw + 3.1415); -- 180º
 				move_3D = false
+				mov = mov + dirNor * player_controller.m_Speed * l_ElapsedTime;
+				player_controller.m_Direction3D = dirNor;
 			end	
-			mov = mov + dirNor * player_controller.m_Speed * l_ElapsedTime;
-			player_controller.m_Direction3D = dirNor;
+			
 			if player_controller.m_isJumping == true then
 				mov = mov * 0.75;
 			end
