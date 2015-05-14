@@ -154,3 +154,7 @@ function set_checkpoint(trigger_name)
 --	end
 
 end
+
+function ChuckyJump()
+	
+end

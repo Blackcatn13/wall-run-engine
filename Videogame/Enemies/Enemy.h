@@ -61,6 +61,7 @@ class CEnemy : public CAIController { //CAIController
   GET_SET(float, ShootAccuracy);
 // GET_SET(float, Speed);
   GET_SET(float, CurrentTime);
+  CFSMInstance *getFsm() { return m_Fsm;}
   // get & set
   // set(const <type> &name)
   // const <type> & get
