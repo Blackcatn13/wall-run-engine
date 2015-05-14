@@ -22,7 +22,8 @@
           texture_over="./Data/GUI/GoPixelGo/OptionsButtonHover.png"
           texture_clicked="./Data/GUI/GoPixelGo/OptionsButton.png"
           texture_deactivated="./Data/GUI/GoPixelGo/OptionsButton.png"
-          OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music');"
+          OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music');
+							CCoreLuaWrapper().m_CoreInstance:exit_game()"
           OnOverAction=""/>
 		  
 	<Button name="Extras" posx="60.00" posy="61.00" height="15.00" width="22.00" visible="true" 

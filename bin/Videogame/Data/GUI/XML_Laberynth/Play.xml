@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <Windows OnLoadWindows=""
          OnSaveWindows=""
-         OnUpdateWindows="">
+         OnUpdateWindows="onUpdateWindowDisplayGUI()">
 		  
   <Image name="LifeGUI" posx="75.00" posy="2.00" height="17.50" width="17.50" visible="true" active="true"
          default="Life3" OnLoadValue="" OnSaveValue="" flip="" backGround="false">

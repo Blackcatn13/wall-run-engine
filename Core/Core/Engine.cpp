@@ -39,6 +39,7 @@ CEngine::~CEngine(void) {
 void CEngine::Init(CProcess *p, HWND handler) {
   m_Process = p;
   m_Core = CCORE;
+  m_Process->setexitGame(false);
   m_Core->SetProcess(m_Process);
   m_Core->setConfig (m_Conf_info);
   m_Core->setHandler (handler);

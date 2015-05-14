@@ -6,6 +6,7 @@
 #include "EngineDefs.h"
 #include "Camera\CameraController.h"
 #include "Utils\MapManager.h"
+#include "Process.h"
 
 class CLanguageManager;
 class CGraphicsManager;
@@ -253,6 +254,8 @@ class CCore {
     {
         return m_PlatformsMap;
     }*/
+
+	void ExitGame(){ GetProcess()->setexitGame(true);}
 
 };
 

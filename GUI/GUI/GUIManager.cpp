@@ -43,6 +43,9 @@ CGUIManager::CGUIManager(const Vect2i &resolution)
   , m_sLastLoadpathGUI_XML("")
   , m_bFirstUpdate(true)
   , m_bVisiblePointerMouse(true)
+  , m_isDisplayed(true)
+  , m_GUICount(0.0f)
+  , m_dt(0.0f)
 {}
 
 //----------------------------------------------------------------------------
@@ -257,7 +260,8 @@ void	CGUIManager::RenderPointerMouse	(CGraphicsManager *renderManager, CFontMana
 //----------------------------------------------------------------------------
 
 void CGUIManager::Update (float elapsedTime) {
-  if (m_bIsOk) {
+	m_dt = elapsedTime;
+	if (m_bIsOk) {
     assert(m_TextBox);
     assert(m_PointerMouse);
     //Si es la primera vez que actualizamos la GUI debemos hacer un load de la main.xml:
@@ -865,4 +869,33 @@ void CGUIManager::SetConsole() {
       m_Console->LoseFocus();
     }
   }
+}
+
+
+void CGUIManager::SetPositionPercentElement(std::string name, float posx, float posy){
+	m_ElementsMap.find(name)->second->SetPositionPercent(Vect2f(posx,posy));
+}
+
+float CGUIManager::GetPositionXPercentElement(std::string name){
+	return m_ElementsMap.find(name)->second->GetPositionPercent().x;
+}
+
+bool CGUIManager::GetIsDisplayed(){
+	return m_isDisplayed;
+}
+
+void CGUIManager::SetIsDisplayed(bool input){
+	m_isDisplayed = input;
+}
+
+float CGUIManager::GetGUICount(){
+	return m_GUICount;
+}
+
+void CGUIManager::SetGUICount(float value){
+	m_GUICount = value;
+}
+
+float CGUIManager::GetElapsedTime(){
+	return m_dt;
 }

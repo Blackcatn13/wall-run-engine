@@ -19,6 +19,7 @@ class CProcess {
   bool	m_PaintPhisics;
   bool	m_DebugPhisics;
   int	m_aux_x;
+  bool  m_exitGame;
  public:
   CProcess(void);
   virtual ~CProcess(void);
@@ -46,6 +47,7 @@ class CProcess {
   GET_SET(bool, PaintPhisicTriggers )
   GET_SET(bool, PaintPhisics )
   GET_SET(bool, DebugPhisics )
+  GET_SET(bool, exitGame )
 };
 
 

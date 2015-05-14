@@ -62,6 +62,7 @@ void RegisterCore() {
     .def("getWWSoundManager", &CCore::GetWWSoundManager)
     .def("getGUIManager", &CCore::GetGuiManager)
     // .def("get_log_render", &CCore::GetLogRender)
+	.def("exit_game", &CCore::ExitGame)
     .property("m_CameraController", &CCore::GetCameraController, &CCore::SetCameraController)
     //.property("m_PlatformsMap", &CCore::GetPlatformsMap)
   ];

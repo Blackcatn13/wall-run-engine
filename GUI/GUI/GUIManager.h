@@ -103,6 +103,14 @@ class CGUIManager { //:public CScriptRegister
   void								PlayImage									(const std::string &inImageName, float timePerImage, bool loop);
   //-----------------------------------------------------------------------------------------------------------//
 
+  bool							GetIsDisplayed();
+  void							SetIsDisplayed(bool input);
+  float							GetPositionXPercentElement(std::string name);
+  void							SetPositionPercentElement(std::string name, float posx, float posy);
+  float							GetGUICount();
+  void							SetGUICount(float value);
+  float							GetElapsedTime();
+
  private:
   void								Release										();
   void								RenderTransitionEffect		(CGraphicsManager *renderManager);
@@ -126,6 +134,9 @@ class CGUIManager { //:public CScriptRegister
   std::string													m_sLastLoadpathGUI_XML;
   TransitionEffect										m_sTransitionEffect;
   bool																m_bFirstUpdate;
+  bool																m_isDisplayed;
+  float																m_GUICount;
+  float																m_dt;
 };
 
 #endif //INC_GUI_MANAGER_H
