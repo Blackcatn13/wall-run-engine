@@ -17,7 +17,8 @@ CMovingPlatform::CMovingPlatform(std::string platformName, std::string coreName,
   : CStaticPlatform(platformName, coreName),
     m_Speed(speed),
     m_CurrentWpId(0),
-    m_WayPointsVector(NULL) {
+    m_WayPointsVector(NULL),
+    m_Activated(false) {
   /*  m_PhysicUserData = new CPhysicUserData("AI");
   m_PhysicUserData->SetPaint(true);
   m_PhysicUserData->SetColor(colRED);*/

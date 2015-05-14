@@ -417,6 +417,7 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node) {
         l_MovingPlatform->SetRoll(roll);
         l_MovingPlatform->SetScale(scale);
         l_MovingPlatform->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
+        l_MovingPlatform->setRoom( m.GetPszISOProperty("room", "0", false));
         //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
         AddResource(platformName, l_MovingPlatform);
         //std::string boxName, std::string coreName, std::string userDataName, Vect3f size, Vect3f localPosition)
@@ -475,4 +476,12 @@ std::string CRenderableObjectsManager::SetUserDataName(std::string name) {
   std::stringstream ss;
   ss << name << "_UserData";
   return ss.str();
+}
+
+void CRenderableObjectsManager::ActivateElements(std::string roomName) {
+  for (int i = 0; i < GetResourcesVector().size(); ++ i ) {
+    if (((CMovingPlatform *)GetResourcesVector()[i])->getActivated() == false && ((CMovingPlatform *)GetResourcesVector()[i])->getRoom() == roomName) {
+      ((CMovingPlatform *)GetResourcesVector()[i])->setActivated(true);
+    }
+  }
 }

@@ -22,6 +22,7 @@ class CRenderableObjectsManager : public CTemplatedVectorMapManager<CRenderableO
   CRenderableObject *AddMeshInstance(CXMLTreeNode &Node);
   CRenderableObject *AddAnimatedInstanceModel(const std::string &CoreModelName, const std::string &InstanceModelName, const Vect3f &Position);
   CRenderableObject *AddAnimatedInstanceModel(CXMLTreeNode &Node);
+  void ActivateElements (std::string roomName);
   void Load(const std::string &FileName);
   void Load(CXMLTreeNode &Node);
   void Reload();

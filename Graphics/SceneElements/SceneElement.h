@@ -18,6 +18,7 @@ class CSceneElement : public CMeshInstance {
   CPhysicActor *m_Actor;
   CPhysicUserData *m_UserData;
   Vect3f m_PhysicsSize;
+  std::string m_Room;
 
  public:
   CSceneElement(std::string switchName, std::string coreName);
@@ -30,6 +31,7 @@ class CSceneElement : public CMeshInstance {
     return m_PhysicsSize;
   }
 
+  GET_SET(std::string, Room);
 };
 
 #endif

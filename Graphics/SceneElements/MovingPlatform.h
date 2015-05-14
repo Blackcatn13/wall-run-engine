@@ -19,6 +19,7 @@ class CMovingPlatform : public CStaticPlatform {
   int					m_CurrentWpId;
   FSM			*m_Fsm;
   Vect3f		m_NextWP;
+  bool				m_Activated;
   //CPhysicController*	m_PhysicController;
 
  public:
@@ -37,6 +38,7 @@ class CMovingPlatform : public CStaticPlatform {
   void UpdateFSM(float elapsedTime);
   bool isInside(Vect3f vector1, Vect3f vector2);
   bool isAround(Vect3f vector1, Vect3f vector2);
+  GET_SET(bool, Activated);
   void SetNextWPVector(Vect3f NextWp) {
     m_NextWP = NextWp;
   }

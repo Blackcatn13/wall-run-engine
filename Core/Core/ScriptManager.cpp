@@ -392,6 +392,8 @@ void CScriptManager::RegisterLUAFunctions() {
     .def("load", (void (CRenderableObjectsManager::*)(const std::string & FileName)) &CRenderableObjectsManager::Load)
     .def("load", (void (CRenderableObjectsManager::*)(CXMLTreeNode & Node)) &CRenderableObjectsManager::Load)
     .def("reload", & CRenderableObjectsManager::Reload)
+    .def("activate_elements", & CRenderableObjectsManager::ActivateElements)
+
   ];
 
   luabind::module(LUA_STATE) [
