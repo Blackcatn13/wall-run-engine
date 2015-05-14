@@ -9,4 +9,5 @@
 	<animation name="jump_loop" file="Piky_jump_loop.CAF"/>
 	<animation name="jump_end" file="Piky_jump_end.CAF"/>
 	<animation name="attack" file="Piky_kick.CAF"/>
+	<animation name="hurt" file="Piky_hurt.CAF"/>
 </animated_model>
