@@ -23,7 +23,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 	--*********** PARAMETROS VARIABLES *******************************************
 	--______ CAMERA 3D _______________________
 	local pitch3D = -0.40;
-	local zoom3D = 8;
+	local zoom3D = 6;
 	local fov3D = 60.0 * 3.1415 / 180;
 	local aspect3D = 16/9;
 	local distToCameraOffset = 3;
@@ -33,7 +33,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 	local zoom2D = 18;
 	local fov2D = 45.0 * 3.1415 / 180;
 	local aspect2D = 16/9;
-	local heightCameraOffset = 3;
+	local heightCameraOffset = 2.5;
 	
 	--______ GENERALES _______________________
 	local distanciaGiro = 3;

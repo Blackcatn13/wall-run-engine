@@ -12,7 +12,7 @@ function Player.new()
     local self = {}    -- the new instance
    -- setmetatable( new_inst, Player_mt ) -- all instances share the same metatable
 	self.MAXHEARTS = 3
-	self.MAXLIVES = 3
+	self.MAXLIVES = 50
 	self.num_hearts = self.MAXHEARTS
 	self.num_lives = self.MAXLIVES
 	self.instance = self

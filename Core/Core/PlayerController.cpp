@@ -34,7 +34,7 @@ CPlayerController::CPlayerController()
     m_mesh(NULL) {
   m_PhysicUserData = new CPhysicUserData("Player");
   m_PhysicUserData->SetPaint(false);
-  m_PhysicController = new CPhysicController(0.5f, 1, 45.0f, 0.001f, 0.3f, ECG_ESCENE, m_PhysicUserData, Vect3f(0, 1.001f, 0), 0);
+  m_PhysicController = new CPhysicController(0.5f, 1, 45.0f, 0.001f, 0.5f, ECG_ESCENE, m_PhysicUserData, Vect3f(0, 1.001f, 0), 0);
   m_PhysicUserData->SetMyCollisionGroup(ECG_PLAYER);
   PHYSXM->AddPhysicController(m_PhysicController);
   //CRenderableObject* malla = RENDLM->GetDefaultRenderableObjectManager()->GetResource("PIKY");
