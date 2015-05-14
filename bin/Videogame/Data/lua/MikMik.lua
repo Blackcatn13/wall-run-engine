@@ -186,14 +186,16 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 		coreInstance:trace(tostring(player_distance))
 		if player_distance < 4 then -- Hacer por colision
 		-- Aqui meter impacto del ataque
-			coreInstance:trace("tocado!!")
-			instance.m_string = "Parado"
-			local directionDamage = player_position - enemy:get_position()
-			directionDamage:normalize(1)
-			player.player_take_damage(directionDamage, ElapsedTime)
-			player.is_hit = true --Temporal => Para que se pare el MikMik al tocarle. De momento Piky no recibe daño para no palmar 
-			--coreInstance:trace("Player hit "..tostring(player.is_hit))
-			check_hitbox(ElapsedTime, player_position, enemy)
+			if player_controller.m_isAttack == false then
+				coreInstance:trace("tocado!!")
+				instance.m_string = "Parado"
+				local directionDamage = player_position - enemy:get_position()
+				directionDamage:normalize(1)
+				player.player_take_damage(directionDamage, ElapsedTime)
+				player.is_hit = true --Temporal => Para que se pare el MikMik al tocarle. De momento Piky no recibe daño para no palmar 
+				--coreInstance:trace("Player hit "..tostring(player.is_hit))
+				check_hitbox(ElapsedTime, player_position, enemy)
+			end
 		--	enemy.m_Speed = enemy.m_Speed / speed_modifier
 		end
 		
