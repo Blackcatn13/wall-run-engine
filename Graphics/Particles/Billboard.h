@@ -3,6 +3,7 @@
 
 #include "Math\Vector3.h"
 #include "Math\Color.h"
+#include "Utils\Defines.h"
 
 class CGraphicsManager;
 class CXMLTreeNode;
@@ -21,6 +22,7 @@ class CBillboard {
   void setSize(float size) {m_size = size;}
   Vect3f getPosition() {return m_position;}
   void setPosition(Vect3f position) {m_position = position;}
+  GET_SET(CTexture *, Texture)
  protected:
   float			m_size;
   Vect3f		m_position;

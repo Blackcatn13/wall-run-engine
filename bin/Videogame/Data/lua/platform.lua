@@ -106,7 +106,7 @@ function on_enter_pinchos(platform_name)
 	if player.num_hearts > 0 then
 		player.get_player_controller():set_position(player.last_spikes_position)
 	end
-	player.player_take_damage()
+	player.player_take_damage(Vect3f(0,0,0), 0)
 	
 	-- Hacer cosas
 	
@@ -116,7 +116,11 @@ end
 --
 
 -- Moving Platform
-instance = CLuaGlobalsWrapper().m_CoreInstance;
+local mov_platforms_manager = renderable_objects_layer_manager:get_renderable_objects_manager_by_str("mov_platforms")
+
+function activate_moving_platforms(room_name)
+	mov_platforms_manager:activate_elements(room_name)
+end
 
 function mp_enter_stopped(name)
 	--coreInstance:trace("Parando plataforma");
@@ -133,6 +137,10 @@ end
 function mp_update_stopped(ElapsedTime, name)
 	--core:trace("Update Platform stopped");
 	--instance.m_string = "Buscar_next_WP_Plaform"
+	local platform = mov_platforms_manager:get_resource(name)
+	if platform.m_Activated == true then
+		instance.m_string = "Buscar_next_WP_Plaform"
+	end
 end
 
 function mp_enter_moving(name)
@@ -147,7 +155,7 @@ function mp_update_moving(ElapsedTime, name)
 	
 	--local player_position = coreInstance:get_player_controller():get_position()
 	--core:trace(tostring(player_position.x));
-	local platform = renderable_objects_layer_manager:get_default_renderable_object_manager():get_resource(name)-- modificar para poder pasarlo por parametro
+	local platform = mov_platforms_manager:get_resource(name)-- modificar para poder pasarlo por parametro
 	if platform ~= nil then
 		local next_wp = platform.m_NextWP
 		platform:move_to_point(ElapsedTime, next_wp, 2)
@@ -191,7 +199,7 @@ function mp_enter_calcwp(name) -- Pasar el nombre de la plataforma y de ahí que
 	--	next_wp = Vect3f(15,0,15)
 	--end
 	
-	local platform = renderable_objects_layer_manager:get_default_renderable_object_manager():get_resource(name)
+	local platform = mov_platforms_manager:get_resource(name)
 	if platform ~= nil then
 		platform.m_NextWP = platform:get_next_wp()
 		--coreInstance:trace(tostring(next_wp.x));

@@ -63,6 +63,7 @@ void RegisterSceneElements() {
     .def("get_next_wp", &CMovingPlatform::GetNextWP)
     .def("add_box_controller", &CMovingPlatform::AddBoxController)
     .property("m_NextWP",  &CMovingPlatform::GetNextWPVector, &CMovingPlatform::SetNextWPVector)
+    .property("m_Activated",  &CMovingPlatform::getActivated, &CMovingPlatform::setActivated)
   ];
   luabind::module(LUA_STATE) [
     class_<CPinchosPlatform, CBreakablePlatform>("CPinchosPlatform")

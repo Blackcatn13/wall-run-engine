@@ -44,6 +44,8 @@ function on_update_player_lua(l_ElapsedTime)
 	player_controller.m_AttackForce = 0.8;					--Impulse force for the attack.
 	player_controller.m_PhysicController:set_step(0.3); 	--Altura que puede superar (escalones).
 	local AirTime = 0.7;						-- Time into the air, playing air loop
+	local m_damageFeedBackSpeed = 13;
+	local m_damageTime = 0.6;
 	--////////////////////////////////////////////////////////
 	if is_init == true then
 		is_init = false
@@ -81,9 +83,10 @@ function on_update_player_lua(l_ElapsedTime)
 	
 	-- Si dañan al player
 	if player.is_hit == true then
-		timer = timer +1 * l_ElapsedTime
+		timer = timer + l_ElapsedTime
+		mov = player.vector_damage * m_damageFeedBackSpeed * l_ElapsedTime
 		--coreInstance:trace("Time "..tostring(timer))
-		if timer > 3 then
+		if timer > m_damageTime then
 			player.is_hit = false
 			timer = 0.0
 			--coreInstance:trace("Player hit "..tostring(player.is_hit))
@@ -91,11 +94,8 @@ function on_update_player_lua(l_ElapsedTime)
 	end
 	
 	
-	if act2in:do_action_from_lua("StopMovePlayerBack") or act2in:do_action_from_lua("StopMovePlayerForward") then
-		 if player_controller.m_is3D == true then
+	if act2in:do_action_from_lua("StopMovePlayerBack") or act2in:do_action_from_lua("StopMovePlayerForward")  then
 			move_3D = true 
-		end
-		
 	end
 	
 	
@@ -103,7 +103,7 @@ function on_update_player_lua(l_ElapsedTime)
 	--///////////////////////////////////////////////////////////
 	-- Movimiento del Player en las distintas direcciones. 
 	--///////////////////////////////////////////////////////////
-	if (player_controller.m_isJumpingMoving == false) and (player_controller.m_isAttack == false) then
+	if (player_controller.m_isJumpingMoving == false) and (player_controller.m_isAttack == false) and (player.is_hit == false) then
 		if act2in:do_action_from_lua("MoveForward") then
 			if player_controller.m_is3D == true then
 				mov = mov + dir3D * player_controller.m_Speed * l_ElapsedTime;
@@ -114,12 +114,18 @@ function on_update_player_lua(l_ElapsedTime)
 					player_controller.m_Direction3D = dir3D - dirNor;
 					player_controller.m_isTurned = false;
 					player_controller.m_JumpType = 5;
+					if move_3D == false then
+						move_3D = true
+					end
 				elseif act2in:do_action_from_lua("MoveLeft")  then
 					player_controller:set_yaw(PlayerYaw + 5.497); -- 315º
 					mov = mov + dirNor * player_controller.m_Speed * l_ElapsedTime;
 					player_controller.m_Direction3D = dir3D + dirNor;
 					player_controller.m_isTurned = true;
 					player_controller.m_JumpType = 8;
+					if move_3D == false then
+						move_3D = true
+					end
 				else
 					player_controller:set_yaw(PlayerYaw); -- 0º
 					player_controller.m_JumpType = 1;
@@ -148,12 +154,18 @@ function on_update_player_lua(l_ElapsedTime)
 					player_controller.m_Direction3D = Vect3f(0,0,0) - dir3D - dirNor;
 					player_controller.m_isTurned = false;
 					player_controller.m_JumpType = 6;
+					if move_3D == false then
+						move_3D = true
+					end
 				elseif act2in:do_action_from_lua("MoveLeft") then
 					player_controller:set_yaw(PlayerYaw + 3.926); -- 225º
 					mov = mov + dirNor * player_controller.m_Speed * l_ElapsedTime;
 					player_controller.m_Direction3D = Vect3f(0,0,0) - dir3D + dirNor;
 					player_controller.m_isTurned = true;
 					player_controller.m_JumpType = 7;
+					if move_3D == false then
+						move_3D = true
+					end
 				else
 					player_controller:set_yaw(PlayerYaw + 3.1415); -- 180º
 					player_controller.m_JumpType = 3;
@@ -173,30 +185,48 @@ function on_update_player_lua(l_ElapsedTime)
 				
 			end
 		elseif act2in:do_action_from_lua("MoveRigth")  then
-			if player_controller.m_is3D == true and move_3D == true then	
+			if player_controller.m_is3D == true then	
 				player_controller:set_yaw(PlayerYaw + 1.57); -- 90º
 				player_controller.m_JumpType = 2;
+				if move_3D == true then
+					mov = mov - dirNor * player_controller.m_Speed * l_ElapsedTime;
+					player_controller.m_Direction3D = Vect3f(0,0,0) - dirNor;
+				else
+					player_controller:set_yaw(PlayerYaw);
+					mov = mov + dir3D * player_controller.m_Speed * l_ElapsedTime;
+					player_controller.m_Direction3D = Vect3f(0,0,0) + dir3D;
+				end
 			else
 				player_controller:set_yaw(PlayerYaw); -- 0º
 				move_3D = false
-			end	
-			mov = mov - dirNor * player_controller.m_Speed * l_ElapsedTime;
-			player_controller.m_Direction3D = Vect3f(0,0,0) - dirNor;
+				mov = mov - dirNor * player_controller.m_Speed * l_ElapsedTime;
+				player_controller.m_Direction3D = Vect3f(0,0,0) - dirNor;
+			end
 			if player_controller.m_isJumping == true then
 				mov = mov * 0.75;
 			end
 			player_controller.m_isTurned = false;
 			
 		elseif act2in:do_action_from_lua("MoveLeft")   then
-			if player_controller.m_is3D == true and move_3D == true then	
+			if player_controller.m_is3D == true then	
 				player_controller:set_yaw(PlayerYaw + 4.712); -- 270º
 				player_controller.m_JumpType = 4;
+				if move_3D == true then
+					mov = mov + dirNor * player_controller.m_Speed * l_ElapsedTime;
+					player_controller.m_Direction3D = Vect3f(0,0,0) + dirNor;
+				else
+					player_controller:set_yaw(PlayerYaw + 3.1415); -- 180º
+					mov = mov - dir3D * player_controller.m_Speed * l_ElapsedTime;
+					player_controller.m_Direction3D = Vect3f(0,0,0) - dir3D;
+				
+				end
 			else
 				player_controller:set_yaw(PlayerYaw + 3.1415); -- 180º
 				move_3D = false
+				mov = mov + dirNor * player_controller.m_Speed * l_ElapsedTime;
+				player_controller.m_Direction3D = dirNor;
 			end	
-			mov = mov + dirNor * player_controller.m_Speed * l_ElapsedTime;
-			player_controller.m_Direction3D = dirNor;
+			
 			if player_controller.m_isJumping == true then
 				mov = mov * 0.75;
 			end
@@ -343,7 +373,7 @@ function on_update_player_lua(l_ElapsedTime)
 	--///////////////////////////////////////////////////////////
 	-- Acción de saltar del Player. Puede realizar 2 saltos distintos (de longitud, y salto vertical). 
 	--///////////////////////////////////////////////////////////
-	if (act2in:do_action_from_lua("Jump")) and (player_controller.m_isJumping == false and _land == false and player_controller.m_isAttack == false) then
+	if (act2in:do_action_from_lua("Jump")) and (player_controller.m_isJumping == false and _land == false and player_controller.m_isAttack == false and player.is_hit == false) then
 		coreInstance:trace(tostring(player_controller.m_isJumping));
 		coreInstance:trace(tostring(_land));
 		coreInstance:getWWSoundManager():PlayEvent("Jump", "Piky");
@@ -374,7 +404,7 @@ function on_update_player_lua(l_ElapsedTime)
 	--///////////////////////////////////////////////////////////
 	-- Acción de atacar del Player. Realiza un impulso hacia adelante. 
 	--/////////////////////////////////////////////////////////// 
-	if (act2in:do_action_from_lua("Attack") and not player_controller.m_isJumping and not _land and player_controller.m_isAttack == false and canAttack == true) then--) and (player_controller.m_isAttack == false) then
+	if (act2in:do_action_from_lua("Attack") and not player_controller.m_isJumping and not _land and player_controller.m_isAttack == false and canAttack == true and player.is_hit == false) then--) and (player_controller.m_isAttack == false) then
 		canAttack = false;
 		contador = 0;
 		m_AttackGravity = AttackGravityStart;
@@ -398,8 +428,13 @@ function on_update_player_lua(l_ElapsedTime)
 			playerRenderable:clear_cycle(1,0);
 			playerRenderable:blend_cycle(0,1,0);
 		else
-			playerRenderable:clear_cycle(0,0);
-			playerRenderable:blend_cycle(1,1,0);
+			if player.is_hit then
+				--AQUI VA LA ANIMACION DE RECIBIR DAMAGE
+				playerRenderable:clear_cycle(0,0);
+			else
+				playerRenderable:clear_cycle(0,0);
+				playerRenderable:blend_cycle(1,1,0);
+			end
 		end
 	end
 	return 0;
