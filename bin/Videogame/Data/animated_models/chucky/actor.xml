@@ -5,6 +5,5 @@
 	<mesh file="Chucky_Mesh.cmf"/>
 	<animation name="idle" file="Chucky_idle.caf"/>
 	<animation name="run" file="Chucky_run.caf"/>
-	<animation name="jump_start" file="Chucky_jump_start.caf"/>
-	<animation name="jump_end" file="Chucky_jump_end.caf"/>
+	<animation name="jump" file="Chucky_jump.caf"/>
 </animated_model>
