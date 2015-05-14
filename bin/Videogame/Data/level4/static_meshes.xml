@@ -32,7 +32,6 @@
 	<static_mesh name="ANTORCHA014" filename="Data\level4\meshes\ANTORCHA014.mesh"/>
 	<static_mesh name="COLUMNA_INTERIOR014" filename="Data\level4\meshes\COLUMNA_INTERIOR014.mesh"/>
 	<static_mesh name="PARED_TIP3_006" filename="Data\level4\meshes\PARED_TIP3_006.mesh"/>
-	<static_mesh name="SUPORT ANTORCHA014" filename="Data\level4\meshes\SUPORT ANTORCHA014.mesh"/>
 	<static_mesh name="ANTORCHA015" filename="Data\level4\meshes\ANTORCHA015.mesh"/>
 	<static_mesh name="COLUMNA_INTERIOR015" filename="Data\level4\meshes\COLUMNA_INTERIOR015.mesh"/>
 	<static_mesh name="SUPORT ANTORCHA015" filename="Data\level4\meshes\SUPORT ANTORCHA015.mesh"/>
@@ -101,4 +100,5 @@
 	<static_mesh name="PARED_TIP3_008" filename="Data\level4\meshes\PARED_TIP3_008.mesh"/>
 	<static_mesh name="PARED_TIP3_009" filename="Data\level4\meshes\PARED_TIP3_009.mesh"/>
 	<static_mesh name="PARED_TIP3_010" filename="Data\level4\meshes\PARED_TIP3_010.mesh"/>
+	<static_mesh name="SUPORT ANTORCHA014" filename="Data\level4\meshes\SUPORT ANTORCHA014.mesh"/>
 </static_meshes>

@@ -17,9 +17,9 @@ CTrigger::CTrigger(CXMLTreeNode &node, CPhysicUserData *_pUserData)
   std::string l_sType = node.GetPszProperty("shape", "box", false);
   //int group = node.GetIntProperty("group", 1, false);
   if (l_sType == "box")
-    CreateBoxTrigger(node.GetVect3fProperty("position", v3fZERO, false), node.GetVect3fProperty("size", v3fZERO, false));
+    CreateBoxTrigger(node.GetVect3fProperty("pos", v3fZERO, false), node.GetVect3fProperty("size", v3fZERO, false));
   else if (l_sType == "sphere")
-    CreateSphereTrigger(node.GetVect3fProperty("position", v3fZERO, false), node.GetFloatProperty("radius", 0.f, false), ECG_TRIGGERS);
+    CreateSphereTrigger(node.GetVect3fProperty("pos", v3fZERO, false), node.GetFloatProperty("radius", 0.f, false), ECG_TRIGGERS);
   SetTriggerGroup(ECG_TRIGGERS);
   _pUserData->SetColor(CColor(node.GetVect3fProperty("color", v3fONE, false)));
   _pUserData->SetPaint(false);

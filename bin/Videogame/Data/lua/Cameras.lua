@@ -24,7 +24,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 	--______ CAMERA 3D _______________________
 	local pitch3D = -0.40;
 	local zoom3D = 8;
-	local fov3D = 45.0 * 3.1415 / 180;
+	local fov3D = 60.0 * 3.1415 / 180;
 	local aspect3D = 16/9;
 	local distToCameraOffset = 3;
 	

@@ -31,7 +31,7 @@ function on_update_player_lua(l_ElapsedTime)
 	--local player_controller = coreInstance:get_player_controller();
 	--local lightM = coreInstance:get_light_manager();
 	local directionalLight = lightM:get_resource("Direct002");
-	local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky");
+	local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("Piky");
 	--////////////////////////////////////////////////////////
 	-- PARAMETERS
 	--////////////////////////////////////////////////////////
@@ -406,7 +406,7 @@ function on_update_player_lua(l_ElapsedTime)
 end
 
 function move_character_controller_mesh(_player, _position, _jumping)
-	local mesh = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky")
+	local mesh = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("Piky")
 	mesh:set_yaw(_player:get_yaw() + math.pi)
 	local pos;
 	if _jumping and not inLoop then

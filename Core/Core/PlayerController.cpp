@@ -38,9 +38,9 @@ CPlayerController::CPlayerController()
   m_PhysicUserData->SetMyCollisionGroup(ECG_PLAYER);
   PHYSXM->AddPhysicController(m_PhysicController);
   //CRenderableObject* malla = RENDLM->GetDefaultRenderableObjectManager()->GetResource("PIKY");
-  m_mesh = RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky");
-  m_mesh->SetYaw(m_fYaw);
-  m_mesh->SetPosition(m_PhysicController->GetPosition());
+  //m_mesh = RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky");
+  //m_mesh->SetYaw(m_fYaw);
+  //m_mesh->SetPosition(m_PhysicController->GetPosition());
 }
 
 CPlayerController::~CPlayerController() {

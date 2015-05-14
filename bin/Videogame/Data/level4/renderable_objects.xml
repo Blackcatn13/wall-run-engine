@@ -11,105 +11,110 @@
 	<layer name="collectible"/>
 	<layer name="enemies"/>
 	<layer name="puzzle"/>
-	<mesh_instance name="ARCADA" core="ARCADA" pos="-0.017227 9.222342 0.316050" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="CUPULA" core="CUPULA" pos="-0.002787 34.766350 -0.108083" yaw="0.0167741" pitch="0.0" roll="0.0" scale="1.04838 1.04838 1.04838" visible="false" layer="solid"/>
-	<mesh_instance name="ORO2" core="ORO2" pos="-0.001024 1.363649 15.286530" yaw="0.31952" pitch="0.0" roll="0.0" scale="0.146555 0.146555 0.146555" visible="false" layer="solid"/>
-	<mesh_instance name="ORO004" core="ORO004" pos="0.348110 1.363649 -10.414305" yaw="-0.000587151" pitch="0.0" roll="0.0" scale="0.146555 0.146555 0.146555" visible="false" layer="solid"/>
-	<mesh_instance name="CADIRA" core="CADIRA" pos="-0.097616 11.329084 -1.428843" yaw="-0.0412545" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="TERRA_SALA0" core="TERRA_SALA0" pos="-0.008257 0.000000 0.052575" yaw="-0.00112105" pitch="0.0" roll="0.0" scale="0.895 0.89 0.895" visible="false" layer="solid"/>
-	<mesh_instance name="ORO1" core="ORO1" pos="-0.030479 1.363649 10.189282" yaw="-0.0167962" pitch="0.0" roll="0.0" scale="0.146555 0.146555 0.146555" visible="false" layer="solid"/>
-	<mesh_instance name="ORO3" core="ORO3" pos="-0.174196 1.363649 -14.681000" yaw="-0.0167962" pitch="0.0" roll="0.0" scale="0.146555 0.146555 0.146555" visible="false" layer="solid"/>
+	<!-- Animated Models -->
+	<animated_model name="Piky" core="piky" pos="0 2 0" yaw="0" pitch="0" roll="0" scale="1 1 1"/>
+	<animated_model name="Chucky" core="chuky" pos="0 2 0" yaw="0" pitch="0" roll="0" scale="1 1 1" layer="enemies" />
+
+
+	<mesh_instance name="ARCADA" core="ARCADA" pos="-0.017227 9.222342 0.316050" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="CUPULA" core="CUPULA" pos="-0.002787 34.766350 -0.108083" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ORO2" core="ORO2" pos="-0.001024 1.363649 15.286530" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ORO004" core="ORO004" pos="0.348110 1.363649 -10.414305" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="CADIRA" core="CADIRA" pos="-0.097616 11.329084 -1.428843" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="TERRA_SALA0" core="TERRA_SALA0" pos="-0.008257 0.000000 0.052575" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ORO1" core="ORO1" pos="-0.030479 1.363649 10.189282" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ORO3" core="ORO3" pos="-0.174196 1.363649 -14.681000" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="SALA1_TEMPLEPOLYPOLY" core="SALA1_TEMPLEPOLYPOLY" pos="115.713768 3.386007 -5.057911" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="SALA2_TEMPLEPOLYPOLY" core="SALA2_TEMPLEPOLYPOLY" pos="289.721039 4.516609 11.131084" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="SALA 3" core="SALA 3" pos="470.251068 17.271515 -19.819033" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA012" core="SUPORT ANTORCHA012" pos="-59.875648 3.739071 -28.452377" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="PARED_TIP2_003" core="PARED_TIP2_003" pos="-62.577660 0.000007 -34.306442" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="PARED_TIP3_007" core="PARED_TIP3_007" pos="-65.613266 0.000012 -46.436394" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA013" core="ANTORCHA013" pos="-46.536671 3.568692 -19.880173" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="PARED_TIP1_004" core="PARED_TIP1_004" pos="40.014263 4.000007 -32.471478" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA018" core="SUPORT ANTORCHA018" pos="34.618183 3.284922 -37.134315" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA016" core="ANTORCHA016" pos="34.389343 3.568693 -36.860958" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="COLUMNA_INTERIOR020" core="COLUMNA_INTERIOR020" pos="43.283463 4.000013 -26.354923" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA020" core="ANTORCHA020" pos="43.150482 3.568694 -26.066841" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA021" core="SUPORT ANTORCHA021" pos="48.972752 3.284922 -13.550907" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA021" core="ANTORCHA021" pos="48.612698 3.568693 -13.444725" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="COLUMNA_INTERIOR021" core="COLUMNA_INTERIOR021" pos="48.771694 4.000012 -13.533215" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="COLUMNA_INTERIOR018" core="COLUMNA_INTERIOR018" pos="34.602039 4.000112 -37.080288" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA020" core="SUPORT ANTORCHA020" pos="43.447655 3.284924 -26.294306" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA001" core="SUPORT ANTORCHA001" pos="43.638702 3.284925 26.288395" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="COLUMNA_INTERIOR001" core="COLUMNA_INTERIOR001" pos="43.559746 4.000115 26.350578" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA002" core="ANTORCHA002" pos="23.462595 3.568692 44.905827" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA013" core="SUPORT ANTORCHA013" pos="-46.859222 3.284921 -20.038189" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA014" core="ANTORCHA014" pos="-39.438496 3.568693 -31.632072" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="COLUMNA_INTERIOR014" core="COLUMNA_INTERIOR014" pos="-17.230331 4.000112 -47.626137" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="PARED_TIP3_006" core="PARED_TIP3_006" pos="-44.494781 4.000117 -26.726849" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA014" core="SUPORT ANTORCHA014" pos="-17.295013 3.284921 -47.792854" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA015" core="ANTORCHA015" pos="-29.297140 3.568694 -41.134796" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="COLUMNA_INTERIOR015" core="COLUMNA_INTERIOR015" pos="-29.579454 4.000013 -41.273003" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA015" core="SUPORT ANTORCHA015" pos="-29.531832 3.284923 -41.417393" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA016" core="SUPORT ANTORCHA016" pos="10.158813 3.284924 -49.745754" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="COLUMNA_INTERIOR016" core="COLUMNA_INTERIOR016" pos="10.338760 4.000114 -49.634686" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="COLUMNA_INTERIOR017" core="COLUMNA_INTERIOR017" pos="-3.455196 4.000014 -50.526276" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA017" core="ANTORCHA017" pos="-3.606770 3.568695 -50.293804" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA017" core="SUPORT ANTORCHA017" pos="-3.608517 3.284924 -50.664890" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="PAREDS_PORTA_SALA_0" core="PAREDS_PORTA_SALA_0" pos="50.599915 4.000118 0.152714" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ARC_PORTA_SALA_0" core="ARC_PORTA_SALA_0" pos="49.316242 15.311697 0.473961" yaw="1.32558" pitch="1.74846e-007" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="PARED_TIP1_" core="PARED_TIP1_" pos="17.483086 4.000006 48.759708" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="COLUMNA_INTERIOR" core="COLUMNA_INTERIOR" pos="48.965912 4.000017 13.665009" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA" core="ANTORCHA" pos="48.709320 3.568697 13.473480" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA" core="SUPORT ANTORCHA" pos="49.047573 3.284925 13.594948" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA001" core="ANTORCHA001" pos="43.330822 3.568696 26.100559" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA009" core="ANTORCHA009" pos="-39.226936 3.568692 32.195747" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="COLUMNA_INTERIOR002" core="COLUMNA_INTERIOR002" pos="23.655115 4.000112 45.080780" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="PARED_TIP1_002" core="PARED_TIP1_002" pos="-49.903049 4.000006 -13.690907" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="COLUMNA_INTERIOR009" core="COLUMNA_INTERIOR009" pos="-39.367630 4.000011 32.478680" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA006" core="ANTORCHA006" pos="-3.180298 3.568693 50.631500" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="COLUMNA_INTERIOR006" core="COLUMNA_INTERIOR006" pos="-29.266350 4.000110 41.868893" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA002" core="SUPORT ANTORCHA002" pos="23.664925 3.284921 45.218884" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA006" core="SUPORT ANTORCHA006" pos="-29.230171 3.284919 41.939835" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA007" core="SUPORT ANTORCHA007" pos="-16.948006 3.284922 48.227039" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="PARED_TIP3_002" core="PARED_TIP3_002" pos="3.694466 4.000117 51.924675" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA007" core="ANTORCHA007" pos="-16.807159 3.568693 47.898880" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="PARED_TIP3_003" core="PARED_TIP3_003" pos="-23.786064 4.000116 46.338421" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="COLUMNA_INTERIOR007" core="COLUMNA_INTERIOR007" pos="-16.995922 4.000012 48.157841" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA005" core="ANTORCHA005" pos="10.443127 3.568694 49.611740" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="PARED_TIP2_001" core="PARED_TIP2_001" pos="-10.430180 4.000112 51.022442" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="PARED_TIP1_001" core="PARED_TIP1_001" pos="-35.233265 4.000005 38.077930" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA003" core="ANTORCHA003" pos="34.625687 3.568695 36.946217" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="COLUMNA_INTERIOR003" core="COLUMNA_INTERIOR003" pos="34.908405 4.000015 37.088627" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="COLUMNA_INTERIOR005" core="COLUMNA_INTERIOR005" pos="10.429253 4.000014 49.797192" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA003" core="SUPORT ANTORCHA003" pos="34.887432 3.284925 37.191513" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="COLUMNA_INTERIOR004" core="COLUMNA_INTERIOR004" pos="-3.468597 4.000112 50.877964" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA004" core="ANTORCHA004" pos="-29.027603 3.568689 41.642036" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA004" core="SUPORT ANTORCHA004" pos="-3.244667 3.284922 50.998940" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="COLUMNA_INTERIOR008" core="COLUMNA_INTERIOR008" pos="-46.554314 4.000112 20.663153" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA005" core="SUPORT ANTORCHA005" pos="10.515724 3.284923 49.979652" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA008" core="ANTORCHA008" pos="-50.228439 3.568691 -6.481785" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA008" core="SUPORT ANTORCHA008" pos="-46.710835 3.284921 20.685604" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA018" core="ANTORCHA018" pos="10.056282 3.568695 -49.397076" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA019" core="ANTORCHA019" pos="23.163956 3.568696 -44.765415" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="COLUMNA_INTERIOR019" core="COLUMNA_INTERIOR019" pos="23.341393 4.000014 -45.037418" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA019" core="SUPORT ANTORCHA019" pos="23.338387 3.284925 -45.080742" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="PARED_TIP2_002" core="PARED_TIP2_002" pos="-50.030556 4.000111 14.309494" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA009" core="SUPORT ANTORCHA009" pos="-39.491592 3.284920 32.444283" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA010" core="ANTORCHA010" pos="-46.380569 3.568692 20.514210" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="COLUMNA_INTERIOR010" core="COLUMNA_INTERIOR010" pos="-50.470577 4.000111 -6.765865" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="PARED_TIP3_004" core="PARED_TIP3_004" pos="-44.350700 4.000116 27.273243" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA010" core="SUPORT ANTORCHA010" pos="-50.586880 3.284920 -6.563473" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA011" core="ANTORCHA011" pos="-50.166271 3.568693 7.197254" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="PARED_TIP3_005" core="PARED_TIP3_005" pos="-51.997536 4.000117 0.293415" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="COLUMNA_INTERIOR011" core="COLUMNA_INTERIOR011" pos="-50.375763 4.000012 7.114311" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA011" core="SUPORT ANTORCHA011" pos="-50.536690 3.284922 7.234520" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="COLUMNA_INTERIOR012" core="COLUMNA_INTERIOR012" pos="-39.662144 4.000112 -31.858355" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA012" core="ANTORCHA012" pos="-17.155434 3.568692 -47.447002" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="PARED_TIP1_003" core="PARED_TIP1_003" pos="-10.663795 4.000007 -50.506088" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="COLUMNA_INTERIOR013" core="COLUMNA_INTERIOR013" pos="-46.802814 4.000011 -20.063694" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SOSTRE_PARED" core="SOSTRE_PARED" pos="0.016540 9.000114 0.202597" yaw="1.32558" pitch="1.74846e-007" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="PARED_TIP2_" core="PARED_TIP2_" pos="-26.150642 0.000004 111.253075" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="PARED_TIP2_004" core="PARED_TIP2_004" pos="-74.720016 0.000009 -82.826286" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="PARED_TIP3_" core="PARED_TIP3_" pos="-23.115059 0.000009 123.383034" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="PARED_TIP3_001" core="PARED_TIP3_001" pos="30.070518 4.000119 42.401611" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="PARED_TIP3_008" core="PARED_TIP3_008" pos="-71.684433 0.000013 -70.696327" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="PARED_TIP3_009" core="PARED_TIP3_009" pos="-77.755600 0.000014 -94.956245" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="PARED_TIP3_010" core="PARED_TIP3_010" pos="-83.826767 0.000014 -119.216164" yaw="1.32558" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA012" core="SUPORT ANTORCHA012" pos="-59.875648 3.739071 -28.452377" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PARED_TIP2_003" core="PARED_TIP2_003" pos="-62.577660 0.000007 -34.306442" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PARED_TIP3_007" core="PARED_TIP3_007" pos="-65.613266 0.000012 -46.436394" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA013" core="ANTORCHA013" pos="-46.536671 3.568692 -19.880173" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PARED_TIP1_004" core="PARED_TIP1_004" pos="40.014263 4.000007 -32.471478" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA018" core="SUPORT ANTORCHA018" pos="34.618183 3.284922 -37.134315" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA016" core="ANTORCHA016" pos="34.389343 3.568693 -36.860958" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="COLUMNA_INTERIOR020" core="COLUMNA_INTERIOR020" pos="43.283463 4.000013 -26.354923" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA020" core="ANTORCHA020" pos="43.150482 3.568694 -26.066841" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA021" core="SUPORT ANTORCHA021" pos="48.972752 3.284922 -13.550907" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA021" core="ANTORCHA021" pos="48.612698 3.568693 -13.444725" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="COLUMNA_INTERIOR021" core="COLUMNA_INTERIOR021" pos="48.771694 4.000012 -13.533215" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="COLUMNA_INTERIOR018" core="COLUMNA_INTERIOR018" pos="34.602039 4.000112 -37.080288" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA020" core="SUPORT ANTORCHA020" pos="43.447655 3.284924 -26.294306" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA001" core="SUPORT ANTORCHA001" pos="43.638702 3.284925 26.288395" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="COLUMNA_INTERIOR001" core="COLUMNA_INTERIOR001" pos="43.559746 4.000115 26.350578" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA002" core="ANTORCHA002" pos="23.462595 3.568692 44.905827" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA013" core="SUPORT ANTORCHA013" pos="-46.859222 3.284921 -20.038189" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA014" core="ANTORCHA014" pos="-39.438496 3.568693 -31.632072" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="COLUMNA_INTERIOR014" core="COLUMNA_INTERIOR014" pos="-17.230331 4.000112 -47.626137" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PARED_TIP3_006" core="PARED_TIP3_006" pos="-44.494781 4.000117 -26.726849" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA015" core="ANTORCHA015" pos="-29.297140 3.568694 -41.134796" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="COLUMNA_INTERIOR015" core="COLUMNA_INTERIOR015" pos="-29.579454 4.000013 -41.273003" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA015" core="SUPORT ANTORCHA015" pos="-29.531832 3.284923 -41.417393" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA016" core="SUPORT ANTORCHA016" pos="10.158813 3.284924 -49.745754" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="COLUMNA_INTERIOR016" core="COLUMNA_INTERIOR016" pos="10.338760 4.000114 -49.634686" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="COLUMNA_INTERIOR017" core="COLUMNA_INTERIOR017" pos="-3.455196 4.000014 -50.526276" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA017" core="ANTORCHA017" pos="-3.606770 3.568695 -50.293804" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA017" core="SUPORT ANTORCHA017" pos="-3.608517 3.284924 -50.664890" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PAREDS_PORTA_SALA_0" core="PAREDS_PORTA_SALA_0" pos="50.599915 4.000118 0.152714" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ARC_PORTA_SALA_0" core="ARC_PORTA_SALA_0" pos="49.316242 15.311697 0.473961" yaw="0.0" pitch="1.74846e-007" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PARED_TIP1_" core="PARED_TIP1_" pos="17.483086 4.000006 48.759708" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="COLUMNA_INTERIOR" core="COLUMNA_INTERIOR" pos="48.965912 4.000017 13.665009" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA" core="ANTORCHA" pos="48.709320 3.568697 13.473480" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA" core="SUPORT ANTORCHA" pos="49.047573 3.284925 13.594948" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA001" core="ANTORCHA001" pos="43.330822 3.568696 26.100559" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA009" core="ANTORCHA009" pos="-39.226936 3.568692 32.195747" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="COLUMNA_INTERIOR002" core="COLUMNA_INTERIOR002" pos="23.655115 4.000112 45.080780" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PARED_TIP1_002" core="PARED_TIP1_002" pos="-49.903049 4.000006 -13.690907" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="COLUMNA_INTERIOR009" core="COLUMNA_INTERIOR009" pos="-39.367630 4.000011 32.478680" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA006" core="ANTORCHA006" pos="-3.180298 3.568693 50.631500" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="COLUMNA_INTERIOR006" core="COLUMNA_INTERIOR006" pos="-29.266350 4.000110 41.868893" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA002" core="SUPORT ANTORCHA002" pos="23.664925 3.284921 45.218884" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA006" core="SUPORT ANTORCHA006" pos="-29.230171 3.284919 41.939835" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA007" core="SUPORT ANTORCHA007" pos="-16.948006 3.284922 48.227039" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PARED_TIP3_002" core="PARED_TIP3_002" pos="3.694466 4.000117 51.924675" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA007" core="ANTORCHA007" pos="-16.807159 3.568693 47.898880" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PARED_TIP3_003" core="PARED_TIP3_003" pos="-23.786064 4.000116 46.338421" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="COLUMNA_INTERIOR007" core="COLUMNA_INTERIOR007" pos="-16.995922 4.000012 48.157841" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA005" core="ANTORCHA005" pos="10.443127 3.568694 49.611740" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PARED_TIP2_001" core="PARED_TIP2_001" pos="-10.430180 4.000112 51.022442" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PARED_TIP1_001" core="PARED_TIP1_001" pos="-35.233265 4.000005 38.077930" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA003" core="ANTORCHA003" pos="34.625687 3.568695 36.946217" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="COLUMNA_INTERIOR003" core="COLUMNA_INTERIOR003" pos="34.908405 4.000015 37.088627" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="COLUMNA_INTERIOR005" core="COLUMNA_INTERIOR005" pos="10.429253 4.000014 49.797192" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA003" core="SUPORT ANTORCHA003" pos="34.887432 3.284925 37.191513" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="COLUMNA_INTERIOR004" core="COLUMNA_INTERIOR004" pos="-3.468597 4.000112 50.877964" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA004" core="ANTORCHA004" pos="-29.027603 3.568689 41.642036" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA004" core="SUPORT ANTORCHA004" pos="-3.244667 3.284922 50.998940" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="COLUMNA_INTERIOR008" core="COLUMNA_INTERIOR008" pos="-46.554314 4.000112 20.663153" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA005" core="SUPORT ANTORCHA005" pos="10.515724 3.284923 49.979652" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA008" core="ANTORCHA008" pos="-50.228439 3.568691 -6.481785" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA008" core="SUPORT ANTORCHA008" pos="-46.710835 3.284921 20.685604" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA018" core="ANTORCHA018" pos="10.056282 3.568695 -49.397076" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA019" core="ANTORCHA019" pos="23.163956 3.568696 -44.765415" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="COLUMNA_INTERIOR019" core="COLUMNA_INTERIOR019" pos="23.341393 4.000014 -45.037418" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA019" core="SUPORT ANTORCHA019" pos="23.338387 3.284925 -45.080742" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PARED_TIP2_002" core="PARED_TIP2_002" pos="-50.030556 4.000111 14.309494" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA009" core="SUPORT ANTORCHA009" pos="-39.491592 3.284920 32.444283" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA010" core="ANTORCHA010" pos="-46.380569 3.568692 20.514210" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="COLUMNA_INTERIOR010" core="COLUMNA_INTERIOR010" pos="-50.470577 4.000111 -6.765865" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PARED_TIP3_004" core="PARED_TIP3_004" pos="-44.350700 4.000116 27.273243" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA010" core="SUPORT ANTORCHA010" pos="-50.586880 3.284920 -6.563473" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA011" core="ANTORCHA011" pos="-50.166271 3.568693 7.197254" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PARED_TIP3_005" core="PARED_TIP3_005" pos="-51.997536 4.000117 0.293415" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="COLUMNA_INTERIOR011" core="COLUMNA_INTERIOR011" pos="-50.375763 4.000012 7.114311" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA011" core="SUPORT ANTORCHA011" pos="-50.536690 3.284922 7.234520" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="COLUMNA_INTERIOR012" core="COLUMNA_INTERIOR012" pos="-39.662144 4.000112 -31.858355" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA012" core="ANTORCHA012" pos="-17.155434 3.568692 -47.447002" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PARED_TIP1_003" core="PARED_TIP1_003" pos="-10.663795 4.000007 -50.506088" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="COLUMNA_INTERIOR013" core="COLUMNA_INTERIOR013" pos="-46.802814 4.000011 -20.063694" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SOSTRE_PARED" core="SOSTRE_PARED" pos="0.016540 9.000114 0.202597" yaw="0.0" pitch="1.74846e-007" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PARED_TIP2_" core="PARED_TIP2_" pos="-26.150642 0.000004 111.253075" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PARED_TIP2_004" core="PARED_TIP2_004" pos="-74.720016 0.000009 -82.826286" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PARED_TIP3_" core="PARED_TIP3_" pos="-23.115059 0.000009 123.383034" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PARED_TIP3_001" core="PARED_TIP3_001" pos="30.070518 4.000119 42.401611" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PARED_TIP3_008" core="PARED_TIP3_008" pos="-71.684433 0.000013 -70.696327" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PARED_TIP3_009" core="PARED_TIP3_009" pos="-77.755600 0.000014 -94.956245" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="PARED_TIP3_010" core="PARED_TIP3_010" pos="-83.826767 0.000014 -119.216164" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA014" core="SUPORT ANTORCHA014" pos="-17.295013 3.284921 -47.792854" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 </renderable_objects>

@@ -175,23 +175,23 @@ void CTestGameplay::Init() {
   //PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/Sala0.ASE", "sceneTraining");
   //PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/VolFinal.ASE", "sceneTraining");
   //PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/Sala0.ASE", "sceneTraining");
-  PHYSXM->GetCookingMesh()->CreateMeshFromASE(CCORE->getLevelPhisicsFile(), "sceneTraining");
+  //PHYSXM->GetCookingMesh()->CreateMeshFromASE(CCORE->getLevelPhisicsFile(), "sceneTraining");
   //PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/Level1/trainingPiky2.ASE", "sceneTraining");
-// PHYSXM->GetCookingMesh()->LoadFromXML("./Data/level1/LevelCooking.xml");
-  //  m_CockMesh->CreateMeshFromASE("./Data/sceneTrainingPiky.ASE", "sceneTraining");
+  PHYSXM->GetCookingMesh()->LoadFromXML(CCORE->getLevelPhisicsFile());
+  //  m_CockMesh->CreateMeshFromASE(". / Data / sceneTrainingPiky.ASE", "sceneTraining");
   m_PhysicActorCubeFix = new CPhysicActor(m_PhysicUserDataCube);
   m_PhysicActorCubeFix->AddMeshMap( PHYSXM->GetCookingMesh()->GetPhysicMeshMap());
   m_PhysicUserDataCube->SetPaint(false);
   PHYSXM->AddPhysicActor(m_PhysicActorCubeFix);
   /* m_PhysicActorCubeFix2 = new CPhysicActor(m_PhysicUserDataCube2);
-   m_PhysicActorCubeFix2->AddBoxSphape(Vect3f(2, 2, 2), Vect3f(0, 10.2, 4), Vect3f(0, 0, 0.35));
-   m_PhysicActorCubeFix2->CreateBody(0.5f);
-   PHYSXM->AddPhysicActor(m_PhysicActorCubeFix2);*/
+  m_PhysicActorCubeFix2->AddBoxSphape(Vect3f(2, 2, 2), Vect3f(0, 10.2, 4), Vect3f(0, 0, 0.35));
+  m_PhysicActorCubeFix2->CreateBody(0.5f);
+  PHYSXM->AddPhysicActor(m_PhysicActorCubeFix2);*/
   m_LuaInitLevelFunc = CCORE->getLuaLoadLevelFunc();
   //PHYSXM->ReleasePhysicActor(m_PhysicActorCubeFix2);
   /*  char l_InitLevelText[256];
-    _snprintf_s(l_InitLevelText, 256, 256, m_LuaInitLevelFunc.c_str());
-    SCRIPTM->RunCode(l_InitLevelText);
+  _snprintf_s(l_InitLevelText, 256, 256, m_LuaInitLevelFunc.c_str());
+  SCRIPTM->RunCode(l_InitLevelText);
   */
   std::stringstream ss;
   int var = 1;
@@ -199,7 +199,7 @@ void CTestGameplay::Init() {
   std::string toRun = ss.str();
   SCRIPTM->RunCode(toRun.c_str());
   CLuaGlobals::getInstance()->getString();
-// m_fsmManager = new CFSMManager();
+  // m_fsmManager = new CFSMManager();
   //m_fsmManager->Load("data//AI//Patrulla.xml");
 // m_fsmManager->Load("data//AI//FSMs.xml");
 // m_fsmManager->Load("data//AI//EnemyFSM.xml");
@@ -367,16 +367,16 @@ void CTestGameplay::Update(float dt) {
   //float deltaX =  im->GetMouseDelta().x;
   //float deltaY = im->GetMouseDelta().y;
   //float deltaZ = im->GetMouseDelta().z;
-  Vect3f l_Position = RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky")->GetPosition();
-  Vect3f auxPos = l_Position;
-  auxPos.z = -auxPos.z;
-  Vect3f dir = CAMCONTM->GetResource("FPS")->GetDirection();
-  dir.z = dir.z;
-  Vect3f up = CAMCONTM->GetResource("FPS")->GetVecUp();
-  up.z = -up.z;
-  WWSNDMGR->SetListenerPosition(auxPos, dir, up);
-  m_ObjectFPS->SetPosition(Vect3f(l_Position.x, l_Position.y + 1.0f, l_Position.z ));
-  m_ObjectThPS->SetPosition(l_Position);
+  /* Vect3f l_Position = RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky")->GetPosition();
+   Vect3f auxPos = l_Position;
+   auxPos.z = -auxPos.z;
+   Vect3f dir = CAMCONTM->GetResource("FPS")->GetDirection();
+   dir.z = dir.z;
+   Vect3f up = CAMCONTM->GetResource("FPS")->GetVecUp();
+   up.z = -up.z;
+   WWSNDMGR->SetListenerPosition(auxPos, dir, up);
+   m_ObjectFPS->SetPosition(Vect3f(l_Position.x, l_Position.y + 1.0f, l_Position.z ));
+   m_ObjectThPS->SetPosition(l_Position);*/
 // m_ObjectThPS->SetYaw(RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky")->GetYaw());
   if (ACT2IN->DoAction("ChangeCatalan")) {
     LANGM->SetCurrentLanguage("catalan");
