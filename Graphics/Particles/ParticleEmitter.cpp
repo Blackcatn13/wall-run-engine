@@ -7,6 +7,9 @@
 #include "GraphicsManager.h"
 #include "Particle.h"
 #include "Utils\Defines.h"
+#include "Core\Core.h"
+#include "Texture\Texture.h"
+#include "Texture\TextureManager.h"
 
 CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
   : m_CurrentTime(.0f)
@@ -94,7 +97,12 @@ void CParticleEmitter::PopulateParticle(CParticle *p) {
   p->setColor1(col1);
   p->setGravity(m_Gravity);
   p->setVelocidadOndulacion(mathUtils::RandomFloatRange(m_MinVelocidadOndulacion, m_MaxVelocidadOndulacion));
+  //CTexture *l_Texture = new CTexture();
 
+// l_Texture->Load(m_sTexture);
+  /* l_Texture->Create(m_sTexture, size, size, 1, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, l_Texture->GetFormatTypeFromString("R8G8B8"));
+   float height = l_Texture->GetHeight();*/
+//  p->setTexture(l_Texture);
   float o1x = m_vOndulacion1.x;
   float o2x = m_vOndulacion2.x;
   float o1y = m_vOndulacion1.y;
