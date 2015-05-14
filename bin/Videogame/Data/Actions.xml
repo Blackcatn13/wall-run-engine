@@ -307,6 +307,10 @@
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_TAB"/>
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LSHIFT"/>
     </action>
+	
+	<action name="ShowLifeGUI">
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_G"/>
+    </action>
 
     <action name="AddSlowMotion">
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>

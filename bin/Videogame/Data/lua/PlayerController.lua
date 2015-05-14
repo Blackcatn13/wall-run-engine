@@ -38,11 +38,11 @@ function on_update_player_lua(l_ElapsedTime)
 	player_controller.m_Gravity = 9;						--Gravedad que afecta al personaje cuando cae.
 	player_controller.m_GravityJump = 11;					--Gravedad que afecta cuando el personaje está impulsándose hacia arriba en el salto.
 	
-	player_controller.m_Speed = 8;							--Velocidad de movimiento.
+	player_controller.m_Speed = 13;							--Velocidad de movimiento.
 	player_controller.m_JumpForce = 5.5;					--Fuerza de salto, impulso.
 	superjumForce = 10;						 	--SUPERSALTO CHEAT
 	player_controller.m_AttackForce = 0.8;					--Impulse force for the attack.
-	player_controller.m_PhysicController:set_step(0.3); 	--Altura que puede superar (escalones).
+	player_controller.m_PhysicController:set_step(0.5); 	--Altura que puede superar (escalones).
 	local AirTime = 0.7;						-- Time into the air, playing air loop
 	local m_damageFeedBackSpeed = 13;
 	local m_damageTime = 0.6;
