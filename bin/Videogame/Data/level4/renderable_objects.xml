@@ -14,6 +14,15 @@
 	<!-- Animated Models -->
 	<animated_model name="Piky" core="piky" pos="0 2 0" yaw="0" pitch="0" roll="0" scale="1 1 1"/>
 	<animated_model name="Chucky" core="chuky" pos="0 2 0" yaw="0" pitch="0" roll="0" scale="1 1 1" layer="enemies" />
+	
+	<mesh_instance name="MikMik1" core="Enemy1"  pos="500.826767 10.000014 -10.216164" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />
+	<mesh_instance name="MikMik2" core="Enemy1"  pos="490.826767 10.000014 -5.216164" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />
+	<mesh_instance name="PumPum1" core="Enemy1"  pos="495.826767 10.000014 -8.216164" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />
+	<mesh_instance name="disparoPumPum1" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" layer="enemies" />
+	<mesh_instance name="PumPum2" core="Enemy1"  pos="-18.0 2.0 -8.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />
+	<mesh_instance name="disparoPumPum2" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" layer="enemies" />
+	<mesh_instance name="PumPum3" core="Enemy1"  pos="-23.0 2.0 -10.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />
+	<mesh_instance name="disparoPumPum3" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" layer="enemies" />
 
 
 	<mesh_instance name="ARCADA" core="ARCADA" pos="-0.017227 9.222342 0.316050" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
