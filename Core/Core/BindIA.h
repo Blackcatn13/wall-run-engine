@@ -22,6 +22,7 @@
 #include "Enemy.h"
 #include "EasyEnemy.h"
 #include "AI\Puzzle.h"
+#include "AI\FSMInstance.h"
 
 extern "C"
 {
@@ -91,6 +92,7 @@ void RegisterAI() {
     .property("m_AttackSpeed", &CEasyEnemy::GetAttackSpeed )
     .property("m_OriginalSpeed", &CEasyEnemy::GetOriginalSpeed )
     .property("m_Returning", &CEasyEnemy::getReturning, &CEasyEnemy::setReturning)
+    .property("m_FSM", &CEasyEnemy::getFsm)
     .def("get_wp_vector_size", &CEasyEnemy::GetWPVectorSize )
 
     // .def("init", &CEasyEnemy::Init)
