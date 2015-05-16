@@ -23,6 +23,7 @@
 #include "EasyEnemy.h"
 #include "AI\Puzzle.h"
 #include "AI\FSMInstance.h"
+#include "AI\FSMManager.h"
 
 extern "C"
 {
@@ -79,6 +80,20 @@ void RegisterAI() {
 
     /* .def("update", &CEnemy::Update)
      .def("render", &CEnemy::Render)*/
+  ];
+
+  luabind::module(LUA_STATE) [
+    class_<FSM>("FSM")
+    .def(constructor<FSM>())
+    .def_readwrite("m_States", &FSM::m_States)
+    .def_readwrite("m_previousState", &FSM::m_previousState)
+    .def_readwrite("m_currentState", &FSM::m_currentState)
+  ];
+
+  luabind::module(LUA_STATE) [
+    class_<CFSMInstance>("CFSMInstance")
+    .def(constructor<FSM *>())
+    .def("newState", &CFSMInstance::setNewState)
   ];
 
   luabind::module(LUA_STATE) [

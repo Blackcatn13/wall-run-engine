@@ -17,7 +17,8 @@ class CFSMInstance {
   GET_SET(CMapManager<STATE>,	States)
   GET_SET( std::string, PreviousState)
   GET_SET( std::string, CurrentState)
-  GET_SET( std::string, newState)
   GET_SET( bool, Changed)
+  void setNewState(std::string);
+  std::string getNewState();
 };
 
