@@ -293,11 +293,12 @@ void CAIController::ActualizarHitboxEnemigo() {
 
 void CAIController::AddDamagePlayer() {
 //	PLAYC->SetPosition(Vect3f(PLAYC->GetPosition().x, PLAYC->GetPosition().y, PLAYC->GetPosition().z + 5.0));
-  //SCRIPTM->RunCode("Player:get_instance().player_take_damage()");
+  SCRIPTM->RunCode("Player:get_instance().player_take_damage()");
 }
 
 void CAIController::AddDamageEnemy() {
   m_life = m_life - 1;
+  //Diferenciar si se está sltando o no para lanzar la animación de segundo salto o no
   if (m_life <= 0) {
     m_isAlive = false;
     m_RenderableObject->setPrintable(false);
@@ -324,10 +325,14 @@ int CAIController::CheckPlayerCollision() {
   //1 if player hits
   //2 if player gets hit
   //0 if no hit
-  if ((RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource(getName())->getPrintable()) && (m_Position.Distance(PLAYC->GetPosition()) < m_EnemyHitbox)) {
-    if (PLAYC->GetPosition().y > m_Position.y) {
+  float l_MargenSuperiorPlayer = 2.0;
+  if (getisAlive() && (m_Position.Distance(PLAYC->GetPosition()) < m_EnemyHitbox)) {
+	  if (PLAYC->GetPosition().y > m_Position.y + l_MargenSuperiorPlayer || PLAYC->getisAttack()) 
+	{
       return 1;
-    } else {
+    } 
+	else 
+	{
       return 2;
     }
   }
