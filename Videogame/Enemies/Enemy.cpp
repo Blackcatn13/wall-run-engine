@@ -109,14 +109,14 @@ void CEnemy::UpdateFSM(float elapsedTime) {
     s->m_ElapsedTime = 0;
     doComprobation = 0;
   }
-  bool change = CLuaGlobals::getInstance()->ValueChanged();
+  bool change = m_Fsm->getChanged(); // CLuaGlobals::getInstance()->ValueChanged();
   if (change) {
     s->m_onEnter = false;
     char l_ExitFunction[256];
     _snprintf_s(l_ExitFunction, 256, 256, "%s(\"%s\")", s->onExit.c_str(), getName().c_str());
     SCRIPTM->RunCode(l_ExitFunction);
     m_Fsm->setPreviousState( m_Fsm->getCurrentState());
-    m_Fsm->setCurrentState( CLuaGlobals::getInstance()->getString());
+    m_Fsm->setCurrentState( m_Fsm->getNewState());//CLuaGlobals::getInstance()->getString());
   }
 
   /* std::stringstream ss;

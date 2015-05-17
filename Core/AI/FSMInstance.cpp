@@ -4,7 +4,9 @@
 CFSMInstance::CFSMInstance(FSM *fsm):
   m_States(fsm->m_States),
   m_CurrentState(fsm->m_currentState),
-  m_PreviousState(fsm->m_previousState) {
+  m_PreviousState(fsm->m_previousState),
+  m_newState(""),
+  m_Changed(false) {
 }
 
 

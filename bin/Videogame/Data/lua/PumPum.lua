@@ -41,12 +41,12 @@ function pumpum_update_stopped(ElapsedTime, doComprobation, name)
 			-- En caso de acabar de perseguir o llegar a un WP si la distancia al siguiente es muy corta vuelve a la posicion original
 						
 			if enemy.m_CurrentTime >= 0.1 then
-				instance.m_string = "Buscar_next_WP"
+				enemy:m_FSM():newState("Buscar_next_WP")
 			end
 						
 		else --En caso de no tener waypoints que mire al player
 			if enemy.m_CurrentWp == enemy.m_OriginalPosition and enemy.m_Returning == true then
-				instance.m_string = "Andar_WP"
+				enemy:m_FSM():newState("Andar_WP")
 				enemy.m_Returning = false
 			else 
 				local player_position = coreInstance:get_player_controller():get_position()
@@ -60,13 +60,13 @@ function pumpum_update_stopped(ElapsedTime, doComprobation, name)
 		-- Si le Player se acerca atacaarl
 		if check_attack(enemy) == true and enemy.m_CurrentTime >= 2 then
 		--	coreInstance:trace("Vamos a perseguir")
-			instance.m_string = "Perseguir_Player"
+			enemy:m_FSM():newState("Perseguir_Player")
 		end
 		enemy.m_CurrentTime = enemy.m_CurrentTime +1 * ElapsedTime
 		enemy:actualizar_disparo(ElapsedTime)
 		enemy:actualizar_hitbox()
 	else
-		instance.m_string = "Parado"
+		enemy:m_FSM():newState("Parado")
 	end
 	
 end
@@ -82,7 +82,7 @@ function pumpum_exit_moving(name)
 	if (enemy ~= nil) and (enemy.m_isAlive == true) then
 		enemy.m_CurrentTime = 0 
 	else
-		instance.m_string = "Parado"
+		enemy:m_FSM():newState("Parado")
 	end
 end
 
@@ -103,19 +103,19 @@ function pumpum_update_moving(ElapsedTime, doComprobation, name)
 	--		coreInstance:trace("Am I moving??")
 		if check_attack(enemy) == true then
 		--	coreInstance:trace("Vamos a perseguir")
-			instance.m_string = "Perseguir_Player"
+			enemy:m_FSM():newState("Perseguir_Player")
 		else
 		
 			local wp_distance = get_distance_between_points(enemy:get_position(), enemy.m_CurrentWp)
 			if wp_distance < 4 then
 				--coreInstance:trace("Ya he llegado y a por otro")
-				instance.m_string = "Buscar_next_WP"
+				enemy:m_FSM():newState("Buscar_next_WP")
 			end
 		end
 		enemy:actualizar_disparo(ElapsedTime)
 		enemy:actualizar_hitbox()
 	else
-		instance.m_string = "Parado"
+		enemy:m_FSM():newState("Parado")
 	end
 		
 end
@@ -132,9 +132,9 @@ function pumpum_enter_calcwp(name)
 			currentwp = wp2
 		end--]]
 		enemy.m_CurrentWp = enemy:get_next_wp()
-		instance.m_string = "Andar_WP"
+		enemy:m_FSM():newState("Andar_WP")
 	else
-		instance.m_string = "Parado"
+		enemy:m_FSM():newState("Parado")
 	end
 end
 
@@ -146,7 +146,7 @@ function pumpum_exit_calcwp(name)
 	if (enemy ~= nil) and (enemy.m_isAlive == true) then
 		 enemy.m_CurrentTime = 0
 	else
-		instance.m_string = "Parado"
+		enemy:m_FSM():newState("Parado")
 	end
 end
 
@@ -161,9 +161,9 @@ function pumpum_update_calcwp(ElapsedTime, doComprobation, name)
 		else
 			enemy.wp = Vect3f(2.0,2.0,15.0)
 		end--]]
-		instance.m_string = "Andar_WP"
+		enemy:m_FSM():newState("Andar_WP")
 	else
-		instance.m_string = "Parado"
+		enemy:m_FSM():newState("Parado")
 	end
 end
 
@@ -202,12 +202,12 @@ function pumpum_update_attack_player(ElapsedTime, doComprobation, name)
 	--if doComprobation == 1 then
 		local player_distance = get_distance_to_player(enemy:get_position(), player_position)
 		if player_distance > 225 then
-			instance.m_string = "Parado"
+			enemy:m_FSM():newState("Parado")
 		--	enemy.m_Speed = enemy.m_Speed / speed_modifier
 		end
 		if player_distance < 1 then
 		-- Aqui meter impacto del ataque
-			instance.m_string = "Parado"
+			enemy:m_FSM():newState("Parado")
 		--	enemy.m_Speed = enemy.m_Speed / speed_modifier
 		end
 	if (enemy ~= nil) then

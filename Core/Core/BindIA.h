@@ -70,19 +70,6 @@ void RegisterAI() {
   ];
 
   luabind::module(LUA_STATE) [
-    class_<CEnemy, CAIController>("CEnemy")
-    .def(constructor<CXMLTreeNode>())
-    .def(constructor<std::string, std::string, Vect3f, float, float, float , float >())
-    //.property("m_Speed", &CEnemy::getSpeed, &CEnemy::setSpeed)
-    .property("m_CurrentTime", &CEnemy::getCurrentTime, &CEnemy::setCurrentTime)
-    .property("m_OriginalPosition", &CEnemy::GetOriginalPosition)
-    .def("get_name",  &CEnemy::GetEnemyName)
-
-    /* .def("update", &CEnemy::Update)
-     .def("render", &CEnemy::Render)*/
-  ];
-
-  luabind::module(LUA_STATE) [
     class_<FSM>("FSM")
     .def(constructor<FSM>())
     .def_readwrite("m_States", &FSM::m_States)
@@ -97,6 +84,19 @@ void RegisterAI() {
   ];
 
   luabind::module(LUA_STATE) [
+    class_<CEnemy, CAIController>("CEnemy")
+    .def(constructor<CXMLTreeNode>())
+    .def(constructor<std::string, std::string, Vect3f, float, float, float , float >())
+    //.property("m_Speed", &CEnemy::getSpeed, &CEnemy::setSpeed)
+    .property("m_CurrentTime", &CEnemy::getCurrentTime, &CEnemy::setCurrentTime)
+    .property("m_OriginalPosition", &CEnemy::GetOriginalPosition)
+    .def("get_name",  &CEnemy::GetEnemyName)
+    .def("m_FSM", &CEnemy::getFsm)
+    /* .def("update", &CEnemy::Update)
+     .def("render", &CEnemy::Render)*/
+  ];
+
+  luabind::module(LUA_STATE) [
     class_<CEasyEnemy, CEnemy>("CEasyEnemy")
     .def(constructor<CXMLTreeNode>())
     .def(constructor<std::string, std::string, Vect3f, float, float, float , float >())
@@ -107,7 +107,6 @@ void RegisterAI() {
     .property("m_AttackSpeed", &CEasyEnemy::GetAttackSpeed )
     .property("m_OriginalSpeed", &CEasyEnemy::GetOriginalSpeed )
     .property("m_Returning", &CEasyEnemy::getReturning, &CEasyEnemy::setReturning)
-    .property("m_FSM", &CEasyEnemy::getFsm)
     .def("get_wp_vector_size", &CEasyEnemy::GetWPVectorSize )
 
     // .def("init", &CEasyEnemy::Init)
