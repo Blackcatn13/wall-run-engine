@@ -166,6 +166,7 @@ void RegisterPhysX() {
     .property("m_GravityJump", &CPlayerController::getGravityJump, &CPlayerController::setGravityJump )
     .property("m_Speed", &CPlayerController::getSpeed, &CPlayerController::setSpeed )
     .property("m_JumpForce", &CPlayerController::getJumpForce, &CPlayerController::setJumpForce )
+	.property("m_isOnPlatform", &CPlayerController::getisOnPlatform, &CPlayerController::setisOnPlatform )
     .property("m_isJumping", &CPlayerController::getisJumping, &CPlayerController::setisJumping )
     .property("m_isJumpingMoving", &CPlayerController::getisJumpingMoving, &CPlayerController::setisJumpingMoving )
     .property("m_is3D", &CPlayerController::getis3D, &CPlayerController::setis3D )

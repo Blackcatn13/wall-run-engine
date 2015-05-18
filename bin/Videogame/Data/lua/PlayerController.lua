@@ -249,7 +249,7 @@ function on_update_player_lua(l_ElapsedTime)
 	-- --///////////////////////////////////////////////////////////
 	-- Gravedad que siempre afecta al Player. 
 	--///////////////////////////////////////////////////////////
-	mov.y = -player_controller.m_Gravity * l_ElapsedTime;
+	mov.y = -player_controller.m_Gravity * l_ElapsedTime * player_controller.m_isOnPlatform;
 	
 	--///////////////////////////////////////////////////////////
 	-- Cuando el Player está saltando, su velocidad dependerá del tipo de salto realizado. 

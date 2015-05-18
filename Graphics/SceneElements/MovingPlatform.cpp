@@ -132,7 +132,7 @@ void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
         //PLAYC->getPhysicController()->MovePlayer(direction.Normalize() * m_Speed * dt + PLAYC->getGravity() * Vect3f(0,1,0) * 1.2 * dt, dt);
         //PLAYC->IsGrounded(direction.Normalize() * m_Speed * dt / 1.0, dt);
         if (!PLAYC->getisJumping() || PLAYC->getCurrentJumpForce() < 0) {
-          PLAYC->setGravity(0.0);
+          PLAYC->setisOnPlatform(0.0);
           Vect3f l_PlayerPosition = PLAYC->getPhysicController()->GetPosition();
           l_playerPosition.y = m_Position.y + l_DesplazamientoVerticalPlataforma;
           PLAYC->getPhysicController()->SetPosition(l_playerPosition);
@@ -143,7 +143,7 @@ void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
           PLAYC->setisJumpingMoving(false);
         }
       } else {
-        PLAYC->setGravity(11.0);
+        PLAYC->setisOnPlatform(1.0);
 
         if (isAround(l_playerPosition, m_Position)) {
           PLAYC->getPhysicController()->Move(-dirRay.Normalize() * m_Speed * 3 * dt / 1.0, dt);
