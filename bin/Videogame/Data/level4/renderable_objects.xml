@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <renderable_objects>
-	<layer name="solid" default="true"/>
+	<layer name="player" default="true"/>
 	<layer name="skybox"/>
 	<layer name="alpha_objects"/>
 	<layer name="alpha_blend_objects"/>
@@ -11,9 +11,9 @@
 	<layer name="collectible"/>
 	<layer name="enemies"/>
 	<layer name="puzzle"/>
-	<layer name="player"/>
+	<layer name="solid"/>
 	<!-- Animated Models -->
-	<animated_model name="Piky" core="piky" pos="0 2 0" yaw="0" pitch="0" roll="0" scale="1 1 1"/>
+	<animated_model name="Piky" core="piky" pos="0 2 0" yaw="0" pitch="0" roll="0" scale="1 1 1" layer="player"/>
 	<animated_model name="Chucky" core="chuky" pos="0 2 0" yaw="0" pitch="0" roll="0" scale="1 1 1" layer="enemies"/>
 	
 	<mesh_instance name="MikMik1" core="Enemy1"  pos="500.826767 10.000014 -10.216164" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />

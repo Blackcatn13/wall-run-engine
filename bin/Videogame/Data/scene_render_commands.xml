@@ -35,8 +35,8 @@
 	<!--<render_scene layer="switches" active="true" />-->
 	<render_scene layer="puzzle" active="true" />
 	<render_scene layer="mov_platforms" active="true" />
+	<render_scene layer="player" active="true"/>
 	<render_scene layer="solid" active="true"/>
-	
 	<unset_render_target render_target="deferred_multiple_render_target"/>
 	<disable_z_write/>
 	<disable_z_test />
