@@ -24,8 +24,11 @@ function Player.new()
 	self.stickers = 0
 	self.is_hit = false
 	self.vector_damage = Vect3f(0.0,0.0,0.0)
-	
+	self.enemies_killed = 0
+	self.enemy_puzzle_active = false
+
 	------	 PLAYER FUNCTIONS -----
+		
 	function self.add_pixelites(inc_pixelites)
 		self.pixelites = self.pixelites + inc_pixelites
 		self.coreInstance:trace("Num Pixelites: "..tostring(self.pixelites))

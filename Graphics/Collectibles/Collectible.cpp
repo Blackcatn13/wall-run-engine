@@ -12,7 +12,7 @@
 
 
 
-CCollectible::CCollectible(CRenderableObject *RendObj, std::string layerMame, std::string MeshLuaCode, std::string TriggerLuaCode, Vect3f triggerSize, std::string param2):
+CCollectible::CCollectible(CRenderableObject *RendObj, std::string layerMame, std::string MeshLuaCode, std::string TriggerLuaCode, Vect3f triggerSize, std::string param2, bool visible):
   m_RenderableObject(RendObj),
   m_LuaCode(MeshLuaCode),
 // m_TriggerLuaCode(TriggerLuaCode),
@@ -30,6 +30,9 @@ CCollectible::CCollectible(CRenderableObject *RendObj, std::string layerMame, st
   m_Trigger = new CTrigger("box", l_TriggerPosition, triggerSize, 0.0f, Vect3f(0.0f, 1.5f, 1.5f), "enter", TriggerLuaCode, l_Param1, param2, l_pUserData);
   m_Trigger->GetUserData()->SetMyCollisionGroup(ECG_PLAYER);
   TRIGGM->AddResource(name, m_Trigger);
+  m_RenderableObject->setVisible(visible);
+  if (visible == false)
+	  m_Trigger->setIsSwitched(true);
 }
 
 
