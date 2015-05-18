@@ -198,6 +198,14 @@ void CAIController::MoveTo(float dt, Vect3f point) {
 
 }
 
+void CAIController::MoveToPosition(Vect3f pos) {
+  m_PhysicController->SetPosition(pos);
+  Vect3f l_Position = m_PhysicController->GetPosition();
+  SetPosition(l_Position);
+  if (m_RenderableObject != NULL)
+    m_RenderableObject->SetPosition(l_Position);
+}
+
 
 void CAIController::RotateOrMove(float dt, Vect3f point) {
   if (point.Distance(m_Position) >= 2) {
@@ -327,12 +335,9 @@ int CAIController::CheckPlayerCollision() {
   //0 if no hit
   float l_MargenSuperiorPlayer = 2.0;
   if (getisAlive() && (m_Position.Distance(PLAYC->GetPosition()) < m_EnemyHitbox)) {
-	  if (PLAYC->GetPosition().y > m_Position.y + l_MargenSuperiorPlayer || PLAYC->getisAttack()) 
-	{
+    if (PLAYC->GetPosition().y > m_Position.y + l_MargenSuperiorPlayer || PLAYC->getisAttack()) {
       return 1;
-    } 
-	else 
-	{
+    } else {
       return 2;
     }
   }

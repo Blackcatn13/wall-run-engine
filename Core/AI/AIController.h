@@ -31,6 +31,7 @@ class CAIController : public CObject3D {
   void AddDamagePlayer();
   void ActualizarHitboxEnemigo();
   void AddDamageEnemy();
+  void MoveToPosition(Vect3f pos);
 
 
   GET_SET(CPhysicController *, PhysicController);

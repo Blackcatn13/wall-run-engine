@@ -155,6 +155,13 @@ function set_checkpoint(trigger_name)
 
 end
 
+function ChuckyApear()
+	coreInstance:trace("CHUCKY APEARS!!!!!")
+	local current_position = Vect3f(player.get_player_controller():get_position())
+	local Chucky = enemy_manager:get_enemy("Chucky");
+	Chucky:move_to_position(current_position);
+end
+
 function ChuckyJump()
 	
 end

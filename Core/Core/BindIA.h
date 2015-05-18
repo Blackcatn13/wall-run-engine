@@ -67,6 +67,7 @@ void RegisterAI() {
     .def("actualizar_disparo", &CAIController::ActualizarDisparo)
     .def("actualizar_hitbox", &CAIController::ActualizarHitboxEnemigo)
     .def("get_angle_diff", &CAIController::getAngleDiff)
+    .def("move_to_position", &CAIController::MoveToPosition)
   ];
 
   luabind::module(LUA_STATE) [
