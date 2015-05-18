@@ -82,6 +82,14 @@ function Player.new()
 		local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 		self.coreInstance:trace("player dies")
 		self.num_lives = self.num_lives -1
+		gui_manager:set_is_displayed(true);
+		if gui_manager:get_active_image('VidesGUI') == 'Vides3' then
+			gui_manager:set_image('VidesGUI','Vides2')
+		else
+			if gui_manager:get_active_image('VidesGUI') == 'Vides2' then
+				gui_manager:set_image('VidesGUI','Vides1')
+			end	
+		end
 		gui_manager:set_image('LifeGUI','Life3')
 		if self.num_lives == 0 then
 			--game over

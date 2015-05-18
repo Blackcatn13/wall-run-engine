@@ -320,6 +320,8 @@ void CTestGameplay::DeInit() {
 
 Vect2i CTestGameplay::RenderDebugInfo(bool render/*, float dt*/) {
   Vect2i size;
+  uint32 screenWidth = 1030;
+  Vect2i auxRight = Vect2i(screenWidth-m_textPosition.x, m_textPosition.y);
   if (m_printInfo) {
     // get Process debug size
     size = CProcess::RenderDebugInfo(false/*, m_Dt*/);
@@ -337,18 +339,18 @@ Vect2i CTestGameplay::RenderDebugInfo(bool render/*, float dt*/) {
        size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Drawing 3"));
      else
        size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Drawing 2"));*/
-    size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de vertices: %d", m_totalVertices));
-    size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de caras: %d", m_totalFaces));
-    size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Numero de primitivas: %d", m_numPrimitives));
+    size.Add_Max(FONTM->DrawDefaultText(screenWidth-m_textPosition.x+10, size.y, colWHITE, "Numero de vertices: %d", m_totalVertices));
+    size.Add_Max(FONTM->DrawDefaultText(screenWidth-m_textPosition.x+10, size.y, colWHITE, "Numero de caras: %d", m_totalFaces));
+    size.Add_Max(FONTM->DrawDefaultText(screenWidth-m_textPosition.x+10, size.y, colWHITE, "Numero de primitivas: %d", m_numPrimitives));
     aux_x = max(aux_x, 240);
-    GRAPHM->DrawRectangle2D (m_textPosition, aux_x, size.y , m_Color, 2, 2, CColor(0, 0, 0, 1));
+    GRAPHM->DrawRectangle2D (auxRight/*m_textPosition*/, aux_x, size.y , m_Color, 2, 2, CColor(0, 0, 0, 1));
   } else {
     // print a message asking for key to open the menu
 
     Vect2i aux = m_textPosition;
     aux.Add_Max(FONTM->GetLiteralSize(aux.x, aux.y, "OpenDebug"));
-    GRAPHM->DrawRectangle2D (m_textPosition, aux.x, aux.y , m_Color, 2, 2, CColor(0, 0, 0, 1));
-    FONTM->DrawLiteral(m_textPosition.x, m_textPosition.y, "OpenDebug");
+    GRAPHM->DrawRectangle2D (auxRight/*m_textPosition*/, aux.x, aux.y , m_Color, 2, 2, CColor(0, 0, 0, 1));
+    FONTM->DrawLiteral(screenWidth-m_textPosition.x, m_textPosition.y, "OpenDebug");
     /* if (GRAPHM->isSphereVisible(Vect3f(15, 0, 0), 2))
        size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Drawing 3"));
      else
