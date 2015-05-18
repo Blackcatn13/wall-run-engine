@@ -8,7 +8,7 @@
 		<texture name="img1" name_texture="./Data/GUI/GoPixelGo/MenuMain2.jpg"/>
 	</Image>
 	
-	<Button name="Play" posx="60.00" posy="17.00" height="15.00" width="22.00" visible="true" 
+	<Button name="Play" posx="60.00" posy="10.00" height="15.00" width="22.00" visible="true" 
           active="true" texture_normal="./Data/GUI/GoPixelGo/PlayButton.png"
           texture_over="./Data/GUI/GoPixelGo/PlayButtonHover.png"
           texture_clicked="./Data/GUI/GoPixelGo/PlayButton.png"
@@ -17,22 +17,30 @@
 							CCoreLuaWrapper().m_CoreInstance:getGUIManager():push_windows('Play.xml');"
           OnOverAction=""/>
 		  
-	<Button name="Options" posx="60.00" posy="39.00" height="15.00" width="22.00" visible="true" 
+	<Button name="Options" posx="60.00" posy="30.00" height="15.00" width="22.00" visible="true" 
           active="true" texture_normal="./Data/GUI/GoPixelGo/OptionsButton.png"
           texture_over="./Data/GUI/GoPixelGo/OptionsButtonHover.png"
           texture_clicked="./Data/GUI/GoPixelGo/OptionsButton.png"
           texture_deactivated="./Data/GUI/GoPixelGo/OptionsButton.png"
-          OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music');
-							CCoreLuaWrapper().m_CoreInstance:exit_game()"
+          OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music');"
           OnOverAction=""/>
 		  
-	<Button name="Extras" posx="60.00" posy="61.00" height="15.00" width="22.00" visible="true" 
+	<Button name="Extras" posx="60.00" posy="50.00" height="15.00" width="22.00" visible="true" 
           active="true" texture_normal="./Data/GUI/GoPixelGo/ExtrasButton.png"
           texture_over="./Data/GUI/GoPixelGo/ExtrasButtonHover.png"
           texture_clicked="./Data/GUI/GoPixelGo/ExtrasButton.png"
           texture_deactivated="./Data/GUI/GoPixelGo/ExtrasButton.png"
           OnClickedAction=" CCoreLuaWrapper().m_CoreInstance:getGUIManager():push_windows('Collectibles.xml')
 			CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music');"
+          OnOverAction=""/>
+		  
+	<Button name="Exit" posx="60.00" posy="70.00" height="15.00" width="22.00" visible="true" 
+          active="true" texture_normal="./Data/GUI/GoPixelGo/ExitButton.png"
+          texture_over="./Data/GUI/GoPixelGo/ExitButtonHover.png"
+          texture_clicked="./Data/GUI/GoPixelGo/ExitButton.png"
+          texture_deactivated="./Data/GUI/GoPixelGo/ExitButton.png"
+          OnClickedAction=" CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music');
+							CCoreLuaWrapper().m_CoreInstance:exit_game()"
           OnOverAction=""/>
 
 </Windows>
