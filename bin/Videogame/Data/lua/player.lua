@@ -51,7 +51,7 @@ function Player.new()
 		return self.coreInstance:get_player_controller()
 	end
 	
-	function self.player_take_damage(direction, elapsed_time)
+	function self.player_take_damage(direction)
 		if self.is_hit == false then
 			if direction.x ~= 0 or direction.y ~= 0 or direction.z ~= 0 then
 				self.vector_damage = direction

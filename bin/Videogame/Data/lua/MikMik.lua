@@ -183,7 +183,8 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 		--	enemy.m_Speed = enemy.m_Speed / speed_modifier
 		end
 		coreInstance:trace(tostring(player_distance))
-		if player_distance < 4 then -- Hacer por colision
+		enemy:actualizar_hitbox()
+		--[[if player_distance < 4 then -- Hacer por colision
 		-- Aqui meter impacto del ataque
 			if player_controller.m_isAttack == false then
 				coreInstance:trace("tocado!!")
@@ -196,7 +197,7 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 				check_hitbox(ElapsedTime, player_position, enemy)
 			end
 		--	enemy.m_Speed = enemy.m_Speed / speed_modifier
-		end
+		end]]
 		
 	--end
 end
