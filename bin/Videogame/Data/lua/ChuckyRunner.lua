@@ -3,7 +3,7 @@ local player = Player:get_instance();
 local playerController = player.get_player_controller();
 local distance = 4;
 local chucky = enemy_manager:get_enemy("Chucky");
-chucky.m_PhysicController:set_group(13);
+chucky.m_PhysicUserData.m_myCollisionGroup = 18;
 
 -- Chucky Variables --
 local Chucky_running_speed = 4;
@@ -64,8 +64,8 @@ end
 -- Chucky Jumping --
 
 function chucky_runner_enter_jumping(name)
-	chucky.m_RenderableObject:blend_cycle(1,0,0.2);
-	chucky.m_RenderableObject:execute_action(2,0,0.3,1,false);
+	chucky.m_RenderableObject:clear_cycle(1,0);
+	chucky.m_RenderableObject:execute_action(2,0,0,1,false);
 end
 
 function chucky_runner_exit_jumping(name)
@@ -73,8 +73,11 @@ function chucky_runner_exit_jumping(name)
 end
 
 function chucky_runner_update_jumping(ElapsedTime, doComprobation, name)
-	local pos = chucky.m_RenderableObject:getAnimationBonePosition();
-	chucky:set_position(pos);
+	--local Topos = chucky.m_RenderableObject:getAnimationBonePosition();
+	--local pos = chucky:get_position();
+	--local mov = Topos - pos;
+	--chucky.m_PhysicController:move(Topos, ElapsedTime);
+	--chucky.set_position(chucky.m_PhysicController:get_position())
 end
 
 -- Chucky Catching --

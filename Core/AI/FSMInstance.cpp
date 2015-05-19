@@ -19,5 +19,6 @@ void CFSMInstance::setNewState(std::string state) {
 }
 
 std::string CFSMInstance::getNewState() {
+  m_Changed = false;
   return m_newState;
 }

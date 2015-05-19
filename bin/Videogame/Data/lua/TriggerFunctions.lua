@@ -181,7 +181,7 @@ end
 
 function ChuckyApear()
 	local current_position = Vect3f(player.get_player_controller():get_position());
-	local pos = Vect3f(current_position.x,2,current_position.z);
+	local pos = Vect3f(current_position.x,4,current_position.z);
 	local Chucky = enemy_manager:get_enemy("Chucky");
 	Chucky:move_to_position(pos);
 	local yaw = player.get_player_controller():get_yaw();
@@ -191,5 +191,6 @@ end
 
 function ChuckyJump()
 	coreInstance:trace("Chucky Jumping");
+	local Chucky = enemy_manager:get_enemy("Chucky");
 	Chucky:m_FSM():newState("Saltando");
 end

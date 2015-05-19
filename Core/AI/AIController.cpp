@@ -302,11 +302,11 @@ void CAIController::ActualizarHitboxEnemigo() {
 
 void CAIController::AddDamagePlayer() {
 //	PLAYC->SetPosition(Vect3f(PLAYC->GetPosition().x, PLAYC->GetPosition().y, PLAYC->GetPosition().z + 5.0));
-	Vect3f damageVector = PLAYC->GetPosition() - GetPosition();
-	damageVector.Normalize();
-	std::stringstream buffer;
-	buffer<<"Player:get_instance().player_take_damage(Vect3f("<<damageVector.x<<", "<<damageVector.y<<", "<<damageVector.z<<"))";
-	SCRIPTM->RunCode(buffer.str());
+  Vect3f damageVector = PLAYC->GetPosition() - GetPosition();
+  damageVector.Normalize();
+  std::stringstream buffer;
+  buffer << "Player:get_instance().player_take_damage(Vect3f(" << damageVector.x << ", " << damageVector.y << ", " << damageVector.z << "))";
+  SCRIPTM->RunCode(buffer.str());
 }
 
 void CAIController::AddDamageEnemy() {
@@ -315,7 +315,7 @@ void CAIController::AddDamageEnemy() {
   if (m_life <= 0) {
     m_isAlive = false;
     m_RenderableObject->setPrintable(false);
-	//m_PhysicController->GetUserData()->GetActor()->Activate(false);
+    //m_PhysicController->GetUserData()->GetActor()->Activate(false);
   }
 
 }

@@ -241,12 +241,12 @@ void CAnimatedInstanceModel::RenderModelByHardware(CGraphicsManager *RM) {
 
 Vect3f CAnimatedInstanceModel::GetAnimationBonePosition() {
   CalVector CBone = m_CalModel->getSkeleton()->getBone(0)->getTranslation();
-  return Vect3f(0, CBone.y, 0);
+  return Vect3f(CBone.x, CBone.y, CBone.z);
 }
 
 Vect3f CAnimatedInstanceModel::GetBonePosition() {
   CalVector CBone = m_CalModel->getSkeleton()->getCoreSkeleton()->getCoreBone(0)->getTranslation();
-  return Vect3f(0, CBone.y, 0);
+  return Vect3f(CBone.x, CBone.y, CBone.z);
 }
 
 Vect3f CAnimatedInstanceModel::GetBoneMovement() {
