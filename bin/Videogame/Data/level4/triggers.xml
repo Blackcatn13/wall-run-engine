@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <triggers>
-<trigger name="SetEnemyPuzzle" platform_name="" pos="490.26767 10.000014 -10.216164" shape="box" size="25.10077 9.92248 20.6073" type_event="stay" script_function="check_enemies_killed" param1="5" parm2="door_001" group="1" paint="false" color="0.882353 0.345098 0.780392"/>
+<trigger name="SetEnemyPuzzleFalse" platform_name="" pos="530.26767 10.000014 -28.216164" shape="box" size="12.10077 9.92248 1.6073" type_event="enter" script_function="set_puzzle_enemy_active" param1="false" group="1" paint="false" color="0.882353 0.345098 0.780392"/>
+<trigger name="SetEnemyPuzzleTrue" platform_name="" pos="425.26767 10.000014 8.216164" shape="box" size="1.10077 9.92248 9.6073" type_event="enter" script_function="set_puzzle_enemy_active" param1="true" group="1" paint="false" color="0.882353 0.345098 0.780392"/>
+<trigger name="EnemyPuzzle" platform_name="" pos="480.26767 10.000014 -6.216164" shape="box" size="50.10077 9.92248 17.6073" type_event="stay" script_function="check_enemies_killed" param1="5" param2="door_001" group="1" paint="false" color="0.882353 0.345098 0.780392"/>
 <trigger name="InitCamera" platform_name="" pos="48.793602 4.985123 -6.568461" shape="box" size="8.10077 9.92248 -12.6073" type_event="enter" script_function="trigger_set_3D" param1="" group="1" paint="false" color="0.882353 0.345098 0.780392"/>
 <trigger name="CheckPoint001" platform_name="" pos="59.382996 0.000000 0.071655" shape="box" size="0.69519 9.74541 9.85767" type_event="enter" script_function="set_checkpoint" param1="CheckPoint001" group="1" paint="false" color="0.882353 0.776471 0.341176"/>
 <trigger name="Hole001" platform_name="" pos="117.896194 -5.990989 -21.201315" shape="box" size="4.00146 2.55814 9.8392" type_event="enter" script_function="player_die" param1="" group="1" paint="false" color="0.341176 0.882353 0.560784"/>

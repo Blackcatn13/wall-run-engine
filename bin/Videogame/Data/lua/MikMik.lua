@@ -23,7 +23,7 @@ function mikmik_update_stopped(ElapsedTime, doComprobation, name)
 	local player_distance = get_distance_to_player(enemy:get_position(), player_position)
 				
 	if enemy ~= nil then
-		if player_distance > min_player_distance then
+		if player_distance > min_player_distance  and player_distance < 3500 then
 			if enemy:get_wp_vector_size() > 0 then --Si tiene waypoints para moverse
 				-- En caso de acabar de perseguir o llegar a un WP si la distancia al siguiente es muy corta vuelve a la posicion original
 							

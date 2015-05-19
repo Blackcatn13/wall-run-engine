@@ -19,10 +19,16 @@
 	
 	<mesh_instance name="pixelite1" core="SpongePicky" pos="10.0 2.0 2.0" yaw="0.0" pitch="0.0" roll="0.0" scale="0.5 0.5 0.1" visible="true" layer="collectible" />
 	<mesh_instance name="pixelite2" core="SpongePicky" pos="15.0 2.0 3.0" yaw="0.0" pitch="0.0" roll="0.0" scale="0.5 0.5 0.1" visible="true" layer="collectible" />
-	<mesh_instance name="Collectible1" core="Enemy1" pos="7.0 2.0 3.0" yaw="0.0" pitch="0.0" roll="0.0" scale="0.5 0.5 0.1" visible="false" layer="collectible" />
+	<mesh_instance name="Collectible1" core="Enemy1" pos="485.26767 10.000014 -2.216164" yaw="0.0" pitch="0.0" roll="0.0" scale="0.5 0.5 0.1" visible="false" layer="collectible" />
+	
+	<door name="door_001" core="door_001" phisic_size="4.5 4.0 2.0" lua_function="move_door" final_position="520.26767 20.000014 -28.216164" pos="527.26767 8.000014 -23.216164" yaw="0.0" pitch="0.0" roll="0.0" scale="3.0 1.0 1.0" visible="true" layer="puzzle"/>
 	
 	<mesh_instance name="MikMik1" core="Enemy1"  pos="500.826767 10.000014 -10.216164" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />
 	<mesh_instance name="MikMik2" core="Enemy1"  pos="490.826767 10.000014 -5.216164" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />
+	<!--<mesh_instance name="MikMik3" core="Enemy1"  pos="470.826767 10.000014 -8.216164" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />
+	<mesh_instance name="MikMik4" core="Enemy1"  pos="475.826767 10.000014 -3.216164" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />
+	<mesh_instance name="MikMik5" core="Enemy1"  pos="460.826767 10.000014  2.216164" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" /> -->
+
 	<mesh_instance name="PumPum1" core="Enemy1"  pos="495.826767 10.000014 -8.216164" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />
 	<mesh_instance name="disparoPumPum1" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" layer="enemies" />
 	<mesh_instance name="PumPum2" core="Enemy1"  pos="-18.0 2.0 -8.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />

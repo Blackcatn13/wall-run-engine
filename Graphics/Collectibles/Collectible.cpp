@@ -31,8 +31,10 @@ CCollectible::CCollectible(CRenderableObject *RendObj, std::string layerMame, st
   m_Trigger->GetUserData()->SetMyCollisionGroup(ECG_PLAYER);
   TRIGGM->AddResource(name, m_Trigger);
   m_RenderableObject->setVisible(visible);
-  if (visible == false)
-	  m_Trigger->setIsSwitched(true);
+  if (visible == false) {
+    m_Trigger->setIsSwitched(true);
+    m_RenderableObject->setPrintable(false);
+  }
 }
 
 
