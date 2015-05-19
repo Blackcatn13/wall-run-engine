@@ -22,15 +22,8 @@ class CAIController : public CObject3D {
   void RotateYaw(float dt, Vect3f point);
   void RotateRenderable(float dt, float angle);
   void RotateOrMove(float dt, Vect3f point);
-  void OnlyRotate(float dt, Vect3f point);
-  void ShotToVector(float dt, Vect3f point);
-  void ActualizarDisparo(float dt);
   void DestruirDisparo();
-  int CheckPlayerCollision();
   bool CheckPlayerShotCollision();
-  void AddDamagePlayer();
-  void ActualizarHitboxEnemigo();
-  void AddDamageEnemy();
   void MoveToPosition(Vect3f pos);
 
 
@@ -45,7 +38,6 @@ class CAIController : public CObject3D {
   GET_SET(float, CurrentJumpForce);
   GET_SET(std::string, Mesh);
   GET_SET(std::string, Name);
-  GET_SET(bool, isAlive);
   GET_SET(CRenderableObject *, RenderableObject)
 
   //GET_SET(std::string, Mesh)
@@ -54,7 +46,7 @@ class CAIController : public CObject3D {
   GET_SET(bool, SpeedModified);
   float getAngleDiff(Vect3f A, Vect3f B);
 
- private:
+ protected:
 
   CPhysicController	*m_PhysicController;
   CPhysicUserData	*m_PhysicUserData;
@@ -78,8 +70,6 @@ class CAIController : public CObject3D {
   float				m_minAngleDisparo;
   float				m_ProjectileHitbox;
   float				m_EnemyHitbox;
-  bool				m_isAlive;
-  int				m_life;
   float				m_Angle;
 };
 

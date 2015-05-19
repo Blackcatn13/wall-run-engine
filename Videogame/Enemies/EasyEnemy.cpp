@@ -40,6 +40,18 @@ CEasyEnemy::CEasyEnemy(CRenderableObject *renderableObject, std::vector<Vect3f> 
   m_OriginalSpeed(speed),
   m_CurrentWpId(0) {
   Init(fsmName);
+  if(fsmName == "MikMik")
+  {
+	  m_enemyType = MIKMIK;
+  }
+  else if(fsmName == "PumPum")
+  {
+	  m_enemyType = PUMPUM;
+  }
+  else
+  {
+	  m_enemyType = UNDEFINED;
+  }
   //InitWpVector(numWp, distWp);
 }
 

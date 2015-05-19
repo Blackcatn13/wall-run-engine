@@ -11,16 +11,24 @@
 #include "AI\FSMManager.h"
 #include "Mesh\MeshInstance.h"
 
+
 class CXMLTreeNode;
 class CPhysicController;
 class CPhysicUserData;
 class CRenderableObject;
 class CFSMInstance;
 
+enum ENEMY_TYPE
+{
+	UNDEFINED,
+	MIKMIK,
+	PUMPUM
+};
+
 class CEnemy : public CAIController { //CAIController
  protected:
 
-  float				m_Life;
+  int				m_Life;
   float				m_TimeToSpawn;
   float				m_TimeToShoot;
   float				m_ShootAccuracy;
@@ -32,13 +40,15 @@ class CEnemy : public CAIController { //CAIController
   float				m_CurrentTime;
   std::string		m_FsmName;
   Vect3f			m_OriginalPosition;
+  bool				m_isAlive;
+  ENEMY_TYPE		m_enemyType;
 
 
   CEnemy();
  public:
   CEnemy(CXMLTreeNode &info1);
   CEnemy(std::string mesh, std::string name, Vect3f position,  float speed, float turnSpeed, float gravity, float yaw);
-  CEnemy(CRenderableObject *renderableObject, float speed, float turnSpeed, float life, Vect2f controller_size);
+  CEnemy(CRenderableObject *renderableObject, float speed, float turnSpeed, int life, Vect2f controller_size);
   virtual ~CEnemy();
 
 
@@ -51,6 +61,16 @@ class CEnemy : public CAIController { //CAIController
   std::string GetEnemyName() {
     return getName();
   }
+
+  void AddDamagePlayer();
+  void AddDamageEnemyMikMik();
+  void AddDamageEnemyPumPum();
+  void ActualizarHitboxEnemigo();
+  void ActualizarDisparo(float dt);
+  void ShotToVector(float dt, Vect3f point);
+  void OnlyRotate(float dt, Vect3f point);
+  int CheckPlayerCollision();
+
   //void SetMesh(std::string mesh);
   GET_SET(float, Life);
   /*GET_SET(float, Yaw);
@@ -62,6 +82,7 @@ class CEnemy : public CAIController { //CAIController
 // GET_SET(float, Speed);
   GET_SET(float, CurrentTime);
   CFSMInstance *getFsm() { return m_Fsm;}
+  GET_SET(bool, isAlive);
   // get & set
   // set(const <type> &name)
   // const <type> & get

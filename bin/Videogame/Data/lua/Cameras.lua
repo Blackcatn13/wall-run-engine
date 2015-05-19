@@ -44,13 +44,15 @@ function on_update_cameras_lua(l_ElapsedTime)
 	local act2in = coreInstance:get_action_to_input();
 	local camController = coreInstance.m_CameraController;
 	local cam = camController:get_active_camera();
-	if act2in:do_action_from_lua("Set3DCamera") then
-		--coreInstance.m_CameraController:set_active_camera("3DCam");
-		cam.m_eTypeCamera = 6;
-	end
-	if act2in:do_action_from_lua("Set2DCamera") then
-		--coreInstance.m_CameraController:set_active_camera("2DCam");
-		cam.m_eTypeCamera = 5;
+	if gui_manager:get_is_displayed() == false then
+		if act2in:do_action_from_lua("Set3DCamera") then
+			--coreInstance.m_CameraController:set_active_camera("3DCam");
+			cam.m_eTypeCamera = 6;
+		end
+		if act2in:do_action_from_lua("Set2DCamera") then
+			--coreInstance.m_CameraController:set_active_camera("2DCam");
+			cam.m_eTypeCamera = 5;
+		end
 	end
 	--local name2=CNamed();
 	--name2:set_name("UpdatePass1");

@@ -26,8 +26,6 @@ CAIController::CAIController()
     m_IsOnCooldown(false),
     m_CooldownTimer(5),
     m_ProjectileHitbox(0.5),
-    m_isAlive(true),
-    m_life(1),
     m_EnemyHitbox(2.0),
     m_CurrentCooldown(0),
     m_tiempoVidaDisparo(2.0),
@@ -58,8 +56,6 @@ CAIController::CAIController(std::string mesh, std::string name, Vect3f position
   m_IsOnCooldown(false),
   m_CooldownTimer(5),
   m_ProjectileHitbox(0.5),
-  m_isAlive(true),
-  m_life(1),
   m_Angle(0.0f),
   m_EnemyHitbox(2.0),
   m_CurrentCooldown(0),
@@ -90,8 +86,6 @@ CAIController::CAIController(CRenderableObject *rond, float speed, float turnSpe
   m_IsOnCooldown(false),
   m_CooldownTimer(5),
   m_ProjectileHitbox(0.5),
-  m_isAlive(true),
-  m_life(1),
   m_Angle(0.0f),
   m_EnemyHitbox(2.0),
   m_CurrentCooldown(0),
@@ -226,99 +220,6 @@ void CAIController::RotateOrMove(float dt, Vect3f point) {
   }
 }
 
-void CAIController::OnlyRotate(float dt, Vect3f point) {
-  if (point.Distance(m_Position) >= 2) {
-    Vect3f direction = (point - m_Position);
-    Vect3f diff = Vect3f(1, 0, 0).RotateY(m_fYaw);
-    float angle = getAngleDiff(direction, diff);
-
-    //if (angle > 0.5f)
-    RotateYaw(dt, point);
-    if ((!m_IsOnCooldown) && angle < 0.2) {
-      //DISPARO, cooldown 500 ms
-      m_IsOnCooldown = true;
-      m_CurrentCooldown = m_CooldownTimer;
-      ShotToVector(dt, m_Position);
-      m_DireccionBala = direction;
-    }
-
-    //ActualizarDisparo(dt);
-
-
-    /*else {
-      m_PhysicController->Move( direction.Normalize() * m_Speed, dt);
-      SetPosition(m_PhysicController
-    ->GetPosition());
-      Vect3f l_Position = (m_PhysicController->GetPosition());
-      if (m_RenderableObject != NULL) {
-        m_RenderableObject->SetPosition(m_PhysicController->GetPosition());
-      }
-    }*/
-  }
-}
-
-void CAIController::ShotToVector(float dt, Vect3f point) {
-  if (m_isAlive) {
-    m_PosicionBala = m_Position;
-    RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->SetPosition(m_PosicionBala);
-    RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->setPrintable(true);
-  }
-}
-void CAIController::ActualizarDisparo(float dt) {
-  if (m_IsOnCooldown) {
-    m_CurrentCooldown = m_CurrentCooldown - dt;
-    if (m_CurrentCooldown < 0.0) {
-      m_IsOnCooldown = false;
-      DestruirDisparo();
-    } else if (m_CurrentCooldown < (m_CooldownTimer - m_tiempoVidaDisparo)) {
-      DestruirDisparo();
-    } else {
-      m_PosicionBala = m_PosicionBala + m_DireccionBala.Normalize() * m_BalaSpeed * dt;
-      RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->SetPosition(m_PosicionBala);
-      if (CheckPlayerShotCollision()) {
-        DestruirDisparo();
-        AddDamagePlayer();
-      }
-    }
-  }
-}
-
-void CAIController::ActualizarHitboxEnemigo() {
-  switch (CheckPlayerCollision()) {
-
-    case 1:
-      AddDamageEnemy();
-      break;
-    case 2:
-      AddDamagePlayer();
-      break;
-    case 3:
-
-      break;
-    default:
-      break;
-  }
-}
-
-void CAIController::AddDamagePlayer() {
-//	PLAYC->SetPosition(Vect3f(PLAYC->GetPosition().x, PLAYC->GetPosition().y, PLAYC->GetPosition().z + 5.0));
-  Vect3f damageVector = PLAYC->GetPosition() - GetPosition();
-  damageVector.Normalize();
-  std::stringstream buffer;
-  buffer << "Player:get_instance().player_take_damage(Vect3f(" << damageVector.x << ", " << damageVector.y << ", " << damageVector.z << "))";
-  SCRIPTM->RunCode(buffer.str());
-}
-
-void CAIController::AddDamageEnemy() {
-  m_life = m_life - 1;
-  //Diferenciar si se está sltando o no para lanzar la animación de segundo salto o no
-  if (m_life <= 0) {
-    m_isAlive = false;
-    m_RenderableObject->setPrintable(false);
-    //m_PhysicController->GetUserData()->GetActor()->Activate(false);
-  }
-
-}
 
 
 void CAIController::DestruirDisparo() {
@@ -333,21 +234,7 @@ bool CAIController::CheckPlayerShotCollision() {
   return false;
 }
 
-int CAIController::CheckPlayerCollision() {
-  //returns:
-  //1 if player hits
-  //2 if player gets hit
-  //0 if no hit
-  float l_MargenSuperiorPlayer = 2.0;
-  if (getisAlive() && (m_Position.Distance(PLAYC->GetPosition()) < m_EnemyHitbox)) {
-    if (PLAYC->GetPosition().y > m_Position.y + l_MargenSuperiorPlayer || PLAYC->getisAttack()) {
-      return 1;
-    } else {
-      return 2;
-    }
-  }
-  return 0;
-}
+
 
 void CAIController::RotateYaw(float dt, Vect3f point) {
   Vect3f direction = (point - m_Position);

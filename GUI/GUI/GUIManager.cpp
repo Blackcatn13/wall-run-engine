@@ -43,7 +43,7 @@ CGUIManager::CGUIManager(const Vect2i &resolution)
   , m_sLastLoadpathGUI_XML("")
   , m_bFirstUpdate(true)
   , m_bVisiblePointerMouse(true)
-  , m_isDisplayed(true)
+  , m_isDisplayedConsole(false)
   , m_GUICount(0.0f)
   , m_dt(0.0f)
 {}
@@ -855,6 +855,7 @@ void CGUIManager::SetConsole() {
       m_Console->SetHeightPercent(10);
       m_Console->SetVisible( true );
       m_Console->SetActive( true );
+	  SetIsDisplayed(true);
       m_Console->GainFocus();
       /*m_LifeGUI->SetWidthPercent(170);
       m_LifeGUI->SetHeightPercent(10);
@@ -866,6 +867,7 @@ void CGUIManager::SetConsole() {
     } else {
       m_Console->SetVisible( false );
       m_Console->SetActive( false );
+	  SetIsDisplayed(false);
       m_Console->LoseFocus();
     }
   }
@@ -881,11 +883,11 @@ float CGUIManager::GetPositionXPercentElement(std::string name){
 }
 
 bool CGUIManager::GetIsDisplayed(){
-	return m_isDisplayed;
+	return m_isDisplayedConsole;
 }
 
 void CGUIManager::SetIsDisplayed(bool input){
-	m_isDisplayed = input;
+	m_isDisplayedConsole = input;
 }
 
 float CGUIManager::GetGUICount(){
