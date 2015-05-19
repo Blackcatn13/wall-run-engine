@@ -134,7 +134,7 @@ class CGUIManager { //:public CScriptRegister
   std::string													m_sLastLoadpathGUI_XML;
   TransitionEffect										m_sTransitionEffect;
   bool																m_bFirstUpdate;
-  bool																m_isDisplayed;
+  bool																m_isDisplayedConsole;
   float																m_GUICount;
   float																m_dt;
 };
