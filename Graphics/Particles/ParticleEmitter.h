@@ -12,6 +12,7 @@
 class CXMLTreeNode;
 class CGraphicsManager;
 class CParticle;
+class CTexture;
 
 enum EmitterType {EMITTER_ESF, EMITTER_PLANE};
 
@@ -50,6 +51,8 @@ class CParticleEmitter : public CObject3D {
   float								m_MinVelocidadOndulacion;
   Vect3f							m_vOndulacion1;
   Vect3f							m_vOndulacion2;
+
+  CTexture*							m_Texture;
 };
 
 #endif
