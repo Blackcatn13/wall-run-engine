@@ -103,6 +103,8 @@ class CGUIManager { //:public CScriptRegister
   void								PlayImage									(const std::string &inImageName, float timePerImage, bool loop);
   //-----------------------------------------------------------------------------------------------------------//
 
+  bool							GetIsDisplayedConsole();
+  void							SetIsDisplayedConsole(bool input);
   bool							GetIsDisplayed();
   void							SetIsDisplayed(bool input);
   float							GetPositionXPercentElement(std::string name);
@@ -135,6 +137,7 @@ class CGUIManager { //:public CScriptRegister
   TransitionEffect										m_sTransitionEffect;
   bool																m_bFirstUpdate;
   bool																m_isDisplayedConsole;
+  bool																m_isDisplayed;
   float																m_GUICount;
   float																m_dt;
 };
