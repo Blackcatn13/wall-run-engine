@@ -140,26 +140,28 @@ void CEnemy::AddDamagePlayer()
 
 void CEnemy::AddDamageEnemyMikMik() 
 {
-	m_Life = m_Life - 1;
+	/*m_Life = m_Life - 1;
 	//Diferenciar si se está sltando o no para lanzar la animación de segundo salto o no
 	if (m_Life <= 0) 
 	{
 		m_isAlive = false;
 		getRenderableObject()->setPrintable(false);
 		//m_PhysicController->GetUserData()->GetActor()->Activate(false);
-	}
+	}*/
+	m_Fsm->setNewState("Take_Damage");
 }
 
 void CEnemy::AddDamageEnemyPumPum() 
 {
-	m_Life = m_Life - 1;
+	/*m_Life = m_Life - 1;
 	//Diferenciar si se está sltando o no para lanzar la animación de segundo salto o no
 	if (m_Life <= 0) 
 	{
 		m_isAlive = false;
 		getRenderableObject()->setPrintable(false);
 		//m_PhysicController->GetUserData()->GetActor()->Activate(false);
-	}
+	}*/
+	m_Fsm->setNewState("Take_Damage");
 }
 
 void CEnemy::ActualizarHitboxEnemigo() 

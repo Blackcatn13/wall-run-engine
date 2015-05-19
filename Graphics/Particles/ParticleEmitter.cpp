@@ -42,6 +42,9 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
     m_Type = EMITTER_PLANE;
   m_Particles = new CRecyclingArray<CParticle>(m_MaxParticles);
   m_TimeNextParticle = mathUtils::RandomFloatRange(m_MinEmissionTime, m_MaxEmissionTime);
+
+  m_Texture = new CTexture();
+  m_Texture->Load(m_sTexture);
 }
 
 CParticleEmitter::~CParticleEmitter() {
@@ -50,6 +53,7 @@ CParticleEmitter::~CParticleEmitter() {
     m_Particles->Free(i);
 
   CHECKED_DELETE(m_Particles);
+  CHECKED_DELETE(m_Texture);
 }
 
 void CParticleEmitter::Render(CGraphicsManager *RM) {
@@ -97,12 +101,10 @@ void CParticleEmitter::PopulateParticle(CParticle *p) {
   p->setColor1(col1);
   p->setGravity(m_Gravity);
   p->setVelocidadOndulacion(mathUtils::RandomFloatRange(m_MinVelocidadOndulacion, m_MaxVelocidadOndulacion));
-  //CTexture *l_Texture = new CTexture();
-
-// l_Texture->Load(m_sTexture);
+  
   /* l_Texture->Create(m_sTexture, size, size, 1, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, l_Texture->GetFormatTypeFromString("R8G8B8"));
    float height = l_Texture->GetHeight();*/
-//  p->setTexture(l_Texture);
+  p->setTexture(m_Texture);
   float o1x = m_vOndulacion1.x;
   float o2x = m_vOndulacion2.x;
   float o1y = m_vOndulacion1.y;

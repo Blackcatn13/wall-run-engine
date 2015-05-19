@@ -166,7 +166,6 @@ end
 
 function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 --player_position = Vect3f(10,0,10)
-	coreInstance:trace("Persiguiendo");
 	local player_position = player_controller:get_position()
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy.m_SpeedModified == false then
@@ -200,4 +199,45 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 		end]]
 		
 	--end
+end
+
+function mikmik_enter_take_damage(name)
+	return 0
+end
+
+function mikmik_exit_take_damage(name)
+	return 0
+end
+
+function mikmik_update_take_damage(ElapsedTime, doComprobation, name)
+	local enemy = enemy_manager:get_enemy(name)
+	enemy.m_Life = enemy.m_Life - 1
+	if(enemy.m_Life <= 0) then
+		enemy:m_FSM():newState("Dead")
+	else
+		enemy:m_FSM():newState("Parado")
+	end
+end
+
+function mikmik_enter_dead(name)
+	local enemy = enemy_manager:get_enemy(name)
+	enemy.m_isAlive = false
+	enemy.m_RenderableObject.m_Printable=false
+	coreInstance:trace("HECHOMIKMIK1");
+	local dead_pos = enemy.m_PhysicController:get_position()
+	coreInstance:trace("HECHOMIKMIK2");
+	dead_pos.y = dead_pos.y + 1000
+	coreInstance:trace("HECHOMIKMIK3");
+	enemy:set_position(dead_pos)
+	coreInstance:trace("HECHOMIKMIK4");
+	enemy.m_PhysicController:set_position(dead_pos)
+	coreInstance:trace("HECHOMIKMIK5");
+end
+
+function mikmik_exit_dead(name)
+	enemy.m_RenderableObject.m_Printable=true
+end
+
+function mikmik_update_dead(ElapsedTime, doComprobation, name)
+	return 0
 end

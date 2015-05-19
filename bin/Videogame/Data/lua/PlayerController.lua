@@ -47,7 +47,7 @@ function on_update_player_lua(l_ElapsedTime)
 	local m_damageFeedBackSpeed = 13;
 	local m_damageTime = 0.6;
 	--////////////////////////////////////////////////////////
-	if gui_manager:get_is_displayed() == false then
+	if gui_manager:get_is_displayed_console() == false then
 
 		if is_init == true then
 			is_init = false

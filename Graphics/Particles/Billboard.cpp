@@ -18,7 +18,7 @@ CBillboard::CBillboard(CXMLTreeNode &node)
   std::string tempText = node.GetPszISOProperty("texture", ""	, false);
   if (tempText != "") {
     m_Texture = new CTexture();
-    m_Texture->Load(node.GetPszISOProperty("texture", ""	, false));
+    m_Texture->Load(tempText);
   } else {
     m_Texture = NULL;
   }
@@ -35,7 +35,7 @@ CBillboard::CBillboard(float size, Vect3f pos)
 }
 
 CBillboard::~CBillboard() {
-  CHECKED_DELETE(m_Texture);
+  //CHECKED_DELETE(m_Texture);
 }
 
 void CBillboard::Render(CGraphicsManager *GM) {
