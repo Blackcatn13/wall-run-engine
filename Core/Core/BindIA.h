@@ -89,6 +89,7 @@ void RegisterAI() {
     .property("m_CurrentTime", &CEnemy::getCurrentTime, &CEnemy::setCurrentTime)
     .property("m_OriginalPosition", &CEnemy::GetOriginalPosition)
 	.property("m_isAlive", &CEnemy::getisAlive,  &CEnemy::setisAlive )
+	.property("m_Life",&CEnemy::getLife,  &CEnemy::setLife)
     .def("get_name",  &CEnemy::GetEnemyName)
     .def("m_FSM", &CEnemy::getFsm)
     .def("only_rotate", &CEnemy::OnlyRotate)
