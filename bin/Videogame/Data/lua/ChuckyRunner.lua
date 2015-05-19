@@ -3,6 +3,7 @@ local player = Player:get_instance();
 local playerController = player.get_player_controller();
 local distance = 4;
 local chucky = enemy_manager:get_enemy("Chucky");
+chucky.m_PhysicController:set_group(13);
 
 -- Chucky Variables --
 local Chucky_running_speed = 4;
@@ -21,6 +22,9 @@ function chucky_runner_enter_stopped(name)
 		coreInstance:trace(tostring(chucky:get_name()))
 		coreInstance:trace("========================")
 	end
+	local characterPos = chucky.m_PhysicController:get_position();
+	characterPos.y = 0;
+	chucky.m_RenderableObject:set_position(characterPos);
 end
 
 function chucky_runner_exit_stopped(name)
@@ -34,7 +38,6 @@ end
 -- Chucky Running --
 
 function chucky_runner_enter_running(name)
-	--local
 	chucky.m_RenderableObject:blend_cycle(1,1,0);
 end
 
@@ -44,15 +47,25 @@ end
 
 function chucky_runner_update_running(ElapsedTime, doComprobation, name)
 	local playerPos = playerController:get_position();
-	--local mov = playerPos - chucky.get_player_controller():get_position();
-	--chucky.get_player_controller():move(mov, ElapsedTime);
-	--chucky.m_RenderableObject:set_position(chucky.get_player_controller():get_position());
+	--coreInstance:trace("Player position x:" .. tostring(playerPos.x)  .. " y:" .. tostring(playerPos.y) ..  " z:" ..  tostring(playerPos.z));
+	local chuckyPos = chucky:get_position();
+	--coreInstance:trace("Chucky position x:" .. tostring(chuckyPos.x)  .. " y:" .. tostring(chuckyPos.y) ..  " z:" ..  tostring(chuckyPos.z));
+	local mov = playerPos - chucky:get_position();
+	mov.y = 0;
+	--coreInstance:trace("mov x:" .. tostring(mov.x)  .. " y:" .. tostring(mov.y) ..  " z:" ..  tostring(mov.z));
+	chucky.m_PhysicController:move(mov/30, ElapsedTime);
+	chucky:set_position(chucky.m_PhysicController:get_position());
+	local characterPos = chucky.m_PhysicController:get_position();
+	characterPos.y = 0;
+	chucky.m_RenderableObject:set_position(characterPos);
+
 end
 
 -- Chucky Jumping --
 
 function chucky_runner_enter_jumping(name)
-
+	chucky.m_RenderableObject:blend_cycle(1,0,0.2);
+	chucky.m_RenderableObject:execute_action(2,0,0.3,1,false);
 end
 
 function chucky_runner_exit_jumping(name)
@@ -60,7 +73,8 @@ function chucky_runner_exit_jumping(name)
 end
 
 function chucky_runner_update_jumping(ElapsedTime, doComprobation, name)
-
+	local pos = chucky.m_RenderableObject:getAnimationBonePosition();
+	chucky:set_position(pos);
 end
 
 -- Chucky Catching --
