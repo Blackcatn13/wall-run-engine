@@ -24,8 +24,11 @@ function Player.new()
 	self.stickers = 0
 	self.is_hit = false
 	self.vector_damage = Vect3f(0.0,0.0,0.0)
-	
+	self.enemies_killed = 0
+	self.enemy_puzzle_active = false
+
 	------	 PLAYER FUNCTIONS -----
+		
 	function self.add_pixelites(inc_pixelites)
 		self.pixelites = self.pixelites + inc_pixelites
 		self.coreInstance:trace("Num Pixelites: "..tostring(self.pixelites))
@@ -51,7 +54,7 @@ function Player.new()
 		return self.coreInstance:get_player_controller()
 	end
 	
-	function self.player_take_damage(direction, elapsed_time)
+	function self.player_take_damage(direction)
 		if self.is_hit == false then
 			if direction.x ~= 0 or direction.y ~= 0 or direction.z ~= 0 then
 				self.vector_damage = direction
@@ -82,6 +85,14 @@ function Player.new()
 		local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 		self.coreInstance:trace("player dies")
 		self.num_lives = self.num_lives -1
+		gui_manager:set_is_displayed(true);
+		if gui_manager:get_active_image('VidesGUI') == 'Vides3' then
+			gui_manager:set_image('VidesGUI','Vides2')
+		else
+			if gui_manager:get_active_image('VidesGUI') == 'Vides2' then
+				gui_manager:set_image('VidesGUI','Vides1')
+			end	
+		end
 		gui_manager:set_image('LifeGUI','Life3')
 		if self.num_lives == 0 then
 			--game over

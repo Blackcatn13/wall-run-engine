@@ -14,6 +14,7 @@
 #include <sstream>
 #include "Math\Vector3.h"
 #include "Core\ScriptManager.h"
+#include "Actor\PhysicActor.h"
 
 CAIController::CAIController()
   : CObject3D(),
@@ -301,7 +302,11 @@ void CAIController::ActualizarHitboxEnemigo() {
 
 void CAIController::AddDamagePlayer() {
 //	PLAYC->SetPosition(Vect3f(PLAYC->GetPosition().x, PLAYC->GetPosition().y, PLAYC->GetPosition().z + 5.0));
-  SCRIPTM->RunCode("Player:get_instance().player_take_damage()");
+	Vect3f damageVector = PLAYC->GetPosition() - GetPosition();
+	damageVector.Normalize();
+	std::stringstream buffer;
+	buffer<<"Player:get_instance().player_take_damage(Vect3f("<<damageVector.x<<", "<<damageVector.y<<", "<<damageVector.z<<"))";
+	SCRIPTM->RunCode(buffer.str());
 }
 
 void CAIController::AddDamageEnemy() {
@@ -310,7 +315,7 @@ void CAIController::AddDamageEnemy() {
   if (m_life <= 0) {
     m_isAlive = false;
     m_RenderableObject->setPrintable(false);
-    PLAYC->SetPosition(Vect3f(PLAYC->GetPosition().x, PLAYC->GetPosition().y + 10, PLAYC->GetPosition().z));
+	//m_PhysicController->GetUserData()->GetActor()->Activate(false);
   }
 
 }

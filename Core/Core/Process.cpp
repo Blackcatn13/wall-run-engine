@@ -17,7 +17,7 @@ void CProcess::DeInit() {
 }
 
 Vect2i CProcess::RenderDebugInfo(bool render/*, float dt*/) {
-  Vect2i pos = Vect2i(10, 30);
+  Vect2i pos = Vect2i(1030, 30);//10, 30);
   if (!render) {
     //  pos.Add_Max(FONTM->GetDefaultTextSize(pos.x, pos.y, colWHITE, "Info from %s", __FILE__));
     pos.Add_Max(FONTM->GetDefaultTextSize(pos.x, pos.y, colWHITE, "%f FPS", 1 / m_Dt));
@@ -38,9 +38,9 @@ Vect2i CProcess::WriteBoolInfo(bool varInfo, std::string text, Vect2i pos) {
   int l_aux_i = pos.y;
   pos.Add_Max(FONTM->DrawDefaultText(pos.x, pos.y, colWHITE, text.c_str()));
   if (!varInfo)
-    FONTM->DrawDefaultText(m_aux_x, l_aux_i, colRED, "%s", "false");
+    FONTM->DrawDefaultText(pos.x+m_aux_x, l_aux_i, colRED, "%s", "false");
   else
-    FONTM->DrawDefaultText(m_aux_x, l_aux_i, colBLUE, "%s", "true");
+    FONTM->DrawDefaultText(pos.x+m_aux_x, l_aux_i, colBLUE, "%s", "true");
 
   return pos;
 }
@@ -48,7 +48,7 @@ Vect2i CProcess::WriteBoolInfo(bool varInfo, std::string text, Vect2i pos) {
 Vect2i CProcess::WriteStrInfo(std::string varInfo, std::string text, Vect2i pos) {
   int l_aux_i = pos.y;
   pos.Add_Max(FONTM->DrawDefaultText(pos.x, pos.y, colWHITE, text.c_str()));
-  FONTM->DrawDefaultText(m_aux_x, l_aux_i, colYELLOW, "%s", varInfo.c_str());
+  FONTM->DrawDefaultText(pos.x+m_aux_x, l_aux_i, colYELLOW, "%s", varInfo.c_str());
 
   return pos;
 }

@@ -155,6 +155,30 @@ function set_checkpoint(trigger_name)
 
 end
 
+function set_puzzle_enemy_active(active)
+	if active == "true" then
+		player.enemy_puzzle_active = true
+	else
+		player.enemy_puzzle_active = false
+	end
+	coreInstance:trace("Enemy puzle active ".. tostring(player.enemy_puzzle_active))
+end
+
+function check_enemies_killed(num1, door)
+	if player.enemy_puzzle_active then
+		if player.enemies_killed == tonumber(num1) then
+			-- Aparece el collectible
+			local trigger_name ="Collectible1_UserData"
+			local trigger = trigger_manager:get_resource(trigger_name)
+			activate_collectible(trigger, "collectible", "Collectible1")
+			player.enemy_puzzle_active = false
+		end
+		if player.enemies_killed == 2 then
+			open_door(door)
+		end
+	end
+end
+
 function ChuckyApear()
 	coreInstance:trace("CHUCKY APEARS!!!!!")
 	local current_position = Vect3f(player.get_player_controller():get_position());

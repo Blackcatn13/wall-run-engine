@@ -20,6 +20,7 @@
 		<wp position = "-9.0 2.0 -10.0" />
 		<wp position = "-23.0 2.0 -10.0" />
 	</instance_enemy>
+	
 	 
 	<instance_enemy name="MikMik1" type="mikmik_easy" >
 		<wp position = "500.826767 10.000014 -7.216164" />
@@ -27,8 +28,18 @@
 	</instance_enemy>
 	<instance_enemy name="MikMik2" type="mikmik_easy" >
 		<wp position = "495.826767 10.000014 -7.216164" />
-		<wp position = "495.826767 10.000014 -3.216164" />
+		<wp position = "470.826767 10.000014 -7.216164" />
 	</instance_enemy>
+	
+<!--	<instance_enemy name="MikMik3" type="mikmik_easy" >
+	</instance_enemy>
+	<instance_enemy name="MikMik4" type="mikmik_easy" >
+	</instance_enemy>
+	<instance_enemy name="MikMik5" type="mikmik_easy" >
+	</instance_enemy>-->
+
+
+
 	<!--<enemy name="Enemy2" type="easy" pos="8.0 2.0 -2.0" yaw="0.0" mesh="Enemy2" />
 	<enemy name="Enemy3" type="easy" pos="4.0 2.0 7.0" yaw="0.0" mesh="Enemy3" />-->
 	<!--<enemy name="Enemy4" type="easy" pos="5.0 2.0 3.0" yaw="0.0"/>

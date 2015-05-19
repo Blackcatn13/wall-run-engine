@@ -23,6 +23,7 @@ class CPlayerController : public CObject3D {
   GET_SET(float, Speed);
   GET_SET(float, JumpForce);
   GET_SET(bool, isJumping);
+  GET_SET(float, isOnPlatform);
   GET_SET(bool, isJumpingMoving);
   GET_SET(float, CurrentJumpForce);
   GET_SET(bool, is3D);
@@ -45,6 +46,7 @@ class CPlayerController : public CObject3D {
   float				m_Speed;
   float				m_JumpForce;
   float				m_CurrentJumpForce;
+  float				m_isOnPlatform;
   bool				m_isJumping;
   bool				m_isJumpingMoving;
   bool				m_is3D;

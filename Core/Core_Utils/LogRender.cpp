@@ -147,13 +147,15 @@ void CLogRender::Render (CGraphicsManager *GraphicsManager, CFontManager *fm, CC
     CColor quad2dColor(0.f, 0.f, 0.5f, 0.7f);
     uint32 w = fm->SizeX(l_sInfo.c_str());
     uint32 h = fm->SizeY(l_sInfo.c_str());
+	uint32 wScreen, hScreen;
+    GraphicsManager->GetWidthAndHeight(wScreen, hScreen);
     CColor edgeColor = colBLACK;
     edgeColor.SetAlpha(0.7f);
-    GraphicsManager->DrawRectangle2D(Vect2i(m_WindowsPos.x, (uint32)(m_WindowsPos.y - h * 0.5)), w, h, m_Quad2dColor, 1, 1, edgeColor);
+    GraphicsManager->DrawRectangle2D(Vect2i(wScreen-w-m_WindowsPos.x, (uint32)(m_WindowsPos.y - h * 0.5)), w, h, m_Quad2dColor, 1, 1, edgeColor);
     //Draw Info Text
     if	(LOGGER->Warnings())	color = colGREEN;
     if	(LOGGER->Errors())		color = colRED;
-    fm->DrawDefaultText(m_WindowsPos.x, m_WindowsPos.y - 10, color, l_sInfo.c_str());
+    fm->DrawDefaultText(wScreen-w-m_WindowsPos.x, m_WindowsPos.y - 10, color, l_sInfo.c_str());
   }
 }
 

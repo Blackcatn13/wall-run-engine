@@ -26,10 +26,11 @@ void CCollectibleManager::InitCollectibles(std::string layerName) {
     for (int j = 0; j < m_VectorCollectibleTypes.size(); ++j) {
       if (((CMeshInstance *)l_Rom->GetResourcesVector()[i])->GetCoreName() == m_VectorCollectibleTypes[j].CoreMesh) {
         std::string l_CardName = "";
+		bool l_Visible = l_Rom->GetResourcesVector()[i]->getVisible();
         if (m_VectorCollectibleTypes[j].Name == "card")
           l_CardName = m_Unlockables.find(l_Rom->GetResourcesVector()[i]->getName())->first;
 
-        CCollectible *l_Collectible = new CCollectible(l_Rom->GetResourcesVector()[i], m_Layer, m_VectorCollectibleTypes[j].MeshLuaFunction, m_VectorCollectibleTypes[j].TriggerFunction, m_VectorCollectibleTypes[j].TriggerSize, l_CardName  );
+        CCollectible *l_Collectible = new CCollectible(l_Rom->GetResourcesVector()[i], m_Layer, m_VectorCollectibleTypes[j].MeshLuaFunction, m_VectorCollectibleTypes[j].TriggerFunction, m_VectorCollectibleTypes[j].TriggerSize, l_CardName, l_Visible  );
         AddResource(l_Rom->GetResourcesVector()[i]->getName(), l_Collectible);
 
         /*  } else if ((m_VectorCollectibleTypes[j].Name == "sticker")) {

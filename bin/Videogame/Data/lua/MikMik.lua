@@ -23,7 +23,7 @@ function mikmik_update_stopped(ElapsedTime, doComprobation, name)
 	local player_distance = get_distance_to_player(enemy:get_position(), player_position)
 				
 	if enemy ~= nil then
-		if player_distance > min_player_distance then
+		if player_distance > min_player_distance  and player_distance < 3500 then
 			if enemy:get_wp_vector_size() > 0 then --Si tiene waypoints para moverse
 				-- En caso de acabar de perseguir o llegar a un WP si la distancia al siguiente es muy corta vuelve a la posicion original
 							
@@ -183,7 +183,8 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 		--	enemy.m_Speed = enemy.m_Speed / speed_modifier
 		end
 		coreInstance:trace(tostring(player_distance))
-		if player_distance < 4 then -- Hacer por colision
+		enemy:actualizar_hitbox()
+		--[[if player_distance < 4 then -- Hacer por colision
 		-- Aqui meter impacto del ataque
 			if player_controller.m_isAttack == false then
 				coreInstance:trace("tocado!!")
@@ -196,7 +197,7 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 				check_hitbox(ElapsedTime, player_position, enemy)
 			end
 		--	enemy.m_Speed = enemy.m_Speed / speed_modifier
-		end
+		end]]
 		
 	--end
 end

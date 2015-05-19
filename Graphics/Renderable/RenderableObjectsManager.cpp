@@ -92,6 +92,7 @@ void CRenderableObjectsManager::Load(const std::string &FileName) {
         float pitch = m(i).GetFloatProperty("pitch");
         float roll = m(i).GetFloatProperty("roll");
         Vect3f scale = m(i).GetVect3fProperty("scale", v3fONE);
+		bool visible = m(i).GetBoolProperty("visible", true, false);
         //TODO Static mesh por mesh instance
         //
         CMeshInstance *l_meshInstance = new CMeshInstance(meshName, core);
@@ -100,6 +101,7 @@ void CRenderableObjectsManager::Load(const std::string &FileName) {
         l_meshInstance->SetPitch(pitch);
         l_meshInstance->SetRoll(roll);
         l_meshInstance->SetScale(scale);
+		l_meshInstance->setVisible(visible);
         //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
         AddResource(meshName, l_meshInstance);
       } else if (name == "animated_model") {
@@ -289,6 +291,7 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node) {
       float pitch = m.GetFloatProperty("pitch");
       float roll = m.GetFloatProperty("roll");
       Vect3f scale = m.GetVect3fProperty("scale", v3fONE);
+	  bool visible = m.GetBoolProperty("visible", true, false);
       //TODO Static mesh por mesh instance hecho?
       //
       CMeshInstance *l_meshInstance = new CMeshInstance(meshName, core);
@@ -297,6 +300,7 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node) {
       l_meshInstance->SetPitch(pitch);
       l_meshInstance->SetRoll(roll);
       l_meshInstance->SetScale(scale);
+	  l_meshInstance->setVisible(visible);
       //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
       AddResource(meshName, l_meshInstance);
     } else if (name == "animated_model") {
@@ -325,6 +329,7 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node) {
       float pitch = m.GetFloatProperty("pitch");
       float roll = m.GetFloatProperty("roll");
       float scale = m.GetFloatProperty("scale");
+
       CSwitch *l_Switch  = new CSwitch(meshName, core);
       l_Switch->SetYaw(yaw);
       l_Switch->SetPosition(pos);

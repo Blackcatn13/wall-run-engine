@@ -161,7 +161,7 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
   //solo hacemos los calculos de colisiones si la plataforma esta a una distancia minima (optimización)
   if (abs(dirRay.x) + abs(dirRay.z) < (GetPhysicsSize().x + GetPhysicsSize().z + 1.0)) {
     SCollisionInfo info = SCollisionInfo();
-    float l_RadioPhysicsPlayer = 0.5;
+    float l_RadioPhysicsPlayer = 0.8;
     //float l_AlturaPlataformaDesdeOrigen = GetPhysicsSize().y + 1.5;
     //float l_MargenLateralPlataforma = 1.0;
     float l_DesplazamientoVerticalPlataforma = GetPhysicsSize().y + 1.5f;
@@ -226,7 +226,7 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
         //PLAYC->getPhysicController()->MovePlayer(direction.Normalize() * m_Speed * dt + PLAYC->getGravity() * Vect3f(0,1,0) * 1.2 * dt, dt);
         //PLAYC->IsGrounded(direction.Normalize() * m_Speed * dt / 1.0, dt);
         if (!PLAYC->getisJumping() || PLAYC->getCurrentJumpForce() < 0) {
-          PLAYC->setGravity(0.0);
+          PLAYC->setisOnPlatform(0.0);
           Vect3f l_PlayerPosition = PLAYC->getPhysicController()->GetPosition();
           l_playerPosition.y = m_Position.y + l_DesplazamientoVerticalPlataforma;
           PLAYC->getPhysicController()->SetPosition(l_playerPosition);
@@ -237,7 +237,7 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
           PLAYC->setisJumpingMoving(false);
         }
       } else {
-        PLAYC->setGravity(11.0);
+        PLAYC->setisOnPlatform(1.0);
 
         if (isAround(l_playerPosition, m_Position)) {
           PLAYC->getPhysicController()->Move(-dirRay.Normalize() * m_Speed * 3 * dt / 1.0, dt);
