@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<Windows OnLoadWindows=""
+<Windows OnLoadWindows="gui_manager:set_is_displayed_console(true);"
          OnSaveWindows=""
          OnUpdateWindows="">
 	

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<Windows OnLoadWindows="gui_manager:set_visible_mouse(false);"
+<Windows OnLoadWindows="gui_manager:set_visible_mouse(false);
+						gui_manager:set_is_displayed_console(false);"
          OnSaveWindows=""
          OnUpdateWindows="onUpdateWindowDisplayGUI()">
 		  
