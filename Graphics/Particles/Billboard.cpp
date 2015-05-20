@@ -34,8 +34,12 @@ CBillboard::CBillboard(float size, Vect3f pos)
   , m_position(pos) {
 }
 
-CBillboard::~CBillboard() {
-  //CHECKED_DELETE(m_Texture);
+CBillboard::~CBillboard() {	
+	if (m_Texture != NULL){
+		uint32 width = m_Texture->GetWidth();
+		if (width < 5000)
+			CHECKED_DELETE(m_Texture);
+	}
 }
 
 void CBillboard::Render(CGraphicsManager *GM) {

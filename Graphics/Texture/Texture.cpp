@@ -55,7 +55,7 @@ bool CTexture::LoadFileGUI() {
 }
 
 void CTexture::Unload() {
-  CHECKED_RELEASE(m_Texture);
+	CHECKED_RELEASE(m_Texture);
 }
 
 ///////////////////////////////////
