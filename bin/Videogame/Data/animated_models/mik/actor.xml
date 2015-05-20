@@ -1,0 +1,11 @@
+<animated_model name="mik">
+	<texture file="DIFF_MIK.tga"/>
+	<texture file="NRM_MIKMIK.tga"/>
+	<skeleton file="Mik_Skeleton.CSF"/>
+	<mesh file="Mik_Mesh.cmf"/>
+	<animation name="idle" file="Mik_idle.caf"/>
+	<animation name="walk" file="Mik_walk.caf"/>
+	<animation name="attack" file="Mik_attack.caf"/>
+	<animation name="dead" file="Mik_dead.caf"/>
+	<animation name="hurt" file="Mik_hurt.caf"/>
+</animated_model>
