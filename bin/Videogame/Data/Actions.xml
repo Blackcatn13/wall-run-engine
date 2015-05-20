@@ -107,7 +107,7 @@
     </action>
 	
 	<action name="SuperJump">
-    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_J"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_Z"/>
     </action>
 	
 	<action name="ChangeDimension">
@@ -115,7 +115,7 @@
     </action>
 	
 	<action name="Attack">
-		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_E"/>
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_J"/>
     </action>
 	
 	<action name="KeyMoveForward">

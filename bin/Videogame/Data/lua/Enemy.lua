@@ -24,42 +24,33 @@ end
 
 function check_attack (_enemy)
 	local player_position = player_controller:get_position()
-	--core:trace(tostring(player_position.x));
-		
 	local player_distance = get_distance_to_player(_enemy:get_position(), player_position)
-	--coreInstance:trace(tostring(player_distance))
 	if player_distance <= 49 and player.is_hit == false then
-		--coreInstance:trace("Attack!!")
-		--coreInstance:trace(_enemy:get_name())
 		return true
 	end
 	return false
 end
 
 function move_enemy(ElapsedTime, _point, Enemy)
-	--local player =  coreInstance:get_player_controller()
-	if player_controller.m_is3D == true then 
-		--Enemy:move_to(ElapsedTime, _point)
+	if player_controller.m_is3D == true then
 		move_to(Enemy, ElapsedTime, _point)
 	else
-		--Enemy:rotate_or_move(ElapsedTime, _point)
 		rotate_or_move(Enemy, ElapsedTime, _point)
 	end
 end
 
 
 function move_to(_enemy, ElapsedTime, _point)
-	if _point:distance(_enemy:get_position()) >= 2 then
+	--if _point:distance(_enemy:get_position()) >= 2 then
 		rotate_yaw (_enemy, ElapsedTime, _point)
-	
 		_enemy.m_PhysicController:move(Vect3f(1, 0, 0):rotate_y(_enemy:get_yaw()) * _enemy.m_Speed, ElapsedTime)
 		move_enemy_renderable(_enemy)	
-	end
+	--end
 end
 
 
 function rotate_or_move(_enemy, ElapsedTime, _point)
-	if _point:distance(_enemy:get_position()) >= 2 then
+	--if _point:distance(_enemy:get_position()) >= 2 then
 		local direction = Vect3f(_point - _enemy:get_position())
 		direction = direction:normalize(1.0)
 		local diff = Vect3f(1.0,0.0,0.0):rotate_y(_enemy:get_yaw())
@@ -70,7 +61,7 @@ function rotate_or_move(_enemy, ElapsedTime, _point)
 			_enemy.m_PhysicController:move(direction * _enemy.m_Speed, ElapsedTime)
 			move_enemy_renderable(_enemy)
 		end
-	end
+	--end
 end
 
 function move_enemy_renderable(_enemy)
