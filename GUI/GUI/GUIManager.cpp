@@ -874,7 +874,6 @@ void CGUIManager::SetConsole() {
   }
 }
 
-
 void CGUIManager::SetPositionPercentElement(std::string name, float posx, float posy){
 	m_ElementsMap.find(name)->second->SetPositionPercent(Vect2f(posx,posy));
 }

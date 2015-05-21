@@ -10,6 +10,7 @@ class CFSMInstance {
   std::string			m_CurrentState;
   std::string     m_newState;
   bool            m_Changed;
+  bool            m_onEnter;
  public:
   CFSMInstance(FSM *fsm);
   ~CFSMInstance(void);
@@ -18,6 +19,7 @@ class CFSMInstance {
   GET_SET( std::string, PreviousState)
   GET_SET( std::string, CurrentState)
   GET_SET( bool, Changed)
+  GET_SET( bool, onEnter)
   void setNewState(std::string);
   std::string getNewState();
 };

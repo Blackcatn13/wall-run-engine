@@ -53,7 +53,11 @@ CParticleEmitter::~CParticleEmitter() {
     m_Particles->Free(i);
 
   CHECKED_DELETE(m_Particles);
-  CHECKED_DELETE(m_Texture);
+  if (m_Texture != NULL){
+		uint32 width = m_Texture->GetWidth();
+		if (width < 5000)
+			CHECKED_DELETE(m_Texture);
+	}
 }
 
 void CParticleEmitter::Render(CGraphicsManager *RM) {

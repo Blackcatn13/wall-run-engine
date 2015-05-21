@@ -356,6 +356,7 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		
 		if player_controller.m_isAttack == true then
+			coreInstance:trace("ATACANDOOO");
 			if player_controller.m_CurrentAttackForce > 0.5 then	
 				player_controller.m_CurrentAttackForce = player_controller.m_CurrentAttackForce - (m_AttackGravity * l_ElapsedTime);
 				mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce * AttackSpeed * l_ElapsedTime;

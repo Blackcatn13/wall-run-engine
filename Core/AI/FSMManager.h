@@ -10,7 +10,7 @@ typedef struct State {
     std::string		onUpdate;
     float			m_UpdateTime;
     float			m_ElapsedTime;
-    bool            m_onEnter;
+	bool			m_onEnter;
 } STATE;
 
 typedef struct Fsm {

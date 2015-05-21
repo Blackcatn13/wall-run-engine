@@ -93,11 +93,11 @@ void CEnemy::UpdateFSM(float elapsedTime) {
 // for (TMapResource::iterator it = m_Resources.begin(); it != m_Resources.end(); ++it) {
 // for (TMapResource::iterator it = m_Resources.begin(); it != m_Resources.end(); ++it) {
   STATE *s = m_Fsm->getStates().GetResource(m_Fsm->getCurrentState());
-  if (s->m_onEnter == false) {
+  if (m_Fsm->getonEnter() == false) {
     char l_EnterFunction[256];
     _snprintf_s(l_EnterFunction, 256, 256, "%s(\"%s\")", s->onEnter.c_str(), getName().c_str());
     SCRIPTM->RunCode(l_EnterFunction);
-    s->m_onEnter = true;
+    m_Fsm->setonEnter(true);
   }
   s->m_ElapsedTime += elapsedTime;
 // char l_InitLevelText[256];
@@ -114,7 +114,7 @@ void CEnemy::UpdateFSM(float elapsedTime) {
   }
   bool change = m_Fsm->getChanged(); // CLuaGlobals::getInstance()->ValueChanged();
   if (change) {
-    s->m_onEnter = false;
+    m_Fsm->setonEnter(false);
     char l_ExitFunction[256];
     _snprintf_s(l_ExitFunction, 256, 256, "%s(\"%s\")", s->onExit.c_str(), getName().c_str());
     SCRIPTM->RunCode(l_ExitFunction);
@@ -250,7 +250,7 @@ int CEnemy::CheckPlayerCollision()
 	//1 if player hits
 	//2 if player gets hit
 	//0 if no hit
-	float l_MargenSuperiorPlayer = 2.0;
+	float l_MargenSuperiorPlayer = 1.5;//HARDCODED
 	if (getisAlive() && (m_Position.Distance(PLAYC->GetPosition()) < m_EnemyHitbox)) 
 	{
 		if (PLAYC->GetPosition().y > m_Position.y + l_MargenSuperiorPlayer || PLAYC->getisAttack()) 

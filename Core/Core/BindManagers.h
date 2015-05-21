@@ -268,6 +268,7 @@ void RegisterManagers() {
     .def("set_image", &CGUIManager::SetImage)
     .def("get_active_image", &CGUIManager::GetImage)
     .def("play_image", &CGUIManager::PlayImage)
+	.def("set_visible_mouse", &CGUIManager::SetVisiblePointerMouse)
 	.def("get_is_displayed_console", &CGUIManager::GetIsDisplayedConsole)
 	.def("set_is_displayed_console", &CGUIManager::SetIsDisplayedConsole)
 	.def("get_is_displayed", &CGUIManager::GetIsDisplayed)
