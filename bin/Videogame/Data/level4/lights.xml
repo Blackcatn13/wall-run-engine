@@ -11,8 +11,7 @@
 	-->
 	
 
-
-<light name="Omni002" type="omni" pos="79 3 5" color="1 0.5 0" intensity="0.7" att_start_range="5.0" att_end_range="10.0" generate_shadow_map="false" shadow_map_format_type="R32F" ortho_shadow_map_width="256" ortho_shadow_map_height="256" shadow_map_width="256" shadow_map_height="256" generate_static_shadow_map="false" static_shadow_map_format_type="R32F" 
+<light name="Omni002" type="omni" pos="98.0968 7.66317 3.59285" color="1 0.50588235294117647058823529411765 0.30980392156862745098039215686275" intensity="1" att_start_range="9.235" att_end_range="15.867" generate_shadow_map="false" shadow_map_format_type="R32F" ortho_shadow_map_width="256" ortho_shadow_map_height="256" shadow_map_width="256" shadow_map_height="256" generate_static_shadow_map="false" static_shadow_map_format_type="R32F" 
  angle="1.05" fall_off="1.05">
  <dynamic renderable_objects_manager="solid"/>
 </light>
@@ -39,7 +38,7 @@ generate_shadow_map="false" shadow_map_format_type="R32F" ortho_shadow_map_width
 </light>-->
 
 
-<light name="Direct002" type="directional" pos="-1 10 -1" dir="1 -1 1" color="1 1 1" intensity="0.3" att_start_range="50.0" att_end_range="100.0" generate_shadow_map="true" shadow_map_format_type="R32F" ortho_shadow_map_width="60" ortho_shadow_map_height="60" shadow_map_width="2048" shadow_map_height="2048" generate_static_shadow_map="false" static_shadow_map_format_type="R32F" angle="1.05" fall_off="1.05">
+<light name="Direct002" type="directional" pos="-1 10 -1" dir="1 -1 1" color="1 1 1" intensity="0" att_start_range="50.0" att_end_range="100.0" generate_shadow_map="true" shadow_map_format_type="R32F" ortho_shadow_map_width="60" ortho_shadow_map_height="60" shadow_map_width="2048" shadow_map_height="2048" generate_static_shadow_map="false" static_shadow_map_format_type="R32F" angle="1.05" fall_off="1.05">
  <dynamic renderable_objects_manager="player"/>
  <dynamic renderable_objects_manager="enemies"/>
 </light>
