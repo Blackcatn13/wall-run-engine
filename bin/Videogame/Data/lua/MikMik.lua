@@ -168,16 +168,11 @@ function mikmik_enter_dead(name)
 	if enemy ~= nil then
 		enemy.m_isAlive = false
 		enemy.m_RenderableObject.m_Printable=false
-		coreInstance:trace("HECHOMIKMIK1");
 		local dead_pos = enemy.m_PhysicController:get_position()
-		coreInstance:trace("HECHOMIKMIK2");
 		coreInstance:trace(name);
 		dead_pos.y = dead_pos.y + 1000
-		coreInstance:trace("HECHOMIKMIK3");
 		enemy:set_position(dead_pos)
-		coreInstance:trace("HECHOMIKMIK4");
 		enemy.m_PhysicController:set_position(dead_pos)
-		coreInstance:trace("HECHOMIKMIK5");
 	end
 end
 

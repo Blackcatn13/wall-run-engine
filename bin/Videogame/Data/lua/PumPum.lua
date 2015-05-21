@@ -239,34 +239,51 @@ function pumpum_enter_take_damage(name)
 end
 
 function pumpum_exit_take_damage(name)
+	local enemy = enemy_manager:get_enemy(name)
+	if enemy ~= nil then
+		enemy.m_CurrentTime = 0
+	end
 	return 0
 end
 
 function pumpum_update_take_damage(ElapsedTime, doComprobation, name)
 	local enemy = enemy_manager:get_enemy(name)
-	enemy.m_Life = enemy.m_Life - 1
-	if(enemy.m_Life <= 0) then
-		enemy:m_FSM():newState("Dead")
-	else
-		enemy:m_FSM():newState("Parado")
+	if enemy ~= nil then
+		enemy.m_Life = enemy.m_Life - 1
+		if(enemy.m_Life <= 0) then
+			enemy:m_FSM():newState("Dead")
+		else
+			enemy:m_FSM():newState("Parado")
+		end
 	end
 end
 
 function pumpum_enter_dead(name)
 	local enemy = enemy_manager:get_enemy(name)
-	enemy.m_isAlive = false
-	enemy.m_RenderableObject.m_Printable=false
-	local dead_pos = enemy.m_PhysicController:get_position()
-	dead_pos.y = dead_pos.y + 1000
-	enemy:set_position(dead_pos)
-	enemy.m_PhysicController:set_position(dead_pos)
-	coreInstance:trace("HECHOMIKMIK");
+	if enemy ~= nil then
+		enemy.m_isAlive = false
+		enemy.m_RenderableObject.m_Printable=false
+		local dead_pos = enemy.m_PhysicController:get_position()
+		coreInstance:trace(name);
+		dead_pos.y = dead_pos.y + 1000
+		enemy:set_position(dead_pos)
+		enemy.m_PhysicController:set_position(dead_pos)
+	end
 end
 
 function pumpum_exit_dead(name)
-	enemy.m_RenderableObject.m_Printable=true
+	local enemy = enemy_manager:get_enemy(name)
+	if enemy ~= nil then
+		enemy.m_RenderableObject.m_Printable=true
+		enemy.m_CurrentTime = 0
+	end
 end
 
 function pumpum_update_dead(ElapsedTime, doComprobation, name)
-	return 0
+	local enemy = enemy_manager:get_enemy(name)
+	if enemy ~= nil then
+		if enemy.m_isAlive == true then
+			enemy:m_FSM():newState("Parado")
+		end
+	end
 end

@@ -10,10 +10,10 @@ local move_3D = true
 --////////////////////////////////////////////////////////
 -- GLOBAL PARAMETERS
 --////////////////////////////////////////////////////////
-local AttackGravityStart = 0.40;
+local AttackGravityStart = 0.30;
 local AtackGravityModifier = 0.0002;
 local m_AttackGravity = AttackGravityStart;
-local AttackStartSpeed = 20;
+local AttackStartSpeed = 30;
 local AttackSpeed = AttackStartSpeed;
 local AttackDismin = 0.5;
 local canAttack = true;
@@ -41,7 +41,7 @@ function on_update_player_lua(l_ElapsedTime)
 	player_controller.m_Speed = 13;							--Velocidad de movimiento.
 	player_controller.m_JumpForce = 5.5;					--Fuerza de salto, impulso.
 	superjumForce = 10;						 	--SUPERSALTO CHEAT
-	player_controller.m_AttackForce = 0.8;					--Impulse force for the attack.
+	player_controller.m_AttackForce = 0.7;					--Impulse force for the attack.
 	player_controller.m_PhysicController:set_step(0.5); 	--Altura que puede superar (escalones).
 	local AirTime = 0.7;						-- Time into the air, playing air loop
 	local m_damageFeedBackSpeed = 13;
