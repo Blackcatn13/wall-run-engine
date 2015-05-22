@@ -180,6 +180,7 @@ function check_enemies_killed(num1, door)
 end
 
 function ChuckyApear()
+	coreInstance:trace("CHUKY APEARS!!!");
 	local current_position = Vect3f(player.get_player_controller():get_position());
 	local pos = Vect3f(current_position.x,4,current_position.z);
 	local Chucky = enemy_manager:get_enemy("Chucky");
