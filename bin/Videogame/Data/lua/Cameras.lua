@@ -178,7 +178,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 			obj:set_roll(0);
 			cam:set_zoom(zoom3D);
 			cam.m_fZNear = 0.1;
-			cam.m_fZFar = 1000;
+			cam.m_fZFar = 100;
 			cam.m_fFOV = fov3D;
 			cam.m_fAspectRatio = aspect3D;
 		end
@@ -243,7 +243,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 			obj:set_roll(0);
 			cam:set_zoom(zoom2D);
 			cam.m_fZNear = 0.1;
-			cam.m_fZFar = 1000;
+			cam.m_fZFar = 30;
 			cam.m_fFOV = fov2D;
 			cam.m_fAspectRatio = aspect2D;
 		end

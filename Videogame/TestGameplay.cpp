@@ -105,11 +105,11 @@ void CTestGameplay::Init() {
   m_Object3D = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
   m_Object2D = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
   //m_RenderableObject = RENDM->GetResourcesMap().find("Box005")->second.m_Value;
-  m_3DCamera = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_Object3D, 50);
+  m_3DCamera = new CThPSCamera(0.1f, 2.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_Object3D, 50);
   m_3DCamera->SetTypeCamera(CCamera::TC_3DCAM);
   m_3DCamera->LoadPathFromFile(".\\Data\\camera_path.xml");
   m_3DCamera->GetObject3D()->SetPosition(m_3DCamera->GetPathPoint(0));
-  m_2DCamera = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_Object2D, 50);
+  m_2DCamera = new CThPSCamera(0.1f, 30.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_Object2D, 50);
   m_2DCamera->SetTypeCamera(CCamera::TC_2DCAM);
   m_2DCamera->LoadPathFromFile(".\\Data\\camera_path.xml");
   m_ThPSCamera = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPSEsf /*RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky")*/, 200);
@@ -175,7 +175,7 @@ void CTestGameplay::Init() {
   //PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/Sala0.ASE", "sceneTraining");
   //PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/VolFinal.ASE", "sceneTraining");
   //PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/Sala0.ASE", "sceneTraining");
- // PHYSXM->GetCookingMesh()->CreateMeshFromASE(CCORE->getLevelPhisicsFile(), "sceneTraining");
+// PHYSXM->GetCookingMesh()->CreateMeshFromASE(CCORE->getLevelPhisicsFile(), "sceneTraining");
   //PHYSXM->GetCookingMesh()->CreateMeshFromASE("./Data/Level1/trainingPiky2.ASE", "sceneTraining");
   PHYSXM->GetCookingMesh()->LoadFromXML(CCORE->getLevelPhisicsFile());
   //  m_CockMesh->CreateMeshFromASE(". / Data / sceneTrainingPiky.ASE", "sceneTraining");
@@ -321,7 +321,7 @@ void CTestGameplay::DeInit() {
 Vect2i CTestGameplay::RenderDebugInfo(bool render/*, float dt*/) {
   Vect2i size;
   uint32 screenWidth = 1030;
-  Vect2i auxRight = Vect2i(screenWidth-m_textPosition.x, m_textPosition.y);
+  Vect2i auxRight = Vect2i(screenWidth - m_textPosition.x, m_textPosition.y);
   if (m_printInfo) {
     // get Process debug size
     size = CProcess::RenderDebugInfo(false/*, m_Dt*/);
@@ -339,9 +339,9 @@ Vect2i CTestGameplay::RenderDebugInfo(bool render/*, float dt*/) {
        size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Drawing 3"));
      else
        size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Drawing 2"));*/
-    size.Add_Max(FONTM->DrawDefaultText(screenWidth-m_textPosition.x+10, size.y, colWHITE, "Numero de vertices: %d", m_totalVertices));
-    size.Add_Max(FONTM->DrawDefaultText(screenWidth-m_textPosition.x+10, size.y, colWHITE, "Numero de caras: %d", m_totalFaces));
-    size.Add_Max(FONTM->DrawDefaultText(screenWidth-m_textPosition.x+10, size.y, colWHITE, "Numero de primitivas: %d", m_numPrimitives));
+    size.Add_Max(FONTM->DrawDefaultText(screenWidth - m_textPosition.x + 10, size.y, colWHITE, "Numero de vertices: %d", m_totalVertices));
+    size.Add_Max(FONTM->DrawDefaultText(screenWidth - m_textPosition.x + 10, size.y, colWHITE, "Numero de caras: %d", m_totalFaces));
+    size.Add_Max(FONTM->DrawDefaultText(screenWidth - m_textPosition.x + 10, size.y, colWHITE, "Numero de primitivas: %d", m_numPrimitives));
     aux_x = max(aux_x, 240);
     GRAPHM->DrawRectangle2D (auxRight/*m_textPosition*/, aux_x, size.y , m_Color, 2, 2, CColor(0, 0, 0, 1));
   } else {
@@ -350,7 +350,7 @@ Vect2i CTestGameplay::RenderDebugInfo(bool render/*, float dt*/) {
     Vect2i aux = m_textPosition;
     aux.Add_Max(FONTM->GetLiteralSize(aux.x, aux.y, "OpenDebug"));
     GRAPHM->DrawRectangle2D (auxRight/*m_textPosition*/, aux.x, aux.y , m_Color, 2, 2, CColor(0, 0, 0, 1));
-    FONTM->DrawLiteral(screenWidth-m_textPosition.x, m_textPosition.y, "OpenDebug");
+    FONTM->DrawLiteral(screenWidth - m_textPosition.x, m_textPosition.y, "OpenDebug");
     /* if (GRAPHM->isSphereVisible(Vect3f(15, 0, 0), 2))
        size.Add_Max(FONTM->DrawDefaultText(m_textPosition.x, size.y, colWHITE, "Drawing 3"));
      else
