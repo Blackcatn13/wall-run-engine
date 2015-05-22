@@ -53,19 +53,25 @@ CParticleEmitter::~CParticleEmitter() {
     m_Particles->Free(i);
 
   CHECKED_DELETE(m_Particles);
-  if (m_Texture != NULL){
-		uint32 width = m_Texture->GetWidth();
-		if (width < 5000)
-			CHECKED_DELETE(m_Texture);
-	}
+  if (m_Texture != NULL) {
+    uint32 width = m_Texture->GetWidth();
+    if (width < 5000)
+      CHECKED_DELETE(m_Texture);
+  }
 }
 
 void CParticleEmitter::Render(CGraphicsManager *RM) {
+  Mat44f t = m44fIDENTITY;
+  RM->SetTransform(t);
+  t.Translate(m_Position);
+  RM->SetTransform(t);
   for (int i = 0; i < m_MaxParticles; i++) {
     if (!m_Particles->IsFree(i)) {
       m_Particles->GetAt(i)->Render(RM);
     }
   }
+  t = m44fIDENTITY;
+  RM->SetTransform(t);
 }
 
 void CParticleEmitter::Update(float dt) {
@@ -105,7 +111,7 @@ void CParticleEmitter::PopulateParticle(CParticle *p) {
   p->setColor1(col1);
   p->setGravity(m_Gravity);
   p->setVelocidadOndulacion(mathUtils::RandomFloatRange(m_MinVelocidadOndulacion, m_MaxVelocidadOndulacion));
-  
+
   /* l_Texture->Create(m_sTexture, size, size, 1, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, l_Texture->GetFormatTypeFromString("R8G8B8"));
    float height = l_Texture->GetHeight();*/
   p->setTexture(m_Texture);
