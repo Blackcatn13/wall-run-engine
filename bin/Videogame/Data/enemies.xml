@@ -23,11 +23,11 @@
 	</instance_enemy>
 	
 	 
-	<instance_enemy name="MikMik1" type="mikmik_easy" >
+	<instance_enemy name="MikMik001" type="mikmik_easy" >
 		<wp position = "500.826767 10.000014 -7.216164" />
 		<wp position = "500.826767 10.000014 -3.216164" />
 	</instance_enemy>
-	<instance_enemy name="MikMik2" type="mikmik_easy" >
+	<instance_enemy name="MikMik002" type="mikmik_easy" >
 		<wp position = "495.826767 10.000014 -7.216164" />
 		<wp position = "470.826767 10.000014 -7.216164" />
 	</instance_enemy>

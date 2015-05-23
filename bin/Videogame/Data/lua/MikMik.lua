@@ -5,11 +5,13 @@ function mikmik_enter_stopped(name)
 	--coreInstance:trace("Entro y Estoy parado")
 	local enemy = enemy_manager:get_enemy(name)
 	enemy.m_CurrentTime = 0
+	enemy.m_RenderableObject:blend_cycle(0,1,0);
 end
 
 function mikmik_exit_stopped(name)
 	local enemy = enemy_manager:get_enemy(name)
 	enemy.m_CurrentTime = 0
+	enemy.m_RenderableObject:clear_cycle(0,0.3);
 end
 
 function mikmik_update_stopped(ElapsedTime, doComprobation, name)
@@ -50,6 +52,8 @@ function mikmik_update_stopped(ElapsedTime, doComprobation, name)
 end
 
 function mikmik_enter_moving(name)
+	local enemy = enemy_manager:get_enemy(name)
+	enemy.m_RenderableObject:blend_cycle(1,1,0.2);
 	return 0;
 end
 
@@ -58,6 +62,7 @@ function mikmik_exit_moving(name)
 	if enemy ~= nil then
 		enemy.m_CurrentTime = 0
 	end
+	enemy.m_RenderableObject:clear_cycle(1,0.2);
 end
 
 function mikmik_update_moving(ElapsedTime, doComprobation, name)
