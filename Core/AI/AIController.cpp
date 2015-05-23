@@ -39,7 +39,7 @@ CAIController::CAIController()
   m_PhysicUserData = new CPhysicUserData("AI");
   m_PhysicUserData->SetPaint(true);
   m_PhysicUserData->SetColor(colRED);
-  m_PhysicController = new CPhysicController(0.5, 0.25, 0.87, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, Vect3f(-15, 5, -15), -m_Gravity);
+  m_PhysicController = new CPhysicController(0.5, 0.25, 45, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, Vect3f(-15, 5, -15), -m_Gravity);
   PHYSXM->AddPhysicController(m_PhysicController);
 }
 
@@ -70,7 +70,7 @@ CAIController::CAIController(std::string mesh, std::string name, Vect3f position
   m_PhysicUserData = new CPhysicUserData(userDataName);
   m_PhysicUserData->SetPaint(false);
   m_PhysicUserData->SetColor(colRED);
-  m_PhysicController = new CPhysicController(0.5, 0.25, 0.87, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, position, -gravity);
+  m_PhysicController = new CPhysicController(0.5, 0.25, 45, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, position, -gravity);
   PHYSXM->AddPhysicController(m_PhysicController);
 }
 CAIController::CAIController(CRenderableObject *rond, float speed, float turnSpeed, float gravity, Vect2f controller_size):
@@ -100,7 +100,7 @@ CAIController::CAIController(CRenderableObject *rond, float speed, float turnSpe
   m_PhysicUserData->SetPaint(false);
   m_PhysicUserData->SetColor(colRED);
   Vect3f newPosition = Vect3f(rond->GetPosition().x, rond->GetPosition().y + controller_size.y, rond->GetPosition().z);
-  m_PhysicController = new CPhysicController(controller_size.x, controller_size.y, 0.87, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, newPosition, -gravity);//0.5,0.25
+  m_PhysicController = new CPhysicController(controller_size.x, controller_size.y, 45, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, newPosition, -gravity);//0.5,0.25
 
   PHYSXM->AddPhysicController(m_PhysicController);
 }

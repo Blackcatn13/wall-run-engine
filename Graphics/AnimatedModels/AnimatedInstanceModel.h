@@ -27,7 +27,8 @@ class CAnimatedInstanceModel : public CRenderableObject {
   int m_NumFaces;
   //bool LoadVertexBuffer(CGraphicsManager *RM);
   void LoadTextures();
-  float m_oldPosition;
+  float m_oldYPosition;
+  Vect3f m_oldPosition;
  public:
   CAnimatedInstanceModel();
   ~CAnimatedInstanceModel();
@@ -47,6 +48,8 @@ class CAnimatedInstanceModel : public CRenderableObject {
   Vect3f GetBoneMovement();
   Vect3f GetBonePosition();
   Vect3f GetAnimationBonePosition();
+  Vect3f GetBonesMovement();
+  void RestartBonesOldPosition();
 };
 
 #endif

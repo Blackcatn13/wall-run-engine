@@ -40,6 +40,7 @@ CAnimatedInstanceModel::CAnimatedInstanceModel() :
   m_EffectTechnique(NULL),
   m_NumFaces(0),
   m_NumVtxs(0),
+  m_oldYPosition(0),
   m_oldPosition(0) {
 }
 
@@ -251,13 +252,27 @@ Vect3f CAnimatedInstanceModel::GetBonePosition() {
 
 Vect3f CAnimatedInstanceModel::GetBoneMovement() {
   CalVector AnimatedBone = m_CalModel->getSkeleton()->getBone(0)->getTranslation();
-  float position = AnimatedBone.y - m_oldPosition;
-  m_oldPosition = AnimatedBone.y;
+  float position = AnimatedBone.y - m_oldYPosition;
+  m_oldYPosition = AnimatedBone.y;
   if (position < 0.001 && position > -0.001) position = 0;
   return Vect3f(0, position, 0);
+}
+
+Vect3f CAnimatedInstanceModel::GetBonesMovement() {
+  CalVector AnimatedBone = m_CalModel->getSkeleton()->getBone(0)->getTranslation();
+  Vect3f position = Vect3f(AnimatedBone.x, AnimatedBone.y, AnimatedBone.z) - m_oldPosition;
+  m_oldPosition = Vect3f(AnimatedBone.x, AnimatedBone.y, AnimatedBone.z);
+  if (position.x < 0.001 && position.x > -0.001) position.x = 0;
+  if (position.y < 0.001 && position.y > -0.001) position.y = 0;
+  if (position.z < 0.001 && position.z > -0.001) position.z = 0;
+  return position;
 }
 
 void CAnimatedInstanceModel::UpdateSkeleton(float dt) {
   m_CalModel->getMixer()->updateAnimation(dt);
   m_CalModel->getMixer()->updateSkeleton();
+}
+
+void CAnimatedInstanceModel::RestartBonesOldPosition() {
+  m_oldPosition = Vect3f(0);
 }
