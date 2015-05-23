@@ -53,7 +53,7 @@ function chucky_runner_update_running(ElapsedTime, doComprobation, name)
 	local mov = playerPos - chucky:get_position();
 	mov.y = 0;
 	--coreInstance:trace("mov x:" .. tostring(mov.x)  .. " y:" .. tostring(mov.y) ..  " z:" ..  tostring(mov.z));
-	chucky.m_PhysicController:move(mov/30, ElapsedTime);
+	chucky.m_PhysicController:move(mov/35, ElapsedTime);
 	chucky:set_position(chucky.m_PhysicController:get_position());
 	local characterPos = chucky.m_PhysicController:get_position();
 	characterPos.y = characterPos.y - 2;

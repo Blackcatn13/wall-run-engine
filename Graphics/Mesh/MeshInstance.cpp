@@ -26,9 +26,9 @@ void CMeshInstance::Render(CGraphicsManager *RM) {
     Mat44f t = m44fIDENTITY;
     RM->SetTransform(t);
     RM->SetTransform(getTransform());
-    if (GRAPHM->isSphereVisible(m_Position, m_StaticMesh->GetBoundingSphere().GetRadius()))
+    if (RM->isSphereVisible(m_Position, m_StaticMesh->GetBoundingSphere().GetRadius()))
       m_StaticMesh->Render(RM);
-    else if (GRAPHM->isBoxVisible(m_StaticMesh->GetBoundingBox().GetMinPos(), m_StaticMesh->GetBoundingBox().GetMaxPos()))
+    else if (RM->isBoxVisible(m_StaticMesh->GetBoundingBox().GetMinPos(), m_StaticMesh->GetBoundingBox().GetMaxPos()))
       m_StaticMesh->Render(RM);
   }
 }

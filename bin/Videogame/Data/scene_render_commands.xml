@@ -245,8 +245,6 @@
 	</render_draw_quad>-->
 
 	<!--<enable_z_test/> -->
-
-	<render_debug_lights/>
 	<!--render_gui/-->
 	 <!--<render_debug_scene layer="solid" active="true"/>-->
 	<disable_z_test/>

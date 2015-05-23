@@ -50,8 +50,10 @@ void CDeferredShadingSceneRendererCommand::Execute(CGraphicsManager &RM) {
   CEffectTechnique *l_EffectTechnique = m_RenderableObjectTechnique->GetEffectTechnique();
   while (it != LIGHTM->GetResources().end()) {
     if (m_RenderableObjectTechnique->GetEffectTechnique() != NULL && m_RenderableObjectTechnique->GetEffectTechnique()->GetEffect() != NULL) {
-      m_RenderableObjectTechnique->GetEffectTechnique()->GetEffect()->ChangeLight(it->second);
-      DrawColoredQuad2DTexturedInPixelsByEffectTechnique(&RM, l_EffectTechnique, rect, m_Color, m_StageTextures[0].m_Texture);
+      if (RM.isSphereVisible(it->second->GetPosition(), it->second->GetEndRangeAttenuation())) {
+        m_RenderableObjectTechnique->GetEffectTechnique()->GetEffect()->ChangeLight(it->second);
+        DrawColoredQuad2DTexturedInPixelsByEffectTechnique(&RM, l_EffectTechnique, rect, m_Color, m_StageTextures[0].m_Texture);
+      }
     }
     ++it;
   }
