@@ -175,9 +175,9 @@
 	<mesh_instance name="ANTORCHA037" core="ANTORCHA037" pos="147.658112 5.535036 15.345295" yaw="-1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<animated_model name="Piky" core="piky" pos="55.784378 0.000000 0.617737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="player"/>
 	<animated_model name="Chucky" core="chuky" pos="12.301392 0.000000 -2.756073" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>
-	<animated_model name="MikMik004" core="mik" pos="511.225891 8.583496 6.575592" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>
-	<animated_model name="MikMik005" core="mik" pos="511.225891 8.583496 -8.934296" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>
+	<!--<animated_model name="MikMik004" core="mik" pos="511.225891 8.583496 6.575592" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>
+	<animated_model name="MikMik005" core="mik" pos="511.225891 8.583496 -8.934296" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>-->
 	<animated_model name="MikMik002" core="mik" pos="498.949768 8.583496 -8.934296" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>
 	<animated_model name="MikMik001" core="mik" pos="498.949768 8.583496 3.256622" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>
-	<animated_model name="MikMik003" core="mik" pos="505.668762 8.583496 -2.441345" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>
+	<!--<animated_model name="MikMik003" core="mik" pos="505.668762 8.583496 -2.441345" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>-->
 </renderable_objects>

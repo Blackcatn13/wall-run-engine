@@ -176,8 +176,9 @@ function mikmik_enter_dead(name)
 		local dead_pos = enemy.m_PhysicController:get_position()
 		coreInstance:trace(name);
 		dead_pos.y = dead_pos.y + 1000
-		enemy:set_position(dead_pos)
-		enemy.m_PhysicController:set_position(dead_pos)
+		--enemy:set_position(dead_pos)
+		--enemy.m_PhysicController:set_position(dead_pos)
+		enemy:move_to_position(dead_pos)
 	end
 end
 
