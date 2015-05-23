@@ -32,12 +32,12 @@
 		<wp position = "470.826767 10.000014 -7.216164" />
 	</instance_enemy>
 	
-	<!--<instance_enemy name="MikMik3" type="mikmik_easy" >
+	<instance_enemy name="MikMik003" type="mikmik_easy" >
 	</instance_enemy>
-	<instance_enemy name="MikMik4" type="mikmik_easy" >
+	<instance_enemy name="MikMik004" type="mikmik_easy" >
 	</instance_enemy>
-	<instance_enemy name="MikMik5" type="mikmik_easy" >
-	</instance_enemy>-->
+	<instance_enemy name="MikMik005" type="mikmik_easy" >
+	</instance_enemy>
 
 
 
