@@ -426,6 +426,7 @@ function on_update_player_lua(l_ElapsedTime)
 			player_controller:is_grounded(mov,l_ElapsedTime);
 		end
 		player_controller:set_position(player_controller.m_PhysicController:get_position());
+		coreInstance:getWWSoundManager():SetListenerPosition(player_controller.m_PhysicController:get_position(), Vect3f(1,0,0), Vect3f(0,1,0));
 		move_character_controller_mesh(player_controller, player_controller:get_position(), player_controller.m_isJumping);
 		if not player_controller.m_isJumping and not _land then
 			if mov.x == 0 and mov.z == 0 then
