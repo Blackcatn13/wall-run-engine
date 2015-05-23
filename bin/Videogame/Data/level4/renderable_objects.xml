@@ -10,24 +10,16 @@
 	<layer name="enabled_poly"/>
 	<layer name="collectible"/>
 	<layer name="enemies"/>
-	<layer name="puzzle"/>
 	<layer name="player"/>
-	<!-- Animated Models -->
-	<animated_model name="Piky" core="piky" pos="0 2 0" yaw="0" pitch="0" roll="0" scale="1 1 1" layer="player"/>
-	<animated_model name="Chucky" core="chuky" pos="0 2 0" yaw="0" pitch="0" roll="0" scale="1 1 1" layer="enemies"/>
-	
-	
+	<layer name="puzzle"/>
+	<layer name="mov_platforms"/>
+
+	<!--hardcoded-->
 	<mesh_instance name="pixelite1" core="SpongePicky" pos="10.0 2.0 2.0" yaw="0.0" pitch="0.0" roll="0.0" scale="0.5 0.5 0.1" visible="true" layer="collectible" />
 	<mesh_instance name="pixelite2" core="SpongePicky" pos="15.0 2.0 3.0" yaw="0.0" pitch="0.0" roll="0.0" scale="0.5 0.5 0.1" visible="true" layer="collectible" />
 	<mesh_instance name="Collectible1" core="Enemy1" pos="485.26767 10.000014 -2.216164" yaw="0.0" pitch="0.0" roll="0.0" scale="0.5 0.5 0.1" visible="false" layer="collectible" />
 	
 	<door name="door_001" core="door_001" phisic_size="4.5 4.0 2.0" lua_function="move_door" final_position="520.26767 20.000014 -28.216164" pos="527.26767 8.000014 -23.216164" yaw="0.0" pitch="0.0" roll="0.0" scale="3.0 1.0 1.0" visible="true" layer="puzzle"/>
-	
-	<mesh_instance name="MikMik1" core="Enemy1"  pos="500.826767 10.000014 -10.216164" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />
-	<mesh_instance name="MikMik2" core="Enemy1"  pos="490.826767 10.000014 -5.216164" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />
-	<!--<mesh_instance name="MikMik3" core="Enemy1"  pos="470.826767 10.000014 -8.216164" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />
-	<mesh_instance name="MikMik4" core="Enemy1"  pos="475.826767 10.000014 -3.216164" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />
-	<mesh_instance name="MikMik5" core="Enemy1"  pos="460.826767 10.000014  2.216164" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" /> -->
 
 	<mesh_instance name="PumPum1" core="Enemy1"  pos="495.826767 10.000014 -8.216164" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />
 	<mesh_instance name="disparoPumPum1" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" layer="enemies" />
@@ -35,7 +27,7 @@
 	<mesh_instance name="disparoPumPum2" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" layer="enemies" />
 	<mesh_instance name="PumPum3" core="Enemy1"  pos="-23.0 2.0 -10.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />
 	<mesh_instance name="disparoPumPum3" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" layer="enemies" />
-
+	<!--hardcoded-->
 
 	<mesh_instance name="ARCADA" core="ARCADA" pos="-0.017227 9.222342 0.316050" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="CUPULA" core="CUPULA" pos="-0.002787 35.136833 -0.108083" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
@@ -136,37 +128,37 @@
 	<mesh_instance name="PARED_TIP3_009" core="PARED_TIP3_009" pos="-77.755600 0.000014 -94.956245" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="PARED_TIP3_010" core="PARED_TIP3_010" pos="-83.826767 0.000014 -119.216164" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="SUPORT ANTORCHA014" core="SUPORT ANTORCHA014" pos="-17.295013 3.284921 -47.792854" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SALA2_TEMPLEPOLYPOLY" core="SALA2_TEMPLEPOLYPOLY" pos="289.725037 4.516609 11.099791" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SALA2_TEMPLEPOLYPOLY" core="SALA2_TEMPLEPOLYPOLY" pos="298.484070 9.516605 6.154408" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="Object001" core="Object001" pos="289.725037 4.516609 11.099791" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="obstacle" core="obstacle" pos="241.464417 4.516609 11.099791" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="obstacle002" core="obstacle002" pos="328.570496 4.516609 11.099791" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="obstacle" core="obstacle" pos="252.817764 0.841506 11.095692" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="obstacle002" core="obstacle002" pos="339.923828 0.841506 11.095692" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="Cylinder001" core="Cylinder001" pos="304.051270 5.645349 16.930262" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="Cylinder002" core="Cylinder002" pos="360.035706 5.645349 16.930262" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA022" core="ANTORCHA022" pos="189.583267 4.630239 17.396589" yaw="0.473699" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA022" core="SUPORT ANTORCHA022" pos="189.620514 4.346467 17.767475" yaw="0.473699" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA023" core="ANTORCHA023" pos="204.493729 4.630239 17.396589" yaw="0.473699" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA023" core="SUPORT ANTORCHA023" pos="204.530975 4.346467 17.767475" yaw="0.473699" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA024" core="SUPORT ANTORCHA024" pos="219.259613 4.346467 17.767475" yaw="0.473699" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA024" core="ANTORCHA024" pos="219.222366 4.630239 17.396589" yaw="0.473699" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA025" core="SUPORT ANTORCHA025" pos="243.945328 4.346467 17.767475" yaw="0.473699" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA025" core="ANTORCHA025" pos="243.908081 4.630239 17.396589" yaw="0.473699" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA026" core="SUPORT ANTORCHA026" pos="259.850067 4.346467 17.767475" yaw="0.473699" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA026" core="ANTORCHA026" pos="259.812805 4.630239 17.396589" yaw="0.473699" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA027" core="SUPORT ANTORCHA027" pos="279.078888 4.346467 17.767475" yaw="0.473699" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA027" core="ANTORCHA027" pos="279.041626 4.630239 17.396589" yaw="0.473699" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA028" core="SUPORT ANTORCHA028" pos="296.266296 4.346467 17.767475" yaw="0.473699" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA028" core="ANTORCHA028" pos="296.229034 4.630239 17.396589" yaw="0.473699" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA029" core="SUPORT ANTORCHA029" pos="312.027618 4.346467 17.767475" yaw="0.473699" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA029" core="ANTORCHA029" pos="311.990356 4.630239 17.396589" yaw="0.473699" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA030" core="SUPORT ANTORCHA030" pos="339.702423 4.346467 17.767475" yaw="0.473699" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA030" core="ANTORCHA030" pos="339.665161 4.630239 17.396589" yaw="0.473699" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA031" core="SUPORT ANTORCHA031" pos="369.481354 4.346467 17.767475" yaw="0.473699" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA031" core="ANTORCHA031" pos="369.444092 4.630239 17.396589" yaw="0.473699" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA032" core="SUPORT ANTORCHA032" pos="406.855927 13.793026 15.761860" yaw="0.473699" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA032" core="ANTORCHA032" pos="406.818665 14.076797 15.390974" yaw="0.473699" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SUPORT ANTORCHA033" core="SUPORT ANTORCHA033" pos="422.702057 13.793026 15.761860" yaw="0.473699" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA033" core="ANTORCHA033" pos="422.664795 14.076797 15.390974" yaw="0.473699" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="SALA1_TEMPLEPOLYPOLY" core="SALA1_TEMPLEPOLYPOLY" pos="55.124161 0.000000 0.000000" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA022" core="ANTORCHA022" pos="189.583267 4.630239 17.396589" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA022" core="SUPORT ANTORCHA022" pos="189.620514 4.346467 17.767475" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA023" core="ANTORCHA023" pos="204.493729 4.630239 17.396589" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA023" core="SUPORT ANTORCHA023" pos="204.530975 4.346467 17.767475" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA024" core="SUPORT ANTORCHA024" pos="219.259613 4.346467 17.767475" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA024" core="ANTORCHA024" pos="219.222366 4.630239 17.396589" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA025" core="SUPORT ANTORCHA025" pos="243.945328 4.346467 17.767475" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA025" core="ANTORCHA025" pos="243.908081 4.630239 17.396589" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA026" core="SUPORT ANTORCHA026" pos="259.850067 4.346467 17.767475" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA026" core="ANTORCHA026" pos="259.812805 4.630239 17.396589" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA027" core="SUPORT ANTORCHA027" pos="279.078888 4.346467 17.767475" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA027" core="ANTORCHA027" pos="279.041626 4.630239 17.396589" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA028" core="SUPORT ANTORCHA028" pos="296.266296 4.346467 17.767475" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA028" core="ANTORCHA028" pos="296.229034 4.630239 17.396589" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA029" core="SUPORT ANTORCHA029" pos="312.027618 4.346467 17.767475" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA029" core="ANTORCHA029" pos="311.990356 4.630239 17.396589" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA030" core="SUPORT ANTORCHA030" pos="339.702423 4.346467 17.767475" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA030" core="ANTORCHA030" pos="339.665161 4.630239 17.396589" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA031" core="SUPORT ANTORCHA031" pos="369.481354 4.346467 17.767475" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA031" core="ANTORCHA031" pos="369.444092 4.630239 17.396589" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA032" core="SUPORT ANTORCHA032" pos="406.855927 13.793026 15.761860" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA032" core="ANTORCHA032" pos="406.818665 14.076797 15.390974" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SUPORT ANTORCHA033" core="SUPORT ANTORCHA033" pos="422.702057 13.793026 15.761860" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA033" core="ANTORCHA033" pos="422.664795 14.076797 15.390974" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="SALA1_TEMPLEPOLYPOLY" core="SALA1_TEMPLEPOLYPOLY" pos="115.714447 3.385889 -5.337020" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="Columna" core="Columna" pos="110.437492 0.741134 -14.710083" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="Columna01" core="Columna01" pos="113.665535 0.741134 -14.710083" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="Columna02" core="Columna02" pos="116.893570 0.741134 -14.710083" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
@@ -177,8 +169,15 @@
 	<mesh_instance name="Columna007" core="Columna007" pos="116.893570 0.741134 -27.675018" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="Columna008" core="Columna008" pos="113.665535 0.741134 -27.675018" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="Columna009" core="Columna009" pos="110.437492 0.741134 -27.675018" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA034" core="ANTORCHA034" pos="98.133629 5.549440 3.802600" yaw="-2.007" pitch="0.0" roll="0.0" scale="1.48025 1.48025 1.48025" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA035" core="ANTORCHA035" pos="103.677330 5.549440 -25.898174" yaw="1.81704" pitch="0.0" roll="0.0" scale="1.48025 1.48025 1.48025" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA036" core="ANTORCHA036" pos="133.468384 5.623781 -25.368145" yaw="2.1979" pitch="0.0" roll="0.0" scale="1.48025 1.48025 1.48025" visible="false" layer="solid"/>
-	<mesh_instance name="ANTORCHA037" core="ANTORCHA037" pos="147.658112 5.535036 15.345295" yaw="-1.12878" pitch="0.0" roll="0.0" scale="1.48025 1.48025 1.48025" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA034" core="ANTORCHA034" pos="98.133629 5.549440 3.802600" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA035" core="ANTORCHA035" pos="103.677330 5.549440 -25.898174" yaw="-1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA036" core="ANTORCHA036" pos="133.468384 5.623781 -25.368145" yaw="-1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ANTORCHA037" core="ANTORCHA037" pos="147.658112 5.535036 15.345295" yaw="-1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<animated_model name="Piky" core="piky" pos="55.784378 0.000000 0.617737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="player"/>
+	<animated_model name="Chucky" core="chuky" pos="12.301392 0.000000 -2.756073" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>
+	<animated_model name="MikMik004" core="mik" pos="511.225891 8.583496 6.575592" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>
+	<animated_model name="MikMik005" core="mik" pos="511.225891 8.583496 -8.934296" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>
+	<animated_model name="MikMik002" core="mik" pos="498.949768 8.583496 -8.934296" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>
+	<animated_model name="MikMik001" core="mik" pos="498.949768 8.583496 3.256622" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>
+	<animated_model name="MikMik003" core="mik" pos="505.668762 8.583496 -2.441345" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>
 </renderable_objects>

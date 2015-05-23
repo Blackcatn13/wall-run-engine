@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <static_meshes>
 
+	<!--hardcoded-->
 	<static_mesh filename=".\Data\level3\meshes//Enemy1.mesh" name="Enemy1"/>
 	<static_mesh filename=".\Data\level3\meshes//Enemy2.mesh" name="Enemy2"/>
 	<static_mesh filename=".\Data\level3\meshes//Enemy3.mesh" name="Enemy3"/>
 	<static_mesh filename=".\Data\level5\meshes//SpongePicky.mesh" name="SpongePicky"/>
 	<static_mesh name="door_001" filename="Data\level3\meshes\door_001.mesh"/>
+	<!--hardcoded-->
 
 	<static_mesh name="ARCADA" filename="Data\level4\meshes\ARCADA.mesh"/>
 	<static_mesh name="CUPULA" filename="Data\level4\meshes\CUPULA.mesh"/>
