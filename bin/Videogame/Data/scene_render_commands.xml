@@ -58,7 +58,7 @@
 
 	
 	<!--<deferred_shading/>-->
-	<set_texture_in_stage texture_name="./Data/g_Textures/celshade.tga" stage_id="5"/>
+	<!--<set_texture_in_stage texture_name="./Data/g_Textures/celshade.tga" stage_id="5"/>-->
 	<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
 	<!--<set_pool_renderable_objects_technique pool="deferred_lights_pool"/>-->
 	<set_pool_renderable_objects_technique pool="deferred_lights_pool"/>

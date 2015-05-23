@@ -27,7 +27,7 @@ CGraphicsManager::CGraphicsManager() :
   m_Rendering(false),
   m_Handler (NULL) {
   m_BackbufferColor_debug.Set(0.49804f, 1.f, 0.83137f, 1.f);
-  m_BackbufferColor_release.Set(0.f, 0.f, 0.f, 1.f);
+  m_BackbufferColor_release.Set(0.49804f, 1.f, 0.83137f, 1.f);
 }
 
 CGraphicsManager::~CGraphicsManager() {
@@ -909,7 +909,7 @@ struct MYCUSTOMVERTEX {
   DWORD color;
   float tu, tv;
   static unsigned int GetFVF() {
-	  return D3DFVF_XYZ|D3DFVF_DIFFUSE|D3DFVF_TEX1;
+    return D3DFVF_XYZ | D3DFVF_DIFFUSE | D3DFVF_TEX1;
   }
 };
 
@@ -924,14 +924,14 @@ void CGraphicsManager::DrawQuad3D (	const Vect3f &ul, const Vect3f &ur, const Ve
   MYCUSTOMVERTEX v[4] = {
     { ul.x, ul.y,	ul.z, l_Color, U0, V0} //(x,y) up_left.
     , { dl.x, dl.y,	dl.z, l_Color, U0, V1} //(x,y) down_left.
-	, { ur.x, ur.y,	ur.z, l_Color, U1, V0} //(x,y) up_right.
+    , { ur.x, ur.y,	ur.z, l_Color, U1, V0} //(x,y) up_right.
     , { dr.x, dr.y,	dr.z, l_Color, U1, V1} //(x,y) down_right.
   };
   m_pD3DDevice->SetFVF( MYCUSTOMVERTEX::GetFVF() );
   //m_pD3DDevice->SetTexture(0, NULL);
   Texture->Activate(0);
   m_pD3DDevice->DrawIndexedPrimitiveUP( D3DPT_TRIANGLELIST, 0, 4, 2, indices, D3DFMT_INDEX16, v, sizeof( MYCUSTOMVERTEX ) );
- // m_pD3DDevice->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP, 2, v, sizeof( SCREEN_TEXTURED_COLORED_VERTEX ) );
+// m_pD3DDevice->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP, 2, v, sizeof( SCREEN_TEXTURED_COLORED_VERTEX ) );
 
 }
 

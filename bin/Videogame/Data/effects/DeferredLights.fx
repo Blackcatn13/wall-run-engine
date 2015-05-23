@@ -152,7 +152,7 @@ technique RenderLightDeferredShadingTechnique
 {
 	pass p0
 	{
-		AlphaBlendEnable = true;
+		//AlphaBlendEnable = true;
 		//ZEnable = false;
 		//ZWriteEnable = false;
 		//BlendOp=Add;
