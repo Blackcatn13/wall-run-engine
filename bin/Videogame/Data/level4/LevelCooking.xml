@@ -7,6 +7,7 @@
 	<Physx_mesh name="TERRA_SALA0" filename="Data\level4\meshes\TERRA_SALA0.phsx"/>
 	<Physx_mesh name="ORO1" filename="Data\level4\meshes\ORO1.phsx"/>
 	<Physx_mesh name="ORO3" filename="Data\level4\meshes\ORO3.phsx"/>
+	<Physx_mesh name="PilarQuad001" filename="Data\level4\meshes\PilarQuad001.phsx"/>
 	<Physx_mesh name="SALA 3" filename="Data\level4\meshes\SALA 3.phsx"/>
 	<Physx_mesh name="PARED_TIP2_003" filename="Data\level4\meshes\PARED_TIP2_003.phsx"/>
 	<Physx_mesh name="PARED_TIP3_007" filename="Data\level4\meshes\PARED_TIP3_007.phsx"/>
@@ -60,4 +61,5 @@
 	<Physx_mesh name="Cylinder001" filename="Data\level4\meshes\Cylinder001.phsx"/>
 	<Physx_mesh name="Cylinder002" filename="Data\level4\meshes\Cylinder002.phsx"/>
 	<Physx_mesh name="SALA1_TEMPLEPOLYPOLY" filename="Data\level4\meshes\SALA1_TEMPLEPOLYPOLY.phsx"/>
+	<Physx_mesh name="PilarQuad002" filename="Data\level4\meshes\PilarQuad002.phsx"/>
 </Physx_meshes>

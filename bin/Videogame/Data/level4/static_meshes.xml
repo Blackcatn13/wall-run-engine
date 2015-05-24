@@ -8,7 +8,7 @@
 	<static_mesh filename=".\Data\level5\meshes//SpongePicky.mesh" name="SpongePicky"/>
 	<static_mesh name="door_001" filename="Data\level3\meshes\door_001.mesh"/>
 	<!--hardcoded-->
-
+	
 	<static_mesh name="ARCADA" filename="Data\level4\meshes\ARCADA.mesh"/>
 	<static_mesh name="CUPULA" filename="Data\level4\meshes\CUPULA.mesh"/>
 	<static_mesh name="ORO2" filename="Data\level4\meshes\ORO2.mesh"/>
@@ -17,6 +17,7 @@
 	<static_mesh name="TERRA_SALA0" filename="Data\level4\meshes\TERRA_SALA0.mesh"/>
 	<static_mesh name="ORO1" filename="Data\level4\meshes\ORO1.mesh"/>
 	<static_mesh name="ORO3" filename="Data\level4\meshes\ORO3.mesh"/>
+	<static_mesh name="PilarQuad001" filename="Data\level4\meshes\PilarQuad001.mesh"/>
 	<static_mesh name="SALA 3" filename="Data\level4\meshes\SALA 3.mesh"/>
 	<static_mesh name="SUPORT ANTORCHA012" filename="Data\level4\meshes\SUPORT ANTORCHA012.mesh"/>
 	<static_mesh name="PARED_TIP2_003" filename="Data\level4\meshes\PARED_TIP2_003.mesh"/>
@@ -153,4 +154,6 @@
 	<static_mesh name="ANTORCHA035" filename="Data\level4\meshes\ANTORCHA035.mesh"/>
 	<static_mesh name="ANTORCHA036" filename="Data\level4\meshes\ANTORCHA036.mesh"/>
 	<static_mesh name="ANTORCHA037" filename="Data\level4\meshes\ANTORCHA037.mesh"/>
+	<static_mesh name="PilarQuad002" filename="Data\level4\meshes\PilarQuad002.mesh"/>
+	<static_mesh name="Pixelite001" filename="Data\level4\meshes\Pixelite001.mesh"/>
 </static_meshes>

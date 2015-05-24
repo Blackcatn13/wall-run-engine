@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <triggers>
-<trigger name="InitCamera" platform_name="" pos="48.793602 4.985123 -6.568461" shape="box" size="8.10077 9.92248 -12.6073" type_event="enter" script_function="trigger_set_3D" param1="" group="1" paint="false" color="0.882353 0.345098 0.780392"/>
+<trigger name="InitCamera" platform_name="" pos="48.793602 4.985123 -6.568461" shape="box" size="8.10077 9.92248 12.6073" type_event="enter" script_function="trigger_set_3D" param1="" group="1" paint="false" color="0.882353 0.345098 0.780392"/>
 <trigger name="CheckPoint001" platform_name="" pos="59.382996 0.000000 0.071655" shape="box" size="0.69519 9.74541 9.85767" type_event="enter" script_function="set_checkpoint" param1="CheckPoint001" group="1" paint="false" color="0.882353 0.776471 0.341176"/>
 <trigger name="Hole001" platform_name="" pos="117.896194 -5.990989 -21.201315" shape="box" size="4.00146 2.55814 9.8392" type_event="enter" script_function="player_die" param1="" group="1" paint="false" color="0.341176 0.882353 0.560784"/>
 <trigger name="Hole002" platform_name="" pos="165.747330 -5.990989 11.023417" shape="box" size="4.00146 2.55814 9.8392" type_event="enter" script_function="player_die" param1="" group="1" paint="false" color="0.341176 0.882353 0.560784"/>
@@ -25,5 +25,6 @@
 <trigger name="2DTO3D001" platform_name="" pos="429.490265 8.452271 11.098312" shape="box" size="0.69519 9.74541 9.85767" type_event="enter" script_function="trigger_change_view" param1="" group="1" paint="true" color="0.109804 0.109804 0.694118"/>
 <trigger name="EnemyPuzzleStart001" platform_name="" pos="472.058228 8.491058 -3.217155" shape="box" size="0.69519 9.74541 9.85767" type_event="enter" script_function="set_puzzle_enemy_active" param1="true" group="1" paint="true" color="0.690196 0.101961 0.701961"/>
 <trigger name="EnemyPuzzle001" platform_name="" pos="516.532776 8.491058 -4.825186" shape="box" size="73.7941 9.74541 33.8452" type_event="enter" script_function="check_enemies_killed" param1="5" group="1" paint="true" color="1.0 0.0 0.439216"/>
-<trigger name="EnemyPuzzleEnd001" platform_name="" pos="558.138855 8.491058 -21.222233" shape="box" size="9.84827 9.74541 0.817219" type_event="enter" script_function="set_puzzle_enemy_active" param1="true" group="1" paint="true" color="0.690196 0.101961 0.701961"/>
+<trigger name="EnemyPuzzleEnd001" platform_name="" pos="558.138855 8.491058 -21.222233" shape="box" size="9.84827 9.74541 2.19131" type_event="enter" script_function="set_puzzle_enemy_active" param1="true" group="1" paint="true" color="0.690196 0.101961 0.701961"/>
+<trigger name="ChukyDesapears001" platform_name="" pos="426.922821 8.515198 11.098312" shape="box" size="0.69519 9.74541 9.85767" type_event="enter" script_function="ChuckyDesapears" param1="" group="1" paint="true" color="1.0 0.0235294 0.0235294"/>
 </triggers>
