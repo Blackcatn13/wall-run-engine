@@ -285,5 +285,6 @@ function pumpum_update_dead(ElapsedTime, doComprobation, name)
 		if enemy.m_isAlive == true then
 			enemy:m_FSM():newState("Parado")
 		end
+		enemy:actualizar_disparo(ElapsedTime)	
 	end
 end
