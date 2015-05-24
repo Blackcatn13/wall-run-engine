@@ -43,7 +43,7 @@ end
 function move_to(_enemy, ElapsedTime, _point)
 	--if _point:distance(_enemy:get_position()) >= 2 then
 		rotate_yaw (_enemy, ElapsedTime, _point)
-		_enemy.m_PhysicController:move(Vect3f(1, 0, 0):rotate_y(_enemy:get_yaw()) * _enemy.m_Speed, ElapsedTime)
+		_enemy.m_PhysicController:move(Vect3f(1, 0, 0):rotate_y(_enemy:get_yaw()) * _enemy.m_Speed * ElapsedTime, ElapsedTime)
 		move_enemy_renderable(_enemy)	
 	--end
 end
@@ -58,7 +58,7 @@ function rotate_or_move(_enemy, ElapsedTime, _point)
 		if angle > 0.5 then
 			rotate_yaw(_enemy, ElapsedTime, _point)
 		else
-			_enemy.m_PhysicController:move(direction * _enemy.m_Speed, ElapsedTime)
+			_enemy.m_PhysicController:move(direction * _enemy.m_Speed  * ElapsedTime, ElapsedTime)
 			move_enemy_renderable(_enemy)
 		end
 	--end

@@ -367,10 +367,10 @@ function on_update_player_lua(l_ElapsedTime)
 				player_controller.m_CurrentAttackForce = player_controller.m_CurrentAttackForce - (m_AttackGravity * l_ElapsedTime);
 				mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce * AttackSpeed * l_ElapsedTime;
 				if AttackSpeed > 0.05 then
-					AttackSpeed = AttackSpeed - AttackDismin;
+					AttackSpeed = AttackSpeed - AttackDismin * l_ElapsedTime;
 				end
 				mov.y = 0.0;
-				m_AttackGravity = m_AttackGravity + AtackGravityModifier;
+				m_AttackGravity = m_AttackGravity + AtackGravityModifier * l_ElapsedTime;
 				--l_ElapsedTime = l_ElapsedTime / AtackGravityModifier;
 				--AtackGravityModifier = AtackGravityModifier * 2;
 			else
