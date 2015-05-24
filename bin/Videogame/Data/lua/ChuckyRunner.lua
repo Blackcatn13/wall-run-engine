@@ -34,11 +34,14 @@ end
 -- Chucky Running --
 
 function chucky_runner_enter_running(name)
-	chucky.m_RenderableObject:blend_cycle(1,1,0);
+	coreInstance:trace("Enter running");
+	chucky.m_RenderableObject:blend_cycle(1,1,0.2);
+	chucky.m_RenderableObject:remove_action(2);
 	chucky.m_PhysicController:use_gravity(true);
 end
 
 function chucky_runner_exit_running(name)
+	coreInstance:trace("Exit running");
 	chucky:set_position(chucky.m_PhysicController:get_position());
 	local characterPos = chucky.m_PhysicController:get_position();
 	characterPos.y = 0;
@@ -46,6 +49,7 @@ function chucky_runner_exit_running(name)
 end
 
 function chucky_runner_update_running(ElapsedTime, doComprobation, name)
+	--chucky.m_RenderableObject:updateSkeleton(ElapsedTime);
 	local playerPos = playerController:get_position();
 	--coreInstance:trace("Player position x:" .. tostring(playerPos.x)  .. " y:" .. tostring(playerPos.y) ..  " z:" ..  tostring(playerPos.z));
 	local chuckyPos = chucky:get_position();
@@ -65,14 +69,13 @@ end
 
 function chucky_runner_enter_jumping(name)
 	chucky.m_RenderableObject:clear_cycle(1,0);
-	chucky.m_RenderableObject:execute_action(2,0,0,1,true);
+	chucky.m_RenderableObject:execute_action(2,0,0.3,1,true);
 	chucky.m_PhysicController:use_gravity(false);
 	coreInstance:trace("Enter jumping" );
 	jumpStart = false;
 end
 
 function chucky_runner_exit_jumping(name)
-	chucky.m_RenderableObject:remove_action(2);
 	chucky.m_RenderableObject:restartBonesPosition();
 	coreInstance:trace("Exit jumping");
 end
@@ -97,7 +100,7 @@ function chucky_runner_update_jumping(ElapsedTime, doComprobation, name)
 		local fallPos = chucky:get_position();
 		local distance = (fallPos.x - _fallPosition.x) * (fallPos.x - _fallPosition.x) + (fallPos.y - _fallPosition.y) * (fallPos.y - _fallPosition.y) + (fallPos.z - _fallPosition.z) * (fallPos.z - _fallPosition.z);
 		coreInstance:trace(tostring(distance));
-		if distance <= 0.48 then
+		if distance <= 2 then
 			coreInstance:trace("Jump stated");
 			jumpStart = true;
 		end
