@@ -19,6 +19,7 @@ local AttackDismin = 0.5;
 local canAttack = true;
 local contador = 0;
 local timeAttack = 0.6;
+local jumpTime = 0;
 --coreInstance:get_player_controller().m_mesh = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky");
 --coreInstance:get_player_controller().m_mesh:set_yaw(coreInstance:get_player_controller():get_yaw());
 function on_update_player_lua(l_ElapsedTime)
@@ -276,7 +277,7 @@ function on_update_player_lua(l_ElapsedTime)
 			end
 		end
 		if (player_controller.m_isJumping == true) or (player_controller.m_isFalling) then
-			
+				jumpTime = jumpTime + l_ElapsedTime;
 			--if player_controller.m_CurrentJumpForce < 0 then
 				--player_controller.m_CurrentJumpForce = player_controller.m_CurrentJumpForce - (player_controller.m_Gravity * l_ElapsedTime);
 			--else
@@ -289,9 +290,10 @@ function on_update_player_lua(l_ElapsedTime)
 			if inLoop then
 				mov.y = 0;
 			end
-			if mov.y == 0 and inLoop == false then
+			if mov.y == 0 and inLoop == false and jumpTime >= 0.3 then
 				player_controller.m_isFalling = true;
 				player_controller.m_isJumpingMoving = false;
+				jumpTime = 0;
 			end
 			if player_controller.m_JumpingTime > AirTime then
 				player_controller.m_isJumping = false;
