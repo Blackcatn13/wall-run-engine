@@ -148,7 +148,6 @@ void CCore::DeInit() {
   CHECKED_DELETE(m_LanguageManager);
   CHECKED_DELETE(m_FontManager);
   CHECKED_DELETE(m_ActionToInput);
-  CHECKED_DELETE(m_StaticMeshManager);
   CHECKED_DELETE(m_AnimatedModelManager);
   //CHECKED_DELETE(m_RenderableManager);
   CHECKED_DELETE(m_RenderableLayersManager);
@@ -175,6 +174,7 @@ void CCore::DeInit() {
   CHECKED_DELETE(m_GuiManager);
   CHECKED_DELETE(m_PhysicsManager);
   CHECKED_DELETE(m_CollectibleManager);
+  CHECKED_DELETE(m_StaticMeshManager);
   // m_PlatformsMap->Destroy();
 }
 

@@ -27,7 +27,7 @@ CGraphicsManager::CGraphicsManager() :
   m_Rendering(false),
   m_Handler (NULL) {
   m_BackbufferColor_debug.Set(0.49804f, 1.f, 0.83137f, 1.f);
-  m_BackbufferColor_release.Set(0.49804f, 1.f, 0.83137f, 1.f);
+  m_BackbufferColor_release.Set(1.f, 1.f, 1.f, 1.f);
 }
 
 CGraphicsManager::~CGraphicsManager() {
