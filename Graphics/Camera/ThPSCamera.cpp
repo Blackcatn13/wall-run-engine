@@ -83,6 +83,8 @@ bool CThPSCamera::LoadPathFromFile(std::string filename) {
           // std::string pointId = m(i)(j).GetPszISOProperty("id", "");
           Vect3f pos = m(i)(j).GetVect3fProperty("pos", v3fZERO);
           m_path.push_back(pos);
+		  bool canRotate = m(i)(j).GetBoolProperty("can_rotate", false);
+		  m_pathRotate.push_back(canRotate);
         }
 
       }
@@ -102,12 +104,24 @@ std::vector<Vect3f>	CThPSCamera::GetMPath() {
   return m_path;
 }
 
+std::vector<bool>	CThPSCamera::GetMPathRotate() {
+  return m_pathRotate;
+}
+
 Vect3f CThPSCamera::GetPathPoint(int i) {
   Vect3f pos = v3fZERO;
   if (i < m_path.size()) {
     pos = m_path[i];
   }
   return pos;
+}
+
+bool CThPSCamera::GetPathPointRotate(int i) {
+  bool canRotate = false;
+  if (i < m_pathRotate.size()) {
+    canRotate = m_pathRotate[i];
+  }
+  return canRotate;
 }
 
 int CThPSCamera::GetPathSize() {
