@@ -92,8 +92,16 @@ function trigger_change_view(offset_axis)
 		--player:set_yaw(coreInstance.m_CameraController:get_active_camera().m_pObject3D:get_yaw())
 		--coreInstance:trace(tostring(player:get_yaw()))
 		local camera_object = coreInstance.m_CameraController:get_active_camera().m_pObject3D
+		local active_camera = cam_Controller:get_active_camera();
+		local currentWP = nil
+		local nextWP = nil
+		if active_camera.m_currentWaypoint ~= nil then
+			currentWP = active_camera:get_path_point(active_camera.m_currentWaypoint)
+			nextWP = active_camera:get_path_point(active_camera.m_nextWaypoint)
+		end
 		local pos_x =  player_controller:get_position().x
 		local pos_z =  player_controller:get_position().z
+		coreInstance:trace(offset_axis)
 		if offset_axis == "x" then
 			pos_x = camera_object:get_position().x
 		elseif offset_axis == "z" then
@@ -104,10 +112,31 @@ function trigger_change_view(offset_axis)
 		end
 		
 		local position_2d = Vect3f(pos_x, player_controller:get_position().y ,pos_z)
+		
+		if currentWP ~= nil and nextWP ~= nil then
+			local camPathVector = nextWP - currentWP
+			camPathVector.y = 0
+			local playerVec = (player_controller.m_PhysicController:get_position()) - currentWP
+			playerVec.y = 0
+			if playerVec.x ~= 0 or playerVec.y ~= 0 or playerVec.z ~= 0 then
+				local modul = playerVec:length()
+				playerVec:normalize(1)
+				camPathVector:normalize(1)
+				local dot = camPathVector * playerVec
+				local moviment = dot * modul
+				local playerPos = currentWP + (camPathVector * moviment)
+				position_2d.x = playerPos.x
+				position_2d.z = playerPos.z
+			end
+		end
+		
+		
+		coreInstance:trace(tostring(player_controller:get_position().x))
 		coreInstance:trace(tostring(player_controller:get_position().z))
 		
 		player_controller.m_PhysicController:set_position(position_2d)
 		move_character_controller_mesh(player_controller, position_2d);
+		coreInstance:trace(tostring(position_2d.x))
 		coreInstance:trace(tostring(position_2d.z))
 	else
 		player_controller.m_is3D = true;
