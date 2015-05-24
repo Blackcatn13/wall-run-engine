@@ -27,6 +27,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 	local fov3D = 60.0 * 3.1415 / 180;
 	local aspect3D = 16/9;
 	local distToCameraOffset = 3;
+	local dot_maxim = -0.1
 	
 	--______ CAMERA 2D _______________________
 	local pitch2D = -0.2;
@@ -59,6 +60,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 	if cam.m_eTypeCamera ~= 2 and cam.m_eTypeCamera ~= 1 and cam.m_currentWaypoint ~= nil then
 		local currentWP = cam:get_path_point(cam.m_currentWaypoint);
 		local nextWP = cam:get_path_point(cam.m_nextWaypoint);
+		local canRotate = cam:get_path_point_rotate(cam.m_currentWaypoint);
 		--name2:set_name("UpdatePass2");
 		--local lastPlayerPos = cam.m_lastPlayerPos;
 		local pCont = coreInstance:get_player_controller();
@@ -122,6 +124,10 @@ function on_update_cameras_lua(l_ElapsedTime)
 		--Update Camera 3D
 		if(cam.m_eTypeCamera == 6) then
 			local offsetPosVec = newPosReal + Vect3f(0, distToCameraOffset, 0);
+			--[[if canRotate == true then
+				local playerPos = Vect3f(pCont:get_position().x, newPosReal.y, pCont:get_position().z);
+				offsetPosVec = playerPos + Vect3f(0, distToCameraOffset, 0);
+			end]]
 			obj:set_position(Vect3f(offsetPosVec.x, offsetPosVec.y, offsetPosVec.z));
 			--obj:set_position(Vect3f(newPosReal.x, newPosReal.y, newPosReal.z));
 			local yaw = math.atan2(cameraVecZXN.z, cameraVecZXN.x);
@@ -252,6 +258,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 		local lengthPos = vecPos:length();
 		local auxVec = nextWP - currentWP;
 		local lengthWP = auxVec:length();
+		coreInstance:trace("Pasa por aqui")
 		if(dot > 0) then
 			if(lengthWP < lengthPos) then
 				if(cam.m_nextWaypoint < cam:get_path_size()) then
