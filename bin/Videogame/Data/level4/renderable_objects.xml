@@ -17,7 +17,7 @@
 	<!--hardcoded-->
 	<mesh_instance name="Collectible1" core="Enemy1" pos="485.26767 10.000014 -2.216164" yaw="0.0" pitch="0.0" roll="0.0" scale="0.5 0.5 0.1" visible="false" layer="collectible" />
 	
-	<door name="door_001" core="door_001" phisic_size="4.5 4.0 2.0" lua_function="move_door" final_position="520.26767 20.000014 -28.216164" pos="527.26767 8.000014 -23.216164" yaw="0.0" pitch="0.0" roll="0.0" scale="3.0 1.0 1.0" visible="true" layer="puzzle"/>
+	<door name="door_001" core="door_001" phisic_size="4.5 4.0 2.0" lua_function="move_door" final_position="557.26767 20.000014 -21" pos="557.26767 8.000014 -21.216164" yaw="0.0" pitch="0.0" roll="0.0" scale="3.0 1.0 1.0" visible="true" layer="puzzle"/>
 
 	<mesh_instance name="PumPum1" core="Enemy1"  pos="495.826767 10.000014 -8.216164" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />
 	<mesh_instance name="disparoPumPum1" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" layer="enemies" />
