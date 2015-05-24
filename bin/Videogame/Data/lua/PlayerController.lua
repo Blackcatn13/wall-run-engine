@@ -27,6 +27,12 @@ function on_update_player_lua(l_ElapsedTime)
 	local act2in = coreInstance:get_action_to_input();
 	local cam_Controller = coreInstance.m_CameraController;--]]
 	local active_camera = cam_Controller:get_active_camera();
+	local currentWP = nil
+	local nextWP = nil
+	if active_camera.m_currentWaypoint ~= nil then
+		currentWP = active_camera:get_path_point(active_camera.m_currentWaypoint)
+		nextWP = active_camera:get_path_point(active_camera.m_nextWaypoint)
+	end
 	local camObject = active_camera.m_pObject3D;
 	--local player_controller = coreInstance:get_player_controller();
 	--local lightM = coreInstance:get_light_manager();
@@ -420,11 +426,33 @@ function on_update_player_lua(l_ElapsedTime)
 			playerRenderable:execute_action(5,0,0.3,1,false);
 		end
 		
+		
+		
 		if player_controller.m_isJumping then
 			player_controller:move(mov, l_ElapsedTime);
 		else
 			player_controller:is_grounded(mov,l_ElapsedTime);
 		end
+		
+		-- FIJAR AL PLAYER EN 2D
+		if player_controller.m_is3D == false then
+			if currentWP ~= nil and nextWP ~= nil then
+				camPathVector = nextWP - currentWP
+				local playerVec = (player_controller.m_PhysicController:get_position()) - currentWP
+				camPathVector.y = 0
+				playerVec.y = 0
+				if playerVec.x ~= 0 or playerVec.y ~= 0 or playerVec.z ~= 0 then
+					local modul = playerVec:length()
+					playerVec:normalize(1)
+					camPathVector:normalize(1)
+					local dot = camPathVector * playerVec
+					local moviment = dot * modul
+					local playerPos = currentWP + (camPathVector * moviment)
+					player_controller.m_PhysicController:set_position(Vect3f(playerPos.x,player_controller.m_PhysicController:get_position().y,playerPos.z))
+				end
+			end
+		end
+		
 		player_controller:set_position(player_controller.m_PhysicController:get_position());
 		coreInstance:getWWSoundManager():SetListenerPosition(player_controller.m_PhysicController:get_position(), Vect3f(1,0,0), Vect3f(0,1,0));
 		move_character_controller_mesh(player_controller, player_controller:get_position(), player_controller.m_isJumping);
