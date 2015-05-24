@@ -69,7 +69,7 @@ end
 
 function chucky_runner_enter_jumping(name)
 	chucky.m_RenderableObject:clear_cycle(1,0);
-	chucky.m_RenderableObject:execute_action(2,0,0.3,1,true);
+	chucky.m_RenderableObject:execute_action(2,0,0.3,1,false);
 	chucky.m_PhysicController:use_gravity(false);
 	coreInstance:trace("Enter jumping" );
 	jumpStart = false;
