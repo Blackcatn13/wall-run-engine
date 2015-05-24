@@ -180,7 +180,7 @@ function mikmik_enter_dead(name)
 		enemy.m_PhysicController:set_position(dead_pos)
 		enemy:move_to_position(dead_pos)
 		player.enemies_killed = player.enemies_killed + 1
-		check_enemies_killed(5, 'door_001')
+		check_enemies_killed(5, "door_001")
 	end
 end
 
