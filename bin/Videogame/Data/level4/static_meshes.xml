@@ -2,13 +2,13 @@
 <static_meshes>
 
 	<!--hardcoded-->
-	<static_mesh filename=".\Data\level3\meshes//Enemy1.mesh" name="Enemy1"/>
-	<static_mesh filename=".\Data\level3\meshes//Enemy2.mesh" name="Enemy2"/>
-	<static_mesh filename=".\Data\level3\meshes//Enemy3.mesh" name="Enemy3"/>
+	<static_mesh filename=".\Data\level5\meshes//Enemy1.mesh" name="Enemy1"/>
+	<static_mesh filename=".\Data\level5\meshes//Enemy2.mesh" name="Enemy2"/>
+	<static_mesh filename=".\Data\level5\meshes//Enemy3.mesh" name="Enemy3"/>
 	<static_mesh filename=".\Data\level5\meshes//SpongePicky.mesh" name="SpongePicky"/>
 	<static_mesh name="door_001" filename="Data\level3\meshes\door_001.mesh"/>
 	<!--hardcoded-->
-	
+
 	<static_mesh name="ARCADA" filename="Data\level4\meshes\ARCADA.mesh"/>
 	<static_mesh name="CUPULA" filename="Data\level4\meshes\CUPULA.mesh"/>
 	<static_mesh name="ORO2" filename="Data\level4\meshes\ORO2.mesh"/>
@@ -112,7 +112,7 @@
 	<static_mesh name="SALA2_TEMPLEPOLYPOLY" filename="Data\level4\meshes\SALA2_TEMPLEPOLYPOLY.mesh"/>
 	<static_mesh name="Object001" filename="Data\level4\meshes\Object001.mesh"/>
 	<static_mesh name="obstacle" filename="Data\level4\meshes\obstacle.mesh"/>
-	<static_mesh name="obstacle002" filename="Data\level4\meshes\obstacle002.mesh"/>
+	<static_mesh name="obstacle0022" filename="Data\level4\meshes\obstacle0022.mesh"/>
 	<static_mesh name="Cylinder001" filename="Data\level4\meshes\Cylinder001.mesh"/>
 	<static_mesh name="Cylinder002" filename="Data\level4\meshes\Cylinder002.mesh"/>
 	<static_mesh name="ANTORCHA022" filename="Data\level4\meshes\ANTORCHA022.mesh"/>
@@ -140,7 +140,7 @@
 	<static_mesh name="SUPORT ANTORCHA033" filename="Data\level4\meshes\SUPORT ANTORCHA033.mesh"/>
 	<static_mesh name="ANTORCHA033" filename="Data\level4\meshes\ANTORCHA033.mesh"/>
 	<static_mesh name="SALA1_TEMPLEPOLYPOLY" filename="Data\level4\meshes\SALA1_TEMPLEPOLYPOLY.mesh"/>
-	<static_mesh name="Columna" filename="Data\level4\meshes\Columna.mesh"/>
+	<static_mesh name="Columna002" filename="Data\level4\meshes\Columna002.mesh"/>
 	<static_mesh name="Columna01" filename="Data\level4\meshes\Columna01.mesh"/>
 	<static_mesh name="Columna02" filename="Data\level4\meshes\Columna02.mesh"/>
 	<static_mesh name="Columna03" filename="Data\level4\meshes\Columna03.mesh"/>
@@ -154,6 +154,44 @@
 	<static_mesh name="ANTORCHA035" filename="Data\level4\meshes\ANTORCHA035.mesh"/>
 	<static_mesh name="ANTORCHA036" filename="Data\level4\meshes\ANTORCHA036.mesh"/>
 	<static_mesh name="ANTORCHA037" filename="Data\level4\meshes\ANTORCHA037.mesh"/>
+	<static_mesh name="SALA 4" filename="Data\level4\meshes\SALA 4.mesh"/>
+	<static_mesh name="PUNXES002" filename="Data\level4\meshes\PUNXES002.mesh"/>
+	<static_mesh name="OBSTACLE004" filename="Data\level4\meshes\OBSTACLE004.mesh"/>
+	<static_mesh name="OBSTACLE008" filename="Data\level4\meshes\OBSTACLE008.mesh"/>
+	<static_mesh name="OBSTACLE007" filename="Data\level4\meshes\OBSTACLE007.mesh"/>
+	<static_mesh name="SALA 5" filename="Data\level4\meshes\SALA 5.mesh"/>
+	<static_mesh name="PLATAFORMA003" filename="Data\level4\meshes\PLATAFORMA003.mesh"/>
+	<static_mesh name="PLATAFORMA005" filename="Data\level4\meshes\PLATAFORMA005.mesh"/>
+	<static_mesh name="PLATAFORMA010" filename="Data\level4\meshes\PLATAFORMA010.mesh"/>
+	<static_mesh name="PLATAFORMA006" filename="Data\level4\meshes\PLATAFORMA006.mesh"/>
+	<static_mesh name="PLATAFORMA004" filename="Data\level4\meshes\PLATAFORMA004.mesh"/>
+	<static_mesh name="PLATAFORMA002" filename="Data\level4\meshes\PLATAFORMA002.mesh"/>
+	<static_mesh name="SALA 6" filename="Data\level4\meshes\SALA 6.mesh"/>
+	<static_mesh name="PUNXES005" filename="Data\level4\meshes\PUNXES005.mesh"/>
+	<static_mesh name="SALA 7" filename="Data\level4\meshes\SALA 7.mesh"/>
+	<static_mesh name="OBSTACLE006" filename="Data\level4\meshes\OBSTACLE006.mesh"/>
+	<static_mesh name="OBSTACLE002" filename="Data\level4\meshes\OBSTACLE002.mesh"/>
+	<static_mesh name="OBSTACLE005" filename="Data\level4\meshes\OBSTACLE005.mesh"/>
+	<static_mesh name="OBSTACLE001" filename="Data\level4\meshes\OBSTACLE001.mesh"/>
+	<static_mesh name="PUNXES012" filename="Data\level4\meshes\PUNXES012.mesh"/>
+	<static_mesh name="PUNXES008" filename="Data\level4\meshes\PUNXES008.mesh"/>
+	<static_mesh name="OBSTACLE003" filename="Data\level4\meshes\OBSTACLE003.mesh"/>
+	<static_mesh name="PUNXES014" filename="Data\level4\meshes\PUNXES014.mesh"/>
+	<static_mesh name="PUNXES003" filename="Data\level4\meshes\PUNXES003.mesh"/>
+	<static_mesh name="PUNXES004" filename="Data\level4\meshes\PUNXES004.mesh"/>
+	<static_mesh name="PUNXES009" filename="Data\level4\meshes\PUNXES009.mesh"/>
+	<static_mesh name="PUNXES001" filename="Data\level4\meshes\PUNXES001.mesh"/>
+	<static_mesh name="PLATAFORMA008" filename="Data\level4\meshes\PLATAFORMA008.mesh"/>
+	<static_mesh name="PLATAFORMA009" filename="Data\level4\meshes\PLATAFORMA009.mesh"/>
+	<static_mesh name="PLATAFORMA001" filename="Data\level4\meshes\PLATAFORMA001.mesh"/>
+	<static_mesh name="PUNXES011" filename="Data\level4\meshes\PUNXES011.mesh"/>
+	<static_mesh name="PUNXES006" filename="Data\level4\meshes\PUNXES006.mesh"/>
+	<static_mesh name="PUNXES007" filename="Data\level4\meshes\PUNXES007.mesh"/>
+	<static_mesh name="COLUMNA001" filename="Data\level4\meshes\COLUMNA001.mesh"/>
+	<static_mesh name="COLUMNA" filename="Data\level4\meshes\COLUMNA.mesh"/>
+	<static_mesh name="PUNXES013" filename="Data\level4\meshes\PUNXES013.mesh"/>
+	<static_mesh name="PUNXES010" filename="Data\level4\meshes\PUNXES010.mesh"/>
+	<static_mesh name="SALA 8" filename="Data\level4\meshes\SALA 8.mesh"/>
 	<static_mesh name="PilarQuad002" filename="Data\level4\meshes\PilarQuad002.mesh"/>
 	<static_mesh name="Pixelite001" filename="Data\level4\meshes\Pixelite001.mesh"/>
 </static_meshes>
