@@ -19,4 +19,11 @@
 	<texture name="Vides2" name_texture="./Data/GUI/GoPixelGo/Vides2.png"/>
 	<texture name="Vides1" name_texture="./Data/GUI/GoPixelGo/Vides1.png"/>
   </Image>
+  
+  <Image name="PixeliteGUI" posx="45" posy="4.00" height="8" width="10" visible="true" active="true"
+         default="Pixelite" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="Pixelite" name_texture="./Data/GUI/GoPixelGo/Pixelites.png"/>
+  </Image>
+  
+  <StaticText name="PixeliteNumber" posx="49.5" posy="6" height="10" width="10" visible="true" active="true" Literal="x 1"/>
 </Windows>

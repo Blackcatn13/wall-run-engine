@@ -229,6 +229,11 @@ uint32 CFontManager::DrawLiteral (uint32 x, uint32 y, const std::string &s_lit) 
   return DrawDefaultText(x, y, colGREEN, "Literal Error: %s", s_lit.c_str());
 }
 
+uint32 CFontManager::DrawLiteralNumber (uint32 x, uint32 y, const std::string &s_lit, CColor color, uint32 font) {
+  CLanguageManager *languageM = LANGM;
+  return DrawText(x, y, color, font, s_lit.c_str());
+}
+
 Vect2i CFontManager::GetLiteralSize (uint32 x, uint32 y, const std::string &s_lit) {
   CLanguageManager *languageM = LANGM;
   SLiteral lit;

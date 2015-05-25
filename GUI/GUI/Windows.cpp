@@ -767,5 +767,6 @@ CStaticText*	CWindows::LoadStaticText(CXMLTreeNode& pNewNode, const Vect2i& scre
 	
 	CStaticText* staticText = new CStaticText(screenResolution.y, screenResolution.x, h, w, Vect2f(posx,posy), l_literal, visible, activated);
 	staticText->SetName(name);
+	staticText->SetLiteral(l_literal);
 	return staticText;
 }
