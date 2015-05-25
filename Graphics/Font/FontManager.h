@@ -44,6 +44,7 @@ class CFontManager {
   uint32					DrawDefaultText   		(uint32 x, uint32 y, CColor color, const char *format, ... );
   uint32					DrawText				(uint32 x, uint32 y, CColor color, uint32 idFont, const char *format, ... );
   uint32					DrawLiteral				(uint32 x, uint32 y, const std::string &lit);
+  uint32					DrawLiteralNumber				(uint32 x, uint32 y, const std::string &lit, CColor color = colWHITE, uint32 font = 1);
   uint32					SizeX					(const char *format, uint32 idFont = 0);
   uint32					SizeY					(const char *format, uint32 idFont = 0);
   Vect2i					GetDefaultTextSize		(uint32 x, uint32 y, CColor color, const char *format, ...);

@@ -33,7 +33,6 @@ CGUIManager::CGUIManager(const Vect2i &resolution)
   : m_sCurrentWindows("Main.xml")
   , m_TextBox(NULL)
   , m_Console(NULL)
-  , m_LifeGUI(NULL)
   , m_PointerMouse(NULL)
   , m_bRenderError(false)
   , m_bUpdateError(false)
@@ -73,7 +72,6 @@ void CGUIManager::Release () {
   m_WindowsMap.clear();
   CHECKED_DELETE(m_TextBox);
   CHECKED_DELETE(m_Console);
-  CHECKED_DELETE(m_LifeGUI);
   CHECKED_DELETE(m_PointerMouse);
   LOGGER->AddNewLog(ELL_INFORMATION, "GUIManager:: offline (ok)");
 }
@@ -165,33 +163,7 @@ bool CGUIManager::Init (const std::string &initGuiXML) {
         std::string msg_error = "CGUIManager::Init-> Error al intentar leer el tag <Console> del archivo de configuracion GUI: " + initGuiXML;
         LOGGER->AddNewLog(ELL_ERROR, msg_error.c_str());
         throw CException(__FILE__, __LINE__, msg_error);
-      }
-      /*m = parser["LifeGUI"];
-      if (m.Exists()) {
-          std::string name								= m.GetPszProperty("name", "");
-          float posx										= m.GetFloatProperty("posx", 0.f);
-          float posy										= m.GetFloatProperty("posy", 35.f);
-          uint32 h										= m.GetFloatProperty("height", 35);
-          uint32 w										= m.GetFloatProperty("width", 5);
-          bool visible									= m.GetBoolProperty("visible", true);
-          bool active										= m.GetBoolProperty("active", true);
-          std::string back								= m.GetPszProperty("background",	"./Data/GUI/GoPixelGo/Life.jpg");
-          std::string heart								= m.GetPszProperty("heart",	"./Data/GUI/GoPixelGo/Heart.jpg");
-          CTexture* t_back							= textureM->GetResource(back);
-          CTexture* t_heart							= textureM->GetResource(heart);
-          m_LifeGUI =	new CLifeGUI(h, w, 300, 200, Vect2f(posx, posy), "", 0, 0, visible, active );
-          assert(m_LifeGUI);
-          m_LifeGUI->SetName("Life");
-          m_LifeGUI->SetBackgroundTexture(t_back, "Background");
-          m_LifeGUI->SetHeartTexture(t_heart, "Heart");
-          m_LifeGUI->SetVisible(false);
-          m_LifeGUI->SetBackgroundVisible(true);
-          m_LifeGUI->SetHeartVisible(true);
-      } else {
-          std::string msg_error = "CGUIManager::Init-> Error al intentar leer el tag <LifeGUI> del archivo de configuracion GUI: " + initGuiXML;
-          LOGGER->AddNewLog(ELL_ERROR, msg_error.c_str());
-          throw CException(__FILE__, __LINE__, msg_error);
-      }*/
+      }      
       m = parser["PointerMouse"];
       if (m.Exists()) {
         float posx													= m.GetFloatProperty("posx",			5.f);
@@ -246,7 +218,6 @@ void CGUIManager::Render (CGraphicsManager *renderManager, CFontManager *fm) {
     assert(m_TextBox);
     m_TextBox->Render(renderManager, fm);
     m_Console->Render(renderManager, fm);
-    //m_LifeGUI->RenderGUI(renderManager, fm);
     RenderPointerMouse(renderManager, fm);
   }//END if (m_bIsOk)
 }
@@ -279,7 +250,6 @@ void CGUIManager::Update (float elapsedTime) {
     m_PointerMouse->Update(intputManager, elapsedTime);
     m_TextBox->Update(intputManager, elapsedTime);
     m_Console->Update(intputManager, elapsedTime);
-    //m_LifeGUI->UpdateGUI(intputManager, elapsedTime);
     if ( !m_TextBox->IsVisible() && m_bLoadedGuiFiles) {
       std::map<std::string, CWindows *>::iterator it;
       it = m_WindowsMap.find( m_sCurrentWindows );
@@ -858,13 +828,6 @@ void CGUIManager::SetConsole() {
       m_Console->SetActive( true );
 	  SetIsDisplayedConsole(true);
       m_Console->GainFocus();
-      /*m_LifeGUI->SetWidthPercent(170);
-      m_LifeGUI->SetHeightPercent(10);
-      m_LifeGUI->SetVisible( true );
-      m_LifeGUI->SetBackgroundVisible(true);
-      m_LifeGUI->SetHeartVisible(true);
-      m_LifeGUI->SetActive( true );
-      m_LifeGUI->SetPosition(Vect2i(5, 150));*/
     } else {
       m_Console->SetVisible( false );
       m_Console->SetActive( false );

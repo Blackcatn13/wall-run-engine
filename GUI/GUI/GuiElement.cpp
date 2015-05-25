@@ -203,7 +203,10 @@ void CGuiElement::RenderText (CGraphicsManager* render, CFontManager* fm)
 			uint32 posX = CGuiElement::m_Position.x + m_uTextWidthOffset;
 			uint32 posY = CGuiElement::m_Position.y + m_uTextHeightOffset;
 
-			fm->DrawLiteral(posX, posY, m_sLiteral);
+			if (m_sName == "PixeliteNumber")
+				fm->DrawLiteralNumber(posX, posY, m_sLiteral, colBLACK);
+			else
+				fm->DrawLiteral(posX, posY, m_sLiteral);
 		}//if (m_sLiteral != "")
 
 	}//if (m_bIsVisible)
