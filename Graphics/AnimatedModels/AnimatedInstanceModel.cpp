@@ -19,6 +19,11 @@
 #include "cal3d\coreskeleton.h"
 #include "cal3d\corebone.h"
 #include "cal3d\bone.h"
+#include "cal3d\animation.h"
+#include "cal3d\animation_action.h"
+#include "cal3d\animation_cycle.h"
+#include <list>
+#include <vector>
 
 struct VERTEX {
   D3DXVECTOR3    pos;
@@ -255,6 +260,7 @@ Vect3f CAnimatedInstanceModel::GetBoneMovement() {
   float position = AnimatedBone.y - m_oldYPosition;
   m_oldYPosition = AnimatedBone.y;
   if (position < 0.001 && position > -0.001) position = 0;
+  //std::vector<CalAnimation *> &test = m_CalModel->getMixer()->getAnimationVector();
   return Vect3f(0, position, 0);
 }
 
