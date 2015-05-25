@@ -1,12 +1,10 @@
+#include "cal3d\cal3d.h"*/
 #include "AnimatedInstanceModel.h"
-#include "cal3d\cal3d_wrapper.h"
-#include "cal3d\mixer.h"
 #include "AnimatedCoreModel.h"
 #include "GraphicsManager.h"
 #include "Core\Core.h"
 #include "Texture\TextureManager.h"
 #include "Utils\Defines.h"
-#include "cal3d\renderer.h"
 #include "RenderableVertex\VertexTypes.h"
 #include "Effects\Effect.h"
 #include "Effects\EffectManager.h"
@@ -15,13 +13,6 @@
 #include "RenderableVertex\RenderableVertexs.h"
 #include "Core_Utils/MemLeaks.h"
 #include "Renderable\RenderableObjectTechniqueManager.h"
-#include "cal3d\skeleton.h"
-#include "cal3d\coreskeleton.h"
-#include "cal3d\corebone.h"
-#include "cal3d\bone.h"
-#include "cal3d\animation.h"
-#include "cal3d\animation_action.h"
-#include "cal3d\animation_cycle.h"
 #include <list>
 #include <vector>
 
@@ -94,38 +85,6 @@ void CAnimatedInstanceModel::Update(float ElapsedTime) {
   //TODO => Revisar el update (onIdle?)
   m_CalModel->update(ElapsedTime);
 }
-
-/*bool CAnimatedInstanceModel::LoadVertexBuffer(CGraphicsManager *RM)
-{
- // Create vertex buffer =>> Pillar los nuestros
-  //if(FAILED(RM->GetDevice()->CreateVertexBuffer(30000*sizeof(VERTEX),
-	if(FAILED(RM->GetDevice()->CreateVertexBuffer(30000*sizeof(TTEXTURE_VERTEX),
-	  //D3DUSAGE_WRITEONLY|D3DUSAGE_DYNAMIC, D3DFVF_VERTEX,
-	  D3DUSAGE_WRITEONLY|D3DUSAGE_DYNAMIC, TTEXTURE_VERTEX::GetFVF(),
-	  D3DPOOL_DEFAULT , &m_pVB, NULL
-	  )))
-	  return false;
-
-  // Create index buffer =>> Pillar los nuestros
-  if(sizeof(CalIndex)==2)
-  {
-	  if(FAILED(
-         RM->GetDevice()->CreateIndexBuffer(50000*3*sizeof(CalIndex),
-			  D3DUSAGE_WRITEONLY|D3DUSAGE_DYNAMIC,D3DFMT_INDEX16,
-			  D3DPOOL_DEFAULT ,&m_pIB, NULL)))
-			  return false;
-  }
-  else
-  {
-	  if(FAILED(
-      RM->GetDevice()->CreateIndexBuffer(50000*3*sizeof(CalIndex),
-			  D3DUSAGE_WRITEONLY|D3DUSAGE_DYNAMIC,D3DFMT_INDEX32,
-			  D3DPOOL_DEFAULT ,&m_pIB, NULL)))
-			  return false;
-  }
-
-  return true;
-}*/
 
 void CAnimatedInstanceModel::Render(CGraphicsManager *RM) {
   //TODO renderObject?
@@ -260,7 +219,7 @@ Vect3f CAnimatedInstanceModel::GetBoneMovement() {
   float position = AnimatedBone.y - m_oldYPosition;
   m_oldYPosition = AnimatedBone.y;
   if (position < 0.001 && position > -0.001) position = 0;
-  //std::vector<CalAnimation *> &test = m_CalModel->getMixer()->getAnimationVector();
+  std::list<CalAnimationAction *> test = m_CalModel->getMixer()->getAnimationActionList();
   return Vect3f(0, position, 0);
 }
 
