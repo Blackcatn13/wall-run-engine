@@ -290,7 +290,7 @@ function on_update_player_lua(l_ElapsedTime)
 			if inLoop then
 				mov.y = 0;
 			end
-			if mov.y == 0 and inLoop == false and jumpTime >= 0.3 then
+			if (not playerRenderable:is_cycle_animation_active()) and inLoop == false then
 				player_controller.m_isFalling = true;
 				player_controller.m_isJumpingMoving = false;
 				jumpTime = 0;

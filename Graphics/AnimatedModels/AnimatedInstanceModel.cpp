@@ -219,7 +219,6 @@ Vect3f CAnimatedInstanceModel::GetBoneMovement() {
   float position = AnimatedBone.y - m_oldYPosition;
   m_oldYPosition = AnimatedBone.y;
   if (position < 0.001 && position > -0.001) position = 0;
-  std::list<CalAnimationAction *> test = m_CalModel->getMixer()->getAnimationActionList();
   return Vect3f(0, position, 0);
 }
 
@@ -240,4 +239,15 @@ void CAnimatedInstanceModel::UpdateSkeleton(float dt) {
 
 void CAnimatedInstanceModel::RestartBonesOldPosition() {
   m_oldPosition = Vect3f(0);
+}
+
+bool CAnimatedInstanceModel::IsCycleAnimationActive() const {
+  std::list< CalAnimationAction *> anim = m_CalModel->getMixer()->getAnimationActionList();
+  if (anim.size() > 0)
+    return (anim.front()->getState() != CalAnimation::STATE_STOPPED);
+  return false;
+}
+
+bool CAnimatedInstanceModel::IsActionAnimationActive() const {
+  return true;
 }

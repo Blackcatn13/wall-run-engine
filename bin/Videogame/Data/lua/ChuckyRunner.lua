@@ -84,26 +84,12 @@ function chucky_runner_update_jumping(ElapsedTime, doComprobation, name)
 	chucky.m_RenderableObject:updateSkeleton(ElapsedTime);
 	local Topos = chucky.m_RenderableObject:getBonesMovement();
 	Topos = Topos:rotate_y(1.7);
-	coreInstance:trace("Position x:" .. tostring(Topos.x) .. " y:" .. tostring(Topos.y) .. " z:" .. tostring(Topos.z));
+	--coreInstance:trace("Position x:" .. tostring(Topos.x) .. " y:" .. tostring(Topos.y) .. " z:" .. tostring(Topos.z));
 	chucky.m_PhysicController:move(Topos, ElapsedTime);
 	chucky:set_position(chucky.m_PhysicController:get_position())
-	coreInstance:trace("Jump has started? " .. tostring(jumpStart));
-	if Topos.y == 0 and jumpStart == true then
+	if (not chucky.m_RenderableObject:is_cycle_animation_active()) then
 		coreInstance:trace("Changing to runing");
 		chucky:m_FSM():newState("Corriendo");
-	end
-	if doComprobation == 1 and jumpStart == false then
-		local info = SCollisionInfo();
-		local _dirRay = Vect3f(0,-1,0);
-		coreInstance:get_phisics_manager():raycast_closest_actor(chucky:get_position() - 0.4, _dirRay, 1, info, 1000);
-		_fallPosition = info.m_CollisionPoint;
-		local fallPos = chucky:get_position();
-		local distance = (fallPos.x - _fallPosition.x) * (fallPos.x - _fallPosition.x) + (fallPos.y - _fallPosition.y) * (fallPos.y - _fallPosition.y) + (fallPos.z - _fallPosition.z) * (fallPos.z - _fallPosition.z);
-		coreInstance:trace(tostring(distance));
-		if distance <= 2 then
-			coreInstance:trace("Jump stated");
-			jumpStart = true;
-		end
 	end
 end
 
