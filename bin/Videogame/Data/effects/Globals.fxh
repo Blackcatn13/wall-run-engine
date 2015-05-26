@@ -37,7 +37,7 @@ float g_ConstantBlur = 0.05;
 float2 g_RenderTargetSize = float2(754 , 584);
 float g_ContourNormalThickness = 0.0;
 
-float3 g_LightAmbient=float3(0.2, 0.2, 0.2);
+float3 g_LightAmbient=float3(0.35, 0.35, 0.35);
 float g_SpecularExponent = 200;
 float g_LightAmbientIntensity = 1;
 

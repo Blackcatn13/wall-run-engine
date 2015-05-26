@@ -1,5 +1,7 @@
 local min_player_distance = 49
 function mikmik_enter_stopped(name)
+	--coreInstance:trace(name)
+	--coreInstance:trace("enter_stopped")
 	--local enemy = enemy_manager:get_enemy(name)
 	--currentwp = wp1
 	--coreInstance:trace("Entro y Estoy parado")
@@ -9,12 +11,16 @@ function mikmik_enter_stopped(name)
 end
 
 function mikmik_exit_stopped(name)
+	--coreInstance:trace(name)
+	--coreInstance:trace("exit_stopped")
 	local enemy = enemy_manager:get_enemy(name)
 	enemy.m_CurrentTime = 0
 	enemy.m_RenderableObject:clear_cycle(0,0.3);
 end
 
 function mikmik_update_stopped(ElapsedTime, doComprobation, name)
+	--coreInstance:trace(name)
+	--coreInstance:trace("update_stopped")
 	local enemy = enemy_manager:get_enemy(name)
 	local player_position = player_controller:get_position()
 	local player_distance = get_distance_to_player(enemy:get_position(), player_position)
@@ -52,12 +58,16 @@ function mikmik_update_stopped(ElapsedTime, doComprobation, name)
 end
 
 function mikmik_enter_moving(name)
+	--coreInstance:trace(name)
+	--coreInstance:trace("enter_moving")
 	local enemy = enemy_manager:get_enemy(name)
 	enemy.m_RenderableObject:blend_cycle(1,1,0.2);
 	return 0;
 end
 
 function mikmik_exit_moving(name)
+	--coreInstance:trace(name)
+	--coreInstance:trace("exit_moving")
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil then
 		enemy.m_CurrentTime = 0
@@ -66,6 +76,8 @@ function mikmik_exit_moving(name)
 end
 
 function mikmik_update_moving(ElapsedTime, doComprobation, name)
+	--coreInstance:trace(name)
+	--coreInstance:trace("update_moving")
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil then
 		if enemy.m_CurrentWp == nil then
@@ -86,12 +98,16 @@ function mikmik_update_moving(ElapsedTime, doComprobation, name)
 end
 
 function mikmik_enter_calcwp(name)
+	--coreInstance:trace(name)
+	--coreInstance:trace("enter_calcwp")
 	return 0
 end
 
 function mikmik_exit_calcwp(name)
 --core:trace("Saliendo Buscar_next_WP");
 -- OnExit Buscar_next_WP
+	coreInstance:trace(name)
+	coreInstance:trace("exit_calcwp")
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil then
 		 enemy.m_CurrentTime = 0
@@ -99,6 +115,8 @@ function mikmik_exit_calcwp(name)
 end
 
 function mikmik_update_calcwp(ElapsedTime, doComprobation, name)
+	--coreInstance:trace(name)
+	--coreInstance:trace("update_calcwp")
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil and enemy:get_wp_vector_size() > 0 then
 		enemy.m_CurrentWp = enemy:get_next_wp()
@@ -107,6 +125,8 @@ function mikmik_update_calcwp(ElapsedTime, doComprobation, name)
 end
 
 function mikmik_enter_attack_player(name)
+	--coreInstance:trace(name)
+	--coreInstance:trace("enter_attack_player")
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil then
 		enemy.m_Speed = enemy.m_AttackSpeed
@@ -116,6 +136,8 @@ function mikmik_enter_attack_player(name)
 end
 
 function mikmik_exit_attack_player(name)
+	--coreInstance:trace(name)
+	--coreInstance:trace("exit_attack_player")
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil then
 		enemy.m_Speed = enemy.m_OriginalSpeed
@@ -129,6 +151,8 @@ function mikmik_exit_attack_player(name)
 end
 
 function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
+	--coreInstance:trace(name)
+	--coreInstance:trace("update_attack_player")
 --player_position = Vect3f(10,0,10)
 	local player_position = player_controller:get_position()
 	local enemy = enemy_manager:get_enemy(name)
@@ -145,10 +169,14 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 end
 
 function mikmik_enter_take_damage(name)
+	--coreInstance:trace(name)
+	--coreInstance:trace("enter_take_damage")
 	return 0
 end
 
 function mikmik_exit_take_damage(name)
+	--coreInstance:trace(name)
+	--coreInstance:trace("exit_take_damage")
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil then
 		enemy.m_CurrentTime = 0
@@ -157,6 +185,8 @@ function mikmik_exit_take_damage(name)
 end
 
 function mikmik_update_take_damage(ElapsedTime, doComprobation, name)
+	--coreInstance:trace(name)
+	--coreInstance:trace("update_take_damage")
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil then
 		enemy.m_Life = enemy.m_Life - 1
@@ -169,6 +199,8 @@ function mikmik_update_take_damage(ElapsedTime, doComprobation, name)
 end
 
 function mikmik_enter_dead(name)
+	--coreInstance:trace(name)
+	--coreInstance:trace("enter_dead")
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil then
 		enemy.m_isAlive = false
@@ -185,6 +217,8 @@ function mikmik_enter_dead(name)
 end
 
 function mikmik_exit_dead(name)
+	--coreInstance:trace(name)
+	--coreInstance:trace("exit_dead")
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil then
 		enemy.m_RenderableObject.m_Printable=true
@@ -193,6 +227,8 @@ function mikmik_exit_dead(name)
 end
 
 function mikmik_update_dead(ElapsedTime, doComprobation, name)
+	--coreInstance:trace(name)
+	--coreInstance:trace("update_dead")
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil then
 		if enemy.m_isAlive == true then

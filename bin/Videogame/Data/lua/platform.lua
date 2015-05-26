@@ -249,12 +249,13 @@ function update_poly_platform(current_poly_time, dt, platform_name)
 		--activate_poly(platform, dt)
 		--local new_pos = Vect3f(position + platform.m_RedimScale)
 		--coreInstance:get_player_controller().m_PhysicController:set_position(new_pos) 
-	end
-	-- If poly is activated
 	
-	if current_poly_time > platform.m_TimeOut then
+	-- If poly is activated
+	elseif current_poly_time > platform.m_TimeOut then
 		platform:deactivate_poly()
 		--deactivate_poly(platform, dt)
+	else
+		platform:apply_physics_to_player(platform.m_Direction, dt)
 	end
 		
 end

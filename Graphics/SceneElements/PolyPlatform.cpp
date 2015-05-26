@@ -169,8 +169,9 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
     float l_PosicionMaxSobrePlat = GetPhysicsSize().y + 2.0f;
 
     //para saber si es movimiento horizontal o vertical
-    //Caso horizontal
+    //Caso horizo	ntal
     if ((abs(direction.z) + abs(direction.x)) > abs(direction.y)) {
+      PLAYC->setisOnPlatform(1.0);
       bool PhysicsApplied = false;
       dirRay = dirRay.Normalize() * 0.4f;
       Vect3f dirRayBounding = Vect3f(dirRay.x, -l_RadioPhysicsPlayer, dirRay.z);
@@ -222,10 +223,12 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
       	PLAYC->setisGrounded(false);
       }
       else*/
-      if ((l_playerPosition.y > (m_Position.y + l_PosicionMinSobrePlat) && (l_playerPosition.y < (m_Position.y + l_PosicionMaxSobrePlat)) && (hit != NULL && hit->getName().substr(0, 4) == "Poly" && info.m_fDistance <= 3.0))) {
+      if ((l_playerPosition.y > (m_Position.y + l_PosicionMinSobrePlat) && (l_playerPosition.y < (m_Position.y + l_PosicionMaxSobrePlat)) && (hit != NULL && hit->getName().substr(0, 4) == "Poly" && info.m_fDistance <= 3.0))) 
+	  {
         //PLAYC->getPhysicController()->MovePlayer(direction.Normalize() * m_Speed * dt + PLAYC->getGravity() * Vect3f(0,1,0) * 1.2 * dt, dt);
         //PLAYC->IsGrounded(direction.Normalize() * m_Speed * dt / 1.0, dt);
-        if (!PLAYC->getisJumping() || PLAYC->getCurrentJumpForce() < 0) {
+        if (!PLAYC->getisJumping() || PLAYC->getCurrentJumpForce() < 0) 
+		{
           PLAYC->setisOnPlatform(0.0);
           Vect3f l_PlayerPosition = PLAYC->getPhysicController()->GetPosition();
           l_playerPosition.y = m_Position.y + l_DesplazamientoVerticalPlataforma;
@@ -236,7 +239,13 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
           PLAYC->setCurrentJumpForce(0.0);
           PLAYC->setisJumpingMoving(false);
         }
-      } else {
+		else
+		{
+			PLAYC->setisOnPlatform(1.0);
+		}
+      } 
+	  else 
+	  {
         PLAYC->setisOnPlatform(1.0);
 
         if (isAround(l_playerPosition, m_Position)) {

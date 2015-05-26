@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <Windows OnLoadWindows="gui_manager:set_visible_mouse(false);
 						gui_manager:set_is_displayed_console(false);
-            CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuEnd','Music');"
+						CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuEnd','Music');
+						gui_manager:set_num_pixelite(0);"
          OnSaveWindows=""
          OnUpdateWindows="onUpdateWindowDisplayGUI()">
 		  
