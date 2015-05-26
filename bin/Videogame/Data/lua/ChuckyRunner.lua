@@ -95,6 +95,9 @@ function chucky_runner_update_jumping(ElapsedTime, doComprobation, name)
 		chucky.m_RenderableObject:remove_action(2);
 		chucky.m_RenderableObject:restartBonesPosition();
 		--chucky.m_RenderableObject:updateSkeleton(ElapsedTime);
+		local characterPos = chucky.m_PhysicController:get_position();
+		characterPos.y = 0;
+		chucky.m_RenderableObject:set_position(characterPos);
 		chucky:m_FSM():newState("Corriendo");
 	end
 end
