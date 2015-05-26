@@ -3,7 +3,7 @@
 	<core_enemy type="patrol" life="75.0" time_to_spawn="1.0" time_to_shoot="2.5" shoot_accuracy="0.45"/>
 	<core_enemy type="boss" life="250.0" time_to_spawn="0.0" time_to_shoot="2.0" shoot_accuracy="0.75"/>-->
 
-	<core_enemy type="mikmik_easy" speed="7" speed_attack="10" turn_speed ="5.0" life="1" fsm="MikMik" controller_size= "0.5 0.25" enemy_type="MikMik"/>
+	<core_enemy type="mikmik_easy" speed="4" speed_attack="8" turn_speed ="5.0" life="1" fsm="MikMik" controller_size= "0.5 0.25" enemy_type="MikMik"/>
 	<core_enemy type="pumpum_easy" speed="0.1" speed_attack="0.2" turn_speed ="5.0" life="1" fsm="PumPum" controller_size= "0.5 0.25" enemy_type="PumPum"/>
 	<core_enemy type="chucky_runner" speed="10" fsm="ChuckyRunner" controller_size= "1 2" />
 	
