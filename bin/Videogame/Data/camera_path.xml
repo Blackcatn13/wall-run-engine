@@ -45,6 +45,16 @@
 		<point id="p42" pos="558.336 8.50617 -32.83"/>
 		<point id="p43" pos="558.348 8.50617 -38.8726"/>
 		<point id="p44" pos="557.885 8.50617 -45.0066"/>
-		<point id="p45" pos="557.885 8.50617 -55.7829"/>
+		<point id="p45" pos="557.885 11.50617 -55.7829"/>
+		<point id="p46" pos="557.885 16.50617 -65.7829"/>
+		<point id="p47" pos="567.885 16.50617 -75.7829" can_rotate="true"/>
+		<point id="p48" pos="567.885 17.50617 -85.7829" can_rotate="true"/>
+		<point id="p49" pos="567.885 17.50617 -95.7829" can_rotate="true"/>
+		<point id="p50" pos="567.885 16.50617 -105.7829" can_rotate="true"/>
+		<point id="p51" pos="557.885 14.50617 -115.7829" can_rotate="true"/>
+		<point id="p52" pos="550.885 14.50617 -125.7829" can_rotate="true"/>
+		<point id="p53" pos="550.885 14.50617 -135.7829"/>
+		<point id="p54" pos="550.885 11.50617 -145.7829"/>
+		<point id="p55" pos="550.885 11.50617 -155.7829"/>
 	</spline>
 </camera_path>
