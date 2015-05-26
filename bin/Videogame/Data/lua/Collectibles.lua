@@ -12,6 +12,11 @@ function get_pixelite(pixelite_name)
 	if trigger.m_IsSwitched == false then
 		player.add_pixelites(1)
 		deactivate_collectible(trigger,"collectible", pixelite_name)
+		
+		gui_manager:set_is_displayed_pixelite(true);
+		gui_manager:set_count_pixelite(0.0);
+		gui_manager:set_num_pixelite( gui_manager:get_num_pixelite() + 1 );
+	
 	end
 end
 

@@ -16,7 +16,6 @@
 #include "Math/Vector2.h"
 #include "Math/Color.h"
 #include "TextBox.h"
-#include "DialogBox.h"
 #include "Console.h"
 //#include "Core/ScriptRegister.h"
 
@@ -105,12 +104,19 @@ class CGUIManager { //:public CScriptRegister
 
   bool							GetIsDisplayedConsole();
   void							SetIsDisplayedConsole(bool input);
-  bool							GetIsDisplayed();
-  void							SetIsDisplayed(bool input);
+  bool							GetIsDisplayedHeart();
+  void							SetIsDisplayedHeart(bool input);
+  bool							GetIsDisplayedPixelite();
+  void							SetIsDisplayedPixelite(bool input);
   float							GetPositionXPercentElement(std::string name);
+  float							GetPositionYPercentElement(std::string name);
   void							SetPositionPercentElement(std::string name, float posx, float posy);
-  float							GetGUICount();
-  void							SetGUICount(float value);
+  float							GetGUICountHeart();
+  void							SetGUICountHeart(float value);
+  float							GetGUICountPixelite();
+  void							SetGUICountPixelite(float value);
+  int							GetGUIPixeliteNumber();
+  void							SetGUIPixeliteNumber(int input);
   float							GetElapsedTime();
 
  private:
@@ -136,8 +142,11 @@ class CGUIManager { //:public CScriptRegister
   TransitionEffect										m_sTransitionEffect;
   bool																m_bFirstUpdate;
   bool																m_isDisplayedConsole;
-  bool																m_isDisplayed;
-  float																m_GUICount;
+  bool																m_isDisplayedHeart;
+  bool																m_isDisplayedPixelite;
+  float																m_GUICountHeart;
+  float																m_GUICountPixelite;
+  int																m_GUINumPixelites;
   float																m_dt;
 };
 

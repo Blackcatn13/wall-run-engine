@@ -42,9 +42,12 @@ CGUIManager::CGUIManager(const Vect2i &resolution)
   , m_sLastLoadpathGUI_XML("")
   , m_bFirstUpdate(true)
   , m_bVisiblePointerMouse(true)
-  , m_isDisplayed(true)
+  , m_isDisplayedHeart(true)
+  , m_isDisplayedPixelite(true)
   , m_isDisplayedConsole(false)
-  , m_GUICount(0.0f)
+  , m_GUICountHeart(0.0f)
+  , m_GUICountPixelite(0.0f)
+  , m_GUINumPixelites(0)
   , m_dt(0.0f)
 {}
 
@@ -845,6 +848,10 @@ float CGUIManager::GetPositionXPercentElement(std::string name){
 	return m_ElementsMap.find(name)->second->GetPositionPercent().x;
 }
 
+float CGUIManager::GetPositionYPercentElement(std::string name){
+	return m_ElementsMap.find(name)->second->GetPositionPercent().y;
+}
+
 bool CGUIManager::GetIsDisplayedConsole(){
 	return m_isDisplayedConsole;
 }
@@ -853,20 +860,46 @@ void CGUIManager::SetIsDisplayedConsole(bool input){
 	m_isDisplayedConsole = input;
 }
 
-bool CGUIManager::GetIsDisplayed(){
-	return m_isDisplayed;
+bool CGUIManager::GetIsDisplayedHeart(){
+	return m_isDisplayedHeart;
 }
 
-void CGUIManager::SetIsDisplayed(bool input){
-	m_isDisplayed = input;
+void CGUIManager::SetIsDisplayedHeart(bool input){
+	m_isDisplayedHeart = input;
 }
 
-float CGUIManager::GetGUICount(){
-	return m_GUICount;
+bool CGUIManager::GetIsDisplayedPixelite(){
+	return m_isDisplayedPixelite;
 }
 
-void CGUIManager::SetGUICount(float value){
-	m_GUICount = value;
+void CGUIManager::SetIsDisplayedPixelite(bool input){
+	m_isDisplayedPixelite = input;
+}
+
+float CGUIManager::GetGUICountHeart(){
+	return m_GUICountHeart;
+}
+
+void CGUIManager::SetGUICountHeart(float value){
+	m_GUICountHeart = value;
+}
+
+float CGUIManager::GetGUICountPixelite(){
+	return m_GUICountPixelite;
+}
+
+void CGUIManager::SetGUICountPixelite(float value){
+	m_GUICountPixelite = value;
+}
+
+int CGUIManager::GetGUIPixeliteNumber(){
+	return m_GUINumPixelites;
+}
+
+void CGUIManager::SetGUIPixeliteNumber(int input)
+{
+	m_GUINumPixelites = input;
+	m_ElementsMap.find("PixeliteNumber")->second->SetLiteral("x " + std::to_string( long double(input) ));
 }
 
 float CGUIManager::GetElapsedTime(){
