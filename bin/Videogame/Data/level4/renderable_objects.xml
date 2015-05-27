@@ -234,7 +234,7 @@
 	activation_distance= "10"  pos="558.16 9.50 -51.31" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="poly" light="OmniPoly001" />
 	<platform name="MovingPlatform001" core="MovingPlatform001" phisic_size="2 0.5 1.5" type="moving" speed= "5"  pos="568.16 13.50 -81.31" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms" room="1">
 		<wp pos="568.16 13.50 -81.31" />
-		<wp pos="548.16 13.50 -121.31" />
+		<wp pos="554.16 13.50 -115.31" />
 	</platform>
 	
 	<platform name="MovingPlatform002" core="MovingPlatform001" phisic_size="2 0.5 1.5" type="moving" speed= "5"  pos="568.16 13.50 -71.31" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms"  room="1">
