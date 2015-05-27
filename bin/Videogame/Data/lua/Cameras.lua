@@ -24,6 +24,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 	--______ CAMERA 3D _______________________
 	local pitch3D = -0.20;
 	local zoom3D = 6;
+	local zoom3D_back = 10;
 	local fov3D = 60.0 * 3.1415 / 180;
 	local aspect3D = 16/9;
 	local distToCameraOffset = 3;
@@ -193,11 +194,29 @@ function on_update_cameras_lua(l_ElapsedTime)
 					end
 				end
 			end
+			local player_yaw = pCont:get_yaw();
+			player_yaw = player_yaw - 1.57;
+			local yaw_aux = yaw;
+			coreInstance:trace("yaw player");
+			coreInstance:trace(tostring(player_yaw));
+			coreInstance:trace("yaw camara");
+			coreInstance:trace(tostring(yaw_aux));
+			if player_yaw < 0 then
+				player_yaw = player_yaw + 2*math.pi;
+			end
+			if yaw_aux < 0 then
+				yaw_aux = yaw_aux + 2*math.pi;
+			end
+			local diffYaw = math.abs(player_yaw - yaw_aux);
 			yaw = yaw + incYaw;
 			obj:set_yaw(yaw);
 			obj:set_pitch(pitch3D);
 			obj:set_roll(0);
-			cam:set_zoom(zoom3D);
+			if diffYaw > math.rad(90) then
+				cam:set_zoom(zoom3D_back);
+			else
+				cam:set_zoom(zoom3D);
+			end
 			cam.m_fZNear = 0.1;
 			cam.m_fZFar = 280;
 			cam.m_fFOV = fov3D;

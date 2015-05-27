@@ -232,14 +232,14 @@
 
 	<platform name="PolyPlatform001" core="PolyPlatform001" type="poly" phisic_size="1.5 0.5 1.5" final_position="558.16 14.50 -51.31" direction="0.0 1.0 0.0" time_out="5.0" speed="5.0"
 	activation_distance= "10"  pos="558.16 9.50 -51.31" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="poly" light="OmniPoly001" />
-	<platform name="MovingPlatform001" core="MovingPlatform001" phisic_size="2 0.5 1.5" type="moving" speed= "5"  pos="568.16 13.50 -71.31" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms" room="1">
-		<wp pos="558.16 13.50 -71.31" />
-		<wp pos="568.16 13.50 -71.31" />
+	<platform name="MovingPlatform001" core="MovingPlatform001" phisic_size="2 0.5 1.5" type="moving" speed= "5"  pos="568.16 13.50 -81.31" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms" room="1">
+		<wp pos="568.16 13.50 -81.31" />
+		<wp pos="558.16 13.50 -101.31" />
 	</platform>
 	
-	<platform name="MovingPlatform002" core="MovingPlatform001" phisic_size="2 0.5 1.5" type="moving" speed= "5"  pos="568.16 13.50 -81.31" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms"  room="1">
-		<wp pos="568.16 13.50 -81.31" />
-		<wp pos="568.16 23.50 -81.31" />
+	<platform name="MovingPlatform002" core="MovingPlatform001" phisic_size="2 0.5 1.5" type="moving" speed= "5"  pos="568.16 13.50 -71.31" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms"  room="1">
+		<wp pos="568.16 13.50 -71.31" />
+		<wp pos="568.16 23.50 -71.31" />
 	</platform>
 	
 	
