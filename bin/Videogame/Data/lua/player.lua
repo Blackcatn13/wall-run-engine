@@ -26,6 +26,7 @@ function Player.new()
 	self.vector_damage = Vect3f(0.0,0.0,0.0)
 	self.enemies_killed = 0
 	self.enemy_puzzle_active = false
+	self.going_back = false
 
 	------	 PLAYER FUNCTIONS -----
 		

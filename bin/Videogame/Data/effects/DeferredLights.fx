@@ -75,7 +75,7 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 	//return float4(1.0, 0.0, 0.0, 0.0);
 	float4 l_UABColor=float4(0,1,0,1);
 	float3 finalColor = 0;//l_DiffuseColor.xyz*l_Ambient;
-	float lightAmount = 1.0;
+	float lightAmount = 0.0;
 	if (g_useShadowMap) {
 		l_PositionVS = l_PositionVS / l_PositionVS.w;
 		float3 vPos = mul(float4(l_PositionFromDepth, 1), g_ViewMatrix).xyz;
@@ -90,7 +90,7 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 		if (ShadowTexC.x <=0.0 || ShadowTexC.y<=0.0 || ShadowTexC.x >=1.0 || ShadowTexC.y>=1.0)
 		{
 			l_UABColor=float4(1,0,0,1);
-			lightAmount=1.0;
+			lightAmount=0.0;
 		}
 		else
 			l_UABColor=tex2D(S7LinearClampSampler, ShadowTexC);
