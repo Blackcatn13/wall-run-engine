@@ -52,6 +52,7 @@
 #include "WWSoundManager.h"
 
 #include "GUI\GUIManager.h"
+#include "Core\PlayerController.h"
 
 CTestGameplay::CTestGameplay(void) {
   tTerra1_yaw = 0;
@@ -416,6 +417,11 @@ void CTestGameplay::Update(float dt) {
     } else {
       CAMCONTM->setActiveCamera(tempCam);
     }
+  }
+  if (ACT2IN->DoAction("TeleportTest1")) {
+	  PLAYC->SetPosition(Vect3f(558.16,14.50,-45.31));
+	  PLAYC->getPhysicController()->SetPosition(Vect3f(558.16,14.50,-45.31));
+
   }
 
 // CCORE->GetCinematicController()->Update(dt);
