@@ -116,6 +116,7 @@ function on_update_player_lua(l_ElapsedTime)
 		if (player_controller.m_isJumpingMoving == false) and (player_controller.m_isAttack == false) and (player.is_hit == false) then
 			if act2in:do_action_from_lua("MoveForward") then
 				if player_controller.m_is3D == true then
+					player.going_back = false;
 					mov = mov + dir3D * player_controller.m_Speed * l_ElapsedTime;
 					player_controller.m_Direction3D = dir3D;
 					if act2in:do_action_from_lua("MoveRigth")  then
@@ -156,6 +157,7 @@ function on_update_player_lua(l_ElapsedTime)
 				end
 			elseif act2in:do_action_from_lua("MoveBack") then
 				if player_controller.m_is3D == true then
+					player.going_back = true;
 					mov = mov - dir3D * player_controller.m_Speed * l_ElapsedTime;
 					player_controller.m_Direction3D = Vect3f(0,0,0) - dir3D;
 					if act2in:do_action_from_lua("MoveRigth")  then

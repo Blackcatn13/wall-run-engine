@@ -82,7 +82,7 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 		float4 LightPosition = mul(l_PositionVS, g_ViewToLightProjectionMatrix);
 		float2 ShadowTexC = 0.5 * (LightPosition.xy / LightPosition.w) + float2(0.5, 0.5);
 		ShadowTexC.y = 1.0f - ShadowTexC.y;
-		lightAmount = (tex2D(S7LinearClampSampler, ShadowTexC) + g_ShadowEpsilon < LightPosition.z/LightPosition.w)? 0.0f: 1.0f;
+		lightAmount = (tex2D(S7LinearClampSampler, ShadowTexC) + g_ShadowEpsilon < LightPosition.z/LightPosition.w)? 1.0f: 0.0f;
 		/*if (ShadowTexC.x < 0.0 || ShadowTexC.y < 0.0 || ShadowTexC.x > 1.0 || ShadowTexC.y > 1.0)
 			lightAmount = 1.0;*/
 		//lightAmount = 1.0;
@@ -90,7 +90,7 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 		if (ShadowTexC.x <=0.0 || ShadowTexC.y<=0.0 || ShadowTexC.x >=1.0 || ShadowTexC.y>=1.0)
 		{
 			l_UABColor=float4(1,0,0,1);
-			lightAmount=1.0;
+			lightAmount=0.0;
 		}
 		else
 			l_UABColor=tex2D(S7LinearClampSampler, ShadowTexC);

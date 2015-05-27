@@ -23,11 +23,13 @@ function on_update_cameras_lua(l_ElapsedTime)
 	--*********** PARAMETROS VARIABLES *******************************************
 	--______ CAMERA 3D _______________________
 	local pitch3D = -0.20;
+	local pitch3D_back = -0.60;
 	local zoom3D = 6;
-	local zoom3D_back = 10;
+	local zoom3D_back = 12;
 	local fov3D = 60.0 * 3.1415 / 180;
 	local aspect3D = 16/9;
 	local distToCameraOffset = 3;
+	local distToCameraOffset_back = -2;
 	local dist_to_rotate = 3;
 	local yaw_to_rotate = 0.05;
 	
@@ -126,7 +128,14 @@ function on_update_cameras_lua(l_ElapsedTime)
 		--Update Camera 3D
 		if(cam.m_eTypeCamera == 6) then
 			local incYaw = 0;
-			local offsetPosVec = newPosReal + Vect3f(0, distToCameraOffset, 0);
+			local distToCamera = 0;
+			if player.going_back == true then
+				distToCamera = distToCameraOffset_back;
+			else
+				distToCamera = distToCameraOffset;
+			end
+			local offsetPosVec = newPosReal + Vect3f(0, distToCamera, 0);
+			
 			if canRotate == true then
 				local distVector =  currentPlayerPos - newPosReal;
 				distVector.y = 0;
@@ -141,7 +150,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 					incYaw = -incYaw;
 				end
 				local playerPos = Vect3f(pCont:get_position().x, newPosReal.y, pCont:get_position().z);
-				offsetPosVec = playerPos + Vect3f(0, distToCameraOffset, 0);
+				offsetPosVec = playerPos + Vect3f(0, distToCamera, 0);
 			end
 			obj:set_position(Vect3f(offsetPosVec.x, offsetPosVec.y, offsetPosVec.z));
 			--obj:set_position(Vect3f(newPosReal.x, newPosReal.y, newPosReal.z));
@@ -194,25 +203,15 @@ function on_update_cameras_lua(l_ElapsedTime)
 					end
 				end
 			end
-			local player_yaw = pCont:get_yaw();
-			player_yaw = player_yaw - 1.57;
-			local yaw_aux = yaw;
-			--coreInstance:trace("yaw player");
-			--coreInstance:trace(tostring(player_yaw));
-			--coreInstance:trace("yaw camara");
-			--coreInstance:trace(tostring(yaw_aux));
-			if player_yaw < 0 then
-				player_yaw = player_yaw + 2*math.pi;
-			end
-			if yaw_aux < 0 then
-				yaw_aux = yaw_aux + 2*math.pi;
-			end
-			local diffYaw = math.abs(player_yaw - yaw_aux);
 			yaw = yaw + incYaw;
 			obj:set_yaw(yaw);
-			obj:set_pitch(pitch3D);
+			if player.going_back == true then
+				obj:set_pitch(pitch3D_back);
+			else
+				obj:set_pitch(pitch3D);
+			end
 			obj:set_roll(0);
-			if diffYaw > math.rad(90) then
+			if player.going_back == true then
 				cam:set_zoom(zoom3D_back);
 			else
 				cam:set_zoom(zoom3D);
