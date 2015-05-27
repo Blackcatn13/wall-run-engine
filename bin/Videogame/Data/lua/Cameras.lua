@@ -197,10 +197,10 @@ function on_update_cameras_lua(l_ElapsedTime)
 			local player_yaw = pCont:get_yaw();
 			player_yaw = player_yaw - 1.57;
 			local yaw_aux = yaw;
-			coreInstance:trace("yaw player");
-			coreInstance:trace(tostring(player_yaw));
-			coreInstance:trace("yaw camara");
-			coreInstance:trace(tostring(yaw_aux));
+			--coreInstance:trace("yaw player");
+			--coreInstance:trace(tostring(player_yaw));
+			--coreInstance:trace("yaw camara");
+			--coreInstance:trace(tostring(yaw_aux));
 			if player_yaw < 0 then
 				player_yaw = player_yaw + 2*math.pi;
 			end
