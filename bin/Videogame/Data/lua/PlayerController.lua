@@ -96,11 +96,8 @@ function on_update_player_lua(l_ElapsedTime)
 			timer = timer + l_ElapsedTime
 			mov = player.vector_damage * m_damageFeedBackSpeed * l_ElapsedTime
 			--coreInstance:trace("Time "..tostring(timer))
-			if timer > m_damageTime then
-				player.is_hit = false
-				timer = 0.0
-				--coreInstance:trace("Player hit "..tostring(player.is_hit))
-			end
+			--if timer > m_damageTime then
+			
 		end
 		
 		
@@ -469,7 +466,17 @@ function on_update_player_lua(l_ElapsedTime)
 					--AQUI VA LA ANIMACION DE RECIBIR DAMAGE
 					playerRenderable:clear_cycle(0,0);
 					playerRenderable:clear_cycle(1,0);
-					playerRenderable:execute_action(6,0,0.3,1,false);
+					if player.playing_hit == false then
+						player.playing_hit = true
+						playerRenderable:execute_action(6,0,0.3,1,true);
+					else
+						if not playerRenderable:is_cycle_animation_active() then
+							player.is_hit = false
+							player.playing_hit = false
+							timer = 0.0
+							--coreInstance:trace("Player hit "..tostring(player.is_hit))
+						end
+					end
 				else
 					playerRenderable:clear_cycle(0,0);
 					playerRenderable:blend_cycle(1,1,0);

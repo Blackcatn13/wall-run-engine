@@ -10,4 +10,5 @@
 	<animation name="jump_end" file="Piky_jump_end.CAF"/>
 	<animation name="attack" file="Piky_kick.CAF"/>
 	<animation name="hurt" file="Piky_hurt.CAF"/>
+	<animation name="poly" file="Piky_poly.CAF"/>
 </animated_model>
