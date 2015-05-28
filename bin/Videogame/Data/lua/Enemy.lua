@@ -85,7 +85,7 @@ function rotate_renderable(ElapsedTime, angle, _enemy)
 	_enemy:set_yaw(_enemy:get_yaw() - angle * _enemy.m_TurnSpeed * ElapsedTime)
 
 	if _enemy.m_RenderableObject ~= nil then
-		_enemy.m_RenderableObject:set_yaw(_enemy:get_yaw())
+		_enemy.m_RenderableObject:set_yaw(_enemy:get_yaw() - math.pi/2)
 	end
 end
 
