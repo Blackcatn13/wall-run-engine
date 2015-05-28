@@ -32,16 +32,10 @@
 		<wp position = "470.826767 10.000014 -7.216164" />
 	</instance_enemy>
 	<instance_enemy name="MikMik003" type="mikmik_easy" >
-		<!--<wp position = "505.668762 8.583496 -2.441345" />
-		<wp position = "507.668762 8.583496 -1.441345" />-->
 	</instance_enemy>
 	<instance_enemy name="MikMik004" type="mikmik_easy" >
-		<!--<wp position = "511.225891 8.583496 6.575592" />
-		<wp position = "512.225891 8.583496 5.575592" />-->
 	</instance_enemy>
 	<instance_enemy name="MikMik005" type="mikmik_easy" >
-		<!--<wp position = "511.225891 8.583496 -8.934296" />
-		<wp position = "513.225891 8.583496 -8.934296" />-->
 	</instance_enemy>
 
 

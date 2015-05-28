@@ -468,6 +468,8 @@ function on_update_player_lua(l_ElapsedTime)
 				if player.is_hit then
 					--AQUI VA LA ANIMACION DE RECIBIR DAMAGE
 					playerRenderable:clear_cycle(0,0);
+					playerRenderable:clear_cycle(1,0);
+					playerRenderable:execute_action(6,0,0.3,1,false);
 				else
 					playerRenderable:clear_cycle(0,0);
 					playerRenderable:blend_cycle(1,1,0);
