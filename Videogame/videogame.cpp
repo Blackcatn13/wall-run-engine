@@ -84,10 +84,10 @@ int APIENTRY WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance, LPSTR _lpCm
     m_Engine->ParseConfFile(".\\Data\\Config.xml");
     CONFIG_INFO l_Conf = m_Engine->getConfig();
 
-	DWORD dwStyle = WS_BORDER;//WS_POPUPWINDOW;
-	HWND hWnd = CreateWindow(APPLICATION_NAME, APPLICATION_NAME, dwStyle/*WS_POPUPWINDOW*/, l_Conf.Win_posX, l_Conf.Win_posY, l_Conf.Screen_Width, l_Conf.Screen_Heigth, NULL, NULL, wc.hInstance, NULL );
-	
-	// Añadir aquí el Init de la applicacioón
+    DWORD dwStyle = WS_BORDER;//WS_POPUPWINDOW;
+    HWND hWnd = CreateWindow(APPLICATION_NAME, APPLICATION_NAME, dwStyle/*WS_POPUPWINDOW*/, l_Conf.Win_posX, l_Conf.Win_posY, l_Conf.Screen_Width, l_Conf.Screen_Heigth, NULL, NULL, wc.hInstance, NULL );
+
+    // Añadir aquí el Init de la applicacioón
     //new CVideoGame_Process()
     //new CTest_Process()
     CProcess *proc = new CTestGameplay();
@@ -95,11 +95,11 @@ int APIENTRY WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance, LPSTR _lpCm
     m_Engine->Init(proc, hWnd);
     proc->Init();
     // Añadir en el while la condición de salida del programa de la aplicación
-	ShowWindow(hWnd, _nCmdShow);
+    ShowWindow(hWnd, _nCmdShow);
     UpdateWindow( hWnd );
     MSG msg;
     ZeroMemory( &msg, sizeof(msg) );
-	while ( msg.message != WM_QUIT && !proc->getexitGame() ) {
+    while ( msg.message != WM_QUIT && !proc->getexitGame() ) {
       if ( PeekMessage( &msg, NULL, 0U, 0U, PM_REMOVE ) ) {
         TranslateMessage( &msg );
         DispatchMessage( &msg );
