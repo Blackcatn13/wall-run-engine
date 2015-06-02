@@ -89,8 +89,12 @@
 	<disable_alpha_blend />
 	
 	
-
+	<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>
+	<set_pool_renderable_objects_technique pool="particles_pool"/>
 	<particle_render/>
+	<disable_alpha_blend />
+	
+	
 	<!--Fog-->
 <!--	<enable_alpha_blend blendOp ="add" blendSrc="srcalpha" destBlend="invsrcalpha" />
 	<set_pool_renderable_objects_technique pool="fog_pool"/>

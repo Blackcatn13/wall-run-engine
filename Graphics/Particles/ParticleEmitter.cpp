@@ -103,7 +103,7 @@ void CParticleEmitter::PopulateParticle(CParticle *p) {
   float r2 = m_Color2.GetRed();
   float g2 = m_Color2.GetGreen();
   float b2 = m_Color2.GetBlue();
-  CColor col1 = CColor(mathUtils::RandomFloatRange(r1, r2), mathUtils::RandomFloatRange(g1, g2), mathUtils::RandomFloatRange(b1, b2));
+  CColor col1 = CColor(mathUtils::RandomFloatRange(r1, r2), mathUtils::RandomFloatRange(g1, g2), mathUtils::RandomFloatRange(b1, b2), 0.0f);
   p->setSpeed(speed);
   p->setSize(size);
   p->setAge(age);

@@ -906,10 +906,10 @@ void CGraphicsManager::PresentSceneCommand() {
 
 struct MYCUSTOMVERTEX {
   float x, y, z;
-  DWORD color;
+  //DWORD color;
   float tu, tv;
   static unsigned int GetFVF() {
-    return D3DFVF_XYZ | D3DFVF_DIFFUSE | D3DFVF_TEX1;
+    return D3DFVF_XYZ | /*D3DFVF_DIFFUSE | */D3DFVF_TEX1;
   }
 };
 
@@ -922,10 +922,10 @@ void CGraphicsManager::DrawQuad3D (	const Vect3f &ul, const Vect3f &ur, const Ve
   float V0 = 0;
   float V1 = 1;
   MYCUSTOMVERTEX v[4] = {
-    { ul.x, ul.y,	ul.z, l_Color, U0, V0} //(x,y) up_left.
-    , { dl.x, dl.y,	dl.z, l_Color, U0, V1} //(x,y) down_left.
-    , { ur.x, ur.y,	ur.z, l_Color, U1, V0} //(x,y) up_right.
-    , { dr.x, dr.y,	dr.z, l_Color, U1, V1} //(x,y) down_right.
+    { ul.x, ul.y,	ul.z, /*l_Color, */U0, V0} //(x,y) up_left.
+    , { dl.x, dl.y,	dl.z, /*l_Color, */U0, V1} //(x,y) down_left.
+    , { ur.x, ur.y,	ur.z, /*l_Color, */U1, V0} //(x,y) up_right.
+    , { dr.x, dr.y,	dr.z, /*l_Color, */U1, V1} //(x,y) down_right.
   };
   m_pD3DDevice->SetFVF( MYCUSTOMVERTEX::GetFVF() );
   //m_pD3DDevice->SetTexture(0, NULL);

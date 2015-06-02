@@ -116,10 +116,10 @@ void CCore::Init(HWND handler) {
   m_PuzzleManager->Load(m_Config.PuzzlesPath);
   m_LuaLoadLevelFunc = m_Config.LuaLevelObjectsFunc;
   m_LevelPhisicsFile = m_Config.LevelPhisics;
-  m_BillboardManager = new CBillboardManager();
-  m_BillboardManager->Load("./Data/billboards.xml");
   m_ParticleManager = new CParticleManager();
   m_ParticleManager->Load("./Data/particles.xml");
+  m_BillboardManager = new CBillboardManager();
+  m_BillboardManager->Load("./Data/billboards.xml");
   //m_SoundManager = new CSoundManager();
   //m_SoundManager->Init();
   //m_SoundManager->LoadSounds("./Data/sounds.xml");

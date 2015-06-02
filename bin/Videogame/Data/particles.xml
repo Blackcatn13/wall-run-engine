@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <particles>
-	<emitter name="particle0000001" type="ESF" min_speed="1.0" max_speed="3.5" max_particles="100" min_emission_time="0.4" max_emission_time="2.5" min_age="3" max_age="10" min_size="0.05" max_size="0.3" color_1="0.0 0.0 0.0" color_2="1.0 1.0 1.0" v_Pos="94.215805 1.300000 -0.875405" spawn_dir1="0.0 1 0.0" spawn_dir2="0.15 0.0 0.15" texture="./Data/level3/textures/BARK5.jpg" Gravity="0.0" min_speed_ondulacion="500.0" max_speed_ondulacion="800.0" ondulacion_vec1="0.5 0.0 0.5" ondulacion_vec2="1.2 0.0 1.2"/>
+	<emitter name="particle0000001" type="ESF" min_speed="1.0" max_speed="3.5" max_particles="2000" min_emission_time="0.2" max_emission_time="2.5" min_age="1" max_age="2" min_size="0.2" max_size="0.4" color_1="0.0 0.0 0.0 0.0" color_2="1.0 1.0 1.0 0.0" v_Pos="94.215805 1.300000 -0.875405" spawn_dir1="0.0 1 0.0" spawn_dir2="0.15 0.0 0.15" texture="./Data/g_Textures/particles_smoke.png" Gravity="0.0" min_speed_ondulacion="500.0" max_speed_ondulacion="800.0" ondulacion_vec1="0.5 0.0 0.5" ondulacion_vec2="1.2 0.0 1.2"/>
 </particles>

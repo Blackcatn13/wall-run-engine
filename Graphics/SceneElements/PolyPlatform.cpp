@@ -158,25 +158,29 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
 
   Vect3f l_playerPosition = PLAYC->GetPosition();
   Vect3f dirRay = (m_Position - l_playerPosition);
+  Vect3f l_dirRayFixed = Vect3f(dirRay.x, 0, dirRay.y);
+  l_dirRayFixed = l_dirRayFixed.Normalize();
   //solo hacemos los calculos de colisiones si la plataforma esta a una distancia minima (optimización)
-  if (abs(dirRay.x) + abs(dirRay.z) < (GetPhysicsSize().x + GetPhysicsSize().z + 1.0)) {
+  if (abs(dirRay.x) + abs(dirRay.z) < (GetPhysicsSize().x + GetPhysicsSize().z + 4.0)) {
     SCollisionInfo info = SCollisionInfo();
     float l_RadioPhysicsPlayer = 0.8;
     //float l_AlturaPlataformaDesdeOrigen = GetPhysicsSize().y + 1.5;
     //float l_MargenLateralPlataforma = 1.0;
-    float l_DesplazamientoVerticalPlataforma = GetPhysicsSize().y + 1.5f;
-    float l_PosicionMinSobrePlat = GetPhysicsSize().y + 0.5f;
-    float l_PosicionMaxSobrePlat = GetPhysicsSize().y + 2.0f;
+    float l_DesplazamientoVerticalPlataforma = GetPhysicsSize().y + 3.8f;
+    float l_PosicionMinSobrePlat = 0.0f;
+    float l_PosicionMaxSobrePlat = GetPhysicsSize().y + 4.5f;
+	//float l_DesplazamientoVerticalPlataforma = 6.5f;
+    //float l_PosicionMinSobrePlat = 0.0f;
+    //float l_PosicionMaxSobrePlat = 7.0f;
 
     //para saber si es movimiento horizontal o vertical
     //Caso horizo	ntal
     if ((abs(direction.z) + abs(direction.x)) > abs(direction.y)) {
       PLAYC->setisOnPlatform(1.0);
       bool PhysicsApplied = false;
-      dirRay = dirRay.Normalize() * 0.4f;
-      Vect3f dirRayBounding = Vect3f(dirRay.x, -l_RadioPhysicsPlayer, dirRay.z);
+      l_dirRayFixed = l_dirRayFixed.Normalize() * 0.5;
+      Vect3f dirRayBounding = Vect3f(l_dirRayFixed.x, -l_RadioPhysicsPlayer, l_dirRayFixed.z);
       //Vect3f dirRayBounding = dirRay * l_RadioPhysicsPlayer;
-
       CPhysicUserData *hit = CCORE->GetPhysicsManager()->RaycastClosestActor(Vect3f(l_playerPosition.x + dirRayBounding.x, l_playerPosition.y + dirRayBounding.y, l_playerPosition.z + dirRayBounding.z),
                              Vect3f(0, -1, 0), 0xffffffff, info);
 
@@ -209,8 +213,8 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
     }
     //Caso vertical
     else {
-      dirRay = dirRay.Normalize() * 0.5;
-      Vect3f dirRayBounding = Vect3f(dirRay.x, -l_RadioPhysicsPlayer, dirRay.z);
+      l_dirRayFixed = l_dirRayFixed.Normalize() * 0.5;
+      Vect3f dirRayBounding = Vect3f(l_dirRayFixed.x, -l_RadioPhysicsPlayer, l_dirRayFixed.z);
       CPhysicUserData *hit = CCORE->GetPhysicsManager()->RaycastClosestActor(Vect3f(l_playerPosition.x + dirRayBounding.x, l_playerPosition.y + dirRayBounding.y, l_playerPosition.z + dirRayBounding.z),
                              Vect3f(0, -1, 0), 0xffffffff, info);
 
@@ -272,11 +276,13 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
 }
 
 bool CPolyPlatform::isInside(Vect3f vector1, Vect3f vector2) {
+  //FIX BUG DETECTA PLAYER INSIDE
+  return false;
   float l_margenx = GetPhysicsSize().x;
   float l_margenz = GetPhysicsSize().z;
   float l_margeny = GetPhysicsSize().y;
   if ((vector1.x > vector2.x - l_margenx) && (vector1.x < vector2.x + l_margenx) && (vector1.y > vector2.y - l_margeny) && (vector1.y < vector2.y + l_margeny) && (vector1.z > vector2.z - l_margenz) && (vector1.z < vector2.z + l_margenz))
-    return true;
+    return true; 
   else
     return false;
 }
