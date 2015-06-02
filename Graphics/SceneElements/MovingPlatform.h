@@ -7,6 +7,7 @@
 #include "StaticPlatform.h"
 #include <vector>
 #include "AI\FSMManager.h"
+#include "AI\FSMInstance.h"
 
 
 
@@ -17,7 +18,7 @@ class CMovingPlatform : public CStaticPlatform {
   Vect3f				m_Direction;
   std::vector<Vect3f> m_WayPointsVector;
   int					m_CurrentWpId;
-  FSM			*m_Fsm;
+  CFSMInstance			*m_Fsm;
   Vect3f		m_NextWP;
   bool				m_Activated;
   //CPhysicController*	m_PhysicController;

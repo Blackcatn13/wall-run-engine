@@ -13,6 +13,7 @@
 #include "Core\ScriptManager.h"
 
 
+
 CMovingPlatform::CMovingPlatform(std::string platformName, std::string coreName, float speed)
   : CStaticPlatform(platformName, coreName),
     m_Speed(speed),
@@ -22,7 +23,7 @@ CMovingPlatform::CMovingPlatform(std::string platformName, std::string coreName,
   /*  m_PhysicUserData = new CPhysicUserData("AI");
   m_PhysicUserData->SetPaint(true);
   m_PhysicUserData->SetColor(colRED);*/
-  m_Fsm = FSMMGR->GetResource("MovingPlatform");
+  m_Fsm = new CFSMInstance(FSMMGR->GetResource("MovingPlatform"));
 }
 
 void CMovingPlatform::AddBoxController(Vect3f size, float slope, float skinwidth, float offset, float gravity) {
@@ -193,7 +194,7 @@ bool CMovingPlatform::isInside(Vect3f vector1, Vect3f vector2) {
 
 void CMovingPlatform::UpdateFSM(float elapsedTime) {
 // for (TMapResource::iterator it = m_Resources.begin(); it != m_Resources.end(); ++it) {
-  STATE *s = m_Fsm->m_States.GetResource(m_Fsm->m_currentState);
+  STATE *s = m_Fsm->getStates().GetResource(m_Fsm->getCurrentState());
   char l_InitLevelText[256];
   if (s->m_onEnter == false) {
     _snprintf_s(l_InitLevelText, 256, 256, "%s(\"%s\")", s->onEnter.c_str(), getName().c_str());
@@ -216,8 +217,8 @@ void CMovingPlatform::UpdateFSM(float elapsedTime) {
   if (change) {
     s->m_onEnter = false;
     SCRIPTM->RunCode(s->onExit.c_str());
-    m_Fsm->m_previousState = m_Fsm->m_currentState;
-    m_Fsm->m_currentState = CLuaGlobals::getInstance()->getString();
+	m_Fsm->setPreviousState(m_Fsm->getCurrentState());
+	m_Fsm->setCurrentState(CLuaGlobals::getInstance()->getString());
   }
 }
 
