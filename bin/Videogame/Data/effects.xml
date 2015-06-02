@@ -36,6 +36,7 @@
 	<effect name="CombineBloomEffect" file="data/effects/CombineBloom.fx"/>
 	<effect name="GaussianBlurEffect" file="data/effects/GaussianBlur.fx"/>
 	<effect name="PolyEffect" file="data/effects/PolyEffect.fx"/>
+	<effect name="ParticleEffect" file="data/effects/PolyEffect.fx"/>
 	
 	<!--<technique name="BasicTechnique" effect="BasicEffect" use_view_to_light_projection_matrix="true" use_world_matrix="true" use_world_view_projection_matrix="true"/>-->
 	<technique name="LightsTechnique" effect="LightsEffect" use_view_to_light_projection_matrix="true" use_world_matrix="true" use_world_view_projection_matrix="true" num_of_lights="4" use_lights="true" use_light_ambient_color="true" use_inverse_view_matrix="true" />
@@ -67,6 +68,6 @@
 	<technique name="CombineBloomTechnique" effect="CombineBloomEffect" use_world_matrix="true" use_world_view_projection_matrix="true" />
 	<technique name="GaussianBlurTechnique" effect="GaussianBlurEffect" use_world_matrix="true" use_world_view_projection_matrix="true" />
 	
-	<technique name="PolyTechnique" effect="PolyEffect"  use_world_matrix="true" use_view_matrix="true" use_inverse_view_matrix="true" use_projection_matrix="true"/>
+	<technique name="ParticlesTechnique" effect="ParticleEffect"  use_world_matrix="true" use_view_matrix="true" use_inverse_view_matrix="true" use_projection_matrix="true"/>
 
 </effects>

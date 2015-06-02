@@ -93,4 +93,8 @@
 		 <default_technique vertex_type="19" technique="PolyTechnique"/>
 	</pool_renderable_object_technique>
 	
+	<pool_renderable_object_technique name="particles_pool">
+        <default_technique vertex_type="2048" technique="ParticlesTechnique"/>
+    </pool_renderable_object_technique>
+	
 </renderable_object_techniques>
