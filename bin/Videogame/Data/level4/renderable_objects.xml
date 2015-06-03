@@ -249,11 +249,29 @@
 		<wp pos="568.16 23.50 -81.31" />
 	</platform>
 	
-	<platform name="MovingPlatform004" core="MovingPlatform001" phisic_size="2 0.5 1.5" type="moving" speed= "5"  pos="563.00 12.00 -370.00" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms"  room="1">
-		<wp pos="563.00 12.00 -370.00" />
-		<wp pos="563.00 12.00 -356.00" />
-		<wp pos="549.00 12.00 -356.00" />
-		<wp pos="549.00 12.00 -370.00" />
+	<platform name="MovingPlatform004" core="MovingPlatform001" phisic_size="2 0.5 1.5" type="moving" speed= "5"  pos="565.00 11.00 -371.00" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms"  room="1">
+		<wp pos="566.00 11.50 -372.00" />
+		<wp pos="566.00 11.50 -355.00" />
+		<wp pos="549.00 11.50 -355.00" />
+		<wp pos="549.00 11.50 -372.00" />
+	</platform>	
+	<platform name="MovingPlatform005" core="MovingPlatform001" phisic_size="2 0.5 1.5" type="moving" speed= "5"  pos="565.00 11.00 -355.00" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms"  room="1">
+		<wp pos="566.00 11.50 -355.00" />
+		<wp pos="549.00 11.50 -355.00" />
+		<wp pos="549.00 11.50 -372.00" />
+		<wp pos="566.00 11.50 -372.00" />
+	</platform>	
+	<platform name="MovingPlatform006" core="MovingPlatform001" phisic_size="2 0.5 1.5" type="moving" speed= "5"  pos="549.00 11.00 -355.00" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms"  room="1">
+		<wp pos="549.00 11.50 -355.00" />
+		<wp pos="549.00 11.50 -372.00" />
+		<wp pos="566.00 11.50 -372.00" />
+		<wp pos="566.00 11.50 -355.00" />
+	</platform>	
+	<platform name="MovingPlatform007" core="MovingPlatform001" phisic_size="2 0.5 1.5" type="moving" speed= "5"  pos="549.00 11.00 -371.00" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms"  room="1">
+		<wp pos="549.00 11.50 -372.00" />
+		<wp pos="566.00 11.50 -372.00" />
+		<wp pos="566.00 11.50 -355.00" />
+		<wp pos="549.00 11.50 -355.00" />
 	</platform>	
 	
 	</renderable_objects>
