@@ -7,7 +7,7 @@ chucky.m_PhysicUserData.m_myCollisionGroup = 18;
 local jumpStart = false;
 
 -- Chucky Variables --
-local Chucky_running_speed = 4;
+local Chucky_running_speed = 10;
 
 -- Chucky Stopped --
 function chucky_runner_enter_stopped(name)
@@ -36,37 +36,24 @@ end
 function chucky_runner_enter_running(name)
 	coreInstance:trace("Enter running");
 	chucky.m_RenderableObject:blend_cycle(1,1,0);
-	chucky.m_PhysicController:use_gravity(false);
+	chucky.m_PhysicController:use_gravity(true);
 end
 
 function chucky_runner_exit_running(name)
 	chucky.m_RenderableObject:clear_cycle(1,0.25);
 	coreInstance:trace("Exit running");
-	--chucky:set_position(chucky.m_PhysicController:get_position());
-	--local characterPos = chucky.m_PhysicController:get_position();
-	--characterPos.y = 0;
-	--chucky.m_RenderableObject:set_position(characterPos);
 end
 
 function chucky_runner_update_running(ElapsedTime, doComprobation, name)
-	--coreInstance:trace("RUNING");
-	--chucky.m_RenderableObject:updateSkeleton(ElapsedTime);
 	local playerPos = playerController:get_position();
-	--coreInstance:trace("Player position x:" .. tostring(playerPos.x)  .. " y:" .. tostring(playerPos.y) ..  " z:" ..  tostring(playerPos.z));
 	local chuckyPos = chucky:get_position();
-	--coreInstance:trace("Chucky position x:" .. tostring(chuckyPos.x)  .. " y:" .. tostring(chuckyPos.y) ..  " z:" ..  tostring(chuckyPos.z));
 	local mov = playerPos - chucky:get_position();
 	mov.y = 0;
-	--coreInstance:trace("mov x:" .. tostring(mov.x)  .. " y:" .. tostring(mov.y) ..  " z:" ..  tostring(mov.z));
-	--chucky.m_PhysicController:move(mov * ElapsedTime, ElapsedTime);
+	mov:normalize(1);
+	chucky.m_PhysicController:move(mov * Chucky_running_speed * ElapsedTime, ElapsedTime);
 	local pos = chucky:get_position();
-	--chucky:set_position(chucky.m_PhysicController:get_position());
-	local characterPos = pos + mov;
-	--local characterPos = chucky.m_PhysicController:get_position();
-
-	--characterPos.y = characterPos.y - 2;
-	chucky:set_position(characterPos);
-	chucky.m_RenderableObject:set_position(characterPos);
+	chucky:set_position(chucky.m_PhysicController:get_position());
+	chucky.m_RenderableObject:set_position(Vect3f(pos.x, pos.y - 2, pos.z));
 
 end
 
@@ -76,7 +63,7 @@ function chucky_runner_enter_jumping(name)
 	chucky.m_RenderableObject:execute_action(2,0.25,0,1,true);
 	chucky.m_PhysicController:use_gravity(false);
 	coreInstance:trace("Enter jumping" );
-	--jumpStart = false;
+	jumpStart = false;
 end
 
 function chucky_runner_exit_jumping(name)
@@ -85,53 +72,11 @@ function chucky_runner_exit_jumping(name)
 end
 
 function chucky_runner_update_jumping(ElapsedTime, doComprobation, name)
--- 	coreInstance:trace("JUMPING");
--- 	chucky.m_RenderableObject:updateSkeleton(ElapsedTime);
--- 	local Topos = chucky.m_RenderableObject:getBonesMovement();
--- 	Topos = Topos:rotate_y(1.7);
--- 	coreInstance:trace("Position x:" .. tostring(Topos.x) .. " y:" .. tostring(Topos.y) .. " z:" .. tostring(Topos.z));
--- 	chucky.m_PhysicController:move(Topos, ElapsedTime);
--- 	chucky:set_position(chucky.m_PhysicController:get_position())
--- 	coreInstance:trace(tostring(chucky.m_RenderableObject:is_cycle_animation_active()));
--- 	if (not chucky.m_RenderableObject:is_cycle_animation_active()) then
--- 		coreInstance:trace("Changing to runing");
--- 		chucky.m_RenderableObject:remove_action(2);
--- 		chucky.m_RenderableObject:restartBonesPosition();
--- 		chucky.m_RenderableObject:updateSkeleton(ElapsedTime);
--- 		local characterPos = chucky.m_PhysicController:get_position();
--- 		characterPos.y = 0;
--- 		local newPos = chucky.m_RenderableObject:getAnimationBonePosition();
--- 		newPos = newPos:rotate_y(1.7);
--- 		chucky.m_RenderableObject:set_position(characterPos);
--- 		coreInstance:trace("Position x:" .. tostring(newPos.x) .. " y:" .. tostring(newPos.y) .. " z:" .. tostring(newPos.z))
--- 		chucky:m_FSM():newState("Corriendo");
--- 	end
-	-- chucky.m_RenderableObject:updateSkeleton(ElapsedTime);
-	-- local Topos = chucky.m_RenderableObject:getBonesMovement();
-	-- Topos = Topos:rotate_y(math.rad(90));
-	-- chucky.m_PhysicController:move(Topos, ElapsedTime);
-	-- chucky:set_position(chucky.m_PhysicController:get_position()); 
-	-- if (not chucky.m_RenderableObject:is_cycle_animation_active()) then
-	-- 	chucky.m_RenderableObject:remove_action(2);
-	-- 	local newPos = chucky.m_RenderableObject:getAnimationBonePosition();
-	-- 	local Pos = chucky.m_PhysicController:get_position();
-	-- 	local newCharPos = Pos + newPos;
-	-- 	newPos = newPos:rotate_y(math.rad(90));
-	-- 	coreInstance:trace("new Position x:" .. tostring(newPos.x) .. " y:" .. tostring(newPos.y) .. " z:" .. tostring(newPos.z))
-	-- 	coreInstance:trace("old Position x:" .. tostring(Pos.x) .. " y:" .. tostring(Pos.y) .. " z:" .. tostring(Pos.z))
-	-- 	coreInstance:trace("to move Position x:" .. tostring(newCharPos.x) .. " y:" .. tostring(newCharPos.y) .. " z:" .. tostring(newCharPos.z))
-	-- 	coreInstance:trace("--------------------------------------------");
-	-- 	newCharPos = newCharPos:rotate_y(math.rad(90));
-	-- 	chucky.m_RenderableObject:set_position(Pos);
-	-- 	--chucky.m_PhysicController:move(newPos, ElapsedTime);
-	-- 	chucky:m_FSM():newState("Corriendo");
-	-- end
-	if (not chucky.m_RenderableObject:is_cycle_animation_active()) then
-		coreInstance:trace("there");
+	if (not chucky.m_RenderableObject:is_cycle_animation_active() and not jumpStart) then
 		chucky.m_RenderableObject:remove_action(2);
 		chucky.m_RenderableObject:blend_cycle(1,1,0);
 		local characterPos = chucky.m_RenderableObject:get_position();
-		--characterPos.z = characterPos.z + 10;
+		chucky.m_PhysicController:set_position(Vect3f(characterPos.x + 8.992 + 0.164, characterPos.y + 2, characterPos.z));
 		chucky.m_RenderableObject:set_position(Vect3f(characterPos.x + 8.992 + 0.164, characterPos.y, characterPos.z));
 		jumpStart = true
 		chucky:m_FSM():newState("Corriendo");
