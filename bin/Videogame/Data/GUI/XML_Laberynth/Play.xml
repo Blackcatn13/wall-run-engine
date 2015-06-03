@@ -6,7 +6,7 @@
          OnSaveWindows=""
          OnUpdateWindows="onUpdateWindowDisplayGUI()">
 		  
-  <Image name="LifeGUI" posx="2" posy="2.00" height="10" width="17.50" visible="true" active="true"
+  <Image name="LifeGUI" posx="2" posy="82.00" height="10" width="17.50" visible="true" active="true"
          default="Life3" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
     <texture name="Life3" name_texture="./Data/GUI/GoPixelGo/Life3-2.png"/>
 	<texture name="Life2" name_texture="./Data/GUI/GoPixelGo/Life2-2.png"/>
@@ -14,17 +14,17 @@
 	<texture name="Life0" name_texture="./Data/GUI/GoPixelGo/Life0-2.png"/>
   </Image>
   
-  <Image name="VidesGUI" posx="2" posy="15.00" height="8" width="10" visible="true" active="true"
+  <Image name="VidesGUI" posx="27" posy="84.00" height="8" width="10" visible="true" active="true"
          default="Vides3" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
     <texture name="Vides3" name_texture="./Data/GUI/GoPixelGo/Vides3.png"/>
 	<texture name="Vides2" name_texture="./Data/GUI/GoPixelGo/Vides2.png"/>
 	<texture name="Vides1" name_texture="./Data/GUI/GoPixelGo/Vides1.png"/>
   </Image>
   
-  <Image name="PixeliteGUI" posx="45" posy="4.00" height="8" width="10" visible="true" active="true"
+  <Image name="PixeliteGUI" posx="45" posy="84.00" height="8" width="10" visible="true" active="true"
          default="Pixelite" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
     <texture name="Pixelite" name_texture="./Data/GUI/GoPixelGo/Pixelites.png"/>
   </Image>
   
-  <StaticText name="PixeliteNumber" posx="49.5" posy="6" height="10" width="10" visible="true" active="true" Literal="x 1"/>
+  <StaticText name="PixeliteNumber" posx="49.5" posy="86" height="10" width="10" visible="true" active="true" Literal="x 1"/>
 </Windows>
