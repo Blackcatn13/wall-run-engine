@@ -106,12 +106,13 @@ void CRenderableObjectsLayersManager::Load(const std::string &FileName) {
     m_FileName = FileName;
     int count = m.GetNumChildren();
     for (int i = 0; i < count; ++i) {
-      std::string name = m(i).GetName();
+      CXMLTreeNode nodeChild = m(i);
+      std::string name = nodeChild.GetName();
       if (name == "layer") {
-        std::string layerName = m(i).GetPszISOProperty("name", "");
-        bool isDefault = m(i).GetBoolProperty("default", false, false);
+        std::string layerName = nodeChild.GetPszISOProperty("name", "");
+        bool isDefault = nodeChild.GetBoolProperty("default", false, false);
         CRenderableObjectsManager *l_managerInstance = new CRenderableObjectsManager();
-        //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
+        //CMeshInstance* l_meshInstance = new CMeshInstance(nodeChild);
         AddResource(layerName, l_managerInstance);
         if (isDefault) {
           m_DefaultLayerName = layerName;
@@ -120,22 +121,23 @@ void CRenderableObjectsLayersManager::Load(const std::string &FileName) {
       }
     }
     for (int i = 0; i < count; ++i) {
-      std::string name = m(i).GetName();
+      CXMLTreeNode nodeChild = m(i);
+      std::string name = nodeChild.GetName();
       //if ((name == "mesh_instance") || (name == "renderable_script")){
       if (name == "mesh_instance" || name == "animated_model" || name == "platform" || name == "switch_instance" || name == "door") {
-        (GetRenderableObjectManager(m(i)))->Load(m(i));
-        /*std::string layerAssigned = m(i).GetPszISOProperty("layer", "box1");
+        (GetRenderableObjectManager(nodeChild))->Load(nodeChild);
+        /*std::string layerAssigned = nodeChild.GetPszISOProperty("layer", "box1");
         if (layerAssigned == "box1")
         {
-        	m_DefaultRenderableObjectManager->Load(m(i));
+        	m_DefaultRenderableObjectManager->Load(nodeChild);
         }
         else
         {
-        	//FIND layerAssigned, load m(i)
+        	//FIND layerAssigned, load nodeChild
         	CRenderableObjectsManager* l_managerInstance = GetResource(layerAssigned);
         	if (l_managerInstance != NULL)
         	{
-        		l_managerInstance->Load(m(i));
+        		l_managerInstance->Load(nodeChild);
         	}
         }*/
       }

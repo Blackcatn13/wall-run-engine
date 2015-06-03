@@ -60,37 +60,38 @@ void CEnemyManager::Init(const std::string &FileName) {
     if (m.Exists()) {
       int count = m.GetNumChildren();
       for (int i = 0; i < count; ++i) {
-        std::string l_Name = m(i).GetName();
+        CXMLTreeNode nodeChild = m(i);
+        std::string l_Name = nodeChild.GetName();
         if (l_Name == "enemy") {
-          std::string name = m(i).GetPszProperty("type", "", false);
+          std::string name = nodeChild.GetPszProperty("type", "", false);
           if (name == "easy") {
-            CEasyEnemy *l_Enemy = new CEasyEnemy(m(i));
+            CEasyEnemy *l_Enemy = new CEasyEnemy(nodeChild);
             m_Enemies.push_back(l_Enemy);
           } else if (name == "patrol") {
-            CPatrolEnemy *l_Enemy = new CPatrolEnemy(m(i));
+            CPatrolEnemy *l_Enemy = new CPatrolEnemy(nodeChild);
             m_Enemies.push_back(l_Enemy);
           } else if (name == "boss") {
-            CBossEnemy *l_Enemy = new CBossEnemy(m(i));
+            CBossEnemy *l_Enemy = new CBossEnemy(nodeChild);
             m_Enemies.push_back(l_Enemy);
           }
         } else if (l_Name == "core_enemy") {
-          std::string type = m(i).GetPszProperty("type", "", false);
+          std::string type = nodeChild.GetPszProperty("type", "", false);
           StatsStr l_Stats;
-          l_Stats.life = m(i).GetIntProperty("life", 1 , false);
-          l_Stats.ShootSpeed = m(i).GetFloatProperty("shoot_speed", 0.0f , false);
-          l_Stats.Speed = m(i).GetFloatProperty("speed", 0.0f , false);
-          l_Stats.SpeedAttack = m(i).GetFloatProperty("speed_attack", 0.0f , false);
-          l_Stats.FsmName = m(i).GetPszISOProperty("fsm", "NoFSM", false);
-          l_Stats.ControllerSize = m(i).GetVect2fProperty("controller_size", v2fZERO, false);
-          l_Stats.TurnSpeed = m(i).GetFloatProperty("turn_speed", 0.2f , false);
+          l_Stats.life = nodeChild.GetIntProperty("life", 1 , false);
+          l_Stats.ShootSpeed = nodeChild.GetFloatProperty("shoot_speed", 0.0f , false);
+          l_Stats.Speed = nodeChild.GetFloatProperty("speed", 0.0f , false);
+          l_Stats.SpeedAttack = nodeChild.GetFloatProperty("speed_attack", 0.0f , false);
+          l_Stats.FsmName = nodeChild.GetPszISOProperty("fsm", "NoFSM", false);
+          l_Stats.ControllerSize = nodeChild.GetVect2fProperty("controller_size", v2fZERO, false);
+          l_Stats.TurnSpeed = nodeChild.GetFloatProperty("turn_speed", 0.2f , false);
           m_Cores.insert(std::pair<std::string, StatsStr>(type, l_Stats));
         } else if (l_Name == "instance_enemy") {
           EnemiesStr l_Enemy;
-          l_Enemy.instanceName = m(i).GetPszISOProperty("name", "", false);
-          l_Enemy.instanceType = m(i).GetPszISOProperty("type", "", false);
-          int instanceNumChilds = m(i).GetNumChildren();
+          l_Enemy.instanceName = nodeChild.GetPszISOProperty("name", "", false);
+          l_Enemy.instanceType = nodeChild.GetPszISOProperty("type", "", false);
+          int instanceNumChilds = nodeChild.GetNumChildren();
           for (int j = 0; j < instanceNumChilds; ++j) {
-            l_Enemy.waypoints.push_back(m(i)(j).GetVect3fProperty("position", v3fZERO, false));
+            l_Enemy.waypoints.push_back(nodeChild(j).GetVect3fProperty("position", v3fZERO, false));
           }
           m_EnemyInstances.push_back(l_Enemy);
         }

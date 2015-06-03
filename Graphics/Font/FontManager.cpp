@@ -68,13 +68,14 @@ bool CFontManager::LoadTTFs (const std::string &pathFile) {
     CreateFont(17, true, false, "Times New Roman");
     int count = m.GetNumChildren();
     for (int i = 0; i < count; ++i) {
-      std::string fontId	= m(i).GetPszProperty("id");
-      std::string name		= m(i).GetPszProperty("name");
-      std::string file		= m(i).GetPszProperty("file");
-      uint8 size					= m(i).GetIntProperty("size", 10);
-      bool bold						= m(i).GetBoolProperty("bold", false);
-      bool italica				= m(i).GetBoolProperty("italica", false);
-      bool _default				= m(i).GetBoolProperty("default", false);
+      CXMLTreeNode nodeChild = m(i);
+      std::string fontId	= nodeChild.GetPszProperty("id");
+      std::string name		= nodeChild.GetPszProperty("name");
+      std::string file		= nodeChild.GetPszProperty("file");
+      uint8 size					= nodeChild.GetIntProperty("size", 10);
+      bool bold						= nodeChild.GetBoolProperty("bold", false);
+      bool italica				= nodeChild.GetBoolProperty("italica", false);
+      bool _default				= nodeChild.GetBoolProperty("default", false);
       std::vector<std::string>::iterator it			= m_vTTFsFiles.begin();
       std::vector<std::string>::iterator itEnd	= m_vTTFsFiles.end();
       bool exist = false;

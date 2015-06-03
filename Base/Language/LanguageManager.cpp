@@ -45,12 +45,13 @@ void CLanguageManager::LoadXML (const std::string &pathFile) {
   if (m.Exists()) {
     int count = m.GetNumChildren();
     for (int i = 0; i < count; ++i) {
+      CXMLTreeNode nodeChild = m(i);
       //for each literal:
       SLiteral l_literal;
-      std::string id			= m(i).GetPszProperty("id");
-      l_literal.m_sFontId	= m(i).GetPszProperty("font");
-      Vect4f vecColor			= m(i).GetVect4fProperty("color", Vect4f(0.f, 0.f, 0.f, 0.f));
-      l_literal.m_value		= m(i).GetPszISOProperty("value", "nothing");
+      std::string id			= nodeChild.GetPszProperty("id");
+      l_literal.m_sFontId	= nodeChild.GetPszProperty("font");
+      Vect4f vecColor			= nodeChild.GetVect4fProperty("color", Vect4f(0.f, 0.f, 0.f, 0.f));
+      l_literal.m_value		= nodeChild.GetPszISOProperty("value", "nothing");
       l_literal.m_cColor	= CColor(vecColor.x, vecColor.y, vecColor.z, vecColor.w);
       language.insert(std::pair<std::string, SLiteral>(id, l_literal));
       LOGGER->AddNewLog(ELL_INFORMATION, "LanguageManager::LoadXML-> Añadido literal(%s,%s,[%f,%f,%f,%f],%s)",

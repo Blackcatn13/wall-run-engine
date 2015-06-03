@@ -54,15 +54,16 @@ bool	CTriggerManager::LoadTriggers( std::string FileName) {
     if (m.Exists()) {
       int count = m.GetNumChildren();
       for (int i = 0; i < count; ++i) {
+        CXMLTreeNode nodeChild = m(i);
         //Creando el UserData para el trigger
-        std::string name = m(i).GetPszProperty("name", "", false);
+        std::string name = nodeChild.GetPszProperty("name", "", false);
         CPhysicUserData *l_pUserData = new CPhysicUserData(name);
-        l_pUserData->SetPaint(m(i).GetBoolProperty("paint", true, false));
-        CColor col(m(i).GetVect3fProperty("color", v3fZERO, false));
+        l_pUserData->SetPaint(nodeChild.GetBoolProperty("paint", true, false));
+        CColor col(nodeChild.GetVect3fProperty("color", v3fZERO, false));
         l_pUserData->SetColor(colRED);
         l_pUserData->SetGroup(ECG_TRIGGERS);
         //  m_UserData.push_back( l_pUserData );
-        CTrigger *trigger = new CTrigger(m(i), l_pUserData);
+        CTrigger *trigger = new CTrigger(nodeChild, l_pUserData);
         if (!AddResource(name, trigger)) {
           LOGGER->AddNewLog(ELL_WARNING, "El CTrigger ya existía ", name.c_str());
           CHECKED_DELETE(trigger);

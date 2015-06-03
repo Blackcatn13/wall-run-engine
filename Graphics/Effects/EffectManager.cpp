@@ -88,38 +88,39 @@ void CEffectManager::Load(const std::string &FileName) {
     if (m.Exists()) {
       int count = m.GetNumChildren();
       for (int i = 0; i < count; ++i) {
-        std::string name = m(i).GetName();
+        CXMLTreeNode nodeChild = m(i);
+        std::string name = nodeChild.GetName();
         if (name == "default_technique") {
-          int vType = m(i).GetIntProperty("vertex_type");
-          std::string techniqueName = m(i).GetPszISOProperty("technique", "");
+          int vType = nodeChild.GetIntProperty("vertex_type");
+          std::string techniqueName = nodeChild.GetPszISOProperty("technique", "");
           m_DefaultTechniqueEffectMap[vType] = techniqueName;
         }
         if (name == "effect") {
-          std::string effectName = m(i).GetPszISOProperty("name", "");
-          std::string effectFile = m(i).GetPszISOProperty("file", "");
+          std::string effectName = nodeChild.GetPszISOProperty("name", "");
+          std::string effectFile = nodeChild.GetPszISOProperty("file", "");
           CEffect *effect = new CEffect();
           effect->Load(effectFile);
           m_Effects.AddResource(effectName, effect);
         }
         if (name == "technique") {
-          std::string techniqueName = m(i).GetPszISOProperty("name", "");
-          std::string effectName = m(i).GetPszISOProperty("effect", "");
-          bool UseCameraPosition = m(i).GetBoolProperty("use_camera_position", false, false);
-          bool UseInverseProjMatrix = m(i).GetBoolProperty("use_inverse_projection_matrix", false, false);
-          bool UseInverseViewMatrix = m(i).GetBoolProperty("use_inverse_view_matrix", false, false);
-          bool UseInverseWorldMatrix = m(i).GetBoolProperty("use_inverse_world_matrix", false, false);
-          bool UseLights = m(i).GetBoolProperty("use_lights", false, false);
-          int NumOfLights = m(i).GetIntProperty("num_of_lights", 0, false);
-          bool UseLightAmbientColor = m(i).GetBoolProperty("use_light_ambient_color", false, false);
-          bool UseProjMatrix = m(i).GetBoolProperty("use_projection_matrix", false, false);
-          bool UseViewMatrix = m(i).GetBoolProperty("use_view_matrix", false, false);
-          bool UseWorldMatrix = m(i).GetBoolProperty("use_world_matrix", false, false);
-          bool UseWorldViewMatrix = m(i).GetBoolProperty("use_world_view_matrix", false, false);
-          bool UseWorldViewProjectionMatrix = m(i).GetBoolProperty("use_world_view_projection_matrix", false, false);
-          bool UseViewProjectionMatrix = m(i).GetBoolProperty("use__view_projection_matrix", false, false);
-          bool UseViewToLightProjectionMatrix = m(i).GetBoolProperty("use_view_to_light_projection_matrix", false, false);
-          bool UseTime = m(i).GetBoolProperty("use_time", false, false);
-          bool UseScreenSize = m(i).GetBoolProperty("use_screen_size", false, false);
+          std::string techniqueName = nodeChild.GetPszISOProperty("name", "");
+          std::string effectName = nodeChild.GetPszISOProperty("effect", "");
+          bool UseCameraPosition = nodeChild.GetBoolProperty("use_camera_position", false, false);
+          bool UseInverseProjMatrix = nodeChild.GetBoolProperty("use_inverse_projection_matrix", false, false);
+          bool UseInverseViewMatrix = nodeChild.GetBoolProperty("use_inverse_view_matrix", false, false);
+          bool UseInverseWorldMatrix = nodeChild.GetBoolProperty("use_inverse_world_matrix", false, false);
+          bool UseLights = nodeChild.GetBoolProperty("use_lights", false, false);
+          int NumOfLights = nodeChild.GetIntProperty("num_of_lights", 0, false);
+          bool UseLightAmbientColor = nodeChild.GetBoolProperty("use_light_ambient_color", false, false);
+          bool UseProjMatrix = nodeChild.GetBoolProperty("use_projection_matrix", false, false);
+          bool UseViewMatrix = nodeChild.GetBoolProperty("use_view_matrix", false, false);
+          bool UseWorldMatrix = nodeChild.GetBoolProperty("use_world_matrix", false, false);
+          bool UseWorldViewMatrix = nodeChild.GetBoolProperty("use_world_view_matrix", false, false);
+          bool UseWorldViewProjectionMatrix = nodeChild.GetBoolProperty("use_world_view_projection_matrix", false, false);
+          bool UseViewProjectionMatrix = nodeChild.GetBoolProperty("use__view_projection_matrix", false, false);
+          bool UseViewToLightProjectionMatrix = nodeChild.GetBoolProperty("use_view_to_light_projection_matrix", false, false);
+          bool UseTime = nodeChild.GetBoolProperty("use_time", false, false);
+          bool UseScreenSize = nodeChild.GetBoolProperty("use_screen_size", false, false);
           CEffect *effect = m_Effects.GetResource(effectName);
           if (effect != NULL) {
             CEffectTechnique *effectTechnique = new CEffectTechnique();

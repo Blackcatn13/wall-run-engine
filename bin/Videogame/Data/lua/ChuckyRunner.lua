@@ -34,14 +34,12 @@ end
 -- Chucky Running --
 
 function chucky_runner_enter_running(name)
-	coreInstance:trace("Enter running");
 	chucky.m_RenderableObject:blend_cycle(1,1,0);
 	chucky.m_PhysicController:use_gravity(true);
 end
 
 function chucky_runner_exit_running(name)
 	chucky.m_RenderableObject:clear_cycle(1,0.25);
-	coreInstance:trace("Exit running");
 end
 
 function chucky_runner_update_running(ElapsedTime, doComprobation, name)
@@ -62,13 +60,10 @@ end
 function chucky_runner_enter_jumping(name)
 	chucky.m_RenderableObject:execute_action(2,0.25,0,1,true);
 	chucky.m_PhysicController:use_gravity(false);
-	coreInstance:trace("Enter jumping" );
 	jumpStart = false;
 end
 
 function chucky_runner_exit_jumping(name)
-	
-	coreInstance:trace("Exit jumping");
 end
 
 function chucky_runner_update_jumping(ElapsedTime, doComprobation, name)

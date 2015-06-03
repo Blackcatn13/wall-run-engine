@@ -29,20 +29,21 @@ void CLightManager::Load(const std::string &FileName) {
   if (m.Exists()) {
     int count = m.GetNumChildren();
     for (int i = 0; i < count; ++i) {
-      if (std::string("light") == m(i).GetName()) {
+      CXMLTreeNode nodeChild = m(i);
+      if (std::string("light") == nodeChild.GetName()) {
         //	XML type ejemplo
-        std::string l_Type = m(i).GetPszISOProperty("type", "");
-        std::string l_Name = m(i).GetPszISOProperty("name", "");
+        std::string l_Type = nodeChild.GetPszISOProperty("type", "");
+        std::string l_Name = nodeChild.GetPszISOProperty("name", "");
         if (l_Type == "omni") {
-          COmniLight *l_OmniLight = new COmniLight(m(i));
+          COmniLight *l_OmniLight = new COmniLight(nodeChild);
           l_OmniLight->Init();
           AddResource(l_Name, l_OmniLight);
         } else if (l_Type == "directional") {
-          CDirectionalLight *l_DirectionalLight = new CDirectionalLight(m(i));
+          CDirectionalLight *l_DirectionalLight = new CDirectionalLight(nodeChild);
           l_DirectionalLight->Init();
           AddResource(l_Name, l_DirectionalLight);
         } else if (l_Type == "spot") {
-          CSpotLight *l_SpotLight = new CSpotLight(m(i));
+          CSpotLight *l_SpotLight = new CSpotLight(nodeChild);
           l_SpotLight->Init();
           AddResource(l_Name, l_SpotLight);
         }

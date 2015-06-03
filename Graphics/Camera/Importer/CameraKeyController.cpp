@@ -62,13 +62,14 @@ void CCameraKeyController::LoadXML(const std::string &FileName) {
       m_PitchInterpolated = l_pitch;
       int count = m.GetNumChildren();
       for (int i = 0; i < count; ++i) {
-        if (!strcmp(m(i).GetName(), "key")) {
-          float l_time = m(i).GetFloatProperty("time");
-          Vect3f l_pos = m(i).GetVect3fProperty("pos", NULL, true);
-          Vect3f l_look_at = m(i).GetVect3fProperty("look_at", NULL, true);
-          float l_fov = m(i).GetFloatProperty("fov");
-          float l_near_plane = m(i).GetFloatProperty("near_plane");
-          float l_far_plane = m(i).GetFloatProperty("far_plane");
+        CXMLTreeNode nodeChild = m(i);
+        if (!strcmp(nodeChild.GetName(), "key")) {
+          float l_time = nodeChild.GetFloatProperty("time");
+          Vect3f l_pos = nodeChild.GetVect3fProperty("pos", NULL, true);
+          Vect3f l_look_at = nodeChild.GetVect3fProperty("look_at", NULL, true);
+          float l_fov = nodeChild.GetFloatProperty("fov");
+          float l_near_plane = nodeChild.GetFloatProperty("near_plane");
+          float l_far_plane = nodeChild.GetFloatProperty("far_plane");
           CCameraInfo *m_CamInfo = new CCameraInfo(l_pos, l_look_at, l_pos, l_near_plane, l_far_plane, l_fov);
           CCameraKey *m_CamKey = new CCameraKey(m_CamInfo, l_time);
           m_Keys.push_back(m_CamKey);

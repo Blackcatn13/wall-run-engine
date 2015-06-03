@@ -47,9 +47,10 @@ void CAnimatedModelManager::Load(const std::string &Filename) {
   if (m.Exists()) {
     int count = m.GetNumChildren();
     for (int i = 0; i < count; ++i) {
-      if (std::string("animated_model") == m(i).GetName()) {
-        std::string name = m(i).GetPszISOProperty("name", "");
-        std::string path = m(i).GetPszISOProperty("path", "");
+      CXMLTreeNode nodeChild = m(i);
+      if (std::string("animated_model") == nodeChild.GetName()) {
+        std::string name = nodeChild.GetPszISOProperty("name", "");
+        std::string path = nodeChild.GetPszISOProperty("path", "");
         CAnimatedCoreModel *animModel = new CAnimatedCoreModel();
         animModel->Load(path);
         AddResource(name, animModel);

@@ -140,60 +140,61 @@ void CEngine::ParseConfFile(std::string file) {
     if (n.Exists()) {
       int count = n.GetNumChildren();
       for (int i = 0; i < count; ++i) {
-        if (!n(i).IsComment()) {
-          std::string name = n(i).GetName();
+        CXMLTreeNode nodeChild = n(i);
+        if (!nodeChild.IsComment()) {
+          std::string name = nodeChild.GetName();
           if (name == "ScreenResolution") {
-            m_Conf_info.Screen_Width = n(i).GetIntProperty("width");
-            m_Conf_info.Screen_Heigth = n(i).GetIntProperty("height");
+            m_Conf_info.Screen_Width = nodeChild.GetIntProperty("width");
+            m_Conf_info.Screen_Heigth = nodeChild.GetIntProperty("height");
           } else if (name == "WindowsPosition") {
-            m_Conf_info.Win_posX = n(i).GetIntProperty("posX");
-            m_Conf_info.Win_posY = n(i).GetIntProperty("posY");
+            m_Conf_info.Win_posX = nodeChild.GetIntProperty("posX");
+            m_Conf_info.Win_posY = nodeChild.GetIntProperty("posY");
           } else if (name == "Rendermode") {
-            m_Conf_info.FullScreen = n(i).GetBoolProperty("fullscreenMode", false, false);
+            m_Conf_info.FullScreen = nodeChild.GetBoolProperty("fullscreenMode", false, false);
           } else if (name == "Mouse") {
-            m_Conf_info.Mouse_Exclusive = n(i).GetBoolProperty("exclusiveModeinMouse", false, false);
-            m_Conf_info.Mouse_Draw = n(i).GetBoolProperty("drawPointerMouse", false, false);
+            m_Conf_info.Mouse_Exclusive = nodeChild.GetBoolProperty("exclusiveModeinMouse", false, false);
+            m_Conf_info.Mouse_Draw = nodeChild.GetBoolProperty("drawPointerMouse", false, false);
           } else if (name == "Languages") {
             m_Conf_info.LanguagesPath = std::vector<std::string>();
-            m_Conf_info.CurrentLanguage = n(i).GetPszISOProperty("current", "catalan", false);
+            m_Conf_info.CurrentLanguage = nodeChild.GetPszISOProperty("current", "catalan", false);
             int languages = n (i).GetNumChildren();
             for (int j = 0; j < languages; ++j)
-              m_Conf_info.LanguagesPath.push_back(n(i)(j).GetPszISOProperty("XMLfile", "./Data/catalan.xml", false));
+              m_Conf_info.LanguagesPath.push_back(nodeChild(j).GetPszISOProperty("XMLfile", "./Data/catalan.xml", false));
           } else if (name == "Fonts") {
-            m_Conf_info.FontsPath = n(i).GetPszISOProperty("fontsXML", "./Data/fonts/fonts.xml", false);
+            m_Conf_info.FontsPath = nodeChild.GetPszISOProperty("fontsXML", "./Data/fonts/fonts.xml", false);
           } else if (name == "Actions") {
-            m_Conf_info.ActionsPath = n(i).GetPszISOProperty("actionsXML", "./Data/Actions.xml", false);
+            m_Conf_info.ActionsPath = nodeChild.GetPszISOProperty("actionsXML", "./Data/Actions.xml", false);
           } else if (name == "Meshes") {
-            m_Conf_info.MeshesPath = n(i).GetPszISOProperty("meshesXML", "./Data/level1/static_meshes.xml", false);
+            m_Conf_info.MeshesPath = nodeChild.GetPszISOProperty("meshesXML", "./Data/level1/static_meshes.xml", false);
           } else if (name == "Renderable") {
-            m_Conf_info.RenderablePath = n(i).GetPszISOProperty("renderXML", "./Data/level1/renderable_objects.xml", false);
+            m_Conf_info.RenderablePath = nodeChild.GetPszISOProperty("renderXML", "./Data/level1/renderable_objects.xml", false);
           } else if (name == "Lights") {
-            m_Conf_info.LightsPath = n(i).GetPszISOProperty("lightsXML", "./Data/level1/lights.xml", false);
+            m_Conf_info.LightsPath = nodeChild.GetPszISOProperty("lightsXML", "./Data/level1/lights.xml", false);
           } else if (name == "Cameras") {
-            m_Conf_info.CameraPath = n(i).GetPszISOProperty("CamerasLvl", "", false);
+            m_Conf_info.CameraPath = nodeChild.GetPszISOProperty("CamerasLvl", "", false);
           } else if (name == "Cinematic") {
-            m_Conf_info.CinematicPath = n(i).GetPszISOProperty("CinematicLvl", "", false);
+            m_Conf_info.CinematicPath = nodeChild.GetPszISOProperty("CinematicLvl", "", false);
           } else if (name == "Lua") {
-            m_Conf_info.LuaPath = n(i).GetPszISOProperty("LuaFile", "", false);
+            m_Conf_info.LuaPath = nodeChild.GetPszISOProperty("LuaFile", "", false);
           } else if (name == "Effect") {
-            m_Conf_info.EffectPath = n(i).GetPszISOProperty("EffectXML", "", false);
+            m_Conf_info.EffectPath = nodeChild.GetPszISOProperty("EffectXML", "", false);
           } else if (name == "RendererCommands") {
-            m_Conf_info.SceneRenderCommandsPath = n(i).GetPszISOProperty("rendererCommandsXML", "", false);
+            m_Conf_info.SceneRenderCommandsPath = nodeChild.GetPszISOProperty("rendererCommandsXML", "", false);
           } else if (name == "PoolRenderableObjects") {
-            m_Conf_info.PoolRenderableObjects = n(i).GetPszISOProperty("poolRenderableObjects", ".\\Data\\level1\\pool_renderable_objects.xml", false);
+            m_Conf_info.PoolRenderableObjects = nodeChild.GetPszISOProperty("poolRenderableObjects", ".\\Data\\level1\\pool_renderable_objects.xml", false);
           } else if (name == "AnimatedModels") {
-            m_Conf_info.AnimatedMeshPath = n(i).GetPszISOProperty("modelsXML", "./Data/animated_models.xml", false);
+            m_Conf_info.AnimatedMeshPath = nodeChild.GetPszISOProperty("modelsXML", "./Data/animated_models.xml", false);
           } else if (name == "LoadLevel") {
-            m_Conf_info.LuaLevelObjectsFunc = n(i).GetPszISOProperty("LuaInitLevelFunc", "init_level()", false);
-            m_Conf_info.LuaLevelCamFunc = n(i).GetPszISOProperty("LuaInitCamerasFunc", "", false);
+            m_Conf_info.LuaLevelObjectsFunc = nodeChild.GetPszISOProperty("LuaInitLevelFunc", "init_level()", false);
+            m_Conf_info.LuaLevelCamFunc = nodeChild.GetPszISOProperty("LuaInitCamerasFunc", "", false);
           } else if (name == "LevelPhisicsFile") {
-            m_Conf_info.LevelPhisics = n(i).GetPszISOProperty("PhisicsFile", "./Data/level1/trainingPiky2.ASE", false);
+            m_Conf_info.LevelPhisics = nodeChild.GetPszISOProperty("PhisicsFile", "./Data/level1/trainingPiky2.ASE", false);
           } else if (name == "Triggers") {
-            m_Conf_info.TriggersPath = n(i).GetPszISOProperty("TriggersFile", "./Data/level1/triggers.xml", false);
+            m_Conf_info.TriggersPath = nodeChild.GetPszISOProperty("TriggersFile", "./Data/level1/triggers.xml", false);
           } else if (name == "Puzzles") {
-            m_Conf_info.PuzzlesPath = n(i).GetPszISOProperty("PuzzlesFile", "./Data/level1/puzzles.xml", false);
+            m_Conf_info.PuzzlesPath = nodeChild.GetPszISOProperty("PuzzlesFile", "./Data/level1/puzzles.xml", false);
           } else if (name == "Collectibles") {
-            m_Conf_info.CollectiblesPath = n(i).GetPszISOProperty("CollectiblesFile", "./Data/level1/collectibles.xml", false);
+            m_Conf_info.CollectiblesPath = nodeChild.GetPszISOProperty("CollectiblesFile", "./Data/level1/collectibles.xml", false);
           }
 
 

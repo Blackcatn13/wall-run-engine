@@ -43,17 +43,19 @@ void CRenderableObjectTechniqueManager::Load(const std::string &FileName) {
   CXMLTreeNode  m = newFile["renderable_object_techniques"];
   int count = m.GetNumChildren();
   for (int i = 0; i < count; ++i) {
-    std::string name = m(i).GetName();
+    CXMLTreeNode nodeChild = m(i);
+    std::string name = nodeChild.GetName();
     if (name == "pool_renderable_object_technique") {
-      std::string l_poolName = m(i).GetPszISOProperty("name", "");
-      bool l_isDefault = m(i).GetBoolProperty("default", false, false);
+      std::string l_poolName = nodeChild.GetPszISOProperty("name", "");
+      bool l_isDefault = nodeChild.GetBoolProperty("default", false, false);
       if (l_isDefault) {
-        int count2 = m(i).GetNumChildren();
+        int count2 = nodeChild.GetNumChildren();
         for (int j = 0; j < count2; ++j) {
-          std::string name2 = m(i)(j).GetName();
+          CXMLTreeNode nodeChild1 = nodeChild(j);
+          std::string name2 = nodeChild1.GetName();
           if (name2 == "default_technique") {
-            unsigned int l_VertexNumber = m(i)(j).GetIntProperty("vertex_type", 0, false);
-            std::string l_TechniqueName = m(i)(j).GetPszISOProperty("technique", "", false);
+            unsigned int l_VertexNumber = nodeChild1.GetIntProperty("vertex_type", 0, false);
+            std::string l_TechniqueName = nodeChild1.GetPszISOProperty("technique", "", false);
             std::string l_RenderableObjectTechniqueName = GetRenderableObjectTechniqueNameByVertexType(l_VertexNumber);
             InsertRenderableObjectTechnique(l_RenderableObjectTechniqueName, l_TechniqueName);
           }

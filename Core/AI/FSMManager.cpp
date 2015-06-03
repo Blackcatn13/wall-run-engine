@@ -39,28 +39,31 @@ void CFSMManager::Load() {
     if (m.Exists()) {
       int count = m.GetNumChildren();
       for (int i = 0; i < count; ++i) {
-        std::string name = m(i).GetName();
+        CXMLTreeNode nodeChild = m(i);
+        std::string name = nodeChild.GetName();
         if (name == "fsm") {
           FSM *newFSM = new FSM();
-          int childCount = m(i).GetNumChildren();
-          std::string FSMName = m(i).GetPszISOProperty("name", "", false);
+          int childCount = nodeChild.GetNumChildren();
+          std::string FSMName = nodeChild.GetPszISOProperty("name", "", false);
           for (int j = 0; j < childCount; ++j) {
-            std::string l_PropName = m(i)(j).GetName();
+            CXMLTreeNode nodeChild1 = nodeChild(j);
+            std::string l_PropName = nodeChild1.GetName();
             if (l_PropName == "initialState") {
-              newFSM->m_currentState = m(i)(j).GetPszISOProperty("name", "", false);
+              newFSM->m_currentState = nodeChild1.GetPszISOProperty("name", "", false);
             } else if (l_PropName == "state") {
               STATE *s = new STATE();
-              int states = m(i)(j).GetNumChildren();
-              std::string StateName = m(i)(j).GetPszISOProperty("name", "", false);
+              int states = nodeChild1.GetNumChildren();
+              std::string StateName = nodeChild1.GetPszISOProperty("name", "", false);
               for (int k = 0; k < states; ++k) {
-                std::string StateType = m(i)(j)(k).GetName();
+                CXMLTreeNode nodeChild2 = nodeChild1(k);
+                std::string StateType = nodeChild2.GetName();
                 if (StateType == "onEnter") {
-                  s->onEnter = m(i)(j)(k).GetPszISOProperty("lua_funtion", "", false);
+                  s->onEnter = nodeChild2.GetPszISOProperty("lua_funtion", "", false);
                 } else if (StateType == "onExit") {
-                  s->onExit = m(i)(j)(k).GetPszISOProperty("lua_funtion", "", false);
+                  s->onExit = nodeChild2.GetPszISOProperty("lua_funtion", "", false);
                 } else if (StateType == "Update") {
-                  s->onUpdate = m(i)(j)(k).GetPszISOProperty("lua_funtion", "", false);
-                  s->m_UpdateTime = m(i)(j)(k).GetFloatProperty("time");
+                  s->onUpdate = nodeChild2.GetPszISOProperty("lua_funtion", "", false);
+                  s->m_UpdateTime = nodeChild2.GetFloatProperty("time");
                 }
                 s->m_ElapsedTime = 0;
                 s->m_onEnter = false;

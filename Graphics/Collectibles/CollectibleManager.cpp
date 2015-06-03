@@ -52,20 +52,21 @@ void CCollectibleManager::Load(std::string &FileName) {
     if (m.Exists()) {
       int count = m.GetNumChildren();
       for (int i = 0; i < count; ++i) {
-        std::string l_name = m(i).GetName();
+        CXMLTreeNode nodeChild = m(i);
+        std::string l_name = nodeChild.GetName();
         if (l_name == "collectible-type") {
           StrCollectibles l_CollectibleType;
-          l_CollectibleType.Name = m(i).GetPszISOProperty("name", "", false);
-          l_CollectibleType.CoreMesh = m(i).GetPszISOProperty("core_mesh", "", false);
-          l_CollectibleType.MeshLuaFunction = m(i).GetPszISOProperty("mesh_lua_function", "", false);
-          l_CollectibleType.TriggerFunction = m(i).GetPszISOProperty("trigger_function", "", false);
-          l_CollectibleType.TriggerSize = m(i).GetVect3fProperty("trigger_size", v3fZERO, false);
+          l_CollectibleType.Name = nodeChild.GetPszISOProperty("name", "", false);
+          l_CollectibleType.CoreMesh = nodeChild.GetPszISOProperty("core_mesh", "", false);
+          l_CollectibleType.MeshLuaFunction = nodeChild.GetPszISOProperty("mesh_lua_function", "", false);
+          l_CollectibleType.TriggerFunction = nodeChild.GetPszISOProperty("trigger_function", "", false);
+          l_CollectibleType.TriggerSize = nodeChild.GetVect3fProperty("trigger_size", v3fZERO, false);
           m_VectorCollectibleTypes.push_back(l_CollectibleType);
         } else if (l_name == "layer") {
-          m_Layer = m(i).GetPszISOProperty("name", "collectible", false);
+          m_Layer = nodeChild.GetPszISOProperty("name", "collectible", false);
         } else if (l_name == "unlockable-card") {
-          std::string l_meshName = m(i).GetPszISOProperty("mesh_name", "", false);
-          std::string l_imgSrc = m(i).GetPszISOProperty("img_src", "", false);
+          std::string l_meshName = nodeChild.GetPszISOProperty("mesh_name", "", false);
+          std::string l_imgSrc = nodeChild.GetPszISOProperty("img_src", "", false);
           m_Unlockables.insert(std::pair<std::string, std::string>(l_meshName, l_imgSrc));
           std::stringstream ss;
           ss << "Card.new(\"" << l_meshName << "\"," << "\"" << l_imgSrc << "\")";

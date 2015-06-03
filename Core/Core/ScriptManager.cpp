@@ -121,11 +121,12 @@ void CScriptManager::Load(const std::string &XMLFile) {
     if (m.Exists()) {
       int count = m.GetNumChildren();
       for (int i = 0; i < count; ++i) {
-        std::string name = m(i).GetName();
+        CXMLTreeNode nodeChild = m(i);
+        std::string name = nodeChild.GetName();
         if (name == "script") {
-          std::string l_name = m(i).GetPszISOProperty("name", "");
-          std::string l_file = m(i).GetPszISOProperty("file", "");
-          bool l_autoRun = m(i).GetBoolProperty("auto_run", true);
+          std::string l_name = nodeChild.GetPszISOProperty("name", "");
+          std::string l_file = nodeChild.GetPszISOProperty("file", "");
+          bool l_autoRun = nodeChild.GetBoolProperty("auto_run", true);
           if (l_autoRun)
             RunFile(l_file);
           m_ScriptsMap.insert ( std::pair<std::string, std::string>(l_name, l_file) );

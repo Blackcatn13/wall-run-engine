@@ -59,19 +59,20 @@ void CAnimatedCoreModel::Load(const std::string &Path) {
     m_CalCoreModel = new CalCoreModel(l_Name);
     int count = m.GetNumChildren();
     for (int i = 0; i < count; ++i) {
-      std::string l_Element(m(i).GetName());
+      CXMLTreeNode nodeChild = m(i);
+      std::string l_Element(nodeChild.GetName());
       if ( l_Element == "skeleton") {
-        std::string Filename = m(i).GetPszISOProperty("file", "");
+        std::string Filename = nodeChild.GetPszISOProperty("file", "");
         LoadSkeleton(Path + "\\" + Filename);
       } else if (l_Element == "animation") {
-        std::string name = m(i).GetPszISOProperty("name", "");
-        std::string Filename = m(i).GetPszISOProperty("file", "");
+        std::string name = nodeChild.GetPszISOProperty("name", "");
+        std::string Filename = nodeChild.GetPszISOProperty("file", "");
         LoadAnimation(name, Path + "\\" + Filename);
       } else if (l_Element == "mesh") {
-        std::string Filename = m(i).GetPszISOProperty("file", "");
+        std::string Filename = nodeChild.GetPszISOProperty("file", "");
         LoadMesh(Path + "\\" + Filename);
       } else if (l_Element == "texture") {
-        std::string Filename = Path + std::string(m(i).GetPszISOProperty("file", ""));
+        std::string Filename = Path + std::string(nodeChild.GetPszISOProperty("file", ""));
         m_TextureFilenameList.push_back(Filename);
         TEXTM->GetResource(Filename);
       }

@@ -30,17 +30,18 @@ void CPuzzleManager::Load(std::string file) {
     if (m.Exists()) {
       int count = m.GetNumChildren();
       for (int i = 0; i < count; ++i) {
-        std::string name = m(i).GetName();
+        CXMLTreeNode nodeChild = m(i);
+        std::string name = nodeChild.GetName();
         if (name == "puzzle") {
-          std::string puzzleName = m(i).GetPszISOProperty("name", "", false);
+          std::string puzzleName = nodeChild.GetPszISOProperty("name", "", false);
           CPuzzle *newPuzzle = new CPuzzle();
-          std::string l_LuaCode = m(i).GetPszISOProperty("lua_function", "", false);
-          int l_NumActivatedSwitches = m(i).GetIntProperty("min_activated_switches", 0, false);
+          std::string l_LuaCode = nodeChild.GetPszISOProperty("lua_function", "", false);
+          int l_NumActivatedSwitches = nodeChild.GetIntProperty("min_activated_switches", 0, false);
           newPuzzle->setLuaCode(l_LuaCode);
           newPuzzle->setMinActivatedSwitches(l_NumActivatedSwitches);
-          newPuzzle->setSceneElement(m(i).GetPszISOProperty("scene_element", "", false));
-          for (int j = 0; j < m(i).GetNumChildren(); ++j) {
-            CTrigger *l_Trigger = TRIGGM->GetResource(m(i)(j).GetPszISOProperty("name", "", false));
+          newPuzzle->setSceneElement(nodeChild.GetPszISOProperty("scene_element", "", false));
+          for (int j = 0; j < nodeChild.GetNumChildren(); ++j) {
+            CTrigger *l_Trigger = TRIGGM->GetResource(nodeChild(j).GetPszISOProperty("name", "", false));
             if (l_Trigger != NULL)
               newPuzzle->getSwitches().push_back(l_Trigger);
           }

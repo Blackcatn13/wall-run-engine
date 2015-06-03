@@ -73,17 +73,19 @@ bool CThPSCamera::LoadPathFromFile(std::string filename) {
   CXMLTreeNode  m = newFile["camera_path"];
   int count = m.GetNumChildren();
   for (int i = 0; i < count; ++i) {
-    std::string name = m(i).GetName();
+    CXMLTreeNode nodeChild = m(i);
+    std::string name = nodeChild.GetName();
     if (name == "spline") {
-      // std::string l_lineName = m(i).GetPszISOProperty("name", "");
-      int numPoints = m(i).GetNumChildren();
+      // std::string l_lineName = nodeChild.GetPszISOProperty("name", "");
+      int numPoints = nodeChild.GetNumChildren();
       for (int j = 0; j < numPoints; ++j) {
-        std::string namePoint = m(i)(j).GetName();
+        CXMLTreeNode nodeChild1 = nodeChild(j);
+        std::string namePoint = nodeChild1.GetName();
         if (namePoint == "point") {
-          // std::string pointId = m(i)(j).GetPszISOProperty("id", "");
-          Vect3f pos = m(i)(j).GetVect3fProperty("pos", v3fZERO);
+          // std::string pointId = nodeChild1.GetPszISOProperty("id", "");
+          Vect3f pos = nodeChild1.GetVect3fProperty("pos", v3fZERO);
           m_path.push_back(pos);
-		  bool canRotate = m(i)(j).GetBoolProperty("can_rotate", false);
+		  bool canRotate = nodeChild1.GetBoolProperty("can_rotate", false);
 		  m_pathRotate.push_back(canRotate);
         }
 

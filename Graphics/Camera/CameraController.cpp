@@ -170,9 +170,10 @@ bool CCameraController::Load(const std::string &FileName) {
     if (m.Exists()) {
       int count = m.GetNumChildren();
       for (int i = 0; i < count; ++i) {
-        if (!strcmp(m(i).GetName(), "key_camera_controller")) {
-          std::string l_Name = m(i).GetPszProperty("name");
-          std::string l_file = m(i).GetPszProperty("file");
+        CXMLTreeNode nodeChild = m(i);
+        if (!strcmp(nodeChild.GetName(), "key_camera_controller")) {
+          std::string l_Name = nodeChild.GetPszProperty("name");
+          std::string l_file = nodeChild.GetPszProperty("file");
           CCameraKeyController *l_CameraKeyController = new CCameraKeyController();
           l_CameraKeyController->LoadXML(l_file);
           bool l_Ret = AddResource(l_Name, l_CameraKeyController);
@@ -181,13 +182,13 @@ bool CCameraController::Load(const std::string &FileName) {
             CHECKED_DELETE(l_CameraKeyController);
           }
         }
-        if (!strcmp(m(i).GetName(), "fixed_camera")) {
-          std::string l_Name = m(i).GetPszProperty("name");
-          Vect3f pos = m(i).GetVect3fProperty("pos", v3fONE);
-          Vect3f lookat = m(i).GetVect3fProperty("lookat", v3fONE);
-          float l_fov = m(i).GetFloatProperty("fov");
-          float l_near_plane = m(i).GetFloatProperty("near_plane");
-          float l_far_plane = m(i).GetFloatProperty("far_plane");
+        if (!strcmp(nodeChild.GetName(), "fixed_camera")) {
+          std::string l_Name = nodeChild.GetPszProperty("name");
+          Vect3f pos = nodeChild.GetVect3fProperty("pos", v3fONE);
+          Vect3f lookat = nodeChild.GetVect3fProperty("lookat", v3fONE);
+          float l_fov = nodeChild.GetFloatProperty("fov");
+          float l_near_plane = nodeChild.GetFloatProperty("near_plane");
+          float l_far_plane = nodeChild.GetFloatProperty("far_plane");
           Vect3f l_V = pos - lookat;
           float l_yaw = atan2(l_V.z, l_V.x) - ePIf;
           float l_pitch = -atan2(l_V.y, sqrt((l_V.z * l_V.z) + (l_V.x * l_V.x)));

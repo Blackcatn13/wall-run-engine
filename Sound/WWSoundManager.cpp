@@ -183,32 +183,34 @@ void CWWSoundManager::Load(std::string file) {
       int count = m.GetNumChildren();
       AkBankID bankID;
       for (int i = 0; i < count; ++i) {
-        std::string name = m(i).GetName();
+        CXMLTreeNode nodeChild = m(i);
+        std::string name = nodeChild.GetName();
         if (name == "Bank") {
-          std::string bnkName = m(i).GetPszISOProperty("name", "", false);
+          std::string bnkName = nodeChild.GetPszISOProperty("name", "", false);
           if (AK::SoundEngine::LoadBank(bnkName.c_str(), AK_DEFAULT_POOL_ID, bankID) != AK_Success) {
             LOGGER->AddNewLog(ELL_ERROR, "Bank %s not correctly loaded", bnkName.c_str());
           }
         } else if (name == "GameObject2D") {
-          std::string goName = m(i).GetPszISOProperty("name", "", false);
+          std::string goName = nodeChild.GetPszISOProperty("name", "", false);
           m_GameObjects[goName] = ++m_LastId;
-          bool register_ = m(i).GetBoolProperty("register", false, false);
+          bool register_ = nodeChild.GetBoolProperty("register", false, false);
           if (register_) {
             AK::SoundEngine::RegisterGameObj(m_GameObjects[goName]);
           }
         } else if (name == "GameObject3D") {
-          std::string goName = m(i).GetPszISOProperty("name", "", false);
+          std::string goName = nodeChild.GetPszISOProperty("name", "", false);
           m_GameObjects[goName] = ++m_LastId;
-          bool register_ = m(i).GetBoolProperty("register", false, false);
+          bool register_ = nodeChild.GetBoolProperty("register", false, false);
           if (register_) {
             AK::SoundEngine::RegisterGameObj(m_GameObjects[goName]);
           }
-          int positions = m(i).GetNumChildren();
+          int positions = nodeChild.GetNumChildren();
           if (positions > 0) {
             AkSoundPosition *posList = new (std::nothrow) AkSoundPosition[positions];
             for (int j = 0; j < positions; ++j) {
-              Vect3f pos = m(i)(j).GetVect3fProperty("pos", v3fZERO, false);
-              Vect3f dir = m(i)(j).GetVect3fProperty("dir", v3fZERO, false);
+              CXMLTreeNode nodeChild1 = nodeChild(j);
+              Vect3f pos = nodeChild1.GetVect3fProperty("pos", v3fZERO, false);
+              Vect3f dir = nodeChild1.GetVect3fProperty("dir", v3fZERO, false);
               posList[j].Position.X = pos.x;
               posList[j].Position.Y = pos.y;
               posList[j].Position.Z = pos.z;
@@ -218,7 +220,7 @@ void CWWSoundManager::Load(std::string file) {
               posList[j].Orientation.Z = dir.z;
 
             }
-            std::string type = m(i).GetPszISOProperty("type", "", false);
+            std::string type = nodeChild.GetPszISOProperty("type", "", false);
             AK::SoundEngine::MultiPositionType type_pos;
             if (type == "MultiSource") {
               type_pos = AK::SoundEngine::MultiPositionType::MultiPositionType_MultiSources;
@@ -228,8 +230,8 @@ void CWWSoundManager::Load(std::string file) {
             AK::SoundEngine::SetMultiplePositions(m_GameObjects[goName], posList, positions, type_pos);
             delete[] posList;
           } else {
-            Vect3f pos = m(i).GetVect3fProperty("pos", v3fZERO, false);
-            Vect3f dir = m(i).GetVect3fProperty("dir", v3fZERO, false);
+            Vect3f pos = nodeChild.GetVect3fProperty("pos", v3fZERO, false);
+            Vect3f dir = nodeChild.GetVect3fProperty("dir", v3fZERO, false);
             AkSoundPosition soundPos;
             soundPos.Position.X = pos.x;
             soundPos.Position.Y = pos.y;
@@ -241,8 +243,8 @@ void CWWSoundManager::Load(std::string file) {
             AK::SoundEngine::SetPosition(m_GameObjects[goName], soundPos);
           }
         } else if (name == "InitEvent") {
-          std::string eventName = m(i).GetPszISOProperty("event", "", false);
-          std::string goName = m(i).GetPszISOProperty("GameObject", "", false);
+          std::string eventName = nodeChild.GetPszISOProperty("event", "", false);
+          std::string goName = nodeChild.GetPszISOProperty("GameObject", "", false);
           EventInfo *ei = new EventInfo();
           ei->Event = eventName;
           ei->GameObjectID = m_GameObjects[goName];
