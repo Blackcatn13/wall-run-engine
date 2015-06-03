@@ -225,7 +225,7 @@ void CMovingPlatform::UpdateFSM(float elapsedTime) {
 bool CMovingPlatform::isAround(Vect3f vector1, Vect3f vector2) {
   float l_margenx = GetPhysicsSize().x + 0.5f;
   float l_margenz = GetPhysicsSize().z + 0.5f;
-  float l_margeny = GetPhysicsSize().y + 0.0f;
+  float l_margeny = GetPhysicsSize().y + 1.5f;
   // bool l_isInside = isInside(vector1, vector2);
   if ((vector1.x > vector2.x - l_margenx) && (vector1.x < vector2.x + l_margenx) && (vector1.y > vector2.y - l_margeny) && (vector1.y < vector2.y + l_margeny) && (vector1.z > vector2.z - l_margenz) && (vector1.z < vector2.z + l_margenz))
     return true;
