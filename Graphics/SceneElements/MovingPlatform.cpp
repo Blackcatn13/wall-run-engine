@@ -43,6 +43,7 @@ void CMovingPlatform::AddBoxController(Vect3f size, float slope, float skinwidth
 CMovingPlatform::~CMovingPlatform () {
   /* PHYSXM->ReleasePhysicController(m_PhysicController);
    CHECKED_DELETE(m_PhysicController);*/
+	CHECKED_DELETE(m_Fsm);
 }
 
 void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {

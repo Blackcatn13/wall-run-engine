@@ -13,15 +13,8 @@ CBillboard::CBillboard(CXMLTreeNode &node)
   : m_size(node.GetFloatProperty("size", .0f	, false))
   , m_position(node.GetVect3fProperty("position", v3fZERO	, false))
   , m_Color1(CColor((node.GetVect4fProperty("color", v4fZERO	, false))))
-
+  , m_Texture(NULL)
 {
-  std::string tempText = node.GetPszISOProperty("texture", ""	, false);
-  if (tempText != "") {
-    m_Texture = new CTexture();
-    m_Texture->Load(tempText);
-  } else {
-    m_Texture = NULL;
-  }
 }
 
 CBillboard::CBillboard(float size)
