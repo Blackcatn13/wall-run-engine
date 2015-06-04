@@ -32,7 +32,7 @@ TGBUFFER_TEXTURED1_VERTEX_PS GBufferVS(VertexVS_TTEXTURE2_NORMAL_VERTEX IN){
 TMultiRenderTargetPixel GBufferPS(TGBUFFER_TEXTURED1_VERTEX_PS IN) {
 	TMultiRenderTargetPixel OUT = (TMultiRenderTargetPixel)0;
 	float4 l_DiffuseColor = tex2D(S0LinearWrapSampler , IN.UV);
-	float3 l_DiffuseLigthMap = tex2D(S3LinearWrapSampler, IN.UV2).rgb;
+	float3 l_DiffuseLigthMap = tex2D(S1LinearWrapSampler, IN.UV2).rgb;
 	float3 l_intensity = l_DiffuseColor.xyz * l_DiffuseLigthMap;
 	float3 Nn = normalize(IN.Normal);
 	float3 NnScalated = Normal2Texture(Nn);
