@@ -333,5 +333,7 @@
 	<action name="TeleportTest2">
     	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_H"/>
     </action>
-	
+	<action name="TeleportTest3">
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_T"/>
+    </action>
 </Actions>
