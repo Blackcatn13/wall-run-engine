@@ -20,6 +20,9 @@ local canAttack = true;
 local contador = 0;
 local timeAttack = 0.6;
 local jumpTime = 0;
+local m_damageFeedBackSpeedStart = 20;
+local m_damageFeedBackSpeed = 20;
+local m_damageFeedBackSpeedDismin = 40;
 --coreInstance:get_player_controller().m_mesh = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky");
 --coreInstance:get_player_controller().m_mesh:set_yaw(coreInstance:get_player_controller():get_yaw());
 function on_update_player_lua(l_ElapsedTime)
@@ -51,8 +54,7 @@ function on_update_player_lua(l_ElapsedTime)
 	player_controller.m_AttackForce = 0.7;					--Impulse force for the attack.
 	player_controller.m_PhysicController:set_step(0.5); 	--Altura que puede superar (escalones).
 	local AirTime = 0.7;						-- Time into the air, playing air loop
-	local m_damageFeedBackSpeed = 13;
-	local m_damageTime = 0.6;
+	local m_damageTime = 0.3;
 	--////////////////////////////////////////////////////////
 	if gui_manager:get_is_displayed_console() == false then
 
@@ -93,6 +95,12 @@ function on_update_player_lua(l_ElapsedTime)
 		
 		-- Si dañan al player
 		if player.is_hit == true then
+			if timer > m_damageTime then
+				m_damageFeedBackSpeed = m_damageFeedBackSpeed - m_damageFeedBackSpeedDismin * l_ElapsedTime
+			end
+			if m_damageFeedBackSpeed < 0.2 then
+				m_damageFeedBackSpeed = 0.2
+			end
 			timer = timer + l_ElapsedTime
 			mov = player.vector_damage * m_damageFeedBackSpeed * l_ElapsedTime
 			--coreInstance:trace("Time "..tostring(timer))
@@ -469,11 +477,16 @@ function on_update_player_lua(l_ElapsedTime)
 					if player.playing_hit == false then
 						player.playing_hit = true
 						playerRenderable:execute_action(6,0,0.3,1,true);
+						coreInstance:trace("PLAY HIT");
 					else
 						if not playerRenderable:is_cycle_animation_active() then
 							player.is_hit = false
 							player.playing_hit = false
 							timer = 0.0
+							coreInstance:trace("STOP HIT");
+							playerRenderable:remove_action(6);
+							playerRenderable:blend_cycle(0,1,0);
+							m_damageFeedBackSpeed = m_damageFeedBackSpeedStart
 							--coreInstance:trace("Player hit "..tostring(player.is_hit))
 						end
 					end
