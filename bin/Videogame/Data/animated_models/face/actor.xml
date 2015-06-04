@@ -1,0 +1,6 @@
+<animated_model name="cara">
+	<texture file=".tga"/>
+	<skeleton file="Face_skeleton.CSF"/>
+	<mesh file="Face_mesh.CMF"/>
+	<animation name="move" file="Face_tongue_move.CAF"/>
+</animated_model>

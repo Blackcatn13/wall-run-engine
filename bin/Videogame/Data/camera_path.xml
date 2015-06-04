@@ -30,36 +30,38 @@
 		<point id="p27" pos="468.463 8.50617 -1.88948"/>
 		<point id="p28" pos="471.195 8.50617 -2.83909"/>
 		<point id="p29" pos="479.238 8.50617 -3.09103"/>
+		<point id="p30" pos="487.748 8.50617 -3.06139"/>
 	</spline>
-	<spline name="line_2">
-		<point id="p30" pos="487.748 8.50617 -3.06139" can_rotate="true"/>
-		<point id="p31" pos="496.795 8.50617 -2.11901" can_rotate="true"/>
-		<point id="p32" pos="503.935 8.50617 -1.69605" can_rotate="true"/>
-		<point id="p33" pos="510.311 8.50617 -2.30518" can_rotate="true"/>
-		<point id="p34" pos="515.995 8.50617 -3.10117" can_rotate="true"/>
-		<point id="p35" pos="524.161 8.50617 -4.77448" can_rotate="true"/>
-		<point id="p36" pos="530.547 8.50617 -6.55853" can_rotate="true"/>
-		<point id="p37" pos="538.449 8.50617 -9.42438" can_rotate="true"/>
+	<spline name="line_1">
+		<point id="p1" pos="488.173 8.50617 -2.99731" can_rotate="true"/>
+		<point id="p2" pos="496.795 8.50617 -2.11901" can_rotate="true"/>
+		<point id="p3" pos="503.935 8.50617 -1.69605" can_rotate="true"/>
+		<point id="p4" pos="510.311 8.50617 -1.77778" can_rotate="true"/>
+		<point id="p5" pos="515.995 8.50617 -1.71061" can_rotate="true"/>
+		<point id="p6" pos="524.161 8.50617 -1.71057" can_rotate="true"/>
+		<point id="p7" pos="530.547 8.50617 -1.45553" can_rotate="true"/>
+		<point id="p8" pos="534.664 8.50617 -1.51973" can_rotate="true"/>
 	</spline>
-	<spline name="line_3">
-		<point id="p38" pos="545.294 8.50617 -12.0515"/>
-		<point id="p39" pos="555.145 8.50617 -17.682"/>
-		<point id="p40" pos="557.234 8.50617 -22.5982"/>
-		<point id="p41" pos="558.261 8.50617 -27.3447"/>
-		<point id="p42" pos="558.336 8.50617 -32.83"/>
-		<point id="p43" pos="558.348 8.50617 -38.8726"/>
-		<point id="p44" pos="557.885 8.50617 -45.0066"/>
-		<point id="p45" pos="557.885 11.50617 -55.7829"/>
-		<point id="p46" pos="557.885 16.50617 -65.7829"/>
-		<point id="p47" pos="567.885 16.50617 -75.7829" can_rotate="true"/>
-		<point id="p48" pos="567.885 17.50617 -85.7829" can_rotate="true"/>
-		<point id="p49" pos="567.885 17.50617 -95.7829" can_rotate="true"/>
-		<point id="p50" pos="567.885 16.50617 -105.7829" can_rotate="true"/>
-		<point id="p51" pos="557.885 14.50617 -115.7829" can_rotate="true"/>
-		<point id="p52" pos="550.885 14.50617 -125.7829" can_rotate="true"/>
-		<point id="p53" pos="550.885 14.50617 -135.7829"/>
-		<point id="p54" pos="550.885 11.50617 -145.7829"/>
-		<point id="p55" pos="554.885 11.50617 -155.7829"/>
-		<point id="p56" pos="554.885 11.50617 -500.7829"/>
+	<spline name="line_1">
+		<point id="p1" pos="535.1 8.50617 -1.51973"/>
+		<point id="p2" pos="538.449 8.50617 -1.56695"/>
+		<point id="p3" pos="546.809 8.50617 -1.40889"/>
+		<point id="p4" pos="549.484 8.50617 -1.39026"/>
+		<point id="p5" pos="552.376 8.50617 -1.54202"/>
+		<point id="p6" pos="555.206 8.50617 -2.11175"/>
+		<point id="p7" pos="557.27 8.50617 -3.53631"/>
+		<point id="p8" pos="558.458 8.50617 -5.41861"/>
+		<point id="p9" pos="559.036 8.50617 -11.0771"/>
+		<point id="p10" pos="559.092 8.50617 -22.5982"/>
+		<point id="p11" pos="558.904 8.50617 -27.3447"/>
+		<point id="p12" pos="558.828 8.50617 -32.83"/>
+		<point id="p13" pos="558.348 8.50617 -38.8726"/>
+		<point id="p14" pos="557.885 8.50617 -45.0066"/>
+		<point id="p15" pos="557.755 8.67838 -48.4296"/>
+		<point id="p16" pos="557.755 9.73553 -50.3069"/>
+		<point id="p17" pos="557.885 11.8202 -51.7986"/>
+		<point id="p18" pos="557.885 13.9942 -53.3781"/>
+		<point id="p19" pos="557.885 15.5352 -55.0669"/>
+		<point id="p20" pos="557.885 15.5227 -59.3047"/>
 	</spline>
 </camera_path>
