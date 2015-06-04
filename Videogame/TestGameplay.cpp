@@ -426,7 +426,10 @@ void CTestGameplay::Update(float dt) {
 	  PLAYC->SetPosition(Vect3f(557.25122,14.5,-341.80167));
 	  PLAYC->getPhysicController()->SetPosition(Vect3f(557.25122,14.5,-341.80167));
   }
-
+  if (ACT2IN->DoAction("TeleportTest3")) {
+	  PLAYC->SetPosition(Vect3f(436.72714,10.5071726,11.082876));
+	  PLAYC->getPhysicController()->SetPosition(Vect3f(436.72714,10.5071726,11.082876));
+  }
 // CCORE->GetCinematicController()->Update(dt);
   m_Camera = CAMCONTM->getActiveCamera();
   /*  m_Granade->Update(dt);
