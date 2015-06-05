@@ -81,6 +81,7 @@ end
 function trigger_change_view(offset_axis)
 	local player_controller = coreInstance:get_player_controller();
 	if player_controller.m_is3D == true then 
+		player.going_back = false;
 		player_controller.m_is3D = false;
 		local cam = coreInstance.m_CameraController:get_resource("3DCam");
 		cam.m_eTypeCamera = 5;
@@ -213,8 +214,14 @@ end
 
 function ChuckyApear()
 	coreInstance:trace("CHUKY APEARS!!!");
+	local active_camera = cam_Controller:get_active_camera();
+	local dirVec = active_camera:get_path_point(active_camera.m_nextWaypoint) - active_camera:get_path_point(active_camera.m_currentWaypoint);
+	dirVec.y = 0;
+	dirVec:normalize(1);
 	local current_position = Vect3f(player.get_player_controller():get_position());
-	local pos = Vect3f(current_position.x,4,current_position.z);
+	local distance = 18;
+	current_position = current_position - dirVec * distance;
+	local pos = Vect3f(current_position.x,current_position.y + 4,current_position.z);
 	local Chucky = enemy_manager:get_enemy("Chucky");
 	Chucky:move_to_position(pos);
 	local yaw = player.get_player_controller():get_yaw();
