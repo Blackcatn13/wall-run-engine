@@ -1,5 +1,5 @@
 <animated_model name="cara">
-	<texture file=".tga"/>
+	<texture file="DIFF_PARET_SANEFES.tga"/>
 	<skeleton file="Face_skeleton.CSF"/>
 	<mesh file="Face_mesh.CMF"/>
 	<animation name="move" file="Face_tongue_move.CAF"/>
