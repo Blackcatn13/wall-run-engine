@@ -169,7 +169,7 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
     float l_DesplazamientoVerticalPlataforma = GetPhysicsSize().y + 3.8f;
     float l_PosicionMinSobrePlat = 0.0f;
     float l_PosicionMaxSobrePlat = GetPhysicsSize().y + 4.5f;
-	//float l_DesplazamientoVerticalPlataforma = 6.5f;
+    //float l_DesplazamientoVerticalPlataforma = 6.5f;
     //float l_PosicionMinSobrePlat = 0.0f;
     //float l_PosicionMaxSobrePlat = 7.0f;
 
@@ -186,7 +186,7 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
 
       //Intentando arreglar que al saltar debajado de la plataforma el personaje se queda incrustado
       if (hit != NULL && hit->getName().substr(0, 4) == "Poly" && info.m_fDistance <= 1.2) {
-        PLAYC->getPhysicController()->Move(direction.Normalize() * m_Speed * dt / 1.0, dt);
+        PLAYC->getPhysicController()->Move(direction.Normalize() * m_Speed * dt, dt);
         PhysicsApplied = true;
       }
 
@@ -197,7 +197,7 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
         //PLAYC->setisJumping(false);
         //PLAYC->setisGrounded(false);
         if (dirRay.y > 0.2) {
-          PLAYC->getPhysicController()->Move(Vect3f(0, -1, 0) * m_Speed * 8 * dt / 1.0, dt);
+          PLAYC->getPhysicController()->Move(Vect3f(0, -1, 0) * m_Speed * 8 * dt, dt);
           PLAYC->setisJumping(false);
           PLAYC->setisGrounded(false);
           PLAYC->setCurrentJumpForce(0.0);
@@ -227,12 +227,10 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
       	PLAYC->setisGrounded(false);
       }
       else*/
-      if ((l_playerPosition.y > (m_Position.y + l_PosicionMinSobrePlat) && (l_playerPosition.y < (m_Position.y + l_PosicionMaxSobrePlat)) && (hit != NULL && hit->getName().substr(0, 4) == "Poly" && info.m_fDistance <= 3.0))) 
-	  {
+      if ((l_playerPosition.y > (m_Position.y + l_PosicionMinSobrePlat) && (l_playerPosition.y < (m_Position.y + l_PosicionMaxSobrePlat)) && (hit != NULL && hit->getName().substr(0, 4) == "Poly" && info.m_fDistance <= 3.0))) {
         //PLAYC->getPhysicController()->MovePlayer(direction.Normalize() * m_Speed * dt + PLAYC->getGravity() * Vect3f(0,1,0) * 1.2 * dt, dt);
         //PLAYC->IsGrounded(direction.Normalize() * m_Speed * dt / 1.0, dt);
-        if (!PLAYC->getisJumping() || PLAYC->getCurrentJumpForce() < 0) 
-		{
+        if (!PLAYC->getisJumping() || PLAYC->getCurrentJumpForce() < 0) {
           PLAYC->setisOnPlatform(0.0);
           Vect3f l_PlayerPosition = PLAYC->getPhysicController()->GetPosition();
           l_playerPosition.y = m_Position.y + l_DesplazamientoVerticalPlataforma;
@@ -242,20 +240,16 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
           PLAYC->setisGrounded(false);
           PLAYC->setCurrentJumpForce(0.0);
           PLAYC->setisJumpingMoving(false);
+        } else {
+          PLAYC->setisOnPlatform(1.0);
         }
-		else
-		{
-			PLAYC->setisOnPlatform(1.0);
-		}
-      } 
-	  else 
-	  {
+      } else {
         PLAYC->setisOnPlatform(1.0);
 
         if (isAround(l_playerPosition, m_Position)) {
-          PLAYC->getPhysicController()->Move(-dirRay.Normalize() * m_Speed * 3 * dt / 1.0, dt);
+          PLAYC->getPhysicController()->Move(-dirRay.Normalize() * m_Speed * 3 * dt, dt);
           if (dirRay.y > 0.2) {
-            PLAYC->getPhysicController()->Move(Vect3f(0, -1, 0) * m_Speed * 8 * dt / 1.0, dt);
+            PLAYC->getPhysicController()->Move(Vect3f(0, -1, 0) * m_Speed * 8 * dt, dt);
             PLAYC->setisJumping(false);
             PLAYC->setisGrounded(false);
             PLAYC->setCurrentJumpForce(0.0);
@@ -282,7 +276,7 @@ bool CPolyPlatform::isInside(Vect3f vector1, Vect3f vector2) {
   float l_margenz = GetPhysicsSize().z;
   float l_margeny = GetPhysicsSize().y;
   if ((vector1.x > vector2.x - l_margenx) && (vector1.x < vector2.x + l_margenx) && (vector1.y > vector2.y - l_margeny) && (vector1.y < vector2.y + l_margeny) && (vector1.z > vector2.z - l_margenz) && (vector1.z < vector2.z + l_margenz))
-    return true; 
+    return true;
   else
     return false;
 }

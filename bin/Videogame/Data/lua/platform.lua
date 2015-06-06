@@ -241,19 +241,17 @@ function update_poly_platform(current_poly_time, dt, platform_name)
 	end
 	
 	--local act2in = coreInstance:get_action_to_input();
-	
 	if (act2in:do_action_from_lua("PolyPowa") == true and platform.m_Enabled) or platform.m_IsMoving == true then
-		coreInstance:trace(tostring(platform.m_IsMoving))
-		platform:activate_poly()
+		--platform:activate_poly()
 		
-		--activate_poly(platform, dt)
+		activate_poly(platform, dt)
 		--local new_pos = Vect3f(position + platform.m_RedimScale)
 		--coreInstance:get_player_controller().m_PhysicController:set_position(new_pos) 
 	
 	-- If poly is activated
 	elseif current_poly_time > platform.m_TimeOut then
-		platform:deactivate_poly()
-		--deactivate_poly(platform, dt)
+		--platform:deactivate_poly()
+		deactivate_poly(platform, dt)
 	else
 		platform:apply_physics_to_player(platform.m_Direction, dt)
 	end
@@ -263,16 +261,16 @@ end
 function activate_poly(_platform, dt)
 	if _platform.m_Activated == false then
 		max_distance = _platform.m_OriginalPosition:distance(_platform.m_FinalPosition)
-		
-		if _platform:get_position():distance(_platform.m_FinalPosition) >= 0.9 and _platform:get_position():distance(_platform.m_FinalPosition) <= max_distance then
+
+		if _platform:get_position():distance(_platform.m_FinalPosition) >= 0.1 and _platform:get_position():distance(_platform.m_FinalPosition) <= max_distance then
 			local new_position = _platform:get_position() + (_platform.m_Direction * _platform.m_Speed * dt)
 			_platform.m_Actor:set_global_position(new_position)
 			_platform:set_position(new_position)
-			_platform.m_Light:set_position(new_position)
+			--_platform.m_Light:set_position(new_position)
 			_platform.m_IsMoving = true
 			-- Si colisiona con piky (o si debería bajar) que lo desplace
 		else
-			_platform.m_Light:set_position(_platform.m_FinalPosition)
+			--_platform.m_Light:set_position(_platform.m_FinalPosition)
 			_platform:set_position(_platform.m_FinalPosition)
 			_platform.m_Activated = true
 			_platform.m_IsMoving = false
@@ -284,14 +282,14 @@ end
 function deactivate_poly(_platform, dt)
 	if _platform.m_Activated == true then
 		max_distance = _platform.m_OriginalPosition:distance(_platform.m_FinalPosition)
-		if _platform:get_position():distance(_platform.m_OriginalPosition) >= 0.9 and _platform:get_position():distance(_platform.m_OriginalPosition) <= max_distance+10 then
+		if _platform:get_position():distance(_platform.m_OriginalPosition) >= 0.1 and _platform:get_position():distance(_platform.m_OriginalPosition) <= max_distance+0.1 then
 			local new_position = _platform:get_position() + (_platform.m_Direction * _platform.m_Speed * dt * -1)
 			_platform.m_Actor:set_global_position(new_position)
 			_platform:set_position(new_position)
-			_platform.m_Light:set_position(new_position)
+			--_platform.m_Light:set_position(new_position)
 			--Si colisiona (o si debería bajar)con Piky => Desplazarle
 		else
-			_platform.m_Light:set_position(_platform.m_LightOriginalPosition)
+			--_platform.m_Light:set_position(_platform.m_LightOriginalPosition)
 			_platform:set_position(_platform.m_OriginalPosition)
 			_platform.m_Activated = false
 			_platform.m_ActiveTime = 0.0
