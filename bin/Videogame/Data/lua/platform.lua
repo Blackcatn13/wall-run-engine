@@ -268,6 +268,8 @@ function activate_poly(_platform, dt)
 			_platform:set_position(new_position)
 			--_platform.m_Light:set_position(new_position)
 			_platform.m_IsMoving = true
+
+			player_controller:move(_platform.m_Direction * _platform.m_Speed * dt, dt)
 			-- Si colisiona con piky (o si debería bajar) que lo desplace
 		else
 			--_platform.m_Light:set_position(_platform.m_FinalPosition)
