@@ -41,6 +41,12 @@
 
 CSceneRendererCommandManager::CSceneRendererCommandManager()
   : m_FileName(""),
+    m_GUICommand(""),
+	m_AlphaBlendCommand(""),
+	m_BeginCommand(""),
+	m_ClearCommand(""),
+	m_EndCommand(""),
+	m_PresentCommand(""),
     m_needReload(false) {
   CleanUp();
 }
@@ -77,10 +83,12 @@ void CSceneRendererCommandManager::Load(const std::string &FileName) {
         if (name == "begin_scene") {
           CBeginRenderSceneRendererCommand *l_Command = new CBeginRenderSceneRendererCommand(m(i));
           m_SceneRendererCommands.AddResource(l_Name, l_Command);
+		  m_BeginCommand = l_Name;
         }
         if (name == "clear_scene") {
           CClearSceneRendererCommand *l_Command = new CClearSceneRendererCommand(m(i));
           m_SceneRendererCommands.AddResource(l_Name, l_Command);
+		  m_ClearCommand = l_Name;
         }
         if (name == "capture_frame_buffer") {
           CCaptureFrameBufferSceneRendererCommand *l_Command = new CCaptureFrameBufferSceneRendererCommand(m(i));
@@ -109,6 +117,7 @@ void CSceneRendererCommandManager::Load(const std::string &FileName) {
         if (name == "enable_alpha_blend") {
           CEnableAlphaBlendSceneRendererCommand *l_Command = new CEnableAlphaBlendSceneRendererCommand(m(i));
           m_SceneRendererCommands.AddResource(l_Name, l_Command);
+		  m_AlphaBlendCommand = l_Name;
         }
         if (name == "disable_alpha_blend") {
           CDisableAlphaBlendSceneRendererCommand *l_Command = new CDisableAlphaBlendSceneRendererCommand(m(i));
@@ -117,6 +126,7 @@ void CSceneRendererCommandManager::Load(const std::string &FileName) {
         if (name == "end_scene") {
           CEndRenderSceneRendererCommand *l_Command = new CEndRenderSceneRendererCommand(m(i));
           m_SceneRendererCommands.AddResource(l_Name, l_Command);
+		  m_EndCommand = l_Name;
         }
         if (name == "generate_shadow_maps") {
           CGenerateShadowMapsSceneRendererCommand *l_Command = new CGenerateShadowMapsSceneRendererCommand(m(i));
@@ -125,6 +135,7 @@ void CSceneRendererCommandManager::Load(const std::string &FileName) {
         if (name == "present") {
           CPresentSceneRendererCommand *l_Command = new CPresentSceneRendererCommand(m(i));
           m_SceneRendererCommands.AddResource(l_Name, l_Command);
+		  m_PresentCommand = l_Name;
         }
         if (name == "set_pool_renderable_objects_technique") {
           CRenderableObjectTechniquesSceneRendererCommand *l_Command = new CRenderableObjectTechniquesSceneRendererCommand(m(i));
@@ -194,6 +205,7 @@ void CSceneRendererCommandManager::Load(const std::string &FileName) {
         if (name == "render_gui") {
           CRenderGUISceneRendererCommand *l_Command = new CRenderGUISceneRendererCommand(m(i));
           m_SceneRendererCommands.AddResource(l_Name, l_Command);
+		  m_GUICommand = l_Name;
         }
         if (name == "particle_render") {
           CParticleRendererCommand *l_Command = new CParticleRendererCommand(m(i));
@@ -215,14 +227,32 @@ void CSceneRendererCommandManager::Load(const std::string &FileName) {
 //    }
 //}
 void CSceneRendererCommandManager::Execute(CGraphicsManager &RM) {
-  for (size_t i = 0; i < m_SceneRendererCommands.GetResourcesVector().size(); ++i) {
-    if (m_needReload) {
-      m_SceneRendererCommands.GetResourcesVector().at(i)->Reload();
-    }
-    m_SceneRendererCommands.GetResourcesVector().at(i)->Execute(RM);
-  }
-  if (m_needReload)
-    m_needReload = false;
+	if (!RM.GetIsGUIDisplayed())  {
+		for (size_t i = 0; i < m_SceneRendererCommands.GetResourcesVector().size(); ++i) {
+			if (m_needReload) {
+				m_SceneRendererCommands.GetResourcesVector().at(i)->Reload();
+			}
+			m_SceneRendererCommands.GetResourcesVector().at(i)->Execute(RM);
+		}
+		if (m_needReload)
+			m_needReload = false;
+	}else{
+		if (m_needReload) {
+			m_SceneRendererCommands.GetResource(m_ClearCommand)->Reload();
+			m_SceneRendererCommands.GetResource(m_BeginCommand)->Reload();
+			m_SceneRendererCommands.GetResource(m_AlphaBlendCommand)->Reload();
+			m_SceneRendererCommands.GetResource(m_EndCommand)->Reload();
+			m_SceneRendererCommands.GetResource(m_PresentCommand)->Reload();
+			m_SceneRendererCommands.GetResource(m_GUICommand)->Reload();
+			m_needReload = false;
+		}
+		m_SceneRendererCommands.GetResource(m_ClearCommand)->Execute(RM);
+		m_SceneRendererCommands.GetResource(m_BeginCommand)->Execute(RM);
+		m_SceneRendererCommands.GetResource(m_AlphaBlendCommand)->Execute(RM);
+		m_SceneRendererCommands.GetResource(m_GUICommand)->Execute(RM);
+		m_SceneRendererCommands.GetResource(m_EndCommand)->Execute(RM);
+		m_SceneRendererCommands.GetResource(m_PresentCommand)->Execute(RM);
+	}
 }
 
 void CSceneRendererCommandManager::Reload() {
