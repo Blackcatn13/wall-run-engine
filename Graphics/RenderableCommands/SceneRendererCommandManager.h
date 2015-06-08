@@ -18,6 +18,12 @@ class CSceneRendererCommandManager {
   void CleanUp();
   std::string GetNextName();
   bool m_needReload;
+  std::string m_GUICommand;
+  std::string m_AlphaBlendCommand;
+  std::string m_BeginCommand;
+  std::string m_ClearCommand;
+  std::string m_EndCommand;
+  std::string m_PresentCommand;
 
   void GetSetRenderTargetSceneRendererCommand(CSetRenderTargetSceneRendererCommand *SceneRendererCommand);
  public:

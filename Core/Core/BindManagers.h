@@ -93,6 +93,8 @@ void RegisterManagers() {
     .def("draw_cylinder", &CGraphicsManager::DrawCylinder)
     .def("enable_z_buffering", (void (CGraphicsManager::*)(const Vect3f &, const Vect3f &, const Vect3f &, float, float, CColor)) &CGraphicsManager::DrawQuad3D)
     .def("disable_z_buffering", (void (CGraphicsManager::*)(const Vect3f &, const Vect3f &, const Vect3f &, const Vect3f &, CColor)) &CGraphicsManager::DrawQuad3D)
+	.def("get_is_GUI_displayed", &CGraphicsManager::GetIsGUIDisplayed)
+	.def("set_is_GUI_displayed", &CGraphicsManager::SetIsGUIDisplayed)
   ];
   luabind::module(LUA_STATE) [
     class_<CFontManager>("CFontManager")
