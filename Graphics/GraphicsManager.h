@@ -70,6 +70,7 @@ class CGraphicsManager {
   float                   m_pitch;
   CFrustum                m_Frustum;
   bool					m_Rendering;
+  bool					m_isGUIDisplayed;
 
  public:
   CGraphicsManager();
@@ -124,6 +125,9 @@ class CGraphicsManager {
   void BeginRenderCommand();
   void EndRenderCommand();
   void PresentSceneCommand();
+
+  bool GetIsGUIDisplayed(){ return m_isGUIDisplayed;}
+  void SetIsGUIDisplayed(bool input){ m_isGUIDisplayed = input;}
 };
 
 
