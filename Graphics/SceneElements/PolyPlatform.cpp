@@ -166,10 +166,10 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
     float l_RadioPhysicsPlayer = 0.8;
     //float l_AlturaPlataformaDesdeOrigen = GetPhysicsSize().y + 1.5;
     //float l_MargenLateralPlataforma = 1.0;
-    float l_DesplazamientoVerticalPlataforma = GetPhysicsSize().y + 3.8f;
+    float l_DesplazamientoVerticalPlataforma = (GetPhysicsSize().y)*2 + 1.0f;
     float l_PosicionMinSobrePlat = 0.0f;
-    float l_PosicionMaxSobrePlat = GetPhysicsSize().y + 4.5f;
-    //float l_DesplazamientoVerticalPlataforma = 6.5f;
+    float l_PosicionMaxSobrePlat = (GetPhysicsSize().y)*2 + 1.7f;
+    //float l_DesplazamientoVerticalPlataforma = 6.5f;	
     //float l_PosicionMinSobrePlat = 0.0f;
     //float l_PosicionMaxSobrePlat = 7.0f;
 
