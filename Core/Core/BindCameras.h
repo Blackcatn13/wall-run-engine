@@ -122,6 +122,13 @@ void RegisterCameraController() {
     .def("stop", & CCameraController::Stop)
     .def("cam_updates", & CCameraController::CamUpdates)
   ];
+    luabind::module(LUA_STATE) [
+    class_< PathPointSpec>("PathPointSpec")[
+		.def(constructor<>())
+		.def_readwrite("can_rotate", &PathPointSpec::canRotate)
+	];
+	
+
 }
 
 #endif

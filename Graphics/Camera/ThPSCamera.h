@@ -15,6 +15,7 @@
 
 typedef struct PathPointSpecStruct
 {
+	PathPointSpecStruct();
 	bool canRotate;
 } PathPointSpec;
 
