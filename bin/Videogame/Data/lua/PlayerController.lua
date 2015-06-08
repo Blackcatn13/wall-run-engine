@@ -280,8 +280,9 @@ function on_update_player_lua(l_ElapsedTime)
 			_fallPosition = info.m_CollisionPoint;
 			local fallPos = player_controller:get_position();
 			local distance = (fallPos.x - _fallPosition.x) * (fallPos.x - _fallPosition.x) + (fallPos.y - _fallPosition.y) * (fallPos.y - _fallPosition.y) + (fallPos.z - _fallPosition.z) * (fallPos.z - _fallPosition.z);
-			--coreInstance:trace(tostring(distance))
-			if distance <= 1.34 then
+			coreInstance:trace(tostring(distance))
+			--if distance <= 1.8 then
+			if player_controller.m_isGrounded then
 				_land = false;
 			end
 		end
@@ -394,7 +395,7 @@ function on_update_player_lua(l_ElapsedTime)
 		--///////////////////////////////////////////////////////////
 		-- Acción de saltar del Player. Puede realizar 2 saltos distintos (de longitud, y salto vertical). 
 		--///////////////////////////////////////////////////////////
-		if (act2in:do_action_from_lua("Jump")) and (player_controller.m_isJumping == false and _land == false and player_controller.m_isAttack == false and player.is_hit == false) then
+		if (act2in:do_action_from_lua("Jump")) and (player_controller.m_isJumping == false and _land == false and player_controller.m_isAttack == false and player.is_hit == false and player_controller.m_isGrounded) then
 			--coreInstance:trace(tostring(player_controller.m_isJumping));
 			--coreInstance:trace(tostring(_land));
 			coreInstance:getWWSoundManager():PlayEvent("Jump", "Piky");
