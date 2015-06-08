@@ -59,7 +59,7 @@ void CAnimatedInstanceModel::Initialize(CAnimatedCoreModel *AnimatedCoreModel, C
     m_CalModel->attachMesh(i);
 //	LoadVertexBuffer(RM);
   LoadTextures();
-  //BlendCycle(0, 1.0f, 0.0f);
+  BlendCycle(0, 1.0f, 0.0f);
   m_CalModel->update(0.0f);
   m_oldPosition = m_CalModel->getSkeleton()->getCoreSkeleton()->getCoreBone(0)->getTranslation().y;
 }

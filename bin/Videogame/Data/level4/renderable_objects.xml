@@ -130,8 +130,8 @@
 	<mesh_instance name="Object001" core="Object001" pos="289.725037 4.516609 11.099791" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="obstacle" core="obstacle" pos="252.817764 0.841506 11.095692" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="obstacle0022" core="obstacle0022" pos="339.923828 0.841506 11.095692" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="Cylinder001" core="Cylinder001" pos="304.051270 5.645349 16.930262" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="Cylinder002" core="Cylinder002" pos="360.035706 5.645349 16.930262" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<animated_model name="Cylinder001" core="face" pos="304.051270 5.645349 16.930262" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
+	<animated_model name="Cylinder002" core="face" pos="360.035706 5.645349 16.930262" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="ANTORCHA022" core="ANTORCHA022" pos="189.583267 4.630239 17.396589" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="SUPORT ANTORCHA022" core="SUPORT ANTORCHA022" pos="189.620514 4.346467 17.767475" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="ANTORCHA023" core="ANTORCHA023" pos="204.493729 4.630239 17.396589" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
