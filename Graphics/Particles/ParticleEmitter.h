@@ -46,13 +46,14 @@ class CParticleEmitter : public CObject3D {
   CColor			                m_Color2;
   std::string		              m_sTexture;
   CRecyclingArray<CParticle> *m_Particles;
-  float								m_Gravity;
-  float								m_MaxVelocidadOndulacion;
-  float								m_MinVelocidadOndulacion;
-  Vect3f							m_vOndulacion1;
-  Vect3f							m_vOndulacion2;
+  float								        m_Gravity;
+  float								        m_MaxVelocidadOndulacion;
+  float								        m_MinVelocidadOndulacion;
+  Vect3f							        m_vOndulacion1;
+  Vect3f							        m_vOndulacion2;
 
-  CTexture*							m_Texture;
+  CTexture							     *m_Texture;
+  //CRenderableVertexs         *m_RV;
 };
 
 #endif

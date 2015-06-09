@@ -206,14 +206,13 @@
 	<static_mesh name="Pedra05" filename="Data\level4\meshes\Pedra05.mesh"/>
 	<static_mesh name="Pedra06" filename="Data\level4\meshes\Pedra06.mesh"/>
 	<static_mesh name="Pedra07" filename="Data\level4\meshes\Pedra07.mesh"/>
-	<static_mesh name="Pared_pedres_02" filename="Data\level4\meshes\Pared_pedres_02.mesh"/>
-	<static_mesh name="Puerta_puzzle001" filename="Data\level4\meshes\Puerta_puzzle001.mesh"/>
+	<static_mesh name="Minitemplo" filename="Data\level4\meshes\Minitemplo.mesh"/>
 	<static_mesh name="Ojo_puerta01" filename="Data\level4\meshes\Ojo_puerta01.mesh"/>
 	<static_mesh name="Ojo_puerta02" filename="Data\level4\meshes\Ojo_puerta02.mesh"/>
 	<static_mesh name="Pedra09" filename="Data\level4\meshes\Pedra09.mesh"/>
 	<static_mesh name="Pedra010" filename="Data\level4\meshes\Pedra010.mesh"/>
 	<static_mesh name="Pedra011" filename="Data\level4\meshes\Pedra011.mesh"/>
 	<static_mesh name="Pedra012" filename="Data\level4\meshes\Pedra012.mesh"/>
-	<static_mesh name="Puerta_abajo" filename="Data\level4\meshes\Puerta_abajo.mesh"/>
 	<static_mesh name="Puerta_arriba" filename="Data\level4\meshes\Puerta_arriba.mesh"/>
+	<static_mesh name="Pared_pedres_002" filename="Data\level4\meshes\Pared_pedres_002.mesh"/>
 </static_meshes>

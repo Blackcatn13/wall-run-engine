@@ -96,7 +96,7 @@
 	<Physx_mesh name="Pedra06" filename="Data\level4\meshes\Pedra06.phsx"/>
 	<Physx_mesh name="Pedra07" filename="Data\level4\meshes\Pedra07.phsx"/>
 	<Physx_mesh name="Pared_pedres_02" filename="Data\level4\meshes\Pared_pedres_02.phsx"/>
-	<Physx_mesh name="Puerta_puzzle001" filename="Data\level4\meshes\Puerta_puzzle001.phsx"/>
+	<Physx_mesh name="Minitemplo" filename="Data\level4\meshes\Minitemplo.phsx"/>
 	<Physx_mesh name="Ojo_puerta01" filename="Data\level4\meshes\Ojo_puerta01.phsx"/>
 	<Physx_mesh name="Ojo_puerta02" filename="Data\level4\meshes\Ojo_puerta02.phsx"/>
 	<Physx_mesh name="Pedra09" filename="Data\level4\meshes\Pedra09.phsx"/>
