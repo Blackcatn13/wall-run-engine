@@ -252,7 +252,7 @@
 	<platform name="PolyPlatform002" core="PolyPlatform002" type="poly" pos="557.900879 3.498659 -53.174576" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="5.0 2.8 2.8" layer="poly" final_position="557.901 11.3701 -53.175"
 		 direction="0 1 0" time_out="3" speed="2" light="OmniPoly001" activation_distance="10"/>
 	<platform name="PolyPlatform001" core="PolyPlatform001" type="poly" phisic_size="1.5 0.5 1.5" final_position="557.900879 10.498659 -50.174576" direction="0.0 0.0 -1.0" time_out="3.0" speed="2.0"
-	activation_distance= "10"  pos="557.900879 10.498659 -40.174576" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="poly" light="OmniPoly001" />	 
+	activation_distance= "10"  pos="557.900879 10.498659 -40.174576" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="poly" light="OmniPoly001" />
 		 
 	<platform name="MovingPlatform001" core="MovingPlatform001" phisic_size="2 0.5 1.5" type="moving" speed= "5"  pos="568.16 13.50 -81.31" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms" room="1">
 		<wp pos="568.16 13.50 -81.31" />

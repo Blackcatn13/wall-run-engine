@@ -140,7 +140,7 @@ void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
           PLAYC->getPhysicController()->SetPosition(l_playerPosition);
           PLAYC->SetPosition(l_playerPosition);
           PLAYC->setisJumping(false);
-          PLAYC->setisGrounded(false);
+          PLAYC->setisGrounded(true);
           PLAYC->setCurrentJumpForce(0.0);
           PLAYC->setisJumpingMoving(false);
         }
