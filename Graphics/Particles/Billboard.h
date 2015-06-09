@@ -24,10 +24,10 @@ class CBillboard {
   void setPosition(Vect3f position) {m_position = position;}
   GET_SET(CTexture *, Texture)
  protected:
-  float			m_size;
-  Vect3f		m_position;
+  float			  m_size;
+  Vect3f		  m_position;
   CTexture		*m_Texture;
-  CColor		m_Color1;
+  CColor		  m_Color1;
 };
 
 #endif // BILLBOARD_H_

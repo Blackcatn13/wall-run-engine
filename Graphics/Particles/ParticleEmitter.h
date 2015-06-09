@@ -13,6 +13,7 @@ class CXMLTreeNode;
 class CGraphicsManager;
 class CParticle;
 class CTexture;
+class CRenderableVertexs;
 
 enum EmitterType {EMITTER_ESF, EMITTER_PLANE};
 
@@ -53,7 +54,7 @@ class CParticleEmitter : public CObject3D {
   Vect3f							        m_vOndulacion2;
 
   CTexture							     *m_Texture;
-  //CRenderableVertexs         *m_RV;
+  CRenderableVertexs         *m_RV;
 };
 
 #endif

@@ -13,8 +13,7 @@ CBillboard::CBillboard(CXMLTreeNode &node)
   : m_size(node.GetFloatProperty("size", .0f	, false))
   , m_position(node.GetVect3fProperty("position", v3fZERO	, false))
   , m_Color1(CColor((node.GetVect4fProperty("color", v4fZERO	, false))))
-  , m_Texture(NULL)
-{
+  , m_Texture(NULL) {
 }
 
 CBillboard::CBillboard(float size)
@@ -27,12 +26,12 @@ CBillboard::CBillboard(float size, Vect3f pos)
   , m_position(pos) {
 }
 
-CBillboard::~CBillboard() {	
-	if (m_Texture != NULL){
-		uint32 width = m_Texture->GetWidth();
-		if (width < 5000)
-			CHECKED_DELETE(m_Texture);
-	}
+CBillboard::~CBillboard() {
+  if (m_Texture != NULL) {
+    uint32 width = m_Texture->GetWidth();
+    if (width < 5000)
+      CHECKED_DELETE(m_Texture);
+  }
 }
 
 void CBillboard::Render(CGraphicsManager *GM) {

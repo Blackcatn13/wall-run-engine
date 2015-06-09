@@ -10,6 +10,8 @@
 #include "Core\Core.h"
 #include "Texture\Texture.h"
 #include "Texture\TextureManager.h"
+#include "RenderableVertex\RenderableVertexs.h"
+#include "RenderableVertex\VertexTypes.h"
 
 CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
   : m_CurrentTime(.0f)
@@ -65,6 +67,10 @@ void CParticleEmitter::Render(CGraphicsManager *RM) {
   RM->SetTransform(t);
   t.Translate(m_Position);
   RM->SetTransform(t);
+
+  int numOfParticles = m_Particles->GetNumUsedElements();
+  //void *vertex_list = (void *)malloc(numOfParticles * 4 * sizeof(TTEXTURE_VERTEX));
+  //void *index_list = (void *)malloc(numOfParticles * 6 * sizeof(unsigned short));
   for (int i = 0; i < m_MaxParticles; i++) {
     if (!m_Particles->IsFree(i)) {
       m_Particles->GetAt(i)->Render(RM);
