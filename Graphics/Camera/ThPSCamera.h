@@ -22,7 +22,7 @@ typedef struct PathPointSpecStruct
 class CThPSCamera : public CCamera {
  public:
   std::vector<Vect3f>			m_path;
-  std::vector<bool>				m_pathRotate;
+  std::vector<PathPointSpec>				m_pathSpecs;
   std::string			m_pathFile;
   Vect3f				m_LastPlayerPos;
   int					m_CurrentWaypoint;
@@ -50,9 +50,9 @@ class CThPSCamera : public CCamera {
   //---Interfaz 3DCamera y 2DCamera
   bool										LoadPathFromFile(std::string filename);
   std::vector<Vect3f>							GetMPath();
-  std::vector<bool>								GetMPathRotate();
+  std::vector<PathPointSpec>								GetMPathSpecs();
   Vect3f										GetPathPoint(int i);
-  bool											GetPathPointRotate(int i);
+  PathPointSpec											GetPathPointSpecs(int i);
   int											GetPathSize();
   Vect3f										GetLastPlayerPos();
   void										SetLastPlayerPos(Vect3f lPos);

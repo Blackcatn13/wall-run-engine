@@ -3,6 +3,11 @@
 	m_3DCamera
 	m_2DCamera
 ]]
+--*****************************************************************************
+--************ PARAMTETROS GLOBALES *******************************************
+local Dist_To_Camera_Tot = 3;
+local incYawTot = 0;
+--*****************************************************************************
 function on_init_cameras_lua()
 	local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 	local player = coreInstance:get_player_controller();
@@ -32,6 +37,12 @@ function on_update_cameras_lua(l_ElapsedTime)
 	local distToCameraOffset_back = -2;
 	local dist_to_rotate = 3;
 	local yaw_to_rotate = 0.05;
+	local cam3D_speed = 11;
+	local cam3D_rotateSpeed = 5;
+	local cam3D_yawSpeed = 5;
+	local cam3D_zoomSpeed = 5;
+	local cam3D_distSpeed = 5;
+	
 	
 	--______ CAMERA 2D _______________________
 	local pitch2D = -0.1;
@@ -39,6 +50,11 @@ function on_update_cameras_lua(l_ElapsedTime)
 	local fov2D = 45.0 * 3.1415 / 180;
 	local aspect2D = 16/9;
 	local heightCameraOffset = 2.5;
+	local cam2D_speed = 11;
+	local cam2D_rotateSpeed = 5;
+	local cam2D_yawSpeed = 5;
+	local cam2D_zoomSpeed = 5;
+	local cam2D_heightSpeed = 5;
 	
 	--______ GENERALES _______________________
 	local distanciaGiro = 3;
@@ -64,7 +80,8 @@ function on_update_cameras_lua(l_ElapsedTime)
 	if cam.m_eTypeCamera ~= 2 and cam.m_eTypeCamera ~= 1 and cam.m_currentWaypoint ~= nil then
 		local currentWP = cam:get_path_point(cam.m_currentWaypoint);
 		local nextWP = cam:get_path_point(cam.m_nextWaypoint);
-		local canRotate = cam:get_path_point_rotate(cam.m_currentWaypoint);
+		local pointSpecs = cam:get_path_point_specs(cam.m_currentWaypoint);
+		local canRotate = pointSpecs.can_rotate;
 		--name2:set_name("UpdatePass2");
 		--local lastPlayerPos = cam.m_lastPlayerPos;
 		local pCont = coreInstance:get_player_controller();
@@ -124,15 +141,20 @@ function on_update_cameras_lua(l_ElapsedTime)
 			end
 		end
 		local obj = cam.m_pObject3D;
-		obj:set_position(Vect3f(newPosReal.x, newPosReal.y, newPosReal.z));
+		local lastPos = obj:get_position();
+		--obj:set_position(Vect3f(newPosReal.x, newPosReal.y, newPosReal.z));
 		--Update Camera 3D
 		if(cam.m_eTypeCamera == 6) then
 			local incYaw = 0;
 			local distToCamera = 0;
 			if player.going_back == true then
-				distToCamera = distToCameraOffset_back;
+				local incDist = distToCameraOffset_back - Dist_To_Camera_Tot;
+				distToCamera = Dist_To_Camera_Tot + incDist * l_ElapsedTime * cam3D_distSpeed;
+				Dist_To_Camera_Tot = distToCamera;
 			else
-				distToCamera = distToCameraOffset;
+				local incDist = distToCameraOffset - Dist_To_Camera_Tot;
+				distToCamera = Dist_To_Camera_Tot + incDist * l_ElapsedTime * cam3D_distSpeed;
+				Dist_To_Camera_Tot = distToCamera;
 			end
 			local offsetPosVec = newPosReal + Vect3f(0, distToCamera, 0);
 			
@@ -152,7 +174,9 @@ function on_update_cameras_lua(l_ElapsedTime)
 				local playerPos = Vect3f(pCont:get_position().x, newPosReal.y, pCont:get_position().z);
 				offsetPosVec = playerPos + Vect3f(0, distToCamera, 0);
 			end
-			obj:set_position(Vect3f(offsetPosVec.x, offsetPosVec.y, offsetPosVec.z));
+			local movVec = offsetPosVec - lastPos;
+			local finalPos = lastPos + (movVec * (l_ElapsedTime * cam3D_speed));
+			obj:set_position(Vect3f(finalPos.x, finalPos.y, finalPos.z));
 			--obj:set_position(Vect3f(newPosReal.x, newPosReal.y, newPosReal.z));
 			local yaw = math.atan2(cameraVecZXN.z, cameraVecZXN.x);
 			if(percent >= 1 - percentToRotation) then
@@ -203,18 +227,26 @@ function on_update_cameras_lua(l_ElapsedTime)
 					end
 				end
 			end
-			yaw = yaw + incYaw;
+			incrementYaw = incYaw - incYawTot;
+			yaw = yaw + incYawTot + incrementYaw * l_ElapsedTime * cam3D_yawSpeed;
+			incYawTot = incYaw;
 			obj:set_yaw(yaw);
+			local lastPitch = obj:get_pitch();
 			if player.going_back == true then
-				obj:set_pitch(pitch3D_back);
+				local incPitch = pitch3D_back - lastPitch;
+				obj:set_pitch(lastPitch + incPitch * l_ElapsedTime * cam3D_rotateSpeed);
 			else
-				obj:set_pitch(pitch3D);
+				local incPitch = pitch3D - lastPitch;
+				obj:set_pitch(lastPitch + incPitch * l_ElapsedTime * cam3D_rotateSpeed);
 			end
 			obj:set_roll(0);
+			local lastZoom = cam:get_zoom();
 			if player.going_back == true then
-				cam:set_zoom(zoom3D_back);
+				local incZoom = zoom3D_back - lastZoom;
+				cam:set_zoom(lastZoom + incZoom * l_ElapsedTime * cam3D_zoomSpeed);
 			else
-				cam:set_zoom(zoom3D);
+				local incZoom = zoom3D - lastZoom;
+				cam:set_zoom(lastZoom + incZoom * l_ElapsedTime * cam3D_zoomSpeed);
 			end
 			cam.m_fZNear = 0.1;
 			cam.m_fZFar = 280;
@@ -224,7 +256,9 @@ function on_update_cameras_lua(l_ElapsedTime)
 		--Update Camera 2D
 		if(cam.m_eTypeCamera == 5) then
 			local offsetPosVec = newPosReal + Vect3f(0, heightCameraOffset, 0);
-			obj:set_position(Vect3f(offsetPosVec.x, offsetPosVec.y, offsetPosVec.z));
+			local movVec = offsetPosVec - lastPos;
+			local finalPos = lastPos + (movVec * (l_ElapsedTime * cam2D_speed));
+			obj:set_position(Vect3f(finalPos.x, finalPos.y, finalPos.z));
 			local yaw = math.atan2(cameraVecZXN.z, cameraVecZXN.x);
 			yaw = yaw + (math.pi / 2);
 			if(percent >= 1 - percentToRotation) then
