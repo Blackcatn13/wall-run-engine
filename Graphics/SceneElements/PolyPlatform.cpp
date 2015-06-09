@@ -166,9 +166,9 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
     float l_RadioPhysicsPlayer = 0.8;
     //float l_AlturaPlataformaDesdeOrigen = GetPhysicsSize().y + 1.5;
     //float l_MargenLateralPlataforma = 1.0;
-    float l_DesplazamientoVerticalPlataforma = (GetPhysicsSize().y)*2 + 1.0f;
+    float l_DesplazamientoVerticalPlataforma = (GetPhysicsSize().y)*2 + 0.88f;
     float l_PosicionMinSobrePlat = 0.0f;
-    float l_PosicionMaxSobrePlat = (GetPhysicsSize().y)*2 + 1.7f;
+    float l_PosicionMaxSobrePlat = (GetPhysicsSize().y)*2 + 1.5f;
     //float l_DesplazamientoVerticalPlataforma = 6.5f;	
     //float l_PosicionMinSobrePlat = 0.0f;
     //float l_PosicionMaxSobrePlat = 7.0f;
@@ -237,11 +237,12 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
           PLAYC->getPhysicController()->SetPosition(l_playerPosition);
           PLAYC->SetPosition(l_playerPosition);
           PLAYC->setisJumping(false);
-          PLAYC->setisGrounded(false);
+          PLAYC->setisGrounded(true);
           PLAYC->setCurrentJumpForce(0.0);
           PLAYC->setisJumpingMoving(false);
         } else {
           PLAYC->setisOnPlatform(1.0);
+		  //PLAYC->IsGrounded(Vect3f(0.0,-1.0,0.0),dt);
         }
       } else {
         PLAYC->setisOnPlatform(1.0);
@@ -281,7 +282,7 @@ bool CPolyPlatform::isInside(Vect3f vector1, Vect3f vector2) {
     return false;
 }
 
-bool CPolyPlatform::isAround(Vect3f vector1, Vect3f vector2) {
+bool CPolyPlatform::isAround(Vect3f vector1, Vect3f vector2) { 
   float l_margenx = GetPhysicsSize().x + 0.5f;
   float l_margenz = GetPhysicsSize().z + 0.5f;
   float l_margeny = GetPhysicsSize().y + 0.5f;
