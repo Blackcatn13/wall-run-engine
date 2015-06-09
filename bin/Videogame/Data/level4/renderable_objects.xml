@@ -254,8 +254,8 @@
 	<platform name="PolyPlatform001" core="PolyPlatform001" type="poly" phisic_size="1.5 0.5 1.5" final_position="557.900879 10.498659 -50.174576" direction="0.0 0.0 -1.0" time_out="3.0" speed="2.0"
 	activation_distance= "10"  pos="557.900879 10.498659 -40.174576" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="poly" light="OmniPoly001" />
 		 
-	<platform name="MovingPlatform001" core="MovingPlatform001" phisic_size="2 0.5 1.5" type="moving" speed= "5"  pos="568.16 13.50 -81.31" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms" room="1">
-		<wp pos="568.16 13.50 -81.31" />
+	<platform name="MovingPlatform001" core="MovingPlatform001" phisic_size="2 0.5 1.5" type="moving" speed= "8"  pos="568.16 13.50 -81.31" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms" room="1">
+		<wp pos="558.23016 14.507172 -70.188255" />
 		<wp pos="554.16 13.50 -115.31" />
 	</platform>
 	
@@ -293,5 +293,17 @@
 		<wp pos="566.00 11.50 -355.00" />
 		<wp pos="549.00 11.50 -355.00" />
 	</platform>	
+	<platform name="MovingPlatform008" core="MovingPlatform001" phisic_size="2 0.5 1.5" type="moving" speed= "5"  pos="334.00208 32.281052 -571.25446" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms"  room="1">
+		<wp pos="334.00208 27.281052 -571.25446" />
+		<wp pos="334.00208 42.281052 -571.25446" />
+	</platform>	
+	<platform name="MovingPlatform009" core="MovingPlatform001" phisic_size="2 0.5 1.5" type="moving" speed= "5"  pos="132.61086 31.281052 -571.64801" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms"  room="1">
+		<wp pos="132.61086 31.281052 -571.64801" />
+		<wp pos="100.61086 31.281052 -571.64801" />
+	</platform>	
 	
-	</renderable_objects>
+	<platform name="MovingPlatform010" core="MovingPlatform001" phisic_size="2 0.5 1.5" type="moving" speed= "5"  pos="132.61086 31.281052 -571.64801" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms"  room="1">
+		<wp pos="-157.99136 19.7021513 -571.69769" />
+		<wp pos="-157.99136 7.7021513 -571.69769" />
+	</platform>	
+</renderable_objects>
