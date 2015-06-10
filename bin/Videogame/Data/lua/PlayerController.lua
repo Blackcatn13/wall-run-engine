@@ -57,7 +57,7 @@ function on_update_player_lua(l_ElapsedTime)
 	--local lightM = coreInstance:get_light_manager();
 	local directionalLight = lightM:get_resource("ShadowLight");
 	local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("player"):get_resource("Piky");
-
+	
 	if gui_manager:get_is_displayed_console() == false then
 
 		if is_init == true then

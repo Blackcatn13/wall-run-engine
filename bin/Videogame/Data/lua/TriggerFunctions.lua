@@ -105,7 +105,7 @@ function trigger_set_2D(offset_axis)
 	end
 	local pos_x =  player_controller:get_position().x
 	local pos_z =  player_controller:get_position().z
-	coreInstance:trace(offset_axis)
+	--coreInstance:trace(offset_axis)
 	if offset_axis == "x" then
 		pos_x = camera_object:get_position().x
 	elseif offset_axis == "z" then
