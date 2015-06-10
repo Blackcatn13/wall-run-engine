@@ -33,14 +33,14 @@
 		<point id="p30" pos="487.748 8.50617 -3.06139"/>
 	</spline>
 	<spline name="line_1">
-		<point id="p1" pos="488.173 8.50617 -2.99731" can_rotate="true"/>
-		<point id="p2" pos="496.795 8.50617 -2.11901" can_rotate="true"/>
-		<point id="p3" pos="503.935 8.50617 -1.69605" can_rotate="true"/>
-		<point id="p4" pos="510.311 8.50617 -1.77778" can_rotate="true"/>
-		<point id="p5" pos="515.995 8.50617 -1.71061" can_rotate="true"/>
-		<point id="p6" pos="524.161 8.50617 -1.71057" can_rotate="true"/>
-		<point id="p7" pos="530.547 8.50617 -1.45553" can_rotate="true"/>
-		<point id="p8" pos="534.664 8.50617 -1.51973" can_rotate="true"/>
+		<point id="p1" pos="488.173 8.50617 -2.99731" can_rotate="true" can_go_back="true"/>
+		<point id="p2" pos="496.795 8.50617 -2.11901" can_rotate="true" can_go_back="true"/>
+		<point id="p3" pos="503.935 8.50617 -1.69605" can_rotate="true" can_go_back="true"/>
+		<point id="p4" pos="510.311 8.50617 -1.77778" can_rotate="true" can_go_back="true"/>
+		<point id="p5" pos="515.995 8.50617 -1.71061" can_rotate="true" can_go_back="true"/>
+		<point id="p6" pos="524.161 8.50617 -1.71057" can_rotate="true" can_go_back="true"/>
+		<point id="p7" pos="530.547 8.50617 -1.45553" can_rotate="true" can_go_back="true"/>
+		<point id="p8" pos="534.664 8.50617 -1.51973" can_rotate="true" can_go_back="true"/>
 	</spline>
 	<spline name="line_1">
 		<point id="p1" pos="535.1 8.50617 -1.51973"/>
