@@ -8,6 +8,7 @@
 #include "Math\Color.h"
 #include "Math\Vector3.h"
 #include "Particles/RecyclingArray.h"
+#include "RenderableVertex\VertexTypes.h"
 
 class CXMLTreeNode;
 class CGraphicsManager;
@@ -54,7 +55,9 @@ class CParticleEmitter : public CObject3D {
   Vect3f							        m_vOndulacion2;
 
   CTexture							     *m_Texture;
-  CRenderableVertexs         *m_RV;
+  //CRenderableVertexs         m_RV;
+  TTEXTURE_NORMAL_VERTEX    *m_vertex_list;
+  unsigned short            *m_index_list;
 };
 
 #endif
