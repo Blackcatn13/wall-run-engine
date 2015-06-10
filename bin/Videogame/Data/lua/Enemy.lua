@@ -25,7 +25,7 @@ end
 function check_attack (_enemy)
 	local player_position = player_controller:get_position()
 	local player_distance = get_distance_to_player(_enemy:get_position(), player_position)
-	if player_distance <= 49 and player.is_hit == false then
+	if player_distance <= _enemy.m_AttackPlayerDistance and player.is_hit == false then
 		return true
 	end
 	return false
@@ -43,8 +43,11 @@ end
 function move_to(_enemy, ElapsedTime, _point)
 	--if _point:distance(_enemy:get_position()) >= 2 then
 		rotate_yaw (_enemy, ElapsedTime, _point)
-		_enemy.m_PhysicController:move(Vect3f(1, 0, 0):rotate_y(_enemy:get_yaw()) * _enemy.m_Speed * ElapsedTime, ElapsedTime)
-		move_enemy_renderable(_enemy)	
+		-- si no es estatico
+		if _enemy:is_static() == false then
+			_enemy.m_PhysicController:move(Vect3f(1, 0, 0):rotate_y(_enemy:get_yaw()) * _enemy.m_Speed * ElapsedTime, ElapsedTime)
+			move_enemy_renderable(_enemy)	
+		end
 	--end
 end
 
@@ -58,8 +61,10 @@ function rotate_or_move(_enemy, ElapsedTime, _point)
 		if angle > 0.5 then
 			rotate_yaw(_enemy, ElapsedTime, _point)
 		else
-			_enemy.m_PhysicController:move(direction * _enemy.m_Speed  * ElapsedTime, ElapsedTime)
-			move_enemy_renderable(_enemy)
+			if _enemy:is_static() == false then
+				_enemy.m_PhysicController:move(direction * _enemy.m_Speed  * ElapsedTime, ElapsedTime)
+				move_enemy_renderable(_enemy)
+			end
 		end
 	--end
 end

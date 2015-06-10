@@ -17,12 +17,13 @@ class CEasyEnemy : public CEnemy {
   float					m_AttackSpeed;
   float					m_OriginalSpeed;
   bool					m_Returning;
+  bool					m_Static;
 
 
 
  public:
   CEasyEnemy(CXMLTreeNode &info1);
-  CEasyEnemy(CRenderableObject *renderableObject, std::vector<Vect3f> wayPoints, float speed, float turnSpeed, float speedAttack, float life, std::string fsmName, Vect2f characterSize);
+  CEasyEnemy(CRenderableObject *renderableObject, std::vector<Vect3f> wayPoints, float speed, float turnSpeed, float speedAttack, float life, std::string fsmName, Vect2f characterSize, float AttackDistance);
   CEasyEnemy(std::string mesh, std::string name, Vect3f position,  float speed, float turnSpeed, float gravity, float yaw) ;
   //~CEasyEnemy();
 
@@ -51,6 +52,10 @@ class CEasyEnemy : public CEnemy {
   int GetWPVectorSize();
 
   GET_SET(bool, Returning)
+
+  bool Is_Static() {
+    return m_Static;
+  }
 
 };
 

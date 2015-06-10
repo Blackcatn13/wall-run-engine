@@ -15,7 +15,7 @@ class CRunnerEnemy : public CEnemy {
 
  public:
 
-  CRunnerEnemy(CRenderableObject *renderableObject, float speed, std::string fsmName, Vect2f characterSize);
+  CRunnerEnemy(CRenderableObject *renderableObject, float speed, std::string fsmName, Vect2f characterSize, float AttackDistance);
 
   //~CEasyEnemy();
 

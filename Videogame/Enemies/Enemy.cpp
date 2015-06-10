@@ -35,12 +35,13 @@ CEnemy::CEnemy(CXMLTreeNode &info1)
   m_Position = info1.GetVect3fProperty("pos", Vect3f(), false);
 }
 
-CEnemy::CEnemy(CRenderableObject *renderableObject, float speed, float turnSpeed, int life, Vect2f controller_size):
+CEnemy::CEnemy(CRenderableObject *renderableObject, float speed, float turnSpeed, int life, Vect2f controller_size, float AttackDistance):
   //m_RenderableObject(renderableObject),
   m_Life(life),
 // m_Speed(speed),
   m_CurrentTime(0.0f),
   m_isAlive(true),
+  m_AttackPlayerDistance(AttackDistance),
   m_OriginalPosition(renderableObject->GetPosition()),
   CAIController(renderableObject, speed, turnSpeed, 13.0f, controller_size ) {
   m_fYaw = renderableObject->GetYaw();
@@ -51,6 +52,7 @@ CEnemy::CEnemy(std::string mesh, std::string name, Vect3f position,  float speed
   //m_RenderableObject(NULL) ,
   m_CurrentTime(0.0f),
   m_isAlive(true),
+  m_AttackPlayerDistance(0.0f),
   m_OriginalPosition(position) {
   m_fYaw = yaw;
   m_Position = position;
@@ -128,140 +130,115 @@ void CEnemy::UpdateFSM(float elapsedTime) {
    CCORE->Trace(str);*/
 }
 
-void CEnemy::AddDamagePlayer() 
-{
+void CEnemy::AddDamagePlayer() {
 //	PLAYC->SetPosition(Vect3f(PLAYC->GetPosition().x, PLAYC->GetPosition().y, PLAYC->GetPosition().z + 5.0));
-	Vect3f damageVector = PLAYC->GetPosition() - GetPosition();
-	damageVector.Normalize();
-	std::stringstream buffer;
-	buffer<<"Player:get_instance().player_take_damage(Vect3f("<<damageVector.x<<", "<<damageVector.y<<", "<<damageVector.z<<"))";
-	SCRIPTM->RunCode(buffer.str());
+  Vect3f damageVector = PLAYC->GetPosition() - GetPosition();
+  damageVector.Normalize();
+  std::stringstream buffer;
+  buffer << "Player:get_instance().player_take_damage(Vect3f(" << damageVector.x << ", " << damageVector.y << ", " << damageVector.z << "))";
+  SCRIPTM->RunCode(buffer.str());
 }
 
-void CEnemy::AddDamageEnemyMikMik() 
-{
-	/*m_Life = m_Life - 1;
-	//Diferenciar si se está sltando o no para lanzar la animación de segundo salto o no
-	if (m_Life <= 0) 
-	{
-		m_isAlive = false;
-		getRenderableObject()->setPrintable(false);
-		//m_PhysicController->GetUserData()->GetActor()->Activate(false);
-	}*/
-	m_Fsm->setNewState("Take_Damage");
+void CEnemy::AddDamageEnemyMikMik() {
+  /*m_Life = m_Life - 1;
+  //Diferenciar si se está sltando o no para lanzar la animación de segundo salto o no
+  if (m_Life <= 0)
+  {
+  	m_isAlive = false;
+  	getRenderableObject()->setPrintable(false);
+  	//m_PhysicController->GetUserData()->GetActor()->Activate(false);
+  }*/
+  m_Fsm->setNewState("Take_Damage");
 }
 
-void CEnemy::AddDamageEnemyPumPum() 
-{
-	/*m_Life = m_Life - 1;
-	//Diferenciar si se está sltando o no para lanzar la animación de segundo salto o no
-	if (m_Life <= 0) 
-	{
-		m_isAlive = false;
-		getRenderableObject()->setPrintable(false);
-		//m_PhysicController->GetUserData()->GetActor()->Activate(false);
-	}*/
-	m_Fsm->setNewState("Take_Damage");
+void CEnemy::AddDamageEnemyPumPum() {
+  /*m_Life = m_Life - 1;
+  //Diferenciar si se está sltando o no para lanzar la animación de segundo salto o no
+  if (m_Life <= 0)
+  {
+  	m_isAlive = false;
+  	getRenderableObject()->setPrintable(false);
+  	//m_PhysicController->GetUserData()->GetActor()->Activate(false);
+  }*/
+  m_Fsm->setNewState("Take_Damage");
 }
 
-void CEnemy::ActualizarHitboxEnemigo() 
-{
-	switch (CheckPlayerCollision()) 
-	{
-	case 1:
-		if(m_enemyType == MIKMIK)
-		{
-			AddDamageEnemyMikMik();
-		}
-		else if(m_enemyType == PUMPUM)
-		{
-			AddDamageEnemyPumPum();
-		}
-		break;
+void CEnemy::ActualizarHitboxEnemigo() {
+  switch (CheckPlayerCollision()) {
+    case 1:
+      if (m_enemyType == MIKMIK) {
+        AddDamageEnemyMikMik();
+      } else if (m_enemyType == PUMPUM) {
+        AddDamageEnemyPumPum();
+      }
+      break;
     case 2:
-		AddDamagePlayer();
-		break;
+      AddDamagePlayer();
+      break;
     case 3:
-		break;
+      break;
     default:
-		break;
-	}
+      break;
+  }
 }
 
-void CEnemy::ActualizarDisparo(float dt) 
-{
-	if (m_IsOnCooldown) 
-	{
-		m_CurrentCooldown = m_CurrentCooldown - dt;
-		if (m_CurrentCooldown < 0.0) 
-		{
-			m_IsOnCooldown = false;
-			DestruirDisparo();
-		} 
-		else if (m_CurrentCooldown < (m_CooldownTimer - m_tiempoVidaDisparo)) 
-		{
-			DestruirDisparo();
-		} 
-		else 
-		{
-			m_PosicionBala = m_PosicionBala + m_DireccionBala.Normalize() * m_BalaSpeed * dt;
-			RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->SetPosition(m_PosicionBala);
-			if (CheckPlayerShotCollision()) 
-			{
-				DestruirDisparo();
-				AddDamagePlayer();
-			}
-		}
-	}
+void CEnemy::ActualizarDisparo(float dt) {
+  if (m_IsOnCooldown) {
+    m_CurrentCooldown = m_CurrentCooldown - dt;
+    if (m_CurrentCooldown < 0.0) {
+      m_IsOnCooldown = false;
+      DestruirDisparo();
+    } else if (m_CurrentCooldown < (m_CooldownTimer - m_tiempoVidaDisparo)) {
+      DestruirDisparo();
+    } else {
+      m_PosicionBala = m_PosicionBala + m_DireccionBala.Normalize() * m_BalaSpeed * dt;
+      RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->SetPosition(m_PosicionBala);
+      if (CheckPlayerShotCollision()) {
+        DestruirDisparo();
+        AddDamagePlayer();
+      }
+    }
+  }
 }
 
-void CEnemy::ShotToVector(float dt, Vect3f point) 
-{
-	if (m_isAlive) 
-	{
-		m_PosicionBala = m_Position;
-		RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->SetPosition(m_PosicionBala);
-		RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->setPrintable(true);
-	}
+void CEnemy::ShotToVector(float dt, Vect3f point) {
+  if (m_isAlive) {
+    m_PosicionBala = m_Position;
+    RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->SetPosition(m_PosicionBala);
+    RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->setPrintable(true);
+  }
 }
 
 void CEnemy::OnlyRotate(float dt, Vect3f point) {
-	if (point.Distance(m_Position) >= 2) 
-	{
-		Vect3f direction = (point - m_Position);
-		Vect3f diff = Vect3f(1, 0, 0).RotateY(m_fYaw);
-		float angle = getAngleDiff(direction, diff);
-		//if (angle > 0.5f)
-		RotateYaw(dt, point);
-		if ((!m_IsOnCooldown) && angle < 0.2) 
-		{
-			//DISPARO, cooldown 500 ms
-			m_IsOnCooldown = true;
-			m_CurrentCooldown = m_CooldownTimer;
-			ShotToVector(dt, m_Position);
-			m_DireccionBala = direction;
-		}
-	}
+  if (point.Distance(m_Position) >= 2) {
+    Vect3f direction = (point - m_Position);
+    Vect3f diff = Vect3f(1, 0, 0).RotateY(m_fYaw);
+    float angle = getAngleDiff(direction, diff);
+    //if (angle > 0.5f)
+    RotateYaw(dt, point);
+    if ((!m_IsOnCooldown) && angle < 0.2) {
+      //DISPARO, cooldown 500 ms
+      m_IsOnCooldown = true;
+      m_CurrentCooldown = m_CooldownTimer;
+      ShotToVector(dt, m_Position);
+      m_DireccionBala = direction;
+    }
+  }
 }
 
-int CEnemy::CheckPlayerCollision() 
-{
-	//returns:
-	//1 if player hits
-	//2 if player gets hit
-	//0 if no hit
-	float l_MargenSuperiorPlayer = 1.5;//HARDCODED
-	if (getisAlive() && (m_Position.Distance(PLAYC->GetPosition()) < m_EnemyHitbox)) 
-	{
-		if (PLAYC->GetPosition().y > m_Position.y + l_MargenSuperiorPlayer || PLAYC->getisAttack()) 
-		{
-			return 1;
-		} 
-		else 
-		{
-			return 2;
-		}
-	}
-	return 0;
+int CEnemy::CheckPlayerCollision() {
+  //returns:
+  //1 if player hits
+  //2 if player gets hit
+  //0 if no hit
+  float l_MargenSuperiorPlayer = 1.5;//HARDCODED
+  if (getisAlive() && (m_Position.Distance(PLAYC->GetPosition()) < m_EnemyHitbox)) {
+    if (PLAYC->GetPosition().y > m_Position.y + l_MargenSuperiorPlayer || PLAYC->getisAttack()) {
+      return 1;
+    } else {
+      return 2;
+    }
+  }
+  return 0;
 }
 
