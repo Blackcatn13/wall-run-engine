@@ -48,8 +48,8 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
 
   m_Texture = new CTexture();
   m_Texture->Load(m_sTexture);
-  m_vertex_list = (TTEXTURE_NORMAL_VERTEX *)malloc(m_MaxSize * 4 * sizeof(TTEXTURE_NORMAL_VERTEX));
-  m_index_list = (unsigned short *)malloc(m_MaxSize * 6 * sizeof(unsigned short));
+  /*m_vertex_list = (TTEXTURE_NORMAL_VERTEX *)malloc(m_MaxSize * 4 * sizeof(TTEXTURE_NORMAL_VERTEX));
+  m_index_list = (unsigned short *)malloc(m_MaxSize * 6 * sizeof(unsigned short));*/
 }
 
 CParticleEmitter::~CParticleEmitter() {
@@ -63,8 +63,8 @@ CParticleEmitter::~CParticleEmitter() {
     if (width < 5000)
       CHECKED_DELETE(m_Texture);
   }
-  free(m_vertex_list);
-  free(m_index_list);
+  /*free(m_vertex_list);
+  free(m_index_list);*/
 }
 
 void CParticleEmitter::Render(CGraphicsManager *RM) {
@@ -73,7 +73,7 @@ void CParticleEmitter::Render(CGraphicsManager *RM) {
   t.Translate(m_Position);
   RM->SetTransform(t);
 
-  int numOfParticles = m_Particles->GetNumUsedElements();
+  /*int numOfParticles = m_Particles->GetNumUsedElements();
   int vertex_num = 0;
   int index_num = 0;
   CCamera *actCam = CAMCONTM->getActiveCamera();
@@ -144,15 +144,14 @@ void CParticleEmitter::Render(CGraphicsManager *RM) {
 
     }
   }
-
-  /*CIndexedVertexs<TTEXTURE_NORMAL_VERTEX> m_RV = CIndexedVertexs<TTEXTURE_NORMAL_VERTEX>(GRAPHM, m_vertex_list, m_index_list, numOfParticles * 4, numOfParticles * 6);
+  CIndexedVertexs<TTEXTURE_NORMAL_VERTEX> m_RV = CIndexedVertexs<TTEXTURE_NORMAL_VERTEX>(GRAPHM, m_vertex_list, m_index_list, numOfParticles * 4, numOfParticles * 6);
   CEffectTechnique *l_EffectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(m_RV.GetVertexType()))->GetEffectTechnique();
   m_Texture->Activate(0);
   m_RV.Render(RM, l_EffectTechnique);*/
-  CRenderableVertexs *m_RV = new CIndexedVertexs<TTEXTURE_NORMAL_VERTEX>(GRAPHM, m_vertex_list, m_index_list, numOfParticles * 4, numOfParticles * 6);
+  /*CRenderableVertexs *m_RV = new CIndexedVertexs<TTEXTURE_NORMAL_VERTEX>(GRAPHM, m_vertex_list, m_index_list, numOfParticles * 4, numOfParticles * 6);
   CEffectTechnique *l_EffectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(m_RV->GetVertexType()))->GetEffectTechnique();
   m_Texture->Activate(0);
-  m_RV->Render(RM, l_EffectTechnique);
+  m_RV->Render(RM, l_EffectTechnique);*/
   t = m44fIDENTITY;
   RM->SetTransform(t);
 }
