@@ -15,7 +15,7 @@
 	<set_axis />
 	-->
 	
-	<!--<set_pool_renderable_objects_technique pool="generate_shadow_map_renderable_obejcts_technique"/>
+	<set_pool_renderable_objects_technique pool="generate_shadow_map_renderable_obejcts_technique"/>
 	<generate_shadow_maps />
 	
 	<set_pool_renderable_objects_technique pool="generate_deferred_shading_pool_renderable_object_technique"/>
@@ -25,19 +25,19 @@
 		<dynamic_texture stage_id="1" name="LightMapTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 		<dynamic_texture stage_id="2" name="NormalMapTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 		<dynamic_texture stage_id="3" name="DepthMapTexture" texture_width_as_frame_buffer="true" format_type="R32F"/>
-	</set_render_target>-->
+	</set_render_target>
 	<clear_scene color="true" depth="true" stencil="true"/> 
 	<set_matrices/>
 	<enable_z_write/>
 	<enable_z_test/>
-	<!--<render_scene layer="enemies" active="true" />
-	<render_scene layer="collectible" active="true" />-->
+	<render_scene layer="enemies" active="true" />
+	<render_scene layer="collectible" active="true" />
 	<!--<render_scene layer="switches" active="true" />-->
-	<!--<render_scene layer="puzzle" active="true" />
+	<render_scene layer="puzzle" active="true" />
 	<render_scene layer="mov_platforms" active="true" />
 	<render_scene layer="solid" active="true"/>
-	<render_scene layer="player" active="true"/>-->
-	<!--<unset_render_target render_target="deferred_multiple_render_target"/>-->
+	<render_scene layer="player" active="true"/>
+	<unset_render_target render_target="deferred_multiple_render_target"/>
 	<disable_z_write/>
 	<disable_z_test />
 	
@@ -50,10 +50,10 @@
 		<texture stage_id="0" file="SkyBoxTexture"/>
 	</render_draw_quad>-->
 	<!-- End Skybox -->
-	<!--<set_pool_renderable_objects_technique pool="draw_textured_quad_pool"/>
+	<set_pool_renderable_objects_technique pool="draw_textured_quad_pool"/>
 	<render_draw_quad> 
 		<texture stage_id="0" file="LightMapTexture"/>
-	</render_draw_quad>-->
+	</render_draw_quad>
 	
 
 	
@@ -62,13 +62,13 @@
 	<!--<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>-->
 	<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
 	<!--<set_pool_renderable_objects_technique pool="deferred_lights_pool"/>-->
-	<!--<set_pool_renderable_objects_technique pool="deferred_lights_pool"/>
+	<set_pool_renderable_objects_technique pool="deferred_lights_pool"/>
 	<render_deferred_shading>
 		<texture stage_id="0" file="DiffuseMapTexture"/>
 		<texture stage_id="1" file="LightMapTexture"/>
 		<texture stage_id="2" file="NormalMapTexture"/>
 		<texture stage_id="3" file="DepthMapTexture"/>
-	</render_deferred_shading>-->
+	</render_deferred_shading>
 	
 	<disable_alpha_blend />
 	<enable_z_write/>
@@ -77,15 +77,15 @@
 
 	<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
 	
-	<!--<render_debug_scene layer="phisics" active="true" paint_cooking_mesh="false" cooking_mesh_name="fixbox" />-->
+	<render_debug_scene layer="phisics" active="true" paint_cooking_mesh="false" cooking_mesh_name="fixbox" />
 	<disable_alpha_blend />
-	<!--<check_active_poly />
+	<check_active_poly />
 
-	<render_scene layer="poly" active="true" />-->
+	<render_scene layer="poly" active="true" />
 	<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
 
 	<!--<set_pool_renderable_objects_technique pool="poly_pool"/>-->
-	<!--<render_scene layer="enabled_poly" active="true" />-->
+	<render_scene layer="enabled_poly" active="true" />
 	<disable_alpha_blend />
 	
 	
@@ -169,7 +169,7 @@
 	<!-- Sobel -->
 	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
 	
-	<!--<capture_frame_buffer>
+	<capture_frame_buffer>
 			<dynamic_texture stage_id="0" name="AfterDeferred" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 	</capture_frame_buffer>
 	<set_pool_renderable_objects_technique pool="sobel_pool"/>
@@ -183,7 +183,7 @@
 	<render_draw_quad> 
 		<texture stage_id="0" file="AfterDeferred"/>
 		<texture stage_id="1" file="SobelTexture"/>
-	</render_draw_quad>-->
+	</render_draw_quad>
 	
 	<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
 	<!-- Blur -->
