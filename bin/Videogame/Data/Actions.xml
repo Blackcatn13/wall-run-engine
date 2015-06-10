@@ -342,4 +342,9 @@
 	<action name="TeleportTest5">
     	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_E"/>
     </action>
+	
+	<action name="ResetGame">
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_R"/>
+    </action>
 </Actions>

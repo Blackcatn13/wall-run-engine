@@ -142,7 +142,9 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 	local player_position = player_controller:get_position()
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil then
-		if player.is_hit == false then
+	coreInstance:trace("Enemy Zone" .. tostring (enemy.m_Zone))
+	coreInstance:trace("player Zone" .. tostring (player.zone))
+		if player.is_hit == false and tostring(enemy.m_Zone) == tostring(player.zone) then
 			move_enemy(ElapsedTime, player_position, enemy) -- en caso de no ser estatico
 		end
 		
@@ -153,7 +155,12 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 		else
 			enemy:actualizar_hitbox() --esto setea take damage si le pegan
 		end
+		
+		if tostring(enemy.m_Zone) ~= tostring(player.zone) then
+			enemy:m_FSM():newState("Parado")
+		end
 	end
+	
 end
 
 function mikmik_enter_take_damage(name)

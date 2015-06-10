@@ -50,3 +50,67 @@ function split_str(inputstr, sep)
         end
         return t
 end
+
+function reset_game()
+	--/////////////////////////////////////////////////////////////////////////////////////
+	--PLAYER
+	--/////////////////////////////////////////////////////////////////////////////////////
+	
+	--Position + 3D
+	player_controller:set_position(Vect3f(60,5,0));
+	player_controller.m_PhysicController:set_position(Vect3f(60,5,0));
+	player_controller.m_is3D = true;
+	local cam = coreInstance.m_CameraController:get_resource("3DCam");
+	cam.m_eTypeCamera = 6;
+	coreInstance.m_CameraController:set_active_camera("3DCam");
+	player_controller.m_isTurned = false;
+	
+	--Lifes + Pixelites
+	player_controller.num_hearts = 3;
+	gui_manager:set_image('LifeGUI','Life3')
+	player_controller.num_lives = 3;
+	gui_manager:set_image('VidesGUI','Vides3')
+	gui_manager:set_is_displayed_heart(true);
+	gui_manager:set_count_heart(0.0);
+	player_controller.pixelites = 0;
+	gui_manager:set_is_displayed_pixelite(true);
+	gui_manager:set_count_pixelite(0.0);
+	gui_manager:set_num_pixelite( 0 );
+	
+	--/////////////////////////////////////////////////////////////////////////////////////
+	--COLLECTIBLES
+	--/////////////////////////////////////////////////////////////////////////////////////
+	
+	--Pixelites
+	activate_collectible(trigger_manager:get_resource("Pixelite001_UserData"), "collectible" ,"Pixelite001");
+	activate_collectible(trigger_manager:get_resource("Pixelite002_UserData"), "collectible" ,"Pixelite002");
+	activate_collectible(trigger_manager:get_resource("Pixelite003_UserData"), "collectible" ,"Pixelite003");
+	activate_collectible(trigger_manager:get_resource("Pixelite004_UserData"), "collectible" ,"Pixelite004");
+	activate_collectible(trigger_manager:get_resource("Pixelite005_UserData"), "collectible" ,"Pixelite005");
+	activate_collectible(trigger_manager:get_resource("Pixelite006_UserData"), "collectible" ,"Pixelite006");
+	activate_collectible(trigger_manager:get_resource("Pixelite007_UserData"), "collectible" ,"Pixelite007");
+	activate_collectible(trigger_manager:get_resource("Pixelite008_UserData"), "collectible" ,"Pixelite008");
+	activate_collectible(trigger_manager:get_resource("Pixelite009_UserData"), "collectible" ,"Pixelite009");
+	activate_collectible(trigger_manager:get_resource("Pixelite010_UserData"), "collectible" ,"Pixelite010");
+	activate_collectible(trigger_manager:get_resource("Pixelite011_UserData"), "collectible" ,"Pixelite011");
+	activate_collectible(trigger_manager:get_resource("Collectible1_UserData"), "collectible" ,"Collectible1");
+	
+	--/////////////////////////////////////////////////////////////////////////////////////
+	--ENEMIES
+	--/////////////////////////////////////////////////////////////////////////////////////
+	
+	local enemies = enemy_manager:get_enemies();
+	local num = 1
+	for num = 1, #enemies do
+		if enemies[num].m_isAlive == false then
+			enemies[num].m_isAlive = true;
+			enemies[num].m_RenderableObject.m_Printable = true;
+			--local dead_pos = enemies[num].m_PhysicController:get_position()
+			--dead_pos.y = dead_pos.y - 1000
+			--enemies[num]:set_position(dead_pos)
+			--enemies[num].m_PhysicController:set_position(dead_pos)
+			--enemies[num]:move_to_position(dead_pos)
+		end
+	end
+	player_controller.enemies_killed = 0;
+end

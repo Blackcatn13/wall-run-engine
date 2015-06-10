@@ -438,6 +438,14 @@ void CTestGameplay::Update(float dt) {
 	  PLAYC->SetPosition(Vect3f(-261.73236,-31.524834,-568.39246));
 	  PLAYC->getPhysicController()->SetPosition(Vect3f(-261.73236,-31.524834,-568.39246));
   }
+
+
+  if (ACT2IN->DoAction("ResetGame")) {
+	char l_Text[256];
+    _snprintf_s(l_Text, 256, 256, "reset_game(%f)", dt);
+    SCRIPTM->RunCode(l_Text);
+  }
+
 // CCORE->GetCinematicController()->Update(dt);
   m_Camera = CAMCONTM->getActiveCamera();
   /*  m_Granade->Update(dt);
