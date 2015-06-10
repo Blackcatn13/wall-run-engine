@@ -11,7 +11,6 @@
 #include "Texture\Texture.h"
 #include "Texture\TextureManager.h"
 #include "RenderableVertex\RenderableVertexs.h"
-#include "RenderableVertex\VertexTypes.h"
 #include "RenderableVertex\IndexedVertexs.h"
 #include "Renderable\RenderableObjectTechniqueManager.h"
 
@@ -49,6 +48,8 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
 
   m_Texture = new CTexture();
   m_Texture->Load(m_sTexture);
+  m_vertex_list = (TTEXTURE_NORMAL_VERTEX *)malloc(m_MaxSize * 4 * sizeof(TTEXTURE_NORMAL_VERTEX));
+  m_index_list = (unsigned short *)malloc(m_MaxSize * 6 * sizeof(unsigned short));
 }
 
 CParticleEmitter::~CParticleEmitter() {
@@ -62,6 +63,8 @@ CParticleEmitter::~CParticleEmitter() {
     if (width < 5000)
       CHECKED_DELETE(m_Texture);
   }
+  free(m_vertex_list);
+  free(m_index_list);
 }
 
 void CParticleEmitter::Render(CGraphicsManager *RM) {
@@ -71,8 +74,6 @@ void CParticleEmitter::Render(CGraphicsManager *RM) {
   RM->SetTransform(t);
 
   int numOfParticles = m_Particles->GetNumUsedElements();
-  TTEXTURE_NORMAL_VERTEX *vertex_list = (TTEXTURE_NORMAL_VERTEX *)malloc(numOfParticles * 4 * sizeof(TTEXTURE_NORMAL_VERTEX));
-  unsigned short  *index_list = (unsigned short *)malloc(numOfParticles * 6 * sizeof(unsigned short));
   int vertex_num = 0;
   int index_num = 0;
   CCamera *actCam = CAMCONTM->getActiveCamera();
@@ -92,65 +93,66 @@ void CParticleEmitter::Render(CGraphicsManager *RM) {
       Vect3f v1 = dl - ul;
       Vect3f normal = Vect3f(v1.y * v2.z - v1.z * v2.y, v1.x * v2.z - v1.z * v1.x, v1.x * v2.y - v1.y * v2.x);
 
-      index_list[index_num++] = vertex_num;
-      index_list[index_num++] = vertex_num + 1;
-      index_list[index_num++] = vertex_num + 2;
-      index_list[index_num++] = vertex_num + 1;
-      index_list[index_num++] = vertex_num + 3;
-      index_list[index_num++] = vertex_num + 2;
+      m_index_list[index_num++] = vertex_num;
+      m_index_list[index_num++] = vertex_num + 1;
+      m_index_list[index_num++] = vertex_num + 2;
+      m_index_list[index_num++] = vertex_num + 1;
+      m_index_list[index_num++] = vertex_num + 3;
+      m_index_list[index_num++] = vertex_num + 2;
 
 
-      vertex_list[vertex_num].x = ul.x;
-      vertex_list[vertex_num].y = ul.y;
-      vertex_list[vertex_num].z = ul.z;
-      vertex_list[vertex_num].tu = 0.f;
-      vertex_list[vertex_num].tv = 0.f;
-      vertex_list[vertex_num].nx = normal.x;
-      vertex_list[vertex_num].ny = normal.y;
-      vertex_list[vertex_num].nz = normal.z;
+      m_vertex_list[vertex_num].x = ul.x;
+      m_vertex_list[vertex_num].y = ul.y;
+      m_vertex_list[vertex_num].z = ul.z;
+      m_vertex_list[vertex_num].tu = 0.f;
+      m_vertex_list[vertex_num].tv = 0.f;
+      m_vertex_list[vertex_num].nx = normal.x;
+      m_vertex_list[vertex_num].ny = normal.y;
+      m_vertex_list[vertex_num].nz = normal.z;
       vertex_num++;
 
-      vertex_list[vertex_num].x = ur.x;
-      vertex_list[vertex_num].y = ur.y;
-      vertex_list[vertex_num].z = ur.z;
-      vertex_list[vertex_num].tu = 0.f;
-      vertex_list[vertex_num].tv = 1.f;
-      vertex_list[vertex_num].nx = normal.x;
-      vertex_list[vertex_num].ny = normal.y;
-      vertex_list[vertex_num].nz = normal.z;
+      m_vertex_list[vertex_num].x = ur.x;
+      m_vertex_list[vertex_num].y = ur.y;
+      m_vertex_list[vertex_num].z = ur.z;
+      m_vertex_list[vertex_num].tu = 0.f;
+      m_vertex_list[vertex_num].tv = 1.f;
+      m_vertex_list[vertex_num].nx = normal.x;
+      m_vertex_list[vertex_num].ny = normal.y;
+      m_vertex_list[vertex_num].nz = normal.z;
       vertex_num++;
 
-      vertex_list[vertex_num].x = dl.x;
-      vertex_list[vertex_num].y = dl.y;
-      vertex_list[vertex_num].z = dl.z;
-      vertex_list[vertex_num].tu = 1.f;
-      vertex_list[vertex_num].tv = 0.f;
-      vertex_list[vertex_num].nx = normal.x;
-      vertex_list[vertex_num].ny = normal.y;
-      vertex_list[vertex_num].nz = normal.z;
+      m_vertex_list[vertex_num].x = dl.x;
+      m_vertex_list[vertex_num].y = dl.y;
+      m_vertex_list[vertex_num].z = dl.z;
+      m_vertex_list[vertex_num].tu = 1.f;
+      m_vertex_list[vertex_num].tv = 0.f;
+      m_vertex_list[vertex_num].nx = normal.x;
+      m_vertex_list[vertex_num].ny = normal.y;
+      m_vertex_list[vertex_num].nz = normal.z;
       vertex_num++;
 
 
-      vertex_list[vertex_num].x = dr.x;
-      vertex_list[vertex_num].y = dr.y;
-      vertex_list[vertex_num].z = dr.z;
-      vertex_list[vertex_num].tu = 1.f;
-      vertex_list[vertex_num].tv = 1.f;
-      vertex_list[vertex_num].nx = normal.x;
-      vertex_list[vertex_num].ny = normal.y;
-      vertex_list[vertex_num].nz = normal.z;
+      m_vertex_list[vertex_num].x = dr.x;
+      m_vertex_list[vertex_num].y = dr.y;
+      m_vertex_list[vertex_num].z = dr.z;
+      m_vertex_list[vertex_num].tu = 1.f;
+      m_vertex_list[vertex_num].tv = 1.f;
+      m_vertex_list[vertex_num].nx = normal.x;
+      m_vertex_list[vertex_num].ny = normal.y;
+      m_vertex_list[vertex_num].nz = normal.z;
       vertex_num++;
 
     }
   }
 
-  m_RV = new CIndexedVertexs<TTEXTURE_NORMAL_VERTEX>(GRAPHM, vertex_list, index_list, numOfParticles * 4, numOfParticles * 6);
+  /*CIndexedVertexs<TTEXTURE_NORMAL_VERTEX> m_RV = CIndexedVertexs<TTEXTURE_NORMAL_VERTEX>(GRAPHM, m_vertex_list, m_index_list, numOfParticles * 4, numOfParticles * 6);
+  CEffectTechnique *l_EffectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(m_RV.GetVertexType()))->GetEffectTechnique();
+  m_Texture->Activate(0);
+  m_RV.Render(RM, l_EffectTechnique);*/
+  CRenderableVertexs *m_RV = new CIndexedVertexs<TTEXTURE_NORMAL_VERTEX>(GRAPHM, m_vertex_list, m_index_list, numOfParticles * 4, numOfParticles * 6);
   CEffectTechnique *l_EffectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(m_RV->GetVertexType()))->GetEffectTechnique();
   m_Texture->Activate(0);
   m_RV->Render(RM, l_EffectTechnique);
-  delete(m_RV);
-  free(vertex_list);
-  free(index_list);
   t = m44fIDENTITY;
   RM->SetTransform(t);
 }

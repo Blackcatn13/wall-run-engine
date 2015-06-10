@@ -398,7 +398,7 @@ function on_update_player_lua(l_ElapsedTime)
 		if (act2in:do_action_from_lua("Jump")) and (player_controller.m_isJumping == false and _land == false and player_controller.m_isAttack == false and player.is_hit == false and player_controller.m_isGrounded) then
 			--coreInstance:trace(tostring(player_controller.m_isJumping));
 			--coreInstance:trace(tostring(_land));
-			coreInstance:getWWSoundManager():PlayEvent("Jump", "Piky");
+			--coreInstance:getWWSoundManager():PlayEvent("Jump", "Piky");
 			player_controller.m_JumpingTime = 0;
 			playerRenderable:clear_cycle(0,0.2);
 			playerRenderable:clear_cycle(1,0.2);
@@ -466,7 +466,7 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		
 		player_controller:set_position(player_controller.m_PhysicController:get_position());
-		coreInstance:getWWSoundManager():SetListenerPosition(player_controller.m_PhysicController:get_position(), Vect3f(1,0,0), Vect3f(0,1,0));
+		--coreInstance:getWWSoundManager():SetListenerPosition(player_controller.m_PhysicController:get_position(), Vect3f(1,0,0), Vect3f(0,1,0));
 		move_character_controller_mesh(player_controller, player_controller:get_position(), player_controller.m_isJumping);
 		if not player_controller.m_isJumping and not _land then
 			if mov.x == 0 and mov.z == 0 then
