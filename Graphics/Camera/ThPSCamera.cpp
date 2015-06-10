@@ -87,6 +87,7 @@ bool CThPSCamera::LoadPathFromFile(std::string filename) {
           m_path.push_back(pos);
 		  PathPointSpec pointSpecs;
 		  pointSpecs.canRotate = nodeChild1.GetBoolProperty("can_rotate", false);
+		  pointSpecs.canGoBack = nodeChild1.GetBoolProperty("can_go_back", false);
 		  m_pathSpecs.push_back(pointSpecs);
         }
 

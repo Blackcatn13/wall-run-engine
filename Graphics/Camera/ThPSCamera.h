@@ -17,6 +17,7 @@ typedef struct PathPointSpecStruct
 {
 	PathPointSpecStruct(){}
 	bool canRotate;
+	bool canGoBack;
 } PathPointSpec;
 
 class CThPSCamera : public CCamera {

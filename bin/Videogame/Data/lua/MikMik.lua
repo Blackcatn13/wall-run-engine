@@ -118,6 +118,7 @@ function mikmik_enter_attack_player(name)
 	if enemy ~= nil and enemy:is_static() == false then -- en caso de no ser estatico
 		enemy.m_Speed = enemy.m_AttackSpeed
 		enemy.m_SpeedModified = true
+		enemy.m_RenderableObject:blend_cycle(1,1,0.2);
 	end
 	return 0
 end
@@ -132,6 +133,7 @@ function mikmik_exit_attack_player(name)
 			enemy.m_CurrentWp = enemy.m_OriginalPosition
 			enemy.m_Returning = true
 		end
+		enemy.m_RenderableObject:clear_cycle(1,0.2);
 	end
 end
 
