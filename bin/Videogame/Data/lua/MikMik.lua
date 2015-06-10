@@ -1,4 +1,4 @@
-local min_player_distance = 49
+--local min_player_distance = 49
 local base_yaw = math.pi/2
 function mikmik_enter_stopped(name)
 	--local enemy = enemy_manager:get_enemy(name)
@@ -22,7 +22,7 @@ function mikmik_update_stopped(ElapsedTime, doComprobation, name)
 				
 	if enemy ~= nil then
 		if player_distance < 3500 then
-			if player_distance > min_player_distance  then
+			if player_distance > enemy.m_AttackPlayerDistance  then --min_player_distance => enemy.m_AttackPlayerDistance
 				if enemy:get_wp_vector_size() > 0 then --Si tiene waypoints para moverse
 					-- En caso de acabar de perseguir o llegar a un WP si la distancia al siguiente es muy corta vuelve a la posicion original
 								
@@ -115,7 +115,7 @@ end
 
 function mikmik_enter_attack_player(name)
 	local enemy = enemy_manager:get_enemy(name)
-	if enemy ~= nil then
+	if enemy ~= nil and enemy:is_static() == false then -- en caso de no ser estatico
 		enemy.m_Speed = enemy.m_AttackSpeed
 		enemy.m_SpeedModified = true
 	end
@@ -124,7 +124,7 @@ end
 
 function mikmik_exit_attack_player(name)
 	local enemy = enemy_manager:get_enemy(name)
-	if enemy ~= nil then
+	if enemy ~= nil and enemy:is_static() == false then -- en caso de no ser estatico
 		enemy.m_Speed = enemy.m_OriginalSpeed
 		enemy.m_SpeedModified = false
 		enemy.m_CurrentTime = 0
@@ -141,7 +141,7 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil then
 		if player.is_hit == false then
-			move_enemy(ElapsedTime, player_position, enemy)
+			move_enemy(ElapsedTime, player_position, enemy) -- en caso de no ser estatico
 		end
 		
 		local player_distance = get_distance_to_player(enemy:get_position(), player_position)

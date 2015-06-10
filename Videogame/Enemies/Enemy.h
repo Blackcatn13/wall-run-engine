@@ -18,11 +18,10 @@ class CPhysicUserData;
 class CRenderableObject;
 class CFSMInstance;
 
-enum ENEMY_TYPE
-{
-	UNDEFINED,
-	MIKMIK,
-	PUMPUM
+enum ENEMY_TYPE {
+  UNDEFINED,
+  MIKMIK,
+  PUMPUM
 };
 
 class CEnemy : public CAIController { //CAIController
@@ -42,13 +41,14 @@ class CEnemy : public CAIController { //CAIController
   Vect3f			m_OriginalPosition;
   bool				m_isAlive;
   ENEMY_TYPE		m_enemyType;
+  float				m_AttackPlayerDistance;
 
 
   CEnemy();
  public:
   CEnemy(CXMLTreeNode &info1);
   CEnemy(std::string mesh, std::string name, Vect3f position,  float speed, float turnSpeed, float gravity, float yaw);
-  CEnemy(CRenderableObject *renderableObject, float speed, float turnSpeed, int life, Vect2f controller_size);
+  CEnemy(CRenderableObject *renderableObject, float speed, float turnSpeed, int life, Vect2f controller_size, float AttackDistance);
   virtual ~CEnemy();
 
 
@@ -83,6 +83,7 @@ class CEnemy : public CAIController { //CAIController
   GET_SET(float, CurrentTime);
   CFSMInstance *getFsm() { return m_Fsm;}
   GET_SET(bool, isAlive);
+  GET_SET(float, AttackPlayerDistance);
   // get & set
   // set(const <type> &name)
   // const <type> & get

@@ -16,6 +16,7 @@ CEasyEnemy::CEasyEnemy(CXMLTreeNode &info1) : CEnemy(info1),
   m_CurrentWp(NULL),
   m_AttackSpeed(NULL),
   m_OriginalSpeed(NULL),
+  m_Static(false),
   m_CurrentWpId(0) {
   Init("NoFSM");
   //InitWpVector(2, 4);
@@ -25,6 +26,7 @@ CEasyEnemy::CEasyEnemy(std::string mesh, std::string name, Vect3f position,  flo
   CEnemy(mesh, name, position, speed, turnSpeed, gravity, yaw),
   m_WpVector(NULL),
   m_CurrentWp(NULL),
+  m_Static(false),
   m_AttackSpeed(NULL),
   m_OriginalSpeed(speed),
   m_CurrentWpId(0) {
@@ -32,26 +34,25 @@ CEasyEnemy::CEasyEnemy(std::string mesh, std::string name, Vect3f position,  flo
   //InitWpVector(2, 4);
 }
 //Nuevo sistema
-CEasyEnemy::CEasyEnemy(CRenderableObject *renderableObject, std::vector<Vect3f> wayPoints, float speed, float turnSpeed, float speedAttack, float life, std::string fsmName, Vect2f characterSize) :
-  CEnemy(renderableObject, speed, turnSpeed, life, characterSize),
+CEasyEnemy::CEasyEnemy(CRenderableObject *renderableObject, std::vector<Vect3f> wayPoints, float speed, float turnSpeed, float speedAttack, float life, std::string fsmName, Vect2f characterSize,  float AttackDistance) :
+  CEnemy(renderableObject, speed, turnSpeed, life, characterSize, AttackDistance),
   m_WpVector(wayPoints),
   m_CurrentWp(NULL),
   m_AttackSpeed(speedAttack),
   m_OriginalSpeed(speed),
   m_CurrentWpId(0) {
   Init(fsmName);
-  if(fsmName == "MikMik")
-  {
-	  m_enemyType = MIKMIK;
+  if (fsmName == "MikMik") {
+    m_enemyType = MIKMIK;
+  } else if (fsmName == "PumPum") {
+    m_enemyType = PUMPUM;
+  } else {
+    m_enemyType = UNDEFINED;
   }
-  else if(fsmName == "PumPum")
-  {
-	  m_enemyType = PUMPUM;
-  }
+  if (wayPoints.size() == 0)
+    m_Static = true;
   else
-  {
-	  m_enemyType = UNDEFINED;
-  }
+    m_Static = false;
   //InitWpVector(numWp, distWp);
 }
 

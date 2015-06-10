@@ -85,8 +85,9 @@ bool CThPSCamera::LoadPathFromFile(std::string filename) {
           // std::string pointId = nodeChild1.GetPszISOProperty("id", "");
           Vect3f pos = nodeChild1.GetVect3fProperty("pos", v3fZERO);
           m_path.push_back(pos);
-		  bool canRotate = nodeChild1.GetBoolProperty("can_rotate", false);
-		  m_pathRotate.push_back(canRotate);
+		  PathPointSpec pointSpecs;
+		  pointSpecs.canRotate = nodeChild1.GetBoolProperty("can_rotate", false);
+		  m_pathSpecs.push_back(pointSpecs);
         }
 
       }
@@ -106,8 +107,8 @@ std::vector<Vect3f>	CThPSCamera::GetMPath() {
   return m_path;
 }
 
-std::vector<bool>	CThPSCamera::GetMPathRotate() {
-  return m_pathRotate;
+std::vector<PathPointSpec>	CThPSCamera::GetMPathSpecs() {
+  return m_pathSpecs;
 }
 
 Vect3f CThPSCamera::GetPathPoint(int i) {
@@ -118,12 +119,12 @@ Vect3f CThPSCamera::GetPathPoint(int i) {
   return pos;
 }
 
-bool CThPSCamera::GetPathPointRotate(int i) {
-  bool canRotate = false;
-  if (i < m_pathRotate.size()) {
-    canRotate = m_pathRotate[i];
+PathPointSpec CThPSCamera::GetPathPointSpecs(int i) {
+  PathPointSpec spec;
+  if (i < m_pathSpecs.size()) {
+    spec = m_pathSpecs[i];
   }
-  return canRotate;
+  return spec;
 }
 
 int CThPSCamera::GetPathSize() {
