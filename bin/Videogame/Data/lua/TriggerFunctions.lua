@@ -17,6 +17,10 @@ function set_is_3D()
 
 end
 
+function set_player_zone(zone_number)
+	player.zone = zone_number
+	coreInstance:trace("New Zone " .. tostring(player.zone) )
+end
 
 function unlock_image(image_name)
 	coreInstance:trace("Imagen a obtener: "  ..image_name)

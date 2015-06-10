@@ -28,6 +28,7 @@ function Player.new()
 	self.enemy_puzzle_active = false
 	self.going_back = false
 	self.playing_hit = false
+	self.zone = 1
 
 	------	 PLAYER FUNCTIONS -----
 		

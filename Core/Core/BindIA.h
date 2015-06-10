@@ -91,6 +91,7 @@ void RegisterAI() {
     .property("m_isAlive", &CEnemy::getisAlive,  &CEnemy::setisAlive )
     .property("m_Life", &CEnemy::getLife,  &CEnemy::setLife)
     .property("m_AttackPlayerDistance", &CEnemy::getAttackPlayerDistance, &CEnemy::setAttackPlayerDistance )
+	.property("m_Zone", &CEnemy::getZone, &CEnemy::setZone)
     .def("get_name",  &CEnemy::GetEnemyName)
     .def("m_FSM", &CEnemy::getFsm)
     .def("only_rotate", &CEnemy::OnlyRotate)
