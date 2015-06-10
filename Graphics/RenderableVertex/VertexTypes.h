@@ -16,7 +16,7 @@
 #define VERTEX_TYPE_CUBE        0x0200      // CUBE MAP
 #define VERTEX_TYPE_RNM         0x0400      // RNM
 #define VERTEX_TYPE_SCREEN      0x0800		// DRAW_QUAD_SCREEN
-#define VERTEX_TYPE_POLY		0x0900		// POLY
+#define VERTEX_TYPE_POLY		0x1000		// POLY
 
 #include "GraphicsManager.h"
 #include "Utils\Defines.h"

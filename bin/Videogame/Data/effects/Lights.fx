@@ -33,7 +33,7 @@ float4 RenderNormalsPS20(PNormalVertex IN) : COLOR
 {
 	float3 l_Nm = normalize(IN.normal);
     float4 l_DiffuseColor = tex2D(S0LinearWrapSampler, IN.uv);
-    
+ 	return l_DiffuseColor;   
     float3 l_EyePos = g_InverseViewMatrix[3].xyz;//g_WorldViewMatrix[3].xyz;
 	//float3 l_LightColor = saturate(dot(l_Nm, -g_LightDirection[1]));
    // float3 l_HV = normalize(normalize(l_EyePos - IN.WorldPosition)-g_LightDirection[1]);
