@@ -31,9 +31,9 @@
 		<wp position = "495.826767 10.000014 -7.216164" />
 		<wp position = "470.826767 10.000014 -7.216164" />
 	</instance_enemy>
-	<instance_enemy name="MikMik003" type="mikmik_easy" zone="3.5" >
+	<instance_enemy name="MikMik003" type="mikmik_easy" zone="3.5" static = "true" >
 	</instance_enemy>
-	<instance_enemy name="MikMik004" type="mikmik_easy" zone="3.5" >
+	<instance_enemy name="MikMik004" type="mikmik_easy" zone="3.5" static = "true" >
 	</instance_enemy>
 	<instance_enemy name="MikMik005" type="mikmik_easy" zone="3.5" >
 	</instance_enemy>

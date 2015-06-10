@@ -34,12 +34,13 @@ CEasyEnemy::CEasyEnemy(std::string mesh, std::string name, Vect3f position,  flo
   //InitWpVector(2, 4);
 }
 //Nuevo sistema
-CEasyEnemy::CEasyEnemy(CRenderableObject *renderableObject, std::vector<Vect3f> wayPoints, float speed, float turnSpeed, float speedAttack, float life, std::string fsmName, Vect2f characterSize,  float AttackDistance, float zone) :
+CEasyEnemy::CEasyEnemy(CRenderableObject *renderableObject, std::vector<Vect3f> wayPoints, float speed, float turnSpeed, float speedAttack, float life, std::string fsmName, Vect2f characterSize,  float AttackDistance, float zone, bool isStatic) :
   CEnemy(renderableObject, speed, turnSpeed, life, characterSize, AttackDistance, zone),
   m_WpVector(wayPoints),
   m_CurrentWp(NULL),
   m_AttackSpeed(speedAttack),
   m_OriginalSpeed(speed),
+  m_Static(isStatic),
   m_CurrentWpId(0) {
   Init(fsmName);
   if (fsmName == "MikMik") {
@@ -49,10 +50,7 @@ CEasyEnemy::CEasyEnemy(CRenderableObject *renderableObject, std::vector<Vect3f> 
   } else {
     m_enemyType = UNDEFINED;
   }
-  if (wayPoints.size() == 0)
-    m_Static = true;
-  else
-    m_Static = false;
+
   //InitWpVector(numWp, distWp);
 }
 

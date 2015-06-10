@@ -18,6 +18,7 @@ typedef struct EnemyStruct {
   std::vector<Vect3f>		waypoints;
   float				AttackDistance;
   float				Zone;
+  bool				Static;
 
 } EnemiesStr;
 

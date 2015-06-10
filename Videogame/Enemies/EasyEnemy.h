@@ -23,7 +23,7 @@ class CEasyEnemy : public CEnemy {
 
  public:
   CEasyEnemy(CXMLTreeNode &info1);
-  CEasyEnemy(CRenderableObject *renderableObject, std::vector<Vect3f> wayPoints, float speed, float turnSpeed, float speedAttack, float life, std::string fsmName, Vect2f characterSize, float AttackDistance, float zone);
+  CEasyEnemy(CRenderableObject *renderableObject, std::vector<Vect3f> wayPoints, float speed, float turnSpeed, float speedAttack, float life, std::string fsmName, Vect2f characterSize, float AttackDistance, float zone, bool isStatic);
   CEasyEnemy(std::string mesh, std::string name, Vect3f position,  float speed, float turnSpeed, float gravity, float yaw) ;
   //~CEasyEnemy();
 
