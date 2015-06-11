@@ -310,4 +310,14 @@
 		<wp pos="-157.99136 19.7021513 -571.69769" />
 		<wp pos="-157.99136 7.7021513 -571.69769" />
 	</platform>	
+	<platform name="PolyPlatform003" core="PolyPlatform001" type="poly" phisic_size="1.5 0.5 1.5" final_position="-360.16644 -34.250000 -570.70001" direction="0.0 0.0 1.0" time_out="3.0" speed="2.0"
+	activation_distance= "10"  pos="-360.16644 -34.250000 -578.20001" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="poly" light="OmniPoly001" />
+	<platform name="PolyPlatform004" core="PolyPlatform001" type="poly" phisic_size="1.5 0.5 1.5" final_position="-365.16644 -32.250000 -570.70001" direction="0.0 0.0 1.0" time_out="3.0" speed="2.0"
+	activation_distance= "10"  pos="-365.16644 -32.250000 -578.20001" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="poly" light="OmniPoly001" />
+	<platform name="PolyPlatform005" core="PolyPlatform001" type="poly" phisic_size="1.5 0.5 1.5" final_position="-370.16644 -31.250000 -570.70001" direction="0.0 0.0 1.0" time_out="3.0" speed="2.0"
+	activation_distance= "10"  pos="-370.16644 -31.250000 -578.20001" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="poly" light="OmniPoly001" />
+	<platform name="PolyPlatform006" core="PolyPlatform001" type="poly" phisic_size="1.5 0.5 1.5" final_position="-375.16644 -30.250000 -570.70001" direction="0.0 0.0 1.0" time_out="3.0" speed="2.0"
+	activation_distance= "10"  pos="-375.16644 -30.250000 -578.20001" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="poly" light="OmniPoly001" />
+	<!--+		m_Position	{x=-340.16644 y=-35.250000 z=-570.70001 }	Vector3<float>
+	+		m_Position	{x=-412.89560 y=-35.250000 z=-570.70001 }	Vector3<float>-->
 </renderable_objects>
