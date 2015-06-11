@@ -87,7 +87,7 @@ void RegisterAI() {
     .def(constructor<std::string, std::string, Vect3f, float, float, float , float >())
     //.property("m_Speed", &CEnemy::getSpeed, &CEnemy::setSpeed)
     .property("m_CurrentTime", &CEnemy::getCurrentTime, &CEnemy::setCurrentTime)
-    .property("m_OriginalPosition", &CEnemy::GetOriginalPosition)
+    .property("m_OriginalPosition", &CEnemy::GetOriginalPosition , &CEnemy::SetOriginalPosition )
     .property("m_isAlive", &CEnemy::getisAlive,  &CEnemy::setisAlive )
     .property("m_Life", &CEnemy::getLife,  &CEnemy::setLife)
     .property("m_AttackPlayerDistance", &CEnemy::getAttackPlayerDistance, &CEnemy::setAttackPlayerDistance )
