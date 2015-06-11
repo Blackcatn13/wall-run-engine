@@ -17,6 +17,10 @@ function set_is_3D()
 
 end
 
+function set_player_zone(zone_number)
+	player.zone = zone_number
+	coreInstance:trace("New Zone " .. tostring(player.zone) )
+end
 
 function unlock_image(image_name)
 	coreInstance:trace("Imagen a obtener: "  ..image_name)
@@ -101,7 +105,7 @@ function trigger_set_2D(offset_axis)
 	end
 	local pos_x =  player_controller:get_position().x
 	local pos_z =  player_controller:get_position().z
-	coreInstance:trace(offset_axis)
+	--coreInstance:trace(offset_axis)
 	if offset_axis == "x" then
 		pos_x = camera_object:get_position().x
 	elseif offset_axis == "z" then
@@ -194,7 +198,7 @@ function check_enemies_killed(num1, door)
 			activate_collectible(trigger, "collectible", "Collectible1")
 			player.enemy_puzzle_active = false
 		end
-		if player.enemies_killed == 5 then
+		if player.enemies_killed == 2 then
 			coreInstance:trace("----------------------------Opening door")
 			open_door(door)
 		end

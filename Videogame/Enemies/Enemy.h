@@ -42,13 +42,14 @@ class CEnemy : public CAIController { //CAIController
   bool				m_isAlive;
   ENEMY_TYPE		m_enemyType;
   float				m_AttackPlayerDistance;
+  float				m_Zone;
 
 
   CEnemy();
  public:
   CEnemy(CXMLTreeNode &info1);
   CEnemy(std::string mesh, std::string name, Vect3f position,  float speed, float turnSpeed, float gravity, float yaw);
-  CEnemy(CRenderableObject *renderableObject, float speed, float turnSpeed, int life, Vect2f controller_size, float AttackDistance);
+  CEnemy(CRenderableObject *renderableObject, float speed, float turnSpeed, int life, Vect2f controller_size, float AttackDistance, float zone);
   virtual ~CEnemy();
 
 
@@ -84,6 +85,7 @@ class CEnemy : public CAIController { //CAIController
   CFSMInstance *getFsm() { return m_Fsm;}
   GET_SET(bool, isAlive);
   GET_SET(float, AttackPlayerDistance);
+  GET_SET(float, Zone);
   // get & set
   // set(const <type> &name)
   // const <type> & get

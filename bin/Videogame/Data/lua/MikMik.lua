@@ -118,6 +118,7 @@ function mikmik_enter_attack_player(name)
 	if enemy ~= nil and enemy:is_static() == false then -- en caso de no ser estatico
 		enemy.m_Speed = enemy.m_AttackSpeed
 		enemy.m_SpeedModified = true
+		enemy.m_RenderableObject:blend_cycle(1,1,0.2);
 	end
 	return 0
 end
@@ -132,6 +133,7 @@ function mikmik_exit_attack_player(name)
 			enemy.m_CurrentWp = enemy.m_OriginalPosition
 			enemy.m_Returning = true
 		end
+		enemy.m_RenderableObject:clear_cycle(1,0.2);
 	end
 end
 
@@ -140,7 +142,9 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 	local player_position = player_controller:get_position()
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil then
-		if player.is_hit == false then
+	--coreInstance:trace("Enemy Zone" .. tostring (enemy.m_Zone))
+	--coreInstance:trace("player Zone" .. tostring (player.zone))
+		if player.is_hit == false and tostring(enemy.m_Zone) == tostring(player.zone) then
 			move_enemy(ElapsedTime, player_position, enemy) -- en caso de no ser estatico
 		end
 		
@@ -151,7 +155,12 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 		else
 			enemy:actualizar_hitbox() --esto setea take damage si le pegan
 		end
+		
+		if tostring(enemy.m_Zone) ~= tostring(player.zone) then
+			enemy:m_FSM():newState("Parado")
+		end
 	end
+	
 end
 
 function mikmik_enter_take_damage(name)
@@ -184,7 +193,7 @@ function mikmik_enter_dead(name)
 		enemy.m_isAlive = false
 		enemy.m_RenderableObject.m_Printable=false
 		local dead_pos = enemy.m_PhysicController:get_position()
-		coreInstance:trace(name);
+		--coreInstance:trace(name);
 		dead_pos.y = dead_pos.y + 1000
 		enemy:set_position(dead_pos)
 		enemy.m_PhysicController:set_position(dead_pos)
