@@ -175,7 +175,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 				offsetPosVec = playerPos + Vect3f(0, distToCamera, 0);
 				
 			end
-			coreInstance:trace(tostring(offsetPosVec.y))
+			--coreInstance:trace(tostring(offsetPosVec.y))
 			local movVec = offsetPosVec - lastPos;
 			local finalPos = lastPos + (movVec * (l_ElapsedTime * cam3D_speed));
 			obj:set_position(Vect3f(finalPos.x, finalPos.y, finalPos.z));

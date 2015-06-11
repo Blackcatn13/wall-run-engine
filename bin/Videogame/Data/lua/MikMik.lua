@@ -142,8 +142,8 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 	local player_position = player_controller:get_position()
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil then
-	coreInstance:trace("Enemy Zone" .. tostring (enemy.m_Zone))
-	coreInstance:trace("player Zone" .. tostring (player.zone))
+	--coreInstance:trace("Enemy Zone" .. tostring (enemy.m_Zone))
+	--coreInstance:trace("player Zone" .. tostring (player.zone))
 		if player.is_hit == false and tostring(enemy.m_Zone) == tostring(player.zone) then
 			move_enemy(ElapsedTime, player_position, enemy) -- en caso de no ser estatico
 		end
@@ -193,7 +193,7 @@ function mikmik_enter_dead(name)
 		enemy.m_isAlive = false
 		enemy.m_RenderableObject.m_Printable=false
 		local dead_pos = enemy.m_PhysicController:get_position()
-		coreInstance:trace(name);
+		--coreInstance:trace(name);
 		dead_pos.y = dead_pos.y + 1000
 		enemy:set_position(dead_pos)
 		enemy.m_PhysicController:set_position(dead_pos)

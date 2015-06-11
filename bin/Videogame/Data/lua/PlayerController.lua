@@ -274,13 +274,13 @@ function on_update_player_lua(l_ElapsedTime)
 		-- Cuando el Player está saltando, su velocidad dependerá del tipo de salto realizado. 
 		--///////////////////////////////////////////////////////////
 		if _land then
-			local info = SCollisionInfo();
-			local _dirRay = Vect3f(0,-1,0);
-			coreInstance:get_phisics_manager():raycast_closest_actor(player_controller:get_position() - 0.4, _dirRay, 1, info, 1000);
-			_fallPosition = info.m_CollisionPoint;
-			local fallPos = player_controller:get_position();
-			local distance = (fallPos.x - _fallPosition.x) * (fallPos.x - _fallPosition.x) + (fallPos.y - _fallPosition.y) * (fallPos.y - _fallPosition.y) + (fallPos.z - _fallPosition.z) * (fallPos.z - _fallPosition.z);
-			coreInstance:trace(tostring(distance))
+			--local info = SCollisionInfo();
+			--local _dirRay = Vect3f(0,-1,0);
+			--coreInstance:get_phisics_manager():raycast_closest_actor(player_controller:get_position() - 0.4, _dirRay, 1, info, 1000);
+			--_fallPosition = info.m_CollisionPoint;
+			--local fallPos = player_controller:get_position();
+			--local distance = (fallPos.x - _fallPosition.x) * (fallPos.x - _fallPosition.x) + (fallPos.y - _fallPosition.y) * (fallPos.y - _fallPosition.y) + (fallPos.z - _fallPosition.z) * (fallPos.z - _fallPosition.z);
+			--coreInstance:trace(tostring(distance))
 			--if distance <= 1.8 then
 			if player_controller.m_isGrounded then
 				_land = false;
@@ -310,13 +310,13 @@ function on_update_player_lua(l_ElapsedTime)
 				inLoop = false;
 				topPosition = -1000;
 				_land = true;
-				local info = SCollisionInfo();
-				local _dirRay = Vect3f(0,-1,0);
-				coreInstance:get_phisics_manager():raycast_closest_actor(player_controller:get_position() - 0.4, _dirRay, 1, info, 1000);
+				--local info = SCollisionInfo();
+				--local _dirRay = Vect3f(0,-1,0);
+				--coreInstance:get_phisics_manager():raycast_closest_actor(player_controller:get_position() - 0.4, _dirRay, 1, info, 1000);
 				playerRenderable:clear_cycle(3,0.5);
 				playerRenderable:updateSkeleton(l_ElapsedTime);
 				playerRenderable:execute_action(4,0,0.3,1,false);
-				_fallPosition = info.m_CollisionPoint;
+				--_fallPosition = info.m_CollisionPoint;
 			else
 				if player_controller.m_isFalling then
 					local positionOld = playerRenderable:get_position();
