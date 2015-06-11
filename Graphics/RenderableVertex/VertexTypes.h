@@ -17,6 +17,7 @@
 #define VERTEX_TYPE_RNM         0x0400      // RNM
 #define VERTEX_TYPE_SCREEN      0x0800		// DRAW_QUAD_SCREEN
 #define VERTEX_TYPE_POLY		0x1000		// POLY
+#define VERTEX_TYPE_PARTICLE 0x2000
 
 #include "GraphicsManager.h"
 #include "Utils\Defines.h"
@@ -36,6 +37,30 @@ struct SCREEN_TEXTURED_COLORED_VERTEX {
     CHECKED_RELEASE(s_VertexDeclaration);
   }
 };
+
+// Particle
+struct TPARTICLE_VERTEX {
+  float x, y, z;
+  float tu, tv;
+  static inline unsigned short GetVertexType() {
+    return VERTEX_TYPE_PARTICLE;
+  }
+  static inline unsigned int GetFVF() {
+    return 0;
+  }
+  static LPDIRECT3DVERTEXDECLARATION9 s_VertexDeclaration;
+  static LPDIRECT3DVERTEXDECLARATION9 &GetVertexDeclaration();
+  static void ReleaseVertexDeclaration() {
+    CHECKED_RELEASE(s_VertexDeclaration);
+  }
+};
+
+struct TPARTICLE_VERTEX_INSTANCE {
+  float x, y, z;
+  float size;
+  float visible;
+};
+
 
 // G T1
 struct TTEXTURE_VERTEX {

@@ -625,5 +625,8 @@
     <ClInclude Include="RenderableCommands\GenerateCascadeShadowMapsSceneRendererCommand.h">
       <Filter>RenderableCommands</Filter>
     </ClInclude>
+    <ClInclude Include="RenderableVertex\InstancingVertexs.h">
+      <Filter>RenderableVertex</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

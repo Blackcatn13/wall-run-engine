@@ -10,6 +10,9 @@
 	<static_mesh name="MovingPlatform001" filename=".\Data\level1\meshes//MovingPlatform001.mesh"/>
 	<static_mesh name="PolyPlatform001" filename=".\Data\level1\meshes//PolyPlatform001.mesh"/>
 	<static_mesh name="PolyPlatform002" filename="Data\level4\meshes\PolyPlatform002.mesh"/>
+		<static_mesh name="Plataforma_Fragil" filename="Data\level4\meshes\Plataforma_Fragil.mesh"/>
+	<static_mesh name="Plataforma01" filename="Data\level4\meshes\Plataforma01.mesh"/>
+	<static_mesh name="Plataforma02" filename="Data\level4\meshes\Plataforma02.mesh"/>
 	<!--hardcoded-->
 
 	<static_mesh name="ARCADA" filename="Data\level4\meshes\ARCADA.mesh"/>

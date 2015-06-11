@@ -105,4 +105,7 @@
 	<Physx_mesh name="Pedra012" filename="Data\level4\meshes\Pedra012.phsx"/>
 	<Physx_mesh name="Puerta_abajo" filename="Data\level4\meshes\Puerta_abajo.phsx"/>
 	<Physx_mesh name="Puerta_arriba" filename="Data\level4\meshes\Puerta_arriba.phsx"/>
+	<Physx_mesh name="Plataforma_Fragil" filename="Data\level4\meshes\Plataforma_Fragil.phsx"/>
+	<Physx_mesh name="Plataforma01" filename="Data\level4\meshes\Plataforma01.phsx"/>
+	<Physx_mesh name="Plataforma02" filename="Data\level4\meshes\Plataforma02.phsx"/>
 </Physx_meshes>

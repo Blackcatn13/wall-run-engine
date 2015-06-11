@@ -204,6 +204,7 @@
     <ClInclude Include="RenderableCommands\StagedTexturedRendererCommand.h" />
     <ClInclude Include="RenderableCommands\UnsetRenderTargetSceneRendererCommand.h" />
     <ClInclude Include="RenderableVertex\IndexedVertexs.h" />
+    <ClInclude Include="RenderableVertex\InstancingVertexs.h" />
     <ClInclude Include="RenderableVertex\RenderableVertexs.h" />
     <ClInclude Include="RenderableVertex\VertexTypes.h" />
     <ClInclude Include="Renderable\PoolRenderableObjectTechnique.h" />

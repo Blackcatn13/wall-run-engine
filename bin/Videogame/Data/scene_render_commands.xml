@@ -91,7 +91,7 @@
 	
 	<!--<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>-->
 	<set_pool_renderable_objects_technique pool="particles_pool"/>
-	<particle_render/>
+	<!--<particle_render/>-->
 	<disable_alpha_blend />
 	
 	

@@ -284,6 +284,7 @@ function on_update_player_lua(l_ElapsedTime)
 			--if distance <= 1.8 then
 			if player_controller.m_isGrounded then
 				_land = false;
+				playerRenderable:clear_cycle(4,0);
 			end
 		end
 		if (player_controller.m_isJumping == true) or (player_controller.m_isFalling) then
@@ -315,7 +316,8 @@ function on_update_player_lua(l_ElapsedTime)
 				coreInstance:get_phisics_manager():raycast_closest_actor(player_controller:get_position() - 0.4, _dirRay, 1, info, 1000);
 				playerRenderable:clear_cycle(3,0.5);
 				playerRenderable:updateSkeleton(l_ElapsedTime);
-				playerRenderable:execute_action(4,0,0.3,1,false);
+				--playerRenderable:execute_action(4,0,0.3,1,false);
+				playerRenderable:blend_cycle(4,1,0.3);
 				_fallPosition = info.m_CollisionPoint;
 			else
 				if player_controller.m_isFalling then

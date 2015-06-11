@@ -13,6 +13,7 @@
 #include "RenderableVertex\RenderableVertexs.h"
 #include "RenderableVertex\IndexedVertexs.h"
 #include "Renderable\RenderableObjectTechniqueManager.h"
+#include "RenderableVertex\InstancingVertexs.h"
 
 CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
   : m_CurrentTime(.0f)
@@ -50,6 +51,20 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
   m_Texture->Load(m_sTexture);
   /*m_vertex_list = (TTEXTURE_NORMAL_VERTEX *)malloc(m_MaxSize * 4 * sizeof(TTEXTURE_NORMAL_VERTEX));
   m_index_list = (unsigned short *)malloc(m_MaxSize * 6 * sizeof(unsigned short));*/
+  const uint32 lIdxCount = 6;
+  const uint32 lVtxCount = 4;
+
+  TPARTICLE_VERTEX vertexs[lVtxCount] = {
+    {  -0.5f, 0.0f, -0.5f, 0, 0 },    // vertex 0
+    {  -0.5f, 0.0f,  0.5f, 0, 1 },    // vertex 1
+    {   0.5f, 0.0f,  0.5f, 1, 1 },    // vertex 2
+    {   0.5f, 0.0f, -0.5f, 1, 0 }     // vertex 3
+  };
+
+  unsigned short int lIdx[lIdxCount] = { 0, 1, 2,  2, 3, 0 };
+
+  m_RV = new CInstancingVertexs<TPARTICLE_VERTEX>(GRAPHM, &vertexs, &lIdx, lVtxCount, lIdxCount);
+  ((CInstancingVertexs<TPARTICLE_VERTEX> *)m_RV)->SetInstanceNumber(m_MaxParticles);
 }
 
 CParticleEmitter::~CParticleEmitter() {
@@ -77,12 +92,20 @@ void CParticleEmitter::Render(CGraphicsManager *RM) {
   int vertex_num = 0;
   int index_num = 0;
   CCamera *actCam = CAMCONTM->getActiveCamera();
-  Vect3f up_cam = actCam->GetVecUp().Normalize();
+  Vect3f up_cam = actCam->GetVecUp().Normalize();*/
+  TPARTICLE_VERTEX_INSTANCE *m_vertex_list = (TPARTICLE_VERTEX_INSTANCE *)malloc(m_MaxSize * 4 * sizeof(TTEXTURE_NORMAL_VERTEX));
   for (int i = 0; i < m_MaxParticles; i++) {
     if (!m_Particles->IsFree(i)) {
       //m_Particles->GetAt(i)->Render(RM);
       CParticle *p = m_Particles->GetAt(i);
-      Vect3f up =  up_cam * p->getSize() / 2;
+      m_vertex_list[i].x = p->getPosition().x;
+      m_vertex_list[i].y = p->getPosition().y;
+      m_vertex_list[i].z = p->getPosition().z;
+      m_vertex_list[i].size = p->getSize();
+      m_vertex_list[i].visible = 1;
+    } else {
+      m_vertex_list[i].visible = 0;
+      /*Vect3f up =  up_cam * p->getSize() / 2;
       Vect3f direction = actCam->GetDirection().Normalize();
       Vect3f right = (up_cam ^ direction) * p->getSize() / 2;
       Vect3f ul = p->getPosition() + up - right;
@@ -140,11 +163,15 @@ void CParticleEmitter::Render(CGraphicsManager *RM) {
       m_vertex_list[vertex_num].nx = normal.x;
       m_vertex_list[vertex_num].ny = normal.y;
       m_vertex_list[vertex_num].nz = normal.z;
-      vertex_num++;
+      vertex_num++;*/
 
     }
   }
-  CIndexedVertexs<TTEXTURE_NORMAL_VERTEX> m_RV = CIndexedVertexs<TTEXTURE_NORMAL_VERTEX>(GRAPHM, m_vertex_list, m_index_list, numOfParticles * 4, numOfParticles * 6);
+  ((CInstancingVertexs<TPARTICLE_VERTEX> *)m_RV)->AddInstancinguffer(RM, m_vertex_list);
+  CEffectTechnique *l_EffectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(m_RV->GetVertexType()))->GetEffectTechnique();
+  m_Texture->Activate(0);
+  m_RV->Render(RM, l_EffectTechnique);
+  /*CIndexedVertexs<TTEXTURE_NORMAL_VERTEX> m_RV = CIndexedVertexs<TTEXTURE_NORMAL_VERTEX>(GRAPHM, m_vertex_list, m_index_list, numOfParticles * 4, numOfParticles * 6);
   CEffectTechnique *l_EffectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(m_RV.GetVertexType()))->GetEffectTechnique();
   m_Texture->Activate(0);
   m_RV.Render(RM, l_EffectTechnique);*/
