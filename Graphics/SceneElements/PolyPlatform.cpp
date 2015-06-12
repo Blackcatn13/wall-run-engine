@@ -161,7 +161,7 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
   Vect3f l_dirRayFixed = Vect3f(dirRay.x, 0, dirRay.y);
   l_dirRayFixed = l_dirRayFixed.Normalize();
   //solo hacemos los calculos de colisiones si la plataforma esta a una distancia minima (optimización)
-  if (abs(dirRay.x) + abs(dirRay.z) < (GetPhysicsSize().x + GetPhysicsSize().z + 4.0)) {
+  if (abs(dirRay.x) + abs(dirRay.z) < (GetPhysicsSize().x + GetPhysicsSize().z + 1.0)) {
     SCollisionInfo info = SCollisionInfo();
     float l_RadioPhysicsPlayer = 0.8;
     //float l_AlturaPlataformaDesdeOrigen = GetPhysicsSize().y + 1.5;
@@ -196,12 +196,12 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
         //PLAYC->setCurrentJumpForce(0.0);
         //PLAYC->setisJumping(false);
         //PLAYC->setisGrounded(false);
-        if (dirRay.y > 0.2) {
+        if (dirRay.y > 0.1) {
           PLAYC->getPhysicController()->Move(Vect3f(0, -1, 0) * m_Speed * 8 * dt, dt);
-          PLAYC->setisJumping(false);
-          PLAYC->setisGrounded(false);
-          PLAYC->setCurrentJumpForce(0.0);
-          PLAYC->setisJumpingMoving(false);
+          //PLAYC->setisJumping(false);
+          //PLAYC->setisGrounded(true);
+          //PLAYC->setCurrentJumpForce(0.0);
+          //PLAYC->setisJumpingMoving(false);
         }
       }
 
@@ -272,10 +272,9 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
 
 bool CPolyPlatform::isInside(Vect3f vector1, Vect3f vector2) {
   //FIX BUG DETECTA PLAYER INSIDE
-  return false;
-  float l_margenx = GetPhysicsSize().x;
-  float l_margenz = GetPhysicsSize().z;
-  float l_margeny = GetPhysicsSize().y;
+  float l_margenx = GetPhysicsSize().x + 0.5f;
+  float l_margenz = GetPhysicsSize().z + 0.5f;
+  float l_margeny = GetPhysicsSize().y + 0.5f;
   if ((vector1.x > vector2.x - l_margenx) && (vector1.x < vector2.x + l_margenx) && (vector1.y > vector2.y - l_margeny) && (vector1.y < vector2.y + l_margeny) && (vector1.z > vector2.z - l_margenz) && (vector1.z < vector2.z + l_margenz))
     return true;
   else
@@ -283,9 +282,9 @@ bool CPolyPlatform::isInside(Vect3f vector1, Vect3f vector2) {
 }
 
 bool CPolyPlatform::isAround(Vect3f vector1, Vect3f vector2) { 
-  float l_margenx = GetPhysicsSize().x + 0.5f;
-  float l_margenz = GetPhysicsSize().z + 0.5f;
-  float l_margeny = GetPhysicsSize().y + 0.5f;
+  float l_margenx = GetPhysicsSize().x + 0.8f;
+  float l_margenz = GetPhysicsSize().z + 0.8f;
+  float l_margeny = GetPhysicsSize().y + 1.8f;
   /*bool l_isInside = false;
   l_isInside = isInside(vector1, vector2);*/
   if ((vector1.x > vector2.x - l_margenx) && (vector1.x < vector2.x + l_margenx) && (vector1.y > vector2.y - l_margeny) && (vector1.y < vector2.y + l_margeny) && (vector1.z > vector2.z - l_margenz) && (vector1.z < vector2.z + l_margenz))

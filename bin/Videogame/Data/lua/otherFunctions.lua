@@ -98,19 +98,6 @@ function reset_game()
 	--/////////////////////////////////////////////////////////////////////////////////////
 	--ENEMIES
 	--/////////////////////////////////////////////////////////////////////////////////////
-	
-	local enemies = enemy_manager:get_enemies();
-	local num = 1
-	for num = 1, #enemies do
-		if enemies[num].m_isAlive == false then
-			enemies[num].m_isAlive = true;
-			enemies[num].m_RenderableObject.m_Printable = true;
-			--local dead_pos = enemies[num].m_PhysicController:get_position()
-			--dead_pos.y = dead_pos.y - 1000
-			--enemies[num]:set_position(dead_pos)
-			--enemies[num].m_PhysicController:set_position(dead_pos)
-			--enemies[num]:move_to_position(dead_pos)
-		end
-	end
 	player_controller.enemies_killed = 0;
+	enemy_manager:reload_enemies();
 end

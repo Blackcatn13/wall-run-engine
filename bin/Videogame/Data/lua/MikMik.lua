@@ -3,7 +3,7 @@ local base_yaw = math.pi/2
 function mikmik_enter_stopped(name)
 	--local enemy = enemy_manager:get_enemy(name)
 	--currentwp = wp1
-	--coreInstance:trace("Entro y Estoy parado")
+	coreInstance:trace("Entro y Estoy parado")
 	local enemy = enemy_manager:get_enemy(name)
 	enemy.m_CurrentTime = 0
 	enemy.m_RenderableObject:blend_cycle(0,1,0);
@@ -22,10 +22,10 @@ function mikmik_update_stopped(ElapsedTime, doComprobation, name)
 				
 	if enemy ~= nil then
 		if player_distance < 3500 then
+		
 			if player_distance > enemy.m_AttackPlayerDistance  then --min_player_distance => enemy.m_AttackPlayerDistance
 				if enemy:get_wp_vector_size() > 0 then --Si tiene waypoints para moverse
 					-- En caso de acabar de perseguir o llegar a un WP si la distancia al siguiente es muy corta vuelve a la posicion original
-								
 					if enemy.m_CurrentTime >= 0.1 then
 						enemy:m_FSM():newState("Buscar_next_WP")
 					end
@@ -35,7 +35,6 @@ function mikmik_update_stopped(ElapsedTime, doComprobation, name)
 						enemy:m_FSM():newState("Andar_WP")
 						enemy.m_Returning = false
 					else 
-						
 						if player_distance < 500 then
 							-- Animacion de andar
 							rotate_yaw(enemy, ElapsedTime, player_position)
@@ -193,14 +192,22 @@ function mikmik_enter_dead(name)
 		enemy.m_isAlive = false
 		enemy.m_RenderableObject.m_Printable=false
 		local dead_pos = enemy.m_PhysicController:get_position()
-		--coreInstance:trace(name);
+		enemy.m_OriginalPosition = Vect3f(dead_pos.x,dead_pos.y,dead_pos.z)
 		dead_pos.y = dead_pos.y + 1000
 		enemy:set_position(dead_pos)
 		enemy.m_PhysicController:set_position(dead_pos)
 		enemy:move_to_position(dead_pos)
 		player.enemies_killed = player.enemies_killed + 1
-		check_enemies_killed(5, "door_001")
+		check_enemies_killed(2, "door_001")
 	end
+end
+
+function mikmik_set_alive(name)
+	local enemy =  enemy_manager:get_enemy(name)
+	enemy:set_position(enemy.m_OriginalPosition)
+	enemy.m_PhysicController:set_position(enemy.m_OriginalPosition)
+	enemy:move_to_position(enemy.m_OriginalPosition)
+	
 end
 
 function mikmik_exit_dead(name)
@@ -214,8 +221,11 @@ end
 function mikmik_update_dead(ElapsedTime, doComprobation, name)
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil then
+		coreInstance:trace("Enemigo  Muerto-------------------------------------")
 		if enemy.m_isAlive == true then
+			coreInstance:trace("Enemigo  Muerto que va a viriiiirlañkdn aslkñd n ASSSSSSSSSSSSSS-------------------------------------")
 			enemy:m_FSM():newState("Parado")
+			coreInstance:trace("Enemigo  resucitado-------------------------------------")
 		end
 	end
 end
