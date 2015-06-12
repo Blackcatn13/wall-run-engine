@@ -390,22 +390,27 @@ function on_update_player_lua(l_ElapsedTime)
 			canAttack = true;
 		end
 		
+		coreInstance:trace(tostring(player_controller.m_isGrounded));
 		if player_controller.m_isAttack == true then
 			--coreInstance:trace("ATACANDOOO");
-			if player_controller.m_CurrentAttackForce > 0.5 then	
-				player_controller.m_CurrentAttackForce = player_controller.m_CurrentAttackForce - (m_AttackGravity * l_ElapsedTime);
-				mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce * AttackSpeed * l_ElapsedTime;
-				if AttackSpeed > 0.05 then
-					AttackSpeed = AttackSpeed - AttackDismin * l_ElapsedTime;
-				end
-				mov.y = 0.0;
-				m_AttackGravity = m_AttackGravity + AtackGravityModifier * l_ElapsedTime;
-				--l_ElapsedTime = l_ElapsedTime / AtackGravityModifier;
-				--AtackGravityModifier = AtackGravityModifier * 2;
-			else
-				local mesh = playerRenderable;
-				mesh:set_position(player_controller:get_position());
+			if false then
 				player_controller.m_isAttack = false;
+			else
+				if player_controller.m_CurrentAttackForce > 0.5 then	
+					player_controller.m_CurrentAttackForce = player_controller.m_CurrentAttackForce - (m_AttackGravity * l_ElapsedTime);
+					mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce * AttackSpeed * l_ElapsedTime;
+					if AttackSpeed > 0.05 then
+						AttackSpeed = AttackSpeed - AttackDismin * l_ElapsedTime;
+					end
+					mov.y = 0.0;
+					m_AttackGravity = m_AttackGravity + AtackGravityModifier * l_ElapsedTime;
+					--l_ElapsedTime = l_ElapsedTime / AtackGravityModifier;
+					--AtackGravityModifier = AtackGravityModifier * 2;
+				else
+					local mesh = playerRenderable;
+					mesh:set_position(player_controller:get_position());
+					player_controller.m_isAttack = false;
+				end
 			end
 		end
 		
@@ -494,16 +499,15 @@ function on_update_player_lua(l_ElapsedTime)
 					--AQUI VA LA ANIMACION DE RECIBIR DAMAGE
 					playerRenderable:clear_cycle(0,0);
 					playerRenderable:clear_cycle(1,0);
+					coreInstance:trace(tostring(player_controller.m_isGrounded));
 					if player.playing_hit == false then
 						player.playing_hit = true
 						playerRenderable:execute_action(6,0,0.3,1,true);
-						coreInstance:trace("PLAY HIT");
 					else
 						if not playerRenderable:is_cycle_animation_active() then
 							player.is_hit = false
 							player.playing_hit = false
 							timer = 0.0
-							coreInstance:trace("STOP HIT");
 							playerRenderable:remove_action(6);
 							playerRenderable:blend_cycle(0,1,0);
 							m_damageFeedBackSpeed = m_damageFeedBackSpeedStart
