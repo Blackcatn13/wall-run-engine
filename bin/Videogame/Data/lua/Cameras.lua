@@ -35,6 +35,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 	local aspect3D = 16/9;
 	local distToCameraOffset = 3;
 	local distToCameraOffset_back = -2;
+	local offsetFollowY = -0.3;
 	local dist_to_rotate = 3;
 	local yaw_to_rotate = 0.05;
 	local cam3D_speed = 11;
@@ -176,6 +177,10 @@ function on_update_cameras_lua(l_ElapsedTime)
 				
 			end
 			--coreInstance:trace(tostring(offsetPosVec.y))
+			if pointSpecs.follow_player_y == true then
+				offsetPosVec = Vect3f(offsetPosVec.x,pCont:get_position().y + offsetFollowY,offsetPosVec.z)
+				offsetPosVec = offsetPosVec + Vect3f(0, distToCamera, 0);
+			end
 			local movVec = offsetPosVec - lastPos;
 			local finalPos = lastPos + (movVec * (l_ElapsedTime * cam3D_speed));
 			obj:set_position(Vect3f(finalPos.x, finalPos.y, finalPos.z));
