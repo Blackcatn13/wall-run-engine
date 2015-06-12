@@ -62,9 +62,11 @@ function reset_game()
 	player_controller.m_is3D = true;
 	local cam = coreInstance.m_CameraController:get_resource("3DCam");
 	cam.m_eTypeCamera = 6;
+	cam.m_currentWaypoint = 0;
+	cam.m_nextWaypoint = 1;
 	coreInstance.m_CameraController:set_active_camera("3DCam");
 	player_controller.m_isTurned = false;
-	
+		
 	--Lifes + Pixelites
 	player_controller.num_hearts = 3;
 	gui_manager:set_image('LifeGUI','Life3')
@@ -81,23 +83,13 @@ function reset_game()
 	--COLLECTIBLES
 	--/////////////////////////////////////////////////////////////////////////////////////
 	
-	--Pixelites
-	activate_collectible(trigger_manager:get_resource("Pixelite001_UserData"), "collectible" ,"Pixelite001");
-	activate_collectible(trigger_manager:get_resource("Pixelite002_UserData"), "collectible" ,"Pixelite002");
-	activate_collectible(trigger_manager:get_resource("Pixelite003_UserData"), "collectible" ,"Pixelite003");
-	activate_collectible(trigger_manager:get_resource("Pixelite004_UserData"), "collectible" ,"Pixelite004");
-	activate_collectible(trigger_manager:get_resource("Pixelite005_UserData"), "collectible" ,"Pixelite005");
-	activate_collectible(trigger_manager:get_resource("Pixelite006_UserData"), "collectible" ,"Pixelite006");
-	activate_collectible(trigger_manager:get_resource("Pixelite007_UserData"), "collectible" ,"Pixelite007");
-	activate_collectible(trigger_manager:get_resource("Pixelite008_UserData"), "collectible" ,"Pixelite008");
-	activate_collectible(trigger_manager:get_resource("Pixelite009_UserData"), "collectible" ,"Pixelite009");
-	activate_collectible(trigger_manager:get_resource("Pixelite010_UserData"), "collectible" ,"Pixelite010");
-	activate_collectible(trigger_manager:get_resource("Pixelite011_UserData"), "collectible" ,"Pixelite011");
-	activate_collectible(trigger_manager:get_resource("Collectible1_UserData"), "collectible" ,"Collectible1");
+	--Pixelites and cards
+	collectible_manager:reset_collectibles();
+	player.enemy_puzzle_active = true
 	
 	--/////////////////////////////////////////////////////////////////////////////////////
 	--ENEMIES
 	--/////////////////////////////////////////////////////////////////////////////////////
-	player_controller.enemies_killed = 0;
+	player.enemies_killed = 0;
 	enemy_manager:reload_enemies();
 end

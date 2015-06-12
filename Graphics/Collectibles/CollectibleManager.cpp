@@ -100,3 +100,20 @@ void CCollectibleManager::Update(float dt) {
     m_ResourcesVector[i]->Update(dt);
   }
 }
+
+void CCollectibleManager::ResetCollectibles(){
+	for (int num = 0; num < m_ResourcesVector.size(); num++){
+		std::stringstream ss;
+		std::string name = m_ResourcesVector[num]->getRenderableObject()->getName();
+		std::string trigger = "trigger_manager:get_resource(\"" + name + "_UserData\")";
+
+		std::size_t found = name.find("Collectible");
+		if (found!=std::string::npos)
+			ss << "deactivate_collectible(" << trigger << ",\"" << "collectible" << "\",\"" << name <<"\")";
+		else
+			ss << "activate_collectible(" << trigger << ",\"" << "collectible" << "\",\"" << name <<"\")";
+
+		std::string str = ss.str();
+		CCORE->GetScriptManager()->RunCode(str);
+	}
+}

@@ -12,5 +12,6 @@
  cam_Controller = coreInstance.m_CameraController
  lightM = coreInstance:get_light_manager()
  enemy_manager = coreInstance:get_enemy_manager()
+ collectible_manager = coreInstance:getCollectibleManager()
  
 
