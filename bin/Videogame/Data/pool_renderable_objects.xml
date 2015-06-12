@@ -11,6 +11,7 @@
 		<default_technique vertex_type="531" technique="CubeMapTechnique"/>
 		<default_technique vertex_type="1087" technique=""/>		
 		<default_technique vertex_type="2048" technique=""/>
+		<default_technique vertex_type="8192" technique=""/>
 	</pool_renderable_object_technique>
 
 	<pool_renderable_object_technique name="generate_shadow_map_renderable_obejcts_technique">
@@ -98,7 +99,7 @@
 	</pool_renderable_object_technique>
 	
 	<pool_renderable_object_technique name="particles_pool">
-        <default_technique vertex_type="19" technique="ParticlesTechnique"/>
+        <default_technique vertex_type="8192" technique="ParticlesTechnique"/>
     </pool_renderable_object_technique>
 	
 </renderable_object_techniques>
