@@ -264,7 +264,7 @@
 	</platform>
 	
 	<platform name="MovingPlatform002" core="MovingPlatform001" phisic_size="2 0.5 1.5" type="moving" speed= "5"  pos="568.16 13.50 -71.31" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms"  room="1">
-		<wp pos="568.16 13.50 -71.31" />
+		<wp pos="568.16 15.50 -71.31" />
 		<wp pos="568.16 23.50 -71.31" />
 	</platform>
 	
@@ -320,4 +320,8 @@
 	activation_distance= "10"  pos="-375.16644 -30.250000 -578.20001" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="poly" light="OmniPoly001" />
 	<!--+		m_Position	{x=-340.16644 y=-35.250000 z=-570.70001 }	Vector3<float>
 	+		m_Position	{x=-412.89560 y=-35.250000 z=-570.70001 }	Vector3<float>-->
+	<platform name="MovingPlatform011" core="MovingPlatform001" phisic_size="2 0.5 1.5" type="moving" speed= "5"  pos="-360.16644 -34.250000 -570.70001" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms"  room="1">
+		<wp pos="-360.16644 -38.250000 -570.70001" />
+		<wp pos="-360.16644 -24.250000 -570.70001" />
+	</platform>	
 </renderable_objects>
