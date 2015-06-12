@@ -6,7 +6,7 @@
 	<light name="Omni004" type="omni" pos="147.758 7.37545 15.1945" color="1.0 0.505882 0.309804" intensity="0.9999" att_start_range="9.2351" att_end_range="15.8666"/>
 	<light name="Omni005" type="omni" pos="189.645 5.92454 15.1945" color="1.0 0.505882 0.309804" intensity="0.9999" att_start_range="9.2351" att_end_range="15.8666"/>
 	<light name="Omni006" type="omni" pos="204.631 5.92454 15.1945" color="1.0 0.505882 0.309804" intensity="0.9999" att_start_range="9.2351" att_end_range="15.8666"/>
-	<light name="Omni007" type="omni" pos="560 25 -92" color="1.0 1 1" intensity="0.9999" att_start_range="500" att_end_range="800"/>
+	<!--<light name="Omni007" type="omni" pos="560 25 -92" color="1.0 1 1" intensity="0.9999" att_start_range="500" att_end_range="800"/>-->
 	<!--<light name="Omni008" type="omni" pos="243.957 5.92454 15.1945" color="1.0 0.505882 0.309804" intensity="0.9999" att_start_range="9.2351" att_end_range="15.8666"/>
 	<light name="Omni009" type="omni" pos="259.939 5.92454 15.1945" color="1.0 0.505882 0.309804" intensity="0.9999" att_start_range="9.2351" att_end_range="15.8666"/>
 	<light name="Omni010" type="omni" pos="279.082 5.92454 15.1945" color="1.0 0.505882 0.309804" intensity="0.9999" att_start_range="9.2351" att_end_range="15.8666"/>
