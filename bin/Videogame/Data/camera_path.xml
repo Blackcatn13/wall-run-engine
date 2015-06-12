@@ -56,13 +56,13 @@
 		<point id="p11" pos="558.904 8.50617 -27.3447"/>
 		<point id="p12" pos="558.828 8.50617 -32.83"/>
 		<point id="p13" pos="558.348 8.50617 -38.8726"/>
-		<point id="p14" pos="557.885 8.50617 -45.0066"/>
-		<point id="p15" pos="557.755 8.67838 -48.4296"/>
-		<point id="p16" pos="557.755 9.73553 -50.3069"/>
-		<point id="p17" pos="557.885 11.8202 -51.7986"/>
-		<point id="p18" pos="557.885 13.9942 -53.3781"/>
-		<point id="p19" pos="557.885 15.5352 -55.0669"/>
-		<point id="p20" pos="557.885 15.5227 -59.3047"/>
+		<point id="p14" pos="557.885 8.50617 -45.0066" follow_player_y="true"/>
+		<point id="p15" pos="557.755 8.67838 -48.4296" follow_player_y="true"/>
+		<point id="p16" pos="557.755 9.73553 -50.3069" follow_player_y="true"/>
+		<point id="p17" pos="557.885 11.8202 -51.7986" follow_player_y="true"/>
+		<point id="p18" pos="557.885 13.9942 -53.3781" follow_player_y="true"/>
+		<point id="p19" pos="557.885 15.5352 -55.0669" follow_player_y="true"/>
+		<point id="p20" pos="557.885 15.5227 -59.3047" follow_player_y="true"/>
 		<point id="p21" pos="560.762 15.532 -73.8142"/>
 		<point id="p22" pos="560.947 15.5319 -80.9174"/>
 		<point id="p23" pos="560.947 15.5317 -89.5194"/>

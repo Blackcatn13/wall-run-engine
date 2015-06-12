@@ -37,6 +37,8 @@ class CCollectibleManager : public CTemplatedVectorMapManager<CCollectible> {
   void Reload();
   void Update(float dt);
   void DeInit();
+  
+  void ResetCollectibles();
 
   void InitCollectibles(std::string layerName);
 

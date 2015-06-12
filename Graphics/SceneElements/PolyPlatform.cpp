@@ -192,12 +192,14 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
 
       if ((PhysicsApplied == false) && (isAround(l_playerPosition, m_Position))) {
 
-        PLAYC->getPhysicController()->Move(-dirRay.Normalize() * m_Speed * 3 * dt  + direction.Normalize() * m_Speed * dt, dt);
+          Vect3f dirInvertida = -dirRay.Normalize();
+		  dirInvertida = Vect3f(dirInvertida.x, 0, dirInvertida.z);
+          PLAYC->getPhysicController()->Move(dirInvertida * m_Speed * 3 * dt  + direction.Normalize() * m_Speed * dt, dt);
         //PLAYC->setCurrentJumpForce(0.0);
         //PLAYC->setisJumping(false);
         //PLAYC->setisGrounded(false);
-        if (dirRay.y > 0.1) {
-          PLAYC->getPhysicController()->Move(Vect3f(0, -1, 0) * m_Speed * 8 * dt, dt);
+        if (dirRay.y > 0.45) {
+          PLAYC->getPhysicController()->Move(Vect3f(0, -1, 0) * m_Speed * 4 * dt, dt);
           //PLAYC->setisJumping(false);
           //PLAYC->setisGrounded(true);
           //PLAYC->setCurrentJumpForce(0.0);
@@ -248,9 +250,11 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
         PLAYC->setisOnPlatform(1.0);
 
         if (isAround(l_playerPosition, m_Position)) {
-          PLAYC->getPhysicController()->Move(-dirRay.Normalize() * m_Speed * 3 * dt, dt);
-          if (dirRay.y > 0.2) {
-            PLAYC->getPhysicController()->Move(Vect3f(0, -1, 0) * m_Speed * 8 * dt, dt);
+          Vect3f dirInvertida = -dirRay.Normalize();
+		  dirInvertida = Vect3f(dirInvertida.x, 0, dirInvertida.z);
+          PLAYC->getPhysicController()->Move(dirInvertida * m_Speed * 3 * dt  + direction.Normalize() * m_Speed * dt, dt);
+          if (dirRay.y > 0.45) {
+            PLAYC->getPhysicController()->Move(Vect3f(0, -1, 0) * m_Speed * 4 * dt, dt);
             PLAYC->setisJumping(false);
             PLAYC->setisGrounded(false);
             PLAYC->setCurrentJumpForce(0.0);
@@ -262,8 +266,8 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
         }
         if (isInside(l_playerPosition, m_Position)) {
           //Hola
-          float l_margenInferiorPlataforma = GetPhysicsSize().y * 2;
-          PLAYC->getPhysicController()->SetPosition(l_playerPosition + Vect3f(0, -l_margenInferiorPlataforma, 0));
+          float l_margenInferiorPlataforma = GetPhysicsSize().y + 0.9;
+          PLAYC->getPhysicController()->SetPosition(m_Position + Vect3f(0, -l_margenInferiorPlataforma, 0));
         }
       }
     }
@@ -272,9 +276,9 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
 
 bool CPolyPlatform::isInside(Vect3f vector1, Vect3f vector2) {
   //FIX BUG DETECTA PLAYER INSIDE
-  float l_margenx = GetPhysicsSize().x + 0.5f;
-  float l_margenz = GetPhysicsSize().z + 0.5f;
-  float l_margeny = GetPhysicsSize().y + 0.5f;
+  float l_margenx = GetPhysicsSize().x + 0.0f;
+  float l_margenz = GetPhysicsSize().z + 0.0f;
+  float l_margeny = GetPhysicsSize().y + 0.0f;
   if ((vector1.x > vector2.x - l_margenx) && (vector1.x < vector2.x + l_margenx) && (vector1.y > vector2.y - l_margeny) && (vector1.y < vector2.y + l_margeny) && (vector1.z > vector2.z - l_margenz) && (vector1.z < vector2.z + l_margenz))
     return true;
   else

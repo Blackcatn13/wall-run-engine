@@ -27,6 +27,7 @@
 #include "Math\MathTypes.h"
 #include "WWSoundManager.h"
 #include "GUI\GUIManager.h"
+#include "Collectibles\CollectibleManager.h"
 
 extern "C"
 {
@@ -288,6 +289,11 @@ void RegisterManagers() {
 	.def("get_num_pixelite", &CGUIManager::GetGUIPixeliteNumber)
 	.def("set_num_pixelite", &CGUIManager::SetGUIPixeliteNumber)
 	.def("get_dt", &CGUIManager::GetElapsedTime)
+  ];
+
+  luabind::module(LUA_STATE) [
+    class_<CCollectibleManager>("CCollectibleManager")
+    .def("reset_collectibles", &CCollectibleManager::ResetCollectibles)
   ];
 
 }

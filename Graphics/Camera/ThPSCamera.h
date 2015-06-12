@@ -18,6 +18,7 @@ typedef struct PathPointSpecStruct
 	PathPointSpecStruct(){}
 	bool canRotate;
 	bool canGoBack;
+	bool followPlayerY;
 } PathPointSpec;
 
 class CThPSCamera : public CCamera {

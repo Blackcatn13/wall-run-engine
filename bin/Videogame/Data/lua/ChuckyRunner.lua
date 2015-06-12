@@ -7,7 +7,7 @@ chucky.m_PhysicUserData.m_myCollisionGroup = 18;
 local jumpStart = false;
 
 -- Chucky Variables --
-local Chucky_running_speed = 19;
+local Chucky_running_speed = 13;
 
 -- Chucky Stopped --
 function chucky_runner_enter_stopped(name)

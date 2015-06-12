@@ -141,13 +141,6 @@ void CEnemyManager::ReloadEnemies(){
 			m_Enemies[num]->getRenderableObject()->setPrintable(true);
 			m_Enemies[num]->getRenderableObject()->setVisible(true);
 			std::stringstream ss;
-			/*ss <<"Enemy "<<num <<" Position: "<< m_Enemies[num]->getRenderableObject()->GetPosition().y;
-			std::string lala = ss.str();
-			CCORE->Trace(lala);
-			//m_Enemies[num]->getPhysicController()->SetPosition(Vect3f(m_Enemies[num]->GetOriginalPosition().x, m_Enemies[num]->GetOriginalPosition().y + 2,  m_Enemies[num]->GetOriginalPosition().z ));
-			m_Enemies[num]->MoveToPosition(m_Enemies[num]->GetOriginalPosition());
-			m_Enemies[num]->getRenderableObject()->SetPosition(m_Enemies[num]->GetOriginalPosition());
-			*/
 			ss << "mikmik_set_alive(\"" <<m_Enemies[num]->getName()<<"\")";
 			std::string str = ss.str();
 			CCORE->GetScriptManager()->RunCode(str);

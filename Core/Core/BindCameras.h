@@ -127,6 +127,7 @@ void RegisterCameraController() {
 		.def(constructor<>())
 		.def_readwrite("can_rotate", &PathPointSpec::canRotate)
 		.def_readwrite("can_go_back", &PathPointSpec::canGoBack)
+		.def_readwrite("follow_player_y", &PathPointSpec::followPlayerY)
 	];
 	
 

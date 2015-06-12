@@ -94,13 +94,14 @@ void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
       }
 
       if ((PhysicsApplied == false) && (isAround(l_playerPosition, m_Position))) {
-
-        PLAYC->getPhysicController()->Move(-dirRay.Normalize() * m_Speed * 3 * dt  + direction.Normalize() * m_Speed * dt, dt);
+		Vect3f dirInvertida = -dirRay.Normalize();
+		dirInvertida = Vect3f(dirInvertida.x, 0, dirInvertida.z);
+        PLAYC->getPhysicController()->Move(dirInvertida * m_Speed * 3 * dt  + direction.Normalize() * m_Speed * dt, dt);
         //PLAYC->setCurrentJumpForce(0.0);
         //PLAYC->setisJumping(false);
         //PLAYC->setisGrounded(false);
-        if (dirRay.y > 0.2) {
-          PLAYC->getPhysicController()->Move(Vect3f(0, -1, 0) * m_Speed * 8 * dt / 1.0, dt);
+        if (dirRay.y > 0.45) {
+          PLAYC->getPhysicController()->Move(Vect3f(0, -1, 0) * m_Speed * 4 * dt / 1.0, dt);
           PLAYC->setisJumping(false);
           PLAYC->setisGrounded(false);
           PLAYC->setCurrentJumpForce(0.0);
@@ -109,10 +110,10 @@ void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
       }
 
       if (isInside(l_playerPosition, m_Position)) {
-        //Hola
-        float l_margenInferiorPlataforma = GetPhysicsSize().y * 2;
-        PLAYC->getPhysicController()->SetPosition(l_playerPosition + Vect3f(0, -l_margenInferiorPlataforma, 0));
-      }
+          //Hola
+          float l_margenInferiorPlataforma = GetPhysicsSize().y + 0.9;
+          PLAYC->getPhysicController()->SetPosition(m_Position + Vect3f(0, -l_margenInferiorPlataforma, 0));
+        }
     }
     //Caso vertical
     else {
@@ -148,8 +149,8 @@ void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
         PLAYC->setisOnPlatform(1.0);
 
         if (isAround(l_playerPosition, m_Position)) {
-          if (dirRay.y > 0.1) {
-            PLAYC->getPhysicController()->Move(Vect3f(0, -1, 0) * m_Speed * 5 * dt / 1.0, dt);
+          if (dirRay.y > 0.45) {
+            PLAYC->getPhysicController()->Move(Vect3f(0, -1, 0) * m_Speed * 4 * dt / 1.0, dt);
             //PLAYC->setisJumping(false);
             //PLAYC->setisGrounded(false);
             //PLAYC->setCurrentJumpForce(0.0);
