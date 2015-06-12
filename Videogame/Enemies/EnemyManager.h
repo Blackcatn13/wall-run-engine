@@ -56,6 +56,7 @@ class CEnemyManager {
   void Render();
   void Destroy();
   void Reload();
+  void ReloadEnemies();
   void InsertEnemy(CEnemy *enemy);
   CEnemy *GetEnemy(std::string enemyName);
 

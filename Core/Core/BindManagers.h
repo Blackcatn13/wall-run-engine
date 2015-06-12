@@ -235,7 +235,7 @@ void RegisterManagers() {
     .def("get_instance", &CEnemyManager::GetInstance)
     .def("insert_enemy", &CEnemyManager::InsertEnemy)
     .def("get_enemy", &CEnemyManager::GetEnemy)
-	.def("get_enemies",  &CEnemyManager::GetEnemies)
+	.def("reload_enemies",  &CEnemyManager::ReloadEnemies)
   ];
 
   luabind::module(LUA_STATE) [

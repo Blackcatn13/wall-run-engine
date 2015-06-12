@@ -11,6 +11,6 @@
  act2in = coreInstance:get_action_to_input()
  cam_Controller = coreInstance.m_CameraController
  lightM = coreInstance:get_light_manager()
- enemy_manager =  coreInstance:get_enemy_manager()
+ enemy_manager = coreInstance:get_enemy_manager()
  
 

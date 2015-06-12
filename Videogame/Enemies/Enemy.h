@@ -59,6 +59,7 @@ class CEnemy : public CAIController { //CAIController
   virtual void Render() /*= 0*/;
   void UpdateFSM(float elapsedTime);
   Vect3f GetOriginalPosition();
+  void SetOriginalPosition(Vect3f position);
   std::string GetEnemyName() {
     return getName();
   }

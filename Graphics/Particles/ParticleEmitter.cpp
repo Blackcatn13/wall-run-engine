@@ -65,6 +65,9 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
 
   m_RV = new CInstancingVertexs<TPARTICLE_VERTEX>(GRAPHM, &vertexs, &lIdx, lVtxCount, lIdxCount);
   ((CInstancingVertexs<TPARTICLE_VERTEX> *)m_RV)->SetInstanceNumber(m_MaxParticles);
+  //m_vertex_list = (TPARTICLE_VERTEX_INSTANCE *)malloc(m_MaxSize * sizeof(TPARTICLE_VERTEX_INSTANCE));
+  const uint32 size_instancing = 200;
+  m_vertex_list = new TPARTICLE_VERTEX_INSTANCE[size_instancing];
 }
 
 CParticleEmitter::~CParticleEmitter() {
@@ -78,6 +81,7 @@ CParticleEmitter::~CParticleEmitter() {
     if (width < 5000)
       CHECKED_DELETE(m_Texture);
   }
+  delete[] m_vertex_list;
   /*free(m_vertex_list);
   free(m_index_list);*/
 }
@@ -93,7 +97,7 @@ void CParticleEmitter::Render(CGraphicsManager *RM) {
   int index_num = 0;
   CCamera *actCam = CAMCONTM->getActiveCamera();
   Vect3f up_cam = actCam->GetVecUp().Normalize();*/
-  TPARTICLE_VERTEX_INSTANCE *m_vertex_list = (TPARTICLE_VERTEX_INSTANCE *)malloc(m_MaxSize * 4 * sizeof(TTEXTURE_NORMAL_VERTEX));
+
   for (int i = 0; i < m_MaxParticles; i++) {
     if (!m_Particles->IsFree(i)) {
       //m_Particles->GetAt(i)->Render(RM);
@@ -171,6 +175,7 @@ void CParticleEmitter::Render(CGraphicsManager *RM) {
   CEffectTechnique *l_EffectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(m_RV->GetVertexType()))->GetEffectTechnique();
   m_Texture->Activate(0);
   m_RV->Render(RM, l_EffectTechnique);
+  //free(m_vertex_list);
   /*CIndexedVertexs<TTEXTURE_NORMAL_VERTEX> m_RV = CIndexedVertexs<TTEXTURE_NORMAL_VERTEX>(GRAPHM, m_vertex_list, m_index_list, numOfParticles * 4, numOfParticles * 6);
   CEffectTechnique *l_EffectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(m_RV.GetVertexType()))->GetEffectTechnique();
   m_Texture->Activate(0);

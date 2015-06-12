@@ -6,6 +6,7 @@
 #include "RenderableVertex\RenderableVertexs.h"
 #include "Effects/Effect.h"
 #include "Effects/EffectTechnique.h"
+#include <iostream>
 
 template<class T>
 class CInstancingVertexs : public CRenderableVertexs {
@@ -24,7 +25,8 @@ class CInstancingVertexs : public CRenderableVertexs {
   }
  public:
   void AddInstancinguffer(CGraphicsManager *RM, void *InstanceAddress) {
-    RM->GetDevice()->CreateVertexBuffer(GetInstanceSize() * m_InstancesNumber, D3DUSAGE_DYNAMIC, 0, D3DPOOL_MANAGED, &m_InstanceB, 0);
+    RM->GetDevice()->CreateVertexBuffer(GetInstanceSize() * m_InstancesNumber, 0, 0, D3DPOOL_MANAGED, &m_InstanceB, 0);
+    //std::cout << "RESULT: " << std::hex << m_ok << std::endl;
     void *instance_data;
     m_InstanceB->Lock(0, GetInstanceSize() * m_InstancesNumber, &instance_data, 0);
     memcpy(instance_data, InstanceAddress, GetInstanceSize() * m_InstancesNumber);
@@ -35,6 +37,7 @@ class CInstancingVertexs : public CRenderableVertexs {
     m_InstancesNumber = instanceNumber;
   }
   CInstancingVertexs(CGraphicsManager *RM, void *VertexAddress, void *IndexAddres, size_t VertexCount, size_t IndexCount) {
+    m_InstanceB = 0;
     RM->GetDevice()->CreateVertexBuffer(GetVertexSize() * VertexCount, 0, T::GetFVF(), D3DPOOL_DEFAULT, &m_VB, 0);
     RM->GetDevice()->CreateIndexBuffer(GetIndexSize() * IndexCount, 0, D3DFMT_INDEX16, D3DPOOL_DEFAULT, &m_IB, 0);
     m_IndexCount = IndexCount;
@@ -86,7 +89,7 @@ class CInstancingVertexs : public CRenderableVertexs {
       l_Effect->End();
     }
     l_Device->SetStreamSourceFreq(0, 1);
-    l_Device->SetStreamSourceFreq(1, 1);
+    //l_Device->SetStreamSourceFreq(1, 1);
     return true;
   }
   virtual inline unsigned short GetVertexType() const {

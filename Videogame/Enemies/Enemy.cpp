@@ -96,6 +96,10 @@ Vect3f CEnemy::GetOriginalPosition() {
   return m_OriginalPosition;
 }
 
+void CEnemy::SetOriginalPosition(Vect3f position) {
+   m_OriginalPosition = position;
+}
+
 void CEnemy::UpdateFSM(float elapsedTime) {
 // for (TMapResource::iterator it = m_Resources.begin(); it != m_Resources.end(); ++it) {
 // for (TMapResource::iterator it = m_Resources.begin(); it != m_Resources.end(); ++it) {

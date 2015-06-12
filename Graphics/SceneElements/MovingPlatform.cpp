@@ -148,14 +148,17 @@ void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
         PLAYC->setisOnPlatform(1.0);
 
         if (isAround(l_playerPosition, m_Position)) {
-          PLAYC->getPhysicController()->Move(-dirRay.Normalize() * m_Speed * 3 * dt / 1.0, dt);
-          if (dirRay.y > 0.2) {
-            PLAYC->getPhysicController()->Move(Vect3f(0, -1, 0) * m_Speed * 8 * dt / 1.0, dt);
-            PLAYC->setisJumping(false);
-            PLAYC->setisGrounded(false);
-            PLAYC->setCurrentJumpForce(0.0);
-            PLAYC->setisJumpingMoving(false);
+          if (dirRay.y > 0.1) {
+            PLAYC->getPhysicController()->Move(Vect3f(0, -1, 0) * m_Speed * 5 * dt / 1.0, dt);
+            //PLAYC->setisJumping(false);
+            //PLAYC->setisGrounded(false);
+            //PLAYC->setCurrentJumpForce(0.0);
+            //PLAYC->setisJumpingMoving(false);
           }
+		  else
+		  {
+		    PLAYC->getPhysicController()->Move(-dirRay.Normalize() * m_Speed * 3 * dt / 1.0, dt);
+		  }
           //PLAYC->setCurrentJumpForce(0.0);
           //PLAYC->setisJumping(false);
           //PLAYC->setisGrounded(false);
