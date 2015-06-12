@@ -187,6 +187,10 @@ void CRenderableObjectsManager::Load(const std::string &FileName) {
           l_StaticPlatform->SetScale(scale);
           //CMeshInstance* l_meshInstance = new CMeshInstance(nodeChild);
           l_StaticPlatform->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
+		  l_StaticPlatform->setPrintable(nodeChild.GetBoolProperty("visible", true, false));
+		  if (l_StaticPlatform->getPrintable() == false)
+			  l_StaticPlatform->ActivatePhisic(false);
+
           AddResource(platformName, l_StaticPlatform);
           //std::string boxName, std::string coreName, std::string userDataName, Vect3f size, Vect3f localPosition)
         } else if (type == "breakable") {
@@ -394,6 +398,9 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node) {
         //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
         AddResource(platformName, l_StaticPlatform);
         l_StaticPlatform->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
+		l_StaticPlatform->setPrintable(m.GetBoolProperty("visible", true, false));
+		if (l_StaticPlatform->getPrintable() == false)
+			  l_StaticPlatform->ActivatePhisic(false);
         //std::string boxName, std::string coreName, std::string userDataName, Vect3f size, Vect3f localPosition)
       } else if (type == "breakable") {
         std::string l_TriggerName =  m.GetPszISOProperty("trigger_name", "", false);

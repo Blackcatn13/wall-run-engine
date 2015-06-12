@@ -43,6 +43,7 @@ void RegisterSceneElements() {
     .def("insert_phisic", &CSceneElement::InsertPhisic)
     .property("m_Actor", &CSceneElement::GetActor)
     .property("m_PhysicsSize", &CSceneElement::GetPhysicsSize)
+	.def("activate_phisic", &CSceneElement::ActivatePhisic)
   ];
 
   luabind::module(LUA_STATE) [

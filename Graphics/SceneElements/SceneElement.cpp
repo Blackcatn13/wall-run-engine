@@ -22,6 +22,9 @@ CSceneElement::~CSceneElement () {
   CHECKED_DELETE(m_UserData);
 }
 
+void CSceneElement::ActivatePhisic(bool active){
+	m_Actor->Activate(active);
+}
 
 void CSceneElement::InsertPhisic(std::string userDataName, Vect3f size, Vect3f localPosition) {
   // m_RenderableObject = RENDLM->GetDefaultRenderableObjectManager()->GetResource(boxName);

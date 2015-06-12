@@ -320,4 +320,9 @@
 	activation_distance= "10"  pos="-375.16644 -30.250000 -578.20001" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="poly" light="OmniPoly001" />
 	<!--+		m_Position	{x=-340.16644 y=-35.250000 z=-570.70001 }	Vector3<float>
 	+		m_Position	{x=-412.89560 y=-35.250000 z=-570.70001 }	Vector3<float>-->
+	
+	
+	<!-- invisible wall -->
+		<platform name="INVISIBLE_WALL001" core="INVISIBLE_WALL001" type="static" pos="431.490265 8.452271 11.098312" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="0.137375 5.22161 5.33797" layer="solid"/>
+	
 </renderable_objects>

@@ -187,6 +187,20 @@ function set_puzzle_enemy_active(active)
 	coreInstance:trace("Enemy puzle active ".. tostring(player.enemy_puzzle_active))
 end
 
+function activate_invisible_wall(name)
+	local wall = get_renderable_object("solid", name)
+	if wall ~= nil then
+		wall:activate_phisic(true)
+	end
+end
+
+function deactivate_invisible_wall(name)
+	local wall = get_renderable_object("solid", name)
+	if wall ~= nil then
+		wall:activate_phisic(false)
+	end
+end
+
 function check_enemies_killed(num1, door)
 	if player.enemy_puzzle_active then
 		coreInstance:trace("----------------------------Enemies: ".. tostring(player.enemies_killed))

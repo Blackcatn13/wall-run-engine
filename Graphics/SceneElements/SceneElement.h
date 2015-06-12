@@ -24,6 +24,7 @@ class CSceneElement : public CMeshInstance {
   CSceneElement(std::string switchName, std::string coreName);
   virtual ~CSceneElement ();
   void InsertPhisic( std::string userDataName, Vect3f size, Vect3f localPosition);
+  void ActivatePhisic(bool active);
   CPhysicActor *GetActor() {
     return m_Actor;
   }

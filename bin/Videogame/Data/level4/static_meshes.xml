@@ -13,6 +13,7 @@
 		<static_mesh name="Plataforma_Fragil" filename="Data\level4\meshes\Plataforma_Fragil.mesh"/>
 	<static_mesh name="Plataforma01" filename="Data\level4\meshes\Plataforma01.mesh"/>
 	<static_mesh name="Plataforma02" filename="Data\level4\meshes\Plataforma02.mesh"/>
+	<static_mesh name="INVISIBLE_WALL001" filename="Data\level4\meshes\INVISIBLE_WALL001.mesh"/>
 	<!--hardcoded-->
 
 	<static_mesh name="ARCADA" filename="Data\level4\meshes\ARCADA.mesh"/>
