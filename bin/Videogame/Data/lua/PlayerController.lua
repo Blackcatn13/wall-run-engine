@@ -30,6 +30,7 @@ local m_damageFeedBackSpeedDismin = 40;
 player_controller.m_Gravity = 9;						--Gravedad que afecta al personaje cuando cae.
 player_controller.m_GravityJump = 11;					--Gravedad que afecta cuando el personaje está impulsándose hacia arriba en el salto.
 player_controller.m_Speed = 13;							--Velocidad de movimiento.
+player_controller.m_JumpSpeed = 10;						--Velocidad de movimiento en el salto.
 player_controller.m_JumpForce = 5.5;					--Fuerza de salto, impulso.
 superjumForce = 10;						 				--SUPERSALTO CHEAT
 player_controller.m_AttackForce = 0.7;					--Impulse force for the attack.
@@ -339,31 +340,45 @@ function on_update_player_lua(l_ElapsedTime)
 			if player_controller.m_isJumpingMoving == true then
 				if player_controller.m_is3D == false then
 					if player_controller.m_isTurned == false then
-						mov = mov - dirNor * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
+						--mov = mov - dirNor * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
+						mov = mov - dirNor * player_controller.m_JumpSpeed * l_ElapsedTime;
 					else
-						mov = mov + dirNor * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
+						--mov = mov + dirNor * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
+						mov = mov + dirNor * player_controller.m_JumpSpeed * l_ElapsedTime;
 					end
 				else
 					if player_controller.m_JumpType == 1 then --Forward
-						mov = mov + dir3D * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
+						--mov = mov + dir3D * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
+						mov = mov + dir3D * player_controller.m_JumpSpeed * l_ElapsedTime;
 					elseif player_controller.m_JumpType == 2 then --Right
-						mov = mov - dirNor * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
+						--mov = mov - dirNor * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
+						mov = mov - dirNor * player_controller.m_JumpSpeed * l_ElapsedTime;
 					elseif player_controller.m_JumpType == 3 then --Back
-						mov = mov - dir3D * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
+						--mov = mov - dir3D * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
+						mov = mov - dir3D * player_controller.m_JumpSpeed * l_ElapsedTime;
 					elseif player_controller.m_JumpType == 4 then --Left
-						mov = mov + dirNor * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
+						--mov = mov + dirNor * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
+						mov = mov + dirNor * player_controller.m_JumpSpeed * l_ElapsedTime;
 					elseif player_controller.m_JumpType == 5 then --Forward-Right
-						mov = mov + dir3D * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
-						mov = mov - dirNor * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
+						--mov = mov + dir3D * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
+						--mov = mov - dirNor * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
+						mov = mov + dir3D * player_controller.m_JumpSpeed * l_ElapsedTime;
+						mov = mov - dirNor * player_controller.m_JumpSpeed * l_ElapsedTime;
 					elseif player_controller.m_JumpType == 6 then --Back-Right
-						mov = mov - dir3D * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
-						mov = mov - dirNor * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
+						--mov = mov - dir3D * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
+						--mov = mov - dirNor * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
+						mov = mov - dir3D * player_controller.m_JumpSpeed * l_ElapsedTime;
+						mov = mov - dirNor * player_controller.m_JumpSpeed * l_ElapsedTime;
 					elseif player_controller.m_JumpType == 7 then --Back-Left
-						mov = mov - dir3D * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
-						mov = mov + dirNor * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
+						--mov = mov - dir3D * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
+						--mov = mov + dirNor * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
+						mov = mov - dir3D * player_controller.m_JumpSpeed * l_ElapsedTime;
+						mov = mov + dirNor * player_controller.m_JumpSpeed * l_ElapsedTime;
 					elseif player_controller.m_JumpType == 8 then --Forward-Left
-						mov = mov + dir3D * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
-						mov = mov + dirNor * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
+						--mov = mov + dir3D * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
+						--mov = mov + dirNor * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
+						mov = mov + dir3D * player_controller.m_JumpSpeed * l_ElapsedTime;
+						mov = mov + dirNor * player_controller.m_JumpSpeed * l_ElapsedTime;
 					end
 				end
 			end
