@@ -225,5 +225,8 @@
     <ClInclude Include="Enemies\RunnerEnemy.h">
       <Filter>Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="Core\BindParticles.h">
+      <Filter>ScriptManager</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

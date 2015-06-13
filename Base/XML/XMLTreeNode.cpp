@@ -1,6 +1,7 @@
 #include "XMLTreeNode.h"
 #include "Assert.h"
 #include "Utils/Logger.h"
+#include "libxml\xmlerror.h"
 
 // Defines
 #define MY_ENCODING "ISO-8859-1"
@@ -47,6 +48,11 @@ bool CXMLTreeNode::LoadFile (const char *_pszFileName) {
         return true;
       }
     }
+#ifdef _DEBUG
+    else {
+      xmlErrorPtr err = xmlGetLastError();
+    }
+#endif
   }
   Release();
   return false;

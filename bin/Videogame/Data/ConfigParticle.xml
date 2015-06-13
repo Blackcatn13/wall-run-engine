@@ -6,7 +6,7 @@
   <Rendermode fullscreenMode="false"/>          
   <!--Rendermode fullscreenMode="true"/-->
   <Console_Logger activateConsole="true" Log_Level="INFORMATION" activateLogger="true" linesPerPageInLogger="20"/>
-  <Mouse exclusiveModeinMouse="false"  drawPointerMouse="true" />
+  <Mouse exclusiveModeinMouse="true"  drawPointerMouse="true" />
   <Languages current="ingles">
     <lang XMLfile="./Data/catalan.xml"/>
     <lang XMLfile="./Data/castellano.xml"/>
@@ -14,7 +14,7 @@
   </Languages>
   <Fonts fontsXML="./Data/fonts/fonts.xml"/>
   <Actions actionsXML="./Data/Actions.xml"/>
-  <GUI initGuiXML=""/>
+  <GUI initGuiXML="./Data/GUI/initParticleGUI.xml" dataFolder="./Data/GUI/ParticleViewer"/>
   <Sound soundXML=""/>
   <Meshes meshesXML=""/>
   <Renderable renderXML=""/>

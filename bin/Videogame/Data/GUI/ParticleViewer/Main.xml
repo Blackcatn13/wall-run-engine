@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Windows OnLoadWindows="
+     "
+     OnSaveWindows="" OnUpdateWindows="">
+	
+
+     <Slider name="MinSpeedSlider" posx="80" posy="10" height="2" width="15" visible="true" active="true" value="1" buttonH="3" buttonW="3" button_normal="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal1.png"
+     button_over="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_over1.png"
+     button_clicked="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_press1.png"
+     button_deactivated="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal1.png"
+     quad="./Data/GUI/Textures_LaberynthGame/gui_sliderback1.png"
+     OnOverAction=""
+     OnClickedAction=""
+     OnChangeValue="
+          local MinSpeed = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('MinSpeed')
+          if (MinSpeed ~= nil) then
+               MinSpeed = tonumber(MinSpeed)
+               if (MinSpeed &lt;= 0) then
+                    MinSpeed = 0.1
+               end
+               CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(0).m_MinSpeed = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getSliderState('MinSpeedSlider') * MinSpeed
+          end"
+     OnSaveValue=""
+     OnLoadValue=""/>
+
+     <EditableTextBox name="MinSpeed" posx="95" posy="10" height="2" width="4" visible="true" active="true"/>
+     <StaticText name="MinSpeedLabel" posx="70" posy="10" width="10" height="2" Literal="MinSpeed" visible="true" active="true"/>
+
+     <Slider name="MaxSpeedSlider" posx="80" posy="14" height="2" width="15" visible="true" active="true" value="1" buttonH="3" buttonW="3" button_normal="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal1.png"
+     button_over="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_over1.png"
+     button_clicked="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_press1.png"
+     button_deactivated="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal1.png"
+     quad="./Data/GUI/Textures_LaberynthGame/gui_sliderback1.png"
+     OnOverAction=""
+     OnClickedAction=""
+     OnChangeValue="
+          local MaxSpeed = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('MaxSpeed')
+          if (MaxSpeed ~= nil) then
+               MaxSpeed = tonumber(MaxSpeed)
+               if (MaxSpeed &lt;= 0) then
+                    MaxSpeed = 0.1
+               end
+               CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(0).m_MaxSpeed = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getSliderState('MaxSpeedSlider') * MaxSpeed
+          end"
+     OnSaveValue=""
+     OnLoadValue=""/>
+
+     <EditableTextBox name="MaxSpeed" posx="95" posy="14" height="2" width="4" visible="true" active="true"/>
+     <StaticText name="MaxSpeedLabel" posx="70" posy="14" width="10" height="2" Literal="MaxSpeed" visible="true" active="true"/>
+
+     <Slider name="MinParticlesSlider" posx="80" posy="18" height="2" width="15" visible="true" active="true" value="1" buttonH="3" buttonW="3" button_normal="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal1.png"
+     button_over="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_over1.png"
+     button_clicked="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_press1.png"
+     button_deactivated="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal1.png"
+     quad="./Data/GUI/Textures_LaberynthGame/gui_sliderback1.png"
+     OnOverAction=""
+     OnClickedAction=""
+     OnChangeValue="
+          local MinParticles = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('MinParticles')
+          if (MinParticles ~= nil) then
+               MinParticles = tonumber(MinParticles)
+               if (MinParticles &lt;= 0) then
+                    MinParticles = 0.1
+               end
+               CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(0).m_MinParticles = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getSliderState('MinParticlesSlider') * MinParticles
+          end"
+     OnSaveValue=""
+     OnLoadValue=""/>
+
+     <EditableTextBox name="MinParticles" posx="95" posy="18" height="2" width="4" visible="true" active="true"/>
+     <StaticText name="MinParticlesLabel" posx="70" posy="18" width="10" height="2" Literal="MinParticles" visible="true" active="true"/>
+
+     <Slider name="MinEmissionTimeSlider" posx="80" posy="22" height="2" width="15" visible="true" active="true" value="1" buttonH="3" buttonW="3" button_normal="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal1.png"
+     button_over="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_over1.png"
+     button_clicked="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_press1.png"
+     button_deactivated="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal1.png"
+     quad="./Data/GUI/Textures_LaberynthGame/gui_sliderback1.png"
+     OnOverAction=""
+     OnClickedAction=""
+     OnChangeValue="
+          local MinEmissionTime = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('MinEmissionTime')
+          if (MinEmissionTime ~= nil) then
+               MinEmissionTime = tonumber(MinEmissionTime)
+               if (MinEmissionTime &lt;= 0) then
+                    MinEmissionTime = 0.1
+               end
+               CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(0).m_MinEmissionTime = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getSliderState('MinEmissionTimeSlider') * MinEmissionTime
+          end"
+     OnSaveValue=""
+     OnLoadValue=""/>
+
+     <EditableTextBox name="MinEmissionTime" posx="95" posy="22" height="2" width="4" visible="true" active="true"/>
+     <StaticText name="MinEmissionTimeLabel" posx="70" posy="22" width="10" height="2" Literal="MinEmissionTime" visible="true" active="true"/>
+
+     <Slider name="MaxEmissionTimeSlider" posx="80" posy="26" height="2" width="15" visible="true" active="true" value="1" buttonH="3" buttonW="3" button_normal="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal1.png"
+     button_over="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_over1.png"
+     button_clicked="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_press1.png"
+     button_deactivated="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal1.png"
+     quad="./Data/GUI/Textures_LaberynthGame/gui_sliderback1.png"
+     OnOverAction=""
+     OnClickedAction=""
+     OnChangeValue="
+          local MaxEmissionTime = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('MaxEmissionTime')
+          if (MaxEmissionTime ~= nil) then
+               MaxEmissionTime = tonumber(MaxEmissionTime)
+               if (MaxEmissionTime &lt;= 0) then
+                    MaxEmissionTime = 0.1
+               end
+               CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(0).m_MaxEmissionTime = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getSliderState('MaxEmissionTimeSlider') * MaxEmissionTime
+          end"
+     OnSaveValue=""
+     OnLoadValue=""/>
+
+     <EditableTextBox name="MaxEmissionTime" posx="95" posy="26" height="2" width="4" visible="true" active="true"/>
+     <StaticText name="MaxEmissionTimeLabel" posx="70" posy="26" width="10" height="2" Literal="MaxEmissionTime" visible="true" active="true"/>
+
+     <Slider name="MinAgeSlider" posx="80" posy="30" height="2" width="15" visible="true" active="true" value="1" buttonH="3" buttonW="3" button_normal="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal1.png"
+     button_over="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_over1.png"
+     button_clicked="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_press1.png"
+     button_deactivated="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal1.png"
+     quad="./Data/GUI/Textures_LaberynthGame/gui_sliderback1.png"
+     OnOverAction=""
+     OnClickedAction=""
+     OnChangeValue="
+          local MinAge = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('MinAge')
+          if (MinAge ~= nil) then
+               MinAge = tonumber(MinAge)
+               if (MinAge &lt;= 0) then
+                    MinAge = 0.1
+               end
+               CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(0).m_MinAge = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getSliderState('MinAgeSlider') * MinAge
+          end"
+     OnSaveValue=""
+     OnLoadValue=""/>
+
+     <EditableTextBox name="MinAge" posx="95" posy="30" height="2" width="4" visible="true" active="true"/>
+     <StaticText name="MinAgeLabel" posx="70" posy="30" width="10" height="2" Literal="MinAge" visible="true" active="true"/>
+
+     <Slider name="MaxAgeSlider" posx="80" posy="34" height="2" width="15" visible="true" active="true" value="1" buttonH="3" buttonW="3" button_normal="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal1.png"
+     button_over="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_over1.png"
+     button_clicked="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_press1.png"
+     button_deactivated="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal1.png"
+     quad="./Data/GUI/Textures_LaberynthGame/gui_sliderback1.png"
+     OnOverAction=""
+     OnClickedAction=""
+     OnChangeValue="
+          local MaxAge = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('MaxAge')
+          if (MaxAge ~= nil) then
+               MaxAge = tonumber(MaxAge)
+               if (MaxAge &lt;= 0) then
+                    MaxAge = 0.1
+               end
+               CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(0).m_MaxAge = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getSliderState('MaxAgeSlider') * MaxAge
+          end"
+     OnSaveValue=""
+     OnLoadValue=""/>
+
+     <EditableTextBox name="MaxAge" posx="95" posy="34" height="2" width="4" visible="true" active="true"/>
+     <StaticText name="MaxAgeLabel" posx="70" posy="34" width="10" height="2" Literal="MaxAge" visible="true" active="true"/>
+
+     <Slider name="MinSizeSlider" posx="80" posy="38" height="2" width="15" visible="true" active="true" value="1" buttonH="3" buttonW="3" button_normal="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal1.png"
+     button_over="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_over1.png"
+     button_clicked="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_press1.png"
+     button_deactivated="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal1.png"
+     quad="./Data/GUI/Textures_LaberynthGame/gui_sliderback1.png"
+     OnOverAction=""
+     OnClickedAction=""
+     OnChangeValue="
+          local MinSize = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('MinSize')
+          if (MinSize ~= nil) then
+               MinSize = tonumber(MinSize)
+               if (MinSize &lt;= 0) then
+                    MinSize = 0.1
+               end
+               CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(0).m_MinSize = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getSliderState('MinSizeSlider') * MinSize
+          end"
+     OnSaveValue=""
+     OnLoadValue=""/>
+
+     <EditableTextBox name="MinSize" posx="95" posy="38" height="2" width="4" visible="true" active="true"/>
+     <StaticText name="MinSizeLabel" posx="70" posy="38" width="10" height="2" Literal="MinSize" visible="true" active="true"/>
+
+     <Slider name="MaxSizeSlider" posx="80" posy="42" height="2" width="15" visible="true" active="true" value="1" buttonH="3" buttonW="3" button_normal="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal1.png"
+     button_over="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_over1.png"
+     button_clicked="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_press1.png"
+     button_deactivated="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal1.png"
+     quad="./Data/GUI/Textures_LaberynthGame/gui_sliderback1.png"
+     OnOverAction=""
+     OnClickedAction=""
+     OnChangeValue="
+          local MaxSize = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('MaxSize')
+          if (MaxSize ~= nil) then
+               MaxSize = tonumber(MaxSize)
+               if (MaxSize &lt;= 0) then
+                    MaxSize = 0.1
+               end
+               CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(0).m_MaxSize = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getSliderState('MaxSizeSlider') * MaxSize
+          end"
+     OnSaveValue=""
+     OnLoadValue=""/>
+
+     <EditableTextBox name="MaxSize" posx="95" posy="42" height="2" width="4" visible="true" active="true"/>
+     <StaticText name="MaxSizeLabel" posx="70" posy="42" width="10" height="2" Literal="MaxSize" visible="true" active="true"/>
+
+     <Slider name="GravitySlider" posx="80" posy="46" height="2" width="15" visible="true" active="true" value="1" buttonH="3" buttonW="3" button_normal="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal1.png"
+     button_over="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_over1.png"
+     button_clicked="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_press1.png"
+     button_deactivated="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal1.png"
+     quad="./Data/GUI/Textures_LaberynthGame/gui_sliderback1.png"
+     OnOverAction=""
+     OnClickedAction=""
+     OnChangeValue="
+          local Gravity = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('Gravity')
+          if (Gravity ~= nil) then
+               Gravity = tonumber(Gravity)
+               if (Gravity &lt;= 0) then
+                    Gravity = 0.1
+               end
+               CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(0).m_Gravity = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getSliderState('GravitySlider') * Gravity
+          end"
+     OnSaveValue=""
+     OnLoadValue=""/>
+
+     <EditableTextBox name="Gravity" posx="95" posy="46" height="2" width="4" visible="true" active="true"/>
+     <StaticText name="GravityLabel" posx="70" posy="46" width="10" height="2" Literal="Gravity" visible="true" active="true"/>
+
+     <Slider name="MaxVelocidadOndulacionSlider" posx="80" posy="50" height="2" width="15" visible="true" active="true" value="1" buttonH="3" buttonW="3" button_normal="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal1.png"
+     button_over="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_over1.png"
+     button_clicked="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_press1.png"
+     button_deactivated="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal1.png"
+     quad="./Data/GUI/Textures_LaberynthGame/gui_sliderback1.png"
+     OnOverAction=""
+     OnClickedAction=""
+     OnChangeValue="
+          local MaxVelocidadOndulacion = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('MaxVelocidadOndulacion')
+          if (MaxVelocidadOndulacion ~= nil) then
+               MaxVelocidadOndulacion = tonumber(MaxVelocidadOndulacion)
+               if (MaxVelocidadOndulacion &lt;= 0) then
+                    MaxVelocidadOndulacion = 0.1
+               end
+               CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(0).m_MaxVelocidadOndulacion = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getSliderState('MaxVelocidadOndulacionSlider') * MaxVelocidadOndulacion
+          end"
+     OnSaveValue=""
+     OnLoadValue=""/>
+
+     <EditableTextBox name="MaxVelocidadOndulacion" posx="95" posy="50" height="2" width="4" visible="true" active="true"/>
+     <StaticText name="MaxVelocidadOndulacionLabel" posx="70" posy="50" width="10" height="2" Literal="MaxVelocidadOndulacion" visible="true" active="true"/>
+
+     <Slider name="MinVelocidadOndulacionSlider" posx="80" posy="54" height="2" width="15" visible="true" active="true" value="1" buttonH="3" buttonW="3" button_normal="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal1.png"
+     button_over="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_over1.png"
+     button_clicked="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_press1.png"
+     button_deactivated="./Data/GUI/Textures_LaberynthGame/gui_sliderbutton_normal1.png"
+     quad="./Data/GUI/Textures_LaberynthGame/gui_sliderback1.png"
+     OnOverAction=""
+     OnClickedAction=""
+     OnChangeValue="
+          local MinVelocidadOndulacion = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('MinVelocidadOndulacion')
+          if (MinVelocidadOndulacion ~= nil) then
+               MinVelocidadOndulacion = tonumber(MinVelocidadOndulacion)
+               if (MinVelocidadOndulacion &lt;= 0) then
+                    MinVelocidadOndulacion = 0.1
+               end
+               CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(0).m_MinVelocidadOndulacion = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getSliderState('MinVelocidadOndulacionSlider') * MinVelocidadOndulacion
+          end"
+     OnSaveValue=""
+     OnLoadValue=""/>
+
+     <EditableTextBox name="MinVelocidadOndulacion" posx="95" posy="54" height="2" width="4" visible="true" active="true"/>
+     <StaticText name="MinVelocidadOndulacionLabel" posx="70" posy="54" width="10" height="2" Literal="MinVelocidadOndulacion" visible="true" active="true"/>
+
+     <EditableTextBox name="sTexture" posx="70" posy="62" height="2" width="30" visible="true" active="true"/>
+     <StaticText name="sTextureLabel" posx="70" posy="58" width="10" height="2" Literal="Texture" visible="true" active="true"/>
+     <Button name="sTextureButton" posx="90" posy="58" height="2" width="10" visible="true" active="true"
+      texture_normal="./Data/GUI/Textures_LaberynthGame/exitYes_normal.png"
+      texture_over="./Data/GUI/Textures_LaberynthGame/exitYes_over.png"
+      texture_clicked="./Data/GUI/Textures_LaberynthGame/exitYes_press.png"
+      texture_deactivated="./Data/GUI/Textures_LaberynthGame/exitYes_normal.png"
+     OnClickedAction=
+          "local newTexture = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('sTexture')
+          CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(0).m_sTexture = newTexture
+          CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(0):reloadTexture()"
+     OnOverAction=""/>
+</Windows>      

@@ -67,6 +67,59 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
   m_vertex_list = new TPARTICLE_VERTEX_INSTANCE[size_instancing];
 }
 
+CParticleEmitter::CParticleEmitter()
+  : m_CurrentTime(.0f)
+  , m_ExcedentTime(.0f)
+  , m_MinSpeed(1.f)
+  , m_MaxSpeed(1.f)
+  , m_MinParticles(1)
+  , m_MaxParticles(200)
+  , m_MinEmissionTime(1)
+  , m_MaxEmissionTime(1)
+  , m_MinAge(1)
+  , m_MaxAge(2)
+  , m_MinSize(1)
+  , m_MaxSize(1)
+  , m_Color1(colWHITE)
+  , m_Color2(colWHITE)
+  , m_vPos(v3fZERO)
+  , m_vSpawnDir1(v3fZERO)
+  , m_vSpawnDir2(v3fZERO)
+  , m_Gravity(0.f)
+  , m_MaxVelocidadOndulacion(0.f)
+  , m_MinVelocidadOndulacion(0.f)
+  , m_vOndulacion1(v3fZERO)
+  , m_vOndulacion2(v3fZERO)
+  , m_sTexture("") {
+  std::string type = "PLANE";
+  if (type == "ESF")
+    m_Type = EMITTER_ESF;
+  else if (type == "PLANE")
+    m_Type = EMITTER_PLANE;
+  m_Particles = new CRecyclingArray<CParticle>(m_MaxParticles);
+  m_TimeNextParticle = mathUtils::RandomFloatRange(m_MinEmissionTime, m_MaxEmissionTime);
+
+  m_Texture = new CTexture();
+  if (m_sTexture != "")
+    m_Texture->Load(m_sTexture);
+  const uint32 lIdxCount = 6;
+  const uint32 lVtxCount = 4;
+
+  TPARTICLE_VERTEX vertexs[lVtxCount] = {
+    {  -1.f, 15.0f, -1.f, 0, 0 },    // vertex 0
+    {  -1.f, 15.0f,  1.f, 0, 1 },    // vertex 1
+    {   1.f, 15.0f,  1.f, 1, 1 },    // vertex 2
+    {   1.f, 15.0f, -1.f, 1, 0 }     // vertex 3
+  };
+
+  unsigned short int lIdx[lIdxCount] = { 0, 1, 2, 2, 3, 0};
+
+  m_RV = new CInstancingVertexs<TPARTICLE_VERTEX>(GRAPHM, &vertexs, &lIdx, lVtxCount, lIdxCount);
+  ((CInstancingVertexs<TPARTICLE_VERTEX> *)m_RV)->SetInstanceNumber(m_MaxParticles);
+  const uint32 size_instancing = 200;
+  m_vertex_list = new TPARTICLE_VERTEX_INSTANCE[size_instancing];
+}
+
 CParticleEmitter::~CParticleEmitter() {
   m_Particles->DeleteAllElements();
   for (size_t i = 0; i < m_Particles->GetNumFreeElements(); ++i)
@@ -129,6 +182,15 @@ void CParticleEmitter::Update(float dt) {
   if (m_Particles->GetNumUsedElements() > 0) {
     m_Particles->ParticleUpdate(dt);
   }
+}
+
+bool CParticleEmitter::reloadTexture() {
+  if (m_sTexture != "") {
+    CHECKED_DELETE(m_Texture);
+    m_Texture = new CTexture();
+    m_Texture->Load(m_sTexture);
+  }
+  return false;
 }
 
 void CParticleEmitter::PopulateParticle(CParticle *p) {

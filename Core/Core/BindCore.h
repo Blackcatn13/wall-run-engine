@@ -61,9 +61,10 @@ void RegisterCore() {
     .def("set_lights_to_platforms", &CCore::SetLightsToPlatforms)
     .def("getWWSoundManager", &CCore::GetWWSoundManager)
     .def("getGUIManager", &CCore::GetGuiManager)
-	.def("getCollectibleManager", &CCore::GetCollectibleManager)
+    .def("getCollectibleManager", &CCore::GetCollectibleManager)
+    .def("getParticleManager", &CCore::GetParticleManager)
     // .def("get_log_render", &CCore::GetLogRender)
-	.def("exit_game", &CCore::ExitGame)
+    .def("exit_game", &CCore::ExitGame)
     .property("m_CameraController", &CCore::GetCameraController, &CCore::SetCameraController)
     //.property("m_PlatformsMap", &CCore::GetPlatformsMap)
   ];

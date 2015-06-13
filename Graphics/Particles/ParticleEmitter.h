@@ -20,10 +20,34 @@ enum EmitterType {EMITTER_ESF, EMITTER_PLANE};
 
 class CParticleEmitter : public CObject3D {
  public:
+  CParticleEmitter();
   CParticleEmitter(CXMLTreeNode  &node);
   ~CParticleEmitter();
   void Render(CGraphicsManager *RM);
   void Update(float dt);
+  GET_SET(EmitterType, Type);
+  GET_SET(Vect3f, vPos);
+  GET_SET(Vect3f, vSpawnDir1);
+  GET_SET(Vect3f, vSpawnDir2);
+  GET_SET(float, MinSpeed);
+  GET_SET(float, MaxSpeed);
+  GET_SET(int, MinParticles);
+  GET_SET(int, MaxParticles);
+  GET_SET(float, MinEmissionTime);
+  GET_SET(float, MaxEmissionTime);
+  GET_SET(float, MinAge);
+  GET_SET(float, MaxAge);
+  GET_SET(float, MinSize);
+  GET_SET(float, MaxSize);
+  GET_SET(CColor, Color1);
+  GET_SET(CColor, Color2);
+  GET_SET(std::string, sTexture);
+  GET_SET(float, Gravity);
+  GET_SET(float, MaxVelocidadOndulacion);
+  GET_SET(float, MinVelocidadOndulacion);
+  GET_SET(Vect3f, vOndulacion1);
+  GET_SET(Vect3f, vOndulacion2);
+  bool reloadTexture();
  private:
   void PopulateParticle(CParticle *p);
   EmitterType                  m_Type;

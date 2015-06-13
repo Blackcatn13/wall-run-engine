@@ -288,6 +288,14 @@
 		<set_pool_renderable_objects_technique pool="particles_pool"/>
 		<particle_render/>
 		<disable_alpha_blend />
+		<disable_z_test/>
+		<disable_z_write/>
+		<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>
+		
+		<render_gui/>
+		<render_debug_info/>
+		
+		<disable_alpha_blend /> 
 		<end_scene/>
 		<present/>
 	</particle_viewer>

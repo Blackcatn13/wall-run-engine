@@ -36,6 +36,7 @@
 #include "Utils\LuaGlobalsWrapper.h"
 #include "BindSceneElements.h"
 #include "Mesh\MeshInstance.h"
+#include "BindParticles.h"
 
 //Código de la función Alert que se llamará al generarse algún error de LUA
 int Alert(/*IN */lua_State *State) {
@@ -98,7 +99,7 @@ void CScriptManager::RunCode(const std::string &Code) const {
     const char *l_Str = lua_tostring(m_LS, -1);
     //Info("%s",l_Str);
 
-	LOGGER->AddNewLog(ELL_INFORMATION, l_Str);
+    LOGGER->AddNewLog(ELL_INFORMATION, l_Str);
   }
 }
 //Para ejecutar un fichero de código LUA
@@ -447,5 +448,6 @@ void CScriptManager::RegisterLUAFunctions() {
   RegisterColor();
   RegisterSceneElements();
   RegisterManagers();
+  RegisterParticles();
 }
 

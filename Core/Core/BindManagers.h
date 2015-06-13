@@ -289,6 +289,9 @@ void RegisterManagers() {
     .def("get_num_pixelite", &CGUIManager::GetGUIPixeliteNumber)
     .def("set_num_pixelite", &CGUIManager::SetGUIPixeliteNumber)
     .def("get_dt", &CGUIManager::GetElapsedTime)
+    .def("getSliderState", &CGUIManager::GetStateSlider)
+    .def("getEditableTextBox", &CGUIManager::GetEditableTextBox)
+    .def("setEditableTextBox", &CGUIManager::SetEditableTextBox)
   ];
 
   luabind::module(LUA_STATE) [

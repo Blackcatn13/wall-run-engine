@@ -2,4 +2,17 @@
 <Language id="castellano">
 	<literal id="OpenDebug"  font="arial"  color="1 1 1 0.9" value="Pulsa 'Logger' per obtener info de debug"/>
 	<literal id="poly_enabled"  font="gotic"  color="1 1 1 0.9" value="Pulsa 'M' para activar la Poly Emmerald"/>
+	 <literal id="MinSpeed" font="arial" color="0 0 0 0.9" value="Min Speed"/>
+ <literal id="MaxSpeed" font="arial" color="0 0 0 0.9" value="Max Speed"/>
+ <literal id="MinParticles" font="arial" color="0 0 0 0.9" value="Min Particles"/>
+ <literal id="MinEmissionTime" font="arial" color="0 0 0 0.9" value="Min Emission Time"/>
+ <literal id="MaxEmissionTime" font="arial" color="0 0 0 0.9" value="Max Emission Time"/>
+ <literal id="MinAge" font="arial" color="0 0 0 0.9" value="Min Age"/>
+ <literal id="MaxAge" font="arial" color="0 0 0 0.9" value="Max Age"/>
+ <literal id="MinSize" font="arial" color="0 0 0 0.9" value="Min Size"/>
+ <literal id="MaxSize" font="arial" color="0 0 0 0.9" value="Max Size"/>
+ <literal id="Gravity" font="arial" color="0 0 0 0.9" value="Gravity"/>
+ <literal id="MaxVelocidadOndulacion" font="arial" color="0 0 0 0.9" value="Velocidad Ondulacion 1"/>
+ <literal id="MinVelocidadOndulacion" font="arial" color="0 0 0 0.9" value="Velocidad Ondulacion 2"/>
+ <literal id="Texture" font="arial" color="0 0 0 0.9" value="Pulsa Ok para cambiar la textura"/>
 </Language>

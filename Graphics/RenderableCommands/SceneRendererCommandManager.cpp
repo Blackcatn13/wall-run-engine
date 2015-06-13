@@ -51,10 +51,11 @@ CSceneRendererCommandManager::~CSceneRendererCommandManager() {
 
 void CSceneRendererCommandManager::CleanUp() {
   //if(!m_SceneRendererCommands.GetResourcesMap().empty())
-  m_SceneRendererCommands.Destroy();
-  m_SceneRendererCommandsGUI.Destroy();
 #ifdef _PARTICLEVIEWER
   m_SceneRendererCommandsParticle.Destroy();
+#else
+  m_SceneRendererCommands.Destroy();
+  m_SceneRendererCommandsGUI.Destroy();
 #endif
 }
 
@@ -77,14 +78,15 @@ void CSceneRendererCommandManager::Load(const std::string &FileName) {
       CTemplatedVectorMapManager<CSceneRendererCommand> *toInsert;
       m = newFile(count);
       std::string treeName = m.GetName();
+#ifdef _PARTICLEVIEWER
+      if (treeName == "particle_viewer") {
+        toInsert = &m_SceneRendererCommandsParticle;
+      }
+#else
       if (treeName == "normal_render") {
         toInsert = &m_SceneRendererCommands;
       } else if (treeName == "gui_render") {
         toInsert = &m_SceneRendererCommandsGUI;
-      }
-#ifdef _PARTICLEVIEWER
-      else if (treeName == "particle_viewer") {
-        toInsert = &m_SceneRendererCommandsParticle;
       }
 #endif
       else {

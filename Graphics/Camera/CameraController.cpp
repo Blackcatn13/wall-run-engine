@@ -123,10 +123,11 @@ void CCameraController::Update(float dt) {
     else if (ATI->DoAction("scroll", deltaZ))
       ((CThPSCamera *) m_ActiveCamera)->AddZoom(-deltaZ * m_BigZoom * dt);
     float panX, panY;
-    if (ATI->DoAction("PanX", panX))
+    /*if (ATI->DoAction("PanX", panX))
       camObject->SetPosition(camObject->GetPosition() + Vect3f(0, 0, panX) * m_PanSpeed * dt);
     if (ATI->DoAction("PanY", panY))
       camObject->SetPosition(camObject->GetPosition() + Vect3f(panY, 0, 0) * m_PanSpeed * dt);
+    */
     if (ATI->DoAction("RotX", panX))
       camObject->SetYaw(camObject->GetYaw() - panX * dt);
     if (ATI->DoAction("RotY", panY))

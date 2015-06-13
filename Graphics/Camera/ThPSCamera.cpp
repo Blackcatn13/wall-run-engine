@@ -85,11 +85,11 @@ bool CThPSCamera::LoadPathFromFile(std::string filename) {
           // std::string pointId = nodeChild1.GetPszISOProperty("id", "");
           Vect3f pos = nodeChild1.GetVect3fProperty("pos", v3fZERO);
           m_path.push_back(pos);
-		  PathPointSpec pointSpecs;
-		  pointSpecs.canRotate = nodeChild1.GetBoolProperty("can_rotate", false);
-		  pointSpecs.canGoBack = nodeChild1.GetBoolProperty("can_go_back", false);
-		  pointSpecs.followPlayerY = nodeChild1.GetBoolProperty("follow_player_y", false);
-		  m_pathSpecs.push_back(pointSpecs);
+          PathPointSpec pointSpecs;
+          pointSpecs.canRotate = nodeChild1.GetBoolProperty("can_rotate", false);
+          pointSpecs.canGoBack = nodeChild1.GetBoolProperty("can_go_back", false);
+          pointSpecs.followPlayerY = nodeChild1.GetBoolProperty("follow_player_y", false);
+          m_pathSpecs.push_back(pointSpecs);
         }
 
       }
