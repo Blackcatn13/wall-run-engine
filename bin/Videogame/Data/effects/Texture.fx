@@ -6,7 +6,7 @@
 struct PSVertex
 {
     float4 pos : POSITION;
-    float4 normal : NORMAL;
+    //float3 normal : TEXCOORD1;
     float2 uv : TEXCOORD0;
 };
 
@@ -27,16 +27,17 @@ PSVertex VS(PARTICLEIN IN){
 	PSVertex OUT = (PSVertex)0;
 	if (IN.params.y == 1) {
 		OUT.uv = IN.uv;
-		float3 position = IN.pos; //(IN.pos.x * rightVector + IN.pos.z*upVector) * IN.params.x;
+		float3 position = IN.worldPos + (IN.pos.x * rightVector + IN.pos.z*upVector) * IN.params.x;
 		OUT.pos = mul(float4(position,1.0), g_WorldViewProjectionMatrix);
-		OUT.normal = float4(viewVector.xyz, 1);
+		//float3 normal = float3(0,1,0);
+		//OUT.normal ==normalize(mul(normal.xyz,(float3x3)g_WorldMatrix));
 	}
     return OUT;
 }
 
 float4 PS(PSVertex IN) : COLOR
 {
-	return float4(1,0,0,1);
+	//return float4(0,1,0,1);
 	return tex2D(S0LinearClampSampler, IN.uv);
 }
 

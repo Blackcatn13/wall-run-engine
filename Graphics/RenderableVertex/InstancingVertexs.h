@@ -26,7 +26,6 @@ class CInstancingVertexs : public CRenderableVertexs {
  public:
   void AddInstancinguffer(CGraphicsManager *RM, void *InstanceAddress) {
     RM->GetDevice()->CreateVertexBuffer(GetInstanceSize() * m_InstancesNumber, 0, 0, D3DPOOL_MANAGED, &m_InstanceB, 0);
-    //std::cout << "RESULT: " << std::hex << m_ok << std::endl;
     void *instance_data;
     m_InstanceB->Lock(0, GetInstanceSize() * m_InstancesNumber, &instance_data, 0);
     memcpy(instance_data, InstanceAddress, GetInstanceSize() * m_InstancesNumber);
@@ -89,7 +88,7 @@ class CInstancingVertexs : public CRenderableVertexs {
       l_Effect->End();
     }
     l_Device->SetStreamSourceFreq(0, 1);
-    //l_Device->SetStreamSourceFreq(1, 1);
+    l_Device->SetStreamSourceFreq(1, 1);
     return true;
   }
   virtual inline unsigned short GetVertexType() const {

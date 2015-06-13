@@ -70,6 +70,6 @@
 	<technique name="CombineBloomTechnique" effect="CombineBloomEffect" use_world_matrix="true" use_world_view_projection_matrix="true" />
 	<technique name="GaussianBlurTechnique" effect="GaussianBlurEffect" use_world_matrix="true" use_world_view_projection_matrix="true" />
 	
-	<technique name="ParticlesTechnique" effect="TextureEffect"  use_world_matrix="true" use_view_matrix="true" use_inverse_view_matrix="true" use_projection_matrix="true"/>
+	<technique name="ParticlesTechnique" effect="TextureEffect"  use_world_matrix="true" use_view_matrix="true" use_inverse_view_matrix="true" use_projection_matrix="true" use_world_view_projection_matrix="true"/>
 
 </effects>

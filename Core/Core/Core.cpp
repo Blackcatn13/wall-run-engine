@@ -51,6 +51,9 @@ void CCore::Init(HWND handler) {
 #ifdef _DEBUG
   std::cout << "Creating Graphics Manager";
   CTimer t = CTimer(1);
+  CTimer t1 = CTimer(1);
+  t.Update();
+  t1.Update();
 #endif
   m_GraphicsManager = new CGraphicsManager();
   m_GraphicsManager->Init(handler, m_Config.FullScreen, m_Config.Screen_Width, m_Config.Screen_Heigth);
@@ -276,6 +279,8 @@ void CCore::Init(HWND handler) {
 #ifdef _DEBUG
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  t1.Update();
+  std::cout << "Total loading time " << t1.GetElapsedTime() << " s" << std::endl;
 #endif
 
 }
