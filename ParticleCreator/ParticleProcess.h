@@ -7,12 +7,12 @@
 
 class CCameraController;
 class CObject3D;
-class CFPSCamera;
 class CThPSCamera;
 
 class CParticleProcess : public CProcess {
  private:
-
+  CThPSCamera   *m_ThPSCamera;
+  CObject3D     *m_ObjectThPS;
  public:
   CParticleProcess(void);
   ~CParticleProcess(void);

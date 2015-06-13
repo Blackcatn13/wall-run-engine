@@ -7,6 +7,7 @@ function init_level(a)
 	--init_poly_platform("PolyPlatform001","Poly001UserData", Vect3f(2,0.5,2), Vect3f(0,0.4,0), false, 3.0)
 	local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 	coreInstance.m_CameraController:set_active_camera("3DCam");
+	graphics_manager:set_is_GUI_displayed(true);
 	--[[init_platform("MovingPlatform001","Moving001UserData", Vect3f(2,0.5,2), Vect3f(0,0.8,0))
 	init_platform("MovingPlatform002","Moving002UserData", Vect3f(2,0.5,2), Vect3f(0,0.8,0))
 	init_platform("Spikes001","Spikes001UserData", Vect3f(2.5,0.5,2.2), Vect3f(0,0.8,0)) --]]

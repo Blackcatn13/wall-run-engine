@@ -1,15 +1,25 @@
 #include "ParticleProcess.h"
 
+#include "Camera\ThPSCamera.h"
+#include "Camera\CameraController.h"
+#include "Object\Object3D.h"
+#include "Core\Core.h"
+#include "RenderableCommands\SceneRendererCommandManager.h"
+
+
 CParticleProcess::CParticleProcess() {
 
 }
 
 CParticleProcess::~CParticleProcess() {
-
 }
 
 void CParticleProcess::Init() {
-
+  m_ObjectThPS = new CObject3D(Vect3f(1, 1, 1), 0, 0, 0);
+  m_ThPSCamera = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_ObjectThPS, 50);
+  m_ThPSCamera->SetTypeCamera(CCamera::TC_ESF);
+  CAMCONTM->AddNewCamera("ThPSEDF", m_ThPSCamera);
+  CAMCONTM->setActiveCamera(m_ThPSCamera);
 }
 
 void CParticleProcess::DeInit() {
@@ -20,9 +30,9 @@ Vect2i CParticleProcess::RenderDebugInfo(bool render/*, float dt*/) {
 }
 
 void CParticleProcess::Update(float dt) {
-
+  CAMCONTM->Update(dt);
 }
 
 void CParticleProcess::Render() {
-
+  SCENRENDCOMM->Execute(*GRAPHM);
 }

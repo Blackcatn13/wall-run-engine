@@ -419,29 +419,29 @@ void CTestGameplay::Update(float dt) {
     }
   }
   if (ACT2IN->DoAction("TeleportTest1")) {
-	  PLAYC->SetPosition(Vect3f(558.16,14.50,-45.31));
-	  PLAYC->getPhysicController()->SetPosition(Vect3f(558.16,14.50,-45.31));
+    PLAYC->SetPosition(Vect3f(558.16, 14.50, -45.31));
+    PLAYC->getPhysicController()->SetPosition(Vect3f(558.16, 14.50, -45.31));
   }
   if (ACT2IN->DoAction("TeleportTest2")) {
-	  PLAYC->SetPosition(Vect3f(557.25122,14.5,-341.80167));
-	  PLAYC->getPhysicController()->SetPosition(Vect3f(557.25122,14.5,-341.80167));
+    PLAYC->SetPosition(Vect3f(557.25122, 14.5, -341.80167));
+    PLAYC->getPhysicController()->SetPosition(Vect3f(557.25122, 14.5, -341.80167));
   }
   if (ACT2IN->DoAction("TeleportTest3")) {
-	  PLAYC->SetPosition(Vect3f(436.72714,10.5071726,11.082876));
-	  PLAYC->getPhysicController()->SetPosition(Vect3f(436.72714,10.5071726,11.082876));
+    PLAYC->SetPosition(Vect3f(436.72714, 10.5071726, 11.082876));
+    PLAYC->getPhysicController()->SetPosition(Vect3f(436.72714, 10.5071726, 11.082876));
   }
   if (ACT2IN->DoAction("TeleportTest4")) {
-	  PLAYC->SetPosition(Vect3f(532.268,15.5227,-570.7));
-	  PLAYC->getPhysicController()->SetPosition(Vect3f(532.268,15.5227,-570.7));
+    PLAYC->SetPosition(Vect3f(532.268, 15.5227, -570.7));
+    PLAYC->getPhysicController()->SetPosition(Vect3f(532.268, 15.5227, -570.7));
   }
   if (ACT2IN->DoAction("TeleportTest5")) {
-	  PLAYC->SetPosition(Vect3f(-261.73236,-31.524834,-568.39246));
-	  PLAYC->getPhysicController()->SetPosition(Vect3f(-261.73236,-31.524834,-568.39246));
+    PLAYC->SetPosition(Vect3f(-261.73236, -31.524834, -568.39246));
+    PLAYC->getPhysicController()->SetPosition(Vect3f(-261.73236, -31.524834, -568.39246));
   }
 
 
   if (ACT2IN->DoAction("ResetGame")) {
-	char l_Text[256];
+    char l_Text[256];
     _snprintf_s(l_Text, 256, 256, "reset_game(%f)", dt);
     SCRIPTM->RunCode(l_Text);
   }
@@ -476,10 +476,10 @@ void CTestGameplay::Update(float dt) {
    }*/
   if (ACT2IN->DoAction("ToggleFPSCam"))
     m_FPSMode = !m_FPSMode;
-  if (m_FPSMode)
+  /*if (m_FPSMode)
     CAMCONTM->Update("FPS", dt);
   else
-    CAMCONTM->Update(dt);
+    CAMCONTM->Update(dt);*/
 
 
   if (ACT2IN->DoAction("ReloadScriptedController")) {

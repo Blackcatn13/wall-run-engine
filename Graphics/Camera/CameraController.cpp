@@ -66,76 +66,78 @@ void CCameraController::Update(float dt) {
 //-control de pitch.
 //-correr, ajupir-se, ..
 //
+#ifdef _PARTICLEVIEWER
   float deltaX, deltaY, deltaZ;
   CCamera::ETypeCamera camType = m_ActiveCamera->GetTypeCamera();
-  //CObject3D *camObject = m_ActiveCamera->GetObject3D();
-// CActionToInput *ATI = ACT2IN;
-  /*  if (ATI->DoAction("FlyMode"))
-        m_FlyMode = !m_FlyMode;
-    if (camType == CCamera::TC_FPS) {
-        if (ATI->DoAction("yaw", deltaX))
-            camObject->SetYaw(camObject->GetYaw() - deltaX * dt);
-        if (ATI->DoAction("pitch", deltaY))
-            camObject->SetPitch(camObject->GetPitch() - deltaY * dt);
-        float yaw = camObject->GetYaw();
-        Vect3f dir = m_ActiveCamera->GetDirection();
-        Vect3f nor = Vect3f(mathUtils::Cos(yaw + ePI2f), 0, (mathUtils::Sin(yaw + ePI2f)));
-        nor.Normalize();
-        if (!m_FlyMode) {
-            dir.y = 0;
-            nor. y = 0;
-        }
-        if (ATI->DoAction("MoveForward"))
-            camObject->SetPosition(camObject->GetPosition() + dir * m_Speed * dt);
-        if (ATI->DoAction("MoveBack"))
-            camObject->SetPosition(camObject->GetPosition() - dir * m_Speed * dt);
-        if (ATI->DoAction("MoveRigth"))
-            camObject->SetPosition(camObject->GetPosition() - nor * m_Speed * dt);
-        if (ATI->DoAction("MoveLeft"))
-            camObject->SetPosition(camObject->GetPosition() + nor * m_Speed * dt);
+  CObject3D *camObject = m_ActiveCamera->GetObject3D();
+  CActionToInput *ATI = ACT2IN;
+  if (ATI->DoAction("FlyMode"))
+    m_FlyMode = !m_FlyMode;
+  if (camType == CCamera::TC_FPS) {
+    if (ATI->DoAction("yaw", deltaX))
+      camObject->SetYaw(camObject->GetYaw() - deltaX * dt);
+    if (ATI->DoAction("pitch", deltaY))
+      camObject->SetPitch(camObject->GetPitch() - deltaY * dt);
+    float yaw = camObject->GetYaw();
+    Vect3f dir = m_ActiveCamera->GetDirection();
+    Vect3f nor = Vect3f(mathUtils::Cos(yaw + ePI2f), 0, (mathUtils::Sin(yaw + ePI2f)));
+    nor.Normalize();
+    if (!m_FlyMode) {
+      dir.y = 0;
+      nor. y = 0;
     }
-    if (camType == CCamera::TC_THPS) {
-        if (ATI->DoAction("yaw", deltaX))
-            camObject->SetYaw(camObject->GetYaw() - deltaX * dt);
-        if (ATI->DoAction("pitch", deltaY))
-            camObject->SetPitch(camObject->GetPitch() - deltaY * dt);
-        float yaw = camObject->GetYaw();
-        Vect3f dir = m_ActiveCamera->GetDirection();
-        Vect3f nor = Vect3f(mathUtils::Cos(yaw + ePI2f), 0, (mathUtils::Sin(yaw + ePI2f)));
-        nor.Normalize();
-        if (!m_FlyMode) {
-            dir.y = 0;
-            nor. y = 0;
-        }
-        if (ATI->DoAction("MoveForward"))
-            camObject->SetPosition(camObject->GetPosition() + dir * m_Speed * dt);
-        if (ATI->DoAction("MoveBack"))
-            camObject->SetPosition(camObject->GetPosition() - dir * m_Speed * dt);
-        if (ATI->DoAction("MoveRigth"))
-            camObject->SetPosition(camObject->GetPosition() - nor * m_Speed * dt);
-        if (ATI->DoAction("MoveLeft"))
-            camObject->SetPosition(camObject->GetPosition() + nor * m_Speed * dt);
+    if (ATI->DoAction("MoveForward"))
+      camObject->SetPosition(camObject->GetPosition() + dir * m_Speed * dt);
+    if (ATI->DoAction("MoveBack"))
+      camObject->SetPosition(camObject->GetPosition() - dir * m_Speed * dt);
+    if (ATI->DoAction("MoveRigth"))
+      camObject->SetPosition(camObject->GetPosition() - nor * m_Speed * dt);
+    if (ATI->DoAction("MoveLeft"))
+      camObject->SetPosition(camObject->GetPosition() + nor * m_Speed * dt);
+  }
+  if (camType == CCamera::TC_THPS) {
+    if (ATI->DoAction("yaw", deltaX))
+      camObject->SetYaw(camObject->GetYaw() - deltaX * dt);
+    if (ATI->DoAction("pitch", deltaY))
+      camObject->SetPitch(camObject->GetPitch() - deltaY * dt);
+    float yaw = camObject->GetYaw();
+    Vect3f dir = m_ActiveCamera->GetDirection();
+    Vect3f nor = Vect3f(mathUtils::Cos(yaw + ePI2f), 0, (mathUtils::Sin(yaw + ePI2f)));
+    nor.Normalize();
+    if (!m_FlyMode) {
+      dir.y = 0;
+      nor. y = 0;
     }
+    if (ATI->DoAction("MoveForward"))
+      camObject->SetPosition(camObject->GetPosition() + dir * m_Speed * dt);
+    if (ATI->DoAction("MoveBack"))
+      camObject->SetPosition(camObject->GetPosition() - dir * m_Speed * dt);
+    if (ATI->DoAction("MoveRigth"))
+      camObject->SetPosition(camObject->GetPosition() - nor * m_Speed * dt);
+    if (ATI->DoAction("MoveLeft"))
+      camObject->SetPosition(camObject->GetPosition() + nor * m_Speed * dt);
+  }
   if (camType == CCamera::TC_ESF) {
-      if (ATI->DoAction("scrollLittle", deltaZ))
-          ((CThPSCamera *) m_ActiveCamera)->AddZoom(-deltaZ * m_LittleZoom * dt);
-      else if (ATI->DoAction("scroll", deltaZ))
-          ((CThPSCamera *) m_ActiveCamera)->AddZoom(-deltaZ * m_BigZoom * dt);
-      float panX, panY;
-      if (ATI->DoAction("PanX", panX))
-          camObject->SetPosition(camObject->GetPosition() + Vect3f(0, 0, panX) * m_PanSpeed * dt);
-      if (ATI->DoAction("PanY", panY))
-          camObject->SetPosition(camObject->GetPosition() + Vect3f(panY, 0, 0) * m_PanSpeed * dt);
-      if (ATI->DoAction("RotX", panX))
-          camObject->SetYaw(camObject->GetYaw() - panX * dt);
-      if (ATI->DoAction("RotY", panY))
-          camObject->SetPitch(camObject->GetPitch() - panY * dt);
-  }*/
+    if (ATI->DoAction("scrollLittle", deltaZ))
+      ((CThPSCamera *) m_ActiveCamera)->AddZoom(-deltaZ * m_LittleZoom * dt);
+    else if (ATI->DoAction("scroll", deltaZ))
+      ((CThPSCamera *) m_ActiveCamera)->AddZoom(-deltaZ * m_BigZoom * dt);
+    float panX, panY;
+    if (ATI->DoAction("PanX", panX))
+      camObject->SetPosition(camObject->GetPosition() + Vect3f(0, 0, panX) * m_PanSpeed * dt);
+    if (ATI->DoAction("PanY", panY))
+      camObject->SetPosition(camObject->GetPosition() + Vect3f(panY, 0, 0) * m_PanSpeed * dt);
+    if (ATI->DoAction("RotX", panX))
+      camObject->SetYaw(camObject->GetYaw() - panX * dt);
+    if (ATI->DoAction("RotY", panY))
+      camObject->SetPitch(camObject->GetPitch() - panY * dt);
+  }
   //CamUpdates(camType, dt);
   //CCamera::ETypeCamera camType = m_ActiveCamera->GetTypeCamera();
   if (camType == CCamera::TC_CIN) {
     CamUpdates(camType, dt);
   }
+#endif
 }
 
 void CCameraController::CamUpdates(CCamera::ETypeCamera camType, float dt) {

@@ -41,13 +41,8 @@
 
 CSceneRendererCommandManager::CSceneRendererCommandManager()
   : m_FileName(""),
-    m_GUICommand(""),
-	m_AlphaBlendCommand(""),
-	m_BeginCommand(""),
-	m_ClearCommand(""),
-	m_EndCommand(""),
-	m_PresentCommand(""),
-    m_needReload(false) {
+    m_needReload(false),
+    m_CommandNumber(0) {
   CleanUp();
 }
 CSceneRendererCommandManager::~CSceneRendererCommandManager() {
@@ -57,11 +52,12 @@ CSceneRendererCommandManager::~CSceneRendererCommandManager() {
 void CSceneRendererCommandManager::CleanUp() {
   //if(!m_SceneRendererCommands.GetResourcesMap().empty())
   m_SceneRendererCommands.Destroy();
+  m_SceneRendererCommandsGUI.Destroy();
 }
 
 std::string CSceneRendererCommandManager::GetNextName() {
   std::ostringstream ss;
-  ss << m_SceneRendererCommands.GetResourcesVector().size();
+  ss << m_CommandNumber++;
   std::string l_Name = "SCeneRenderCommand_" + ss.str();
   return l_Name;
 }
@@ -72,148 +68,155 @@ void CSceneRendererCommandManager::Load(const std::string &FileName) {
   if (!newFile.LoadFile(FileName.c_str())) {
     printf("ERROR loading the file.");
   } else {
-    CXMLTreeNode  m = newFile["scene_renderer_commands"];
-    if (m.Exists()) {
-      int count = m.GetNumChildren();
-      for (int i = 0; i < count; ++i) {
-        std::string l_Name = m(i).GetPszProperty("name", "", false);
-        if (l_Name.empty())
-          l_Name = GetNextName();
-        std::string name = m(i).GetName();
-        if (name == "begin_scene") {
-          CBeginRenderSceneRendererCommand *l_Command = new CBeginRenderSceneRendererCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-		  m_BeginCommand = l_Name;
-        }
-        if (name == "clear_scene") {
-          CClearSceneRendererCommand *l_Command = new CClearSceneRendererCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-		  m_ClearCommand = l_Name;
-        }
-        if (name == "capture_frame_buffer") {
-          CCaptureFrameBufferSceneRendererCommand *l_Command = new CCaptureFrameBufferSceneRendererCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-        }
-        if (name == "render_deferred_shading") {
-          CDeferredShadingSceneRendererCommand *l_Command = new CDeferredShadingSceneRendererCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-        }
-        if (name == "disable_z_write") {
-          CDisableZWriteSceneRendererCommand *l_Command = new CDisableZWriteSceneRendererCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-        }
-        if (name == "render_draw_quad") {
-          CDrawQuadRendererCommand *l_Command = new CDrawQuadRendererCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-        }
-        if (name == "gaussian_blur") {
-          CGaussianBlueSceneRendererCommand *l_Command = new CGaussianBlueSceneRendererCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-        }
-        if (name == "enable_z_write") {
-          CEnableZWriteSceneRendererCommand *l_Command = new CEnableZWriteSceneRendererCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-        }
-        if (name == "enable_alpha_blend") {
-          CEnableAlphaBlendSceneRendererCommand *l_Command = new CEnableAlphaBlendSceneRendererCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-		  m_AlphaBlendCommand = l_Name;
-        }
-        if (name == "disable_alpha_blend") {
-          CDisableAlphaBlendSceneRendererCommand *l_Command = new CDisableAlphaBlendSceneRendererCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-        }
-        if (name == "end_scene") {
-          CEndRenderSceneRendererCommand *l_Command = new CEndRenderSceneRendererCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-		  m_EndCommand = l_Name;
-        }
-        if (name == "generate_shadow_maps") {
-          CGenerateShadowMapsSceneRendererCommand *l_Command = new CGenerateShadowMapsSceneRendererCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-        }
-        if (name == "present") {
-          CPresentSceneRendererCommand *l_Command = new CPresentSceneRendererCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-		  m_PresentCommand = l_Name;
-        }
-        if (name == "set_pool_renderable_objects_technique") {
-          CRenderableObjectTechniquesSceneRendererCommand *l_Command = new CRenderableObjectTechniquesSceneRendererCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-        }
-        if (name == "render_debug_lights") {
-          CRenderDebugLightsSceneRenderCommand *l_Command = new CRenderDebugLightsSceneRenderCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-        }
-        if (name == "render_debug_scene") {
-          CRenderDebugSceneSceneRendererCommand *l_Command = new CRenderDebugSceneSceneRendererCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-        }
-        if (name == "set_texture_in_stage") {
-          CSetTextureInSpecificStageCommand *l_Command = new CSetTextureInSpecificStageCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-        }
-        //if (name == "render_debug_shadow_maps") {
-        //	CRenderDebugShadowMapsSceneRendererCommand *l_Command = new CRenderDebugShadowMapsSceneRendererCommand(m(i));
-        //	m_SceneRendererCommands.AddResource(l_Name,l_Command);
-        //}
-        //if (name == "render_gui") {
-        //	CRenderGUISceneRendererCommand *l_Command = new CRenderGUISceneRendererCommand(m(i));
-        //	m_SceneRendererCommands.AddResource(l_Name,l_Command);
-        //}
-        if (name == "render_scene") {
-          CRenderSceneSceneRendererCommand *l_Command = new CRenderSceneSceneRendererCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-        }
-        if (name == "set_matrices") {
-          CSetMatricesSceneRendererCommand *l_Command = new CSetMatricesSceneRendererCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-        }
-        if (name == "set_axis") {
-          CSetAxisRendererCommand *l_Command = new CSetAxisRendererCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-        }
-        if (name == "set_render_target") {
-          CSetRenderTargetSceneRendererCommand *l_Command = new CSetRenderTargetSceneRendererCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-        }
-        ///*if (name == "texture") {
-        //	CStagedTexturedRendererCommand *l_Command = new CStagedTexturedRendererCommand(m(i));
-        //	m_SceneRendererCommands.AddResource(l_Name,l_Command);
-        //}*/
-        if (name == "unset_render_target") {
-          std::string l_CommandName = m(i).GetPszProperty("render_target", "");
-          CSetRenderTargetSceneRendererCommand *l_UnsetRenderTarget = (CSetRenderTargetSceneRendererCommand *)m_SceneRendererCommands.GetResourcesMap().find(l_CommandName)->second.m_Value;
-          //	GetSetRenderTargetSceneRendererCommand(l_UnsetRenderTarget);
-          if (l_UnsetRenderTarget != NULL) {
-            CUnsetRenderTargetSceneRendererCommand *l_Command = new CUnsetRenderTargetSceneRendererCommand(l_UnsetRenderTarget, m(i));
-            m_SceneRendererCommands.AddResource(l_Name, l_Command);
+    int scene_commands_count = newFile.GetNumChildren();
+    for (int count = 0; count < scene_commands_count; count++) {
+      CXMLTreeNode m;
+      CTemplatedVectorMapManager<CSceneRendererCommand> *toInsert;
+      m = newFile(count);
+      std::string treeName = m.GetName();
+      if (treeName == "normal_render") {
+        toInsert = &m_SceneRendererCommands;
+      } else if (treeName == "gui_render") {
+        toInsert = &m_SceneRendererCommandsGUI;
+      }
+      //}
+      //CXMLTreeNode  m = newFile["scene_renderer_commands"];
+      if (m.Exists()) {
+        int count = m.GetNumChildren();
+        for (int i = 0; i < count; ++i) {
+          std::string l_Name = m(i).GetPszProperty("name", "", false);
+          if (l_Name.empty())
+            l_Name = GetNextName();
+          std::string name = m(i).GetName();
+          if (name == "begin_scene") {
+            CBeginRenderSceneRendererCommand *l_Command = new CBeginRenderSceneRendererCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
           }
-        }
-        if (name == "enable_z_test") {
-          CEnableZTestSceneRendererCommand *l_Command = new CEnableZTestSceneRendererCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-        }
-        if (name == "disable_z_test") {
-          CDisableZTestSceneRendererCommand *l_Command = new CDisableZTestSceneRendererCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-        }
-        if (name == "render_debug_info") {
-          CRenderDebugInfoSceneRendererCommand *l_Command = new CRenderDebugInfoSceneRendererCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-        }
-        if (name == "render_gui") {
-          CRenderGUISceneRendererCommand *l_Command = new CRenderGUISceneRendererCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-		  m_GUICommand = l_Name;
-        }
-        if (name == "particle_render") {
-          CParticleRendererCommand *l_Command = new CParticleRendererCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
-        }
-        if (name == "check_active_poly") {
-          CCheckEnabledPolyRenderCommand *l_Command = new CCheckEnabledPolyRenderCommand(m(i));
-          m_SceneRendererCommands.AddResource(l_Name, l_Command);
+          if (name == "clear_scene") {
+            CClearSceneRendererCommand *l_Command = new CClearSceneRendererCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          if (name == "capture_frame_buffer") {
+            CCaptureFrameBufferSceneRendererCommand *l_Command = new CCaptureFrameBufferSceneRendererCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          if (name == "render_deferred_shading") {
+            CDeferredShadingSceneRendererCommand *l_Command = new CDeferredShadingSceneRendererCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          if (name == "disable_z_write") {
+            CDisableZWriteSceneRendererCommand *l_Command = new CDisableZWriteSceneRendererCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          if (name == "render_draw_quad") {
+            CDrawQuadRendererCommand *l_Command = new CDrawQuadRendererCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          if (name == "gaussian_blur") {
+            CGaussianBlueSceneRendererCommand *l_Command = new CGaussianBlueSceneRendererCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          if (name == "enable_z_write") {
+            CEnableZWriteSceneRendererCommand *l_Command = new CEnableZWriteSceneRendererCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          if (name == "enable_alpha_blend") {
+            CEnableAlphaBlendSceneRendererCommand *l_Command = new CEnableAlphaBlendSceneRendererCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          if (name == "disable_alpha_blend") {
+            CDisableAlphaBlendSceneRendererCommand *l_Command = new CDisableAlphaBlendSceneRendererCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          if (name == "end_scene") {
+            CEndRenderSceneRendererCommand *l_Command = new CEndRenderSceneRendererCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          if (name == "generate_shadow_maps") {
+            CGenerateShadowMapsSceneRendererCommand *l_Command = new CGenerateShadowMapsSceneRendererCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          if (name == "present") {
+            CPresentSceneRendererCommand *l_Command = new CPresentSceneRendererCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          if (name == "set_pool_renderable_objects_technique") {
+            CRenderableObjectTechniquesSceneRendererCommand *l_Command = new CRenderableObjectTechniquesSceneRendererCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          if (name == "render_debug_lights") {
+            CRenderDebugLightsSceneRenderCommand *l_Command = new CRenderDebugLightsSceneRenderCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          if (name == "render_debug_scene") {
+            CRenderDebugSceneSceneRendererCommand *l_Command = new CRenderDebugSceneSceneRendererCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          if (name == "set_texture_in_stage") {
+            CSetTextureInSpecificStageCommand *l_Command = new CSetTextureInSpecificStageCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          //if (name == "render_debug_shadow_maps") {
+          //	CRenderDebugShadowMapsSceneRendererCommand *l_Command = new CRenderDebugShadowMapsSceneRendererCommand(m(i));
+          //	toInsert->AddResource(l_Name,l_Command);
+          //}
+          //if (name == "render_gui") {
+          //	CRenderGUISceneRendererCommand *l_Command = new CRenderGUISceneRendererCommand(m(i));
+          //	toInsert->AddResource(l_Name,l_Command);
+          //}
+          if (name == "render_scene") {
+            CRenderSceneSceneRendererCommand *l_Command = new CRenderSceneSceneRendererCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          if (name == "set_matrices") {
+            CSetMatricesSceneRendererCommand *l_Command = new CSetMatricesSceneRendererCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          if (name == "set_axis") {
+            CSetAxisRendererCommand *l_Command = new CSetAxisRendererCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          if (name == "set_render_target") {
+            CSetRenderTargetSceneRendererCommand *l_Command = new CSetRenderTargetSceneRendererCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          ///*if (name == "texture") {
+          //	CStagedTexturedRendererCommand *l_Command = new CStagedTexturedRendererCommand(m(i));
+          //	toInsert->AddResource(l_Name,l_Command);
+          //}*/
+          if (name == "unset_render_target") {
+            std::string l_CommandName = m(i).GetPszProperty("render_target", "");
+            CSetRenderTargetSceneRendererCommand *l_UnsetRenderTarget = (CSetRenderTargetSceneRendererCommand *)toInsert->GetResourcesMap().find(l_CommandName)->second.m_Value;
+            //	GetSetRenderTargetSceneRendererCommand(l_UnsetRenderTarget);
+            if (l_UnsetRenderTarget != NULL) {
+              CUnsetRenderTargetSceneRendererCommand *l_Command = new CUnsetRenderTargetSceneRendererCommand(l_UnsetRenderTarget, m(i));
+              toInsert->AddResource(l_Name, l_Command);
+            }
+          }
+          if (name == "enable_z_test") {
+            CEnableZTestSceneRendererCommand *l_Command = new CEnableZTestSceneRendererCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          if (name == "disable_z_test") {
+            CDisableZTestSceneRendererCommand *l_Command = new CDisableZTestSceneRendererCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          if (name == "render_debug_info") {
+            CRenderDebugInfoSceneRendererCommand *l_Command = new CRenderDebugInfoSceneRendererCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          if (name == "render_gui") {
+            CRenderGUISceneRendererCommand *l_Command = new CRenderGUISceneRendererCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          if (name == "particle_render") {
+            CParticleRendererCommand *l_Command = new CParticleRendererCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          if (name == "check_active_poly") {
+            CCheckEnabledPolyRenderCommand *l_Command = new CCheckEnabledPolyRenderCommand(m(i));
+            toInsert->AddResource(l_Name, l_Command);
+          }
         }
       }
     }
@@ -227,32 +230,25 @@ void CSceneRendererCommandManager::Load(const std::string &FileName) {
 //    }
 //}
 void CSceneRendererCommandManager::Execute(CGraphicsManager &RM) {
-	if (!RM.GetIsGUIDisplayed())  {
-		for (size_t i = 0; i < m_SceneRendererCommands.GetResourcesVector().size(); ++i) {
-			if (m_needReload) {
-				m_SceneRendererCommands.GetResourcesVector().at(i)->Reload();
-			}
-			m_SceneRendererCommands.GetResourcesVector().at(i)->Execute(RM);
-		}
-		if (m_needReload)
-			m_needReload = false;
-	}else{
-		if (m_needReload) {
-			m_SceneRendererCommands.GetResource(m_ClearCommand)->Reload();
-			m_SceneRendererCommands.GetResource(m_BeginCommand)->Reload();
-			m_SceneRendererCommands.GetResource(m_AlphaBlendCommand)->Reload();
-			m_SceneRendererCommands.GetResource(m_EndCommand)->Reload();
-			m_SceneRendererCommands.GetResource(m_PresentCommand)->Reload();
-			m_SceneRendererCommands.GetResource(m_GUICommand)->Reload();
-			m_needReload = false;
-		}
-		m_SceneRendererCommands.GetResource(m_ClearCommand)->Execute(RM);
-		m_SceneRendererCommands.GetResource(m_BeginCommand)->Execute(RM);
-		m_SceneRendererCommands.GetResource(m_AlphaBlendCommand)->Execute(RM);
-		m_SceneRendererCommands.GetResource(m_GUICommand)->Execute(RM);
-		m_SceneRendererCommands.GetResource(m_EndCommand)->Execute(RM);
-		m_SceneRendererCommands.GetResource(m_PresentCommand)->Execute(RM);
-	}
+  if (!RM.GetIsGUIDisplayed())  {
+    for (size_t i = 0; i < m_SceneRendererCommands.GetResourcesVector().size(); ++i) {
+      if (m_needReload) {
+        m_SceneRendererCommands.GetResourcesVector().at(i)->Reload();
+      }
+      m_SceneRendererCommands.GetResourcesVector().at(i)->Execute(RM);
+    }
+    if (m_needReload)
+      m_needReload = false;
+  } else {
+    for (size_t i = 0; i < m_SceneRendererCommandsGUI.GetResourcesVector().size(); ++i) {
+      if (m_needReload) {
+        m_SceneRendererCommandsGUI.GetResourcesVector().at(i)->Reload();
+      }
+      m_SceneRendererCommandsGUI.GetResourcesVector().at(i)->Execute(RM);
+    }
+    if (m_needReload)
+      m_needReload = false;
+  }
 }
 
 void CSceneRendererCommandManager::Reload() {
