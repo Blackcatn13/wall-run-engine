@@ -91,7 +91,7 @@
 		
 		
 		<!--<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>-->
-		<set_pool_renderable_objects_technique pool="dummy_manager"/>
+		<set_pool_renderable_objects_technique pool="particles_pool"/>
 		<particle_render/>
 		<disable_alpha_blend />
 		
@@ -277,4 +277,15 @@
 		<end_scene/>
 		<present/>
 	</gui_render>
+
+	<particle_viewer>
+		<clear_scene color="true" depth="true" stencil="true"/>
+		<begin_scene/>
+		<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>
+		<set_pool_renderable_objects_technique pool="particles_pool"/>
+		<particle_render/>
+		<disable_alpha_blend />
+		<end_scene/>
+		<present/>
+	</particle_viewer>
 </scene_renderer_commands>

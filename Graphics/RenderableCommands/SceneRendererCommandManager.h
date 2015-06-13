@@ -15,6 +15,9 @@ class CSceneRendererCommandManager {
  private:
   CTemplatedVectorMapManager<CSceneRendererCommand> m_SceneRendererCommands;
   CTemplatedVectorMapManager<CSceneRendererCommand> m_SceneRendererCommandsGUI;
+#ifdef _PARTICLEVIEWER
+  CTemplatedVectorMapManager<CSceneRendererCommand> m_SceneRendererCommandsParticle;
+#endif
   std::string m_FileName;
   void CleanUp();
   std::string GetNextName();

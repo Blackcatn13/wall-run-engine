@@ -31,7 +31,7 @@
   <Lua LuaFile=""/>
   <!--<LoadLevel LuaInitLevelFunc="init_level" LuaInitCamerasFunc="" />-->
   <Enemies enemiesXML=""/>
-  <Particles particleXML="./Data/Particle.xml"/>
+  <Particles particlesXML="./Data/particles.xml"/>
   <FSM FsmXML=""/>
   <Effect EffectXML="./Data/effects.xml"/>
   <Avi aviXML=""/>
