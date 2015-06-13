@@ -42,18 +42,19 @@ void CAnimatedModelManager::Load(const std::string &Filename) {
   CXMLTreeNode newFile;
   if (!newFile.LoadFile(Filename.c_str())) {
     printf("ERROR loading the file.");
-  }
-  CXMLTreeNode  m = newFile["animated_models"];
-  if (m.Exists()) {
-    int count = m.GetNumChildren();
-    for (int i = 0; i < count; ++i) {
-      CXMLTreeNode nodeChild = m(i);
-      if (std::string("animated_model") == nodeChild.GetName()) {
-        std::string name = nodeChild.GetPszISOProperty("name", "");
-        std::string path = nodeChild.GetPszISOProperty("path", "");
-        CAnimatedCoreModel *animModel = new CAnimatedCoreModel();
-        animModel->Load(path);
-        AddResource(name, animModel);
+  } else {
+    CXMLTreeNode  m = newFile["animated_models"];
+    if (m.Exists()) {
+      int count = m.GetNumChildren();
+      for (int i = 0; i < count; ++i) {
+        CXMLTreeNode nodeChild = m(i);
+        if (std::string("animated_model") == nodeChild.GetName()) {
+          std::string name = nodeChild.GetPszISOProperty("name", "");
+          std::string path = nodeChild.GetPszISOProperty("path", "");
+          CAnimatedCoreModel *animModel = new CAnimatedCoreModel();
+          animModel->Load(path);
+          AddResource(name, animModel);
+        }
       }
     }
   }

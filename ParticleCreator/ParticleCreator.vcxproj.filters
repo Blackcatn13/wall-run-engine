@@ -5,8 +5,19 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="ParticleProcess">
+      <UniqueIdentifier>{3e8e9539-bcb8-4515-a407-a8a4d198847e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="particleCreator.cpp" />
+    <ClCompile Include="ParticleProcess.cpp">
+      <Filter>ParticleProcess</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ParticleProcess.h">
+      <Filter>ParticleProcess</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

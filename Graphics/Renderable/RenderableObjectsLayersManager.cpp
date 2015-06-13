@@ -99,57 +99,58 @@ void CRenderableObjectsLayersManager::Load(const std::string &FileName) {
   CXMLTreeNode newFile;
   if (!newFile.LoadFile(FileName.c_str())) {
     printf("ERROR loading the file.");
-  }
-  CXMLTreeNode  m = newFile["renderable_objects"];
-  CXMLTreeNode  m2 = newFile["lua_scripts"];
-  if (m.Exists()) {
-    m_FileName = FileName;
-    int count = m.GetNumChildren();
-    for (int i = 0; i < count; ++i) {
-      CXMLTreeNode nodeChild = m(i);
-      std::string name = nodeChild.GetName();
-      if (name == "layer") {
-        std::string layerName = nodeChild.GetPszISOProperty("name", "");
-        bool isDefault = nodeChild.GetBoolProperty("default", false, false);
-        CRenderableObjectsManager *l_managerInstance = new CRenderableObjectsManager();
-        //CMeshInstance* l_meshInstance = new CMeshInstance(nodeChild);
-        AddResource(layerName, l_managerInstance);
-        if (isDefault) {
-          m_DefaultLayerName = layerName;
-          m_DefaultRenderableObjectManager = l_managerInstance;
+  } else {
+    CXMLTreeNode  m = newFile["renderable_objects"];
+    CXMLTreeNode  m2 = newFile["lua_scripts"];
+    if (m.Exists()) {
+      m_FileName = FileName;
+      int count = m.GetNumChildren();
+      for (int i = 0; i < count; ++i) {
+        CXMLTreeNode nodeChild = m(i);
+        std::string name = nodeChild.GetName();
+        if (name == "layer") {
+          std::string layerName = nodeChild.GetPszISOProperty("name", "");
+          bool isDefault = nodeChild.GetBoolProperty("default", false, false);
+          CRenderableObjectsManager *l_managerInstance = new CRenderableObjectsManager();
+          //CMeshInstance* l_meshInstance = new CMeshInstance(nodeChild);
+          AddResource(layerName, l_managerInstance);
+          if (isDefault) {
+            m_DefaultLayerName = layerName;
+            m_DefaultRenderableObjectManager = l_managerInstance;
+          }
+        }
+      }
+      for (int i = 0; i < count; ++i) {
+        CXMLTreeNode nodeChild = m(i);
+        std::string name = nodeChild.GetName();
+        //if ((name == "mesh_instance") || (name == "renderable_script")){
+        if (name == "mesh_instance" || name == "animated_model" || name == "platform" || name == "switch_instance" || name == "door") {
+          (GetRenderableObjectManager(nodeChild))->Load(nodeChild);
+          /*std::string layerAssigned = nodeChild.GetPszISOProperty("layer", "box1");
+          if (layerAssigned == "box1")
+          {
+            m_DefaultRenderableObjectManager->Load(nodeChild);
+          }
+          else
+          {
+            //FIND layerAssigned, load nodeChild
+            CRenderableObjectsManager* l_managerInstance = GetResource(layerAssigned);
+            if (l_managerInstance != NULL)
+            {
+              l_managerInstance->Load(nodeChild);
+            }
+          }*/
         }
       }
     }
-    for (int i = 0; i < count; ++i) {
-      CXMLTreeNode nodeChild = m(i);
-      std::string name = nodeChild.GetName();
-      //if ((name == "mesh_instance") || (name == "renderable_script")){
-      if (name == "mesh_instance" || name == "animated_model" || name == "platform" || name == "switch_instance" || name == "door") {
-        (GetRenderableObjectManager(nodeChild))->Load(nodeChild);
-        /*std::string layerAssigned = nodeChild.GetPszISOProperty("layer", "box1");
-        if (layerAssigned == "box1")
-        {
-        	m_DefaultRenderableObjectManager->Load(nodeChild);
+    if (m2.Exists()) {
+      m_FileName2 = FileName;
+      int count = m2.GetNumChildren();
+      for (int i = 0; i < count; ++i) {
+        std::string name = m2(i).GetName();
+        if (name == "renderable_script") {
+          GetDefaultRenderableObjectManager()->Load(m2(i));
         }
-        else
-        {
-        	//FIND layerAssigned, load nodeChild
-        	CRenderableObjectsManager* l_managerInstance = GetResource(layerAssigned);
-        	if (l_managerInstance != NULL)
-        	{
-        		l_managerInstance->Load(nodeChild);
-        	}
-        }*/
-      }
-    }
-  }
-  if (m2.Exists()) {
-    m_FileName2 = FileName;
-    int count = m2.GetNumChildren();
-    for (int i = 0; i < count; ++i) {
-      std::string name = m2(i).GetName();
-      if (name == "renderable_script") {
-        GetDefaultRenderableObjectManager()->Load(m2(i));
       }
     }
   }

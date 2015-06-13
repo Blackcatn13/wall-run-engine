@@ -39,13 +39,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)\bin\$(ProjectName)\</OutDir>
+    <OutDir>$(SolutionDir)\bin\Videogame\</OutDir>
     <IntDir>$(SolutionDir)\bin\Intermediate\$(ProjectName)$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)_d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)\bin\$(ProjectName)\</OutDir>
+    <OutDir>$(SolutionDir)\bin\Videogame\</OutDir>
     <IntDir>$(SolutionDir)\bin\Intermediate\$(ProjectName)$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
@@ -87,6 +87,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="particleCreator.cpp" />
+    <ClCompile Include="ParticleProcess.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ParticleProcess.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

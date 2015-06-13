@@ -14,26 +14,26 @@
   </Languages>
   <Fonts fontsXML="./Data/fonts/fonts.xml"/>
   <Actions actionsXML="./Data/Actions.xml"/>
-  <GUI initGuiXML="./Data/GUI/initGui_laberynth.xml"/>
-  <Sound soundXML="./Data/Sounds/LaberynthSounds.xml"/>
-  <Meshes meshesXML="./Data/level4/static_meshes.xml"/>
-  <Renderable renderXML="./Data/level4/renderable_objects.xml"/> 
+  <GUI initGuiXML=""/>
+  <Sound soundXML=""/>
+  <Meshes meshesXML=""/>
+  <Renderable renderXML=""/> 
   <Lights lightsXML="./Data/level4/lights.xml"/> 
-  <Triggers TriggersFile="./Data/level4/triggers.xml" />
-  <Puzzles PuzzlesFile="./Data/level4/puzzles.xml" />
-  <Collectibles CollectiblesFile="./Data/level4/collectibles.xml" />
-  <LevelPhisicsFile PhisicsFile="./Data/level4/LevelCooking.xml" />
-  <AnimatedModels modelsXML="./Data/animated_models.xml"/>
+  <Triggers TriggersFile="" />
+  <Puzzles PuzzlesFile="" />
+  <Collectibles CollectiblesFile="" />
+  <LevelPhisicsFile PhisicsFile="" />
+  <AnimatedModels modelsXML=""/>
   <RendererCommands rendererCommandsXML="./Data/scene_render_commands.xml"/>
   <PoolRenderableObjects poolRenderableObjects="./Data/pool_renderable_objects.xml"/>
   <Cameras CamerasLvl="No"/>
   <Cinematic CinematicLvl="No"/>
-  <Lua LuaFile="./Data/lua_actions.xml"/>
-  <LoadLevel LuaInitLevelFunc="init_level" LuaInitCamerasFunc="" />
-  <Enemies enemiesXML="./Data/enemies.xml"/>
+  <Lua LuaFile=""/>
+  <!--<LoadLevel LuaInitLevelFunc="init_level" LuaInitCamerasFunc="" />-->
+
   <Effect EffectXML="./Data/effects.xml"/> 
   <Avi aviXML=""/>
-  <PhysX initPhysX="true"/>
+  <PhysX initPhysX="false"/>
   <ComputerVision initComputerVision="false"/>
   <Script init="_core       = getCore();
                 _inputM     = getCore():getInput();
