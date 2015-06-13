@@ -281,6 +281,9 @@
 	<particle_viewer>
 		<clear_scene color="true" depth="true" stencil="true"/>
 		<begin_scene/>
+		<set_matrices/>
+		<enable_z_write/>
+		<enable_z_test/>
 		<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>
 		<set_pool_renderable_objects_technique pool="particles_pool"/>
 		<particle_render/>

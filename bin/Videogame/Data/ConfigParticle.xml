@@ -17,7 +17,7 @@
   <GUI initGuiXML=""/>
   <Sound soundXML=""/>
   <Meshes meshesXML=""/>
-  <Renderable renderXML=""/> 
+  <Renderable renderXML=""/>
   <Lights lightsXML="./Data/level4/lights.xml"/> 
   <Triggers TriggersFile="" />
   <Puzzles PuzzlesFile="" />
@@ -31,7 +31,7 @@
   <Lua LuaFile=""/>
   <!--<LoadLevel LuaInitLevelFunc="init_level" LuaInitCamerasFunc="" />-->
   <Enemies enemiesXML=""/>
-  <Particles particlesXML="./Data/particles.xml"/>
+  <Particles particlesXML="./Data/particles1.xml"/>
   <FSM FsmXML=""/>
   <Effect EffectXML="./Data/effects.xml"/>
   <Avi aviXML=""/>

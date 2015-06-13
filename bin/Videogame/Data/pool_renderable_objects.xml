@@ -5,7 +5,7 @@
 		<default_technique vertex_type="31" technique="NormalMapTechnique"/>
 		<default_technique vertex_type="51" technique="LightMapTechnique"/>
 		<default_technique vertex_type="63" technique="LightMapTechnique"/>
-		<default_technique vertex_type="67" technique=""/>
+		<default_technique vertex_type="67" technique="LightMapTechnique"/>
 		<default_technique vertex_type="415" technique=""/>
 		<default_technique vertex_type="531" technique="CubeMapTechnique"/>
 		<default_technique vertex_type="1087" technique=""/>		
