@@ -28,6 +28,12 @@
     <ClCompile Include="Core_Utils\LogRender.cpp" />
     <ClCompile Include="Core_Utils\MemLeaks.cpp" />
     <ClCompile Include="Core_Utils\Timer.cpp" />
+    <ClCompile Include="Enemies\BossEnemy.cpp" />
+    <ClCompile Include="Enemies\EasyEnemy.cpp" />
+    <ClCompile Include="Enemies\Enemy.cpp" />
+    <ClCompile Include="Enemies\EnemyManager.cpp" />
+    <ClCompile Include="Enemies\PatrolEnemy.cpp" />
+    <ClCompile Include="Enemies\RunnerEnemy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AI\AIController.h" />
@@ -63,6 +69,12 @@
     <ClInclude Include="Core_Utils\LogRender.h" />
     <ClInclude Include="Core_Utils\MemLeaks.h" />
     <ClInclude Include="Core_Utils\Timer.h" />
+    <ClInclude Include="Enemies\BossEnemy.h" />
+    <ClInclude Include="Enemies\EasyEnemy.h" />
+    <ClInclude Include="Enemies\Enemy.h" />
+    <ClInclude Include="Enemies\EnemyManager.h" />
+    <ClInclude Include="Enemies\PatrolEnemy.h" />
+    <ClInclude Include="Enemies\RunnerEnemy.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{ABD8DB84-38BC-4C77-AFA9-EF6EC35F16FA}</ProjectGuid>

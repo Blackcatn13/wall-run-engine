@@ -32,6 +32,9 @@
     <Filter Include="AI">
       <UniqueIdentifier>{c41f54e0-a765-4eea-9275-a2cffa18cd51}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Enemies">
+      <UniqueIdentifier>{812eb69c-8426-4031-86b4-87b2780b72d0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Engine.cpp">
@@ -84,6 +87,24 @@
     </ClCompile>
     <ClCompile Include="AI\FSMInstance.cpp">
       <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemies\BossEnemy.cpp">
+      <Filter>Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemies\EasyEnemy.cpp">
+      <Filter>Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemies\Enemy.cpp">
+      <Filter>Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemies\EnemyManager.cpp">
+      <Filter>Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemies\PatrolEnemy.cpp">
+      <Filter>Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemies\RunnerEnemy.cpp">
+      <Filter>Enemies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -185,6 +206,24 @@
     </ClInclude>
     <ClInclude Include="AI\FSMInstance.h">
       <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemies\BossEnemy.h">
+      <Filter>Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemies\EasyEnemy.h">
+      <Filter>Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemies\Enemy.h">
+      <Filter>Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemies\EnemyManager.h">
+      <Filter>Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemies\PatrolEnemy.h">
+      <Filter>Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemies\RunnerEnemy.h">
+      <Filter>Enemies</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

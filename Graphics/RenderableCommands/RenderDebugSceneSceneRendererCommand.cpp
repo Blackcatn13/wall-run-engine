@@ -9,7 +9,7 @@
 #include "ActionToInput.h"
 #include "TriggerManager\Trigger.h"
 #include "TriggerManager\TriggerManager.h"
-#include "EnemyManager.h"
+#include "Enemies\EnemyManager.h"
 #include "Core\PlayerController.h"
 #include "Core\Process.h"
 

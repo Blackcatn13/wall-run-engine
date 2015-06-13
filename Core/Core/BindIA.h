@@ -19,8 +19,8 @@
 //#include "NxActor.h"
 //#include "NxPhysicsSDK.h"
 #include "AI\AIController.h"
-#include "Enemy.h"
-#include "EasyEnemy.h"
+#include "Enemies\Enemy.h"
+#include "Enemies\EasyEnemy.h"
 #include "AI\Puzzle.h"
 #include "AI\FSMInstance.h"
 #include "AI\FSMManager.h"
@@ -91,7 +91,7 @@ void RegisterAI() {
     .property("m_isAlive", &CEnemy::getisAlive,  &CEnemy::setisAlive )
     .property("m_Life", &CEnemy::getLife,  &CEnemy::setLife)
     .property("m_AttackPlayerDistance", &CEnemy::getAttackPlayerDistance, &CEnemy::setAttackPlayerDistance )
-	.property("m_Zone", &CEnemy::getZone, &CEnemy::setZone)
+    .property("m_Zone", &CEnemy::getZone, &CEnemy::setZone)
     .def("get_name",  &CEnemy::GetEnemyName)
     .def("m_FSM", &CEnemy::getFsm)
     .def("only_rotate", &CEnemy::OnlyRotate)

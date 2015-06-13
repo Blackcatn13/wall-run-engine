@@ -8,7 +8,7 @@
 #include "Core_Utils/MemLeaks.h"
 #include "Lights\LightManager.h"
 #include "Core\ScriptManager.h"
-#include "EnemyManager.h"
+#include "Enemies\EnemyManager.h"
 #include "Collectibles\CollectibleManager.h"
 
 

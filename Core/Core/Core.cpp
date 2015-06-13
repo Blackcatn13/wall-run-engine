@@ -24,7 +24,7 @@
 //#include "Core_Utils/MemLeaks.h"
 #include "Core_Utils\LogRender.h"
 #include "AI\WPManager.h"
-#include "EnemyManager.h"
+#include "Enemies\EnemyManager.h"
 #include "Particles\ParticleManager.h"
 #include "Particles\BillboardManager.h"
 #include "AI\FSMManager.h"

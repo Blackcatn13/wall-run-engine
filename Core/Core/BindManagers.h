@@ -12,7 +12,7 @@
 #include "GraphicsManager.h"
 #include "Language\LanguageManager.h"
 #include "TriggerManager\TriggerManager.h"
-#include "EnemyManager.h"
+#include "Enemies\EnemyManager.h"
 #include "AI\WPManager.h"
 #include "AI\PuzzleManager.h"
 
@@ -94,8 +94,8 @@ void RegisterManagers() {
     .def("draw_cylinder", &CGraphicsManager::DrawCylinder)
     .def("enable_z_buffering", (void (CGraphicsManager::*)(const Vect3f &, const Vect3f &, const Vect3f &, float, float, CColor)) &CGraphicsManager::DrawQuad3D)
     .def("disable_z_buffering", (void (CGraphicsManager::*)(const Vect3f &, const Vect3f &, const Vect3f &, const Vect3f &, CColor)) &CGraphicsManager::DrawQuad3D)
-	.def("get_is_GUI_displayed", &CGraphicsManager::GetIsGUIDisplayed)
-	.def("set_is_GUI_displayed", &CGraphicsManager::SetIsGUIDisplayed)
+    .def("get_is_GUI_displayed", &CGraphicsManager::GetIsGUIDisplayed)
+    .def("set_is_GUI_displayed", &CGraphicsManager::SetIsGUIDisplayed)
   ];
   luabind::module(LUA_STATE) [
     class_<CFontManager>("CFontManager")
@@ -236,7 +236,7 @@ void RegisterManagers() {
     .def("get_instance", &CEnemyManager::GetInstance)
     .def("insert_enemy", &CEnemyManager::InsertEnemy)
     .def("get_enemy", &CEnemyManager::GetEnemy)
-	.def("reload_enemies",  &CEnemyManager::ReloadEnemies)
+    .def("reload_enemies",  &CEnemyManager::ReloadEnemies)
   ];
 
   luabind::module(LUA_STATE) [
@@ -272,23 +272,23 @@ void RegisterManagers() {
     .def("set_image", &CGUIManager::SetImage)
     .def("get_active_image", &CGUIManager::GetImage)
     .def("play_image", &CGUIManager::PlayImage)
-	.def("set_visible_mouse", &CGUIManager::SetVisiblePointerMouse)
-	.def("get_is_displayed_console", &CGUIManager::GetIsDisplayedConsole)
-	.def("set_is_displayed_console", &CGUIManager::SetIsDisplayedConsole)
-	.def("get_is_displayed_heart", &CGUIManager::GetIsDisplayedHeart)
-	.def("set_is_displayed_heart", &CGUIManager::SetIsDisplayedHeart)
-	.def("get_is_displayed_pixelite", &CGUIManager::GetIsDisplayedPixelite)
-	.def("set_is_displayed_pixelite", &CGUIManager::SetIsDisplayedPixelite)
-	.def("get_position_x_element", &CGUIManager::GetPositionXPercentElement)
-	.def("get_position_y_element", &CGUIManager::GetPositionYPercentElement)
-	.def("set_position_element", &CGUIManager::SetPositionPercentElement)
-	.def("get_count_heart", &CGUIManager::GetGUICountHeart)
-	.def("set_count_heart", &CGUIManager::SetGUICountHeart)
-	.def("get_count_pixelite", &CGUIManager::GetGUICountPixelite)
-	.def("set_count_pixelite", &CGUIManager::SetGUICountPixelite)
-	.def("get_num_pixelite", &CGUIManager::GetGUIPixeliteNumber)
-	.def("set_num_pixelite", &CGUIManager::SetGUIPixeliteNumber)
-	.def("get_dt", &CGUIManager::GetElapsedTime)
+    .def("set_visible_mouse", &CGUIManager::SetVisiblePointerMouse)
+    .def("get_is_displayed_console", &CGUIManager::GetIsDisplayedConsole)
+    .def("set_is_displayed_console", &CGUIManager::SetIsDisplayedConsole)
+    .def("get_is_displayed_heart", &CGUIManager::GetIsDisplayedHeart)
+    .def("set_is_displayed_heart", &CGUIManager::SetIsDisplayedHeart)
+    .def("get_is_displayed_pixelite", &CGUIManager::GetIsDisplayedPixelite)
+    .def("set_is_displayed_pixelite", &CGUIManager::SetIsDisplayedPixelite)
+    .def("get_position_x_element", &CGUIManager::GetPositionXPercentElement)
+    .def("get_position_y_element", &CGUIManager::GetPositionYPercentElement)
+    .def("set_position_element", &CGUIManager::SetPositionPercentElement)
+    .def("get_count_heart", &CGUIManager::GetGUICountHeart)
+    .def("set_count_heart", &CGUIManager::SetGUICountHeart)
+    .def("get_count_pixelite", &CGUIManager::GetGUICountPixelite)
+    .def("set_count_pixelite", &CGUIManager::SetGUICountPixelite)
+    .def("get_num_pixelite", &CGUIManager::GetGUIPixeliteNumber)
+    .def("set_num_pixelite", &CGUIManager::SetGUIPixeliteNumber)
+    .def("get_dt", &CGUIManager::GetElapsedTime)
   ];
 
   luabind::module(LUA_STATE) [

@@ -50,6 +50,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lua", "3dParty\Lua\Lua.vcxp
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LuaBind", "3dParty\LuaBind\LuaBind.vcxproj", "{D30B4BC2-CB05-44FD-94C5-271F1EA185E4}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ParticleCreator", "ParticleCreator\ParticleCreator.vcxproj", "{9D9B5935-AA13-45D3-809F-3ABBE7AD3864}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -104,6 +106,10 @@ Global
 		{D30B4BC2-CB05-44FD-94C5-271F1EA185E4}.Debug|Win32.Build.0 = Debug|Win32
 		{D30B4BC2-CB05-44FD-94C5-271F1EA185E4}.Release|Win32.ActiveCfg = Release|Win32
 		{D30B4BC2-CB05-44FD-94C5-271F1EA185E4}.Release|Win32.Build.0 = Release|Win32
+		{9D9B5935-AA13-45D3-809F-3ABBE7AD3864}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9D9B5935-AA13-45D3-809F-3ABBE7AD3864}.Debug|Win32.Build.0 = Debug|Win32
+		{9D9B5935-AA13-45D3-809F-3ABBE7AD3864}.Release|Win32.ActiveCfg = Release|Win32
+		{9D9B5935-AA13-45D3-809F-3ABBE7AD3864}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -121,5 +127,6 @@ Global
 		{2EB6B1B2-D6D3-401D-96FE-3EA035D19D3F} = {118F0AB5-C692-49F3-8FA4-9FA4089965D2}
 		{D30B4BC2-CB05-44FD-94C5-271F1EA185E4} = {118F0AB5-C692-49F3-8FA4-9FA4089965D2}
 		{527642D4-1B66-4725-866D-542AEF6A1BA0} = {90A1B123-1A3D-4D7B-AE0F-388B4A877B0F}
+		{9D9B5935-AA13-45D3-809F-3ABBE7AD3864} = {E33BC268-A3DC-49B7-9580-9D6AADAA9D1F}
 	EndGlobalSection
 EndGlobal
