@@ -5,6 +5,7 @@
 #include "Object\Object3D.h"
 #include "Core\Core.h"
 #include "RenderableCommands\SceneRendererCommandManager.h"
+#include "Language\LanguageManager.h"
 
 
 CParticleProcess::CParticleProcess() {
@@ -31,6 +32,16 @@ Vect2i CParticleProcess::RenderDebugInfo(bool render/*, float dt*/) {
 
 void CParticleProcess::Update(float dt) {
   CAMCONTM->Update(dt);
+
+  if (ACT2IN->DoAction("ChangeCatalan")) {
+    LANGM->SetCurrentLanguage("catalan");
+  }
+  if (ACT2IN->DoAction("ChangeCastellano")) {
+    LANGM->SetCurrentLanguage("castellano");
+  }
+  if (ACT2IN->DoAction("ChangeIngles")) {
+    LANGM->SetCurrentLanguage("ingles");
+  }
 }
 
 void CParticleProcess::Render() {

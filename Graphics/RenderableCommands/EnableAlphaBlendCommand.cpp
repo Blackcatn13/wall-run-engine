@@ -29,7 +29,7 @@ void CEnableAlphaBlendSceneRendererCommand::initMaps() {
   m_ToBlendType["srcalpha"] = srcalpha;
   m_ToBlendType["invsrcalpha"] = invsrcalpha;
   m_ToBlendType["destalpha"] = destalpha;
-  m_ToBlendType["invdestalpja"] = invdestalpja;
+  m_ToBlendType["invdestalpha"] = invdestalpha;
   m_ToBlendType["destcolor"] = destcolor;
   m_ToBlendType["invdestcolor"] = invdestcolor;
   m_ToBlendType["srcalphasat"] = srcalphasat;

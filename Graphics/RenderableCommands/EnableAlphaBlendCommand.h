@@ -6,7 +6,7 @@
 #include <map>
 #include <string>
 
-enum BlendType {zero = 1, one, srccolor, invsrccolor, srcalpha, invsrcalpha, destalpha, invdestalpja, destcolor, invdestcolor, srcalphasat, bothsrcalpha, bothinvsrcalpha, blendfactor, invblendfactor, srccolor2, invsrccolor2};
+enum BlendType {zero = 1, one, srccolor, invsrccolor, srcalpha, invsrcalpha, destalpha, invdestalpha, destcolor, invdestcolor, srcalphasat, bothsrcalpha, bothinvsrcalpha, blendfactor, invblendfactor, srccolor2, invsrccolor2};
 enum BlendOP {add = 1, substract, revsubstract, min, max};
 
 class CEnableAlphaBlendSceneRendererCommand : public CSceneRendererCommand {
