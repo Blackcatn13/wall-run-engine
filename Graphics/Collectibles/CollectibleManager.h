@@ -32,12 +32,12 @@ class CCollectibleManager : public CTemplatedVectorMapManager<CCollectible> {
   CCollectibleManager();
   ~CCollectibleManager();
 
-  void Load(std::string &FileName);
+  bool Load(std::string &FileName);
   void Load();
   void Reload();
   void Update(float dt);
   void DeInit();
-  
+
   void ResetCollectibles();
 
   void InitCollectibles(std::string layerName);

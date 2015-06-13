@@ -30,8 +30,10 @@
   <Cinematic CinematicLvl="No"/>
   <Lua LuaFile=""/>
   <!--<LoadLevel LuaInitLevelFunc="init_level" LuaInitCamerasFunc="" />-->
-
-  <Effect EffectXML="./Data/effects.xml"/> 
+  <Enemies enemiesXML=""/>
+  <Particles particleXML="./Data/Particle.xml"/>
+  <FSM FsmXML="./Data/AI/FSMs.xml"/>
+  <Effect EffectXML="./Data/effects.xml"/>
   <Avi aviXML=""/>
   <PhysX initPhysX="false"/>
   <ComputerVision initComputerVision="false"/>

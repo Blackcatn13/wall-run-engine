@@ -79,6 +79,7 @@ CParticleEmitter::~CParticleEmitter() {
       CHECKED_DELETE(m_Texture);
   }
   delete[] m_vertex_list;
+  CHECKED_DELETE(m_RV);
 
 }
 

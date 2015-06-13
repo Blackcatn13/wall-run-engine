@@ -14,8 +14,8 @@
   </Languages>
   <Fonts fontsXML="./Data/fonts/fonts.xml"/>
   <Actions actionsXML="./Data/Actions.xml"/>
-  <GUI initGuiXML="./Data/GUI/initGui_laberynth.xml"/>
-  <Sound soundXML="./Data/Sounds/LaberynthSounds.xml"/>
+  <GUI initGuiXML="./Data/GUI/initGui_laberynth.xml" dataFolder="./Data/GUI/XML_Laberynth"/>
+  <Sound soundXML="./Data/WWSounds.xml"/>
   <Meshes meshesXML="./Data/level4/static_meshes.xml"/>
   <Renderable renderXML="./Data/level4/renderable_objects.xml"/> 
   <Lights lightsXML="./Data/level4/lights.xml"/> 
@@ -31,6 +31,8 @@
   <Lua LuaFile="./Data/lua_actions.xml"/>
   <LoadLevel LuaInitLevelFunc="init_level" LuaInitCamerasFunc="" />
   <Enemies enemiesXML="./Data/enemies.xml"/>
+  <Particles particlesXML="./Data/particles.xml"/>
+  <FSM FsmXML="./Data/AI/FSMs.xml"/>
   <Effect EffectXML="./Data/effects.xml"/> 
   <Avi aviXML=""/>
   <PhysX initPhysX="true"/>

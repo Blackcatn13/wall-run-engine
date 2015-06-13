@@ -50,7 +50,7 @@ class CEnemyManager {
  public:
   CEnemyManager();
   ~CEnemyManager();
-  void Init(const std::string &FileName);
+  bool Init(const std::string &FileName);
   void InitEnemies(std::string layerName);
   void Update(float elapsedTime);
   void Render();

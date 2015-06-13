@@ -165,11 +165,11 @@ void CEngine::ParseConfFile(std::string file) {
           } else if (name == "Actions") {
             m_Conf_info.ActionsPath = nodeChild.GetPszISOProperty("actionsXML", "./Data/Actions.xml", false);
           } else if (name == "Meshes") {
-            m_Conf_info.MeshesPath = nodeChild.GetPszISOProperty("meshesXML", "./Data/level1/static_meshes.xml", false);
+            m_Conf_info.MeshesPath = nodeChild.GetPszISOProperty("meshesXML", "", false);
           } else if (name == "Renderable") {
-            m_Conf_info.RenderablePath = nodeChild.GetPszISOProperty("renderXML", "./Data/level1/renderable_objects.xml", false);
+            m_Conf_info.RenderablePath = nodeChild.GetPszISOProperty("renderXML", "", false);
           } else if (name == "Lights") {
-            m_Conf_info.LightsPath = nodeChild.GetPszISOProperty("lightsXML", "./Data/level1/lights.xml", false);
+            m_Conf_info.LightsPath = nodeChild.GetPszISOProperty("lightsXML", "", false);
           } else if (name == "Cameras") {
             m_Conf_info.CameraPath = nodeChild.GetPszISOProperty("CamerasLvl", "", false);
           } else if (name == "Cinematic") {
@@ -181,23 +181,32 @@ void CEngine::ParseConfFile(std::string file) {
           } else if (name == "RendererCommands") {
             m_Conf_info.SceneRenderCommandsPath = nodeChild.GetPszISOProperty("rendererCommandsXML", "", false);
           } else if (name == "PoolRenderableObjects") {
-            m_Conf_info.PoolRenderableObjects = nodeChild.GetPszISOProperty("poolRenderableObjects", ".\\Data\\level1\\pool_renderable_objects.xml", false);
+            m_Conf_info.PoolRenderableObjects = nodeChild.GetPszISOProperty("poolRenderableObjects", "", false);
           } else if (name == "AnimatedModels") {
-            m_Conf_info.AnimatedMeshPath = nodeChild.GetPszISOProperty("modelsXML", "./Data/animated_models.xml", false);
+            m_Conf_info.AnimatedMeshPath = nodeChild.GetPszISOProperty("modelsXML", "", false);
           } else if (name == "LoadLevel") {
             m_Conf_info.LuaLevelObjectsFunc = nodeChild.GetPszISOProperty("LuaInitLevelFunc", "init_level()", false);
             m_Conf_info.LuaLevelCamFunc = nodeChild.GetPszISOProperty("LuaInitCamerasFunc", "", false);
           } else if (name == "LevelPhisicsFile") {
-            m_Conf_info.LevelPhisics = nodeChild.GetPszISOProperty("PhisicsFile", "./Data/level1/trainingPiky2.ASE", false);
+            m_Conf_info.LevelPhisics = nodeChild.GetPszISOProperty("PhisicsFile", "", false);
           } else if (name == "Triggers") {
-            m_Conf_info.TriggersPath = nodeChild.GetPszISOProperty("TriggersFile", "./Data/level1/triggers.xml", false);
+            m_Conf_info.TriggersPath = nodeChild.GetPszISOProperty("TriggersFile", "", false);
           } else if (name == "Puzzles") {
-            m_Conf_info.PuzzlesPath = nodeChild.GetPszISOProperty("PuzzlesFile", "./Data/level1/puzzles.xml", false);
+            m_Conf_info.PuzzlesPath = nodeChild.GetPszISOProperty("PuzzlesFile", "", false);
           } else if (name == "Collectibles") {
-            m_Conf_info.CollectiblesPath = nodeChild.GetPszISOProperty("CollectiblesFile", "./Data/level1/collectibles.xml", false);
+            m_Conf_info.CollectiblesPath = nodeChild.GetPszISOProperty("CollectiblesFile", "", false);
+          } else if (name == "Enemies") {
+            m_Conf_info.EnemiesPath = nodeChild.GetPszISOProperty("enemiesXML", "", false);
+          } else if (name == "Sound") {
+            m_Conf_info.SoundPath = nodeChild.GetPszISOProperty("soundXML", "" , false);
+          } else if (name == "GUI") {
+            m_Conf_info.GUIPath = nodeChild.GetPszISOProperty("initGuiXML", "", false);
+            m_Conf_info.GUIFolder = nodeChild.GetPszISOProperty("dataFolder", "", false);
+          } else if (name == "Particles") {
+            m_Conf_info.ParticlesPath = nodeChild.GetPszISOProperty("particlesXML", "", false);
+          } else if (name == "FSM") {
+            m_Conf_info.FSMPath = nodeChild.GetPszISOProperty("FsmXML", "", false);
           }
-
-
         }
       }
     }

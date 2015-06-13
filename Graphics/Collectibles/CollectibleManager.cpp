@@ -26,7 +26,7 @@ void CCollectibleManager::InitCollectibles(std::string layerName) {
     for (int j = 0; j < m_VectorCollectibleTypes.size(); ++j) {
       if (((CMeshInstance *)l_Rom->GetResourcesVector()[i])->GetCoreName() == m_VectorCollectibleTypes[j].CoreMesh) {
         std::string l_CardName = "";
-		bool l_Visible = l_Rom->GetResourcesVector()[i]->getVisible();
+        bool l_Visible = l_Rom->GetResourcesVector()[i]->getVisible();
         if (m_VectorCollectibleTypes[j].Name == "card")
           l_CardName = m_Unlockables.find(l_Rom->GetResourcesVector()[i]->getName())->first;
 
@@ -42,11 +42,12 @@ void CCollectibleManager::InitCollectibles(std::string layerName) {
   }
 }
 
-void CCollectibleManager::Load(std::string &FileName) {
+bool CCollectibleManager::Load(std::string &FileName) {
   m_FileName = FileName;
   CXMLTreeNode newFile;
   if (!newFile.LoadFile(FileName.c_str())) {
     printf("ERROR loading the file.");
+    return false;
   } else {
     CXMLTreeNode  m = newFile["collectibles"];
     if (m.Exists()) {
@@ -76,6 +77,7 @@ void CCollectibleManager::Load(std::string &FileName) {
       }
     }
   }
+  return true;
 }
 
 void CCollectibleManager::Load() {
@@ -101,19 +103,19 @@ void CCollectibleManager::Update(float dt) {
   }
 }
 
-void CCollectibleManager::ResetCollectibles(){
-	for (int num = 0; num < m_ResourcesVector.size(); num++){
-		std::stringstream ss;
-		std::string name = m_ResourcesVector[num]->getRenderableObject()->getName();
-		std::string trigger = "trigger_manager:get_resource(\"" + name + "_UserData\")";
+void CCollectibleManager::ResetCollectibles() {
+  for (int num = 0; num < m_ResourcesVector.size(); num++) {
+    std::stringstream ss;
+    std::string name = m_ResourcesVector[num]->getRenderableObject()->getName();
+    std::string trigger = "trigger_manager:get_resource(\"" + name + "_UserData\")";
 
-		std::size_t found = name.find("Collectible");
-		if (found!=std::string::npos)
-			ss << "deactivate_collectible(" << trigger << ",\"" << "collectible" << "\",\"" << name <<"\")";
-		else
-			ss << "activate_collectible(" << trigger << ",\"" << "collectible" << "\",\"" << name <<"\")";
+    std::size_t found = name.find("Collectible");
+    if (found != std::string::npos)
+      ss << "deactivate_collectible(" << trigger << ",\"" << "collectible" << "\",\"" << name << "\")";
+    else
+      ss << "activate_collectible(" << trigger << ",\"" << "collectible" << "\",\"" << name << "\")";
 
-		std::string str = ss.str();
-		CCORE->GetScriptManager()->RunCode(str);
-	}
+    std::string str = ss.str();
+    CCORE->GetScriptManager()->RunCode(str);
+  }
 }

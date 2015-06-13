@@ -141,7 +141,7 @@ void CCore::Init(HWND handler) {
   std::cout << "Creating FSM Manger";
 #endif
   m_FSMManager = new CFSMManager();
-  m_FSMManager->Load("data//AI//FSMs.xml");
+  m_FSMManager->Load(m_Config.FSMPath);
 #ifdef _DEBUG
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
@@ -222,8 +222,8 @@ void CCore::Init(HWND handler) {
   std::cout << "Creating Enemy Manger";
 #endif
   m_EnemyManager = CEnemyManager::GetInstance();
-  m_EnemyManager->Init("data//enemies.xml");
-  m_EnemyManager->InitEnemies("enemies");
+  if (m_EnemyManager->Init(m_Config.EnemiesPath))
+    m_EnemyManager->InitEnemies("enemies");
 #ifdef _DEBUG
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
@@ -239,14 +239,14 @@ void CCore::Init(HWND handler) {
   std::cout << "Creating Particle Manger";
 #endif
   m_ParticleManager = new CParticleManager();
-  m_ParticleManager->Load("./Data/particles.xml");
-#ifdef _DEBUG
-  t.Update();
-  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
-  std::cout << "Creating Billboard Manger";
-#endif
-  m_BillboardManager = new CBillboardManager();
-  m_BillboardManager->Load("./Data/billboards.xml");
+  m_ParticleManager->Load(m_Config.ParticlesPath);
+//#ifdef _DEBUG
+//  t.Update();
+//  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+//  std::cout << "Creating Billboard Manger";
+//#endif
+  //m_BillboardManager = new CBillboardManager();
+  //m_BillboardManager->Load("./Data/billboards.xml");
   //m_SoundManager = new CSoundManager();
   //m_SoundManager->Init();
   //m_SoundManager->LoadSounds("./Data/sounds.xml");
@@ -257,25 +257,29 @@ void CCore::Init(HWND handler) {
 #endif
   m_WWSoundManager = new CWWSoundManager();
   m_WWSoundManager->Init();
-  m_WWSoundManager->Load("./Data/WWSounds.xml");
+  m_WWSoundManager->Load(m_Config.SoundPath);
 #ifdef _DEBUG
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating GUI Manger";
 #endif
   m_GuiManager = new CGUIManager(Vect2i(m_Config.Screen_Width, m_Config.Screen_Heigth));
-  m_GuiManager->Init("./Data/GUI/initGui_laberynth.xml");
-  m_GuiManager->LoadGuiFiles("./Data/GUI/XML_Laberynth");
+  if (m_GuiManager->Init(m_Config.GUIPath))
+    m_GuiManager->LoadGuiFiles(m_Config.GUIFolder);
 #ifdef _DEBUG
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Collectible Manger";
 #endif
   m_CollectibleManager = new CCollectibleManager();
-
+  if (m_CollectibleManager->Load(m_Config.CollectiblesPath))
+    m_CollectibleManager->InitCollectibles(m_CollectibleManager->GetCollectiblesLayerName());
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Scprit Manger";
+#endif
   m_ScriptManager->Load(m_Config.LuaPath);
-  m_CollectibleManager->Load(m_Config.CollectiblesPath);
-  m_CollectibleManager->InitCollectibles(m_CollectibleManager->GetCollectiblesLayerName());
 #ifdef _DEBUG
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
@@ -312,7 +316,7 @@ void CCore::DeInit() {
   CHECKED_DELETE(m_LogRender);
 // CHECKED_DELETE(m_WPManager);
   CHECKED_DELETE(m_EnemyManager);
-  CHECKED_DELETE(m_BillboardManager);
+  //CHECKED_DELETE(m_BillboardManager);
   CHECKED_DELETE(m_ParticleManager);
   CHECKED_DELETE(m_WWSoundManager);
   CHECKED_DELETE(m_PuzzleManager);
@@ -345,7 +349,7 @@ void CCore::Update(float dt) {
   m_TriggerManager->Update(dt);
   m_EnemyManager->Update(dt);
   m_ParticleManager->Update(dt);
-  m_BillboardManager->Update(dt);
+  //m_BillboardManager->Update(dt);
   m_PuzzleManager->Update(dt);
   m_WWSoundManager->Render();
   m_GuiManager->Update(dt);

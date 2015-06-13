@@ -89,7 +89,8 @@ bool CGUIManager::Init (const std::string &initGuiXML) {
   if (!parser.LoadFile(initGuiXML.c_str())) {
     std::string msg_error = "CGUIManager::Init-> Error al leer el archivo de configuracion GUI: " + initGuiXML;
     LOGGER->AddNewLog(ELL_ERROR, msg_error.c_str());
-    throw CException(__FILE__, __LINE__, msg_error);
+    //throw CException(__FILE__, __LINE__, msg_error);
+    return false;
   } else {
     CTextureManager *textureM = CCORE->GetTextureManager();
     CXMLTreeNode  m = parser["GuiFiles"];
@@ -166,7 +167,7 @@ bool CGUIManager::Init (const std::string &initGuiXML) {
         std::string msg_error = "CGUIManager::Init-> Error al intentar leer el tag <Console> del archivo de configuracion GUI: " + initGuiXML;
         LOGGER->AddNewLog(ELL_ERROR, msg_error.c_str());
         throw CException(__FILE__, __LINE__, msg_error);
-      }      
+      }
       m = parser["PointerMouse"];
       if (m.Exists()) {
         float posx													= m.GetFloatProperty("posx",			5.f);
@@ -235,8 +236,8 @@ void	CGUIManager::RenderPointerMouse	(CGraphicsManager *renderManager, CFontMana
 //----------------------------------------------------------------------------
 
 void CGUIManager::Update (float elapsedTime) {
-	m_dt = elapsedTime;
-	if (m_bIsOk) {
+  m_dt = elapsedTime;
+  if (m_bIsOk) {
     assert(m_TextBox);
     assert(m_PointerMouse);
     //Si es la primera vez que actualizamos la GUI debemos hacer un load de la main.xml:
@@ -829,79 +830,78 @@ void CGUIManager::SetConsole() {
       m_Console->SetHeightPercent(10);
       m_Console->SetVisible( true );
       m_Console->SetActive( true );
-	  SetIsDisplayedConsole(true);
+      SetIsDisplayedConsole(true);
       m_Console->GainFocus();
     } else {
       m_Console->SetVisible( false );
       m_Console->SetActive( false );
-	  SetIsDisplayedConsole(false);
+      SetIsDisplayedConsole(false);
       m_Console->LoseFocus();
     }
   }
 }
 
-void CGUIManager::SetPositionPercentElement(std::string name, float posx, float posy){
-	m_ElementsMap.find(name)->second->SetPositionPercent(Vect2f(posx,posy));
+void CGUIManager::SetPositionPercentElement(std::string name, float posx, float posy) {
+  m_ElementsMap.find(name)->second->SetPositionPercent(Vect2f(posx, posy));
 }
 
-float CGUIManager::GetPositionXPercentElement(std::string name){
-	return m_ElementsMap.find(name)->second->GetPositionPercent().x;
+float CGUIManager::GetPositionXPercentElement(std::string name) {
+  return m_ElementsMap.find(name)->second->GetPositionPercent().x;
 }
 
-float CGUIManager::GetPositionYPercentElement(std::string name){
-	return m_ElementsMap.find(name)->second->GetPositionPercent().y;
+float CGUIManager::GetPositionYPercentElement(std::string name) {
+  return m_ElementsMap.find(name)->second->GetPositionPercent().y;
 }
 
-bool CGUIManager::GetIsDisplayedConsole(){
-	return m_isDisplayedConsole;
+bool CGUIManager::GetIsDisplayedConsole() {
+  return m_isDisplayedConsole;
 }
 
-void CGUIManager::SetIsDisplayedConsole(bool input){
-	m_isDisplayedConsole = input;
+void CGUIManager::SetIsDisplayedConsole(bool input) {
+  m_isDisplayedConsole = input;
 }
 
-bool CGUIManager::GetIsDisplayedHeart(){
-	return m_isDisplayedHeart;
+bool CGUIManager::GetIsDisplayedHeart() {
+  return m_isDisplayedHeart;
 }
 
-void CGUIManager::SetIsDisplayedHeart(bool input){
-	m_isDisplayedHeart = input;
+void CGUIManager::SetIsDisplayedHeart(bool input) {
+  m_isDisplayedHeart = input;
 }
 
-bool CGUIManager::GetIsDisplayedPixelite(){
-	return m_isDisplayedPixelite;
+bool CGUIManager::GetIsDisplayedPixelite() {
+  return m_isDisplayedPixelite;
 }
 
-void CGUIManager::SetIsDisplayedPixelite(bool input){
-	m_isDisplayedPixelite = input;
+void CGUIManager::SetIsDisplayedPixelite(bool input) {
+  m_isDisplayedPixelite = input;
 }
 
-float CGUIManager::GetGUICountHeart(){
-	return m_GUICountHeart;
+float CGUIManager::GetGUICountHeart() {
+  return m_GUICountHeart;
 }
 
-void CGUIManager::SetGUICountHeart(float value){
-	m_GUICountHeart = value;
+void CGUIManager::SetGUICountHeart(float value) {
+  m_GUICountHeart = value;
 }
 
-float CGUIManager::GetGUICountPixelite(){
-	return m_GUICountPixelite;
+float CGUIManager::GetGUICountPixelite() {
+  return m_GUICountPixelite;
 }
 
-void CGUIManager::SetGUICountPixelite(float value){
-	m_GUICountPixelite = value;
+void CGUIManager::SetGUICountPixelite(float value) {
+  m_GUICountPixelite = value;
 }
 
-int CGUIManager::GetGUIPixeliteNumber(){
-	return m_GUINumPixelites;
+int CGUIManager::GetGUIPixeliteNumber() {
+  return m_GUINumPixelites;
 }
 
-void CGUIManager::SetGUIPixeliteNumber(int input)
-{
-	m_GUINumPixelites = input;
-	m_ElementsMap.find("PixeliteNumber")->second->SetLiteral("x " + std::to_string( long double(input) ));
+void CGUIManager::SetGUIPixeliteNumber(int input) {
+  m_GUINumPixelites = input;
+  m_ElementsMap.find("PixeliteNumber")->second->SetLiteral("x " + std::to_string( long double(input) ));
 }
 
-float CGUIManager::GetElapsedTime(){
-	return m_dt;
+float CGUIManager::GetElapsedTime() {
+  return m_dt;
 }
