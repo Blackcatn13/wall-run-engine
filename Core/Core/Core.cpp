@@ -34,6 +34,9 @@
 #include "GUI\GUIManager.h"
 #include "Collectibles\CollectibleManager.h"
 #include "SceneElements\PolyPlatform.h"
+#ifdef _DEBUG
+#include "Core_Utils\Timer.h"
+#endif
 
 CCore *CCore::m_Instance = 0;
 
@@ -45,41 +48,110 @@ CCore::~CCore() {
 }
 
 void CCore::Init(HWND handler) {
+#ifdef _DEBUG
+  std::cout << "Creating Graphics Manager";
+  CTimer t = CTimer(1);
+#endif
   m_GraphicsManager = new CGraphicsManager();
   m_GraphicsManager->Init(handler, m_Config.FullScreen, m_Config.Screen_Width, m_Config.Screen_Heigth);
   //m_SoundManager = new CSoundManager();
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Effect Manager";
+#endif
   m_EffectManager = new CEffectManager();
   m_EffectManager->Load(m_Config.EffectPath);
   //m_RenderableObjectTechniqueManager = new CRenderableObjectTechniqueManager();
   //Load?
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Input Manager";
+#endif
   m_InputManager = new CInputManager();
   m_InputManager->Init(handler, Vect2i(m_Config.Screen_Width, m_Config.Screen_Heigth), m_Config.Mouse_Exclusive);
-  m_LanguageManager = new CLanguageManager();
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Font Manger";
+#endif
   m_FontManager = new CFontManager();
   m_FontManager->Init(m_GraphicsManager);
   m_FontManager->LoadTTFs(m_Config.FontsPath);
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Language Manger";
+#endif
+  m_LanguageManager = new CLanguageManager();
   for (uint32 i = 0; i < m_Config.LanguagesPath.size(); ++i)
     m_LanguageManager->SetXmlFile(m_Config.LanguagesPath[i]);
   m_LanguageManager->LoadXMLs();
   m_LanguageManager->SetCurrentLanguage(m_Config.CurrentLanguage);
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Action To Input";
+#endif
   m_ActionToInput = new CActionToInput(m_InputManager);
   m_ActionToInput->LoadXML(m_Config.ActionsPath);
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Texture Manger";
+#endif
   m_TextureManager = new CTextureManager();
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Static Mesh Manger";
+#endif
   m_StaticMeshManager = new CStaticMeshManager();
   m_StaticMeshManager->Load(m_Config.MeshesPath);
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Script Manger";
+#endif
   m_ScriptManager = new CScriptManager();
   m_ScriptManager->Initialize();
   //m_RenderableManager = new CRenderableObjectsManager();
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Animated Model Manger";
+#endif
   m_AnimatedModelManager = new CAnimatedModelManager();
   m_AnimatedModelManager->Load(m_Config.AnimatedMeshPath);
   //Cargamos Technique pools
-  m_FSMManager = new CFSMManager();
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Physics Manger";
+#endif
   m_PhysicsManager = new CPhysicsManager();
   m_PhysicsManager->Init();
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating FSM Manger";
+#endif
+  m_FSMManager = new CFSMManager();
   m_FSMManager->Load("data//AI//FSMs.xml");
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Renderable Object Technique Manger";
+#endif
   m_RenderableObjectTechniqueManager = new CRenderableObjectTechniqueManager();
   m_RenderableObjectTechniqueManager->Load(m_Config.PoolRenderableObjects);
   //Cargando Layers
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Renderable Layers Manger";
+#endif
   m_RenderableLayersManager = new CRenderableObjectsLayersManager();
   m_RenderableLayersManager->Load(m_Config.RenderablePath);
   m_RenderableLayersManager->Load(m_Config.LuaPath);
@@ -88,55 +160,123 @@ void CCore::Init(HWND handler) {
   //m_RenderableLayersManager->Load(m_Config.LuaPath);
   //m_RenderableManager->Load(m_Config.RenderablePath);
   //m_RenderableManager->Load(m_Config.LuaPath);
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Light Manger";
+#endif
   m_LightManager = new CLightManager();
   m_LightManager->Load(m_Config.LightsPath);
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Cinematic Manger";
+#endif
   m_CinematicManager = new CCinematicController();
   m_CinematicManager->Load(m_Config.CinematicPath);
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Camera Controller Manger";
+#endif
   m_CameraController = new CCameraController();
   m_CameraController->Load(m_Config.CameraPath);
   /*m_RenderableManager->Load(m_Config.RenderablePath);
   m_ScriptManager = new CScriptManager();
   m_ScriptManager->Initialize();
   m_LightManager = new CLightManager();*/
-
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Logger Render";
+#endif
   m_LogRender = new CLogRender();
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Player Controller";
+#endif
   m_PlayerController = new CPlayerController();
-
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Scene Render Command Manager";
+#endif
   m_SceneRendererCommandManager = new CSceneRendererCommandManager();
   m_SceneRendererCommandManager->Load(m_Config.SceneRenderCommandsPath);
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Trigger Manger";
+#endif
   m_TriggerManager = new CTriggerManager();
+  m_TriggerManager->LoadTriggers(m_Config.TriggersPath);
 // m_WPManager = new CWPManager();
   //m_WPManager->Load("data//AI//Waypoints3.xml");
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Enemy Manger";
+#endif
   m_EnemyManager = CEnemyManager::GetInstance();
   m_EnemyManager->Init("data//enemies.xml");
   m_EnemyManager->InitEnemies("enemies");
-
-  m_TriggerManager->LoadTriggers(m_Config.TriggersPath);
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Puzzle Manger";
+#endif
   m_PuzzleManager  = new CPuzzleManager();
   m_PuzzleManager->Load(m_Config.PuzzlesPath);
   m_LuaLoadLevelFunc = m_Config.LuaLevelObjectsFunc;
   m_LevelPhisicsFile = m_Config.LevelPhisics;
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Particle Manger";
+#endif
   m_ParticleManager = new CParticleManager();
   m_ParticleManager->Load("./Data/particles.xml");
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Billboard Manger";
+#endif
   m_BillboardManager = new CBillboardManager();
   m_BillboardManager->Load("./Data/billboards.xml");
   //m_SoundManager = new CSoundManager();
   //m_SoundManager->Init();
   //m_SoundManager->LoadSounds("./Data/sounds.xml");
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating WW Sound Manger";
+#endif
   m_WWSoundManager = new CWWSoundManager();
   m_WWSoundManager->Init();
   m_WWSoundManager->Load("./Data/WWSounds.xml");
-
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating GUI Manger";
+#endif
   m_GuiManager = new CGUIManager(Vect2i(m_Config.Screen_Width, m_Config.Screen_Heigth));
   m_GuiManager->Init("./Data/GUI/initGui_laberynth.xml");
   m_GuiManager->LoadGuiFiles("./Data/GUI/XML_Laberynth");
-
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Collectible Manger";
+#endif
   m_CollectibleManager = new CCollectibleManager();
 
   m_ScriptManager->Load(m_Config.LuaPath);
   m_CollectibleManager->Load(m_Config.CollectiblesPath);
   m_CollectibleManager->InitCollectibles(m_CollectibleManager->GetCollectiblesLayerName());
-
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+#endif
 
 }
 

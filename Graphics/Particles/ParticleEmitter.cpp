@@ -61,7 +61,7 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
     {   0.5f, 0.0f, -0.5f, 1, 0 }     // vertex 3
   };
 
-  unsigned short int lIdx[lIdxCount] = { 0, 1, 2,  2, 3, 0 };
+  unsigned short int lIdx[lIdxCount] = { 0, 1, 2,  1, 3, 2 };
 
   m_RV = new CInstancingVertexs<TPARTICLE_VERTEX>(GRAPHM, &vertexs, &lIdx, lVtxCount, lIdxCount);
   ((CInstancingVertexs<TPARTICLE_VERTEX> *)m_RV)->SetInstanceNumber(m_MaxParticles);

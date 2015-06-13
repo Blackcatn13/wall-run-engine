@@ -27,7 +27,7 @@ PSVertex VS(PARTICLEIN IN){
 	PSVertex OUT = (PSVertex)0;
 	if (IN.params.y == 1) {
 		OUT.uv = IN.uv;
-		float3 position = (IN.pos.x * rightVector + IN.pos.z*upVector) * IN.params.x;
+		float3 position = IN.pos; //(IN.pos.x * rightVector + IN.pos.z*upVector) * IN.params.x;
 		OUT.pos = mul(float4(position,1.0), g_WorldViewProjectionMatrix);
 		OUT.normal = float4(viewVector.xyz, 1);
 	}
