@@ -172,23 +172,29 @@ void CEnemy::AddDamageEnemyPumPum() {
   m_Fsm->setNewState("Take_Damage");
 }
 
-void CEnemy::ActualizarHitboxEnemigo() {
-  switch (CheckPlayerCollision()) {
-    case 1:
-      if (m_enemyType == MIKMIK) {
-        AddDamageEnemyMikMik();
-      } else if (m_enemyType == PUMPUM) {
-        AddDamageEnemyPumPum();
-      }
-      break;
-    case 2:
-      AddDamagePlayer();
-      break;
-    case 3:
-      break;
-    default:
-      break;
-  }
+bool CEnemy::ActualizarHitboxEnemigo() {
+	  
+	  bool hasMadeDamage = false;
+
+	  switch (CheckPlayerCollision()) {
+		case 1:
+		  if (m_enemyType == MIKMIK) {
+			AddDamageEnemyMikMik();
+		  } else if (m_enemyType == PUMPUM) {
+			AddDamageEnemyPumPum();
+		  }
+		  break;
+		case 2:
+		  AddDamagePlayer();
+		  hasMadeDamage = true;
+		  break;
+		case 3:
+		  break;
+		default:
+		  break;
+	  }
+
+	  return hasMadeDamage;
 }
 
 void CEnemy::ActualizarDisparo(float dt) {

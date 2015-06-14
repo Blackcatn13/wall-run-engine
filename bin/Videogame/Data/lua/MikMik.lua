@@ -152,7 +152,10 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 		if player_distance > 225 then
 			enemy:m_FSM():newState("Parado")
 		else
-			enemy:actualizar_hitbox() --esto setea take damage si le pegan
+			local haceDamage = enemy:actualizar_hitbox() --esto setea take damage si le pegan
+			if haceDamage then
+				enemy:execute_action(2,0.1,0,1,true);
+			end
 		end
 		
 		if tostring(enemy.m_Zone) ~= tostring(player.zone) then

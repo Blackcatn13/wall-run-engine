@@ -67,7 +67,7 @@ class CEnemy : public CAIController { //CAIController
   void AddDamagePlayer();
   void AddDamageEnemyMikMik();
   void AddDamageEnemyPumPum();
-  void ActualizarHitboxEnemigo();
+  bool ActualizarHitboxEnemigo();
   void ActualizarDisparo(float dt);
   void ShotToVector(float dt, Vect3f point);
   void OnlyRotate(float dt, Vect3f point);
