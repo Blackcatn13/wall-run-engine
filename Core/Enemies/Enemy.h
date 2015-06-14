@@ -43,6 +43,7 @@ class CEnemy : public CAIController { //CAIController
   ENEMY_TYPE		m_enemyType;
   float				m_AttackPlayerDistance;
   float				m_Zone;
+  bool				m_isAttacking;
 
 
   CEnemy();
@@ -87,6 +88,7 @@ class CEnemy : public CAIController { //CAIController
   GET_SET(bool, isAlive);
   GET_SET(float, AttackPlayerDistance);
   GET_SET(float, Zone);
+  GET_SET(bool, isAttacking);
   // get & set
   // set(const <type> &name)
   // const <type> & get

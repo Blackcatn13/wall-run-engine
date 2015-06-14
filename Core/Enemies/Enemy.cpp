@@ -22,7 +22,8 @@ CEnemy::CEnemy(CXMLTreeNode &info1)
     // m_RenderableObject(NULL),
     m_CurrentTime(0.0f),
 	m_Zone(1.0f),
-	m_AttackPlayerDistance(1.0f)
+	m_AttackPlayerDistance(1.0f),
+	m_isAttacking(false)
 
     //  CAIController(info1.GetPszISOProperty("mesh", "", false), m_Name, m_Position)
 {
@@ -44,6 +45,7 @@ CEnemy::CEnemy(CRenderableObject *renderableObject, float speed, float turnSpeed
   m_CurrentTime(0.0f),
   m_isAlive(true),
   m_Zone(zone),
+  m_isAttacking(false),
   m_AttackPlayerDistance(AttackDistance),
   m_OriginalPosition(renderableObject->GetPosition()),
   CAIController(renderableObject, speed, turnSpeed, 13.0f, controller_size ) {
@@ -57,6 +59,7 @@ CEnemy::CEnemy(std::string mesh, std::string name, Vect3f position,  float speed
   m_CurrentTime(0.0f),
   m_isAlive(true),
   m_Zone(1.0f),
+  m_isAttacking(false),
   m_AttackPlayerDistance(0.0f),
   m_OriginalPosition(position) {
   m_fYaw = yaw;

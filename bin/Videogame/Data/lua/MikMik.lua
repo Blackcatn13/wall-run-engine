@@ -128,6 +128,7 @@ function mikmik_exit_attack_player(name)
 		enemy.m_Speed = enemy.m_OriginalSpeed
 		enemy.m_SpeedModified = false
 		enemy.m_CurrentTime = 0
+		enemy.m_isAttacking = false
 		if enemy:get_wp_vector_size() == 0 then
 			enemy.m_CurrentWp = enemy.m_OriginalPosition
 			enemy.m_Returning = true
@@ -143,23 +144,34 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 	if enemy ~= nil then
 	--coreInstance:trace("Enemy Zone" .. tostring (enemy.m_Zone))
 	--coreInstance:trace("player Zone" .. tostring (player.zone))
-		if player.is_hit == false and tostring(enemy.m_Zone) == tostring(player.zone) then
-			move_enemy(ElapsedTime, player_position, enemy) -- en caso de no ser estatico
-		end
-		
-		local player_distance = get_distance_to_player(enemy:get_position(), player_position)
-		
-		if player_distance > 225 then
-			enemy:m_FSM():newState("Parado")
-		else
-			local haceDamage = enemy:actualizar_hitbox() --esto setea take damage si le pegan
-			if haceDamage then
-				enemy:execute_action(2,0.1,0,1,true);
+		if enemy.m_isAttacking == false then
+			if player.is_hit == false and tostring(enemy.m_Zone) == tostring(player.zone) then
+				move_enemy(ElapsedTime, player_position, enemy) -- en caso de no ser estatico
 			end
-		end
-		
-		if tostring(enemy.m_Zone) ~= tostring(player.zone) then
-			enemy:m_FSM():newState("Parado")
+			
+			local player_distance = get_distance_to_player(enemy:get_position(), player_position)
+			
+			if player_distance > 225 then
+				enemy:m_FSM():newState("Parado")
+			else
+				local haceDamage = enemy:actualizar_hitbox() --esto setea take damage si le pegan
+				if haceDamage then
+					enemy.m_RenderableObject:clear_cycle(0,0.2);
+					enemy.m_RenderableObject:clear_cycle(1,0.2);
+					enemy.m_RenderableObject:execute_action(2,0.1,0,1,true);
+					enemy.m_isAttacking = true;
+				end
+			end
+			
+			if tostring(enemy.m_Zone) ~= tostring(player.zone) then
+				enemy:m_FSM():newState("Parado")
+			end
+		else
+			if not enemy.m_RenderableObject:is_cycle_animation_active() then
+				enemy.m_RenderableObject:remove_action(2);
+				enemy.m_RenderableObject:blend_cycle(1,1,0.2);
+				enemy.m_isAttacking = false;
+			end
 		end
 	end
 	
@@ -224,11 +236,8 @@ end
 function mikmik_update_dead(ElapsedTime, doComprobation, name)
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil then
-		coreInstance:trace("Enemigo  Muerto-------------------------------------")
 		if enemy.m_isAlive == true then
-			coreInstance:trace("Enemigo  Muerto que va a viriiiirlañkdn aslkñd n ASSSSSSSSSSSSSS-------------------------------------")
 			enemy:m_FSM():newState("Parado")
-			coreInstance:trace("Enemigo  resucitado-------------------------------------")
 		end
 	end
 end
