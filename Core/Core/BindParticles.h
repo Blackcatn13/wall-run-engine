@@ -51,6 +51,11 @@ void RegisterParticles() {
   luabind::module(LUA_STATE) [
     class_<CParticleEmitter, CObject3D>("CParticleEmitter")
     .def(constructor<>())
+    .enum_("EmitterType")
+    [
+      value("EMITTER_ESF", 0),
+      value("EMITTER_PLANE", 1)
+    ]
     .property("m_Type", &CParticleEmitter::getType, &CParticleEmitter::setType)
     .property("m_vPos", &CParticleEmitter::getvPos, &CParticleEmitter::setvPos)
     .property("m_vSpawnDir1", &CParticleEmitter::getvSpawnDir1, &CParticleEmitter::setvSpawnDir1)

@@ -292,6 +292,7 @@ void RegisterManagers() {
     .def("getSliderState", &CGUIManager::GetStateSlider)
     .def("getEditableTextBox", &CGUIManager::GetEditableTextBox)
     .def("setEditableTextBox", &CGUIManager::SetEditableTextBox)
+    .def("getButtonCheckInRadioBox", &CGUIManager::GetButtonCheckInRadioBox)
     .property("m_sCurrentWindows", &CGUIManager::GetCurrentWindow)
   ];
 

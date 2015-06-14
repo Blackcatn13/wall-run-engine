@@ -280,4 +280,26 @@
           CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(0).m_sTexture = newTexture
           CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(0):reloadTexture()"
      OnOverAction=""/>
+
+     <RadioBox name="EMITTER_TYPE" posx="85" posy="66" height="10" width="15" default_checkButton="EMITTER_ESF" visible="true" active="true"
+      texture_back="" columns="1" rows="2" OnCheckOn="
+          local button = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getButtonCheckInRadioBox('EMITTER_TYPE')
+          if (button == 'EMITTER_ESF') then
+               CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(0).m_Type = CParticleEmitter.EMITTER_ESF
+          elseif (button == 'EMITTER_PLANE') then
+               CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(0).m_Type = CParticleEmitter.EMITTER_PLANE
+          end
+      " OnCheckOff="" OnOverButton=""
+      OnSaveValue=""
+      OnLoadValue="">
+
+    <texture name="EMITTER_ESF"
+             on="./Data/GUI/ParticleViewer/Emitter_esf_on.png"
+             off="./Data/GUI/ParticleViewer/Emitter_esf_off.png"
+             deactivated="./Data/GUI/ParticleViewer/Emitter_esf_off.png" />
+    <texture name="EMITTER_PLANE"
+             on="./Data/GUI/ParticleViewer/Emitter_plane_on.png"
+             off="./Data/GUI/ParticleViewer/Emitter_plane_off.png"
+             deactivated="./Data/GUI/ParticleViewer/Emitter_plane_off.png" />
+  </RadioBox>
 </Windows>      
