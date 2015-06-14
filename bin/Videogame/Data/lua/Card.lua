@@ -4,6 +4,9 @@ local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 Cards_Vector = {}
 
 function Card.new(name, path)
+	if collectible_manager == nil then
+		collectible_manager = coreInstance:getCollectibleManager()
+	end
 	local self = setmetatable({}, Card)
 	self.name = name
 	self.path = path

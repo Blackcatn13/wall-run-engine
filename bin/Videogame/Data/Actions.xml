@@ -347,4 +347,9 @@
 		<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
     	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_R"/>
     </action>
+	
+	<action name="PauseGame">
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_P"/>
+    </action>
+	
 </Actions>

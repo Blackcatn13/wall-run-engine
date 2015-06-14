@@ -212,7 +212,7 @@ function check_enemies_killed(num1, door)
 			activate_collectible(trigger, "collectible", "Collectible1")
 			player.enemy_puzzle_active = false
 		end
-		if player.enemies_killed == 5 then
+		if player.enemies_killed == 2 then
 			coreInstance:trace("----------------------------Opening door")
 			open_door(door)
 		end

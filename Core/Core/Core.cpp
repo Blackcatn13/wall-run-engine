@@ -269,17 +269,17 @@ void CCore::Init(HWND handler) {
 #ifdef _DEBUG
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Scprit Manger";
+#endif
+  m_ScriptManager->Load(m_Config.LuaPath);
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Collectible Manger";
 #endif
   m_CollectibleManager = new CCollectibleManager();
   if (m_CollectibleManager->Load(m_Config.CollectiblesPath))
     m_CollectibleManager->InitCollectibles(m_CollectibleManager->GetCollectiblesLayerName());
-#ifdef _DEBUG
-  t.Update();
-  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
-  std::cout << "Creating Scprit Manger";
-#endif
-  m_ScriptManager->Load(m_Config.LuaPath);
 #ifdef _DEBUG
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
