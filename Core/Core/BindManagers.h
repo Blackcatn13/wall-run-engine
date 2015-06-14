@@ -292,6 +292,7 @@ void RegisterManagers() {
     .def("getSliderState", &CGUIManager::GetStateSlider)
     .def("getEditableTextBox", &CGUIManager::GetEditableTextBox)
     .def("setEditableTextBox", &CGUIManager::SetEditableTextBox)
+    .property("m_sCurrentWindows", &CGUIManager::GetCurrentWindow)
   ];
 
   luabind::module(LUA_STATE) [

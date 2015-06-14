@@ -59,7 +59,12 @@ function on_update_player_lua(l_ElapsedTime)
 	local directionalLight = lightM:get_resource("ShadowLight");
 	local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("player"):get_resource("Piky");
 	
-	if gui_manager:get_is_displayed_console() == false then
+	if gui_manager:get_is_displayed_console() == false or  gui_manager.m_sCurrentWindows == "Play.xml" then
+	
+		if act2in:do_action_from_lua("PauseGame") then
+			gui_manager:push_windows('Main.xml')
+			gui_manager:set_visible_mouse(true)
+		end
 
 		if is_init == true then
 			is_init = false

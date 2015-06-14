@@ -118,6 +118,7 @@ class CGUIManager { //:public CScriptRegister
   int							GetGUIPixeliteNumber();
   void							SetGUIPixeliteNumber(int input);
   float							GetElapsedTime();
+  std::string					GetCurrentWindow() { return m_sCurrentWindows;}
 
  private:
   void								Release										();
