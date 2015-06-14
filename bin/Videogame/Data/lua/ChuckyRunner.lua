@@ -7,7 +7,10 @@ chucky.m_PhysicUserData.m_myCollisionGroup = 18;
 local jumpStart = false;
 
 -- Chucky Variables --
+local Chucky_super_speed_dist = 10
 local Chucky_running_speed = 13;
+local Chucky_super_speed = 19;
+local Chucky_current_speed = 13;
 
 -- Chucky Stopped --
 function chucky_runner_enter_stopped(name)
@@ -48,7 +51,7 @@ function chucky_runner_update_running(ElapsedTime, doComprobation, name)
 	local mov = playerPos - chucky:get_position();
 	mov.y = 0;
 	mov:normalize(1);
-	chucky.m_PhysicController:move(mov * Chucky_running_speed * ElapsedTime, ElapsedTime);
+	chucky.m_PhysicController:move(mov * Chucky_current_speed * ElapsedTime, ElapsedTime);
 	local pos = chucky:get_position();
 	chucky:set_position(chucky.m_PhysicController:get_position());
 	chucky.m_RenderableObject:set_position(Vect3f(pos.x, pos.y - 2, pos.z));
@@ -57,6 +60,12 @@ function chucky_runner_update_running(ElapsedTime, doComprobation, name)
 	local distance = math.sqrt( math.pow((playerPos.x - chuckyPos.x),2) + math.pow((playerPos.y - chuckyPos.y),2) + math.pow((playerPos.z - chuckyPos.z),2) );
 	--local distance = math.sqrt( (playerPos.x - chuckyPos.x)*(playerPos.x - chuckyPos.x) + (playerPos.y - chuckyPos.y)*(playerPos.y - chuckyPos.y) )
 	--coreInstance:trace("Pos------------------ "..tostring(distance))
+	
+	if distance > Chucky_super_speed_dist then
+		Chucky_current_speed = Chucky_super_speed;
+	else
+		Chucky_current_speed = Chucky_running_speed;
+	end
 	
 	--Chucky fucks Piky.
 	if distance < 3.0 then
