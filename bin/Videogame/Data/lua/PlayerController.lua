@@ -395,7 +395,6 @@ function on_update_player_lua(l_ElapsedTime)
 			canAttack = true;
 		end
 		
-		coreInstance:trace(tostring(player_controller.m_isGrounded));
 		if player_controller.m_isAttack == true then
 			--coreInstance:trace("ATACANDOOO");
 			if false then
