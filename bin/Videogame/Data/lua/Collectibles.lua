@@ -36,6 +36,7 @@ function get_sticker(sticker_name, img_name)
 	if trigger.m_IsSwitched == false then
 		player.add_sticker(img_name)
 		deactivate_collectible(trigger,"collectible", sticker_name)
+		gui_manager:set_is_displayed_unlock_message(true);
 	end
 end
 

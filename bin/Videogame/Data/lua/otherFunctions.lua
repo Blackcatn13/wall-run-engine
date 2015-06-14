@@ -78,6 +78,9 @@ function reset_game()
 	gui_manager:set_is_displayed_pixelite(true);
 	gui_manager:set_count_pixelite(0.0);
 	gui_manager:set_num_pixelite( 0 );
+	gui_manager:set_is_displayed_poly_message(false);
+	gui_manager:set_is_displayed_unlock_message(false);
+	gui_manager:set_first_poly_message_displayed(false);
 	
 	--/////////////////////////////////////////////////////////////////////////////////////
 	--COLLECTIBLES

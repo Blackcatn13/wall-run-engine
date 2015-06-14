@@ -1,5 +1,9 @@
 <Actions>
-    <action name="CommutationCamera">
+    <action name="Enter">
+		<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_RETURN"/>
+    </action>
+	
+	<action name="CommutationCamera">
    	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_C"/>
    	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_TAB"/>
     </action>

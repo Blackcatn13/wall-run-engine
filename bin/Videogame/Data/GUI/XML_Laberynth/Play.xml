@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <Windows OnLoadWindows="gui_manager:set_visible_mouse(false);
 						gui_manager:set_is_displayed_console(false);
+						gui_manager:set_is_displayed_poly_message(false);
+						gui_manager:set_is_displayed_unlock_message(false);
+						gui_manager:set_visibility_message(false);
 						CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuEnd','Music');
 						gui_manager:set_num_pixelite(0);
 						graphics_manager:set_is_GUI_displayed(false);"
          OnSaveWindows=""
          OnUpdateWindows="onUpdateWindowDisplayGUI()">
 		  
+  <Image name="MessageGUI" posx="37.5" posy="37.50" height="20" width="24" visible="true" active="true"
+         default="PolyPlatform" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="PolyPlatform" name_texture="./Data/GUI/GoPixelGo/PolyPlatformMessage.png"/>
+	<texture name="UnlockCard" name_texture="./Data/GUI/GoPixelGo/UnlockCardMessage.png"/>
+  </Image>
+  
   <Image name="LifeGUI" posx="2" posy="82.00" height="10" width="17.50" visible="true" active="true"
          default="Life3" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
     <texture name="Life3" name_texture="./Data/GUI/GoPixelGo/Life3-2.png"/>

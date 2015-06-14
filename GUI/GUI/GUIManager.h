@@ -31,124 +31,151 @@ class CScriptManager;
 //----------Declaracion de nuevos tipos------------------------------------
 typedef enum EtypeTransitionEffect {TE_SHADOW = 0};
 struct TransitionEffect {
-  TransitionEffect::TransitionEffect(): m_bDoEffect(false), m_fTransitionTime(0.f), m_eType(TE_SHADOW), m_sWindowsName(""), m_fTimeCounter(0.f), m_bActiveWindows(false) {}
-  bool									m_bDoEffect;
-  float									m_fTransitionTime;
-  float									m_fTimeCounter;
-  std::string						m_sWindowsName;
-  bool									m_bActiveWindows;
-  EtypeTransitionEffect	m_eType;
+    TransitionEffect::TransitionEffect(): m_bDoEffect(false), m_fTransitionTime(0.f), m_eType(TE_SHADOW), m_sWindowsName(""), m_fTimeCounter(0.f), m_bActiveWindows(false) {}
+    bool									m_bDoEffect;
+    float									m_fTransitionTime;
+    float									m_fTimeCounter;
+    std::string						m_sWindowsName;
+    bool									m_bActiveWindows;
+    EtypeTransitionEffect	m_eType;
 
 };
 //---------------------------------------------------------------------------
 
-class CGUIManager { //:public CScriptRegister
+class CGUIManager   //:public CScriptRegister
+{
 
- public:
-  // Init and End protocols
-  CGUIManager(const Vect2i &resolution);
-  virtual ~CGUIManager() {Done();}
-
-
-  bool								Init											(const std::string &initGuiXML);
-  void								Done											();
-  bool								IsOk											() const																						{ return m_bIsOk; }
-  void								Render										(CGraphicsManager *renderManager, CFontManager *fontManager);
-  void								RenderPointerMouse				(CGraphicsManager *renderManager, CFontManager *fontManager);
-  void								Update										(float elapsedTime);
-  void								SetScreenResolution				(const Vect2i &resolution);
-  bool								LoadGuiFiles							(const std::string &pathWindows);
-  bool								ReloadGuiFiles						();
-  void								SetMessageBox							(const std::string &text);
-  bool								IsVisibleMessage					() const																						{assert(m_TextBox); return m_TextBox->IsVisible();}
-  void								ActiveWindows							(const std::string &inNameWindow);
-  void                PushWindows               (const std::string &inNameWindow);
-  void                PopWindows                ();
-  void								ActiveWindowsWithEffect		(const std::string &inNameWindow, EtypeTransitionEffect type, float transitionTime );
-  void								SetVisiblePointerMouse		(bool flag)	{m_bVisiblePointerMouse = flag;}
-
-  void								SetConsole();
+public:
+    // Init and End protocols
+    CGUIManager(const Vect2i &resolution);
+    virtual ~CGUIManager()
+    {
+        Done();
+    }
 
 
-  //----CScriptRegister interface--------------------------------------------
-  virtual void				RegisterFunctions					(CScriptManager *scriptManager);
+    bool								Init											(const std::string &initGuiXML);
+    void								Done											();
+    bool								IsOk											() const
+    {
+        return m_bIsOk;
+    }
+    void								Render										(CGraphicsManager *renderManager, CFontManager *fontManager);
+    void								RenderPointerMouse				(CGraphicsManager *renderManager, CFontManager *fontManager);
+    void								Update										(float elapsedTime);
+    void								SetScreenResolution				(const Vect2i &resolution);
+    bool								LoadGuiFiles							(const std::string &pathWindows);
+    bool								ReloadGuiFiles						();
+    void								SetMessageBox							(const std::string &text);
+    bool								IsVisibleMessage					() const
+    {
+        assert(m_TextBox);
+        return m_TextBox->IsVisible();
+    }
+    void								ActiveWindows							(const std::string &inNameWindow);
+    void                PushWindows               (const std::string &inNameWindow);
+    void                PopWindows                ();
+    void								ActiveWindowsWithEffect		(const std::string &inNameWindow, EtypeTransitionEffect type, float transitionTime );
+    void								SetVisiblePointerMouse		(bool flag)
+    {
+        m_bVisiblePointerMouse = flag;
+    }
 
-  //-------Funciones para modificar los GuiElements--------------------------
-  void								SetActiveGuiElement				(const std::string &inNameGuiElement, bool flag);
-  void								SetVisibleGuiElement			(const std::string &inNameGuiElement, bool flag);
+    void								SetConsole();
 
-  bool								GetProgressBarValue				(const std::string &inNameGuiElement, float &outValue);
-  bool								SetProgressBarValue				(const std::string &inNameGuiElement, float inValue);
 
-  bool								NextBlockInRadioBox				(const std::string &inNameRadioBox);
-  bool								PrevBlockInRadioBox				(const std::string &inNameRadioBox);
+    //----CScriptRegister interface--------------------------------------------
+    virtual void				RegisterFunctions					(CScriptManager *scriptManager);
 
-  std::string					GetButtonCheckInRadioBox	(const std::string &inNameRadioBox);
-  void								SetButtonCheckInRadioBox	(const std::string &inNameRadioBox, const std::string &button);
+    //-------Funciones para modificar los GuiElements--------------------------
+    void								SetActiveGuiElement				(const std::string &inNameGuiElement, bool flag);
+    void								SetVisibleGuiElement			(const std::string &inNameGuiElement, bool flag);
 
-  void								SetStateCheckButton 			(const std::string &inCheckButtonName, bool state);
-  bool								GetStateCheckButton 			(const std::string &inCheckButtonName);
+    bool								GetProgressBarValue				(const std::string &inNameGuiElement, float &outValue);
+    bool								SetProgressBarValue				(const std::string &inNameGuiElement, float inValue);
 
-  void								SetStateSlider						(const std::string &inSliderName, float amount);
-  float								GetStateSlider						(const std::string &inSliderName);
+    bool								NextBlockInRadioBox				(const std::string &inNameRadioBox);
+    bool								PrevBlockInRadioBox				(const std::string &inNameRadioBox);
 
-  void								SetLiteralInStaticText		(const std::string &inStaticText, const std::string &lit);
+    std::string					GetButtonCheckInRadioBox	(const std::string &inNameRadioBox);
+    void								SetButtonCheckInRadioBox	(const std::string &inNameRadioBox, const std::string &button);
 
-  void								SetEditableTextBox				(const std::string &inEditableTextName, const std::string &text);
-  std::string					GetEditableTextBox				(const std::string &inEditableTextName);
+    void								SetStateCheckButton 			(const std::string &inCheckButtonName, bool state);
+    bool								GetStateCheckButton 			(const std::string &inCheckButtonName);
 
-  void								SetImage									(const std::string &inImageName, const std::string &activeImage);
-  std::string					GetImage									(const std::string &inImageName);
-  void								PlayImage									(const std::string &inImageName, float timePerImage, bool loop);
-  //-----------------------------------------------------------------------------------------------------------//
+    void								SetStateSlider						(const std::string &inSliderName, float amount);
+    float								GetStateSlider						(const std::string &inSliderName);
 
-  bool							GetIsDisplayedConsole();
-  void							SetIsDisplayedConsole(bool input);
-  bool							GetIsDisplayedHeart();
-  void							SetIsDisplayedHeart(bool input);
-  bool							GetIsDisplayedPixelite();
-  void							SetIsDisplayedPixelite(bool input);
-  float							GetPositionXPercentElement(std::string name);
-  float							GetPositionYPercentElement(std::string name);
-  void							SetPositionPercentElement(std::string name, float posx, float posy);
-  float							GetGUICountHeart();
-  void							SetGUICountHeart(float value);
-  float							GetGUICountPixelite();
-  void							SetGUICountPixelite(float value);
-  int							GetGUIPixeliteNumber();
-  void							SetGUIPixeliteNumber(int input);
-  float							GetElapsedTime();
-  std::string					GetCurrentWindow() { return m_sCurrentWindows;}
+    void								SetLiteralInStaticText		(const std::string &inStaticText, const std::string &lit);
 
- private:
-  void								Release										();
-  void								RenderTransitionEffect		(CGraphicsManager *renderManager);
-  bool								UpdateTransitionEffect		(float elapsedTime);
+    void								SetEditableTextBox				(const std::string &inEditableTextName, const std::string &text);
+    std::string					GetEditableTextBox				(const std::string &inEditableTextName);
 
- private:
-  Vect2i															m_ScreenResolution;
-  bool																m_bIsOk;
-  std::map<std::string, CWindows *>		m_WindowsMap;
-  std::map<std::string, CGuiElement *>	m_ElementsMap;
-  std::string													m_sCurrentWindows;
-  std::vector<std::string>            m_PrevWindows;
-  bool																m_bVisiblePointerMouse;
-  bool																m_bRenderError;
-  bool																m_bUpdateError;
-  CPointerMouse											*m_PointerMouse;
-  CTextBox														*m_TextBox;
-  CConsole														*m_Console;
-  bool																m_bLoadedGuiFiles;
-  std::string													m_sLastLoadpathGUI_XML;
-  TransitionEffect										m_sTransitionEffect;
-  bool																m_bFirstUpdate;
-  bool																m_isDisplayedConsole;
-  bool																m_isDisplayedHeart;
-  bool																m_isDisplayedPixelite;
-  float																m_GUICountHeart;
-  float																m_GUICountPixelite;
-  int																m_GUINumPixelites;
-  float																m_dt;
+    void								SetImage									(const std::string &inImageName, const std::string &activeImage);
+    std::string					GetImage									(const std::string &inImageName);
+    void								PlayImage									(const std::string &inImageName, float timePerImage, bool loop);
+    //-----------------------------------------------------------------------------------------------------------//
+
+    bool							GetIsDisplayedConsole();
+    void							SetIsDisplayedConsole(bool input);
+    bool							GetIsDisplayedHeart();
+    void							SetIsDisplayedHeart(bool input);
+    bool							GetIsDisplayedPixelite();
+    void							SetIsDisplayedPixelite(bool input);
+    void							SetVisibilityMessage(bool input);
+    bool							GetIsDisplayedPolyMessage();
+    void							SetIsDisplayedPolyMessage(bool input);
+    bool							GetFirstPolyMessageDisplayed();
+    void							SetFirstPolyMessageDisplayed(bool input);
+    bool							GetIsDisplayedUnlock();
+    void							SetIsDisplayedUnlock(bool input);
+    float							GetPositionXPercentElement(std::string name);
+    float							GetPositionYPercentElement(std::string name);
+    void							SetPositionPercentElement(std::string name, float posx, float posy);
+    float							GetGUICountHeart();
+    void							SetGUICountHeart(float value);
+    float							GetGUICountPixelite();
+    void							SetGUICountPixelite(float value);
+    int							GetGUIPixeliteNumber();
+    void							SetGUIPixeliteNumber(int input);
+    float							GetElapsedTime();
+    std::string					GetCurrentWindow()
+    {
+        return m_sCurrentWindows;
+    }
+
+private:
+    void								Release										();
+    void								RenderTransitionEffect		(CGraphicsManager *renderManager);
+    bool								UpdateTransitionEffect		(float elapsedTime);
+
+private:
+    Vect2i															m_ScreenResolution;
+    bool																m_bIsOk;
+    std::map<std::string, CWindows *>		m_WindowsMap;
+    std::map<std::string, CGuiElement *>	m_ElementsMap;
+    std::string													m_sCurrentWindows;
+    std::vector<std::string>            m_PrevWindows;
+    bool																m_bVisiblePointerMouse;
+    bool																m_bRenderError;
+    bool																m_bUpdateError;
+    CPointerMouse											*m_PointerMouse;
+    CTextBox														*m_TextBox;
+    CConsole														*m_Console;
+    bool																m_bLoadedGuiFiles;
+    std::string													m_sLastLoadpathGUI_XML;
+    TransitionEffect										m_sTransitionEffect;
+    bool																m_bFirstUpdate;
+    bool																m_isDisplayedConsole;
+    bool																m_isDisplayedHeart;
+    bool																m_isDisplayedPixelite;
+    bool																m_isDisplayedPolyMessage;
+    bool																m_firstPolyMessageSeen;
+    bool																m_isDisplayedUnlock;
+    float																m_GUICountHeart;
+    float																m_GUICountPixelite;
+    int																m_GUINumPixelites;
+    float																m_dt;
 };
 
 #endif //INC_GUI_MANAGER_H

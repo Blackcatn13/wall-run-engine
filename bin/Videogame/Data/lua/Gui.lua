@@ -15,6 +15,14 @@ function onUpdateWindowDisplayGUI()
 	if gui_manager:get_is_displayed_pixelite() == true then
 		ManagerGUIPixelites();
 	end
+	if gui_manager:get_is_displayed_poly_message() == true and gui_manager:get_first_poly_message_displayed() == false then
+		gui_manager:set_visibility_message(true);
+		ManagerGUIPolyMessage();
+	end
+	if gui_manager:get_is_displayed_unlock_message() == true then
+		gui_manager:set_visibility_message(true);
+		ManagerGUIUnlockMessage();
+	end
 	
 end
 
@@ -70,4 +78,29 @@ function ManagerGUIPixelites()
 			gui_manager:set_count_pixelite(count + gui_manager:get_dt());
 		end
 	end
+end
+
+function ManagerGUIPolyMessage()
+	--Poly Message GUI
+	-- Fins que no apretes ENTER no marxa
+	gui_manager:set_is_displayed_console(true);
+	gui_manager:set_image('MessageGUI','PolyPlatform');
+	if act2in:do_action_from_lua("Enter") then
+		gui_manager:set_is_displayed_poly_message(false);
+		gui_manager:set_is_displayed_console(false);
+		gui_manager:set_first_poly_message_displayed(true);
+		gui_manager:set_visibility_message(false);
+	end	
+end
+
+function ManagerGUIUnlockMessage()
+	--Unlock Message GUI
+	-- Fins que no apretes ENTER no marxa
+	gui_manager:set_is_displayed_console(true);
+	gui_manager:set_image('MessageGUI','UnlockCard');
+	if act2in:do_action_from_lua("Enter") then
+		gui_manager:set_is_displayed_unlock_message(false);
+		gui_manager:set_is_displayed_console(false);
+		gui_manager:set_visibility_message(false);
+	end	
 end
