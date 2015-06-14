@@ -55,15 +55,10 @@ void CRenderableObjectsLayersManager::Reload() {
   SMESHM->Reload();
   Load(m_FileName);
   Load(m_FileName2);
-  std::stringstream ss;
-  int var = 1;
-  ss << CCORE->getLuaLoadLevelFunc() << "(" << var << ")";
-  std::string toRun = ss.str();
-  SCRIPTM->RunCode(toRun.c_str());
   LIGHTM->ReloadRO();
   ENEMYM->Reload();
+  SCRIPTM->Reload();
   COLM->Reload();
-
 }
 
 CRenderableObjectsManager *CRenderableObjectsLayersManager::GetRenderableObjectManager(CXMLTreeNode &Node) {

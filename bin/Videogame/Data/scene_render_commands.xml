@@ -90,7 +90,7 @@
 		<disable_alpha_blend />
 		
 		
-		<!--<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>-->
+		<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="one"/>
 		<set_pool_renderable_objects_technique pool="particles_pool"/>
 		<particle_render/>
 		<disable_alpha_blend />

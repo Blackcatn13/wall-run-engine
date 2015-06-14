@@ -22,6 +22,7 @@ class CSceneRendererCommandManager {
   void CleanUp();
   std::string GetNextName();
   bool m_needReload;
+  bool m_needReloadGUI;
   int m_CommandNumber;
   void GetSetRenderTargetSceneRendererCommand(CSetRenderTargetSceneRendererCommand *SceneRendererCommand);
  public:
@@ -30,7 +31,7 @@ class CSceneRendererCommandManager {
   void Load(const std::string &FileName);
   void Execute(CGraphicsManager &RM);
   void Reload();
-  void setReload() {m_needReload = true;}
+  void setReload() {m_needReload = true; m_needReloadGUI = true;}
 
 };
 //XML a parsear scene_renderer_commands.xml pag 17 pdf

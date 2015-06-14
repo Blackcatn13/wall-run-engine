@@ -42,6 +42,7 @@
 CSceneRendererCommandManager::CSceneRendererCommandManager()
   : m_FileName(""),
     m_needReload(false),
+    m_needReloadGUI(false),
     m_CommandNumber(0) {
   CleanUp();
 }
@@ -264,13 +265,13 @@ void CSceneRendererCommandManager::Execute(CGraphicsManager &RM) {
       m_needReload = false;
   } else {
     for (size_t i = 0; i < m_SceneRendererCommandsGUI.GetResourcesVector().size(); ++i) {
-      if (m_needReload) {
+      if (m_needReloadGUI) {
         m_SceneRendererCommandsGUI.GetResourcesVector().at(i)->Reload();
       }
       m_SceneRendererCommandsGUI.GetResourcesVector().at(i)->Execute(RM);
     }
-    if (m_needReload)
-      m_needReload = false;
+    if (m_needReloadGUI)
+      m_needReloadGUI = false;
   }
 #endif
 }
