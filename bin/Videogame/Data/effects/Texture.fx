@@ -37,8 +37,8 @@ PSVertex VS(PARTICLEIN IN){
 
 float4 PS(PSVertex IN) : COLOR
 {
-	//return float4(0,1,0,1);
-	return tex2D(S0LinearClampSampler, IN.uv);
+	float4 color = tex2D(S0PointClampSampler, IN.uv); 
+	return float4(color.rgb, color.a);
 }
 
 
