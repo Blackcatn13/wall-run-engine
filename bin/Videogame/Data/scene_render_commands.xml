@@ -36,6 +36,7 @@
 		<!--<render_scene layer="switches" active="true" />-->
 		<render_scene layer="puzzle" active="true" />
 		<render_scene layer="mov_platforms" active="true" />
+		<render_scene layer="poly" active="true" />
 		<render_scene layer="solid" active="true"/>
 		<render_scene layer="player" active="true"/>
 		<unset_render_target render_target="deferred_multiple_render_target"/>
@@ -83,7 +84,7 @@
 		<check_active_poly />
 
 		
-		<render_scene layer="poly" active="true" />
+		<!--<render_scene layer="poly" active="true" />-->
 		<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>
 
 		<set_pool_renderable_objects_technique pool="poly_pool"/>

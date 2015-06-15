@@ -36,7 +36,7 @@ PNormalVertex RenderNormalsVS(VNormalVertex IN)
 float4 RenderNormalsPS20(PNormalVertex IN) : COLOR
 {
 	return float4(IN.normal, 1);
-	return tex2D(S0LinearClampSampler, IN.uv);
+	return tex2D(DiffuseTextureSampler, IN.uv);
 	return float4(1,0,0,1);
 }
 

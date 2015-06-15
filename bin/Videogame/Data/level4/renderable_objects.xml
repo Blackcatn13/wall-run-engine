@@ -324,7 +324,7 @@
 	
 	
 	<!-- invisible wall -->
-	<platform name="INVISIBLE_WALL001" core="INVISIBLE_WALL001" type="static" pos="431.490265 8.452271 11.098312" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="0.137375 5.22161 5.33797" layer="solid"/>
+	<platform name="INVISIBLE_WALL001" core="INVISIBLE_WALL001" type="static" pos="431.490265 8.452271 11.098312" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="0.5137375 5.22161 5.33797" layer="solid"/>
 	
 
 	<platform name="MovingPlatform011" core="MovingPlatform001" phisic_size="2 0.5 1.5" type="moving" speed= "5"  pos="-360.16644 -34.250000 -570.70001" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms"  room="1">
