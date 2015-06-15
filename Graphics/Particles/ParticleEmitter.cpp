@@ -143,7 +143,7 @@ CParticleEmitter::~CParticleEmitter() {
 void CParticleEmitter::Render(CGraphicsManager *RM) {
 #ifdef _PARTICLEVIEWER
   CTimer timer = CTimer(1);
-  std::cout << "Start rendering particle emitter : " << m_Name << std::endl;
+  //std::cout << "Start rendering particle emitter : " << m_Name << std::endl;
 #endif
   for (int i = 0; i < m_MaxParticles; i++) {
     if (!m_Particles->IsFree(i)) {
@@ -159,7 +159,7 @@ void CParticleEmitter::Render(CGraphicsManager *RM) {
   }
 #ifdef _PARTICLEVIEWER
   timer.Update();
-  std::cout << " Time to update all the particles for  " << m_Name << " " << timer.GetElapsedTime() << " s" << std::endl;
+  //std::cout << " Time to update all the particles for  " << m_Name << " " << timer.GetElapsedTime() << " s" << std::endl;
 #endif
   Mat44f t = m44fIDENTITY;
   RM->SetTransform(t);
@@ -172,7 +172,7 @@ void CParticleEmitter::Render(CGraphicsManager *RM) {
   m_RV->Render(RM, l_EffectTechnique);
 #ifdef _PARTICLEVIEWER
   timer.Update();
-  std::cout << " Time to render all the particles for  " << m_Name << " " << timer.GetElapsedTime() << " s" << std::endl;
+  //std::cout << " Time to render all the particles for  " << m_Name << " " << timer.GetElapsedTime() << " s" << std::endl;
 #endif
   t = m44fIDENTITY;
   RM->SetTransform(t);

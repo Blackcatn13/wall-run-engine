@@ -67,6 +67,9 @@ void RegisterCore() {
     .def("exit_game", &CCore::ExitGame)
     .property("m_CameraController", &CCore::GetCameraController, &CCore::SetCameraController)
     //.property("m_PlatformsMap", &CCore::GetPlatformsMap)
+#ifdef _PARTICLEVIEWER
+    .def("copy_to_clipboard", &CCore::CopyToClipboard)
+#endif
   ];
   luabind::module(LUA_STATE) [
     class_<CCoreLuaWrapper>("CCoreLuaWrapper")

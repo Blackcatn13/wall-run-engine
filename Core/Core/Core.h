@@ -255,8 +255,10 @@ class CCore {
         return m_PlatformsMap;
     }*/
 
-	void ExitGame(){ GetProcess()->setexitGame(true);}
-
+  void ExitGame() { GetProcess()->setexitGame(true);}
+#ifdef _PARTICLEVIEWER
+  void CopyToClipboard(std::string toCopy);
+#endif
 };
 
 #endif

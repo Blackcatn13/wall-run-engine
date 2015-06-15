@@ -8,6 +8,7 @@
 #include "Particles\ParticleEmitter.h"
 #include "Particles\Particle.h"
 #include "Object\Object3D.h"
+#include "Utils\Named.h"
 
 extern "C"
 {
@@ -49,7 +50,7 @@ void RegisterParticles() {
   ];
 
   luabind::module(LUA_STATE) [
-    class_<CParticleEmitter, CObject3D>("CParticleEmitter")
+    class_<CParticleEmitter, bases<CObject3D, CNamed> >("CParticleEmitter")
     .def(constructor<>())
     .enum_("EmitterType")
     [

@@ -51,6 +51,7 @@ bool CXMLTreeNode::LoadFile (const char *_pszFileName) {
 #ifdef _DEBUG
     else {
       xmlErrorPtr err = xmlGetLastError();
+      int i = 0;
     }
 #endif
   }
