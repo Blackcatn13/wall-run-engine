@@ -131,7 +131,13 @@ HRESULT CInputManager::GetPosition( INPUT_DEVICE_TYPE idType, Vect2i& pos)
 {
     switch (idType) {
     case IDV_MOUSE:
-        pos = m_pMouse->GetPosition();
+        //pos = m_pMouse->GetPosition();
+		POINT p;
+		if (GetCursorPos(&p))
+		{
+			//cursor position now in p.x and p.y
+			pos = Vect2i(p.x, p.y);
+		}
         return S_OK;
         break;
     case IDV_GAMEPAD1:
