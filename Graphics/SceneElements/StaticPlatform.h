@@ -19,6 +19,7 @@ class CStaticPlatform : public CSceneElement {
 
  public:
   CStaticPlatform(std::string platformName, std::string coreName);
+  void Update(float dt);
 // virtual  ~ CStaticPlatform ();
   /* void InsertPlatform( std::string userDataName, Vect3f size, Vect3f localPosition);
    CPhysicActor *GetPlatformActor() {
@@ -27,7 +28,8 @@ class CStaticPlatform : public CSceneElement {
    Vect3f GetPhysicsSize() {
      return m_PlatformPhysicsSize;
    }*/
-
+  bool isAround(Vect3f vector1, Vect3f vector2);
+  bool isInside(Vect3f vector1, Vect3f vector2);
 };
 
 #endif

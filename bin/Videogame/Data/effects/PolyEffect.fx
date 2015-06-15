@@ -32,7 +32,7 @@ float4 RenderNormalsPS20(PNormalVertex IN) : COLOR
 	//return float4(IN.normal, 1);
 	float3 l_DiffuseColor = tex2D(S0LinearClampSampler, IN.uv).xyz;
 	float3 l_AuxColor = l_DiffuseColor * float3(0,1,0);
-	return float4(l_AuxColor, 0.5);
+	return float4(l_AuxColor, 1);
 	//return tex2D(S0LinearClampSampler, IN.uv);
 	return float4(1,0,0,1);
 }
