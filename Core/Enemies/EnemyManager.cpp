@@ -181,3 +181,50 @@ CEnemy *CEnemyManager::GetEnemy(std::string enemyName) {
   }
   return NULL;
 }
+
+Vect3f CEnemyManager::GetClosestEnemyVector(Vect3f direction, Vect3f position, float minDistance, float minAngle)
+{
+	Vect3f resultDirection = direction; 
+	for (int i=0; i<m_Enemies.size(); i++)
+	{
+		if ((m_Enemies[i]->getenemyType() == PUMPUM) || (m_Enemies[i]->getenemyType() == MIKMIK))
+		{
+			Vect3f enemyPosition = m_Enemies[i]->GetPosition();
+			if (GetDistance(enemyPosition, position) < minDistance)
+			{
+				float h = GetDistance(enemyPosition, position);
+				if (minAngle >= getAngleDiff(direction.Normalize(), (enemyPosition - position).Normalize()))
+				{
+					resultDirection = (enemyPosition - position).Normalize();
+					float angle = getAngleDiff(direction.Normalize(), (enemyPosition - position).Normalize());
+					minDistance = h;
+				}
+			}
+		}
+
+	}
+	return resultDirection;
+}
+
+float CEnemyManager::GetDistance(Vect3f pos1, Vect3f pos2) {
+  float l_distance = pow((pos1.x - pos2.x), 2) + pow((pos1.y - pos2.y), 2) + pow((pos1.z - pos2.z), 2);
+  float l_result_distance = sqrt(l_distance);
+  return l_result_distance;
+}
+
+float CEnemyManager::getAngleDiff(Vect3f A, Vect3f B) {
+  float angle = 0.0;
+  float divisor = sqrt(A.x * A.x + A.y * A.y + A.z * A.z) * sqrt(B.x * B.x + B.y * B.y + B.z * B.z);
+	if (divisor != 0) {
+	float degangle = ((A.x * B.x + A.y * B.y + A.z * B.z) / divisor);
+	//float angle = mathUtils::ACos(mathUtils::Deg2Rad(degangle));
+	if (degangle > 1.0f)
+		degangle = 1.0f;
+
+	if (degangle < -1.0f)
+		degangle = -1.0f;
+
+	angle = mathUtils::ACos(degangle);
+	}
+  return angle;
+}

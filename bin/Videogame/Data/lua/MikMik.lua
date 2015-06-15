@@ -42,7 +42,7 @@ function mikmik_update_stopped(ElapsedTime, doComprobation, name)
 					end
 				end	
 			-- Si le Player se acerca atacar
-			elseif player.is_hit == false then
+			elseif player.is_hit == false and tostring(enemy.m_Zone) == tostring(player.zone) then
 				enemy:m_FSM():newState("Perseguir_Player")
 			end
 		end
@@ -74,7 +74,7 @@ function mikmik_update_moving(ElapsedTime, doComprobation, name)
 		
 		move_enemy(ElapsedTime, enemy.m_CurrentWp, enemy)
 		
-		if check_attack(enemy) == true then
+		if check_attack(enemy) == true and tostring(enemy.m_Zone) == tostring(player.zone) then
 			enemy:m_FSM():newState("Perseguir_Player")
 		else
 			local wp_distance = get_distance_between_points(enemy:get_position(), enemy.m_CurrentWp)

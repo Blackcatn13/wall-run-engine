@@ -58,7 +58,10 @@ class CEnemyManager {
   void Reload();
   void ReloadEnemies();
   void InsertEnemy(CEnemy *enemy);
+  float getAngleDiff(Vect3f A, Vect3f B);
+  float GetDistance(Vect3f pos1, Vect3f pos2);
   CEnemy *GetEnemy(std::string enemyName);
+  Vect3f GetClosestEnemyVector(Vect3f direction, Vect3f position, float minDistance, float minAngle);
 
   static CEnemyManager *GetInstance();
   const EnemyStats &GetCoreEnemy(const std::string &type);

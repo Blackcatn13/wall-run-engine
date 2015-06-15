@@ -49,7 +49,6 @@ CMovingPlatform::~CMovingPlatform () {
 void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
   Vect3f direction = (point - m_Position);
   direction = direction.Normalize();
-
   if (point.Distance(m_Position) >= minDistance) {
     m_Position =  m_Position + /*Vect3f(1, 0, 0)*/direction.Normalize() * m_Speed * dt;
     //m_PlatorformActor->MoveGlobalPosition(m_Position);
