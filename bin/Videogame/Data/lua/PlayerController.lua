@@ -458,6 +458,7 @@ function on_update_player_lua(l_ElapsedTime)
 			m_AttackGravity = AttackGravityStart;
 			AttackSpeed = AttackStartSpeed;
 			player_controller.m_CurrentAttackForce = player_controller.m_AttackForce;
+			player_controller.m_Direction3D =  get_attack_direction(player_controller.m_Direction3D, player_controller.m_PhysicController:get_position())
 			mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce * AttackSpeed * l_ElapsedTime;
 			mov.y = 0.0;
 			player_controller.m_isAttack = true;
@@ -543,4 +544,10 @@ function move_character_controller_mesh(_player, _position, _jumping)
 		mesh:set_position(mesh_position)
 	end
 	
+end
+
+function get_attack_direction(_directionplayer, _positionplayer)
+	--local result = Vect3f(-1.0,0,0)
+	local result = Vect3f(_directionplayer.x, _directionplayer.y, _directionplayer.z)
+	return result
 end
