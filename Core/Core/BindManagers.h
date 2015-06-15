@@ -234,6 +234,7 @@ void RegisterManagers()
         .def("insert_enemy", &CEnemyManager::InsertEnemy)
         .def("get_enemy", &CEnemyManager::GetEnemy)
         .def("reload_enemies",  &CEnemyManager::ReloadEnemies)
+		.def("get_direction_enemy", &CEnemyManager::GetClosestEnemyVector)
     ];
     luabind::module(LUA_STATE) [
         class_<CMapManager<CPuzzle>>("CMapManagerPuzzle")

@@ -181,3 +181,29 @@ CEnemy *CEnemyManager::GetEnemy(std::string enemyName) {
   }
   return NULL;
 }
+
+Vect3f CEnemyManager::GetClosestEnemyVector(Vect3f direction, Vect3f position, float minDistance)
+{
+	Vect3f resultDirection = direction; 
+	for (int i=0; i<m_Enemies.size(); i++)
+	{
+		if ((m_Enemies[i]->getenemyType() == PUMPUM) || (m_Enemies[i]->getenemyType() == MIKMIK))
+		{
+			Vect3f enemyPosition = m_Enemies[i]->GetPosition();
+			if (GetDistance(enemyPosition, position) < minDistance)
+			{
+				float h = GetDistance(enemyPosition, position);
+				resultDirection = (enemyPosition - position).Normalize();
+				minDistance = h;
+			}
+		}
+
+	}
+	return resultDirection;
+}
+
+float CEnemyManager::GetDistance(Vect3f pos1, Vect3f pos2) {
+  float l_distance = pow((pos1.x - pos2.x), 2) + pow((pos1.y - pos2.y), 2) + pow((pos1.z - pos2.z), 2);
+  float l_result_distance = sqrt(l_distance);
+  return l_result_distance;
+}
