@@ -28,8 +28,8 @@ class CStaticPlatform : public CSceneElement {
    Vect3f GetPhysicsSize() {
      return m_PlatformPhysicsSize;
    }*/
-  bool isAround(Vect3f vector1, Vect3f vector2);
-  bool isInside(Vect3f vector1, Vect3f vector2);
+  //bool isAround(Vect3f vector1, Vect3f vector2);
+  //bool isInside(Vect3f vector1, Vect3f vector2);
 };
 
 #endif

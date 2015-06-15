@@ -43,7 +43,7 @@ void CMovingPlatform::AddBoxController(Vect3f size, float slope, float skinwidth
 CMovingPlatform::~CMovingPlatform () {
   /* PHYSXM->ReleasePhysicController(m_PhysicController);
    CHECKED_DELETE(m_PhysicController);*/
-	CHECKED_DELETE(m_Fsm);
+  CHECKED_DELETE(m_Fsm);
 }
 
 void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
@@ -69,7 +69,7 @@ void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
   if (abs(dirRay.x) + abs(dirRay.z) < (GetPhysicsSize().x + GetPhysicsSize().z + 1.0)) {
     SCollisionInfo info = SCollisionInfo();
     float l_RadioPhysicsPlayerVertical = 0.8;
-	float l_RadioPhysicsPlayerHorizontal = 0.8;
+    float l_RadioPhysicsPlayerHorizontal = 0.8;
     //float l_AlturaPlataformaDesdeOrigen = GetPhysicsSize().y + 1.5;
     //float l_MargenLateralPlataforma = 1.0;
     float l_DesplazamientoVerticalPlataforma = GetPhysicsSize().y + 1.5f;
@@ -94,8 +94,8 @@ void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
       }
 
       if ((PhysicsApplied == false) && (isAround(l_playerPosition, m_Position))) {
-		Vect3f dirInvertida = -dirRay.Normalize();
-		dirInvertida = Vect3f(dirInvertida.x, 0, dirInvertida.z);
+        Vect3f dirInvertida = -dirRay.Normalize();
+        dirInvertida = Vect3f(dirInvertida.x, 0, dirInvertida.z);
         PLAYC->getPhysicController()->Move(dirInvertida * m_Speed * 3 * dt  + direction.Normalize() * m_Speed * dt, dt);
         //PLAYC->setCurrentJumpForce(0.0);
         //PLAYC->setisJumping(false);
@@ -110,10 +110,10 @@ void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
       }
 
       if (isInside(l_playerPosition, m_Position)) {
-          //Hola
-          float l_margenInferiorPlataforma = GetPhysicsSize().y + 0.9;
-          PLAYC->getPhysicController()->SetPosition(m_Position + Vect3f(0, -l_margenInferiorPlataforma, 0));
-        }
+        //Hola
+        float l_margenInferiorPlataforma = GetPhysicsSize().y + 0.9;
+        PLAYC->getPhysicController()->SetPosition(m_Position + Vect3f(0, -l_margenInferiorPlataforma, 0));
+      }
     }
     //Caso vertical
     else {
@@ -155,11 +155,9 @@ void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
             //PLAYC->setisGrounded(false);
             //PLAYC->setCurrentJumpForce(0.0);
             //PLAYC->setisJumpingMoving(false);
+          } else {
+            PLAYC->getPhysicController()->Move(-dirRay.Normalize() * m_Speed * 3 * dt / 1.0, dt);
           }
-		  else
-		  {
-		    PLAYC->getPhysicController()->Move(-dirRay.Normalize() * m_Speed * 3 * dt / 1.0, dt);
-		  }
           //PLAYC->setCurrentJumpForce(0.0);
           //PLAYC->setisJumping(false);
           //PLAYC->setisGrounded(false);
@@ -187,15 +185,15 @@ void CMovingPlatform::Update(float ElapsedTime) {
   UpdateFSM(ElapsedTime);
 }
 
-bool CMovingPlatform::isInside(Vect3f vector1, Vect3f vector2) {
-  float l_margenx = GetPhysicsSize().x;
-  float l_margenz = GetPhysicsSize().z;
-  float l_margeny = GetPhysicsSize().y;
-  if ((vector1.x > vector2.x - l_margenx) && (vector1.x < vector2.x + l_margenx) && (vector1.y > vector2.y - l_margeny) && (vector1.y < vector2.y + l_margeny) && (vector1.z > vector2.z - l_margenz) && (vector1.z < vector2.z + l_margenz))
-    return true;
-  else
-    return false;
-}
+//bool CMovingPlatform::isInside(Vect3f vector1, Vect3f vector2) {
+//  float l_margenx = GetPhysicsSize().x;
+//  float l_margenz = GetPhysicsSize().z;
+//  float l_margeny = GetPhysicsSize().y;
+//  if ((vector1.x > vector2.x - l_margenx) && (vector1.x < vector2.x + l_margenx) && (vector1.y > vector2.y - l_margeny) && (vector1.y < vector2.y + l_margeny) && (vector1.z > vector2.z - l_margenz) && (vector1.z < vector2.z + l_margenz))
+//    return true;
+//  else
+//    return false;
+//}
 
 void CMovingPlatform::UpdateFSM(float elapsedTime) {
 // for (TMapResource::iterator it = m_Resources.begin(); it != m_Resources.end(); ++it) {
@@ -222,8 +220,8 @@ void CMovingPlatform::UpdateFSM(float elapsedTime) {
   if (change) {
     s->m_onEnter = false;
     SCRIPTM->RunCode(s->onExit.c_str());
-	m_Fsm->setPreviousState(m_Fsm->getCurrentState());
-	m_Fsm->setCurrentState(CLuaGlobals::getInstance()->getString());
+    m_Fsm->setPreviousState(m_Fsm->getCurrentState());
+    m_Fsm->setCurrentState(CLuaGlobals::getInstance()->getString());
   }
 }
 

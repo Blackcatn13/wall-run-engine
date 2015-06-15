@@ -25,6 +25,9 @@ class CSceneElement : public CMeshInstance {
   virtual ~CSceneElement ();
   void InsertPhisic( std::string userDataName, Vect3f size, Vect3f localPosition);
   void ActivatePhisic(bool active);
+  bool isAround(Vect3f vector1, Vect3f vector2);
+  bool isInside(Vect3f vector1, Vect3f vector2);
+
   CPhysicActor *GetActor() {
     return m_Actor;
   }

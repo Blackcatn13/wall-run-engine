@@ -55,25 +55,25 @@ void CDoor::Update(float dt) {
   }
 }
 
-bool CDoor::isInside(Vect3f vector1, Vect3f vector2) {
-  //FIX BUG DETECTA PLAYER INSIDE
-  float l_margenx = GetPhysicsSize().x + 0.0f;
-  float l_margenz = GetPhysicsSize().z + 0.0f;
-  float l_margeny = GetPhysicsSize().y + 0.0f;
-  if ((vector1.x > vector2.x - l_margenx) && (vector1.x < vector2.x + l_margenx) && (vector1.y > vector2.y - l_margeny) && (vector1.y < vector2.y + l_margeny) && (vector1.z > vector2.z - l_margenz) && (vector1.z < vector2.z + l_margenz))
-    return true;
-  else
-    return false;
-}
-
-bool CDoor::isAround(Vect3f vector1, Vect3f vector2) {
-  float l_margenx = GetPhysicsSize().x + 0.8f;
-  float l_margenz = GetPhysicsSize().z + 0.8f;
-  float l_margeny = GetPhysicsSize().y + 1.8f;
-  /*bool l_isInside = false;
-  l_isInside = isInside(vector1, vector2);*/
-  if ((vector1.x > vector2.x - l_margenx) && (vector1.x < vector2.x + l_margenx) && (vector1.y > vector2.y - l_margeny) && (vector1.y < vector2.y + l_margeny) && (vector1.z > vector2.z - l_margenz) && (vector1.z < vector2.z + l_margenz))
-    return true;
-  else
-    return false;
-}
+//bool CDoor::isInside(Vect3f vector1, Vect3f vector2) {
+//  //FIX BUG DETECTA PLAYER INSIDE
+//  float l_margenx = GetPhysicsSize().x + 0.0f;
+//  float l_margenz = GetPhysicsSize().z + 0.0f;
+//  float l_margeny = GetPhysicsSize().y + 0.0f;
+//  if ((vector1.x > vector2.x - l_margenx) && (vector1.x < vector2.x + l_margenx) && (vector1.y > vector2.y - l_margeny) && (vector1.y < vector2.y + l_margeny) && (vector1.z > vector2.z - l_margenz) && (vector1.z < vector2.z + l_margenz))
+//    return true;
+//  else
+//    return false;
+//}
+//
+//bool CDoor::isAround(Vect3f vector1, Vect3f vector2) {
+//  float l_margenx = GetPhysicsSize().x + 0.8f;
+//  float l_margenz = GetPhysicsSize().z + 0.8f;
+//  float l_margeny = GetPhysicsSize().y + 1.8f;
+//  /*bool l_isInside = false;
+//  l_isInside = isInside(vector1, vector2);*/
+//  if ((vector1.x > vector2.x - l_margenx) && (vector1.x < vector2.x + l_margenx) && (vector1.y > vector2.y - l_margeny) && (vector1.y < vector2.y + l_margeny) && (vector1.z > vector2.z - l_margenz) && (vector1.z < vector2.z + l_margenz))
+//    return true;
+//  else
+//    return false;
+//}

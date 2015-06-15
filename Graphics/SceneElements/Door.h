@@ -18,8 +18,8 @@ class CDoor : public CSceneElement {
 //  ~CSwitch ();
 
   void Update(float dt);
-  bool isAround(Vect3f vector1, Vect3f vector2);
-  bool isInside(Vect3f vector1, Vect3f vector2);
+  /* bool isAround(Vect3f vector1, Vect3f vector2);
+   bool isInside(Vect3f vector1, Vect3f vector2);*/
   GET_SET(bool, IsOpening)
   GET_SET(std::string, LuaFunction)
   GET_SET(Vect3f, FinalPosition)
