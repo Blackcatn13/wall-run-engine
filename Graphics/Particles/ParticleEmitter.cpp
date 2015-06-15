@@ -14,7 +14,9 @@
 #include "RenderableVertex\IndexedVertexs.h"
 #include "Renderable\RenderableObjectTechniqueManager.h"
 #include "RenderableVertex\InstancingVertexs.h"
-
+#ifdef _PARTICLEVIEWER
+#include <iostream>
+#endif
 CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
   : m_CurrentTime(.0f)
   , m_ExcedentTime(.0f)
@@ -39,6 +41,7 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
   , m_vOndulacion1(node.GetVect3fProperty("ondulacion_vec1", v3fZERO, false))
   , m_vOndulacion2(node.GetVect3fProperty("ondulacion_vec2", v3fZERO, false))
   , m_sTexture(node.GetPszISOProperty("texture", "", false)) {
+  m_Name = (node.GetPszISOProperty("name", "", false));
   std::string type = node.GetPszISOProperty("type", "PLANE", false);
   if (type == "ESF")
     m_Type = EMITTER_ESF;
@@ -63,6 +66,7 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
 
   m_RV = new CInstancingVertexs<TPARTICLE_VERTEX>(GRAPHM, &vertexs, &lIdx, lVtxCount, lIdxCount);
   ((CInstancingVertexs<TPARTICLE_VERTEX> *)m_RV)->SetInstanceNumber(m_MaxParticles);
+  ((CInstancingVertexs<TPARTICLE_VERTEX> *)m_RV)->CreateInstanceBuffer(GRAPHM);
   const uint32 size_instancing = m_MaxParticles;
   m_vertex_list = new TPARTICLE_VERTEX_INSTANCE[size_instancing];
 }
@@ -137,7 +141,10 @@ CParticleEmitter::~CParticleEmitter() {
 }
 
 void CParticleEmitter::Render(CGraphicsManager *RM) {
-
+#ifdef _PARTICLEVIEWER
+  CTimer timer = CTimer(1);
+  std::cout << "Start rendering particle emitter : " << m_Name << std::endl;
+#endif
   for (int i = 0; i < m_MaxParticles; i++) {
     if (!m_Particles->IsFree(i)) {
       CParticle *p = m_Particles->GetAt(i);
@@ -150,7 +157,10 @@ void CParticleEmitter::Render(CGraphicsManager *RM) {
       m_vertex_list[i].visible = 0;
     }
   }
-
+#ifdef _PARTICLEVIEWER
+  timer.Update();
+  std::cout << " Time to update all the particles for  " << m_Name << " " << timer.GetElapsedTime() << " s" << std::endl;
+#endif
   Mat44f t = m44fIDENTITY;
   RM->SetTransform(t);
   t.Translate(m_Position);
@@ -160,7 +170,10 @@ void CParticleEmitter::Render(CGraphicsManager *RM) {
   CEffectTechnique *l_EffectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(m_RV->GetVertexType()))->GetEffectTechnique();
   m_Texture->Activate(0);
   m_RV->Render(RM, l_EffectTechnique);
-
+#ifdef _PARTICLEVIEWER
+  timer.Update();
+  std::cout << " Time to render all the particles for  " << m_Name << " " << timer.GetElapsedTime() << " s" << std::endl;
+#endif
   t = m44fIDENTITY;
   RM->SetTransform(t);
 }

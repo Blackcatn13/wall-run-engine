@@ -9,6 +9,10 @@
 #include "Math\Vector3.h"
 #include "Particles/RecyclingArray.h"
 #include "RenderableVertex\VertexTypes.h"
+#include "Utils\Named.h"
+#ifdef _PARTICLEVIEWER
+#include "Core_Utils\Timer.h"
+#endif
 
 class CXMLTreeNode;
 class CGraphicsManager;
@@ -18,7 +22,7 @@ class CRenderableVertexs;
 
 enum EmitterType {EMITTER_ESF, EMITTER_PLANE};
 
-class CParticleEmitter : public CObject3D {
+class CParticleEmitter : public CObject3D, public CNamed {
  public:
   CParticleEmitter();
   CParticleEmitter(CXMLTreeNode  &node);

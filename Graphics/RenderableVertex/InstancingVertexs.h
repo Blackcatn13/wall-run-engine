@@ -34,11 +34,15 @@ class CInstancingVertexs : public CRenderableVertexs {
   void SetInstanceNumber(int instanceNumber) {
     m_InstancesNumber = instanceNumber;
   }
+
+  void CreateInstanceBuffer(CGraphicsManager *RM) {
+    RM->GetDevice()->CreateVertexBuffer(GetInstanceSize() * m_InstancesNumber, 0, 0, D3DPOOL_MANAGED, &m_InstanceB, 0);
+  }
+
   CInstancingVertexs(CGraphicsManager *RM, void *VertexAddress, void *IndexAddres, size_t VertexCount, size_t IndexCount) {
     m_InstanceB = 0;
     RM->GetDevice()->CreateVertexBuffer(GetVertexSize() * VertexCount, 0, T::GetFVF(), D3DPOOL_DEFAULT, &m_VB, 0);
     RM->GetDevice()->CreateIndexBuffer(GetIndexSize() * IndexCount, 0, D3DFMT_INDEX16, D3DPOOL_DEFAULT, &m_IB, 0);
-    RM->GetDevice()->CreateVertexBuffer(GetInstanceSize() * m_InstancesNumber, 0, 0, D3DPOOL_MANAGED, &m_InstanceB, 0);
     m_IndexCount = IndexCount;
     m_VertexCount = VertexCount;
     void *vb_data;
