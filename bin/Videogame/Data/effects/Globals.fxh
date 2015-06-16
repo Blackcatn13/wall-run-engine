@@ -47,6 +47,6 @@ float g_StartLinearFog = 2.0;
 float g_EndLinearFog = 10.0;
 float4 g_FogColor = float4(0.7f,0.7,0.7f,0.5f); 
 float g_ExpDensityFog = 0.20;
-float g_Exp2DensityFog = 0.05; //0.20
+float g_Exp2DensityFog = 0.02; //0.20
 float g_ShadowEpsilon = 0.005f;
 

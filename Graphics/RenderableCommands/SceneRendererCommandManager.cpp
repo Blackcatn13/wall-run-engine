@@ -36,6 +36,7 @@
 #include "RenderableCommands\CheckEnabledPolyRenderCommand.h"
 #include "RenderableCommands\SetTextureInSpecificStageCommand.h"
 
+
 #include "Core_Utils/MemLeaks.h"
 
 
@@ -231,6 +232,7 @@ void CSceneRendererCommandManager::Load(const std::string &FileName) {
             CCheckEnabledPolyRenderCommand *l_Command = new CCheckEnabledPolyRenderCommand(m(i));
             toInsert->AddResource(l_Name, l_Command);
           }
+
         }
       }
     }
