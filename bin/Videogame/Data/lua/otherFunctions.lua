@@ -18,7 +18,8 @@ function open_door(_objectName)
 	coreInstance:trace("Opening door ".. _objectName)
 	local door = get_renderable_object("puzzle", _objectName)
 	if door ~= nil then
-		door.m_Printable = false
+		--door.m_Printable = false
+		--door:set_position(door.m_FinalPosition)
 		door.m_Actor:activate(false)
 	end
 	--door.m_IsOpening =true

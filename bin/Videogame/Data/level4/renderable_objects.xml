@@ -17,7 +17,7 @@
 	<!--hardcoded-->
 	<mesh_instance name="Collectible1" core="Enemy1" pos="485.26767 10.000014 -2.216164" yaw="0.0" pitch="0.0" roll="0.0" scale="0.5 0.5 0.1" visible="false" layer="collectible" />
 	
-	<door name="door_001" core="door_001" phisic_size="4.5 4.0 2.0" lua_function="move_door" final_position="557.26767 20.000014 -21" pos="557.26767 8.000014 -21.216164" yaw="0.0" pitch="0.0" roll="0.0" scale="3.0 1.0 1.0" visible="true" layer="puzzle"/>
+	<door name="door_001" core="door_001" phisic_size="4.5 4.0 2.0" lua_function="move_door" final_position="557.26767 10.000014 -21" pos="557.26767 8.000014 -21.216164" yaw="0.0" pitch="0.0" roll="0.0" scale="3.0 1.0 1.0" visible="true" layer="puzzle"/>
 
 	<mesh_instance name="PumPum1" core="Enemy1"  pos="495.826767 10.000014 -8.216164" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />
 	<mesh_instance name="disparoPumPum1" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" layer="enemies" />
@@ -254,10 +254,10 @@
 	<!--<platform name="PolyPlatform001" core="PolyPlatform001" type="poly" phisic_size="1.5 0.5 1.5" final_position="558.16 14.50 -51.31" direction="0.0 1.0 0.0" time_out="5.0" speed="5.0"
 	activation_distance= "10"  pos="558.16 9.50 -51.31" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="poly" light="OmniPoly001" />-->
 
-	<platform name="PolyPlatform002" core="PolyPlatform002" type="poly" pos="557.900879 2.778659 -53.174576" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="5.0 2.89 2.8" layer="poly" final_position="557.901 9.3701 -53.175"
-		 direction="0 1 0" time_out="3" speed="15" light="OmniPoly001" activation_distance="10"/>
+	<platform name="PolyPlatform002" core="PolyPlatform002" type="poly" pos="557.900879 2.778659 -53.174576" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="5.0 2.87 2.8" layer="poly" final_position="557.901 9.3701 -53.175"
+		 direction="0 1 0" time_out="3" speed="2" light="OmniPoly001" activation_distance="10"/>
 
-	<platform name="PolyPlatform001" core="PolyPlatform001" type="poly" phisic_size="1.5 0.5 1.5" final_position="557.900879 10.498659 -50.174576" direction="0.0 0.0 -1.0" time_out="3.0" speed="2.0"
+	<platform name="PolyPlatform001" core="PolyPlatform001" type="poly" phisic_size="1.5 0.5 1.5" final_position="557.900879 10.498659 -45.174576" direction="0.0 0.0 -1.0" time_out="3.0" speed="20.0"
 	activation_distance= "10"  pos="557.900879 10.498659 -40.174576" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="poly" light="OmniPoly001" />
 		 
 	<platform name="MovingPlatform001" core="MovingPlatform001" phisic_size="2 0.5 1.5" type="moving" speed= "8"  pos="568.16 13.50 -81.31" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms" room="1">
