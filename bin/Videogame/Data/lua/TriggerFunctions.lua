@@ -219,6 +219,24 @@ function check_enemies_killed(num1, door)
 	end
 end
 
+function check_enemies_killed(num1, door, door2)
+	if player.enemy_puzzle_active then
+		coreInstance:trace("----------------------------Enemies: ".. tostring(player.enemies_killed))
+		if player.enemies_killed == tonumber(num1) then
+			-- Aparece el collectible
+			coreInstance:trace("----------------------------Cromo is here!!")
+			local trigger_name ="Collectible1_UserData"
+			local trigger = trigger_manager:get_resource(trigger_name)
+			activate_collectible(trigger, "collectible", "Collectible1")
+			player.enemy_puzzle_active = false
+		end
+		if player.enemies_killed == 2 then
+			coreInstance:trace("----------------------------Opening door")
+			open_door(door, door2)
+		end
+	end
+end
+
 function ChuckyApear()
 	coreInstance:trace("CHUKY APEARS!!!");
 	local active_camera = cam_Controller:get_active_camera();

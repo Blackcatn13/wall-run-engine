@@ -10,7 +10,8 @@
 
 CDoor::CDoor(std::string switchName, std::string coreName, std::string lua_function, Vect3f final_Position)
   : CSceneElement(switchName, coreName),
-    m_IsOpening(false) {
+    m_IsOpening(false),
+	m_FinalPosition (final_Position){
 }
 
 void CDoor::Update(float dt) {

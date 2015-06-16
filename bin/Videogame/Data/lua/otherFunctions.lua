@@ -19,8 +19,32 @@ function open_door(_objectName)
 	local door = get_renderable_object("puzzle", _objectName)
 	if door ~= nil then
 		--door.m_Printable = false
-		--door:set_position(door.m_FinalPosition)
-		door.m_Actor:activate(false)
+		coreInstance:trace("Door Final Position: " .. tostring(door.m_FinalPosition.y) )
+		door:set_position(door.m_FinalPosition)
+		door.m_Actor:set_global_position(door.m_FinalPosition)
+		--door.m_Actor:activate(false)
+	end
+	--door.m_IsOpening =true
+	--play animacion subir puerta
+end
+
+function open_door(_objectName, _objectName2)
+	coreInstance:trace("Opening door ".. _objectName.. " and " .. _objectName2 )
+	local door = get_renderable_object("puzzle", _objectName)
+	if door ~= nil then
+		--door.m_Printable = false
+		coreInstance:trace("Door Final Position: " .. tostring(door.m_FinalPosition.y) )
+		door:set_position(door.m_FinalPosition)
+		door.m_Actor:set_global_position(door.m_FinalPosition)
+		--door.m_Actor:activate(false)
+	end
+	local door2 = get_renderable_object("puzzle", _objectName2)
+	if door2 ~= nil then
+		--door.m_Printable = false
+		coreInstance:trace("Door Final Position: " .. tostring(door2.m_FinalPosition.y) )
+		door2:set_position(door2.m_FinalPosition)
+		door2.m_Actor:set_global_position(door2.m_FinalPosition)
+		--door.m_Actor:activate(false)
 	end
 	--door.m_IsOpening =true
 	--play animacion subir puerta

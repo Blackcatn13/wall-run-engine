@@ -15,12 +15,12 @@
 	<layer name="mov_platforms"/>
 
 	<!--hardcoded-->
-	<mesh_instance name="Collectible1" core="Enemy1" pos="485.26767 10.000014 -2.216164" yaw="0.0" pitch="0.0" roll="0.0" scale="0.5 0.5 0.1" visible="false" layer="collectible" />
+	<mesh_instance name="Collectible1" core="Enemy1" pos="485.26767 10.000014 -2.216164" yaw="0.0" pitch="0.0" roll="0.0" scale="0.5 0.5 0.1" visible="false" layer="collectible" /> 
 	
-	<door name="door_001" core="door_001" phisic_size="4.5 4.0 2.0" lua_function="move_door" final_position="557.26767 10.000014 -21" pos="557.26767 8.000014 -21.216164" yaw="0.0" pitch="0.0" roll="0.0" scale="3.0 1.0 1.0" visible="true" layer="puzzle"/>
+	<!-- <door name="door_001" core="door_001" phisic_size="4.5 4.0 2.0" lua_function="move_door" final_position="557.26767 15.000014 -21" pos="557.26767 8.000014 -21.216164" yaw="0.0" pitch="0.0" roll="0.0" scale="3.0 1.0 1.0" visible="true" layer="puzzle"/> -->
 
-	<mesh_instance name="PumPum1" core="Enemy1"  pos="495.826767 10.000014 -8.216164" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />
-	<mesh_instance name="disparoPumPum1" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" layer="enemies" />
+	<!--<mesh_instance name="PumPum1" core="Enemy1"  pos="495.826767 10.000014 -8.216164" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" /> -->
+	<!--<mesh_instance name="disparoPumPum1" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" layer="enemies" /> -->
 	<mesh_instance name="PumPum2" core="Enemy1"  pos="-18.0 2.0 -8.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />
 	<mesh_instance name="disparoPumPum2" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" layer="enemies" />
 	<mesh_instance name="PumPum3" core="Enemy1"  pos="-23.0 2.0 -10.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" />
@@ -249,7 +249,7 @@
 	<mesh_instance name="Pedra010" core="Pedra010" pos="531.093811 8.488511 -14.203430" yaw="-0.159481" pitch="0.0" roll="0.0" scale="0.043989 0.043989 0.043989" visible="false" layer="solid"/>
 	<mesh_instance name="Pedra011" core="Pedra011" pos="531.184509 8.766878 -12.002254" yaw="-0.169503" pitch="0.0" roll="0.0" scale="0.0725038 0.0725038 0.0725038" visible="false" layer="solid"/>
 	<mesh_instance name="Pedra012" core="Pedra012" pos="529.496704 8.645426 -12.558045" yaw="-3.13808" pitch="0.0" roll="0.0" scale="0.0408702 0.0408702 0.0408702" visible="false" layer="solid"/>
-	<mesh_instance name="Puerta_arriba" core="Puerta_arriba" pos="539.615845 13.760757 -1.712970" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<door name="Puerta_arriba" core="Puerta_arriba" phisic_size="1.0 3.0 5.0" lua_function="move_door" final_position="539.615845 16.760757 -1.712970"  pos="539.615845 13.760757 -1.712970" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="puzzle"/>
 	<mesh_instance name="Pared_pedres_002" core="Pared_pedres_002" pos="506.567993 18.915779 -12.802419" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<!--<platform name="PolyPlatform001" core="PolyPlatform001" type="poly" phisic_size="1.5 0.5 1.5" final_position="558.16 14.50 -51.31" direction="0.0 1.0 0.0" time_out="5.0" speed="5.0"
 	activation_distance= "10"  pos="558.16 9.50 -51.31" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="poly" light="OmniPoly001" />-->
