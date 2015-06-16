@@ -27,7 +27,8 @@ CPolyPlatform::CPolyPlatform(std::string platformName, std::string coreName,  Ve
     m_TimeOut(timeOut),
     m_Speed(speed) {
   if (m_Speed <= 20) //Intentar buscar formula matematica que de algo parecido ò_ó
-    m_Margin = 0.2;
+   // m_Margin = 0.2;
+   m_Margin =0.5;
   else if ( m_Speed > 20 && m_Speed <= 25)
     m_Margin = 0.5;
   else

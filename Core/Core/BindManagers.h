@@ -205,7 +205,8 @@ void RegisterManagers()
         .def("get_default_renderable_object_manager", &CRenderableObjectsLayersManager::GetDefaultRenderableObjectManager)
         .def("load", &CRenderableObjectsLayersManager::Load)
         .def("get_renderable_objects_manager_by_str", &CRenderableObjectsLayersManager::GetRenderableObjectsManagerByStr)
-        .property("m_CurrentLayer", &CRenderableObjectsLayersManager::getCurrentLayer, &CRenderableObjectsLayersManager::setCurrentLayer)
+        .def("deactivate_objects_by_layer", &CRenderableObjectsLayersManager::DeactivateObjectsByStr)
+		.property("m_CurrentLayer", &CRenderableObjectsLayersManager::getCurrentLayer, &CRenderableObjectsLayersManager::setCurrentLayer)
     ];
     luabind::module(LUA_STATE) [
         class_<ZONE>("ZONE")

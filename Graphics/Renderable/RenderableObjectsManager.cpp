@@ -163,7 +163,8 @@ void CRenderableObjectsManager::Load(const std::string &FileName) {
         ss << meshName << "_UserData";
         std::string userDataName = ss.str();
         Vect3f l_ShapeSize = m.GetVect3fProperty("phisic_size", v3fZERO, false);
-        l_Door->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
+        //l_Door->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
+		l_Door->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, 0.0f, 0.0f));
         AddResource(meshName, l_Door);
 
       }  else  if (name == "platform") {
@@ -365,8 +366,8 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node) {
       l_Door->SetScale(scale);
       std::string userDataName = SetUserDataName(meshName);
       Vect3f l_ShapeSize = m.GetVect3fProperty("phisic_size", v3fZERO, false);
-      l_Door->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
-
+     // l_Door->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
+	  l_Door->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, 0.0f, 0.0f));
       AddResource(meshName, l_Door);
 
     } else  if (name == "renderable_script") {

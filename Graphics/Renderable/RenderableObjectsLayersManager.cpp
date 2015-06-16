@@ -10,6 +10,7 @@
 #include "Core\ScriptManager.h"
 #include "Enemies\EnemyManager.h"
 #include "Collectibles\CollectibleManager.h"
+#include "Renderable\RenderableObjectsManager.h"
 
 
 CRenderableObjectsLayersManager ::CRenderableObjectsLayersManager() {
@@ -149,4 +150,17 @@ void CRenderableObjectsLayersManager::Load(const std::string &FileName) {
       }
     }
   }
+}
+
+void CRenderableObjectsLayersManager::DeactivateObjectsByStr(std::string layerName){
+	CRenderableObjectsManager *manager = GetResource(layerName);
+
+	for (int i = 0; i < manager->GetResourcesVector().size(); i++){
+		std::string name = manager->GetResourcesVector().at(i)->getName();
+		std::stringstream str; 
+		str << "deactivate_invisible_wall(\"" << name << "\")";
+		std::string funct  = str.str();
+
+		SCRIPTM->RunCode(funct);
+	}
 }

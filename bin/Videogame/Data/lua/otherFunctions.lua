@@ -18,8 +18,33 @@ function open_door(_objectName)
 	coreInstance:trace("Opening door ".. _objectName)
 	local door = get_renderable_object("puzzle", _objectName)
 	if door ~= nil then
-		door.m_Printable = false
-		door.m_Actor:activate(false)
+		--door.m_Printable = false
+		coreInstance:trace("Door Final Position: " .. tostring(door.m_FinalPosition.y) )
+		door:set_position(door.m_FinalPosition)
+		door.m_Actor:set_global_position(door.m_FinalPosition)
+		--door.m_Actor:activate(false)
+	end
+	--door.m_IsOpening =true
+	--play animacion subir puerta
+end
+
+function open_door(_objectName, _objectName2)
+	coreInstance:trace("Opening door ".. _objectName.. " and " .. _objectName2 )
+	local door = get_renderable_object("puzzle", _objectName)
+	if door ~= nil then
+		--door.m_Printable = false
+		coreInstance:trace("Door Final Position: " .. tostring(door.m_FinalPosition.y) )
+		door:set_position(door.m_FinalPosition)
+		door.m_Actor:set_global_position(door.m_FinalPosition)
+		--door.m_Actor:activate(false)
+	end
+	local door2 = get_renderable_object("puzzle", _objectName2)
+	if door2 ~= nil then
+		--door.m_Printable = false
+		coreInstance:trace("Door Final Position: " .. tostring(door2.m_FinalPosition.y) )
+		door2:set_position(door2.m_FinalPosition)
+		door2.m_Actor:set_global_position(door2.m_FinalPosition)
+		--door.m_Actor:activate(false)
 	end
 	--door.m_IsOpening =true
 	--play animacion subir puerta
@@ -52,11 +77,8 @@ function split_str(inputstr, sep)
 end
 
 function reset_game()
-	--/////////////////////////////////////////////////////////////////////////////////////
-	--PLAYER
-	--/////////////////////////////////////////////////////////////////////////////////////
 	
-	--Position + 3D
+	--Player Position + 3D
 	player_controller:set_position(Vect3f(60,5,0));
 	player_controller.m_PhysicController:set_position(Vect3f(60,5,0));
 	player_controller.m_is3D = true;
@@ -67,7 +89,7 @@ function reset_game()
 	coreInstance.m_CameraController:set_active_camera("3DCam");
 	player_controller.m_isTurned = false;
 		
-	--Lifes + Pixelites
+	--Player Lifes + Pixelites
 	player_controller.num_hearts = 3;
 	gui_manager:set_image('LifeGUI','Life3')
 	player_controller.num_lives = 3;
@@ -83,17 +105,18 @@ function reset_game()
 	gui_manager:set_first_poly_message_displayed(false);
 	gui_manager:set_visibility_message(false);
 	
-	--/////////////////////////////////////////////////////////////////////////////////////
-	--COLLECTIBLES
-	--/////////////////////////////////////////////////////////////////////////////////////
 	
 	--Pixelites and cards
 	collectible_manager:reset_collectibles();
 	player.enemy_puzzle_active = true
 	
-	--/////////////////////////////////////////////////////////////////////////////////////
-	--ENEMIES
-	--/////////////////////////////////////////////////////////////////////////////////////
+	--Enemies
 	player.enemies_killed = 0;
 	enemy_manager:reload_enemies();
+	
+	--Invisible walls
+	renderable_objects_layer_manager:deactivate_objects_by_layer("invisible");
+	
+	--Doors
+	--TO DO
 end

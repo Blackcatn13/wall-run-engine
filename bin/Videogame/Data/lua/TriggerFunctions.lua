@@ -188,14 +188,14 @@ function set_puzzle_enemy_active(active)
 end
 
 function activate_invisible_wall(name)
-	local wall = get_renderable_object("solid", name)
+	local wall = get_renderable_object("invisible", name)
 	if wall ~= nil then
 		wall:activate_phisic(true)
 	end
 end
 
 function deactivate_invisible_wall(name)
-	local wall = get_renderable_object("solid", name)
+	local wall = get_renderable_object("invisible", name)
 	if wall ~= nil then
 		wall:activate_phisic(false)
 	end
@@ -215,6 +215,24 @@ function check_enemies_killed(num1, door)
 		if player.enemies_killed == 2 then
 			coreInstance:trace("----------------------------Opening door")
 			open_door(door)
+		end
+	end
+end
+
+function check_enemies_killed(num1, door, door2)
+	if player.enemy_puzzle_active then
+		coreInstance:trace("----------------------------Enemies: ".. tostring(player.enemies_killed))
+		if player.enemies_killed == tonumber(num1) then
+			-- Aparece el collectible
+			coreInstance:trace("----------------------------Cromo is here!!")
+			local trigger_name ="Collectible1_UserData"
+			local trigger = trigger_manager:get_resource(trigger_name)
+			activate_collectible(trigger, "collectible", "Collectible1")
+			player.enemy_puzzle_active = false
+		end
+		if player.enemies_killed == 2 then
+			coreInstance:trace("----------------------------Opening door")
+			open_door(door, door2)
 		end
 	end
 end

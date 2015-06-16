@@ -8,6 +8,8 @@ function onUpdateWindowDisplayGUI()
 		end
 	end
 	
+	local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("player"):get_resource("Piky");
+	
 	--Si el valor de isDisplayed es TRUE quiere decir que se muestra y, al cabo de 3 segundos, se ocultará.
 	if gui_manager:get_is_displayed_heart() == true then
 		ManagerGUIHearts();
@@ -17,10 +19,14 @@ function onUpdateWindowDisplayGUI()
 	end
 	if gui_manager:get_is_displayed_poly_message() == true and gui_manager:get_first_poly_message_displayed() == false then
 		gui_manager:set_visibility_message(true);
+		playerRenderable:clear_cycle(1,0);
+		playerRenderable:blend_cycle(0,1,0);
 		ManagerGUIPolyMessage();
 	end
 	if gui_manager:get_is_displayed_unlock_message() == true then
 		gui_manager:set_visibility_message(true);
+		playerRenderable:clear_cycle(1,0);
+		playerRenderable:blend_cycle(0,1,0);
 		ManagerGUIUnlockMessage();
 	end
 	
