@@ -7,12 +7,9 @@
 #include <vector>
 #include "Math\Color.h"
 #include "Math\Vector3.h"
-#include "Particles/RecyclingArray.h"
+//#include "Particles/RecyclingArray.h"
 #include "RenderableVertex\VertexTypes.h"
 #include "Utils\Named.h"
-#ifdef _PARTICLEVIEWER
-#include "Core_Utils\Timer.h"
-#endif
 
 class CXMLTreeNode;
 class CGraphicsManager;
@@ -71,11 +68,11 @@ class CParticleEmitter : public CObject3D, public CNamed {
   float			                  m_MinAge;
   float			                  m_MaxAge;
   float			                  m_MinSize;
-  float			                  m_MaxSize;
+  float 			                m_MaxSize;
   CColor			                m_Color1;
   CColor			                m_Color2;
   std::string		              m_sTexture;
-  CRecyclingArray<CParticle> *m_Particles;
+  //CRecyclingArray<CParticle> *m_Particles;
   float								        m_Gravity;
   float								        m_MaxVelocidadOndulacion;
   float								        m_MinVelocidadOndulacion;
@@ -86,6 +83,18 @@ class CParticleEmitter : public CObject3D, public CNamed {
   CRenderableVertexs         *m_RV;
   TPARTICLE_VERTEX_INSTANCE  *m_vertex_list;
   unsigned short             *m_index_list;
+
+
+  // POOL of particles
+  uint32  m_FreeElements;
+  uint32  m_UsedElements;
+  CParticle *m_RecyclingArray;
+  bool *m_RecyclingArrayStatus;
+
+  void InitPool();
+  void DeleteOldParticles(float age);
+  void UpdateParticles(float dt);
+  CParticle *NewParticle();
 };
 
 #endif

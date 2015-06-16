@@ -14,9 +14,8 @@
 #include "RenderableVertex\IndexedVertexs.h"
 #include "Renderable\RenderableObjectTechniqueManager.h"
 #include "RenderableVertex\InstancingVertexs.h"
-#ifdef _PARTICLEVIEWER
-#include <iostream>
-#endif
+// #include <omp.h>
+
 CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
   : m_CurrentTime(.0f)
   , m_ExcedentTime(.0f)
@@ -29,7 +28,7 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
   , m_MinAge(node.GetFloatProperty("min_age", -1.0f, false))
   , m_MaxAge(node.GetFloatProperty("max_age", -1.0f, false))
   , m_MinSize(node.GetFloatProperty("min_size", -1.0f, false))
-  , m_MaxSize(node.GetFloatProperty("max_size", -1.0f, false))
+  , m_MaxSize(node.GetFloatProperty("max_size", 1.0f, false))
   , m_Color1(node.GetCColorProperty("color_1", colWHITE, false))
   , m_Color2(node.GetCColorProperty("color_2", colWHITE, false))
   , m_vPos(node.GetVect3fProperty("v_Pos", v3fZERO, false))
@@ -47,7 +46,8 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
     m_Type = EMITTER_ESF;
   else if (type == "PLANE")
     m_Type = EMITTER_PLANE;
-  m_Particles = new CRecyclingArray<CParticle>(m_MaxParticles);
+
+  InitPool();
   m_TimeNextParticle = mathUtils::RandomFloatRange(m_MinEmissionTime, m_MaxEmissionTime);
 
   m_Texture = new CTexture();
@@ -67,8 +67,7 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
   m_RV = new CInstancingVertexs<TPARTICLE_VERTEX>(GRAPHM, &vertexs, &lIdx, lVtxCount, lIdxCount);
   ((CInstancingVertexs<TPARTICLE_VERTEX> *)m_RV)->SetInstanceNumber(m_MaxParticles);
   ((CInstancingVertexs<TPARTICLE_VERTEX> *)m_RV)->CreateInstanceBuffer(GRAPHM);
-  const uint32 size_instancing = m_MaxParticles;
-  m_vertex_list = new TPARTICLE_VERTEX_INSTANCE[size_instancing];
+  m_vertex_list = new TPARTICLE_VERTEX_INSTANCE[m_MaxParticles];
 }
 
 CParticleEmitter::CParticleEmitter()
@@ -100,7 +99,8 @@ CParticleEmitter::CParticleEmitter()
     m_Type = EMITTER_ESF;
   else if (type == "PLANE")
     m_Type = EMITTER_PLANE;
-  m_Particles = new CRecyclingArray<CParticle>(m_MaxParticles);
+
+  InitPool();
   m_TimeNextParticle = mathUtils::RandomFloatRange(m_MinEmissionTime, m_MaxEmissionTime);
 
   m_Texture = new CTexture();
@@ -120,16 +120,12 @@ CParticleEmitter::CParticleEmitter()
 
   m_RV = new CInstancingVertexs<TPARTICLE_VERTEX>(GRAPHM, &vertexs, &lIdx, lVtxCount, lIdxCount);
   ((CInstancingVertexs<TPARTICLE_VERTEX> *)m_RV)->SetInstanceNumber(m_MaxParticles);
-  const uint32 size_instancing = 200;
-  m_vertex_list = new TPARTICLE_VERTEX_INSTANCE[size_instancing];
+  m_vertex_list = new TPARTICLE_VERTEX_INSTANCE[m_MaxParticles];
 }
 
 CParticleEmitter::~CParticleEmitter() {
-  m_Particles->DeleteAllElements();
-  for (size_t i = 0; i < m_Particles->GetNumFreeElements(); ++i)
-    m_Particles->Free(i);
-
-  CHECKED_DELETE(m_Particles);
+  CHECKED_DELETE_ARRAY(m_RecyclingArray);
+  CHECKED_DELETE_ARRAY(m_RecyclingArrayStatus);
   if (m_Texture != NULL) {
     uint32 width = m_Texture->GetWidth();
     if (width < 5000)
@@ -141,26 +137,6 @@ CParticleEmitter::~CParticleEmitter() {
 }
 
 void CParticleEmitter::Render(CGraphicsManager *RM) {
-#ifdef _PARTICLEVIEWER
-  CTimer timer = CTimer(1);
-  //std::cout << "Start rendering particle emitter : " << m_Name << std::endl;
-#endif
-  for (int i = 0; i < m_MaxParticles; i++) {
-    if (!m_Particles->IsFree(i)) {
-      CParticle *p = m_Particles->GetAt(i);
-      m_vertex_list[i].x = p->getPosition().x;
-      m_vertex_list[i].y = p->getPosition().y;
-      m_vertex_list[i].z = p->getPosition().z;
-      m_vertex_list[i].size = p->getSize();
-      m_vertex_list[i].visible = 1;
-    } else {
-      m_vertex_list[i].visible = 0;
-    }
-  }
-#ifdef _PARTICLEVIEWER
-  timer.Update();
-  //std::cout << " Time to update all the particles for  " << m_Name << " " << timer.GetElapsedTime() << " s" << std::endl;
-#endif
   Mat44f t = m44fIDENTITY;
   RM->SetTransform(t);
   t.Translate(m_Position);
@@ -170,30 +146,26 @@ void CParticleEmitter::Render(CGraphicsManager *RM) {
   CEffectTechnique *l_EffectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(m_RV->GetVertexType()))->GetEffectTechnique();
   m_Texture->Activate(0);
   m_RV->Render(RM, l_EffectTechnique);
-#ifdef _PARTICLEVIEWER
-  timer.Update();
-  //std::cout << " Time to render all the particles for  " << m_Name << " " << timer.GetElapsedTime() << " s" << std::endl;
-#endif
   t = m44fIDENTITY;
   RM->SetTransform(t);
 }
 
 void CParticleEmitter::Update(float dt) {
   m_CurrentTime = m_CurrentTime + dt;
-  m_Particles->ParticleDeleteOld(dt);
+  DeleteOldParticles(dt);
   if (m_CurrentTime >= m_TimeNextParticle) {
     int numberOfNewParticles = (int)((m_CurrentTime + m_ExcedentTime) / m_TimeNextParticle);
     m_ExcedentTime = m_CurrentTime - m_TimeNextParticle;
     m_TimeNextParticle = mathUtils::RandomFloatRange(m_MinEmissionTime, m_MaxEmissionTime);
     for (int i = 0; i < numberOfNewParticles; ++i) {
-      CParticle *p = m_Particles->New();
+      CParticle *p = NewParticle();
       if (p != NULL) {
         PopulateParticle(p);
       }
     }
   }
-  if (m_Particles->GetNumUsedElements() > 0) {
-    m_Particles->ParticleUpdate(dt);
+  if (m_UsedElements > 0) {
+    UpdateParticles(dt);
   }
 }
 
@@ -261,4 +233,67 @@ void CParticleEmitter::PopulateParticle(CParticle *p) {
       break;
   }
   p->setDirection1(dirFinal);
+}
+
+
+void CParticleEmitter::InitPool() {
+  m_RecyclingArray = new CParticle[m_MaxParticles];
+  m_RecyclingArrayStatus = new bool[m_MaxParticles];
+
+  for (uint32 i = 0; i < m_MaxParticles; ++i)
+    m_RecyclingArrayStatus[i] = true;
+  m_FreeElements = m_MaxParticles;
+  m_UsedElements = 0;
+}
+
+void CParticleEmitter::DeleteOldParticles(float age) {
+  //#pragma omp parallel for
+  for (int i = 0; i < m_MaxParticles; ++i) {
+    if (!m_RecyclingArrayStatus[i]) {
+      if ((&(m_RecyclingArray[i]))->takeLife(age) <= 0) {
+        m_UsedElements--;
+        m_FreeElements++;
+        m_RecyclingArrayStatus[i] = true;
+        m_vertex_list[i].visible = 0;
+      }
+    }
+  }
+}
+
+void CParticleEmitter::UpdateParticles(float dt) {
+  //#pragma omp parallel for
+  for (int i = 0; i < m_MaxParticles; ++i) {
+    if (!m_RecyclingArrayStatus[i]) {
+      CParticle *p = &(m_RecyclingArray[i]);
+      p->Update(dt);
+      Vect3f pos = p->getPosition();
+      m_vertex_list[i].x = pos.x;
+      m_vertex_list[i].y = pos.y;
+      m_vertex_list[i].z = pos.z;
+      m_vertex_list[i].size = p->getSize();
+    }
+  }
+}
+
+CParticle *CParticleEmitter::NewParticle() {
+  bool found = false;
+  uint32 index = 0;
+
+  if (m_FreeElements > 0) {
+    while (!found && index < m_MaxParticles) {
+      found = m_RecyclingArrayStatus[index];
+      ++index;
+    }
+  }
+
+  if (found) {
+    index--;
+    m_FreeElements--;
+    m_UsedElements++;
+
+    m_RecyclingArrayStatus[index] = false;
+    m_vertex_list[index].visible = 1;
+    return &(m_RecyclingArray[index]);
+  } else
+    return 0;
 }
