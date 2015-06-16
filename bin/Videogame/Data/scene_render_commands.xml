@@ -107,12 +107,12 @@
 		
 		
 		<!--Fog-->
-		<enable_alpha_blend blendOp ="add" blendSrc="srcalpha" destBlend="invsrcalpha" />
+		<!-- <enable_alpha_blend blendOp="add" blendSrc="srcalpha" destBlend="invsrcalpha" />
 		<set_pool_renderable_objects_technique pool="fog_pool"/>
 		<render_draw_quad> 
 			<texture stage_id="0" file="DepthMapTexture"/>
 		</render_draw_quad> 
-		<disable_alpha_blend />
+		<disable_alpha_blend /> -->
 		<!--End Fog-->
 
 		<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->

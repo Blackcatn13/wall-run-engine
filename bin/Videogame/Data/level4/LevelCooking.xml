@@ -1,65 +1,35 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <Physx_meshes>
 	<Physx_mesh name="ARCADA" filename="Data\level4\meshes\ARCADA.phsx"/>
-	<Physx_mesh name="ORO2" filename="Data\level4\meshes\ORO2.phsx"/>
-	<Physx_mesh name="ORO004" filename="Data\level4\meshes\ORO004.phsx"/>
 	<Physx_mesh name="CADIRA" filename="Data\level4\meshes\CADIRA.phsx"/>
 	<Physx_mesh name="TERRA_SALA0" filename="Data\level4\meshes\TERRA_SALA0.phsx"/>
-	<Physx_mesh name="ORO1" filename="Data\level4\meshes\ORO1.phsx"/>
-	<Physx_mesh name="ORO3" filename="Data\level4\meshes\ORO3.phsx"/>
-	<Physx_mesh name="PilarQuad001" filename="Data\level4\meshes\PilarQuad001.phsx"/>
-	<Physx_mesh name="PARED_TIP2_003" filename="Data\level4\meshes\PARED_TIP2_003.phsx"/>
-	<Physx_mesh name="PARED_TIP3_007" filename="Data\level4\meshes\PARED_TIP3_007.phsx"/>
-	<Physx_mesh name="PARED_TIP1_004" filename="Data\level4\meshes\PARED_TIP1_004.phsx"/>
-	<Physx_mesh name="COLUMNA_INTERIOR020" filename="Data\level4\meshes\COLUMNA_INTERIOR020.phsx"/>
-	<Physx_mesh name="COLUMNA_INTERIOR021" filename="Data\level4\meshes\COLUMNA_INTERIOR021.phsx"/>
-	<Physx_mesh name="COLUMNA_INTERIOR018" filename="Data\level4\meshes\COLUMNA_INTERIOR018.phsx"/>
-	<Physx_mesh name="COLUMNA_INTERIOR001" filename="Data\level4\meshes\COLUMNA_INTERIOR001.phsx"/>
-	<Physx_mesh name="COLUMNA_INTERIOR014" filename="Data\level4\meshes\COLUMNA_INTERIOR014.phsx"/>
-	<Physx_mesh name="PARED_TIP3_006" filename="Data\level4\meshes\PARED_TIP3_006.phsx"/>
-	<Physx_mesh name="COLUMNA_INTERIOR015" filename="Data\level4\meshes\COLUMNA_INTERIOR015.phsx"/>
-	<Physx_mesh name="COLUMNA_INTERIOR016" filename="Data\level4\meshes\COLUMNA_INTERIOR016.phsx"/>
-	<Physx_mesh name="COLUMNA_INTERIOR017" filename="Data\level4\meshes\COLUMNA_INTERIOR017.phsx"/>
-	<Physx_mesh name="PAREDS_PORTA_SALA_0" filename="Data\level4\meshes\PAREDS_PORTA_SALA_0.phsx"/>
-	<Physx_mesh name="ARC_PORTA_SALA_0" filename="Data\level4\meshes\ARC_PORTA_SALA_0.phsx"/>
-	<Physx_mesh name="PARED_TIP1_" filename="Data\level4\meshes\PARED_TIP1_.phsx"/>
-	<Physx_mesh name="COLUMNA_INTERIOR" filename="Data\level4\meshes\COLUMNA_INTERIOR.phsx"/>
-	<Physx_mesh name="COLUMNA_INTERIOR002" filename="Data\level4\meshes\COLUMNA_INTERIOR002.phsx"/>
-	<Physx_mesh name="PARED_TIP1_002" filename="Data\level4\meshes\PARED_TIP1_002.phsx"/>
-	<Physx_mesh name="COLUMNA_INTERIOR009" filename="Data\level4\meshes\COLUMNA_INTERIOR009.phsx"/>
-	<Physx_mesh name="COLUMNA_INTERIOR006" filename="Data\level4\meshes\COLUMNA_INTERIOR006.phsx"/>
-	<Physx_mesh name="PARED_TIP3_002" filename="Data\level4\meshes\PARED_TIP3_002.phsx"/>
-	<Physx_mesh name="PARED_TIP3_003" filename="Data\level4\meshes\PARED_TIP3_003.phsx"/>
-	<Physx_mesh name="COLUMNA_INTERIOR007" filename="Data\level4\meshes\COLUMNA_INTERIOR007.phsx"/>
-	<Physx_mesh name="PARED_TIP2_001" filename="Data\level4\meshes\PARED_TIP2_001.phsx"/>
-	<Physx_mesh name="PARED_TIP1_001" filename="Data\level4\meshes\PARED_TIP1_001.phsx"/>
-	<Physx_mesh name="COLUMNA_INTERIOR003" filename="Data\level4\meshes\COLUMNA_INTERIOR003.phsx"/>
-	<Physx_mesh name="COLUMNA_INTERIOR005" filename="Data\level4\meshes\COLUMNA_INTERIOR005.phsx"/>
-	<Physx_mesh name="COLUMNA_INTERIOR004" filename="Data\level4\meshes\COLUMNA_INTERIOR004.phsx"/>
-	<Physx_mesh name="COLUMNA_INTERIOR008" filename="Data\level4\meshes\COLUMNA_INTERIOR008.phsx"/>
-	<Physx_mesh name="COLUMNA_INTERIOR019" filename="Data\level4\meshes\COLUMNA_INTERIOR019.phsx"/>
-	<Physx_mesh name="PARED_TIP2_002" filename="Data\level4\meshes\PARED_TIP2_002.phsx"/>
-	<Physx_mesh name="COLUMNA_INTERIOR010" filename="Data\level4\meshes\COLUMNA_INTERIOR010.phsx"/>
-	<Physx_mesh name="PARED_TIP3_004" filename="Data\level4\meshes\PARED_TIP3_004.phsx"/>
-	<Physx_mesh name="PARED_TIP3_005" filename="Data\level4\meshes\PARED_TIP3_005.phsx"/>
-	<Physx_mesh name="COLUMNA_INTERIOR011" filename="Data\level4\meshes\COLUMNA_INTERIOR011.phsx"/>
-	<Physx_mesh name="COLUMNA_INTERIOR012" filename="Data\level4\meshes\COLUMNA_INTERIOR012.phsx"/>
-	<Physx_mesh name="PARED_TIP1_003" filename="Data\level4\meshes\PARED_TIP1_003.phsx"/>
-	<Physx_mesh name="COLUMNA_INTERIOR013" filename="Data\level4\meshes\COLUMNA_INTERIOR013.phsx"/>
-	<Physx_mesh name="PARED_TIP2_" filename="Data\level4\meshes\PARED_TIP2_.phsx"/>
-	<Physx_mesh name="PARED_TIP2_004" filename="Data\level4\meshes\PARED_TIP2_004.phsx"/>
-	<Physx_mesh name="PARED_TIP3_" filename="Data\level4\meshes\PARED_TIP3_.phsx"/>
-	<Physx_mesh name="PARED_TIP3_001" filename="Data\level4\meshes\PARED_TIP3_001.phsx"/>
-	<Physx_mesh name="PARED_TIP3_008" filename="Data\level4\meshes\PARED_TIP3_008.phsx"/>
-	<Physx_mesh name="PARED_TIP3_009" filename="Data\level4\meshes\PARED_TIP3_009.phsx"/>
-	<Physx_mesh name="PARED_TIP3_010" filename="Data\level4\meshes\PARED_TIP3_010.phsx"/>
-	<Physx_mesh name="SALA2_TEMPLEPOLYPOLY" filename="Data\level4\meshes\SALA2_TEMPLEPOLYPOLY.phsx"/>
 	<Physx_mesh name="Object001" filename="Data\level4\meshes\Object001.phsx"/>
 	<Physx_mesh name="obstacle" filename="Data\level4\meshes\obstacle.phsx"/>
-	<Physx_mesh name="obstacle0022" filename="Data\level4\meshes\obstacle0022.phsx"/>
-	<Physx_mesh name="Cylinder001" filename="Data\level4\meshes\Cylinder001.phsx"/>
-	<Physx_mesh name="Cylinder002" filename="Data\level4\meshes\Cylinder002.phsx"/>
+	<Physx_mesh name="SALA1_TEMPLEPOLYPOLY_PHYSX" filename="Data\level4\meshes\SALA1_TEMPLEPOLYPOLY_PHYSX.phsx"/>
+	<Physx_mesh name="obstacle023" filename="Data\level4\meshes\obstacle023.phsx"/>
 	<Physx_mesh name="SALA 4" filename="Data\level4\meshes\SALA 4.phsx"/>
+	<Physx_mesh name="Plataforma_Fragil" filename="Data\level4\meshes\Plataforma_Fragil.phsx"/>
+	<Physx_mesh name="Plataforma01" filename="Data\level4\meshes\Plataforma01.phsx"/>
+	<Physx_mesh name="Plataforma02" filename="Data\level4\meshes\Plataforma02.phsx"/>
+	<Physx_mesh name="POLY PLAT. HORTZ002" filename="Data\level4\meshes\POLY PLAT. HORTZ002.phsx"/>
+	<Physx_mesh name="POLY PLAT. HORTZ003" filename="Data\level4\meshes\POLY PLAT. HORTZ003.phsx"/>
+	<Physx_mesh name="POLY PLAT. HORTZ001" filename="Data\level4\meshes\POLY PLAT. HORTZ001.phsx"/>
+	<Physx_mesh name="Plataforma0er3" filename="Data\level4\meshes\Plataforma0er3.phsx"/>
+	<Physx_mesh name="SALA 3" filename="Data\level4\meshes\SALA 3.phsx"/>
+	<Physx_mesh name="Pedra01" filename="Data\level4\meshes\Pedra01.phsx"/>
+	<Physx_mesh name="Pedra03" filename="Data\level4\meshes\Pedra03.phsx"/>
+	<Physx_mesh name="Pedra02" filename="Data\level4\meshes\Pedra02.phsx"/>
+	<Physx_mesh name="Pared_pedres_01" filename="Data\level4\meshes\Pared_pedres_01.phsx"/>
+	<Physx_mesh name="Pedra08" filename="Data\level4\meshes\Pedra08.phsx"/>
+	<Physx_mesh name="Pedra04" filename="Data\level4\meshes\Pedra04.phsx"/>
+	<Physx_mesh name="Pedra05" filename="Data\level4\meshes\Pedra05.phsx"/>
+	<Physx_mesh name="Pedra06" filename="Data\level4\meshes\Pedra06.phsx"/>
+	<Physx_mesh name="Pedra07" filename="Data\level4\meshes\Pedra07.phsx"/>
+	<Physx_mesh name="Minitemplo" filename="Data\level4\meshes\Minitemplo.phsx"/>
+	<Physx_mesh name="Pedra09" filename="Data\level4\meshes\Pedra09.phsx"/>
+	<Physx_mesh name="Pedra011" filename="Data\level4\meshes\Pedra011.phsx"/>
+	<Physx_mesh name="Pedra012" filename="Data\level4\meshes\Pedra012.phsx"/>
+	<Physx_mesh name="Pared_pedres_002" filename="Data\level4\meshes\Pared_pedres_002.phsx"/>
 	<Physx_mesh name="OBSTACLE004" filename="Data\level4\meshes\OBSTACLE004.phsx"/>
 	<Physx_mesh name="OBSTACLE008" filename="Data\level4\meshes\OBSTACLE008.phsx"/>
 	<Physx_mesh name="OBSTACLE007" filename="Data\level4\meshes\OBSTACLE007.phsx"/>
@@ -77,35 +47,10 @@
 	<Physx_mesh name="OBSTACLE005" filename="Data\level4\meshes\OBSTACLE005.phsx"/>
 	<Physx_mesh name="OBSTACLE001" filename="Data\level4\meshes\OBSTACLE001.phsx"/>
 	<Physx_mesh name="OBSTACLE003" filename="Data\level4\meshes\OBSTACLE003.phsx"/>
+	<Physx_mesh name="PLATAFORMA007" filename="Data\level4\meshes\PLATAFORMA007.phsx"/>
 	<Physx_mesh name="PLATAFORMA008" filename="Data\level4\meshes\PLATAFORMA008.phsx"/>
 	<Physx_mesh name="PLATAFORMA009" filename="Data\level4\meshes\PLATAFORMA009.phsx"/>
 	<Physx_mesh name="PLATAFORMA001" filename="Data\level4\meshes\PLATAFORMA001.phsx"/>
-	<Physx_mesh name="COLUMNA001" filename="Data\level4\meshes\COLUMNA001.phsx"/>
 	<Physx_mesh name="COLUMNA" filename="Data\level4\meshes\COLUMNA.phsx"/>
 	<Physx_mesh name="SALA 8" filename="Data\level4\meshes\SALA 8.phsx"/>
-	<Physx_mesh name="PilarQuad002" filename="Data\level4\meshes\PilarQuad002.phsx"/>
-	<Physx_mesh name="SALA1_TEMPLEPOLYPOLY_PHYSX" filename="Data\level4\meshes\SALA1_TEMPLEPOLYPOLY_PHYSX.phsx"/>
-	<Physx_mesh name="SALA 3" filename="Data\level4\meshes\SALA 3.phsx"/>
-	<Physx_mesh name="Pedra01" filename="Data\level4\meshes\Pedra01.phsx"/>
-	<Physx_mesh name="Pedra03" filename="Data\level4\meshes\Pedra03.phsx"/>
-	<Physx_mesh name="Pedra02" filename="Data\level4\meshes\Pedra02.phsx"/>
-	<Physx_mesh name="Pared_pedres_01" filename="Data\level4\meshes\Pared_pedres_01.phsx"/>
-	<Physx_mesh name="Pedra08" filename="Data\level4\meshes\Pedra08.phsx"/>
-	<Physx_mesh name="Pedra04" filename="Data\level4\meshes\Pedra04.phsx"/>
-	<Physx_mesh name="Pedra05" filename="Data\level4\meshes\Pedra05.phsx"/>
-	<Physx_mesh name="Pedra06" filename="Data\level4\meshes\Pedra06.phsx"/>
-	<Physx_mesh name="Pedra07" filename="Data\level4\meshes\Pedra07.phsx"/>
-	<Physx_mesh name="Pared_pedres_02" filename="Data\level4\meshes\Pared_pedres_02.phsx"/>
-	<Physx_mesh name="Minitemplo" filename="Data\level4\meshes\Minitemplo.phsx"/>
-	<Physx_mesh name="Ojo_puerta01" filename="Data\level4\meshes\Ojo_puerta01.phsx"/>
-	<Physx_mesh name="Ojo_puerta02" filename="Data\level4\meshes\Ojo_puerta02.phsx"/>
-	<Physx_mesh name="Pedra09" filename="Data\level4\meshes\Pedra09.phsx"/>
-	<Physx_mesh name="Pedra010" filename="Data\level4\meshes\Pedra010.phsx"/>
-	<Physx_mesh name="Pedra011" filename="Data\level4\meshes\Pedra011.phsx"/>
-	<Physx_mesh name="Pedra012" filename="Data\level4\meshes\Pedra012.phsx"/>
-	<Physx_mesh name="Puerta_abajo" filename="Data\level4\meshes\Puerta_abajo.phsx"/>
-	<Physx_mesh name="Puerta_arriba" filename="Data\level4\meshes\Puerta_arriba.phsx"/>
-	<Physx_mesh name="Plataforma_Fragil" filename="Data\level4\meshes\Plataforma_Fragil.phsx"/>
-	<Physx_mesh name="Plataforma01" filename="Data\level4\meshes\Plataforma01.phsx"/>
-	<Physx_mesh name="Plataforma02" filename="Data\level4\meshes\Plataforma02.phsx"/>
 </Physx_meshes>

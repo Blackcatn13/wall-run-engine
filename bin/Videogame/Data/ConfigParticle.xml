@@ -28,7 +28,7 @@
   <PoolRenderableObjects poolRenderableObjects="./Data/pool_renderable_objects.xml"/>
   <Cameras CamerasLvl="No"/>
   <Cinematic CinematicLvl="No"/>
-  <Lua LuaFile=""/>
+  <Lua LuaFile="./Data/ParticleViewer/lua_actions.xml"/>
   <!--<LoadLevel LuaInitLevelFunc="init_level" LuaInitCamerasFunc="" />-->
   <Enemies enemiesXML=""/>
   <Particles particlesXML="./Data/particles1.xml"/>

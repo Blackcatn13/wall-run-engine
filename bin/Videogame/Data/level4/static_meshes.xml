@@ -1,21 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <static_meshes>
-
-	<!--hardcoded-->
-	<static_mesh filename=".\Data\level5\meshes//Enemy1.mesh" name="Enemy1"/>
-	<static_mesh filename=".\Data\level5\meshes//Enemy2.mesh" name="Enemy2"/>
-	<static_mesh filename=".\Data\level5\meshes//Enemy3.mesh" name="Enemy3"/>
-	<static_mesh filename=".\Data\level5\meshes//SpongePicky.mesh" name="SpongePicky"/>
-	<static_mesh name="door_001" filename="Data\level3\meshes\door_001.mesh"/>
-	<static_mesh name="MovingPlatform001" filename=".\Data\level1\meshes//MovingPlatform001.mesh"/>
-	<static_mesh name="PolyPlatform001" filename=".\Data\level1\meshes//PolyPlatform001.mesh"/>
-	<static_mesh name="PolyPlatform002" filename="Data\level4\meshes\PolyPlatform002.mesh"/>
-		<static_mesh name="Plataforma_Fragil" filename="Data\level4\meshes\Plataforma_Fragil.mesh"/>
-	<static_mesh name="Plataforma01" filename="Data\level4\meshes\Plataforma01.mesh"/>
-	<static_mesh name="Plataforma02" filename="Data\level4\meshes\Plataforma02.mesh"/>
-	<static_mesh name="INVISIBLE_WALL001" filename="Data\level4\meshes\INVISIBLE_WALL001.mesh"/>
-	<!--hardcoded-->
-
 	<static_mesh name="ARCADA" filename="Data\level4\meshes\ARCADA.mesh"/>
 	<static_mesh name="CUPULA" filename="Data\level4\meshes\CUPULA.mesh"/>
 	<static_mesh name="ORO2" filename="Data\level4\meshes\ORO2.mesh"/>
@@ -118,9 +102,6 @@
 	<static_mesh name="SALA2_TEMPLEPOLYPOLY" filename="Data\level4\meshes\SALA2_TEMPLEPOLYPOLY.mesh"/>
 	<static_mesh name="Object001" filename="Data\level4\meshes\Object001.mesh"/>
 	<static_mesh name="obstacle" filename="Data\level4\meshes\obstacle.mesh"/>
-	<static_mesh name="obstacle0022" filename="Data\level4\meshes\obstacle0022.mesh"/>
-	<static_mesh name="Cylinder001" filename="Data\level4\meshes\Cylinder001.mesh"/>
-	<static_mesh name="Cylinder002" filename="Data\level4\meshes\Cylinder002.mesh"/>
 	<static_mesh name="ANTORCHA022" filename="Data\level4\meshes\ANTORCHA022.mesh"/>
 	<static_mesh name="SUPORT ANTORCHA022" filename="Data\level4\meshes\SUPORT ANTORCHA022.mesh"/>
 	<static_mesh name="ANTORCHA023" filename="Data\level4\meshes\ANTORCHA023.mesh"/>
@@ -146,21 +127,39 @@
 	<static_mesh name="SUPORT ANTORCHA033" filename="Data\level4\meshes\SUPORT ANTORCHA033.mesh"/>
 	<static_mesh name="ANTORCHA033" filename="Data\level4\meshes\ANTORCHA033.mesh"/>
 	<static_mesh name="SALA1_TEMPLEPOLYPOLY" filename="Data\level4\meshes\SALA1_TEMPLEPOLYPOLY.mesh"/>
-	<static_mesh name="Columna002" filename="Data\level4\meshes\Columna002.mesh"/>
-	<static_mesh name="Columna01" filename="Data\level4\meshes\Columna01.mesh"/>
-	<static_mesh name="Columna02" filename="Data\level4\meshes\Columna02.mesh"/>
-	<static_mesh name="Columna03" filename="Data\level4\meshes\Columna03.mesh"/>
-	<static_mesh name="Columna04" filename="Data\level4\meshes\Columna04.mesh"/>
 	<static_mesh name="Columna005" filename="Data\level4\meshes\Columna005.mesh"/>
-	<static_mesh name="Columna006" filename="Data\level4\meshes\Columna006.mesh"/>
-	<static_mesh name="Columna007" filename="Data\level4\meshes\Columna007.mesh"/>
-	<static_mesh name="Columna008" filename="Data\level4\meshes\Columna008.mesh"/>
-	<static_mesh name="Columna009" filename="Data\level4\meshes\Columna009.mesh"/>
 	<static_mesh name="ANTORCHA034" filename="Data\level4\meshes\ANTORCHA034.mesh"/>
-	<static_mesh name="ANTORCHA035" filename="Data\level4\meshes\ANTORCHA035.mesh"/>
-	<static_mesh name="ANTORCHA036" filename="Data\level4\meshes\ANTORCHA036.mesh"/>
-	<static_mesh name="ANTORCHA037" filename="Data\level4\meshes\ANTORCHA037.mesh"/>
+	<static_mesh name="PilarQuad002" filename="Data\level4\meshes\PilarQuad002.mesh"/>
+	<static_mesh name="Pixelite001" filename="Data\level4\meshes\Pixelite001.mesh"/>
+	<static_mesh name="CARALLENGUA" filename="Data\level4\meshes\CARALLENGUA.mesh"/>
+	<static_mesh name="CARALLENGUA001" filename="Data\level4\meshes\CARALLENGUA001.mesh"/>
+	<static_mesh name="obstacle023" filename="Data\level4\meshes\obstacle023.mesh"/>
 	<static_mesh name="SALA 4" filename="Data\level4\meshes\SALA 4.mesh"/>
+	<static_mesh name="Plataforma_Fragil" filename="Data\level4\meshes\Plataforma_Fragil.mesh"/>
+	<static_mesh name="Plataforma01" filename="Data\level4\meshes\Plataforma01.mesh"/>
+	<static_mesh name="Plataforma02" filename="Data\level4\meshes\Plataforma02.mesh"/>
+	<static_mesh name="POLY PLAT. HORTZ002" filename="Data\level4\meshes\POLY PLAT. HORTZ002.mesh"/>
+	<static_mesh name="POLY PLAT. HORTZ003" filename="Data\level4\meshes\POLY PLAT. HORTZ003.mesh"/>
+	<static_mesh name="POLY PLAT. HORTZ001" filename="Data\level4\meshes\POLY PLAT. HORTZ001.mesh"/>
+	<static_mesh name="Plataforma0er3" filename="Data\level4\meshes\Plataforma0er3.mesh"/>
+	<static_mesh name="SALA 3" filename="Data\level4\meshes\SALA 3.mesh"/>
+	<static_mesh name="Pedra01" filename="Data\level4\meshes\Pedra01.mesh"/>
+	<static_mesh name="Pedra03" filename="Data\level4\meshes\Pedra03.mesh"/>
+	<static_mesh name="Pedra02" filename="Data\level4\meshes\Pedra02.mesh"/>
+	<static_mesh name="Pared_pedres_01" filename="Data\level4\meshes\Pared_pedres_01.mesh"/>
+	<static_mesh name="Pedra08" filename="Data\level4\meshes\Pedra08.mesh"/>
+	<static_mesh name="Pedra04" filename="Data\level4\meshes\Pedra04.mesh"/>
+	<static_mesh name="Pedra05" filename="Data\level4\meshes\Pedra05.mesh"/>
+	<static_mesh name="Pedra06" filename="Data\level4\meshes\Pedra06.mesh"/>
+	<static_mesh name="Pedra07" filename="Data\level4\meshes\Pedra07.mesh"/>
+	<static_mesh name="Minitemplo" filename="Data\level4\meshes\Minitemplo.mesh"/>
+	<static_mesh name="Ojo_puerta01" filename="Data\level4\meshes\Ojo_puerta01.mesh"/>
+	<static_mesh name="Ojo_puerta02" filename="Data\level4\meshes\Ojo_puerta02.mesh"/>
+	<static_mesh name="Pedra09" filename="Data\level4\meshes\Pedra09.mesh"/>
+	<static_mesh name="Pedra010" filename="Data\level4\meshes\Pedra010.mesh"/>
+	<static_mesh name="Pedra011" filename="Data\level4\meshes\Pedra011.mesh"/>
+	<static_mesh name="Pedra012" filename="Data\level4\meshes\Pedra012.mesh"/>
+	<static_mesh name="Pared_pedres_002" filename="Data\level4\meshes\Pared_pedres_002.mesh"/>
 	<static_mesh name="PUNXES002" filename="Data\level4\meshes\PUNXES002.mesh"/>
 	<static_mesh name="OBSTACLE004" filename="Data\level4\meshes\OBSTACLE004.mesh"/>
 	<static_mesh name="OBSTACLE008" filename="Data\level4\meshes\OBSTACLE008.mesh"/>
@@ -183,6 +182,7 @@
 	<static_mesh name="PUNXES008" filename="Data\level4\meshes\PUNXES008.mesh"/>
 	<static_mesh name="OBSTACLE003" filename="Data\level4\meshes\OBSTACLE003.mesh"/>
 	<static_mesh name="PUNXES014" filename="Data\level4\meshes\PUNXES014.mesh"/>
+	<static_mesh name="PLATAFORMA007" filename="Data\level4\meshes\PLATAFORMA007.mesh"/>
 	<static_mesh name="PUNXES003" filename="Data\level4\meshes\PUNXES003.mesh"/>
 	<static_mesh name="PUNXES004" filename="Data\level4\meshes\PUNXES004.mesh"/>
 	<static_mesh name="PUNXES009" filename="Data\level4\meshes\PUNXES009.mesh"/>
@@ -193,30 +193,52 @@
 	<static_mesh name="PUNXES011" filename="Data\level4\meshes\PUNXES011.mesh"/>
 	<static_mesh name="PUNXES006" filename="Data\level4\meshes\PUNXES006.mesh"/>
 	<static_mesh name="PUNXES007" filename="Data\level4\meshes\PUNXES007.mesh"/>
-	<static_mesh name="COLUMNA001" filename="Data\level4\meshes\COLUMNA001.mesh"/>
 	<static_mesh name="COLUMNA" filename="Data\level4\meshes\COLUMNA.mesh"/>
-	<static_mesh name="PUNXES013" filename="Data\level4\meshes\PUNXES013.mesh"/>
+	<static_mesh name="PUNXES0123" filename="Data\level4\meshes\PUNXES0123.mesh"/>
 	<static_mesh name="PUNXES010" filename="Data\level4\meshes\PUNXES010.mesh"/>
+	<static_mesh name="Box043" filename="Data\level4\meshes\Box043.mesh"/>
+	<static_mesh name="Box0001" filename="Data\level4\meshes\Box0001.mesh"/>
+	<static_mesh name="Box002" filename="Data\level4\meshes\Box002.mesh"/>
+	<static_mesh name="Box003" filename="Data\level4\meshes\Box003.mesh"/>
+	<static_mesh name="Box004" filename="Data\level4\meshes\Box004.mesh"/>
+	<static_mesh name="Box005" filename="Data\level4\meshes\Box005.mesh"/>
+	<static_mesh name="Box006" filename="Data\level4\meshes\Box006.mesh"/>
+	<static_mesh name="Box007" filename="Data\level4\meshes\Box007.mesh"/>
+	<static_mesh name="Box008" filename="Data\level4\meshes\Box008.mesh"/>
+	<static_mesh name="Box009" filename="Data\level4\meshes\Box009.mesh"/>
+	<static_mesh name="Box010" filename="Data\level4\meshes\Box010.mesh"/>
+	<static_mesh name="Box011" filename="Data\level4\meshes\Box011.mesh"/>
+	<static_mesh name="Box012" filename="Data\level4\meshes\Box012.mesh"/>
+	<static_mesh name="Box013" filename="Data\level4\meshes\Box013.mesh"/>
+	<static_mesh name="Box014" filename="Data\level4\meshes\Box014.mesh"/>
+	<static_mesh name="Box015" filename="Data\level4\meshes\Box015.mesh"/>
+	<static_mesh name="Box016" filename="Data\level4\meshes\Box016.mesh"/>
+	<static_mesh name="Box017" filename="Data\level4\meshes\Box017.mesh"/>
+	<static_mesh name="Box018" filename="Data\level4\meshes\Box018.mesh"/>
+	<static_mesh name="Box019" filename="Data\level4\meshes\Box019.mesh"/>
+	<static_mesh name="Box020" filename="Data\level4\meshes\Box020.mesh"/>
+	<static_mesh name="Box021" filename="Data\level4\meshes\Box021.mesh"/>
+	<static_mesh name="Box022" filename="Data\level4\meshes\Box022.mesh"/>
+	<static_mesh name="Box023" filename="Data\level4\meshes\Box023.mesh"/>
+	<static_mesh name="Box024" filename="Data\level4\meshes\Box024.mesh"/>
+	<static_mesh name="Box025" filename="Data\level4\meshes\Box025.mesh"/>
+	<static_mesh name="Box026" filename="Data\level4\meshes\Box026.mesh"/>
+	<static_mesh name="Box027" filename="Data\level4\meshes\Box027.mesh"/>
+	<static_mesh name="Box028" filename="Data\level4\meshes\Box028.mesh"/>
+	<static_mesh name="Box029" filename="Data\level4\meshes\Box029.mesh"/>
+	<static_mesh name="Box030" filename="Data\level4\meshes\Box030.mesh"/>
+	<static_mesh name="Box031" filename="Data\level4\meshes\Box031.mesh"/>
+	<static_mesh name="Box032" filename="Data\level4\meshes\Box032.mesh"/>
+	<static_mesh name="Box033" filename="Data\level4\meshes\Box033.mesh"/>
+	<static_mesh name="Box034" filename="Data\level4\meshes\Box034.mesh"/>
+	<static_mesh name="Box035" filename="Data\level4\meshes\Box035.mesh"/>
+	<static_mesh name="Box036" filename="Data\level4\meshes\Box036.mesh"/>
+	<static_mesh name="Box037" filename="Data\level4\meshes\Box037.mesh"/>
+	<static_mesh name="Box038" filename="Data\level4\meshes\Box038.mesh"/>
+	<static_mesh name="Box039" filename="Data\level4\meshes\Box039.mesh"/>
+	<static_mesh name="Box040" filename="Data\level4\meshes\Box040.mesh"/>
+	<static_mesh name="Box041" filename="Data\level4\meshes\Box041.mesh"/>
+	<static_mesh name="Box042" filename="Data\level4\meshes\Box042.mesh"/>
+	<static_mesh name="Box044" filename="Data\level4\meshes\Box044.mesh"/>
 	<static_mesh name="SALA 8" filename="Data\level4\meshes\SALA 8.mesh"/>
-	<static_mesh name="PilarQuad002" filename="Data\level4\meshes\PilarQuad002.mesh"/>
-	<static_mesh name="Pixelite001" filename="Data\level4\meshes\Pixelite001.mesh"/>
-	<static_mesh name="SALA 3" filename="Data\level4\meshes\SALA 3.mesh"/>
-	<static_mesh name="Pedra01" filename="Data\level4\meshes\Pedra01.mesh"/>
-	<static_mesh name="Pedra03" filename="Data\level4\meshes\Pedra03.mesh"/>
-	<static_mesh name="Pedra02" filename="Data\level4\meshes\Pedra02.mesh"/>
-	<static_mesh name="Pared_pedres_01" filename="Data\level4\meshes\Pared_pedres_01.mesh"/>
-	<static_mesh name="Pedra08" filename="Data\level4\meshes\Pedra08.mesh"/>
-	<static_mesh name="Pedra04" filename="Data\level4\meshes\Pedra04.mesh"/>
-	<static_mesh name="Pedra05" filename="Data\level4\meshes\Pedra05.mesh"/>
-	<static_mesh name="Pedra06" filename="Data\level4\meshes\Pedra06.mesh"/>
-	<static_mesh name="Pedra07" filename="Data\level4\meshes\Pedra07.mesh"/>
-	<static_mesh name="Minitemplo" filename="Data\level4\meshes\Minitemplo.mesh"/>
-	<static_mesh name="Ojo_puerta01" filename="Data\level4\meshes\Ojo_puerta01.mesh"/>
-	<static_mesh name="Ojo_puerta02" filename="Data\level4\meshes\Ojo_puerta02.mesh"/>
-	<static_mesh name="Pedra09" filename="Data\level4\meshes\Pedra09.mesh"/>
-	<static_mesh name="Pedra010" filename="Data\level4\meshes\Pedra010.mesh"/>
-	<static_mesh name="Pedra011" filename="Data\level4\meshes\Pedra011.mesh"/>
-	<static_mesh name="Pedra012" filename="Data\level4\meshes\Pedra012.mesh"/>
-	<static_mesh name="Puerta_arriba" filename="Data\level4\meshes\Puerta_arriba.mesh"/>
-	<static_mesh name="Pared_pedres_002" filename="Data\level4\meshes\Pared_pedres_002.mesh"/>
 </static_meshes>
