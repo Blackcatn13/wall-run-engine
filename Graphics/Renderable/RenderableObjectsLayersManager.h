@@ -16,6 +16,7 @@ class CRenderableObjectsLayersManager : public CTemplatedVectorMapManager<CRende
   ~CRenderableObjectsLayersManager();
   CRenderableObjectsManager *GetDefaultRenderableObjectManager();
   CRenderableObjectsManager *GetRenderableObjectsManagerByStr(std::string layerName);
+  void DeactivateObjectsByStr(std::string layerName);
   //void Destroy();
   void Load(const std::string &FileName);
   void Reload();

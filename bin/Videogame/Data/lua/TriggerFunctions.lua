@@ -188,14 +188,14 @@ function set_puzzle_enemy_active(active)
 end
 
 function activate_invisible_wall(name)
-	local wall = get_renderable_object("solid", name)
+	local wall = get_renderable_object("invisible", name)
 	if wall ~= nil then
 		wall:activate_phisic(true)
 	end
 end
 
 function deactivate_invisible_wall(name)
-	local wall = get_renderable_object("solid", name)
+	local wall = get_renderable_object("invisible", name)
 	if wall ~= nil then
 		wall:activate_phisic(false)
 	end

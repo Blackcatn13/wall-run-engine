@@ -77,11 +77,8 @@ function split_str(inputstr, sep)
 end
 
 function reset_game()
-	--/////////////////////////////////////////////////////////////////////////////////////
-	--PLAYER
-	--/////////////////////////////////////////////////////////////////////////////////////
 	
-	--Position + 3D
+	--Player Position + 3D
 	player_controller:set_position(Vect3f(60,5,0));
 	player_controller.m_PhysicController:set_position(Vect3f(60,5,0));
 	player_controller.m_is3D = true;
@@ -92,7 +89,7 @@ function reset_game()
 	coreInstance.m_CameraController:set_active_camera("3DCam");
 	player_controller.m_isTurned = false;
 		
-	--Lifes + Pixelites
+	--Player Lifes + Pixelites
 	player_controller.num_hearts = 3;
 	gui_manager:set_image('LifeGUI','Life3')
 	player_controller.num_lives = 3;
@@ -108,17 +105,18 @@ function reset_game()
 	gui_manager:set_first_poly_message_displayed(false);
 	gui_manager:set_visibility_message(false);
 	
-	--/////////////////////////////////////////////////////////////////////////////////////
-	--COLLECTIBLES
-	--/////////////////////////////////////////////////////////////////////////////////////
 	
 	--Pixelites and cards
 	collectible_manager:reset_collectibles();
 	player.enemy_puzzle_active = true
 	
-	--/////////////////////////////////////////////////////////////////////////////////////
-	--ENEMIES
-	--/////////////////////////////////////////////////////////////////////////////////////
+	--Enemies
 	player.enemies_killed = 0;
 	enemy_manager:reload_enemies();
+	
+	--Invisible walls
+	renderable_objects_layer_manager:deactivate_objects_by_layer("invisible");
+	
+	--Doors
+	--TO DO
 end

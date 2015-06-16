@@ -13,6 +13,7 @@
 	<layer name="player"/>
 	<layer name="puzzle"/>
 	<layer name="mov_platforms"/>
+	<layer name="invisible"/>
 
 	<!--hardcoded-->
 	<mesh_instance name="Collectible1" core="Enemy1" pos="485.26767 10.000014 -2.216164" yaw="0.0" pitch="0.0" roll="0.0" scale="0.5 0.5 0.1" visible="false" layer="collectible" /> 
@@ -326,7 +327,7 @@
 	
 	
 	<!-- invisible wall -->
-	<platform name="INVISIBLE_WALL001" core="INVISIBLE_WALL001" type="static" pos="431.490265 8.452271 11.098312" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="0.5137375 5.22161 5.33797" layer="solid"/>
+	<platform name="INVISIBLE_WALL001" core="INVISIBLE_WALL001" type="static" pos="431.490265 8.452271 11.098312" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="0.5137375 5.22161 5.33797" layer="invisible"/>
 	
 
 	<platform name="MovingPlatform011" core="MovingPlatform001" phisic_size="2 0.5 1.5" type="moving" speed= "5"  pos="-360.16644 -34.250000 -570.70001" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms"  room="1">
