@@ -26,6 +26,12 @@ CPolyPlatform::CPolyPlatform(std::string platformName, std::string coreName,  Ve
     m_IsMoving(false),
     m_TimeOut(timeOut),
     m_Speed(speed) {
+  if (m_Speed <= 20) //Intentar buscar formula matematica que de algo parecido ò_ó
+    m_Margin = 0.2;
+  else if ( m_Speed > 20 && m_Speed <= 25)
+    m_Margin = 0.5;
+  else
+    m_Margin = 0.9;
 }
 
 //CPolyPlatform::~CPolyPlatform () {
@@ -55,7 +61,7 @@ void CPolyPlatform:: ActivatePoly() {
     // l_NewScale = 0;
     // m_PlatorformActor->Activate(false);
     //   m_Collission = false;
-    if (m_Position.Distance(m_FinalPosition) >= 0.9) {
+    if (m_Position.Distance(m_FinalPosition) >= m_Margin/*0.9*/) {
       Vect3f l_NewPosition =  m_Position + (m_Direction * m_Speed * m_Dt);
       ApplyPhysicsToPlayer(m_Direction, m_Dt);
       m_Actor->SetGlobalPosition(l_NewPosition);
@@ -65,6 +71,9 @@ void CPolyPlatform:: ActivatePoly() {
       m_IsMoving = true;
       //Si colisiona con Piky => Desplazarle
     } else {
+      m_Position = m_FinalPosition;
+      ApplyPhysicsToPlayer(m_Direction, m_Dt);
+      m_Actor->SetGlobalPosition(m_FinalPosition);
       m_Activated = true;
       m_IsMoving = false;
     }
@@ -96,7 +105,7 @@ void CPolyPlatform:: ActivatePoly() {
 
 void CPolyPlatform:: DeactivatePoly() {
   if (m_Activated) {
-    if (m_Position.Distance(m_OriginalPosition) >= 0.9) {
+    if (m_Position.Distance(m_OriginalPosition) >= m_Margin /*0.9*/) {
       Vect3f l_NewPosition =  m_Position + ( m_Direction * m_Speed * m_Dt * -1);
       ApplyPhysicsToPlayer(m_Direction * -1, m_Dt);
       m_Actor->SetGlobalPosition(l_NewPosition);
@@ -166,9 +175,9 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
     float l_RadioPhysicsPlayer = 0.8;
     //float l_AlturaPlataformaDesdeOrigen = GetPhysicsSize().y + 1.5;
     //float l_MargenLateralPlataforma = 1.0;
-    float l_DesplazamientoVerticalPlataforma = (GetPhysicsSize().y) * 2 + 0.88f;
+    float l_DesplazamientoVerticalPlataforma = (GetPhysicsSize().y) * 2 + 1.5f;
     float l_PosicionMinSobrePlat = 0.0f;
-    float l_PosicionMaxSobrePlat = (GetPhysicsSize().y) * 2 + 1.5f;
+    float l_PosicionMaxSobrePlat = (GetPhysicsSize().y) * 2 + 2.5f;
     //float l_DesplazamientoVerticalPlataforma = 6.5f;
     //float l_PosicionMinSobrePlat = 0.0f;
     //float l_PosicionMaxSobrePlat = 7.0f;
@@ -229,7 +238,7 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
       	PLAYC->setisGrounded(false);
       }
       else*/
-      if ((l_playerPosition.y > (m_Position.y + l_PosicionMinSobrePlat) && (l_playerPosition.y < (m_Position.y + l_PosicionMaxSobrePlat)) && (hit != NULL && hit->getName().substr(0, 4) == "Poly" && info.m_fDistance <= 3.0))) {
+      if ((l_playerPosition.y > (m_Position.y + l_PosicionMinSobrePlat) && (l_playerPosition.y < (m_Position.y + l_PosicionMaxSobrePlat)) && (hit != NULL && hit->getName().substr(0, 4) == "Poly" && info.m_fDistance <= 5.0))) {
         //PLAYC->getPhysicController()->MovePlayer(direction.Normalize() * m_Speed * dt + PLAYC->getGravity() * Vect3f(0,1,0) * 1.2 * dt, dt);
         //PLAYC->IsGrounded(direction.Normalize() * m_Speed * dt / 1.0, dt);
         if (!PLAYC->getisJumping() || PLAYC->getCurrentJumpForce() < 0) {

@@ -29,6 +29,7 @@ class CPolyPlatform : public CStaticPlatform {
   CLight	 *m_Light;
   std::string m_LightName;
   Vect3f	m_LightOriginalPosition;
+  float		m_Margin;
 
  public:
   CPolyPlatform(std::string platformName, std::string coreName,  Vect3f finalPosition, Vect3f direction,  float activationDistance, float timeOut, float speed);
