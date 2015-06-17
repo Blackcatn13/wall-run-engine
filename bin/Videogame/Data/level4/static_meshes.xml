@@ -135,12 +135,8 @@
 	<static_mesh name="CARALLENGUA001" filename="Data\level4\meshes\CARALLENGUA001.mesh"/>
 	<static_mesh name="obstacle023" filename="Data\level4\meshes\obstacle023.mesh"/>
 	<static_mesh name="SALA 4" filename="Data\level4\meshes\SALA 4.mesh"/>
-	<static_mesh name="Plataforma_Fragil" filename="Data\level4\meshes\Plataforma_Fragil.mesh"/>
 	<static_mesh name="Plataforma01" filename="Data\level4\meshes\Plataforma01.mesh"/>
 	<static_mesh name="Plataforma02" filename="Data\level4\meshes\Plataforma02.mesh"/>
-	<static_mesh name="POLY PLAT. HORTZ002" filename="Data\level4\meshes\POLY PLAT. HORTZ002.mesh"/>
-	<static_mesh name="POLY PLAT. HORTZ003" filename="Data\level4\meshes\POLY PLAT. HORTZ003.mesh"/>
-	<static_mesh name="POLY PLAT. HORTZ001" filename="Data\level4\meshes\POLY PLAT. HORTZ001.mesh"/>
 	<static_mesh name="Plataforma0er3" filename="Data\level4\meshes\Plataforma0er3.mesh"/>
 	<static_mesh name="SALA 3" filename="Data\level4\meshes\SALA 3.mesh"/>
 	<static_mesh name="Pedra01" filename="Data\level4\meshes\Pedra01.mesh"/>
@@ -241,4 +237,9 @@
 	<static_mesh name="Box042" filename="Data\level4\meshes\Box042.mesh"/>
 	<static_mesh name="Box044" filename="Data\level4\meshes\Box044.mesh"/>
 	<static_mesh name="SALA 8" filename="Data\level4\meshes\SALA 8.mesh"/>
+	<static_mesh name="PolyPlatform002" filename="Data\level4\meshes\PolyPlatform002.mesh"/>
+	<static_mesh name="Plataforma_Fragil" filename="Data\level4\meshes\Plataforma_Fragil.mesh"/>
+	<static_mesh name="POLY PLAT. HORTZ005" filename="Data\level4\meshes\POLY PLAT. HORTZ005.mesh"/>
+	<static_mesh name="POLY PLAT. HORTZ006" filename="Data\level4\meshes\POLY PLAT. HORTZ006.mesh"/>
+	<static_mesh name="POLY PLAT. HORTZ004" filename="Data\level4\meshes\POLY PLAT. HORTZ004.mesh"/>
 </static_meshes>

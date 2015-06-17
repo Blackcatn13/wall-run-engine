@@ -8,12 +8,8 @@
 	<Physx_mesh name="SALA1_TEMPLEPOLYPOLY_PHYSX" filename="Data\level4\meshes\SALA1_TEMPLEPOLYPOLY_PHYSX.phsx"/>
 	<Physx_mesh name="obstacle023" filename="Data\level4\meshes\obstacle023.phsx"/>
 	<Physx_mesh name="SALA 4" filename="Data\level4\meshes\SALA 4.phsx"/>
-	<Physx_mesh name="Plataforma_Fragil" filename="Data\level4\meshes\Plataforma_Fragil.phsx"/>
 	<Physx_mesh name="Plataforma01" filename="Data\level4\meshes\Plataforma01.phsx"/>
 	<Physx_mesh name="Plataforma02" filename="Data\level4\meshes\Plataforma02.phsx"/>
-	<Physx_mesh name="POLY PLAT. HORTZ002" filename="Data\level4\meshes\POLY PLAT. HORTZ002.phsx"/>
-	<Physx_mesh name="POLY PLAT. HORTZ003" filename="Data\level4\meshes\POLY PLAT. HORTZ003.phsx"/>
-	<Physx_mesh name="POLY PLAT. HORTZ001" filename="Data\level4\meshes\POLY PLAT. HORTZ001.phsx"/>
 	<Physx_mesh name="Plataforma0er3" filename="Data\level4\meshes\Plataforma0er3.phsx"/>
 	<Physx_mesh name="SALA 3" filename="Data\level4\meshes\SALA 3.phsx"/>
 	<Physx_mesh name="Pedra01" filename="Data\level4\meshes\Pedra01.phsx"/>
