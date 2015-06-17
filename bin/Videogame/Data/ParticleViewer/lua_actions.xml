@@ -1,0 +1,4 @@
+<lua_scripts>	
+	<script name="test" file="Data/ParticleViewer/functions.lua" auto_run="true"/>
+</lua_scripts>
+

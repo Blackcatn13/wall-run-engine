@@ -3,10 +3,7 @@
 	<Physx_mesh name="ARCADA" filename="Data\level4\meshes\ARCADA.phsx"/>
 	<Physx_mesh name="CADIRA" filename="Data\level4\meshes\CADIRA.phsx"/>
 	<Physx_mesh name="TERRA_SALA0" filename="Data\level4\meshes\TERRA_SALA0.phsx"/>
-	<Physx_mesh name="Object001" filename="Data\level4\meshes\Object001.phsx"/>
-	<Physx_mesh name="obstacle" filename="Data\level4\meshes\obstacle.phsx"/>
 	<Physx_mesh name="SALA1_TEMPLEPOLYPOLY_PHYSX" filename="Data\level4\meshes\SALA1_TEMPLEPOLYPOLY_PHYSX.phsx"/>
-	<Physx_mesh name="obstacle023" filename="Data\level4\meshes\obstacle023.phsx"/>
 	<Physx_mesh name="SALA 4" filename="Data\level4\meshes\SALA 4.phsx"/>
 	<Physx_mesh name="Plataforma01" filename="Data\level4\meshes\Plataforma01.phsx"/>
 	<Physx_mesh name="Plataforma02" filename="Data\level4\meshes\Plataforma02.phsx"/>
@@ -49,4 +46,7 @@
 	<Physx_mesh name="PLATAFORMA001" filename="Data\level4\meshes\PLATAFORMA001.phsx"/>
 	<Physx_mesh name="COLUMNA" filename="Data\level4\meshes\COLUMNA.phsx"/>
 	<Physx_mesh name="SALA 8" filename="Data\level4\meshes\SALA 8.phsx"/>
+	<Physx_mesh name="Object001" filename="Data\level4\meshes\Object001.phsx"/>
+	<Physx_mesh name="obstacle" filename="Data\level4\meshes\obstacle.phsx"/>
+	<Physx_mesh name="obstacle023" filename="Data\level4\meshes\obstacle023.phsx"/>
 </Physx_meshes>
