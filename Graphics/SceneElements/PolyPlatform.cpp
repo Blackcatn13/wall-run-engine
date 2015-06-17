@@ -195,7 +195,7 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
                              Vect3f(0, -1, 0), 0xffffffff, info);
 
       //Intentando arreglar que al saltar debajado de la plataforma el personaje se queda incrustado
-      if (hit != NULL && hit->getName().substr(0, 4) == "Poly" && info.m_fDistance <= 1.2) {
+      if (hit != NULL && (hit->getName().substr(0, 4) == "Poly" || hit->getName().substr(0, 4) == "POLY")  && info.m_fDistance <= 1.2) {
         PLAYC->getPhysicController()->Move(direction.Normalize() * m_Speed * dt, dt);
         PhysicsApplied = true;
       }
@@ -231,7 +231,7 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
                              Vect3f(0, -1, 0), 0xffffffff, info);
 
       //Intentando arreglar que al saltar debajado de la plataforma el personaje se queda incrustado
-      /*if ((dirRay.y > (0.15)) && (hit != NULL && hit->getName().substr(0,4) == "Poly" && info.m_fDistance <= 0.9))
+      /*if ((dirRay.y > (0.15)) && ((hit->getName().substr(0, 4) == "Poly" || hit->getName().substr(0, 4) == "POLY") && info.m_fDistance <= 0.9))
       {
       	PLAYC->getPhysicController()->Move(Vect3f(0.0, -1.0, 0.0) * m_Speed    * dt , dt);
       	PLAYC->setCurrentJumpForce(0.0);
@@ -239,7 +239,7 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
       	PLAYC->setisGrounded(false);
       }
       else*/
-      if ((l_playerPosition.y > (m_Position.y + l_PosicionMinSobrePlat) && (l_playerPosition.y < (m_Position.y + l_PosicionMaxSobrePlat)) && (hit != NULL && hit->getName().substr(0, 4) == "Poly" && info.m_fDistance <= 5.0))) {
+      if ((l_playerPosition.y > (m_Position.y + l_PosicionMinSobrePlat) && (l_playerPosition.y < (m_Position.y + l_PosicionMaxSobrePlat)) && ((hit->getName().substr(0, 4) == "Poly" || hit->getName().substr(0, 4) == "POLY") && info.m_fDistance <= 5.0))) {
         //PLAYC->getPhysicController()->MovePlayer(direction.Normalize() * m_Speed * dt + PLAYC->getGravity() * Vect3f(0,1,0) * 1.2 * dt, dt);
         //PLAYC->IsGrounded(direction.Normalize() * m_Speed * dt / 1.0, dt);
         if (!PLAYC->getisJumping() || PLAYC->getCurrentJumpForce() < 0) {
