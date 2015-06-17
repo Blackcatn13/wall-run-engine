@@ -87,7 +87,7 @@
 		<disable_alpha_blend />
 	
 		<!--<clear_scene color="true" depth="false" stencil="false"/> -->
-		<enable_z_write/>
+		<!--<enable_z_write/>
 		<enable_z_test />
 		<set_render_target name="deferred_poly_render_target">
 			<dynamic_texture stage_id="0" name="GlowTexturePoly" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
@@ -100,7 +100,7 @@
 		</render_draw_quad> 
 		<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
 		<disable_z_write/>
-		<disable_z_test />
+		<disable_z_test />-->
 
 		
 		
