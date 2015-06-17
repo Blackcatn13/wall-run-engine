@@ -8,12 +8,17 @@ CEnableAlphaBlendSceneRendererCommand::CEnableAlphaBlendSceneRendererCommand(CXM
   m_blendop = m_ToBlendOp[atts.GetPszISOProperty("blendOP", "add", false)];
   m_srcblend = m_ToBlendType[atts.GetPszISOProperty("blendSrc", "one", false)];
   m_destblend = m_ToBlendType[atts.GetPszISOProperty("blendDest", "one", false)];
+  m_alphasrcblend = m_ToBlendType[atts.GetPszISOProperty("alphablendSrc", "srcalpha", false)];
+  m_alphadestblend = m_ToBlendType[atts.GetPszISOProperty("alphablendDest", "invsrcalpha", false)];
 }
 
 void CEnableAlphaBlendSceneRendererCommand::Execute(CGraphicsManager &RM)
-
 {
   RM.EnableAlphaBlend(m_blendop, m_srcblend, m_destblend);
+  LPDIRECT3DDEVICE9 m_pD3DDevice=RM.GetDevice();
+  
+  m_pD3DDevice->SetRenderState ( D3DRS_SRCBLENDALPHA, m_alphasrcblend  );
+  m_pD3DDevice->SetRenderState ( D3DRS_DESTBLENDALPHA, m_alphadestblend );
 }
 
 void CEnableAlphaBlendSceneRendererCommand::initMaps() {

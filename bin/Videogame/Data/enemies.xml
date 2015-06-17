@@ -24,18 +24,18 @@
 	
 	 
 	<instance_enemy name="MikMik001" type="mikmik_easy" attack_distance = "49" zone="3.5">
-		<wp position = "500.826767 10.000014 -7.216164" />
-		<wp position = "500.826767 10.000014 -3.216164" />
+		<wp position = "500.826767 10.000014 5.216164" />
+		<wp position = "500.826767 10.000014 -13.216164" />
 	</instance_enemy>
 	<instance_enemy name="MikMik002" type="mikmik_easy"  attack_distance = "49" zone="3.5">
 		<wp position = "495.826767 10.000014 -7.216164" />
-		<wp position = "470.826767 10.000014 -7.216164" />
+		<wp position = "485.826767 10.000014 -7.216164" />
 	</instance_enemy>
-	<instance_enemy name="MikMik003" type="mikmik_easy" zone="3.5" static = "true" >
+	<instance_enemy name="MikMik003" type="mikmik_easy" zone="3.5" attack_distance = "60" >
 	</instance_enemy>
-	<instance_enemy name="MikMik004" type="mikmik_easy" zone="3.5" static = "true" >
+	<instance_enemy name="MikMik004" type="mikmik_easy" zone="3.5" attack_distance = "60" >
 	</instance_enemy>
-	<instance_enemy name="MikMik005" type="mikmik_easy" zone="3.5" >
+	<instance_enemy name="MikMik005" type="mikmik_easy" zone="3.5" attack_distance = "60" >
 	</instance_enemy>
 
 
