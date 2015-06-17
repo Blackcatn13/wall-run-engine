@@ -2,6 +2,7 @@
 <scene_renderer_commands>
 	<normal_render>
 		 <!--pre_render-->
+
 		<clear_scene color="true" depth="true" stencil="true"/>
 		<begin_scene/>
 
@@ -84,6 +85,26 @@
 		
 		
 		<disable_alpha_blend />
+	
+		<!--<clear_scene color="true" depth="false" stencil="false"/> -->
+		<enable_z_write/>
+		<enable_z_test />
+		<set_render_target name="deferred_poly_render_target">
+			<dynamic_texture stage_id="0" name="GlowTexturePoly" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
+		</set_render_target>
+		<unset_render_target render_target="deferred_poly_render_target"/>
+		<set_pool_renderable_objects_technique pool="poly_pool"/>
+		<render_scene layer="enabled_poly" active="true" />
+		<render_draw_quad> 
+			<texture stage_id="0" file="GlowTexturePoly"/>
+		</render_draw_quad> 
+		<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
+		<disable_z_write/>
+		<disable_z_test />
+
+		
+		
+
 		<enable_z_write/>
 		<enable_z_test />
 		
@@ -118,8 +139,8 @@
 		<set_pool_renderable_objects_technique pool="particles_pool"/>
 		<particle_render/>
 		<disable_alpha_blend />
-		<enable_z_write/>
-		<enable_z_test />
+		<!--<enable_z_write/>
+		<enable_z_test /> -->
 		
 		
 
