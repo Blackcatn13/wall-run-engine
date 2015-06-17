@@ -12,6 +12,7 @@ class CDoor : public CSceneElement {
   bool			m_IsOpening;
   std::string	m_LuaFunction;
   Vect3f		m_FinalPosition;
+  Vect3f		m_OriginalPosition;
 
  public:
   CDoor(std::string switchName, std::string coreName, std::string lua_function, Vect3f final_Position);
@@ -23,7 +24,7 @@ class CDoor : public CSceneElement {
   GET_SET(bool, IsOpening)
   GET_SET(std::string, LuaFunction)
   GET_SET(Vect3f, FinalPosition)
-
+  GET_SET(Vect3f, OriginalPosition)
 };
 
 #endif

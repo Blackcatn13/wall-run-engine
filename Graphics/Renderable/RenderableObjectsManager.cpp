@@ -93,7 +93,7 @@ void CRenderableObjectsManager::Load(const std::string &FileName) {
         float pitch = nodeChild.GetFloatProperty("pitch");
         float roll = nodeChild.GetFloatProperty("roll");
         Vect3f scale = nodeChild.GetVect3fProperty("scale", v3fONE);
-		bool visible = nodeChild.GetBoolProperty("visible", true, false);
+        bool visible = nodeChild.GetBoolProperty("visible", true, false);
         //TODO Static mesh por mesh instance
         //
         CMeshInstance *l_meshInstance = new CMeshInstance(meshName, core);
@@ -102,7 +102,7 @@ void CRenderableObjectsManager::Load(const std::string &FileName) {
         l_meshInstance->SetPitch(pitch);
         l_meshInstance->SetRoll(roll);
         l_meshInstance->SetScale(scale);
-		l_meshInstance->setVisible(visible);
+        l_meshInstance->setVisible(visible);
         //CMeshInstance* l_meshInstance = new CMeshInstance(nodeChild);
         AddResource(meshName, l_meshInstance);
       } else if (name == "animated_model") {
@@ -159,12 +159,13 @@ void CRenderableObjectsManager::Load(const std::string &FileName) {
         l_Door->SetPitch(pitch);
         l_Door->SetRoll(roll);
         l_Door->SetScale(scale);
+        l_Door->setOriginalPosition(pos);
         std::stringstream ss;
         ss << meshName << "_UserData";
         std::string userDataName = ss.str();
         Vect3f l_ShapeSize = m.GetVect3fProperty("phisic_size", v3fZERO, false);
         //l_Door->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
-		l_Door->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, 0.0f, 0.0f));
+        l_Door->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, 0.0f, 0.0f));
         AddResource(meshName, l_Door);
 
       }  else  if (name == "platform") {
@@ -188,9 +189,9 @@ void CRenderableObjectsManager::Load(const std::string &FileName) {
           l_StaticPlatform->SetScale(scale);
           //CMeshInstance* l_meshInstance = new CMeshInstance(nodeChild);
           l_StaticPlatform->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
-		  l_StaticPlatform->setPrintable(nodeChild.GetBoolProperty("visible", true, false));
-		  if (l_StaticPlatform->getPrintable() == false)
-			  l_StaticPlatform->ActivatePhisic(false);
+          l_StaticPlatform->setPrintable(nodeChild.GetBoolProperty("visible", true, false));
+          if (l_StaticPlatform->getPrintable() == false)
+            l_StaticPlatform->ActivatePhisic(false);
 
           AddResource(platformName, l_StaticPlatform);
           //std::string boxName, std::string coreName, std::string userDataName, Vect3f size, Vect3f localPosition)
@@ -297,7 +298,7 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node) {
       float pitch = m.GetFloatProperty("pitch");
       float roll = m.GetFloatProperty("roll");
       Vect3f scale = m.GetVect3fProperty("scale", v3fONE);
-	  bool visible = m.GetBoolProperty("visible", true, false);
+      bool visible = m.GetBoolProperty("visible", true, false);
       //TODO Static mesh por mesh instance hecho?
       //
       CMeshInstance *l_meshInstance = new CMeshInstance(meshName, core);
@@ -306,7 +307,7 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node) {
       l_meshInstance->SetPitch(pitch);
       l_meshInstance->SetRoll(roll);
       l_meshInstance->SetScale(scale);
-	  l_meshInstance->setVisible(visible);
+      l_meshInstance->setVisible(visible);
       //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
       AddResource(meshName, l_meshInstance);
     } else if (name == "animated_model") {
@@ -364,10 +365,11 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node) {
       l_Door->SetPitch(pitch);
       l_Door->SetRoll(roll);
       l_Door->SetScale(scale);
+      l_Door->setOriginalPosition(pos);
       std::string userDataName = SetUserDataName(meshName);
       Vect3f l_ShapeSize = m.GetVect3fProperty("phisic_size", v3fZERO, false);
-     // l_Door->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
-	  l_Door->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, 0.0f, 0.0f));
+      // l_Door->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
+      l_Door->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, 0.0f, 0.0f));
       AddResource(meshName, l_Door);
 
     } else  if (name == "renderable_script") {
@@ -399,9 +401,9 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node) {
         //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
         AddResource(platformName, l_StaticPlatform);
         l_StaticPlatform->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
-		l_StaticPlatform->setPrintable(m.GetBoolProperty("visible", true, false));
-		if (l_StaticPlatform->getPrintable() == false)
-			  l_StaticPlatform->ActivatePhisic(false);
+        l_StaticPlatform->setPrintable(m.GetBoolProperty("visible", true, false));
+        if (l_StaticPlatform->getPrintable() == false)
+          l_StaticPlatform->ActivatePhisic(false);
         //std::string boxName, std::string coreName, std::string userDataName, Vect3f size, Vect3f localPosition)
       } else if (type == "breakable") {
         std::string l_TriggerName =  m.GetPszISOProperty("trigger_name", "", false);
