@@ -124,6 +124,7 @@ function GameOver()
 		reset_game();
 		gui_manager:set_is_gameover(false);
 		gui_manager:set_visible_mouse(true);
+		graphics_manager:set_is_GUI_displayed(true);
 		gui_manager:pop_windows();
 	else
 		GameoverCount = GameoverCount + gui_manager:get_dt();
