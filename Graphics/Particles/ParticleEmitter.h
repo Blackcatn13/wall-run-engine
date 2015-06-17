@@ -17,7 +17,7 @@ class CParticle;
 class CTexture;
 class CRenderableVertexs;
 
-enum EmitterType {EMITTER_ESF, EMITTER_PLANE};
+enum EmitterType {EMITTER_ESF, EMITTER_PLANE, EMITTER_ESF1};
 
 class CParticleEmitter : public CObject3D, public CNamed {
  public:

@@ -46,6 +46,8 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
     m_Type = EMITTER_ESF;
   else if (type == "PLANE")
     m_Type = EMITTER_PLANE;
+  else if (type == "ESF1")
+    m_Type = EMITTER_ESF1;
 
   InitPool();
   m_TimeNextParticle = mathUtils::RandomFloatRange(m_MinEmissionTime, m_MaxEmissionTime);
@@ -99,6 +101,8 @@ CParticleEmitter::CParticleEmitter()
     m_Type = EMITTER_ESF;
   else if (type == "PLANE")
     m_Type = EMITTER_PLANE;
+  else if (type == "ESF1")
+    m_Type = EMITTER_ESF1;
 
   InitPool();
   m_TimeNextParticle = mathUtils::RandomFloatRange(m_MinEmissionTime, m_MaxEmissionTime);
@@ -219,7 +223,7 @@ void CParticleEmitter::PopulateParticle(CParticle *p) {
       dirFinal.z += m_vSpawnDir2.z * mathUtils::RandomFloatRange(-1.0, 1.0);
       dirFinal = dirFinal.Normalize();
       break;
-    case EMITTER_PLANE:
+    case EMITTER_PLANE: {
       //Cambiamos para que en vez de generar particulas siempre en SpawnDir1 se coja un random entre SpawnDir1, SpawnDir2
       //p->setDirection1(m_vSpawnDir1);
       float d1x = m_vSpawnDir1.x;
@@ -231,6 +235,14 @@ void CParticleEmitter::PopulateParticle(CParticle *p) {
 
       dirFinal = Vect3f(mathUtils::RandomFloatRange(d1x, d2x), mathUtils::RandomFloatRange(d1y, d2y), mathUtils::RandomFloatRange(d1z, d2z)).Normalize();
       break;
+    }
+    case EMITTER_ESF1: {
+      float a = mathUtils::Deg2Rad<float>(mathUtils::RandomFloatRange(0, 360));
+      float b = mathUtils::Deg2Rad<float>(mathUtils::RandomFloatRange(0, 360));
+      float y = mathUtils::Deg2Rad<float>(mathUtils::RandomFloatRange(0, 360));
+      dirFinal = Vect3f(mathUtils::Cos<float>(a), mathUtils::Cos<float>(b), mathUtils::Cos<float>(y));
+      break;
+    }
   }
   p->setDirection1(dirFinal);
 }

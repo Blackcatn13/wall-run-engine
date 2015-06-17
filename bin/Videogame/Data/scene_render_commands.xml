@@ -104,19 +104,22 @@
 		
 		
 		<!--Fog-->
-		<enable_alpha_blend blendOp="add" blendSrc="srcalpha" destBlend="invsrcalpha" />
+		<!--<enable_alpha_blend blendOp="add" blendSrc="srcalpha" destBlend="invsrcalpha" />
 		<set_pool_renderable_objects_technique pool="fog_pool"/>
 		<render_draw_quad> 
 			<texture stage_id="0" file="DepthMapTexture"/>
 		</render_draw_quad> 
-		<disable_alpha_blend /> 
+		<disable_alpha_blend />--> 
 		<!--End Fog-->
 		
-		<!--<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>-->
+		<disable_z_write/>
+		<disable_z_test />
+		<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>
 		<set_pool_renderable_objects_technique pool="particles_pool"/>
 		<particle_render/>
 		<disable_alpha_blend />
-		
+		<enable_z_write/>
+		<enable_z_test />
 		
 		
 
