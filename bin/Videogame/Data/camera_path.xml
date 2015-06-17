@@ -28,100 +28,80 @@
 		<point id="p25" pos="465.633 8.50617 0.998117"/>
 		<point id="p26" pos="466.719 8.50617 -0.610411"/>
 		<point id="p27" pos="468.463 8.50617 -1.88948"/>
-		<point id="p28" pos="471.195 8.50617 -2.83909"/>
-		<point id="p29" pos="479.238 8.50617 -3.09103"/>
-		<point id="p30" pos="487.748 8.50617 -3.06139"/>
+		<point id="p28" pos="471.052 8.50617 -2.44911"/>
+		<point id="p29" pos="474.472 8.50617 -2.67228"/>
+		<point id="p30" pos="485.763 8.50617 -2.80844"/>
 	</spline>
 	<spline name="line_1">
-		<point id="p1" pos="488.173 8.50617 -2.99731" can_rotate="true" can_go_back="true"/>
-		<point id="p2" pos="496.795 8.50617 -2.11901" can_rotate="true" can_go_back="true"/>
-		<point id="p3" pos="503.935 8.50617 -1.69605" can_rotate="true" can_go_back="true"/>
-		<point id="p4" pos="510.311 8.50617 -1.77778" can_rotate="true" can_go_back="true"/>
-		<point id="p5" pos="515.995 8.50617 -1.71061" can_rotate="true" can_go_back="true"/>
-		<point id="p6" pos="524.161 8.50617 -1.71057" can_rotate="true" can_go_back="true"/>
-		<point id="p7" pos="530.547 8.50617 -1.45553" can_rotate="true" can_go_back="true"/>
-		<point id="p8" pos="534.664 8.50617 -1.51973" can_rotate="true" can_go_back="true"/>
+		<point id="p1" pos="487.106 8.50987 -2.83209" can_rotate="true" can_go_back="true"/>
+		<point id="p2" pos="498.181 8.50987 -2.56026" can_rotate="true" can_go_back="true"/>
+		<point id="p3" pos="507.649 8.50987 -2.32788" can_rotate="true" can_go_back="true"/>
+		<point id="p4" pos="517.342 8.50987 -2.08997" can_rotate="true" can_go_back="true"/>
+		<point id="p5" pos="527.128 8.50987 -1.84977" can_rotate="true" can_go_back="true"/>
+		<point id="p6" pos="535.984 8.50987 -1.63241" can_rotate="true" can_go_back="true"/>
 	</spline>
 	<spline name="line_1">
-		<point id="p1" pos="535.1 8.50617 -1.51973"/>
-		<point id="p2" pos="538.449 8.50617 -1.56695"/>
-		<point id="p3" pos="546.809 8.50617 -1.40889"/>
-		<point id="p4" pos="549.484 8.50617 -1.39026"/>
-		<point id="p5" pos="552.376 8.50617 -1.54202"/>
-		<point id="p6" pos="555.206 8.50617 -2.11175"/>
-		<point id="p7" pos="557.27 8.50617 -3.53631"/>
-		<point id="p8" pos="558.458 8.50617 -5.41861"/>
-		<point id="p9" pos="559.036 8.50617 -11.0771"/>
-		<point id="p10" pos="559.092 8.50617 -22.5982"/>
-		<point id="p11" pos="558.904 8.50617 -27.3447"/>
-		<point id="p12" pos="558.828 8.50617 -32.83"/>
-		<point id="p13" pos="558.348 8.50617 -38.8726"/>
-		<point id="p14" pos="557.885 8.50617 -45.0066" follow_player_y="true"/>
-		<point id="p15" pos="557.755 8.67838 -48.4296" follow_player_y="true"/>
-		<point id="p16" pos="557.755 9.73553 -50.3069" follow_player_y="true"/>
-		<point id="p17" pos="557.885 11.8202 -51.7986" follow_player_y="true"/>
-		<point id="p18" pos="557.885 13.9942 -53.3781" follow_player_y="true"/>
-		<point id="p19" pos="557.885 15.5352 -55.0669" follow_player_y="true"/>
-		<point id="p20" pos="557.885 15.5227 -59.3047" follow_player_y="true"/>
-		<point id="p21" pos="560.762 15.532 -73.8142" can_rotate="true"/>
-		<point id="p22" pos="560.947 15.5319 -80.9174" can_rotate="true"/>
-		<point id="p23" pos="560.947 15.5317 -89.5194" can_rotate="true"/>
-		<point id="p24" pos="560.947 15.5315 -99.5533" can_rotate="true"/>
-		<point id="p25" pos="560.947 15.5314 -106.11" can_rotate="true"/>
-		<point id="p26" pos="556.901 15.5312 -113.784" can_rotate="true"/>
-		<point id="p27" pos="556.891 15.5311 -120.104" can_rotate="true"/>
-		<point id="p28" pos="556.891 15.531 -124.713" can_rotate="true"/>
-		<point id="p29" pos="556.891 15.5309 -133.661" can_rotate="true"/>
-		<point id="p30" pos="556.891 15.5306 -149.105" can_rotate="true"/>
-		<point id="p31" pos="556.978 15.5303 -165.057" can_rotate="true"/>
-		<point id="p32" pos="556.978 15.53 -178.372" can_rotate="true"/>
-		<point id="p33" pos="556.978 15.5298 -189.091" can_rotate="true"/>
-		<point id="p34" pos="557.148 15.5296 -204.641" can_rotate="true"/>
-		<point id="p35" pos="557.148 15.5293 -219.939" can_rotate="true"/>
-		<point id="p36" pos="557.089 15.529 -233.614" can_rotate="true"/>
-		<point id="p37" pos="557.089 15.5287 -248.281" can_rotate="true"/>
-		<point id="p38" pos="557.09 15.5285 -261.508" can_rotate="true"/>
-		<point id="p39" pos="557.09 15.5284 -264.295" can_rotate="true"/>
-		<point id="p40" pos="557.09 15.5282 -275.046"/>
-		<point id="p41" pos="557.086 15.528 -287.943"/>
-		<point id="p42" pos="557.086 15.5277 -304.119"/>
-		<point id="p43" pos="557.089 15.5274 -322.315"/>
-		<point id="p44" pos="557.089 15.527 -339.439"/>
-		<point id="p45" pos="557.315 15.5268 -350.392"/>
-		<point id="p46" pos="557.03 15.5267 -354.855"/>
-		<point id="p47" pos="557.144 15.5265 -363.613"/>
-		<point id="p48" pos="557.201 15.5264 -372.278"/>
-		<point id="p49" pos="561.983 15.5263 -379.63"/>
-		<point id="p50" pos="561.925 15.5262 -388.23"/>
-		<point id="p51" pos="558.337 15.526 -394.499"/>
-		<point id="p52" pos="553.157 15.5259 -400.333"/>
-		<point id="p53" pos="555.206 15.5258 -409.764"/>
-		<point id="p54" pos="556.971 15.5256 -417.635"/>
-		<point id="p55" pos="557.085 15.5254 -430.99"/>
-		<point id="p56" pos="548.545 15.5252 -438.095"/>
-		<point id="p57" pos="537.67 15.525 -447.123"/>
-		<point id="p58" pos="537.67 15.5248 -456.835"/>
-		<point id="p59" pos="537.67 15.5247 -465.573"/>
-		<point id="p60" pos="537.777 15.5246 -473.116"/>
-		<point id="p61" pos="537.777 15.5245 -478.031"/>
-		<point id="p62" pos="537.777 15.5244 -483.935"/>
-		<point id="p63" pos="537.777 15.5242 -491.678"/>
-		<point id="p64" pos="528.035 15.5241 -498.038"/>
-		<point id="p65" pos="522.459 15.524 -504.549"/>
-		<point id="p66" pos="522.459 15.5239 -509.056"/>
-		<point id="p67" pos="543.595 15.5238 -517.195"/>
-		<point id="p68" pos="543.763 15.5237 -524.253"/>
-		<point id="p69" pos="543.763 15.5236 -531.25"/>
-		<point id="p70" pos="543.763 15.5234 -538.421"/>
-		<point id="p71" pos="545.665 15.5233 -542.892"/>
-		<point id="p72" pos="545.665 15.5231 -552.95"/>
-		<point id="p73" pos="545.665 15.523 -560.629"/>
-		<point id="p74" pos="532.268 15.5227 -570.7"/>
-		<point id="p75" pos="470.268 25.5227 -570.7"/>
-		<point id="p76" pos="-20.268 35.5227 -570.7"/>
-		<point id="p77" pos="-40.268 25.5227 -570.7"/>
-		<point id="p78" pos="-250.268 25.5227 -570.7"/>
-		<point id="p79" pos="-260.268 -33.5227 -570.7"/>
-		<point id="p79" pos="-500.268 -33.5227 -570.7"/>
+		<point id="p1" pos="537.682 8.50987 -1.448"/>
+		<point id="p2" pos="547.707 8.50987 -1.33266"/>
+		<point id="p3" pos="552.366 8.50987 -1.45502"/>
+		<point id="p4" pos="555.192 8.50987 -2.51315"/>
+		<point id="p5" pos="557.034 8.50987 -4.00071"/>
+		<point id="p6" pos="558.049 8.50987 -5.67235"/>
+		<point id="p7" pos="558.326 8.50987 -15.5983"/>
+		<point id="p8" pos="558.191 8.50987 -42.6027"/>
+	</spline>
+	<spline name="line_1">
+		<point id="p1" pos="558.031 8.50987 -44.8171" follow_player_y="true"/>
+		<point id="p2" pos="557.89 15.5063 -55.9209" follow_player_y="true"/>
+		<point id="p3" pos="558.516 15.5063 -58.539" follow_player_y="true"/>
+		<point id="p4" pos="558.701 15.5143 -61.241" follow_player_y="true"/>
+	</spline>
+	<spline name="line_1">
+		<point id="p1" pos="558.696 15.501 -62.6867" can_rotate="true"/>
+		<point id="p2" pos="558.878 15.5063 -64.92" can_rotate="true"/>
+		<point id="p3" pos="559.68 15.5063 -68.6193" can_rotate="true"/>
+		<point id="p4" pos="560.544 15.5143 -70.5445" can_rotate="true"/>
+	</spline>
+	<spline name="line_1">
+		<point id="p1" pos="560.643 15.501 -71.2283" follow_player_y="true" can_rotate="true"/>
+		<point id="p2" pos="560.825 15.5063 -73.4616" follow_player_y="true" can_rotate="true"/>
+		<point id="p3" pos="561.627 20.5969 -77.2707" follow_player_y="true" can_rotate="true"/>
+		<point id="p4" pos="562.491 20.9251 -81.3488" follow_player_y="true" can_rotate="true"/>
+	</spline>
+	<spline name="line_1">
+		<point id="p1" pos="562.862 20.8165 -83.5636" can_rotate="true"/>
+		<point id="p2" pos="562.717 20.6596 -85.7968" can_rotate="true"/>
+		<point id="p3" pos="562.638 20.5969 -89.606" can_rotate="true"/>
+		<point id="p4" pos="562.636 20.5943 -94.2398" can_rotate="true"/>
+		<point id="p5" pos="562.633 20.5917 -98.8846" can_rotate="true"/>
+		<point id="p6" pos="562.631 20.5895 -102.823" can_rotate="true"/>
+		<point id="p7" pos="562.629 20.0548 -105.111" can_rotate="true"/>
+		<point id="p8" pos="562.628 19.1417 -107.277" can_rotate="true"/>
+		<point id="p9" pos="562.628 18.2098 -108.806" can_rotate="true"/>
+		<point id="p10" pos="562.628 17.3453 -110.122" can_rotate="true"/>
+		<point id="p11" pos="562.627 16.8113 -111.403" can_rotate="true"/>
+		<point id="p12" pos="562.627 16.6396 -111.826" can_rotate="true"/>
+		<point id="p13" pos="562.627 16.5101 -112.281" can_rotate="true"/>
+		<point id="p14" pos="562.624 16.8598 -118.021" can_rotate="true"/>
+		<point id="p15" pos="562.267 16.8834 -122.283" can_rotate="true"/>
+		<point id="p16" pos="561.463 16.4459 -125.078" can_rotate="true"/>
+		<point id="p17" pos="560.981 15.8297 -127.142" can_rotate="true"/>
+		<point id="p18" pos="560.486 15.1581 -128.608" can_rotate="true"/>
+		<point id="p19" pos="560.437 14.4923 -129.959" can_rotate="true"/>
+		<point id="p20" pos="559.702 14.4499 -137.303" can_rotate="true"/>
+		<point id="p21" pos="559.188 14.4486 -139.699" can_rotate="true"/>
+		<point id="p22" pos="558.982 14.4451 -141.663" can_rotate="true"/>
+		<point id="p23" pos="558.634 14.444 -143.702" can_rotate="true"/>
+		<point id="p24" pos="558.386 14.4453 -145.644" can_rotate="true"/>
+		<point id="p25" pos="558.357 14.4442 -147.617" can_rotate="true"/>
+		<point id="p26" pos="558.231 14.4399 -152.122" can_rotate="true"/>
+		<point id="p27" pos="557.884 14.3435 -155.963" can_rotate="true"/>
+		<point id="p28" pos="557.619 14.144 -158.529" can_rotate="true"/>
+		<point id="p29" pos="557.254 13.6016 -161.882" can_rotate="true"/>
+		<point id="p30" pos="557.408 12.0271 -164.811" can_rotate="true"/>
+		<point id="p31" pos="557.454 10.6636 -167.037" can_rotate="true"/>
+		<point id="p32" pos="557.484 10.0785 -168.55" can_rotate="true"/>
+		<point id="p33" pos="557.48 9.93568 -174.238" can_rotate="true"/>
+		<point id="p34" pos="557.475 10.0006 -184.218" can_rotate="true"/>
 	</spline>
 </camera_path>
