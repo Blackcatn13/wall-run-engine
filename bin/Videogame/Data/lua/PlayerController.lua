@@ -549,6 +549,6 @@ end
 function get_attack_direction(_directionplayer, _positionplayer)
 	--local result = Vect3f(-1.0,0,0)
 	--local result = Vect3f(_directionplayer.x, _directionplayer.y, _directionplayer.z)
-	local result = coreInstance:get_enemy_manager():get_direction_enemy(_directionplayer, _positionplayer, 50.0, 90.0)
+	local result = coreInstance:get_enemy_manager():get_direction_enemy(_directionplayer, _positionplayer, 20.0, 0.5)
 	return result
 end
