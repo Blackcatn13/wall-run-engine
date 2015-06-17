@@ -265,9 +265,9 @@
 	<platform name="POLY PLAT. HORTZ004" core="POLY PLAT. HORTZ004" type="poly" pos="568.288513 12.833940 -73.332703" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="2.12463 1.34251 1.48662" layer="poly" final_position="568 14.84 -73.33"
 		 direction="0 1 0" time_out="3" speed="5" light="" activation_distance="10"/>
 	<platform name="POLY PLAT. HORTZ005" core="POLY PLAT. HORTZ005" type="poly" pos="573.214294 20.364029 -96.463341" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="2.87384 0.331227 2.33016" layer="poly" final_position="568.167 20.694 -96.518"
-		 direction="-1 0 0" time_out="3" speed="5" light="" activation_distance="10"/>
+		 direction="-1 0 0" time_out="3" speed="15" light="" activation_distance="15"/>
 	<platform name="POLY PLAT. HORTZ006" core="POLY PLAT. HORTZ006" type="poly" pos="549.451172 20.370979 -96.517426" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="2.87384 0.331227 2.33017" layer="poly" final_position="555.653 20.694 -96.517"
-		 direction="1 0 0" time_out="3" speed="5" light="" activation_distance="10"/>
+		 direction="1 0 0" time_out="3" speed="15" light="" activation_distance="15"/>
 	<mesh_instance name="SALA1_TEMPLEPOLYPOLY" core="SALA1_TEMPLEPOLYPOLY" pos="115.736115 3.385889 -5.362411" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="Columna005" core="Columna005" pos="123.349655 0.741134 -27.675018" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="ANTORCHA034" core="ANTORCHA034" pos="98.133629 5.549440 3.802600" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
@@ -296,10 +296,8 @@
 	<mesh_instance name="ANTORCHA032" core="ANTORCHA032" pos="406.818665 14.076797 15.390974" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="SUPORT ANTORCHA033" core="SUPORT ANTORCHA033" pos="422.702057 13.793026 15.761860" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="ANTORCHA033" core="ANTORCHA033" pos="422.664795 14.076797 15.390974" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="CARALLENGUA" core="CARALLENGUA" pos="304.051270 5.645349 16.930260" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<mesh_instance name="CARALLENGUA001" core="CARALLENGUA001" pos="360.035706 5.645349 16.930262" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<animated_model name="CARALLENGUA" core="face" pos="304.051270 5.645349 16.930260" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
+	<animated_model name="CARALLENGUA001" core="face" pos="360.035706 5.645349 16.930262" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 	<mesh_instance name="obstacle" core="obstacle" pos="252.817764 0.841506 11.095692" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="obstacle023" core="obstacle023" pos="339.923828 0.841506 11.095692" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
-	<door name="Puerta_abajo" core="Puerta_abajo" phisic_size="1.0 3.0 4.0" pos="539.615845 10.870041 -1.622209" final_position="539.615845 5.870041 -1.622209" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="puzzle"/> 
-	<door name="Puerta_arriba" core="Puerta_arriba" phisic_size="1.0 3.0 4.0" pos="539.615845 14.380225 -1.622209" final_position="539.615845 19.080225 -1.622209" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="puzzle"/>
 </renderable_objects>
