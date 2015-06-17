@@ -21,6 +21,7 @@
 	<effect name="GBufferColoredEffect" file="data/effects/GBufferColored.fx"/>
 	<effect name="GBufferNormalMapEffect" file="data/effects/GBufferNormalMap.fx"/>
 	<effect name="GBufferLightMapEffect" file="data/effects/GBufferLightMap.fx"/>
+	<effect name="GBufferLightMapNoNormalEffect" file="data/effects/GBufferLightMapNoNormal.fx"/>
 	<effect name="GBufferCubeMapEffect" file="data/effects/GBufferCubeMap.fx"/>
 	<effect name="GBufferCal3DEffect" file="data/effects/GBufferCal3D.fx"/>
 	<effect name="GBufferRNMEffect" file="data/effects/GBufferRNM.fx"/>
@@ -52,6 +53,7 @@
 	<technique name="GBufferNormalMapTechnique" effect="GBufferNormalMapEffect"  use_world_matrix="true" use_world_view_projection_matrix="true" use_inverse_view_matrix="true"/>
 	<technique name="GBufferCal3DTechnique" effect="GBufferCal3DEffect"  use_world_matrix="true" use_world_view_projection_matrix="true" use_inverse_view_matrix="true"/>
 	<technique name="GBufferLightMapTechnique" effect="GBufferLightMapEffect"  use_world_matrix="true" use_world_view_projection_matrix="true" />
+	<technique name="GBufferLightMapNoNormalTechnique" effect="GBufferLightMapNoNormalEffect"  use_world_matrix="true" use_world_view_projection_matrix="true" />
 	<technique name="GBufferCubeMapTechnique" effect="GBufferCubeMapEffect"  use_world_matrix="true" use_world_view_projection_matrix="true" use_inverse_view_matrix="true" />
 	<technique name="GBufferRNMTechnique" effect="GBufferRNMEffect"  use_world_matrix="true" use_world_view_projection_matrix="true" use_inverse_view_matrix="true" />
 	<technique name="DrawQuadSolidTechnique" effect="DrawQuadEffect"  use_world_matrix="true" use_world_view_projection_matrix="true" />
