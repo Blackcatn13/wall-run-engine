@@ -128,13 +128,16 @@ function reset_game()
 	player_controller.m_isTurned = false;
 		
 	--Player Lifes + Pixelites
-	player_controller.num_hearts = 3;
+	player.num_hearts = 3;
 	gui_manager:set_image('LifeGUI','Life3')
-	player_controller.num_lives = 3;
+	player.num_lives = 3;
+	player.visited_checkpoints = {}
+	player.last_checkpoint = nil
+	player.zone = 1
 	gui_manager:set_image('VidesGUI','Vides3')
 	gui_manager:set_is_displayed_heart(true);
 	gui_manager:set_count_heart(0.0);
-	player_controller.pixelites = 0;
+	player.pixelites = 0;
 	gui_manager:set_is_displayed_pixelite(true);
 	gui_manager:set_count_pixelite(0.0);
 	gui_manager:set_num_pixelite( 0 );
@@ -146,7 +149,7 @@ function reset_game()
 	
 	--Pixelites and cards
 	collectible_manager:reset_collectibles();
-	player.enemy_puzzle_active = true
+	player.enemy_puzzle_active = false
 	
 	--Enemies
 	player.enemies_killed = 0;

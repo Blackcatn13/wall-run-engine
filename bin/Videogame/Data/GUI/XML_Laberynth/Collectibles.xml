@@ -62,7 +62,7 @@
           texture_over="./Data/GUI/GoPixelGo/go-back-button-hover.png"
           texture_clicked="./Data/GUI/GoPixelGo/go-back-button.png"
           texture_deactivated="./Data/GUI/GoPixelGo/go-back-button.png"
-          OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getGUIManager():push_windows('Main.xml')
+          OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getGUIManager():pop_windows();
 							CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music');"
           OnOverAction=""/>
 

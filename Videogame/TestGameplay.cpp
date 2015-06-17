@@ -440,7 +440,7 @@ void CTestGameplay::Update(float dt) {
   }
 
 
-  if (ACT2IN->DoAction("ResetGame")) {
+  if (ACT2IN->DoAction("ResetGame") && !CCORE->GetGuiManager()->GetIsGameOver()) {
     char l_Text[256];
     _snprintf_s(l_Text, 256, 256, "reset_game(%f)", dt);
     SCRIPTM->RunCode(l_Text);

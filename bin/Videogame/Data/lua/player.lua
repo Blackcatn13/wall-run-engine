@@ -12,7 +12,7 @@ function Player.new()
     local self = {}    -- the new instance
    -- setmetatable( new_inst, Player_mt ) -- all instances share the same metatable
 	self.MAXHEARTS = 3
-	self.MAXLIVES = 50
+	self.MAXLIVES = 3
 	self.num_hearts = self.MAXHEARTS
 	self.num_lives = self.MAXLIVES
 	self.instance = self
@@ -87,7 +87,7 @@ function Player.new()
 	function self.player_die()
 		local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 		self.coreInstance:trace("player dies")
-		self.num_lives = self.num_lives -1
+		self.num_lives = self.num_lives - 1
 		
 		gui_manager:set_is_displayed_heart(true);
 		gui_manager:set_count_heart(0.0);
@@ -99,11 +99,13 @@ function Player.new()
 				gui_manager:set_image('VidesGUI','Vides1')
 			end	
 		end
-		gui_manager:set_image('LifeGUI','Life3')
 		if self.num_lives == 0 then
 			--game over
 			self.coreInstance:trace("game over")
+			gui_manager:set_is_gameover(true);
 		else
+			self.coreInstance:trace(tostring(self.num_lives))
+			gui_manager:set_image('LifeGUI','Life3')
 			--actualizar gui
 			self.num_hearts = self.MAXHEARTS
 			--cargar ultimo chekpoint

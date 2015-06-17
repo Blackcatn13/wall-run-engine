@@ -17,6 +17,10 @@ class CEnableAlphaBlendSceneRendererCommand : public CSceneRendererCommand {
   BlendOP     m_blendop;
   BlendType   m_srcblend;
   BlendType   m_destblend;
+
+  BlendType   m_alphasrcblend;
+  BlendType   m_alphadestblend;
+
   std::map<std::string, BlendType> m_ToBlendType;
   std::map<std::string, BlendOP> m_ToBlendOp;
 
