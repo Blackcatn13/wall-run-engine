@@ -991,6 +991,19 @@ void CGUIManager::SetGUIPixeliteNumber(int input)
     m_ElementsMap.find("PixeliteNumber")->second->SetLiteral("x " + std::to_string( long double(input) ));
 }
 
+bool CGUIManager::GetIsGameOver()
+{
+    return m_isGameOver;
+}
+
+void CGUIManager::SetIsGameOver(bool input)
+{
+    m_isGameOver = input;
+	SetIsDisplayedConsole(input);
+	m_ElementsMap.find("GameOver")->second->SetVisible(input);
+	m_ElementsMap.find("GameOverBackground")->second->SetVisible(input);
+}
+
 float CGUIManager::GetElapsedTime()
 {
     return m_dt;

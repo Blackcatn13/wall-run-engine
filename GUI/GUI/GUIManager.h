@@ -138,6 +138,8 @@ public:
     void							SetGUICountPixelite(float value);
     int							GetGUIPixeliteNumber();
     void							SetGUIPixeliteNumber(int input);
+	bool							GetIsGameOver();
+    void							SetIsGameOver(bool input);
     float							GetElapsedTime();
     std::string					GetCurrentWindow()
     {
@@ -175,6 +177,7 @@ private:
     float																m_GUICountHeart;
     float																m_GUICountPixelite;
     int																m_GUINumPixelites;
+	bool																m_isGameOver;
     float																m_dt;
 };
 

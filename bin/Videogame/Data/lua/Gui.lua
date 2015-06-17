@@ -1,3 +1,5 @@
+local GameoverCount = 0;
+
 function onUpdateWindowDisplayGUI()
 	if act2in:do_action_from_lua("ShowLifeGUI") then
 		if gui_manager:get_is_displayed_heart() == false then
@@ -28,6 +30,10 @@ function onUpdateWindowDisplayGUI()
 		playerRenderable:clear_cycle(1,0);
 		playerRenderable:blend_cycle(0,1,0);
 		ManagerGUIUnlockMessage();
+	end
+	
+	if gui_manager:get_is_gameover() == true then
+		GameOver();
 	end
 	
 end
@@ -109,4 +115,17 @@ function ManagerGUIUnlockMessage()
 		gui_manager:set_is_displayed_console(false);
 		gui_manager:set_visibility_message(false);
 	end	
+end
+
+function GameOver()
+	--GameOver	
+	if GameoverCount > 3 then
+		GameoverCount = 0;
+		reset_game();
+		gui_manager:set_is_gameover(false);
+		gui_manager:set_visible_mouse(true);
+		gui_manager:pop_windows();
+	else
+		GameoverCount = GameoverCount + gui_manager:get_dt();
+	end
 end
