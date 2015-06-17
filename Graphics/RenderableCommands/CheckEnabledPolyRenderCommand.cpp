@@ -10,6 +10,7 @@
 #include "Math\Vector2.h"
 #include "Lights\Light.h"
 #include "GUI\GUIManager.h"
+#include "Core\PlayerController.h"
 
 CCheckEnabledPolyRenderCommand::CCheckEnabledPolyRenderCommand(CXMLTreeNode &atts) {
   m_Effect = EFFECTM->GetEffect("PolyEffect");
@@ -40,7 +41,8 @@ void CCheckEnabledPolyRenderCommand::CheckLayerChange(CRenderableObjectsManager 
         std::string poly_text = "poly_enabled";
         /*  Vect2i textSize = FONTM->GetLiteralSize(width, height, poly_text);
           FONTM->DrawLiteral((width / 2) - textSize.x / 2, height - 30, poly_text);*/
-        GUIM->SetIsDisplayedPolyMessage(true);
+		if (CCORE->GetPlayerController()->getisGrounded())
+			GUIM->SetIsDisplayedPolyMessage(true);
         if (poly->GetLight() != NULL)
           poly->GetLight()->SetIntensity(0.3f);
       } else {
