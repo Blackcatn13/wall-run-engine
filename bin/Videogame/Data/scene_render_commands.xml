@@ -65,6 +65,8 @@
 		<!--<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>-->
 		<enable_z_write/>
 		<enable_z_test />
+		
+		
 		<set_pool_renderable_objects_technique pool="poly_pool"/>
 		<render_scene layer="enabled_poly" active="true" />
 		<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
@@ -93,12 +95,22 @@
 		<check_active_poly />
 
 		
-		<!--<render_scene layer="poly" active="true" />-->
+		<!--<render_scene layer="poly" active="true" />
 		<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
 
 		
-		<disable_alpha_blend /> 
+		<disable_alpha_blend /> -->
 		
+		
+		
+		<!--Fog-->
+		<enable_alpha_blend blendOp="add" blendSrc="srcalpha" destBlend="invsrcalpha" />
+		<set_pool_renderable_objects_technique pool="fog_pool"/>
+		<render_draw_quad> 
+			<texture stage_id="0" file="DepthMapTexture"/>
+		</render_draw_quad> 
+		<disable_alpha_blend /> 
+		<!--End Fog-->
 		
 		<!--<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>-->
 		<set_pool_renderable_objects_technique pool="particles_pool"/>
@@ -106,14 +118,7 @@
 		<disable_alpha_blend />
 		
 		
-		<!--Fog-->
-		<!-- <enable_alpha_blend blendOp="add" blendSrc="srcalpha" destBlend="invsrcalpha" />
-		<set_pool_renderable_objects_technique pool="fog_pool"/>
-		<render_draw_quad> 
-			<texture stage_id="0" file="DepthMapTexture"/>
-		</render_draw_quad> 
-		<disable_alpha_blend /> -->
-		<!--End Fog-->
+		
 
 		<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
 		<!-- Bloom pas 1	-->

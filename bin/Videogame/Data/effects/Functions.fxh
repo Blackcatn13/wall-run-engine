@@ -33,13 +33,14 @@ float4 CalcLinearFog(float Depth, float StartFog, float EndFog, float4 FogColor)
 float4 CalcExp2Fog(float Depth, float ExpDensityFog, float4 FogColor)
 {
 	//Versión de directx
-	float l_ExpDensity=Depth*ExpDensityFog;
+	/*float l_ExpDensity=Depth*ExpDensityFog;
 	float l_Fog=1.0/exp(l_ExpDensity*l_ExpDensity);
-	return float4(FogColor.xyz,FogColor.a*(1.0-l_Fog));
-	//Versión que mejora el cálculo
-	/*const float LOG2E = 1.442695; // = 1 / log(2)
-	float l_Fog = exp2(-ExpDensityFog * ExpDensityFog * Depth * Depth * LOG2E);
+	//return float4(FogColor.xyz,1-l_Fog);
 	return float4(FogColor.xyz,FogColor.a*(1.0-l_Fog));*/
+	//Versión que mejora el cálculo
+	const float LOG2E = 1.442695; // = 1 / log(2)
+	float l_Fog = exp2(-ExpDensityFog * ExpDensityFog * Depth * Depth * LOG2E);
+	return float4(FogColor.xyz,FogColor.a*(1.0-l_Fog));
 }
 
 float4 CalcExpFog(float Depth, float ExpDensityFog, float4 FogColor)
