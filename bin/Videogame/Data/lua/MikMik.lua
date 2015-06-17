@@ -214,7 +214,7 @@ function mikmik_enter_dead(name)
 		enemy:move_to_position(dead_pos)
 		player.enemies_killed = player.enemies_killed + 1
 		--check_enemies_killed(5, "door_001")
-		check_enemies_killed(5, "Puerta_arriba", "door_001")
+		check_enemies_killed(5, "Puerta_arriba", "Puerta_abajo")
 	end
 end
 
