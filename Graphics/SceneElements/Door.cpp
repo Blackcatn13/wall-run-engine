@@ -10,14 +10,12 @@
 
 CDoor::CDoor(std::string switchName, std::string coreName, std::string lua_function, Vect3f final_Position)
   : CSceneElement(switchName, coreName),
-    m_IsOpening(false),
-	m_FinalPosition (final_Position){
+    m_AnimationDone(false),
+    m_IsPlayingAnimation(false),
+    m_FinalPosition (final_Position) {
 }
 
 void CDoor::Update(float dt) {
-  if (m_IsOpening) {
-    //A ver como se hace al final
-  }
 
   //Aqui meter las colisiones con el Player
   if (PLAYC->getis3D() == false) {

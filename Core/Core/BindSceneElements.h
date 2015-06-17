@@ -43,7 +43,7 @@ void RegisterSceneElements() {
     .def("insert_phisic", &CSceneElement::InsertPhisic)
     .property("m_Actor", &CSceneElement::GetActor)
     .property("m_PhysicsSize", &CSceneElement::GetPhysicsSize)
-	.def("activate_phisic", &CSceneElement::ActivatePhisic)
+    .def("activate_phisic", &CSceneElement::ActivatePhisic)
   ];
 
   luabind::module(LUA_STATE) [
@@ -108,8 +108,10 @@ void RegisterSceneElements() {
   luabind::module(LUA_STATE) [
     class_<CDoor, CSceneElement>("CDoor")
     .def(constructor < std::string , std::string, std::string, Vect3f>())
-    .property("m_IsOpening", &CDoor::getIsOpening, &CDoor::setIsOpening)
+    .property("m_AnimationDone", &CDoor::getAnimationDone, &CDoor::setAnimationDone)
     .property("m_FinalPosition", &CDoor::getFinalPosition, &CDoor::setFinalPosition)
+    .property("m_OriginalPosition", &CDoor::getOriginalPosition, &CDoor::setOriginalPosition)
+    .property("m_IsPlayingAnimation", &CDoor::getIsPlayingAnimation, &CDoor::setIsPlayingAnimation)
   ];
 }
 
