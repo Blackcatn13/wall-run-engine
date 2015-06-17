@@ -21,6 +21,10 @@ function init_level(a)
 	--player.m_is3D = true;
 	--coreInstance:getWWSoundManager():PlayEvent("Menu", "Music");
 	--coreInstance:getWWSoundManager():PlayEvent("Torches", "Torch");
+	local cara1 = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("solid"):get_resource("CARALLENGUA");
+	cara1:blend_cycle(0, 1, 0);
+	local cara2 = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("solid"):get_resource("CARALLENGUA001");
+	cara2:blend_cycle(0, 1, 0);
 	on_init_cameras_lua()
 	return 0
 end
