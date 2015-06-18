@@ -119,6 +119,11 @@ function Player.new()
 			end
 			
 		end
+		coreInstance:trace("Player dying zone: ".. tostring(self.zone))
+		if tostring(self.zone) == "4.0" then
+			coreInstance:trace("Player died in zone 4.0")
+			enable_breaking_platform("Plataforma_Fragil")
+		end
 
 	end
 	
