@@ -41,6 +41,7 @@
 		<render_scene layer="solid" active="true"/>
 		<render_scene layer="player" active="true"/>
 		<render_scene layer="enabled_poly" active="true" />
+		<!--<render_scene layer="invisible" active="true" />-->
 		<unset_render_target render_target="deferred_multiple_render_target"/>
 		<disable_z_write/>
 		<disable_z_test />

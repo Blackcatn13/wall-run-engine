@@ -79,7 +79,7 @@ function activate_trigger_update(trigger_name)
 	--local trigger_manager = coreInstance:get_trigger_manager()
 	local trigger = trigger_manager:get_resource(trigger_name)
 	trigger.m_Update=true
-
+	coreInstance:trace("Trigger update " .. tostring(trigger.m_Update))
 end 
 
 function trigger_set_2D(offset_axis)

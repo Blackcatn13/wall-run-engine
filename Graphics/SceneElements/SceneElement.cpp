@@ -36,6 +36,7 @@ void CSceneElement::InsertPhisic(std::string userDataName, Vect3f size, Vect3f l
   m_Actor->AddBoxSphape(size, m_Position, localPosition);
   //m_RenderableObject->SetYaw(m_fYaw);
   // m_PlatorformActor->CreateBody(0.5f);
+
   PHYSXM->AddPhysicActor(m_Actor);
   //m_RenderableObject->SetPosition(m_RenderableObject->GetPosition());
 }
