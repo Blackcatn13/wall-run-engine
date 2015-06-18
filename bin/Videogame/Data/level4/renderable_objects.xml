@@ -301,7 +301,7 @@
 	<mesh_instance name="obstacle" core="obstacle" pos="252.817764 0.841506 11.095692" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="obstacle023" core="obstacle023" pos="339.923828 0.841506 11.095692" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	
-	<mesh_instance name="Collectible1" core="Enemy1" pos="490.26767 10.000014 -2.216164" yaw="0.0" pitch="0.0" roll="0.0" scale="0.5 0.5 0.1" visible="false" layer="collectible" />
+	<mesh_instance name="Collectible1" core="Enemy1" pos="525.454 9.676 -1.606" yaw="0.0" pitch="0.0" roll="0.0" scale="0.5 0.5 0.1" visible="false" layer="collectible" />
 	
 	<door name="Puerta_abajo" core="Puerta_abajo" phisic_size="1.0 3.0 4.0" pos="539.615845 10.870041 -1.622209" final_position="539.615845 5.870041 -1.622209" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="puzzle"/> 
 	<door name="Puerta_arriba" core="Puerta_arriba" phisic_size="1.0 3.0 4.0" pos="539.615845 14.380225 -1.622209" final_position="539.615845 19.080225 -1.622209" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="puzzle"/>

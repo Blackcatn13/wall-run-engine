@@ -29,7 +29,7 @@ void CSceneElement::ActivatePhisic(bool active) {
 void CSceneElement::InsertPhisic(std::string userDataName, Vect3f size, Vect3f localPosition) {
   // m_RenderableObject = RENDLM->GetDefaultRenderableObjectManager()->GetResource(boxName);
   m_UserData = new CPhysicUserData(userDataName);
-  m_UserData->SetPaint(true);
+  m_UserData->SetPaint(false);
   m_Actor = new CPhysicActor(m_UserData);
   m_PhysicsSize = Vect3f(size.x, size.y, size.z);
   // m_PlatorformActor->AddBoxSphape(size, m_RenderableObject->GetPosition(), localPosition);
