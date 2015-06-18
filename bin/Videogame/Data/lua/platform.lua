@@ -61,7 +61,7 @@ function init_poly_platform(name, user_data_name, size, position, time_out, spee
 end
 local m_current_time = 0
 function update_break_platform(dt, current_time, max_time, platform_name)
-	coreInstance:trace("m_current_time " .. tostring(m_current_time))
+	--coreInstance:trace("m_current_time " .. tostring(m_current_time))
 	local l_time = m_current_time * dt
 	if l_time >= max_time then
 		local platform = renderable_objects_layer_manager:get_default_renderable_object_manager():get_resource(platform_name)
