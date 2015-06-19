@@ -45,33 +45,17 @@ void CParticleManager::Load() {
 
 
 void CParticleManager::Update(float ElapsedTime) {
-#ifdef _PARTICLEVIEWER
-  CTimer timer = CTimer(1);
-  timer.Update();
-  std::cout << "Start update of emitters : " << std::endl;
-#endif
   for (size_t i = 0; i < m_ResourcesVector.size(); ++i) {
-    m_ResourcesVector[i]->Update(ElapsedTime);
+    if (m_ResourcesVector[i]->getVisible())
+      m_ResourcesVector[i]->Update(ElapsedTime);
   }
-#ifdef _PARTICLEVIEWER
-  timer.Update();
-  std::cout << " Time to update all the particles " << timer.GetElapsedTime() << " s" << std::endl;
-#endif
 }
 
 void CParticleManager::Render(CGraphicsManager *RM) {
-#ifdef _PARTICLEVIEWER
-  CTimer timer = CTimer(1);
-  timer.Update();
-  std::cout << "Start render of emitters : " << std::endl;
-#endif
   for (size_t i = 0; i < m_ResourcesVector.size(); ++i) {
-    m_ResourcesVector[i]->Render(RM);
+    if (m_ResourcesVector[i]->getVisible())
+      m_ResourcesVector[i]->Render(RM);
   }
-#ifdef _PARTICLEVIEWER
-  timer.Update();
-  std::cout << " Time to render all the particles " << timer.GetElapsedTime() << " s" << std::endl;
-#endif
 }
 
 
