@@ -10,17 +10,14 @@
 #include "Utils\Defines.h"
 #include "SceneElement.h"
 
-class CStaticPlatform : public CSceneElement {
- protected:
-  // CRenderableObject * m_RenderableObject;
-  /*  CPhysicActor *m_PlatorformActor;
-    CPhysicUserData *m_PlatformUserData;
-    Vect3f m_PlatformPhysicsSize;*/
+class CXMLTreeNode;
 
+class CStaticPlatform : public CSceneElement {
  public:
   CStaticPlatform(std::string platformName, std::string coreName);
+  CStaticPlatform(const CXMLTreeNode &node);
   void Update(float dt);
-// virtual  ~ CStaticPlatform ();
+  virtual ~CStaticPlatform();
   /* void InsertPlatform( std::string userDataName, Vect3f size, Vect3f localPosition);
    CPhysicActor *GetPlatformActor() {
      return m_PlatorformActor;

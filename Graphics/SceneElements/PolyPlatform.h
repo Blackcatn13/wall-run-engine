@@ -9,6 +9,8 @@
 
 class CGraphicsManager;
 class CLight;
+class CXMLTreeNode;
+
 class CPolyPlatform : public CStaticPlatform {
  protected:
   // std::string	m_RedimensionAxis;
@@ -33,14 +35,14 @@ class CPolyPlatform : public CStaticPlatform {
 
  public:
   CPolyPlatform(std::string platformName, std::string coreName,  Vect3f finalPosition, Vect3f direction,  float activationDistance, float timeOut, float speed);
-// virtual  ~ CPolyPlatform ();
+  CPolyPlatform(const CXMLTreeNode &node);
+  virtual ~CPolyPlatform ();
   void ActivatePoly();
   void DeactivatePoly();
   void Update(float ElapsedTime);
   void ApplyPhysicsToPlayer(Vect3f direction, float ElapsedTime);
   bool isAround(Vect3f vector1, Vect3f vector2);
   //bool isInside(Vect3f vector1, Vect3f vector2);
-  void InitPolyPlatform(Vect3f size);
 
   bool IsActivated() {
     return m_Activated;

@@ -73,40 +73,16 @@ void CRenderableObjectsManager::Load(const std::string &FileName) {
   }
   CXMLTreeNode  m = newFile["renderable_objects"];
   CXMLTreeNode m2 = newFile["lua_scripts"];
-  //this->Load(m);
-  //TODO comentar todo y usar la llamada a Load(XMLTreeNode)
   if (m.Exists()) {
     m_FileName = FileName;
-    //cargamos aqui el animated models para no hacerlo varias veces dentro del bucle
-    //CCore::GetInstance()->GetAnimatedModelManager()->Load(".\\Data\\level1\\animated_models.xml"); //se carga animatedmodels.xml
-    //CCore::GetInstance()->GetAnimatedModelManager()->Load(".\\Data\\animated_models.xml"); //se carga animatedmodels.xml
     int count = m.GetNumChildren();
     for (int i = 0; i < count; ++i) {
       CXMLTreeNode nodeChild = m(i);
       std::string name = nodeChild.GetName();
       if (name == "mesh_instance") {
-        //TODO
-        std::string meshName = nodeChild.GetPszISOProperty("name", "box1");
-        std::string core = nodeChild.GetPszISOProperty("core", "box");
-        Vect3f pos = nodeChild.GetVect3fProperty("pos", v3fZERO);
-        float yaw = nodeChild.GetFloatProperty("yaw");
-        float pitch = nodeChild.GetFloatProperty("pitch");
-        float roll = nodeChild.GetFloatProperty("roll");
-        Vect3f scale = nodeChild.GetVect3fProperty("scale", v3fONE);
-        bool visible = nodeChild.GetBoolProperty("visible", true, false);
-        //TODO Static mesh por mesh instance
-        //
-        CMeshInstance *l_meshInstance = new CMeshInstance(meshName, core);
-        l_meshInstance->SetYaw(yaw);
-        l_meshInstance->SetPosition(pos);
-        l_meshInstance->SetPitch(pitch);
-        l_meshInstance->SetRoll(roll);
-        l_meshInstance->SetScale(scale);
-        l_meshInstance->setVisible(visible);
-        //CMeshInstance* l_meshInstance = new CMeshInstance(nodeChild);
-        AddResource(meshName, l_meshInstance);
+        CMeshInstance *l_meshInstance = new CMeshInstance(nodeChild);
+        AddResource(l_meshInstance->getName(), l_meshInstance);
       } else if (name == "animated_model") {
-        //FALTA CARGAR EL ANIMATED_MODELS.XML
         std::string meshName = nodeChild.GetPszISOProperty("name", "box1");
         std::string core = nodeChild.GetPszISOProperty("core", "box");
         Vect3f pos = nodeChild.GetVect3fProperty("pos", v3fZERO);
@@ -121,143 +97,30 @@ void CRenderableObjectsManager::Load(const std::string &FileName) {
         l_AnimatedInstanceModel->SetRoll(roll);
         l_AnimatedInstanceModel->SetScale(scale);
         l_AnimatedInstanceModel->setName(meshName);
-        //CMeshInstance* l_meshInstance = new CMeshInstance(nodeChild);
         AddResource(meshName, l_AnimatedInstanceModel);
       } else if (name == "switch_instance") {
-        std::string meshName = nodeChild.GetPszISOProperty("name", "box1");
-        std::string core = nodeChild.GetPszISOProperty("core", "box");
-        Vect3f pos = nodeChild.GetVect3fProperty("pos", v3fZERO);
-        float yaw = nodeChild.GetFloatProperty("yaw");
-        float pitch = nodeChild.GetFloatProperty("pitch");
-        float roll = nodeChild.GetFloatProperty("roll");
-        float scale = nodeChild.GetFloatProperty("scale");
-        CSwitch *l_Switch  = new CSwitch(meshName, core);
-        l_Switch->SetYaw(yaw);
-        l_Switch->SetPosition(pos);
-        l_Switch->SetPitch(pitch);
-        l_Switch->SetRoll(roll);
-        l_Switch->SetScale(scale);
-        std::stringstream ss;
-        ss << meshName << "_UserData";
-        std::string userDataName = ss.str();
-        Vect3f l_ShapeSize = m.GetVect3fProperty("phisic_size", v3fZERO, false);
-        l_Switch->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
-        AddResource(meshName, l_Switch);
+        CSwitch *l_Switch  = new CSwitch(nodeChild);
+        AddResource(l_Switch->getName(), l_Switch);
       } else if (name == "door") {
-        std::string meshName = nodeChild.GetPszISOProperty("name", "box1");
-        std::string core = nodeChild.GetPszISOProperty("core", "box");
-        Vect3f pos = nodeChild.GetVect3fProperty("pos", v3fZERO);
-        float yaw = nodeChild.GetFloatProperty("yaw");
-        float pitch = nodeChild.GetFloatProperty("pitch");
-        float roll = nodeChild.GetFloatProperty("roll");
-        float scale = nodeChild.GetFloatProperty("scale");
-        std::string l_LuaFunc = nodeChild.GetPszISOProperty("lua_function", "", false);
-        Vect3f l_FinalPos = nodeChild.GetVect3fProperty("final_position", v3fZERO, false);
-        CDoor *l_Door  = new CDoor(meshName, core, l_LuaFunc, l_FinalPos);
-        l_Door->SetYaw(yaw);
-        l_Door->SetPosition(pos);
-        l_Door->SetPitch(pitch);
-        l_Door->SetRoll(roll);
-        l_Door->SetScale(scale);
-        l_Door->setOriginalPosition(pos);
-        std::stringstream ss;
-        ss << meshName << "_UserData";
-        std::string userDataName = ss.str();
-        Vect3f l_ShapeSize = m.GetVect3fProperty("phisic_size", v3fZERO, false);
-        //l_Door->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
-        l_Door->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, 0.0f, 0.0f));
-        AddResource(meshName, l_Door);
-
+        CDoor *l_Door  = new CDoor(nodeChild);
+        AddResource(l_Door->getName(), l_Door);
       }  else  if (name == "platform") {
-        //TODO
-        std::string platformName = nodeChild.GetPszISOProperty("name", "box1");
-        std::string core = nodeChild.GetPszISOProperty("core", "box");
-        Vect3f pos = nodeChild.GetVect3fProperty("pos", v3fZERO);
-        float yaw = nodeChild.GetFloatProperty("yaw");
-        float pitch = nodeChild.GetFloatProperty("pitch");
-        float roll = nodeChild.GetFloatProperty("roll");
-        Vect3f scale = nodeChild.GetVect3fProperty("scale", v3fONE);
         std::string type = nodeChild.GetPszISOProperty("type", "", false);
-        std::string userDataName = SetUserDataName(platformName);
-        Vect3f l_ShapeSize = m.GetVect3fProperty("phisic_size", v3fZERO, false);
         if (type == "static") {
-          CStaticPlatform *l_StaticPlatform = new CStaticPlatform(platformName, core);
-          l_StaticPlatform->SetYaw(yaw);
-          l_StaticPlatform->SetPosition(pos);
-          l_StaticPlatform->SetPitch(pitch);
-          l_StaticPlatform->SetRoll(roll);
-          l_StaticPlatform->SetScale(scale);
-          //CMeshInstance* l_meshInstance = new CMeshInstance(nodeChild);
-          l_StaticPlatform->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
-          l_StaticPlatform->setPrintable(nodeChild.GetBoolProperty("visible", true, false));
-          if (l_StaticPlatform->getPrintable() == false)
-            l_StaticPlatform->ActivatePhisic(false);
-
-          AddResource(platformName, l_StaticPlatform);
-          //std::string boxName, std::string coreName, std::string userDataName, Vect3f size, Vect3f localPosition)
+          CStaticPlatform *l_StaticPlatform = new CStaticPlatform(nodeChild);
+          AddResource(l_StaticPlatform->getName(), l_StaticPlatform);
         } else if (type == "breakable") {
-          std::string l_TriggerName =  nodeChild.GetPszISOProperty("trigger_name", "", false);
-          CBreakablePlatform *l_BreakablePlatform = new CBreakablePlatform(platformName, core, l_TriggerName);
-          l_BreakablePlatform->SetYaw(yaw);
-          l_BreakablePlatform->SetPosition(pos);
-          l_BreakablePlatform->SetPitch(pitch);
-          l_BreakablePlatform->SetRoll(roll);
-          l_BreakablePlatform->SetScale(scale);
-          //CMeshInstance* l_meshInstance = new CMeshInstance(nodeChild);
-          l_BreakablePlatform->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
-          AddResource(platformName, l_BreakablePlatform);
-          //std::string boxName, std::string coreName, std::string userDataName, Vect3f size, Vect3f localPosition)
+          CBreakablePlatform *l_BreakablePlatform = new CBreakablePlatform(nodeChild);
+          AddResource(l_BreakablePlatform->getName(), l_BreakablePlatform);
         } else if (type == "moving") {
-          float l_speed =  nodeChild.GetFloatProperty("speed", 0.0f, false);
-          int l_WpCount = nodeChild.GetNumChildren();
-          CMovingPlatform *l_MovingPlatform = new CMovingPlatform(platformName, core, l_speed);
-          for (int j = 0; j < l_WpCount; ++j) {
-            std::string name = nodeChild(j).GetName();
-            if (name == "wp") {
-              Vect3f l_Wp = nodeChild(j).GetVect3fProperty("pos", Vect3f(.0f, .0f, .0f), false);
-              l_MovingPlatform->GetWayPointsVector().push_back(l_Wp);
-            }
-          }
-          l_MovingPlatform->SetNextWPVector(l_MovingPlatform->GetWayPointsVector()[1]);
-          l_MovingPlatform->SetYaw(yaw);
-          l_MovingPlatform->SetPosition(pos);
-          l_MovingPlatform->SetPitch(pitch);
-          l_MovingPlatform->SetRoll(roll);
-          l_MovingPlatform->SetScale(scale);
-          l_MovingPlatform->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
-          //CMeshInstance* l_meshInstance = new CMeshInstance(nodeChild);
-          AddResource(platformName, l_MovingPlatform);
+          CMovingPlatform *l_MovingPlatform = new CMovingPlatform(nodeChild);
+          AddResource(l_MovingPlatform->getName(), l_MovingPlatform);
         } else if (type == "pinchos") {
-          std::string l_TriggerName =  nodeChild.GetPszISOProperty("trigger_name", "", false);
-          /* Vect3f l_BackPos = nodeChild.GetVect3fProperty("back_position", v3fZERO, false);
-           Vect3f l_FrontPos = nodeChild.GetVect3fProperty("forth_position", v3fZERO, false);
-           bool	l_FromX = nodeChild.GetBoolProperty("from_x", false, false);
-           bool	l_FromZ = nodeChild.GetBoolProperty("from_z", false, false);*/
-          CPinchosPlatform *l_PinchosPlatform = new CPinchosPlatform(platformName, core, l_TriggerName/*, l_BackPos, l_FrontPos,  l_FromX, l_FromZ*/);
-          l_PinchosPlatform->SetYaw(yaw);
-          l_PinchosPlatform->SetPosition(pos);
-          l_PinchosPlatform->SetPitch(pitch);
-          l_PinchosPlatform->SetRoll(roll);
-          l_PinchosPlatform->SetScale(scale);
-          l_PinchosPlatform->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
-          AddResource(platformName, l_PinchosPlatform);
+          CPinchosPlatform *l_PinchosPlatform = new CPinchosPlatform(nodeChild);
+          AddResource(l_PinchosPlatform->getName(), l_PinchosPlatform);
         } else if (type == "poly") {
-          Vect3f	l_FinalPosition = nodeChild.GetVect3fProperty("final_position",  v3fZERO, false);
-          float	l_ActivationDistance = nodeChild.GetFloatProperty("activation_distance", .0f, false);
-          // bool	l_InitialCollision = nodeChild.GetBoolProperty("initial_collision", false, false);
-          // std::string	l_RedimAxis = nodeChild.GetPszISOProperty("redim_axis", "", false);
-          Vect3f	l_Direction = m.GetVect3fProperty("direction",  v3fZERO, false);
-          float	l_timeOut = m.GetFloatProperty("time_out", .0f, false);
-          float	l_speed = m.GetFloatProperty("speed", .0f, false);
-          CPolyPlatform *l_PolyPlatform = new CPolyPlatform(platformName, core, l_FinalPosition, l_Direction, l_ActivationDistance, l_timeOut, l_speed);
-          l_PolyPlatform->setLightName(nodeChild.GetPszISOProperty("light", "", false));
-          l_PolyPlatform->SetYaw(yaw);
-          l_PolyPlatform->SetPosition(pos);
-          l_PolyPlatform->SetPitch(pitch);
-          l_PolyPlatform->SetRoll(roll);
-          l_PolyPlatform->SetScale(scale);
-          l_PolyPlatform->InitPolyPlatform(l_ShapeSize);
-          AddResource(platformName, l_PolyPlatform);
+          CPolyPlatform *l_PolyPlatform = new CPolyPlatform(nodeChild);
+          AddResource(l_PolyPlatform->getName(), l_PolyPlatform);
         }
       }
     }
@@ -283,42 +146,18 @@ void CRenderableObjectsManager::Load(const std::string &FileName) {
 void CRenderableObjectsManager::Load(CXMLTreeNode &Node) {
   CXMLTreeNode  m = Node;
   if (Node.Exists()) {
-    //cargamos aqui el animated models para no hacerlo varias veces dentro del bucle
-    //CCore::GetInstance()->GetAnimatedModelManager()->Load(".\\Data\\level1\\animated_models.xml"); //se carga animatedmodels.xml
-    //CCore::GetInstance()->GetAnimatedModelManager()->Load(".\\Data\\animated_models.xml"); //se carga animatedmodels.xml
-    //int count = m.GetNumChildren();
-    //for (int i = 0; i < count; ++i) {
     std::string name = m.GetName();
     if (name == "mesh_instance") {
-      //TODO poder pasar XMLTreeNode
-      std::string meshName = m.GetPszISOProperty("name", "box1");
-      std::string core = m.GetPszISOProperty("core", "box");
-      Vect3f pos = m.GetVect3fProperty("pos", v3fZERO);
-      float yaw = m.GetFloatProperty("yaw");
-      float pitch = m.GetFloatProperty("pitch");
-      float roll = m.GetFloatProperty("roll");
-      Vect3f scale = m.GetVect3fProperty("scale", v3fONE);
-      bool visible = m.GetBoolProperty("visible", true, false);
-      //TODO Static mesh por mesh instance hecho?
-      //
-      CMeshInstance *l_meshInstance = new CMeshInstance(meshName, core);
-      l_meshInstance->SetYaw(yaw);
-      l_meshInstance->SetPosition(pos);
-      l_meshInstance->SetPitch(pitch);
-      l_meshInstance->SetRoll(roll);
-      l_meshInstance->SetScale(scale);
-      l_meshInstance->setVisible(visible);
-      //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
-      AddResource(meshName, l_meshInstance);
+      CMeshInstance *l_meshInstance = new CMeshInstance(Node);
+      AddResource(l_meshInstance->getName(), l_meshInstance);
     } else if (name == "animated_model") {
-      //FALTA CARGAR EL ANIMATED_MODELS.XML hecho?
-      std::string meshName = m.GetPszISOProperty("name", "box1");
-      std::string core = m.GetPszISOProperty("core", "box");
-      Vect3f pos = m.GetVect3fProperty("pos", v3fZERO);
-      float yaw = m.GetFloatProperty("yaw");
-      float pitch = m.GetFloatProperty("pitch");
-      float roll = m.GetFloatProperty("roll");
-      float scale = m.GetFloatProperty("scale");
+      std::string meshName = Node.GetPszISOProperty("name", "box1");
+      std::string core = Node.GetPszISOProperty("core", "box");
+      Vect3f pos = Node.GetVect3fProperty("pos", v3fZERO);
+      float yaw = Node.GetFloatProperty("yaw");
+      float pitch = Node.GetFloatProperty("pitch");
+      float roll = Node.GetFloatProperty("roll");
+      float scale = Node.GetFloatProperty("scale");
       CAnimatedInstanceModel *l_AnimatedInstanceModel  = ANIMAN->GetInstance(core);
       l_AnimatedInstanceModel->SetYaw(yaw);
       l_AnimatedInstanceModel->SetPosition(pos);
@@ -326,154 +165,38 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node) {
       l_AnimatedInstanceModel->SetRoll(roll);
       l_AnimatedInstanceModel->SetScale(scale);
       l_AnimatedInstanceModel->setName(meshName);
-      //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
       AddResource(meshName, l_AnimatedInstanceModel);
     } else if (name == "switch_instance") {
-      std::string meshName = m.GetPszISOProperty("name", "box1");
-      std::string core = m.GetPszISOProperty("core", "box");
-      Vect3f pos = m.GetVect3fProperty("pos", v3fZERO);
-      float yaw = m.GetFloatProperty("yaw");
-      float pitch = m.GetFloatProperty("pitch");
-      float roll = m.GetFloatProperty("roll");
-      float scale = m.GetFloatProperty("scale");
-
-      CSwitch *l_Switch  = new CSwitch(meshName, core);
-      l_Switch->SetYaw(yaw);
-      l_Switch->SetPosition(pos);
-      l_Switch->SetPitch(pitch);
-      l_Switch->SetRoll(roll);
-      l_Switch->SetScale(scale);
-
-      std::string userDataName = SetUserDataName(meshName);
-      Vect3f l_ShapeSize = m.GetVect3fProperty("phisic_size", v3fZERO, false);
-      l_Switch->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
-      AddResource(meshName, l_Switch);
-
+      CSwitch *l_Switch  = new CSwitch(Node);
+      AddResource(l_Switch->getName(), l_Switch);
     } else if (name == "door") {
-      std::string meshName = m.GetPszISOProperty("name", "box1");
-      std::string core = m.GetPszISOProperty("core", "box");
-      Vect3f pos = m.GetVect3fProperty("pos", v3fZERO);
-      float yaw = m.GetFloatProperty("yaw");
-      float pitch = m.GetFloatProperty("pitch");
-      float roll = m.GetFloatProperty("roll");
-      float scale = m.GetFloatProperty("scale");
-      std::string l_LuaFunc = m.GetPszISOProperty("lua_function", "", false);
-      Vect3f l_FinalPos = m.GetVect3fProperty("final_position", v3fZERO, false);
-      CDoor *l_Door  = new CDoor(meshName, core, l_LuaFunc, l_FinalPos);
-      l_Door->SetYaw(yaw);
-      l_Door->SetPosition(pos);
-      l_Door->SetPitch(pitch);
-      l_Door->SetRoll(roll);
-      l_Door->SetScale(scale);
-      l_Door->setOriginalPosition(pos);
-      std::string userDataName = SetUserDataName(meshName);
-      Vect3f l_ShapeSize = m.GetVect3fProperty("phisic_size", v3fZERO, false);
-      // l_Door->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
-      l_Door->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, 0.0f, 0.0f));
-      AddResource(meshName, l_Door);
-
+      CDoor *l_Door  = new CDoor(Node);
+      AddResource(l_Door->getName(), l_Door);
     } else  if (name == "renderable_script") {
-      std::string l_name = m.GetPszISOProperty("name", "");
-      //std::string l_file = m.GetPszISOProperty("file", "");
+      std::string l_name = Node.GetPszISOProperty("name", "");
       if (l_name == "scriptedController") {
         CScriptedController *l_ScriptedController = new CScriptedController();
         AddResource(l_name, l_ScriptedController);
       }
     } else  if (name == "platform") {
-      //TODO
-      std::string platformName = m.GetPszISOProperty("name", "box1");
-      std::string core = m.GetPszISOProperty("core", "box");
-      Vect3f pos = m.GetVect3fProperty("pos", v3fZERO);
-      float yaw = m.GetFloatProperty("yaw");
-      float pitch = m.GetFloatProperty("pitch");
-      float roll = m.GetFloatProperty("roll");
-      Vect3f scale = m.GetVect3fProperty("scale", v3fONE);
-      std::string type = m.GetPszISOProperty("type", "", false);
-      std::string userDataName = SetUserDataName(platformName);
-      Vect3f l_ShapeSize = m.GetVect3fProperty("phisic_size", v3fZERO, false);
+      std::string type = Node.GetPszISOProperty("type", "", false);
       if (type == "static") {
-        CStaticPlatform *l_StaticPlatform = new CStaticPlatform(platformName, core);
-        l_StaticPlatform->SetYaw(yaw);
-        l_StaticPlatform->SetPosition(pos);
-        l_StaticPlatform->SetPitch(pitch);
-        l_StaticPlatform->SetRoll(roll);
-        l_StaticPlatform->SetScale(scale);
-        //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
-        AddResource(platformName, l_StaticPlatform);
-        l_StaticPlatform->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
-        l_StaticPlatform->setPrintable(m.GetBoolProperty("visible", true, false));
-        if (l_StaticPlatform->getPrintable() == false)
-          l_StaticPlatform->ActivatePhisic(false);
-        //std::string boxName, std::string coreName, std::string userDataName, Vect3f size, Vect3f localPosition)
+        CStaticPlatform *l_StaticPlatform = new CStaticPlatform(Node);
+        AddResource(l_StaticPlatform->getName(), l_StaticPlatform);
       } else if (type == "breakable") {
-        std::string l_TriggerName =  m.GetPszISOProperty("trigger_name", "", false);
-        CBreakablePlatform *l_BreakablePlatform = new CBreakablePlatform(platformName, core, l_TriggerName);
-        l_BreakablePlatform->SetYaw(yaw);
-        l_BreakablePlatform->SetPosition(pos);
-        l_BreakablePlatform->SetPitch(pitch);
-        l_BreakablePlatform->SetRoll(roll);
-        l_BreakablePlatform->SetScale(scale);
-        l_BreakablePlatform->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
-        AddResource(platformName, l_BreakablePlatform);
+        CBreakablePlatform *l_BreakablePlatform = new CBreakablePlatform(Node);
+        AddResource(l_BreakablePlatform->getName(), l_BreakablePlatform);
       } else if (type == "moving") {
-        float l_speed =  m.GetFloatProperty("speed", 0.0f, false);
-        int l_WpCount = m.GetNumChildren();
-        CMovingPlatform *l_MovingPlatform = new CMovingPlatform(platformName, core, l_speed);
-        for (int i = 0; i < l_WpCount; ++i) {
-          std::string name = m(i).GetName();
-          if (name == "wp") {
-            Vect3f l_Wp = m(i).GetVect3fProperty("pos", Vect3f(.0f, .0f, .0f), false);
-            l_MovingPlatform->GetWayPointsVector().push_back(l_Wp);
-          }
-        }
-        l_MovingPlatform->SetNextWPVector(l_MovingPlatform->GetWayPointsVector()[1]);
-        l_MovingPlatform->SetYaw(yaw);
-        l_MovingPlatform->SetPosition(pos);
-        l_MovingPlatform->SetPitch(pitch);
-        l_MovingPlatform->SetRoll(roll);
-        l_MovingPlatform->SetScale(scale);
-        l_MovingPlatform->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
-        l_MovingPlatform->setRoom( m.GetPszISOProperty("room", "0", false));
-        //CMeshInstance* l_meshInstance = new CMeshInstance(m(i));
-        AddResource(platformName, l_MovingPlatform);
-        //std::string boxName, std::string coreName, std::string userDataName, Vect3f size, Vect3f localPosition)
+        CMovingPlatform *l_MovingPlatform = new CMovingPlatform(Node);
+        AddResource(l_MovingPlatform->getName(), l_MovingPlatform);
       } else if (type == "pinchos") {
-        std::string l_TriggerName =  m.GetPszISOProperty("trigger_name", "", false);
-        // float	l_Offset = m.GetFloatProperty("offset", .0f, false);
-        //back_position="3.64 0.5 170.0" forth_position ="3.64 0.5 260.0"
-        Vect3f l_BackPos = m.GetVect3fProperty("back_position", v3fZERO, false);
-        Vect3f l_FrontPos = m.GetVect3fProperty("forth_position", v3fZERO, false);
-        //bool	l_FromX = m.GetBoolProperty("from_x", false, false);
-        //bool	l_FromZ = m.GetBoolProperty("from_z", false, false);
-        CPinchosPlatform *l_PinchosPlatform = new CPinchosPlatform(platformName, core, l_TriggerName/*, l_BackPos, l_FrontPos,  l_FromX, l_FromZ*/);
-        l_PinchosPlatform->SetYaw(yaw);
-        l_PinchosPlatform->SetPosition(pos);
-        l_PinchosPlatform->SetPitch(pitch);
-        l_PinchosPlatform->SetRoll(roll);
-        l_PinchosPlatform->SetScale(scale);
-        l_PinchosPlatform->InsertPhisic(userDataName, l_ShapeSize, Vect3f(0.0f, l_ShapeSize.y, 0.0f));
-        AddResource(platformName, l_PinchosPlatform);
+        CPinchosPlatform *l_PinchosPlatform = new CPinchosPlatform(Node);
+        AddResource(l_PinchosPlatform->getName(), l_PinchosPlatform);
       } else if (type == "poly") {
-        Vect3f	l_FinalPosition = m.GetVect3fProperty("final_position",  v3fZERO, false);
-        Vect3f	l_Direction = m.GetVect3fProperty("direction",  v3fZERO, false);
-        float	l_ActivationDistance = m.GetFloatProperty("activation_distance", .0f, false);
-        float	l_timeOut = m.GetFloatProperty("time_out", .0f, false);
-        float	l_speed = m.GetFloatProperty("speed", .0f, false);
-        // bool	l_InitialCollision = m.GetBoolProperty("initial_collision", false, false);
-        //std::string	l_RedimAxis = m.GetPszISOProperty("redim_axis", "", false);
-        CPolyPlatform *l_PolyPlatform = new CPolyPlatform(platformName, core, l_FinalPosition, l_Direction,  l_ActivationDistance, l_timeOut, l_speed);
-        l_PolyPlatform->setLightName(m.GetPszISOProperty("light", "", false));
-        l_PolyPlatform->SetYaw(yaw);
-        l_PolyPlatform->SetPosition(pos);
-        l_PolyPlatform->setOriginalPosition(pos);
-        l_PolyPlatform->SetPitch(pitch);
-        l_PolyPlatform->SetRoll(roll);
-        l_PolyPlatform->SetScale(scale);
-        l_PolyPlatform->InitPolyPlatform(l_ShapeSize);
-        AddResource(platformName, l_PolyPlatform);
+        CPolyPlatform *l_PolyPlatform = new CPolyPlatform(Node);
+        AddResource(l_PolyPlatform->getName(), l_PolyPlatform);
       }
     }
-    //}
   }
 }
 void CRenderableObjectsManager::Reload() {

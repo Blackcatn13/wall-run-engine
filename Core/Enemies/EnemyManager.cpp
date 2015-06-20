@@ -27,8 +27,8 @@ CEnemyManager::~CEnemyManager() {
 void CEnemyManager::InitEnemies(std::string layerName) {
   m_LayerName = layerName;
   CRenderableObjectsManager *l_Rom = RENDLM->GetRenderableObjectsManagerByStr(layerName);
-  for (int i = 0; i < l_Rom->GetResourcesVector().size(); ++i) {
-    for (int j = 0; j < m_EnemyInstances.size(); ++j) {
+  for (size_t i = 0; i < l_Rom->GetResourcesVector().size(); ++i) {
+    for (size_t j = 0; j < m_EnemyInstances.size(); ++j) {
       if (l_Rom->GetResourcesVector()[i]->getName() == m_EnemyInstances[j].instanceName) {
         std::string nam = m_Cores.find(m_EnemyInstances[j].instanceType)->first;
         float l_Speed = m_Cores.find(m_EnemyInstances[j].instanceType)->second.Speed;
@@ -100,7 +100,7 @@ bool CEnemyManager::Init(const std::string &FileName) {
           }
           l_Enemy.AttackDistance = nodeChild.GetFloatProperty("attack_distance", 15.0f, false);
           l_Enemy.Zone = nodeChild.GetFloatProperty("zone", 1.0f, false);
-          l_Enemy.Static = nodeChild.GetFloatProperty("static", false, false);
+          l_Enemy.Static = nodeChild.GetBoolProperty("static", false, false);
           m_EnemyInstances.push_back(l_Enemy);
         }
       }
@@ -136,7 +136,7 @@ void CEnemyManager::Reload() {
 }
 
 void CEnemyManager::ReloadEnemies() {
-  for (int num = 0; num < m_Enemies.size(); num++) {
+  for (size_t num = 0; num < m_Enemies.size(); num++) {
     if (!m_Enemies[num]->getisAlive()) {
       m_Enemies[num]->setisAlive(true);
       m_Enemies[num]->getRenderableObject()->setPrintable(true);
@@ -164,7 +164,7 @@ const EnemyStats &CEnemyManager::GetCoreEnemy(const std::string &type) {
 
 
 void CEnemyManager::SetPaintEnemies(bool paint) {
-  for (int i = 0; i < m_Enemies.size(); ++i) {
+  for (size_t i = 0; i < m_Enemies.size(); ++i) {
     m_Enemies[i]->getPhysicUserData()->SetPaint(paint);
   }
 }
@@ -175,35 +175,30 @@ void CEnemyManager::InsertEnemy(CEnemy *enemy) {
 }
 
 CEnemy *CEnemyManager::GetEnemy(std::string enemyName) {
-  for (int i = 0; i < m_Enemies.size(); ++ i) {
+  for (size_t i = 0; i < m_Enemies.size(); ++ i) {
     if (m_Enemies[i]->getName() == enemyName)
       return m_Enemies[i];
   }
   return NULL;
 }
 
-Vect3f CEnemyManager::GetClosestEnemyVector(Vect3f direction, Vect3f position, float minDistance, float minAngle)
-{
-	Vect3f resultDirection = direction; 
-	for (int i=0; i<m_Enemies.size(); i++)
-	{
-		if ((m_Enemies[i]->getenemyType() == PUMPUM) || (m_Enemies[i]->getenemyType() == MIKMIK))
-		{
-			Vect3f enemyPosition = m_Enemies[i]->GetPosition();
-			if (GetDistance(enemyPosition, position) < minDistance)
-			{
-				float h = GetDistance(enemyPosition, position);
-				if (minAngle >= getAngleDiff(direction.Normalize(), (enemyPosition - position).Normalize()))
-				{
-					resultDirection = (enemyPosition - position).Normalize();
-					float angle = getAngleDiff(direction.Normalize(), (enemyPosition - position).Normalize());
-					minDistance = h;
-				}
-			}
-		}
+Vect3f CEnemyManager::GetClosestEnemyVector(Vect3f direction, Vect3f position, float minDistance, float minAngle) {
+  Vect3f resultDirection = direction;
+  for (size_t i = 0; i < m_Enemies.size(); i++) {
+    if ((m_Enemies[i]->getenemyType() == PUMPUM) || (m_Enemies[i]->getenemyType() == MIKMIK)) {
+      Vect3f enemyPosition = m_Enemies[i]->GetPosition();
+      if (GetDistance(enemyPosition, position) < minDistance) {
+        float h = GetDistance(enemyPosition, position);
+        if (minAngle >= getAngleDiff(direction.Normalize(), (enemyPosition - position).Normalize())) {
+          resultDirection = (enemyPosition - position).Normalize();
+          float angle = getAngleDiff(direction.Normalize(), (enemyPosition - position).Normalize());
+          minDistance = h;
+        }
+      }
+    }
 
-	}
-	return resultDirection;
+  }
+  return resultDirection;
 }
 
 float CEnemyManager::GetDistance(Vect3f pos1, Vect3f pos2) {
@@ -215,16 +210,16 @@ float CEnemyManager::GetDistance(Vect3f pos1, Vect3f pos2) {
 float CEnemyManager::getAngleDiff(Vect3f A, Vect3f B) {
   float angle = 0.0;
   float divisor = sqrt(A.x * A.x + A.y * A.y + A.z * A.z) * sqrt(B.x * B.x + B.y * B.y + B.z * B.z);
-	if (divisor != 0) {
-	float degangle = ((A.x * B.x + A.y * B.y + A.z * B.z) / divisor);
-	//float angle = mathUtils::ACos(mathUtils::Deg2Rad(degangle));
-	if (degangle > 1.0f)
-		degangle = 1.0f;
+  if (divisor != 0) {
+    float degangle = ((A.x * B.x + A.y * B.y + A.z * B.z) / divisor);
+    //float angle = mathUtils::ACos(mathUtils::Deg2Rad(degangle));
+    if (degangle > 1.0f)
+      degangle = 1.0f;
 
-	if (degangle < -1.0f)
-		degangle = -1.0f;
+    if (degangle < -1.0f)
+      degangle = -1.0f;
 
-	angle = mathUtils::ACos(degangle);
-	}
+    angle = mathUtils::ACos(degangle);
+  }
   return angle;
 }

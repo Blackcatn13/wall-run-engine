@@ -8,14 +8,16 @@
 #include "GraphicsManager.h"
 
 
-CMeshInstance::CMeshInstance(const std::string &Name, const std::string &CoreName):
+CMeshInstance::CMeshInstance(const std::string &Name, const std::string &CoreName) :
   m_CoreName(CoreName) {
   m_StaticMesh = SMESHM->GetResource(CoreName);
   setName(Name);
 }
 
-CMeshInstance::CMeshInstance(const CXMLTreeNode &Node) {
-//TODO Cuando esté el código del Load que falta ponerlo aquí tb
+CMeshInstance::CMeshInstance(const CXMLTreeNode &Node) :
+  CRenderableObject(Node),
+  m_CoreName(Node.GetPszISOProperty("core", "")) {
+  m_StaticMesh = SMESHM->GetResource(m_CoreName);
 }
 CMeshInstance::~CMeshInstance() {
   if (m_StaticMesh->isDestroyed())

@@ -5,7 +5,7 @@
 #include "Core\Core.h"
 #include "Actor\PhysicController.h"
 #include "Utils\PhysicUserData.h"
-
+#include "XML\XMLTreeNode.h"
 
 
 CDoor::CDoor(std::string switchName, std::string coreName, std::string lua_function, Vect3f final_Position)
@@ -15,22 +15,34 @@ CDoor::CDoor(std::string switchName, std::string coreName, std::string lua_funct
     m_FinalPosition (final_Position) {
 }
 
+CDoor::CDoor(const CXMLTreeNode &node)
+  : CSceneElement(node) ,
+    m_AnimationDone(false),
+    m_IsPlayingAnimation(false),
+    m_FinalPosition(node.GetVect3fProperty("final_position", v3fZERO)),
+    m_OriginalPosition(m_Position),
+    m_LuaFunction(node.GetPszISOProperty("lua_function", "")) {
+  InsertPhisic(v3fZERO);
+}
+
+CDoor::~CDoor() {
+}
+
 void CDoor::Update(float dt) {
 
   //Aqui meter las colisiones con el Player
   if (PLAYC->getis3D() == false) {
-    std::string lala = m_Name;
     PLAYC->setisOnPlatform(1.0);
     float l_RadioPhysicsPlayer = PLAYC->getPhysicController()->GetRadius();
     Vect3f l_playerPosition = PLAYC->GetPosition();
     Vect3f dirRay = (m_Position - l_playerPosition);
     Vect3f l_dirRayFixed = Vect3f(dirRay.x, 0, dirRay.y);
-    bool PhysicsApplied = false;
+
     l_dirRayFixed = l_dirRayFixed.Normalize();
     //solo hacemos los calculos de colisiones si la plataforma esta a una distancia minima (optimización)
     if (abs(dirRay.x) + abs(dirRay.z) < (GetPhysicsSize().x + GetPhysicsSize().z + 1.0)) {
+      bool PhysicsApplied = false;
       SCollisionInfo info = SCollisionInfo();
-
 
       l_dirRayFixed = l_dirRayFixed.Normalize() * 0.5;
       Vect3f dirRayBounding = Vect3f(l_dirRayFixed.x, -l_RadioPhysicsPlayer, l_dirRayFixed.z);

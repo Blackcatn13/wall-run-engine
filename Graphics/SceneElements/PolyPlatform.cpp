@@ -8,7 +8,7 @@
 #include "Utils\Logger.h"
 #include "Lights\Light.h"
 #include "Lights\LightManager.h"
-
+#include "XML\XMLTreeNode.h"
 
 CPolyPlatform::CPolyPlatform(std::string platformName, std::string coreName,  Vect3f finalPosition, Vect3f direction, float activationDistance, float timeOut, float speed)
   : CStaticPlatform(platformName, coreName),
@@ -27,33 +27,39 @@ CPolyPlatform::CPolyPlatform(std::string platformName, std::string coreName,  Ve
     m_TimeOut(timeOut),
     m_Speed(speed) {
   if (m_Speed <= 20) //Intentar buscar formula matematica que de algo parecido ò_ó
-   // m_Margin = 0.2;
-   m_Margin =0.5;
+    // m_Margin = 0.2;
+    m_Margin = 0.5;
   else if ( m_Speed > 20 && m_Speed <= 25)
     m_Margin = 0.5;
   else
     m_Margin = 0.9;
 }
 
-//CPolyPlatform::~CPolyPlatform () {
-//  //PHYSXM->ReleasePhysicActor(m_PlatorformActor);
-//}
-void CPolyPlatform::InitPolyPlatform(Vect3f size) {
-  std::stringstream ss;
-  ss << getName() << "_UserData";
-  std::string l_UserDataName = ss.str();
-  InsertPhisic(l_UserDataName, size, Vect3f(0.0f, size.y, 0.0f));
-  /* m_Light = LIGHTM->GetResource(m_LightName);
-   if (m_Light != NULL)
-     m_LightOriginalPosition = m_Light->GetPosition();
-  */
-  /* bool l_Collision = true;
-   if (m_Collission == false)
-    l_Collision = false;*/
-
-  //m_OriginalScale = GetScale();
+CPolyPlatform::CPolyPlatform(const CXMLTreeNode &node)
+  : CStaticPlatform(node),
+    m_FinalPosition(node.GetVect3fProperty("final_position",  v3fZERO)),
+    m_Direction(node.GetVect3fProperty("direction",  v3fZERO)),
+    m_OriginalPosition(m_Position),
+    m_Enabled(false),
+    m_ActivationDistance(node.GetFloatProperty("activation_distance", .0f)),
+    m_ActiveTime(.0f),
+    m_Activated(false),
+    m_Light(NULL),
+    m_LightOriginalPosition(NULL),
+    m_IsMoving(false),
+    m_TimeOut(node.GetFloatProperty("time_out", .0f)),
+    m_Speed(node.GetFloatProperty("speed", .0f)) {
+  if (m_Speed <= 20) //Intentar buscar formula matematica que de algo parecido ò_ó
+    // m_Margin = 0.2;
+    m_Margin = 0.5;
+  else if ( m_Speed > 20 && m_Speed <= 25)
+    m_Margin = 0.5;
+  else
+    m_Margin = 0.9;
 }
 
+CPolyPlatform::~CPolyPlatform() {
+}
 
 void CPolyPlatform:: ActivatePoly() {
   if (!m_Activated) {

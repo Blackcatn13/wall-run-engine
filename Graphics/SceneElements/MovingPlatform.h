@@ -9,9 +9,9 @@
 #include "AI\FSMManager.h"
 #include "AI\FSMInstance.h"
 
-
-
+class CXMLTreeNode;
 class CPhysicController;
+
 class CMovingPlatform : public CStaticPlatform {
  protected:
   float				m_Speed;
@@ -25,8 +25,8 @@ class CMovingPlatform : public CStaticPlatform {
 
  public:
   CMovingPlatform(std::string platformName, std::string coreName, float speed);
-
-  ~ CMovingPlatform ();
+  CMovingPlatform(CXMLTreeNode &node);
+  virtual ~CMovingPlatform();
 
   void MoveToPoint(float dt, Vect3f point, float minDistance);
   Vect3f GetNextWP();

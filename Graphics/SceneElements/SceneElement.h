@@ -11,6 +11,7 @@
 
 class CPhysicActor;
 class CPhysicUserData;
+class CXMLTreeNode;
 
 class CSceneElement : public CMeshInstance {
  protected:
@@ -22,8 +23,9 @@ class CSceneElement : public CMeshInstance {
 
  public:
   CSceneElement(std::string switchName, std::string coreName);
+  CSceneElement(const CXMLTreeNode &node);
   virtual ~CSceneElement ();
-  void InsertPhisic( std::string userDataName, Vect3f size, Vect3f localPosition);
+  void InsertPhisic(Vect3f localPosition);
   void ActivatePhisic(bool active);
   bool isAround(Vect3f vector1, Vect3f vector2);
   bool isInside(Vect3f vector1, Vect3f vector2);

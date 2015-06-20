@@ -4,16 +4,13 @@
 
 #include "SceneElement.h"
 
+class CXMLTreeNode;
 
 class CSwitch : public CSceneElement {
- protected:
-
-
  public:
   CSwitch(std::string switchName, std::string coreName);
-//  ~CSwitch ();
-
-
+  CSwitch(const CXMLTreeNode &node);
+  virtual ~CSwitch ();
 };
 
 #endif

@@ -3,13 +3,14 @@
 #define NAMED_H
 
 #include <string>
+#include "XML/XMLTreeNode.h"
 
 class CNamed {
  protected:
   std::string m_Name;
  public:
   CNamed() {} //Ojo que este es solo para probar el ScriptManager
-
+  CNamed(const CXMLTreeNode &node) : m_Name(node.GetPszISOProperty("name", "")) {}
   void setName(std::string name) {
     m_Name = name;
     if (name == "Tete") //Test scripting

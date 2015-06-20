@@ -11,8 +11,7 @@
 #include "Actor\PhysicController.h"
 #include "Utils\LuaGlobals.h"
 #include "Core\ScriptManager.h"
-
-
+#include "XML\XMLTreeNode.h"
 
 CMovingPlatform::CMovingPlatform(std::string platformName, std::string coreName, float speed)
   : CStaticPlatform(platformName, coreName),
@@ -24,6 +23,23 @@ CMovingPlatform::CMovingPlatform(std::string platformName, std::string coreName,
   m_PhysicUserData->SetPaint(true);
   m_PhysicUserData->SetColor(colRED);*/
   m_Fsm = new CFSMInstance(FSMMGR->GetResource("MovingPlatform"));
+}
+
+CMovingPlatform::CMovingPlatform(CXMLTreeNode &node)
+  : CStaticPlatform(node),
+    m_Speed(node.GetFloatProperty("speed", 0.0f)),
+    m_CurrentWpId(0),
+    m_Activated(false),
+    m_Fsm(new CFSMInstance(FSMMGR->GetResource("MovingPlatform"))) {
+  int wpCount = node.GetNumChildren();
+  for (int i = 0; i < wpCount; ++i) {
+    std::string name = node(i).GetName();
+    if (name == "wp") {
+      Vect3f l_Wp = node(i).GetVect3fProperty("pos", Vect3f(.0f, .0f, .0f), false);
+      m_WayPointsVector.push_back(l_Wp);
+    }
+  }
+  m_NextWP = m_WayPointsVector[1];
 }
 
 void CMovingPlatform::AddBoxController(Vect3f size, float slope, float skinwidth, float offset, float gravity) {
@@ -41,8 +57,6 @@ void CMovingPlatform::AddBoxController(Vect3f size, float slope, float skinwidth
 }
 
 CMovingPlatform::~CMovingPlatform () {
-  /* PHYSXM->ReleasePhysicController(m_PhysicController);
-   CHECKED_DELETE(m_PhysicController);*/
   CHECKED_DELETE(m_Fsm);
 }
 

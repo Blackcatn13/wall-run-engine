@@ -7,7 +7,13 @@
 #include "Renderable\RenderableObjectsLayersManager.h"
 #include "Core\Core.h"
 #include "Utils\Defines.h"
+#include "XML\XMLTreeNode.h"
 
+std::string SetUserDataName(std::string name) {
+  std::stringstream ss;
+  ss << name << "_UserData";
+  return ss.str();
+}
 
 CSceneElement::CSceneElement(std::string switchName, std::string coreName)
   : CMeshInstance(switchName, coreName)
@@ -16,29 +22,33 @@ CSceneElement::CSceneElement(std::string switchName, std::string coreName)
     m_Room("0") {
 }
 
+CSceneElement::CSceneElement(const CXMLTreeNode &node)
+  : CMeshInstance(node),
+    m_Actor(NULL),
+    m_UserData(NULL),
+    m_Room(node.GetPszISOProperty("room", "0")),
+    m_PhysicsSize(node.GetVect3fProperty("phisic_size", v3fZERO)) {
+}
+
 CSceneElement::~CSceneElement () {
-  PHYSXM->ReleasePhysicActor(m_Actor);
-  CHECKED_DELETE(m_Actor);
-  CHECKED_DELETE(m_UserData);
+  if (m_Actor != NULL) {
+    PHYSXM->ReleasePhysicActor(m_Actor);
+    CHECKED_DELETE(m_Actor);
+  }
+  if (m_UserData != NULL)
+    CHECKED_DELETE(m_UserData);
 }
 
 void CSceneElement::ActivatePhisic(bool active) {
   m_Actor->Activate(active);
 }
 
-void CSceneElement::InsertPhisic(std::string userDataName, Vect3f size, Vect3f localPosition) {
-  // m_RenderableObject = RENDLM->GetDefaultRenderableObjectManager()->GetResource(boxName);
-  m_UserData = new CPhysicUserData(userDataName);
+void CSceneElement::InsertPhisic(Vect3f localPosition) {
+  m_UserData = new CPhysicUserData(SetUserDataName(m_Name));
   m_UserData->SetPaint(false);
   m_Actor = new CPhysicActor(m_UserData);
-  m_PhysicsSize = Vect3f(size.x, size.y, size.z);
-  // m_PlatorformActor->AddBoxSphape(size, m_RenderableObject->GetPosition(), localPosition);
-  m_Actor->AddBoxSphape(size, m_Position, localPosition);
-  //m_RenderableObject->SetYaw(m_fYaw);
-  // m_PlatorformActor->CreateBody(0.5f);
-
+  m_Actor->AddBoxSphape(m_PhysicsSize, m_Position, localPosition);
   PHYSXM->AddPhysicActor(m_Actor);
-  //m_RenderableObject->SetPosition(m_RenderableObject->GetPosition());
 }
 
 bool CSceneElement::isInside(Vect3f vector1, Vect3f vector2) {

@@ -1,14 +1,5 @@
 #include "PinchosPlatform.h"
-
-/*#include "Core\Core.h"
-#include "TriggerManager\Trigger.h"
-#include "TriggerManager\TriggerManager.h"
-#include "PhysicsManager.h"
-#include "Renderable\RenderableObject.h"
-#include "Utils\TemplatedVectorMapManager.h"
-#include "Core\PlayerController.h"
-#include "Utils\PhysicUserData.h"
-*/
+#include "XML\XMLTreeNode.h"
 
 CPinchosPlatform::CPinchosPlatform(std::string platformName, std::string coreName, std::string triggerName/*, Vect3f backPos, Vect3f frontPos, bool fromX, bool fromZ*/)
   : CBreakablePlatform(platformName, coreName, triggerName)//,
@@ -20,7 +11,9 @@ CPinchosPlatform::CPinchosPlatform(std::string platformName, std::string coreNam
 {
 }
 
-
+CPinchosPlatform::CPinchosPlatform(const CXMLTreeNode &node)
+  : CBreakablePlatform(node) {
+}
 
 CPinchosPlatform::~CPinchosPlatform () {
 }

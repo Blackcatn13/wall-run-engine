@@ -38,7 +38,7 @@ class CIndexedVertexs : public CRenderableVertexs {
     m_ok = RM->GetDevice()->SetIndices(m_IB);
     m_ok = RM->GetDevice()->SetFVF(T::GetFVF());
     m_ok = RM->GetDevice()->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, m_VertexCount, 0, m_IndexCount / 3);
-    return m_ok;
+    return m_ok == S_OK;
   }
   bool Render(CGraphicsManager *GM, CEffectTechnique *EffectTechnique, int baseVertex = 0, int MinVertex = 0, int NumVertex = -1, int StartIndex = 0, int IndexCount = -1) const {
     LPDIRECT3DDEVICE9 l_Device = GM->GetDevice();

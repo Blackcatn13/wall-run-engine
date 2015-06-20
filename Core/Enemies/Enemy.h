@@ -75,7 +75,7 @@ class CEnemy : public CAIController { //CAIController
   int CheckPlayerCollision();
 
   //void SetMesh(std::string mesh);
-  GET_SET(float, Life);
+  GET_SET(int, Life);
   /*GET_SET(float, Yaw);
   GET_SET_REF(std::string, Name);
   GET_SET_REF(Vect3f, Position);*/

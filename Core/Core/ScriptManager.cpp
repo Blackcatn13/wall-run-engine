@@ -352,7 +352,8 @@ void CScriptManager::RegisterLUAFunctions() {
     //.def(constructor<>())
     .def("update", & CRenderableObject::Update)
     .def("render", & CRenderableObject::Render)
-    .property("m_Printable", & CRenderableObject::getPrintable, & CRenderableObject::setPrintable )
+    .property("m_Printable", & CRenderableObject::getPrintable, &CRenderableObject::setPrintable )
+    .property("m_ParticleEmitter", &CRenderableObject::getParticleEmitter, &CRenderableObject::setParticleEmitter)
   ];
   luabind::module(LUA_STATE) [
     class_< CMeshInstance, CRenderableObject>  ("CMeshInstance")

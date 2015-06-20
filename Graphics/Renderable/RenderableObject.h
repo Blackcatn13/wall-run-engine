@@ -6,15 +6,17 @@
 #include "Object/Object3D.h"
 #include "GraphicsManager.h"
 #include "Utils/Named.h"
+
 //#include "Mesh\MeshInstance.h"
+class CXMLTreeNode;
 
 class CRenderableObject : public CObject3D, public CNamed {
  protected:
   bool		m_Printable;
+  std::string m_ParticleEmitter;
  public:
   CRenderableObject();
-  //TODO
-  //CRenderableObject(CXMLTreeNode &TreeNode);
+  CRenderableObject(const CXMLTreeNode &TreeNode);
   virtual ~CRenderableObject() {}
   virtual void Update(float ElapsedTime) {
     if (getVisible() == true)
@@ -24,6 +26,7 @@ class CRenderableObject : public CObject3D, public CNamed {
   }
   GET_SET(bool, Printable);
   virtual void Render(CGraphicsManager *RM) = 0;
+  GET_SET(std::string, ParticleEmitter);
 };
 
 #endif

@@ -254,7 +254,7 @@ void CParticleEmitter::InitPool() {
   m_RecyclingArray = new CParticle[m_MaxParticles];
   m_RecyclingArrayStatus = new bool[m_MaxParticles];
 
-  for (uint32 i = 0; i < m_MaxParticles; ++i)
+  for (int i = 0; i < m_MaxParticles; ++i)
     m_RecyclingArrayStatus[i] = true;
   m_FreeElements = m_MaxParticles;
   m_UsedElements = 0;
@@ -291,7 +291,7 @@ void CParticleEmitter::UpdateParticles(float dt) {
 
 CParticle *CParticleEmitter::NewParticle() {
   bool found = false;
-  uint32 index = 0;
+  int index = 0;
 
   if (m_FreeElements > 0) {
     while (!found && index < m_MaxParticles) {

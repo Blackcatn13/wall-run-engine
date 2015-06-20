@@ -4,20 +4,21 @@
 #include "TriggerManager\Trigger.h"
 #include "TriggerManager\TriggerManager.h"
 #include "PhysicsManager.h"
-//#include "Renderable\RenderableObject.h"
-//#include "Utils\TemplatedVectorMapManager.h"
 #include "Core\PlayerController.h"
 #include "Utils\PhysicUserData.h"
-
+#include "XML\XMLTreeNode.h"
 
 CBreakablePlatform::CBreakablePlatform(std::string platformName, std::string coreName, std::string triggerName)
   : CStaticPlatform(platformName, coreName),
     m_TriggerName(triggerName) {
 }
 
+CBreakablePlatform::CBreakablePlatform(const CXMLTreeNode &node)
+  : CStaticPlatform(node),
+    m_TriggerName(node.GetPszISOProperty("trigger_name", "")) {
+}
 
-
-CBreakablePlatform::~CBreakablePlatform () {
+CBreakablePlatform::~CBreakablePlatform() {
 }
 
 void CBreakablePlatform::DisablePlatform(float dt, Vect3f direction) {
