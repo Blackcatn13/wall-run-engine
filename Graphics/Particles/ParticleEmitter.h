@@ -48,7 +48,6 @@ class CParticleEmitter : public CObject3D, public CNamed {
   GET_SET(float, MinVelocidadOndulacion);
   GET_SET(Vect3f, vOndulacion1);
   GET_SET(Vect3f, vOndulacion2);
-  GET_SET(bool, visible);
   bool reloadTexture();
  private:
   void PopulateParticle(CParticle *p);
@@ -84,7 +83,6 @@ class CParticleEmitter : public CObject3D, public CNamed {
   CRenderableVertexs         *m_RV;
   TPARTICLE_VERTEX_INSTANCE  *m_vertex_list;
   unsigned short             *m_index_list;
-  bool                        m_visible;
 
   // POOL of particles
   uint32  m_FreeElements;

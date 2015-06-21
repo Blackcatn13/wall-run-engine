@@ -39,8 +39,8 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
   , m_MinVelocidadOndulacion(node.GetFloatProperty("min_speed_ondulacion", 0.0f, false))
   , m_vOndulacion1(node.GetVect3fProperty("ondulacion_vec1", v3fZERO, false))
   , m_vOndulacion2(node.GetVect3fProperty("ondulacion_vec2", v3fZERO, false))
-  , m_sTexture(node.GetPszISOProperty("texture", "", false))
-  , m_visible(true) {
+  , m_sTexture(node.GetPszISOProperty("texture", "", false)) {
+  m_visible = true;
   m_Name = (node.GetPszISOProperty("name", "", false));
   std::string type = node.GetPszISOProperty("type", "PLANE", false);
   if (type == "ESF")
@@ -96,8 +96,8 @@ CParticleEmitter::CParticleEmitter()
   , m_MinVelocidadOndulacion(0.f)
   , m_vOndulacion1(v3fZERO)
   , m_vOndulacion2(v3fZERO)
-  , m_sTexture("")
-  , m_visible(true) {
+  , m_sTexture("") {
+  m_visible = true;
   std::string type = "PLANE";
   if (type == "ESF")
     m_Type = EMITTER_ESF;
