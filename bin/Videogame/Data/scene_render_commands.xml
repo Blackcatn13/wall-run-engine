@@ -65,8 +65,8 @@
 		<!--<deferred_shading/>-->
 		<!--<set_texture_in_stage texture_name="./Data/g_Textures/celshade.tga" stage_id="5"/>-->
 		<!--<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>-->
-		<!--<enable_z_write/>
-		<enable_z_test />-->
+		<enable_z_write/>
+		<enable_z_test />
 		
 		
 		<set_pool_renderable_objects_technique pool="poly_pool"/>

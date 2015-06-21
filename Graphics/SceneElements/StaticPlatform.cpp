@@ -5,15 +5,18 @@
 #include "Actor\PhysicController.h"
 #include "Utils\PhysicUserData.h"
 #include "XML\XMLTreeNode.h"
+#include "Actor\PhysicActor.h"
 
 CStaticPlatform::CStaticPlatform(std::string platformName, std::string coreName)
   : CSceneElement(platformName, coreName) {
   InsertPhisic(Vect3f(.0f, m_PhysicsSize.y, .0f));
+  m_Actor->Activate(false);
 }
 
 CStaticPlatform::CStaticPlatform(const CXMLTreeNode &node)
   : CSceneElement(node) {
   InsertPhisic(Vect3f(.0f, m_PhysicsSize.y, .0f));
+  m_Actor->Activate(false);
 }
 
 CStaticPlatform::~CStaticPlatform() {
