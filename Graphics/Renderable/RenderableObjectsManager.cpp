@@ -224,3 +224,11 @@ void CRenderableObjectsManager::ActivateElements(std::string roomName) {
     }
   }
 }
+
+void CRenderableObjectsManager::RestoreBrokenPlatforms() {
+  for (int i = 0; i < GetResourcesVector().size(); ++ i ) {
+    if (((CBreakablePlatform *)GetResourcesVector()[i])->IsBroken() == true) {
+      ((CBreakablePlatform *)GetResourcesVector()[i])->EnablePlatform();
+    }
+  }
+}

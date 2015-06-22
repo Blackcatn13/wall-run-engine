@@ -27,6 +27,7 @@ class CRenderableObjectsManager : public CTemplatedVectorMapManager<CRenderableO
   void Load(CXMLTreeNode &Node);
   void Reload();
   std::string SetUserDataName(std::string name);
+  void RestoreBrokenPlatforms();
 };
 
 #endif

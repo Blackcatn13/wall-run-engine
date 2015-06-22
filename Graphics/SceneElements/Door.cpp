@@ -5,8 +5,8 @@
 #include "Core\Core.h"
 #include "Actor\PhysicController.h"
 #include "Utils\PhysicUserData.h"
-#include "Actor\PhysicActor.h"
 #include "XML\XMLTreeNode.h"
+#include "Actor\PhysicActor.h"
 
 
 CDoor::CDoor(std::string switchName, std::string coreName, std::string lua_function, Vect3f final_Position)
