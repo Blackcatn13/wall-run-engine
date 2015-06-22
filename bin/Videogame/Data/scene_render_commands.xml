@@ -112,7 +112,7 @@
 		
 		<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
 		
-		<render_debug_scene layer="phisics" active="false" paint_cooking_mesh="false" cooking_mesh_name="fixbox" />
+		<render_debug_scene layer="phisics" active="true" paint_cooking_mesh="false" cooking_mesh_name="fixbox" />
 		<disable_alpha_blend />
 		<check_active_poly />
 

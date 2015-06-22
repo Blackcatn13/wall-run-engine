@@ -397,6 +397,7 @@ void CScriptManager::RegisterLUAFunctions() {
     .def("load", (void (CRenderableObjectsManager::*)(CXMLTreeNode & Node)) &CRenderableObjectsManager::Load)
     .def("reload", & CRenderableObjectsManager::Reload)
     .def("activate_elements", & CRenderableObjectsManager::ActivateElements)
+    .def("restore_broken_platforms", &CRenderableObjectsManager::RestoreBrokenPlatforms)
 
   ];
 

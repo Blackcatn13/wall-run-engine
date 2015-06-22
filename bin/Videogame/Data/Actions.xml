@@ -353,7 +353,7 @@
     </action>
 	
 	<action name="PauseGame">
-    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_P"/>
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_O"/>
     </action>
 	
 </Actions>
