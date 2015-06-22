@@ -23,6 +23,7 @@ CMovingPlatform::CMovingPlatform(std::string platformName, std::string coreName,
   m_PhysicUserData->SetPaint(true);
   m_PhysicUserData->SetColor(colRED);*/
   m_Fsm = new CFSMInstance(FSMMGR->GetResource("MovingPlatform"));
+  m_Actor->Activate(true);
 }
 
 CMovingPlatform::CMovingPlatform(CXMLTreeNode &node)
@@ -40,6 +41,7 @@ CMovingPlatform::CMovingPlatform(CXMLTreeNode &node)
     }
   }
   m_NextWP = m_WayPointsVector[1];
+  m_Actor->Activate(true);
 }
 
 void CMovingPlatform::AddBoxController(Vect3f size, float slope, float skinwidth, float offset, float gravity) {

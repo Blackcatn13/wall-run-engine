@@ -12,11 +12,13 @@ CBreakablePlatform::CBreakablePlatform(std::string platformName, std::string cor
   : CStaticPlatform(platformName, coreName),
     m_TriggerName(triggerName),
     m_Broken(false) {
+  m_Actor->Activate(true);
 }
 
 CBreakablePlatform::CBreakablePlatform(const CXMLTreeNode &node)
   : CStaticPlatform(node),
     m_TriggerName(node.GetPszISOProperty("trigger_name", "")) {
+  m_Actor->Activate(true);
 }
 
 CBreakablePlatform::~CBreakablePlatform() {

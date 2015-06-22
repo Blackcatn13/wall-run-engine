@@ -6,6 +6,7 @@
 #include "Actor\PhysicController.h"
 #include "Utils\PhysicUserData.h"
 #include "XML\XMLTreeNode.h"
+#include "Actor\PhysicActor.h"
 
 
 CDoor::CDoor(std::string switchName, std::string coreName, std::string lua_function, Vect3f final_Position)
@@ -13,6 +14,7 @@ CDoor::CDoor(std::string switchName, std::string coreName, std::string lua_funct
     m_AnimationDone(false),
     m_IsPlayingAnimation(false),
     m_FinalPosition (final_Position) {
+  m_Actor->Activate(true);
 }
 
 CDoor::CDoor(const CXMLTreeNode &node)
@@ -23,6 +25,7 @@ CDoor::CDoor(const CXMLTreeNode &node)
     m_OriginalPosition(m_Position),
     m_LuaFunction(node.GetPszISOProperty("lua_function", "")) {
   InsertPhisic(v3fZERO);
+  m_Actor->Activate(true);
 }
 
 CDoor::~CDoor() {

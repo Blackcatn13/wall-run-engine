@@ -33,6 +33,7 @@ CPolyPlatform::CPolyPlatform(std::string platformName, std::string coreName,  Ve
     m_Margin = 0.5;
   else
     m_Margin = 0.9;
+  m_Actor->Activate(true);
 }
 
 CPolyPlatform::CPolyPlatform(const CXMLTreeNode &node)
@@ -56,6 +57,7 @@ CPolyPlatform::CPolyPlatform(const CXMLTreeNode &node)
     m_Margin = 0.5;
   else
     m_Margin = 0.9;
+  m_Actor->Activate(true);
 }
 
 CPolyPlatform::~CPolyPlatform() {
