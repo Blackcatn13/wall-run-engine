@@ -1,5 +1,5 @@
 #include "BreakablePlatform.h"
-
+#include "Actor\PhysicActor.h"
 #include "Core\Core.h"
 #include "TriggerManager\Trigger.h"
 #include "TriggerManager\TriggerManager.h"
@@ -11,11 +11,13 @@
 CBreakablePlatform::CBreakablePlatform(std::string platformName, std::string coreName, std::string triggerName)
   : CStaticPlatform(platformName, coreName),
     m_TriggerName(triggerName) {
+  m_Actor->Activate(true);
 }
 
 CBreakablePlatform::CBreakablePlatform(const CXMLTreeNode &node)
   : CStaticPlatform(node),
     m_TriggerName(node.GetPszISOProperty("trigger_name", "")) {
+  m_Actor->Activate(true);
 }
 
 CBreakablePlatform::~CBreakablePlatform() {
