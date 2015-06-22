@@ -3,11 +3,12 @@
 	<normal_render>
 		 <!--pre_render-->
 
-		<clear_scene color="true" depth="true" stencil="true"/>
-		<begin_scene/>
+		<!--<clear_scene color="true" depth="true" stencil="true"/>-->
 
-		<!--<enable_z_write/>
-		<enable_z_test/> -->
+		<set_pool_renderable_objects_technique pool="generate_shadow_map_renderable_obejcts_technique"/>
+		<generate_shadow_maps />
+
+		<begin_scene/>
 
 		<enable_z_write/>
 		<enable_z_test/>
@@ -16,19 +17,15 @@
 		<!--
 		<set_axis />
 		-->
-		
-		<set_pool_renderable_objects_technique pool="generate_shadow_map_renderable_obejcts_technique"/>
-		<generate_shadow_maps />
-		
 		<set_pool_renderable_objects_technique pool="generate_deferred_shading_pool_renderable_object_technique"/>
 
 		<set_render_target name="deferred_multiple_render_target">
-			<dynamic_texture stage_id="0" name="DiffuseMapTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
+			<dynamic_texture stage_id="0" name="DiffuseMapTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8" depth_buffer="true"/>
 			<dynamic_texture stage_id="1" name="LightMapTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 			<dynamic_texture stage_id="2" name="NormalMapTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 			<dynamic_texture stage_id="3" name="DepthMapTexture" texture_width_as_frame_buffer="true" format_type="R32F"/>
 		</set_render_target>
-		<clear_scene color="true" depth="true" stencil="true"/> 
+		<clear_scene color="true" depth="true" stencil="false"/> 
 		<set_matrices/>
 		<enable_z_write/>
 		<enable_z_test/>
@@ -42,7 +39,7 @@
 		<render_scene layer="player" active="true"/>
 		<render_scene layer="enabled_poly" active="true" />
 		<!--<render_scene layer="invisible" active="true" />-->
-		<unset_render_target render_target="deferred_multiple_render_target"/>
+		<unset_render_target render_target="deferred_multiple_render_target" stencil_buffer="0"/>
 		<disable_z_write/>
 		<disable_z_test />
 		
@@ -86,7 +83,8 @@
 		
 		
 		<disable_alpha_blend />
-	
+		<disable_z_write/>
+		<disable_z_test />
 		<!--<clear_scene color="true" depth="false" stencil="false"/> -->
 		<!--<enable_z_write/>
 		<enable_z_test />
@@ -116,7 +114,8 @@
 		<disable_alpha_blend />
 		<check_active_poly />
 
-		
+		<disable_z_write/>
+		<disable_z_test />
 		<!--<render_scene layer="poly" active="true" />
 		<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
 
@@ -284,8 +283,9 @@
 		<!--render_gui/-->
 		 <!--<render_debug_scene layer="solid" active="true"/>-->
 
-		<disable_z_write/>
-		<disable_z_test />
+		<!--<disable_z_write/>-->
+		<enable_z_test />
+		<!--<disable_z_test />-->
 		<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>
 		<set_pool_renderable_objects_technique pool="particles_pool"/>
 		<particle_render/>

@@ -13,7 +13,7 @@ class CSetRenderTargetSceneRendererCommand : public CStagedTexturedRendererComma
   ~CSetRenderTargetSceneRendererCommand();
   CSetRenderTargetSceneRendererCommand(CXMLTreeNode &atts);
   void Execute(CGraphicsManager &RM);
-  void UnsetRenderTarget();
+  void UnsetRenderTarget(int depthStencil);
 };
 
 #endif

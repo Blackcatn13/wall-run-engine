@@ -55,7 +55,7 @@ bool CTexture::LoadFileGUI() {
 }
 
 void CTexture::Unload() {
-	CHECKED_RELEASE(m_Texture);
+  CHECKED_RELEASE(m_Texture);
 }
 
 ///////////////////////////////////
@@ -81,10 +81,13 @@ bool CTexture::SetAsRenderTarget(size_t IdStage) {
   return true;
 }
 
-void CTexture::UnsetAsRenderTarget(size_t IdStage) {
+void CTexture::UnsetAsRenderTarget(size_t IdStage, bool UnsetStencilBuffer) {
   LPDIRECT3DDEVICE9 l_Device = GRAPHM->GetDevice();
-  l_Device->SetDepthStencilSurface(m_OldDepthStencilRenderTarget);
-  CHECKED_RELEASE(m_OldDepthStencilRenderTarget);
+  if (m_DepthStencil) {
+    if (UnsetStencilBuffer)
+      l_Device->SetDepthStencilSurface(m_OldDepthStencilRenderTarget);
+    CHECKED_RELEASE(m_OldDepthStencilRenderTarget);
+  }
   l_Device->SetRenderTarget(IdStage, m_OldRenderTarget);
   CHECKED_RELEASE(m_OldRenderTarget);
 }

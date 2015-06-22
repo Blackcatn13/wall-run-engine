@@ -39,8 +39,8 @@ void CSetRenderTargetSceneRendererCommand::Execute(CGraphicsManager &RM) {
     m_StageTextures[i].m_Texture->SetAsRenderTarget(m_StageTextures[i].m_StageId);
   }
 }
-void CSetRenderTargetSceneRendererCommand::UnsetRenderTarget() {
+void CSetRenderTargetSceneRendererCommand::UnsetRenderTarget(int depthStencil) {
   for (size_t i = 0; i < m_StageTextures.size(); ++i) {
-    m_StageTextures[i].m_Texture->UnsetAsRenderTarget(m_StageTextures[i].m_StageId);
+    m_StageTextures[i].m_Texture->UnsetAsRenderTarget(m_StageTextures[i].m_StageId, depthStencil != i);
   }
 }

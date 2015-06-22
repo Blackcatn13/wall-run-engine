@@ -20,6 +20,7 @@ CStagedTexturedRendererCommand::CStagedTexturedRendererCommand(CXMLTreeNode &att
       int l_Width = atts(i).GetIntProperty("width", 0, false);
       int l_Height = atts(i).GetIntProperty("height", 0, false);
       bool l_WidthAsFrameBuffer = atts(i).GetBoolProperty("texture_width_as_frame_buffer", false, false);
+      bool depthStencil = atts(i).GetBoolProperty("depth_buffer", false);
       if ((l_Width == 0 || l_Height == 0) && l_WidthAsFrameBuffer) {
         D3DVIEWPORT9 *l_viewPort = new D3DVIEWPORT9();
         GRAPHM->GetDevice()->GetViewport(l_viewPort);
@@ -32,7 +33,7 @@ CStagedTexturedRendererCommand::CStagedTexturedRendererCommand(CXMLTreeNode &att
         TEXTM->RemoveResource(l_TextureName);
       }
       l_Texture = new CTexture();
-      l_Texture->Create(l_TextureName, l_Width, l_Height, 1, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, l_Texture->GetFormatTypeFromString(l_FormatType));
+      l_Texture->Create(l_TextureName, l_Width, l_Height, 1, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, l_Texture->GetFormatTypeFromString(l_FormatType), depthStencil);
       AddStageTexture(l_StageId, l_Texture);
       TEXTM->AddResource(l_TextureName, l_Texture);
     } else  if (name == "texture") {

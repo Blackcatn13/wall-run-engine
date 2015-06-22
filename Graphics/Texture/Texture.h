@@ -63,7 +63,7 @@ class CTexture : public CNamed {
 
   void Deactivate(size_t Stage);
   bool SetAsRenderTarget(size_t IdStage = 0);
-  void UnsetAsRenderTarget(size_t IdStage = 0);
+  void UnsetAsRenderTarget(size_t IdStage = 0, bool UnsetStencilBuffer = true);
   void CaptureFrameBuffer(size_t IdStage);
   CTexture::TFormatType CTexture::GetFormatTypeFromString(const std::string &FormatType);
   int GetWidth() {
