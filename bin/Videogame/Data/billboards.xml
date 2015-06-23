@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <billboards>
-	<billboard name="billboard001" size="5" position="0.0 3.0 0.0" color="1.0 0.0 1.0 1.0"/>
+	<billboard name="billboard001" size="5" position="0.0 3.0 0.0" color="1.0 0.0 1.0 1.0">
+		<Textures>
+			<name="./Data/g_Textures/spark.png"/>
+			<name="./Data/g_Textures/fire.png"/>
+		</Textures>
+	</billboard>
 		
 	
 </billboards>
