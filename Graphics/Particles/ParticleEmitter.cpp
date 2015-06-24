@@ -205,7 +205,7 @@ void CParticleEmitter::PopulateParticle(CParticle *p) {
 
   /* l_Texture->Create(m_sTexture, size, size, 1, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, l_Texture->GetFormatTypeFromString("R8G8B8"));
    float height = l_Texture->GetHeight();*/
-  p->setTexture(m_Texture);
+  //p->setTexture(m_Texture);
   float o1x = m_vOndulacion1.x;
   float o2x = m_vOndulacion2.x;
   float o1y = m_vOndulacion1.y;

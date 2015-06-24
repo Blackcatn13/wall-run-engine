@@ -9,7 +9,6 @@ CParticle::CParticle(Vect3f Direction1, Vect3f Direction2, float Age, float Spee
   , m_Color2(Color2)
   , m_Dead(false) {
   m_Color1 = Color1;
-  m_Texture = NULL;
 }
 
 CParticle::CParticle()
@@ -21,7 +20,6 @@ CParticle::CParticle()
   , m_Color2(CColor(colWHITE))
   , m_Dead(false) {
   m_Color1 = colBLACK;
-  m_Texture = NULL;
 }
 
 CParticle::~CParticle() {}

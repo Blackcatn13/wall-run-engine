@@ -12,8 +12,7 @@
 CBillboard::CBillboard(CXMLTreeNode &node)
   : m_size(node.GetFloatProperty("size", .0f	, false))
   , m_position(node.GetVect3fProperty("position", v3fZERO	, false))
-  , m_Color1(CColor((node.GetVect4fProperty("color", v4fZERO	, false))))
-  , m_Texture(NULL) {
+  , m_Color1(CColor((node.GetVect4fProperty("color", v4fZERO	, false)))) {
 }
 
 CBillboard::CBillboard(float size)
@@ -27,11 +26,14 @@ CBillboard::CBillboard(float size, Vect3f pos)
 }
 
 CBillboard::~CBillboard() {
-  if (m_Texture != NULL) {
-    uint32 width = m_Texture->GetWidth();
-    if (width < 5000)
-      CHECKED_DELETE(m_Texture);
+  for (std::vector<CTexture *>::iterator it = m_Textures.begin(); it != m_Textures.end(); ++it) {
+    CHECKED_DELETE((*it));
   }
+  /* if (m_Texture != NULL) {
+     uint32 width = m_Texture->GetWidth();
+     if (width < 5000)
+       CHECKED_DELETE(m_Texture);
+   }*/
 }
 
 void CBillboard::Render(CGraphicsManager *GM) {
@@ -46,10 +48,10 @@ void CBillboard::Render(CGraphicsManager *GM) {
   Vect3f dr = m_position - up + right;
   //GM->DrawQuad3D(ul, ur, dl, dr, m_Color1);
 
-  if (m_Texture != NULL)
+  /*if (m_Texture != NULL)
     GM->DrawQuad3D(ul, ur, dl, dr,  m_Texture, m_Color1);
   else
-    GM->DrawQuad3D(ul, ur, dl, dr, m_Color1);
+    GM->DrawQuad3D(ul, ur, dl, dr, m_Color1);*/
 }
 
 

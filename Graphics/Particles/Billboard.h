@@ -1,6 +1,7 @@
 #ifndef BILLBOARD_H_
 #define BILLBOARD_H_
 
+#include <vector>
 #include "Math\Vector3.h"
 #include "Math\Color.h"
 #include "Utils\Defines.h"
@@ -22,11 +23,13 @@ class CBillboard {
   void setSize(float size) {m_size = size;}
   Vect3f getPosition() {return m_position;}
   void setPosition(Vect3f position) {m_position = position;}
-  GET_SET(CTexture *, Texture)
+  CTexture *getTexture() {return m_Textures[0];}
+  void setTexture(CTexture *t) {m_Textures[0] = t;}
+  //GET_SET(CTexture *, Texture)
  protected:
   float			  m_size;
   Vect3f		  m_position;
-  CTexture		*m_Texture;
+  std::vector<CTexture *>		m_Textures;
   CColor		  m_Color1;
 };
 
