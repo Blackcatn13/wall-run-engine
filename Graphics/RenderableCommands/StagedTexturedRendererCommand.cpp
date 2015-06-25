@@ -11,16 +11,18 @@
 
 
 CStagedTexturedRendererCommand::CStagedTexturedRendererCommand(CXMLTreeNode &atts) {
-  for (int i = 0; i < atts.GetNumChildren(); ++i) {
-    std::string name = atts(i).GetName();
+  int numChildren = atts.GetNumChildren();
+  for (int i = 0; i < numChildren; ++i) {
+    CXMLTreeNode nodeChild = atts(i);
+    std::string name = nodeChild.GetName();
     if (name == "dynamic_texture") {
-      int l_StageId = atts(i).GetIntProperty("stage_id", 0, false);
-      std::string l_TextureName = atts(i).GetPszProperty("name", "", false);
-      std::string l_FormatType = atts(i).GetPszProperty("format_type", "", false);
-      int l_Width = atts(i).GetIntProperty("width", 0, false);
-      int l_Height = atts(i).GetIntProperty("height", 0, false);
-      bool l_WidthAsFrameBuffer = atts(i).GetBoolProperty("texture_width_as_frame_buffer", false, false);
-      bool depthStencil = atts(i).GetBoolProperty("depth_buffer", false);
+      int l_StageId = nodeChild.GetIntProperty("stage_id", 0, false);
+      std::string l_TextureName = nodeChild.GetPszProperty("name", "", false);
+      std::string l_FormatType = nodeChild.GetPszProperty("format_type", "", false);
+      int l_Width = nodeChild.GetIntProperty("width", 0, false);
+      int l_Height = nodeChild.GetIntProperty("height", 0, false);
+      bool l_WidthAsFrameBuffer = nodeChild.GetBoolProperty("texture_width_as_frame_buffer", false, false);
+      bool depthStencil = nodeChild.GetBoolProperty("depth_buffer", false);
       if ((l_Width == 0 || l_Height == 0) && l_WidthAsFrameBuffer) {
         D3DVIEWPORT9 *l_viewPort = new D3DVIEWPORT9();
         GRAPHM->GetDevice()->GetViewport(l_viewPort);
@@ -41,8 +43,8 @@ CStagedTexturedRendererCommand::CStagedTexturedRendererCommand(CXMLTreeNode &att
       Vect3f color = atts.GetVect3fProperty("color", v3fZERO, false);
       m_Color.Set(color.x, color.y, color.z);
       m_TechniqueName = atts.GetPszProperty("technique_name", "", false);
-      int l_StageId = atts(i).GetIntProperty("stage_id");
-      std::string l_TextureName = atts(i).GetPszProperty("file", "");
+      int l_StageId = nodeChild.GetIntProperty("stage_id");
+      std::string l_TextureName = nodeChild.GetPszProperty("file", "");
       uint32 l_Width, l_Height;
       GRAPHM->GetWidthAndHeight(l_Width, l_Height);
       if (atts(i).GetBoolProperty("load_file", false, false)) {

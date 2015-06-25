@@ -13,6 +13,19 @@ CBillboard::CBillboard(CXMLTreeNode &node)
   : m_size(node.GetFloatProperty("size", .0f	, false))
   , m_position(node.GetVect3fProperty("position", v3fZERO	, false))
   , m_Color1(CColor((node.GetVect4fProperty("color", v4fZERO	, false)))) {
+  int numChild = node.GetNumChildren();
+  for (int i = 0; i < numChild; ++i) {
+    CXMLTreeNode nodeChild = node(i);
+    std::string textureName = nodeChild.GetPszISOProperty("name", "");
+    if (TEXTM->ExisteResource(textureName)) {
+      m_Textures.push_back(TEXTM->GetResource(textureName));
+    } else {
+      CTexture *texture = new CTexture();
+      texture->Load(textureName);
+      TEXTM->AddResource(textureName, texture);
+      m_Textures.push_back(texture);
+    }
+  }
 }
 
 CBillboard::CBillboard(float size)
@@ -26,9 +39,9 @@ CBillboard::CBillboard(float size, Vect3f pos)
 }
 
 CBillboard::~CBillboard() {
-  for (std::vector<CTexture *>::iterator it = m_Textures.begin(); it != m_Textures.end(); ++it) {
+  /*for (std::vector<CTexture *>::iterator it = m_Textures.begin(); it != m_Textures.end(); ++it) {
     CHECKED_DELETE((*it));
-  }
+  }*/
   /* if (m_Texture != NULL) {
      uint32 width = m_Texture->GetWidth();
      if (width < 5000)
