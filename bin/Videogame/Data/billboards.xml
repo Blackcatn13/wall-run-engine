@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <billboards>
-	<billboard name="billboard001" size="5" position="15.0 15.0 15.0" color="1.0 0.0 1.0 1.0">
+	<billboard name="billboard001" size="0.5 1" position="98.0968 7.723 3.59258" color="1.0 0.0 1.0 1.0">
 		<Texture name="./Data/g_Textures/fire01.dds"/>
 		<Texture name="./Data/g_Textures/noise01.dds"/>
 		<Texture name="./Data/g_Textures/alpha01.dds"/>

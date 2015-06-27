@@ -15,6 +15,7 @@ struct PARTICLEIN
 {
 	float3 pos : POSITION;
 	float2 uv : TEXCOORD0;
+	float2 size : TEXCOORD1;
 };
 
 PSVertex VS(PARTICLEIN IN){
@@ -24,8 +25,9 @@ PSVertex VS(PARTICLEIN IN){
 	float3 viewVector = normalize(float3(g_ViewMatrix[0][2], g_ViewMatrix[1][2], g_ViewMatrix[2][2]));
 
 	PSVertex OUT = (PSVertex)0;
-	OUT.uv = IN.uv;
-	float3 position = (IN.pos.x * rightVector + IN.pos.z*upVector);
+	OUT.uv.x = IN.uv.x;
+	OUT.uv.y = 1 - IN.uv.y;
+	float3 position = (IN.pos.x * rightVector * IN.size.x + IN.pos.z * upVector * IN.size.y);
 	OUT.pos = mul(float4(position,1.0), g_WorldViewProjectionMatrix);
 	OUT.uv2 = IN.uv * scales.x;
 	OUT.uv2.y = OUT.uv2.y + (g_Time / 100 * scrollSpeeds.x);

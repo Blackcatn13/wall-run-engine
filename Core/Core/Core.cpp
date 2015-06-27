@@ -316,7 +316,7 @@ void CCore::DeInit() {
   CHECKED_DELETE(m_LogRender);
 // CHECKED_DELETE(m_WPManager);
   CHECKED_DELETE(m_EnemyManager);
-  //CHECKED_DELETE(m_BillboardManager);
+  CHECKED_DELETE(m_BillboardManager);
   CHECKED_DELETE(m_ParticleManager);
   CHECKED_DELETE(m_WWSoundManager);
   CHECKED_DELETE(m_PuzzleManager);

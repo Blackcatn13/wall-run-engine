@@ -14,7 +14,7 @@
 #include "Renderable\RenderableObjectTechniqueManager.h"
 
 CBillboard::CBillboard(CXMLTreeNode &node)
-  : m_size(node.GetFloatProperty("size", .0f	, false))
+  : m_sizes(node.GetVect2fProperty("size", v2fONE))
   , m_position(node.GetVect3fProperty("position", v3fZERO	, false))
   , m_Color1(CColor((node.GetVect4fProperty("color", v4fZERO	, false)))) {
   int numChild = node.GetNumChildren();
@@ -34,16 +34,16 @@ CBillboard::CBillboard(CXMLTreeNode &node)
   const uint32 lIdxCount = 6;
   const uint32 lVtxCount = 4;
 
-  TPARTICLE_VERTEX vertexs[lVtxCount] = {
-    {  -1.f, 0.0f, -1.f, 0, 0 },    // vertex 0
-    {  -1.f, 0.0f,  1.f, 0, 1 },    // vertex 1
-    {   1.f, 0.0f,  1.f, 1, 1 },    // vertex 2
-    {   1.f, 0.0f, -1.f, 1, 0 }     // vertex 3
+  TBILLBOARD_VERTEX vertexs[lVtxCount] = {
+    {  -1.f, 0.0f, -1.f, 0, 0, m_sizes.x, m_sizes.y },    // vertex 0
+    {  -1.f, 0.0f,  1.f, 0, 1, m_sizes.x, m_sizes.y },    // vertex 1
+    {   1.f, 0.0f,  1.f, 1, 1, m_sizes.x, m_sizes.y },    // vertex 2
+    {   1.f, 0.0f, -1.f, 1, 0, m_sizes.x, m_sizes.y }     // vertex 3
   };
 
   unsigned short int lIdx[lIdxCount] = { 0, 1, 2, 2, 3, 0};
 
-  m_RV = new CIndexedVertexs<TPARTICLE_VERTEX>(GRAPHM, &vertexs, &lIdx, lVtxCount, lIdxCount);
+  m_RV = new CIndexedVertexs<TBILLBOARD_VERTEX>(GRAPHM, &vertexs, &lIdx, lVtxCount, lIdxCount);
 }
 
 CBillboard::CBillboard(float size)

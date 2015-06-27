@@ -30,6 +30,7 @@ class CBillboard {
  protected:
   float			  m_size;
   Vect3f		  m_position;
+  Vect2f      m_sizes;
   std::vector<CTexture *>		m_Textures;
   CColor		  m_Color1;
   CRenderableVertexs         *m_RV;
