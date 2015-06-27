@@ -289,6 +289,8 @@
 		<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>
 		<set_pool_renderable_objects_technique pool="particles_pool"/>
 		<particle_render/>
+		<set_pool_renderable_objects_technique pool="fire_billboard_pool"/>
+		<billboard_render/>
 		<disable_alpha_blend />
 		<!--<enable_z_write/>
 		<enable_z_test /> -->

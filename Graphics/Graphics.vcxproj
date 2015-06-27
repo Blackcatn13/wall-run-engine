@@ -75,6 +75,7 @@
     <ClCompile Include="Particles\ParticleEmitter.cpp" />
     <ClCompile Include="Particles\ParticleManager.cpp" />
     <ClCompile Include="RenderableCommands\BeginRenderSceneRendererCommand.cpp" />
+    <ClCompile Include="RenderableCommands\BillboardRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\CaptureFrameBufferSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\CheckEnabledPolyRenderCommand.cpp" />
     <ClCompile Include="RenderableCommands\ClearSceneRendererCommand.cpp" />
@@ -190,6 +191,7 @@
     <ClInclude Include="Particles\ParticleManager.h" />
     <ClInclude Include="Particles\RecyclingArray.h" />
     <ClInclude Include="RenderableCommands\BeginRenderSceneRendererCommand.h" />
+    <ClInclude Include="RenderableCommands\BillboardRendererCommand.h" />
     <ClInclude Include="RenderableCommands\CaptureFrameBufferSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\CheckEnabledPolyRenderCommand.h" />
     <ClInclude Include="RenderableCommands\ClearSceneRendererCommand.h" />

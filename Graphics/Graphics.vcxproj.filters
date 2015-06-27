@@ -336,6 +336,9 @@
     <ClCompile Include="RenderableCommands\GenerateCascadeShadowMapsSceneRendererCommand.cpp">
       <Filter>RenderableCommands</Filter>
     </ClCompile>
+    <ClCompile Include="RenderableCommands\BillboardRendererCommand.cpp">
+      <Filter>RenderableCommands</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
@@ -627,6 +630,9 @@
     </ClInclude>
     <ClInclude Include="RenderableVertex\InstancingVertexs.h">
       <Filter>RenderableVertex</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableCommands\BillboardRendererCommand.h">
+      <Filter>RenderableCommands</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

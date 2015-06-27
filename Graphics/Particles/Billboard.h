@@ -9,6 +9,7 @@
 class CGraphicsManager;
 class CXMLTreeNode;
 class CTexture;
+class CRenderableVertexs;
 
 class CBillboard {
  public:
@@ -31,6 +32,7 @@ class CBillboard {
   Vect3f		  m_position;
   std::vector<CTexture *>		m_Textures;
   CColor		  m_Color1;
+  CRenderableVertexs         *m_RV;
 };
 
 #endif // BILLBOARD_H_

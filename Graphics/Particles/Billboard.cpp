@@ -8,6 +8,10 @@
 #include "Texture\Texture.h"
 #include "Math\Color.h"
 #include "Utils\Defines.h"
+#include "RenderableVertex\RenderableVertexs.h"
+#include "RenderableVertex\IndexedVertexs.h"
+#include "RenderableVertex\VertexTypes.h"
+#include "Renderable\RenderableObjectTechniqueManager.h"
 
 CBillboard::CBillboard(CXMLTreeNode &node)
   : m_size(node.GetFloatProperty("size", .0f	, false))
@@ -26,16 +30,32 @@ CBillboard::CBillboard(CXMLTreeNode &node)
       m_Textures.push_back(texture);
     }
   }
+
+  const uint32 lIdxCount = 6;
+  const uint32 lVtxCount = 4;
+
+  TPARTICLE_VERTEX vertexs[lVtxCount] = {
+    {  -1.f, 0.0f, -1.f, 0, 0 },    // vertex 0
+    {  -1.f, 0.0f,  1.f, 0, 1 },    // vertex 1
+    {   1.f, 0.0f,  1.f, 1, 1 },    // vertex 2
+    {   1.f, 0.0f, -1.f, 1, 0 }     // vertex 3
+  };
+
+  unsigned short int lIdx[lIdxCount] = { 0, 1, 2, 2, 3, 0};
+
+  m_RV = new CIndexedVertexs<TPARTICLE_VERTEX>(GRAPHM, &vertexs, &lIdx, lVtxCount, lIdxCount);
 }
 
 CBillboard::CBillboard(float size)
   : m_size(size)
-  , m_position(v3fZERO) {
+  , m_position(v3fZERO)
+  , m_RV(NULL) {
 }
 
 CBillboard::CBillboard(float size, Vect3f pos)
   : m_size(size)
-  , m_position(pos) {
+  , m_position(pos)
+  , m_RV(NULL) {
 }
 
 CBillboard::~CBillboard() {
@@ -47,24 +67,22 @@ CBillboard::~CBillboard() {
      if (width < 5000)
        CHECKED_DELETE(m_Texture);
    }*/
+  if (m_RV != NULL)
+    CHECKED_DELETE(m_RV);
 }
 
 void CBillboard::Render(CGraphicsManager *GM) {
-  CCamera *actCam = CAMCONTM->getActiveCamera();
-  Vect3f up_cam = actCam->GetVecUp().Normalize();
-  Vect3f up =  up_cam * m_size / 2;
-  Vect3f direction = actCam->GetDirection().Normalize();
-  Vect3f right = (up_cam ^ direction) * m_size / 2;
-  Vect3f ul = m_position + up - right;
-  Vect3f ur = m_position + up + right;
-  Vect3f dl = m_position - up - right;
-  Vect3f dr = m_position - up + right;
-  //GM->DrawQuad3D(ul, ur, dl, dr, m_Color1);
+  Mat44f t = m44fIDENTITY;
+  GM->SetTransform(t);
+  t.Translate(m_position);
+  GM->SetTransform(t);
 
-  /*if (m_Texture != NULL)
-    GM->DrawQuad3D(ul, ur, dl, dr,  m_Texture, m_Color1);
-  else
-    GM->DrawQuad3D(ul, ur, dl, dr, m_Color1);*/
+  CEffectTechnique *l_EffectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(m_RV->GetVertexType()))->GetEffectTechnique();
+  for (size_t i = 0; i < m_Textures.size(); ++i)
+    m_Textures[i]->Activate(i);
+  m_RV->Render(GM, l_EffectTechnique);
+  t = m44fIDENTITY;
+  GM->SetTransform(t);
 }
 
 

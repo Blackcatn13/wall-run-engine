@@ -49,4 +49,12 @@ float4 g_FogColor = float4(0.05f,0.05f,0.05f,1.0f);
 float g_ExpDensityFog = 0.20;
 float g_Exp2DensityFog = 0.02; //0.20
 float g_ShadowEpsilon = 0.005f;
+// Fire values
+float3 scrollSpeeds = float3(1.3f, 2.1f, 2.3f);
+float3 scales = float3(1.f, 2.f, 3.f);
+float2 distortion1 = float2(0.1f, 0.2f);
+float2 distortion2 = float2(0.1f, 0.3f);
+float2 distortion3 = float2(0.1f, 0.1f);
+float distortionScale = 0.8f;
+float distortionBias = 0.5f;
 

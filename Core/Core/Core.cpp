@@ -240,13 +240,13 @@ void CCore::Init(HWND handler) {
 #endif
   m_ParticleManager = new CParticleManager();
   m_ParticleManager->Load(m_Config.ParticlesPath);
-//#ifdef _DEBUG
-//  t.Update();
-//  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
-//  std::cout << "Creating Billboard Manger";
-//#endif
-  //m_BillboardManager = new CBillboardManager();
-  //m_BillboardManager->Load("./Data/billboards.xml");
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Billboard Manger";
+#endif
+  m_BillboardManager = new CBillboardManager();
+  m_BillboardManager->Load("./Data/billboards.xml");
   //m_SoundManager = new CSoundManager();
   //m_SoundManager->Init();
   //m_SoundManager->LoadSounds("./Data/sounds.xml");

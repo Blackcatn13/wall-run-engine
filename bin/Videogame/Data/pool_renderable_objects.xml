@@ -101,5 +101,9 @@
 	<pool_renderable_object_technique name="particles_pool">
         <default_technique vertex_type="8192" technique="ParticlesTechnique"/>
     </pool_renderable_object_technique>
+
+	<pool_renderable_object_technique name="fire_billboard_pool">
+        <default_technique vertex_type="8192" technique="FireTechnique"/>
+    </pool_renderable_object_technique>    
 	
 </renderable_object_techniques>
