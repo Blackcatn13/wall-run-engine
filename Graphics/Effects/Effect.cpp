@@ -43,6 +43,7 @@ void CEffect::SetNullParameters() {
   m_UseDynamicShadowmapParameter = NULL;
   m_NShadowmapsParameter = NULL;
   m_PolyEnabledParameter = NULL;
+  m_TickParameter = NULL;
 }
 
 void CEffect::GetParameterBySemantic(const std::string &SemanticName, D3DXHANDLE &l_Handle) {
@@ -87,6 +88,7 @@ bool CEffect::LoadEffect() {
   GetParameterBySemantic("POLYENABLED", m_PolyEnabledParameter);
   GetParameterBySemantic("USESHADOWMAP", m_UseDynamicShadowmapParameter);
   GetParameterBySemantic("NSHADOWMAPS", m_NShadowmapsParameter);
+  GetParameterBySemantic("TICK", m_TickParameter);
   return isOK;
 }
 void CEffect::Unload() {
@@ -124,7 +126,8 @@ CEffect::CEffect()
   , m_UseShadowMaskTextureParameter(NULL)
   , m_UseStaticShadowmapParameter(NULL)
   , m_UseDynamicShadowmapParameter(NULL)
-  , m_NShadowmapsParameter(NULL) {
+  , m_NShadowmapsParameter(NULL)
+  , m_TickParameter(NULL) {
 }
 
 CEffect::~CEffect() {

@@ -6,6 +6,7 @@
 #include "d3dx9shader.h"
 
 class CEffect;
+class CXMLTreeNode;
 
 class CEffectTechnique {
  private:
@@ -25,11 +26,14 @@ class CEffectTechnique {
   bool m_UseViewToLightProjectionMatrix;
   bool m_UseTime;
   bool m_UseScreenSize;
+  bool m_UseTick;
+  float m_tick;
   CEffect *m_Effect;
   D3DXHANDLE m_D3DTechnique;
   std::string m_TechniqueName;
  public:
   CEffectTechnique ();
+  CEffectTechnique(const CXMLTreeNode &node);
   ~CEffectTechnique ();
   inline CEffect *GetEffect() const {
     return m_Effect;
@@ -88,6 +92,9 @@ class CEffectTechnique {
   bool GetUseTime() {
     return m_UseTime;
   }
+  bool GetUseTick() {
+    return m_UseTick;
+  }
   bool GetUseScreenSize() {
     return m_UseScreenSize;
   }
@@ -136,6 +143,9 @@ class CEffectTechnique {
   }
   void SetUseTime(bool value) {
     m_UseTime = value;
+  }
+  void SetUseTick(bool value) {
+    m_UseTick = value;
   }
   void SetUseScreenSize(bool value) {
     m_UseScreenSize = value;

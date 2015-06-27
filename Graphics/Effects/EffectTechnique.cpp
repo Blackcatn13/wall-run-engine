@@ -7,6 +7,7 @@
 #include <d3dx9.h>
 #include "Core_Utils/MemLeaks.h"
 #include "Core_Utils/Timer.h"
+#include "XML\XMLTreeNode.h"
 
 CEffectTechnique::CEffectTechnique()
   : m_Effect(NULL)
@@ -26,7 +27,31 @@ CEffectTechnique::CEffectTechnique()
   , m_UseViewProjectionMatrix(false)
   , m_UseViewToLightProjectionMatrix(false)
   , m_UseTime(false)
-  , m_UseScreenSize(false) {
+  , m_UseScreenSize(false)
+  , m_UseTick(false)
+  , m_tick(0.f) {
+}
+
+CEffectTechnique::CEffectTechnique(const CXMLTreeNode &node)
+  : m_TechniqueName(node.GetPszISOProperty("name", ""))
+  , m_UseCameraPosition(node.GetBoolProperty("use_camera_position", false, false))
+  , m_UseInverseProjMatrix(node.GetBoolProperty("use_inverse_projection_matrix", false, false))
+  , m_UseInverseViewMatrix(node.GetBoolProperty("use_inverse_view_matrix", false, false))
+  , m_UseInverseWorldMatrix(node.GetBoolProperty("use_inverse_world_matrix", false, false))
+  , m_UseLights(node.GetBoolProperty("use_lights", false, false))
+  , m_NumOfLights(node.GetIntProperty("num_of_lights", 0, false))
+  , m_UseLightAmbientColor(node.GetBoolProperty("use_light_ambient_color", false, false))
+  , m_UseProjMatrix(node.GetBoolProperty("use_projection_matrix", false, false))
+  , m_UseViewMatrix(node.GetBoolProperty("use_view_matrix", false, false))
+  , m_UseWorldMatrix(node.GetBoolProperty("use_world_matrix", false, false))
+  , m_UseWorldViewMatrix(node.GetBoolProperty("use_world_view_matrix", false, false))
+  , m_UseWorldViewProjectionMatrix(node.GetBoolProperty("use_world_view_projection_matrix", false, false))
+  , m_UseViewProjectionMatrix(node.GetBoolProperty("use__view_projection_matrix", false, false))
+  , m_UseViewToLightProjectionMatrix(node.GetBoolProperty("use_view_to_light_projection_matrix", false, false))
+  , m_UseTime(node.GetBoolProperty("use_time", false, false))
+  , m_UseScreenSize(node.GetBoolProperty("use_screen_size", false, false))
+  , m_UseTick(node.GetBoolProperty("use_tick", false, false))
+  , m_tick(0.f) {
 }
 
 CEffectTechnique::~CEffectTechnique() {
@@ -110,6 +135,12 @@ bool CEffectTechnique::BeginRender() {
   }
   if (m_UseTime) {
     l_Effect->SetFloat(m_Effect->GetTimeParameter(), rand() / 1000.0f);
+  }
+  if (m_UseTick) {
+    m_tick += 0.01f;
+    if (m_tick >= 1000.f)
+      m_tick = 0.f;
+    l_Effect->SetFloat(m_Effect->GetTickParameter(), m_tick);
   }
   if (m_UseScreenSize) {
     int l_Width = 0;

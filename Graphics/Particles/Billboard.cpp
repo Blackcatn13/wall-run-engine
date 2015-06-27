@@ -35,10 +35,10 @@ CBillboard::CBillboard(CXMLTreeNode &node)
   const uint32 lVtxCount = 4;
 
   TBILLBOARD_VERTEX vertexs[lVtxCount] = {
-    {  -1.f, 0.0f, -1.f, 0, 0, m_sizes.x, m_sizes.y },    // vertex 0
-    {  -1.f, 0.0f,  1.f, 0, 1, m_sizes.x, m_sizes.y },    // vertex 1
-    {   1.f, 0.0f,  1.f, 1, 1, m_sizes.x, m_sizes.y },    // vertex 2
-    {   1.f, 0.0f, -1.f, 1, 0, m_sizes.x, m_sizes.y }     // vertex 3
+    {  -1.f, 0.0f, -1.f, 0, 1, m_sizes.x, m_sizes.y },    // vertex 0
+    {  -1.f, 0.0f,  1.f, 0, 0, m_sizes.x, m_sizes.y },    // vertex 1
+    {   1.f, 0.0f,  1.f, 1, 0, m_sizes.x, m_sizes.y },    // vertex 2
+    {   1.f, 0.0f, -1.f, 1, 1, m_sizes.x, m_sizes.y }     // vertex 3
   };
 
   unsigned short int lIdx[lIdxCount] = { 0, 1, 2, 2, 3, 0};

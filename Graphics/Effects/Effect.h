@@ -35,7 +35,7 @@ class CEffect {
   D3DXHANDLE m_LightsFallOffParameter, m_LightsStartRangeAttenuationParameter, m_LightsEndRangeAttenuationParameter, m_LightsIntensityParameter;
   D3DXHANDLE m_CameraPositionParameter;
   D3DXHANDLE m_BonesParameter;
-  D3DXHANDLE m_TimeParameter;
+  D3DXHANDLE m_TimeParameter, m_TickParameter;
   D3DXHANDLE m_ScreenSizeParameter;
 
   CLight *m_Light;
@@ -157,6 +157,9 @@ class CEffect {
   }
   D3DXHANDLE GetTimeParameter() {
     return m_TimeParameter;
+  }
+  D3DXHANDLE GetTickParameter() {
+    return m_TickParameter;
   }
   D3DXHANDLE GetInverseWorldMatrixParameter() {
     return m_InverseWorldMatrixParameter;

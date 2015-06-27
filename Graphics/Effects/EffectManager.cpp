@@ -105,43 +105,10 @@ void CEffectManager::Load(const std::string &FileName) {
         if (name == "technique") {
           std::string techniqueName = nodeChild.GetPszISOProperty("name", "");
           std::string effectName = nodeChild.GetPszISOProperty("effect", "");
-          bool UseCameraPosition = nodeChild.GetBoolProperty("use_camera_position", false, false);
-          bool UseInverseProjMatrix = nodeChild.GetBoolProperty("use_inverse_projection_matrix", false, false);
-          bool UseInverseViewMatrix = nodeChild.GetBoolProperty("use_inverse_view_matrix", false, false);
-          bool UseInverseWorldMatrix = nodeChild.GetBoolProperty("use_inverse_world_matrix", false, false);
-          bool UseLights = nodeChild.GetBoolProperty("use_lights", false, false);
-          int NumOfLights = nodeChild.GetIntProperty("num_of_lights", 0, false);
-          bool UseLightAmbientColor = nodeChild.GetBoolProperty("use_light_ambient_color", false, false);
-          bool UseProjMatrix = nodeChild.GetBoolProperty("use_projection_matrix", false, false);
-          bool UseViewMatrix = nodeChild.GetBoolProperty("use_view_matrix", false, false);
-          bool UseWorldMatrix = nodeChild.GetBoolProperty("use_world_matrix", false, false);
-          bool UseWorldViewMatrix = nodeChild.GetBoolProperty("use_world_view_matrix", false, false);
-          bool UseWorldViewProjectionMatrix = nodeChild.GetBoolProperty("use_world_view_projection_matrix", false, false);
-          bool UseViewProjectionMatrix = nodeChild.GetBoolProperty("use__view_projection_matrix", false, false);
-          bool UseViewToLightProjectionMatrix = nodeChild.GetBoolProperty("use_view_to_light_projection_matrix", false, false);
-          bool UseTime = nodeChild.GetBoolProperty("use_time", false, false);
-          bool UseScreenSize = nodeChild.GetBoolProperty("use_screen_size", false, false);
           CEffect *effect = m_Effects.GetResource(effectName);
           if (effect != NULL) {
-            CEffectTechnique *effectTechnique = new CEffectTechnique();
-            effectTechnique->SetTechniqueName(techniqueName);
+            CEffectTechnique *effectTechnique = new CEffectTechnique(nodeChild);
             effectTechnique->SetEffect(effect);
-            effectTechnique->SetUseCameraPosition(UseCameraPosition);
-            effectTechnique->SetUseInverseProjMatrix(UseInverseProjMatrix);
-            effectTechnique->SetUseInverseViewMatrix(UseInverseViewMatrix);
-            effectTechnique->SetUseInverseWorldMatrix(UseInverseWorldMatrix);
-            effectTechnique->SetUseLights(UseLights);
-            effectTechnique->SetNumOfLights(NumOfLights);
-            effectTechnique->SetUseLightAmbientColor(UseLightAmbientColor);
-            effectTechnique->SetUseProjMatrix(UseProjMatrix);
-            effectTechnique->SetUseViewMatrix(UseViewMatrix);
-            effectTechnique->SetUseWorldMatrix(UseWorldMatrix);
-            effectTechnique->SetUseWorldViewMatrix(UseWorldViewMatrix);
-            effectTechnique->SetUseWorldViewProjectionMatrix(UseWorldViewProjectionMatrix);
-            effectTechnique->SetUseViewProjectionMatrix(UseViewProjectionMatrix);
-            effectTechnique->SetUseViewToLightProjectionMatrix(UseViewToLightProjectionMatrix);
-            effectTechnique->SetUseTime(UseTime);
-            effectTechnique->SetUseScreenSize(UseScreenSize);
             effectTechnique->Refresh();
             AddResource(techniqueName, effectTechnique);
           } else {

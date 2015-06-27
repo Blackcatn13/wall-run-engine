@@ -26,15 +26,15 @@ PSVertex VS(PARTICLEIN IN){
 
 	PSVertex OUT = (PSVertex)0;
 	OUT.uv.x = IN.uv.x;
-	OUT.uv.y = 1 - IN.uv.y;
+	OUT.uv.y = IN.uv.y;
 	float3 position = (IN.pos.x * rightVector * IN.size.x + IN.pos.z * upVector * IN.size.y);
 	OUT.pos = mul(float4(position,1.0), g_WorldViewProjectionMatrix);
 	OUT.uv2 = IN.uv * scales.x;
-	OUT.uv2.y = OUT.uv2.y + (g_Time / 100 * scrollSpeeds.x);
+	OUT.uv2.y = OUT.uv2.y + (g_Tick * scrollSpeeds.x);
 	OUT.uv3 = IN.uv * scales.y;
-	OUT.uv3.y = OUT.uv3.y + (g_Time / 100 * scrollSpeeds.y);
+	OUT.uv3.y = OUT.uv3.y + (g_Tick * scrollSpeeds.y);
 	OUT.uv4 = IN.uv * scales.z;
-	OUT.uv4.y = OUT.uv4.y + (g_Time / 100 * scrollSpeeds.z);
+	OUT.uv4.y = OUT.uv4.y + (g_Tick * scrollSpeeds.z);
 
     return OUT;
 }
