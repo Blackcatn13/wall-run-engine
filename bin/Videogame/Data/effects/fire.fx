@@ -61,9 +61,7 @@ float4 PS(PSVertex IN) : COLOR
 
 	float4 fireColor = tex2D(S0LinearClampSampler, noiseCoords.xy);
 	float4 alphaColor = tex2D(S2LinearClampSampler, noiseCoords.xy);
-
 	fireColor.a = alphaColor;
-
 	return fireColor;
 }
 
