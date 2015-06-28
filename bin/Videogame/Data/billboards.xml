@@ -18,7 +18,7 @@
 		<Texture name="./Data/g_Textures/alpha01.dds"/>
 	</billboard>
 
-	<billboard name="billboard004" size="0.5 0.6" position="204.549 6.46 17.215" color="1.0 0.0 1.0 1.0">
+	<billboard name="billboard004" size="0.5 0.6" position="204.549 6.046 17.215" color="1.0 0.0 1.0 1.0">
 		<Texture name="./Data/g_Textures/fire01.dds"/>
 		<Texture name="./Data/g_Textures/noise01.dds"/>
 		<Texture name="./Data/g_Textures/alpha01.dds"/>
