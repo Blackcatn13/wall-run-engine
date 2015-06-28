@@ -57,7 +57,7 @@ bool CGraphicsManager::Init (HWND hWnd, bool fullscreenMode, uint32 widthScreen,
       d3dpp.Windowed          = FALSE;
       d3dpp.BackBufferWidth   = widthScreen;
       d3dpp.BackBufferHeight  = heightScreen;
-      d3dpp.BackBufferFormat = D3DFMT_R5G6B5;
+      d3dpp.BackBufferFormat = D3DFMT_X8R8G8B8;//D3DFMT_A8R8G8B8  D3DFMT_X8R8G8B8  //numero de bytes de cada pixel  (D3DFMT_R5G6B5 No va);
     } else {
       d3dpp.Windowed          = TRUE;
       d3dpp.BackBufferFormat	= D3DFMT_UNKNOWN;
