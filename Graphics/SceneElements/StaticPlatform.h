@@ -14,8 +14,8 @@ class CXMLTreeNode;
 
 class CStaticPlatform : public CSceneElement {
  public:
-  CStaticPlatform(std::string platformName, std::string coreName);
-  CStaticPlatform(const CXMLTreeNode &node);
+  CStaticPlatform(std::string platformName, std::string coreName, bool hasRigidBody = false);
+  CStaticPlatform(const CXMLTreeNode &node, bool hasRigidBody = false);
   void Update(float dt);
   virtual ~CStaticPlatform();
   /* void InsertPlatform( std::string userDataName, Vect3f size, Vect3f localPosition);

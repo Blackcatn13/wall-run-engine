@@ -9,14 +9,14 @@
 #include "XML\XMLTreeNode.h"
 
 CBreakablePlatform::CBreakablePlatform(std::string platformName, std::string coreName, std::string triggerName)
-  : CStaticPlatform(platformName, coreName),
+  : CStaticPlatform(platformName, coreName, true),
     m_TriggerName(triggerName),
     m_Broken(false) {
   m_Actor->Activate(true);
 }
 
 CBreakablePlatform::CBreakablePlatform(const CXMLTreeNode &node)
-  : CStaticPlatform(node),
+  : CStaticPlatform(node, true),
     m_TriggerName(node.GetPszISOProperty("trigger_name", "")) {
   m_Actor->Activate(true);
 }
@@ -24,14 +24,21 @@ CBreakablePlatform::CBreakablePlatform(const CXMLTreeNode &node)
 CBreakablePlatform::~CBreakablePlatform() {
 }
 
+
+std::string SetUserDataName(std::string name) {
+  std::stringstream ss;
+  ss << name << "_UserData";
+  return ss.str();
+}
 void CBreakablePlatform::DisablePlatform(float dt, Vect3f direction) {
-  m_UserData->SetPaint(false);
-  m_Actor->Activate(false);
-  m_Printable = false;
+  /* m_UserData->SetPaint(false);
+   m_Actor->Activate(false);
+   m_Printable = false;*/
   TRIGGM->GetResource(m_TriggerName)->setUpdate(false);
   TRIGGM->GetResource(m_TriggerName)->Activate(false);
   //Vect3f l_CurrentPosition = Vect3f (CCORE->GetPlayerController()->GetPosition());
-  CCORE->GetPlayerController()->getPhysicController()->Move(direction, dt);
+// CCORE->GetPlayerController()->getPhysicController()->Move(direction, dt);
+  m_ActorAux->Activate(false);
   m_Broken = true;
 }
 
@@ -45,3 +52,10 @@ void CBreakablePlatform::EnablePlatform() {
   //CCORE->GetPlayerController()->getPhysicController()->Move(direction, dt);
 }
 
+
+void CBreakablePlatform::Update(float ElapsedTime) {
+  m_Position = m_Actor->GetPosition();
+  m_fYaw = m_Actor->GetRotation().x;
+  m_fPitch = m_Actor->GetRotation().y;
+  m_fRoll = m_Actor->GetRotation().z;
+}

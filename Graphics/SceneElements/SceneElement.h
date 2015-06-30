@@ -18,14 +18,18 @@ class CSceneElement : public CMeshInstance {
   // CRenderableObject * m_RenderableObject;
   CPhysicActor *m_Actor;
   CPhysicUserData *m_UserData;
+  CPhysicActor *m_ActorAux;
+  CPhysicUserData *m_UserDataAux;
   Vect3f m_PhysicsSize;
   std::string m_Room;
+  bool m_HasRigidBody;
 
  public:
   CSceneElement(std::string switchName, std::string coreName);
   CSceneElement(const CXMLTreeNode &node);
   virtual ~CSceneElement ();
   void InsertPhisic(Vect3f localPosition);
+  std::string SetUserDataName(std::string name);
   void ActivatePhisic(bool active);
   bool isAround(Vect3f vector1, Vect3f vector2);
   bool isInside(Vect3f vector1, Vect3f vector2);

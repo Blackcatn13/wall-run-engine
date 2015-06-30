@@ -7,14 +7,16 @@
 #include "XML\XMLTreeNode.h"
 #include "Actor\PhysicActor.h"
 
-CStaticPlatform::CStaticPlatform(std::string platformName, std::string coreName)
+CStaticPlatform::CStaticPlatform(std::string platformName, std::string coreName, bool hasRigidBody)
   : CSceneElement(platformName, coreName) {
+  m_HasRigidBody = hasRigidBody;
   InsertPhisic(Vect3f(.0f, m_PhysicsSize.y, .0f));
   m_Actor->Activate(false);
 }
 
-CStaticPlatform::CStaticPlatform(const CXMLTreeNode &node)
+CStaticPlatform::CStaticPlatform(const CXMLTreeNode &node, bool hasRigidBody)
   : CSceneElement(node) {
+  m_HasRigidBody = hasRigidBody;
   InsertPhisic(Vect3f(.0f, m_PhysicsSize.y, .0f));
   m_Actor->Activate(false);
 }
