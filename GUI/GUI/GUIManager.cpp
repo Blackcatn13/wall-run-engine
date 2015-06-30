@@ -999,12 +999,21 @@ bool CGUIManager::GetIsGameOver()
 void CGUIManager::SetIsGameOver(bool input)
 {
     m_isGameOver = input;
-	SetIsDisplayedConsole(input);
-	m_ElementsMap.find("GameOver")->second->SetVisible(input);
-	m_ElementsMap.find("GameOverBackground")->second->SetVisible(input);
+    SetIsDisplayedConsole(input);
+    m_ElementsMap.find("GameOver")->second->SetVisible(input);
+    m_ElementsMap.find("GameOverBackground")->second->SetVisible(input);
 }
 
 float CGUIManager::GetElapsedTime()
 {
     return m_dt;
+}
+
+float CGUIManager::GetScreenWidth()
+{
+    return m_ScreenResolution.x;
+}
+float CGUIManager::GetScreenHeight()
+{
+    return m_ScreenResolution.y;
 }

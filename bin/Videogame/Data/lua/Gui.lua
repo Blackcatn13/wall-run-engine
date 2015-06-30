@@ -43,21 +43,25 @@ function ManagerGUIHearts()
 	
 	local count = gui_manager:get_count_heart();
 	
+	local positionMin = 84;
+	local positionMax = (gui_manager:get_screen_height() * 108) / 720;
+	local positionX = 27;
+	
 	--Vides GUI
 	-- Posició antiga (horitzontal per sota de la vida): x = 2 ,y = 15
-	if pos > 84 and count == 0.0 then
-		gui_manager:set_position_element("VidesGUI", 27, pos - (65 * gui_manager:get_dt()));
+	if pos > positionMin and count == 0.0 then
+		gui_manager:set_position_element("VidesGUI", positionX, pos - (65 * gui_manager:get_dt()));
 	else
 		if count >= 3.0 then
 			-- Valor antic: pos > -20
-			if pos < 96 then
-				gui_manager:set_position_element("VidesGUI", 27, pos + (25 * gui_manager:get_dt()));
+			if pos < positionMax then
+				gui_manager:set_position_element("VidesGUI", positionX, pos + (25 * gui_manager:get_dt()));
 			else
 				gui_manager:set_is_displayed_heart(false);
 				gui_manager:set_count_heart(0.0);
 			end
 		else
-			gui_manager:set_position_element("VidesGUI", 27, 84);
+			gui_manager:set_position_element("VidesGUI", positionX, positionMin);
 			gui_manager:set_count_heart(count + gui_manager:get_dt());
 		end
 	end
@@ -68,25 +72,30 @@ function ManagerGUIPixelites()
 	local posPixelitesText = gui_manager:get_position_y_element("PixeliteNumber");
 	
 	local count = gui_manager:get_count_pixelite();
+	
+	local positionMin = 84;
+	local positionMax = (gui_manager:get_screen_height() * 108) / 720;
+	local positionXGUI = 45;
+	local positionXNum = 49.5;
 		
 	--Pixelite GUI
 	-- Posició antiga (vertical a dalt la pantalla): x = 45/49.5 ,y = 4/6 (textura/text)
-	if posPixelites > 84 and count == 0.0 then
-		gui_manager:set_position_element("PixeliteGUI", 45, posPixelites - (65 * gui_manager:get_dt()));
-		gui_manager:set_position_element("PixeliteNumber", 49.5, posPixelitesText - (65 * gui_manager:get_dt()));
+	if posPixelites > positionMin and count == 0.0 then
+		gui_manager:set_position_element("PixeliteGUI", positionXGUI, posPixelites - (65 * gui_manager:get_dt()));
+		gui_manager:set_position_element("PixeliteNumber", positionXNum, posPixelitesText - (65 * gui_manager:get_dt()));
 	else
 		if count >= 3.0 then
 			-- Valor antic: posPixelites > -18
-			if posPixelites < 96 then
-				gui_manager:set_position_element("PixeliteGUI", 45, posPixelites + (25 * gui_manager:get_dt()));
-				gui_manager:set_position_element("PixeliteNumber", 49.5, posPixelitesText + (25 * gui_manager:get_dt()));
+			if posPixelites < positionMax then
+				gui_manager:set_position_element("PixeliteGUI", positionXGUI, posPixelites + (25 * gui_manager:get_dt()));
+				gui_manager:set_position_element("PixeliteNumber", positionXNum, posPixelitesText + (25 * gui_manager:get_dt()));
 			else
 				gui_manager:set_is_displayed_pixelite(false);
 				gui_manager:set_count_pixelite(0.0);
 			end
 		else
-			gui_manager:set_position_element("PixeliteGUI", 45, 84);
-			gui_manager:set_position_element("PixeliteNumber", 49.5, 86);
+			gui_manager:set_position_element("PixeliteGUI", positionXGUI, positionMin);
+			gui_manager:set_position_element("PixeliteNumber", positionXNum, positionMin+2);
 			gui_manager:set_count_pixelite(count + gui_manager:get_dt());
 		end
 	end
