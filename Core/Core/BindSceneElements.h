@@ -112,6 +112,7 @@ void RegisterSceneElements() {
     .property("m_FinalPosition", &CDoor::getFinalPosition, &CDoor::setFinalPosition)
     .property("m_OriginalPosition", &CDoor::getOriginalPosition, &CDoor::setOriginalPosition)
     .property("m_IsPlayingAnimation", &CDoor::getIsPlayingAnimation, &CDoor::setIsPlayingAnimation)
+    .property("m_IsOpening", &CDoor::getIsOpening, &CDoor::setIsOpening)
   ];
 }
 

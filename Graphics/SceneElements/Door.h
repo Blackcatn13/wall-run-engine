@@ -16,11 +16,14 @@ class CDoor : public CSceneElement {
   Vect3f		m_FinalPosition;
   Vect3f		m_OriginalPosition;
   bool			m_IsPlayingAnimation;
+  bool			m_IsOpening;
+  float			m_Speed;
 
  public:
   CDoor(std::string switchName, std::string coreName, std::string lua_function, Vect3f final_Position);
   CDoor(const CXMLTreeNode &node);
   virtual ~CDoor();
+  void OpeningDoor(float dt);
 
   void Update(float dt);
   /* bool isAround(Vect3f vector1, Vect3f vector2);
@@ -30,6 +33,8 @@ class CDoor : public CSceneElement {
   GET_SET(Vect3f, FinalPosition)
   GET_SET(Vect3f, OriginalPosition)
   GET_SET(bool, IsPlayingAnimation)
+  GET_SET(bool, IsOpening)
+
 };
 
 #endif

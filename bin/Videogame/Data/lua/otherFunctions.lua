@@ -20,8 +20,9 @@ function open_door(_objectName)
 	if door ~= nil then
 		--door.m_Printable = false
 		coreInstance:trace("Door Final Position: " .. tostring(door.m_FinalPosition.y) )
-		door:set_position(door.m_FinalPosition)
-		door.m_Actor:set_global_position(door.m_FinalPosition)
+		door.m_IsOpening = true
+		--door:set_position(door.m_FinalPosition)
+		--door.m_Actor:set_global_position(door.m_FinalPosition)
 		--door.m_Actor:activate(false)
 	end
 	--door.m_IsOpening =true
@@ -34,16 +35,18 @@ function open_door(_objectName, _objectName2)
 	if door ~= nil then
 		--door.m_Printable = false
 		coreInstance:trace("Door Final Position: " .. tostring(door.m_FinalPosition.y) )
-		door:set_position(door.m_FinalPosition)
-		door.m_Actor:set_global_position(door.m_FinalPosition)
+		door.m_IsOpening = true
+		--door:set_position(door.m_FinalPosition)
+		--door.m_Actor:set_global_position(door.m_FinalPosition)
 		--door.m_Actor:activate(false)
 	end
 	local door2 = get_renderable_object("puzzle", _objectName2)
 	if door2 ~= nil then
 		--door.m_Printable = false
 		coreInstance:trace("Door Final Position: " .. tostring(door2.m_FinalPosition.y) )
-		door2:set_position(door2.m_FinalPosition)
-		door2.m_Actor:set_global_position(door2.m_FinalPosition)
+		door2.m_IsOpening = true
+		--door2:set_position(door2.m_FinalPosition)
+		--door2.m_Actor:set_global_position(door2.m_FinalPosition)
 		--door.m_Actor:activate(false)
 	end
 	--door.m_IsOpening =true

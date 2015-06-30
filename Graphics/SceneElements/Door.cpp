@@ -13,7 +13,9 @@ CDoor::CDoor(std::string switchName, std::string coreName, std::string lua_funct
   : CSceneElement(switchName, coreName),
     m_AnimationDone(false),
     m_IsPlayingAnimation(false),
-    m_FinalPosition (final_Position) {
+    m_FinalPosition (final_Position),
+    m_IsOpening(false),
+    m_Speed(0.0f) {
   m_Actor->Activate(true);
 }
 
@@ -23,15 +25,21 @@ CDoor::CDoor(const CXMLTreeNode &node)
     m_IsPlayingAnimation(false),
     m_FinalPosition(node.GetVect3fProperty("final_position", v3fZERO)),
     m_OriginalPosition(m_Position),
-    m_LuaFunction(node.GetPszISOProperty("lua_function", "")) {
+    m_IsOpening(false),
+    m_Speed(node.GetFloatProperty("speed", 0.0f, false)),
+    m_LuaFunction(node.GetPszISOProperty("lua_function", "", false)) {
   InsertPhisic(v3fZERO);
   m_Actor->Activate(true);
+
 }
 
 CDoor::~CDoor() {
 }
 
 void CDoor::Update(float dt) {
+  if (m_IsOpening) {
+    OpeningDoor(dt);
+  }
 
   //Aqui meter las colisiones con el Player
   if (PLAYC->getis3D() == false) {
@@ -67,6 +75,21 @@ void CDoor::Update(float dt) {
 
     }
   }
+}
+
+void CDoor::OpeningDoor(float dt) {
+  Vect3f direction = (m_FinalPosition - m_Position);
+  direction = direction.Normalize();
+  if (m_FinalPosition.Distance(m_Position) >= 0.2f) {
+    m_Position =  m_Position + /*Vect3f(1, 0, 0)*/direction.Normalize() * m_Speed * dt;
+    m_Actor->SetGlobalPosition(m_Position);
+  } else {
+    m_IsOpening = false;
+    m_IsPlayingAnimation = false;
+    m_AnimationDone = true;
+  }
+
+
 }
 
 //bool CDoor::isInside(Vect3f vector1, Vect3f vector2) {
