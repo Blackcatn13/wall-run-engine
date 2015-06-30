@@ -122,7 +122,7 @@ CXMLTreeNode CXMLTreeNode::operator() (int _iIndex) const {
     int iCount = 0;
     xmlNodePtr pChildren = m_pNode->children;
     while (pChildren != NULL) {
-      if (pChildren->type != XML_TEXT_NODE) {
+      if (pChildren->type != XML_TEXT_NODE && pChildren->type != XML_COMMENT_NODE) {
         if (_iIndex == iCount) {
           TreeFound.m_pNode = pChildren;
           TreeFound.m_pDoc = m_pDoc;
@@ -145,7 +145,7 @@ int CXMLTreeNode::GetNumChildren () {
   if (m_pNode) {
     xmlNodePtr pChildren = m_pNode->children;
     while (pChildren != NULL) {
-      if (pChildren->type != XML_TEXT_NODE)
+      if (pChildren->type != XML_TEXT_NODE && pChildren->type != XML_COMMENT_NODE)
         ++iCount;
       pChildren = pChildren->next;
     }
