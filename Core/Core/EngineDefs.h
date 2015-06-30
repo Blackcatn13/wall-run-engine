@@ -38,6 +38,7 @@ typedef struct Conf_info {
   std::string                 SoundPath;
   std::string                 ParticlesPath;
   std::string                 FSMPath;
+  std::string                 BillboardPath;
 } CONFIG_INFO;
 
 

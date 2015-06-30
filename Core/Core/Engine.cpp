@@ -206,6 +206,8 @@ void CEngine::ParseConfFile(std::string file) {
             m_Conf_info.ParticlesPath = nodeChild.GetPszISOProperty("particlesXML", "", false);
           } else if (name == "FSM") {
             m_Conf_info.FSMPath = nodeChild.GetPszISOProperty("FsmXML", "", false);
+          } else if (name == "Billboard") {
+            m_Conf_info.BillboardPath = nodeChild.GetPszISOProperty("billboardXML", "");
           }
         }
       }

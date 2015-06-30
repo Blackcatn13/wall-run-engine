@@ -33,6 +33,7 @@
   <LoadLevel LuaInitLevelFunc="init_level" LuaInitCamerasFunc="" />
   <Enemies enemiesXML="./Data/enemies.xml"/>
   <Particles particlesXML="./Data/particles.xml"/>
+  <Billboard billboardXML="./Data/billboards.xml"/>
   <FSM FsmXML="./Data/AI/FSMs.xml"/>
   <Effect EffectXML="./Data/effects.xml"/> 
   <Avi aviXML=""/>

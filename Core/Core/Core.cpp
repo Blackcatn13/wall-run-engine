@@ -246,7 +246,7 @@ void CCore::Init(HWND handler) {
   std::cout << "Creating Billboard Manger";
 #endif
   m_BillboardManager = new CBillboardManager();
-  m_BillboardManager->Load("./Data/billboards.xml");
+  m_BillboardManager->Load(m_Config.BillboardPath);
   //m_SoundManager = new CSoundManager();
   //m_SoundManager->Init();
   //m_SoundManager->LoadSounds("./Data/sounds.xml");
