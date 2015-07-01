@@ -1017,3 +1017,12 @@ float CGUIManager::GetScreenHeight()
 {
     return m_ScreenResolution.y;
 }
+
+void CGUIManager::SetGUIElementSizePercent(std::string _name, int _sizeX, int _sizeY)
+{
+    int w = (m_ScreenResolution.x * _sizeX) / 1280;
+    int h = (m_ScreenResolution.y * _sizeY) / 720;
+    CGuiElement* element = m_ElementsMap.find(_name)->second;
+    element->SetHeightPercent(h);
+    element->SetWidthPercent(w);
+}

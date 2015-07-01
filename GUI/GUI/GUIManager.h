@@ -143,6 +143,7 @@ public:
     float							GetElapsedTime();
     float							GetScreenWidth();
     float							GetScreenHeight();
+    void							SetGUIElementSizePercent(std::string _name, int _sizeX, int _sizeY);
 
     std::string					GetCurrentWindow()
     {

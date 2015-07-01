@@ -300,6 +300,7 @@ void RegisterManagers()
         .def("getButtonCheckInRadioBox", &CGUIManager::GetButtonCheckInRadioBox)
         .def("get_screen_width", &CGUIManager::GetScreenWidth)
         .def("get_screen_height", &CGUIManager::GetScreenHeight)
+        .def("set_size_percent", &CGUIManager::SetGUIElementSizePercent)
         .property("m_sCurrentWindows", &CGUIManager::GetCurrentWindow)
     ];
     luabind::module(LUA_STATE) [

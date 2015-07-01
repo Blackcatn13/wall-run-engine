@@ -44,7 +44,7 @@ function ManagerGUIHearts()
 	local count = gui_manager:get_count_heart();
 	
 	local positionMin = 84;
-	local positionMax = (gui_manager:get_screen_height() * 108) / 720;
+	local positionMax = 108;
 	local positionX = 27;
 	
 	--Vides GUI
@@ -74,7 +74,7 @@ function ManagerGUIPixelites()
 	local count = gui_manager:get_count_pixelite();
 	
 	local positionMin = 84;
-	local positionMax = (gui_manager:get_screen_height() * 108) / 720;
+	local positionMax = 108;
 	local positionXGUI = 45;
 	local positionXNum = 49.5;
 		

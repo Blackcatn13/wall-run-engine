@@ -22,19 +22,25 @@ class CStaticText: public CGuiElement
 {
 
 public:
-	CStaticText(	uint32 windowsHeight, uint32 windowsWidth, float height_precent, float witdh_percent,
-								const Vect2f position_percent,  std::string lit="", bool isVisible = true, bool isActive = true);
-	
-	virtual ~CStaticText() {/*NOTHING*/;}
+    CStaticText(	uint32 windowsHeight, uint32 windowsWidth, float height_precent, float witdh_percent,
+                    const Vect2f position_percent,  std::string lit = "", bool isVisible = true, bool isActive = true);
+
+    virtual ~CStaticText()
+    {
+        /*NOTHING*/;
+    }
 
 
-	//---------------CGuiElement Interface----------------------
-	virtual void	Render							(CGraphicsManager *renderManager, CFontManager* fm);
-	virtual void	Update							(CInputManager* intputManager, float elapsedTime);
-	virtual void	OnClickedChild			(const std::string& name) {/*NOTHING*/;}
+    //---------------CGuiElement Interface----------------------
+    virtual void	Render							(CGraphicsManager *renderManager, CFontManager* fm);
+    virtual void	Update							(CInputManager* intputManager, float elapsedTime);
+    virtual void	OnClickedChild			(const std::string& name)
+    {
+        /*NOTHING*/;
+    }
 
-	//---------------CStaticText Interface------------------
-	void					SetLiteral					(const std::string& lit);
+    //---------------CStaticText Interface------------------
+    void					SetLiteral					(const std::string& lit);
 
 private:
 };
