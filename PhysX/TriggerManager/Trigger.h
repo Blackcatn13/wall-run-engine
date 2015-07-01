@@ -9,6 +9,7 @@
 #include "Math\Vector3.h"
 #include "Utils\Defines.h"
 
+
 class CPhysicUserData;
 
 class CTrigger: public CPhysicActor {
@@ -20,13 +21,14 @@ class CTrigger: public CPhysicActor {
   std::string		m_UpdateFunction;
   float			m_ElapsedTime;
   bool			m_UseElapsedTime ;
-  int				m_Time;
-  int				m_MaxTime;
+  float				m_Time;
+  float				m_MaxTime;
   bool			m_Update;
   std::string		m_ScriptParam;
   std::string		m_PlatformName;
   bool			m_IsSwitched;
   CPhysicUserData *m_UserData;
+  std::string	m_Name;
 
  public:
   CTrigger(CXMLTreeNode &node, CPhysicUserData *_pUserData);
@@ -54,6 +56,8 @@ class CTrigger: public CPhysicActor {
   }
   void setUpdate(bool update);
   GET_SET(bool, IsSwitched)
+  GET_SET(float, Time)
+  GET_SET(std::string, Name)
 };
 
 #endif

@@ -8,15 +8,13 @@
 #include "Actor\PhysicActor.h"
 
 CStaticPlatform::CStaticPlatform(std::string platformName, std::string coreName, bool hasRigidBody)
-  : CSceneElement(platformName, coreName) {
-  m_HasRigidBody = hasRigidBody;
+  : CSceneElement(platformName, coreName, hasRigidBody) {
   InsertPhisic(Vect3f(.0f, m_PhysicsSize.y, .0f));
   m_Actor->Activate(false);
 }
 
 CStaticPlatform::CStaticPlatform(const CXMLTreeNode &node, bool hasRigidBody)
-  : CSceneElement(node) {
-  m_HasRigidBody = hasRigidBody;
+  : CSceneElement(node, hasRigidBody) {
   InsertPhisic(Vect3f(.0f, m_PhysicsSize.y, .0f));
   m_Actor->Activate(false);
 }

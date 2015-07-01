@@ -5,6 +5,7 @@
 #include "Utils\PhysicUserData.h"
 #include "Core\Core.h"
 
+
 CTriggerManager::CTriggerManager()
   : CPhysicTriggerReport() {
 }
@@ -64,6 +65,7 @@ bool	CTriggerManager::LoadTriggers( std::string FileName) {
         l_pUserData->SetGroup(ECG_TRIGGERS);
         //  m_UserData.push_back( l_pUserData );
         CTrigger *trigger = new CTrigger(nodeChild, l_pUserData);
+        trigger->setName(name);
         if (!AddResource(name, trigger)) {
           LOGGER->AddNewLog(ELL_WARNING, "El CTrigger ya existía ", name.c_str());
           CHECKED_DELETE(trigger);

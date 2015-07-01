@@ -13,13 +13,15 @@ class CBreakablePlatform : public CStaticPlatform {
  protected:
   std::string		m_TriggerName;
   bool				m_Broken;
+  Vect3f			m_ActorOriginalPosition;
+  Vect3f			m_ActorOriginalRotation;
 
  public:
   CBreakablePlatform(std::string platformName, std::string coreName, std::string triggerName);
   CBreakablePlatform(const CXMLTreeNode &node);
 
   virtual ~CBreakablePlatform ();
-  void DisablePlatform(float dt, Vect3f direction);
+  void DisablePlatform(float dt/*, Vect3f direction*/);
   void EnablePlatform();
   void Update(float ElapsedTime);
 

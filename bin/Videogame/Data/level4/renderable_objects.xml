@@ -303,7 +303,7 @@
 	
 	<mesh_instance name="Collectible1" core="Enemy1" pos="525.454 9.676 -1.606" yaw="0.0" pitch="0.0" roll="0.0" scale="0.5 0.5 0.1" visible="false" layer="collectible" />
 	
-	<door name="Puerta_abajo" core="Puerta_abajo" speed = "2" phisic_size="1.0 3.0 4.0" pos="539.615845 10.870041 -1.622209" final_position="539.615845 5.870041 -1.622209" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="puzzle"/> 
+	<door name="Puerta_abajo" core="Puerta_abajo" speed = "2" phisic_size="1.0 2.6 4.0" pos="539.615845 10.870041 -1.622209" final_position="539.615845 5.870041 -1.622209" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="puzzle"/> 
 	<door name="Puerta_arriba" core="Puerta_arriba" speed = "2" phisic_size="1.0 3.0 4.0" pos="539.615845 14.380225 -1.622209" final_position="539.615845 19.080225 -1.622209" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="puzzle"/>
 	
 	<platform name="INVISIBLE_WALL003" core="INVISIBLE_WALL003" type="static" pos="430.332184 8.022827 11.219621" yaw="0.0" pitch="0.0" roll="0.0" scale="0.0473361 0.367931 0.25315" visible="true" phisic_size="0.408533 5.48104 5.61374" layer="invisible"/>

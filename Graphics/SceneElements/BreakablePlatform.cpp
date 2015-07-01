@@ -13,12 +13,17 @@ CBreakablePlatform::CBreakablePlatform(std::string platformName, std::string cor
     m_TriggerName(triggerName),
     m_Broken(false) {
   m_Actor->Activate(true);
+  m_ActorOriginalPosition = m_Actor->GetPosition();
+  m_ActorOriginalRotation = m_Actor->GetRotation();
 }
 
 CBreakablePlatform::CBreakablePlatform(const CXMLTreeNode &node)
   : CStaticPlatform(node, true),
+    m_Broken(false),
     m_TriggerName(node.GetPszISOProperty("trigger_name", "")) {
   m_Actor->Activate(true);
+  m_ActorOriginalPosition = m_Actor->GetPosition();
+  m_ActorOriginalRotation = m_Actor->GetRotation();
 }
 
 CBreakablePlatform::~CBreakablePlatform() {
@@ -30,7 +35,7 @@ std::string SetUserDataName(std::string name) {
   ss << name << "_UserData";
   return ss.str();
 }
-void CBreakablePlatform::DisablePlatform(float dt, Vect3f direction) {
+void CBreakablePlatform::DisablePlatform(float dt/*, Vect3f direction*/) {
   /* m_UserData->SetPaint(false);
    m_Actor->Activate(false);
    m_Printable = false;*/
@@ -43,13 +48,18 @@ void CBreakablePlatform::DisablePlatform(float dt, Vect3f direction) {
 }
 
 void CBreakablePlatform::EnablePlatform() {
-  m_Actor->Activate(true);
-  m_Printable = true;
-  //TRIGGM->GetResource(m_TriggerName)->setUpdate(false);
-  TRIGGM->GetResource(m_TriggerName)->Activate(true);
-  m_Broken = false;
-  //Vect3f l_CurrentPosition = Vect3f (CCORE->GetPlayerController()->GetPosition());
-  //CCORE->GetPlayerController()->getPhysicController()->Move(direction, dt);
+  if (m_Broken) {
+    m_ActorAux->Activate(true);
+// m_ActorAux->SetGlobalPosition(Vect3f(m_ActorOriginalPosition.x, m_ActorOriginalPosition.y - m_PhysicsSize.y, m_ActorOriginalPosition.z));
+    m_Actor->SetGlobalPosition(m_ActorOriginalPosition);
+    m_Actor->SetRotation(m_ActorOriginalRotation);
+    //m_Printable = true;
+    //TRIGGM->GetResource(m_TriggerName)->setUpdate(false);
+    TRIGGM->GetResource(m_TriggerName)->Activate(true);
+    m_Broken = false;
+    //Vect3f l_CurrentPosition = Vect3f (CCORE->GetPlayerController()->GetPosition());
+    //CCORE->GetPlayerController()->getPhysicController()->Move(direction, dt);
+  }
 }
 
 

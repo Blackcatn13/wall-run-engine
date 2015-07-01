@@ -166,7 +166,7 @@ void RegisterPhysX() {
     .property("m_GravityJump", &CPlayerController::getGravityJump, &CPlayerController::setGravityJump )
     .property("m_Speed", &CPlayerController::getSpeed, &CPlayerController::setSpeed )
     .property("m_JumpForce", &CPlayerController::getJumpForce, &CPlayerController::setJumpForce )
-	.property("m_isOnPlatform", &CPlayerController::getisOnPlatform, &CPlayerController::setisOnPlatform )
+    .property("m_isOnPlatform", &CPlayerController::getisOnPlatform, &CPlayerController::setisOnPlatform )
     .property("m_isJumping", &CPlayerController::getisJumping, &CPlayerController::setisJumping )
     .property("m_isJumpingMoving", &CPlayerController::getisJumpingMoving, &CPlayerController::setisJumpingMoving )
     .property("m_is3D", &CPlayerController::getis3D, &CPlayerController::setis3D )
@@ -206,6 +206,7 @@ void RegisterPhysX() {
     .def("execute_on_exit", &CTrigger::ExecuteOnExit )
     .property("m_Update",  &CTrigger::getUpdate,  &CTrigger::setUpdate)
     .property("m_IsSwitched",  &CTrigger::getIsSwitched,  &CTrigger::setIsSwitched)
+    .property("m_Time",  &CTrigger::getTime,  &CTrigger::setTime)
   ];
 
   luabind::module(LUA_STATE) [

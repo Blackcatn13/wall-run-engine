@@ -25,8 +25,8 @@ class CSceneElement : public CMeshInstance {
   bool m_HasRigidBody;
 
  public:
-  CSceneElement(std::string switchName, std::string coreName);
-  CSceneElement(const CXMLTreeNode &node);
+  CSceneElement(std::string switchName, std::string coreName, bool hasRigidBody = false);
+  CSceneElement(const CXMLTreeNode &node, bool hasRigidBody = false);
   virtual ~CSceneElement ();
   void InsertPhisic(Vect3f localPosition);
   std::string SetUserDataName(std::string name);
