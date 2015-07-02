@@ -120,8 +120,7 @@ end
 function reset_game()
 	
 	--Player Position + 3D
-	player_controller:set_position(Vect3f(60,5,0));
-	player_controller.m_PhysicController:set_position(Vect3f(60,5,0));
+	player.reset_position()
 	player_controller.m_is3D = true;
 	local cam = coreInstance.m_CameraController:get_resource("3DCam");
 	cam.m_eTypeCamera = 6;

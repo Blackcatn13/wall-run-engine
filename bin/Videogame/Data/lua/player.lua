@@ -29,7 +29,9 @@ function Player.new()
 	self.going_back = false
 	self.playing_hit = false
 	self.zone = 1
-
+	self.original_position = Vect3f(0.0,0.0,0.0)
+	self.original_yaw = 0.0
+	
 	------	 PLAYER FUNCTIONS -----
 		
 	function self.add_pixelites(inc_pixelites)
@@ -46,6 +48,16 @@ function Player.new()
 	function self.inc_score(value)
 		self.score = self.score + value
 		self.coreInstance:trace("Score: "..tostring(self.score))
+	end
+	
+	function self.set_initial_position(yaw, position)
+		self.original_position = position
+		self.original_yaw = yaw
+	end
+	
+	function self.reset_position()
+		player_controller.m_PhysicController:set_position(self.original_position)
+		player_controller:set_yaw(self.original_yaw)
 	end
 	
 	function self.get_player_controller()

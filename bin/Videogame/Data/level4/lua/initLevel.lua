@@ -21,11 +21,27 @@ function init_level(a)
 	--player.m_is3D = true;
 	--coreInstance:getWWSoundManager():PlayEvent("Menu", "Music");
 	--coreInstance:getWWSoundManager():PlayEvent("Torches", "Torch");
+	
+	--player_controller.m_Direction3D = dir3D
 	local cara1 = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("solid"):get_resource("CARALLENGUA");
 	cara1:blend_cycle(0, 1, 0);
 	local cara2 = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("solid"):get_resource("CARALLENGUA001");
 	cara2:blend_cycle(0, 1, 0);
 	on_init_cameras_lua()
+	
+	local active_camera = cam_Controller:get_active_camera()
+	local dir3D = active_camera:get_direction()
+	local camObject = active_camera.m_pObject3D
+	local dirYaw = camObject:get_yaw()
+	local PlayerYaw =  - dirYaw + 1.57
+	player_controller:set_yaw(PlayerYaw)
+	
+	local old_position = player_controller.m_PhysicController:get_position()
+	local new_position = Vect3f(old_position.x, 1.0, old_position.z)
+
+	player_controller.m_PhysicController:set_position(new_position)
+	player.set_initial_position(PlayerYaw, new_position)
+	
 	return 0
 end
 
