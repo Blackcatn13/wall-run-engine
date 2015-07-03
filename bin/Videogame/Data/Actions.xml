@@ -355,5 +355,8 @@
 	<action name="PauseGame">
     	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_O"/>
     </action>
+	<action name="PauseGameExit">
+    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_K"/>
+    </action>
 	
 </Actions>
