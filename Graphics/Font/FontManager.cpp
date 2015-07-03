@@ -71,11 +71,11 @@ bool CFontManager::LoadTTFs (const std::string &pathFile)
         //first of all we release the fonts
         Release();
         //Como mínimo creamos una fuente por defecto, la que estara en la posición m_Fonts[0]
-        int w = CCORE->GetGuiManager()->GetScreenWidth();
-        int h = CCORE->GetGuiManager()->GetScreenHeight();
+        uint32 w, h = 0;
+        CCORE->GetGraphicsManager()->GetWidthAndHeight(w, h);
         uint8 sizeAux = 0;
-        if (w < h) sizeAux = (CCORE->GetGuiManager()->GetScreenWidth() * 17) / 1280;
-        else sizeAux = (CCORE->GetGuiManager()->GetScreenHeight() * 17) / 720;
+        if (w < h) sizeAux = (w * 17) / 1280;
+        else sizeAux = (h * 17) / 720;
         CreateFont(sizeAux, true, false, "Times New Roman");
         int count = m.GetNumChildren();
         for (int i = 0; i < count; ++i) {
@@ -101,10 +101,9 @@ bool CFontManager::LoadTTFs (const std::string &pathFile)
                 int id = AddFontResource(file.c_str());
                 if (id == 1) {
                     m_vTTFsFiles.push_back(file);
-                    uint8 sizeAux2 = 0;
-                    if (w < h) sizeAux2 = (CCORE->GetGuiManager()->GetScreenWidth() * size) / 1280;
-                    else sizeAux2 = (CCORE->GetGuiManager()->GetScreenHeight() * size) / 720;
-                    m_TTFs[fontId] = CreateFont(sizeAux2, bold, italica, name, _default);
+                    if (w < h) sizeAux = (w * size) / 1280;
+                    else sizeAux = (h * size) / 720;
+                    m_TTFs[fontId] = CreateFont(sizeAux, bold, italica, name, _default);
                     LOGGER->AddNewLog(ELL_INFORMATION, "LoadFonts:: Add font %s (file:%s,size:%d,bold:%d,italica:%d,default:%d),", fontId.c_str(), file.c_str(), size, bold, italica, _default);
                 } else {
                     LOGGER->AddNewLog(ELL_ERROR, "LoadFonts:: no se ha podido añadir el ttf file: %s", file.c_str());

@@ -80,6 +80,14 @@ void CCore::Init(HWND handler)
 #ifdef _DEBUG
     t.Update();
     std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+    std::cout << "Creating Font Manger";
+#endif
+    m_FontManager = new CFontManager();
+    m_FontManager->Init(m_GraphicsManager);
+    m_FontManager->LoadTTFs(m_Config.FontsPath);
+#ifdef _DEBUG
+    t.Update();
+    std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
     std::cout << "Creating Language Manger";
 #endif
     m_LanguageManager = new CLanguageManager();
@@ -261,14 +269,6 @@ void CCore::Init(HWND handler)
     m_GuiManager = new CGUIManager(Vect2i(m_Config.Screen_Width, m_Config.Screen_Heigth));
     if (m_GuiManager->Init(m_Config.GUIPath))
         m_GuiManager->LoadGuiFiles(m_Config.GUIFolder);
-#ifdef _DEBUG
-    t.Update();
-    std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
-    std::cout << "Creating Font Manger";
-#endif
-    m_FontManager = new CFontManager();
-    m_FontManager->Init(m_GraphicsManager);
-    m_FontManager->LoadTTFs(m_Config.FontsPath);
 #ifdef _DEBUG
     t.Update();
     std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
