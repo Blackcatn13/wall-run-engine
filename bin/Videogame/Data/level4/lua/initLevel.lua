@@ -41,6 +41,7 @@ function init_level(a)
 
 	player_controller.m_PhysicController:set_position(new_position)
 	player.set_initial_position(PlayerYaw, new_position)
+	player.attack_enabled = false
 	
 	return 0
 end

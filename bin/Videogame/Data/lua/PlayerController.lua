@@ -402,12 +402,13 @@ function on_update_player_lua(l_ElapsedTime)
 				player_controller.m_isAttack = false;
 			else
 				if player_controller.m_CurrentAttackForce > 0.5 then	
+					local prev_y = mov.y
 					player_controller.m_CurrentAttackForce = player_controller.m_CurrentAttackForce - (m_AttackGravity * l_ElapsedTime);
 					mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce * AttackSpeed * l_ElapsedTime;
 					if AttackSpeed > 0.05 then
 						AttackSpeed = AttackSpeed - AttackDismin * l_ElapsedTime;
 					end
-					mov.y = 0.0;
+					mov.y = prev_y;
 					m_AttackGravity = m_AttackGravity + AtackGravityModifier * l_ElapsedTime;
 					--l_ElapsedTime = l_ElapsedTime / AtackGravityModifier;
 					--AtackGravityModifier = AtackGravityModifier * 2;
@@ -453,20 +454,27 @@ function on_update_player_lua(l_ElapsedTime)
 		--///////////////////////////////////////////////////////////
 		-- Acción de atacar del Player. Realiza un impulso hacia adelante. 
 		--/////////////////////////////////////////////////////////// 
-		if (act2in:do_action_from_lua("Attack") and not player_controller.m_isJumping and not _land and player_controller.m_isAttack == false and canAttack == true and player.is_hit == false) then--) and (player_controller.m_isAttack == false) then
+		if (act2in:do_action_from_lua("Attack") and not player_controller.m_isJumping and not _land and player_controller.m_isAttack == false and canAttack == true and player.is_hit == false and player.attack_enabled) then--) and (player_controller.m_isAttack == false) then
 			canAttack = false;
 			contador = 0;
+			local prev_y = mov.y
 			m_AttackGravity = AttackGravityStart;
 			AttackSpeed = AttackStartSpeed;
 			player_controller.m_CurrentAttackForce = player_controller.m_AttackForce;
 			player_controller.m_Direction3D =  get_attack_direction(player_controller.m_Direction3D, player_controller.m_PhysicController:get_position())
 			mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce * AttackSpeed * l_ElapsedTime;
-			mov.y = 0.0;
+			mov.y = prev_y;
 			player_controller.m_isAttack = true;
 			playerRenderable:execute_action(5,0,0.3,1,false);
 		end
-		
-		
+	
+		if not player_controller.m_isGrounded then
+			if  player_controller.m_isAttack then	-- Aqui ir poniendo siempre que se tenga que parar alguna acción si no está grounded
+			
+				player_controller.m_isAttack = false
+				
+			end
+		end
 		
 		if player_controller.m_isJumping then
 			player_controller:move(mov, l_ElapsedTime);

@@ -181,6 +181,7 @@ end
 function set_puzzle_enemy_active(active)
 	if active == "true" then
 		player.enemy_puzzle_active = true
+		player.attack_enabled = true
 	else
 		player.enemy_puzzle_active = false
 	end
