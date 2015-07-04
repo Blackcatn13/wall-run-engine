@@ -41,6 +41,7 @@ CGUIManager::CGUIManager(const Vect2i &resolution)
     , m_bLoadedGuiFiles(false)
     , m_sLastLoadpathGUI_XML("")
     , m_bFirstUpdate(true)
+    , m_isPaused(false)
     , m_bVisiblePointerMouse(true)
     , m_isDisplayedHeart(true)
     , m_isDisplayedPixelite(true)
@@ -879,6 +880,18 @@ void CGUIManager::SetConsole()
         }
     }
 }
+
+
+bool CGUIManager::GetIsPaused()
+{
+    return m_isPaused;
+}
+
+void CGUIManager::SetIsPaused(bool input)
+{
+    m_isPaused = input;
+}
+
 
 void CGUIManager::SetPositionPercentElement(std::string name, float posx, float posy)
 {

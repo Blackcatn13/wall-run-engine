@@ -116,6 +116,9 @@ public:
     void								PlayImage									(const std::string &inImageName, float timePerImage, bool loop);
     //-----------------------------------------------------------------------------------------------------------//
 
+    bool							GetIsPaused();
+    void							SetIsPaused(bool input);
+
     bool							GetIsDisplayedConsole();
     void							SetIsDisplayedConsole(bool input);
     bool							GetIsDisplayedHeart();
@@ -172,6 +175,9 @@ private:
     std::string													m_sLastLoadpathGUI_XML;
     TransitionEffect										m_sTransitionEffect;
     bool																m_bFirstUpdate;
+
+    bool																m_isPaused;
+
     bool																m_isDisplayedConsole;
     bool																m_isDisplayedHeart;
     bool																m_isDisplayedPixelite;

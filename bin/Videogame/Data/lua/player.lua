@@ -31,6 +31,7 @@ function Player.new()
 	self.zone = 1
 	self.original_position = Vect3f(0.0,0.0,0.0)
 	self.original_yaw = 0.0
+	self.attack_enabled = false
 	
 	------	 PLAYER FUNCTIONS -----
 		
