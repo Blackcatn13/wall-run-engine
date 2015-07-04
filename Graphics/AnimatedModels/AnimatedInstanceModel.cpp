@@ -93,10 +93,15 @@ void CAnimatedInstanceModel::Render(CGraphicsManager *RM) {
 }
 
 void CAnimatedInstanceModel::LoadTextures() {
-  for (int i = 0; i < m_AnimatedCoreModel->GetNumTextures(); ++i) {
-    std::string Name = m_AnimatedCoreModel->GetTextureName(i);
-    m_TextureList.push_back(TEXTM->GetResource(Name));
+  std::vector<std::string> textures = m_AnimatedCoreModel->GetTexturesNames();
+  std::vector<std::string> normalTextures = m_AnimatedCoreModel->GetNormalTexturesNames();
+  for (size_t i = 0; i < textures.size(); ++i) {
+    m_TextureList.push_back(TEXTM->GetResource(textures[i]));
   }
+  for (size_t i = 0; i < normalTextures.size(); ++i) {
+    m_NormalTextureList.push_back(TEXTM->GetResource(normalTextures[i]));
+  }
+  m_hasNormalTexture = m_NormalTextureList.size() != 0;
 }
 
 
@@ -178,10 +183,11 @@ void CAnimatedInstanceModel::RenderModelByHardware(CGraphicsManager *RM) {
     l_EffectTechnique->BeginRender();
     CalHardwareModel *l_CalHardwareModel = m_AnimatedCoreModel->GetCalHardwareModel();
     D3DXMATRIX transformation[MAXBONES];
-    for (int i = 0; i < m_TextureList.size(); ++i) {
-      m_TextureList[i]->Activate(i);
-    }
     for (int hardwareMeshId = 0; hardwareMeshId < l_CalHardwareModel->getHardwareMeshCount(); hardwareMeshId++) {
+      int textureID = (hardwareMeshId < m_TextureList.size()) ? hardwareMeshId : 0;
+      m_TextureList[textureID]->Activate(0);
+      if (m_hasNormalTexture)
+        m_NormalTextureList[textureID]->Activate(1);
       l_CalHardwareModel->selectHardwareMesh(hardwareMeshId);
       for (int boneId = 0; boneId < l_CalHardwareModel->getBoneCount(); boneId++) {
         D3DXMatrixRotationQuaternion(&transformation[boneId], (CONST D3DXQUATERNION *)&l_CalHardwareModel->getRotationBoneSpace(boneId,

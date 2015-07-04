@@ -1,6 +1,6 @@
 <animated_model name="piky">
 	<texture file="DIF2.tga"/>
-	<texture file="NRM_Piky.tga"/>
+	<normal_texture file="NRM_Piky.tga"/>
 	<skeleton file="Piky_Skeleton.CSF"/>
 	<mesh file="Piky_Mesh.CMF"/>
 	<animation name="idle" file="Piky_idle.CAF"/>

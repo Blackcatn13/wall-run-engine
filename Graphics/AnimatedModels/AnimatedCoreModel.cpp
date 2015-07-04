@@ -75,6 +75,9 @@ void CAnimatedCoreModel::Load(const std::string &Path) {
         std::string Filename = Path + std::string(nodeChild.GetPszISOProperty("file", ""));
         m_TextureFilenameList.push_back(Filename);
         TEXTM->GetResource(Filename);
+      } else if (l_Element == "normal_texture") {
+        std::string Filename = Path + std::string(nodeChild.GetPszISOProperty("file", ""));
+        m_NormalTextureFilenameList.push_back(Filename);
       }
     }
   }

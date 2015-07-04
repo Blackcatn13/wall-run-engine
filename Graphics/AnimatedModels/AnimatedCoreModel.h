@@ -17,6 +17,7 @@ class CAnimatedCoreModel {
   int							m_NumVtxs;
   std::string m_Name;
   std::vector<std::string> m_TextureFilenameList;
+  std::vector<std::string> m_NormalTextureFilenameList;
   std::string m_Path;
   bool LoadMesh(const std::string &Filename);
   bool LoadSkeleton(const std::string &Filename);
@@ -33,7 +34,12 @@ class CAnimatedCoreModel {
   }
   void Load(const std::string &Path);
   int GetAnimationId(const std::string &AnimationName) const;
-
+  const std::vector<std::string> &GetTexturesNames() {
+    return m_TextureFilenameList;
+  }
+  const std::vector<std::string> &GetNormalTexturesNames() {
+    return m_NormalTextureFilenameList;
+  }
   CalHardwareModel *GetCalHardwareModel() const {
     return m_CalHardwareModel;
   }

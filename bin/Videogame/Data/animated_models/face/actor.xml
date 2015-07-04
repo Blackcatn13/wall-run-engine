@@ -1,5 +1,9 @@
 <animated_model name="face">
+	<texture file="SOSTRE_1_DIFF.tga"/>
+	<texture file="SOSTRE_2_DIFF.tga"/>
+	<texture file="SOSTRE_1_DIFF.tga"/>
 	<texture file="COLUMNA_ARCADA_2_DIFF.tga"/>
+	<texture file="MARRONDARK_DIFF.tga"/>
 	<skeleton file="Face_skeleton.CSF"/>
 	<mesh file="Face_mesh.CMF"/>
 	<animation name="move" file="Face_tongue_move.CAF"/>

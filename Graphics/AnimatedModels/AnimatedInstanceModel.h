@@ -19,6 +19,7 @@ class CAnimatedInstanceModel : public CRenderableObject {
   CalModel *m_CalModel;
   CAnimatedCoreModel *m_AnimatedCoreModel;
   std::vector<CTexture *> m_TextureList;
+  std::vector<CTexture *> m_NormalTextureList;
   LPDIRECT3DVERTEXBUFFER9 m_pVB;
   LPDIRECT3DINDEXBUFFER9 m_pIB;
 
@@ -29,6 +30,7 @@ class CAnimatedInstanceModel : public CRenderableObject {
   void LoadTextures();
   float m_oldYPosition;
   Vect3f m_oldPosition;
+  bool m_hasNormalTexture;
  public:
   CAnimatedInstanceModel();
   ~CAnimatedInstanceModel();
