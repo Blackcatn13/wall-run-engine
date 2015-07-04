@@ -53,13 +53,9 @@ CSceneRendererCommandManager::~CSceneRendererCommandManager() {
 }
 
 void CSceneRendererCommandManager::CleanUp() {
-  //if(!m_SceneRendererCommands.GetResourcesMap().empty())
-#ifdef _PARTICLEVIEWER
-  m_SceneRendererCommandsParticle.Destroy();
-#else
-  m_SceneRendererCommands.Destroy();
-  m_SceneRendererCommandsGUI.Destroy();
-#endif
+  for (auto it = m_commandsMaps.begin(); it != m_commandsMaps.end(); ++it) {
+    (*it).second.Destroy();
+  }
 }
 
 std::string CSceneRendererCommandManager::GetNextName() {
@@ -81,20 +77,26 @@ void CSceneRendererCommandManager::Load(const std::string &FileName) {
       CTemplatedVectorMapManager<CSceneRendererCommand> *toInsert;
       m = newFile(count);
       std::string treeName = m.GetName();
-#ifdef _PARTICLEVIEWER
-      if (treeName == "particle_viewer") {
-        toInsert = &m_SceneRendererCommandsParticle;
+      if (treeName == "renderer_list") {
+        for (int renderers = 0; renderers < m.GetNumChildren(); ++renderers) {
+          m_commandsMaps[m(renderers).GetPszISOProperty("name", "")] = CTemplatedVectorMapManager<CSceneRendererCommand>();
+        }
+      } else {
+        toInsert = &m_commandsMaps[treeName];
+        if (m.GetBoolProperty("active"))
+          m_activeRenderer = treeName;
       }
-#else
-      if (treeName == "normal_render") {
-        toInsert = &m_SceneRendererCommands;
-      } else if (treeName == "gui_render") {
-        toInsert = &m_SceneRendererCommandsGUI;
-      }
-#endif
-      else {
-        continue;
-      }
+      /*#ifdef _PARTICLEVIEWER
+            if (treeName == "particle_viewer") {
+              toInsert = &m_SceneRendererCommandsParticle;
+            }
+      #else
+            if (treeName == "normal_render") {
+
+            } else if (treeName == "gui_render") {
+              toInsert = &m_SceneRendererCommandsGUI;
+            }
+      #endif*/
       //}
       //CXMLTreeNode  m = newFile["scene_renderer_commands"];
       if (m.Exists()) {
@@ -250,36 +252,14 @@ void CSceneRendererCommandManager::Load(const std::string &FileName) {
 //    }
 //}
 void CSceneRendererCommandManager::Execute(CGraphicsManager &RM) {
-#ifdef _PARTICLEVIEWER
-  for (size_t i = 0; i < m_SceneRendererCommandsParticle.GetResourcesVector().size(); ++i) {
+  for (size_t i = 0; i < m_commandsMaps[m_activeRenderer].GetResourcesVector().size(); ++i) {
     if (m_needReload) {
-      m_SceneRendererCommandsParticle.GetResourcesVector().at(i)->Reload();
+      m_commandsMaps[m_activeRenderer].GetResourcesVector().at(i)->Reload();
     }
-    m_SceneRendererCommandsParticle.GetResourcesVector().at(i)->Execute(RM);
+    m_commandsMaps[m_activeRenderer].GetResourcesVector().at(i)->Execute(RM);
   }
   if (m_needReload)
     m_needReload = false;
-#else
-  if (!RM.GetIsGUIDisplayed())  {
-    for (size_t i = 0; i < m_SceneRendererCommands.GetResourcesVector().size(); ++i) {
-      if (m_needReload) {
-        m_SceneRendererCommands.GetResourcesVector().at(i)->Reload();
-      }
-      m_SceneRendererCommands.GetResourcesVector().at(i)->Execute(RM);
-    }
-    if (m_needReload)
-      m_needReload = false;
-  } else {
-    for (size_t i = 0; i < m_SceneRendererCommandsGUI.GetResourcesVector().size(); ++i) {
-      if (m_needReloadGUI) {
-        m_SceneRendererCommandsGUI.GetResourcesVector().at(i)->Reload();
-      }
-      m_SceneRendererCommandsGUI.GetResourcesVector().at(i)->Execute(RM);
-    }
-    if (m_needReloadGUI)
-      m_needReloadGUI = false;
-  }
-#endif
 }
 
 void CSceneRendererCommandManager::Reload() {

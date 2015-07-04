@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <scene_renderer_commands>
+	<renderer_list>
+		<render name="normal_render"/>
+		<render name="gui_render"/>
+		<render name="particle_viewer"/>
+	</renderer_list>
 	<normal_render>
 		 <!--pre_render-->
 
@@ -312,7 +317,7 @@
 		<present/>
 	</normal_render>
 
-	<gui_render>
+	<gui_render active="true">
 		<clear_scene color="true" depth="true" stencil="true"/>
 		<begin_scene/>
 		<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>

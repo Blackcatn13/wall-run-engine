@@ -3,6 +3,7 @@
 #define SCENE_RENDERER_COMMAND_MANAGER_H
 
 #include <string>
+#include <map>
 #include "SceneRendererCommand.h"
 #include "Utils/TemplatedVectorMapManager.h"
 
@@ -13,10 +14,11 @@ class CGraphicsManager;
 
 class CSceneRendererCommandManager {
  private:
-  CTemplatedVectorMapManager<CSceneRendererCommand> m_SceneRendererCommands;
-  CTemplatedVectorMapManager<CSceneRendererCommand> m_SceneRendererCommandsGUI;
+  std::map<std::string, CTemplatedVectorMapManager<CSceneRendererCommand>> m_commandsMaps;
+  //CTemplatedVectorMapManager<CSceneRendererCommand> m_SceneRendererCommands;
+  //CTemplatedVectorMapManager<CSceneRendererCommand> m_SceneRendererCommandsGUI;
 #ifdef _PARTICLEVIEWER
-  CTemplatedVectorMapManager<CSceneRendererCommand> m_SceneRendererCommandsParticle;
+  //CTemplatedVectorMapManager<CSceneRendererCommand> m_SceneRendererCommandsParticle;
 #endif
   std::string m_FileName;
   void CleanUp();
@@ -32,6 +34,7 @@ class CSceneRendererCommandManager {
   void Execute(CGraphicsManager &RM);
   void Reload();
   void setReload() {m_needReload = true; m_needReloadGUI = true;}
+  std::string m_activeRenderer;
 
 };
 //XML a parsear scene_renderer_commands.xml pag 17 pdf

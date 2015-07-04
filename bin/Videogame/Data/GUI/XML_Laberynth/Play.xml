@@ -7,7 +7,7 @@
 						gui_manager:set_visibility_message(false);
 						CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuEnd','Music');
 						gui_manager:set_num_pixelite(0);
-						graphics_manager:set_is_GUI_displayed(false);"
+            CCoreLuaWrapper().m_CoreInstance:get_scene_render_commands_manager().currentRenderer = 'normal_render';"
          OnSaveWindows=""
          OnUpdateWindows="onUpdateWindowDisplayGUI()">
   
