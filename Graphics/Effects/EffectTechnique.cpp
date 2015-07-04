@@ -137,9 +137,6 @@ bool CEffectTechnique::BeginRender() {
     l_Effect->SetFloat(m_Effect->GetTimeParameter(), rand() / 1000.0f);
   }
   if (m_UseTick) {
-    m_tick += 0.001f;
-    if (m_tick >= 1000.f)
-      m_tick = 0.f;
     l_Effect->SetFloat(m_Effect->GetTickParameter(), m_tick);
   }
   if (m_UseScreenSize) {

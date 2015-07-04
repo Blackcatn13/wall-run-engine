@@ -16,7 +16,8 @@
 CBillboard::CBillboard(CXMLTreeNode &node)
   : m_sizes(node.GetVect2fProperty("size", v2fONE))
   , m_position(node.GetVect3fProperty("position", v3fZERO	, false))
-  , m_Color1(CColor((node.GetVect4fProperty("color", v4fZERO	, false)))) {
+  , m_Color1(CColor((node.GetVect4fProperty("color", v4fZERO	, false))))
+  , m_tick((rand() % 100 + 1) / 10) {
   int numChild = node.GetNumChildren();
   for (int i = 0; i < numChild; ++i) {
     CXMLTreeNode nodeChild = node(i);
@@ -78,6 +79,7 @@ void CBillboard::Render(CGraphicsManager *GM) {
   GM->SetTransform(t);
 
   CEffectTechnique *l_EffectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(m_RV->GetVertexType()))->GetEffectTechnique();
+  l_EffectTechnique->SetTick(m_tick);
   for (size_t i = 0; i < m_Textures.size(); ++i)
     m_Textures[i]->Activate(i);
   m_RV->Render(GM, l_EffectTechnique);
@@ -87,4 +89,7 @@ void CBillboard::Render(CGraphicsManager *GM) {
 
 
 void CBillboard::Update(float ElapsedTime) {
+  m_tick += 0.05f;
+  if (m_tick >= 1000.f)
+    m_tick = 0.f;
 }

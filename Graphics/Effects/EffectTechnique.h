@@ -157,6 +157,10 @@ class CEffectTechnique {
     return m_TechniqueName;
   }
 
+  void SetTick(float tick) {
+    m_tick = tick;
+  }
+
   //apaño para default vertex repetidos
   int GetDefaultVertex();
 };

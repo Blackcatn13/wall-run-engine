@@ -34,6 +34,7 @@ class CBillboard {
   std::vector<CTexture *>		m_Textures;
   CColor		  m_Color1;
   CRenderableVertexs         *m_RV;
+  float     m_tick;
 };
 
 #endif // BILLBOARD_H_
