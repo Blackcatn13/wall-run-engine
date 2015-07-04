@@ -20,15 +20,9 @@ function onUpdateWindowDisplayGUI()
 		ManagerGUIPixelites();
 	end
 	if gui_manager:get_is_displayed_poly_message() == true and gui_manager:get_first_poly_message_displayed() == false then
-		gui_manager:set_visibility_message(true);
-		playerRenderable:clear_cycle(1,0);
-		playerRenderable:blend_cycle(0,1,0);
 		ManagerGUIPolyMessage();
 	end
 	if gui_manager:get_is_displayed_unlock_message() == true then
-		gui_manager:set_visibility_message(true);
-		playerRenderable:clear_cycle(1,0);
-		playerRenderable:blend_cycle(0,1,0);
 		ManagerGUIUnlockMessage();
 	end
 	
@@ -103,6 +97,8 @@ end
 
 function ManagerGUIPolyMessage()
 	--Poly Message GUI
+	gui_manager:set_is_paused(true);
+	gui_manager:set_visibility_message(true);
 	-- Fins que no apretes ENTER no marxa
 	gui_manager:set_is_displayed_console(true);
 	gui_manager:set_image('MessageGUI','PolyPlatform');
@@ -111,11 +107,14 @@ function ManagerGUIPolyMessage()
 		gui_manager:set_is_displayed_console(false);
 		gui_manager:set_first_poly_message_displayed(true);
 		gui_manager:set_visibility_message(false);
+		gui_manager:set_is_paused(false);
 	end	
 end
 
 function ManagerGUIUnlockMessage()
 	--Unlock Message GUI
+	gui_manager:set_is_paused(true);
+	gui_manager:set_visibility_message(true);
 	-- Fins que no apretes ENTER no marxa
 	gui_manager:set_is_displayed_console(true);
 	gui_manager:set_image('MessageGUI','UnlockCard');
@@ -123,6 +122,7 @@ function ManagerGUIUnlockMessage()
 		gui_manager:set_is_displayed_unlock_message(false);
 		gui_manager:set_is_displayed_console(false);
 		gui_manager:set_visibility_message(false);
+		gui_manager:set_is_paused(false);
 	end	
 end
 

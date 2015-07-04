@@ -365,7 +365,7 @@ Vect2i CTestGameplay::RenderDebugInfo(bool render/*, float dt*/)
 
 void CTestGameplay::Update(float dt)
 {
-    if (!CCORE->GetGuiManager()->GetIsPaused()) {
+    if (!GUIM->GetIsPaused()) {
         // m_Granade->Update(dt);
         //CInputManager* im = INPUTM;
         //float deltaX =  im->GetMouseDelta().x;
@@ -498,8 +498,13 @@ void CTestGameplay::Update(float dt)
             // CCORE->GetCinematicController()->GetResource("DestroyW")->Pause();
         }
     } else {
-        if (ACT2IN->DoAction("PauseGameExit")) {
-            CCORE->GetGuiManager()->SetIsPaused(false);
+        if (GUIM->GetIsDisplayedConsole()) {
+            SCRIPTM->RunFile(".\\Data\\lua\\Gui.lua");
+        } else {
+            if (ACT2IN->DoAction("PauseGameExit")) {
+                GUIM->SetIsPaused(false);
+                GUIM->SetVisiblePointerMouse(false);
+            }
         }
     }
 }
@@ -517,9 +522,7 @@ void CTestGameplay::Render()
      GRAPHM->DrawAxis(10);*/
     //text->Activate(0);
     //RENDLM->Render(GRAPHM, RENDLM->getCurrentLayer);
-    if (!CCORE->GetGuiManager()->GetIsPaused()) {
-        SCENRENDCOMM->Execute(*GRAPHM);
-    }
+    SCENRENDCOMM->Execute(*GRAPHM);
     //g_RV->Render(CCORE->GetGraphicsManager(º+-));
     /* Mat44f t;
      Mat44f trot1;
