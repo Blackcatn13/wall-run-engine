@@ -78,10 +78,34 @@ bool CActionToInput::DoAction(const std::string &action_name, float &amount) {
           action &= amount != 0 ;
           if (!action) return false;
           break;
-        case AXIS_LEFT_THUMB_X:
-        case AXIS_LEFT_THUMB_Y:
-        case AXIS_RIGHT_THUMB_X:
-        case AXIS_RIGHT_THUMB_Y:
+        case AXIS_LEFT_THUMB_X: {
+          float aux;
+          action = m_InputManager->GetGamePadLeftThumbDeflection(&amount, &aux);
+          action &= amount != 0;
+          if (!action) return false;
+          break;
+        }
+        case AXIS_LEFT_THUMB_Y: {
+          float aux;
+          action = m_InputManager->GetGamePadLeftThumbDeflection(&aux, &amount);
+          action &= amount != 0;
+          if (!action) return false;
+          break;
+        }
+        case AXIS_RIGHT_THUMB_X: {
+          float aux;
+          action = m_InputManager->GetGamePadRightThumbDeflection(&amount, &aux);
+          action &= amount != 0;
+          if (!action) return false;
+          break;
+        }
+        case AXIS_RIGHT_THUMB_Y: {
+          float aux;
+          action = m_InputManager->GetGamePadRightThumbDeflection(&aux, &amount);
+          action &= amount != 0;
+          if (!action) return false;
+          break;
+        }
         case AXIS_DELTA_TRIGGER_RIGHT:
         case AXIS_DELTA_TRIGGER_LEFT:
         case AXIS_NOTHING:

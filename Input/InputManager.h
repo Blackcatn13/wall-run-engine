@@ -55,6 +55,8 @@ class CInputManager { //: public CScriptRegister
   bool				GetGamePadDeltaTriggers			(float *pfLeft, float *pfRight, INPUT_DEVICE_TYPE device = IDV_GAMEPAD1);
   void				SetGamePadLeftMotorSpeed		(uint32 speed, INPUT_DEVICE_TYPE device = IDV_GAMEPAD1); //[0-65535]
   void				SetGamePadRightMotorSpeed		(uint32 speed, INPUT_DEVICE_TYPE device = IDV_GAMEPAD1); //[0-65535]
+  float       GetGamePadLeftThumbYDeflection (INPUT_DEVICE_TYPE device = IDV_GAMEPAD1);
+  float       GetGamePadLeftThumbXDeflection (INPUT_DEVICE_TYPE device = IDV_GAMEPAD1);
 
   //----CScriptRegister interface-------------------
   //virtual void		RegisterFunctions								(CScriptManager* scriptManager);
