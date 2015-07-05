@@ -119,6 +119,8 @@ public:
     bool							GetIsPaused();
     void							SetIsPaused(bool input);
 
+    void							ActivatePause(bool input);
+
     bool							GetIsDisplayedConsole();
     void							SetIsDisplayedConsole(bool input);
     bool							GetIsDisplayedHeart();

@@ -142,12 +142,7 @@ function reset_game()
 	player.pixelites = 0;
 	gui_manager:set_is_displayed_pixelite(true);
 	gui_manager:set_count_pixelite(0.0);
-	gui_manager:set_num_pixelite( 0 );
-	gui_manager:set_is_displayed_poly_message(false);
-	gui_manager:set_is_displayed_unlock_message(false);
-	gui_manager:set_first_poly_message_displayed(false);
-	gui_manager:set_visibility_message(false);
-	
+	gui_manager:set_num_pixelite( 0 );	
 	
 	--Pixelites and cards
 	collectible_manager:reset_collectibles();
@@ -161,5 +156,13 @@ function reset_game()
 	renderable_objects_layer_manager:deactivate_objects_by_layer("invisible");
 	
 	--Doors
-	--TO DO
+	close_door("Puerta_arriba", "Puerta_abajo");
+	
+	--Others
+	gui_manager:activate_pause(false);
+	gui_manager:set_is_paused(false);
+	gui_manager:set_is_displayed_poly_message(false);
+	gui_manager:set_is_displayed_unlock_message(false);
+	gui_manager:set_first_poly_message_displayed(false);
+	gui_manager:set_visibility_message(false);
 end

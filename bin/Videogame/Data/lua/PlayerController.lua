@@ -63,7 +63,7 @@ function on_update_player_lua(l_ElapsedTime)
 	
 		if act2in:do_action_from_lua("PauseGame") then
 			--gui_manager:push_windows('Main.xml')
-			gui_manager:set_visible_mouse(true);
+			gui_manager:activate_pause(true);
 			gui_manager:set_is_paused(true);
 		end
 

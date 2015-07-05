@@ -56,5 +56,9 @@ function activate_collectible (_trigger, layer_name, obj_name)
 	local object_manager = renderable_objects_layer_manager:get_renderable_objects_manager_by_str(layer_name)
 	local object = object_manager:get_resource(obj_name)
 	object.m_Printable = true
+	local emitter = object.m_ParticleEmitter
+	if (emitter ~= "") then
+		coreInstance:getParticleManager():get_resource(emitter):set_visible(true);
+	end
 end
 
