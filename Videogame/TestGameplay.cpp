@@ -503,7 +503,7 @@ void CTestGameplay::Update(float dt)
         } else {
             if (ACT2IN->DoAction("PauseGameExit")) {
                 GUIM->SetIsPaused(false);
-                GUIM->SetVisiblePointerMouse(false);
+                GUIM->ActivatePause(false);
             }
         }
     }

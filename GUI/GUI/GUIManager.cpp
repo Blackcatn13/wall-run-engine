@@ -893,6 +893,18 @@ void CGUIManager::SetIsPaused(bool input)
 }
 
 
+void CGUIManager::ActivatePause(bool input)
+{
+    m_ElementsMap.find("backgroundPause")->second->SetVisible(input);
+    m_ElementsMap.find("pause")->second->SetVisible(input);
+    m_ElementsMap.find("PlayPause")->second->SetVisible(input);
+    m_ElementsMap.find("OptionsPause")->second->SetVisible(input);
+    m_ElementsMap.find("ExtrasPause")->second->SetVisible(input);
+    m_ElementsMap.find("ExitPause")->second->SetVisible(input);
+    SetVisiblePointerMouse(input);
+}
+
+
 void CGUIManager::SetPositionPercentElement(std::string name, float posx, float posy)
 {
     m_ElementsMap.find(name)->second->SetPositionPercent(Vect2f(posx, posy));
