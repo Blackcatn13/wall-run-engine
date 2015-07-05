@@ -9,8 +9,8 @@ CActionToInput::CActionToInput(CInputManager *input) {
 
 void CActionToInput::GetActionInfo(std::string actionName, std::string &strInfo) {
   std::string str_aux;
-  if (m_String2Actions.count(actionName)) {
-    VecInfoInputs aux = m_String2Actions[actionName];
+  if (m_GlobalString2Actions.count(actionName)) {
+    VecInfoInputs aux = m_GlobalString2Actions[actionName];
 
     int size = aux.size();
     for (size_t i = 0; i < size; ++ i) {
@@ -30,8 +30,8 @@ void CActionToInput::GetActionInfo(std::string actionName, std::string &strInfo)
 }
 bool CActionToInput::DoAction(const std::string &action_name) {
   std::string aux1 = action_name;
-  if (m_String2Actions.count(action_name)) {
-    VecInfoInputs aux = m_String2Actions[aux1];
+  if (m_GlobalString2Actions.count(action_name)) {
+    VecInfoInputs aux = m_GlobalString2Actions[aux1];
     bool action = true;
     for (uint32 i = 0; i < aux.size(); ++i) {
       switch (aux[i].EventType) {
@@ -58,8 +58,8 @@ bool CActionToInput::DoAction(const std::string &action_name) {
 
 bool CActionToInput::DoAction(const std::string &action_name, float &amount) {
   std::string aux1 = action_name;
-  if (m_String2Actions.count(action_name)) {
-    VecInfoInputs aux = m_String2Actions[aux1];
+  if (m_GlobalString2Actions.count(action_name)) {
+    VecInfoInputs aux = m_GlobalString2Actions[aux1];
     bool action = true;
     for (uint32 i = 0; i < aux.size(); ++i) {
       switch (aux[i].axisType) {
@@ -118,6 +118,9 @@ bool CActionToInput::DoActionFromLua(const std::string action_name,  float amoun
 }
 
 bool CActionToInput::ReloadXML() {
+  m_GlobalString2Actions.clear();
+  m_GamePadString2Actions.clear();
+  m_MouseKeyboardString2Actions.clear();
   LoadXML(m_fileName);
   return true;
 }
@@ -133,26 +136,46 @@ bool CActionToInput::LoadXML (const std::string &xmlFile) {
     int count = m.GetNumChildren();
     int counter = 0;
     for (int i = 0; i < count; ++i) {
-      std::string name = m(i).GetName();
-      if (name == "action") {
-        std::string nameAction = m(i).GetPszISOProperty("name", "Action" + counter++, false);
-        int actionsCount = m(i).GetNumChildren();
-        m_String2Actions[nameAction] = VecInfoInputs();
-        m_String2Actions[nameAction].clear();
-        for (int j = 0; j < actionsCount; ++j) {
-          std::string nameDevice = m(i)(j).GetPszISOProperty("deviceType", "IDV_NOTHING", false);
-          std::string nameEvent = m(i)(j).GetPszISOProperty("EventType", "EVENT_NOTHING", false);
-          std::string nameKey = m(i)(j).GetPszISOProperty("Code", "KEY_M", false);
-          std::string axisKey = m(i)(j).GetPszISOProperty("AxisType", "AXIS_NOTHING", false);
-          action_info actAux = {static_cast<INPUT_DEVICE_TYPE>(m_String2Code[nameDevice]),
-                                static_cast<INPUT_EVENT_TYPE>(m_String2Code[nameEvent]),
-                                (uint32) m_String2Code[nameKey],
-                                static_cast<INPUT_AXIS_TYPE>(m_String2Code[axisKey])
-                               };
-          m_String2Actions[nameAction].push_back(actAux);
+      CXMLTreeNode childNode = m(i);
+      std::string name = childNode.GetName();
+      MapString2Actions *toInsert;
+      if (name == "globals") {
+        toInsert = &m_GlobalString2Actions;
+      } else if (name == "mouse_keyboard") {
+        toInsert = &m_MouseKeyboardString2Actions;
+      } else if (name == "gamepad") {
+        toInsert = &m_GamePadString2Actions;
+      }
+      int newCount = childNode.GetNumChildren();
+      for (int j = 0; j < newCount; ++j) {
+        CXMLTreeNode childNode1 = childNode(j);
+        std::string name1 = childNode1.GetName();
+        if (name1 == "action") {
+          std::string nameAction = childNode1.GetPszISOProperty("name", "Action" + counter++, false);
+          int actionsCount = childNode1.GetNumChildren();
+          (*toInsert)[nameAction] = VecInfoInputs();
+          (*toInsert)[nameAction].clear();
+          for (int k = 0; k < actionsCount; ++k) {
+            CXMLTreeNode childNode2 = childNode1(k);
+            std::string nameDevice = childNode2.GetPszISOProperty("deviceType", "IDV_NOTHING", false);
+            std::string nameEvent = childNode2.GetPszISOProperty("EventType", "EVENT_NOTHING", false);
+            std::string nameKey = childNode2.GetPszISOProperty("Code", "KEY_M", false);
+            std::string axisKey = childNode2.GetPszISOProperty("AxisType", "AXIS_NOTHING", false);
+            action_info actAux = {static_cast<INPUT_DEVICE_TYPE>(m_String2Code[nameDevice]),
+                                  static_cast<INPUT_EVENT_TYPE>(m_String2Code[nameEvent]),
+                                  (uint32) m_String2Code[nameKey],
+                                  static_cast<INPUT_AXIS_TYPE>(m_String2Code[axisKey])
+                                 };
+            (*toInsert)[nameAction].push_back(actAux);
+          }
         }
       }
     }
+  }
+  if (m_InputManager->HasGamePad()) {
+    m_GlobalString2Actions.insert(m_GamePadString2Actions.begin(), m_GamePadString2Actions.end());
+  } else {
+    m_GlobalString2Actions.insert(m_MouseKeyboardString2Actions.begin(), m_MouseKeyboardString2Actions.end());
   }
   return true;
 }

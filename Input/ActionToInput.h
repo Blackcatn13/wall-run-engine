@@ -24,7 +24,9 @@ class CActionToInput {
  private:
   MapString2Code          m_String2Code;
   std::string             m_fileName;
-  MapString2Actions       m_String2Actions;
+  MapString2Actions       m_GlobalString2Actions;
+  MapString2Actions       m_MouseKeyboardString2Actions;
+  MapString2Actions       m_GamePadString2Actions;
   CInputManager          *m_InputManager;
  public:
   CActionToInput(CInputManager *input);
