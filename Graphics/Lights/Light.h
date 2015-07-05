@@ -31,6 +31,7 @@ class CLight : public CObject3D {
   bool m_RenderShadows;
   float m_StartRangeAttenuation;
   float m_EndRangeAttenuation;
+  float m_EnableDistance;
   float m_Intensity;
   static TLightType GetLightTypeByName(const std::string &StrLightType);
   std::vector<std::string> renderableDynamicMaps;
@@ -77,6 +78,12 @@ class CLight : public CObject3D {
   }
   float GetEndRangeAttenuation() const {
     return m_EndRangeAttenuation;
+  }
+  void SetEnableDistance(const float EnableDistance) {
+	  m_EnableDistance = EnableDistance;
+  }
+  float GetEnableDistance() const {
+    return m_EnableDistance;
   }
 
   void SetIntensity(const float Intensity) {
@@ -168,6 +175,7 @@ class CLight : public CObject3D {
   GET_SET(int, ShadowMapHeigth);
   void BeginRenderEffectManagerShadowMap(CEffect *Effect);
   void ReloadRO();
+  bool IsEnabled();
 };
 
 

@@ -159,6 +159,7 @@ bool CEffect::SetLight() {
     m_LightsStartRangeAttenuation[0] = l_startRangeAtten;
     float l_endRangeAtten = m_Light->GetEndRangeAttenuation();
     m_LightsEndRangeAttenuation[0] = l_endRangeAtten;
+	m_LightsEnabled[0] = m_Light->IsEnabled();
     float l_intensity = m_Light->GetIntensity();
     m_LightsIntensity[0] = l_intensity;
     Vect3f l_pos = m_Light->GetPosition();
@@ -173,6 +174,7 @@ bool CEffect::SetLight() {
     m_LightsDirection[0] = l_direction;
     Vect3f l_color = Vect3f(m_Light->GetColor().GetRed(), m_Light->GetColor().GetGreen(), m_Light->GetColor().GetBlue()) ;
     m_LightsColor[0] = l_color;
+	m_Effect->SetBoolArray(m_LightEnabledParameter, &m_LightsEnabled[0], MAX_LIGHTS_BY_SHADER);
     m_Effect->SetIntArray(m_LightsTypeParameter, &m_LightsType[0], MAX_LIGHTS_BY_SHADER);
     m_Effect->SetFloatArray(m_LightsAngleParameter, &m_LightsAngle[0], MAX_LIGHTS_BY_SHADER);
     m_Effect->SetFloatArray(m_LightsFallOffParameter, &m_LightsFallOff[0], MAX_LIGHTS_BY_SHADER);
@@ -194,7 +196,7 @@ bool CEffect::SetLights(size_t NumOfLights) {
   int l_lightIndex = 0;
   // std::map<std::string, CLight *> resources = LIGHTM->GetResources();
   while (it != LIGHTM->GetResources().end() && l_lightIndex < NumOfLights) {
-    m_LightsEnabled[l_lightIndex] = 1;
+    m_LightsEnabled[l_lightIndex] = it->second->IsEnabled();
     int l_type = it->second->GetType();
     m_LightsType[l_lightIndex] = l_type;
     float l_angle = 0;
@@ -234,6 +236,7 @@ bool CEffect::SetLights(size_t NumOfLights) {
   m_Effect->SetFloatArray(m_LightsIntensityParameter, &m_LightsIntensity[0], MAX_LIGHTS_BY_SHADER);
   m_Effect->SetFloatArray(m_LightsStartRangeAttenuationParameter, &m_LightsStartRangeAttenuation[0], MAX_LIGHTS_BY_SHADER);
   m_Effect->SetFloatArray(m_LightsEndRangeAttenuationParameter, &m_LightsEndRangeAttenuation[0], MAX_LIGHTS_BY_SHADER);
+  m_Effect->SetBoolArray(m_LightEnabledParameter, &m_LightsEnabled[0], MAX_LIGHTS_BY_SHADER);
   m_Effect->SetFloatArray(m_LightsPositionParameter, &m_LightsPosition[0].x, MAX_LIGHTS_BY_SHADER * 3);
   m_Effect->SetFloatArray(m_LightsDirectionParameter, &m_LightsDirection[0].x, MAX_LIGHTS_BY_SHADER * 3);
   return true;

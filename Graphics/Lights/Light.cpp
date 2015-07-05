@@ -7,6 +7,7 @@
 #include "Core_Utils/MemLeaks.h"
 #include "Renderable\RenderableObjectsLayersManager.h"
 #include "Core\Core.h"
+#include "Core\PlayerController.h"
 
 CLight::CLight()
   : m_ShadowMaskTexture(NULL),
@@ -23,6 +24,7 @@ CLight::CLight()
 CLight::CLight(CXMLTreeNode &Node)
   : m_Color (Node.GetVect3fProperty("color", (0.0f, 0.0f, 0.0f)))
   , m_EndRangeAttenuation (Node.GetFloatProperty("att_end_range", 0.0f))
+  , m_EnableDistance (Node.GetFloatProperty("enable_distance", 5000.0f))
   , m_FormatType (Node.GetPszISOProperty("shadow_map_format_type", "", false))
   , m_GenerateDynamicShadowMap (Node.GetBoolProperty("generate_shadow_map", false))
   , m_GenerateStaticShadowMap (Node.GetBoolProperty("generate_static_shadow_map", false))
@@ -201,4 +203,18 @@ void CLight::ReloadRO() {
     l_RenderableObjectManager = RENDLM->GetResource(renderableStaticMaps[i]);
     m_StaticShadowMapRenderableObjectsManagers.push_back(l_RenderableObjectManager);
   }
+}
+
+bool CLight::IsEnabled()
+{
+	bool enabled = false;
+	if(PLAYC != NULL)
+	{
+		Vect3f playerPos = PLAYC->GetPosition();
+		if(m_Position.Distance(playerPos) < m_EnableDistance)
+		{
+			enabled = true;
+		}
+	}
+	return enabled;
 }
