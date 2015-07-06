@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <static_meshes>
-	<static_mesh name="Enemy1" filename=".\Data\level5\meshes//Enemy1.mesh"/>
-	<static_mesh name="INVISIBLE_WALL001" filename="Data\level4\meshes\INVISIBLE_WALL001.mesh"/>
-	<static_mesh name="INVISIBLE_WALL002" filename="Data\level4\meshes\INVISIBLE_WALL002.mesh"/>
-	<static_mesh name="INVISIBLE_WALL003" filename="Data\level4\meshes\INVISIBLE_WALL003.mesh"/>
-	<static_mesh name="INVISIBLE_WALL004" filename="Data\level4\meshes\INVISIBLE_WALL004.mesh"/>
-	<static_mesh name="Puerta_abajo" filename="Data\level4\meshes\Puerta_abajo.mesh"/>
-	<static_mesh name="Puerta_arriba" filename="Data\level4\meshes\Puerta_arriba.mesh"/>
 	<static_mesh name="ARCADA" filename="Data\level4\meshes\ARCADA.mesh"/>
 	<static_mesh name="CUPULA" filename="Data\level4\meshes\CUPULA.mesh"/>
 	<static_mesh name="ORO2" filename="Data\level4\meshes\ORO2.mesh"/>
@@ -130,42 +123,6 @@
 	<static_mesh name="Pedra011" filename="Data\level4\meshes\Pedra011.mesh"/>
 	<static_mesh name="Pedra012" filename="Data\level4\meshes\Pedra012.mesh"/>
 	<static_mesh name="Pared_pedres_002" filename="Data\level4\meshes\Pared_pedres_002.mesh"/>
-	<static_mesh name="PUNXES002" filename="Data\level4\meshes\PUNXES002.mesh"/>
-	<static_mesh name="OBSTACLE004" filename="Data\level4\meshes\OBSTACLE004.mesh"/>
-	<static_mesh name="OBSTACLE008" filename="Data\level4\meshes\OBSTACLE008.mesh"/>
-	<static_mesh name="OBSTACLE007" filename="Data\level4\meshes\OBSTACLE007.mesh"/>
-	<static_mesh name="SALA 5" filename="Data\level4\meshes\SALA 5.mesh"/>
-	<static_mesh name="PLATAFORMA003" filename="Data\level4\meshes\PLATAFORMA003.mesh"/>
-	<static_mesh name="PLATAFORMA005" filename="Data\level4\meshes\PLATAFORMA005.mesh"/>
-	<static_mesh name="PLATAFORMA010" filename="Data\level4\meshes\PLATAFORMA010.mesh"/>
-	<static_mesh name="PLATAFORMA006" filename="Data\level4\meshes\PLATAFORMA006.mesh"/>
-	<static_mesh name="PLATAFORMA004" filename="Data\level4\meshes\PLATAFORMA004.mesh"/>
-	<static_mesh name="PLATAFORMA002" filename="Data\level4\meshes\PLATAFORMA002.mesh"/>
-	<static_mesh name="SALA 6" filename="Data\level4\meshes\SALA 6.mesh"/>
-	<static_mesh name="PUNXES005" filename="Data\level4\meshes\PUNXES005.mesh"/>
-	<static_mesh name="SALA 7" filename="Data\level4\meshes\SALA 7.mesh"/>
-	<static_mesh name="OBSTACLE006" filename="Data\level4\meshes\OBSTACLE006.mesh"/>
-	<static_mesh name="OBSTACLE002" filename="Data\level4\meshes\OBSTACLE002.mesh"/>
-	<static_mesh name="OBSTACLE005" filename="Data\level4\meshes\OBSTACLE005.mesh"/>
-	<static_mesh name="OBSTACLE001" filename="Data\level4\meshes\OBSTACLE001.mesh"/>
-	<static_mesh name="PUNXES012" filename="Data\level4\meshes\PUNXES012.mesh"/>
-	<static_mesh name="PUNXES008" filename="Data\level4\meshes\PUNXES008.mesh"/>
-	<static_mesh name="OBSTACLE003" filename="Data\level4\meshes\OBSTACLE003.mesh"/>
-	<static_mesh name="PUNXES014" filename="Data\level4\meshes\PUNXES014.mesh"/>
-	<static_mesh name="PLATAFORMA007" filename="Data\level4\meshes\PLATAFORMA007.mesh"/>
-	<static_mesh name="PUNXES003" filename="Data\level4\meshes\PUNXES003.mesh"/>
-	<static_mesh name="PUNXES004" filename="Data\level4\meshes\PUNXES004.mesh"/>
-	<static_mesh name="PUNXES009" filename="Data\level4\meshes\PUNXES009.mesh"/>
-	<static_mesh name="PUNXES001" filename="Data\level4\meshes\PUNXES001.mesh"/>
-	<static_mesh name="PLATAFORMA008" filename="Data\level4\meshes\PLATAFORMA008.mesh"/>
-	<static_mesh name="PLATAFORMA009" filename="Data\level4\meshes\PLATAFORMA009.mesh"/>
-	<static_mesh name="PLATAFORMA001" filename="Data\level4\meshes\PLATAFORMA001.mesh"/>
-	<static_mesh name="PUNXES011" filename="Data\level4\meshes\PUNXES011.mesh"/>
-	<static_mesh name="PUNXES006" filename="Data\level4\meshes\PUNXES006.mesh"/>
-	<static_mesh name="PUNXES007" filename="Data\level4\meshes\PUNXES007.mesh"/>
-	<static_mesh name="COLUMNA" filename="Data\level4\meshes\COLUMNA.mesh"/>
-	<static_mesh name="PUNXES0123" filename="Data\level4\meshes\PUNXES0123.mesh"/>
-	<static_mesh name="PUNXES010" filename="Data\level4\meshes\PUNXES010.mesh"/>
 	<static_mesh name="Box043" filename="Data\level4\meshes\Box043.mesh"/>
 	<static_mesh name="Box0001" filename="Data\level4\meshes\Box0001.mesh"/>
 	<static_mesh name="Box002" filename="Data\level4\meshes\Box002.mesh"/>
@@ -241,7 +198,68 @@
 	<static_mesh name="ANTORCHA033" filename="Data\level4\meshes\ANTORCHA033.mesh"/>
 	<static_mesh name="obstacle" filename="Data\level4\meshes\obstacle.mesh"/>
 	<static_mesh name="obstacle023" filename="Data\level4\meshes\obstacle023.mesh"/>
-	<static_mesh name="PolyPlatform002" filename="Data\level4\meshes\PolyPlatform002.mesh"/>
+	<static_mesh name="PLATAFORMA_S6_01" filename="Data\level4\meshes\PLATAFORMA_S6_01.mesh"/>
+	<static_mesh name="Plataforma_Mov01" filename="Data\level4\meshes\Plataforma_Mov01.mesh"/>
+	<static_mesh name="PLATAFORMA_S6_03" filename="Data\level4\meshes\PLATAFORMA_S6_03.mesh"/>
+	<static_mesh name="Plataforma_Mov02" filename="Data\level4\meshes\Plataforma_Mov02.mesh"/>
+	<static_mesh name="PLATAFORMA_S6_02" filename="Data\level4\meshes\PLATAFORMA_S6_02.mesh"/>
+	<static_mesh name="Plataforma_Mov03" filename="Data\level4\meshes\Plataforma_Mov03.mesh"/>
+	<static_mesh name="Sala_06" filename="Data\level4\meshes\Sala_06.mesh"/>
+	<static_mesh name="PLATAFORMA_S6_06" filename="Data\level4\meshes\PLATAFORMA_S6_06.mesh"/>
+	<static_mesh name="PLATAFORMA_S6_05" filename="Data\level4\meshes\PLATAFORMA_S6_05.mesh"/>
+	<static_mesh name="Plataforma_Mov06" filename="Data\level4\meshes\Plataforma_Mov06.mesh"/>
+	<static_mesh name="Plataforma_Mov05" filename="Data\level4\meshes\Plataforma_Mov05.mesh"/>
+	<static_mesh name="Plataforma_Mov04" filename="Data\level4\meshes\Plataforma_Mov04.mesh"/>
+	<static_mesh name="PUNXES002" filename="Data\level4\meshes\PUNXES002.mesh"/>
+	<static_mesh name="POLY. PLAT. HORTZ003" filename="Data\level4\meshes\POLY. PLAT. HORTZ003.mesh"/>
+	<static_mesh name="SALA 5" filename="Data\level4\meshes\SALA 5.mesh"/>
+	<static_mesh name="FRANJA_SALA 5" filename="Data\level4\meshes\FRANJA_SALA 5.mesh"/>
+	<static_mesh name="FRANJA_SALA 5 INFERIOR" filename="Data\level4\meshes\FRANJA_SALA 5 INFERIOR.mesh"/>
+	<static_mesh name="FRANJA_SALA 5 INFERIOR001" filename="Data\level4\meshes\FRANJA_SALA 5 INFERIOR001.mesh"/>
+	<static_mesh name="FRANJA_SALA 5 INFERIOR002" filename="Data\level4\meshes\FRANJA_SALA 5 INFERIOR002.mesh"/>
+	<static_mesh name="Object002" filename="Data\level4\meshes\Object002.mesh"/>
+	<static_mesh name="obstacle024" filename="Data\level4\meshes\obstacle024.mesh"/>
+	<static_mesh name="PUNXES005" filename="Data\level4\meshes\PUNXES005.mesh"/>
+	<static_mesh name="SALA 7" filename="Data\level4\meshes\SALA 7.mesh"/>
+	<static_mesh name="OBSTACLE006" filename="Data\level4\meshes\OBSTACLE006.mesh"/>
+	<static_mesh name="OBSTACLE002" filename="Data\level4\meshes\OBSTACLE002.mesh"/>
+	<static_mesh name="OBSTACLE005" filename="Data\level4\meshes\OBSTACLE005.mesh"/>
+	<static_mesh name="OBSTACLE001" filename="Data\level4\meshes\OBSTACLE001.mesh"/>
+	<static_mesh name="PUNXES012" filename="Data\level4\meshes\PUNXES012.mesh"/>
+	<static_mesh name="PUNXES008" filename="Data\level4\meshes\PUNXES008.mesh"/>
+	<static_mesh name="OBSTACLE003" filename="Data\level4\meshes\OBSTACLE003.mesh"/>
+	<static_mesh name="PUNXES014" filename="Data\level4\meshes\PUNXES014.mesh"/>
+	<static_mesh name="PLAT POLY011" filename="Data\level4\meshes\PLAT POLY011.mesh"/>
+	<static_mesh name="PLAT POLY003" filename="Data\level4\meshes\PLAT POLY003.mesh"/>
+	<static_mesh name="PLAT POLY006" filename="Data\level4\meshes\PLAT POLY006.mesh"/>
+	<static_mesh name="PLAT POLY012" filename="Data\level4\meshes\PLAT POLY012.mesh"/>
+	<static_mesh name="PLATAFORMA007" filename="Data\level4\meshes\PLATAFORMA007.mesh"/>
+	<static_mesh name="PUNXES003" filename="Data\level4\meshes\PUNXES003.mesh"/>
+	<static_mesh name="PUNXES004" filename="Data\level4\meshes\PUNXES004.mesh"/>
+	<static_mesh name="PUNXES009" filename="Data\level4\meshes\PUNXES009.mesh"/>
+	<static_mesh name="PUNXES001" filename="Data\level4\meshes\PUNXES001.mesh"/>
+	<static_mesh name="PLATAFORMA008" filename="Data\level4\meshes\PLATAFORMA008.mesh"/>
+	<static_mesh name="PLAT POLY009" filename="Data\level4\meshes\PLAT POLY009.mesh"/>
+	<static_mesh name="PLATAFORMA009" filename="Data\level4\meshes\PLATAFORMA009.mesh"/>
+	<static_mesh name="PLAT POLY001" filename="Data\level4\meshes\PLAT POLY001.mesh"/>
+	<static_mesh name="PLATAFORMA001" filename="Data\level4\meshes\PLATAFORMA001.mesh"/>
+	<static_mesh name="PUNXES011" filename="Data\level4\meshes\PUNXES011.mesh"/>
+	<static_mesh name="PUNXES006" filename="Data\level4\meshes\PUNXES006.mesh"/>
+	<static_mesh name="PLAT POLY007" filename="Data\level4\meshes\PLAT POLY007.mesh"/>
+	<static_mesh name="PLAT POLY013" filename="Data\level4\meshes\PLAT POLY013.mesh"/>
+	<static_mesh name="PLAT POLY008" filename="Data\level4\meshes\PLAT POLY008.mesh"/>
+	<static_mesh name="PLAT POLY004" filename="Data\level4\meshes\PLAT POLY004.mesh"/>
+	<static_mesh name="PLAT POLY002" filename="Data\level4\meshes\PLAT POLY002.mesh"/>
+	<static_mesh name="PLAT POLY014" filename="Data\level4\meshes\PLAT POLY014.mesh"/>
+	<static_mesh name="PLAT POLY005" filename="Data\level4\meshes\PLAT POLY005.mesh"/>
+	<static_mesh name="PLAT POLY010" filename="Data\level4\meshes\PLAT POLY010.mesh"/>
+	<static_mesh name="PUNXES007" filename="Data\level4\meshes\PUNXES007.mesh"/>
+	<static_mesh name="COLUMNA" filename="Data\level4\meshes\COLUMNA.mesh"/>
+	<static_mesh name="PUNXES0123" filename="Data\level4\meshes\PUNXES0123.mesh"/>
+	<static_mesh name="PUNXES010" filename="Data\level4\meshes\PUNXES010.mesh"/>
+	<static_mesh name="Object010" filename="Data\level4\meshes\Object010.mesh"/>
+	<static_mesh name="Object011" filename="Data\level4\meshes\Object011.mesh"/>
+		<static_mesh name="PolyPlatform002" filename="Data\level4\meshes\PolyPlatform002.mesh"/>
 	<static_mesh name="Plataforma_Fragil" filename="Data\level4\meshes\Plataforma_Fragil.mesh"/>
 	<static_mesh name="POLY PLAT. HORTZ005" filename="Data\level4\meshes\POLY PLAT. HORTZ005.mesh"/>
 	<static_mesh name="POLY PLAT. HORTZ006" filename="Data\level4\meshes\POLY PLAT. HORTZ006.mesh"/>

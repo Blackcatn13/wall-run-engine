@@ -23,30 +23,62 @@
 	<Physx_mesh name="Pedra011" filename="Data\level4\meshes\Pedra011.phsx"/>
 	<Physx_mesh name="Pedra012" filename="Data\level4\meshes\Pedra012.phsx"/>
 	<Physx_mesh name="Pared_pedres_002" filename="Data\level4\meshes\Pared_pedres_002.phsx"/>
-	<Physx_mesh name="OBSTACLE004" filename="Data\level4\meshes\OBSTACLE004.phsx"/>
-	<Physx_mesh name="OBSTACLE008" filename="Data\level4\meshes\OBSTACLE008.phsx"/>
-	<Physx_mesh name="OBSTACLE007" filename="Data\level4\meshes\OBSTACLE007.phsx"/>
+	<Physx_mesh name="SALA 8" filename="Data\level4\meshes\SALA 8.phsx"/>
+	<Physx_mesh name="Object001" filename="Data\level4\meshes\Object001.phsx"/>
+	<Physx_mesh name="obstacle" filename="Data\level4\meshes\obstacle.phsx"/>
+	<Physx_mesh name="obstacle023" filename="Data\level4\meshes\obstacle023.phsx"/>
+	<Physx_mesh name="PLATAFORMA_S6_01" filename="Data\level4\meshes\PLATAFORMA_S6_01.phsx"/>
+	<Physx_mesh name="Plataforma_Mov01" filename="Data\level4\meshes\Plataforma_Mov01.phsx"/>
+	<Physx_mesh name="PLATAFORMA_S6_03" filename="Data\level4\meshes\PLATAFORMA_S6_03.phsx"/>
+	<Physx_mesh name="Plataforma_Mov02" filename="Data\level4\meshes\Plataforma_Mov02.phsx"/>
+	<Physx_mesh name="PLATAFORMA_S6_02" filename="Data\level4\meshes\PLATAFORMA_S6_02.phsx"/>
+	<Physx_mesh name="Plataforma_Mov03" filename="Data\level4\meshes\Plataforma_Mov03.phsx"/>
+	<Physx_mesh name="Sala_06" filename="Data\level4\meshes\Sala_06.phsx"/>
+	<Physx_mesh name="PLATAFORMA_S6_06" filename="Data\level4\meshes\PLATAFORMA_S6_06.phsx"/>
+	<Physx_mesh name="PLATAFORMA_S6_05" filename="Data\level4\meshes\PLATAFORMA_S6_05.phsx"/>
+	<Physx_mesh name="Plataforma_Mov06" filename="Data\level4\meshes\Plataforma_Mov06.phsx"/>
+	<Physx_mesh name="Plataforma_Mov05" filename="Data\level4\meshes\Plataforma_Mov05.phsx"/>
+	<Physx_mesh name="Plataforma_Mov04" filename="Data\level4\meshes\Plataforma_Mov04.phsx"/>
+	<Physx_mesh name="POLY. PLAT. HORTZ003" filename="Data\level4\meshes\POLY. PLAT. HORTZ003.phsx"/>
 	<Physx_mesh name="SALA 5" filename="Data\level4\meshes\SALA 5.phsx"/>
-	<Physx_mesh name="PLATAFORMA003" filename="Data\level4\meshes\PLATAFORMA003.phsx"/>
-	<Physx_mesh name="PLATAFORMA005" filename="Data\level4\meshes\PLATAFORMA005.phsx"/>
-	<Physx_mesh name="PLATAFORMA010" filename="Data\level4\meshes\PLATAFORMA010.phsx"/>
-	<Physx_mesh name="PLATAFORMA006" filename="Data\level4\meshes\PLATAFORMA006.phsx"/>
-	<Physx_mesh name="PLATAFORMA004" filename="Data\level4\meshes\PLATAFORMA004.phsx"/>
-	<Physx_mesh name="PLATAFORMA002" filename="Data\level4\meshes\PLATAFORMA002.phsx"/>
-	<Physx_mesh name="SALA 6" filename="Data\level4\meshes\SALA 6.phsx"/>
+	<Physx_mesh name="FRANJA_SALA 5" filename="Data\level4\meshes\FRANJA_SALA 5.phsx"/>
+	<Physx_mesh name="FRANJA_SALA 5 INFERIOR" filename="Data\level4\meshes\FRANJA_SALA 5 INFERIOR.phsx"/>
+	<Physx_mesh name="FRANJA_SALA 5 INFERIOR001" filename="Data\level4\meshes\FRANJA_SALA 5 INFERIOR001.phsx"/>
+	<Physx_mesh name="FRANJA_SALA 5 INFERIOR002" filename="Data\level4\meshes\FRANJA_SALA 5 INFERIOR002.phsx"/>
+	<Physx_mesh name="Object001" filename="Data\level4\meshes\Object001.phsx"/>
+	<Physx_mesh name="Object002" filename="Data\level4\meshes\Object002.phsx"/>
+	<Physx_mesh name="CARALLENGUA001" filename="Data\level4\meshes\CARALLENGUA001.phsx"/>
+	<Physx_mesh name="obstacle023" filename="Data\level4\meshes\obstacle023.phsx"/>
+	<Physx_mesh name="obstacle024" filename="Data\level4\meshes\obstacle024.phsx"/>
 	<Physx_mesh name="SALA 7" filename="Data\level4\meshes\SALA 7.phsx"/>
 	<Physx_mesh name="OBSTACLE006" filename="Data\level4\meshes\OBSTACLE006.phsx"/>
 	<Physx_mesh name="OBSTACLE002" filename="Data\level4\meshes\OBSTACLE002.phsx"/>
 	<Physx_mesh name="OBSTACLE005" filename="Data\level4\meshes\OBSTACLE005.phsx"/>
 	<Physx_mesh name="OBSTACLE001" filename="Data\level4\meshes\OBSTACLE001.phsx"/>
 	<Physx_mesh name="OBSTACLE003" filename="Data\level4\meshes\OBSTACLE003.phsx"/>
+	<Physx_mesh name="PLAT POLY011" filename="Data\level4\meshes\PLAT POLY011.phsx"/>
+	<Physx_mesh name="PLAT POLY003" filename="Data\level4\meshes\PLAT POLY003.phsx"/>
+	<Physx_mesh name="PLAT POLY006" filename="Data\level4\meshes\PLAT POLY006.phsx"/>
+	<Physx_mesh name="PLAT POLY012" filename="Data\level4\meshes\PLAT POLY012.phsx"/>
 	<Physx_mesh name="PLATAFORMA007" filename="Data\level4\meshes\PLATAFORMA007.phsx"/>
 	<Physx_mesh name="PLATAFORMA008" filename="Data\level4\meshes\PLATAFORMA008.phsx"/>
+	<Physx_mesh name="PLAT POLY009" filename="Data\level4\meshes\PLAT POLY009.phsx"/>
 	<Physx_mesh name="PLATAFORMA009" filename="Data\level4\meshes\PLATAFORMA009.phsx"/>
+	<Physx_mesh name="PLAT POLY001" filename="Data\level4\meshes\PLAT POLY001.phsx"/>
 	<Physx_mesh name="PLATAFORMA001" filename="Data\level4\meshes\PLATAFORMA001.phsx"/>
+	<Physx_mesh name="PUNXES011" filename="Data\level4\meshes\PUNXES011.phsx"/>
+	<Physx_mesh name="PUNXES006" filename="Data\level4\meshes\PUNXES006.phsx"/>
+	<Physx_mesh name="PLAT POLY007" filename="Data\level4\meshes\PLAT POLY007.phsx"/>
+	<Physx_mesh name="PLAT POLY013" filename="Data\level4\meshes\PLAT POLY013.phsx"/>
+	<Physx_mesh name="PLAT POLY008" filename="Data\level4\meshes\PLAT POLY008.phsx"/>
+	<Physx_mesh name="PLAT POLY004" filename="Data\level4\meshes\PLAT POLY004.phsx"/>
+	<Physx_mesh name="PLAT POLY002" filename="Data\level4\meshes\PLAT POLY002.phsx"/>
+	<Physx_mesh name="PLAT POLY014" filename="Data\level4\meshes\PLAT POLY014.phsx"/>
+	<Physx_mesh name="PLAT POLY005" filename="Data\level4\meshes\PLAT POLY005.phsx"/>
+	<Physx_mesh name="PLAT POLY010" filename="Data\level4\meshes\PLAT POLY010.phsx"/>
 	<Physx_mesh name="COLUMNA" filename="Data\level4\meshes\COLUMNA.phsx"/>
-	<Physx_mesh name="SALA 8" filename="Data\level4\meshes\SALA 8.phsx"/>
-	<Physx_mesh name="Object001" filename="Data\level4\meshes\Object001.phsx"/>
-	<Physx_mesh name="obstacle" filename="Data\level4\meshes\obstacle.phsx"/>
-	<Physx_mesh name="obstacle023" filename="Data\level4\meshes\obstacle023.phsx"/>
+	<Physx_mesh name="PUNXES0123" filename="Data\level4\meshes\PUNXES0123.phsx"/>
+	<Physx_mesh name="PUNXES010" filename="Data\level4\meshes\PUNXES010.phsx"/>
+	<Physx_mesh name="Object010" filename="Data\level4\meshes\Object010.phsx"/>
+	<Physx_mesh name="Object011" filename="Data\level4\meshes\Object011.phsx"/>
 </Physx_meshes>
