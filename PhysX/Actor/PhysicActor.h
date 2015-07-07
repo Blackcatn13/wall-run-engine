@@ -67,6 +67,7 @@ class CPhysicActor {
   void				AddMeshShape				( NxTriangleMesh *mesh, const Vect3f &_vGlobalPos = v3fZERO, const Vect3f &_vLocalPos = v3fZERO, NxCCDSkeleton *_pSkeleton = 0, uint32 _uiGroup = 0);
   void				AddPlaneShape				( const Vect3f &_vNormal, float _Distance, uint32 _uiGroup = 0);
   void        AddMeshMap          (const std::map<std::string, NxTriangleMesh *> map, const Vect3f &_vGlobalPos = v3fZERO, uint32 _uiGroup = 0);
+  void        AddMeshFromMap          (const std::map<std::string, NxTriangleMesh *> map, std::string name,  const Vect3f &_vGlobalPos = v3fZERO, uint32 _uiGroup = 0);
 
   //---Activate---
   void				Activate					( bool _bActivate );

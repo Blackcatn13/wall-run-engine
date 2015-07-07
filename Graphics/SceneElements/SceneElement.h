@@ -23,10 +23,11 @@ class CSceneElement : public CMeshInstance {
   Vect3f m_PhysicsSize;
   std::string m_Room;
   bool m_HasRigidBody;
+  bool m_HasPhisicMesh;
 
  public:
-  CSceneElement(std::string switchName, std::string coreName, bool hasRigidBody = false);
-  CSceneElement(const CXMLTreeNode &node, bool hasRigidBody = false);
+  CSceneElement(std::string switchName, std::string coreName, bool hasRigidBody = false, bool hasPhisicMesh = false);
+  CSceneElement(const CXMLTreeNode &node, bool hasRigidBody = false, bool hasPhisicMesh = false);
   virtual ~CSceneElement ();
   void InsertPhisic(Vect3f localPosition);
   std::string SetUserDataName(std::string name);

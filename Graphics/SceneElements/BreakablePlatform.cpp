@@ -48,7 +48,8 @@ void CBreakablePlatform::DisablePlatform(float dt/*, Vect3f direction*/) {
 }
 
 void CBreakablePlatform::EnablePlatform() {
-  if (m_Broken) {
+  if (m_Broken && m_Actor != NULL) {
+
     m_ActorAux->Activate(true);
 // m_ActorAux->SetGlobalPosition(Vect3f(m_ActorOriginalPosition.x, m_ActorOriginalPosition.y - m_PhysicsSize.y, m_ActorOriginalPosition.z));
     m_Actor->SetGlobalPosition(m_ActorOriginalPosition);
@@ -57,6 +58,7 @@ void CBreakablePlatform::EnablePlatform() {
     //TRIGGM->GetResource(m_TriggerName)->setUpdate(false);
     TRIGGM->GetResource(m_TriggerName)->Activate(true);
     m_Broken = false;
+
     //Vect3f l_CurrentPosition = Vect3f (CCORE->GetPlayerController()->GetPosition());
     //CCORE->GetPlayerController()->getPhysicController()->Move(direction, dt);
   }

@@ -9,23 +9,26 @@
 #include "Utils\Defines.h"
 #include "XML\XMLTreeNode.h"
 
+#include "Cooking Mesh\PhysicCookingMesh.h"
+
 std::string CSceneElement::SetUserDataName(std::string name) {
   std::stringstream ss;
   ss << name << "_UserData";
   return ss.str();
 }
 
-CSceneElement::CSceneElement(std::string switchName, std::string coreName, bool hasRigidBody)
+CSceneElement::CSceneElement(std::string switchName, std::string coreName, bool hasRigidBody, bool hasPhisicMesh)
   : CMeshInstance(switchName, coreName)
   , m_Actor(NULL)
   , m_UserData(NULL),
     m_UserDataAux(NULL),
     m_ActorAux(NULL),
     m_Room("0"),
-    m_HasRigidBody(hasRigidBody) {
+    m_HasRigidBody(hasRigidBody),
+    m_HasPhisicMesh(hasPhisicMesh) {
 }
 
-CSceneElement::CSceneElement(const CXMLTreeNode &node, bool hasRigidBody)
+CSceneElement::CSceneElement(const CXMLTreeNode &node, bool hasRigidBody, bool hasPhisicMesh)
   : CMeshInstance(node),
     m_Actor(NULL),
     m_ActorAux(NULL),
@@ -33,7 +36,8 @@ CSceneElement::CSceneElement(const CXMLTreeNode &node, bool hasRigidBody)
     m_UserDataAux(NULL),
     m_Room(node.GetPszISOProperty("room", "0")),
     m_PhysicsSize(node.GetVect3fProperty("phisic_size", v3fZERO)),
-    m_HasRigidBody(hasRigidBody) {
+    m_HasRigidBody(hasRigidBody),
+    m_HasPhisicMesh(hasPhisicMesh) {
 }
 
 CSceneElement::~CSceneElement () {
@@ -59,7 +63,10 @@ void CSceneElement::InsertPhisic(Vect3f localPosition) {
   m_UserData = new CPhysicUserData(SetUserDataName(m_Name));
   m_UserData->SetPaint(false);
   m_Actor = new CPhysicActor(m_UserData);
-  m_Actor->AddBoxSphape(m_PhysicsSize, m_Position, localPosition);
+  if (m_HasPhisicMesh)
+    m_Actor->AddMeshFromMap( PHYSXM->GetSceneCookingMesh()->GetPhysicMeshMap(), m_Name);
+  else
+    m_Actor->AddBoxSphape(m_PhysicsSize, m_Position, localPosition);
   if (m_HasRigidBody) {
     std::stringstream name;
     name << m_Name << "_Aux";
@@ -67,7 +74,11 @@ void CSceneElement::InsertPhisic(Vect3f localPosition) {
     m_UserDataAux = new CPhysicUserData(SetUserDataName(nameAux));
     m_UserDataAux->SetPaint(false);
     m_ActorAux = new CPhysicActor(m_UserDataAux);
-    m_ActorAux->AddBoxSphape(m_PhysicsSize, Vect3f(m_Position.x, m_Position.y - m_PhysicsSize.y, m_Position.z), localPosition);
+    if (m_HasPhisicMesh) {
+      Vect3f newSize = Vect3f(m_PhysicsSize.x - 1, m_PhysicsSize.y - 1, m_PhysicsSize.z - 1);
+      m_ActorAux->AddBoxSphape(newSize, Vect3f(m_Position.x, m_Position.y - m_PhysicsSize.y, m_Position.z), localPosition);
+    } else
+      m_ActorAux->AddBoxSphape(m_PhysicsSize, Vect3f(m_Position.x, m_Position.y - m_PhysicsSize.y, m_Position.z), localPosition);
     PHYSXM->AddPhysicActor(m_ActorAux);
     m_Actor->CreateBody(0.5);
   }

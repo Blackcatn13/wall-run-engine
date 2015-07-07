@@ -129,6 +129,10 @@ class CPhysicsManager {
   CPhysicCookingMesh		*GetCookingMesh					() const {
     return m_pCookingMesh;
   }
+  CPhysicCookingMesh		*GetSceneCookingMesh					() const {
+    return m_pSceneCookingMesh;
+  }
+
   NxPhysicsSDK			*GetPhysicsSDK					() {
     return m_pPhysicsSDK;
   }
@@ -216,6 +220,7 @@ class CPhysicsManager {
   NxControllerManager	*m_pControllerManager;
   CPhysicUserAllocator	*m_pMyAllocator;
   CPhysicCookingMesh		*m_pCookingMesh;
+  CPhysicCookingMesh		*m_pSceneCookingMesh;
   SPhysicsInitParams		m_InitParams;
   //-------------------------------------------
 

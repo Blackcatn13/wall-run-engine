@@ -250,6 +250,18 @@ void CPhysicActor::AddMeshMap (const std::map<std::string, NxTriangleMesh *> map
   }
 }
 
+void CPhysicActor::AddMeshFromMap (const std::map<std::string, NxTriangleMesh *> map, std::string name, const Vect3f &_vGlobalPos, uint32 _uiGroup) {
+  auto it = map.find(name);
+  if (it != map.end() ) {
+    NxTriangleMeshShapeDesc *triangleMeshDesc = new NxTriangleMeshShapeDesc();
+    triangleMeshDesc->group = _uiGroup;
+    m_vMeshDesc.push_back(triangleMeshDesc);
+    triangleMeshDesc->meshData = it->second;
+    m_pPhXActorDesc->globalPose.t = NxVec3 ( _vGlobalPos.x, _vGlobalPos.y, _vGlobalPos.z );
+    m_pPhXActorDesc->shapes.pushBack( triangleMeshDesc );
+  }
+}
+
 void CPhysicActor::AddPlaneShape ( const Vect3f &_vNormal, float distance, uint32 _uiGroup ) {
   assert(m_pPhXActorDesc);
   // Add a plane shape to the actor descriptor

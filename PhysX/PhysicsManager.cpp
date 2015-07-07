@@ -49,6 +49,7 @@ CPhysicsManager::CPhysicsManager( void )
   , m_pControllerManager	( NULL )
   , m_pMyAllocator		( NULL )
   , m_pCookingMesh		( NULL )
+  , m_pSceneCookingMesh( NULL )
   , m_InitParams			( )
   , m_bfrustum (false)
   , m_bFront (false)
@@ -120,10 +121,17 @@ bool CPhysicsManager::Init ( void ) {
         if ( m_bIsOk ) {
           LOGGER->AddNewLog ( ELL_INFORMATION, "PhysicsManager::Init-> Creado el controlador de caracteres" );
           m_pCookingMesh = new CPhysicCookingMesh();
+          m_pSceneCookingMesh = new CPhysicCookingMesh();
           assert ( m_pCookingMesh );
+
           m_bIsOk = m_pCookingMesh->Init ( m_pPhysicsSDK, m_pMyAllocator );
           if ( m_bIsOk ) {
             LOGGER->AddNewLog ( ELL_INFORMATION, "PhysicsManager::Init-> Creado el CookingMesh" );
+          }
+          assert ( m_pSceneCookingMesh );
+          m_bIsOk = m_pSceneCookingMesh->Init ( m_pPhysicsSDK, m_pMyAllocator );
+          if ( m_bIsOk ) {
+            LOGGER->AddNewLog ( ELL_INFORMATION, "PhysicsManager::Init-> Creado el CookingMesh de elementos de escena" );
           }
         }// isOk m_pControllerManager?
       }//isOk m_pScene?
@@ -169,6 +177,8 @@ void CPhysicsManager::Done () {
 void CPhysicsManager::Release ( void ) {
   ReleaseAllActors();
   CHECKED_DELETE ( m_pCookingMesh );
+  if (m_pSceneCookingMesh != NULL)
+    CHECKED_DELETE ( m_pSceneCookingMesh );
   if ( m_pControllerManager != NULL ) {
     m_pControllerManager->purgeControllers();
     NxReleaseControllerManager ( m_pControllerManager );

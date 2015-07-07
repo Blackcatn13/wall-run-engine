@@ -208,14 +208,16 @@ void CEngine::ParseConfFile(std::string file) {
             m_Conf_info.FSMPath = nodeChild.GetPszISOProperty("FsmXML", "", false);
           } else if (name == "Billboard") {
             m_Conf_info.BillboardPath = nodeChild.GetPszISOProperty("billboardXML", "");
+          } else if (name == "SceneElementsPhisicsFile") {
+            m_Conf_info.ScenePhisics = nodeChild.GetPszISOProperty("PhisicsFile", "", false);
           }
         }
       }
+      //<ScreenResolution width="800" height="600"/>
+      //  <!--ScreenResolution width="1280" height="1024"/-->
+      //  <WindowsPosition posX="100" posY="100"/>
+      //  <Rendermode fullscreenMode="false"/>
+      //  <!--Rendermode fullscreenMode="true"/-->
     }
-    //<ScreenResolution width="800" height="600"/>
-    //  <!--ScreenResolution width="1280" height="1024"/-->
-    //  <WindowsPosition posX="100" posY="100"/>
-    //  <Rendermode fullscreenMode="false"/>
-    //  <!--Rendermode fullscreenMode="true"/-->
   }
 }

@@ -39,6 +39,7 @@ typedef struct Conf_info {
   std::string                 ParticlesPath;
   std::string                 FSMPath;
   std::string                 BillboardPath;
+  std::string                 ScenePhisics ;
 } CONFIG_INFO;
 
 

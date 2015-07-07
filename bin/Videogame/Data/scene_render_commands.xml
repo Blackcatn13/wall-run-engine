@@ -40,6 +40,7 @@
 		<render_scene layer="puzzle" active="true" />
 		<render_scene layer="mov_platforms" active="true" />
 		<render_scene layer="poly" active="true" />
+		<render_scene layer="breakable" active="true"/>
 		<render_scene layer="solid" active="true"/>
 		<render_scene layer="player" active="true"/>
 		<render_scene layer="enabled_poly" active="true" />
