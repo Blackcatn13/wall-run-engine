@@ -1,4 +1,3 @@
---local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 local is_init=true;
 local topPosition = -1000;
 local inLoop = false;
@@ -7,6 +6,8 @@ local _fallPosition = Vect3f(-10000, -10000, -10000);
 local timer = 0.0
 local player_moving = false
 local move_3D = true
+
+
 --////////////////////////////////////////////////////////
 -- GLOBAL PARAMETERS
 --////////////////////////////////////////////////////////
@@ -39,13 +40,9 @@ local AirTime = 0.7;									-- Time into the air, playing air loop
 local m_damageTime = 0.3;
 --////////////////////////////////////////////////////////
 
---coreInstance:get_player_controller().m_mesh = coreInstance:get_renderable_object_layer_manager():get_default_renderable_object_manager():get_resource("SpongePicky");
---coreInstance:get_player_controller().m_mesh:set_yaw(coreInstance:get_player_controller():get_yaw());
+
 function on_update_player_lua(l_ElapsedTime)
 
-	--[[local luaUtil = CCMathLuaUtils();
-	local act2in = coreInstance:get_action_to_input();
-	local cam_Controller = coreInstance.m_CameraController;--]]
 	local active_camera = cam_Controller:get_active_camera();
 	local currentWP = nil
 	local nextWP = nil
@@ -54,15 +51,12 @@ function on_update_player_lua(l_ElapsedTime)
 		nextWP = active_camera:get_path_point(active_camera.m_nextWaypoint)
 	end
 	local camObject = active_camera.m_pObject3D;
-	--local player_controller = coreInstance:get_player_controller();
-	--local lightM = coreInstance:get_light_manager();
 	local directionalLight = lightM:get_resource("ShadowLight");
 	local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("player"):get_resource("Piky");
 	
 	if gui_manager:get_is_displayed_console() == false and gui_manager.m_sCurrentWindows == "Play.xml" then
 	
 		if act2in:do_action_from_lua("PauseGame") then
-			--gui_manager:push_windows('Main.xml')
 			gui_manager:activate_pause(true);
 			gui_manager:set_is_paused(true);
 		end
@@ -91,7 +85,6 @@ function on_update_player_lua(l_ElapsedTime)
 		local offsetx = lightDirection.x*altura;
 		local offsetz = lightDirection.z*altura;
 		directionalLight:set_position(Vect3f(player_controller:get_position().x-offsetx,player_controller:get_position().y+altura,player_controller:get_position().z-offsetz));
-		--directionalLight:set_position(Vect3f(player_controller:get_position().x,player_controller:get_position().y+altura,player_controller:get_position().z));
 		local dir3D = active_camera:get_direction();
 		local dirYaw = camObject:get_yaw();
 		local dirNor = Vect3f(math.cos(dirYaw + (math.pi/2)), 0, (math.sin(dirYaw + (math.pi/2))));
@@ -111,10 +104,7 @@ function on_update_player_lua(l_ElapsedTime)
 				m_damageFeedBackSpeed = 0.2
 			end
 			timer = timer + l_ElapsedTime
-			mov = player.vector_damage * m_damageFeedBackSpeed * l_ElapsedTime
-			--coreInstance:trace("Time "..tostring(timer))
-			--if timer > m_damageTime then
-			
+			mov = player.vector_damage * m_damageFeedBackSpeed * l_ElapsedTime			
 		end
 		
 		
@@ -181,7 +171,6 @@ function on_update_player_lua(l_ElapsedTime)
 					player_controller:set_yaw(PlayerYaw);
 					mov = mov - dirNor * player_controller.m_Speed * l_ElapsedTime;
 					player_controller.m_Direction3D = Vect3f(0,0,0) - dirNor;
-					--move_3D = false
 					if player_controller.m_isJumping == true then
 						mov = mov * 0.75;
 					end
@@ -278,7 +267,6 @@ function on_update_player_lua(l_ElapsedTime)
 				player_controller.m_isTurned = true;
 			
 			else
-				--player_controller:set_yaw(PlayerYaw);
 				player_controller.m_JumpType = 0;
 			end
 		end
@@ -300,26 +288,13 @@ function on_update_player_lua(l_ElapsedTime)
 		-- Cuando el Player está saltando, su velocidad dependerá del tipo de salto realizado. 
 		--///////////////////////////////////////////////////////////
 		if _land then
-			--local info = SCollisionInfo();
-			--local _dirRay = Vect3f(0,-1,0);
-			--coreInstance:get_phisics_manager():raycast_closest_actor(player_controller:get_position() - 0.4, _dirRay, 1, info, 1000);
-			--_fallPosition = info.m_CollisionPoint;
-			--local fallPos = player_controller:get_position();
-			--local distance = (fallPos.x - _fallPosition.x) * (fallPos.x - _fallPosition.x) + (fallPos.y - _fallPosition.y) * (fallPos.y - _fallPosition.y) + (fallPos.z - _fallPosition.z) * (fallPos.z - _fallPosition.z);
-			--coreInstance:trace(tostring(distance))
-			--if distance <= 1.8 then
 			if player_controller.m_isGrounded then
 				_land = false;
 				playerRenderable:clear_cycle(4,0);
 			end
 		end
 		if (player_controller.m_isJumping == true) or (player_controller.m_isFalling) then
-				jumpTime = jumpTime + l_ElapsedTime;
-			--if player_controller.m_CurrentJumpForce < 0 then
-				--player_controller.m_CurrentJumpForce = player_controller.m_CurrentJumpForce - (player_controller.m_Gravity * l_ElapsedTime);
-			--else
-				--player_controller.m_CurrentJumpForce = player_controller.m_CurrentJumpForce - (player_controller.m_GravityJump * l_ElapsedTime);
-			--end
+			jumpTime = jumpTime + l_ElapsedTime;
 
 			if player_controller.m_isJumping then
 				mov.y = playerRenderable:getBoneMovement().y;
@@ -337,14 +312,9 @@ function on_update_player_lua(l_ElapsedTime)
 				inLoop = false;
 				topPosition = -1000;
 				_land = true;
-				--local info = SCollisionInfo();
-				--local _dirRay = Vect3f(0,-1,0);
-				--coreInstance:get_phisics_manager():raycast_closest_actor(player_controller:get_position() - 0.4, _dirRay, 1, info, 1000);
 				playerRenderable:clear_cycle(3,0.5);
 				playerRenderable:updateSkeleton(l_ElapsedTime);
-				--playerRenderable:execute_action(4,0,0.3,1,false);
 				playerRenderable:blend_cycle(4,1,0.3);
-				--_fallPosition = info.m_CollisionPoint;
 			else
 				if player_controller.m_isFalling then
 					local positionOld = playerRenderable:get_position();
@@ -365,43 +335,29 @@ function on_update_player_lua(l_ElapsedTime)
 			if player_controller.m_isJumpingMoving == true then
 				if player_controller.m_is3D == false then
 					if player_controller.m_isTurned == false then
-						--mov = mov - dirNor * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
 						mov = mov - dirNor * player_controller.m_JumpSpeed * l_ElapsedTime;
 					else
-						--mov = mov + dirNor * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
 						mov = mov + dirNor * player_controller.m_JumpSpeed * l_ElapsedTime;
 					end
 				else
 					if player_controller.m_JumpType == 1 then --Forward
-						--mov = mov + dir3D * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
 						mov = mov + dir3D * player_controller.m_JumpSpeed * l_ElapsedTime;
 					elseif player_controller.m_JumpType == 2 then --Right
-						--mov = mov - dirNor * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
 						mov = mov - dirNor * player_controller.m_JumpSpeed * l_ElapsedTime;
 					elseif player_controller.m_JumpType == 3 then --Back
-						--mov = mov - dir3D * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
 						mov = mov - dir3D * player_controller.m_JumpSpeed * l_ElapsedTime;
 					elseif player_controller.m_JumpType == 4 then --Left
-						--mov = mov + dirNor * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
 						mov = mov + dirNor * player_controller.m_JumpSpeed * l_ElapsedTime;
 					elseif player_controller.m_JumpType == 5 then --Forward-Right
-						--mov = mov + dir3D * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
-						--mov = mov - dirNor * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
 						mov = mov + dir3D * player_controller.m_JumpSpeed * l_ElapsedTime;
 						mov = mov - dirNor * player_controller.m_JumpSpeed * l_ElapsedTime;
 					elseif player_controller.m_JumpType == 6 then --Back-Right
-						--mov = mov - dir3D * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
-						--mov = mov - dirNor * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
 						mov = mov - dir3D * player_controller.m_JumpSpeed * l_ElapsedTime;
 						mov = mov - dirNor * player_controller.m_JumpSpeed * l_ElapsedTime;
 					elseif player_controller.m_JumpType == 7 then --Back-Left
-						--mov = mov - dir3D * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
-						--mov = mov + dirNor * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
 						mov = mov - dir3D * player_controller.m_JumpSpeed * l_ElapsedTime;
 						mov = mov + dirNor * player_controller.m_JumpSpeed * l_ElapsedTime;
 					elseif player_controller.m_JumpType == 8 then --Forward-Left
-						--mov = mov + dir3D * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
-						--mov = mov + dirNor * player_controller.m_JumpForce*1.5 * l_ElapsedTime;
 						mov = mov + dir3D * player_controller.m_JumpSpeed * l_ElapsedTime;
 						mov = mov + dirNor * player_controller.m_JumpSpeed * l_ElapsedTime;
 					end
@@ -416,7 +372,6 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		
 		if player_controller.m_isAttack == true then
-			--coreInstance:trace("ATACANDOOO");
 			if false then
 				player_controller.m_isAttack = false;
 			else
@@ -429,8 +384,6 @@ function on_update_player_lua(l_ElapsedTime)
 					end
 					mov.y = prev_y;
 					m_AttackGravity = m_AttackGravity + AtackGravityModifier * l_ElapsedTime;
-					--l_ElapsedTime = l_ElapsedTime / AtackGravityModifier;
-					--AtackGravityModifier = AtackGravityModifier * 2;
 				else
 					local mesh = playerRenderable;
 					mesh:set_position(player_controller:get_position());
@@ -443,9 +396,6 @@ function on_update_player_lua(l_ElapsedTime)
 		-- Acción de saltar del Player. Puede realizar 2 saltos distintos (de longitud, y salto vertical). 
 		--///////////////////////////////////////////////////////////
 		if (act2in:do_action_from_lua("Jump")) and (player_controller.m_isJumping == false and _land == false and player_controller.m_isAttack == false and player.is_hit == false and player_controller.m_isGrounded) then
-			--coreInstance:trace(tostring(player_controller.m_isJumping));
-			--coreInstance:trace(tostring(_land));
-			--coreInstance:getWWSoundManager():PlayEvent("Jump", "Piky");
 			player_controller.m_JumpingTime = 0;
 			playerRenderable:clear_cycle(0,0.2);
 			playerRenderable:clear_cycle(1,0.2);
@@ -453,7 +403,6 @@ function on_update_player_lua(l_ElapsedTime)
 			playerRenderable:execute_action(2,0.1,0,1,true);
 			playerRenderable:updateSkeleton(l_ElapsedTime);
 			player_controller.m_isJumping = true;
-			--player_controller.m_CurrentJumpForce = player_controller.m_JumpForce;
 			if player_controller.m_is3D == false then
 				if act2in:do_action_from_lua("MoveRigth") then
 					player_controller.m_isJumpingMoving = true;
@@ -521,7 +470,6 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		
 		player_controller:set_position(player_controller.m_PhysicController:get_position());
-		--coreInstance:getWWSoundManager():SetListenerPosition(player_controller.m_PhysicController:get_position(), Vect3f(1,0,0), Vect3f(0,1,0));
 		move_character_controller_mesh(player_controller, player_controller:get_position(), player_controller.m_isJumping);
 		if not player_controller.m_isJumping and not _land then
 			if mov.x == 0 and mov.z == 0 then
@@ -575,8 +523,6 @@ function move_character_controller_mesh(_player, _position, _jumping)
 end
 
 function get_attack_direction(_directionplayer, _positionplayer)
-	--local result = Vect3f(-1.0,0,0)
-	--local result = Vect3f(_directionplayer.x, _directionplayer.y, _directionplayer.z)
 	local result = coreInstance:get_enemy_manager():get_direction_enemy(_directionplayer, _positionplayer, 20.0, 0.5)
 	return result
 end
