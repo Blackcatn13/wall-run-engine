@@ -85,6 +85,8 @@ void CBillboard::Render(CGraphicsManager *GM) {
   m_RV->Render(GM, l_EffectTechnique);
   t = m44fIDENTITY;
   GM->SetTransform(t);
+  for (size_t i = 0; i < m_Textures.size(); ++i)
+    m_Textures[i]->Deactivate(i);
 }
 
 

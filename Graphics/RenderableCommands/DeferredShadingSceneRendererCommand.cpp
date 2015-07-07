@@ -50,19 +50,17 @@ void CDeferredShadingSceneRendererCommand::Execute(CGraphicsManager &RM) {
   CEffectTechnique *l_EffectTechnique = m_RenderableObjectTechnique->GetEffectTechnique();
   while (it != LIGHTM->GetResources().end()) {
     if (m_RenderableObjectTechnique->GetEffectTechnique() != NULL && m_RenderableObjectTechnique->GetEffectTechnique()->GetEffect() != NULL) {
-      if (RM.isSphereVisible(it->second->GetPosition(), it->second->GetEndRangeAttenuation())) {
-		DWORD opblend;
-		if(it->second->GetGenerateDynamicShadowMap())
-		{
-			GRAPHM->GetDevice()->GetRenderState(D3DRS_BLENDOP, &opblend);
-			GRAPHM->GetDevice()->SetRenderState(D3DRS_BLENDOP, 3); // 2 - substract, 3 - revsubstract
-		}
+      if (RM.isSphereVisible(it->second->GetPosition(), it->second->GetEndRangeAttenuation()) && it->second->IsEnabled()) {
+        DWORD opblend;
+        if (it->second->GetGenerateDynamicShadowMap()) {
+          GRAPHM->GetDevice()->GetRenderState(D3DRS_BLENDOP, &opblend);
+          GRAPHM->GetDevice()->SetRenderState(D3DRS_BLENDOP, 3); // 2 - substract, 3 - revsubstract
+        }
         m_RenderableObjectTechnique->GetEffectTechnique()->GetEffect()->ChangeLight(it->second);
         DrawColoredQuad2DTexturedInPixelsByEffectTechnique(&RM, l_EffectTechnique, rect, m_Color, m_StageTextures[0].m_Texture);
-		if(it->second->GetGenerateDynamicShadowMap())
-		{
-			GRAPHM->GetDevice()->SetRenderState(D3DRS_BLENDOP, opblend);
-		}
+        if (it->second->GetGenerateDynamicShadowMap()) {
+          GRAPHM->GetDevice()->SetRenderState(D3DRS_BLENDOP, opblend);
+        }
       }
     }
     ++it;
