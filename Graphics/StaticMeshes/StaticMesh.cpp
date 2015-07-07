@@ -319,6 +319,8 @@ void CStaticMesh::Render (CGraphicsManager *RM) {
     if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_DIFFUSE) == VERTEX_TYPE_DIFFUSE)
         RM->GetDevice()->SetTexture(0, 0);*/
     m_RVs[i]->Render(RM, l_EffectTechnique);
+    for (size_t j = 0; j < m_Textures[i].size(); ++j)
+      m_Textures[i][j]->Deactivate(j);
   }
 
 }

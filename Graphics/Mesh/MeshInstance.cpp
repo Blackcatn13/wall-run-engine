@@ -19,19 +19,29 @@ CMeshInstance::CMeshInstance(const CXMLTreeNode &Node) :
   m_CoreName(Node.GetPszISOProperty("core", "")) {
   m_StaticMesh = SMESHM->GetResource(m_CoreName);
 }
+
+void CMeshInstance::Update(float dt) {
+  if (m_visible) {
+    if (GRAPHM->isSphereVisible(m_Position, m_StaticMesh->GetBoundingSphere().GetRadius()))
+      m_Printable = true;
+    else if (GRAPHM->isBoxVisible(m_StaticMesh->GetBoundingBox().GetMinPos(), m_StaticMesh->GetBoundingBox().GetMaxPos()))
+      m_Printable = true;
+    else
+      m_Printable = false;
+  }
+}
+
 CMeshInstance::~CMeshInstance() {
   if (m_StaticMesh->isDestroyed())
     m_StaticMesh = 0;
 }
+
 void CMeshInstance::Render(CGraphicsManager *RM) {
   if (m_Printable) {
     Mat44f t = m44fIDENTITY;
     RM->SetTransform(t);
     RM->SetTransform(getTransform());
-    if (RM->isSphereVisible(m_Position, m_StaticMesh->GetBoundingSphere().GetRadius()))
-      m_StaticMesh->Render(RM);
-    else if (RM->isBoxVisible(m_StaticMesh->GetBoundingBox().GetMinPos(), m_StaticMesh->GetBoundingBox().GetMaxPos()))
-      m_StaticMesh->Render(RM);
+    m_StaticMesh->Render(RM);
   }
 }
 

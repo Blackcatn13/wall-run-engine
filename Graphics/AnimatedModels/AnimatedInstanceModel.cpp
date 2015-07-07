@@ -206,6 +206,9 @@ void CAnimatedInstanceModel::RenderModelByHardware(CGraphicsManager *RM) {
       //m_NormalTextureList[0]->Activate(1);
       m_AnimatedCoreModel->GetRenderableVertexs()->Render(GRAPHM, l_EffectTechnique, l_CalHardwareModel->getBaseVertexIndex(), 0,
           l_CalHardwareModel->getVertexCount(), l_CalHardwareModel->getStartIndex(), l_CalHardwareModel->getFaceCount() * 3);
+      m_TextureList[textureID]->Deactivate(0);
+      if (m_hasNormalTexture)
+        m_NormalTextureList[textureID]->Deactivate(1);
     }
   }
 }

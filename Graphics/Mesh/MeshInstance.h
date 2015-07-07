@@ -17,7 +17,7 @@ class CMeshInstance : public CRenderableObject {
   CMeshInstance(const CXMLTreeNode &Node);
   ~CMeshInstance();
   void Render(CGraphicsManager *RM);
-  void Update(float dt) {};
+  void Update(float dt);
   std::string GetCoreName() {
     return m_CoreName;
   }
