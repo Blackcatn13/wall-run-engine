@@ -16,6 +16,7 @@ CDoor::CDoor(std::string switchName, std::string coreName, std::string lua_funct
     m_FinalPosition (final_Position),
     m_IsOpening(false),
     m_Speed(0.0f) {
+  m_HasPhisicMesh = false;
   m_Actor->Activate(true);
 }
 

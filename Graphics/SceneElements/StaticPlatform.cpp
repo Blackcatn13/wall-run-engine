@@ -9,6 +9,7 @@
 
 CStaticPlatform::CStaticPlatform(std::string platformName, std::string coreName, bool hasRigidBody)
   : CSceneElement(platformName, coreName, hasRigidBody) {
+  m_HasPhisicMesh = false;
   InsertPhisic(Vect3f(.0f, m_PhysicsSize.y, .0f));
   m_Actor->Activate(false);
 }

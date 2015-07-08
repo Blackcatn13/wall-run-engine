@@ -64,7 +64,7 @@ function update_break_platform(dt, current_time, max_time, platform_name, trigge
 	--coreInstance:trace("m_current_time " .. tostring(m_current_time))
 	--local l_time = m_current_time * dt
 	if current_time >= max_time then
-		local platform = renderable_objects_layer_manager:get_default_renderable_object_manager():get_resource(platform_name)
+		local platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str("breakable"):get_resource(platform_name)
 		--local falling_force = Vect3f(0.0,-1.0,0.0)
 		platform:disable_platform(dt)--, falling_force)
 		--m_current_time = 0
