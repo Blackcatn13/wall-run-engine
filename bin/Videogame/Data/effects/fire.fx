@@ -11,30 +11,32 @@ struct PSVertex
     float2 uv4 : TEXCOORD3;
 };
 
-struct PARTICLEIN
+struct BILLBOARDIN
 {
 	float3 pos : POSITION;
 	float2 uv : TEXCOORD0;
-	float2 size : TEXCOORD1;
+	float3 worldPos : TEXCOORD1;
+	float4 params : TEXCOORD2;
 };
 
-PSVertex VS(PARTICLEIN IN){
+PSVertex VS(BILLBOARDIN IN){
 	
 	float3 rightVector = normalize(float3(g_ViewMatrix[0][0], g_ViewMatrix[1][0], g_ViewMatrix[2][0]));
 	float3 upVector = normalize(float3(g_ViewMatrix[0][1], g_ViewMatrix[1][1], g_ViewMatrix[2][1]));
 	float3 viewVector = normalize(float3(g_ViewMatrix[0][2], g_ViewMatrix[1][2], g_ViewMatrix[2][2]));
 
 	PSVertex OUT = (PSVertex)0;
-	OUT.uv.x = IN.uv.x;
-	OUT.uv.y = IN.uv.y;
-	float3 position = (IN.pos.x * rightVector * IN.size.x + IN.pos.z * upVector * IN.size.y);
-	OUT.pos = mul(float4(position,1.0), g_WorldViewProjectionMatrix);
-	OUT.uv2 = IN.uv * scales.x;
-	OUT.uv2.y = OUT.uv2.y + (g_Tick * scrollSpeeds.x);
-	OUT.uv3 = IN.uv * scales.y;
-	OUT.uv3.y = OUT.uv3.y + (g_Tick * scrollSpeeds.y);
-	OUT.uv4 = IN.uv * scales.z;
-	OUT.uv4.y = OUT.uv4.y + (g_Tick * scrollSpeeds.z);
+	//if (IN.params.z == 1) {
+	 	OUT.uv = IN.uv;
+		float3 position = IN.worldPos + (IN.pos.x * rightVector * IN.params.x + IN.pos.z * upVector * IN.params.y);
+		OUT.pos = mul(float4(position,1.0), g_WorldViewProjectionMatrix);
+		OUT.uv2 = IN.uv * scales.x;
+		OUT.uv2.y = OUT.uv2.y + (IN.params.z * scrollSpeeds.x);
+		OUT.uv3 = IN.uv * scales.y;
+		OUT.uv3.y = OUT.uv3.y + (IN.params.z * scrollSpeeds.y);
+		OUT.uv4 = IN.uv * scales.z;
+		OUT.uv4.y = OUT.uv4.y + (IN.params.z * scrollSpeeds.z);
+	//}
 
     return OUT;
 }
@@ -71,7 +73,7 @@ technique TextureTechnique
 	pass p0
 	{
 		//AlphaBlendEnable = false;
-		//CullMode = NONE; // NONE - CW
+		CullMode = NONE; // NONE - CW
 		VertexShader = compile vs_3_0 VS();
 		PixelShader = compile ps_3_0 PS();
 	}

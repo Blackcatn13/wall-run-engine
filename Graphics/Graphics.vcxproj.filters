@@ -339,6 +339,9 @@
     <ClCompile Include="RenderableCommands\BillboardRendererCommand.cpp">
       <Filter>RenderableCommands</Filter>
     </ClCompile>
+    <ClCompile Include="Particles\InstancedBillboard.cpp">
+      <Filter>Particles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
@@ -633,6 +636,9 @@
     </ClInclude>
     <ClInclude Include="RenderableCommands\BillboardRendererCommand.h">
       <Filter>RenderableCommands</Filter>
+    </ClInclude>
+    <ClInclude Include="Particles\InstancedBillboard.h">
+      <Filter>Particles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

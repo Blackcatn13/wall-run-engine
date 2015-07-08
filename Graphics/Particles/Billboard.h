@@ -17,9 +17,9 @@ class CBillboard {
   CBillboard(CXMLTreeNode &node);
   CBillboard(float size);
   CBillboard(float size, Vect3f pos);
-  ~CBillboard();
-  void Update(float ElapsedTime);
-  void Render(CGraphicsManager *GM);
+  virtual ~CBillboard();
+  virtual void Update(float ElapsedTime);
+  virtual void Render(CGraphicsManager *GM);
   float getSize() {return m_size;}
   void setSize(float size) {m_size = size;}
   Vect3f getPosition() {return m_position;}

@@ -17,7 +17,8 @@
 #define VERTEX_TYPE_RNM         0x0400      // RNM
 #define VERTEX_TYPE_SCREEN      0x0800		  // DRAW_QUAD_SCREEN
 #define VERTEX_TYPE_POLY		    0x1000		  // POLY
-#define VERTEX_TYPE_PARTICLE    0x2000      // PARTICLE AND BILLBOARD
+#define VERTEX_TYPE_PARTICLE    0x2000      // PARTICLE AND BILLBOARD Instanced
+#define VERTEX_TYPE_BILLBOARD   0x4000      // BILLOBARD
 
 #include "GraphicsManager.h"
 #include "Utils\Defines.h"
@@ -61,13 +62,35 @@ struct TPARTICLE_VERTEX_INSTANCE {
   float visible;
 };
 
+struct TBILLBOARD_INSTANCED_VERTEX {
+  float x, y, z;
+  float tu, tv;
+  static inline unsigned short GetVertexType() {
+    return VERTEX_TYPE_PARTICLE;
+  }
+  static inline unsigned int GetFVF() {
+    return 0;
+  }
+  static LPDIRECT3DVERTEXDECLARATION9 s_VertexDeclaration;
+  static LPDIRECT3DVERTEXDECLARATION9 &GetVertexDeclaration();
+  static void ReleaseVertexDeclaration() {
+    CHECKED_RELEASE(s_VertexDeclaration);
+  }
+};
+
+struct TBILLBOARD_VERTEX_INSTANCE {
+  float x, y, z;
+  float sizex, sizey, tick;
+  //float visible;
+};
+
 // Billboard
 struct TBILLBOARD_VERTEX {
   float x, y, z;
   float tu, tv;
   float sizex, sizey;
   static inline unsigned short GetVertexType() {
-    return VERTEX_TYPE_PARTICLE;
+    return VERTEX_TYPE_BILLBOARD;
   }
   static inline unsigned int GetFVF() {
     return 0;

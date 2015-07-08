@@ -71,6 +71,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ParticleRelease|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Particles\InstancedBillboard.cpp" />
     <ClCompile Include="Particles\Particle.cpp" />
     <ClCompile Include="Particles\ParticleEmitter.cpp" />
     <ClCompile Include="Particles\ParticleManager.cpp" />
@@ -186,6 +187,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ParticleRelease|Win32'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="Particles\InstancedBillboard.h" />
     <ClInclude Include="Particles\Particle.h" />
     <ClInclude Include="Particles\ParticleEmitter.h" />
     <ClInclude Include="Particles\ParticleManager.h" />

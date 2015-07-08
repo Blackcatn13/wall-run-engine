@@ -1,87 +1,22 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <billboards>
-	<billboard name="billboard001" size="0.5 0.6" position="98.0968 7.323 3.59258" color="1.0 0.0 1.0 1.0">
+	<instanced_billboard name="billboard001" billboards="14">
 		<Texture name="./Data/g_Textures/fire01.dds"/>
 		<Texture name="./Data/g_Textures/noise01.dds"/>
 		<Texture name="./Data/g_Textures/alpha01.dds"/>
-	</billboard>
-
-	<billboard name="billboard002" size="0.5 0.6" position="103.659 7.323 -25.7024" color="1.0 0.0 1.0 1.0">
-		<Texture name="./Data/g_Textures/fire01.dds"/>
-		<Texture name="./Data/g_Textures/noise01.dds"/>
-		<Texture name="./Data/g_Textures/alpha01.dds"/>
-	</billboard>
-
-	<billboard name="billboard003" size="0.5 0.6" position="133.339 7.323 -25.203" color="1.0 0.0 1.0 1.0">
-		<Texture name="./Data/g_Textures/fire01.dds"/>
-		<Texture name="./Data/g_Textures/noise01.dds"/>
-		<Texture name="./Data/g_Textures/alpha01.dds"/>
-	</billboard>
-
-	<billboard name="billboard004" size="0.5 0.6" position="147.745 7.323 15.1147" color="1.0 0.0 1.0 1.0">
-		<Texture name="./Data/g_Textures/fire01.dds"/>
-		<Texture name="./Data/g_Textures/noise01.dds"/>
-		<Texture name="./Data/g_Textures/alpha01.dds"/>
-	</billboard>
-
-
-	<billboard name="billboard005" size="0.5 0.6" position="189.645 6.046 17.215" color="1.0 0.0 1.0 1.0">
-		<Texture name="./Data/g_Textures/fire01.dds"/>
-		<Texture name="./Data/g_Textures/noise01.dds"/>
-		<Texture name="./Data/g_Textures/alpha01.dds"/>
-	</billboard>
-
-	<billboard name="billboard006" size="0.5 0.6" position="204.549 6.046 17.215" color="1.0 0.0 1.0 1.0">
-		<Texture name="./Data/g_Textures/fire01.dds"/>
-		<Texture name="./Data/g_Textures/noise01.dds"/>
-		<Texture name="./Data/g_Textures/alpha01.dds"/>
-	</billboard>
-
-	<billboard name="billboard007" size="0.5 0.6" position="219.318 6.046 17.215" color="1.0 0.0 1.0 1.0">
-		<Texture name="./Data/g_Textures/fire01.dds"/>
-		<Texture name="./Data/g_Textures/noise01.dds"/>
-		<Texture name="./Data/g_Textures/alpha01.dds"/>
-	</billboard>
-
-	<billboard name="billboard008" size="0.5 0.6" position="243.996 6.046 17.215" color="1.0 0.0 1.0 1.0">
-		<Texture name="./Data/g_Textures/fire01.dds"/>
-		<Texture name="./Data/g_Textures/noise01.dds"/>
-		<Texture name="./Data/g_Textures/alpha01.dds"/>
-	</billboard>
-
-	<billboard name="billboard009" size="0.5 0.6" position="259.894 6.046 17.215" color="1.0 0.0 1.0 1.0">
-		<Texture name="./Data/g_Textures/fire01.dds"/>
-		<Texture name="./Data/g_Textures/noise01.dds"/>
-		<Texture name="./Data/g_Textures/alpha01.dds"/>
-	</billboard>
-
-	<billboard name="billboard010" size="0.5 0.6" position="279.141 6.046 17.215" color="1.0 0.0 1.0 1.0">
-		<Texture name="./Data/g_Textures/fire01.dds"/>
-		<Texture name="./Data/g_Textures/noise01.dds"/>
-		<Texture name="./Data/g_Textures/alpha01.dds"/>
-	</billboard>
-
-	<billboard name="billboard011" size="0.5 0.6" position="296.321 6.046 17.215" color="1.0 0.0 1.0 1.0">
-		<Texture name="./Data/g_Textures/fire01.dds"/>
-		<Texture name="./Data/g_Textures/noise01.dds"/>
-		<Texture name="./Data/g_Textures/alpha01.dds"/>
-	</billboard>
-
-	<billboard name="billboard012" size="0.5 0.6" position="312.074 6.046 17.215" color="1.0 0.0 1.0 1.0">
-		<Texture name="./Data/g_Textures/fire01.dds"/>
-		<Texture name="./Data/g_Textures/noise01.dds"/>
-		<Texture name="./Data/g_Textures/alpha01.dds"/>
-	</billboard>
-
-	<billboard name="billboard013" size="0.5 0.6" position="339.759 6.046 17.215" color="1.0 0.0 1.0 1.0">
-		<Texture name="./Data/g_Textures/fire01.dds"/>
-		<Texture name="./Data/g_Textures/noise01.dds"/>
-		<Texture name="./Data/g_Textures/alpha01.dds"/>
-	</billboard>
-
-	<billboard name="billboard014" size="0.5 0.6" position="369.54 6.046 17.215" color="1.0 0.0 1.0 1.0">
-		<Texture name="./Data/g_Textures/fire01.dds"/>
-		<Texture name="./Data/g_Textures/noise01.dds"/>
-		<Texture name="./Data/g_Textures/alpha01.dds"/>
-	</billboard>
+		<Instance size="0.5 0.6" position="98.0968 7.323 3.59258"/>
+		<Instance size="0.5 0.6" position="103.659 7.323 -25.7024"/>
+		<Instance size="0.5 0.6" position="133.339 7.323 -25.203"/>
+		<Instance size="0.5 0.6" position="147.745 7.323 15.1147"/>
+		<Instance size="0.5 0.6" position="189.645 6.046 17.215"/>
+		<Instance size="0.5 0.6" position="204.549 6.046 17.215"/>
+		<Instance size="0.5 0.6" position="219.318 6.046 17.215"/>
+		<Instance size="0.5 0.6" position="243.996 6.046 17.215"/>
+		<Instance size="0.5 0.6" position="259.894 6.046 17.215"/>
+		<Instance size="0.5 0.6" position="279.141 6.046 17.215"/>
+		<Instance size="0.5 0.6" position="296.321 6.046 17.215"/>
+		<Instance size="0.5 0.6" position="312.074 6.046 17.215"/>
+		<Instance size="0.5 0.6" position="339.759 6.046 17.215"/>
+		<Instance size="0.5 0.6" position="369.54 6.046 17.215"/>
+	</instanced_billboard>
 </billboards>

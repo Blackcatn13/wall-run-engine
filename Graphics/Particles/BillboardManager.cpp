@@ -1,6 +1,7 @@
 #include "Particles\BillboardManager.h"
 #include "XML\XMLTreeNode.h"
 #include "Particles\Billboard.h"
+#include "Particles\InstancedBillboard.h"
 
 CBillboardManager::CBillboardManager()
   : m_fileName ("") {
@@ -25,6 +26,10 @@ void CBillboardManager::Load(std::string file) {
           CBillboard *l_Billboard = new CBillboard(m(i));
           std::string EmitterName = m(i).GetPszISOProperty("name", "");
           AddResource(EmitterName, l_Billboard);
+        } else if (l_Name == "instanced_billboard") {
+          CBillboard *l_billboard = new CInstancedBillboard(m(i));
+          std::string EmitterName = m(i).GetPszISOProperty("name", "");
+          AddResource(EmitterName, l_billboard);
         }
       }
     }

@@ -82,7 +82,6 @@ class CParticleEmitter : public CObject3D, public CNamed {
   CTexture							     *m_Texture;
   CRenderableVertexs         *m_RV;
   TPARTICLE_VERTEX_INSTANCE  *m_vertex_list;
-  unsigned short             *m_index_list;
 
   // POOL of particles
   uint32  m_FreeElements;

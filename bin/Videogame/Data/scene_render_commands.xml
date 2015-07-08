@@ -131,12 +131,12 @@
 		
 		
 		<!--Fog-->
-		<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha" alphablendSrc="one" alphablendDest="one" />
+		<!--<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha" alphablendSrc="one" alphablendDest="one" />
 		<set_pool_renderable_objects_technique pool="fog_pool"/>
 		<render_draw_quad> 
 			<texture stage_id="0" file="DepthMapTexture"/>
 		</render_draw_quad> 
-		<disable_alpha_blend />
+		<disable_alpha_blend />-->
 		<!--End Fog-->		
 
 		<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -293,10 +293,10 @@
 		<enable_z_test />
 		<!--<disable_z_test />-->
 		<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>
-		<set_pool_renderable_objects_technique pool="particles_pool"/>
-		<particle_render/>
 		<set_pool_renderable_objects_technique pool="fire_billboard_pool"/>
 		<billboard_render/>
+		<set_pool_renderable_objects_technique pool="particles_pool"/>
+		<particle_render/>
 		<disable_alpha_blend />
 		<!--<enable_z_write/>
 		<enable_z_test /> -->
