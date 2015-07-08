@@ -8,7 +8,7 @@
 #include "Effects/EffectTechnique.h"
 #include <iostream>
 
-template<class T>
+template<class T1, class T>
 class CInstancingVertexs : public CRenderableVertexs {
  private:
   LPDIRECT3DVERTEXBUFFER9 m_InstanceB;
@@ -21,7 +21,7 @@ class CInstancingVertexs : public CRenderableVertexs {
     return sizeof(unsigned short);
   }
   inline size_t GetInstanceSize() {
-    return sizeof(TPARTICLE_VERTEX_INSTANCE);
+    return sizeof(T1);
   }
  public:
   void AddInstancinguffer(CGraphicsManager *RM, void *InstanceAddress) {
@@ -76,7 +76,7 @@ class CInstancingVertexs : public CRenderableVertexs {
       l_Device->SetStreamSource(0, m_VB, 0, sizeof(T));
       l_Device->SetStreamSourceFreq(0, D3DSTREAMSOURCE_INDEXEDDATA | m_InstancesNumber);
       // Setting the second stream source and frequency
-      l_Device->SetStreamSource(1, m_InstanceB, 0, sizeof(TPARTICLE_VERTEX_INSTANCE));
+      l_Device->SetStreamSource(1, m_InstanceB, 0, sizeof(T1));
       l_Device->SetStreamSourceFreq(1, D3DSTREAMSOURCE_INSTANCEDATA | 1ul);
       l_Device->SetIndices(m_IB);
       for (UINT b = 0; b < l_NumPasses; ++b) {

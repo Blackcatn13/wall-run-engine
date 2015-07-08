@@ -67,9 +67,9 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
 
   unsigned short int lIdx[lIdxCount] = { 0, 1, 2, 2, 3, 0};
 
-  m_RV = new CInstancingVertexs<TPARTICLE_VERTEX>(GRAPHM, &vertexs, &lIdx, lVtxCount, lIdxCount);
-  ((CInstancingVertexs<TPARTICLE_VERTEX> *)m_RV)->SetInstanceNumber(m_MaxParticles);
-  ((CInstancingVertexs<TPARTICLE_VERTEX> *)m_RV)->CreateInstanceBuffer(GRAPHM);
+  m_RV = new CInstancingVertexs<TPARTICLE_VERTEX_INSTANCE, TPARTICLE_VERTEX>(GRAPHM, &vertexs, &lIdx, lVtxCount, lIdxCount);
+  ((CInstancingVertexs<TPARTICLE_VERTEX_INSTANCE, TPARTICLE_VERTEX> *)m_RV)->SetInstanceNumber(m_MaxParticles);
+  ((CInstancingVertexs<TPARTICLE_VERTEX_INSTANCE, TPARTICLE_VERTEX> *)m_RV)->CreateInstanceBuffer(GRAPHM);
   m_vertex_list = new TPARTICLE_VERTEX_INSTANCE[m_MaxParticles];
 }
 
@@ -124,8 +124,8 @@ CParticleEmitter::CParticleEmitter()
 
   unsigned short int lIdx[lIdxCount] = { 0, 1, 2, 2, 3, 0};
 
-  m_RV = new CInstancingVertexs<TPARTICLE_VERTEX>(GRAPHM, &vertexs, &lIdx, lVtxCount, lIdxCount);
-  ((CInstancingVertexs<TPARTICLE_VERTEX> *)m_RV)->SetInstanceNumber(m_MaxParticles);
+  m_RV = new CInstancingVertexs<TPARTICLE_VERTEX_INSTANCE, TPARTICLE_VERTEX>(GRAPHM, &vertexs, &lIdx, lVtxCount, lIdxCount);
+  ((CInstancingVertexs<TPARTICLE_VERTEX_INSTANCE, TPARTICLE_VERTEX> *)m_RV)->SetInstanceNumber(m_MaxParticles);
   m_vertex_list = new TPARTICLE_VERTEX_INSTANCE[m_MaxParticles];
 }
 
@@ -148,7 +148,7 @@ void CParticleEmitter::Render(CGraphicsManager *RM) {
   t.Translate(m_Position);
   RM->SetTransform(t);
 
-  ((CInstancingVertexs<TPARTICLE_VERTEX> *)m_RV)->AddInstancinguffer(RM, m_vertex_list);
+  ((CInstancingVertexs<TPARTICLE_VERTEX_INSTANCE, TPARTICLE_VERTEX> *)m_RV)->AddInstancinguffer(RM, m_vertex_list);
   CEffectTechnique *l_EffectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(m_RV->GetVertexType()))->GetEffectTechnique();
   m_Texture->Activate(0);
   m_RV->Render(RM, l_EffectTechnique);
