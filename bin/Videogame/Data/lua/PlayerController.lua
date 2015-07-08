@@ -124,9 +124,19 @@ function on_update_player_lua(l_ElapsedTime)
 				auxAxisYMoved = act2in:do_action_from_lua("MoveForward", y_axis);
 				auxAxisXMoved = act2in:do_action_from_lua("MoveRigth", x_axis);
 				y_axis = inputm:get_game_pad_left_thumb_y_deflection(1);
-				x_axis = inputm:get_game_pad_left_thumb_x_deflection(1); 
-				coreInstance:trace("AXIS y " .. tostring(y_axis))
-				coreInstance:trace("AXIS x " .. tostring(x_axis))
+				x_axis = inputm:get_game_pad_left_thumb_x_deflection(1);
+				if (y_axis == 0 and x_axis == 0) then
+					cosyaw = 0;
+					sinyaw = 0;
+				else
+					auxyaw = math.atan2(y_axis,x_axis);
+					cosyaw = math.cos(auxyaw); -- derecha 1 izquierda -1
+					sinyaw = math.sin(auxyaw); -- alante 1 atras -1
+				end
+				coreInstance:trace("YAW " .. tostring(auxyaw))
+				coreInstance:trace("COS " .. tostring(cosyaw))
+				mov = dir3D * sinyaw + dirNor * cosyaw;
+				mov = mov * l_ElapsedTime;
 				auxForward = auxAxisYMoved and y_axis > 0
 				auxBackward = auxAxisYMoved and y_axis < 0
 				auxRight = auxAxisXMoved and x_axis > 0
