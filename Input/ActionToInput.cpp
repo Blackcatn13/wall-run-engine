@@ -106,8 +106,20 @@ bool CActionToInput::DoAction(const std::string &action_name, float &amount) {
           if (!action) return false;
           break;
         }
-        case AXIS_DELTA_TRIGGER_RIGHT:
-        case AXIS_DELTA_TRIGGER_LEFT:
+        case AXIS_DELTA_TRIGGER_RIGHT: {
+          float aux;
+          action = m_InputManager->GetGamePadDeltaTriggers(&aux, &amount);
+          action &= amount != 0;
+          if (!action) return false;
+          break;
+        }
+        case AXIS_DELTA_TRIGGER_LEFT: {
+          float aux;
+          action = m_InputManager->GetGamePadDeltaTriggers(&amount, &aux);
+          action &= amount != 0;
+          if (!action) return false;
+          break;
+        }
         case AXIS_NOTHING:
           break;
       }
