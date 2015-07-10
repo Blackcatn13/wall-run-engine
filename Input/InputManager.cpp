@@ -399,4 +399,52 @@ float CInputManager::GetGamePadLeftThumbYDeflection(INPUT_DEVICE_TYPE device) {
   }
 }
 
+float CInputManager::GetGamePadLeftTriggerDelta(INPUT_DEVICE_TYPE device) {
+  float leftT, rightT;
+  switch (device) {
+    case IDV_GAMEPAD1:
+      m_pGamePad->GetDeltaTriggers(&leftT, &rightT, 0);
+      return leftT;
+      break;
+    case IDV_GAMEPAD2:
+      m_pGamePad->GetDeltaTriggers(&leftT, &rightT, 1);
+      return leftT;
+      break;
+    case IDV_GAMEPAD3:
+      m_pGamePad->GetDeltaTriggers(&leftT, &rightT, 2);
+      return leftT;
+      break;
+    case IDV_GAMEPAD4:
+      m_pGamePad->GetDeltaTriggers(&leftT, &rightT, 3);
+      return leftT;
+      break;
+    default:
+      return 0.f;
+  }
+}
+
+float CInputManager::GetGamePadRightTriggerDelta(INPUT_DEVICE_TYPE device) {
+  float leftT, rightT;
+  switch (device) {
+    case IDV_GAMEPAD1:
+      m_pGamePad->GetDeltaTriggers(&leftT, &rightT, 0);
+      return rightT;
+      break;
+    case IDV_GAMEPAD2:
+      m_pGamePad->GetDeltaTriggers(&leftT, &rightT, 1);
+      return rightT;
+      break;
+    case IDV_GAMEPAD3:
+      m_pGamePad->GetDeltaTriggers(&leftT, &rightT, 2);
+      return rightT;
+      break;
+    case IDV_GAMEPAD4:
+      m_pGamePad->GetDeltaTriggers(&leftT, &rightT, 3);
+      return rightT;
+      break;
+    default:
+      return 0.f;
+  }
+}
+
 
