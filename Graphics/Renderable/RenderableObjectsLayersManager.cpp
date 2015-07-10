@@ -208,14 +208,11 @@ void CRenderableObjectsLayersManager::Load(const std::string &FileName) {
 
 void CRenderableObjectsLayersManager::DeactivateObjectsByStr(std::string layerName) {
 
-  std::vector <CTemplatedVectorMapManager<CRenderableObjectsManager>> l_Vector;
-  std::vector <CTemplatedVectorMapManager<CRenderableObjectsManager>>::iterator it =  l_Vector.begin();
-  l_Vector.resize(MAX_ROOMS);
-  for (it; it != l_Vector.end(); ++it) {
-    CRenderableObjectsManager *manager = it->GetResource(layerName);
+  for (size_t i = 0 ; i < MAX_ROOMS ; ++i) {
+    CRenderableObjectsManager *manager = m_ResourcesVector[i]->GetResource(layerName);
 
-    for (int i = 0; i < manager->GetResourcesVector().size(); i++) {
-      std::string name = manager->GetResourcesVector().at(i)->getName();
+    for (int j = 0; j < manager->GetResourcesVector().size(); j++) {
+      std::string name = manager->GetResourcesVector().at(j)->getName();
       std::stringstream str;
       str << "deactivate_invisible_wall(\"" << name << "\")";
       std::string funct  = str.str();

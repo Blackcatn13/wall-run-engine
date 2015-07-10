@@ -23,7 +23,7 @@ CSceneElement::CSceneElement(std::string switchName, std::string coreName, bool 
   , m_UserData(NULL),
     m_UserDataAux(NULL),
     m_ActorAux(NULL),
-    m_Room("0"),
+    m_Room(0),
     m_HasRigidBody(hasRigidBody),
     m_HasPhisicMesh(hasPhisicMesh) {
 }
@@ -34,7 +34,7 @@ CSceneElement::CSceneElement(const CXMLTreeNode &node, bool hasRigidBody)
     m_ActorAux(NULL),
     m_UserData(NULL),
     m_UserDataAux(NULL),
-    m_Room(node.GetPszISOProperty("room", "0")),
+    m_Room(node.GetIntProperty("room", 0)),
     m_PhysicsSize(node.GetVect3fProperty("phisic_size", v3fZERO)),
     m_HasRigidBody(hasRigidBody),
     m_HasPhisicMesh( node.GetBoolProperty("use_physx_mesh", false)) {

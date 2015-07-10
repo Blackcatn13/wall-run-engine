@@ -222,6 +222,7 @@ void RegisterManagers() {
     .def("get_default_renderable_object_manager", &CRenderableObjectsLayersManager::GetDefaultRenderableObjectManager)
     .def("load", &CRenderableObjectsLayersManager::Load)
     .def("get_renderable_objects_manager_by_str", &CRenderableObjectsLayersManager::GetRenderableObjectsManagerByStr)
+    .def("get_renderable_objects_manager_by_str_and_room", &CRenderableObjectsLayersManager::GetRenderableObjectsManagerByStrAndRoom)
     .def("deactivate_objects_by_layer", &CRenderableObjectsLayersManager::DeactivateObjectsByStr)
     .property("m_CurrentLayer", &CRenderableObjectsLayersManager::getCurrentLayer, &CRenderableObjectsLayersManager::setCurrentLayer)
   ];
