@@ -26,32 +26,33 @@ CEnemyManager::~CEnemyManager() {
 
 void CEnemyManager::InitEnemies(std::string layerName) {
   m_LayerName = layerName;
-  CRenderableObjectsManager *l_Rom = RENDLM->GetRenderableObjectsManagerByStr(layerName);
-  for (size_t i = 0; i < l_Rom->GetResourcesVector().size(); ++i) {
-    for (size_t j = 0; j < m_EnemyInstances.size(); ++j) {
-      if (l_Rom->GetResourcesVector()[i]->getName() == m_EnemyInstances[j].instanceName) {
-        std::string nam = m_Cores.find(m_EnemyInstances[j].instanceType)->first;
-        float l_Speed = m_Cores.find(m_EnemyInstances[j].instanceType)->second.Speed;
-        std::string l_FsmName = m_Cores.find(m_EnemyInstances[j].instanceType)->second.FsmName;
-        Vect2f l_ControllerSize = m_Cores.find(m_EnemyInstances[j].instanceType)->second.ControllerSize;
-        float l_Zone = m_EnemyInstances[j].Zone;
-        float l_AttackDistance = m_EnemyInstances[j].AttackDistance;
-        if ((nam.find("_easy") != std::string::npos)) {
-          float l_AttackSpeed = m_Cores.find(m_EnemyInstances[j].instanceType)->second.SpeedAttack;
-          int l_Life = m_Cores.find(m_EnemyInstances[j].instanceType)->second.life;
-          float l_TurnSpeed = m_Cores.find(m_EnemyInstances[j].instanceType)->second.TurnSpeed;
-          std::vector<Vect3f> l_WayPoints = m_EnemyInstances[j].waypoints;
-          bool isStatic =  m_EnemyInstances[j].Static;
-          CEasyEnemy *Enemy = new CEasyEnemy(l_Rom->GetResourcesVector()[i], l_WayPoints, l_Speed, l_TurnSpeed, l_AttackSpeed, l_Life, l_FsmName, l_ControllerSize, l_AttackDistance, l_Zone, isStatic);
-          m_Enemies.push_back(Enemy);
-        } else if (nam.find("_runner") != std::string::npos) {
-          CRunnerEnemy *Enemy = new CRunnerEnemy(l_Rom->GetResourcesVector()[i], l_Speed, l_FsmName, l_ControllerSize, l_AttackDistance, l_Zone);
-          m_Enemies.push_back(Enemy);
+  for (int roomNum = 0; roomNum < RENDLM->GetSize() ; ++ roomNum) {
+    CRenderableObjectsManager *l_Rom = RENDLM->GetRenderableObjectsManagerByStrAndRoom(layerName, roomNum);
+    for (size_t i = 0; i < l_Rom->GetResourcesVector().size(); ++i) {
+      for (size_t j = 0; j < m_EnemyInstances.size(); ++j) {
+        if (l_Rom->GetResourcesVector()[i]->getName() == m_EnemyInstances[j].instanceName) {
+          std::string nam = m_Cores.find(m_EnemyInstances[j].instanceType)->first;
+          float l_Speed = m_Cores.find(m_EnemyInstances[j].instanceType)->second.Speed;
+          std::string l_FsmName = m_Cores.find(m_EnemyInstances[j].instanceType)->second.FsmName;
+          Vect2f l_ControllerSize = m_Cores.find(m_EnemyInstances[j].instanceType)->second.ControllerSize;
+          float l_Zone = m_EnemyInstances[j].Zone;
+          float l_AttackDistance = m_EnemyInstances[j].AttackDistance;
+          if ((nam.find("_easy") != std::string::npos)) {
+            float l_AttackSpeed = m_Cores.find(m_EnemyInstances[j].instanceType)->second.SpeedAttack;
+            int l_Life = m_Cores.find(m_EnemyInstances[j].instanceType)->second.life;
+            float l_TurnSpeed = m_Cores.find(m_EnemyInstances[j].instanceType)->second.TurnSpeed;
+            std::vector<Vect3f> l_WayPoints = m_EnemyInstances[j].waypoints;
+            bool isStatic =  m_EnemyInstances[j].Static;
+            CEasyEnemy *Enemy = new CEasyEnemy(l_Rom->GetResourcesVector()[i], l_WayPoints, l_Speed, l_TurnSpeed, l_AttackSpeed, l_Life, l_FsmName, l_ControllerSize, l_AttackDistance, l_Zone, isStatic);
+            m_Enemies.push_back(Enemy);
+          } else if (nam.find("_runner") != std::string::npos) {
+            CRunnerEnemy *Enemy = new CRunnerEnemy(l_Rom->GetResourcesVector()[i], l_Speed, l_FsmName, l_ControllerSize, l_AttackDistance, l_Zone);
+            m_Enemies.push_back(Enemy);
+          }
         }
       }
     }
   }
-
 }
 
 bool CEnemyManager::Init(const std::string &FileName) {

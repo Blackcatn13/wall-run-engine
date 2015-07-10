@@ -129,6 +129,7 @@ function reset_game()
 	coreInstance.m_CameraController:set_active_camera("3DCam");
 	player_controller.m_isTurned = false;
 	player.attack_enabled = false
+	player.set_room(1)
 		
 	--Player Lifes + Pixelites
 	player.num_hearts = 3;

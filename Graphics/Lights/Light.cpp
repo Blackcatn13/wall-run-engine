@@ -49,31 +49,41 @@ CLight::CLight(CXMLTreeNode &Node)
   CRenderableObjectsManager *l_RenderableObjectManager;
   for (int i = 0; i < childs; ++i) {
     if (std::string("dynamic") == Node(i).GetName()) {
-      int dynamicChilds = Node(i).GetNumChildren();
-      if (dynamicChilds > 0) {
-        for (int j = 0; j < dynamicChilds; ++j) {
-          renderableDynamicMaps.push_back(Node(i)(j).GetPszISOProperty("renderable_objects_manager", "", false));
-          l_RenderableObjectManager = RENDLM->GetResource(Node(i)(j).GetPszISOProperty("renderable_objects_manager", "", false));
+
+      for (int roomNum = 0; roomNum < RENDLM->GetSize(); ++roomNum) {
+        int dynamicChilds = Node(i).GetNumChildren();
+        if (dynamicChilds > 0) {
+          for (int j = 0; j < dynamicChilds; ++j) {
+            renderableDynamicMaps.push_back(Node(i)(j).GetPszISOProperty("renderable_objects_manager", "", false));
+
+            // l_RenderableObjectManager = RENDLM->GetResource(Node(i)(j).GetPszISOProperty("renderable_objects_manager", "", false));
+            l_RenderableObjectManager = RENDLM-> GetRenderableObjectsManagerByStrAndRoom(Node(i)(j).GetPszISOProperty("renderable_objects_manager", "", false), roomNum);
+            m_DynamicShadowMapRenderableObjectsManagers.push_back(l_RenderableObjectManager);
+          }
+        } else {
+          renderableDynamicMaps.push_back(Node(i).GetPszISOProperty("renderable_objects_manager", "", false));
+          // l_RenderableObjectManager = RENDLM->GetResource(Node(i).GetPszISOProperty("renderable_objects_manager", "", false));
+          l_RenderableObjectManager = RENDLM->GetRenderableObjectsManagerByStrAndRoom(Node(i).GetPszISOProperty("renderable_objects_manager", "", false), roomNum);
           m_DynamicShadowMapRenderableObjectsManagers.push_back(l_RenderableObjectManager);
         }
-      } else {
-        renderableDynamicMaps.push_back(Node(i).GetPszISOProperty("renderable_objects_manager", "", false));
-        l_RenderableObjectManager = RENDLM->GetResource(Node(i).GetPszISOProperty("renderable_objects_manager", "", false));
-        m_DynamicShadowMapRenderableObjectsManagers.push_back(l_RenderableObjectManager);
       }
     }
     if (std::string("static") == Node(i).GetName()) {
       int dynamicChilds = Node(i).GetNumChildren();
-      if (dynamicChilds > 0) {
-        for (int j = 0; j < dynamicChilds; ++j) {
-          renderableStaticMaps.push_back(Node(i)(j).GetPszISOProperty("renderable_objects_manager", "", false));
-          l_RenderableObjectManager = RENDLM->GetResource(Node(i)(j).GetPszISOProperty("renderable_objects_manager", "", false));
+      for (int roomNum = 0; roomNum < RENDLM->GetSize(); ++roomNum) {
+        if (dynamicChilds > 0) {
+          for (int j = 0; j < dynamicChilds; ++j) {
+            renderableStaticMaps.push_back(Node(i)(j).GetPszISOProperty("renderable_objects_manager", "", false));
+            //l_RenderableObjectManager = RENDLM->GetResource(Node(i)(j).GetPszISOProperty("renderable_objects_manager", "", false));
+            l_RenderableObjectManager = RENDLM->GetRenderableObjectsManagerByStrAndRoom(Node(i)(j).GetPszISOProperty("renderable_objects_manager", "", false), roomNum);
+            m_StaticShadowMapRenderableObjectsManagers.push_back(l_RenderableObjectManager);
+          }
+        } else {
+          renderableStaticMaps.push_back(Node(i).GetPszISOProperty("renderable_objects_manager", "", false));
+          //l_RenderableObjectManager = RENDLM->GetResource(Node(i).GetPszISOProperty("renderable_objects_manager", "", false));
+          l_RenderableObjectManager = RENDLM->GetRenderableObjectsManagerByStrAndRoom(Node(i).GetPszISOProperty("renderable_objects_manager", "", false), roomNum);
           m_StaticShadowMapRenderableObjectsManagers.push_back(l_RenderableObjectManager);
         }
-      } else {
-        renderableStaticMaps.push_back(Node(i).GetPszISOProperty("renderable_objects_manager", "", false));
-        l_RenderableObjectManager = RENDLM->GetResource(Node(i).GetPszISOProperty("renderable_objects_manager", "", false));
-        m_StaticShadowMapRenderableObjectsManagers.push_back(l_RenderableObjectManager);
       }
     }
   }
@@ -195,26 +205,25 @@ void CLight::ReloadRO() {
   m_StaticShadowMapRenderableObjectsManagers.clear();
   m_DynamicShadowMapRenderableObjectsManagers.clear();
   CRenderableObjectsManager *l_RenderableObjectManager;
-  for (size_t i = 0; i < renderableDynamicMaps.size(); ++i) {
-    l_RenderableObjectManager = RENDLM->GetResource(renderableDynamicMaps[i]);
-    m_DynamicShadowMapRenderableObjectsManagers.push_back(l_RenderableObjectManager);
-  }
-  for (size_t i = 0; i < renderableStaticMaps.size(); ++i) {
-    l_RenderableObjectManager = RENDLM->GetResource(renderableStaticMaps[i]);
-    m_StaticShadowMapRenderableObjectsManagers.push_back(l_RenderableObjectManager);
+  for (int roomNum = 0; roomNum < RENDLM->GetSize(); ++roomNum) {
+    for (size_t i = 0; i < renderableDynamicMaps.size(); ++i) {
+      l_RenderableObjectManager = RENDLM->GetRenderableObjectsManagerByStrAndRoom(renderableDynamicMaps[i], roomNum);
+      m_DynamicShadowMapRenderableObjectsManagers.push_back(l_RenderableObjectManager);
+    }
+    for (size_t i = 0; i < renderableStaticMaps.size(); ++i) {
+      l_RenderableObjectManager = RENDLM->GetRenderableObjectsManagerByStrAndRoom(renderableStaticMaps[i], roomNum);
+      m_StaticShadowMapRenderableObjectsManagers.push_back(l_RenderableObjectManager);
+    }
   }
 }
 
-bool CLight::IsEnabled()
-{
-	bool enabled = false;
-	if(PLAYC != NULL)
-	{
-		Vect3f playerPos = PLAYC->GetPosition();
-		if(m_Position.Distance(playerPos) < m_EnableDistance)
-		{
-			enabled = true;
-		}
-	}
-	return enabled;
+bool CLight::IsEnabled() {
+  bool enabled = false;
+  if (PLAYC != NULL) {
+    Vect3f playerPos = PLAYC->GetPosition();
+    if (m_Position.Distance(playerPos) < m_EnableDistance) {
+      enabled = true;
+    }
+  }
+  return enabled;
 }

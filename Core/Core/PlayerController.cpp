@@ -31,6 +31,7 @@ CPlayerController::CPlayerController()
     m_AttackForce(5.0f),
     m_CurrentAttackForce(5.0f),
     m_JumpingTime(0),
+    m_Room(0),
     m_isFalling(false),
     m_mesh(NULL) {
   m_PhysicUserData = new CPhysicUserData("Player");
