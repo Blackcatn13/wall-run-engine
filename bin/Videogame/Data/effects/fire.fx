@@ -36,7 +36,7 @@ PSVertex VS(BILLBOARDIN IN){
 		OUT.uv3.y = OUT.uv3.y + (IN.params.z * scrollSpeeds.y);
 		OUT.uv4 = IN.uv * scales.z;
 		OUT.uv4.y = OUT.uv4.y + (IN.params.z * scrollSpeeds.z);
-	//}
+	//	}
 
     return OUT;
 }

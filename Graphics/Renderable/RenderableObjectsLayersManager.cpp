@@ -41,8 +41,11 @@ CRenderableObjectsManager  *CRenderableObjectsLayersManager::GetRenderableObject
 void CRenderableObjectsLayersManager::Update(float ElapsedTime) {
   for (size_t i = GetPreviousZone() ; i < GetNextZone() + 1; ++i) {
     // m_ResourcesVector[i]->Update(ElapsedTime);
-    for (size_t j = 0; j < m_ResourcesVector[i]->GetResourcesVector().size(); ++j) {
-      m_ResourcesVector[i]->GetResourcesVector()[j]->  Update(ElapsedTime);
+    CTemplatedVectorMapManager<CRenderableObjectsManager> *aux = m_ResourcesVector[i];
+    size_t maxSize = aux->GetSize();
+    std::vector<CRenderableObjectsManager *> resources = aux->GetResourcesVector();
+    for (size_t j = 0; j < maxSize; ++j) {
+      resources[j]->  Update(ElapsedTime);
     }
   }
 }
@@ -50,8 +53,11 @@ void CRenderableObjectsLayersManager::Update(float ElapsedTime) {
 void CRenderableObjectsLayersManager::Render(CGraphicsManager *RM) {
   for (size_t i = GetPreviousZone(); i < GetNextZone() + 1; ++i) {
     // m_ResourcesVector[i]->Update(ElapsedTime);
-    for (size_t j = 0; j < m_ResourcesVector[i]->GetResourcesVector().size(); ++j) {
-      m_ResourcesVector[i]->GetResourcesVector()[j]->Render(RM);
+    CTemplatedVectorMapManager<CRenderableObjectsManager> *aux = m_ResourcesVector[i];
+    size_t maxSize = aux->GetSize();
+    std::vector<CRenderableObjectsManager *> resources = aux->GetResourcesVector();
+    for (size_t j = 0; j < maxSize; ++j) {
+      resources[j]->Render(RM);
     }
   }
 }
@@ -67,17 +73,16 @@ int CRenderableObjectsLayersManager::GetNextZone() {
     return PLAYC->getRoom();
   return PLAYC->getRoom() + 1;
 }
+
 void CRenderableObjectsLayersManager::Render(CGraphicsManager *RM, const std::string &LayerName) {
   for (size_t i = GetPreviousZone(); i < GetNextZone() + 1; ++i) {
-    // m_ResourcesVector[i]->Update(ElapsedTime);
-    for (size_t j = 0; j < m_ResourcesVector[i]->GetResourcesVector().size(); ++j) {
-      CRenderableObjectsManager *l_managerInstance = m_ResourcesVector[i]->GetResource(LayerName);
-      if (l_managerInstance != NULL) {
-        l_managerInstance->Render(RM);
-      }
+    CRenderableObjectsManager *l_managerInstance = m_ResourcesVector[i]->GetResource(LayerName);
+    if (l_managerInstance != NULL) {
+      l_managerInstance->Render(RM);
     }
   }
 }
+
 /*
 void CRenderableObjectsLayersManager::Destroy()
 {
@@ -166,30 +171,31 @@ void CRenderableObjectsLayersManager::Load(const std::string &FileName) {
         std::stringstream ss;
         ss << numRoom;
         AddResource(ss.str(), l_ResourcesVector);
+      }
+      for (int i = 0; i < count; ++i) {
+        CXMLTreeNode nodeChild = m(i);
+        std::string name = nodeChild.GetName();
+        //if ((name == "mesh_instance") || (name == "renderable_script")){
+        if (name == "mesh_instance" || name == "animated_model" || name == "platform" || name == "switch_instance" || name == "door") {
+          int roomNum = nodeChild.GetIntProperty("room", 0);/*it - l_Vector.begin()*/
+          std::stringstream ss;
+          ss << roomNum;
+          (GetRenderableObjectManager(nodeChild, ss.str()))->Load(nodeChild);
 
-        for (int i = 0; i < count; ++i) {
-          CXMLTreeNode nodeChild = m(i);
-          std::string name = nodeChild.GetName();
-          //if ((name == "mesh_instance") || (name == "renderable_script")){
-          if (name == "mesh_instance" || name == "animated_model" || name == "platform" || name == "switch_instance" || name == "door") {
-            if (nodeChild.GetIntProperty("room", 0) == numRoom/*it - l_Vector.begin()*/) {
-              (GetRenderableObjectManager(nodeChild, ss.str()))->Load(nodeChild);
-            }
-            /*std::string layerAssigned = nodeChild.GetPszISOProperty("layer", "box1");
-            if (layerAssigned == "box1")
-            {
-              m_DefaultRenderableObjectManager->Load(nodeChild);
-            }
-            else
-            {
-              //FIND layerAssigned, load nodeChild
-              CRenderableObjectsManager* l_managerInstance = GetResource(layerAssigned);
-              if (l_managerInstance != NULL)
-              {
-                l_managerInstance->Load(nodeChild);
-              }
-            }*/
+          /*std::string layerAssigned = nodeChild.GetPszISOProperty("layer", "box1");
+          if (layerAssigned == "box1")
+          {
+            m_DefaultRenderableObjectManager->Load(nodeChild);
           }
+          else
+          {
+            //FIND layerAssigned, load nodeChild
+            CRenderableObjectsManager* l_managerInstance = GetResource(layerAssigned);
+            if (l_managerInstance != NULL)
+            {
+              l_managerInstance->Load(nodeChild);
+            }
+          }*/
         }
       }
     }
