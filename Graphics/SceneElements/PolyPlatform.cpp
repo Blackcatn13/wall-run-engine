@@ -162,13 +162,16 @@ void CPolyPlatform::Update(float ElapsedTime) {
   else
       m_Enabled = false;
   */
-  m_Dt = ElapsedTime;
-  if (m_Activated)
-    m_ActiveTime = m_ActiveTime + 1 * ElapsedTime;
-  std::stringstream ss;
-  ss << "update_poly_platform" << "(" << m_ActiveTime << "," << ElapsedTime << ",\"" << m_Name << "\")";
-  std::string toRun = ss.str();
-  SCRIPTM->RunCode(toRun.c_str());
+  int room = PLAYC->getRoom() ;
+  if (PLAYC->getRoom() == m_Room) {
+    m_Dt = ElapsedTime;
+    if (m_Activated)
+      m_ActiveTime = m_ActiveTime + 1 * ElapsedTime;
+    std::stringstream ss;
+    ss << "update_poly_platform" << "(" << m_ActiveTime << "," << ElapsedTime << ",\"" << m_Name << "\")";
+    std::string toRun = ss.str();
+    SCRIPTM->RunCode(toRun.c_str());
+  }
 }
 
 

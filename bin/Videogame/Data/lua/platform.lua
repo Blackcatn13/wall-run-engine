@@ -64,7 +64,7 @@ function update_break_platform(dt, current_time, max_time, platform_name, trigge
 	--coreInstance:trace("m_current_time " .. tostring(m_current_time))
 	--local l_time = m_current_time * dt
 	if current_time >= max_time then
-		local platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str("breakable"):get_resource(platform_name)
+		local platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("breakable",player_controller.m_Room):get_resource(platform_name)
 		--local falling_force = Vect3f(0.0,-1.0,0.0)
 		platform:disable_platform(dt)--, falling_force)
 		--m_current_time = 0
@@ -75,7 +75,7 @@ function update_break_platform(dt, current_time, max_time, platform_name, trigge
 end
 
 function restore_broken_platforms_by_layer(layer_name)
-	renderable_objects_layer_manager:get_renderable_objects_manager_by_str(layer_name):restore_broken_platforms()
+	renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room(layer_name, player_controller.m_Room):restore_broken_platforms()
 end
 
 --[[function enable_breaking_platform(name)
@@ -249,9 +249,9 @@ end
 function update_poly_platform(current_poly_time, dt, platform_name)
 	-- Enable Poly Emmerald power
 	local position = coreInstance:get_player_controller():get_position()
-	local platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str("poly"):get_resource(platform_name)
+	local platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("poly", player_controller.m_Room):get_resource(platform_name)
 	if platform == nil then
-		platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str("enabled_poly"):get_resource(platform_name)
+		platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("enabled_poly", player_controller.m_Room):get_resource(platform_name)
 	end
 	local platform_position = platform:get_position()
 	local l_distance = position:distance(platform_position)

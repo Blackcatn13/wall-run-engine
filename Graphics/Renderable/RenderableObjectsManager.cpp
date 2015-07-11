@@ -217,7 +217,7 @@ std::string CRenderableObjectsManager::SetUserDataName(std::string name) {
   return ss.str();
 }
 
-void CRenderableObjectsManager::ActivateElements(std::string roomName) {
+void CRenderableObjectsManager::ActivateElements(int roomName) {
   for (int i = 0; i < GetResourcesVector().size(); ++ i ) {
     if (((CMovingPlatform *)GetResourcesVector()[i])->getActivated() == false && ((CMovingPlatform *)GetResourcesVector()[i])->getRoom() == roomName) {
       ((CMovingPlatform *)GetResourcesVector()[i])->setActivated(true);

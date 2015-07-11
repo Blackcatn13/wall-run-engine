@@ -201,12 +201,28 @@ void RegisterManagers() {
     .def("get_resource_map", &CTemplatedVectorMapManager<CRenderableObjectsManager>::GetResourcesMap)
     .def("get_resource_vector", &CTemplatedVectorMapManager<CRenderableObjectsManager>::GetResourcesVector)
   ];
+
+
   luabind::module(LUA_STATE) [
-    class_<CRenderableObjectsLayersManager, CTemplatedVectorMapManager<CRenderableObjectsManager>>("CRenderableObjectsLayersManager")
+    class_<CTemplatedVectorMapManager< CTemplatedVectorMapManager<CRenderableObjectsManager>>>("CTemplatedVectorMapManagerCTemplatedVectorMapManagerROM")
+    .def(constructor<>())
+
+    //.def("remove_resource", &CTemplatedVectorMapManager<CRenderableObject>::RemoveResource) // <= m_Id identificador no declarado xq está en clase interna
+    .def("get_resource", &CTemplatedVectorMapManager<CRenderableObjectsManager>::GetResource)
+    .def("get_resource_by_id", &CTemplatedVectorMapManager<CRenderableObjectsManager>:: GetResourceById)
+    .def("add_resource", &CTemplatedVectorMapManager<CRenderableObjectsManager>::AddResource)
+    .def("destroy", &CTemplatedVectorMapManager<CRenderableObjectsManager>::Destroy)
+    .def("get_resource_map", &CTemplatedVectorMapManager<CRenderableObjectsManager>::GetResourcesMap)
+    .def("get_resource_vector", &CTemplatedVectorMapManager<CRenderableObjectsManager>::GetResourcesVector)
+  ];
+
+  luabind::module(LUA_STATE) [
+    class_<CRenderableObjectsLayersManager, CTemplatedVectorMapManager<CTemplatedVectorMapManager<CRenderableObjectsManager>>>("CRenderableObjectsLayersManager")
     .def(constructor<>())
     .def("get_default_renderable_object_manager", &CRenderableObjectsLayersManager::GetDefaultRenderableObjectManager)
     .def("load", &CRenderableObjectsLayersManager::Load)
     .def("get_renderable_objects_manager_by_str", &CRenderableObjectsLayersManager::GetRenderableObjectsManagerByStr)
+    .def("get_renderable_objects_manager_by_str_and_room", &CRenderableObjectsLayersManager::GetRenderableObjectsManagerByStrAndRoom)
     .def("deactivate_objects_by_layer", &CRenderableObjectsLayersManager::DeactivateObjectsByStr)
     .property("m_CurrentLayer", &CRenderableObjectsLayersManager::getCurrentLayer, &CRenderableObjectsLayersManager::setCurrentLayer)
   ];

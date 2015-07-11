@@ -8,15 +8,15 @@ function change_object_position(_object, _position)
 	_object.m_Actor:set_global_position(_position)
 end
 
-function get_renderable_object(layer_name, _objectName)
-	local object_manager = renderable_objects_layer_manager:get_renderable_objects_manager_by_str(layer_name)
+function get_renderable_object(layer_name,room, _objectName)
+	local object_manager = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room(layer_name, room)
 	local object = object_manager:get_resource(_objectName)
 	return object
 end
 
 function open_door(_objectName)
 	--coreInstance:trace("Opening door ".. _objectName)
-	local door = get_renderable_object("puzzle", _objectName)
+	local door = get_renderable_object("puzzle",player_controller.m_Room, _objectName)
 	if door ~= nil then
 		--door.m_Printable = false
 		coreInstance:trace("Door Final Position: " .. tostring(door.m_FinalPosition.y) )
@@ -31,7 +31,7 @@ end
 
 function open_door(_objectName, _objectName2)
 	--coreInstance:trace("Opening door ".. _objectName.. " and " .. _objectName2 )
-	local door = get_renderable_object("puzzle", _objectName)
+	local door = get_renderable_object("puzzle",player_controller.m_Room, _objectName)
 	if door ~= nil then
 		--door.m_Printable = false
 		coreInstance:trace("Door Final Position: " .. tostring(door.m_FinalPosition.y) )
@@ -40,7 +40,7 @@ function open_door(_objectName, _objectName2)
 		--door.m_Actor:set_global_position(door.m_FinalPosition)
 		--door.m_Actor:activate(false)
 	end
-	local door2 = get_renderable_object("puzzle", _objectName2)
+	local door2 = get_renderable_object("puzzle",player_controller.m_Room, _objectName2)
 	if door2 ~= nil then
 		--door.m_Printable = false
 		coreInstance:trace("Door Final Position: " .. tostring(door2.m_FinalPosition.y) )
@@ -55,7 +55,7 @@ end
 
 function close_door(_objectName)
 	--coreInstance:trace("Opening door ".. _objectName)
-	local door = get_renderable_object("puzzle", _objectName)
+	local door = get_renderable_object("puzzle",player_controller.m_Room, _objectName)
 	if door ~= nil then
 		--door.m_Printable = false
 		coreInstance:trace("Door Final Position: " .. tostring(door.m_OriginalPosition.y) )
@@ -69,7 +69,7 @@ end
 
 function close_door(_objectName, _objectName2)
 	--coreInstance:trace("Opening door ".. _objectName.. " and " .. _objectName2 )
-	local door = get_renderable_object("puzzle", _objectName)
+	local door = get_renderable_object("puzzle",player_controller.m_Room, _objectName)
 	if door ~= nil then
 		--door.m_Printable = false
 		coreInstance:trace("Door Final Position: " .. tostring(door.m_OriginalPosition.y) )
@@ -77,7 +77,7 @@ function close_door(_objectName, _objectName2)
 		door.m_Actor:set_global_position(door.m_OriginalPosition)
 		--door.m_Actor:activate(false)
 	end
-	local door2 = get_renderable_object("puzzle", _objectName2)
+	local door2 = get_renderable_object("puzzle",player_controller.m_Room, _objectName2)
 	if door2 ~= nil then
 		--door.m_Printable = false
 		coreInstance:trace("Door Final Position: " .. tostring(door2.m_OriginalPosition.y) )
@@ -129,6 +129,7 @@ function reset_game()
 	coreInstance.m_CameraController:set_active_camera("3DCam");
 	player_controller.m_isTurned = false;
 	player.attack_enabled = false
+	player.set_room(0)
 		
 	--Player Lifes + Pixelites
 	player.num_hearts = 3;

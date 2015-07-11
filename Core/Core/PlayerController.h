@@ -35,6 +35,7 @@ class CPlayerController : public CObject3D {
   GET_SET(int, JumpType);
   GET_SET(Vect3f, Direction3D);
   GET_SET(CRenderableObject *, mesh);
+  GET_SET(int, Room);
 
  private:
   CPhysicController	*m_PhysicController;
@@ -57,6 +58,7 @@ class CPlayerController : public CObject3D {
   Vect3f			m_Direction3D;
   float       m_JumpingTime;
   bool        m_isFalling;
+  int				m_Room;
   CRenderableObject *m_mesh;
 };
 

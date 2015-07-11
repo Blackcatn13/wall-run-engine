@@ -35,6 +35,9 @@ function Player.new()
 	
 	------	 PLAYER FUNCTIONS -----
 		
+	function self.set_room(room_number)
+		player_controller.m_Room = room_number
+	end
 	function self.add_pixelites(inc_pixelites)
 		self.pixelites = self.pixelites + inc_pixelites
 		self.coreInstance:trace("Num Pixelites: "..tostring(self.pixelites))

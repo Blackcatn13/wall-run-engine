@@ -21,7 +21,7 @@ class CSceneElement : public CMeshInstance {
   CPhysicActor *m_ActorAux;
   CPhysicUserData *m_UserDataAux;
   Vect3f m_PhysicsSize;
-  std::string m_Room;
+  int m_Room;
   bool m_HasRigidBody;
   bool m_HasPhisicMesh;
 
@@ -42,7 +42,7 @@ class CSceneElement : public CMeshInstance {
     return m_PhysicsSize;
   }
 
-  GET_SET(std::string, Room);
+  GET_SET(int, Room);
 };
 
 #endif
