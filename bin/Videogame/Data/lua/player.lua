@@ -115,6 +115,9 @@ function Player.new()
 				gui_manager:set_image('VidesGUI','Vides1')
 			end	
 		end
+		--Chuky Desaparece
+		ChuckyDesapears()
+		
 		if self.num_lives == 0 then
 			--game over
 			self.coreInstance:trace("game over")

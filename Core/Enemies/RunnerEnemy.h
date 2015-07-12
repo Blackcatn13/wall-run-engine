@@ -5,13 +5,14 @@
 
 #include "Enemy.h"
 #include <string.h>
-
+#include "Utils\Defines.h"
 class CRenderableObject;
 
 class CRunnerEnemy : public CEnemy {
  private:
 
   //float					m_AttackSpeed;
+  bool					m_Appeared;
 
  public:
 
@@ -20,7 +21,7 @@ class CRunnerEnemy : public CEnemy {
   //~CEasyEnemy();
 
   virtual void Update(float elapsedTime);
-
+  GET_SET(bool, Appeared);
   //float GetAttackSpeed() {
   //  return m_AttackSpeed;
   //}

@@ -153,6 +153,7 @@ function reset_game()
 	--Enemies
 	player.enemies_killed = 0;
 	enemy_manager:reload_enemies();
+	ChuckyDesapears()
 	
 	--Invisible walls
 	renderable_objects_layer_manager:deactivate_objects_by_layer("invisible");
