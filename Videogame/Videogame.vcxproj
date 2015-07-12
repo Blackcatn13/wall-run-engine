@@ -210,17 +210,6 @@
     <ClInclude Include="VideoGame_Process.h" />
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="..\bin\Videogame\Data\effects\DeferredLights.fx">
-      <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(DXSDK_DIR)Utilities\bin\x86\"fxc.exe /T fx_2_0 /LD /Gfp /Zi /Od /Fo "%(Filename).fxo" "%(FullPath)"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='ParticleDebug|Win32'">"$(DXSDK_DIR)Utilities\bin\x86\"fxc.exe /T fx_2_0 /LD /Gfp /Zi /Od /Fo "%(Filename).fxo" "%(FullPath)"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(DXSDK_DIR)Utilities\bin\x86\"fxc.exe /T fx_2_0 /LD /Fo "%(Filename).fxo" "%(FullPath)"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='ParticleRelease|Win32'">"$(DXSDK_DIR)Utilities\bin\x86\"fxc.exe /T fx_2_0 /LD /Fo "%(Filename).fxo" "%(FullPath)"</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(InputName).fxo</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='ParticleDebug|Win32'">$(InputName).fxo</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(InputName).fxo</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='ParticleRelease|Win32'">$(InputName).fxo</Outputs>
-    </CustomBuild>
     <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -68,9 +68,4 @@
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
   </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="..\bin\Videogame\Data\effects\DeferredLights.fx">
-      <Filter>shaders</Filter>
-    </CustomBuild>
-  </ItemGroup>
 </Project>
