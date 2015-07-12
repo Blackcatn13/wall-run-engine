@@ -10,7 +10,7 @@ function onUpdateWindowDisplayGUI()
 		end
 	end
 	
-	local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("player"):get_resource("Piky");
+	--local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky")
 	
 	--Si el valor de isDisplayed es TRUE quiere decir que se muestra y, al cabo de 3 segundos, se ocultará.
 	if gui_manager:get_is_displayed_heart() == true then

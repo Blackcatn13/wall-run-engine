@@ -18,7 +18,9 @@ function set_is_3D()
 end
 
 function set_player_zone(zone_number)
+--set_player_room("3", "false")
 	player.zone = zone_number
+	--renderable_objects_layer_manager:change_between_vectors("player", "Piky", tonumber(zone_number))
 	coreInstance:trace("New Zone " .. tostring(player.zone) )
 end
 
@@ -256,17 +258,36 @@ function ChuckyApear()
 	Chucky:move_to_position(pos);
 	local yaw = player.get_player_controller():get_yaw();
 	Chucky.m_RenderableObject:set_yaw(-math.rad(90));
+	Chucky.m_Appeared = true
 	Chucky:m_FSM():newState("Corriendo");
 end
 
 function ChuckyDesapears()
 	coreInstance:trace("CHUKY goes out");
 	local Chucky = enemy_manager:get_enemy("Chucky");
-	Chucky:m_FSM():newState("Parado");
+	if(Chucky.m_Appeared == true) then
+		local pos = Vect3f(12.30, 0.0, -2.75)
+		Chucky:move_to_position(pos);
+		Chucky:m_FSM():newState("Parado");
+		Chucky.m_Appeared = false
+	end
 end
 
 function ChuckyJump()
 	coreInstance:trace("Chucky Jumping");
 	local Chucky = enemy_manager:get_enemy("Chucky");
 	Chucky:m_FSM():newState("Saltando");
+end
+
+function set_player_room(room, chucky_appears)
+	set_player_zone(room ..".0")
+	local num_room = tonumber(room)
+	renderable_objects_layer_manager:change_between_vectors("player", "Piky", num_room)
+
+	renderable_objects_layer_manager:change_between_vectors("solid","scriptedController", num_room)
+	if chucky_appears == "true" then
+		renderable_objects_layer_manager:change_between_vectors("enemies", "Chucky", num_room)
+	end
+	
+	player_controller.m_Room = num_room
 end

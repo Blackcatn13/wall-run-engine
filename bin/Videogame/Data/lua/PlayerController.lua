@@ -52,7 +52,7 @@ function on_update_player_lua(l_ElapsedTime)
 	end
 	local camObject = active_camera.m_pObject3D;
 	local directionalLight = lightM:get_resource("ShadowLight");
-	local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", 0):get_resource("Piky");
+	local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky");
 	
 	if gui_manager:get_is_displayed_console() == false and gui_manager.m_sCurrentWindows == "Play.xml" then
 	
@@ -516,7 +516,7 @@ function on_update_player_lua(l_ElapsedTime)
 end
 
 function move_character_controller_mesh(_player, _position, _jumping)
-	local mesh = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", 0):get_resource("Piky")
+	local mesh = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky")
 	mesh:set_yaw(_player:get_yaw() + math.pi)
 	local pos;
 	if _jumping and not inLoop then

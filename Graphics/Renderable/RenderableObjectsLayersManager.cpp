@@ -45,7 +45,8 @@ void CRenderableObjectsLayersManager::Update(float ElapsedTime) {
     size_t maxSize = aux->GetSize();
     std::vector<CRenderableObjectsManager *> resources = aux->GetResourcesVector();
     for (size_t j = 0; j < maxSize; ++j) {
-      resources[j]->  Update(ElapsedTime);
+      if (resources[j]->GetSize() > 0)
+        resources[j]->  Update(ElapsedTime);
     }
   }
 }
@@ -57,7 +58,8 @@ void CRenderableObjectsLayersManager::Render(CGraphicsManager *RM) {
     size_t maxSize = aux->GetSize();
     std::vector<CRenderableObjectsManager *> resources = aux->GetResourcesVector();
     for (size_t j = 0; j < maxSize; ++j) {
-      resources[j]->Render(RM);
+      if (resources[j]->GetSize() > 0)
+        resources[j]->Render(RM);
     }
   }
 }
@@ -77,7 +79,7 @@ int CRenderableObjectsLayersManager::GetNextZone() {
 void CRenderableObjectsLayersManager::Render(CGraphicsManager *RM, const std::string &LayerName) {
   for (size_t i = GetPreviousZone(); i < GetNextZone() + 1; ++i) {
     CRenderableObjectsManager *l_managerInstance = m_ResourcesVector[i]->GetResource(LayerName);
-    if (l_managerInstance != NULL) {
+    if (l_managerInstance != NULL && l_managerInstance->GetSize() > 0) {
       l_managerInstance->Render(RM);
     }
   }
@@ -226,4 +228,13 @@ void CRenderableObjectsLayersManager::DeactivateObjectsByStr(std::string layerNa
       SCRIPTM->RunCode(funct);
     }
   }
+}
+
+void CRenderableObjectsLayersManager::ChangeBetweenVectors( std::string layer, std::string objName, int room ) {
+  CRenderableObjectsManager *l_Rolm = m_ResourcesVector[PLAYC->getRoom()]->GetResource(layer);
+  CRenderableObjectsManager *l_RolmAux = m_ResourcesVector[room]->GetResource(layer);
+  CRenderableObject *l_Ro = l_Rolm ->GetResource(objName);
+  l_Ro->setRoom(room);
+  l_RolmAux->AddResource(objName, l_Ro);
+  l_Rolm->RemoveFromResource(objName);
 }

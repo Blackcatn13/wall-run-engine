@@ -8,6 +8,7 @@
 
 #include "PlayerController.h"
 #include "Math\Vector3.h"
+#include "Math\Vector2.h"
 #include "Math\Matrix33.h"
 #include "Object\Object3D.h"
 #include "Actor\PhysicActor.h"
@@ -21,6 +22,7 @@
 #include "AI\AIController.h"
 #include "Enemies\Enemy.h"
 #include "Enemies\EasyEnemy.h"
+#include "Enemies\RunnerEnemy.h"
 #include "AI\Puzzle.h"
 #include "AI\FSMInstance.h"
 #include "AI\FSMManager.h"
@@ -92,7 +94,7 @@ void RegisterAI() {
     .property("m_Life", &CEnemy::getLife,  &CEnemy::setLife)
     .property("m_AttackPlayerDistance", &CEnemy::getAttackPlayerDistance, &CEnemy::setAttackPlayerDistance )
     .property("m_Zone", &CEnemy::getZone, &CEnemy::setZone)
-	.property("m_isAttacking", &CEnemy::getisAttacking, &CEnemy::setisAttacking)
+    .property("m_isAttacking", &CEnemy::getisAttacking, &CEnemy::setisAttacking)
     .def("get_name",  &CEnemy::GetEnemyName)
     .def("m_FSM", &CEnemy::getFsm)
     .def("only_rotate", &CEnemy::OnlyRotate)
@@ -121,7 +123,13 @@ void RegisterAI() {
     //.def("render", &CEasyEnemy::Render)
   ];
 
+  luabind::module(LUA_STATE) [
+    class_<CRunnerEnemy, CEnemy>("CRunnerEnemy")
+    //.def(constructor<CXMLTreeNode>())
+    .def(constructor<CRenderableObject *, float , std::string , Vect2f , float , float >())
+    .property("m_Appeared", &CRunnerEnemy::getAppeared, &CRunnerEnemy::setAppeared)
 
+  ];
   luabind::module(LUA_STATE) [
     class_<CPuzzle>("CPuzzle")
     .def(constructor<>())

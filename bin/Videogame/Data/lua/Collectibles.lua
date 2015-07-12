@@ -40,8 +40,17 @@ function get_sticker(sticker_name, img_name)
 end
 
 function deactivate_collectible (_trigger, layer_name, obj_name)
+	deactivate_collectible_by_room(_trigger, layer_name, obj_name, player_controller.m_Room)
+end
+
+function activate_collectible (_trigger, layer_name, obj_name)
+	activate_collectible_by_room(_trigger, layer_name, obj_name, player_controller.m_Room)
+end
+
+
+function deactivate_collectible_by_room (_trigger, layer_name, obj_name, room_number)
 	_trigger.m_IsSwitched = true
-	local object_manager = renderable_objects_layer_manager:get_renderable_objects_manager_by_str(layer_name)
+	local object_manager = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room(layer_name, room_number)
 	local object = object_manager:get_resource(obj_name)
 	if object ~= nil then
 		object.m_Printable = false
@@ -53,9 +62,9 @@ function deactivate_collectible (_trigger, layer_name, obj_name)
 	end
 end
 
-function activate_collectible (_trigger, layer_name, obj_name)
+function activate_collectible_by_room (_trigger, layer_name, obj_name, room_number)
 	_trigger.m_IsSwitched = false
-	local object_manager = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room(layer_name, player_controller.m_Room)
+	local object_manager = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room(layer_name, room_number)
 	local object = object_manager:get_resource(obj_name)
 	if object ~= nil then
 		object.m_Printable = true

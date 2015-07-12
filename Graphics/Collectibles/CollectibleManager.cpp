@@ -113,12 +113,14 @@ void CCollectibleManager::ResetCollectibles() {
     std::string name = m_ResourcesVector[num]->getRenderableObject()->getName();
     std::string trigger = "trigger_manager:get_resource(\"" + name + "_UserData\")";
 
+    int room = m_ResourcesVector[num]->getRenderableObject()->getRoom();
     std::size_t found = name.find("Collectible");
     if (found != std::string::npos)
-      ss << "deactivate_collectible(" << trigger << ",\"" << "collectible" << "\",\"" << name << "\")";
+      //  ss << "deactivate_collectible(" << trigger << ",\"" << "collectible" << "\",\"" << name << "\")";
+      ss << "deactivate_collectible_by_room(" << trigger << ",\"" << "collectible" << "\",\"" << name << "\"," << room << ")";
     else
-      ss << "activate_collectible(" << trigger << ",\"" << "collectible" << "\",\"" << name << "\")";
-
+      //  ss << "activate_collectible(" << trigger << ",\"" << "collectible" << "\",\"" << name << "\")";
+      ss << "activate_collectible_by_room(" << trigger << ",\"" << "collectible" << "\",\"" << name << "\"," << room << ")";
     std::string str = ss.str();
     CCORE->GetScriptManager()->RunCode(str);
   }

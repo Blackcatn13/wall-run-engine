@@ -224,6 +224,7 @@ void RegisterManagers() {
     .def("get_renderable_objects_manager_by_str", &CRenderableObjectsLayersManager::GetRenderableObjectsManagerByStr)
     .def("get_renderable_objects_manager_by_str_and_room", &CRenderableObjectsLayersManager::GetRenderableObjectsManagerByStrAndRoom)
     .def("deactivate_objects_by_layer", &CRenderableObjectsLayersManager::DeactivateObjectsByStr)
+    .def("change_between_vectors", &CRenderableObjectsLayersManager::ChangeBetweenVectors)
     .property("m_CurrentLayer", &CRenderableObjectsLayersManager::getCurrentLayer, &CRenderableObjectsLayersManager::setCurrentLayer)
   ];
   luabind::module(LUA_STATE) [
