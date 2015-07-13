@@ -87,7 +87,6 @@ function on_update_player_lua(l_ElapsedTime)
 		directionalLight:set_position(Vect3f(player_controller:get_position().x-offsetx,player_controller:get_position().y+altura,player_controller:get_position().z-offsetz));
 		local dir3D = active_camera:get_direction();
 		local dirYaw = camObject:get_yaw();
-		coreInstance:trace("DIRYAW " .. tostring(dirYaw))
 		local dirNor = Vect3f(math.cos(dirYaw + (math.pi/2)), 0, (math.sin(dirYaw + (math.pi/2))));
 		dir3D.y = 0;
 		dir3D = luaUtil:normalize(dir3D);
@@ -126,7 +125,6 @@ function on_update_player_lua(l_ElapsedTime)
 				auxAxisXMoved = act2in:do_action_from_lua("MoveRigth", x_axis);
 				y_axis = inputm:get_game_pad_left_thumb_y_deflection(1);
 				x_axis = inputm:get_game_pad_left_thumb_x_deflection(1);
-				coreInstance:trace("x_axis " .. tostring(x_axis))
 				if (y_axis == 0 and x_axis == 0) then
 					cosyaw = 0;
 					sinyaw = 0;
@@ -137,8 +135,15 @@ function on_update_player_lua(l_ElapsedTime)
 					sinyaw = math.sin(auxyaw); -- alante 1 atras -1
 					mov = dir3D * sinyaw + dirNor * cosyaw;
 					local player_yaw = math.atan2(mov.x,mov.z);
+					mov = luaUtil:normalize(mov);
+					player_controller.m_Direction3D = mov;
 					mov = mov * l_ElapsedTime * player_controller.m_Speed;
 					player_controller:set_yaw(player_yaw);
+					if (y_axis > 0) then
+						player_controller.m_isTurned = false;
+					elseif (y_axis < 0) then
+						player_controller.m_isTurned = true;
+					end
 				end
 				auxForward = auxAxisYMoved and y_axis > 0
 				auxBackward = auxAxisYMoved and y_axis < 0
