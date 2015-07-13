@@ -26,7 +26,7 @@ class CActionToInput;
 class CGuiElement {
  public:
   typedef enum {	BUTTON = 0, CHECKBUTTON, STATIC_TEXT, SLIDER, IMAGE, EDITABLE_TEXT_BOX,
-                  PROGRESS_BAR, DIALOG_BOX, RADIO_BOX
+                  PROGRESS_BAR, DIALOG_BOX, RADIO_BOX, BUTTON_LIST
                } TypeGuiElement;
 
   typedef enum {  EDITPOS, EDITSIZE, DISABLE } TypeEditMode;
