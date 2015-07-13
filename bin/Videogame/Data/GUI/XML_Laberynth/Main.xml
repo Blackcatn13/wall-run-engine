@@ -16,10 +16,10 @@
           texture_deactivated="./Data/GUI/GoPixelGo/PlayButton.png"
           OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');
 							CCoreLuaWrapper().m_CoreInstance:getGUIManager():push_windows('Play.xml');
-							local cam = coreInstance.m_CameraController:get_resource('3DCam');
-							cam.m_eTypeCamera = 6;
-							cam.m_currentWaypoint = 0;
-							cam.m_nextWaypoint = 1;"
+							if player.game_over == true then
+								 reset_cameras()
+								 player.game_over = false
+							end"
           OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>
 		  
 	<Button name="Options" posx="60.00" posy="30.00" height="15.00" width="22.00" visible="true" 

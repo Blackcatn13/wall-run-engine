@@ -32,6 +32,7 @@ function Player.new()
 	self.original_position = Vect3f(0.0,0.0,0.0)
 	self.original_yaw = 0.0
 	self.attack_enabled = false
+	self.game_over = false
 	
 	------	 PLAYER FUNCTIONS -----
 		
@@ -122,6 +123,7 @@ function Player.new()
 			--game over
 			self.coreInstance:trace("game over")
 			gui_manager:set_is_gameover(true);
+			self.game_over = true
 		else
 			self.coreInstance:trace(tostring(self.num_lives))
 			gui_manager:set_image('LifeGUI','Life3')

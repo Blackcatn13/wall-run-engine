@@ -349,3 +349,10 @@ function on_update_cameras_lua(l_ElapsedTime)
 		--name2:set_name("UpdatePassFinal");
 	end
 end
+
+function reset_cameras()
+	local cam = coreInstance.m_CameraController:get_resource('3DCam');
+	cam.m_eTypeCamera = 6;
+	cam.m_currentWaypoint = 0;
+	cam.m_nextWaypoint = 1;
+end
