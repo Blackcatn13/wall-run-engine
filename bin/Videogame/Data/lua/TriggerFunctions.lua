@@ -7,7 +7,14 @@ function activate_teleport(player_position)
 	local camera = coreInstance.m_CameraController:get_active_camera()
 	--	coreInstance:trace("laaaaaa")
 	camera.m_pObject3D:set_position(Vect3f(camera.m_pObject3D:get_position().x, camera.m_pObject3D:get_position().y, vec3f_array.z - 10))
-
+	local cam_object =  camera.m_pObject3D
+	local PlayerYaw =  - cam_object:get_yaw() + 1.57
+	if player_controller.m_is3D == true then
+		player_controller:set_yaw(PlayerYaw)
+	else
+		player_controller.m_isTurned = false
+		player_controller:set_yaw(PlayerYaw + 1.57); -- 90ยบ
+	end
 	--camera.m_pObject3D:set_position(Vect3f(3.118870, 20.0, 271.008423))
 end
 function set_is_3D()
