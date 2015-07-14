@@ -17,6 +17,7 @@
 #include <Math/Vector3.h>
 #include <Math/Vector2.h>
 //---Forward Declarations---
+class CXMLTreeNode;
 class CGraphicsManager;
 class CFontManager;
 class CInputManager;
@@ -35,6 +36,8 @@ class CGuiElement {
   CGuiElement(	uint32 windowsHeight, uint32 windowsWidth, float height_percent, float width_percent,
                 Vect2f position_percent, TypeGuiElement type, std::string lit = "",  uint32 textHeightOffset = 0,
                 uint32 textWidthOffset = 0, bool isVisible = true, bool isActive = true );
+
+  CGuiElement(CXMLTreeNode &node, uint32 windowsHeight, uint32 windowsWitdh, TypeGuiElement type);
 
   virtual ~CGuiElement() {/*Nothing*/;}
 

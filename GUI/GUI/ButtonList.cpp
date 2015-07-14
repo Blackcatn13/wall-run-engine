@@ -11,9 +11,11 @@
 
 //---Constructor
 CButtonList::CButtonList (	uint32 windowsHeight, uint32 windowsWidth, float height_precent, float witdh_percent,
-                            const Vect2f position_percent, std::string lit, uint32 textHeightOffset,
+                            const Vect2f position_percent, uint32 columns, uint32 rows, std::string lit, uint32 textHeightOffset,
                             uint32 textWidthOffset, bool isVisible, bool isActive)
   : CGuiElement( windowsHeight, windowsWidth, height_precent, witdh_percent, position_percent, BUTTON, lit, textHeightOffset, textWidthOffset, isVisible, isActive)
+  , m_columns(columns)
+  , m_rows(rows)
 {}
 
 
@@ -40,4 +42,8 @@ void CButtonList::Update(CInputManager *intputManager, float elapsedTime) {
       intputManager->GetPosition(IDV_MOUSE, mousePosition);
     CGuiElement::CalculatePosMouse(mousePosition);
   }
+}
+
+void CButtonList::addButtons(CXMLTreeNode &node) {
+
 }

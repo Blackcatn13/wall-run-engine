@@ -6,6 +6,9 @@
 #include "Utils\Logger.h"
 #include "Core\ScriptManager.h"
 #include "Core\Core.h"
+#include "XML\XMLTreeNode.h"
+#include "Core\Core.h"
+#include "Texture\TextureManager.h"
 
 
 //---Constructor
@@ -25,6 +28,21 @@ CButton::CButton (	uint32 windowsHeight, uint32 windowsWidth, float height_prece
   , m_ClickedColor(colRED)
   , m_DeactivatedColor(colYELLOW)
 {}
+
+CButton::CButton(CXMLTreeNode &node, uint32 windowsHeight, uint32 windowsWidth)
+  : CGuiElement(node, windowsHeight, windowsWidth, BUTTON)
+  , m_eState(BS_NORMAL)
+  , m_sLuaCode_OnClicked(node.GetPszProperty("OnClickedAction", ""))
+  , m_sLuaCode_OnOver(node.GetPszProperty("OnOverAction", ""))
+  , m_pNormalTexture(TEXTM->GetResource(node.GetPszProperty("texture_normal", ""), true))
+  , m_pOverTexture(TEXTM->GetResource(node.GetPszProperty("texture_over", ""), true))
+  , m_pClickedTexture(TEXTM->GetResource(node.GetPszProperty("texture_clicked", ""), true))
+  , m_pDeactivatedTexture(TEXTM->GetResource(node.GetPszProperty("texture_deactivated", ""), true))
+  , m_NormalColor(colBLUE)
+  , m_OverColor(colGREEN)
+  , m_ClickedColor(colRED)
+  , m_DeactivatedColor(colYELLOW) {
+}
 
 
 //---------------Interfaz de GuiElement----------------------

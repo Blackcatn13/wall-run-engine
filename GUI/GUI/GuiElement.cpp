@@ -5,6 +5,7 @@
 #include "GraphicsManager.h"
 #include "Font/FontManager.h"
 #include "ActionToInput.h"
+#include "XML\XMLTreeNode.h"
 
 CGuiElement::CGuiElement(	uint32 windowsHeight, uint32 windowsWidth, float height_percent, float width_percent,
                           Vect2f position_percent, TypeGuiElement type, std::string lit, uint32 textHeightOffset,
@@ -22,7 +23,7 @@ CGuiElement::CGuiElement(	uint32 windowsHeight, uint32 windowsWidth, float heigh
   , m_bFocus( false )
   , m_sLuaCode_OnLoadValue("")
   , m_sLuaCode_OnSaveValue("")
-  , m_sName("DefaultGuiElement")
+  , m_sName("defaultGuiElement")
   , m_pParent(NULL)
   , m_eEditMode(DISABLE)
   , m_eType(type)
@@ -36,6 +37,34 @@ CGuiElement::CGuiElement(	uint32 windowsHeight, uint32 windowsWidth, float heigh
   m_Position.y	= (uint32) (m_uWindowsHeight * 0.01f * m_PositionPercent.y);
 }
 
+CGuiElement::CGuiElement(CXMLTreeNode &node, uint32 windowsHeight, uint32 windowsWitdh, TypeGuiElement type)
+  : m_uWindowsHeight(windowsHeight)
+  , m_uWindowsWidth(windowsWitdh)
+  , m_fHeightPercent(node.GetFloatProperty("height", 50.f))
+  , m_fWidthPercent(node.GetFloatProperty("width", 50.f))
+  , m_PositionPercent(Vect2f(node.GetFloatProperty("posx", 0.f), node.GetFloatProperty("posy", 0.f)))
+  , m_eType(type)
+  , m_sLiteral(node.GetPszProperty("Literal", ""))
+  , m_bIsVisible(node.GetBoolProperty("visible", true))
+  , m_bIsActive(node.GetBoolProperty("active", true))
+  , m_bIsOver( false )
+  , m_bIsInside( false )
+  , m_bFocus( false )
+  , m_sLuaCode_OnLoadValue("")
+  , m_sLuaCode_OnSaveValue("")
+  , m_sName(node.GetPszProperty("name", "defaultGuiElement"))
+  , m_pParent(NULL)
+  , m_eEditMode(DISABLE)
+  , m_z(0) {
+  m_uWidth	= (uint32)(m_fWidthPercent * 0.01f * m_uWindowsWidth);
+  m_uHeight	= (uint32)(m_fHeightPercent * 0.01f * m_uWindowsHeight);
+  m_Position.x	= (uint32) (m_uWindowsWidth	* 0.01f * m_PositionPercent.x );
+  m_Position.y	= (uint32) (m_uWindowsHeight * 0.01f * m_PositionPercent.y);
+  float	widthOffsetPercent = node.GetFloatProperty("widthOffset", 0.f);
+  float	heightOffsetPercent	= node.GetFloatProperty("heightOffset", 0.f);
+  m_uTextHeightOffset = (uint32) (windowsWitdh * 0.01f * widthOffsetPercent);
+  m_uTextWidthOffset = (uint32) (m_uWindowsHeight	* 0.01f * heightOffsetPercent);
+}
 
 void CGuiElement::SetWindowsWidth (uint32	w) {
   m_uWindowsWidth = w;

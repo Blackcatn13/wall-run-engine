@@ -288,7 +288,7 @@ CButton *CWindows::LoadButton (CXMLTreeNode &pNewNode, const Vect2i &screenResol
   // texture_normal="blabla" texture_over="bla" texture_clicked="bla" texture_deactivated="bla"
   // OnClickedAction="blabla" OnOverAction="blabla" Literal="blabla" widthOffset="" heightOffset=""/>
 
-  std::string name								= pNewNode.GetPszProperty("name", "defaultGuiElement");
+  /*std::string name								= pNewNode.GetPszProperty("name", "defaultGuiElement");
   float 			posx								= pNewNode.GetFloatProperty("posx", 0.f);
   float 			posy								= pNewNode.GetFloatProperty("posy", 0.f);
   float 			w										= pNewNode.GetFloatProperty("width", 50.f);
@@ -318,7 +318,11 @@ CButton *CWindows::LoadButton (CXMLTreeNode &pNewNode, const Vect2i &screenResol
   button->SetTextures(normal, over, clicked, deactivated);
   button->SetOnClickedAction(OnClickedAction);
   button->SetOnOverAction(OnOverAction);
+  return button;*/
+
+  CButton *button = new CButton(pNewNode, screenResolution.y, screenResolution.x);
   return button;
+
 }
 
 CCheckButton *CWindows::LoadCheckButton ( CXMLTreeNode &pNewNode, const Vect2i &screenResolution, CTextureManager *tm) {

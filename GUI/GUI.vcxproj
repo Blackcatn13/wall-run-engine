@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GUI\Button.cpp" />
+    <ClCompile Include="GUI\ButtonList.cpp" />
     <ClCompile Include="GUI\CheckButton.cpp" />
     <ClCompile Include="GUI\Console.cpp" />
     <ClCompile Include="GUI\DialogBox.cpp" />
@@ -37,6 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GUI\Button.h" />
+    <ClInclude Include="GUI\ButtonList.h" />
     <ClInclude Include="GUI\CheckButton.h" />
     <ClInclude Include="GUI\Console.h" />
     <ClInclude Include="GUI\DialogBox.h" />

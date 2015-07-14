@@ -18,7 +18,7 @@ class CButtonList: public CGuiElement {
  public:
 
   CButtonList(	uint32 windowsHeight, uint32 windowsWidth, float height_precent, float witdh_percent,
-                const Vect2f position_percent, std::string lit = "", uint32 textHeightOffset = 0,
+                const Vect2f position_percent, uint32 columns, uint32 rows, std::string lit = "", uint32 textHeightOffset = 0,
                 uint32 textWidthOffsetbool = 0, bool isVisible = true, bool isActive = true);
 
   virtual ~CButtonList() {/*NOTHING*/;}
@@ -27,6 +27,12 @@ class CButtonList: public CGuiElement {
   virtual void	Render							(CGraphicsManager *renderManager, CFontManager *fm);
   virtual void	Update							(CInputManager *intputManager, float elapsedTime);
   virtual void	OnClickedChild			(const std::string &name) {/*NOTHING*/;}
+
+  void addButtons (CXMLTreeNode &node);
+
+ private:
+  uint32 m_columns;
+  uint32 m_rows;
 };
 
 #endif //INC_BUTTON_H
