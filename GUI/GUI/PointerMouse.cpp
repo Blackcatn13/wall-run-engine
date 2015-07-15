@@ -36,25 +36,26 @@ void CPointerMouse::Render (CGraphicsManager *renderManager, CFontManager *fm) {
 
 void CPointerMouse::Update (CInputManager *inputManager, float elapsedTime) {
   if ( CGuiElement::m_bIsVisible && CGuiElement::m_bIsActive ) {
-    Vect2i pos;
-    if (inputManager->HasGamePad())
-      inputManager->GetPosition(IDV_GAMEPAD1, pos);
-    else
+    if (inputManager->HasGamePad()) {
+      m_bIsVisible = false;
+    } else {
+      Vect2i pos;
       inputManager->GetPosition(IDV_MOUSE, pos);
-    CGuiElement::SetPosition(pos);
+      CGuiElement::SetPosition(pos);
 
-    if (m_bAnimated) {
-      m_fCounter += elapsedTime;
-      if (m_fCounter > m_fTime) {
-        tTexturesMap::iterator it = m_Textures.find(m_sActiveTexture);
-        it++;
-        if (it == m_Textures.end()) {
-          it = m_Textures.begin();
+      if (m_bAnimated) {
+        m_fCounter += elapsedTime;
+        if (m_fCounter > m_fTime) {
+          tTexturesMap::iterator it = m_Textures.find(m_sActiveTexture);
+          it++;
+          if (it == m_Textures.end()) {
+            it = m_Textures.begin();
+          }
+          m_sActiveTexture = it->first;
+          m_fCounter = 0.f;
         }
-        m_sActiveTexture = it->first;
-        m_fCounter = 0.f;
-      }
-    }//END if (m_bAnimated)
+      }//END if (m_bAnimated)
+    }
 
   }//END if( CGuiElement::m_bIsVisible && CGuiElement::m_bIsActive )
 }
