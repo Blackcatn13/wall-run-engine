@@ -25,7 +25,7 @@ class CGamePad;
 class CInputManager { //: public CScriptRegister
  public:
   // Init and End protocols
-  CInputManager(): m_bIsOk(false), m_pDI( NULL ), m_pKB( NULL ), m_pMouse( NULL ), m_pGamePad(NULL), m_hWndMain(NULL), m_fakePosition(v2iZERO) {}
+  CInputManager(): m_bIsOk(false), m_pDI( NULL ), m_pKB( NULL ), m_pMouse( NULL ), m_pGamePad(NULL), m_hWndMain(NULL), m_fakePosition(v2iZERO), m_useFakePosition(false) {}
   virtual ~CInputManager() {
     Done();
   }

@@ -14,7 +14,7 @@
 CButtonList::CButtonList (	uint32 windowsHeight, uint32 windowsWidth, float height_precent, float witdh_percent,
                             const Vect2f position_percent, uint32 columns, uint32 rows, std::string lit, uint32 textHeightOffset,
                             uint32 textWidthOffset, bool isVisible, bool isActive)
-  : CGuiElement( windowsHeight, windowsWidth, height_precent, witdh_percent, position_percent, BUTTON, lit, textHeightOffset, textWidthOffset, isVisible, isActive)
+  : CGuiElement( windowsHeight, windowsWidth, height_precent, witdh_percent, position_percent, BUTTON_LIST, lit, textHeightOffset, textWidthOffset, isVisible, isActive)
   , m_currentId(0)
 {}
 
@@ -56,13 +56,13 @@ void CButtonList::Render	(CGraphicsManager *renderManager, CFontManager *fm) {
 
 void CButtonList::Update(CInputManager *intputManager, float elapsedTime) {
   if ( CGuiElement::m_bIsVisible && CGuiElement::m_bIsActive ) {
-    Vect2i mousePos;
-    intputManager->GetPosition(IDV_MOUSE, mousePos);
-    if (mousePos != m_lastMousePosition) {
-      intputManager->setFakePosition(m_lastMousePosition);
-    }
     //Primero actualizamos todos los hijos que pudiera tener el button:
     if (intputManager->HasGamePad()) {
+      Vect2i mousePos;
+      intputManager->GetPosition(IDV_MOUSE, mousePos);
+      if (mousePos != m_lastMousePosition) {
+        intputManager->setFakePosition(m_lastMousePosition);
+      }
       if (ACT2IN->DoAction("MenuDown")) {
         m_currentId++;
         if (m_currentId == m_buttons.size())
