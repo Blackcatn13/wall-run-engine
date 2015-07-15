@@ -100,7 +100,7 @@ void	CGuiElement::SetPosition (const Vect2i &pos) {
 }
 
 void CGuiElement::CalculatePosMouse( const Vect2i &mousePosition ) {
-  if ( m_bIsActive && m_bIsVisible ) {
+  if ( m_bIsActive && m_bIsVisible) {
     //  (0,0) ________
     //		 |					|
     //		 |GuiElement|

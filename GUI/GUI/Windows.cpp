@@ -19,6 +19,7 @@
 #include "Image.h"
 #include "StaticText.h"
 #include "ProgressBar.h"
+#include "ButtonList.h"
 //---------------------------------------------
 
 CWindows::~CWindows() {
@@ -256,6 +257,9 @@ bool CWindows::LoadXML( const std::string &xmlGuiFile, const Vect2i &screenResol
           //<KeyBoard_Back input="DIK_A" OnKeyDown="blablaLua"/>
           m_sLuaCode_OnKeyDown	= pNewNode.GetPszProperty("OnKeyDown", "");
           m_uInputKeyDown				= pNewNode.GetIntProperty("input", 0);
+        } else if (tagName == "ButtonList") {
+          CButtonList *bl = LoadButtonList(pNewNode, screenResolution, textureM);
+          AddGuiElement(bl);
         } else {
           //Warning
           LOGGER->AddNewLog(ELL_WARNING, "Windows:: No se reconoce el tag %s del fichero %s", tagName.c_str(), xmlGuiFile.c_str());
@@ -689,4 +693,9 @@ CStaticText	*CWindows::LoadStaticText(CXMLTreeNode &pNewNode, const Vect2i &scre
   staticText->SetName(name);
   staticText->SetLiteral(l_literal);
   return staticText;
+}
+
+CButtonList *CWindows::LoadButtonList (CXMLTreeNode &node, const Vect2i &screenResolution, CTextureManager *tm) {
+  CButtonList *bl = new CButtonList(node, screenResolution.y, screenResolution.x);
+  return bl;
 }

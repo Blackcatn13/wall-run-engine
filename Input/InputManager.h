@@ -25,7 +25,7 @@ class CGamePad;
 class CInputManager { //: public CScriptRegister
  public:
   // Init and End protocols
-  CInputManager(): m_bIsOk(false), m_pDI( NULL ), m_pKB( NULL ), m_pMouse( NULL ), m_pGamePad(NULL), m_hWndMain(NULL) {}
+  CInputManager(): m_bIsOk(false), m_pDI( NULL ), m_pKB( NULL ), m_pMouse( NULL ), m_pGamePad(NULL), m_hWndMain(NULL), m_fakePosition(v2iZERO) {}
   virtual ~CInputManager() {
     Done();
   }
@@ -59,6 +59,8 @@ class CInputManager { //: public CScriptRegister
   float       GetGamePadLeftThumbXDeflection (INPUT_DEVICE_TYPE device = IDV_GAMEPAD1);
   float       GetGamePadLeftTriggerDelta (INPUT_DEVICE_TYPE device = IDV_GAMEPAD1);
   float       GetGamePadRightTriggerDelta (INPUT_DEVICE_TYPE device = IDV_GAMEPAD1);
+  void        setFakePosition(Vect2i pos) {m_fakePosition = pos;}
+  void        setUseFakePosition(bool use) {m_useFakePosition = use;}
 
   //----CScriptRegister interface-------------------
   //virtual void		RegisterFunctions								(CScriptManager* scriptManager);
@@ -74,6 +76,8 @@ class CInputManager { //: public CScriptRegister
   CMouse			    *m_pMouse;	      // Pointer to the Mouse instance
   CGamePad			*m_pGamePad;		  // Pointer to the GamePad instance
   HWND			    m_hWndMain;	    // application main window
+  Vect2i        m_fakePosition;
+  bool          m_useFakePosition;
 };
 
 #endif //INC_INPUT_MANAGER_H_

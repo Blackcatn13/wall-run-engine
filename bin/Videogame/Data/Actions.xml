@@ -321,11 +321,16 @@
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_R"/>
 	    </action>
 		
-		<action name="PauseGame">
-	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_O"/>
-	    </action>
 		<action name="PauseGameExit">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_K"/>
+	    </action>
+
+	    <action name="MenuUp">
+	    	<input deviceType="IDV_GAMEPAD1" EventType="EVENT_DOWN_UP" Code="PAD_DPAD_UP"/>
+	    </action>
+
+	    <action name="MenuDown">
+	    	<input deviceType="IDV_GAMEPAD1" EventType="EVENT_DOWN_UP" Code="PAD_DPAD_DOWN"/>
 	    </action>
 	</globals>
     <mouse_keyboard>
@@ -368,6 +373,10 @@
 		<action name="ClickOver">
 			<input deviceType="IDV_MOUSE" EventType="EVENT_DOWN_UP" Code="MOUSE_BUTTON_LEFT"/>
 		</action>
+
+		<action name="PauseGame">
+	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_O"/>
+	    </action>
 	</mouse_keyboard>
 	<gamepad>
 		<action name="MoveForward">
@@ -409,6 +418,10 @@
 		<action name="ClickOver">
 			<input deviceType="IDV_GAMEPAD1" EventType="EVENT_DOWN_UP" Code="PAD_BUTTON_A"/>
 		</action>
+
+		<action name="PauseGame">
+	    	<input deviceType="IDV_GAMEPAD1" EventType="EVENT_UP_DOWN" Code="PAD_DPAD_START"/>
+	    </action>
 	</gamepad>
 	
 </Actions>

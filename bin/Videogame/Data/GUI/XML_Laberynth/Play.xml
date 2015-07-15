@@ -51,41 +51,45 @@
 		<texture name="img1" name_texture="./Data/GUI/GoPixelGo/Pause.png"/>
 	</Image>
 	
-	<Button name="PlayPause" posx="42.00" posy="20.00" height="10.00" width="15.00" visible="false" 
-          active="true" texture_normal="./Data/GUI/GoPixelGo/PlayButton.png"
-          texture_over="./Data/GUI/GoPixelGo/PlayButtonHover.png"
-          texture_clicked="./Data/GUI/GoPixelGo/PlayButton.png"
-          texture_deactivated="./Data/GUI/GoPixelGo/PlayButton.png"
-          OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');
-							gui_manager:activate_pause(false);
-							gui_manager:set_is_paused(false)"
-          OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>
-		  
-	<Button name="OptionsPause" posx="42.00" posy="30.00" height="10.00" width="15.00" visible="false" 
-          active="true" texture_normal="./Data/GUI/GoPixelGo/OptionsButton.png"
-          texture_over="./Data/GUI/GoPixelGo/OptionsButtonHover.png"
-          texture_clicked="./Data/GUI/GoPixelGo/OptionsButton.png"
-          texture_deactivated="./Data/GUI/GoPixelGo/OptionsButton.png"
-          OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');"
-          OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>
-		  
-	<Button name="ExtrasPause" posx="42.00" posy="40.00" height="10.00" width="15.00" visible="false" 
-          active="true" texture_normal="./Data/GUI/GoPixelGo/ExtrasButton.png"
-          texture_over="./Data/GUI/GoPixelGo/ExtrasButtonHover.png"
-          texture_clicked="./Data/GUI/GoPixelGo/ExtrasButton.png"
-          texture_deactivated="./Data/GUI/GoPixelGo/ExtrasButton.png"
-          OnClickedAction=" CCoreLuaWrapper().m_CoreInstance:getGUIManager():push_windows('Collectibles.xml')
-			CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');"
-          OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>
-		  
-	<Button name="ExitPause" posx="42.00" posy="50.00" height="10.00" width="15.00" visible="false" 
-          active="true" texture_normal="./Data/GUI/GoPixelGo/ExitButton.png"
-          texture_over="./Data/GUI/GoPixelGo/ExitButtonHover.png"
-          texture_clicked="./Data/GUI/GoPixelGo/ExitButton.png"
-          texture_deactivated="./Data/GUI/GoPixelGo/ExitButton.png"
-          OnClickedAction=" CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');
-							CCoreLuaWrapper().m_CoreInstance:exit_game()"
-          OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>
+  <ButtonList name="PauseButtonList" posx="42" posy="20" height="60" width="15" visible="false" active="true">
+    <Buttons>
+    	<Button name="PlayPause" posx="42.00" posy="20.00" height="10.00" width="15.00" visible="true" 
+              active="true" texture_normal="./Data/GUI/GoPixelGo/PlayButton.png"
+              texture_over="./Data/GUI/GoPixelGo/PlayButtonHover.png"
+              texture_clicked="./Data/GUI/GoPixelGo/PlayButton.png"
+              texture_deactivated="./Data/GUI/GoPixelGo/PlayButton.png"
+              OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');
+    							gui_manager:activate_pause(false);
+    							gui_manager:set_is_paused(false)"
+              OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>
+    		  
+    	<Button name="OptionsPause" posx="42.00" posy="30.00" height="10.00" width="15.00" visible="true" 
+              active="true" texture_normal="./Data/GUI/GoPixelGo/OptionsButton.png"
+              texture_over="./Data/GUI/GoPixelGo/OptionsButtonHover.png"
+              texture_clicked="./Data/GUI/GoPixelGo/OptionsButton.png"
+              texture_deactivated="./Data/GUI/GoPixelGo/OptionsButton.png"
+              OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');"
+              OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>
+    		  
+    	<Button name="ExtrasPause" posx="42.00" posy="40.00" height="10.00" width="15.00" visible="true" 
+              active="true" texture_normal="./Data/GUI/GoPixelGo/ExtrasButton.png"
+              texture_over="./Data/GUI/GoPixelGo/ExtrasButtonHover.png"
+              texture_clicked="./Data/GUI/GoPixelGo/ExtrasButton.png"
+              texture_deactivated="./Data/GUI/GoPixelGo/ExtrasButton.png"
+              OnClickedAction=" CCoreLuaWrapper().m_CoreInstance:getGUIManager():push_windows('Collectibles.xml')
+    			CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');"
+              OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>
+    		  
+    	<Button name="ExitPause" posx="42.00" posy="50.00" height="10.00" width="15.00" visible="true" 
+              active="true" texture_normal="./Data/GUI/GoPixelGo/ExitButton.png"
+              texture_over="./Data/GUI/GoPixelGo/ExitButtonHover.png"
+              texture_clicked="./Data/GUI/GoPixelGo/ExitButton.png"
+              texture_deactivated="./Data/GUI/GoPixelGo/ExitButton.png"
+              OnClickedAction=" CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');
+    							CCoreLuaWrapper().m_CoreInstance:exit_game()"
+              OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>
+    </Buttons>
+  </ButtonList>
   
   <Image name="GameOverBackground" posx="0" posy="0" height="100" width="100" visible="false" active="true"
          default="background" OnLoadValue="" OnSaveValue="" flip="" backGround="false">

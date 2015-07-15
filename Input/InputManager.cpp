@@ -123,34 +123,39 @@ HRESULT CInputManager::Update(void) {
 // If mouse or joystick return current position.
 //----------------------------------------------------------------------------
 HRESULT CInputManager::GetPosition( INPUT_DEVICE_TYPE idType, Vect2i &pos) {
-  switch (idType) {
-    case IDV_MOUSE:
-      //pos = m_pMouse->GetPosition();
-      POINT p;
-      if (GetCursorPos(&p)) {
-        //cursor position now in p.x and p.y
-        pos = Vect2i(p.x, p.y);
-      }
-      return S_OK;
-      break;
-    case IDV_GAMEPAD1:
-      m_pGamePad->GetPosition(pos, 0);
-      return true;
-      break;
-    case IDV_GAMEPAD2:
-      m_pGamePad->GetPosition(pos, 1);
-      return true;
-      break;
-    case IDV_GAMEPAD3:
-      m_pGamePad->GetPosition(pos, 2);
-      return true;
-      break;
-    case IDV_GAMEPAD4:
-      m_pGamePad->GetPosition(pos, 3);
-      return true;
-      break;
-    default:
-      return E_FAIL;
+  if (!m_useFakePosition) {
+    switch (idType) {
+      case IDV_MOUSE:
+        //pos = m_pMouse->GetPosition();
+        POINT p;
+        if (GetCursorPos(&p)) {
+          //cursor position now in p.x and p.y
+          pos = Vect2i(p.x, p.y);
+        }
+        return S_OK;
+        break;
+      case IDV_GAMEPAD1:
+        m_pGamePad->GetPosition(pos, 0);
+        return true;
+        break;
+      case IDV_GAMEPAD2:
+        m_pGamePad->GetPosition(pos, 1);
+        return true;
+        break;
+      case IDV_GAMEPAD3:
+        m_pGamePad->GetPosition(pos, 2);
+        return true;
+        break;
+      case IDV_GAMEPAD4:
+        m_pGamePad->GetPosition(pos, 3);
+        return true;
+        break;
+      default:
+        return E_FAIL;
+    }
+  } else {
+    pos = m_fakePosition;
+    return true;
   }
 }
 
