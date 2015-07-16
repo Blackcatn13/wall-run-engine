@@ -63,9 +63,12 @@ void CSceneElement::InsertPhisic(Vect3f localPosition) {
   m_UserData = new CPhysicUserData(SetUserDataName(m_Name));
   m_UserData->SetPaint(false);
   m_Actor = new CPhysicActor(m_UserData);
-  if (m_HasPhisicMesh)
+  if (m_HasPhisicMesh) {
+    if (PHYSXM->GetSceneCookingMesh()->GetPhysicMeshMap().size() == 0)
+      PHYSXM->GetSceneCookingMesh()->LoadFromXML(CCORE->getScenePhisicsFile());
     m_Actor->AddMeshFromMap( PHYSXM->GetSceneCookingMesh()->GetPhysicMeshMap(), m_Name);
-  else
+
+  } else
     m_Actor->AddBoxSphape(m_PhysicsSize, m_Position, localPosition);
   if (m_HasRigidBody) {
     std::stringstream name;

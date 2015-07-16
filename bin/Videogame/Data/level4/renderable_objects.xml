@@ -331,4 +331,7 @@
 	<animated_model name="CARALLENGUA_002" core="face" pos="360.035675 5.645350 16.930252" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0"/>
 	<platform name="PolyPlatform002" core="PolyPlatform002" type="poly" pos="557.900879 2.798659 -53.174576" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="5.19568 2.86906 2.5697" layer="poly" room="0" final_position="557.901 9.3701 -53.175"
 		 direction="0 1 0" time_out="3" speed="5" light="" activation_distance="10"/>
+	<!--<platform name="WALL_TRAP1_RIGHT" core="WALL_TRAP1_RIGHT" type ="static" pos="452.820068 8.017212 3.252808" yaw="0.0" pitch="0.0" roll="0.0" scale="0.51843 2.12333 3.17425" visible="true"  phisic_size="4.12463 4.34251 3.48662" use_physx_mesh="true" room="0" layer="solid"/>
+	<platform name="WALL_TRAP1_LEFT" core="WALL_TRAP1_LEFT" type ="static" pos="452.820068 8.017212 18.725906" yaw="0.0" pitch="0.0" roll="0.0" scale="0.51843 2.12333 3.17425" visible="true" phisic_size="4.12463 4.34251 3.48662" use_physx_mesh="true" room="0" layer="solid"/-->	 
+		 
 </renderable_objects>
