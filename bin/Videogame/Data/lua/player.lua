@@ -29,7 +29,7 @@ function Player.new()
 	self.going_back = false
 	self.playing_hit = false
 	self.zone = 1
-	self.original_position = Vect3f(0.0,0.0,0.0)
+	self.original_position = Vect3f(55.784378, 1.0, 0.617737)
 	self.original_yaw = 0.0
 	self.attack_enabled = false
 	self.game_over = false

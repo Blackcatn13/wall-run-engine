@@ -39,16 +39,15 @@
 	<Physx_mesh name="Plataforma_Mov06" filename="Data\level4\meshes\Plataforma_Mov06.phsx"/>
 	<Physx_mesh name="Plataforma_Mov05" filename="Data\level4\meshes\Plataforma_Mov05.phsx"/>
 	<Physx_mesh name="Plataforma_Mov04" filename="Data\level4\meshes\Plataforma_Mov04.phsx"/>
+	<Physx_mesh name="POLY. PLAT. HORTZ004" filename="Data\level4\meshes\POLY. PLAT. HORTZ004.phsx"/>
 	<Physx_mesh name="POLY. PLAT. HORTZ003" filename="Data\level4\meshes\POLY. PLAT. HORTZ003.phsx"/>
 	<Physx_mesh name="SALA 5" filename="Data\level4\meshes\SALA 5.phsx"/>
 	<Physx_mesh name="FRANJA_SALA 5" filename="Data\level4\meshes\FRANJA_SALA 5.phsx"/>
 	<Physx_mesh name="FRANJA_SALA 5 INFERIOR" filename="Data\level4\meshes\FRANJA_SALA 5 INFERIOR.phsx"/>
 	<Physx_mesh name="FRANJA_SALA 5 INFERIOR001" filename="Data\level4\meshes\FRANJA_SALA 5 INFERIOR001.phsx"/>
 	<Physx_mesh name="FRANJA_SALA 5 INFERIOR002" filename="Data\level4\meshes\FRANJA_SALA 5 INFERIOR002.phsx"/>
-	<Physx_mesh name="Object001" filename="Data\level4\meshes\Object001.phsx"/>
 	<Physx_mesh name="Object002" filename="Data\level4\meshes\Object002.phsx"/>
-	<Physx_mesh name="CARALLENGUA001" filename="Data\level4\meshes\CARALLENGUA001.phsx"/>
-	<Physx_mesh name="obstacle023" filename="Data\level4\meshes\obstacle023.phsx"/>
+	<Physx_mesh name="obstacle02311" filename="Data\level4\meshes\obstacle02311.phsx"/>
 	<Physx_mesh name="obstacle024" filename="Data\level4\meshes\obstacle024.phsx"/>
 	<Physx_mesh name="SALA 7" filename="Data\level4\meshes\SALA 7.phsx"/>
 	<Physx_mesh name="OBSTACLE006" filename="Data\level4\meshes\OBSTACLE006.phsx"/>
@@ -81,4 +80,5 @@
 	<Physx_mesh name="PUNXES010" filename="Data\level4\meshes\PUNXES010.phsx"/>
 	<Physx_mesh name="Object010" filename="Data\level4\meshes\Object010.phsx"/>
 	<Physx_mesh name="Object011" filename="Data\level4\meshes\Object011.phsx"/>
+	<Physx_mesh name="POLY. PLAT. HORTZ005-01" filename="Data\level4\meshes\POLY. PLAT. HORTZ005-01.phsx"/>
 </Physx_meshes>

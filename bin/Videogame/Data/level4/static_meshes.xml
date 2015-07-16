@@ -102,6 +102,7 @@
 	<static_mesh name="PilarQuad002" filename="Data\level4\meshes\PilarQuad002.mesh"/>
 	<static_mesh name="Pixelite001" filename="Data\level4\meshes\Pixelite001.mesh"/>
 	<static_mesh name="SALA 4" filename="Data\level4\meshes\SALA 4.mesh"/>
+	<static_mesh name="Plataforma_Fragil" filename="Data\level4\meshes\Plataforma_Fragil.mesh"/>
 	<static_mesh name="Plataforma01" filename="Data\level4\meshes\Plataforma01.mesh"/>
 	<static_mesh name="Plataforma02" filename="Data\level4\meshes\Plataforma02.mesh"/>
 	<static_mesh name="Plataforma0er3" filename="Data\level4\meshes\Plataforma0er3.mesh"/>
@@ -168,6 +169,9 @@
 	<static_mesh name="Box042" filename="Data\level4\meshes\Box042.mesh"/>
 	<static_mesh name="Box044" filename="Data\level4\meshes\Box044.mesh"/>
 	<static_mesh name="SALA 8" filename="Data\level4\meshes\SALA 8.mesh"/>
+	<static_mesh name="POLY PLAT. HORTZ004" filename="Data\level4\meshes\POLY PLAT. HORTZ004.mesh"/>
+	<static_mesh name="POLY PLAT. HORTZ005" filename="Data\level4\meshes\POLY PLAT. HORTZ005.mesh"/>
+	<static_mesh name="POLY PLAT. HORTZ006" filename="Data\level4\meshes\POLY PLAT. HORTZ006.mesh"/>
 	<static_mesh name="SALA1_TEMPLEPOLYPOLY" filename="Data\level4\meshes\SALA1_TEMPLEPOLYPOLY.mesh"/>
 	<static_mesh name="Columna005" filename="Data\level4\meshes\Columna005.mesh"/>
 	<static_mesh name="ANTORCHA034" filename="Data\level4\meshes\ANTORCHA034.mesh"/>
@@ -211,13 +215,16 @@
 	<static_mesh name="Plataforma_Mov05" filename="Data\level4\meshes\Plataforma_Mov05.mesh"/>
 	<static_mesh name="Plataforma_Mov04" filename="Data\level4\meshes\Plataforma_Mov04.mesh"/>
 	<static_mesh name="PUNXES002" filename="Data\level4\meshes\PUNXES002.mesh"/>
+	<static_mesh name="POLY. PLAT. HORTZ004" filename="Data\level4\meshes\POLY. PLAT. HORTZ004.mesh"/>
 	<static_mesh name="POLY. PLAT. HORTZ003" filename="Data\level4\meshes\POLY. PLAT. HORTZ003.mesh"/>
 	<static_mesh name="SALA 5" filename="Data\level4\meshes\SALA 5.mesh"/>
 	<static_mesh name="FRANJA_SALA 5" filename="Data\level4\meshes\FRANJA_SALA 5.mesh"/>
 	<static_mesh name="FRANJA_SALA 5 INFERIOR" filename="Data\level4\meshes\FRANJA_SALA 5 INFERIOR.mesh"/>
 	<static_mesh name="FRANJA_SALA 5 INFERIOR001" filename="Data\level4\meshes\FRANJA_SALA 5 INFERIOR001.mesh"/>
 	<static_mesh name="FRANJA_SALA 5 INFERIOR002" filename="Data\level4\meshes\FRANJA_SALA 5 INFERIOR002.mesh"/>
+	<static_mesh name="Object00111" filename="Data\level4\meshes\Object00111.mesh"/>
 	<static_mesh name="Object002" filename="Data\level4\meshes\Object002.mesh"/>
+	<static_mesh name="obstacle02311" filename="Data\level4\meshes\obstacle02311.mesh"/>
 	<static_mesh name="obstacle024" filename="Data\level4\meshes\obstacle024.mesh"/>
 	<static_mesh name="PUNXES005" filename="Data\level4\meshes\PUNXES005.mesh"/>
 	<static_mesh name="SALA 7" filename="Data\level4\meshes\SALA 7.mesh"/>
@@ -259,9 +266,5 @@
 	<static_mesh name="PUNXES010" filename="Data\level4\meshes\PUNXES010.mesh"/>
 	<static_mesh name="Object010" filename="Data\level4\meshes\Object010.mesh"/>
 	<static_mesh name="Object011" filename="Data\level4\meshes\Object011.mesh"/>
-		<static_mesh name="PolyPlatform002" filename="Data\level4\meshes\PolyPlatform002.mesh"/>
-	<static_mesh name="Plataforma_Fragil" filename="Data\level4\meshes\Plataforma_Fragil.mesh"/>
-	<static_mesh name="POLY PLAT. HORTZ005" filename="Data\level4\meshes\POLY PLAT. HORTZ005.mesh"/>
-	<static_mesh name="POLY PLAT. HORTZ006" filename="Data\level4\meshes\POLY PLAT. HORTZ006.mesh"/>
-	<static_mesh name="POLY PLAT. HORTZ004" filename="Data\level4\meshes\POLY PLAT. HORTZ004.mesh"/>
+	<static_mesh name="PolyPlatform002" filename="Data\level4\meshes\PolyPlatform002.mesh"/>
 </static_meshes>
