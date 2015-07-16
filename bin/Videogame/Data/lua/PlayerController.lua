@@ -6,6 +6,9 @@ local _fallPosition = Vect3f(-10000, -10000, -10000);
 local timer = 0.0
 local player_moving = false
 local move_3D = true
+local lastCamYaw = -10;
+local extraRotationContinue = 0;
+local lastJoystickYaw = -10;
 
 
 --////////////////////////////////////////////////////////
@@ -87,6 +90,9 @@ function on_update_player_lua(l_ElapsedTime)
 		directionalLight:set_position(Vect3f(player_controller:get_position().x-offsetx,player_controller:get_position().y+altura,player_controller:get_position().z-offsetz));
 		local dir3D = active_camera:get_direction();
 		local dirYaw = camObject:get_yaw();
+		if (lastCamYaw == -10) then
+			lastCamYaw = dirYaw;
+		end
 		local dirNor = Vect3f(math.cos(dirYaw + (math.pi/2)), 0, (math.sin(dirYaw + (math.pi/2))));
 		dir3D.y = 0;
 		dir3D = luaUtil:normalize(dir3D);
@@ -125,11 +131,44 @@ function on_update_player_lua(l_ElapsedTime)
 				auxAxisXMoved = act2in:do_action_from_lua("MoveRigth", x_axis);
 				y_axis = inputm:get_game_pad_left_thumb_y_deflection(1);
 				x_axis = inputm:get_game_pad_left_thumb_x_deflection(1);
-				if (y_axis == 0 and x_axis == 0) then
+				if (y_axis == 0 and x_axis == 0 and player_controller.m_is3D == true) or (x_axis == 0 and player_controller.m_is3D == false) then
 					cosyaw = 0;
 					sinyaw = 0;
+					extraRotationContinue = 0;
 				else
+					local changedCamYaw = dirYaw - lastCamYaw;
+					if math.abs(changedCamYaw) > 1 then
+						if changedCamYaw > 0 then
+							extraRotationContinue = 1.57;--de 3d a 2d
+						else
+							extraRotationContinue = -1.57;--de 2d a 3d
+						end
+					end
+					if player_controller.m_is3D == false then
+						y_axis = 0;
+					end
 					auxyaw = math.atan2(x_axis,y_axis);
+					if (lastJoystickYaw == -10) then
+						lastJoystickYaw = auxYaw;
+					else
+						if extraRotationContinue ~= 0 then
+							local changedJoyYaw = auxyaw - lastJoystickYaw;
+							if math.abs(changedJoyYaw) > 0.3 then
+								extraRotationContinue = 0;
+							elseif extraRotationContinue > 0 then
+								extraRotationContinue = extraRotationContinue - math.abs(changedJoyYaw);
+								if math.abs(extraRotationContinue) < 0.3 then
+									extraRotationContinue = 0;
+								end
+							else
+								extraRotationContinue = extraRotationContinue + math.abs(changedJoyYaw);
+								if math.abs(extraRotationContinue) < 0.3 then
+									extraRotationContinue = 0;
+								end
+							end
+						end
+					end
+					auxyaw = auxyaw + extraRotationContinue;
 					auxyaw = auxyaw +1.57;
 					cosyaw = math.cos(auxyaw); -- derecha 1 izquierda -1
 					sinyaw = math.sin(auxyaw); -- alante 1 atras -1
@@ -138,6 +177,9 @@ function on_update_player_lua(l_ElapsedTime)
 					mov = luaUtil:normalize(mov);
 					player_controller.m_Direction3D = mov;
 					mov = mov * l_ElapsedTime * player_controller.m_Speed;
+					if player_controller.m_isJumping == true then
+						mov = mov * 0.75;
+					end
 					player_controller:set_yaw(player_yaw);
 					if (y_axis > 0) then
 						player_controller.m_isTurned = false;
@@ -145,6 +187,9 @@ function on_update_player_lua(l_ElapsedTime)
 						player_controller.m_isTurned = true;
 					end
 				end
+				--ACTUALIZAR LASTCAMYAW Y LASTJOYSTICKYAW, SI SE QUIEREN USAR ABAJO HAY QUE ACTUALIZARLOS MAS TARDE
+				lastCamYaw = dirYaw;
+				lastJoystickYaw = auxYaw;
 				auxForward = auxAxisYMoved and y_axis > 0
 				auxBackward = auxAxisYMoved and y_axis < 0
 				auxRight = auxAxisXMoved and x_axis > 0
