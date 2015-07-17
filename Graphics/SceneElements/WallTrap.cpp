@@ -169,6 +169,7 @@ void CWallTrap::MoveToPoint(float dt,  Vect3f point, float minDistance, float sp
 
 
 void CWallTrap::Update(float ElapsedTime) {
+// if (m_Activated)
   UpdateFSM(ElapsedTime);
 }
 

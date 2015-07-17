@@ -178,7 +178,7 @@ void CRenderableObjectsLayersManager::Load(const std::string &FileName) {
         CXMLTreeNode nodeChild = m(i);
         std::string name = nodeChild.GetName();
         //if ((name == "mesh_instance") || (name == "renderable_script")){
-        if (name == "mesh_instance" || name == "animated_model" || name == "platform" || name == "switch_instance" || name == "door") {
+        if (name == "mesh_instance" || name == "animated_model" || name == "platform" || name == "switch_instance" || name == "door" || name == "wall_trap") {
           int roomNum = nodeChild.GetIntProperty("room", 0);/*it - l_Vector.begin()*/
           std::stringstream ss;
           ss << roomNum;

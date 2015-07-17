@@ -16,6 +16,7 @@
 #include "SceneElements\Door.h"
 #include "SceneElements\WallTrap.h"
 
+
 #include "Mesh\MeshInstance.h"
 #include <string>
 #include "Math\Vector3.h"
@@ -46,7 +47,9 @@ void RegisterSceneElements() {
     .property("m_PhysicsSize", &CSceneElement::GetPhysicsSize)
     .def("activate_phisic", &CSceneElement::ActivatePhisic)
     .def("is_around", &CSceneElement::isAround)
+    .def("get_fsm", &CSceneElement::getFsm)
     .def("is_inside", &CSceneElement::isInside)
+
   ];
 
   luabind::module(LUA_STATE) [

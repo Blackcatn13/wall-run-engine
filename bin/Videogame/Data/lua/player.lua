@@ -149,6 +149,9 @@ function Player.new()
 			--coreInstance:trace("Player died in zone 4.0")
 			--enable_breaking_platform("Plataforma_Fragil")
 			 restore_broken_platforms_by_layer("breakable")
+		elseif tostring(self.zone) == "3.0" then
+			reset_wall_trap(0, "WALL_TRAP1_RIGHT")
+			reset_wall_trap(0, "WALL_TRAP1_LEFT")
 		end
 
 	end

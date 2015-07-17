@@ -40,4 +40,5 @@
 <trigger name="ActivateWall002" platform_name="" pos="184.772156 -0.171448 11.098344" shape="box" size="0.69519 9.74541 9.85767" type_event="enter" script_function="activate_invisible_wall" param1="INVISIBLE_WALL002" group="1" paint="false" color="0.690196 0.501961 0.501961"/>
 <trigger name="ActivateWall003" platform_name="" pos="433.332184 8.022827 11.219621" shape="box" size="0.69519 9.74541 9.85767" type_event="enter" script_function="activate_invisible_wall" param1="INVISIBLE_WALL003" group="1" paint="false" color="0.690196 0.501961 0.501961"/>
 <trigger name="ActivateWall004" platform_name="" pos="558.272339 8.022827 -15.115706" shape="box" size="9.85767 9.74541 0.69519" type_event="enter" script_function="activate_invisible_wall" param1="INVISIBLE_WALL004" group="1" paint="false" color="0.690196 0.501961 0.501961"/>
+<trigger name="ActivateWallTrapRoom3" platform_name="" pos="440.020081 8.491058 8.098312" shape="box" size="0.85767 9.74541 9.69519" type_event="enter" script_function="activate_wall_traps" param1="0" group="1" paint="false" color="0.690196 0.501961 0.501961"/>
 </triggers>

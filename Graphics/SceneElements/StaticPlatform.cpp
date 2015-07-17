@@ -11,13 +11,13 @@ CStaticPlatform::CStaticPlatform(std::string platformName, std::string coreName,
   : CSceneElement(platformName, coreName, hasRigidBody) {
   m_HasPhisicMesh = false;
   InsertPhisic(Vect3f(.0f, m_PhysicsSize.y, .0f));
-  m_Actor->Activate(false);
+  m_Actor->Activate(true);
 }
 
 CStaticPlatform::CStaticPlatform(const CXMLTreeNode &node, bool hasRigidBody)
   : CSceneElement(node, hasRigidBody) {
   InsertPhisic(Vect3f(.0f, m_PhysicsSize.y, .0f));
-  m_Actor->Activate(false);
+  m_Actor->Activate(true);
 }
 
 CStaticPlatform::~CStaticPlatform() {
@@ -25,40 +25,40 @@ CStaticPlatform::~CStaticPlatform() {
 
 void CStaticPlatform::Update(float dt) {
   //Aqui meter las colisiones con el Player
-// if (PLAYC->getis3D() == false) {
-  std::string lala = m_Name;
-  PLAYC->setisOnPlatform(1.0);
-  float l_RadioPhysicsPlayer = PLAYC->getPhysicController()->GetRadius();
-  Vect3f l_playerPosition = PLAYC->GetPosition();
-  Vect3f dirRay = (m_Position - l_playerPosition);
-  Vect3f l_dirRayFixed = Vect3f(dirRay.x, 0, dirRay.y);
-  bool PhysicsApplied = false;
-  l_dirRayFixed = l_dirRayFixed.Normalize();
-  //solo hacemos los calculos de colisiones si la plataforma esta a una distancia minima (optimización)
-  if (abs(dirRay.x) + abs(dirRay.z) < (GetPhysicsSize().x + GetPhysicsSize().z + 1.0) /*|| m_HasPhisicMesh*/) {
-    SCollisionInfo info = SCollisionInfo();
+  if (PLAYC->getis3D() == false && !m_HasPhisicMesh) {
+    std::string lala = m_Name;
+    PLAYC->setisOnPlatform(1.0);
+    float l_RadioPhysicsPlayer = PLAYC->getPhysicController()->GetRadius();
+    Vect3f l_playerPosition = PLAYC->GetPosition();
+    Vect3f dirRay = (m_Position - l_playerPosition);
+    Vect3f l_dirRayFixed = Vect3f(dirRay.x, 0, dirRay.y);
+    bool PhysicsApplied = false;
+    l_dirRayFixed = l_dirRayFixed.Normalize();
+    //solo hacemos los calculos de colisiones si la plataforma esta a una distancia minima (optimización)
+    if (abs(dirRay.x) + abs(dirRay.z) < (GetPhysicsSize().x + GetPhysicsSize().z + 1.0) /*|| m_HasPhisicMesh*/) {
+      SCollisionInfo info = SCollisionInfo();
 
 
-    l_dirRayFixed = l_dirRayFixed.Normalize() * 0.5;
-    Vect3f dirRayBounding = Vect3f(l_dirRayFixed.x, -l_RadioPhysicsPlayer, l_dirRayFixed.z);
-    //Vect3f dirRayBounding = dirRay * l_RadioPhysicsPlayer;
-    CPhysicUserData *hit = CCORE->GetPhysicsManager()->RaycastClosestActor(Vect3f(l_playerPosition.x + dirRayBounding.x, l_playerPosition.y + dirRayBounding.y, l_playerPosition.z + dirRayBounding.z),
-                           Vect3f(0, -1, 0), 0xffffffff, info);
-    if (hit != NULL && hit->getName() == m_Name && info.m_fDistance <= 1.2) {
-      PLAYC->getPhysicController()->Move(-l_dirRayFixed.Normalize() * PLAYC->getSpeed() * dt, dt);
-      PhysicsApplied = true;
+      l_dirRayFixed = l_dirRayFixed.Normalize() * 0.5;
+      Vect3f dirRayBounding = Vect3f(l_dirRayFixed.x, -l_RadioPhysicsPlayer, l_dirRayFixed.z);
+      //Vect3f dirRayBounding = dirRay * l_RadioPhysicsPlayer;
+      CPhysicUserData *hit = CCORE->GetPhysicsManager()->RaycastClosestActor(Vect3f(l_playerPosition.x + dirRayBounding.x, l_playerPosition.y + dirRayBounding.y, l_playerPosition.z + dirRayBounding.z),
+                             Vect3f(0, -1, 0), 0xffffffff, info);
+      if (hit != NULL && hit->getName() == m_Name && info.m_fDistance <= 1.2) {
+        PLAYC->getPhysicController()->Move(-l_dirRayFixed.Normalize() * PLAYC->getSpeed() * dt, dt);
+        PhysicsApplied = true;
+      }
+
+      if ((PhysicsApplied == false) && (isAround(l_playerPosition, m_Position))) {
+
+        Vect3f dirInvertida = -dirRay.Normalize();
+        dirInvertida = Vect3f(dirInvertida.x, 0, dirInvertida.z);
+        PLAYC->getPhysicController()->Move(dirInvertida *  PLAYC->getSpeed() * dt , dt);
+
+      }
+
     }
-
-    if ((PhysicsApplied == false) && (isAround(l_playerPosition, m_Position))) {
-
-      Vect3f dirInvertida = -dirRay.Normalize();
-      dirInvertida = Vect3f(dirInvertida.x, 0, dirInvertida.z);
-      PLAYC->getPhysicController()->Move(dirInvertida *  PLAYC->getSpeed() * dt , dt);
-
-    }
-
   }
-  //}
 }
 
 //bool CStaticPlatform::isInside(Vect3f vector1, Vect3f vector2) {

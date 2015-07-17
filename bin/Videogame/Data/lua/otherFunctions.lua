@@ -8,7 +8,7 @@ function change_object_position(_object, _position)
 	_object.m_Actor:set_global_position(_position)
 end
 
-function get_renderable_object(layer_name,room, _objectName)
+function get_renderable_object(layer_name,room, _objectName)	
 	local object_manager = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room(layer_name, room)
 	local object = object_manager:get_resource(_objectName)
 	return object

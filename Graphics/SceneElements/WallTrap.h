@@ -23,7 +23,9 @@ class CWallTrap : public CStaticPlatform {
   float				m_CurrentTime;
   Vect3f				m_FinalPosition;
   Vect3f				m_OriginalPosition;
+
   //CPhysicController*	m_PhysicController;
+
 
  public:
   CWallTrap(std::string platformName, std::string coreName, float speedOpening, float speedClosing, std::string side);
@@ -44,6 +46,7 @@ class CWallTrap : public CStaticPlatform {
   GET_SET(float, CurrentTime);
   GET_SET(Vect3f, FinalPosition);
   GET_SET(Vect3f, OriginalPosition);
+
 };
 
 #endif

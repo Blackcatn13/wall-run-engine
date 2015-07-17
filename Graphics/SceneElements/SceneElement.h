@@ -45,6 +45,7 @@ class CSceneElement : public CMeshInstance {
   Vect3f GetPhysicsSize() {
     return m_PhysicsSize;
   }
+  CFSMInstance *getFsm() { return m_Fsm;}
 
   GET_SET(int, Room);
 };

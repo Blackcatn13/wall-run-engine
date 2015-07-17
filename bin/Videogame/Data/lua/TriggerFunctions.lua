@@ -298,3 +298,11 @@ function set_player_room(room, chucky_appears)
 	
 	player_controller.m_Room = num_room
 end
+
+function activate_wall_traps(room_number)
+	if room_number == "0" then
+		activate_wall_trap(tonumber(room_number), "WALL_TRAP1_RIGHT")
+		activate_wall_trap(tonumber(room_number), "WALL_TRAP1_LEFT")
+	end
+
+end

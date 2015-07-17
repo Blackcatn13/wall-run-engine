@@ -120,10 +120,11 @@ void CSceneElement::UpdateFSM(float elapsedTime) {
 // for (TMapResource::iterator it = m_Resources.begin(); it != m_Resources.end(); ++it) {
   STATE *s = m_Fsm->getStates().GetResource(m_Fsm->getCurrentState());
   char l_InitLevelText[256];
-  if (s->m_onEnter == false) {
-    _snprintf_s(l_InitLevelText, 256, 256, "%s(\"%s\")", s->onEnter.c_str(), getName().c_str());
+  if (m_Fsm->getonEnter() == false) {
+    _snprintf_s(l_InitLevelText, 256, 256, "%s(%i,\"%s\")", s->onEnter.c_str(), m_Room, getName().c_str());
+
     SCRIPTM->RunCode(l_InitLevelText);
-    s->m_onEnter = true;
+    m_Fsm->setonEnter(true);
   }
   s->m_ElapsedTime += elapsedTime;
 // char l_InitLevelText[256];
@@ -131,17 +132,17 @@ void CSceneElement::UpdateFSM(float elapsedTime) {
   if (s->m_ElapsedTime >= s->m_UpdateTime) {
     doComprobation = 1;
   }
-  _snprintf_s(l_InitLevelText, 256, 256, "%s(%f,\"%s\")", s->onUpdate.c_str(), elapsedTime, getName().c_str());
+  _snprintf_s(l_InitLevelText, 256, 256, "%s(%f,%i,\"%s\")", s->onUpdate.c_str(), elapsedTime, m_Room, getName().c_str());
   SCRIPTM->RunCode(l_InitLevelText);
   if (doComprobation == 1) {
     s->m_ElapsedTime = 0;
     doComprobation = 0;
   }
-  bool change = CLuaGlobals::getInstance()->ValueChanged();
+  bool change =  m_Fsm->getChanged();
   if (change) {
     s->m_onEnter = false;
     SCRIPTM->RunCode(s->onExit.c_str());
-    m_Fsm->setPreviousState(m_Fsm->getCurrentState());
-    m_Fsm->setCurrentState(CLuaGlobals::getInstance()->getString());
+    m_Fsm->setPreviousState( m_Fsm->getCurrentState());
+    m_Fsm->setCurrentState( m_Fsm->getNewState());
   }
 }
