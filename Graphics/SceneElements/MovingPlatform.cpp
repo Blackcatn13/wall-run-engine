@@ -10,7 +10,7 @@
 #include "Utils\PhysicUserData.h"
 #include "Actor\PhysicController.h"
 #include "Utils\LuaGlobals.h"
-#include "Core\ScriptManager.h"
+
 #include "XML\XMLTreeNode.h"
 
 CMovingPlatform::CMovingPlatform(std::string platformName, std::string coreName, float speed)
@@ -30,8 +30,8 @@ CMovingPlatform::CMovingPlatform(CXMLTreeNode &node)
   : CStaticPlatform(node),
     m_Speed(node.GetFloatProperty("speed", 0.0f)),
     m_CurrentWpId(0),
-    m_Activated(false),
-    m_Fsm(new CFSMInstance(FSMMGR->GetResource("MovingPlatform"))) {
+    m_Activated(false) {
+  m_Fsm = new CFSMInstance(FSMMGR->GetResource("MovingPlatform"));
   int wpCount = node.GetNumChildren();
   for (int i = 0; i < wpCount; ++i) {
     std::string name = node(i).GetName();
@@ -59,7 +59,7 @@ void CMovingPlatform::AddBoxController(Vect3f size, float slope, float skinwidth
 }
 
 CMovingPlatform::~CMovingPlatform () {
-  CHECKED_DELETE(m_Fsm);
+// CHECKED_DELETE(m_Fsm);
 }
 
 void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
@@ -210,35 +210,7 @@ void CMovingPlatform::Update(float ElapsedTime) {
 //    return false;
 //}
 
-void CMovingPlatform::UpdateFSM(float elapsedTime) {
-// for (TMapResource::iterator it = m_Resources.begin(); it != m_Resources.end(); ++it) {
-  STATE *s = m_Fsm->getStates().GetResource(m_Fsm->getCurrentState());
-  char l_InitLevelText[256];
-  if (s->m_onEnter == false) {
-    _snprintf_s(l_InitLevelText, 256, 256, "%s(\"%s\")", s->onEnter.c_str(), getName().c_str());
-    SCRIPTM->RunCode(l_InitLevelText);
-    s->m_onEnter = true;
-  }
-  s->m_ElapsedTime += elapsedTime;
-// char l_InitLevelText[256];
-  int doComprobation = 0;
-  if (s->m_ElapsedTime >= s->m_UpdateTime) {
-    doComprobation = 1;
-  }
-  _snprintf_s(l_InitLevelText, 256, 256, "%s(%f,\"%s\")", s->onUpdate.c_str(), elapsedTime, getName().c_str());
-  SCRIPTM->RunCode(l_InitLevelText);
-  if (doComprobation == 1) {
-    s->m_ElapsedTime = 0;
-    doComprobation = 0;
-  }
-  bool change = CLuaGlobals::getInstance()->ValueChanged();
-  if (change) {
-    s->m_onEnter = false;
-    SCRIPTM->RunCode(s->onExit.c_str());
-    m_Fsm->setPreviousState(m_Fsm->getCurrentState());
-    m_Fsm->setCurrentState(CLuaGlobals::getInstance()->getString());
-  }
-}
+
 
 bool CMovingPlatform::isAround(Vect3f vector1, Vect3f vector2) {
   float l_margenx = GetPhysicsSize().x + 0.5f;

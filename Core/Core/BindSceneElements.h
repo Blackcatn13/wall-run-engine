@@ -14,6 +14,7 @@
 #include "SceneElements\Switch.h"
 #include "SceneElements\SceneElement.h"
 #include "SceneElements\Door.h"
+#include "SceneElements\WallTrap.h"
 
 #include "Mesh\MeshInstance.h"
 #include <string>
@@ -39,11 +40,13 @@ using namespace luabind;
 void RegisterSceneElements() {
   luabind::module(LUA_STATE) [
     class_<CSceneElement, CMeshInstance>("CSceneElement")
-    .def(constructor < std::string , std::string>())
+    .def(constructor < std::string , std::string, bool>())
     .def("insert_phisic", &CSceneElement::InsertPhisic)
     .property("m_Actor", &CSceneElement::GetActor)
     .property("m_PhysicsSize", &CSceneElement::GetPhysicsSize)
     .def("activate_phisic", &CSceneElement::ActivatePhisic)
+    .def("is_around", &CSceneElement::isAround)
+    .def("is_inside", &CSceneElement::isInside)
   ];
 
   luabind::module(LUA_STATE) [
@@ -66,6 +69,7 @@ void RegisterSceneElements() {
     .property("m_NextWP",  &CMovingPlatform::GetNextWPVector, &CMovingPlatform::SetNextWPVector)
     .property("m_Activated",  &CMovingPlatform::getActivated, &CMovingPlatform::setActivated)
   ];
+
   luabind::module(LUA_STATE) [
     class_<CPinchosPlatform, CBreakablePlatform>("CPinchosPlatform")
     .def(constructor<std::string, std::string, std::string/*, Vect3f, Vect3f, bool, bool*/>())
@@ -113,6 +117,21 @@ void RegisterSceneElements() {
     .property("m_OriginalPosition", &CDoor::getOriginalPosition, &CDoor::setOriginalPosition)
     .property("m_IsPlayingAnimation", &CDoor::getIsPlayingAnimation, &CDoor::setIsPlayingAnimation)
     .property("m_IsOpening", &CDoor::getIsOpening, &CDoor::setIsOpening)
+  ];
+
+  luabind::module(LUA_STATE) [
+    class_<CWallTrap, CStaticPlatform>("CWallTrap")
+    .def(constructor<std::string, std::string, float, float, std::string>())
+    .def("move_to_point", &CWallTrap::MoveToPoint)
+    .property("m_Activated",  &CWallTrap::getActivated, &CWallTrap::setActivated)
+    .property("m_SpeedClosing",  &CWallTrap::getSpeedClosing, &CWallTrap::setSpeedClosing)
+    .property("m_SpeedOpening",  &CWallTrap::getSpeedOpening, &CWallTrap::setSpeedOpening)
+    .property("m_Side",  &CWallTrap::getSide, &CWallTrap::setSide)
+    .property("m_TimeOut",  &CWallTrap::getTimeOut, &CWallTrap::setTimeOut)
+    .property("m_CurrentTime",  &CWallTrap::getCurrentTime, &CWallTrap::setCurrentTime)
+    .property("m_FinalPosition",  &CWallTrap::getFinalPosition, &CWallTrap::setFinalPosition)
+    .property("m_OriginalPosition",  &CWallTrap::getOriginalPosition, &CWallTrap::setOriginalPosition)
+
   ];
 }
 

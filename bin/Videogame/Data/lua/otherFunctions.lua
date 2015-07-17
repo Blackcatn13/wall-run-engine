@@ -130,6 +130,7 @@ function reset_game()
 	player_controller.m_isTurned = false;
 	player.attack_enabled = false
 	player.set_room(0)
+	reset_crushing_sides()
 		
 	--Player Lifes + Pixelites
 	player.num_hearts = 3;

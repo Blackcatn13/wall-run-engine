@@ -33,6 +33,10 @@ function Player.new()
 	self.original_yaw = 0.0
 	self.attack_enabled = false
 	self.game_over = false
+	self.crush_down = false
+	self.crush_up = false
+	self.crush_left = false
+	self.crush_right = false
 	
 	------	 PLAYER FUNCTIONS -----
 		

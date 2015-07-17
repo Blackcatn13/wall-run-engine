@@ -155,6 +155,7 @@ void CCore::Init(HWND handler) {
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Renderable Layers Manger";
 #endif
+  m_ScenePhisicsFile = m_Config.ScenePhisics;
   m_RenderableLayersManager = new CRenderableObjectsLayersManager();
   m_RenderableLayersManager->Load(m_Config.RenderablePath);
   m_RenderableLayersManager->Load(m_Config.LuaPath);
@@ -233,7 +234,6 @@ void CCore::Init(HWND handler) {
   m_PuzzleManager->Load(m_Config.PuzzlesPath);
   m_LuaLoadLevelFunc = m_Config.LuaLevelObjectsFunc;
   m_LevelPhisicsFile = m_Config.LevelPhisics;
-  m_ScenePhisicsFile = m_Config.ScenePhisics;
 #ifdef _DEBUG
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;

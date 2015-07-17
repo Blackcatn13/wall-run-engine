@@ -267,4 +267,6 @@
 	<static_mesh name="Object010" filename="Data\level4\meshes\Object010.mesh"/>
 	<static_mesh name="Object011" filename="Data\level4\meshes\Object011.mesh"/>
 	<static_mesh name="PolyPlatform002" filename="Data\level4\meshes\PolyPlatform002.mesh"/>
+	<static_mesh name="WALL_TRAP1_RIGHT" filename="Data\level4\meshes\WALL_TRAP1_RIGHT.mesh"/>
+	<static_mesh name="WALL_TRAP1_LEFT" filename="Data\level4\meshes\WALL_TRAP1_LEFT.mesh"/>
 </static_meshes>

@@ -8,6 +8,8 @@
 #include "Renderable\RenderableObject.h"
 #include "Mesh\MeshInstance.h"
 #include "Utils\Defines.h"
+#include "AI\FSMManager.h"
+#include "AI\FSMInstance.h"
 
 class CPhysicActor;
 class CPhysicUserData;
@@ -19,6 +21,7 @@ class CSceneElement : public CMeshInstance {
   CPhysicActor *m_Actor;
   CPhysicUserData *m_UserData;
   CPhysicActor *m_ActorAux;
+  CFSMInstance			*m_Fsm;
   CPhysicUserData *m_UserDataAux;
   Vect3f m_PhysicsSize;
   int m_Room;
@@ -34,6 +37,7 @@ class CSceneElement : public CMeshInstance {
   void ActivatePhisic(bool active);
   bool isAround(Vect3f vector1, Vect3f vector2);
   bool isInside(Vect3f vector1, Vect3f vector2);
+  void UpdateFSM(float elapsedTime);
 
   CPhysicActor *GetActor() {
     return m_Actor;

@@ -16,6 +16,7 @@
 #include "Collectibles\Pixelite.h"
 #include "SceneElements\Switch.h"
 #include "SceneElements\Door.h"
+#include "SceneElements\WallTrap.h"
 
 
 #include <assert.h>
@@ -104,7 +105,10 @@ void CRenderableObjectsManager::Load(const std::string &FileName) {
       } else if (name == "door") {
         CDoor *l_Door  = new CDoor(nodeChild);
         AddResource(l_Door->getName(), l_Door);
-      }  else  if (name == "platform") {
+      }  else if (name == "wall_trap") {
+        CWallTrap *l_WallTrap  = new CWallTrap(nodeChild);
+        AddResource(l_WallTrap->getName(), l_WallTrap);
+      } else  if (name == "platform") {
         std::string type = nodeChild.GetPszISOProperty("type", "", false);
         if (type == "static") {
           CStaticPlatform *l_StaticPlatform = new CStaticPlatform(nodeChild);
@@ -172,6 +176,9 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node) {
     } else if (name == "door") {
       CDoor *l_Door  = new CDoor(Node);
       AddResource(l_Door->getName(), l_Door);
+    }  else if (name == "wall_trap") {
+      CWallTrap *l_WallTrap  = new CWallTrap(Node);
+      AddResource(l_WallTrap->getName(), l_WallTrap);
     } else  if (name == "renderable_script") {
       std::string l_name = Node.GetPszISOProperty("name", "");
       if (l_name == "scriptedController") {

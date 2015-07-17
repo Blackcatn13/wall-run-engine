@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Physx_meshes>
+	<Physx_mesh name="WALL_TRAP1_RIGHT" filename="Data\level4\meshes\WALL_TRAP1_RIGHT.phsx"/>
+	<Physx_mesh name="WALL_TRAP1_LEFT" filename="Data\level4\meshes\WALL_TRAP1_LEFT.phsx"/>
+</Physx_meshes>
