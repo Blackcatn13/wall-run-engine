@@ -18,7 +18,6 @@ class CMovingPlatform : public CStaticPlatform {
   Vect3f				m_Direction;
   std::vector<Vect3f> m_WayPointsVector;
   int					m_CurrentWpId;
-  CFSMInstance			*m_Fsm;
   Vect3f		m_NextWP;
   bool				m_Activated;
   //CPhysicController*	m_PhysicController;
@@ -36,7 +35,6 @@ class CMovingPlatform : public CStaticPlatform {
 
   void Update(float ElapsedTime);
   void AddBoxController(Vect3f size, float slope, float skinwidth, float offset, float gravity);
-  void UpdateFSM(float elapsedTime);
   //bool isInside(Vect3f vector1, Vect3f vector2);
   bool isAround(Vect3f vector1, Vect3f vector2);
   GET_SET(bool, Activated);

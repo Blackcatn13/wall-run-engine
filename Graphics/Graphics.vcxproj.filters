@@ -342,6 +342,9 @@
     <ClCompile Include="Particles\InstancedBillboard.cpp">
       <Filter>Particles</Filter>
     </ClCompile>
+    <ClCompile Include="SceneElements\WallTrap.cpp">
+      <Filter>SceneElements</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
@@ -639,6 +642,9 @@
     </ClInclude>
     <ClInclude Include="Particles\InstancedBillboard.h">
       <Filter>Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneElements\WallTrap.h">
+      <Filter>SceneElements</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

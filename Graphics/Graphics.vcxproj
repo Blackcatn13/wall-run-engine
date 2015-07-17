@@ -127,6 +127,7 @@
     <ClCompile Include="SceneElements\SceneElement.cpp" />
     <ClCompile Include="SceneElements\StaticPlatform.cpp" />
     <ClCompile Include="SceneElements\Switch.cpp" />
+    <ClCompile Include="SceneElements\WallTrap.cpp" />
     <ClCompile Include="StaticMeshes\StaticMesh.cpp" />
     <ClCompile Include="StaticMeshes\StaticMeshManager.cpp" />
     <ClCompile Include="Texture\CubeTexture.cpp" />
@@ -247,6 +248,7 @@
     <ClInclude Include="SceneElements\SceneElement.h" />
     <ClInclude Include="SceneElements\StaticPlatform.h" />
     <ClInclude Include="SceneElements\Switch.h" />
+    <ClInclude Include="SceneElements\WallTrap.h" />
     <ClInclude Include="StaticMeshes\StaticMesh.h" />
     <ClInclude Include="StaticMeshes\StaticMeshManager.h" />
     <ClInclude Include="Texture\CubeTexture.h" />

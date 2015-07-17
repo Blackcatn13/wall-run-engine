@@ -140,7 +140,7 @@ end
 --
 
 -- Moving Platform
-local mov_platforms_manager = renderable_objects_layer_manager:get_renderable_objects_manager_by_str("mov_platforms")
+local mov_platforms_manager = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("mov_platforms", player_controller.m_Room)
 
 function activate_moving_platforms(room_name)
 	mov_platforms_manager:activate_elements(room_name)
