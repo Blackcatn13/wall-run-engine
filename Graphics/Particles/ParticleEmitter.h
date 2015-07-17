@@ -69,6 +69,7 @@ class CParticleEmitter : public CObject3D, public CNamed {
   float			                  m_MaxAge;
   float			                  m_MinSize;
   float 			                m_MaxSize;
+  float                       m_EndSize;
   CColor			                m_Color1;
   CColor			                m_Color2;
   std::string		              m_sTexture;

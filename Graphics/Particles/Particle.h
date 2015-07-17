@@ -9,7 +9,7 @@ class CGraphicsManager;
 
 class CParticle : public CBillboard {
  public:
-  CParticle(Vect3f Direction1, Vect3f Direction2, float Age, float Speed, CColor Color1, CColor Color2, Vect3f Position, float size);
+  CParticle(Vect3f Direction1, Vect3f Direction2, float Age, float Speed, CColor Color1, CColor Color2, Vect3f Position, float size, float endSize);
   CParticle();
   ~CParticle();
   void Update(float dt);
@@ -17,20 +17,22 @@ class CParticle : public CBillboard {
   float takeLife(float dt);
   void setDirection1(Vect3f Direction) { m_Direction1 = Direction; }
   void setDirection2(Vect3f Direction) { m_Direction2 = Direction; }
-  void setAge(float Age) { m_Age = Age; }
+  void setAge(float Age) { m_Age = Age; m_StartAge = Age; }
   void setSpeed(float Speed) { m_Speed = Speed; }
   void setColor1(CColor Color) { m_Color1 = Color; }
   void setColor2(CColor Color) { m_Color2 = Color; }
-  void setSize(float size) { m_size = size; }
+  void setSize(float size) { m_size = size; m_StartSize = size; }
   void setPosition(Vect3f Position) { m_position = Position; }
   void setGravity(float Gravity) { m_Gravity = Gravity; }
   void setVectorOndulacion(Vect3f VectorOndulacion) { m_VectorOndulacion = VectorOndulacion; }
   void setVelocidadOndulacion(float VelocidadOndulacion) { m_VelocidadOndulacion = VelocidadOndulacion; }
   void setInicioOndulacion(float InicioOndulacion) { m_InicioOndulacion = InicioOndulacion; }
+  void setEndSize(float endSize) {m_EndSize = endSize;}
  private:
   Vect3f	m_Direction1;
   Vect3f	m_Direction2;
   float	  m_Age;
+  float   m_StartAge;
   float	  m_Speed;
   CColor	m_Color2;
   bool    m_Dead;
@@ -38,6 +40,8 @@ class CParticle : public CBillboard {
   Vect3f	m_VectorOndulacion;
   float		m_VelocidadOndulacion;
   float		m_InicioOndulacion;
+  float   m_EndSize;
+  float   m_StartSize;
 };
 
 #endif // PARTICLE_H_

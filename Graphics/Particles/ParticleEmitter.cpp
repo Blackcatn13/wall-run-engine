@@ -29,6 +29,7 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
   , m_MaxAge(node.GetFloatProperty("max_age", -1.0f, false))
   , m_MinSize(node.GetFloatProperty("min_size", -1.0f, false))
   , m_MaxSize(node.GetFloatProperty("max_size", 1.0f, false))
+  , m_EndSize(node.GetFloatProperty("end_size", -1.0f, false))
   , m_Color1(node.GetCColorProperty("color_1", colWHITE, false))
   , m_Color2(node.GetCColorProperty("color_2", colWHITE, false))
   , m_vPos(node.GetVect3fProperty("v_Pos", v3fZERO, false))
@@ -86,6 +87,7 @@ CParticleEmitter::CParticleEmitter()
   , m_MaxAge(2)
   , m_MinSize(1)
   , m_MaxSize(1)
+  , m_EndSize(1)
   , m_Color1(colWHITE)
   , m_Color2(colWHITE)
   , m_vPos(v3fZERO)
@@ -201,6 +203,11 @@ void CParticleEmitter::PopulateParticle(CParticle *p) {
   p->setPosition(m_vPos);
   p->setColor1(col1);
   p->setGravity(m_Gravity);
+  if (m_EndSize < 0) {
+    p->setEndSize(size);
+  } else {
+    p->setEndSize(m_EndSize);
+  }
   p->setVelocidadOndulacion(mathUtils::RandomFloatRange(m_MinVelocidadOndulacion, m_MaxVelocidadOndulacion));
 
   /* l_Texture->Create(m_sTexture, size, size, 1, CTexture::TUsageType::RENDERTARGET, CTexture::TPoolType::DEFAULT, l_Texture->GetFormatTypeFromString("R8G8B8"));
