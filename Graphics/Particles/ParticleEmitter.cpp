@@ -40,6 +40,7 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
   , m_MinVelocidadOndulacion(node.GetFloatProperty("min_speed_ondulacion", 0.0f, false))
   , m_vOndulacion1(node.GetVect3fProperty("ondulacion_vec1", v3fZERO, false))
   , m_vOndulacion2(node.GetVect3fProperty("ondulacion_vec2", v3fZERO, false))
+  , m_EndAlpha(node.GetFloatProperty("end_alpha", 1.f))
   , m_sTexture(node.GetPszISOProperty("texture", "", false)) {
   m_visible = true;
   m_Name = (node.GetPszISOProperty("name", "", false));
@@ -203,6 +204,7 @@ void CParticleEmitter::PopulateParticle(CParticle *p) {
   p->setPosition(m_vPos);
   p->setColor1(col1);
   p->setGravity(m_Gravity);
+  p->setEndAlpha(1.f);
   if (m_EndSize < 0) {
     p->setEndSize(size);
   } else {
@@ -292,6 +294,7 @@ void CParticleEmitter::UpdateParticles(float dt) {
       m_vertex_list[i].y = pos.y;
       m_vertex_list[i].z = pos.z;
       m_vertex_list[i].size = p->getSize();
+      m_vertex_list[i].visible = p->getAlpha();
     }
   }
 }

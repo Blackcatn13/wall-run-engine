@@ -28,6 +28,8 @@ class CParticle : public CBillboard {
   void setVelocidadOndulacion(float VelocidadOndulacion) { m_VelocidadOndulacion = VelocidadOndulacion; }
   void setInicioOndulacion(float InicioOndulacion) { m_InicioOndulacion = InicioOndulacion; }
   void setEndSize(float endSize) {m_EndSize = endSize;}
+  void setEndAlpha(float endAlpha) {m_EndAlpha = endAlpha;}
+  float getAlpha();
  private:
   Vect3f	m_Direction1;
   Vect3f	m_Direction2;
@@ -42,6 +44,7 @@ class CParticle : public CBillboard {
   float		m_InicioOndulacion;
   float   m_EndSize;
   float   m_StartSize;
+  float   m_EndAlpha;
 };
 
 #endif // PARTICLE_H_

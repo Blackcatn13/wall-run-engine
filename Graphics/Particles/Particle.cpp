@@ -10,6 +10,7 @@ CParticle::CParticle(Vect3f Direction1, Vect3f Direction2, float Age, float Spee
   , m_Color2(Color2)
   , m_Dead(false)
   , m_StartSize(size)
+  , m_EndAlpha(1)
   , m_EndSize(endSize) {
   m_Color1 = Color1;
 
@@ -22,6 +23,7 @@ CParticle::CParticle()
   , m_Age(5)
   , m_StartAge(5)
   , m_Speed(2)
+  , m_EndAlpha(1)
   , m_StartSize(1)
   , m_Color2(CColor(colWHITE))
   , m_Dead(false) {
@@ -48,4 +50,8 @@ float CParticle::takeLife(float dt) {
   if (m_Age <= 0)
     m_Dead = true;
   return m_Age;
+}
+
+float CParticle::getAlpha() {
+  return (1 - m_Age) * m_EndAlpha + m_Age;
 }
