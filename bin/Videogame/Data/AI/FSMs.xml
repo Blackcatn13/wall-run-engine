@@ -20,7 +20,12 @@
 	</fsm>
 	
 	<fsm name="WallTrap">
-		<initialState name="Parado"/>
+		<initialState name="Initial"/>
+		<state name="Initial">
+			<onEnter lua_funtion="wt_enter_initial"/>
+			<onExit lua_funtion="wt_exit_initial()"/>
+			<Update time=".01" lua_funtion="wt_update_initial"/>
+		</state>
 		<state name="Parado">
 			<onEnter lua_funtion="wt_enter_stopped"/>
 			<onExit lua_funtion="wt_exit_stopped()"/>

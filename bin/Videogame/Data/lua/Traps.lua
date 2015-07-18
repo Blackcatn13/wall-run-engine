@@ -5,6 +5,42 @@ function activate_wall_trap(room_name, name)
 	trap.m_Activated = true
 end
 
+function wt_enter_initial(room_name, name)
+	coreInstance:trace("Inicializando Trampa")
+	local trap = get_renderable_object("solid", room_name, name)
+	trap.m_CurrentTime = 0.0
+	--if trap:get_position() ~= trap.m_OriginalPosition then
+	trap:set_position(trap.m_OriginalPosition)
+	trap.m_Actor:set_global_position(trap.m_OriginalPosition)
+	--end
+	reset_crushing_sides()
+end
+
+function wt_exit_initial()
+	--coreInstance:trace("Saliendo Platform stopped");
+
+end
+
+function wt_update_initial(ElapsedTime, room_name, name)
+	local trap = get_renderable_object("solid",room_name, name)
+	if trap.m_Activated then
+		trap:get_fsm():newState("ClosingTrap")
+		trap.m_CurrentTime = 0.0
+	else
+		if trap:get_position() ~= trap.m_OriginalPosition then
+			trap:set_position(trap.m_OriginalPosition)
+			trap.m_Actor:set_global_position(trap.m_OriginalPosition)
+			coreInstance:trace("Position ".. name .. tostring(trap:get_position().z))
+		end
+		
+		if trap.m_CurrentTime > 0.0 then
+			trap.m_CurrentTime = 0.0
+		end
+	end
+end
+
+
+--PARADO---
 function wt_enter_stopped(room_name, name)
 	coreInstance:trace("Entrando en parada de Trampa")
 	local trap = get_renderable_object("solid", room_name, name)
@@ -33,7 +69,7 @@ function wt_update_stopped(ElapsedTime, room_name, name)
 			--coreInstance:trace("Current Time " .. name ..": "..tostring(trap.m_CurrentTime))
 		end	
 	else
-		if trap:get_position() ~= trap.m_OriginalPosition then
+		--[[if trap:get_position() ~= trap.m_OriginalPosition then
 			trap:set_position(trap.m_OriginalPosition)
 			trap.m_Actor:set_global_position(trap.m_OriginalPosition)
 			coreInstance:trace("Position ".. name .. tostring(trap:get_position().z))
@@ -41,7 +77,8 @@ function wt_update_stopped(ElapsedTime, room_name, name)
 		
 		if trap.m_CurrentTime > 0.0 then
 			trap.m_CurrentTime = 0.0
-		end
+		end--]]
+		trap:get_fsm():newState("Initial")
 	end
 end
 
@@ -72,7 +109,7 @@ function wt_update_closing(ElapsedTime, room_name, name)
 			trap:get_fsm():newState("OpeningTrap")
 		end
 	else
-		trap:get_fsm():newState("Parado")
+		trap:get_fsm():newState("Initial")
 	end
 end
 
@@ -97,7 +134,7 @@ function wt_update_opening(ElapsedTime, room_name, name)
 			trap:get_fsm():newState("Parado")
 		end
 	else
-		trap:get_fsm():newState("Parado")
+		trap:get_fsm():newState("Initial")
 	end
 	
 end
@@ -134,6 +171,6 @@ function reset_wall_trap(room_name, name)
 		--trap.m_Actor:set_global_position(trap.m_OriginalPosition)
 		trap.m_Activated = false
 		--trap.m_CurrentTime = 0.0
-		trap:get_fsm():newState("Parado")
+		trap:get_fsm():newState("Initial")
 	end
 end
