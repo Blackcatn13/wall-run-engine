@@ -140,16 +140,18 @@ end
 --
 
 -- Moving Platform
-local mov_platforms_manager = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("mov_platforms", player_controller.m_Room)
+--local mov_platforms_manager = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("mov_platforms", player_controller.m_Room)
 
 function activate_moving_platforms(room_name)
-	mov_platforms_manager:activate_elements(room_name)
+	--mov_platforms_manager:activate_elements(room_name)
+	renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("mov_platforms", room_name):activate_elements(room_name)
 end
 
-function mp_enter_stopped(name)
+function mp_enter_stopped(room_name, name)
 	--coreInstance:trace("Parando plataforma");
 	--next_wp = Vect3f(-15,0,-15) 
-	instance.m_string = "Buscar_next_WP_Plaform"
+	--instance.m_string = "Buscar_next_WP_Plaform"
+	platform:get_fsm():newState("Buscar_next_WP_Plaform")
 	return 0 
 end
 
@@ -158,16 +160,17 @@ function mp_exit_stopped()
 
 end
 
-function mp_update_stopped(ElapsedTime, name)
+function mp_update_stopped(ElapsedTime,room_name, name)
 	--core:trace("Update Platform stopped");
 	--instance.m_string = "Buscar_next_WP_Plaform"
-	local platform = mov_platforms_manager:get_resource(name)
+	local platform =renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("mov_platforms", room_name):get_resource(name)
 	if platform.m_Activated == true then
-		instance.m_string = "Buscar_next_WP_Plaform"
+		--instance.m_string = "Buscar_next_WP_Plaform"
+		platform:get_fsm():newState("Buscar_next_WP_Plaform")
 	end
 end
 
-function mp_enter_moving(name)
+function mp_enter_moving(room_name, name)
 	--coreInstance:trace("Entering Platform moving State");
 end
 
@@ -175,11 +178,11 @@ function mp_exit_moving()
 	--coreInstance:trace("Exit Moviendo Plataforma");
 end
 
-function mp_update_moving(ElapsedTime, name)
+function mp_update_moving(ElapsedTime, room_name, name)
 	
 	--local player_position = coreInstance:get_player_controller():get_position()
 	--core:trace(tostring(player_position.x));
-	local platform = mov_platforms_manager:get_resource(name)-- modificar para poder pasarlo por parametro
+	local platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("mov_platforms", room_name):get_resource(name)-- modificar para poder pasarlo por parametro
 	if platform ~= nil then
 		local next_wp = platform.m_NextWP
 		platform:move_to_point(ElapsedTime, next_wp, 2)
@@ -188,10 +191,12 @@ function mp_update_moving(ElapsedTime, name)
 		local distance_to_point = get_distance_to_point(current_pos, next_wp)
 		if distance_to_point <= 4 then
 			--coreInstance:trace("Destino alcanzado")
-			instance.m_string = "Parado"
+			--instance.m_string = "Parado"
+			platform:get_fsm():newState("Parado")
 		end
 	else
-		instance.m_string = "Parado"
+		--instance.m_string = "Parado"
+		platform:get_fsm():newState("Parado")
 	end
 		
 end
@@ -213,7 +218,7 @@ local platform_position = _platform:get_position()
 end--]]
 
 
-function mp_enter_calcwp(name) -- Pasar el nombre de la plataforma y de ahí que recoja el wp que necesita? 
+function mp_enter_calcwp(room_name, name) -- Pasar el nombre de la plataforma y de ahí que recoja el wp que necesita? 
 -- OnEnter Buscar_next_WP 
 	--coreInstance:trace("Entering Buscar Platform next WP");
 	--coreInstance:trace(tostring(next_wp.x));
@@ -223,13 +228,15 @@ function mp_enter_calcwp(name) -- Pasar el nombre de la plataforma y de ahí que
 	--	next_wp = Vect3f(15,0,15)
 	--end
 	
-	local platform = mov_platforms_manager:get_resource(name)
+	local platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("mov_platforms", room_name):get_resource(name)
 	if platform ~= nil then
 		platform.m_NextWP = platform:get_next_wp()
 		--coreInstance:trace(tostring(next_wp.x));
-		instance.m_string = "Andar_WP"
+		--instance.m_string = "Andar_WP"
+		platform:get_fsm():newState("Andar_WP")
 	else
-		instance.m_string = "Parado"
+		--instance.m_string = "Parado"
+		platform:get_fsm():newState("Parado")
 	end
 end
 
@@ -237,7 +244,7 @@ function mp_exit_calcwp()
 	--core:trace("Saliendo Buscar_next_WP Platform");
 end
 
-function mp_update_calcwp(ElapsedTime, name)
+function mp_update_calcwp(ElapsedTime, room_name, name)
 	--core:trace("Update Buscar_next_WP Platform");
 	--mp_enter_calcwp()
 end
