@@ -22,7 +22,7 @@
 class CXMLTreeNode {
  public:
   // Init and End protocols
-  CXMLTreeNode () : m_bIsOk(false), m_pDoc(NULL), m_pNode(NULL), m_pWriter(NULL), m_pszFileName(NULL) {}
+  CXMLTreeNode () : m_bIsOk(false), m_pDoc(NULL), m_pNode(NULL), m_pWriter(NULL), m_pszFileName(NULL), m_lastChild(NULL) {}
   virtual ~CXMLTreeNode () {
     Done();
   }
@@ -67,6 +67,7 @@ class CXMLTreeNode {
 
   CXMLTreeNode 				operator[]         	(const char *_pszKey) const;
   CXMLTreeNode 				operator()         	(int _iIndex) const;
+  CXMLTreeNode        getNextChild        ();
 
   bool								IsComment						() const;
 
@@ -113,6 +114,7 @@ class CXMLTreeNode {
   xmlNodePtr          m_pNode;          // Pointer to the root node libxml structure
   xmlTextWriterPtr    m_pWriter;        // Pointer to the writer libxml structure
   const char         *m_pszFileName;    // Name of the new file to be created
+  xmlNodePtr          m_lastChild;
 };
 
 

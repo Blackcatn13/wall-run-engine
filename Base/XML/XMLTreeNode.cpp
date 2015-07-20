@@ -136,6 +136,21 @@ CXMLTreeNode CXMLTreeNode::operator() (int _iIndex) const {
   return TreeFound;
 }
 
+CXMLTreeNode CXMLTreeNode::getNextChild() {
+  CXMLTreeNode child;
+  if (m_lastChild != NULL) {
+    m_lastChild = m_lastChild->next;
+  } else {
+    m_lastChild = m_pNode->children;
+  }
+  while ((m_lastChild->type == XML_TEXT_NODE || m_lastChild->type == XML_COMMENT_NODE) && m_lastChild != NULL) {
+    m_lastChild->next;
+  }
+  child.m_pNode = m_lastChild;
+  child.m_pDoc = m_pDoc;
+  return child;
+}
+
 //----------------------------------------------------------------------------
 // Returns the number of children a tree has
 //----------------------------------------------------------------------------
