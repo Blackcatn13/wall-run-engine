@@ -426,8 +426,8 @@ void CTestGameplay::Update(float dt) {
       PLAYC->getPhysicController()->SetPosition(Vect3f(436.72714, 10.5071726, 11.082876));
     }
     if (ACT2IN->DoAction("TeleportTest4")) {
-      PLAYC->SetPosition(Vect3f(532.268, 15.5227, -570.7));
-      PLAYC->getPhysicController()->SetPosition(Vect3f(532.268, 15.5227, -570.7));
+      PLAYC->SetPosition(Vect3f(328.346, 40.487, -646.076));
+      PLAYC->getPhysicController()->SetPosition(Vect3f(328.346, 40.487, -646.076));
     }
     if (ACT2IN->DoAction("TeleportTest5")) {
       PLAYC->SetPosition(Vect3f(-261.73236, -31.524834, -568.39246));
