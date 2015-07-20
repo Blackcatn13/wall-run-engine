@@ -250,9 +250,9 @@ bool CPhysicController::UpdateCharacterExtents (bool bent, float ammount) {
   m_pPhXController->setCollision(false);	// Avoid checking overlap with ourself
   bool Status = m_pPhXScene->checkOverlapCapsule(worldCapsule);
   m_pPhXController->setCollision(true);
-  if (Status) {
+  /*if (Status) {
     return false;
-  }
+  }*/
   NxExtendedVec3 position(pos.x, pos.y, pos.z);
   m_pPhXController->setPosition(position);
   SetPosition ( Vect3f ( (float)pos.x, (float)pos.y, (float)pos.z ) );

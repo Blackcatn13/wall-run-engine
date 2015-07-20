@@ -41,6 +41,8 @@ player_controller.m_AttackForce = 0.7;					--Impulse force for the attack.
 player_controller.m_PhysicController:set_step(0.5); 	--Altura que puede superar (escalones).
 local AirTime = 0.7;									-- Time into the air, playing air loop
 local m_damageTime = 0.3;
+
+local m_ReduceCollider = 0.75;
 --////////////////////////////////////////////////////////
 
 
@@ -452,6 +454,7 @@ function on_update_player_lua(l_ElapsedTime)
 					local mesh = playerRenderable;
 					mesh:set_position(player_controller:get_position());
 					player_controller.m_isAttack = false;
+					player.get_player_controller():update_character_extents(true, m_ReduceCollider);
 				end
 			end
 		end
@@ -488,6 +491,7 @@ function on_update_player_lua(l_ElapsedTime)
 		--/////////////////////////////////////////////////////////// 
 		if (act2in:do_action_from_lua("Attack") and not player_controller.m_isJumping and not _land and player_controller.m_isAttack == false and canAttack == true and player.is_hit == false and player.attack_enabled) then--) and (player_controller.m_isAttack == false) then
 			canAttack = false;
+			player.get_player_controller():update_character_extents(false, m_ReduceCollider);
 			contador = 0;
 			local prev_y = mov.y
 			m_AttackGravity = AttackGravityStart;
@@ -502,9 +506,8 @@ function on_update_player_lua(l_ElapsedTime)
 	
 		if not player_controller.m_isGrounded then
 			if  player_controller.m_isAttack then	-- Aqui ir poniendo siempre que se tenga que parar alguna acción si no está grounded
-			
+				player.get_player_controller():update_character_extents(true, m_ReduceCollider);
 				player_controller.m_isAttack = false
-				
 			end
 		end
 		
