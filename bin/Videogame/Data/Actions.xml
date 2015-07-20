@@ -1,9 +1,5 @@
 <Actions>
 	<globals>
-	    <action name="Enter">
-			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_RETURN"/>
-	    </action>
-		
 		<action name="CommutationCamera">
 	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_C"/>
 	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_TAB"/>
@@ -377,6 +373,10 @@
 		<action name="PauseGame">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_O"/>
 	    </action>
+
+	    <action name="Enter">
+			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_RETURN"/>
+	    </action>
 	</mouse_keyboard>
 	<gamepad>
 		<action name="MoveForward">
@@ -421,6 +421,10 @@
 
 		<action name="PauseGame">
 	    	<input deviceType="IDV_GAMEPAD1" EventType="EVENT_UP_DOWN" Code="PAD_DPAD_START"/>
+	    </action>
+
+	    <action name="Enter">
+			<input deviceType="IDV_GAMEPAD1" EventType="EVENT_UP_DOWN" Code="PAD_BUTTON_A"/>
 	    </action>
 	</gamepad>
 	
