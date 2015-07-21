@@ -7,11 +7,89 @@ CActionToInput::CActionToInput(CInputManager *input) {
   InitString2Input();
 }
 
+void CActionToInput::Update() {
+  m_ActionsPerformed.clear();
+  for (auto it = m_GlobalString2Actions.begin(); it != m_GlobalString2Actions.end(); ++it) {
+    float amount = 1;
+    bool action = true;
+    std::vector<action_info> actionToCheck = it->second;
+    for (uint32 i = 0; i < actionToCheck.size(); ++i) {
+      switch (actionToCheck[i].axisType) {
+        case AXIS_MOUSE_X:
+          amount = (float)m_InputManager->GetMouseDelta().x;
+          action &= amount != 0;
+          break;
+        case AXIS_MOUSE_Y:
+          amount = (float)m_InputManager->GetMouseDelta().y;
+          action &= amount != 0;
+          break;
+        case AXIS_MOUSE_Z:
+          amount = (float)m_InputManager->GetMouseDelta().z;
+          action &= amount != 0 ;
+          break;
+        case AXIS_LEFT_THUMB_X: {
+          float aux;
+          action = m_InputManager->GetGamePadLeftThumbDeflection(&amount, &aux);
+          action &= amount != 0;
+          break;
+        }
+        case AXIS_LEFT_THUMB_Y: {
+          float aux;
+          action = m_InputManager->GetGamePadLeftThumbDeflection(&aux, &amount);
+          action &= amount != 0;
+          break;
+        }
+        case AXIS_RIGHT_THUMB_X: {
+          float aux;
+          action = m_InputManager->GetGamePadRightThumbDeflection(&amount, &aux);
+          action &= amount != 0;
+          break;
+        }
+        case AXIS_RIGHT_THUMB_Y: {
+          float aux;
+          action = m_InputManager->GetGamePadRightThumbDeflection(&aux, &amount);
+          action &= amount != 0;
+          break;
+        }
+        case AXIS_DELTA_TRIGGER_RIGHT: {
+          float aux;
+          action = m_InputManager->GetGamePadDeltaTriggers(&aux, &amount);
+          action &= amount != 0;
+          break;
+        }
+        case AXIS_DELTA_TRIGGER_LEFT: {
+          float aux;
+          action = m_InputManager->GetGamePadDeltaTriggers(&amount, &aux);
+          action &= amount != 0;
+          break;
+        }
+        case AXIS_NOTHING:
+          break;
+      }
+      switch (actionToCheck[i].EventType) {
+        case EVENT_DOWN:
+          action &= m_InputManager->IsDown(actionToCheck[i].deviceType, actionToCheck[i].Code);
+          break;
+        case EVENT_DOWN_UP:
+          action &= m_InputManager->IsDownUp(actionToCheck[i].deviceType, actionToCheck[i].Code);
+          break;
+        case EVENT_UP_DOWN:
+          action &= m_InputManager->IsUpDown(actionToCheck[i].deviceType, actionToCheck[i].Code);
+          break;
+        case EVENT_NOTHING:
+          break;
+      }
+    }
+    if (action) {
+      m_ActionsPerformed[it->first] = (int)amount;
+    }
+  }
+}
+
 void CActionToInput::GetActionInfo(std::string actionName, std::string &strInfo) {
   std::string str_aux;
   if (m_GlobalString2Actions.count(actionName)) {
     VecInfoInputs aux = m_GlobalString2Actions[actionName];
-
     int size = aux.size();
     for (size_t i = 0; i < size; ++ i) {
       std::map<std::string, uint32>::iterator it = m_String2Code.begin();
@@ -21,15 +99,14 @@ void CActionToInput::GetActionInfo(std::string actionName, std::string &strInfo)
           if (i + 1 != size )
             str_aux.append(" + ");
         }
-
       }
     }
   }
   strInfo = str_aux;
-
 }
+
 bool CActionToInput::DoAction(const std::string &action_name) {
-  std::string aux1 = action_name;
+  /*std::string aux1 = action_name;
   if (m_GlobalString2Actions.count(action_name)) {
     VecInfoInputs aux = m_GlobalString2Actions[aux1];
     bool action = true;
@@ -53,11 +130,15 @@ bool CActionToInput::DoAction(const std::string &action_name) {
     }
     return action;
   }
-  return false;
+  return false;*/
+  auto action = m_ActionsPerformed.find(action_name);
+  if (action != m_ActionsPerformed.end()) {
+    return true;
+  }
 }
 
 bool CActionToInput::DoAction(const std::string &action_name, float &amount) {
-  std::string aux1 = action_name;
+  /*std::string aux1 = action_name;
   if (m_GlobalString2Actions.count(action_name)) {
     VecInfoInputs aux = m_GlobalString2Actions[aux1];
     bool action = true;
@@ -142,7 +223,12 @@ bool CActionToInput::DoAction(const std::string &action_name, float &amount) {
     }
     return action;
   }
-  return false;
+  return false;*/
+  auto action = m_ActionsPerformed.find(action_name);
+  if (action != m_ActionsPerformed.end()) {
+    amount = action->second;
+    return true;
+  }
 }
 
 bool CActionToInput::DoActionFromLua(const std::string action_name) {

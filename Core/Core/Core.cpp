@@ -344,6 +344,7 @@ void CCore::Render() {
 
 void CCore::Update(float dt) {
   if (!m_GuiManager->GetIsPaused()) {
+    m_ActionToInput->Update();
     m_GraphicsManager->Update();
     m_PhysicsManager->Update(dt);
     m_InputManager->Update();
@@ -357,6 +358,7 @@ void CCore::Update(float dt) {
     m_GuiManager->Update(dt);
     m_CollectibleManager->Update(dt);
   } else {
+    m_ActionToInput->Update();
     m_InputManager->Update();
     m_WWSoundManager->Render();
     m_GuiManager->Update(dt);

@@ -19,6 +19,7 @@ typedef struct _action_info {
 typedef std::map<std::string, std::vector<action_info> > MapString2Actions;
 typedef std::map<std::string, uint32> MapString2Code;
 typedef std::vector<action_info> VecInfoInputs;
+typedef std::map<std::string, int> UpdateAction;
 
 class CActionToInput {
  private:
@@ -28,10 +29,12 @@ class CActionToInput {
   MapString2Actions       m_MouseKeyboardString2Actions;
   MapString2Actions       m_GamePadString2Actions;
   CInputManager          *m_InputManager;
+  UpdateAction            m_ActionsPerformed;
  public:
   CActionToInput(CInputManager *input);
   bool	LoadXML (const std::string &xmlFile);
   bool	ReloadXML ();
+  void Update();
   //bool	SaveXML (const std::string& xmlFile);
 
   //void	SetAction (const std::string& action_name, VecInfoInputs& vecInfoInput);
