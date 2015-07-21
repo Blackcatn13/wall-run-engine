@@ -12,7 +12,7 @@ CPoolRenderableObjectTechnique::CPoolRenderableObjectTechnique(CXMLTreeNode &Tre
   setName(l_poolName);
   int count = m.GetNumChildren();
   for (int i = 0; i < count; ++i) {
-    CXMLTreeNode nodeChild = m(i);
+    CXMLTreeNode nodeChild = m.getNextChild();
     std::string name = nodeChild.GetName();
     if (name == "default_technique") {
       unsigned int l_VertexNumber = nodeChild.GetIntProperty("vertex_type", 0);

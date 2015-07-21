@@ -32,10 +32,11 @@ void CParticleManager::Load() {
     if (m.Exists()) {
       int count = m.GetNumChildren();
       for (int i = 0; i < count; ++i) {
-        std::string l_Name = m(i).GetName();
+        CXMLTreeNode child = m.getNextChild();
+        std::string l_Name = child.GetName();
         if (l_Name == "emitter") {
-          CParticleEmitter *newEmitter = new CParticleEmitter(m(i));
-          std::string EmitterName = m(i).GetPszISOProperty("name", "");
+          CParticleEmitter *newEmitter = new CParticleEmitter(child);
+          std::string EmitterName = child.GetPszISOProperty("name", "");
           AddResource(EmitterName, newEmitter);
         }
       }

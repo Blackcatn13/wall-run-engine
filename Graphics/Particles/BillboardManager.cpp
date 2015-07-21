@@ -21,14 +21,15 @@ void CBillboardManager::Load(std::string file) {
     if (m.Exists()) {
       int count = m.GetNumChildren();
       for (int i = 0; i < count; ++i) {
-        std::string l_Name = m(i).GetName();
+        CXMLTreeNode child = m.getNextChild();
+        std::string l_Name = child.GetName();
         if (l_Name == "billboard") {
-          CBillboard *l_Billboard = new CBillboard(m(i));
-          std::string EmitterName = m(i).GetPszISOProperty("name", "");
+          CBillboard *l_Billboard = new CBillboard(child);
+          std::string EmitterName = child.GetPszISOProperty("name", "");
           AddResource(EmitterName, l_Billboard);
         } else if (l_Name == "instanced_billboard") {
-          CBillboard *l_billboard = new CInstancedBillboard(m(i));
-          std::string EmitterName = m(i).GetPszISOProperty("name", "");
+          CBillboard *l_billboard = new CInstancedBillboard(child);
+          std::string EmitterName = child.GetPszISOProperty("name", "");
           AddResource(EmitterName, l_billboard);
         }
       }

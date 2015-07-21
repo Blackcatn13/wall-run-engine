@@ -123,7 +123,7 @@ void CScriptManager::Load(const std::string &XMLFile) {
     if (m.Exists()) {
       int count = m.GetNumChildren();
       for (int i = 0; i < count; ++i) {
-        CXMLTreeNode nodeChild = m(i);
+        CXMLTreeNode nodeChild = m.getNextChild();
         std::string name = nodeChild.GetName();
         if (name == "script") {
           std::string l_name = nodeChild.GetPszISOProperty("name", "");

@@ -29,7 +29,7 @@ void CLightManager::Load(const std::string &FileName) {
   if (m.Exists()) {
     int count = m.GetNumChildren();
     for (int i = 0; i < count; ++i) {
-      CXMLTreeNode nodeChild = m(i);
+      CXMLTreeNode nodeChild = m.getNextChild();
       if (std::string("light") == nodeChild.GetName()) {
         //	XML type ejemplo
         std::string l_Type = nodeChild.GetPszISOProperty("type", "");

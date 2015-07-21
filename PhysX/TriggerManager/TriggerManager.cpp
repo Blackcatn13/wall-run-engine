@@ -55,7 +55,7 @@ bool	CTriggerManager::LoadTriggers( std::string FileName) {
     if (m.Exists()) {
       int count = m.GetNumChildren();
       for (int i = 0; i < count; ++i) {
-        CXMLTreeNode nodeChild = m(i);
+        CXMLTreeNode nodeChild = m.getNextChild();
         //Creando el UserData para el trigger
         std::string name = nodeChild.GetPszProperty("name", "", false);
         CPhysicUserData *l_pUserData = new CPhysicUserData(name);

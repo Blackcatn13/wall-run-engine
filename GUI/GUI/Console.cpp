@@ -265,9 +265,10 @@ void CConsole::LoadWords(const std::string &FileName) {
     if (m.Exists()) {
       int count = m.GetNumChildren();
       for (int i = 0; i < count; ++i) {
-        std::string name = m(i).GetName();
+        CXMLTreeNode child = m.getNextChild();
+        std::string name = child.GetName();
         if (name == "word") {
-          std::string word = m(i).GetPszProperty("string");
+          std::string word = child.GetPszProperty("string");
           m_words.push_back(std::string(word));
         }
       }

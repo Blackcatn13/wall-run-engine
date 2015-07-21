@@ -45,7 +45,7 @@ void CLanguageManager::LoadXML (const std::string &pathFile) {
   if (m.Exists()) {
     int count = m.GetNumChildren();
     for (int i = 0; i < count; ++i) {
-      CXMLTreeNode nodeChild = m(i);
+      CXMLTreeNode nodeChild = m.getNextChild();
       //for each literal:
       SLiteral l_literal;
       std::string id			= nodeChild.GetPszProperty("id");

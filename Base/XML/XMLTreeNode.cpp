@@ -140,11 +140,14 @@ CXMLTreeNode CXMLTreeNode::getNextChild() {
   CXMLTreeNode child;
   if (m_lastChild != NULL) {
     m_lastChild = m_lastChild->next;
-  } else {
+  } else if (m_lastChild == NULL || m_lastChild->next == NULL) {
     m_lastChild = m_pNode->children;
   }
-  while ((m_lastChild->type == XML_TEXT_NODE || m_lastChild->type == XML_COMMENT_NODE) && m_lastChild != NULL) {
-    m_lastChild->next;
+  while (m_lastChild->type == XML_TEXT_NODE || m_lastChild->type == XML_COMMENT_NODE) {
+    m_lastChild = m_lastChild->next;
+    if (m_lastChild == NULL) {
+      m_lastChild = m_pNode->children;
+    }
   }
   child.m_pNode = m_lastChild;
   child.m_pDoc = m_pDoc;

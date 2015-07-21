@@ -140,7 +140,7 @@ void CEngine::ParseConfFile(std::string file) {
     if (n.Exists()) {
       int count = n.GetNumChildren();
       for (int i = 0; i < count; ++i) {
-        CXMLTreeNode nodeChild = n(i);
+        CXMLTreeNode nodeChild = n.getNextChild();
         if (!nodeChild.IsComment()) {
           std::string name = nodeChild.GetName();
           if (name == "ScreenResolution") {
@@ -157,9 +157,9 @@ void CEngine::ParseConfFile(std::string file) {
           } else if (name == "Languages") {
             m_Conf_info.LanguagesPath = std::vector<std::string>();
             m_Conf_info.CurrentLanguage = nodeChild.GetPszISOProperty("current", "catalan", false);
-            int languages = n (i).GetNumChildren();
+            int languages = nodeChild.GetNumChildren();
             for (int j = 0; j < languages; ++j)
-              m_Conf_info.LanguagesPath.push_back(nodeChild(j).GetPszISOProperty("XMLfile", "./Data/catalan.xml", false));
+              m_Conf_info.LanguagesPath.push_back(nodeChild.getNextChild().GetPszISOProperty("XMLfile", "./Data/catalan.xml", false));
           } else if (name == "Fonts") {
             m_Conf_info.FontsPath = nodeChild.GetPszISOProperty("fontsXML", "./Data/fonts/fonts.xml", false);
           } else if (name == "Actions") {

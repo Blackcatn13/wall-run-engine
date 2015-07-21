@@ -183,7 +183,7 @@ void CWWSoundManager::Load(std::string file) {
       int count = m.GetNumChildren();
       AkBankID bankID;
       for (int i = 0; i < count; ++i) {
-        CXMLTreeNode nodeChild = m(i);
+        CXMLTreeNode nodeChild = m.getNextChild();
         std::string name = nodeChild.GetName();
         if (name == "Bank") {
           std::string bnkName = nodeChild.GetPszISOProperty("name", "", false);
@@ -208,7 +208,7 @@ void CWWSoundManager::Load(std::string file) {
           if (positions > 0) {
             AkSoundPosition *posList = new (std::nothrow) AkSoundPosition[positions];
             for (int j = 0; j < positions; ++j) {
-              CXMLTreeNode nodeChild1 = nodeChild(j);
+              CXMLTreeNode nodeChild1 = nodeChild.getNextChild();
               Vect3f pos = nodeChild1.GetVect3fProperty("pos", v3fZERO, false);
               Vect3f dir = nodeChild1.GetVect3fProperty("dir", v3fZERO, false);
               posList[j].Position.X = pos.x;

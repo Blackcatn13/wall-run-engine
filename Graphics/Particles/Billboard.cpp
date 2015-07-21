@@ -20,7 +20,7 @@ CBillboard::CBillboard(CXMLTreeNode &node)
   , m_tick((rand() % 100 + 1) / 10) {
   int numChild = node.GetNumChildren();
   for (int i = 0; i < numChild; ++i) {
-    CXMLTreeNode nodeChild = node(i);
+    CXMLTreeNode nodeChild = node.getNextChild();
     std::string textureName = nodeChild.GetPszISOProperty("name", "");
     if (TEXTM->ExisteResource(textureName)) {
       m_Textures.push_back(TEXTM->GetResource(textureName));

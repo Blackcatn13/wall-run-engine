@@ -155,7 +155,7 @@ void CRenderableObjectsLayersManager::Load(const std::string &FileName) {
       for (int numRoom = 0; numRoom < MAX_ROOMS; ++numRoom) {
         CTemplatedVectorMapManager<CRenderableObjectsManager> *l_ResourcesVector = new  CTemplatedVectorMapManager<CRenderableObjectsManager>();
         for (int j = 0; j < count; ++j) {
-          CXMLTreeNode nodeChild = m(j);
+          CXMLTreeNode nodeChild = m.getNextChild();
           std::string name = nodeChild.GetName();
           if (name == "layer") {
             std::string layerName = nodeChild.GetPszISOProperty("name", "");
@@ -175,7 +175,7 @@ void CRenderableObjectsLayersManager::Load(const std::string &FileName) {
         AddResource(ss.str(), l_ResourcesVector);
       }
       for (int i = 0; i < count; ++i) {
-        CXMLTreeNode nodeChild = m(i);
+        CXMLTreeNode nodeChild = m.getNextChild();
         std::string name = nodeChild.GetName();
         //if ((name == "mesh_instance") || (name == "renderable_script")){
         if (name == "mesh_instance" || name == "animated_model" || name == "platform" || name == "switch_instance" || name == "door" || name == "wall_trap") {
@@ -205,9 +205,10 @@ void CRenderableObjectsLayersManager::Load(const std::string &FileName) {
       m_FileName2 = FileName;
       int count = m2.GetNumChildren();
       for (int i = 0; i < count; ++i) {
-        std::string name = m2(i).GetName();
+        CXMLTreeNode child = m2.getNextChild();
+        std::string name = child.GetName();
         if (name == "renderable_script") {
-          GetDefaultRenderableObjectManager("0")->Load(m2(i));
+          GetDefaultRenderableObjectManager("0")->Load(child);
         }
       }
     }

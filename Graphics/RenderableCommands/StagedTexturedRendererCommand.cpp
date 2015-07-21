@@ -13,7 +13,7 @@
 CStagedTexturedRendererCommand::CStagedTexturedRendererCommand(CXMLTreeNode &atts) {
   int numChildren = atts.GetNumChildren();
   for (int i = 0; i < numChildren; ++i) {
-    CXMLTreeNode nodeChild = atts(i);
+    CXMLTreeNode nodeChild = atts.getNextChild();
     std::string name = nodeChild.GetName();
     if (name == "dynamic_texture") {
       int l_StageId = nodeChild.GetIntProperty("stage_id", 0, false);

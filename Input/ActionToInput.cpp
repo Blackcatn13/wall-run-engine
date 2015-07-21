@@ -172,7 +172,7 @@ bool CActionToInput::LoadXML (const std::string &xmlFile) {
     int count = m.GetNumChildren();
     int counter = 0;
     for (int i = 0; i < count; ++i) {
-      CXMLTreeNode childNode = m(i);
+      CXMLTreeNode childNode = m.getNextChild();
       std::string name = childNode.GetName();
       MapString2Actions *toInsert;
       if (name == "globals") {
@@ -184,7 +184,7 @@ bool CActionToInput::LoadXML (const std::string &xmlFile) {
       }
       int newCount = childNode.GetNumChildren();
       for (int j = 0; j < newCount; ++j) {
-        CXMLTreeNode childNode1 = childNode(j);
+        CXMLTreeNode childNode1 = childNode.getNextChild();
         std::string name1 = childNode1.GetName();
         if (name1 == "action") {
           std::string nameAction = childNode1.GetPszISOProperty("name", "Action" + counter++, false);
@@ -192,7 +192,7 @@ bool CActionToInput::LoadXML (const std::string &xmlFile) {
           (*toInsert)[nameAction] = VecInfoInputs();
           (*toInsert)[nameAction].clear();
           for (int k = 0; k < actionsCount; ++k) {
-            CXMLTreeNode childNode2 = childNode1(k);
+            CXMLTreeNode childNode2 = childNode1.getNextChild();
             std::string nameDevice = childNode2.GetPszISOProperty("deviceType", "IDV_NOTHING", false);
             std::string nameEvent = childNode2.GetPszISOProperty("EventType", "EVENT_NOTHING", false);
             std::string nameKey = childNode2.GetPszISOProperty("Code", "KEY_M", false);

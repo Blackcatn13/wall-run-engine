@@ -62,7 +62,7 @@ void CCameraKeyController::LoadXML(const std::string &FileName) {
       m_PitchInterpolated = l_pitch;
       int count = m.GetNumChildren();
       for (int i = 0; i < count; ++i) {
-        CXMLTreeNode nodeChild = m(i);
+        CXMLTreeNode nodeChild = m.getNextChild();
         if (!strcmp(nodeChild.GetName(), "key")) {
           float l_time = nodeChild.GetFloatProperty("time");
           Vect3f l_pos = nodeChild.GetVect3fProperty("pos", NULL, true);

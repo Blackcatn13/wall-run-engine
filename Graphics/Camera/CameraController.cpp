@@ -173,7 +173,7 @@ bool CCameraController::Load(const std::string &FileName) {
     if (m.Exists()) {
       int count = m.GetNumChildren();
       for (int i = 0; i < count; ++i) {
-        CXMLTreeNode nodeChild = m(i);
+        CXMLTreeNode nodeChild = m.getNextChild();
         if (!strcmp(nodeChild.GetName(), "key_camera_controller")) {
           std::string l_Name = nodeChild.GetPszProperty("name");
           std::string l_file = nodeChild.GetPszProperty("file");

@@ -205,7 +205,7 @@ bool CWindows::LoadXML( const std::string &xmlGuiFile, const Vect2i &screenResol
     if (windows.Exists()) {
       int count = windows.GetNumChildren();
       for (int i = 0; i < count; ++i) {
-        CXMLTreeNode pNewNode = windows(i);
+        CXMLTreeNode pNewNode = windows.getNextChild();
 
         //Para cada guielement leemos su informacion comun-->
         std::string name	= pNewNode.GetPszProperty("name", "defaultGuiElement");
@@ -562,7 +562,7 @@ CRadioBox	*CWindows::LoadRadioBox( CXMLTreeNode &pNewNode, const Vect2i &screenR
   radioBox->SetOnSaveValueAction(OnSaveValue);
   int count = pNewNode.GetNumChildren();
   for (int j = 0; j < count; ++j) {
-    CXMLTreeNode pTexture = pNewNode(j);
+    CXMLTreeNode pTexture = pNewNode.getNextChild();
     std::string tagName = pTexture.GetName();
     if (tagName.compare("texture") == 0) {
       std::string name				= pTexture.GetPszProperty("name");
@@ -624,11 +624,11 @@ CImage	*CWindows::_LoadImage( CXMLTreeNode &pNewNode, const Vect2i &screenResolu
   }
   int count = pNewNode.GetNumChildren();
   for (int j = 0; j < count; ++j) {
-    CXMLTreeNode pTexture = pNewNode(j);
+    CXMLTreeNode pTexture = pNewNode.getNextChild();
     std::string tagName = pTexture.GetName();
     if (tagName.compare("texture") == 0) {
-      std::string name				=  pNewNode(j).GetPszProperty("name");
-      std::string texture			=  pNewNode(j).GetPszProperty("name_texture");
+      std::string name				=  pTexture.GetPszProperty("name");
+      std::string texture			=  pTexture.GetPszProperty("name_texture");
 
       CTexture *texture_image		= tm->GetResource(texture, true); //GetTexture(texture);
       image->SetTexture(texture_image, name);

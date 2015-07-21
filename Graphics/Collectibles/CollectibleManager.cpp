@@ -56,7 +56,7 @@ bool CCollectibleManager::Load(std::string &FileName) {
     if (m.Exists()) {
       int count = m.GetNumChildren();
       for (int i = 0; i < count; ++i) {
-        CXMLTreeNode nodeChild = m(i);
+        CXMLTreeNode nodeChild = m.getNextChild();
         std::string l_name = nodeChild.GetName();
         if (l_name == "collectible-type") {
           StrCollectibles l_CollectibleType;

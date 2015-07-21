@@ -43,7 +43,7 @@ void CRenderableObjectTechniqueManager::Load(const std::string &FileName) {
   CXMLTreeNode  m = newFile["renderable_object_techniques"];
   int count = m.GetNumChildren();
   for (int i = 0; i < count; ++i) {
-    CXMLTreeNode nodeChild = m(i);
+    CXMLTreeNode nodeChild = m.getNextChild();
     std::string name = nodeChild.GetName();
     if (name == "pool_renderable_object_technique") {
       std::string l_poolName = nodeChild.GetPszISOProperty("name", "");
@@ -51,7 +51,7 @@ void CRenderableObjectTechniqueManager::Load(const std::string &FileName) {
       if (l_isDefault) {
         int count2 = nodeChild.GetNumChildren();
         for (int j = 0; j < count2; ++j) {
-          CXMLTreeNode nodeChild1 = nodeChild(j);
+          CXMLTreeNode nodeChild1 = nodeChild.getNextChild();
           std::string name2 = nodeChild1.GetName();
           if (name2 == "default_technique") {
             unsigned int l_VertexNumber = nodeChild1.GetIntProperty("vertex_type", 0, false);

@@ -30,7 +30,7 @@ void CPuzzleManager::Load(std::string file) {
     if (m.Exists()) {
       int count = m.GetNumChildren();
       for (int i = 0; i < count; ++i) {
-        CXMLTreeNode nodeChild = m(i);
+        CXMLTreeNode nodeChild = m.getNextChild();
         std::string name = nodeChild.GetName();
         if (name == "puzzle") {
           std::string puzzleName = nodeChild.GetPszISOProperty("name", "", false);
@@ -40,8 +40,9 @@ void CPuzzleManager::Load(std::string file) {
           newPuzzle->setLuaCode(l_LuaCode);
           newPuzzle->setMinActivatedSwitches(l_NumActivatedSwitches);
           newPuzzle->setSceneElement(nodeChild.GetPszISOProperty("scene_element", "", false));
-          for (int j = 0; j < nodeChild.GetNumChildren(); ++j) {
-            CTrigger *l_Trigger = TRIGGM->GetResource(nodeChild(j).GetPszISOProperty("name", "", false));
+          int count1 = nodeChild.GetNumChildren();
+          for (int j = 0; j < count1; ++j) {
+            CTrigger *l_Trigger = TRIGGM->GetResource(nodeChild.getNextChild().GetPszISOProperty("name", "", false));
             if (l_Trigger != NULL)
               newPuzzle->getSwitches().push_back(l_Trigger);
           }

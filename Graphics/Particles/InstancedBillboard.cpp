@@ -21,7 +21,7 @@ CInstancedBillboard::CInstancedBillboard(CXMLTreeNode &node)
   m_vertex_list = new TBILLBOARD_VERTEX_INSTANCE[m_numBillboards];
   int j = 0;
   for (int i = 0; i < numChild; ++i) {
-    CXMLTreeNode nodeChild = node(i);
+    CXMLTreeNode nodeChild = node.getNextChild();
     std::string Name = nodeChild.GetName();
     if (Name == "Texture") {
       std::string TextureName = nodeChild.GetPszISOProperty("name", "");

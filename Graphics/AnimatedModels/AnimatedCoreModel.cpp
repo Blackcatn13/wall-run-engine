@@ -59,7 +59,7 @@ void CAnimatedCoreModel::Load(const std::string &Path) {
     m_CalCoreModel = new CalCoreModel(l_Name);
     int count = m.GetNumChildren();
     for (int i = 0; i < count; ++i) {
-      CXMLTreeNode nodeChild = m(i);
+      CXMLTreeNode nodeChild = m.getNextChild();
       std::string l_Element(nodeChild.GetName());
       if ( l_Element == "skeleton") {
         std::string Filename = nodeChild.GetPszISOProperty("file", "");

@@ -39,14 +39,14 @@ void CFSMManager::Load() {
     if (m.Exists()) {
       int count = m.GetNumChildren();
       for (int i = 0; i < count; ++i) {
-        CXMLTreeNode nodeChild = m(i);
+        CXMLTreeNode nodeChild = m.getNextChild();
         std::string name = nodeChild.GetName();
         if (name == "fsm") {
           FSM *newFSM = new FSM();
           int childCount = nodeChild.GetNumChildren();
           std::string FSMName = nodeChild.GetPszISOProperty("name", "", false);
           for (int j = 0; j < childCount; ++j) {
-            CXMLTreeNode nodeChild1 = nodeChild(j);
+            CXMLTreeNode nodeChild1 = nodeChild.getNextChild();
             std::string l_PropName = nodeChild1.GetName();
             if (l_PropName == "initialState") {
               newFSM->m_currentState = nodeChild1.GetPszISOProperty("name", "", false);
@@ -55,7 +55,7 @@ void CFSMManager::Load() {
               int states = nodeChild1.GetNumChildren();
               std::string StateName = nodeChild1.GetPszISOProperty("name", "", false);
               for (int k = 0; k < states; ++k) {
-                CXMLTreeNode nodeChild2 = nodeChild1(k);
+                CXMLTreeNode nodeChild2 = nodeChild1.getNextChild();
                 std::string StateType = nodeChild2.GetName();
                 if (StateType == "onEnter") {
                   s->onEnter = nodeChild2.GetPszISOProperty("lua_funtion", "", false);

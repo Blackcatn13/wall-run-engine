@@ -199,12 +199,12 @@ void CWPManager::Load() {
     if (m.Exists()) {
       int count = m.GetNumChildren();
       for (int i = 0; i < count; ++i) {
-        CXMLTreeNode nodeChild = m(i);
+        CXMLTreeNode nodeChild = m.getNextChild();
         ZONE *newZONE = new ZONE();
         int count2 = nodeChild.GetNumChildren();
         std::string ZONEName = nodeChild.GetPszISOProperty("name", "");
         for (int j = 0; j < count2; ++j) {
-          CXMLTreeNode nodeChild1 = nodeChild(j);
+          CXMLTreeNode nodeChild1 = nodeChild.getNextChild();
           std::string name = nodeChild.GetName();
           if (name == "waypoint") {
             WP *newWP = new WP();
@@ -217,7 +217,7 @@ void CWPManager::Load() {
             newWP->m_Padre = NULL;
             int count3 = nodeChild.GetNumChildren();
             for (int k = 0; k < count3; ++k) {
-              CXMLTreeNode nodeChild2 = nodeChild1(k);
+              CXMLTreeNode nodeChild2 = nodeChild1.getNextChild();
               Link *newLink = new Link();
               newLink->id = nodeChild2.GetIntProperty("id", 0);
               newLink->weight = nodeChild2.GetIntProperty("weight", 0);

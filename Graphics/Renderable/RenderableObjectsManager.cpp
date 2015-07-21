@@ -78,7 +78,7 @@ void CRenderableObjectsManager::Load(const std::string &FileName) {
     m_FileName = FileName;
     int count = m.GetNumChildren();
     for (int i = 0; i < count; ++i) {
-      CXMLTreeNode nodeChild = m(i);
+      CXMLTreeNode nodeChild = m.getNextChild();
       std::string name = nodeChild.GetName();
       if (name == "mesh_instance") {
         CMeshInstance *l_meshInstance = new CMeshInstance(nodeChild);
@@ -133,9 +133,10 @@ void CRenderableObjectsManager::Load(const std::string &FileName) {
     m_FileName2 = FileName;
     int count = m2.GetNumChildren();
     for (int i = 0; i < count; ++i) {
-      std::string name = m2(i).GetName();
+      CXMLTreeNode child = m2.getNextChild();
+      std::string name = child.GetName();
       if (name == "renderable_script") {
-        std::string l_name = m2(i).GetPszISOProperty("name", "");
+        std::string l_name = child.GetPszISOProperty("name", "");
         //std::string l_file = m2(i).GetPszISOProperty("file", "");
         if (l_name == "scriptedController") {
           CScriptedController *l_ScriptedController = new CScriptedController();

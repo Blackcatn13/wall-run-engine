@@ -25,7 +25,7 @@ CButtonList::CButtonList(CXMLTreeNode &node, uint32 windowsHeight, uint32 window
   if (m.Exists()) {
     int childs = m.GetNumChildren();
     for (int i = 0; i < childs; ++i) {
-      CButton *b = new CButton(m(i), windowsHeight, windowsWidth);
+      CButton *b = new CButton(m.getNextChild(), windowsHeight, windowsWidth);
       m_buttons.push_back(b);
       AddChild(b);
     }

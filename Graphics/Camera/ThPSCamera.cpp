@@ -73,13 +73,13 @@ bool CThPSCamera::LoadPathFromFile(std::string filename) {
   CXMLTreeNode  m = newFile["camera_path"];
   int count = m.GetNumChildren();
   for (int i = 0; i < count; ++i) {
-    CXMLTreeNode nodeChild = m(i);
+    CXMLTreeNode nodeChild = m.getNextChild();
     std::string name = nodeChild.GetName();
     if (name == "spline") {
       // std::string l_lineName = nodeChild.GetPszISOProperty("name", "");
       int numPoints = nodeChild.GetNumChildren();
       for (int j = 0; j < numPoints; ++j) {
-        CXMLTreeNode nodeChild1 = nodeChild(j);
+        CXMLTreeNode nodeChild1 = nodeChild.getNextChild();
         std::string namePoint = nodeChild1.GetName();
         if (namePoint == "point") {
           // std::string pointId = nodeChild1.GetPszISOProperty("id", "");

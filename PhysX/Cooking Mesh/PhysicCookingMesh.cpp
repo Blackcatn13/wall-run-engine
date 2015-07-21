@@ -277,14 +277,15 @@ bool CPhysicCookingMesh::LoadFromXML(const std::string _FileName) {
     if (m.Exists()) {
       int count = m.GetNumChildren();
       for (int i = 0; i < count; ++i) {
-        std::string name = m(i).GetName();
+        CXMLTreeNode child = m.getNextChild();
+        std::string name = child.GetName();
         if (name == "Physx_mesh") {
           void *vertex = 0;
           void *index = 0;
           unsigned short n_vtx = 0;
           unsigned short n_indx = 0;
-          ReadMesh(m(i).GetPszISOProperty("filename", "", false), vertex, index, &n_vtx, &n_indx);
-          CreatePhysicMesh(vertex, index, n_vtx, n_indx, m(i).GetPszISOProperty("name", "", false));
+          ReadMesh(child.GetPszISOProperty("filename", "", false), vertex, index, &n_vtx, &n_indx);
+          CreatePhysicMesh(vertex, index, n_vtx, n_indx, child.GetPszISOProperty("name", "", false));
           delete(vertex);
           delete(index);
         }

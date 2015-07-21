@@ -66,7 +66,7 @@ bool CEnemyManager::Init(const std::string &FileName) {
     if (m.Exists()) {
       int count = m.GetNumChildren();
       for (int i = 0; i < count; ++i) {
-        CXMLTreeNode nodeChild = m(i);
+        CXMLTreeNode nodeChild = m.getNextChild();
         std::string l_Name = nodeChild.GetName();
         if (l_Name == "enemy") {
           std::string name = nodeChild.GetPszProperty("type", "", false);
@@ -97,7 +97,7 @@ bool CEnemyManager::Init(const std::string &FileName) {
           l_Enemy.instanceType = nodeChild.GetPszISOProperty("type", "", false);
           int instanceNumChilds = nodeChild.GetNumChildren();
           for (int j = 0; j < instanceNumChilds; ++j) {
-            l_Enemy.waypoints.push_back(nodeChild(j).GetVect3fProperty("position", v3fZERO, false));
+            l_Enemy.waypoints.push_back(nodeChild.getNextChild().GetVect3fProperty("position", v3fZERO, false));
           }
           l_Enemy.AttackDistance = nodeChild.GetFloatProperty("attack_distance", 15.0f, false);
           l_Enemy.Zone = nodeChild.GetFloatProperty("zone", 1.0f, false);
