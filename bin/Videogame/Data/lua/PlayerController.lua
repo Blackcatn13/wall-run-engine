@@ -121,7 +121,7 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		
 		
-		
+		local auxyaw = 0;
 		--///////////////////////////////////////////////////////////
 		-- Movimiento del Player en las distintas direcciones. 
 		--///////////////////////////////////////////////////////////
@@ -133,12 +133,12 @@ function on_update_player_lua(l_ElapsedTime)
 				auxAxisXMoved = act2in:do_action_from_lua("MoveRigth", x_axis);
 				y_axis = inputm:get_game_pad_left_thumb_y_deflection(1);
 				x_axis = inputm:get_game_pad_left_thumb_x_deflection(1);
-				if (y_axis == 0 and x_axis == 0 and player_controller.m_is3D == true) or (x_axis == 0 and player_controller.m_is3D == false) then
+				local changedCamYaw = dirYaw - lastCamYaw;
+				if y_axis == 0 and x_axis == 0 then
 					cosyaw = 0;
 					sinyaw = 0;
 					extraRotationContinue = 0;
 				else
-					local changedCamYaw = dirYaw - lastCamYaw;
 					if math.abs(changedCamYaw) > 1 then
 						if changedCamYaw > 0 then
 							extraRotationContinue = 1.57;--de 3d a 2d
@@ -151,7 +151,7 @@ function on_update_player_lua(l_ElapsedTime)
 					end
 					auxyaw = math.atan2(x_axis,y_axis);
 					if (lastJoystickYaw == -10) then
-						lastJoystickYaw = auxYaw;
+						lastJoystickYaw = auxyaw;
 					else
 						if extraRotationContinue ~= 0 then
 							local changedJoyYaw = auxyaw - lastJoystickYaw;
@@ -170,10 +170,10 @@ function on_update_player_lua(l_ElapsedTime)
 							end
 						end
 					end
-					auxyaw = auxyaw + extraRotationContinue;
-					auxyaw = auxyaw +1.57;
-					cosyaw = math.cos(auxyaw); -- derecha 1 izquierda -1
-					sinyaw = math.sin(auxyaw); -- alante 1 atras -1
+					local worldauxyaw = auxyaw + extraRotationContinue;
+					worldauxyaw = worldauxyaw +1.57;
+					cosyaw = math.cos(worldauxyaw); -- derecha 1 izquierda -1
+					sinyaw = math.sin(worldauxyaw); -- alante 1 atras -1
 					mov = dir3D * sinyaw + dirNor * cosyaw;
 					local player_yaw = math.atan2(mov.x,mov.z);
 					mov = luaUtil:normalize(mov);
@@ -189,9 +189,7 @@ function on_update_player_lua(l_ElapsedTime)
 						player_controller.m_isTurned = true;
 					end
 				end
-				--ACTUALIZAR LASTCAMYAW Y LASTJOYSTICKYAW, SI SE QUIEREN USAR ABAJO HAY QUE ACTUALIZARLOS MAS TARDE
-				lastCamYaw = dirYaw;
-				lastJoystickYaw = auxYaw;
+				
 				auxForward = auxAxisYMoved and y_axis > 0
 				auxBackward = auxAxisYMoved and y_axis < 0
 				auxRight = auxAxisXMoved and x_axis > 0
@@ -342,6 +340,10 @@ function on_update_player_lua(l_ElapsedTime)
 				end
 			end
 		end
+		
+		--ACTUALIZAR LASTCAMYAW Y LASTJOYSTICKYAW, SI SE QUIEREN USAR ABAJO HAY QUE ACTUALIZARLOS MAS TARDE
+		lastCamYaw = dirYaw;
+		lastJoystickYaw = auxyaw;
 		
 		
 
