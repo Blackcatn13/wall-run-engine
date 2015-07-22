@@ -306,3 +306,26 @@ function activate_wall_traps(room_number)
 	end
 
 end
+
+-- Se encarga de comprovar si el Player está dentro y si le toca por tiempo pierde corazon
+function check_arrows_trap(damage_time, trap_trigger_name)
+	local trigger_trap = trigger_manager:get_resource(trap_trigger_name)
+	if trigger_trap.m_Time > damage_time then
+		player.player_take_damage(Vect3f(0.0,0.0,0.0))
+	end
+end
+
+-- actualiza el tiempo para la trampa de flechas además de moverla
+function update_arrows_trap(trigger_name, trap_name)
+	local trap = search(trap_vector, trap_name)
+	if trap ~= nil then
+		local trigger = trigger_manager:get_resource(trigger_name)
+		trigger.m_Time = trigger.m_Time +1 * coreInstance.m_ElapsedTime
+		if trigger.m_Time > trap.time_out and trigger.m_Time < (trap.time_out + 1) then
+			trap:move()
+		elseif trigger.m_Time > trap.time_out +1 then
+			trap:reset_position()
+			trap.m_Time = 0
+		end		
+	end
+end

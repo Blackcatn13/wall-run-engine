@@ -18,6 +18,7 @@
 	<script name="PumPum" file="Data/lua/PumPum.lua" auto_run = "true"/>
 	<script name="ChuckyRunner" file="Data/lua/ChuckyRunner.lua" auto_run = "true"/>
 	<script name="Card" file="Data/lua/Card.lua" auto_run = "true"/>
+	<script name="ArrowTrap" file="Data/lua/ArrowTrap.lua" auto_run = "true"/>
 	<script name="Gui" file="Data/lua/Gui.lua" auto_run = "true"/>
 	<script name="traps" file="Data/lua/Traps.lua" auto_run = "true"/>
 	

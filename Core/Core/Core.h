@@ -121,6 +121,7 @@ class CCore {
   CWWSoundManager					*m_WWSoundManager;
   CGUIManager						*m_GuiManager;
   CCollectibleManager				*m_CollectibleManager;
+  float								m_ElapsedTime;
 
  public:
   ~CCore();
@@ -251,6 +252,10 @@ class CCore {
   GET_SET(std::string, LuaLoadLevelFunc)
   GET_SET(std::string, LevelPhisicsFile)
   GET_SET(std::string, ScenePhisicsFile)
+
+  float GetElapsedTime() {
+    return m_ElapsedTime;
+  }
 
   /*  CMapManager<CStaticPlatform>	*GetPlatformsMap()
     {

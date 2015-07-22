@@ -104,6 +104,14 @@ function clear_array(Array_Name)
 	end
 end
 
+function search(vector, name)
+	for i = 1, table.getn(vector) do
+		if vector[i].name == name then
+			return vector[i]
+		end
+	end
+end
+
 function split_str(inputstr, sep)
         if sep == nil then
                 sep = "%s"
@@ -161,6 +169,10 @@ function reset_game()
 	
 	--Doors
 	close_door("Puerta_arriba", "Puerta_abajo");
+	
+	--Traps
+	reset_wall_trap(0, "WALL_TRAP1_RIGHT")
+	reset_wall_trap(0, "WALL_TRAP1_LEFT")
 	
 	--Others
 	gui_manager:activate_pause(false);

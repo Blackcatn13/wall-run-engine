@@ -40,7 +40,8 @@
 
 CCore *CCore::m_Instance = 0;
 
-CCore::CCore() {
+CCore::CCore():
+  m_ElapsedTime(0.0f) {
 }
 
 CCore::~CCore() {
@@ -343,6 +344,7 @@ void CCore::Render() {
 }
 
 void CCore::Update(float dt) {
+  m_ElapsedTime = dt;
   if (!m_GuiManager->GetIsPaused()) {
     m_ActionToInput->Update();
     m_GraphicsManager->Update();
