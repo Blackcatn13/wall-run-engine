@@ -8,9 +8,9 @@ local jumpStart = false;
 
 -- Chucky Variables --
 local Chucky_super_speed_dist = 10
-local Chucky_running_speed = 12;
+local Chucky_running_speed = 14;
 local Chucky_super_speed = 21;
-local Chucky_current_speed = 12;
+local Chucky_current_speed = 14;
 
 -- Chucky Stopped --
 function chucky_runner_enter_stopped(name)
