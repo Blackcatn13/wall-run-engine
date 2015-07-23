@@ -308,20 +308,23 @@ function activate_wall_traps(room_number)
 end
 
 -- Se encarga de comprovar si el Player está dentro y si le toca por tiempo pierde corazon
-function check_arrows_trap(damage_time, trap_trigger_name)
+function check_arrows_trap(trap_name, trap_trigger_name)
 	local trigger_trap = trigger_manager:get_resource(trap_trigger_name)
-	
-	if trigger_trap.m_Time > tonumber(damage_time) and trigger_trap.m_Time < tonumber(damage_time) + 0.3 then
+	local trap = search(trap_vector, trap_name)
+	local trap_time = trap.time_out
+	if trigger_trap.m_Time > trap_time +0.1 and trigger_trap.m_Time < trap_time +0.4 then--tonumber(damage_time) and trigger_trap.m_Time < tonumber(damage_time) + 0.3 then
+		coreInstance:trace("Hit")
 		local player_position = player_controller:get_position()
-		local damage_vector_x = player_position.x - trigger_trap:get_position().x
+		
+		local axis = trap.damage_axis
+		local direction = check_damage_direction(axis, player_position, trigger_trap:get_position() )
+		player.player_take_damage(direction)
+		--[[local damage_vector_x = player_position.x - trigger_trap:get_position().x
 		local damage_vector_z = player_position.z - trigger_trap:get_position().z
+		--]]
+		--local trap = search(trap_vector, trap_name)
 		--local damage_vector = Vect3f(damage_vector_x,player_position.y, damage_vector_z )
 		--luaUtil:normalize(damage_vector)
-  
-		player.player_take_damage(Vect3f(-0.5,0,0))
-		--coreInstance:trace("Damage Time: ".. tostring(damage_time))
-	--coreInstance:trace("Trigger Trap Time: ".. tostring(trigger_trap.m_Time))
-		--coreInstance:trace("Hit")
 	end
 end
 
@@ -332,7 +335,7 @@ function update_arrows_trap(trigger_name, trap_name)
 		local trigger = trigger_manager:get_resource(trigger_name)
 		trigger.m_Time = trigger.m_Time +1 * coreInstance.m_ElapsedTime
 		if trigger.m_Time > trap.time_out and trigger.m_Time < (trap.time_out + 1) then
-			coreInstance:trace("Trigger Trap Time: ".. tostring(trigger.m_Time))
+			--coreInstance:trace("Trigger Trap Time: ".. tostring(trigger.m_Time))
 			trap:move()
 		elseif trigger.m_Time > trap.time_out +1 then
 			trap:reset_position()

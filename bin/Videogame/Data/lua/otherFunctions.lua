@@ -125,6 +125,25 @@ function split_str(inputstr, sep)
         return t
 end
 
+function check_damage_direction (axis, player_direction, other_direction)
+	local direction = Vect3f(0,0,0)
+	if axis == "x" then
+		direction.x = check_position(player_direction.x, other_direction.x, 0.5)
+	elseif axis == "z" then
+		direction.z = check_position(player_direction.z, other_direction.z, 0.5)	
+	end
+	return direction
+end
+
+function check_position (position1, position2, margin)
+	if (position1 + margin > position2) then
+		return margin
+	else
+		return -margin
+	end
+	return 0
+end
+
 function reset_game()
 	
 	--Player Position + 3D
