@@ -334,4 +334,8 @@
 	<wall_trap name="WALL_TRAP1_RIGHT" core="WALL_TRAP1_RIGHT" pos="452.820068 8.017212 3.252808" yaw="0.0" pitch="0.0" roll="0.0" scale="0.51843 2.12333 3.17425" visible="true" use_physx_mesh="true" room="0" layer="solid" speed_opening="4" speed_closing="35" side="right" phisic_size="4.12463 4.34251 3.48662" time_out="1" final_position ="452.820068 8.017212 9.252808"/>
 	<!--platform name="WALL_TRAP1_LEFT" core="WALL_TRAP1_LEFT" type ="static" pos="452.820068 8.017212 18.725906" yaw="0.0" pitch="0.0" roll="0.0" scale="0.51843 2.12333 3.17425" visible="true" phisic_size="4.12463 4.34251 3.48662" use_physx_mesh="true" room="0" layer="solid"/-->	 
 	<wall_trap name="WALL_TRAP1_LEFT" core="WALL_TRAP1_LEFT" pos="452.820068 8.017212 18.725906" yaw="0.0" pitch="0.0" roll="0.0" scale="0.51843 2.12333 3.17425" visible="true" use_physx_mesh="true" room="0" layer="solid" speed_opening="4" speed_closing="35" side="left" phisic_size="4.12463 4.34251 3.48662" time_out="1" final_position ="452.820068 8.017212 12.725906"/>		 
+	
+	<mesh_instance name="Arrow" core="Arrow" pos="80.500626 3.284668 -7.052490" yaw="0.0" pitch="-1.43934" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Arrow001" core="Arrow001" pos="80.500626 2.365845 -7.052490" yaw="0.0" pitch="-1.43934" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Arrow002" core="Arrow002" pos="80.500626 1.365173 -7.052490" yaw="0.0" pitch="-1.43934" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
 </renderable_objects>

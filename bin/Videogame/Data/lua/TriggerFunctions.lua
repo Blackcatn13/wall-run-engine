@@ -310,8 +310,18 @@ end
 -- Se encarga de comprovar si el Player está dentro y si le toca por tiempo pierde corazon
 function check_arrows_trap(damage_time, trap_trigger_name)
 	local trigger_trap = trigger_manager:get_resource(trap_trigger_name)
-	if trigger_trap.m_Time > damage_time then
-		player.player_take_damage(Vect3f(0.0,0.0,0.0))
+	
+	if trigger_trap.m_Time > tonumber(damage_time) and trigger_trap.m_Time < tonumber(damage_time) + 0.3 then
+		local player_position = player_controller:get_position()
+		local damage_vector_x = player_position.x - trigger_trap:get_position().x
+		local damage_vector_z = player_position.z - trigger_trap:get_position().z
+		--local damage_vector = Vect3f(damage_vector_x,player_position.y, damage_vector_z )
+		--luaUtil:normalize(damage_vector)
+  
+		player.player_take_damage(Vect3f(-0.5,0,0))
+		--coreInstance:trace("Damage Time: ".. tostring(damage_time))
+	--coreInstance:trace("Trigger Trap Time: ".. tostring(trigger_trap.m_Time))
+		--coreInstance:trace("Hit")
 	end
 end
 
@@ -322,10 +332,21 @@ function update_arrows_trap(trigger_name, trap_name)
 		local trigger = trigger_manager:get_resource(trigger_name)
 		trigger.m_Time = trigger.m_Time +1 * coreInstance.m_ElapsedTime
 		if trigger.m_Time > trap.time_out and trigger.m_Time < (trap.time_out + 1) then
+			coreInstance:trace("Trigger Trap Time: ".. tostring(trigger.m_Time))
 			trap:move()
 		elseif trigger.m_Time > trap.time_out +1 then
 			trap:reset_position()
-			trap.m_Time = 0
+			--trap.m_Time = 0
+			trigger.m_Time = 0
+			--coreInstance:trace("Reset Trap")
 		end		
 	end
+end
+
+function reset_arrow_trap(trap_name, trigger_name)
+	local trap = search(trap_vector, trap_name)
+	trap:reset_position()
+	local trigger = trigger_manager:get_resource(trigger_name)
+	trigger.m_Time = 0
+	
 end

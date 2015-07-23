@@ -45,6 +45,14 @@ function init_level(a)
 	player.set_initial_position(PlayerYaw, new_position)
 	player.attack_enabled = false
 	player.set_room(0)
+	
+	local ro1 = get_renderable_object("solid",0, "Arrow")
+	local ro2 = get_renderable_object("solid",0, "Arrow001")	
+	local ro3 = get_renderable_object("solid",0, "Arrow002")		
+	local ro_list = {ro1, ro2, ro3}
+	local direction = Vect3f(0,0,1)
+	local arrow_trap = ArrowTrap.new("ArrowTrap1",ro_list,direction, 40, 2, "x"  )
+	
 	return 0
 end
 
