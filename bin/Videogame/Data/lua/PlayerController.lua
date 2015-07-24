@@ -443,20 +443,26 @@ function on_update_player_lua(l_ElapsedTime)
 			if false then
 				player_controller.m_isAttack = false;
 			else
-				if player_controller.m_CurrentAttackForce > 0.5 then	
-					local prev_y = mov.y
-					player_controller.m_CurrentAttackForce = player_controller.m_CurrentAttackForce - (m_AttackGravity * l_ElapsedTime);
-					mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce * AttackSpeed * l_ElapsedTime;
-					if AttackSpeed > 0.05 then
-						AttackSpeed = AttackSpeed - AttackDismin * l_ElapsedTime;
+				if player.can_finish_atack then
+					if player_controller.m_CurrentAttackForce > 0.5 then					
+						local prev_y = mov.y
+						player_controller.m_CurrentAttackForce = player_controller.m_CurrentAttackForce - (m_AttackGravity * l_ElapsedTime);
+						mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce * AttackSpeed * l_ElapsedTime;
+						if AttackSpeed > 0.05 then
+							AttackSpeed = AttackSpeed - AttackDismin * l_ElapsedTime;
+						end
+						mov.y = prev_y;
+						m_AttackGravity = m_AttackGravity + AtackGravityModifier * l_ElapsedTime;
+					else
+						local mesh = playerRenderable;
+						mesh:set_position(player_controller:get_position());
+						player_controller.m_isAttack = false;
+						player.get_player_controller():update_character_extents(true, m_ReduceCollider);
 					end
-					mov.y = prev_y;
-					m_AttackGravity = m_AttackGravity + AtackGravityModifier * l_ElapsedTime;
-				else
-					local mesh = playerRenderable;
-					mesh:set_position(player_controller:get_position());
-					player_controller.m_isAttack = false;
-					player.get_player_controller():update_character_extents(true, m_ReduceCollider);
+				else -- En el caso de estar entre triggers para impedir fin de ataque
+					local prev_y = mov.y
+					mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce * AttackSpeed * l_ElapsedTime
+					mov.y = prev_y
 				end
 			end
 		end

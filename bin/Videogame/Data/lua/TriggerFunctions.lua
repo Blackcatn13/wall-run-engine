@@ -353,3 +353,7 @@ function reset_arrow_trap(trap_name, trigger_name)
 	trigger.m_Time = 0
 	
 end
+
+function set_infinite_player_attack(can_finish)
+	player.can_finish_atack = toboolean(can_finish)
+end

@@ -37,6 +37,7 @@ function Player.new()
 	self.crush_up = false
 	self.crush_left = false
 	self.crush_right = false
+	self.can_finish_atack = true
 	
 	------	 PLAYER FUNCTIONS -----
 		

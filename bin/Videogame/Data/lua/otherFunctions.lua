@@ -144,6 +144,15 @@ function check_position (position1, position2, margin)
 	return 0
 end
 
+function toboolean(string_to_parse)
+	if string_to_parse == "true" or string_to_parse=="TRUE" then
+		return true
+	else
+		return false
+	end
+	return 0
+end
+
 function reset_game()
 	
 	--Player Position + 3D
