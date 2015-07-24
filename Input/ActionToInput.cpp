@@ -135,6 +135,7 @@ bool CActionToInput::DoAction(const std::string &action_name) {
   if (action != m_ActionsPerformed.end()) {
     return true;
   }
+  return false;
 }
 
 bool CActionToInput::DoAction(const std::string &action_name, float &amount) {
@@ -229,6 +230,7 @@ bool CActionToInput::DoAction(const std::string &action_name, float &amount) {
     amount = action->second;
     return true;
   }
+  return false;
 }
 
 bool CActionToInput::DoActionFromLua(const std::string action_name) {
