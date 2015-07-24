@@ -98,7 +98,7 @@ void CInstancedBillboard::Render(CGraphicsManager *GM) {
 
 void CInstancedBillboard::Update(float ElapsedTime) {
   for (int i = 0; i < m_numBillboards; ++i) {
-    m_vertex_list[i].tick += 0.05f;
+    m_vertex_list[i].tick += 1.f * ElapsedTime;
     if (m_vertex_list[i].tick >= 1000.f)
       m_vertex_list[i].tick = 0.f;
   }
