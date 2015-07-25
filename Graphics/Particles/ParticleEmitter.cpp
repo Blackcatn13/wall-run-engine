@@ -33,6 +33,7 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
   , m_Color1(node.GetCColorProperty("color_1", colWHITE, false))
   , m_Color2(node.GetCColorProperty("color_2", colWHITE, false))
   , m_vPos(node.GetVect3fProperty("v_Pos", v3fZERO, false))
+  , m_Rotation(node.GetFloatProperty("rotation", 0.f))
   , m_vSpawnDir1(node.GetVect3fProperty("spawn_dir1", v3fZERO, false))
   , m_vSpawnDir2(node.GetVect3fProperty("spawn_dir2", v3fZERO, false))
   , m_Gravity(node.GetFloatProperty("Gravity", 0.0f, false))
@@ -98,6 +99,7 @@ CParticleEmitter::CParticleEmitter()
   , m_MaxVelocidadOndulacion(0.f)
   , m_MinVelocidadOndulacion(0.f)
   , m_vOndulacion1(v3fZERO)
+  , m_Rotation(0.f)
   , m_vOndulacion2(v3fZERO)
   , m_sTexture("") {
   m_visible = true;
@@ -205,6 +207,7 @@ void CParticleEmitter::PopulateParticle(CParticle *p) {
   p->setColor1(col1);
   p->setGravity(m_Gravity);
   p->setEndAlpha(1.f);
+  p->setRotation(m_Rotation);
   if (m_EndSize < 0) {
     p->setEndSize(size);
   } else {
