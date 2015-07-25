@@ -126,216 +126,101 @@ function on_update_player_lua(l_ElapsedTime)
 		-- Movimiento del Player en las distintas direcciones. 
 		--///////////////////////////////////////////////////////////
 		if (player_controller.m_isJumpingMoving == false) and (player_controller.m_isAttack == false) and (player.is_hit == false) then
+			local y_axis = 0.0
+			local x_axis = 0.0
 			if inputm:has_game_pad(1) then
-				local y_axis = 0.0
-				local x_axis = 0.0
 				auxAxisYMoved = act2in:do_action_from_lua("MoveForward", y_axis);
 				auxAxisXMoved = act2in:do_action_from_lua("MoveRigth", x_axis);
 				y_axis = inputm:get_game_pad_left_thumb_y_deflection(1);
 				x_axis = inputm:get_game_pad_left_thumb_x_deflection(1);
-				local changedCamYaw = dirYaw - lastCamYaw;
-				if y_axis == 0 and x_axis == 0 then
-					cosyaw = 0;
-					sinyaw = 0;
-					extraRotationContinue = 0;
-				else
-					if math.abs(changedCamYaw) > 1 then
-						if changedCamYaw > 0 then
-							extraRotationContinue = 1.57;--de 3d a 2d
-						else
-							extraRotationContinue = -1.57;--de 2d a 3d
-						end
-					end
-					if player_controller.m_is3D == false then
-						y_axis = 0;
-					end
-					auxyaw = math.atan2(x_axis,y_axis);
-					if (lastJoystickYaw == -10) then
-						lastJoystickYaw = auxyaw;
-					else
-						if extraRotationContinue ~= 0 then
-							local changedJoyYaw = auxyaw - lastJoystickYaw;
-							if math.abs(changedJoyYaw) > 0.3 then
-								extraRotationContinue = 0;
-							elseif extraRotationContinue > 0 then
-								extraRotationContinue = extraRotationContinue - math.abs(changedJoyYaw);
-								if math.abs(extraRotationContinue) < 0.3 then
-									extraRotationContinue = 0;
-								end
-							else
-								extraRotationContinue = extraRotationContinue + math.abs(changedJoyYaw);
-								if math.abs(extraRotationContinue) < 0.3 then
-									extraRotationContinue = 0;
-								end
-							end
-						end
-					end
-					local worldauxyaw = auxyaw + extraRotationContinue;
-					worldauxyaw = worldauxyaw +1.57;
-					cosyaw = math.cos(worldauxyaw); -- derecha 1 izquierda -1
-					sinyaw = math.sin(worldauxyaw); -- alante 1 atras -1
-					mov = dir3D * sinyaw + dirNor * cosyaw;
-					local player_yaw = math.atan2(mov.x,mov.z);
-					mov = luaUtil:normalize(mov);
-					player_controller.m_Direction3D = mov;
-					mov = mov * l_ElapsedTime * player_controller.m_Speed;
-					if player_controller.m_isJumping == true then
-						mov = mov * 0.75;
-					end
-					player_controller:set_yaw(player_yaw);
-					if (y_axis > 0) then
-						player_controller.m_isTurned = false;
-					elseif (y_axis < 0) then
-						player_controller.m_isTurned = true;
-					end
-				end
-				
-				auxForward = auxAxisYMoved and y_axis > 0
-				auxBackward = auxAxisYMoved and y_axis < 0
-				auxRight = auxAxisXMoved and x_axis > 0
-				auxLeft = auxAxisXMoved and x_axis < 0
 			else
+				local moving_forward = 0;
+				local moving_back = 0;
+				local moving_right = 0;
+				local moving_left = 0;
 				auxForward = act2in:do_action_from_lua("MoveForward")
 				auxBackward = act2in:do_action_from_lua("MoveBack")
 				auxRight = act2in:do_action_from_lua("MoveRigth")
 				auxLeft = act2in:do_action_from_lua("MoveLeft")
 				if auxForward then
-					if player_controller.m_is3D == true then
-						player.going_back = false;
-						mov = mov + dir3D * player_controller.m_Speed * l_ElapsedTime;
-						player_controller.m_Direction3D = dir3D;
-						if auxRight then
-							player_controller:set_yaw(PlayerYaw + 0.7854); -- 45º
-							mov = mov - dirNor * player_controller.m_Speed * l_ElapsedTime;
-							player_controller.m_Direction3D = dir3D - dirNor;
-							player_controller.m_isTurned = false;
-							player_controller.m_JumpType = 5;
-							if move_3D == false then
-								move_3D = true
-							end
-						elseif auxLeft then
-							player_controller:set_yaw(PlayerYaw + 5.497); -- 315º
-							mov = mov + dirNor * player_controller.m_Speed * l_ElapsedTime;
-							player_controller.m_Direction3D = dir3D + dirNor;
-							player_controller.m_isTurned = true;
-							player_controller.m_JumpType = 8;
-							if move_3D == false then
-								move_3D = true
-							end
-						else
-							player_controller:set_yaw(PlayerYaw); -- 0º
-							player_controller.m_JumpType = 1;
-						end
-						if player_controller.m_isJumping == true then
-							mov = mov * 0.75;
-						end
-					elseif player_controller.m_is3D == false then
-						player_controller:set_yaw(PlayerYaw);
-						mov = mov - dirNor * player_controller.m_Speed * l_ElapsedTime;
-						player_controller.m_Direction3D = Vect3f(0,0,0) - dirNor;
-						if player_controller.m_isJumping == true then
-							mov = mov * 0.75;
-						end
-						player_controller.m_isTurned = false;
-						
-					end
-				elseif auxBackward then
-					if player_controller.m_is3D == true then
-						player.going_back = true;
-						mov = mov - dir3D * player_controller.m_Speed * l_ElapsedTime;
-						player_controller.m_Direction3D = Vect3f(0,0,0) - dir3D;
-						if auxRight  then
-							player_controller:set_yaw(PlayerYaw + 2.356); -- 135º
-							mov = mov - dirNor * player_controller.m_Speed * l_ElapsedTime;
-							player_controller.m_Direction3D = Vect3f(0,0,0) - dir3D - dirNor;
-							player_controller.m_isTurned = false;
-							player_controller.m_JumpType = 6;
-							if move_3D == false then
-								move_3D = true
-							end
-						elseif auxLeft then
-							player_controller:set_yaw(PlayerYaw + 3.926); -- 225º
-							mov = mov + dirNor * player_controller.m_Speed * l_ElapsedTime;
-							player_controller.m_Direction3D = Vect3f(0,0,0) - dir3D + dirNor;
-							player_controller.m_isTurned = true;
-							player_controller.m_JumpType = 7;
-							if move_3D == false then
-								move_3D = true
-							end
-						else
-							player_controller:set_yaw(PlayerYaw + 3.1415); -- 180º
-							player_controller.m_JumpType = 3;
-						end
-						if player_controller.m_isJumping == true then
-							mov = mov * 0.75;
-						end
-					elseif player_controller.m_is3D == false then
-						player_controller:set_yaw(PlayerYaw);
-						mov = mov + dirNor * player_controller.m_Speed * l_ElapsedTime;
-						player_controller.m_Direction3D = Vect3f(0,0,0) + dirNor;
-						--move_3D = false
-						if player_controller.m_isJumping == true then
-							mov = mov * 0.75;
-						end
-						player_controller.m_isTurned = true;
-						
-					end
-				elseif auxRight  then
-					if player_controller.m_is3D == true then	
-						player_controller:set_yaw(PlayerYaw + 1.57); -- 90º
-						player_controller.m_JumpType = 2;
-						if move_3D == true then
-							mov = mov - dirNor * player_controller.m_Speed * l_ElapsedTime;
-							player_controller.m_Direction3D = Vect3f(0,0,0) - dirNor;
-						else
-							player_controller:set_yaw(PlayerYaw);
-							mov = mov + dir3D * player_controller.m_Speed * l_ElapsedTime;
-							player_controller.m_Direction3D = Vect3f(0,0,0) + dir3D;
-						end
+					moving_forward = 1;
+				end
+				if auxBackward then
+					moving_back = 1;
+				end
+				if auxRight then
+					moving_right = 1;
+				end
+				if auxLeft then
+					moving_left = 1;
+				end
+				y_axis = moving_forward - moving_back;
+				x_axis = moving_right - moving_left;
+			end
+			local changedCamYaw = dirYaw - lastCamYaw;
+			if y_axis == 0 and x_axis == 0 then
+				cosyaw = 0;
+				sinyaw = 0;
+				extraRotationContinue = 0;
+			else
+				if math.abs(changedCamYaw) > 1 then
+					if changedCamYaw > 0 then
+						extraRotationContinue = 1.57;--de 3d a 2d
 					else
-						player_controller:set_yaw(PlayerYaw); -- 0º
-						move_3D = false
-						mov = mov - dirNor * player_controller.m_Speed * l_ElapsedTime;
-						player_controller.m_Direction3D = Vect3f(0,0,0) - dirNor;
+						extraRotationContinue = -1.57;--de 2d a 3d
 					end
-					if player_controller.m_isJumping == true then
-						mov = mov * 0.75;
-					end
-					player_controller.m_isTurned = false;
-					
-				elseif auxLeft then
-					if player_controller.m_is3D == true then	
-						player_controller:set_yaw(PlayerYaw + 4.712); -- 270º
-						player_controller.m_JumpType = 4;
-						if move_3D == true then
-							mov = mov + dirNor * player_controller.m_Speed * l_ElapsedTime;
-							player_controller.m_Direction3D = Vect3f(0,0,0) + dirNor;
-						else
-							player_controller:set_yaw(PlayerYaw + 3.1415); -- 180º
-							mov = mov - dir3D * player_controller.m_Speed * l_ElapsedTime;
-							player_controller.m_Direction3D = Vect3f(0,0,0) - dir3D;
-						
-						end
-					else
-						player_controller:set_yaw(PlayerYaw + 3.1415); -- 180º
-						move_3D = false
-						mov = mov + dirNor * player_controller.m_Speed * l_ElapsedTime;
-						player_controller.m_Direction3D = dirNor;
-					end	
-					
-					if player_controller.m_isJumping == true then
-						mov = mov * 0.75;
-					end
-					player_controller.m_isTurned = true;
-				
-				else
-					player_controller.m_JumpType = 0;
 				end
 				if player_controller.m_is3D == false then
-					if player_controller.m_isTurned == false then
-						player_controller:set_yaw(PlayerYaw + 1.57); -- 90º
-					else
-						player_controller:set_yaw(PlayerYaw + 4.712); -- 270º
+					y_axis = 0;
+				end
+				auxyaw = math.atan2(x_axis,y_axis);
+				if (lastJoystickYaw == -10) then
+					lastJoystickYaw = auxyaw;
+				else
+					if extraRotationContinue ~= 0 then
+						local changedJoyYaw = auxyaw - lastJoystickYaw;
+						if math.abs(changedJoyYaw) > 0.3 then
+							extraRotationContinue = 0;
+						elseif extraRotationContinue > 0 then
+							extraRotationContinue = extraRotationContinue - math.abs(changedJoyYaw);
+							if math.abs(extraRotationContinue) < 0.3 then
+								extraRotationContinue = 0;
+							end
+						else
+							extraRotationContinue = extraRotationContinue + math.abs(changedJoyYaw);
+							if math.abs(extraRotationContinue) < 0.3 then
+								extraRotationContinue = 0;
+							end
+						end
+					end
+				end
+				local worldauxyaw = auxyaw + extraRotationContinue;
+				worldauxyaw = worldauxyaw +1.57;
+				cosyaw = math.cos(worldauxyaw); -- derecha 1 izquierda -1
+				sinyaw = math.sin(worldauxyaw); -- alante 1 atras -1
+				mov = dir3D * sinyaw + dirNor * cosyaw;
+				if player_controller.m_is3D == false and extraRotationContinue == 0 and x_axis == 0 then
+					mov = Vect3f(0,0,0);
+				end
+				if mov.x ~= 0 or mov.z ~= 0 then
+					local player_yaw = math.atan2(mov.x,mov.z);
+					mov = luaUtil:normalize(mov);
+					player_controller:set_yaw(player_yaw);
+				end
+				player_controller.m_Direction3D = mov;
+				mov = mov * l_ElapsedTime * player_controller.m_Speed;
+				if player_controller.m_isJumping == true then
+					mov = mov * 0.75;
+				end
+				if (y_axis > 0) then
+					player_controller.m_isTurned = false;
+					if player_controller.m_is3D == true then
+						player.going_back = false;
+					end
+				elseif (y_axis < 0) then
+					player_controller.m_isTurned = true;
+					if player_controller.m_is3D == true then
+						player.going_back = true;
 					end
 				end
 			end
@@ -372,7 +257,6 @@ function on_update_player_lua(l_ElapsedTime)
 			end
 			if (not playerRenderable:is_cycle_animation_active()) and inLoop == false then
 				player_controller.m_isFalling = true;
-				player_controller.m_isJumpingMoving = false;
 				jumpTime = 0;
 			end
 			if player_controller.m_JumpingTime > AirTime then
@@ -399,37 +283,6 @@ function on_update_player_lua(l_ElapsedTime)
 					inLoop = true;
 				end
 				player_controller.m_JumpingTime = player_controller.m_JumpingTime + l_ElapsedTime;
-			end
-			if player_controller.m_isJumpingMoving == true then
-				if player_controller.m_is3D == false then
-					if player_controller.m_isTurned == false then
-						mov = mov - dirNor * player_controller.m_JumpSpeed * l_ElapsedTime;
-					else
-						mov = mov + dirNor * player_controller.m_JumpSpeed * l_ElapsedTime;
-					end
-				else
-					if player_controller.m_JumpType == 1 then --Forward
-						mov = mov + dir3D * player_controller.m_JumpSpeed * l_ElapsedTime;
-					elseif player_controller.m_JumpType == 2 then --Right
-						mov = mov - dirNor * player_controller.m_JumpSpeed * l_ElapsedTime;
-					elseif player_controller.m_JumpType == 3 then --Back
-						mov = mov - dir3D * player_controller.m_JumpSpeed * l_ElapsedTime;
-					elseif player_controller.m_JumpType == 4 then --Left
-						mov = mov + dirNor * player_controller.m_JumpSpeed * l_ElapsedTime;
-					elseif player_controller.m_JumpType == 5 then --Forward-Right
-						mov = mov + dir3D * player_controller.m_JumpSpeed * l_ElapsedTime;
-						mov = mov - dirNor * player_controller.m_JumpSpeed * l_ElapsedTime;
-					elseif player_controller.m_JumpType == 6 then --Back-Right
-						mov = mov - dir3D * player_controller.m_JumpSpeed * l_ElapsedTime;
-						mov = mov - dirNor * player_controller.m_JumpSpeed * l_ElapsedTime;
-					elseif player_controller.m_JumpType == 7 then --Back-Left
-						mov = mov - dir3D * player_controller.m_JumpSpeed * l_ElapsedTime;
-						mov = mov + dirNor * player_controller.m_JumpSpeed * l_ElapsedTime;
-					elseif player_controller.m_JumpType == 8 then --Forward-Left
-						mov = mov + dir3D * player_controller.m_JumpSpeed * l_ElapsedTime;
-						mov = mov + dirNor * player_controller.m_JumpSpeed * l_ElapsedTime;
-					end
-				end
 			end
 		end
 		if player_controller.m_isAttack == false then
@@ -478,20 +331,6 @@ function on_update_player_lua(l_ElapsedTime)
 			playerRenderable:execute_action(2,0.1,0,1,true);
 			playerRenderable:updateSkeleton(l_ElapsedTime);
 			player_controller.m_isJumping = true;
-			if player_controller.m_is3D == false then
-				if act2in:do_action_from_lua("MoveRigth") then
-					player_controller.m_isJumpingMoving = true;
-				elseif act2in:do_action_from_lua("MoveLeft") then
-					player_controller.m_isJumpingMoving = true;
-				end
-			else
-				if player_controller.m_JumpType >= 1 then
-					player_controller.m_isJumpingMoving = true;
-				end
-			end
-			if (act2in:do_action_from_lua("SuperJump")) then
-				player_controller.m_CurrentJumpForce = superjumForce*2;
-			end
 		end
 		
 		--///////////////////////////////////////////////////////////
