@@ -33,6 +33,7 @@ class CLight : public CObject3D {
   float m_EndRangeAttenuation;
   float m_EnableDistance;
   float m_Intensity;
+  float m_ValorYFijo; // Esta variable solo la usa la luz de shadowmap que sigue al player
   static TLightType GetLightTypeByName(const std::string &StrLightType);
   std::vector<std::string> renderableDynamicMaps;
   std::vector<std::string> renderableStaticMaps;
@@ -91,6 +92,10 @@ class CLight : public CObject3D {
   }
   float GetIntensity() const {
     return m_Intensity;
+  }
+
+  float GetValorYFijo() const {
+    return m_ValorYFijo;
   }
 
   bool RenderShadows() const {

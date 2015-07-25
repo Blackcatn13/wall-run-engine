@@ -44,6 +44,7 @@ CLight::CLight(CXMLTreeNode &Node)
     m_StaticShadowMap[i] = NULL;
   }
   m_Position = Node.GetVect3fProperty("pos", (0.0f, 0.0f, 0.0f));
+  m_ValorYFijo = m_Position.y;
   SetShadowMaskTexture(Node.GetPszISOProperty("shadow_texture_mask", "", false));
   int childs = Node.GetNumChildren();
   CRenderableObjectsManager *l_RenderableObjectManager;

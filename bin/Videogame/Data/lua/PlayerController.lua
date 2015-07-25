@@ -86,7 +86,7 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		-- MOVER LA LUZ DEL SHADOWMAP
 		local lightDirection = directionalLight:get_direction();
-		local altura = directionalLight:get_position().y - player_controller:get_position().y;
+		local altura = directionalLight:get_valoryfijo();
 		local offsetx = lightDirection.x*altura;
 		local offsetz = lightDirection.z*altura;
 		directionalLight:set_position(Vect3f(player_controller:get_position().x-offsetx,player_controller:get_position().y+altura,player_controller:get_position().z-offsetz));
