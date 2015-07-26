@@ -287,42 +287,23 @@ bool CStaticMesh::Load (const std::string &FileName) {
   }
   return false;
 }
+
 bool CStaticMesh::ReLoad () {
   Destroy();
   m_deleted = false;
   return Load(m_FileName);
 }
-void CStaticMesh::Render (CGraphicsManager *RM) {
-  //CEffectTechnique *l_EffectTechnique=EFFECTM->GetEffectTechnique("BasicTechnique");
-  //CEffectTechnique *l_EffectTechnique = EFFECTM->GetEffectTechnique("LightsTechnique");
-  //CEffectTechnique *l_EffectTechnique = EFFECTM->GetEffectTechnique("NormalMapTechnique");
-  //CEffectTechnique *l_EffectTechnique = EFFECTM->GetEffectTechnique("CubeMapTechnique");
-  // CEffectTechnique *l_EffectTechnique = EFFECTM->GetEffectTechnique("LightMapTechnique");
-  for (size_t i = 0; i < m_RVs.size(); ++i) {
-    // TODO iterate m_textures
-    // TODO cambiar a esto
-    // TODO modificar esto para que coja el effectTechnique del TechniqueManager a partir del vertexType
-    //std::string l_EffectName = EFFECTM->GetTechniqueEffectNameByVertexDefault(m_RVs[i]->GetVertexType());
-    //CEffectTechnique *l_EffectTechnique =EFFECTM->GetEffectTechnique(l_EffectName);
 
+void CStaticMesh::Render (CGraphicsManager *RM) {
+
+  for (size_t i = 0; i < m_RVs.size(); ++i) {
     CEffectTechnique *l_EffectTechnique = RENDTECHM->GetResource(RENDTECHM->GetRenderableObjectTechniqueNameByVertexType(m_RVs[i]->GetVertexType()))->GetEffectTechnique();
     for (size_t j = 0; j < m_Textures[i].size(); ++j)
       m_Textures[i][j]->Activate(j);
-    /*if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_TEXTURE1) == VERTEX_TYPE_TEXTURE1)
-        m_Textures[i][0]->Activate(0);
-    if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_TANGENT) == VERTEX_TYPE_TANGENT)
-        m_Textures[i][1]->Activate(1);
-    if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_CUBE) == VERTEX_TYPE_CUBE)
-        m_Textures[i][1]->Activate(2);
-    if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_TEXTURE2) == VERTEX_TYPE_TEXTURE2)
-        m_Textures[i][1]->Activate(3);
-    if ((m_RVs[i]->GetVertexType() & VERTEX_TYPE_DIFFUSE) == VERTEX_TYPE_DIFFUSE)
-        RM->GetDevice()->SetTexture(0, 0);*/
     m_RVs[i]->Render(RM, l_EffectTechnique);
     for (size_t j = 0; j < m_Textures[i].size(); ++j)
       m_Textures[i][j]->Deactivate(j);
   }
-
 }
 
 

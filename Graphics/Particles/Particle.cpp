@@ -42,8 +42,9 @@ void CParticle::Update(float dt) {
   //VectorOndulacion Maximo y minimo
   Vect3f l_SumaOndulacion = m_VectorOndulacion * sin(dt * m_VelocidadOndulacion + m_InicioOndulacion);
   Vect3f l_DirGravity = Vect3f(0, -1, 0);
-  m_Direction1 = m_Direction1.Normalize() * m_Speed + l_DirGravity * m_Gravity * dt;
-  m_position += m_Direction1.Normalize() * m_Speed * dt + l_SumaOndulacion * dt;
+  m_Direction1 = m_Direction1 * m_Speed + l_DirGravity * m_Gravity * dt;
+  m_Direction1.Normalize();
+  m_position += m_Direction1 * m_Speed * dt + l_SumaOndulacion * dt;
   m_size = (1 - m_Age) * m_EndSize + m_Age * m_StartSize;
   m_currentRotation += m_Rotation * dt;
   //m_position += m_Direction1.Normalize() * m_Speed * dt + Vect3f(0.0,-1.0,0.0) * m_Gravity * dt*dt;

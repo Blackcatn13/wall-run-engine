@@ -71,6 +71,13 @@ void CCore::Init(HWND handler) {
 #ifdef _DEBUG
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Renderable Object Technique Manager";
+#endif
+  m_RenderableObjectTechniqueManager = new CRenderableObjectTechniqueManager();
+  m_RenderableObjectTechniqueManager->Load(m_Config.PoolRenderableObjects);
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Input Manager";
 #endif
   m_InputManager = new CInputManager();
@@ -143,13 +150,6 @@ void CCore::Init(HWND handler) {
 #endif
   m_FSMManager = new CFSMManager();
   m_FSMManager->Load(m_Config.FSMPath);
-#ifdef _DEBUG
-  t.Update();
-  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
-  std::cout << "Creating Renderable Object Technique Manager";
-#endif
-  m_RenderableObjectTechniqueManager = new CRenderableObjectTechniqueManager();
-  m_RenderableObjectTechniqueManager->Load(m_Config.PoolRenderableObjects);
   //Cargando Layers
 #ifdef _DEBUG
   t.Update();
