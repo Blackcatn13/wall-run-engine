@@ -33,7 +33,7 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
   , m_Color1(node.GetCColorProperty("color_1", colWHITE, false))
   , m_Color2(node.GetCColorProperty("color_2", colWHITE, false))
   , m_vPos(node.GetVect3fProperty("v_Pos", v3fZERO, false))
-  , m_Rotation(node.GetFloatProperty("rotation", 0.f))
+  , m_Rotation(node.GetFloatProperty("rotation", 0.01f))
   , m_vSpawnDir1(node.GetVect3fProperty("spawn_dir1", v3fZERO, false))
   , m_vSpawnDir2(node.GetVect3fProperty("spawn_dir2", v3fZERO, false))
   , m_Gravity(node.GetFloatProperty("Gravity", 0.0f, false))
@@ -99,7 +99,7 @@ CParticleEmitter::CParticleEmitter()
   , m_MaxVelocidadOndulacion(0.f)
   , m_MinVelocidadOndulacion(0.f)
   , m_vOndulacion1(v3fZERO)
-  , m_Rotation(0.f)
+  , m_Rotation(0.01f)
   , m_vOndulacion2(v3fZERO)
   , m_sTexture("") {
   m_visible = true;
@@ -298,6 +298,7 @@ void CParticleEmitter::UpdateParticles(float dt) {
       m_vertex_list[i].z = pos.z;
       m_vertex_list[i].size = p->getSize();
       m_vertex_list[i].visible = p->getAlpha();
+      m_vertex_list[i].rotation = mathUtils::Deg2Rad(p->getCurrentRotation());
     }
   }
 }

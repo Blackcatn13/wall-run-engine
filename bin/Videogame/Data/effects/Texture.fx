@@ -16,19 +16,22 @@ struct PARTICLEIN
 	float3 pos : POSITION;
 	float2 uv : TEXCOORD0;
 	float3 worldPos : TEXCOORD1;
-	float2 params : TEXCOORD2;
+	float3 params : TEXCOORD2;
 };
 
-PSVertex VS(PARTICLEIN IN){
-	
-	float3 rightVector = normalize(float3(g_ViewMatrix[0][0], g_ViewMatrix[1][0], g_ViewMatrix[2][0]));
-	float3 upVector = normalize(float3(g_ViewMatrix[0][1], g_ViewMatrix[1][1], g_ViewMatrix[2][1]));
-	float3 viewVector = normalize(float3(g_ViewMatrix[0][2], g_ViewMatrix[1][2], g_ViewMatrix[2][2]));
-
+PSVertex VS(PARTICLEIN IN) {
 	PSVertex OUT = (PSVertex)0;
 	if (IN.params.y > 0) {
+		float3 rightVector = normalize(float3(g_ViewMatrix[0][0], g_ViewMatrix[1][0], g_ViewMatrix[2][0]));
+		float3 upVector = normalize(float3(g_ViewMatrix[0][1], g_ViewMatrix[1][1], g_ViewMatrix[2][1]));
+		float3 viewVector = normalize(float3(g_ViewMatrix[0][2], g_ViewMatrix[1][2], g_ViewMatrix[2][2]));
+
 		OUT.uv = IN.uv;
-		float3 position = IN.worldPos + (IN.pos.x * rightVector + IN.pos.z*upVector) * IN.params.x;
+		float sn = sin(1.0);
+		float cs = cos(1.0);
+		float3 nUpVector = cs * rightVector - sn * upVector;
+		float3 nRightVector = sn * rightVector + cs * upVector;
+		float3 position = IN.worldPos + (IN.pos.x * rightVector + IN.pos.z * upVector) * IN.params.x;
 		OUT.pos = mul(float4(position,1.0), g_WorldViewProjectionMatrix);
 		OUT.alpha = IN.params.y;
 		//float3 normal = float3(0,1,0);

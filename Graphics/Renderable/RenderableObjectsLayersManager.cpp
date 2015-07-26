@@ -30,6 +30,7 @@ void CRenderableObjectsLayersManager::DestroyRenderableObjectManagers() {
       m_ResourcesVector[i]->Destroy();
     }
   }
+  Destroy();
 }
 
 CRenderableObjectsManager  *CRenderableObjectsLayersManager::GetRenderableObjectsManagerByStrAndRoom(std::string layerName, int roomNumber) {

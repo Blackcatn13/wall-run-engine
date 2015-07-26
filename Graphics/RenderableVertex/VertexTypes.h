@@ -60,6 +60,7 @@ struct TPARTICLE_VERTEX_INSTANCE {
   float x, y, z;
   float size;
   float visible;
+  float rotation;
 };
 
 struct TBILLBOARD_INSTANCED_VERTEX {
