@@ -19,12 +19,12 @@
 	<texture name="UnlockCard" name_texture="./Data/GUI/GoPixelGo/UnlockCardMessage.png"/>
   </Image>
   
-  <Image name="LifeGUI" posx="2" posy="82.00" height="10" width="17.50" visible="true" active="true"
+  <Image name="LifeGUI" posx="2" posy="75.00" height="20" width="13" visible="true" active="true"
          default="Life3" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
-    <texture name="Life3" name_texture="./Data/GUI/GoPixelGo/Life3-2.png"/>
-	<texture name="Life2" name_texture="./Data/GUI/GoPixelGo/Life2-2.png"/>
-	<texture name="Life1" name_texture="./Data/GUI/GoPixelGo/Life1-2.png"/>
-	<texture name="Life0" name_texture="./Data/GUI/GoPixelGo/Life0-2.png"/>
+    <texture name="Life3" name_texture="./Data/GUI/GoPixelGo/Gui_Vida_3.png"/>
+	<texture name="Life2" name_texture="./Data/GUI/GoPixelGo/Gui_Vida_2.png"/>
+	<texture name="Life1" name_texture="./Data/GUI/GoPixelGo/Gui_Vida_1.png"/>
+	<texture name="Life0" name_texture="./Data/GUI/GoPixelGo/Gui_Vida_0.png"/>
   </Image>
   
   <Image name="VidesGUI" posx="27" posy="84.00" height="8" width="10" visible="true" active="true"
