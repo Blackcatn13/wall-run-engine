@@ -121,13 +121,13 @@ class CGraphicsManager {
   void DrawColoredQuad2DTexturedInPixels(RECT Rect, CColor Color, CTexture *Texture, float U0, float V0, float U1, float V1);
 
 //COMMANDS
-  void ClearSceneCommand(float color, float depth, float stencil);
+  void ClearSceneCommand(bool color, bool depth, bool stencil, bool use_back = false, CColor back_color = colBLACK);
   void BeginRenderCommand();
   void EndRenderCommand();
   void PresentSceneCommand();
 
-  bool GetIsGUIDisplayed(){ return m_isGUIDisplayed;}
-  void SetIsGUIDisplayed(bool input){ m_isGUIDisplayed = input;}
+  bool GetIsGUIDisplayed() { return m_isGUIDisplayed;}
+  void SetIsGUIDisplayed(bool input) { m_isGUIDisplayed = input;}
 };
 
 

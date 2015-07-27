@@ -4,6 +4,7 @@
 
 #include "RenderableCommands\SceneRendererCommand.h"
 #include "XML\XMLTreeNode.h"
+#include "Math\Color.h"
 
 class  CGraphicsManager;
 
@@ -12,6 +13,8 @@ class CClearSceneRendererCommand : public CSceneRendererCommand {
   bool m_Color;
   bool m_Depth;
   bool m_Stencil;
+  CColor m_BackColor;
+  bool m_useBack;
  public:
   CClearSceneRendererCommand(CXMLTreeNode &atts);
   virtual void Execute(CGraphicsManager &RM);

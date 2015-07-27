@@ -850,20 +850,26 @@ void CGraphicsManager::DrawQuad3D (	const Vect3f &ul, const Vect3f &ur, const Ve
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // COMMANDS
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void CGraphicsManager::ClearSceneCommand(float color, float depth, float stencil) {
+void CGraphicsManager::ClearSceneCommand(bool color, bool depth, bool stencil, bool use_back, CColor back_color) {
   uint32 red = 0;
   uint32 green = 0;
   uint32 blue = 0;
   if (color) {
+    if (use_back) {
+      red		= (uint32) (back_color.GetRed() * 255);
+      green	= (uint32) (back_color.GetGreen() * 255);
+      blue	= (uint32) (back_color.GetBlue() * 255);
+    } else {
 #ifdef _DEBUG // Clear the backbuffer to a blue color in a Debug mode
-    red		= (uint32) (m_BackbufferColor_debug.GetRed() * 255);
-    green	= (uint32) (m_BackbufferColor_debug.GetGreen() * 255);
-    blue	= (uint32) (m_BackbufferColor_debug.GetBlue() * 255);
+      red		= (uint32) (m_BackbufferColor_debug.GetRed() * 255);
+      green	= (uint32) (m_BackbufferColor_debug.GetGreen() * 255);
+      blue	= (uint32) (m_BackbufferColor_debug.GetBlue() * 255);
 #else // Clear the backbuffer to a black color in a Release mode
-    red		= (uint32) (m_BackbufferColor_release.GetRed() * 255);
-    green	= (uint32) (m_BackbufferColor_release.GetGreen() * 255);
-    blue	= (uint32) (m_BackbufferColor_release.GetBlue() * 255);
+      red		= (uint32) (m_BackbufferColor_release.GetRed() * 255);
+      green	= (uint32) (m_BackbufferColor_release.GetGreen() * 255);
+      blue	= (uint32) (m_BackbufferColor_release.GetBlue() * 255);
 #endif
+    }
   }
   DWORD flags = D3DCLEAR_TARGET;
   if (depth)
