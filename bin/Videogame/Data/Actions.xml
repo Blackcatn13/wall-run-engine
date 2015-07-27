@@ -149,10 +149,10 @@
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_1"/>
 		</action>
 		
-		<action name="FlyMode">
+		<!--<action name="FlyMode">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_C"/>
-		</action>
+		</action> -->
 
 	    <action name="ReloadMeshes">
 	        <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_F9"/>
@@ -179,7 +179,7 @@
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_F5"/>
 		</action>
 		
-		<action name="DestroyActor">
+		<!--<action name="DestroyActor">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_P"/>
 		</action>
@@ -198,23 +198,23 @@
 		
 		<action name="Shot">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_I"/>
-		</action>
+		</action>-->
 		
-		<action name="ReloadBoxes">
+		<!--<action name="ReloadBoxes">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_O"/>
-		</action>
+		</action>-->
 		
 		<action name="ReloadRenderCommands">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_F4"/>
 		</action>
 
-		<action name="ForwardMotor">
+		<!--<action name="ForwardMotor">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_M"/>
 		</action>
 		
 		<action name="BackwardMotor">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_N"/>
-		</action>
+		</action>-->
 		
 		<action name="Set3DCamera">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_C"/>

@@ -66,6 +66,7 @@ void CActionToInput::Update() {
         case AXIS_NOTHING:
           break;
       }
+      if (!action) break;
       switch (actionToCheck[i].EventType) {
         case EVENT_DOWN:
           action &= m_InputManager->IsDown(actionToCheck[i].deviceType, actionToCheck[i].Code);
@@ -79,6 +80,7 @@ void CActionToInput::Update() {
         case EVENT_NOTHING:
           break;
       }
+      if (!action) break;
     }
     if (action) {
       m_ActionsPerformed[it->first] = (int)amount;
