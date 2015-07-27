@@ -151,6 +151,7 @@ function mp_enter_stopped(room_name, name)
 	--coreInstance:trace("Parando plataforma");
 	--next_wp = Vect3f(-15,0,-15) 
 	--instance.m_string = "Buscar_next_WP_Plaform"
+	local platform =renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("mov_platforms", room_name):get_resource(name)
 	platform:get_fsm():newState("Buscar_next_WP_Plaform")
 	return 0 
 end
@@ -164,7 +165,13 @@ function mp_update_stopped(ElapsedTime,room_name, name)
 	--core:trace("Update Platform stopped");
 	--instance.m_string = "Buscar_next_WP_Plaform"
 	local platform =renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("mov_platforms", room_name):get_resource(name)
+	--coreInstance:trace("plataforma =: "..platform:get_name())
+	if player_controller.m_Room == room then
+		platform.m_Activated = true
+	end
+	platform.m_Activated = true
 	if platform.m_Activated == true then
+		coreInstance:trace("activa")
 		--instance.m_string = "Buscar_next_WP_Plaform"
 		platform:get_fsm():newState("Buscar_next_WP_Plaform")
 	end
@@ -229,6 +236,7 @@ function mp_enter_calcwp(room_name, name) -- Pasar el nombre de la plataforma y 
 	--end
 	
 	local platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("mov_platforms", room_name):get_resource(name)
+	coreInstance:trace("plataforma =: "..platform:get_name())
 	if platform ~= nil then
 		platform.m_NextWP = platform:get_next_wp()
 		--coreInstance:trace(tostring(next_wp.x));
@@ -247,6 +255,17 @@ end
 function mp_update_calcwp(ElapsedTime, room_name, name)
 	--core:trace("Update Buscar_next_WP Platform");
 	--mp_enter_calcwp()
+	local platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("mov_platforms", room_name):get_resource(name)
+	coreInstance:trace("plataforma =: "..platform:get_name())
+	if platform ~= nil then
+		platform.m_NextWP = platform:get_next_wp()
+		--coreInstance:trace(tostring(next_wp.x));
+		--instance.m_string = "Andar_WP"
+		platform:get_fsm():newState("Andar_WP")
+	else
+		--instance.m_string = "Parado"
+		platform:get_fsm():newState("Parado")
+	end
 end
 --End Moving Platform
 

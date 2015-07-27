@@ -273,4 +273,6 @@
 	<static_mesh name="Arrow" filename="Data\level4\meshes\Arrow.mesh"/>
 	<static_mesh name="Arrow001" filename="Data\level4\meshes\Arrow001.mesh"/>
 	<static_mesh name="Arrow002" filename="Data\level4\meshes\Arrow002.mesh"/>
+	
+	<static_mesh name="MovingPlatform001" filename=".\Data\level1\meshes//MovingPlatform001.mesh"/>
 </static_meshes>

@@ -338,4 +338,10 @@
 	<mesh_instance name="Arrow" core="Arrow" pos="80.500626 3.284668 -7.052490" yaw="0.0" pitch="-1.43934" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
 	<mesh_instance name="Arrow001" core="Arrow001" pos="80.500626 2.365845 -7.052490" yaw="0.0" pitch="-1.43934" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
 	<mesh_instance name="Arrow002" core="Arrow002" pos="80.500626 1.365173 -7.052490" yaw="0.0" pitch="-1.43934" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
-</renderable_objects>
+
+	<platform name="MovingPlatform002" core="MovingPlatform001" phisic_size="2 0.5 1.5" type="moving" speed= "5"  pos="100.862 1.000000 11.299" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms"  room="0">
+		<wp pos="100.862 10.000000 11.299" />
+		<wp pos="100.862 1.000000 11.299" />
+	</platform>
+	
+	</renderable_objects>
