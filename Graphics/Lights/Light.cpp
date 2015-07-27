@@ -228,3 +228,11 @@ bool CLight::IsEnabled() {
   }
   return enabled;
 }
+
+float CLight::GetDistanceFromPlayer() {
+  if (PLAYC != NULL) {
+    Vect3f playerPos = PLAYC->GetPosition();
+    return m_Position.Distance(playerPos);
+  }
+  return NULL;
+}

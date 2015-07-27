@@ -106,12 +106,17 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 		{	
 			float3 l_DirVectorNoNormal = l_PositionFromDepth - g_LightPosition[0];
 			float l_distance = length(l_PositionFromDepth-g_LightPosition[0]);
+			
+			float l_Intensity = (g_LightIntensity[0] / g_DistanceFromPlayer[0]) *10;
+			if (l_Intensity > g_LightIntensity[0])
+				l_Intensity = g_LightIntensity[0];
+			
 			float l_Attenuation = 1-saturate((l_distance-g_NearAtten[0])/(g_FarAtten[0]-g_NearAtten[0]));
 			float3 l_DirVector = normalize(l_DirVectorNoNormal);
 			float3 l_DiffuseContribution = saturate(dot(l_Nn,-l_DirVector));
 			float3 l_HV = normalize(normalize(l_EyePos - l_PositionFromDepth)-l_DirVector);
 			float3 l_SpecularComponent = pow(saturate(dot(l_Nn,l_HV)), l_SpecularExponent) * SpecPower;
-			finalColor = ((l_DiffuseColor*g_LightIntensity[0])*(l_DiffuseContribution*g_LightColor[0]*l_Attenuation) +l_SpecularComponent*g_LightIntensity[0]*l_SpecularFactor*l_Attenuation);
+			finalColor = ((l_DiffuseColor*l_Intensity)*(l_DiffuseContribution*g_LightColor[0]*l_Attenuation) +l_SpecularComponent*l_Intensity*l_SpecularFactor*l_Attenuation);
 		}
 		else if(g_LightType[0]==1) //directional
 		{			
@@ -126,7 +131,11 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 			
 			float l_distance = length(l_PositionFromDepth-g_LightPosition[0]);
 			float l_Attenuation = 1-saturate((l_distance-g_NearAtten[0])/(g_FarAtten[0]-g_NearAtten[0]));
-							
+			
+			float l_Intensity = (g_LightIntensity[0] / g_DistanceFromPlayer[0]) *10;
+			if (l_Intensity > g_LightIntensity[0])
+				l_Intensity = g_LightIntensity[0];
+			
 			float l_HalfFallOff = g_FallOff[0]/2.0;
 			float l_HalfAngle = g_LightAngle[0]/2.0;
 			float l_MaxAngle = l_HalfFallOff + l_HalfAngle;
@@ -139,7 +148,7 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 			float3 l_DifuseContrib = l_DiffuseColor*l_LightContrib*g_LightColor[0];
 
 			if(dot(l_Nn, -g_LightDirection[0]) >= cos(l_HalfAngle+g_FallOff[0]) ){
-				finalColor = (l_DifuseContrib*g_LightIntensity[0]*l_AngAttenuation*l_Attenuation+l_SpecularComponent*g_LightIntensity[0]*l_SpecularFactor*l_Attenuation);
+				finalColor = (l_DifuseContrib*l_Intensity*l_AngAttenuation*l_Attenuation+l_SpecularComponent*l_Intensity*l_SpecularFactor*l_Attenuation);
 			}				
 		}
 	}

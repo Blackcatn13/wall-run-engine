@@ -44,6 +44,7 @@ void CEffect::SetNullParameters() {
   m_NShadowmapsParameter = NULL;
   m_PolyEnabledParameter = NULL;
   m_TickParameter = NULL;
+  m_LightDistanceFromPlayerParameter = NULL;
 }
 
 void CEffect::GetParameterBySemantic(const std::string &SemanticName, D3DXHANDLE &l_Handle) {
@@ -89,6 +90,7 @@ bool CEffect::LoadEffect() {
   GetParameterBySemantic("USESHADOWMAP", m_UseDynamicShadowmapParameter);
   GetParameterBySemantic("NSHADOWMAPS", m_NShadowmapsParameter);
   GetParameterBySemantic("TICK", m_TickParameter);
+  GetParameterBySemantic("DISTANCEFROMPLAYER", m_LightDistanceFromPlayerParameter);
   return isOK;
 }
 void CEffect::Unload() {
@@ -127,7 +129,8 @@ CEffect::CEffect()
   , m_UseStaticShadowmapParameter(NULL)
   , m_UseDynamicShadowmapParameter(NULL)
   , m_NShadowmapsParameter(NULL)
-  , m_TickParameter(NULL) {
+  , m_TickParameter(NULL)
+  , m_LightDistanceFromPlayerParameter(NULL) {
 }
 
 CEffect::~CEffect() {
@@ -159,7 +162,7 @@ bool CEffect::SetLight() {
     m_LightsStartRangeAttenuation[0] = l_startRangeAtten;
     float l_endRangeAtten = m_Light->GetEndRangeAttenuation();
     m_LightsEndRangeAttenuation[0] = l_endRangeAtten;
-	m_LightsEnabled[0] = m_Light->IsEnabled();
+    m_LightsEnabled[0] = m_Light->IsEnabled();
     float l_intensity = m_Light->GetIntensity();
     m_LightsIntensity[0] = l_intensity;
     Vect3f l_pos = m_Light->GetPosition();
@@ -171,10 +174,11 @@ bool CEffect::SetLight() {
       l_direction = ((CDirectionalLight *)m_Light)->GetDirection();
       l_direction = l_direction.Normalize();
     }
+    m_LightDistanceFromPlayer[0] =  m_Light->GetDistanceFromPlayer();
     m_LightsDirection[0] = l_direction;
     Vect3f l_color = Vect3f(m_Light->GetColor().GetRed(), m_Light->GetColor().GetGreen(), m_Light->GetColor().GetBlue()) ;
     m_LightsColor[0] = l_color;
-	m_Effect->SetBoolArray(m_LightEnabledParameter, &m_LightsEnabled[0], MAX_LIGHTS_BY_SHADER);
+    m_Effect->SetBoolArray(m_LightEnabledParameter, &m_LightsEnabled[0], MAX_LIGHTS_BY_SHADER);
     m_Effect->SetIntArray(m_LightsTypeParameter, &m_LightsType[0], MAX_LIGHTS_BY_SHADER);
     m_Effect->SetFloatArray(m_LightsAngleParameter, &m_LightsAngle[0], MAX_LIGHTS_BY_SHADER);
     m_Effect->SetFloatArray(m_LightsFallOffParameter, &m_LightsFallOff[0], MAX_LIGHTS_BY_SHADER);
@@ -184,6 +188,7 @@ bool CEffect::SetLight() {
     m_Effect->SetFloatArray(m_LightsPositionParameter, &m_LightsPosition[0].x, MAX_LIGHTS_BY_SHADER * 3);
     m_Effect->SetFloatArray(m_LightsDirectionParameter, &m_LightsDirection[0].x, MAX_LIGHTS_BY_SHADER * 3);
     m_Effect->SetFloatArray(m_LightsColorParameter, &m_LightsColor[0].x, MAX_LIGHTS_BY_SHADER * 3);
+    m_Effect->SetFloatArray(m_LightDistanceFromPlayerParameter, &m_LightDistanceFromPlayer[0], MAX_LIGHTS_BY_SHADER);
     m_Light->BeginRenderEffectManagerShadowMap(this);
     return true;
   }

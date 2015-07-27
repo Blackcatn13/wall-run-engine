@@ -55,6 +55,7 @@ class CLight : public CObject3D {
   CLight(CXMLTreeNode &Node);
   virtual ~CLight();
   void Init();
+  float GetDistanceFromPlayer();
 
   void SetName(const std::string &Name) {
     m_Name = Name;
@@ -81,7 +82,7 @@ class CLight : public CObject3D {
     return m_EndRangeAttenuation;
   }
   void SetEnableDistance(const float EnableDistance) {
-	  m_EnableDistance = EnableDistance;
+    m_EnableDistance = EnableDistance;
   }
   float GetEnableDistance() const {
     return m_EnableDistance;

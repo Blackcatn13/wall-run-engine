@@ -24,6 +24,7 @@ class CEffect {
   float m_LightsStartRangeAttenuation[MAX_LIGHTS_BY_SHADER];
   float m_LightsEndRangeAttenuation[MAX_LIGHTS_BY_SHADER];
   float m_LightsIntensity[MAX_LIGHTS_BY_SHADER];
+  float m_LightDistanceFromPlayer[MAX_LIGHTS_BY_SHADER];
   Vect3f m_LightsPosition[MAX_LIGHTS_BY_SHADER];
   Vect3f m_LightsDirection[MAX_LIGHTS_BY_SHADER];
   Vect3f m_LightsColor[MAX_LIGHTS_BY_SHADER];
@@ -32,7 +33,7 @@ class CEffect {
   D3DXHANDLE m_WorldViewMatrixParameter, m_ViewProjectionMatrixParameter, m_WorldViewProjectionMatrixParameter;
   D3DXHANDLE m_ViewToLightProjectionMatrixParameter;
   D3DXHANDLE m_LightEnabledParameter, m_LightsTypeParameter, m_LightsPositionParameter, m_LightsDirectionParameter, m_LightsAngleParameter, m_LightsColorParameter;
-  D3DXHANDLE m_LightsFallOffParameter, m_LightsStartRangeAttenuationParameter, m_LightsEndRangeAttenuationParameter, m_LightsIntensityParameter;
+  D3DXHANDLE m_LightsFallOffParameter, m_LightsStartRangeAttenuationParameter, m_LightsEndRangeAttenuationParameter, m_LightsIntensityParameter, m_LightDistanceFromPlayerParameter;
   D3DXHANDLE m_CameraPositionParameter;
   D3DXHANDLE m_BonesParameter;
   D3DXHANDLE m_TimeParameter, m_TickParameter;
