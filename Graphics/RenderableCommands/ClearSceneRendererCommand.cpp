@@ -7,7 +7,7 @@ CClearSceneRendererCommand::CClearSceneRendererCommand(CXMLTreeNode &atts)
   , m_Depth(atts.GetBoolProperty("depth", false))
   , m_Stencil(atts.GetBoolProperty("stencil", false))
   , m_BackColor(atts.GetCColorProperty("back_color", colBLACK))
-  , m_useBack(atts.GetBoolKeyword("use_back", false))
+  , m_useBack(atts.GetBoolProperty("use_back", false))
   , CSceneRendererCommand(atts) {
 }
 
