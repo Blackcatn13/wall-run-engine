@@ -38,6 +38,7 @@ function Player.new()
 	self.crush_left = false
 	self.crush_right = false
 	self.can_finish_atack = true
+	self.on_air = false
 	
 	------	 PLAYER FUNCTIONS -----
 		

@@ -249,9 +249,11 @@ int CEnemy::CheckPlayerCollision() {
   //1 if player hits
   //2 if player gets hit
   //0 if no hit
-  float l_MargenSuperiorPlayer = 1.5;//HARDCODED
-  if (getisAlive() && (m_Position.Distance(PLAYC->GetPosition()) < m_EnemyHitbox)) {
-    if (PLAYC->GetPosition().y > m_Position.y + l_MargenSuperiorPlayer || PLAYC->getisAttack()) {
+  float l_MargenSuperiorPlayer = 0.5;//HARDCODED
+  float l_MargenInferiorPlayer = 0;//HARDCODED -- 0 = linea de hitbox
+  bool is_over_me = (PLAYC->GetPosition().y > (m_Position.y + m_EnemyHitbox - l_MargenInferiorPlayer)) && (PLAYC->GetPosition().y < (m_Position.y + m_EnemyHitbox + l_MargenSuperiorPlayer));
+  if (getisAlive() && ((m_Position.Distance(PLAYC->GetPosition()) < m_EnemyHitbox) || (is_over_me && m_Position.Distance(PLAYC->GetPosition()) < (m_EnemyHitbox + l_MargenSuperiorPlayer)))) {
+    if (is_over_me || PLAYC->getisAttack()) {
       return 1;
     } else {
       return 2;

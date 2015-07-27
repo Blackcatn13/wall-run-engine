@@ -243,6 +243,7 @@ function on_update_player_lua(l_ElapsedTime)
 		if _land then
 			if player_controller.m_isGrounded then
 				_land = false;
+				player.on_air = false;
 				playerRenderable:clear_cycle(4,0);
 			end
 		end
@@ -331,6 +332,7 @@ function on_update_player_lua(l_ElapsedTime)
 			playerRenderable:execute_action(2,0.1,0,1,true);
 			playerRenderable:updateSkeleton(l_ElapsedTime);
 			player_controller.m_isJumping = true;
+			player.on_air = true;
 		end
 		
 		--///////////////////////////////////////////////////////////

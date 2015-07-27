@@ -145,11 +145,15 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 	--coreInstance:trace("Enemy Zone" .. tostring (enemy.m_Zone))
 	--coreInstance:trace("player Zone" .. tostring (player.zone))
 		if enemy.m_isAttacking == false then
-			if player.is_hit == false and tostring(enemy.m_Zone) == tostring(player.zone) then
-				move_enemy(ElapsedTime, player_position, enemy) -- en caso de no ser estatico
-			end
+			local enemyPosXZ = Vect3f(enemy:get_position().x, 0, enemy:get_position().z)
+			local playerPosXZ = Vect3f(player_position.x, 0, player_position.z)
+			local player_distance = get_distance_to_player(enemyPosXZ, playerPosXZ)
 			
-			local player_distance = get_distance_to_player(enemy:get_position(), player_position)
+			if player.is_hit == false and tostring(enemy.m_Zone) == tostring(player.zone) then
+				if (player.on_air == false) or (player.on_air == true and player_distance > 2) then
+					move_enemy(ElapsedTime, player_position, enemy) -- en caso de no ser estatico
+				end
+			end
 			
 			if player_distance > 225 then
 				enemy:m_FSM():newState("Parado")
