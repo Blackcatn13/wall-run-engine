@@ -276,24 +276,31 @@ bool CActionToInput::LoadXML (const std::string &xmlFile) {
       for (int j = 0; j < newCount; ++j) {
         CXMLTreeNode childNode1 = childNode.getNextChild();
         std::string name1 = childNode1.GetName();
-        if (name1 == "action") {
-          std::string nameAction = childNode1.GetPszISOProperty("name", "Action" + counter++, false);
-          int actionsCount = childNode1.GetNumChildren();
-          (*toInsert)[nameAction] = VecInfoInputs();
-          (*toInsert)[nameAction].clear();
-          for (int k = 0; k < actionsCount; ++k) {
-            CXMLTreeNode childNode2 = childNode1.getNextChild();
-            std::string nameDevice = childNode2.GetPszISOProperty("deviceType", "IDV_NOTHING", false);
-            std::string nameEvent = childNode2.GetPszISOProperty("EventType", "EVENT_NOTHING", false);
-            std::string nameKey = childNode2.GetPszISOProperty("Code", "KEY_M", false);
-            std::string axisKey = childNode2.GetPszISOProperty("AxisType", "AXIS_NOTHING", false);
-            action_info actAux = {static_cast<INPUT_DEVICE_TYPE>(m_String2Code[nameDevice]),
-                                  static_cast<INPUT_EVENT_TYPE>(m_String2Code[nameEvent]),
-                                  (uint32) m_String2Code[nameKey],
-                                  static_cast<INPUT_AXIS_TYPE>(m_String2Code[axisKey])
-                                 };
-            (*toInsert)[nameAction].push_back(actAux);
+#ifndef _DEBUG
+        bool debug = childNode1.GetBoolProperty("debug", false);
+        if (!debug) {
+#endif
+          if (name1 == "action") {
+            std::string nameAction = childNode1.GetPszISOProperty("name", "Action" + counter++, false);
+            int actionsCount = childNode1.GetNumChildren();
+            (*toInsert)[nameAction] = VecInfoInputs();
+            (*toInsert)[nameAction].clear();
+            for (int k = 0; k < actionsCount; ++k) {
+              CXMLTreeNode childNode2 = childNode1.getNextChild();
+              std::string nameDevice = childNode2.GetPszISOProperty("deviceType", "IDV_NOTHING", false);
+              std::string nameEvent = childNode2.GetPszISOProperty("EventType", "EVENT_NOTHING", false);
+              std::string nameKey = childNode2.GetPszISOProperty("Code", "KEY_M", false);
+              std::string axisKey = childNode2.GetPszISOProperty("AxisType", "AXIS_NOTHING", false);
+              action_info actAux = {static_cast<INPUT_DEVICE_TYPE>(m_String2Code[nameDevice]),
+                                    static_cast<INPUT_EVENT_TYPE>(m_String2Code[nameEvent]),
+                                    (uint32) m_String2Code[nameKey],
+                                    static_cast<INPUT_AXIS_TYPE>(m_String2Code[axisKey])
+                                   };
+              (*toInsert)[nameAction].push_back(actAux);
+            }
+#ifndef _DEBUG
           }
+#endif
         }
       }
     }

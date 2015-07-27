@@ -1,318 +1,318 @@
 <Actions>
 	<globals>
-		<action name="CommutationCamera">
+		<action name="CommutationCamera" debug="true">
 	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_C"/>
 	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_TAB"/>
 	    </action>
 	 
-	    <action name="Logger">
+	    <action name="Logger" debug="true">
 	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
 	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_F1"/>
 	    </action>
 		
-		<action name="LoggerOpen">
+		<action name="LoggerOpen" debug="true">
 	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
 	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_F3"/>
 	    </action>
 
-	    <action name="LoggerPageUP">
+	    <action name="LoggerPageUP" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_PGUP"/>
 	    </action>
 
-	    <action name="LoggerPageDown">
+	    <action name="LoggerPageDown" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_PGDOWN"/>
 	    </action>
 		
-		<action name="LoggerUP">
+		<action name="LoggerUP" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_UP"/>
 	    </action>
 
-	    <action name="LoggerDown">
+	    <action name="LoggerDown" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_DOWN"/>
 	    </action>
 
-	    <action name="LoggerUPCont">
+	    <action name="LoggerUPCont" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_UP"/>
 	    </action>
 
-	    <action name="LoggerDownCont">
+	    <action name="LoggerDownCont" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_DOWN"/>
 	    </action>
 
-		<action name="Save2File">
+		<action name="Save2File" debug="true">
 	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
 	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_F2"/>
 	    </action>
 
-	    <action name="LoadLanguages">
+	    <action name="LoadLanguages" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_F5"/>
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_L"/>
 	    </action>
 
-	    <action name="ChangeCatalan">
+	    <action name="ChangeCatalan" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_F1"/>
 	    </action>
 
-	    <action name="ChangeCastellano">
+	    <action name="ChangeCastellano" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_F2"/>
 	    </action>
 
-	    <action name="ChangeIngles">
+	    <action name="ChangeIngles" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_F3"/>
 	    </action>
 
-	    <action name="ReloadActions">
+	    <action name="ReloadActions" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_F5"/>
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_A"/>
 	    </action>
 
-	    <action name="yaw">
+	    <action name="yaw" debug="true">
 	    	<input deviceType="IDV_MOUSE" AxisType="AXIS_MOUSE_X"/>
 	    </action>
 
-	    <action name="pitch">
+	    <action name="pitch" debug="true">
 	    	<input deviceType="IDV_MOUSE" AxisType="AXIS_MOUSE_Y"/>
 	    </action>
 
-	    <action name="scroll">
+	    <action name="scroll" debug="true">
 	    	<input deviceType="IDV_MOUSE" AxisType="AXIS_MOUSE_Z"/>
 	    </action>
 		
-		<action name="scrollLittle">
+		<action name="scrollLittle" debug="true">
 	    	<input deviceType="IDV_MOUSE" AxisType="AXIS_MOUSE_Z"/>
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LSHIFT"/>
 	    </action>
 		
-		<action name="SuperJump">
+		<action name="SuperJump" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_Z"/>
 	    </action>
 		
-		<action name="ChangeDimension">
+		<action name="ChangeDimension" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_X"/>
 	    </action>
 		
-		<action name="KeyMoveForward">
+		<!--<action name="KeyMoveForward" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_UP"/>
-	    </action>
+	    </action> -->
 		
-		<action name="StopMovePlayerForward">
+		<!-- <action name="StopMovePlayerForward" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_D"/>
 	    </action>
 		
-		<action name="StopMovePlayerBack">
+		<action name="StopMovePlayerBack" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_A"/>
-	    </action>
+	    </action> -->
 		
-	    <action name="KeyMoveBack">
+	    <!--<action name="KeyMoveBack" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_DOWN"/>
 	    </action>
 
-	    <action name="KeyMoveRigth">
+	    <action name="KeyMoveRigth" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_RIGHT"/>
 	    </action>
 
-	    <action name="KeyMoveLeft">
+	    <action name="KeyMoveLeft" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_LEFT"/>
-	    </action>
+	    </action> -->
 		
-		<action name="PanX">
+		<action name="PanX" debug="true">
 			<input deviceType="IDV_MOUSE" EventType="EVENT_DOWN" Code="MOUSE_BUTTON_LEFT"/>
 			<input deviceType="IDV_MOUSE" AxisType="AXIS_MOUSE_X"/>
 		</action>
 		
-		<action name="PanY">
+		<action name="PanY" debug="true">
 			<input deviceType="IDV_MOUSE" EventType="EVENT_DOWN" Code="MOUSE_BUTTON_LEFT"/>
 			<input deviceType="IDV_MOUSE" AxisType="AXIS_MOUSE_Y"/>
 		</action>
 		
-		<action name="RotX">
+		<action name="RotX" debug="true">
 			<input deviceType="IDV_MOUSE" EventType="EVENT_DOWN" Code="MOUSE_BUTTON_RIGHT"/>
 			<input deviceType="IDV_MOUSE" AxisType="AXIS_MOUSE_X"/>
 		</action>
 		
-		<action name="RotY">
+		<action name="RotY" debug="true">
 			<input deviceType="IDV_MOUSE" EventType="EVENT_DOWN" Code="MOUSE_BUTTON_RIGHT"/>
 			<input deviceType="IDV_MOUSE" AxisType="AXIS_MOUSE_Y"/>
 		</action>
 		
-		<action name="ToggleFPSCam">
+		<action name="ToggleFPSCam" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_C"/>
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_0"/>
 		</action>
 		
-		<action name="ToogleTHPSCamera">
+		<action name="ToogleTHPSCamera" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_C"/>
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_1"/>
 		</action>
 		
-		<!--<action name="FlyMode">
+		<!--<action name="FlyMode" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_C"/>
 		</action> -->
 
-	    <action name="ReloadMeshes">
+	    <action name="ReloadMeshes" debug="true">
 	        <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_F9"/>
 	    </action>
 
-	    <action name="ReloadTextures">
+	    <action name="ReloadTextures" debug="true">
 	        <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_F8"/>
 	    </action>
 		
-		<action name="ReloadScripts">
+		<action name="ReloadScripts" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_F7"/>
 		</action>
 		
-		<action name="ReloadScriptedController">
+		<action name="ReloadScriptedController" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_7"/>
 		</action>
 		
-		<action name="ReloadEffects">
+		<action name="ReloadEffects" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_F6"/>
 		</action>
 		
-		<action name="ReloadLights">
+		<action name="ReloadLights" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_F5"/>
 		</action>
 		
-		<!--<action name="DestroyActor">
+		<!--<action name="DestroyActor" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_P"/>
 		</action>
 		
-		<action name="CreateActor">
+		<action name="CreateActor" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_P"/>
 		</action>
 		
-		<action name="AcumulateForce">
+		<action name="AcumulateForce" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_SPACE"/>
 		</action>
 		
-		<action name="ThrowGrenade">
+		<action name="ThrowGrenade" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_SPACE"/>
 		</action>
 		
-		<action name="Shot">
+		<action name="Shot" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_I"/>
 		</action>-->
 		
-		<!--<action name="ReloadBoxes">
+		<!--<action name="ReloadBoxes" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_O"/>
 		</action>-->
 		
-		<action name="ReloadRenderCommands">
+		<action name="ReloadRenderCommands" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_F4"/>
 		</action>
 
-		<!--<action name="ForwardMotor">
+		<!--<action name="ForwardMotor" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_M"/>
 		</action>
 		
-		<action name="BackwardMotor">
+		<action name="BackwardMotor" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_N"/>
 		</action>-->
 		
-		<action name="Set3DCamera">
+		<action name="Set3DCamera" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_C"/>
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_3"/>
 		</action>
 		
-		<action name="Set2DCamera">
+		<action name="Set2DCamera" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_C"/>
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_2"/>
 		</action>
 		
-		<action name="ToggleDebugMode">
+		<action name="ToggleDebugMode" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_1"/>
 		</action>
 		
-		<action name="ToggleDebugAllPhysx">
+		<action name="ToggleDebugAllPhysx" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_2"/>
 		</action>
 		
-		<action name="ToggleDebugTriggers">
+		<action name="ToggleDebugTriggers" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_3"/>
 		</action>
 		
-		<action name="ToggleDebugCharacters">
+		<action name="ToggleDebugCharacters" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_4"/>
 		</action>
 		
-		<action name="RenderDebugInfo">
+		<action name="RenderDebugInfo" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_P"/>
 		</action>
 		
-		<action name="ReloadGUI">
+		<action name="ReloadGUI" debug="true">
 	        <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_F10"/>
 	    </action>
 		
-		<action name="Console">
+		<action name="Console" debug="true">
 	        <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_L"/>
 	    </action>
 		
-		<action name="ConsoleEnd">
+		<action name="ConsoleEnd" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_END"/>
 	    </action>
 		
-		<action name="ConsoleStart">
+		<action name="ConsoleStart" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_HOME"/>
 	    </action>
 		
-		<action name="ConsoleComplete">
+		<action name="ConsoleComplete" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_TAB"/>
 	    </action>
 		
-		<action name="ConsoleCompleteBack">
+		<action name="ConsoleCompleteBack" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_TAB"/>
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LSHIFT"/>
 	    </action>
 		
-		<action name="ShowLifeGUI">
+		<action name="ShowLifeGUI" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_G"/>
 	    </action>
 
-	    <action name="AddSlowMotion">
+	    <action name="AddSlowMotion" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_U"/>
 	    </action>
 
-	    <action name="AddFastMotion">
+	    <action name="AddFastMotion" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_I"/>
 	    </action>
 
-	    <action name="ResetMotion">
+	    <action name="ResetMotion" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_O"/>
 	    </action>
 		
-		<action name="TeleportTest1">
+		<action name="TeleportTest1" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_Y"/>
 	    </action>
-		<action name="TeleportTest2">
+		<action name="TeleportTest2" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_H"/>
 	    </action>
-		<action name="TeleportTest3">
+		<action name="TeleportTest3" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_T"/>
 	    </action>
-		<action name="TeleportTest4">
+		<action name="TeleportTest4" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_Q"/>
 	    </action>
-		<!--<action name="TeleportTest5">
+		<!--<action name="TeleportTest5" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_E"/>
 	    </action>-->
 
-		<action name="ResetGame">
+		<action name="ResetGame" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_R"/>
 	    </action>
