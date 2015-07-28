@@ -122,7 +122,7 @@
 			<dynamic_texture stage_id="1" name="FinalPolyTexture" width="512" height="512" format_type="A8R8G8B8"/>
 			<dynamic_texture stage_id="2" name="TempPolyTexture" width="512" height="512" format_type="A8R8G8B8"/>
 		</gaussian_blur>
-		<enable_z_write/>
+		<!--<enable_z_write/>
 		<enable_z_test />
 		<set_pool_renderable_objects_technique pool="draw_textured_quad_pool"/>
 		<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
@@ -130,7 +130,7 @@
 			<texture stage_id="0" file="FinalPolyTexture"/>
 		</render_draw_quad>
 		<disable_z_write/>
-		<disable_z_test />
+		<disable_z_test />-->
 		
 		<enable_z_write/>
 		<enable_z_test />
@@ -329,6 +329,16 @@
 		<render_debug_info/>
 		
 		<disable_alpha_blend /> 
+		
+		<enable_z_write/>
+		<enable_z_test />
+		<set_pool_renderable_objects_technique pool="draw_textured_quad_pool"/>
+		<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
+		<render_draw_quad technique_name="DrawQuadSolidTechnique">
+			<texture stage_id="0" file="FinalPolyTexture"/>
+		</render_draw_quad>
+		<disable_z_write/>
+		<disable_z_test />
 		<!-- <capture_frame_buffer> 
 			<dynamic_texture stage_id="0" name="MyTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 		</capture_frame_buffer> -->
