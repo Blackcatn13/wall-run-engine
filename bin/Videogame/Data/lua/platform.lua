@@ -171,7 +171,7 @@ function mp_update_stopped(ElapsedTime,room_name, name)
 	end
 	platform.m_Activated = true
 	if platform.m_Activated == true then
-		coreInstance:trace("activa")
+		--coreInstance:trace("activa")
 		--instance.m_string = "Buscar_next_WP_Plaform"
 		platform:get_fsm():newState("Buscar_next_WP_Plaform")
 	end
@@ -236,7 +236,7 @@ function mp_enter_calcwp(room_name, name) -- Pasar el nombre de la plataforma y 
 	--end
 	
 	local platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("mov_platforms", room_name):get_resource(name)
-	coreInstance:trace("plataforma =: "..platform:get_name())
+	--coreInstance:trace("plataforma =: "..platform:get_name())
 	if platform ~= nil then
 		platform.m_NextWP = platform:get_next_wp()
 		--coreInstance:trace(tostring(next_wp.x));
@@ -256,7 +256,7 @@ function mp_update_calcwp(ElapsedTime, room_name, name)
 	--core:trace("Update Buscar_next_WP Platform");
 	--mp_enter_calcwp()
 	local platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("mov_platforms", room_name):get_resource(name)
-	coreInstance:trace("plataforma =: "..platform:get_name())
+	--coreInstance:trace("plataforma =: "..platform:get_name())
 	if platform ~= nil then
 		platform.m_NextWP = platform:get_next_wp()
 		--coreInstance:trace(tostring(next_wp.x));
