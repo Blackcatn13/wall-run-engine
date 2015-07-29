@@ -214,18 +214,6 @@
 	<static_mesh name="Plataforma_Mov06" filename="Data\level4\meshes\Plataforma_Mov06.mesh"/>
 	<static_mesh name="Plataforma_Mov05" filename="Data\level4\meshes\Plataforma_Mov05.mesh"/>
 	<static_mesh name="Plataforma_Mov04" filename="Data\level4\meshes\Plataforma_Mov04.mesh"/>
-	<static_mesh name="PUNXES002" filename="Data\level4\meshes\PUNXES002.mesh"/>
-	<static_mesh name="POLY. PLAT. HORTZ004" filename="Data\level4\meshes\POLY. PLAT. HORTZ004.mesh"/>
-	<static_mesh name="POLY. PLAT. HORTZ003" filename="Data\level4\meshes\POLY. PLAT. HORTZ003.mesh"/>
-	<static_mesh name="SALA 5" filename="Data\level4\meshes\SALA 5.mesh"/>
-	<static_mesh name="FRANJA_SALA 5" filename="Data\level4\meshes\FRANJA_SALA 5.mesh"/>
-	<static_mesh name="FRANJA_SALA 5 INFERIOR" filename="Data\level4\meshes\FRANJA_SALA 5 INFERIOR.mesh"/>
-	<static_mesh name="FRANJA_SALA 5 INFERIOR001" filename="Data\level4\meshes\FRANJA_SALA 5 INFERIOR001.mesh"/>
-	<static_mesh name="FRANJA_SALA 5 INFERIOR002" filename="Data\level4\meshes\FRANJA_SALA 5 INFERIOR002.mesh"/>
-	<static_mesh name="Object00111" filename="Data\level4\meshes\Object00111.mesh"/>
-	<static_mesh name="Object002" filename="Data\level4\meshes\Object002.mesh"/>
-	<static_mesh name="obstacle02311" filename="Data\level4\meshes\obstacle02311.mesh"/>
-	<static_mesh name="obstacle024" filename="Data\level4\meshes\obstacle024.mesh"/>
 	<static_mesh name="PUNXES005" filename="Data\level4\meshes\PUNXES005.mesh"/>
 	<static_mesh name="SALA 7" filename="Data\level4\meshes\SALA 7.mesh"/>
 	<static_mesh name="OBSTACLE006" filename="Data\level4\meshes\OBSTACLE006.mesh"/>
@@ -267,12 +255,16 @@
 	<static_mesh name="Object010" filename="Data\level4\meshes\Object010.mesh"/>
 	<static_mesh name="Object011" filename="Data\level4\meshes\Object011.mesh"/>
 	<static_mesh name="PolyPlatform002" filename="Data\level4\meshes\PolyPlatform002.mesh"/>
-	<static_mesh name="WALL_TRAP1_RIGHT" filename="Data\level4\meshes\WALL_TRAP1_RIGHT.mesh"/>
-	<static_mesh name="WALL_TRAP1_LEFT" filename="Data\level4\meshes\WALL_TRAP1_LEFT.mesh"/>
-	
-	<static_mesh name="Arrow" filename="Data\level4\meshes\Arrow.mesh"/>
-	<static_mesh name="Arrow001" filename="Data\level4\meshes\Arrow001.mesh"/>
-	<static_mesh name="Arrow002" filename="Data\level4\meshes\Arrow002.mesh"/>
-	
-	<static_mesh name="MovingPlatform001" filename=".\Data\level1\meshes//MovingPlatform001.mesh"/>
+	<static_mesh name="PUNXES002" filename="Data\level4\meshes\PUNXES002.mesh"/>
+	<static_mesh name="PUNXES00266" filename="Data\level4\meshes\PUNXES00266.mesh"/>
+	<static_mesh name="PUNXES0020" filename="Data\level4\meshes\PUNXES0020.mesh"/>
+	<static_mesh name="POLY. PLAT. HORTZ004" filename="Data\level4\meshes\POLY. PLAT. HORTZ004.mesh"/>
+	<static_mesh name="POLY. PLAT. HORTZ003" filename="Data\level4\meshes\POLY. PLAT. HORTZ003.mesh"/>
+	<static_mesh name="SALA 5" filename="Data\level4\meshes\SALA 5.mesh"/>
+	<static_mesh name="CARALLENGUA001" filename="Data\level4\meshes\CARALLENGUA001.mesh"/>
+	<static_mesh name="obstacle0230" filename="Data\level4\meshes\obstacle0230.mesh"/>
+	<static_mesh name="obstacle024" filename="Data\level4\meshes\obstacle024.mesh"/>
+	<static_mesh name="Object0010" filename="Data\level4\meshes\Object0010.mesh"/>
+	<static_mesh name="Object002" filename="Data\level4\meshes\Object002.mesh"/>
+	<static_mesh name="Object020" filename="Data\level4\meshes\Object020.mesh"/>
 </static_meshes>
