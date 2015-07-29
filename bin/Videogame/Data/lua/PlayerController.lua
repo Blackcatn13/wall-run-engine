@@ -261,13 +261,16 @@ function on_update_player_lua(l_ElapsedTime)
 				jumpTime = 0;
 			end
 			if player_controller.m_JumpingTime > AirTime then
-				player_controller.m_isJumping = false;
-				inLoop = false;
-				topPosition = -1000;
-				_land = true;
-				playerRenderable:clear_cycle(3,0.5);
-				playerRenderable:updateSkeleton(l_ElapsedTime);
-				playerRenderable:blend_cycle(4,1,0.3);
+				local dist_to_floor = get_distance_to_floor(player_controller:get_position());
+				
+				if dist_to_floor < 3 then
+					player_controller.m_isJumping = false;
+					inLoop = false;
+					_land = true;
+					playerRenderable:clear_cycle(3,0.5);
+					playerRenderable:updateSkeleton(l_ElapsedTime);
+					playerRenderable:blend_cycle(4,1,0.3);
+				end
 			else
 				if player_controller.m_isFalling then
 					local positionOld = playerRenderable:get_position();
