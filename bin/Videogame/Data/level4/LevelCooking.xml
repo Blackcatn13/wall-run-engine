@@ -7,7 +7,7 @@
 	<Physx_mesh name="SALA 4" filename="Data\level4\meshes\SALA 4.phsx"/>
 	<Physx_mesh name="Plataforma01" filename="Data\level4\meshes\Plataforma01.phsx"/>
 	<Physx_mesh name="Plataforma02" filename="Data\level4\meshes\Plataforma02.phsx"/>
-	<Physx_mesh name="Plataforma0er3" filename="Data\level4\meshes\Plataforma0er3.phsx"/>
+	<!--<Physx_mesh name="Plataforma0er3" filename="Data\level4\meshes\Plataforma0er3.phsx"/>-->
 	<Physx_mesh name="SALA 3" filename="Data\level4\meshes\SALA 3.phsx"/>
 	<Physx_mesh name="Pedra01" filename="Data\level4\meshes\Pedra01.phsx"/>
 	<Physx_mesh name="Pedra03" filename="Data\level4\meshes\Pedra03.phsx"/>

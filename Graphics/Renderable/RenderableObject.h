@@ -13,7 +13,7 @@ class CXMLTreeNode;
 class CRenderableObject : public CObject3D, public CNamed {
  protected:
   bool		m_Printable;
-  std::string m_ParticleEmitter;
+  std::string m_ParticleEmitter, m_ParticleEmitter2, m_ParticleEmitter3, m_ParticleEmitter4;
   int		m_Room;
  public:
   CRenderableObject();
@@ -28,6 +28,9 @@ class CRenderableObject : public CObject3D, public CNamed {
   GET_SET(bool, Printable);
   virtual void Render(CGraphicsManager *RM) = 0;
   GET_SET(std::string, ParticleEmitter);
+  GET_SET(std::string, ParticleEmitter2);
+  GET_SET(std::string, ParticleEmitter3);
+  GET_SET(std::string, ParticleEmitter4);
   GET_SET(int, Room);
 };
 

@@ -7,6 +7,9 @@ CRenderableObject::CRenderableObject(const CXMLTreeNode &node)
     CNamed(node),
     m_Printable(m_visible),
     m_ParticleEmitter(node.GetPszISOProperty("emitter", "")),
+    m_ParticleEmitter2(node.GetPszISOProperty("emitter2", "")),
+    m_ParticleEmitter3(node.GetPszISOProperty("emitter3", "")),
+    m_ParticleEmitter4(node.GetPszISOProperty("emitter4", "")),
     m_Room(node.GetIntProperty("room", 0)) {
 }
 

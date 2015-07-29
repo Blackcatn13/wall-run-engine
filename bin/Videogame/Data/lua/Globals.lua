@@ -15,5 +15,6 @@
  enemy_manager = coreInstance:get_enemy_manager()
  --collectible_manager = coreInstance:getCollectibleManager()
  collectible_manager = nil
+ particle_manager = coreInstance:getParticleManager()
  
 

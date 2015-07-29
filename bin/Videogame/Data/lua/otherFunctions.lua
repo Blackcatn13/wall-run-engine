@@ -8,6 +8,17 @@ function change_object_position(_object, _position)
 	_object.m_Actor:set_global_position(_position)
 end
 
+function get_distance_to_floor(_pos)
+	local info = SCollisionInfo();
+	local _dirRay = Vect3f(0,-1,0);
+	local auxpos = Vect3f(_pos.x,_pos.y-0.6,_pos.z);
+	coreInstance:get_phisics_manager():raycast_closest_actor(auxpos, _dirRay, 1, info, 1000);
+	local floor_point = info.m_CollisionPoint;
+	local distance = get_distance_between_points(floor_point,_pos);
+	coreInstance:trace("Distance to floor "..tostring(distance));
+	return distance;
+end
+
 function get_renderable_object(layer_name,room, _objectName)	
 	local object_manager = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room(layer_name, room)
 	local object = object_manager:get_resource(_objectName)
@@ -152,6 +163,7 @@ function toboolean(string_to_parse)
 	end
 	return 0
 end
+
 
 function reset_game()
 	

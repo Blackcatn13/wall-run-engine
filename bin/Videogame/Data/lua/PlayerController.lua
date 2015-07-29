@@ -261,13 +261,16 @@ function on_update_player_lua(l_ElapsedTime)
 				jumpTime = 0;
 			end
 			if player_controller.m_JumpingTime > AirTime then
-				player_controller.m_isJumping = false;
-				inLoop = false;
-				topPosition = -1000;
-				_land = true;
-				playerRenderable:clear_cycle(3,0.5);
-				playerRenderable:updateSkeleton(l_ElapsedTime);
-				playerRenderable:blend_cycle(4,1,0.3);
+				local dist_to_floor = get_distance_to_floor(player_controller:get_position());
+				
+				if dist_to_floor < 3 then
+					player_controller.m_isJumping = false;
+					inLoop = false;
+					_land = true;
+					playerRenderable:clear_cycle(3,0.5);
+					playerRenderable:updateSkeleton(l_ElapsedTime);
+					playerRenderable:blend_cycle(4,1,0.3);
+				end
 			else
 				if player_controller.m_isFalling then
 					local positionOld = playerRenderable:get_position();
@@ -365,7 +368,11 @@ function on_update_player_lua(l_ElapsedTime)
 		else
 			player_controller:is_grounded(mov,l_ElapsedTime);
 		end
-		
+		local emitter = particle_manager:get_resource(playerRenderable.m_ParticleEmitter)
+		local difference = playerRenderable:get_position() - emitter.m_vPos
+		emitter.m_vPos = playerRenderable:get_position() + difference
+		--local new_dir = Vect3f(mov.x, 0, mov.z) * player_controller.m_Speed
+		--emitter:move(new_dir, l_ElapsedTime)
 		-- FIJAR AL PLAYER EN 2D
 		if player_controller.m_is3D == false then
 			if currentWP ~= nil and nextWP ~= nil then
