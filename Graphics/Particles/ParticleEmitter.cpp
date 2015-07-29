@@ -325,3 +325,8 @@ CParticle *CParticleEmitter::NewParticle() {
   } else
     return 0;
 }
+
+void CParticleEmitter::Move(Vect3f direction, float ElapsedTime) {
+// m_Position = m_Position + (direction * ElapsedTime);
+  m_vPos = m_vPos + (direction * ElapsedTime);
+}

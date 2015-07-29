@@ -49,6 +49,7 @@ class CParticleEmitter : public CObject3D, public CNamed {
   GET_SET(Vect3f, vOndulacion1);
   GET_SET(Vect3f, vOndulacion2);
   bool reloadTexture();
+  void Move(Vect3f direction, float ElapsedTime);
  private:
   void PopulateParticle(CParticle *p);
   EmitterType                  m_Type;
@@ -96,6 +97,7 @@ class CParticleEmitter : public CObject3D, public CNamed {
   void DeleteOldParticles(float age);
   void UpdateParticles(float dt);
   CParticle *NewParticle();
+
 };
 
 #endif

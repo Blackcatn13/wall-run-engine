@@ -153,6 +153,7 @@ function toboolean(string_to_parse)
 	return 0
 end
 
+
 function reset_game()
 	
 	--Player Position + 3D

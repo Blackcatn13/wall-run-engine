@@ -98,6 +98,10 @@ void CRenderableObjectsManager::Load(const std::string &FileName) {
         l_AnimatedInstanceModel->SetRoll(roll);
         l_AnimatedInstanceModel->SetScale(scale);
         l_AnimatedInstanceModel->setName(meshName);
+        l_AnimatedInstanceModel->setParticleEmitter( nodeChild.GetPszISOProperty("emitter"));
+        l_AnimatedInstanceModel->setParticleEmitter2( nodeChild.GetPszISOProperty("emitter2"));
+        l_AnimatedInstanceModel->setParticleEmitter3( nodeChild.GetPszISOProperty("emitter3"));
+        l_AnimatedInstanceModel->setParticleEmitter4( nodeChild.GetPszISOProperty("emitter4"));
         AddResource(meshName, l_AnimatedInstanceModel);
       } else if (name == "switch_instance") {
         CSwitch *l_Switch  = new CSwitch(nodeChild);
@@ -170,6 +174,10 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node) {
       l_AnimatedInstanceModel->SetRoll(roll);
       l_AnimatedInstanceModel->SetScale(scale);
       l_AnimatedInstanceModel->setName(meshName);
+      l_AnimatedInstanceModel->setParticleEmitter( Node.GetPszISOProperty("emitter", ""));
+      l_AnimatedInstanceModel->setParticleEmitter2( Node.GetPszISOProperty("emitter2", ""));
+      l_AnimatedInstanceModel->setParticleEmitter3( Node.GetPszISOProperty("emitter3", ""));
+      l_AnimatedInstanceModel->setParticleEmitter4( Node.GetPszISOProperty("emitter4", ""));
       AddResource(meshName, l_AnimatedInstanceModel);
     } else if (name == "switch_instance") {
       CSwitch *l_Switch  = new CSwitch(Node);
