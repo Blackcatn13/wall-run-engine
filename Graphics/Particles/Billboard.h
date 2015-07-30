@@ -26,6 +26,8 @@ class CBillboard {
   void setPosition(Vect3f position) {m_position = position;}
   CTexture *getTexture() {return m_Textures[0];}
   void setTexture(CTexture *t) {m_Textures[0] = t;}
+
+  GET_SET(bool, Visible);
   //GET_SET(CTexture *, Texture)
  protected:
   float			  m_size;
@@ -35,6 +37,7 @@ class CBillboard {
   CColor		  m_Color1;
   CRenderableVertexs         *m_RV;
   float     m_tick;
+  bool		m_Visible;
 };
 
 #endif // BILLBOARD_H_

@@ -17,7 +17,8 @@ CBillboard::CBillboard(CXMLTreeNode &node)
   : m_sizes(node.GetVect2fProperty("size", v2fONE))
   , m_position(node.GetVect3fProperty("position", v3fZERO	, false))
   , m_Color1(CColor((node.GetVect4fProperty("color", v4fZERO	, false))))
-  , m_tick((rand() % 100 + 1) / 10) {
+  , m_tick((rand() % 100 + 1) / 10)
+  , m_Visible(node.GetBoolProperty("visible", true)) {
   int numChild = node.GetNumChildren();
   for (int i = 0; i < numChild; ++i) {
     CXMLTreeNode nodeChild = node.getNextChild();

@@ -52,14 +52,16 @@ void CBillboardManager::Load() {
 
 void CBillboardManager::Update(float ElapsedTime) {
   for (size_t i = 0; i < m_ResourcesVector.size(); ++i) {
-    m_ResourcesVector[i]->Update(ElapsedTime);
+    if (m_ResourcesVector[i]->getVisible())
+      m_ResourcesVector[i]->Update(ElapsedTime);
   }
 }
 
 void CBillboardManager::Render(CGraphicsManager *RM) {
   //int test = m_ResourcesVector.size();
   for (size_t i = 0; i < m_ResourcesVector.size(); ++i) {
-    m_ResourcesVector[i]->Render(RM);
+    if (m_ResourcesVector[i]->getVisible())
+      m_ResourcesVector[i]->Render(RM);
   }
 }
 

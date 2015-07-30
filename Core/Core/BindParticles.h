@@ -9,6 +9,8 @@
 #include "Particles\Particle.h"
 #include "Object\Object3D.h"
 #include "Utils\Named.h"
+#include "Particles\InstancedBillboard.h"
+#include "Particles\Billboard.h"
 
 extern "C"
 {
@@ -79,6 +81,19 @@ void RegisterParticles() {
     .property("m_vOndulacion2", &CParticleEmitter::getvOndulacion2, &CParticleEmitter::setvOndulacion2)
     .def("reloadTexture", &CParticleEmitter::reloadTexture)
     .def("move", &CParticleEmitter::Move)
+  ];
+
+  luabind::module(LUA_STATE) [
+    class_<CBillboard>("CParticleManager")
+    .def(constructor<>())
+    .property("m_size", &CBillboard::getSize, &CBillboard::setSize)
+    .property("m_position", &CBillboard::getPosition, &CBillboard::setPosition)
+    .property("m_Visible", &CBillboard::getVisible, &CBillboard::setVisible)
+  ];
+
+  luabind::module(LUA_STATE) [
+    class_<CInstancedBillboard, CBillboard>("CInstancedBillboard")
+    .def(constructor<>())
   ];
 }
 

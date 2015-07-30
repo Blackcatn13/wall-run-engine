@@ -29,6 +29,8 @@
 #include "WWSoundManager.h"
 #include "GUI\GUIManager.h"
 #include "Collectibles\CollectibleManager.h"
+#include "Particles\BillboardManager.h"
+#include "Particles\Billboard.h"
 
 extern "C"
 {
@@ -333,6 +335,29 @@ void RegisterManagers() {
     class_<CSceneRendererCommandManager>("CSceneRendererCommandManager")
     .def(constructor<>())
     .def_readwrite("currentRenderer", &CSceneRendererCommandManager::m_activeRenderer)
+  ];
+
+  luabind::module(LUA_STATE) [
+    class_<CTemplatedVectorMapManager<CBillboard>>("CTemplatedVectorMapManagerBillboardManager")
+    .def(constructor<>())
+    .scope
+    [
+      class_<CTemplatedVectorMapManager<CBillboard>::CMapResourceValue>("CMapResourceValue")
+      .def(constructor<>())
+      .def_readwrite("m_Value", & CTemplatedVectorMapManager<CBillboard>::CMapResourceValue::m_Value)
+      .def_readwrite("m_Id", & CTemplatedVectorMapManager<CBillboard>::CMapResourceValue::m_Id)
+    ]
+    //.def("remove_resource", &CTemplatedVectorMapManager<CRenderableObject>::RemoveResource) // <= m_Id identificador no declarado xq está en clase interna
+    .def("get_resource", &CTemplatedVectorMapManager<CBillboard>::GetResource)
+    .def("get_resource_by_id", &CTemplatedVectorMapManager<CBillboard>:: GetResourceById)
+    .def("add_resource", &CTemplatedVectorMapManager<CBillboard>::AddResource)
+    .def("destroy", &CTemplatedVectorMapManager<CBillboard>::Destroy)
+    .def("get_resource_map", &CTemplatedVectorMapManager<CBillboard>::GetResourcesMap)
+    .def("get_resource_vector", &CTemplatedVectorMapManager<CBillboard>::GetResourcesVector)
+  ];
+  luabind::module(LUA_STATE) [
+    class_<CBillboardManager, bases<CTemplatedVectorMapManager<CBillboard> >>("CBillboardManager")
+    .def(constructor<>())
   ];
 }
 

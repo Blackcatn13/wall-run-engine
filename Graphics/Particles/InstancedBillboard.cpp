@@ -17,6 +17,7 @@
 
 CInstancedBillboard::CInstancedBillboard(CXMLTreeNode &node)
   : m_numBillboards(node.GetIntProperty("billboards")) {
+  m_Visible = node.GetBoolProperty("visible", true);
   int numChild = node.GetNumChildren();
   m_vertex_list = new TBILLBOARD_VERTEX_INSTANCE[m_numBillboards];
   int j = 0;
