@@ -66,10 +66,12 @@ function update_break_platform(dt, current_time, max_time, platform_name, trigge
 	if current_time >= max_time then
 		local platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("breakable",player_controller.m_Room):get_resource(platform_name)
 		--local falling_force = Vect3f(0.0,-1.0,0.0)
-		platform:disable_platform(dt)--, falling_force)
-		--m_current_time = 0
-		local trigger = trigger_manager:get_resource(trigger_name)
-		trigger.m_Time = 0.0
+		if platform ~= nil then
+			platform:disable_platform(dt)--, falling_force)
+			--m_current_time = 0
+			local trigger = trigger_manager:get_resource(trigger_name)
+			trigger.m_Time = 0.0
+		end
 	end
 	--m_current_time = m_current_time + 1
 end
