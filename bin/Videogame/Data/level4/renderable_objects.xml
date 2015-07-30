@@ -117,7 +117,7 @@
 
 	<!--<animated_model name="Piky" core="piky" pos="51.574234 0.714600 0.617737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="player"/>-->
 
-	<animated_model name="Piky" core="piky" pos="55.784378 0.000000 0.617737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="player" emitter="PixelitePikyEmitter"/>
+	<animated_model name="Piky" core="piky" pos="55.784378 0.000000 0.617737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="player" emitter="PixelitePikyEmitter" emitter_offset="0.0 1.0 0.0" />
 
 	<animated_model name="Chucky" core="chuky" pos="12.301392 0.000000 -2.756073" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>
 	<animated_model name="MikMik004" core="mik" pos="530.339172 8.583496 8.188751" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>

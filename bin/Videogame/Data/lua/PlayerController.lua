@@ -301,6 +301,7 @@ function on_update_player_lua(l_ElapsedTime)
 				player_controller.m_isAttack = false;
 			else
 				if player.can_finish_atack then
+					local emitter = particle_manager:get_resource(playerRenderable.m_ParticleEmitter)
 					if player_controller.m_CurrentAttackForce > 0.5 then					
 						local prev_y = mov.y
 						player_controller.m_CurrentAttackForce = player_controller.m_CurrentAttackForce - (m_AttackGravity * l_ElapsedTime);
@@ -310,11 +311,14 @@ function on_update_player_lua(l_ElapsedTime)
 						end
 						mov.y = prev_y;
 						m_AttackGravity = m_AttackGravity + AtackGravityModifier * l_ElapsedTime;
+						
+						emitter.m_vPos = playerRenderable:get_position()+ playerRenderable.m_EmitterOffset
 					else
 						local mesh = playerRenderable;
 						mesh:set_position(player_controller:get_position());
 						player_controller.m_isAttack = false;
 						player.get_player_controller():update_character_extents(true, m_ReduceCollider);
+						emitter:set_visible(false)
 					end
 				else -- En el caso de estar entre triggers para impedir fin de ataque
 					local prev_y = mov.y
@@ -354,6 +358,8 @@ function on_update_player_lua(l_ElapsedTime)
 			mov.y = prev_y;
 			player_controller.m_isAttack = true;
 			playerRenderable:execute_action(5,0,0.3,1,false);
+			local emitter = particle_manager:get_resource(playerRenderable.m_ParticleEmitter)
+			emitter:set_visible(true)
 		end
 	
 		if not player_controller.m_isGrounded then
@@ -368,11 +374,7 @@ function on_update_player_lua(l_ElapsedTime)
 		else
 			player_controller:is_grounded(mov,l_ElapsedTime);
 		end
-		local emitter = particle_manager:get_resource(playerRenderable.m_ParticleEmitter)
-		local difference = playerRenderable:get_position() - emitter.m_vPos
-		emitter.m_vPos = playerRenderable:get_position() + difference
-		--local new_dir = Vect3f(mov.x, 0, mov.z) * player_controller.m_Speed
-		--emitter:move(new_dir, l_ElapsedTime)
+		
 		-- FIJAR AL PLAYER EN 2D
 		if player_controller.m_is3D == false then
 			if currentWP ~= nil and nextWP ~= nil then

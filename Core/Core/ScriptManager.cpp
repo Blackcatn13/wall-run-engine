@@ -354,7 +354,16 @@ void CScriptManager::RegisterLUAFunctions() {
     .def("render", & CRenderableObject::Render)
     .property("m_Printable", & CRenderableObject::getPrintable, &CRenderableObject::setPrintable )
     .property("m_ParticleEmitter", &CRenderableObject::getParticleEmitter, &CRenderableObject::setParticleEmitter)
+    .property("m_ParticleEmitter2", &CRenderableObject::getParticleEmitter2, &CRenderableObject::setParticleEmitter2)
+    .property("m_ParticleEmitter3", &CRenderableObject::getParticleEmitter3, &CRenderableObject::setParticleEmitter3)
+    .property("m_ParticleEmitter4", &CRenderableObject::getParticleEmitter4, &CRenderableObject::setParticleEmitter4)
+    .property("m_EmitterOffset", &CRenderableObject::getEmitterOffset, &CRenderableObject::setEmitterOffset)
+    .property("m_EmitterOffset2", &CRenderableObject::getEmitterOffset2, &CRenderableObject::setEmitterOffset2)
+    .property("m_EmitterOffset3", &CRenderableObject::getEmitterOffset3, &CRenderableObject::setEmitterOffset3)
+    .property("m_EmitterOffset4", &CRenderableObject::getEmitterOffset4, &CRenderableObject::setEmitterOffset4)
     .property("m_Room", &CRenderableObject::getRoom, &CRenderableObject::setRoom)
+
+
   ];
   luabind::module(LUA_STATE) [
     class_< CMeshInstance, CRenderableObject>  ("CMeshInstance")

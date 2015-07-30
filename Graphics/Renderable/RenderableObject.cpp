@@ -10,6 +10,10 @@ CRenderableObject::CRenderableObject(const CXMLTreeNode &node)
     m_ParticleEmitter2(node.GetPszISOProperty("emitter2", "")),
     m_ParticleEmitter3(node.GetPszISOProperty("emitter3", "")),
     m_ParticleEmitter4(node.GetPszISOProperty("emitter4", "")),
+    m_EmitterOffset(node.GetVect3fProperty("emitter_offset", v3fZERO)),
+    m_EmitterOffset2(node.GetVect3fProperty("emitter2_offset", v3fZERO)),
+    m_EmitterOffset3(node.GetVect3fProperty("emitter3_offset", v3fZERO)),
+    m_EmitterOffset4(node.GetVect3fProperty("emitter4_offset", v3fZERO)),
     m_Room(node.GetIntProperty("room", 0)) {
 }
 

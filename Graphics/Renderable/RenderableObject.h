@@ -14,6 +14,7 @@ class CRenderableObject : public CObject3D, public CNamed {
  protected:
   bool		m_Printable;
   std::string m_ParticleEmitter, m_ParticleEmitter2, m_ParticleEmitter3, m_ParticleEmitter4;
+  Vect3f m_EmitterOffset, m_EmitterOffset2, m_EmitterOffset3, m_EmitterOffset4;
   int		m_Room;
  public:
   CRenderableObject();
@@ -31,6 +32,10 @@ class CRenderableObject : public CObject3D, public CNamed {
   GET_SET(std::string, ParticleEmitter2);
   GET_SET(std::string, ParticleEmitter3);
   GET_SET(std::string, ParticleEmitter4);
+  GET_SET(Vect3f, EmitterOffset);
+  GET_SET(Vect3f, EmitterOffset2);
+  GET_SET(Vect3f, EmitterOffset3);
+  GET_SET(Vect3f, EmitterOffset4);
   GET_SET(int, Room);
 };
 

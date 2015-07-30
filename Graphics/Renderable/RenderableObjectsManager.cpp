@@ -102,6 +102,10 @@ void CRenderableObjectsManager::Load(const std::string &FileName) {
         l_AnimatedInstanceModel->setParticleEmitter2( nodeChild.GetPszISOProperty("emitter2"));
         l_AnimatedInstanceModel->setParticleEmitter3( nodeChild.GetPszISOProperty("emitter3"));
         l_AnimatedInstanceModel->setParticleEmitter4( nodeChild.GetPszISOProperty("emitter4"));
+        l_AnimatedInstanceModel->setEmitterOffset (nodeChild.GetVect3fProperty("emitter_offset", v3fZERO));
+        l_AnimatedInstanceModel->setEmitterOffset2 (nodeChild.GetVect3fProperty("emitter2_offset", v3fZERO));
+        l_AnimatedInstanceModel->setEmitterOffset3 (nodeChild.GetVect3fProperty("emitter3_offset", v3fZERO));
+        l_AnimatedInstanceModel->setEmitterOffset4 (nodeChild.GetVect3fProperty("emitter4_offset", v3fZERO));
         AddResource(meshName, l_AnimatedInstanceModel);
       } else if (name == "switch_instance") {
         CSwitch *l_Switch  = new CSwitch(nodeChild);
@@ -178,6 +182,10 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node) {
       l_AnimatedInstanceModel->setParticleEmitter2( Node.GetPszISOProperty("emitter2", ""));
       l_AnimatedInstanceModel->setParticleEmitter3( Node.GetPszISOProperty("emitter3", ""));
       l_AnimatedInstanceModel->setParticleEmitter4( Node.GetPszISOProperty("emitter4", ""));
+      l_AnimatedInstanceModel->setEmitterOffset (Node.GetVect3fProperty("emitter_offset", v3fZERO));
+      l_AnimatedInstanceModel->setEmitterOffset2 (Node.GetVect3fProperty("emitter2_offset", v3fZERO));
+      l_AnimatedInstanceModel->setEmitterOffset3 (Node.GetVect3fProperty("emitter3_offset", v3fZERO));
+      l_AnimatedInstanceModel->setEmitterOffset4 (Node.GetVect3fProperty("emitter4_offset", v3fZERO));
       AddResource(meshName, l_AnimatedInstanceModel);
     } else if (name == "switch_instance") {
       CSwitch *l_Switch  = new CSwitch(Node);
