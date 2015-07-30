@@ -16,5 +16,5 @@
  --collectible_manager = coreInstance:getCollectibleManager()
  collectible_manager = nil
  particle_manager = coreInstance:getParticleManager()
- 
+ billboard_manager = coreInstance:get_billboard_manager()
 
