@@ -40,6 +40,7 @@ void CPuzzleManager::Load(std::string file) {
           newPuzzle->setLuaCode(l_LuaCode);
           newPuzzle->setMinActivatedSwitches(l_NumActivatedSwitches);
           newPuzzle->setSceneElement(nodeChild.GetPszISOProperty("scene_element", "", false));
+          newPuzzle->setSceneElement2(nodeChild.GetPszISOProperty("scene_element2", "", false));
           int count1 = nodeChild.GetNumChildren();
           for (int j = 0; j < count1; ++j) {
             CTrigger *l_Trigger = TRIGGM->GetResource(nodeChild.getNextChild().GetPszISOProperty("name", "", false));

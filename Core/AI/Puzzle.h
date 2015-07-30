@@ -20,6 +20,7 @@ class CPuzzle {
   }
 
   GET_SET(std::string, SceneElement)
+  GET_SET(std::string, SceneElement2)
   GET_SET(std::string, LuaCode)
   GET_SET(int, MinActivatedSwitches)
   GET_SET(int, ActivatedSwitches)
@@ -31,6 +32,7 @@ class CPuzzle {
   int m_ActivatedSwitches;
   bool m_Done;
   std::string m_SceneElement;
+  std::string m_SceneElement2;
 };
 
 #endif
