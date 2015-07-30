@@ -43,7 +43,7 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
   , m_vOndulacion2(node.GetVect3fProperty("ondulacion_vec2", v3fZERO, false))
   , m_EndAlpha(node.GetFloatProperty("end_alpha", 1.f))
   , m_sTexture(node.GetPszISOProperty("texture", "", false)) {
-  m_visible = true;
+  m_visible = node.GetBoolProperty("visible", true, false);
   m_Name = (node.GetPszISOProperty("name", "", false));
   std::string type = node.GetPszISOProperty("type", "PLANE", false);
   if (type == "ESF")
