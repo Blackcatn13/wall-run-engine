@@ -267,7 +267,7 @@ bool ReadMesh(const std::string file, void *&pos, void *&index, unsigned short *
   return false;
 }
 
-bool CPhysicCookingMesh::LoadFromXML(const std::string _FileName) {
+bool CPhysicCookingMesh::LoadFromXML(const std::string &_FileName) {
   CXMLTreeNode newFile;
   if (!newFile.LoadFile(_FileName.c_str())) {
     printf("ERROR loading the file.");

@@ -143,12 +143,12 @@ bool CPhysicsManager::Init ( void ) {
     Release();
     throw CException ( __FILE__, __LINE__, msg_error );
   }
-  m_pPhysicsSDK->getFoundationSDK().getRemoteDebugger()->connect("127.0.0.1");
+  //m_pPhysicsSDK->getFoundationSDK().getRemoteDebugger()->connect("127.0.0.1");
   /*Precompilation Directives*/
-#if defined( _DEBUG )
+#if defined _DEBUG
 #define USE_DEBUGGER
 #ifdef USE_DEBUGGER
-  //m_pPhysicsSDK->getFoundationSDK().getRemoteDebugger()->connect("127.0.0.1");
+  m_pPhysicsSDK->getFoundationSDK().getRemoteDebugger()->connect("127.0.0.1");
 #endif
 #endif
   return m_bIsOk;
