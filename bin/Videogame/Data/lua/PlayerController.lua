@@ -158,16 +158,23 @@ function on_update_player_lua(l_ElapsedTime)
 				x_axis = moving_right - moving_left;
 			end
 			local changedCamYaw = dirYaw - lastCamYaw;
+			if math.abs(changedCamYaw) > 1 then
+				coreInstance:trace("changed yaw "..tostring(changedCamYaw));
+			end
 			if y_axis == 0 and x_axis == 0 then
 				cosyaw = 0;
 				sinyaw = 0;
 				extraRotationContinue = 0;
 			else
-				if math.abs(changedCamYaw) > 1 then
-					if changedCamYaw > 0 then
-						extraRotationContinue = 1.57;--de 3d a 2d
+				if math.abs(changedCamYaw) > 1 and math.abs(changedCamYaw) < 4 then
+					if extraRotationContinue ~= 0 then
+						extraRotationContinue=0;
 					else
-						extraRotationContinue = -1.57;--de 2d a 3d
+						if changedCamYaw > 0 then
+							extraRotationContinue = 1.57;--de 3d a 2d
+						else
+							extraRotationContinue = -1.57;--de 2d a 3d
+						end
 					end
 				end
 				if player_controller.m_is3D == false then
