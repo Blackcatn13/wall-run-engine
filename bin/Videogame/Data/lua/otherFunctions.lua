@@ -177,7 +177,7 @@ function reset_game()
 	coreInstance.m_CameraController:set_active_camera("3DCam");
 	player_controller.m_isTurned = false;
 	player.attack_enabled = false
-	player.set_room(0)
+	--player.set_room(0)
 	reset_crushing_sides()
 		
 	--Player Lifes + Pixelites

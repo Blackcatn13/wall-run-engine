@@ -69,6 +69,9 @@ function Player.new()
 	function self.reset_position()
 		player_controller.m_PhysicController:set_position(self.original_position)
 		player_controller:set_yaw(self.original_yaw)
+		if player_controller.m_Room ~= 0 then
+			set_player_room("0", false)
+		end
 	end
 	
 	function self.get_player_controller()
@@ -128,6 +131,8 @@ function Player.new()
 		if self.num_lives == 0 then
 			--game over
 			self.coreInstance:trace("game over")
+			local game_over_pos = Vect3f(500, 2, 15)
+			set_screen_menu(game_over_pos, 9)
 			gui_manager:set_is_gameover(true);
 			self.game_over = true
 		else
