@@ -52,7 +52,7 @@ void RegisterAnimatedModels() {
     .def("updateSkeleton", &CAnimatedInstanceModel::UpdateSkeleton)
     .def("restartBonesPosition", &CAnimatedInstanceModel::RestartBonesOldPosition)
     .def("is_cycle_animation_active", &CAnimatedInstanceModel::IsCycleAnimationActive)
-    //.def("is_action_animation_active", &CAnimatedInstanceModel::IsActionAnimationActive)
+    .def("is_action_animation_active", &CAnimatedInstanceModel::IsActionAnimationActive)
   ];
   luabind::module(LUA_STATE) [
     class_<CAnimatedModelManager, CMapManager<CAnimatedCoreModel>>("CAnimatedModelManager")

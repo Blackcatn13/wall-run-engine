@@ -294,6 +294,9 @@ function update_poly_platform(current_poly_time, dt, platform_name)
 	
 	--local act2in = coreInstance:get_action_to_input();
 	if (act2in:do_action_from_lua("PolyPowa") == true and platform.m_Enabled) or platform.m_IsMoving == true then
+		local pikyRenderable = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky");
+		pikyRenderable:execute_action(7,0,0.3,1,false);
+		--pikyRenderable:is_action_animation_active()
 		platform:activate_poly()
 		
 		--activate_poly(platform, dt)
