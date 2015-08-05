@@ -3,6 +3,8 @@
 	<layer name="collectible" />
 	
 	<collectible-type name="pixelite" core_mesh="Pixelite001" mesh_lua_function="roll_object" trigger_function="get_pixelite" trigger_size= "0.35 0.30 0.35"/>
+	<collectible-type name="pixeliteVerd" core_mesh="Pixelite Verd001" mesh_lua_function="roll_object" trigger_function="get_pixelite" trigger_size= "0.35 0.30 0.35"/>
+	<collectible-type name="pixeliteBlau" core_mesh="Pixelite Blau001" mesh_lua_function="roll_object" trigger_function="get_pixelite" trigger_size= "0.35 0.30 0.35"/>
 	<collectible-type name="card" core_mesh="Enemy1" mesh_lua_function="roll_object" trigger_function="get_sticker"  trigger_size= "0.20 0.20 0.10" />
 	<!-- <collectible-type name ="card"  core_mesh="" mesh_lua_function ="roll_object" on_enter_function ="get_pixelite" /> -->
 	<unlockable-card mesh_name="Collectible1" img_src="./Data/GUI/GoPixelGo/ImgUnLocked.png" />
