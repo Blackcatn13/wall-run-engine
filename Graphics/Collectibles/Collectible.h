@@ -20,9 +20,10 @@ class CCollectible : public CNamed {
   std::string			    m_TriggerLuaCode;
   std::string			    m_LayerName;
   CTrigger				    *m_Trigger;
+  std::string				m_ParamTriggerFunction;
  public:
   //CCollectible(std::string coreName, std::string name, std::string layerName, std::string userDataName, std::string luaCode);
-  CCollectible(CRenderableObject *RendObj, std::string layerMame, std::string MeshLuaCode, std::string TriggerLuaCode,  Vect3f triggerSize, std::string param2, bool visible);
+  CCollectible(CRenderableObject *RendObj, std::string layerMame, std::string MeshLuaCode, std::string TriggerLuaCode,  Vect3f triggerSize,  std::string param2, bool visible);
   virtual  ~ CCollectible ();
 
 
@@ -32,6 +33,7 @@ class CCollectible : public CNamed {
   GET_SET(std::string, TriggerLuaCode)
   GET_SET(CRenderableObject *, RenderableObject)
   GET_SET(std::string, LayerName)
+  GET_SET(std::string, ParamTriggerFunction)
 
 
 };

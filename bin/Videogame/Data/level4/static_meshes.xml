@@ -101,6 +101,12 @@
 	<static_mesh name="SUPORT ANTORCHA014" filename="Data\level4\meshes\SUPORT ANTORCHA014.mesh"/>
 	<static_mesh name="PilarQuad002" filename="Data\level4\meshes\PilarQuad002.mesh"/>
 	<static_mesh name="Pixelite001" filename="Data\level4\meshes\Pixelite001.mesh"/>
+	
+	<static_mesh name="Pixelite 01" filename="Data\level4\meshes\Pixelite 01.mesh"/>
+	<static_mesh name="Pixelite 002" filename="Data\level4\meshes\Pixelite 002.mesh"/>
+	<static_mesh name="Pixelite 003" filename="Data\level4\meshes\Pixelite 003.mesh"/>
+	<static_mesh name="Pixelite 004" filename="Data\level4\meshes\Pixelite 004.mesh"/>
+	
 	<static_mesh name="SALA 4" filename="Data\level4\meshes\SALA 4.mesh"/>
 	<static_mesh name="Plataforma_Fragil" filename="Data\level4\meshes\Plataforma_Fragil.mesh"/>
 	<static_mesh name="Plataforma01" filename="Data\level4\meshes\Plataforma01.mesh"/>

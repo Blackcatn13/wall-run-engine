@@ -126,10 +126,17 @@
 	<animated_model name="MikMik001" core="mik" pos="500.109070 8.583496 9.234039" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>
 	<animated_model name="MikMik003" core="mik" pos="523.253601 8.583496 -0.450745" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>
 	<mesh_instance name="PilarQuad002" core="PilarQuad002" pos="8.388683 1.227661 -12.106166" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="Pixelite001" core="Pixelite001" pos="94.355011 1.300000 -0.490009" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="collectible"/>
-	<mesh_instance name="Pixelite002" core="Pixelite001" pos="101.344704 1.300000 -17.669697" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="collectible"/>
-	<mesh_instance name="Pixelite003" core="Pixelite001" pos="125.531387 1.300000 -21.289040" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="collectible"/>
-	<mesh_instance name="Pixelite004" core="Pixelite001" pos="136.440048 1.300000 -2.171403" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="collectible"/>
+	
+	<!--mesh_instance name="Pixelite 01" core="Pixelite 01" pos="0.000000 0.000000 0.000000" yaw="0.0" pitch="0.0" roll="0.0" scale="0.330408 0.330408 0.330408" visible="true" room="0" layer="collectible"/>
+	<mesh_instance name="Pixelite 002" core="Pixelite 002" pos="0.000000 0.000000 -0.737793" yaw="0.0" pitch="0.0" roll="0.0" scale="0.330408 0.330408 0.330408" visible="true" room="0" layer="collectible"/>
+	<mesh_instance name="Pixelite 003" core="Pixelite 003" pos="0.000000 0.000000 -1.397949" yaw="0.0" pitch="0.0" roll="0.0" scale="0.330408 0.330408 0.330408" visible="true" room="0" layer="collectible"/>
+	<mesh_instance name="Pixelite 004" core="Pixelite 004" pos="0.000000 0.000000 -2.112427" yaw="0.0" pitch="0.0" roll="0.0" scale="0.330408 0.330408 0.330408" visible="true" room="0" layer="collectible"/>
+	-->
+	
+	<mesh_instance name="Pixelite 01" core="Pixelite 01" pos="94.355011 1.300000 -0.490009" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="collectible"/>
+	<mesh_instance name="Pixelite 002" core="Pixelite 002" pos="101.344704 1.300000 -17.669697" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="collectible"/>
+	<mesh_instance name="Pixelite 003" core="Pixelite 003" pos="125.531387 1.300000 -21.289040" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="collectible"/>
+	<mesh_instance name="Pixelite 004" core="Pixelite 004" pos="136.440048 1.300000 -2.171403" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="collectible"/>
 	<mesh_instance name="Pixelite005" core="Pixelite001" pos="150.013062 1.300000 11.017877" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="collectible"/>
 	<mesh_instance name="Pixelite006" core="Pixelite001" pos="162.107498 1.300000 11.218426" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="collectible"/>
 	<mesh_instance name="Pixelite007" core="Pixelite001" pos="252.824509 3.000000 10.868675" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="collectible"/>

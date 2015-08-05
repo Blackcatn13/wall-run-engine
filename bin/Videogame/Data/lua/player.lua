@@ -48,6 +48,7 @@ function Player.new()
 	end
 	function self.add_pixelites(inc_pixelites)
 		self.pixelites = self.pixelites + inc_pixelites
+		self.coreInstance:trace("Pixelite value: "..tostring(inc_pixelites))
 		self.coreInstance:trace("Num Pixelites: "..tostring(self.pixelites))
 	end
 	

@@ -12,7 +12,7 @@
 
 
 
-CCollectible::CCollectible(CRenderableObject *RendObj, std::string layerMame, std::string MeshLuaCode, std::string TriggerLuaCode, Vect3f triggerSize, std::string param2, bool visible):
+CCollectible::CCollectible(CRenderableObject *RendObj, std::string layerMame, std::string MeshLuaCode, std::string TriggerLuaCode, Vect3f triggerSize,  std::string param2, bool visible):
   m_RenderableObject(RendObj),
   m_LuaCode(MeshLuaCode),
 // m_TriggerLuaCode(TriggerLuaCode),
