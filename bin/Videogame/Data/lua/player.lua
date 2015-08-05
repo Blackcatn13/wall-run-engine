@@ -39,6 +39,7 @@ function Player.new()
 	self.crush_right = false
 	self.can_finish_atack = true
 	self.on_air = false
+	self.is_activating_poly = false
 	
 	------	 PLAYER FUNCTIONS -----
 		
@@ -131,7 +132,7 @@ function Player.new()
 		if self.num_lives == 0 then
 			--game over
 			self.coreInstance:trace("game over")
-			local game_over_pos = Vect3f(500, 2, 15)
+			local game_over_pos = Vect3f(925, 0, -1.5)
 			set_screen_menu(game_over_pos, 9)
 			gui_manager:set_is_gameover(true);
 			self.game_over = true

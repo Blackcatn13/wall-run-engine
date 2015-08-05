@@ -93,10 +93,10 @@
   
   <Image name="GameOverBackground" posx="0" posy="0" height="100" width="100" visible="false" active="true"
          default="background" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
-    <texture name="background" name_texture="./Data/GUI/GoPixelGo/GameOverBackground.png"/>
+    <texture name="background" name_texture="./Data/GUI/GoPixelGo/GameOverBackgroundTrans.png"/>
   </Image>
   
-  <Image name="GameOver" posx="35" posy="30" height="35" width="25" visible="false" active="true"
+  <Image name="GameOver" posx="35" posy="5" height="25" width="15" visible="false" active="true"
          default="Gameover" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
     <texture name="Gameover" name_texture="./Data/GUI/GoPixelGo/GameOver.png"/>
   </Image>

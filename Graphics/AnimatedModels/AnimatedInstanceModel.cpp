@@ -259,7 +259,7 @@ bool CAnimatedInstanceModel::IsCycleAnimationActive() const {
 
 bool CAnimatedInstanceModel::IsActionAnimationActive() const {
   std::list< CalAnimationAction *> anim = m_CalModel->getMixer()->getAnimationActionList();
-  if (anim.size() > 0)
+  if (anim.size() > 0 && anim.front()->getType() == CalAnimation::TYPE_ACTION)
     return (anim.front()->getState() != CalAnimation::STATE_STOPPED);
   return false;
 }

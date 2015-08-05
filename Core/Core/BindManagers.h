@@ -325,6 +325,7 @@ void RegisterManagers() {
     .def("get_screen_width", &CGUIManager::GetScreenWidth)
     .def("get_screen_height", &CGUIManager::GetScreenHeight)
     .def("set_size_percent", &CGUIManager::SetGUIElementSizePercent)
+    .def("set_visible_gui_element", &CGUIManager::SetVisibleGuiElement)
     .property("m_sCurrentWindows", &CGUIManager::GetCurrentWindow)
   ];
   luabind::module(LUA_STATE) [

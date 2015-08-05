@@ -336,4 +336,7 @@
 	<mesh_instance name="Object002" core="Object002" pos="557.355652 11.793659 -280.509796" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
 	<mesh_instance name="Object020" core="Object020" pos="580.863098 20.311216 -274.359650" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
 	<mesh_instance name="POLY. PLAT. HORTZ003" core="POLY. PLAT. HORTZ003" pos="557.355652 12.484023 -260.550873" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+
+	<mesh_instance name="SueloGameOver" core="SueloGameOver" pos="925.235413 0.000000 -1.597900" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" room="9" layer="solid"/>
+	<mesh_instance name="ParedGameOver" core="ParedGameOver" pos="926.038208 49.771095 -44.694866" yaw="0.0" pitch="1.59575" roll="0.0" scale="1.0 1.0 1.0" visible="false"  room="9" layer="solid"/>
 </renderable_objects>

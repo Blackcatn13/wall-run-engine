@@ -55,7 +55,7 @@ function on_update_scripted_controller(l_ElapsedTime)
 			camObject:set_position(camObject:get_position() + nor * cam_Controller.m_Speed *l_ElapsedTime)
 		end	
 	end
-	if type_camera == CCamera.TC_THPS then
+	if type_camera == CCamera.TC_THPS and not gui_manager:get_is_displayed_console() then
 		if act2in:do_action_from_lua("yaw", deltaX) then
 			camObject:set_yaw(camObject:get_yaw() + deltaX * l_ElapsedTime);
 		end

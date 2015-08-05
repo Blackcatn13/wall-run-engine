@@ -267,4 +267,7 @@
 	<static_mesh name="Object0010" filename="Data\level4\meshes\Object0010.mesh"/>
 	<static_mesh name="Object002" filename="Data\level4\meshes\Object002.mesh"/>
 	<static_mesh name="Object020" filename="Data\level4\meshes\Object020.mesh"/>
+	
+	<static_mesh name="SueloGameOver" filename="Data\level4\meshes\SueloGameOver.mesh"/>
+	<static_mesh name="ParedGameOver" filename="Data\level4\meshes\ParedGameOver.mesh"/>
 </static_meshes>

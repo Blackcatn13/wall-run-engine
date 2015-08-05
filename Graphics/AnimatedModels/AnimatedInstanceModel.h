@@ -52,6 +52,7 @@ class CAnimatedInstanceModel : public CRenderableObject {
   Vect3f GetAnimationBonePosition();
   Vect3f GetBonesMovement();
   void RestartBonesOldPosition();
+
 };
 
 #endif

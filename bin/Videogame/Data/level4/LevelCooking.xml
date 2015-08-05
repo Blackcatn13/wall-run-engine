@@ -79,4 +79,7 @@
 	<Physx_mesh name="Object0010" filename="Data\level4\meshes\Object0010.phsx"/>
 	<Physx_mesh name="Object002" filename="Data\level4\meshes\Object002.phsx"/>
 	<Physx_mesh name="Object020" filename="Data\level4\meshes\Object020.phsx"/>
+	
+	<Physx_mesh name="SueloGameOver" filename="Data\level4\meshes\SueloGameOver.phsx"/>
+	<Physx_mesh name="ParedGameOver" filename="Data\level4\meshes\ParedGameOver.phsx"/>
 </Physx_meshes>
