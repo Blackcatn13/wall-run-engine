@@ -295,7 +295,15 @@ function update_poly_platform(current_poly_time, dt, platform_name)
 	--local act2in = coreInstance:get_action_to_input();
 	if (act2in:do_action_from_lua("PolyPowa") == true and platform.m_Enabled) or platform.m_IsMoving == true then
 		local pikyRenderable = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky");
-		pikyRenderable:execute_action(7,0,0.3,1,false);
+		if pikyRenderable:is_action_animation_active() == false and player.is_activating_poly == false then
+			--[[if player_controller.m_isJumping then
+				pikyRenderable:remove_action(2)
+				player_controller.m_isJumping = false
+			end--]]
+			pikyRenderable:execute_action(7,0,0.3,1,false);
+			player.is_activating_poly = true
+		end
+		
 		--pikyRenderable:is_action_animation_active()
 		platform:activate_poly()
 		
@@ -306,6 +314,7 @@ function update_poly_platform(current_poly_time, dt, platform_name)
 	-- If poly is activated
 	elseif current_poly_time > platform.m_TimeOut then
 		platform:deactivate_poly()
+		player.is_activating_poly = false
 		--deactivate_poly(platform, dt)
 	else
 		platform:apply_physics_to_player(platform.m_Direction, 0.0)
