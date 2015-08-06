@@ -11,7 +11,7 @@ end
 function get_distance_to_floor(_pos)
 	local info = SCollisionInfo();
 	local _dirRay = Vect3f(0,-1,0);
-	local auxpos = Vect3f(_pos.x,_pos.y-0.6,_pos.z);
+	local auxpos = Vect3f(_pos.x,_pos.y-0.9,_pos.z);
 	coreInstance:get_phisics_manager():raycast_closest_actor(auxpos, _dirRay, 1, info, 1000);
 	local floor_point = info.m_CollisionPoint;
 	local distance = get_distance_between_points(floor_point,_pos);

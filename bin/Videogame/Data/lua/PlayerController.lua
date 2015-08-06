@@ -2,6 +2,7 @@ local is_init=true;
 local topPosition = -1000;
 local inLoop = false;
 local _land = false;
+local _fallingAnimation = false;
 local _fallPosition = Vect3f(-10000, -10000, -10000);
 local timer = 0.0
 local player_moving = false
@@ -244,14 +245,36 @@ function on_update_player_lua(l_ElapsedTime)
 		--///////////////////////////////////////////////////////////
 		mov.y = -player_controller.m_Gravity * l_ElapsedTime * player_controller.m_isOnPlatform;
 		
+		--local dist_to_flooraux = get_distance_to_floor(player_controller:get_position());
+		
 		--///////////////////////////////////////////////////////////
 		-- Cuando el Player está saltando, su velocidad dependerá del tipo de salto realizado. 
 		--///////////////////////////////////////////////////////////
+		local dist_to_floor = get_distance_to_floor(player_controller:get_position());
+		if dist_to_floor > 3 and _land == false and player_controller.m_isJumping == false then
+			_land = true;
+			_fallingAnimation = false;		
+			playerRenderable:clear_cycle(0,0.1);
+			playerRenderable:clear_cycle(1,0.1);
+			playerRenderable:blend_cycle(3,1,0.1);
+		end
 		if _land then
+			if _fallingAnimation == false then
+				if dist_to_floor < 17 then
+						playerRenderable:clear_cycle(3,0.2);
+						playerRenderable:updateSkeleton(l_ElapsedTime);
+						playerRenderable:blend_cycle(4,1,0.1);
+						_fallingAnimation = true;
+				end
+			end
 			if player_controller.m_isGrounded then
 				_land = false;
 				player.on_air = false;
-				playerRenderable:clear_cycle(4,0);
+				if _fallingAnimation == false then
+					playerRenderable:clear_cycle(3,0.2);
+				else
+					playerRenderable:clear_cycle(4,0.2);
+				end
 			end
 		end
 		if (player_controller.m_isJumping == true) or (player_controller.m_isFalling) then
@@ -268,16 +291,11 @@ function on_update_player_lua(l_ElapsedTime)
 				jumpTime = 0;
 			end
 			if player_controller.m_JumpingTime > AirTime then
-				local dist_to_floor = get_distance_to_floor(player_controller:get_position());
 				
-				if dist_to_floor < 3 then
-					player_controller.m_isJumping = false;
-					inLoop = false;
-					_land = true;
-					playerRenderable:clear_cycle(3,0.5);
-					playerRenderable:updateSkeleton(l_ElapsedTime);
-					playerRenderable:blend_cycle(4,1,0.3);
-				end
+				inLoop = false;
+				_land = true;
+				player_controller.m_isJumping = false;
+				
 			else
 				if player_controller.m_isFalling then
 					local positionOld = playerRenderable:get_position();
@@ -347,6 +365,7 @@ function on_update_player_lua(l_ElapsedTime)
 			playerRenderable:updateSkeleton(l_ElapsedTime);
 			player_controller.m_isJumping = true;
 			player.on_air = true;
+			_fallingAnimation = false;
 		end
 		
 		--///////////////////////////////////////////////////////////
