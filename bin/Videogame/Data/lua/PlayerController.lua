@@ -251,7 +251,7 @@ function on_update_player_lua(l_ElapsedTime)
 		-- Cuando el Player está saltando, su velocidad dependerá del tipo de salto realizado. 
 		--///////////////////////////////////////////////////////////
 		local dist_to_floor = get_distance_to_floor(player_controller:get_position());
-		if dist_to_floor > 3 and _land == false and player_controller.m_isJumping == false then
+		if dist_to_floor > 3 and _land == false and player_controller.m_isJumping == false and player_controller.m_isDoubleJumping == false then
 			_land = true;
 			_fallingAnimation = false;		
 			playerRenderable:clear_cycle(0,0.1);
@@ -314,6 +314,35 @@ function on_update_player_lua(l_ElapsedTime)
 				player_controller.m_JumpingTime = player_controller.m_JumpingTime + l_ElapsedTime;
 			end
 		end
+		if player_controller.m_executeDoubleJump == true then
+			player_controller.m_executeDoubleJump = false;
+			playerRenderable:clear_cycle(0,0);
+			playerRenderable:clear_cycle(1,0);
+			playerRenderable:clear_cycle(3,0);
+			playerRenderable:clear_cycle(4,0);
+			playerRenderable:execute_action(8,0.1,0,1,true);
+			player_controller.m_isDoubleJumping = true;
+			player.on_air = true;
+			_fallingAnimation = false;
+		end
+		if player_controller.m_isDoubleJumping then
+			mov.y = playerRenderable:getBoneMovement().y;
+			if (not playerRenderable:is_cycle_animation_active()) then
+				player_controller.m_isDoubleJumping = false;
+				_land = true;
+				local positionOld = playerRenderable:get_position();
+				local auxPosition = playerRenderable:getAnimationBonePosition().y; 
+				local newPosition = Vect3f(positionOld.x, auxPosition, positionOld.z);
+				playerRenderable:set_position(newPosition);
+				playerRenderable:blend_cycle(3,1,0.5);
+				playerRenderable:updateSkeleton(l_ElapsedTime);
+				playerRenderable:remove_action(8);
+				playerRenderable:clear_cycle(0,0);
+				playerRenderable:clear_cycle(1,0);
+				playerRenderable:updateSkeleton(l_ElapsedTime);
+			end
+		end
+		
 		if player_controller.m_isAttack == false then
 			contador = contador + l_ElapsedTime;
 		end
@@ -366,6 +395,7 @@ function on_update_player_lua(l_ElapsedTime)
 			player_controller.m_isJumping = true;
 			player.on_air = true;
 			_fallingAnimation = false;
+			--player_controller.m_executeDoubleJump = true;
 		end
 		
 		--///////////////////////////////////////////////////////////
@@ -395,7 +425,7 @@ function on_update_player_lua(l_ElapsedTime)
 			end
 		end
 		
-		if player_controller.m_isJumping then
+		if player_controller.m_isJumping or player_controller.m_isDoubleJumping then
 			player_controller:move(mov, l_ElapsedTime);
 		else
 			player_controller:is_grounded(mov,l_ElapsedTime);
@@ -421,8 +451,8 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		
 		player_controller:set_position(player_controller.m_PhysicController:get_position());
-		move_character_controller_mesh(player_controller, player_controller:get_position(), player_controller.m_isJumping);
-		if not player_controller.m_isJumping and not _land then
+		move_character_controller_mesh(player_controller, player_controller:get_position(), player_controller.m_isJumping, player_controller.m_isDoubleJumping);
+		if not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land then
 			if mov.x == 0 and mov.z == 0 then
 				playerRenderable:clear_cycle(1,0);
 				playerRenderable:blend_cycle(0,1,0);
@@ -456,11 +486,11 @@ function on_update_player_lua(l_ElapsedTime)
 	return 0;
 end
 
-function move_character_controller_mesh(_player, _position, _jumping)
+function move_character_controller_mesh(_player, _position, _jumping, _doubleJumping)
 	local mesh = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky")
 	mesh:set_yaw(_player:get_yaw() + math.pi)
 	local pos;
-	if _jumping and not inLoop then
+	if (_jumping and not inLoop) or _doubleJumping then
 		pos = mesh:getAnimationBonePosition().y;
 		local oldPosition = mesh:get_position();
 		local mesh_position = Vect3f(_position.x, oldPosition.y, _position.z)
