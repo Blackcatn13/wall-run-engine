@@ -15,7 +15,6 @@ function get_distance_to_floor(_pos)
 	coreInstance:get_phisics_manager():raycast_closest_actor(auxpos, _dirRay, 1, info, 1000);
 	local floor_point = info.m_CollisionPoint;
 	local distance = get_distance_between_points(floor_point,_pos);
-	coreInstance:trace("Distance to floor "..tostring(distance));
 	return distance;
 end
 
