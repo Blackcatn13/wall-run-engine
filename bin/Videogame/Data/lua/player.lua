@@ -40,6 +40,7 @@ function Player.new()
 	self.can_finish_atack = true
 	self.on_air = false
 	self.is_activating_poly = false
+	self.activating_triggers = true
 	
 	------	 PLAYER FUNCTIONS -----
 		
@@ -113,6 +114,7 @@ function Player.new()
 	end
 
 	function self.player_die()
+		self.activating_triggers = false
 		local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 		self.coreInstance:trace("player dies")
 		self.num_lives = self.num_lives - 1
@@ -162,7 +164,7 @@ function Player.new()
 			reset_wall_trap(0, "WALL_TRAP1_RIGHT")
 			reset_wall_trap(0, "WALL_TRAP1_LEFT")
 		end
-
+		--self.activating_triggers = true
 	end
 	
 	function self.check_visited_checkpoints(trigger_name)

@@ -140,6 +140,9 @@ function on_update_player_lua(l_ElapsedTime)
 				auxAxisXMoved = act2in:do_action_from_lua("MoveRigth", x_axis);
 				y_axis = inputm:get_game_pad_left_thumb_y_deflection(1);
 				x_axis = inputm:get_game_pad_left_thumb_x_deflection(1);
+				if (auxAxisXMoved or auxAxisYMoved) and player.activating_triggers == false then
+					player.activating_triggers = true
+				end
 			else
 				local moving_forward = 0;
 				local moving_back = 0;
@@ -160,6 +163,9 @@ function on_update_player_lua(l_ElapsedTime)
 				end
 				if auxLeft then
 					moving_left = 1;
+				end
+				if (auxForward or auxBackward or auxRight or auxLeft ) and player.activating_triggers == false then
+					player.activating_triggers = true
 				end
 				y_axis = moving_forward - moving_back;
 				x_axis = moving_right - moving_left;
