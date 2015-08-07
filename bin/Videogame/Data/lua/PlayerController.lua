@@ -10,6 +10,7 @@ local move_3D = true
 local lastCamYaw = -10;
 local extraRotationContinue = 0;
 local lastJoystickYaw = -10;
+local _isQuiet = false;
 
 
 --////////////////////////////////////////////////////////
@@ -29,6 +30,7 @@ local m_damageFeedBackSpeedStart = 20;
 local m_damageFeedBackSpeed = 20;
 local m_damageFeedBackSpeedDismin = 40;
 
+
 --////////////////////////////////////////////////////////
 -- PARAMETERS
 --////////////////////////////////////////////////////////
@@ -42,6 +44,10 @@ player_controller.m_AttackForce = 0.7;					--Impulse force for the attack.
 player_controller.m_PhysicController:set_step(0.5); 	--Altura que puede superar (escalones).
 local AirTime = 0.7;									-- Time into the air, playing air loop
 local m_damageTime = 0.3;
+local acceleration = 0;
+local accelerationTime = 1;
+local deccelerationTime = 0.5;
+local inertia = Vect3f(0,0,0);
 
 local m_ReduceCollider = 0.75;
 --////////////////////////////////////////////////////////
@@ -166,7 +172,17 @@ function on_update_player_lua(l_ElapsedTime)
 				cosyaw = 0;
 				sinyaw = 0;
 				extraRotationContinue = 0;
+				if acceleration > 0 then
+					local auxValue = 1 / deccelerationTime;
+					acceleration = acceleration - (auxValue * l_ElapsedTime);
+				else
+					if acceleration < 0 then
+						acceleration = 0;
+					end
+				end
+				_isQuiet = true;
 			else
+				_isQuiet = false;
 				if math.abs(changedCamYaw) > 1 and math.abs(changedCamYaw) < 4 then
 					if extraRotationContinue ~= 0 then
 						extraRotationContinue=0;
@@ -217,6 +233,15 @@ function on_update_player_lua(l_ElapsedTime)
 				end
 				player_controller.m_Direction3D = mov;
 				mov = mov * l_ElapsedTime * player_controller.m_Speed;
+				inertia = Vect3f(mov.x,0,mov.z);
+				if acceleration < 1 then
+					local auxValue = 1 / accelerationTime;
+					acceleration = acceleration + auxValue * l_ElapsedTime;
+				else
+					if acceleration > 1 then
+						acceleration = 1;
+					end
+				end
 				if player_controller.m_isJumping == true then
 					mov = mov * 0.75;
 				end
@@ -424,6 +449,20 @@ function on_update_player_lua(l_ElapsedTime)
 				player_controller.m_isAttack = false
 			end
 		end
+		
+		--ACELERACION/INERCIA
+		if not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land then
+			if _isQuiet == false then
+				local xValue = mov.x * acceleration;
+				local zValue = mov.z * acceleration;
+				mov = Vect3f(xValue, mov.y, zValue);
+			else
+				if acceleration > 0 then
+					mov = inertia * acceleration;
+				end
+			end
+		end
+		
 		
 		if player_controller.m_isJumping or player_controller.m_isDoubleJumping then
 			player_controller:move(mov, l_ElapsedTime);
