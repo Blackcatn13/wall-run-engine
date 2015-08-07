@@ -150,6 +150,7 @@ void RegisterPhysX() {
     // .property("m_phx_Controller", &CPhysicController::GetPhXController)
     // .def("get_phx_controller_desc", &CPhysicController::GetPhXControllerDesc)
     .def("use_gravity", &CPhysicController::UseGravity)
+    .def("set_radius", &CPhysicController::SetRadius)
     //---PhsX Info---
     .property("m_Type", &CPhysicController::GetType, &CPhysicController::SetType)
   ];
