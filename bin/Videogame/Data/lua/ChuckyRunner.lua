@@ -5,6 +5,7 @@ local distance = 4;
 local chucky = enemy_manager:get_enemy("Chucky");
 chucky.m_PhysicUserData.m_myCollisionGroup = 18;
 local jumpStart = false;
+local chuky_catching_distance = 10
 
 -- Chucky Variables --
 local Chucky_super_speed_dist = 10
@@ -45,7 +46,7 @@ function chucky_runner_exit_running(name)
 	chucky.m_RenderableObject:clear_cycle(1,0.25);
 end
 
-function chucky_runner_update_running(ElapsedTime, doComprobation, name)
+function move_chucky_running(ElapsedTime)
 	local playerPos = playerController:get_position();
 	local chuckyPos = chucky:get_position();
 	local mov = playerPos - chucky:get_position();
@@ -55,9 +56,14 @@ function chucky_runner_update_running(ElapsedTime, doComprobation, name)
 	local pos = chucky:get_position();
 	chucky:set_position(chucky.m_PhysicController:get_position());
 	chucky.m_RenderableObject:set_position(Vect3f(pos.x, pos.y - 2, pos.z));
+	return math.sqrt( math.pow((playerPos.x - chuckyPos.x),2) + math.pow((playerPos.y - chuckyPos.y),2) + math.pow((playerPos.z - chuckyPos.z),2) );
+end
+
+function chucky_runner_update_running(ElapsedTime, doComprobation, name)
+	 local distance =  move_chucky_running(ElapsedTime)
 	
 	--sqrt(pow((x - x2), 2) + pow((y - y2), 2) + pow((z - z2), 2));
-	local distance = math.sqrt( math.pow((playerPos.x - chuckyPos.x),2) + math.pow((playerPos.y - chuckyPos.y),2) + math.pow((playerPos.z - chuckyPos.z),2) );
+	
 	--local distance = math.sqrt( (playerPos.x - chuckyPos.x)*(playerPos.x - chuckyPos.x) + (playerPos.y - chuckyPos.y)*(playerPos.y - chuckyPos.y) )
 	--coreInstance:trace("Pos------------------ "..tostring(distance))
 	
@@ -68,7 +74,7 @@ function chucky_runner_update_running(ElapsedTime, doComprobation, name)
 	end
 	
 	--Chucky fucks Piky.
-	if distance < 10.0 then
+	if distance < chuky_catching_distance then
 		chucky:m_FSM():newState("Atrapando")
 	end
 	
@@ -125,25 +131,25 @@ end
 function chucky_runner_update_catching(ElapsedTime, doComprobation, name)
 
 --chucky.m_RenderableObject:clear_cycle(1,0.25);
-	local playerPos = playerController:get_position();
-	local chuckyPos = chucky:get_position();
-	local mov = playerPos - chucky:get_position();
-	mov.y = 0;
-	mov:normalize(1);
-	chucky.m_PhysicController:move(mov * Chucky_current_speed * ElapsedTime, ElapsedTime);
-	local pos = chucky:get_position();
-	chucky:set_position(chucky.m_PhysicController:get_position());
-	chucky.m_RenderableObject:set_position(Vect3f(pos.x, pos.y - 2, pos.z));
-	local distance = math.sqrt( math.pow((playerPos.x - chuckyPos.x),2) + math.pow((playerPos.y - chuckyPos.y),2) + math.pow((playerPos.z - chuckyPos.z),2) );
+	local distance = move_chucky_running(ElapsedTime)
+	--local distance = math.sqrt( math.pow((playerPos.x - chuckyPos.x),2) + math.pow((playerPos.y - chuckyPos.y),2) + math.pow((playerPos.z - chuckyPos.z),2) );
+		
+	if not chucky.m_RenderableObject:is_action_animation_active() then
+		if distance < chuky_catching_distance then
+			chucky.m_RenderableObject:remove_action(3)
+			chucky.m_RenderableObject:execute_action(3,0.1,0,1,false);
+		else
+			chucky:m_FSM():newState("Corriendo");
+			coreInstance:trace("Paro de pillar y corro")
+		end
+	end
+	
 	if distance < 2.0 then
 		player:player_die()
 		coreInstance:trace("PIKY IS DEAD, AND YOU'RE THE NEXT")
 		chucky:m_FSM():newState("Parado");
 	end	
-	
-	if not chucky.m_RenderableObject:is_action_animation_active() then
-		chucky:m_FSM():newState("Corriendo");
-	end
+
 end
 
 -- Chucky Falling down --
