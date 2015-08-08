@@ -451,12 +451,14 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		
 		--ACELERACION/INERCIA
-		if not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land then
+		local stopping = false;
+		if not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land and player_controller.m_isAttack == false then
 			if _isQuiet == false then
 				local xValue = mov.x * acceleration;
 				local zValue = mov.z * acceleration;
 				mov = Vect3f(xValue, mov.y, zValue);
 			else
+				stopping = true;
 				if acceleration > 0 then
 					mov = inertia * acceleration;
 				end
@@ -492,9 +494,9 @@ function on_update_player_lua(l_ElapsedTime)
 		player_controller:set_position(player_controller.m_PhysicController:get_position());
 		move_character_controller_mesh(player_controller, player_controller:get_position(), player_controller.m_isJumping, player_controller.m_isDoubleJumping);
 		if not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land then
-			if mov.x == 0 and mov.z == 0 then
-				playerRenderable:clear_cycle(1,0);
-				playerRenderable:blend_cycle(0,1,0);
+			if mov.x == 0 and mov.z == 0 or stopping then
+				playerRenderable:clear_cycle(1,deccelerationTime);
+				playerRenderable:blend_cycle(0,1,deccelerationTime+0.2);
 			else
 				if player.is_hit then
 					--AQUI VA LA ANIMACION DE RECIBIR DAMAGE
@@ -516,8 +518,9 @@ function on_update_player_lua(l_ElapsedTime)
 						end
 					end
 				else
-					playerRenderable:clear_cycle(0,0);
-					playerRenderable:blend_cycle(1,1,0);
+					--playerRenderable:clear_cycle(0,0);
+					playerRenderable:clear_cycle(0,accelerationTime);
+					playerRenderable:blend_cycle(1,1,accelerationTime);
 				end
 			end
 		end
