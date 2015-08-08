@@ -369,5 +369,5 @@
 	<mesh_instance name="Pixelite Verd022" core="Pixelite Verd001" pos="368.929047 1.300000 11.199324" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="collectible"/>
 	<mesh_instance name="Pixelite Blau002" core="Pixelite Blau001" pos="290.418335 1.300000 11.141947" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="collectible"/>
 	<mesh_instance name="Pixelite Blau003" core="Pixelite Blau001" pos="325.236938 1.300000 11.141947" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="collectible"/>
-	<mesh_instance name="Pixelite Verd023" core="Pixelite Verd001" pos="252.990524 2.927197 11.199324" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="collectible"/>
+	<mesh_instance name="Pixelite Verd023" core="Pixelite Verd001" pos="252.990524 3.927197 11.199324" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="collectible"/>
 </renderable_objects>
