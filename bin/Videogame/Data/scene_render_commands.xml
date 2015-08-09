@@ -30,7 +30,7 @@
 			<dynamic_texture stage_id="2" name="NormalMapTexture" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
 			<dynamic_texture stage_id="3" name="DepthMapTexture" texture_width_as_frame_buffer="true" format_type="R32F"/>
 		</set_render_target>
-		<clear_scene color="true" depth="true" stencil="false" use_back="true"/> 
+		<clear_scene color="true" depth="false" stencil="false" use_back="true"/> 
 		<set_matrices/>
 		<enable_z_write/>
 		<enable_z_test/>		
@@ -40,11 +40,14 @@
 		<render_scene layer="enabled_poly" active="true" />
 		
 		<capture_frame_buffer>
-			<dynamic_texture stage_id="0" name="EnabledPoly" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
+			<dynamic_texture stage_id="0" name="EnabledPoly" texture_width_as_frame_buffer="true" format_type="A8R8G8B8" create_depth_stencil_buffer="false"/>
 		</capture_frame_buffer>
 		
+		<clear_scene color="false" depth="true" stencil="false" use_back="false"/>
 		
-		<render_scene layer="enabled_poly" active="true" />
+		<enable_z_write/>
+		<enable_z_test/>		
+	
 		<render_scene layer="enemies" active="true" />
 		<render_scene layer="collectible" active="true" />
 		<!--<render_scene layer="switches" active="true" />-->
@@ -54,7 +57,6 @@
 		<render_scene layer="breakable" active="true"/>
 		<render_scene layer="solid" active="true"/>
 		<render_scene layer="player" active="true"/>
-		<!--<render_scene layer="enabled_poly" active="true" />-->
 		<!--<render_scene layer="invisible" active="true" />-->
 		<unset_render_target render_target="deferred_multiple_render_target" stencil_buffer="0"/>
 		<disable_z_write/>
@@ -78,16 +80,18 @@
 		<!--<set_texture_in_stage texture_name="./Data/g_Textures/celshade.tga" stage_id="5"/>-->
 		<!--<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>-->
 		
-		<enable_z_write/>
+		<!-- OLD BASIC POLY EFFECT ////////////////////////////////////////////////////////////////////////////////// -->
+		<!--<enable_z_write/>
 		<enable_z_test />
 		<set_pool_renderable_objects_technique pool="poly_pool"/>
-		<render_scene layer="enabled_poly" active="true" />
-		<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
+		<render_scene layer="enabled_poly" active="true" />-->
 		<disable_z_write/>
-		<disable_z_test />	
-		
+		<disable_z_test />
+		<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
 		
 		<!--<set_pool_renderable_objects_technique pool="deferred_lights_pool"/>-->
+		<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
+		
 		<set_pool_renderable_objects_technique pool="deferred_lights_pool"/>
 		
 		<render_deferred_shading>
@@ -100,23 +104,9 @@
 		<disable_alpha_blend />
 		<disable_z_write/>
 		<disable_z_test />		
-		<!--<clear_scene color="true" depth="false" stencil="false"/> -->
-		<!--<enable_z_write/>
+		
+		
 		<enable_z_test />
-		<set_render_target name="deferred_poly_render_target">
-			<dynamic_texture stage_id="0" name="GlowTexturePoly" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
-		</set_render_target>
-		<unset_render_target render_target="deferred_poly_render_target"/>
-		<set_pool_renderable_objects_technique pool="poly_pool"/>
-		<render_scene layer="enabled_poly" active="true" />
-		<render_draw_quad> 
-			<texture stage_id="0" file="GlowTexturePoly"/>
-		</render_draw_quad> 
-		<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
-		<disable_z_write/>
-		<disable_z_test />-->
-			<enable_z_test />
-		<!--<disable_z_test />-->
 		<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>
 		<set_pool_renderable_objects_technique pool="fire_billboard_pool"/>
 		<billboard_render/>
@@ -124,21 +114,23 @@
 		<particle_render/>
 		<disable_alpha_blend />
 		
-		<set_pool_renderable_objects_technique pool="apply_gaussianblur"/>
+		<!-- GLOW POLY EFFECT ////////////////////////////////////////////////////////////////////////////////// -->
+		<set_pool_renderable_objects_technique pool="glow_poly_pool"/>
 		<gaussian_blur gaussian_loops="4" effect_technique_copy="DrawQuadSolidTechnique">
 			<texture stage_id="0" file="EnabledPoly"/>
 			<dynamic_texture stage_id="1" name="FinalPolyTexture" width="512" height="512" format_type="A8R8G8B8"/>
 			<dynamic_texture stage_id="2" name="TempPolyTexture" width="512" height="512" format_type="A8R8G8B8"/>
 		</gaussian_blur>
-		<enable_z_write/>
-		<enable_z_test />
+		<!--<enable_z_test/>-->
+		<disable_z_write/>
 		<set_pool_renderable_objects_technique pool="draw_textured_quad_pool"/>
 		<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
+		<render_scene layer="enabled_poly" active="true" />
 		<render_draw_quad technique_name="DrawQuadSolidTechnique">
 			<texture stage_id="0" file="FinalPolyTexture"/>
 		</render_draw_quad>
-		<disable_z_write/>
 		<disable_z_test />
+		<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
 		
 		<enable_z_write/>
 		<enable_z_test />
@@ -155,7 +147,7 @@
 		
 		<!--<render_scene layer="poly" active="true" />
 		<enable_alpha_blend blendOP="add" blendSrc="one" blendDest="one"/>
-
+		
 		
 		<disable_alpha_blend /> -->
 		

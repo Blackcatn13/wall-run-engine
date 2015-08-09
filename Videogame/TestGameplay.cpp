@@ -360,7 +360,7 @@ Vect2i CTestGameplay::RenderDebugInfo(bool render/*, float dt*/) {
 }
 
 void CTestGameplay::Update(float dt) {
-  if (!GUIM->GetIsPaused()) {
+  if (!GUIM->GetIsPaused() && !GUIM->GetIsDisplayedConsole()) {
     // m_Granade->Update(dt);
     //CInputManager* im = INPUTM;
     //float deltaX =  im->GetMouseDelta().x;
@@ -477,9 +477,7 @@ void CTestGameplay::Update(float dt) {
       //	SCRIPTM->RunFile(SCRIPTM->GetScriptsMap().find("test2")->second);
       //SCRIPTM->RunFile(".\\Data\\scripted_controller.lua");
     }
-    if (ACT2IN->DoAction("Console")) {
-      GUIM->SetConsole();
-    }
+
     skip += dt;
     //tTerra1_yaw += dt * 30 * 0.005;
     //tTerra2_yaw += dt * 80 * 0.005;
@@ -491,6 +489,11 @@ void CTestGameplay::Update(float dt) {
       GUIM->ReloadGuiFiles();
       // CAMCONTM->Pause();
       // CCORE->GetCinematicController()->GetResource("DestroyW")->Pause();
+    }
+  }
+  if (!GUIM->GetIsPaused() || !GUIM->GetIsDisplayedConsole()) {
+    if (ACT2IN->DoAction("Console")) {
+      GUIM->SetConsole();
     }
   } else {
     if (GUIM->GetIsDisplayedConsole()) {

@@ -98,6 +98,10 @@
 		 <default_technique vertex_type="31" technique="PolyTechnique"/>
 	</pool_renderable_object_technique>
 	
+	<pool_renderable_object_technique name="glow_poly_pool">
+		 <default_technique vertex_type="2048" technique="GlowPolyTechnique"/>
+	</pool_renderable_object_technique>
+	
 	<pool_renderable_object_technique name="particles_pool">
         <default_technique vertex_type="8192" technique="ParticlesTechnique"/>
     </pool_renderable_object_technique>

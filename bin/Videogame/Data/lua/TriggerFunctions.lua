@@ -252,21 +252,25 @@ function check_enemies_killed(num1, door, door2)
 end
 
 function ChuckyApear()
-	coreInstance:trace("CHUKY APEARS!!!");
-	local active_camera = cam_Controller:get_active_camera();
-	local dirVec = active_camera:get_path_point(active_camera.m_nextWaypoint) - active_camera:get_path_point(active_camera.m_currentWaypoint);
-	dirVec.y = 0;
-	dirVec:normalize(1);
-	local current_position = Vect3f(player.get_player_controller():get_position());
-	local distance = 18;
-	current_position = current_position - dirVec * distance;
-	local pos = Vect3f(current_position.x,current_position.y + 4,current_position.z);
-	local Chucky = enemy_manager:get_enemy("Chucky");
-	Chucky:move_to_position(pos);
-	local yaw = player.get_player_controller():get_yaw();
-	Chucky.m_RenderableObject:set_yaw(-math.rad(90));
-	Chucky.m_Appeared = true
-	Chucky:m_FSM():newState("Corriendo");
+coreInstance:trace("CHUKY APEARS!!!");
+	if player.activating_triggers then
+		
+		local active_camera = cam_Controller:get_active_camera();
+		local dirVec = active_camera:get_path_point(active_camera.m_nextWaypoint) - active_camera:get_path_point(active_camera.m_currentWaypoint);
+		dirVec.y = 0;
+		dirVec:normalize(1);
+		local current_position = Vect3f(player.get_player_controller():get_position());
+		local distance = 18;
+		current_position = current_position - dirVec * distance;
+		local pos = Vect3f(current_position.x,current_position.y + 4,current_position.z);
+		local Chucky = enemy_manager:get_enemy("Chucky");
+		Chucky:move_to_position(pos);
+		local yaw = player.get_player_controller():get_yaw();
+		Chucky.m_RenderableObject:set_yaw(-math.rad(90));
+		Chucky.m_Appeared = true
+		set_chucky_need_to_jump(false)
+		Chucky:m_FSM():newState("Corriendo");
+	end
 end
 
 function ChuckyDesapears()
@@ -284,6 +288,7 @@ function ChuckyJump()
 	coreInstance:trace("Chucky Jumping");
 	local Chucky = enemy_manager:get_enemy("Chucky");
 	Chucky:m_FSM():newState("Saltando");
+	set_chucky_need_to_jump(true)
 end
 
 function set_player_room(room, chucky_appears)
