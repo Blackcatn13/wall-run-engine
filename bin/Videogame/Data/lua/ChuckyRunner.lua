@@ -6,7 +6,7 @@ local chucky = enemy_manager:get_enemy("Chucky");
 chucky.m_PhysicUserData.m_myCollisionGroup = 18;
 local jumpStart = false;
 local chuky_catching_distance = 7 -- 10 para que se vea toda la animacion pero piky le trolea cosa mala si avanza
-
+local need_to_jump = false
 -- Chucky Variables --
 local Chucky_super_speed_dist = 10
 local Chucky_running_speed = 14;
@@ -90,6 +90,8 @@ function chucky_runner_enter_jumping(name)
 	chucky.m_RenderableObject:execute_action(2,0.25,0,1,true);
 	chucky.m_PhysicController:use_gravity(false);
 	jumpStart = false;
+	coreInstance:trace("Entro saltando")
+	set_chucky_need_to_jump(false)
 end
 
 function chucky_runner_exit_jumping(name)
@@ -97,6 +99,17 @@ function chucky_runner_exit_jumping(name)
 end
 
 function chucky_runner_update_jumping(ElapsedTime, doComprobation, name)
+	-- Solucionando las misteriosas caidas de chucky
+	if jumpStart then
+		if chucky.m_RenderableObject:is_action_animation_active() then
+			chucky.m_RenderableObject:remove_action(3)
+		end
+		chucky.m_RenderableObject:execute_action(2,0.25,0,1,true);
+		chucky.m_PhysicController:use_gravity(false);
+		jumpStart = false;
+		coreInstance:trace("Entro saltando pero no estaba dentro ya?")
+	end
+	coreInstance:trace("Update saltando chuky")
 	if (not chucky.m_RenderableObject:is_cycle_animation_active() and not jumpStart) then
 		chucky.m_RenderableObject:blend_cycle(1,1,0);
 		local characterPos = chucky.m_RenderableObject:get_position();
@@ -149,6 +162,9 @@ function chucky_runner_update_catching(ElapsedTime, doComprobation, name)
 		coreInstance:trace("PIKY IS DEAD, AND YOU'RE THE NEXT")
 		chucky:m_FSM():newState("Parado");
 	end	
+	if need_to_jump then
+		chucky:m_FSM():newState("Saltando");
+	end
 
 end
 
@@ -163,4 +179,12 @@ end
 
 function chucky_runner_update_falling_down(ElapsedTime, doComprobation, name)
 
+end
+
+function get_chuky_need_to_jump()
+	return need_to_jump
+end
+
+function set_chucky_need_to_jump(jumping_trigger)
+	need_to_jump = jumping_trigger
 end
