@@ -5,7 +5,7 @@ local distance = 4;
 local chucky = enemy_manager:get_enemy("Chucky");
 chucky.m_PhysicUserData.m_myCollisionGroup = 18;
 local jumpStart = false;
-local chuky_catching_distance = 10
+local chuky_catching_distance = 7 -- 10 para que se vea toda la animacion pero piky le trolea cosa mala si avanza
 
 -- Chucky Variables --
 local Chucky_super_speed_dist = 10
@@ -110,7 +110,7 @@ function chucky_runner_update_jumping(ElapsedTime, doComprobation, name)
 	local chuckyPos = chucky:get_position();
 	local distance = math.sqrt( math.pow((playerPos.x - chuckyPos.x),2) + math.pow((playerPos.y - chuckyPos.y),2) + math.pow((playerPos.z - chuckyPos.z),2) );
 	--coreInstance:trace("Pos------------------ "..tostring(distance))
-	if distance < 5.0 then
+	if distance < 3.0 then
 		player:player_die()
 		coreInstance:trace("PIKY IS DEAD, AND YOU'RE THE NEXT")
 		chucky:m_FSM():newState("Parado");

@@ -3,7 +3,7 @@ local base_yaw = math.pi/2
 function mikmik_enter_stopped(name)
 	--local enemy = enemy_manager:get_enemy(name)
 	--currentwp = wp1
-	coreInstance:trace("Entro y Estoy parado")
+--coreInstance:trace("Entro y Estoy parado")
 	local enemy = enemy_manager:get_enemy(name)
 	enemy.m_CurrentTime = 0
 	enemy.m_RenderableObject:blend_cycle(0,1,0);
@@ -182,6 +182,22 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 end
 
 function mikmik_enter_take_damage(name)
+	local enemy = enemy_manager:get_enemy(name)
+	if enemy ~= nil then
+		enemy.m_Life = enemy.m_Life - 1
+		if(enemy.m_Life <= 0) then
+			enemy:m_FSM():newState("Dead")
+		else 
+			if enemy.m_RenderableObject:is_action_animation_active() then
+				enemy.m_RenderableObject:remove_action(2)
+			end
+			if	enemy.m_RenderableObject:is_cycle_animation_active() then
+				enemy.m_RenderableObject:clear_cycle(0,0.2);
+				enemy.m_RenderableObject:clear_cycle(1,0.2);
+			end
+			enemy.m_RenderableObject:execute_action(4,0.1,0,1,false)
+		end
+	end
 	return 0
 end
 
@@ -195,20 +211,15 @@ end
 
 function mikmik_update_take_damage(ElapsedTime, doComprobation, name)
 	local enemy = enemy_manager:get_enemy(name)
-	if enemy ~= nil then
-		enemy.m_Life = enemy.m_Life - 1
-		if(enemy.m_Life <= 0) then
-			enemy:m_FSM():newState("Dead")
-		else
-			enemy:m_FSM():newState("Parado")
-		end
+	if enemy.m_RenderableObject:is_action_animation_active() then
+		enemy:m_FSM():newState("Parado")
 	end
 end
 
 function mikmik_enter_dead(name)
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil then
-		coreInstance:trace("Init muerto Mik")
+		--coreInstance:trace("Init muerto Mik")
 		enemy.m_RenderableObject:clear_cycle(0,0.2);
 		enemy.m_RenderableObject:clear_cycle(1,0.2);
 		enemy.m_RenderableObject:remove_action(2);
