@@ -366,7 +366,7 @@ Vect2i CTestGameplay::RenderDebugInfo(bool render/*, float dt*/)
 
 void CTestGameplay::Update(float dt)
 {
-    if (!GUIM->GetIsPaused() || !GUIM->GetIsDisplayedConsole()) {
+    if (!GUIM->GetIsPaused() && !GUIM->GetIsDisplayedConsole()) {
         // m_Granade->Update(dt);
         //CInputManager* im = INPUTM;
         //float deltaX =  im->GetMouseDelta().x;
