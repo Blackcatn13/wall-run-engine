@@ -9,6 +9,7 @@
 class CCinematicController : public CMapManager<CCinematic> {
  private:
   std::string m_FileName;
+  bool start;
  public:
   CCinematicController();
   ~CCinematicController();

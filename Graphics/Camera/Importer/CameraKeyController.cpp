@@ -17,11 +17,11 @@ CCameraKeyController::CCameraKeyController()
   , m_Cycle(false)
   , m_Reverse(false)
   , m_IsReversing(false)
-  , m_Object(NULL)
   , m_YawInterpolated(0.0)
   , m_PitchInterpolated(0.0)
-  , CCamera(0, 0, 0, 1, 0, TC_CIN)
-{}
+  , CCamera(0, 0, 0, 1, 0, TC_CIN) {
+  m_pObject3D = NULL;
+}
 
 CCameraKeyController::CCameraKeyController(CXMLTreeNode &atts)
 {}
@@ -30,7 +30,7 @@ CCameraKeyController::~CCameraKeyController() {
   for (size_t i = 0; i < m_Keys.size(); i++) {
     CHECKED_DELETE(m_Keys[i]);
   }
-  CHECKED_DELETE(m_Object);
+  CHECKED_DELETE(m_pObject3D);
 }
 
 void CCameraKeyController::LoadXML(const std::string &FileName) {
@@ -53,7 +53,7 @@ void CCameraKeyController::LoadXML(const std::string &FileName) {
       float l_yaw = atan2(l_V.z, l_V.x) - ePIf;
       float l_pitch = -atan2(l_V.y, sqrt((l_V.z * l_V.z) + (l_V.x * l_V.x)));
       float l_roll = 0.0f;
-      m_Object = new CObject3D(l_aux1, l_yaw, l_pitch, l_roll);
+      m_pObject3D = new CObject3D(l_aux1, l_yaw, l_pitch, l_roll);
       m_PositionInit = l_aux1;
       m_YawInit = l_yaw;
       m_PitchInit = l_pitch;
@@ -79,7 +79,7 @@ void CCameraKeyController::LoadXML(const std::string &FileName) {
       m_fZNear = m_Keys[0]->m_CameraInfo->m_NearPlane;
       m_fZFar = m_Keys[0]->m_CameraInfo->m_FarPlane;
       m_fFOV = m_Keys[0]->m_CameraInfo->m_FOV;
-      m_pObject3D = m_Object;
+      //m_pObject3D = m_Object;
     }
   }
 }
@@ -134,9 +134,9 @@ void CCameraKeyController::Update(float ElapsedTime) {
       InterpolatePosition(l_p, l_p2, m_Keys[m_CurrentKey]->GetTime(), m_Keys[m_NextKey]->GetTime(), ElapsedTime);
       InterpolateYaw(l_yaw, l_yaw2, m_Keys[m_CurrentKey]->GetTime(), m_Keys[m_NextKey]->GetTime(), ElapsedTime);
       InterpolatePitch(l_pitch, l_pitch2, m_Keys[m_CurrentKey]->GetTime(), m_Keys[m_NextKey]->GetTime(), ElapsedTime);
-      m_Object->SetPosition(m_PosInterpolated);
-      m_Object->SetYaw(m_YawInterpolated);
-      m_Object->SetPitch(m_PitchInterpolated);
+      m_pObject3D->SetPosition(m_PosInterpolated);
+      m_pObject3D->SetYaw(m_YawInterpolated);
+      m_pObject3D->SetPitch(m_PitchInterpolated);
     }
     if ( m_CurrentTime >= m_TotalTime ) {
       if (IsOnce()) m_IsPlaying = false;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<camera_key_controller name="Camera056" once="true" cycle="false" reverse="false"/>
+<camera_key_controller name="Camera056" once="true" cycle="false" reverse="false">
 	<key time="0.0" pos="50.7079 6.50244 0.221808" lookat="37.2717 6.50244 -23.097" fov="0.785398" near_plane="1.0" far_plane="1000.0"/>
 	<key time="0.833333" pos="41.7078 6.50244 0.221808" lookat="4.12438 6.50244 -2.69445" fov="0.785398" near_plane="1.0" far_plane="1000.0"/>
 	<key time="1.16667" pos="5.31749 6.50244 -36.7467" lookat="4.12438 16.4943 -2.69445" fov="0.785398" near_plane="1.0" far_plane="1000.0"/>

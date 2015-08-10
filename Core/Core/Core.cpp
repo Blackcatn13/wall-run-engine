@@ -175,13 +175,6 @@ void CCore::Init(HWND handler) {
 #ifdef _DEBUG
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
-  std::cout << "Creating Cinematic Manager";
-#endif
-  m_CinematicManager = new CCinematicController();
-  m_CinematicManager->Load(m_Config.CinematicPath);
-#ifdef _DEBUG
-  t.Update();
-  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Camera Controller Manager";
 #endif
   m_CameraController = new CCameraController();
@@ -190,6 +183,13 @@ void CCore::Init(HWND handler) {
   m_ScriptManager = new CScriptManager();
   m_ScriptManager->Initialize();
   m_LightManager = new CLightManager();*/
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Cinematic Manager";
+#endif
+  m_CinematicManager = new CCinematicController();
+  m_CinematicManager->Load(m_Config.CinematicPath);
 #ifdef _DEBUG
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
@@ -359,6 +359,8 @@ void CCore::Update(float dt) {
     m_WWSoundManager->Render();
     m_GuiManager->Update(dt);
     m_CollectibleManager->Update(dt);
+    m_CinematicManager->Update(dt);
+    m_CameraController->UpdateCinematicCameras(dt);
   } else {
     m_ActionToInput->Update();
     m_InputManager->Update();

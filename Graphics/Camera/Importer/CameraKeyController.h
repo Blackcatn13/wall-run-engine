@@ -22,7 +22,7 @@ class CCameraKeyController: public CCamera {
   bool								          m_Cycle;
   bool								          m_Reverse;
   bool								          m_IsReversing;
-  CObject3D							        *m_Object;
+  //CObject3D							        *m_Object;
 
   Vect3f								        m_PosInterpolated;
   float								          m_YawInterpolated;
@@ -64,7 +64,7 @@ class CCameraKeyController: public CCamera {
   virtual Vect3f GetVecUp() const;
 
   CObject3D *GetObject3D() {
-    return m_Object;
+    return m_pObject3D;
   }
 };
 

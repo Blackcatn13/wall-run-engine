@@ -145,10 +145,11 @@ void CCameraController::CamUpdates(CCamera::ETypeCamera camType, float dt) {
   //CINEMATICS
   TMapResource::iterator it = m_Resources.begin();
   for (it; it != m_Resources.end(); ++it) {
-    //if (camType == CCamera::TC_CIN) {
-    ((CCameraKeyController *)(* it).second)->Update(dt);
-    //}
+    if (camType == CCamera::TC_CIN) {
+      ((CCameraKeyController *)(* it).second)->Update(dt);
+    }
   }
+
 }
 void CCameraController::Update(std::string camera, float dt) {
   CCamera *aux = m_ActiveCamera;
@@ -219,9 +220,10 @@ bool CCameraController::Reload(const std::string &FileName) {
 }
 
 bool CCameraController::IsAnyCinematicPlaying() {
-  CCamera::ETypeCamera camType = m_ActiveCamera->GetTypeCamera();
+  CCamera::ETypeCamera camType;
   TMapResource::iterator it = m_Resources.begin();
   for (it; it != m_Resources.end(); ++it) {
+    camType = it->second->GetTypeCamera();
     if (camType == CCamera::TC_CIN) {
       if (((CCameraKeyController *)(* it).second)->IsPlayOn())
         return true;
@@ -231,9 +233,10 @@ bool CCameraController::IsAnyCinematicPlaying() {
 }
 
 void CCameraController::Play(bool Cycle) {
-  CCamera::ETypeCamera camType = m_ActiveCamera->GetTypeCamera();
+  CCamera::ETypeCamera camType;
   TMapResource::iterator it = m_Resources.begin();
   for (it; it != m_Resources.end(); ++it) {
+    camType = it->second->GetTypeCamera();
     if (camType == CCamera::TC_CIN) {
       ((CCameraKeyController *)(* it).second)->Play();
       ((CCameraKeyController *)(* it).second)->SetCycle(Cycle);
@@ -242,9 +245,10 @@ void CCameraController::Play(bool Cycle) {
 }
 
 void CCameraController::Pause() {
-  CCamera::ETypeCamera camType = m_ActiveCamera->GetTypeCamera();
+  CCamera::ETypeCamera camType;
   TMapResource::iterator it = m_Resources.begin();
   for (it; it != m_Resources.end(); ++it) {
+    camType = it->second->GetTypeCamera();
     if (camType == CCamera::TC_CIN) {
       ((CCameraKeyController *)(* it).second)->Pause();
     }
@@ -252,11 +256,23 @@ void CCameraController::Pause() {
 }
 
 void CCameraController::Stop() {
-  CCamera::ETypeCamera camType = m_ActiveCamera->GetTypeCamera();
+  CCamera::ETypeCamera camType;
   TMapResource::iterator it = m_Resources.begin();
   for (it; it != m_Resources.end(); ++it) {
+    camType = it->second->GetTypeCamera();
     if (camType == CCamera::TC_CIN) {
       ((CCameraKeyController *)(* it).second)->Stop();
+    }
+  }
+}
+
+void CCameraController::UpdateCinematicCameras(float dt) {
+  CCamera::ETypeCamera camType;
+  TMapResource::iterator it = m_Resources.begin();
+  for (it; it != m_Resources.end(); ++it) {
+    camType = it->second->GetTypeCamera();
+    if (camType == CCamera::TC_CIN) {
+      ((CCameraKeyController *)(it)->second)->Update(dt);
     }
   }
 }

@@ -103,5 +103,6 @@ class CCameraController: public CMapManager<CCamera> {
   }
 
   void CamUpdates(CCamera::ETypeCamera camType, float dt);
+  void UpdateCinematicCameras(float dt);
 };
 #endif
