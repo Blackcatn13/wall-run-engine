@@ -472,6 +472,7 @@ function on_update_player_lua(l_ElapsedTime)
 				end
 			end
 		else
+			inertia = Vect3f(0,0,0);
 		end
 		
 		
