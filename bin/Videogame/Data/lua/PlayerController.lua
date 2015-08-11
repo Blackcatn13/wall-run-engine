@@ -46,8 +46,12 @@ local AirTime = 0.7;									-- Time into the air, playing air loop
 local m_damageTime = 0.3;
 local acceleration = 0;
 local accelerationTime = 1;
+local accelerationTimeJump = 0.8;
 local deccelerationTime = 0.5;
+local deccelerationTimeJump = 0.8;
 local inertia = Vect3f(0,0,0);
+local inertiaJump = Vect3f(0,0,0);
+local percentAirMovement = 0.75;
 
 local m_ReduceCollider = 0.75;
 --////////////////////////////////////////////////////////
@@ -132,8 +136,6 @@ function on_update_player_lua(l_ElapsedTime)
 		--///////////////////////////////////////////////////////////
 		-- Movimiento del Player en las distintas direcciones. 
 		--///////////////////////////////////////////////////////////
-		coreInstance:trace("isAttack "..tostring(player_controller.m_isAttack));
-		coreInstance:trace("isHit "..tostring(player.is_hit));
 		if (player_controller.m_isJumpingMoving == false) and (player_controller.m_isAttack == false) and (player.is_hit == false) then
 			local y_axis = 0.0
 			local x_axis = 0.0
@@ -173,15 +175,17 @@ function on_update_player_lua(l_ElapsedTime)
 				x_axis = moving_right - moving_left;
 			end
 			local changedCamYaw = dirYaw - lastCamYaw;
-			if math.abs(changedCamYaw) > 1 then
-				coreInstance:trace("changed yaw "..tostring(changedCamYaw));
-			end
 			if y_axis == 0 and x_axis == 0 then
 				cosyaw = 0;
 				sinyaw = 0;
 				extraRotationContinue = 0;
 				if acceleration > 0 then
-					local auxValue = 1 / deccelerationTime;
+					local auxValue = 0;
+					if player_controller.m_isJumping or _land then
+						auxValue = 1 / deccelerationTimeJump;
+					else
+						auxValue = 1 / deccelerationTime;
+					end
 					acceleration = acceleration - (auxValue * l_ElapsedTime);
 				else
 					if acceleration < 0 then
@@ -243,7 +247,12 @@ function on_update_player_lua(l_ElapsedTime)
 				mov = mov * l_ElapsedTime * player_controller.m_Speed;
 				inertia = Vect3f(mov.x,0,mov.z);
 				if acceleration < 1 then
-					local auxValue = 1 / accelerationTime;
+					local auxValue = 0;
+					if player_controller.m_isJumping or _land then
+						auxValue = 1 / accelerationTimeJump;
+					else
+						auxValue = 1 / accelerationTime;
+					end
 					acceleration = acceleration + auxValue * l_ElapsedTime;
 				else
 					if acceleration > 1 then
@@ -251,7 +260,7 @@ function on_update_player_lua(l_ElapsedTime)
 					end
 				end
 				if player_controller.m_isJumping == true then
-					mov = mov * 0.75;
+					mov = mov * percentAirMovement;
 				end
 				if (y_axis > 0) then
 					player_controller.m_isTurned = false;
@@ -302,6 +311,7 @@ function on_update_player_lua(l_ElapsedTime)
 			end
 			if player_controller.m_isGrounded then
 				_land = false;
+				inertiaJump = Vect3f(0,0,0);
 				player.on_air = false;
 				if _fallingAnimation == false then
 					playerRenderable:clear_cycle(3,0.2);
@@ -375,6 +385,9 @@ function on_update_player_lua(l_ElapsedTime)
 				playerRenderable:updateSkeleton(l_ElapsedTime);
 			end
 		end
+		if (player_controller.m_isJumping == true or _land == true) and _isQuiet == false then
+			inertiaJump = Vect3f(mov.x,0,mov.z);
+		end
 		
 		if player_controller.m_isAttack == false then
 			contador = contador + l_ElapsedTime;
@@ -428,6 +441,7 @@ function on_update_player_lua(l_ElapsedTime)
 			player_controller.m_isJumping = true;
 			player.on_air = true;
 			_fallingAnimation = false;
+			inertiaJump = Vect3f(inertia.x, inertia.y, inertia.z);
 			--player_controller.m_executeDoubleJump = true;
 		end
 		
@@ -475,6 +489,20 @@ function on_update_player_lua(l_ElapsedTime)
 			inertia = Vect3f(0,0,0);
 		end
 		
+		if player_controller.m_isJumping or _land then
+			if _isQuiet == false then
+				local xValue = mov.x * acceleration;
+				local zValue = mov.z * acceleration;
+				mov = Vect3f(xValue,mov.y, zValue);
+			else
+				if acceleration > 0 then
+					local inertX = inertiaJump.x * acceleration;
+					local inertZ = inertiaJump.z * acceleration;
+					mov = Vect3f(inertX, mov.y, inertZ);
+				end
+			end
+		end
+		
 		
 		if player_controller.m_isJumping or player_controller.m_isDoubleJumping then
 			player_controller:move(mov, l_ElapsedTime);
@@ -512,7 +540,6 @@ function on_update_player_lua(l_ElapsedTime)
 					--AQUI VA LA ANIMACION DE RECIBIR DAMAGE
 					playerRenderable:clear_cycle(0,0);
 					playerRenderable:clear_cycle(1,0);
-					coreInstance:trace(tostring(player_controller.m_isGrounded));
 					if player.playing_hit == false then
 						player.playing_hit = true
 						playerRenderable:execute_action(6,0,0.3,1,true);
