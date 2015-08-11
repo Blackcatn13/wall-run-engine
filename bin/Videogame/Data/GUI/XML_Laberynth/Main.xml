@@ -21,7 +21,9 @@
           							if player.game_over == true then
           								 reset_cameras()
           								 player.game_over = false
-          							end"
+          							end
+                                        gui_manager:activate_pause(false);
+                                        gui_manager:set_is_paused(false)"
                     OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>
           		  
           	<Button name="Options" posx="60.00" posy="30.00" height="15.00" width="22.00" visible="true" 
