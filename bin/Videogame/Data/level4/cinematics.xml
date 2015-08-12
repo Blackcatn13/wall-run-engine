@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<cinematic_controller name="start" oninit="true" seq="true">
-	<block_payer/>
-	<play_cinematic name="start.xml"/>
-	<play_camera name="Camera056"/>
-	<unblock_player/>
+<cinematic_controller name="start" oninit="true">
+	<play_camera name="Camera056" return="3DCam" block="true"/>
 </cinematic_controller>
-<cinematic_controller name="Wall" seq="true">
-	<block_player/>
+<cinematic_controller name="Wall">
 	<play_cinematic name="break-wall.xml"/>
-	<unblock_player/>
 </cinematic_controller>

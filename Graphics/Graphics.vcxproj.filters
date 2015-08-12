@@ -56,6 +56,9 @@
     <Filter Include="Collectibles">
       <UniqueIdentifier>{448151e2-98f6-4d0c-aec1-003d632b488c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Cinematics\CinematicElement">
+      <UniqueIdentifier>{aba01076-8555-4f41-9240-1e76919433b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GraphicsManager.cpp" />
@@ -344,6 +347,12 @@
     </ClCompile>
     <ClCompile Include="SceneElements\WallTrap.cpp">
       <Filter>SceneElements</Filter>
+    </ClCompile>
+    <ClCompile Include="Cinematics\CinematicElement\CinematicElement.cpp">
+      <Filter>Cinematics\CinematicElement</Filter>
+    </ClCompile>
+    <ClCompile Include="Cinematics\CinematicElement\CinematicElementCamera.cpp">
+      <Filter>Cinematics\CinematicElement</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -645,6 +654,12 @@
     </ClInclude>
     <ClInclude Include="SceneElements\WallTrap.h">
       <Filter>SceneElements</Filter>
+    </ClInclude>
+    <ClInclude Include="Cinematics\CinematicElement\CinematicElement.h">
+      <Filter>Cinematics\CinematicElement</Filter>
+    </ClInclude>
+    <ClInclude Include="Cinematics\CinematicElement\CinematicElementCamera.h">
+      <Filter>Cinematics\CinematicElement</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
