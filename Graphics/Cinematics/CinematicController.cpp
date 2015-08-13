@@ -16,6 +16,13 @@ CCinematicController::CCinematicController()
 }
 
 CCinematicController::~CCinematicController() {
+  for (auto it = m_cinematics.begin(); it != m_cinematics.end(); ++it) {
+    for (auto it1 = it->second.begin(); it1 != it->second.end(); ++it1) {
+      CHECKED_DELETE(*it1);
+    }
+    it->second.clear();
+  }
+  m_cinematics.clear();
 }
 
 bool CCinematicController::Load(const std::string &FileName) {
