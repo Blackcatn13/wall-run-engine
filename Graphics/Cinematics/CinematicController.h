@@ -4,12 +4,18 @@
 #define CINEMATIC_CONTROLLER_H
 
 #include "Cinematic.h"
-#include "Utils\MapManager.h"
+#include "CinematicElement\CinematicElement.h"
+#include <vector>
+#include <map>
+#include <string>
 
-class CCinematicController : public CMapManager<CCinematic> {
+class CCinematicController {
  private:
   std::string m_FileName;
-  bool start;
+  bool m_executing;
+  std::map<std::string, std::vector<CCinematicElement *> > m_cinematics;
+  std::vector<CCinematicElement *> m_currentCinematic;
+  int m_lastElement;
  public:
   CCinematicController();
   ~CCinematicController();
@@ -17,6 +23,7 @@ class CCinematicController : public CMapManager<CCinematic> {
   bool Reload();
   bool Reload(const std::string &FileName);
   void Update(float ElapsedTime);
+  void Execute(const std::string &cinematic);
 };
 
 #endif

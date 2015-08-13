@@ -190,6 +190,7 @@ void CCore::Init(HWND handler) {
 #endif
   m_CinematicManager = new CCinematicController();
   m_CinematicManager->Load(m_Config.CinematicPath);
+  m_CinematicManager->Execute("start");
 #ifdef _DEBUG
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;

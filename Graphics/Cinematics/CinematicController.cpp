@@ -6,15 +6,16 @@
 #include <string>
 #include "Camera\CameraController.h"
 #include "Core\Core.h"
+#include "CinematicElement\CinematicElementCamera.h"
 
 
 CCinematicController::CCinematicController()
   : m_FileName("")
-  , start(true) {
+  , m_lastElement(0)
+  , m_executing(false) {
 }
 
 CCinematicController::~CCinematicController() {
-  Destroy();
 }
 
 bool CCinematicController::Load(const std::string &FileName) {
@@ -29,6 +30,17 @@ bool CCinematicController::Load(const std::string &FileName) {
         CXMLTreeNode child = l_XMLParser.getNextChild();
         std::string name = child.GetName();
         if (name == "cinematic_controller") {
+          std::string cinematic_name = child.GetPszISOProperty("name", "NoName");
+          int cinematic_elements = child.GetNumChildren();
+          std::vector<CCinematicElement *> aux;
+          for (int j = 0; j < cinematic_elements; ++j) {
+            CXMLTreeNode nChild = child.getNextChild();
+            std::string elementType = nChild.GetName();
+            if (elementType == "play_camera") {
+              aux.push_back(new CCinematicElementCamera(nChild));
+            }
+          }
+          m_cinematics[cinematic_name] = aux;
         }
       }
     }
@@ -42,26 +54,31 @@ bool CCinematicController::Load(const std::string &FileName) {
 }
 
 bool CCinematicController::Reload() {
-  Destroy();
   return Load(m_FileName);
 }
 
 bool CCinematicController::Reload(const std::string &FileName) {
-  Destroy();
   return Load(FileName);
 }
 
 void CCinematicController::Update(float ElapsedTime) {
-  /*TMapResource::iterator it = m_Resources.begin();
-  for (it; it != m_Resources.end(); ++it) {
-    (* it).second->Update(ElapsedTime);
-  }*/
-  if (start) {
-    CAMCONTM->setActiveCamera("Camera056");
-    CAMCONTM->Play(false);
-    start = false;
+  if (m_executing) {
+    int aux = m_lastElement;
+    while (aux < m_currentCinematic.size() && !m_currentCinematic[aux]->Execute()) {
+      aux++;
+    }
+    m_lastElement = aux;
+    if (m_lastElement >= m_currentCinematic.size()) {
+      m_executing = false;
+    }
   }
-  if (!CAMCONTM->IsAnyCinematicPlaying()) {
-    CAMCONTM->setActiveCamera("3DCam");
+}
+
+void CCinematicController::Execute(const std::string &cinematic) {
+  std::map<std::string, std::vector<CCinematicElement *>>::iterator it = m_cinematics.find(cinematic);
+  if (it != m_cinematics.end()) {
+    m_currentCinematic = it->second;
+    m_lastElement = 0;
+    m_executing = true;
   }
 }

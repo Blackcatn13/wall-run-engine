@@ -29,7 +29,7 @@
   <RendererCommands rendererCommandsXML="./Data/scene_render_commands.xml"/>
   <PoolRenderableObjects poolRenderableObjects="./Data/pool_renderable_objects.xml"/>
   <Cameras CamerasLvl="./Data/level4/cameras.xml"/>
-  <Cinematic CinematicLvl="No"/>
+  <Cinematic CinematicLvl="./Data/level4/cinematics.xml"/>
   <Lua LuaFile="./Data/lua_actions.xml"/>
   <LoadLevel LuaInitLevelFunc="init_level" LuaInitCamerasFunc="" />
   <Enemies enemiesXML="./Data/enemies.xml"/>
