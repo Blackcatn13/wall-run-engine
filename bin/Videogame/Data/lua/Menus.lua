@@ -8,6 +8,7 @@ function set_screen_menu(model_position, room )
 	
 	cam_Controller:set_active_camera("ThPS")
 	gui_manager:set_is_displayed_console(true) -- IMPEDIR QUE EL PLAYER SE MUEVA
+	
 	if room == 9 then --GAME OVER
 		gui_manager:set_visible_gui_element("LifeGUI", false)
 		gui_manager:set_visible_gui_element("VidesGUI", false)
@@ -18,6 +19,8 @@ function set_screen_menu(model_position, room )
 		local playerRenderableMesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", room):get_resource("Piky");
 		playerRenderableMesh:set_position(model_position)
 		-- AMIMACION DE GAME OVER
+		--playerRenderable:remove_action(10)
+		--playerRenderable:execute_action(9,0,0.3,1,true)
 	end
 	
 end
@@ -28,14 +31,9 @@ function set_cam_position(cam_position, yaw)
 	--[[local dir3D = active_camera:get_direction()
 	local camObject = active_camera.m_pObject3D
 	local dirYaw = camObject:get_yaw()
-	local PlayerYaw =  - dirYaw + 1.57 --]]
-	
-	
+	local PlayerYaw =  - dirYaw + 1.57 --]]	
 	active_camera.m_pObject3D:set_position(cam_position)
-	active_camera.m_pObject3D:set_yaw(yaw)
-		
-		
-		
+	active_camera.m_pObject3D:set_yaw(yaw)	
 end
 
 

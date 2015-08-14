@@ -41,6 +41,8 @@ function Player.new()
 	self.on_air = false
 	self.is_activating_poly = false
 	self.activating_triggers = true
+	self.is_dead = false
+	self.has_as_burned = false
 	
 	------	 PLAYER FUNCTIONS -----
 		
@@ -115,6 +117,15 @@ function Player.new()
 
 	function self.player_die()
 		self.activating_triggers = false
+		--self.remove_animations()
+		self.is_dead = true
+		local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky")
+		self.remove_animations(renderable_piky_mesh)
+		--if not self.has_ass_burned then
+			--renderable_piky_mesh:execute_action(10,0,0.3,1,true) animacion de muerto
+		--else
+			--renderable_piky_mesh:execute_action(9,0,0.3,1,true) animacion de piky tostada
+		--end
 		local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 		self.coreInstance:trace("player dies")
 		self.num_lives = self.num_lives - 1
@@ -132,39 +143,7 @@ function Player.new()
 		--Chuky Desaparece
 		ChuckyDesapears()
 		
-		if self.num_lives == 0 then
-			--game over
-			self.coreInstance:trace("game over")
-			local game_over_pos = Vect3f(925, 0, -1.5)
-			set_screen_menu(game_over_pos, 9)
-			gui_manager:set_is_gameover(true);
-			self.game_over = true
-		else
-			self.coreInstance:trace(tostring(self.num_lives))
-			gui_manager:set_image('LifeGUI','Life3')
-			--actualizar gui
-			self.num_hearts = self.MAXHEARTS
-			--cargar ultimo chekpoint
-			if self.last_checkpoint ~= nil then
-				self.last_checkpoint.load_checkpoint(self)
-				self.coreInstance:trace("checkpoint loaded")
-			else 
-				
-				self.coreInstance:trace("reset level")
-				--reset level platforms + enemies
-			end
-			
-		end
-		--coreInstance:trace("Player dying zone: ".. tostring(self.zone))
-		if tostring(self.zone) == "4.0" then
-			--coreInstance:trace("Player died in zone 4.0")
-			--enable_breaking_platform("Plataforma_Fragil")
-			 restore_broken_platforms_by_layer("breakable")
-		elseif tostring(self.zone) == "3.0" then
-			reset_wall_trap(0, "WALL_TRAP1_RIGHT")
-			reset_wall_trap(0, "WALL_TRAP1_LEFT")
-		end
-		--self.activating_triggers = true
+		--self.check_death_actions()
 	end
 	
 	function self.check_visited_checkpoints(trigger_name)
@@ -182,6 +161,58 @@ function Player.new()
 		return false
 	end
 	
+	function self.check_death_actions()
+		self.is_dead = false
+		if self.num_lives == 0 then
+			--game over
+			self.coreInstance:trace("game over")
+			local game_over_pos = Vect3f(925, 0, -1.5)
+			set_screen_menu(game_over_pos, 9)
+			gui_manager:set_is_gameover(true);
+			self.game_over = true
+		else
+			self.coreInstance:trace(tostring(self.num_lives))
+			gui_manager:set_image('LifeGUI','Life3')
+			--actualizar gui
+			self.num_hearts = self.MAXHEARTS
+			--cargar ultimo chekpoint
+			if self.last_checkpoint ~= nil then
+				self.last_checkpoint.load_checkpoint(self)
+				self.coreInstance:trace("checkpoint loaded")
+			--else 
+				
+			--	self.coreInstance:trace("reset level")
+				--reset level platforms + enemies
+			end
+			
+		end
+		--coreInstance:trace("Player dying zone: ".. tostring(self.zone))
+		if tostring(self.zone) == "4.0" then
+			--coreInstance:trace("Player died in zone 4.0")
+			--enable_breaking_platform("Plataforma_Fragil")
+			 restore_broken_platforms_by_layer("breakable")
+		elseif tostring(self.zone) == "3.0" then
+			reset_wall_trap(0, "WALL_TRAP1_RIGHT")
+			reset_wall_trap(0, "WALL_TRAP1_LEFT")
+		end
+		--self.activating_triggers = true
+	end
+	
+	function self.remove_animations(_renderable)
+		if _renderable:is_action_animation_active() then
+			_renderable:remove_action(2)
+			_renderable:remove_action(5)
+			_renderable:remove_action(6)
+			_renderable:remove_action(7)
+			_renderable:remove_action(8)
+		end
+		if _renderable:is_cycle_animation_active() then
+			_renderable:clear_cycle(0,0.1) 
+			_renderable:clear_cycle(1,0.1)
+			_renderable:clear_cycle(3,0.1)
+			_renderable:clear_cycle(4,0.1)
+		end
+	end
     return self
 end
 -----	GETTERS & SETTERS -----	
@@ -192,4 +223,6 @@ function Player:get_instance()
 
 	return instance
 end
+
+
 
