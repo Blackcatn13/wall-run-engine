@@ -53,6 +53,7 @@ function init_level(a)
 	local direction = Vect3f(0,0,1)
 	local arrow_trap = ArrowTrap.new("ArrowTrap1",ro_list,direction, 40, 2, "x"  )
 	--]]
+	coreInstance:get_cinematic_controller():execute("start");
 	return 0
 end
 

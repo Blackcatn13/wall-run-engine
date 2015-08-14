@@ -82,10 +82,11 @@ void RegisterCinematics() {
   luabind::module(LUA_STATE) [
     class_<CCinematicController>("CCinematicController")
     .def(constructor<>())
-    .def("load", & CCinematicController::Load)
+    .def("load", &CCinematicController::Load)
     .def("reload", (bool (CCinematicController::*)())& CCinematicController::Reload)
     .def("reload",  (bool (CCinematicController::*)(const std::string &))& CCinematicController::Reload)
-    .def("update", & CCinematicController::Update)
+    .def("update", &CCinematicController::Update)
+    .def("execute", &CCinematicController::Execute)
   ];
 }
 
