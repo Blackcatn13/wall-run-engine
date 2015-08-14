@@ -244,6 +244,16 @@ void CCameraController::Play(bool Cycle) {
   }
 }
 
+void CCameraController::Play(const std::string &camera, bool Cycle) {
+  TMapResource::iterator it = m_Resources.find(camera);
+  if (it != m_Resources.end()) {
+    if (it->second->GetTypeCamera() == CCamera::TC_CIN) {
+      ((CCameraKeyController *)(* it).second)->Play();
+      ((CCameraKeyController *)(* it).second)->SetCycle(Cycle);
+    }
+  }
+}
+
 void CCameraController::Pause() {
   CCamera::ETypeCamera camType;
   TMapResource::iterator it = m_Resources.begin();

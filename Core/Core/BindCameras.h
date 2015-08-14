@@ -72,13 +72,13 @@ void RegisterCameraController() {
     .def(constructor<float, float, float, float, CObject3D *, float>())
     .def(constructor<>())
     .property("m_path", & CThPSCamera::GetMPath)
-	.property("m_pathSpecs", & CThPSCamera::GetMPathSpecs)
+    .property("m_pathSpecs", & CThPSCamera::GetMPathSpecs)
     .property("m_lastPlayerPos", & CThPSCamera::GetLastPlayerPos, & CThPSCamera::SetLastPlayerPos)
     .property("m_currentWaypoint", & CThPSCamera::GetCurrentWaypoint, & CThPSCamera::SetCurrentWaypoint)
     .property("m_nextWaypoint", & CThPSCamera::GetNextWaypoint, & CThPSCamera::SetNextWaypoint)
     .def("get_path_size", & CThPSCamera::GetPathSize)
     .def("get_path_point", & CThPSCamera::GetPathPoint)
-	.def("get_path_point_specs", & CThPSCamera::GetPathPointSpecs)
+    .def("get_path_point_specs", & CThPSCamera::GetPathPointSpecs)
     .def("get_direction", & CThPSCamera::GetDirection)
     .def("get_look_at", & CThPSCamera::GetLookAt)
     .def("Get_eye", & CThPSCamera::GetEye)
@@ -117,19 +117,20 @@ void RegisterCameraController() {
     .def("reload", (bool (CCameraController::*)()) & CCameraController::Reload)
     .def("reload", (bool (CCameraController::*)(const std::string &)) & CCameraController::Reload)
     .def("is_any_cinematic-playing", & CCameraController::IsAnyCinematicPlaying)
-    .def("play", & CCameraController::Play)
+    .def("play", (void (CCameraController::*)(bool)) & CCameraController::Play)
+    .def("play", (void (CCameraController::*)(const std::string &, bool)) & CCameraController::Play)
     .def("pause", & CCameraController::Pause)
     .def("stop", & CCameraController::Stop)
     .def("cam_updates", & CCameraController::CamUpdates)
   ];
-    luabind::module(LUA_STATE) [
+  luabind::module(LUA_STATE) [
     class_< PathPointSpec>("PathPointSpec")
-		.def(constructor<>())
-		.def_readwrite("can_rotate", &PathPointSpec::canRotate)
-		.def_readwrite("can_go_back", &PathPointSpec::canGoBack)
-		.def_readwrite("follow_player_y", &PathPointSpec::followPlayerY)
-	];
-	
+    .def(constructor<>())
+    .def_readwrite("can_rotate", &PathPointSpec::canRotate)
+    .def_readwrite("can_go_back", &PathPointSpec::canGoBack)
+    .def_readwrite("follow_player_y", &PathPointSpec::followPlayerY)
+  ];
+
 
 }
 

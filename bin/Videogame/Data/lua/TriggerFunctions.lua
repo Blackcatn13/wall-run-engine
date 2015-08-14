@@ -145,6 +145,7 @@ function trigger_set_2D(offset_axis)
 	
 	player_controller.m_PhysicController:set_position(position_2d)
 	move_character_controller_mesh(player_controller, position_2d);
+	--coreInstance:get_cinematic_controller():execute("Chucky-appears");
 end
 
 function trigger_set_3D()

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <cameras>
 	<key_camera_controller name="Camera056" file="./Data/level4/cameras/Camera056.xml"/>
+	<key_camera_controller name="Camera057" file="./Data/level4/cameras/Camera057.xml"/>
 </cameras>

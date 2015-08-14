@@ -60,6 +60,7 @@ class CCameraController: public CMapManager<CCamera> {
   void Play(bool Cycle);
   void Pause();
   void Stop();
+  void Play(const std::string &camera, bool Cycle);
 
 
   void SetFlyMode (bool flyMode) {
