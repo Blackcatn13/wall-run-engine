@@ -58,7 +58,7 @@ float weights[KERNEL_SIZE] =
 // Pixel Shaders.
 //-----------------------------------------------------------------------------
 
-float4 PS_GlowPoly(in float2 UV : TEXCOORD0) : COLOR
+float4 PS_Glow(in float2 UV : TEXCOORD0) : COLOR
 {
 //	offsets = offsets * pixeldistance;
     float4 color = float4(0.0f, 0.0f, 0.0f, 0.0f);
@@ -67,7 +67,7 @@ float4 PS_GlowPoly(in float2 UV : TEXCOORD0) : COLOR
         color += float4(tex2D(S0NoFilterClampSampler, UV + offsets[i]) * weights[i]);
 	//return color;
 	//GLOW POLY
-	float3 final_color = color.xyz* float3(0,1,0);
+	float3 final_color = color.xyz;//* float3(0,1,0);
 	return float4(final_color, color.w);
 }
 
@@ -75,11 +75,11 @@ float4 PS_GlowPoly(in float2 UV : TEXCOORD0) : COLOR
 // Techniques.
 //-----------------------------------------------------------------------------
 
-technique GlowPolyTechnique
+technique GlowTechnique
 {
     pass
     {
 		VertexShader = null;
-        PixelShader = compile ps_3_0 PS_GlowPoly();
+        PixelShader = compile ps_3_0 PS_Glow();
     }
 }

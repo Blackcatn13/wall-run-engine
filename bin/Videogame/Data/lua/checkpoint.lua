@@ -8,9 +8,11 @@ function CheckPoint.new()
    -- setmetatable( new_inst, Player_mt ) -- all instances share the same metatable
 	self.is_activated = false
 	self.name = ""
+	self.renderable_stand = nil
+	
 	--self.yaw = 0.0
 	------	 CHECKPOINT FUNCTIONS -----
-	function self.set_checkpoint(player, trigger_name)
+	function self.set_checkpoint(player, trigger_name, renderable_checkpoint)
 		local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 		if self.is_activated == false then
 		
@@ -25,6 +27,11 @@ function CheckPoint.new()
 			coreInstance:trace("last checkpoint set")
 			self.is_activated = true
 			self.name = trigger_name
+			self.renderable_stand = renderable_checkpoint
+			if self.renderable_stand ~= nil then
+				self.change_checkpoint_renderables()
+			end
+			
 			coreInstance:trace("checkpoint activated")
 			table.insert(player.visited_checkpoints, self)
 			
@@ -48,6 +55,19 @@ function CheckPoint.new()
 		end
 		
 		--player_controller:set_yaw(self.yaw)
+	end
+	
+	function self.change_checkpoint_renderables()
+		renderable_objects_layer_manager:change_between_vectors("solid", "CheckPointEnabledStand001", player_controller.m_Room)
+		renderable_objects_layer_manager:change_between_vectors("glow", "CheckPointEnabledSphere", player_controller.m_Room)
+		local check_point_activated_stand = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("solid", player_controller.m_Room):get_resource("CheckPointEnabledStand001")
+		local check_point_activated_sphere = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("glow", player_controller.m_Room):get_resource("CheckPointEnabledSphere")
+		self.renderable_stand:set_visible(false)
+		self.renderable_stand.m_Printable = false
+		check_point_activated_sphere:set_position(self.renderable_stand:get_position())
+		check_point_activated_stand:set_position(self.renderable_stand:get_position())
+		check_point_activated_stand:set_yaw(self.renderable_stand:get_yaw())
+			
 	end
 	
 	return self

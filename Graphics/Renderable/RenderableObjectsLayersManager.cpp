@@ -233,10 +233,12 @@ void CRenderableObjectsLayersManager::DeactivateObjectsByStr(std::string layerNa
 }
 
 void CRenderableObjectsLayersManager::ChangeBetweenVectors( std::string layer, std::string objName, int room ) {
-  CRenderableObjectsManager *l_Rolm = m_ResourcesVector[PLAYC->getRoom()]->GetResource(layer);
-  CRenderableObjectsManager *l_RolmAux = m_ResourcesVector[room]->GetResource(layer);
-  CRenderableObject *l_Ro = l_Rolm ->GetResource(objName);
-  l_Ro->setRoom(room);
-  l_RolmAux->AddResource(objName, l_Ro);
-  l_Rolm->RemoveFromResource(objName);
+  if (PLAYC->getRoom() != room) {
+    CRenderableObjectsManager *l_Rolm = m_ResourcesVector[PLAYC->getRoom()]->GetResource(layer);
+    CRenderableObjectsManager *l_RolmAux = m_ResourcesVector[room]->GetResource(layer);
+    CRenderableObject *l_Ro = l_Rolm ->GetResource(objName);
+    l_Ro->setRoom(room);
+    l_RolmAux->AddResource(objName, l_Ro);
+    l_Rolm->RemoveFromResource(objName);
+  }
 }

@@ -169,25 +169,45 @@ function set_player_respawn_spikes_point()
 	player.last_spikes_position = Vect3f(player.get_player_controller():get_position())
 end
 
-function set_checkpoint(trigger_name)
+function set_checkpoint(trigger_name, renderable_object)
 	--local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 		coreInstance:trace("enter checkpoint")
 	--local player = Player:get_instance()
 	local current_position = Vect3f(player.get_player_controller():get_position())
 	coreInstance:trace("Player Position set")
-	local checkpoint = CheckPoint.new()
-	coreInstance:trace("Checkpoint created")
+	
 	--coreInstance:trace(tostring(checkpoint:is_activated()))
 	--if checkpoint:is_activated() == false then
 	if player.check_visited_checkpoints(trigger_name) == false then
-		checkpoint.set_checkpoint(player, trigger_name)
+		local checkpoint = CheckPoint.new()
+		coreInstance:trace("Checkpoint created")
+		coreInstance:trace(renderable_object)
+		checkpoint.set_checkpoint(player, trigger_name, get_renderable_object("solid",player_controller.m_Room, renderable_object))
+		coreInstance:trace(tostring(checkpoint.is_activated))
+		coreInstance:trace("checkpoint activated")
 	end
-	coreInstance:trace(tostring(checkpoint.is_activated))
-	coreInstance:trace("checkpoint activated")
---	end
-
 end
-
+-------------------------------------------------------------------
+-- Esta es temporal hasta que se pongan los renderables en la mashup
+--------------------------------------------------------------------
+--[[function set_checkpoint(trigger_name)
+	--local coreInstance = CCoreLuaWrapper().m_CoreInstance;
+		coreInstance:trace("enter checkpoint")
+	--local player = Player:get_instance()
+	local current_position = Vect3f(player.get_player_controller():get_position())
+	coreInstance:trace("Player Position set")
+	
+	--coreInstance:trace(tostring(checkpoint:is_activated()))
+	--if checkpoint:is_activated() == false then
+	if player.check_visited_checkpoints(trigger_name) == false then
+		local checkpoint = CheckPoint.new()
+		coreInstance:trace("Checkpoint created")
+		checkpoint.set_checkpoint(player, trigger_name, nil)
+		coreInstance:trace(tostring(checkpoint.is_activated))
+		coreInstance:trace("checkpoint activated")
+	end
+end
+--]]
 function set_puzzle_enemy_active(active)
 	if active == "true" then
 		player.enemy_puzzle_active = true

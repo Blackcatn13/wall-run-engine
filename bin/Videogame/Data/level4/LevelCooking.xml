@@ -82,4 +82,6 @@
 	
 	<Physx_mesh name="SueloGameOver" filename="Data\level4\meshes\SueloGameOver.phsx"/>
 	<Physx_mesh name="ParedGameOver" filename="Data\level4\meshes\ParedGameOver.phsx"/>
+	
+	<Physx_mesh name="CheckPointDisabledStand001" filename="Data\level4\meshes\CheckPointDisabledStand001.phsx"/>
 </Physx_meshes>
