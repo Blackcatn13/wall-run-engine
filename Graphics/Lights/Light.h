@@ -33,6 +33,7 @@ class CLight : public CObject3D {
   float m_EndRangeAttenuation;
   float m_EnableDistance;
   float m_Intensity;
+  bool m_DynamicIntensity;
   float m_ValorYFijo; // Esta variable solo la usa la luz de shadowmap que sigue al player
   static TLightType GetLightTypeByName(const std::string &StrLightType);
   std::vector<std::string> renderableDynamicMaps;
@@ -179,6 +180,7 @@ class CLight : public CObject3D {
 
   GET_SET(int, ShadowMapWidth);
   GET_SET(int, ShadowMapHeigth);
+  GET_SET(bool, DynamicIntensity);
   void BeginRenderEffectManagerShadowMap(CEffect *Effect);
   void ReloadRO();
   bool IsEnabled();

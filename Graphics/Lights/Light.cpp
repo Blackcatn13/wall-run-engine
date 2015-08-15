@@ -13,7 +13,8 @@ CLight::CLight()
   : m_ShadowMaskTexture(NULL),
     m_GenerateDynamicShadowMap (false),
     m_GenerateStaticShadowMap (false),
-    m_MustUpdateStaticShadowMap (false) {
+    m_MustUpdateStaticShadowMap (false),
+    m_DynamicIntensity(false) {
 
   for (int i = 0; i < MAX_SHADOWMAPS; i++) {
     m_DynamicShadowMap[i] = NULL;
@@ -36,6 +37,7 @@ CLight::CLight(CXMLTreeNode &Node)
   , m_ShadowMapHeigth (Node.GetIntProperty("shadow_map_height", 0, false))
   , m_ShadowMapWidth (Node.GetIntProperty("shadow_map_width", 0, false))
   , m_StartRangeAttenuation (Node.GetFloatProperty("att_start_range", 0.0f))
+  , m_DynamicIntensity(Node.GetBoolProperty("dynamic_intensity", true))
   , m_nShadowmaps(0)
   , m_ViewShadowMap (Mat44f()) {
 

@@ -107,10 +107,12 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 			float3 l_DirVectorNoNormal = l_PositionFromDepth - g_LightPosition[0];
 			float l_distance = length(l_PositionFromDepth-g_LightPosition[0]);
 			
-			float l_Intensity = (g_LightIntensity[0] / g_DistanceFromPlayer[0]) *10;
-			if (l_Intensity > g_LightIntensity[0])
-				l_Intensity = g_LightIntensity[0];
-			
+			float l_Intensity = g_LightIntensity[0];
+			if (g_DynamicIntensity[0] == 1 ){
+				float l_Intensity = (g_LightIntensity[0] / g_DistanceFromPlayer[0]) *10;
+				if (l_Intensity > g_LightIntensity[0])
+					l_Intensity = g_LightIntensity[0];
+			}
 			float l_Attenuation = 1-saturate((l_distance-g_NearAtten[0])/(g_FarAtten[0]-g_NearAtten[0]));
 			float3 l_DirVector = normalize(l_DirVectorNoNormal);
 			float3 l_DiffuseContribution = saturate(dot(l_Nn,-l_DirVector));

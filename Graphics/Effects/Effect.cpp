@@ -45,6 +45,7 @@ void CEffect::SetNullParameters() {
   m_PolyEnabledParameter = NULL;
   m_TickParameter = NULL;
   m_LightDistanceFromPlayerParameter = NULL;
+  m_LightDynamicIntensityParameter = NULL;
 }
 
 void CEffect::GetParameterBySemantic(const std::string &SemanticName, D3DXHANDLE &l_Handle) {
@@ -91,6 +92,7 @@ bool CEffect::LoadEffect() {
   GetParameterBySemantic("NSHADOWMAPS", m_NShadowmapsParameter);
   GetParameterBySemantic("TICK", m_TickParameter);
   GetParameterBySemantic("DISTANCEFROMPLAYER", m_LightDistanceFromPlayerParameter);
+  GetParameterBySemantic("DYNAMICINTENSITY", m_LightDynamicIntensityParameter);
   return isOK;
 }
 void CEffect::Unload() {
@@ -130,7 +132,8 @@ CEffect::CEffect()
   , m_UseDynamicShadowmapParameter(NULL)
   , m_NShadowmapsParameter(NULL)
   , m_TickParameter(NULL)
-  , m_LightDistanceFromPlayerParameter(NULL) {
+  , m_LightDistanceFromPlayerParameter(NULL)
+  , m_LightDynamicIntensityParameter(NULL) {
 }
 
 CEffect::~CEffect() {
@@ -175,6 +178,7 @@ bool CEffect::SetLight() {
       l_direction = l_direction.Normalize();
     }
     m_LightDistanceFromPlayer[0] =  m_Light->GetDistanceFromPlayer();
+    m_DynamicIntensity[0] = m_Light->getDynamicIntensity();
     m_LightsDirection[0] = l_direction;
     Vect3f l_color = Vect3f(m_Light->GetColor().GetRed(), m_Light->GetColor().GetGreen(), m_Light->GetColor().GetBlue()) ;
     m_LightsColor[0] = l_color;
@@ -189,6 +193,7 @@ bool CEffect::SetLight() {
     m_Effect->SetFloatArray(m_LightsDirectionParameter, &m_LightsDirection[0].x, MAX_LIGHTS_BY_SHADER * 3);
     m_Effect->SetFloatArray(m_LightsColorParameter, &m_LightsColor[0].x, MAX_LIGHTS_BY_SHADER * 3);
     m_Effect->SetFloatArray(m_LightDistanceFromPlayerParameter, &m_LightDistanceFromPlayer[0], MAX_LIGHTS_BY_SHADER);
+    m_Effect->SetBoolArray(m_LightDynamicIntensityParameter, &m_DynamicIntensity[0], MAX_LIGHTS_BY_SHADER);
     m_Light->BeginRenderEffectManagerShadowMap(this);
     return true;
   }
