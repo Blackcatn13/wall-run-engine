@@ -354,6 +354,9 @@
     <ClCompile Include="Cinematics\CinematicElement\CinematicElementCamera.cpp">
       <Filter>Cinematics\CinematicElement</Filter>
     </ClCompile>
+    <ClCompile Include="Cinematics\CinematicElement\CinematicElementCinematic.cpp">
+      <Filter>Cinematics\CinematicElement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
@@ -659,6 +662,9 @@
       <Filter>Cinematics\CinematicElement</Filter>
     </ClInclude>
     <ClInclude Include="Cinematics\CinematicElement\CinematicElementCamera.h">
+      <Filter>Cinematics\CinematicElement</Filter>
+    </ClInclude>
+    <ClInclude Include="Cinematics\CinematicElement\CinematicElementCinematic.h">
       <Filter>Cinematics\CinematicElement</Filter>
     </ClInclude>
   </ItemGroup>
