@@ -109,7 +109,7 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 			
 			float l_Intensity = g_LightIntensity[0];
 			if (g_DynamicIntensity[0] == 1 ){
-				float l_Intensity = (g_LightIntensity[0] / g_DistanceFromPlayer[0]) *10;
+				l_Intensity = (g_LightIntensity[0] / g_DistanceFromPlayer[0]) *10;
 				if (l_Intensity > g_LightIntensity[0])
 					l_Intensity = g_LightIntensity[0];
 			}
