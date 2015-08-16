@@ -306,7 +306,7 @@ function ChuckyDesapears()
 end
 
 function ChuckyJump()
-	coreInstance:trace("Chucky Jumping");
+	--coreInstance:trace("Chucky Jumping");
 	local Chucky = enemy_manager:get_enemy("Chucky");
 	Chucky:m_FSM():newState("Saltando");
 	set_chucky_need_to_jump(true)

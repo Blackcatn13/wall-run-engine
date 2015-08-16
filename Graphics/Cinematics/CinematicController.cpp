@@ -7,6 +7,7 @@
 #include "Camera\CameraController.h"
 #include "Core\Core.h"
 #include "CinematicElement\CinematicElementCamera.h"
+#include "CinematicElement\CinematicElementCinematic.h"
 
 
 CCinematicController::CCinematicController()
@@ -45,6 +46,8 @@ bool CCinematicController::Load(const std::string &FileName) {
             std::string elementType = nChild.GetName();
             if (elementType == "play_camera") {
               aux.push_back(new CCinematicElementCamera(nChild));
+            } else if (elementType == "play_cinematic") {
+              aux.push_back(new CCinematicElementCinematic(nChild));
             }
           }
           m_cinematics[cinematic_name] = aux;
