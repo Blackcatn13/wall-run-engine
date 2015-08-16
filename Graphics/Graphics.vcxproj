@@ -36,6 +36,7 @@
     <ClCompile Include="Cinematics\CinematicController.cpp" />
     <ClCompile Include="Cinematics\CinematicElement\CinematicElement.cpp" />
     <ClCompile Include="Cinematics\CinematicElement\CinematicElementCamera.cpp" />
+    <ClCompile Include="Cinematics\CinematicElement\CinematicElementCinematic.cpp" />
     <ClCompile Include="Cinematics\CinematicObject.cpp" />
     <ClCompile Include="Cinematics\CinematicObjectKeyFrame.cpp" />
     <ClCompile Include="Cinematics\CinematicPlayer.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="Cinematics\CinematicController.h" />
     <ClInclude Include="Cinematics\CinematicElement\CinematicElement.h" />
     <ClInclude Include="Cinematics\CinematicElement\CinematicElementCamera.h" />
+    <ClInclude Include="Cinematics\CinematicElement\CinematicElementCinematic.h" />
     <ClInclude Include="Cinematics\CinematicObject.h" />
     <ClInclude Include="Cinematics\CinematicObjectKeyFrame.h" />
     <ClInclude Include="Cinematics\CinematicPlayer.h" />
