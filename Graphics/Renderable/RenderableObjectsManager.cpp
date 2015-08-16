@@ -106,6 +106,7 @@ void CRenderableObjectsManager::Load(const std::string &FileName) {
         l_AnimatedInstanceModel->setEmitterOffset2 (nodeChild.GetVect3fProperty("emitter2_offset", v3fZERO));
         l_AnimatedInstanceModel->setEmitterOffset3 (nodeChild.GetVect3fProperty("emitter3_offset", v3fZERO));
         l_AnimatedInstanceModel->setEmitterOffset4 (nodeChild.GetVect3fProperty("emitter4_offset", v3fZERO));
+        l_AnimatedInstanceModel->setRoom(nodeChild.GetIntProperty("room", 1));
         AddResource(meshName, l_AnimatedInstanceModel);
       } else if (name == "switch_instance") {
         CSwitch *l_Switch  = new CSwitch(nodeChild);
@@ -188,6 +189,7 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node) {
       l_AnimatedInstanceModel->setEmitterOffset4 (Node.GetVect3fProperty("emitter4_offset", v3fZERO));
       l_AnimatedInstanceModel->setBillboard( Node.GetPszISOProperty("billboard", ""));
       l_AnimatedInstanceModel->setBillboardOffset (Node.GetVect3fProperty("billboard_offset", v3fZERO));
+      l_AnimatedInstanceModel->setRoom(Node.GetIntProperty("room", 1));
       AddResource(meshName, l_AnimatedInstanceModel);
     } else if (name == "switch_instance") {
       CSwitch *l_Switch  = new CSwitch(Node);
