@@ -12,4 +12,6 @@
 	<animation name="hurt" file="Piky_hurt.CAF"/>
 	<animation name="poly" file="Piky_poly.CAF"/>
 	<animation name="double_jump" file="Piky_Double_jump.CAF"/>
+	<animation name="death" file="Piky_death.CAF"/>
+	<animation name="death_retry" file="Piky_death_retry.CAF"/>
 </animated_model>
