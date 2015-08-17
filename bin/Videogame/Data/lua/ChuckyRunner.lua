@@ -13,6 +13,7 @@ local Chucky_running_speed = 14;
 local Chucky_super_speed = 21;
 local Chucky_current_speed = 14;
 
+
 -- Chucky Stopped --
 function chucky_runner_enter_stopped(name)
 	if playerController == nil then

@@ -42,7 +42,7 @@ function Player.new()
 	self.is_activating_poly = false
 	self.activating_triggers = true
 	self.is_dead = false
-	self.has_as_burned = false
+	self.has_ass_burned = false
 	
 	------	 PLAYER FUNCTIONS -----
 		
@@ -75,7 +75,7 @@ function Player.new()
 		player_controller.m_PhysicController:set_position(self.original_position)
 		player_controller:set_yaw(self.original_yaw)
 		if player_controller.m_Room ~= 0 then
-			set_player_room("0", false)
+			set_player_room("0", true)
 		end
 	end
 	
@@ -121,11 +121,12 @@ function Player.new()
 		self.is_dead = true
 		local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky")
 		self.remove_animations(renderable_piky_mesh)
-		--if not self.has_ass_burned then
-			--renderable_piky_mesh:execute_action(10,0,0.3,1,true) animacion de muerto
-		--else
+		if not self.has_ass_burned then
+			renderable_piky_mesh:execute_action(10,0,0.3,1,false) --animacion de muerto
+		else
+			self.has_ass_burned = false
 			--renderable_piky_mesh:execute_action(9,0,0.3,1,true) animacion de piky tostada
-		--end
+		end
 		local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 		self.coreInstance:trace("player dies")
 		self.num_lives = self.num_lives - 1
@@ -140,8 +141,6 @@ function Player.new()
 				gui_manager:set_image('VidesGUI','Vides1')
 			end	
 		end
-		--Chuky Desaparece
-		ChuckyDesapears()
 		
 		--self.check_death_actions()
 	end
@@ -163,6 +162,9 @@ function Player.new()
 	
 	function self.check_death_actions()
 		self.is_dead = false
+		--Chuky Desaparece
+		ChuckyDesapears()
+		
 		if self.num_lives == 0 then
 			--game over
 			self.coreInstance:trace("game over")

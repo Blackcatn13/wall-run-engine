@@ -484,7 +484,6 @@ void CTestGameplay::Update(float dt) {
     //tlluna1_yaw -= dt * 60 * 0.05;
     m_Dt = dt;
     // m_fsmManager->Update(dt);
-    RENDLM->Update(dt);
     if (ACT2IN->DoAction("ReloadGUI")) {
       GUIM->ReloadGuiFiles();
       // CAMCONTM->Pause();
@@ -492,6 +491,7 @@ void CTestGameplay::Update(float dt) {
     }
   }
   if (!GUIM->GetIsPaused() || !GUIM->GetIsDisplayedConsole()) {
+    RENDLM->Update(dt);
     if (ACT2IN->DoAction("Console")) {
       GUIM->SetConsole();
     }

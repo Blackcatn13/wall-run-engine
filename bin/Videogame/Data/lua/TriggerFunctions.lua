@@ -161,6 +161,7 @@ function player_die()
 	--local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 	coreInstance:trace("dieeeeee")
 	--local player = Player:get_instance()
+	player.has_ass_burned = true
 	player.player_die()
 end
 
@@ -318,8 +319,9 @@ function set_player_room(room, chucky_appears)
 	renderable_objects_layer_manager:change_between_vectors("player", "Piky", num_room)
 
 	renderable_objects_layer_manager:change_between_vectors("solid","scriptedController", num_room)
-	if chucky_appears == "true" then
+	if chucky_appears == "true" and chuky_last_room ~= num_room then
 		renderable_objects_layer_manager:change_between_vectors("enemies", "Chucky", num_room)
+		chuky_last_room = num_room
 	end
 	
 	player_controller.m_Room = num_room

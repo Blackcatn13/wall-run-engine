@@ -15,12 +15,12 @@ function set_screen_menu(model_position, room )
 		local position = Vect3f(model_position.x, model_position.y + 2, model_position.z + 5)
 		--player_controller:set_yaw(3.14) --180º en teoria
 		set_cam_position(position, -1.57) --  -90º en teoria 
-		set_player_room(9, false)
+		set_player_room(9, true)
 		local playerRenderableMesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", room):get_resource("Piky");
 		playerRenderableMesh:set_position(model_position)
 		-- AMIMACION DE GAME OVER
 		--playerRenderable:remove_action(10)
-		--playerRenderable:execute_action(9,0,0.3,1,true)
+		playerRenderableMesh:execute_action(9,0,0.3,1,true)
 	end
 	
 end

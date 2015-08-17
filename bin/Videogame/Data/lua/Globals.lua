@@ -17,4 +17,4 @@
  collectible_manager = nil
  particle_manager = coreInstance:getParticleManager()
  billboard_manager = coreInstance:get_billboard_manager()
-
+chuky_last_room = 0;
