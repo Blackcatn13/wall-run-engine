@@ -29,6 +29,7 @@ function CheckPoint.new()
 			self.name = trigger_name
 			self.renderable_stand = renderable_checkpoint
 			if self.renderable_stand ~= nil then
+				coreInstance:trace("Cambiando renderables del checkpoint")
 				self.change_checkpoint_renderables()
 			end
 			
