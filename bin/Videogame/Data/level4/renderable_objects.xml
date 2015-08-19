@@ -122,11 +122,11 @@
 	<animated_model name="Piky" core="piky" pos="55.784378 0.000000 0.617737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="player" emitter="PixelitePikyEmitter" emitter_offset="0.0 1.0 0.0" />
 
 	<animated_model name="Chucky" core="chuky" pos="12.301392 0.000000 -2.756073" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" room="1"/>
-	<animated_model name="MikMik004" core="mik" pos="530.339172 8.583496 8.188751" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>
-	<animated_model name="MikMik005" core="mik" pos="532.398804 8.583496 -10.140839" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>
-	<animated_model name="MikMik002" core="mik" pos="493.283875 8.583496 -13.436371" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>
-	<animated_model name="MikMik001" core="mik" pos="500.109070 8.583496 9.234039" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>
-	<animated_model name="MikMik003" core="mik" pos="523.253601 8.583496 -0.450745" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>
+	<animated_model name="MikMik004" core="mik" pos="530.339172 8.583496 8.188751" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"  room="3"/>
+	<animated_model name="MikMik005" core="mik" pos="532.398804 8.583496 -10.140839" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" room="3"/>
+	<animated_model name="MikMik002" core="mik" pos="493.283875 8.583496 -13.436371" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" room="3"/>
+	<animated_model name="MikMik001" core="mik" pos="500.109070 8.583496 9.234039" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" room="3"/>
+	<animated_model name="MikMik003" core="mik" pos="523.253601 8.583496 -0.450745" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" room="3"/>
 	<mesh_instance name="PilarQuad002" core="PilarQuad002" pos="8.388683 1.227661 -12.106166" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 
 	
@@ -347,9 +347,9 @@
 	<mesh_instance name="ParedGameOver" core="ParedGameOver" pos="926.038208 49.771095 -44.694866" yaw="0.0" pitch="1.59575" roll="0.0" scale="1.0 1.0 1.0" visible="false"  room="9" layer="solid"/>
 
 	<mesh_instance name="CheckPointDisabledStand001" core="CheckPointDisabledStand001" pos="59.382996 1.823731 4.071655" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="1" layer="solid"/>
-	<mesh_instance name="CheckPointDisabledStand002" core="CheckPointDisabledStand001" pos="202.563492 1.823731 14.098312" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="0" layer="solid"/>
-	<mesh_instance name="CheckPointDisabledStand003" core="CheckPointDisabledStand001" pos="437.657074 10.291058 14.098312" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="0" layer="solid"/>
-	<mesh_instance name="CheckPointDisabledStand004" core="CheckPointDisabledStand001" pos="563.272339 10.322827 -23.115706" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="CheckPointDisabledStand002" core="CheckPointDisabledStand001" pos="202.563492 1.823731 14.098312" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="2" layer="solid"/>
+	<mesh_instance name="CheckPointDisabledStand003" core="CheckPointDisabledStand001" pos="437.657074 10.291058 14.098312" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="3" layer="solid"/>
+	<mesh_instance name="CheckPointDisabledStand004" core="CheckPointDisabledStand001" pos="563.272339 10.322827 -23.115706" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="4" layer="solid"/>
 	
 	<mesh_instance name="CheckPointEnabledStand001" core="CheckPointEnabledStand001" pos="93.358940 20.823731 4.000000" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="1" layer="solid"/>
 	<mesh_instance name="CheckPointEnabledSphere" core="CheckPointEnabledSphere" pos="93.358940 20.823731 4.000000" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="1" layer="glow"/>

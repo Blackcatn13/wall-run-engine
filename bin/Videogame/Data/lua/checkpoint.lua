@@ -59,8 +59,13 @@ function CheckPoint.new()
 	end
 	
 	function self.change_checkpoint_renderables()
-		renderable_objects_layer_manager:change_between_vectors("solid", "CheckPointEnabledStand001", player_controller.m_Room)
-		renderable_objects_layer_manager:change_between_vectors("glow", "CheckPointEnabledSphere", player_controller.m_Room)
+		if (player_controller.m_Room -1 > 0) then 
+			renderable_objects_layer_manager:change_between_vectors("solid", "CheckPointEnabledStand001",player_controller.m_Room -1, player_controller.m_Room)
+			renderable_objects_layer_manager:change_between_vectors("glow", "CheckPointEnabledSphere", player_controller.m_Room-1, player_controller.m_Room)
+		else 
+			renderable_objects_layer_manager:change_between_vectors("solid", "CheckPointEnabledStand001", player_controller.m_Room)
+			renderable_objects_layer_manager:change_between_vectors("glow", "CheckPointEnabledSphere",  player_controller.m_Room)
+		end
 		local check_point_activated_stand = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("solid", player_controller.m_Room):get_resource("CheckPointEnabledStand001")
 		local check_point_activated_sphere = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("glow", player_controller.m_Room):get_resource("CheckPointEnabledSphere")
 		self.renderable_stand:set_visible(false)

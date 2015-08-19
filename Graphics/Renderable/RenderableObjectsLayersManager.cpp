@@ -242,3 +242,14 @@ void CRenderableObjectsLayersManager::ChangeBetweenVectors( std::string layer, s
     l_Rolm->RemoveFromResource(objName);
   }
 }
+
+void CRenderableObjectsLayersManager::ChangeBetweenVectors( std::string layer, std::string objName, int current_room, int room ) {
+  if (current_room != room) {
+    CRenderableObjectsManager *l_Rolm = m_ResourcesVector[current_room]->GetResource(layer);
+    CRenderableObjectsManager *l_RolmAux = m_ResourcesVector[room]->GetResource(layer);
+    CRenderableObject *l_Ro = l_Rolm ->GetResource(objName);
+    l_Ro->setRoom(room);
+    l_RolmAux->AddResource(objName, l_Ro);
+    l_Rolm->RemoveFromResource(objName);
+  }
+}
