@@ -25,9 +25,9 @@ function init_level(a)
 	--player_controller.m_Direction3D = dir3D
 	
 	--actualizar caras con las salas
-	local cara1 = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("solid",0):get_resource("CARALLENGUA_002");
+	local cara1 = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("solid",2):get_resource("CARALLENGUA_002");
 	cara1:blend_cycle(0, 1, 0);
-	local cara2 = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("solid",0):get_resource("CARALLENGUA_01");
+	local cara2 = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("solid",2):get_resource("CARALLENGUA_01");
 	cara2:blend_cycle(0, 1, 0);
 	on_init_cameras_lua()
 	
