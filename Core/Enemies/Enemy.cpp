@@ -23,7 +23,9 @@ CEnemy::CEnemy(CXMLTreeNode &info1)
     m_CurrentTime(0.0f),
 	m_Zone(1.0f),
 	m_AttackPlayerDistance(1.0f),
-	m_isAttacking(false)
+	m_isAttacking(false),
+	m_time_to_fly(false),
+	m_flyVec(Vect3f(0,0,0))
 
     //  CAIController(info1.GetPszISOProperty("mesh", "", false), m_Name, m_Position)
 {
@@ -46,6 +48,8 @@ CEnemy::CEnemy(CRenderableObject *renderableObject, float speed, float turnSpeed
   m_isAlive(true),
   m_Zone(zone),
   m_isAttacking(false),
+  m_time_to_fly(false),
+  m_flyVec(Vect3f(0,0,0)),
   m_AttackPlayerDistance(AttackDistance),
   m_OriginalPosition(renderableObject->GetPosition()),
   CAIController(renderableObject, speed, turnSpeed, 13.0f, controller_size ) {
@@ -60,6 +64,8 @@ CEnemy::CEnemy(std::string mesh, std::string name, Vect3f position,  float speed
   m_isAlive(true),
   m_Zone(1.0f),
   m_isAttacking(false),
+  m_time_to_fly(false),
+  m_flyVec(Vect3f(0,0,0)),
   m_AttackPlayerDistance(0.0f),
   m_OriginalPosition(position) {
   m_fYaw = yaw;
@@ -175,29 +181,27 @@ void CEnemy::AddDamageEnemyPumPum() {
   m_Fsm->setNewState("Take_Damage");
 }
 
-bool CEnemy::ActualizarHitboxEnemigo() {
-	  
-	  bool hasMadeDamage = false;
+int CEnemy::ActualizarHitboxEnemigo() {
 
-	  switch (CheckPlayerCollision()) {
+	  int resultCollision = CheckPlayerCollision();
+	  
+	  switch (resultCollision) {
 		case 1:
+		case 2:
 		  if (m_enemyType == MIKMIK) {
 			AddDamageEnemyMikMik();
 		  } else if (m_enemyType == PUMPUM) {
 			AddDamageEnemyPumPum();
 		  }
 		  break;
-		case 2:
-		  AddDamagePlayer();
-		  hasMadeDamage = true;
-		  break;
 		case 3:
+		  AddDamagePlayer();
 		  break;
 		default:
 		  break;
 	  }
 
-	  return hasMadeDamage;
+	  return resultCollision;
 }
 
 void CEnemy::ActualizarDisparo(float dt) {
@@ -246,18 +250,21 @@ void CEnemy::OnlyRotate(float dt, Vect3f point) {
 
 int CEnemy::CheckPlayerCollision() {
   //returns:
-  //1 if player hits
-  //2 if player gets hit
+  //1 if player hits with attack
+  //2 if player hits with jump
+  //3 if player gets hit
   //0 if no hit
   float l_MargenSuperiorPlayer = 0.5;//HARDCODED
   float l_MargenInferiorPlayer = 0;//HARDCODED -- 0 = linea de hitbox
   bool is_over_me = (PLAYC->GetPosition().y > (m_Position.y + m_EnemyHitbox - l_MargenInferiorPlayer)) && (PLAYC->GetPosition().y < (m_Position.y + m_EnemyHitbox + l_MargenSuperiorPlayer));
   if (getisAlive() && ((m_Position.Distance(PLAYC->GetPosition()) < m_EnemyHitbox) || (is_over_me && m_Position.Distance(PLAYC->GetPosition()) < (m_EnemyHitbox + l_MargenSuperiorPlayer)))) {
-    if (is_over_me || PLAYC->getisAttack()) {
+    if (PLAYC->getisAttack()) {
       return 1;
-    } else {
+    } else if(is_over_me){
       return 2;
-    }
+    }else{
+	  return 3;
+	}
   }
   return 0;
 }

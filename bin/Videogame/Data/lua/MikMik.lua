@@ -1,5 +1,8 @@
 --local min_player_distance = 49
 local base_yaw = math.pi/2
+local flySpeed = 20;
+local flyInclination = 3;
+local flyDecay = 0.1;
 function mikmik_enter_stopped(name)
 	--local enemy = enemy_manager:get_enemy(name)
 	--currentwp = wp1
@@ -158,12 +161,21 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 			if player_distance > 225 then
 				enemy:m_FSM():newState("Parado")
 			else
-				local haceDamage = enemy:actualizar_hitbox() --esto setea take damage si le pegan
-				if haceDamage then
+				local damageType = enemy:actualizar_hitbox() --esto setea take damage si le pegan
+				-- damage 1 : player pega con ataque
+				-- damage 2 : player pega con salto
+				-- damage 3 : enemy pega player
+				-- damage 0 : nada
+				if damageType == 3 then
 					enemy.m_RenderableObject:clear_cycle(0,0.2);
 					enemy.m_RenderableObject:clear_cycle(1,0.2);
 					enemy.m_RenderableObject:execute_action(2,0.1,0,1,true);
 					enemy.m_isAttacking = true;
+				elseif damageType == 1 then
+					enemy.m_time_to_fly = true;
+					enemy.m_flyVec = Vect3f(enemyPosXZ.x - playerPosXZ.x, 0,enemyPosXZ.z - playerPosXZ.z);
+					enemy.m_flyVec:normalize(1);
+					enemy.m_flyVec = Vect3f(enemy.m_flyVec.x, flyInclination, enemy.m_flyVec.z);
 				end
 			end
 			
@@ -184,8 +196,9 @@ end
 function mikmik_enter_take_damage(name)
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil then
+		enemy.m_CurrentTime = 0
 		enemy.m_Life = enemy.m_Life - 1
-		if(enemy.m_Life <= 0) then
+		if(enemy.m_Life <= 0 and enemy.m_time_to_fly == false) then
 			enemy:m_FSM():newState("Dead")
 		else 
 			if enemy.m_RenderableObject:is_action_animation_active() then
@@ -211,8 +224,23 @@ end
 
 function mikmik_update_take_damage(ElapsedTime, doComprobation, name)
 	local enemy = enemy_manager:get_enemy(name)
-	if enemy.m_RenderableObject:is_action_animation_active() then
-		enemy:m_FSM():newState("Parado")
+	if enemy.m_time_to_fly == true then
+		local auxVec = enemy.m_flyVec * flySpeed;
+		local isGrounded = enemy.m_PhysicController:move(auxVec * ElapsedTime, ElapsedTime);
+		move_enemy_renderable(enemy);
+		if isGrounded == true or enemy.m_CurrentTime > 3 then
+			enemy.m_time_to_fly = false;
+			enemy.m_flyVec = Vect3f(0,0,0);
+		else
+			enemy.m_flyVec = Vect3f(enemy.m_flyVec.x, enemy.m_flyVec.y - flyDecay, enemy.m_flyVec.z);
+			enemy.m_CurrentTime = enemy.m_CurrentTime + ElapsedTime;
+		end
+	elseif not enemy.m_RenderableObject:is_action_animation_active() then
+		if enemy.m_Life <= 0 then
+			enemy:m_FSM():newState("Dead")
+		else
+			enemy:m_FSM():newState("Parado")
+		end
 	end
 end
 

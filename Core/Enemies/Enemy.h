@@ -44,6 +44,8 @@ class CEnemy : public CAIController { //CAIController
   float				m_AttackPlayerDistance;
   float				m_Zone;
   bool				m_isAttacking;
+  bool				m_time_to_fly;
+  Vect3f			m_flyVec;
 
 
   CEnemy();
@@ -68,7 +70,7 @@ class CEnemy : public CAIController { //CAIController
   void AddDamagePlayer();
   void AddDamageEnemyMikMik();
   void AddDamageEnemyPumPum();
-  bool ActualizarHitboxEnemigo();
+  int ActualizarHitboxEnemigo();
   void ActualizarDisparo(float dt);
   void ShotToVector(float dt, Vect3f point);
   void OnlyRotate(float dt, Vect3f point);
@@ -89,6 +91,8 @@ class CEnemy : public CAIController { //CAIController
   GET_SET(float, AttackPlayerDistance);
   GET_SET(float, Zone);
   GET_SET(bool, isAttacking);
+  GET_SET(bool, time_to_fly);
+  GET_SET(Vect3f, flyVec);
   GET_SET(ENEMY_TYPE, enemyType);
   // get & set
   // set(const <type> &name)
