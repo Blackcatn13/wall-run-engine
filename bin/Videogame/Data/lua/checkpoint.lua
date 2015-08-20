@@ -59,15 +59,17 @@ function CheckPoint.new()
 	end
 	
 	function self.change_checkpoint_renderables()
-		if (player_controller.m_Room -1 > 0) then 
-			renderable_objects_layer_manager:change_between_vectors("solid", "CheckPointEnabledStand001",player_controller.m_Room -1, player_controller.m_Room)
-			renderable_objects_layer_manager:change_between_vectors("glow", "CheckPointEnabledSphere", player_controller.m_Room-1, player_controller.m_Room)
-		else 
-			renderable_objects_layer_manager:change_between_vectors("solid", "CheckPointEnabledStand001", player_controller.m_Room)
-			renderable_objects_layer_manager:change_between_vectors("glow", "CheckPointEnabledSphere",  player_controller.m_Room)
+		local check_point_activated_stand = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("solid", self.renderable_stand.m_Room):get_resource("CheckPointEnabledStand001")
+		
+		if (check_point_activated_stand == nil and self.renderable_stand.m_Room -1 > 0) then 
+			renderable_objects_layer_manager:change_between_vectors("solid", "CheckPointEnabledStand001",self.renderable_stand.m_Room -1, self.renderable_stand.m_Room)
+			renderable_objects_layer_manager:change_between_vectors("glow", "CheckPointEnabledSphere",self.renderable_stand.m_Room -1, self.renderable_stand.m_Room)
+			
+			check_point_activated_stand = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("solid", self.renderable_stand.m_Room):get_resource("CheckPointEnabledStand001")
 		end
-		local check_point_activated_stand = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("solid", player_controller.m_Room):get_resource("CheckPointEnabledStand001")
-		local check_point_activated_sphere = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("glow", player_controller.m_Room):get_resource("CheckPointEnabledSphere")
+		
+		local check_point_activated_sphere = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("glow", self.renderable_stand.m_Room):get_resource("CheckPointEnabledSphere")
+
 		self.renderable_stand:set_visible(false)
 		self.renderable_stand.m_Printable = false
 		check_point_activated_sphere:set_position(self.renderable_stand:get_position())

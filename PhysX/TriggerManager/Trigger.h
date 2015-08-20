@@ -30,6 +30,8 @@ class CTrigger: public CPhysicActor {
   CPhysicUserData *m_UserData;
   std::string	m_Name;
 
+  void SetTriggerFunctions(std::string triggerEvent, std::string scriptFile, std::string param1, std::string l_Param2, std::string scriptFunction);
+
  public:
   CTrigger(CXMLTreeNode &node, CPhysicUserData *_pUserData);
   CTrigger( std::string type, Vect3f position, Vect3f size, float radius, Vect3f color, std::string triggerEvent, std::string scriptFunction, std::string param1, std::string param2, CPhysicUserData *_pUserData);

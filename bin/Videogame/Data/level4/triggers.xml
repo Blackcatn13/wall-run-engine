@@ -58,4 +58,7 @@
 <trigger name="PLayerZone1" platform_name="" pos="59.382996 0.000000 0.071655" shape="box" size="0.69519 9.74541 9.85767" type_event="enter" script_function="set_player_room" param1="1" param2="false" group="1" paint="false" color="0.882353 0.776471 0.341176"/>
 <trigger name="PLayerZone2" platform_name="" pos="202.563492 0.015747 11.098312" shape="box" size="0.69519 9.74541 9.85767" type_event="enter" script_function="set_player_room" param1="2" param2="true" group="1" paint="false" color="0.882353 0.776471 0.341176"/>
 
+<trigger name="TestTrigger" platform_name="" pos="85.382996 0.000000 0.071655" shape="box" size="5.69519 9.74541 9.85767" type_event="enter" type_event2="leave" script_function="test_on_enter" script_function2="test_on_exit" param1_event2="param" group="1" paint="false" color="0.882353 0.776471 0.341176"/>
+
+
 </triggers>
