@@ -376,6 +376,14 @@
 	<mesh_instance name="Pixelite Blau002" core="Pixelite Blau001" pos="290.418335 1.300000 11.141947" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="collectible"/>
 	<mesh_instance name="Pixelite Blau003" core="Pixelite Blau001" pos="325.236938 1.300000 11.141947" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="collectible"/>
 	<mesh_instance name="Pixelite Verd023" core="Pixelite Verd001" pos="252.990524 3.927197 11.199324" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="collectible"/>
+	<mesh_instance name="Pixelite Verd024" core="Pixelite Verd001" pos="339.931793 3.927197 11.199324" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="collectible"/>
+	<mesh_instance name="Pixelite Verd025" core="Pixelite Verd001" pos="376.202179 1.300000 11.199324" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="collectible"/>
+	<mesh_instance name="Pixelite Verd026" core="Pixelite Verd001" pos="383.225952 3.672639 11.199324" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="collectible"/>
+	<mesh_instance name="Pixelite Verd027" core="Pixelite Verd001" pos="391.040405 6.403448 11.199324" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="collectible"/>
+	<mesh_instance name="Pixelite Verd028" core="Pixelite Verd001" pos="399.035889 9.062646 11.199324" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="collectible"/>
+	<mesh_instance name="Pixelite Verd029" core="Pixelite Verd001" pos="407.076050 9.738913 11.199324" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="collectible"/>
+	<mesh_instance name="Pixelite Verd030" core="Pixelite Verd001" pos="420.786316 9.738913 11.199324" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="collectible"/>
+	<mesh_instance name="Pixelite Verd031" core="Pixelite Verd001" pos="427.808075 9.738913 11.199324" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="3" layer="collectible"/>
 
 	<mesh_instance name="Move" core="Move" pos="62.888 0.1 -2.018604" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="solid"/>
 	<mesh_instance name="Jump" core="Jump" pos="108.026 0.1 -23.455" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="solid"/>
