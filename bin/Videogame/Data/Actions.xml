@@ -404,7 +404,7 @@
 	    </action>
 	    
 		<action name="PolyPowa">
-			<input deviceType="IDV_GAMEPAD1" AxisType="AXIS_DELTA_TRIGGER_RIGHT"/>
+			<input deviceType="IDV_GAMEPAD1" AxisType="AXIS_DELTA_TRIGGER_LEFT"/>
 		</action>
 
 		<action name="ClickAndHold">
