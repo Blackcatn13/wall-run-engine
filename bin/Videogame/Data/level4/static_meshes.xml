@@ -284,4 +284,9 @@
 	<static_mesh name="CheckPointDisabledSphere001" filename="Data\level4\meshes\CheckPointDisabledSphere001.mesh"/>
 	<static_mesh name="CheckPointEnabledStand001" filename="Data\level4\meshes\CheckPointEnabledStand001.mesh"/>
 	<static_mesh name="CheckPointEnabledSphere" filename="Data\level4\meshes\CheckPointEnabledSphere.mesh"/>
+
+	<static_mesh name="Move" filename="Data\level4\meshes\Move.mesh"/>
+	<static_mesh name="Jump" filename="Data\level4\meshes\Jump.mesh"/>
+	<static_mesh name="Attack" filename="Data\level4\meshes\Attack.mesh"/>
+	<static_mesh name="Poly" filename="Data\level4\meshes\Poly.mesh"/>
 </static_meshes>
