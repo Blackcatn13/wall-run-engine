@@ -402,9 +402,9 @@
 	    <action name="Attack">
 			<input deviceType="IDV_GAMEPAD1" EventType="EVENT_UP_DOWN"  Code="PAD_BUTTON_B"/>
 	    </action>
-
+	    
 		<action name="PolyPowa">
-			<input deviceType="IDV_GAMEPAD1" EventType="EVENT_UP_DOWN" Code="PAD_BUTTON_X"/>
+			<input deviceType="IDV_GAMEPAD1" AxisType="AXIS_DELTA_TRIGGER_RIGHT"/>
 		</action>
 
 		<action name="ClickAndHold">
