@@ -29,36 +29,52 @@ CTrigger::CTrigger(CXMLTreeNode &node, CPhysicUserData *_pUserData)
   _pUserData->SetMyCollisionGroup(static_cast<ECollisionGroup>(l_CollisionGroup));
   //Events & scripts
   std::string triggerEvent = node.GetPszISOProperty("type_event", "enter", false);
+  std::string triggerEvent2 = node.GetPszISOProperty("type_event2", "", false);
+  std::string triggerEvent3 = node.GetPszISOProperty("type_event3", "", false);
   std::string scriptFile = node.GetPszISOProperty("script_file", "", false);
   std::string scriptFunction = node.GetPszISOProperty("script_function", "", false);
+  std::string scriptFunction2 = node.GetPszISOProperty("script_function2", "", false);
+  std::string scriptFunction3 = node.GetPszISOProperty("script_function3", "", false);
   m_ScriptParam = node.GetPszISOProperty("param1", "", false);
+  std::string l_ScriptParam2 = node.GetPszISOProperty("param1_event2", "", false);
+  std::string l_ScriptParam3 = node.GetPszISOProperty("param1_event3", "", false);
   std::string l_Param2 = node.GetPszISOProperty("param2", "", false);
+  std::string l_Param2_event2 = node.GetPszISOProperty("param2_event2", "", false);
+  std::string l_Param2_event3 = node.GetPszISOProperty("param2_event3", "", false);
   m_PlatformName = node.GetPszISOProperty("platform_name", "", false);
   //useElapsedTime = node.GetFloatProperty("uses_elapsed_time", false);
   m_UpdateFunction =  node.GetPszISOProperty("update_function", "", false);
   m_MaxTime =  node.GetIntProperty("max_time", 0, false);
+  SetTriggerFunctions(triggerEvent, scriptFile, m_ScriptParam, l_Param2,  scriptFunction);
+  if (triggerEvent2 != "")
+    SetTriggerFunctions(triggerEvent2, scriptFile, l_ScriptParam2, l_Param2_event2,  scriptFunction2);
+  if (triggerEvent3 != "")
+    SetTriggerFunctions(triggerEvent3, scriptFile, l_ScriptParam3, l_Param2_event3,  scriptFunction3);
+}
+
+void CTrigger::SetTriggerFunctions(std::string triggerEvent, std::string scriptFile, std::string param1, std::string l_Param2, std::string scriptFunction) {
   if (triggerEvent == "enter") {
     if (scriptFile != "")
       m_OnEnter = scriptFile;
     else if (l_Param2 == "") {
-      m_OnEnter = SetString(scriptFunction, m_ScriptParam);
+      m_OnEnter = SetString(scriptFunction, param1);
     } else {
-      m_OnEnter = SetString(scriptFunction, m_ScriptParam, l_Param2);
+      m_OnEnter = SetString(scriptFunction, param1, l_Param2);
     }
   } else if (triggerEvent == "stay") {
     if (scriptFile != "")
       m_OnStay = scriptFile;
     else if (l_Param2 == "")
-      m_OnStay = SetString(scriptFunction, m_ScriptParam);
+      m_OnStay = SetString(scriptFunction, param1);
     else
-      m_OnStay = SetString(scriptFunction, m_ScriptParam, l_Param2);
+      m_OnStay = SetString(scriptFunction, param1, l_Param2);
   } else if (triggerEvent == "leave") {
     if (scriptFile != "")
       m_OnExit = scriptFile;
     else if (l_Param2 == "")
-      m_OnExit = SetString(scriptFunction, m_ScriptParam);
+      m_OnExit = SetString(scriptFunction, param1);
     else
-      m_OnExit = SetString(scriptFunction, m_ScriptParam, l_Param2);
+      m_OnExit = SetString(scriptFunction, param1, l_Param2);
   }
 }
 

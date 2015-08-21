@@ -192,6 +192,18 @@ function set_checkpoint(trigger_name, renderable_object)
 		coreInstance:trace("checkpoint activated")
 	end
 end
+
+function test_on_enter()
+	coreInstance:trace("Entrando en trigger")
+end
+
+function test_on_exit( param)
+	coreInstance:trace("Saliendo de trigger " .. param)
+end
+
+function test_on_stay( param)
+	coreInstance:trace("Dentro de trigger ".. param)
+end
 -------------------------------------------------------------------
 -- Esta es temporal hasta que se pongan los renderables en la mashup
 --------------------------------------------------------------------
@@ -279,7 +291,8 @@ end
 
 function ChuckyApear()
 coreInstance:trace("CHUKY APEARS!!!");
-	if player.activating_triggers then
+local Chucky = enemy_manager:get_enemy("Chucky");
+	if player.activating_triggers and not Chucky.m_Appeared then
 		
 		local active_camera = cam_Controller:get_active_camera();
 		local dirVec = active_camera:get_path_point(active_camera.m_nextWaypoint) - active_camera:get_path_point(active_camera.m_currentWaypoint);
@@ -289,7 +302,6 @@ coreInstance:trace("CHUKY APEARS!!!");
 		local distance = 18;
 		current_position = current_position - dirVec * distance;
 		local pos = Vect3f(current_position.x,current_position.y + 4,current_position.z);
-		local Chucky = enemy_manager:get_enemy("Chucky");
 		Chucky:move_to_position(pos);
 		local yaw = player.get_player_controller():get_yaw();
 		Chucky.m_RenderableObject:set_yaw(-math.rad(90));
