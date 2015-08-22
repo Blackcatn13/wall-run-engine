@@ -41,6 +41,12 @@ end
 function chucky_runner_enter_running(name)
 	chucky.m_RenderableObject:blend_cycle(1,1,0);
 	chucky.m_PhysicController:use_gravity(true);
+	local chucky_renderable = chucky.m_RenderableObject
+	local emitter = particle_manager:get_resource(chucky_renderable.m_ParticleEmitter)
+	emitter.m_vPos = chucky_renderable:get_position()+ chucky_renderable.m_EmitterOffset
+	emitter:set_visible(true)
+	--local emitter2 = particle_manager:get_resource(chucky.m_RenderableObject.m_ParticleEmitter2)
+	--emitter2:set_visible(false)
 end
 
 function chucky_runner_exit_running(name)
@@ -56,7 +62,11 @@ function move_chucky_running(ElapsedTime)
 	chucky.m_PhysicController:move(mov * Chucky_current_speed * ElapsedTime, ElapsedTime);
 	local pos = chucky:get_position();
 	chucky:set_position(chucky.m_PhysicController:get_position());
-	chucky.m_RenderableObject:set_position(Vect3f(pos.x, pos.y - 2, pos.z));
+	local chucky_renderable = chucky.m_RenderableObject
+	chucky_renderable:set_position(Vect3f(pos.x, pos.y - 2, pos.z));
+	
+	local emitter = particle_manager:get_resource(chucky.m_RenderableObject.m_ParticleEmitter)
+	emitter.m_vPos = chucky_renderable:get_position()+ chucky_renderable.m_EmitterOffset
 	return math.sqrt( math.pow((playerPos.x - chuckyPos.x),2) + math.pow((playerPos.y - chuckyPos.y),2) + math.pow((playerPos.z - chuckyPos.z),2) );
 end
 
@@ -93,6 +103,8 @@ function chucky_runner_enter_jumping(name)
 	jumpStart = false;
 	coreInstance:trace("Entro saltando")
 	set_chucky_need_to_jump(false)
+	local emitter = particle_manager:get_resource(chucky.m_RenderableObject.m_ParticleEmitter)
+	emitter:set_visible(false)
 end
 
 function chucky_runner_exit_jumping(name)
@@ -101,22 +113,27 @@ end
 
 function chucky_runner_update_jumping(ElapsedTime, doComprobation, name)
 	-- Solucionando las misteriosas caidas de chucky
+	local chucky_renderable = chucky.m_RenderableObject
 	if jumpStart then
-		if chucky.m_RenderableObject:is_action_animation_active() then
-			chucky.m_RenderableObject:remove_action(3)
+		if chucky_renderable:is_action_animation_active() then
+			chucky_renderable:remove_action(3)
 		end
-		chucky.m_RenderableObject:execute_action(2,0.25,0,1,true);
+		chucky_renderable:execute_action(2,0.25,0,1,true);
 		chucky.m_PhysicController:use_gravity(false);
 		jumpStart = false;
 		coreInstance:trace("Entro saltando pero no estaba dentro ya?")
 	end
-	coreInstance:trace("Update saltando chuky")
-	if (not chucky.m_RenderableObject:is_cycle_animation_active() and not jumpStart) then
-		chucky.m_RenderableObject:blend_cycle(1,1,0);
-		local characterPos = chucky.m_RenderableObject:get_position();
+	--coreInstance:trace("Update saltando chuky")
+	if (not chucky_renderable:is_cycle_animation_active() and not jumpStart) then
+		chucky_renderable:blend_cycle(1,1,0);
+		local characterPos = chucky_renderable:get_position();
 		chucky.m_PhysicController:set_position(Vect3f(characterPos.x + 8.992 + 0.164, characterPos.y + 2, characterPos.z));
-		chucky.m_RenderableObject:set_position(Vect3f(characterPos.x + 8.992 + 0.164, characterPos.y, characterPos.z));
+		chucky_renderable:set_position(Vect3f(characterPos.x + 8.992 + 0.164, characterPos.y, characterPos.z));
 		jumpStart = true
+		local emitter2 = particle_manager:get_resource(chucky_renderable.m_ParticleEmitter2)
+		emitter2.m_vPos = chucky_renderable:get_position()+ chucky_renderable.m_EmitterOffset2
+		emitter2.m_FireParticles = true
+		coreInstance:trace("Salgo del saltooo")
 		chucky:m_FSM():newState("Corriendo");
 	end
 

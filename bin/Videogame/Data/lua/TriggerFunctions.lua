@@ -319,6 +319,8 @@ function ChuckyDesapears()
 		Chucky:move_to_position(pos);
 		Chucky:m_FSM():newState("Parado");
 		Chucky.m_Appeared = false
+		local emitter = particle_manager:get_resource(Chucky.m_RenderableObject.m_ParticleEmitter)
+		emitter:set_visible(false)
 	end
 end
 

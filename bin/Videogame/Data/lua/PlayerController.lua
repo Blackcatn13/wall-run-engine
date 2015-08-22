@@ -424,6 +424,7 @@ function on_update_player_lua(l_ElapsedTime)
 					local prev_y = mov.y
 					mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce * AttackSpeed * l_ElapsedTime
 					mov.y = prev_y
+					emitter.m_vPos = playerRenderable:get_position()+ playerRenderable.m_EmitterOffset
 				end
 			end
 		end
@@ -462,6 +463,7 @@ function on_update_player_lua(l_ElapsedTime)
 			player_controller.m_isAttack = true;
 			playerRenderable:execute_action(5,0,0.3,1,false);
 			local emitter = particle_manager:get_resource(playerRenderable.m_ParticleEmitter)
+			emitter.m_vPos = playerRenderable:get_position()+ playerRenderable.m_EmitterOffset
 			emitter:set_visible(true)
 		end
 	
