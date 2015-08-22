@@ -46,6 +46,7 @@ class CEnemy : public CAIController { //CAIController
   bool				m_isAttacking;
   bool				m_time_to_fly;
   Vect3f			m_flyVec;
+  bool				m_MovedToDiePosition;
 
 
   CEnemy();
@@ -92,6 +93,7 @@ class CEnemy : public CAIController { //CAIController
   GET_SET(float, Zone);
   GET_SET(bool, isAttacking);
   GET_SET(bool, time_to_fly);
+  GET_SET(bool, MovedToDiePosition);
   GET_SET(Vect3f, flyVec);
   GET_SET(ENEMY_TYPE, enemyType);
   // get & set

@@ -95,8 +95,10 @@ void RegisterAI() {
     .property("m_AttackPlayerDistance", &CEnemy::getAttackPlayerDistance, &CEnemy::setAttackPlayerDistance )
     .property("m_Zone", &CEnemy::getZone, &CEnemy::setZone)
     .property("m_isAttacking", &CEnemy::getisAttacking, &CEnemy::setisAttacking)
-	.property("m_time_to_fly", &CEnemy::gettime_to_fly, &CEnemy::settime_to_fly)
-	.property("m_flyVec", &CEnemy::getflyVec, &CEnemy::setflyVec)
+    .property("m_time_to_fly", &CEnemy::gettime_to_fly, &CEnemy::settime_to_fly)
+    .property("m_flyVec", &CEnemy::getflyVec, &CEnemy::setflyVec)
+    .property("m_MovedToDiePosition", &CEnemy::getMovedToDiePosition, &CEnemy::setMovedToDiePosition)
+
     .def("get_name",  &CEnemy::GetEnemyName)
     .def("m_FSM", &CEnemy::getFsm)
     .def("only_rotate", &CEnemy::OnlyRotate)

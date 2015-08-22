@@ -252,6 +252,7 @@ function mikmik_enter_dead(name)
 		enemy.m_RenderableObject:clear_cycle(1,0.2);
 		enemy.m_RenderableObject:remove_action(2);
 		enemy.m_RenderableObject:execute_action(3,0.1,0,1,true);
+		
 		enemy.m_isAlive = false
 		local dead_pos = enemy.m_PhysicController:get_position()
 		enemy.m_OriginalPosition = Vect3f(dead_pos.x,dead_pos.y,dead_pos.z)
@@ -268,6 +269,7 @@ function mikmik_set_alive(name)
 	enemy.m_PhysicController:set_position(enemy.m_OriginalPosition)
 	enemy:move_to_position(enemy.m_OriginalPosition)
 	enemy.m_PhysicController:set_radius(0.5)
+	enemy.m_MovedToDiePosition = false
 end
 
 function mikmik_exit_dead(name)
@@ -283,15 +285,21 @@ end
 function mikmik_update_dead(ElapsedTime, doComprobation, name)
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil then
-		if not enemy.m_RenderableObject:is_action_animation_active() and not enemy.m_isAlive then
+		if not enemy.m_RenderableObject:is_action_animation_active() and not enemy.m_isAlive and not enemy.m_MovedToDiePosition then
+			enemy.m_CurrentTime = enemy.m_CurrentTime + 1 *ElapsedTime
 			--coreInstance:trace("Update muerto Mik sin accion")
-			enemy.m_RenderableObject.m_Printable=false
-			local dead_pos = enemy.m_PhysicController:get_position()
-			dead_pos.y = dead_pos.y + 1000
-			enemy:set_position(dead_pos)
-			enemy.m_PhysicController:set_position(dead_pos)
-			enemy:move_to_position(dead_pos)
-			
+			local emitter = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter)
+			emitter.m_vPos = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_EmitterOffset
+			emitter.m_FireParticles = true 
+			if enemy.m_CurrentTime > 0.5 then
+				enemy.m_RenderableObject.m_Printable=false
+				local dead_pos = enemy.m_PhysicController:get_position()
+				dead_pos.y = dead_pos.y + 1000
+				enemy:set_position(dead_pos)
+				enemy.m_PhysicController:set_position(dead_pos)
+				enemy:move_to_position(dead_pos)
+				enemy.m_MovedToDiePosition  = true
+			end
 		--elseif enemy.m_RenderableObject:is_action_animation_active() and not enemy.m_isAlive then
 			--enemy.m_RenderableObject:execute_action(3,0.1,0,1,false);
 		end

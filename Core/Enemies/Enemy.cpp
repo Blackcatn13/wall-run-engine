@@ -21,11 +21,12 @@ CEnemy::CEnemy(CXMLTreeNode &info1)
                   info1.GetFloatProperty("gravity", .0f, false)),
     // m_RenderableObject(NULL),
     m_CurrentTime(0.0f),
-	m_Zone(1.0f),
-	m_AttackPlayerDistance(1.0f),
-	m_isAttacking(false),
-	m_time_to_fly(false),
-	m_flyVec(Vect3f(0,0,0))
+    m_Zone(1.0f),
+    m_AttackPlayerDistance(1.0f),
+    m_isAttacking(false),
+    m_time_to_fly(false),
+    m_flyVec(Vect3f(0, 0, 0)),
+    m_MovedToDiePosition(false)
 
     //  CAIController(info1.GetPszISOProperty("mesh", "", false), m_Name, m_Position)
 {
@@ -49,9 +50,10 @@ CEnemy::CEnemy(CRenderableObject *renderableObject, float speed, float turnSpeed
   m_Zone(zone),
   m_isAttacking(false),
   m_time_to_fly(false),
-  m_flyVec(Vect3f(0,0,0)),
+  m_flyVec(Vect3f(0, 0, 0)),
   m_AttackPlayerDistance(AttackDistance),
   m_OriginalPosition(renderableObject->GetPosition()),
+  m_MovedToDiePosition(false),
   CAIController(renderableObject, speed, turnSpeed, 13.0f, controller_size ) {
   m_fYaw = renderableObject->GetYaw();
   m_Position = renderableObject->GetPosition();
@@ -65,8 +67,9 @@ CEnemy::CEnemy(std::string mesh, std::string name, Vect3f position,  float speed
   m_Zone(1.0f),
   m_isAttacking(false),
   m_time_to_fly(false),
-  m_flyVec(Vect3f(0,0,0)),
+  m_flyVec(Vect3f(0, 0, 0)),
   m_AttackPlayerDistance(0.0f),
+  m_MovedToDiePosition(false),
   m_OriginalPosition(position) {
   m_fYaw = yaw;
   m_Position = position;
@@ -106,7 +109,7 @@ Vect3f CEnemy::GetOriginalPosition() {
 }
 
 void CEnemy::SetOriginalPosition(Vect3f position) {
-   m_OriginalPosition = position;
+  m_OriginalPosition = position;
 }
 
 void CEnemy::UpdateFSM(float elapsedTime) {
@@ -183,25 +186,25 @@ void CEnemy::AddDamageEnemyPumPum() {
 
 int CEnemy::ActualizarHitboxEnemigo() {
 
-	  int resultCollision = CheckPlayerCollision();
-	  
-	  switch (resultCollision) {
-		case 1:
-		case 2:
-		  if (m_enemyType == MIKMIK) {
-			AddDamageEnemyMikMik();
-		  } else if (m_enemyType == PUMPUM) {
-			AddDamageEnemyPumPum();
-		  }
-		  break;
-		case 3:
-		  AddDamagePlayer();
-		  break;
-		default:
-		  break;
-	  }
+  int resultCollision = CheckPlayerCollision();
 
-	  return resultCollision;
+  switch (resultCollision) {
+    case 1:
+    case 2:
+      if (m_enemyType == MIKMIK) {
+        AddDamageEnemyMikMik();
+      } else if (m_enemyType == PUMPUM) {
+        AddDamageEnemyPumPum();
+      }
+      break;
+    case 3:
+      AddDamagePlayer();
+      break;
+    default:
+      break;
+  }
+
+  return resultCollision;
 }
 
 void CEnemy::ActualizarDisparo(float dt) {
@@ -260,11 +263,11 @@ int CEnemy::CheckPlayerCollision() {
   if (getisAlive() && ((m_Position.Distance(PLAYC->GetPosition()) < m_EnemyHitbox) || (is_over_me && m_Position.Distance(PLAYC->GetPosition()) < (m_EnemyHitbox + l_MargenSuperiorPlayer)))) {
     if (PLAYC->getisAttack()) {
       return 1;
-    } else if(is_over_me){
+    } else if (is_over_me) {
       return 2;
-    }else{
-	  return 3;
-	}
+    } else {
+      return 3;
+    }
   }
   return 0;
 }
