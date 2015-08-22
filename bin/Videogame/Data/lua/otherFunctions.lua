@@ -183,7 +183,7 @@ function reset_game()
 	player.num_hearts = 3;
 	gui_manager:set_image('LifeGUI','Life3')
 	player.num_lives = 3;
-	player.visited_checkpoints = {}
+	--player.visited_checkpoints = {}
 	player.last_checkpoint = nil
 	player.zone = 1
 	gui_manager:set_image('VidesGUI','Vides3')
@@ -215,6 +215,9 @@ function reset_game()
 	local trap = search(trap_vector, "ArrowTrap1")
 	--trap:reset_position()
 	
+	--CheckPoints
+	reset_checkpoints()
+	
 	--Others
 	gui_manager:activate_pause(false);
 	gui_manager:set_is_paused(false);
@@ -225,3 +228,4 @@ function reset_game()
 	gui_manager:set_visible_gui_element("LifeGUI", true)
 	gui_manager:set_visible_gui_element("VidesGUI", true)
 end
+

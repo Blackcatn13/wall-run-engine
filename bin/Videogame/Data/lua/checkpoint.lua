@@ -81,4 +81,19 @@ function CheckPoint.new()
 	return self
 end
 
+function reset_checkpoints()
+	coreInstance:trace("reseting checkpoints: " .. tostring(table.getn(player.visited_checkpoints)) )
+	for i = 1, table.getn(player.visited_checkpoints) do
+		local renderable = player.visited_checkpoints[i].renderable_stand
+		renderable:set_visible(true)
+		renderable.m_Printable = true
+		coreInstance:trace("reseting checkpoint: ".. tostring(i))
+		if i == table.getn(player.visited_checkpoints) then
+			coreInstance:trace("last checkpoint")
+			renderable_objects_layer_manager:change_between_vectors("solid", "CheckPointEnabledStand001", renderable.m_Room, 1)
+			renderable_objects_layer_manager:change_between_vectors("glow", "CheckPointEnabledSphere", renderable.m_Room, 1)
+		end
+	end
+	clear_array(player.visited_checkpoints)
+end
 
