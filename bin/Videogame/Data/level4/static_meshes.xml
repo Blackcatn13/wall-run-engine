@@ -289,4 +289,9 @@
 	<static_mesh name="Jump" filename="Data\level4\meshes\Jump.mesh"/>
 	<static_mesh name="Attack" filename="Data\level4\meshes\Attack.mesh"/>
 	<static_mesh name="Poly" filename="Data\level4\meshes\Poly.mesh"/>
+
+	<static_mesh name="Puerta_abajo" filename="Data\level4\meshes\Puerta_abajo.mesh"/>
+	<static_mesh name="Puerta_arriba" filename="Data\level4\meshes\Puerta_arriba.mesh"/>
+
+	<static_mesh name="Collectible1" filename="Data\level4\meshes\Collectible1.mesh"/>
 </static_meshes>
