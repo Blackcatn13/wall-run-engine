@@ -20,7 +20,7 @@ function set_screen_menu(model_position, room )
 		playerRenderableMesh:set_position(model_position)
 		-- AMIMACION DE GAME OVER
 		--playerRenderable:remove_action(10)
-		playerRenderableMesh:execute_action(9,0,0.3,1,true)
+		playerRenderableMesh:execute_action(8,0,0.3,1,true)
 	end
 	
 end

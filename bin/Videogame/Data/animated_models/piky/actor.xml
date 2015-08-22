@@ -3,15 +3,18 @@
 	<normal_texture file="NRM_Piky.tga"/>
 	<skeleton file="Piky_Skeleton.CSF"/>
 	<mesh file="Piky_Mesh.CMF"/>
-	<animation name="idle" file="Piky_idle.CAF"/>
-	<animation name="run" file="Piky_run.CAF"/>
-	<animation name="jump_start" file="Piky_jump_start.CAF"/>
-	<animation name="jump_loop" file="Piky_jump_loop.CAF"/>
-	<animation name="jump_end" file="Piky_jump_end.CAF"/>
-	<animation name="attack" file="Piky_kick.CAF"/>
-	<animation name="hurt" file="Piky_hurt.CAF"/>
-	<animation name="poly" file="Piky_poly.CAF"/>
-	<animation name="double_jump" file="Piky_Double_jump.CAF"/>
-	<animation name="death" file="Piky_death.CAF"/>
-	<animation name="death_retry" file="Piky_death_retry.CAF"/>
+	<animation name="idle" file="Piky_idle.CAF"/> <!-- 0 -->
+	<animation name="run" file="Piky_run.CAF"/> <!-- 1 -->
+	<animation name="jump_start" file="Piky_jump_start.CAF"/> <!-- 2 -->
+	<animation name="jump_loop" file="Piky_jump_loop.CAF"/> <!-- 3 -->
+	<animation name="jump_end" file="Piky_jump_end.CAF"/> <!-- 4 -->
+	<animation name="attack" file="Piky_kick.CAF"/> <!-- 5 -->
+	<animation name="hurt" file="Piky_hurt.CAF"/> <!-- 6 -->
+	<animation name="poly" file="Piky_poly.CAF"/> <!-- 7 -->
+	<animation name="death" file="Piky_death.CAF"/> <!-- 8 -->
+	<animation name="death_retry" file="Piky_death_retry.CAF"/> <!-- 9 -->
+	<animation name="DJump_01" file="Piky_DoubleJump01.CAF"/> <!-- 10 -->
+	<animation name="DJump_02" file="Piky_DoubleJump02.CAF"/> <!-- 11 -->
+	<animation name="DJump_03" file="Piky_DoubleJump03.CAF"/> <!-- 12 -->
+	<animation name="DJump_04" file="Piky_DoubleJump04.CAF"/> <!-- 13 -->
 </animated_model>

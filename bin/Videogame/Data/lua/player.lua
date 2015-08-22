@@ -122,7 +122,7 @@ function Player.new()
 		local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky")
 		self.remove_animations(renderable_piky_mesh)
 		if not self.has_ass_burned then
-			renderable_piky_mesh:execute_action(10,0,0.3,1,false) --animacion de muerto
+			renderable_piky_mesh:execute_action(9,0,0.3,1,false) --animacion de muerto
 		else
 			self.has_ass_burned = false
 			--renderable_piky_mesh:execute_action(9,0,0.3,1,true) animacion de piky tostada
