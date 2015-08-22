@@ -79,6 +79,7 @@ void RegisterParticles() {
     .property("m_MinVelocidadOndulacion", &CParticleEmitter::getMinVelocidadOndulacion, &CParticleEmitter::setMinVelocidadOndulacion)
     .property("m_vOndulacion1", &CParticleEmitter::getvOndulacion1, &CParticleEmitter::setvOndulacion1)
     .property("m_vOndulacion2", &CParticleEmitter::getvOndulacion2, &CParticleEmitter::setvOndulacion2)
+    .property("m_FireParticles", &CParticleEmitter::getFireParticles, &CParticleEmitter::setFireParticles)
     .def("reloadTexture", &CParticleEmitter::reloadTexture)
     .def("move", &CParticleEmitter::Move)
   ];

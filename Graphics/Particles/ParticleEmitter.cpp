@@ -21,8 +21,8 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
   , m_ExcedentTime(.0f)
   , m_MinSpeed(node.GetFloatProperty("min_speed", -1.0f, false))
   , m_MaxSpeed(node.GetFloatProperty("max_speed", -1.0f, false))
-  , m_MinParticles(node.GetIntProperty("min_particles", -1, false))
-  , m_MaxParticles(node.GetIntProperty("max_particles", -1, false))
+  , m_MinParticles(node.GetIntProperty("min_particles", 0.0f, false))
+  , m_MaxParticles(node.GetIntProperty("max_particles", 0.0f, false))
   , m_MinEmissionTime(node.GetFloatProperty("min_emission_time", -1.0f, false))
   , m_MaxEmissionTime(node.GetFloatProperty("max_emission_time", -1.0f, false))
   , m_MinAge(node.GetFloatProperty("min_age", -1.0f, false))
@@ -42,7 +42,9 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
   , m_vOndulacion1(node.GetVect3fProperty("ondulacion_vec1", v3fZERO, false))
   , m_vOndulacion2(node.GetVect3fProperty("ondulacion_vec2", v3fZERO, false))
   , m_EndAlpha(node.GetFloatProperty("end_alpha", 1.f))
-  , m_sTexture(node.GetPszISOProperty("texture", "", false)) {
+  , m_sTexture(node.GetPszISOProperty("texture", "", false))
+  , m_FireOnce(node.GetBoolProperty("fire_once", false, false)),
+    m_FireParticles(false) {
   m_visible = node.GetBoolProperty("visible", true, false);
   m_Name = (node.GetPszISOProperty("name", "", false));
   std::string type = node.GetPszISOProperty("type", "PLANE", false);
@@ -101,7 +103,9 @@ CParticleEmitter::CParticleEmitter()
   , m_vOndulacion1(v3fZERO)
   , m_Rotation(0.01f)
   , m_vOndulacion2(v3fZERO)
-  , m_sTexture("") {
+  , m_sTexture("")
+  , m_FireOnce(false)
+  , m_FireParticles(false) {
   m_visible = true;
   std::string type = "PLANE";
   if (type == "ESF")
@@ -162,21 +166,24 @@ void CParticleEmitter::Render(CGraphicsManager *RM) {
 }
 
 void CParticleEmitter::Update(float dt) {
-  m_CurrentTime = m_CurrentTime + dt;
   DeleteOldParticles(dt);
-  if (m_CurrentTime >= m_TimeNextParticle) {
-    int numberOfNewParticles = (int)((m_CurrentTime + m_ExcedentTime) / m_TimeNextParticle);
-    m_ExcedentTime = m_CurrentTime - m_TimeNextParticle;
-    m_TimeNextParticle = mathUtils::RandomFloatRange(m_MinEmissionTime, m_MaxEmissionTime);
-    for (int i = 0; i < numberOfNewParticles; ++i) {
-      CParticle *p = NewParticle();
-      if (p != NULL) {
-        PopulateParticle(p);
+  if (m_visible && ((m_FireOnce && m_FireParticles) || !m_FireOnce)) {
+    m_CurrentTime = m_CurrentTime + dt;
+
+    if (m_CurrentTime >= m_TimeNextParticle) {
+      int numberOfNewParticles = (int)((m_CurrentTime + m_ExcedentTime) / m_TimeNextParticle);
+      m_ExcedentTime = m_CurrentTime - m_TimeNextParticle;
+      m_TimeNextParticle = mathUtils::RandomFloatRange(m_MinEmissionTime, m_MaxEmissionTime);
+      for (int i = 0; i < numberOfNewParticles; ++i) {
+        CParticle *p = NewParticle();
+        if (p != NULL) {
+          PopulateParticle(p);
+        }
       }
     }
-  }
-  if (m_UsedElements > 0) {
-    UpdateParticles(dt);
+    if (m_UsedElements > 0) {
+      UpdateParticles(dt);
+    }
   }
 }
 
@@ -266,7 +273,7 @@ void CParticleEmitter::InitPool() {
   m_RecyclingArray = new CParticle[m_MaxParticles];
   m_RecyclingArrayStatus = new bool[m_MaxParticles];
 
-  for (int i = 0; i < m_MaxParticles; ++i)
+  for (int i = m_MinParticles/*0*/; i < m_MaxParticles; ++i)
     m_RecyclingArrayStatus[i] = true;
   m_FreeElements = m_MaxParticles;
   m_UsedElements = 0;
@@ -274,21 +281,24 @@ void CParticleEmitter::InitPool() {
 
 void CParticleEmitter::DeleteOldParticles(float age) {
   //#pragma omp parallel for
-  for (int i = 0; i < m_MaxParticles; ++i) {
+  for (int i = m_MinParticles/*0*/; i < m_MaxParticles; ++i) {
     if (!m_RecyclingArrayStatus[i]) {
       if ((&(m_RecyclingArray[i]))->takeLife(age) <= 0) {
         m_UsedElements--;
         m_FreeElements++;
         m_RecyclingArrayStatus[i] = true;
         m_vertex_list[i].visible = 0;
+        if (i == m_MaxParticles - 1 && m_FireParticles)
+          m_FireParticles = false;
       }
     }
+
   }
 }
 
 void CParticleEmitter::UpdateParticles(float dt) {
   //#pragma omp parallel for
-  for (int i = 0; i < m_MaxParticles; ++i) {
+  for (int i = m_MinParticles/*0*/; i < m_MaxParticles; ++i) {
     if (!m_RecyclingArrayStatus[i]) {
       CParticle *p = &(m_RecyclingArray[i]);
       p->Update(dt);
@@ -305,7 +315,7 @@ void CParticleEmitter::UpdateParticles(float dt) {
 
 CParticle *CParticleEmitter::NewParticle() {
   bool found = false;
-  int index = 0;
+  int index = m_MinParticles/*0*/;
 
   if (m_FreeElements > 0) {
     while (!found && index < m_MaxParticles) {

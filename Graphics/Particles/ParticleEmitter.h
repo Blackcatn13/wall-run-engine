@@ -48,6 +48,8 @@ class CParticleEmitter : public CObject3D, public CNamed {
   GET_SET(float, MinVelocidadOndulacion);
   GET_SET(Vect3f, vOndulacion1);
   GET_SET(Vect3f, vOndulacion2);
+  GET_SET(bool, FireOnce);
+  GET_SET(bool, FireParticles);
   bool reloadTexture();
   void Move(Vect3f direction, float ElapsedTime);
  private:
@@ -77,6 +79,9 @@ class CParticleEmitter : public CObject3D, public CNamed {
   CColor			                m_Color2;
   std::string		              m_sTexture;
   //CRecyclingArray<CParticle> *m_Particles;
+  bool							m_FireOnce;
+  bool							m_FireParticles;
+
   float								        m_Gravity;
   float								        m_MaxVelocidadOndulacion;
   float								        m_MinVelocidadOndulacion;

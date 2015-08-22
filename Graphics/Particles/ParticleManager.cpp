@@ -47,8 +47,8 @@ void CParticleManager::Load() {
 
 void CParticleManager::Update(float ElapsedTime) {
   for (size_t i = 0; i < m_ResourcesVector.size(); ++i) {
-    if (m_ResourcesVector[i]->getVisible())
-      m_ResourcesVector[i]->Update(ElapsedTime);
+    // if (m_ResourcesVector[i]->getVisible()) //Lo miramos en el emitter para poder eliminar las que sobren igualmente
+    m_ResourcesVector[i]->Update(ElapsedTime);
   }
 }
 
