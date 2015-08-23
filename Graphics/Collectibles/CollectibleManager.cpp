@@ -30,13 +30,17 @@ void CCollectibleManager::InitCollectibles(std::string layerName) {
           std::string l_Param = "";
           bool l_Visible = l_Rom->GetResourcesVector()[i]->getVisible();
 
-          if (m_VectorCollectibleTypes[j].Name == "card")
-            l_Param = m_Unlockables.find(l_Rom->GetResourcesVector()[i]->getName())->first;
-          else
+          if (m_VectorCollectibleTypes[j].Name == "card") {
+            auto it = m_Unlockables.find(l_Rom->GetResourcesVector()[i]->getName());
+            if (it != m_Unlockables.end()) {
+              l_Param = it->first;
+            }
+          } else
             l_Param =  m_VectorCollectibleTypes[j].ParamTriggerFunction;
-          CCollectible *l_Collectible = new CCollectible(l_Rom->GetResourcesVector()[i], m_Layer, m_VectorCollectibleTypes[j].MeshLuaFunction, m_VectorCollectibleTypes[j].TriggerFunction, m_VectorCollectibleTypes[j].TriggerSize, l_Param, l_Visible  );
-          AddResource(l_Rom->GetResourcesVector()[i]->getName(), l_Collectible);
-
+          if (l_Param != "") {
+            CCollectible *l_Collectible = new CCollectible(l_Rom->GetResourcesVector()[i], m_Layer, m_VectorCollectibleTypes[j].MeshLuaFunction, m_VectorCollectibleTypes[j].TriggerFunction, m_VectorCollectibleTypes[j].TriggerSize, l_Param, l_Visible  );
+            AddResource(l_Rom->GetResourcesVector()[i]->getName(), l_Collectible);
+          }
           /*  } else if ((m_VectorCollectibleTypes[j].Name == "sticker")) {
               CCromo *l_Collectible  = new CCromo(l_Rom->GetResourcesVector()[i], m_Layer, m_VectorCollectibleTypes[j].MeshLuaFunction, m_VectorCollectibleTypes[j].TriggerFunction  );
               AddResource(l_Rom->GetResourcesVector()[i]->getName(), l_Collectible);

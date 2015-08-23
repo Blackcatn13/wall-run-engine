@@ -401,3 +401,9 @@ end
 function set_infinite_player_attack(can_finish)
 	player.can_finish_atack = toboolean(can_finish)
 end
+
+function trigger_zone4() 
+	set_player_room(4, false)
+	trigger = trigger_manager:get_resource("Collectible2_UserData")
+	activate_collectible(trigger, "collectible", "Collectible2")
+end
