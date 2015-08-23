@@ -41,6 +41,10 @@ function mikmik_update_stopped(ElapsedTime, doComprobation, name)
 						if player_distance < 500 then
 							-- Animacion de andar
 							rotate_yaw(enemy, ElapsedTime, player_position)
+							local billboard = billboard_manager:get_resource(enemy.m_RenderableObject.m_Billboard)
+							if billboard ~= nil then
+								billboard.m_position = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_BillboardOffset
+							end
 						end
 					end
 				end	
@@ -145,6 +149,13 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 	local player_position = player_controller:get_position()
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil then
+	local billboard = billboard_manager:get_resource(enemy.m_RenderableObject.m_Billboard)
+	if billboard ~= nil then
+		--coreInstance:trace("Mik Position: ".. tostring(enemy:get_position().x) .. ", " .. tostring(enemy:get_position().y) .. ", " ..tostring(enemy:get_position().z))
+		billboard.m_position = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_BillboardOffset
+		--coreInstance:trace("BillBoard Position: ".. tostring(billboard.m_position.x) .. ", " .. tostring(billboard.m_position.y) .. ", " ..tostring(billboard.m_position.z))
+	end
+	
 	--coreInstance:trace("Enemy Zone" .. tostring (enemy.m_Zone))
 	--coreInstance:trace("player Zone" .. tostring (player.zone))
 		if enemy.m_isAttacking == false then

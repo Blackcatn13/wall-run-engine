@@ -123,11 +123,11 @@
 
 	<animated_model name="Chucky" core="chuky" pos="12.301392 0.000000 -2.756073" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="DustChuckyEmitter" emitter_offset="0.0 0.0 0.0" emitter2="DustJumpChuckyEmitter" emitter2_offset="0.0 0.0 0.0" room="1"/>
 	
-	<animated_model name="MikMik004" core="mik" pos="530.339172 8.583496 8.188751" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik004DeathEmitter" emitter_offset="0.0 0.0 0.0" room="3"/>
-	<animated_model name="MikMik005" core="mik" pos="532.398804 8.583496 -10.140839" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik005DeathEmitter" emitter_offset="0.0 0.0 0.0" room="3"/>
-	<animated_model name="MikMik002" core="mik" pos="493.283875 8.583496 -13.436371" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik002DeathEmitter" emitter_offset="0.0 0.0 0.0" room="3"/>
-	<animated_model name="MikMik001" core="mik" pos="500.109070 8.583496 9.234039" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik001DeathEmitter" emitter_offset="0.0 0.0 0.0" room="3" />
-	<animated_model name="MikMik003" core="mik" pos="523.253601 8.583496 -0.450745" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik003DeathEmitter" emitter_offset="0.0 0.0 0.0" room="3"/>
+	<animated_model name="MikMik004" core="mik" pos="530.339172 8.583496 8.188751" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik004DeathEmitter" emitter_offset="0.0 0.0 0.0" billboard="exclamationMik004" billboard_offset="0.0 3.0 0.0" room="3"/>
+	<animated_model name="MikMik005" core="mik" pos="532.398804 8.583496 -10.140839" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik005DeathEmitter" emitter_offset="0.0 0.0 0.0" billboard="exclamationMik005" billboard_offset="0.0 3.0 0.0" room="3"/>
+	<animated_model name="MikMik002" core="mik" pos="493.283875 8.583496 -13.436371" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik002DeathEmitter" emitter_offset="0.0 0.0 0.0" billboard="exclamationMik002" billboard_offset="0.0 3.0 0.0" room="3"/>
+	<animated_model name="MikMik001" core="mik" pos="500.109070 8.583496 9.234039" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik001DeathEmitter" emitter_offset="0.0 0.0 0.0" billboard="exclamationMik001" billboard_offset="0.0 3.0 0.0" room="3" />
+	<animated_model name="MikMik003" core="mik" pos="523.253601 8.583496 -0.450745" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik003DeathEmitter" emitter_offset="0.0 0.0 0.0" billboard="exclamationMik003" billboard_offset="0.0 3.0 0.0" room="3"/>
 	<mesh_instance name="PilarQuad002" core="PilarQuad002" pos="8.388683 1.227661 -12.106166" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 
 	<mesh_instance name="SALA 4" core="SALA 4" pos="557.800537 18.551483 -116.637451" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="4"/>
