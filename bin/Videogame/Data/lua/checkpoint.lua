@@ -1,6 +1,6 @@
 CheckPoint = {}
 --CheckPoint_mt = { __index = CheckPoint}
-
+local last_checkpoint_room = 1
 local last_position = Vect3f(0.0, 0.0, 0.0)
 local is_activated = false
 function CheckPoint.new()
@@ -61,10 +61,16 @@ function CheckPoint.new()
 	function self.change_checkpoint_renderables()
 		local check_point_activated_stand = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("solid", self.renderable_stand.m_Room):get_resource("CheckPointEnabledStand001")
 		
-		if (check_point_activated_stand == nil and self.renderable_stand.m_Room -1 > 0) then 
-			renderable_objects_layer_manager:change_between_vectors("solid", "CheckPointEnabledStand001",self.renderable_stand.m_Room -1, self.renderable_stand.m_Room)
-			renderable_objects_layer_manager:change_between_vectors("glow", "CheckPointEnabledSphere",self.renderable_stand.m_Room -1, self.renderable_stand.m_Room)
-			
+		if (check_point_activated_stand == nil and self.renderable_stand.m_Room -1 > 0 ) then 
+			local previous_room = last_checkpoint_room
+			if last_checkpoint_room == nil then
+				previous_room = self.renderable_stand.m_Room -1
+			end
+			renderable_objects_layer_manager:change_between_vectors("solid", "CheckPointEnabledStand001",previous_room, self.renderable_stand.m_Room)
+			renderable_objects_layer_manager:change_between_vectors("glow", "CheckPointEnabledSphere",previous_room, self.renderable_stand.m_Room)
+		
+			last_checkpoint_room = self.renderable_stand.m_Room
+			--coreInstance:trace("Last CheckPoint Room: "..tostring(last_checkpoint_room))
 			check_point_activated_stand = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("solid", self.renderable_stand.m_Room):get_resource("CheckPointEnabledStand001")
 		end
 		
@@ -72,9 +78,11 @@ function CheckPoint.new()
 
 		self.renderable_stand:set_visible(false)
 		self.renderable_stand.m_Printable = false
-		check_point_activated_sphere:set_position(self.renderable_stand:get_position())
-		check_point_activated_stand:set_position(self.renderable_stand:get_position())
-		check_point_activated_stand:set_yaw(self.renderable_stand:get_yaw())
+		if(check_point_activated_sphere ~= nil) then
+			check_point_activated_sphere:set_position(self.renderable_stand:get_position())
+			check_point_activated_stand:set_position(self.renderable_stand:get_position())
+			check_point_activated_stand:set_yaw(self.renderable_stand:get_yaw())
+		end
 			
 	end
 	
@@ -94,6 +102,7 @@ function reset_checkpoints()
 			renderable_objects_layer_manager:change_between_vectors("glow", "CheckPointEnabledSphere", renderable.m_Room, 1)
 		end
 	end
+	last_checkpoint_room = 1
 	clear_array(player.visited_checkpoints)
 end
 
