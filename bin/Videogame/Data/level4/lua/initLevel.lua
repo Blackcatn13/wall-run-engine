@@ -44,7 +44,7 @@ function init_level(a)
 	player_controller.m_PhysicController:set_position(new_position)
 	player.set_initial_position(PlayerYaw, new_position)
 	player.attack_enabled = false
-	player.set_room(0)
+	--player.set_room(0)
 	
 	--[[local ro1 = get_renderable_object("solid",0, "Arrow")
 	local ro2 = get_renderable_object("solid",0, "Arrow001")	

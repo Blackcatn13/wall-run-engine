@@ -137,6 +137,7 @@ function GameOver()
 		local playerRenderableMesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky");
 		playerRenderableMesh:remove_action(8)
 		gui_manager:pop_windows();
+		player.can_move = true
 	else
 		GameoverCount = GameoverCount + gui_manager:get_dt();
 	end

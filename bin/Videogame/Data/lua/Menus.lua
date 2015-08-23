@@ -7,7 +7,7 @@ function set_screen_menu(model_position, room )
 	player_controller.m_PhysicController:set_position(model_position)
 	
 	cam_Controller:set_active_camera("ThPS")
-	gui_manager:set_is_displayed_console(true) -- IMPEDIR QUE EL PLAYER SE MUEVA
+	player.can_move = false -- IMPEDIR QUE EL PLAYER SE MUEVA
 	
 	if room == 9 then --GAME OVER
 		gui_manager:set_visible_gui_element("LifeGUI", false)

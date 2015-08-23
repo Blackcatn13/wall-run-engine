@@ -43,6 +43,7 @@ function Player.new()
 	self.activating_triggers = true
 	self.is_dead = false
 	self.has_ass_burned = false
+	self.can_move = true
 	
 	------	 PLAYER FUNCTIONS -----
 		

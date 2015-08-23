@@ -483,6 +483,7 @@ void CTestGameplay::Update(float dt) {
     //tTerra2_yaw += dt * 80 * 0.005;
     //tlluna1_yaw -= dt * 60 * 0.05;
     m_Dt = dt;
+    RENDLM->Update(dt);
     // m_fsmManager->Update(dt);
     if (ACT2IN->DoAction("ReloadGUI")) {
       GUIM->ReloadGuiFiles();
@@ -491,7 +492,7 @@ void CTestGameplay::Update(float dt) {
     }
   }
   if (!GUIM->GetIsPaused() || !GUIM->GetIsDisplayedConsole()) {
-    RENDLM->Update(dt);
+    // RENDLM->Update(dt);
     if (ACT2IN->DoAction("Console")) {
       GUIM->SetConsole();
     }
