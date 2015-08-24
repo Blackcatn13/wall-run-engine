@@ -24,7 +24,7 @@ bool CCinematicElementCamera::Execute() {
       m_block = false;
     } else {
       CAMCONTM->setActiveCamera(m_cameraName);
-      CAMCONTM->Play(m_cameraName, false);
+      CAMCONTM->Play(m_cameraName, true);
       m_played = true;
     }
   }

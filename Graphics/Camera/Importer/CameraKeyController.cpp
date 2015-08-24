@@ -5,6 +5,7 @@
 #include "Object\Object3D.h"
 #include "Utils\Defines.h"
 #include "Core_Utils/MemLeaks.h"
+#include "Math\MathUtils.h"
 
 
 CCameraKeyController::CCameraKeyController()
@@ -51,7 +52,7 @@ void CCameraKeyController::LoadXML(const std::string &FileName) {
       Vect3f l_aux2 = m(0).GetVect3fProperty("lookat", NULL, true);
       Vect3f l_V = l_aux1 - l_aux2;
       float l_yaw = atan2(l_V.z, l_V.x) - ePIf;
-      float l_pitch = -atan2(l_V.y, sqrt((l_V.z * l_V.z) + (l_V.x * l_V.x)));
+      float l_pitch = atan2(sqrt((l_V.z * l_V.z) + (l_V.x * l_V.x)), l_V.y);
       float l_roll = 0.0f;
       m_pObject3D = new CObject3D(l_aux1, l_yaw, l_pitch, l_roll);
       m_PositionInit = l_aux1;
@@ -123,12 +124,12 @@ void CCameraKeyController::Update(float ElapsedTime) {
       l_p = m_Keys[m_CurrentKey]->m_CameraInfo->GetPos();
       l_la = m_Keys[m_CurrentKey]->m_CameraInfo->GetLookAt();
       l_V = l_p - l_la;
-      l_yaw = atan2(l_V.z, l_V.x);
+      l_yaw = atan2(l_V.x, l_V.z);
       l_pitch = -atan2(l_V.y, sqrt((l_V.z * l_V.z) + (l_V.x * l_V.x)));
       l_p2 = m_Keys[m_NextKey]->m_CameraInfo->GetPos();
       l_la = m_Keys[m_NextKey]->m_CameraInfo->GetLookAt();
       l_V = l_p2 - l_la;
-      l_yaw2 = atan2(l_V.z, l_V.x);
+      l_yaw2 = atan2(l_V.x, l_V.z);
       l_pitch2 = -atan2(l_V.y, sqrt((l_V.z * l_V.z) + (l_V.x * l_V.x)));
       //Interpolación entre frames
       InterpolatePosition(l_p, l_p2, m_Keys[m_CurrentKey]->GetTime(), m_Keys[m_NextKey]->GetTime(), ElapsedTime);
@@ -226,136 +227,20 @@ bool CCameraKeyController::IsPlayOn() {
 }
 
 
-
 void CCameraKeyController::InterpolatePosition(Vect3f PointA, Vect3f PointB, float TimeA, float TimeB, float ElapsedTime) {
-  //Interpolación entre 2 puntos (posición).
-  if (PointB != m_PosInterpolated) {
-    Vect3f l_NewInterpolatedPoint = m_PosInterpolated;
-    Vect3f l_AuxVector;
-    l_AuxVector.x = PointB.x - PointA.x;
-    l_AuxVector.y = PointB.y - PointA.y;
-    l_AuxVector.z = PointB.z - PointA.z;
-    //Para determinar la interpolación, calculamos la distancia y dividimos entre la constante de tiempo.
-    float l_PointIncreaseX = (sqrt (pow(l_AuxVector.x, 2)) ) / ((TimeB - TimeA) / ElapsedTime);
-    float l_PointIncreaseY = (sqrt (pow(l_AuxVector.y, 2)) ) / ((TimeB - TimeA) / ElapsedTime);
-    float l_PointIncreaseZ = (sqrt (pow(l_AuxVector.z, 2)) ) / ((TimeB - TimeA) / ElapsedTime);
-    if (PointB.x != l_NewInterpolatedPoint.x) {
-      if (PointB.x < l_NewInterpolatedPoint.x) {
-        l_NewInterpolatedPoint.x -= l_PointIncreaseX;
-      } else {
-        l_NewInterpolatedPoint.x += l_PointIncreaseX;
-      }
-    }
-    if (PointB.y != l_NewInterpolatedPoint.y) {
-      if (PointB.y < l_NewInterpolatedPoint.y) {
-        l_NewInterpolatedPoint.y -= l_PointIncreaseY;
-      } else {
-        l_NewInterpolatedPoint.y += l_PointIncreaseY;
-      }
-    }
-    if (PointB.z != l_NewInterpolatedPoint.z) {
-      if (PointB.z < l_NewInterpolatedPoint.z) {
-        l_NewInterpolatedPoint.z -= l_PointIncreaseZ;
-      } else {
-        l_NewInterpolatedPoint.z += l_PointIncreaseZ;
-      }
-    }
-    m_PosInterpolated = l_NewInterpolatedPoint;
-  } else {
-    m_PosInterpolated = PointB;
-  }
+  float t = (m_CurrentTime - TimeA) / TimeB;
+  m_PosInterpolated = PointA;
+  m_PosInterpolated.Lerp(PointB, t);
 }
 
 void CCameraKeyController::InterpolateYaw(float YawA, float YawB, float TimeA, float TimeB, float ElapsedTime) {
-  //Interpolación entre 2 floats (yaw).
-  if (YawB != m_YawInterpolated) {
-    float l_NewInterpolatedYaw = m_YawInterpolated;
-    float l_YawIncrease;
-    if (YawB > YawA) {
-      if (YawA < 0.0 && YawB >= 0.0) {
-        if (YawA < (-FLOAT_PI_VALUE / 2) && YawB > (FLOAT_PI_VALUE / 2)) {
-          l_YawIncrease = (((FLOAT_PI_VALUE - YawB) + (YawA + FLOAT_PI_VALUE)) / ((TimeB - TimeA) / ElapsedTime));
-          if (l_NewInterpolatedYaw - l_YawIncrease < -FLOAT_PI_VALUE) {
-            l_NewInterpolatedYaw = FLOAT_PI_VALUE - (-FLOAT_PI_VALUE - (l_NewInterpolatedYaw - l_YawIncrease));
-          } else {
-            l_NewInterpolatedYaw -= l_YawIncrease;
-          }
-        } else {
-          l_YawIncrease = ((YawB - YawA) / ((TimeB - TimeA) / ElapsedTime));
-          l_NewInterpolatedYaw += l_YawIncrease;
-        }
-      } else {
-        l_YawIncrease = ((YawB - YawA) / ((TimeB - TimeA) / ElapsedTime));
-        l_NewInterpolatedYaw += l_YawIncrease;
-      }
-    } else {
-      if (YawA >= 0.0 && YawB < 0.0) {
-        if (YawA > (FLOAT_PI_VALUE / 2) && YawB < (-FLOAT_PI_VALUE / 2)) {
-          l_YawIncrease = (((FLOAT_PI_VALUE - YawA) + (YawB + FLOAT_PI_VALUE)) / ((TimeB - TimeA) / ElapsedTime));
-          if (l_NewInterpolatedYaw + l_YawIncrease > FLOAT_PI_VALUE) {
-            l_NewInterpolatedYaw = -FLOAT_PI_VALUE + ((l_NewInterpolatedYaw + l_YawIncrease) - FLOAT_PI_VALUE);
-          } else {
-            l_NewInterpolatedYaw += l_YawIncrease;
-          }
-        } else {
-          l_YawIncrease = (YawA - YawB) / ((TimeB - TimeA) / ElapsedTime);
-          l_NewInterpolatedYaw -= l_YawIncrease;
-        }
-      } else {
-        l_YawIncrease = ((YawA - YawB) / ((TimeB - TimeA) / ElapsedTime));
-        l_NewInterpolatedYaw -= l_YawIncrease;
-      }
-    }
-    m_YawInterpolated = l_NewInterpolatedYaw;
-  } else {
-    m_YawInterpolated = YawB;
-  }
+  float t = (m_CurrentTime - TimeA) / TimeB;
+  m_YawInterpolated = mathUtils::Lerp(YawA, YawB, t);
 }
 
 void CCameraKeyController::InterpolatePitch(float PitchA, float PitchB, float TimeA, float TimeB, float ElapsedTime) {
-  //Interpolación entre 2 floats (pitch).
-  if (PitchB != m_PitchInterpolated) {
-    float l_NewInterpolatedPitch = m_PitchInterpolated;
-    float l_PitchIncrease;
-    if (PitchB > PitchA) {
-      if (PitchA < 0.0 && PitchB >= 0.0) {
-        if (PitchA < (-FLOAT_PI_VALUE / 2) && PitchB > (FLOAT_PI_VALUE / 2)) {
-          l_PitchIncrease = (((FLOAT_PI_VALUE - PitchB) + (PitchA + FLOAT_PI_VALUE)) / ((TimeB - TimeA) / ElapsedTime));
-          if (l_NewInterpolatedPitch - l_PitchIncrease < -FLOAT_PI_VALUE) {
-            l_NewInterpolatedPitch = FLOAT_PI_VALUE - (-FLOAT_PI_VALUE - (l_NewInterpolatedPitch - l_PitchIncrease));
-          } else {
-            l_NewInterpolatedPitch -= l_PitchIncrease;
-          }
-        } else {
-          l_PitchIncrease = ((PitchB - PitchA) / ((TimeB - TimeA) / ElapsedTime));
-          l_NewInterpolatedPitch += l_PitchIncrease;
-        }
-      } else {
-        l_PitchIncrease = ((PitchB - PitchA) / ((TimeB - TimeA) / ElapsedTime));
-        l_NewInterpolatedPitch += l_PitchIncrease;
-      }
-    } else {
-      if (PitchA >= 0.0 && PitchB < 0.0) {
-        if (PitchA > (FLOAT_PI_VALUE / 2) && PitchB < (-FLOAT_PI_VALUE / 2)) {
-          l_PitchIncrease = (((FLOAT_PI_VALUE - PitchA) + (PitchB + FLOAT_PI_VALUE)) / ((TimeB - TimeA) / ElapsedTime));
-          if (l_NewInterpolatedPitch + l_PitchIncrease > FLOAT_PI_VALUE) {
-            l_NewInterpolatedPitch = -FLOAT_PI_VALUE + ((l_NewInterpolatedPitch + l_PitchIncrease) - FLOAT_PI_VALUE);
-          } else {
-            l_NewInterpolatedPitch += l_PitchIncrease;
-          }
-        } else {
-          l_PitchIncrease = (PitchA - PitchB) / ((TimeB - TimeA) / ElapsedTime);
-          l_NewInterpolatedPitch -= l_PitchIncrease;
-        }
-      } else {
-        l_PitchIncrease = ((PitchA - PitchB) / ((TimeB - TimeA) / ElapsedTime));
-        l_NewInterpolatedPitch -= l_PitchIncrease;
-      }
-    }
-    m_PitchInterpolated = l_NewInterpolatedPitch;
-  } else {
-    m_PitchInterpolated = PitchB;
-  }
+  float t = (m_CurrentTime - TimeA) / TimeB;
+  m_PitchInterpolated = mathUtils::Lerp(PitchA, PitchB, t);
 }
 
 Vect3f CCameraKeyController::GetDirection () const {
