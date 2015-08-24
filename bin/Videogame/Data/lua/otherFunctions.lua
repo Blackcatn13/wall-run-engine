@@ -214,7 +214,7 @@ function reset_game()
 	reset_wall_trap(0, "WALL_TRAP1_LEFT")
 	local trap = search(trap_vector, "ArrowTrap1")
 	--trap:reset_position()
-	
+	 restore_broken_platforms_by_layer("breakable")
 	--CheckPoints
 	reset_checkpoints()
 	

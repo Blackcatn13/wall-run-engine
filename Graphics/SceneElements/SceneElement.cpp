@@ -79,16 +79,16 @@ void CSceneElement::InsertPhisic(Vect3f localPosition) {
     std::stringstream name;
     name << m_Name << "_Aux";
     std::string nameAux = name.str();
-    m_UserDataAux = new CPhysicUserData(SetUserDataName(nameAux));
-    m_UserDataAux->SetPaint(false);
-    m_ActorAux = new CPhysicActor(m_UserDataAux);
+    // m_UserDataAux = new CPhysicUserData(SetUserDataName(nameAux));
+    // m_UserDataAux->SetPaint(false);
+    //  m_ActorAux = new CPhysicActor(m_UserDataAux);
     if (m_HasPhisicMesh) {
-      Vect3f newSize = Vect3f(m_PhysicsSize.x - 1, m_PhysicsSize.y - 1, m_PhysicsSize.z - 1);
-      m_ActorAux->AddBoxSphape(newSize, Vect3f(m_Position.x, m_Position.y - m_PhysicsSize.y, m_Position.z), localPosition);
+      //  Vect3f newSize = Vect3f(m_PhysicsSize.x - 1, m_PhysicsSize.y - 1, m_PhysicsSize.z - 1);
+      //  m_ActorAux->AddBoxSphape(newSize, Vect3f(m_Position.x, m_Position.y - m_PhysicsSize.y, m_Position.z), localPosition);
     } else
-      m_ActorAux->AddBoxSphape(m_PhysicsSize, Vect3f(m_Position.x, m_Position.y - m_PhysicsSize.y, m_Position.z), localPosition);
-    PHYSXM->AddPhysicActor(m_ActorAux);
-    m_Actor->CreateBody(0.5);
+      //   m_ActorAux->AddBoxSphape(m_PhysicsSize, Vect3f(m_Position.x, m_Position.y - m_PhysicsSize.y, m_Position.z), localPosition);
+      //  PHYSXM->AddPhysicActor(m_ActorAux);
+      m_Actor->CreateBody(0.5);
   }
   PHYSXM->AddPhysicActor(m_Actor);
 }

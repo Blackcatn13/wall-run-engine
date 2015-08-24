@@ -15,6 +15,7 @@ CBreakablePlatform::CBreakablePlatform(std::string platformName, std::string cor
   m_Actor->Activate(true);
   m_ActorOriginalPosition = m_Actor->GetPosition();
   m_ActorOriginalRotation = m_Actor->GetRotation();
+  m_Actor->SetKinematic(true);
 }
 
 CBreakablePlatform::CBreakablePlatform(const CXMLTreeNode &node)
@@ -24,6 +25,7 @@ CBreakablePlatform::CBreakablePlatform(const CXMLTreeNode &node)
   m_Actor->Activate(true);
   m_ActorOriginalPosition = m_Actor->GetPosition();
   m_ActorOriginalRotation = m_Actor->GetRotation();
+  m_Actor->SetKinematic(true);
 }
 
 CBreakablePlatform::~CBreakablePlatform() {
@@ -43,20 +45,24 @@ void CBreakablePlatform::DisablePlatform(float dt/*, Vect3f direction*/) {
   TRIGGM->GetResource(m_TriggerName)->Activate(false);
   //Vect3f l_CurrentPosition = Vect3f (CCORE->GetPlayerController()->GetPosition());
 // CCORE->GetPlayerController()->getPhysicController()->Move(direction, dt);
-  m_ActorAux->Activate(false);
+// m_ActorAux->Activate(false);
+  m_Actor->SetKinematic(false);
+  m_Actor->AddImpulseAtPos(Vect3f(0, -1, 0), Vect3f(0, 0, 0), 1.0);
   m_Broken = true;
 }
 
 void CBreakablePlatform::EnablePlatform() {
   if (m_Broken && m_Actor != NULL) {
 
-    m_ActorAux->Activate(true);
+    //  m_ActorAux->Activate(true);
+    m_Actor->SetKinematic(true);
 // m_ActorAux->SetGlobalPosition(Vect3f(m_ActorOriginalPosition.x, m_ActorOriginalPosition.y - m_PhysicsSize.y, m_ActorOriginalPosition.z));
     m_Actor->SetGlobalPosition(m_ActorOriginalPosition);
     m_Actor->SetRotation(m_ActorOriginalRotation);
     //m_Printable = true;
     //TRIGGM->GetResource(m_TriggerName)->setUpdate(false);
     TRIGGM->GetResource(m_TriggerName)->Activate(true);
+
     m_Broken = false;
 
     //Vect3f l_CurrentPosition = Vect3f (CCORE->GetPlayerController()->GetPosition());

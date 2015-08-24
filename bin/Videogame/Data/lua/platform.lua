@@ -77,7 +77,8 @@ function update_break_platform(dt, current_time, max_time, platform_name, trigge
 end
 
 function restore_broken_platforms_by_layer(layer_name)
-	renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room(layer_name, player_controller.m_Room):restore_broken_platforms()
+	--renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room(layer_name, player_controller.m_Room):restore_broken_platforms()
+	renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room(layer_name, 4):restore_broken_platforms()
 end
 
 --[[function enable_breaking_platform(name)
