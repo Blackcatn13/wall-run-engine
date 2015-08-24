@@ -143,7 +143,7 @@ void CEnemyManager::ReloadEnemies() {
       m_Enemies[num]->getRenderableObject()->setPrintable(true);
       m_Enemies[num]->getRenderableObject()->setVisible(true);
       std::stringstream ss;
-      ss << "mikmik_set_alive(\"" << m_Enemies[num]->getName() << "\")";
+      ss << "enemy_set_alive(\"" << m_Enemies[num]->getName() << "\")";
       std::string str = ss.str();
       CCORE->GetScriptManager()->RunCode(str);
     }

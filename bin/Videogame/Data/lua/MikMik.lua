@@ -187,6 +187,11 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 					enemy.m_flyVec = Vect3f(enemyPosXZ.x - playerPosXZ.x, 0,enemyPosXZ.z - playerPosXZ.z);
 					enemy.m_flyVec:normalize(1);
 					enemy.m_flyVec = Vect3f(enemy.m_flyVec.x, flyInclination, enemy.m_flyVec.z);
+					local dead_pos = enemy.m_PhysicController:get_position()
+					enemy.m_OriginalPosition = Vect3f(dead_pos.x,dead_pos.y,dead_pos.z)
+				elseif damageType == 2 then
+					local dead_pos = enemy.m_PhysicController:get_position()
+					enemy.m_OriginalPosition = Vect3f(dead_pos.x,dead_pos.y,dead_pos.z)
 				end
 			end
 			
@@ -265,22 +270,22 @@ function mikmik_enter_dead(name)
 		enemy.m_RenderableObject:execute_action(3,0.1,0,1,true);
 		
 		enemy.m_isAlive = false
-		local dead_pos = enemy.m_PhysicController:get_position()
-		enemy.m_OriginalPosition = Vect3f(dead_pos.x,dead_pos.y,dead_pos.z)
+		
 		player.enemies_killed = player.enemies_killed + 1
 		--check_enemies_killed(5, "door_001")
 		check_enemies_killed(5, "Puerta_arriba", "Puerta_abajo")
-		enemy.m_PhysicController:set_radius(0.01)
+		--enemy.m_PhysicController:set_radius(0.01)
 	end
 end
 
-function mikmik_set_alive(name)
+function enemy_set_alive(name)
 	local enemy =  enemy_manager:get_enemy(name)
 	enemy:set_position(enemy.m_OriginalPosition)
 	enemy.m_PhysicController:set_position(enemy.m_OriginalPosition)
-	enemy:move_to_position(enemy.m_OriginalPosition)
-	enemy.m_PhysicController:set_radius(0.5)
+	--enemy:move_to_position(enemy.m_OriginalPosition)
+	--enemy.m_PhysicController:set_radius(0.5)
 	enemy.m_MovedToDiePosition = false
+	coreInstance:trace("Enemy position: " ..tostring(enemy.m_PhysicController:get_position().x)..","..tostring(enemy.m_PhysicController:get_position().y)..","..tostring(enemy.m_PhysicController:get_position().z))
 end
 
 function mikmik_exit_dead(name)
@@ -289,7 +294,7 @@ function mikmik_exit_dead(name)
 		enemy.m_RenderableObject.m_Printable=true
 		enemy.m_CurrentTime = 0
 		enemy.m_RenderableObject:remove_action(3);
-			--coreInstance:trace("setting alive")
+		coreInstance:trace("setting alive")
 	end
 end
 

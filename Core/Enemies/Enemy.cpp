@@ -39,6 +39,7 @@ CEnemy::CEnemy(CXMLTreeNode &info1)
   m_fYaw = info1.GetFloatProperty("yaw",  .0f, false);
   //setName (info1.GetPszISOProperty("name", "", false));
   m_Position = info1.GetVect3fProperty("pos", Vect3f(), false);
+  m_OriginalPosition = m_Position;
 }
 
 CEnemy::CEnemy(CRenderableObject *renderableObject, float speed, float turnSpeed, int life, Vect2f controller_size, float AttackDistance, float zone):
