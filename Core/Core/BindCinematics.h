@@ -87,6 +87,7 @@ void RegisterCinematics() {
     .def("reload",  (bool (CCinematicController::*)(const std::string &))& CCinematicController::Reload)
     .def("update", &CCinematicController::Update)
     .def("execute", &CCinematicController::Execute)
+    .def("restart", &CCinematicController::Restart)
   ];
 }
 

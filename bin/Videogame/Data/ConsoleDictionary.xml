@@ -6,5 +6,8 @@
  <word string = "getGUIManager():"/>
  <word string = "push_windows"/>
  <word string = "pop_windows"/>
+ <word string = "get_cinematic_controller():"/>
+ <word string = "execute("/>
+ <word string = "restart("/>
  
 </ConsoleWords>

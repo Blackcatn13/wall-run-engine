@@ -95,9 +95,9 @@
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_X"/>
 	    </action>
 		
-		<!--<action name="KeyMoveForward" debug="true">
+		<action name="KeyMoveForward" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_UP"/>
-	    </action> -->
+	    </action>
 		
 		<!-- <action name="StopMovePlayerForward" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_D"/>
@@ -107,11 +107,11 @@
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN_UP" Code="KEY_A"/>
 	    </action> -->
 		
-	    <!--<action name="KeyMoveBack" debug="true">
+	    <action name="KeyMoveBack" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_DOWN"/>
 	    </action>
 
-	    <action name="KeyMoveRigth" debug="true">
+	    <!--<action name="KeyMoveRigth" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_RIGHT"/>
 	    </action>
 

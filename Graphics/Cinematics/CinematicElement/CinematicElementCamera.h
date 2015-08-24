@@ -13,6 +13,7 @@ class CCinematicElementCamera : public CCinematicElement {
   CCinematicElementCamera(const CXMLTreeNode &node);
   virtual ~CCinematicElementCamera();
   bool Execute();
+  virtual void restart();
  private:
   std::string m_cameraName;
   std::string m_returnCamera;

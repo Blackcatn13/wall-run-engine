@@ -35,7 +35,8 @@ bool CConsole::IsReturnPress () {
       m_bufferPos = m_buffers.size();
       return true;
     } else {
-      return false;
+      SCRIPTM->RunCode(bufferAux);
+      return true;
     }
   } else
     return false;

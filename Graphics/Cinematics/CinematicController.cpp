@@ -8,6 +8,7 @@
 #include "Core\Core.h"
 #include "CinematicElement\CinematicElementCamera.h"
 #include "CinematicElement\CinematicElementCinematic.h"
+#include "CinematicElement\CinematicElement.h"
 
 
 CCinematicController::CCinematicController()
@@ -90,5 +91,14 @@ void CCinematicController::Execute(const std::string &cinematic) {
     m_currentCinematic = it->second;
     m_lastElement = 0;
     m_executing = true;
+  }
+}
+
+void CCinematicController::Restart(const std::string &cinematic) {
+  std::map<std::string, std::vector<CCinematicElement *>>::iterator it = m_cinematics.find(cinematic);
+  if (it != m_cinematics.end()) {
+    for (int i = 0; i < it->second.size(); ++i) {
+      it->second[i]->restart();
+    }
   }
 }

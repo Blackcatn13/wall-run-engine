@@ -24,6 +24,7 @@ class CCinematicController {
   bool Reload(const std::string &FileName);
   void Update(float ElapsedTime);
   void Execute(const std::string &cinematic);
+  void Restart(const std::string &cinematic);
 };
 
 #endif

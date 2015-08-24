@@ -14,6 +14,7 @@ class CCinematicElement {
   CCinematicElement(const CXMLTreeNode &node);
   virtual ~CCinematicElement();
   virtual bool Execute() = 0;
+  virtual void restart() {m_ended = false; }
 };
 
 #endif

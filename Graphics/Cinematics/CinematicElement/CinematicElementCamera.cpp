@@ -3,6 +3,7 @@
 #include "Core\Core.h"
 #include "Camera\CameraController.h"
 #include "Core_Utils/MemLeaks.h"
+#include "Camera\Importer\CameraKeyController.h"
 
 CCinematicElementCamera::CCinematicElementCamera(const CXMLTreeNode &node)
   : CCinematicElement(node),
@@ -31,4 +32,11 @@ bool CCinematicElementCamera::Execute() {
 }
 
 CCinematicElementCamera::~CCinematicElementCamera() {
+}
+
+void CCinematicElementCamera::restart() {
+  m_played = false;
+  m_block = true;
+  m_ended = false;
+  ((CCameraKeyController *)CAMCONTM->GetResource(m_cameraName))->ResetTime(false);
 }
