@@ -31,9 +31,9 @@ function open_door(_objectName)
 		--door.m_Printable = false
 		coreInstance:trace("Door Final Position: " .. tostring(door.m_FinalPosition.y) )
 		door.m_IsOpening = true
-		door:set_position(door.m_FinalPosition)
-		door.m_Actor:set_global_position(door.m_FinalPosition)
-		door.m_Actor:activate(false)
+		--door:set_position(door.m_FinalPosition)
+		--door.m_Actor:set_global_position(door.m_FinalPosition)
+		--door.m_Actor:activate(false)
 	end
 	--door.m_IsOpening =true
 	--play animacion subir puerta
@@ -46,18 +46,22 @@ function open_door(_objectName, _objectName2)
 		--door.m_Printable = false
 		coreInstance:trace("Door Final Position: " .. tostring(door.m_FinalPosition.y) )
 		door.m_IsOpening = true
-		door:set_position(door.m_FinalPosition)
-		door.m_Actor:set_global_position(door.m_FinalPosition)
-		door.m_Actor:activate(false)
+		if door.m_Speed == 0.0 then
+			door:set_position(door.m_FinalPosition)
+			door.m_Actor:set_global_position(door.m_FinalPosition)
+			door.m_Actor:activate(false)
+		end
 	end
 	local door2 = get_renderable_object("puzzle",player_controller.m_Room, _objectName2)
 	if door2 ~= nil then
 		--door.m_Printable = false
 		coreInstance:trace("Door Final Position: " .. tostring(door2.m_FinalPosition.y) )
 		door2.m_IsOpening = true
-		door2:set_position(door2.m_FinalPosition)
-		door2.m_Actor:set_global_position(door2.m_FinalPosition)
-		door.m_Actor:activate(false)
+		if door2.m_Speed == 0.0 then
+			door2:set_position(door2.m_FinalPosition)
+			door2.m_Actor:set_global_position(door2.m_FinalPosition)
+			door2.m_Actor:activate(false)
+		end
 	end
 	--door.m_IsOpening =true
 	--play animacion subir puerta
@@ -69,9 +73,12 @@ function close_door(_objectName)
 	if door ~= nil then
 		--door.m_Printable = false
 		coreInstance:trace("Door Final Position: " .. tostring(door.m_OriginalPosition.y) )
-		door:set_position(door.m_OriginalPosition)
-		door.m_Actor:set_global_position(door.m_OriginalPosition)
-		--door.m_Actor:activate(false)
+		
+		if door.m_Speed == 0.0 then
+			door:set_position(door.m_OriginalPosition)
+			door.m_Actor:set_global_position(door.m_OriginalPosition)
+			--door.m_Actor:activate(false)
+		end
 	end
 	--door.m_IsOpening =true
 	--play animacion subir puerta

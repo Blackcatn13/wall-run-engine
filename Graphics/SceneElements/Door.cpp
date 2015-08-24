@@ -82,7 +82,7 @@ void CDoor::OpeningDoor(float dt) {
   Vect3f direction = (m_FinalPosition - m_Position);
   direction = direction.Normalize();
   if (m_FinalPosition.Distance(m_Position) >= 0.2f) {
-    m_Position =  m_Position + /*Vect3f(1, 0, 0)*/direction.Normalize() * m_Speed * dt;
+    m_Position =  m_Position + /*Vect3f(1, 0, 0)*/direction * m_Speed * dt;
     m_Actor->SetGlobalPosition(m_Position);
   } else {
     m_IsOpening = false;

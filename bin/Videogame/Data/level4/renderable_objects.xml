@@ -363,8 +363,8 @@
 	<mesh_instance name="Pixelite Blau005" core="Pixelite Blau001" pos="508.197815 9.739000 -13.042528" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="3" layer="collectible"/>
 	<mesh_instance name="Pixelite Blau006" core="Pixelite Blau001" pos="531.147034 9.739000 -11.971483" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="3" layer="collectible"/>
 	<mesh_instance name="Collectible1" core="Collectible1" pos="505.540405 9.283447 -2.339123" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" room="3" layer="collectible"/>
-	<door name="Puerta_abajo" core="Puerta_abajo" final_position="539.616 5.87004 -1.62221" pos="539.615845 10.870041 -1.622209" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="1 2.6 4.0" room="3" layer="puzzle"/>
-	<door name="Puerta_arriba" core="Puerta_arriba" final_position="539.616 19.0802 -1.62221" pos="539.615845 14.380225 -1.622209" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="1 3 4.0" room="3" layer="puzzle"/>
+	<door name="Puerta_abajo" core="Puerta_abajo" final_position="539.615845 5.870041 -1.622209" speed="3" pos="539.615845 10.870041 -1.622209" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="1 2.6 4.0" room="3" layer="puzzle"/>
+	<door name="Puerta_arriba" core="Puerta_arriba" final_position="539.615845 19.380225 -1.622209" speed="3" pos="539.615845 14.380225 -1.622209" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="1 3 4.0" room="3" layer="puzzle"/>
 	<mesh_instance name="Collectible2" core="Collectible1" pos="553.567322 21.407177 -96.786362" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" room="4" layer="collectible"/>
 
 	<mesh_instance name="Pixelite Verd039" core="Pixelite Verd001" pos="552.854736 9.738913 -1.621504" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible"/>
