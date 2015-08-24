@@ -9,4 +9,7 @@
 	<cinematic_controller name="Wall">
 		<play_cinematic name="break-wall.xml"/>
 	</cinematic_controller>
+	<cinematic_controller name="Door">
+		<play_camera name="Camera060" return="3DCam" block="true"/>
+	</cinematic_controller>
 </cinmetaics>

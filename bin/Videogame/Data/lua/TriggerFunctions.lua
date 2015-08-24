@@ -409,3 +409,8 @@ function trigger_zone4()
 	trigger = trigger_manager:get_resource("Collectible2_UserData")
 	activate_collectible(trigger, "collectible", "Collectible2")
 end
+
+function trigger_puzzle()
+	set_puzzle_enemy_active("true");
+	coreInstance:get_cinematic_controller():execute("Door");
+end

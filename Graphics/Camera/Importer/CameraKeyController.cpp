@@ -48,7 +48,7 @@ void CCameraKeyController::LoadXML(const std::string &FileName) {
       SetCycle(l_cycle);
       SetReverse(l_reverse);
       Vect3f l_aux1 = m(0).GetVect3fProperty("pos", NULL, true);
-      Vect3f l_aux2 = m(0).GetVect3fProperty("look_at", NULL, true);
+      Vect3f l_aux2 = m(0).GetVect3fProperty("lookat", NULL, true);
       Vect3f l_V = l_aux1 - l_aux2;
       float l_yaw = atan2(l_V.z, l_V.x) - ePIf;
       float l_pitch = -atan2(l_V.y, sqrt((l_V.z * l_V.z) + (l_V.x * l_V.x)));
@@ -66,7 +66,7 @@ void CCameraKeyController::LoadXML(const std::string &FileName) {
         if (!strcmp(nodeChild.GetName(), "key")) {
           float l_time = nodeChild.GetFloatProperty("time");
           Vect3f l_pos = nodeChild.GetVect3fProperty("pos", NULL, true);
-          Vect3f l_look_at = nodeChild.GetVect3fProperty("look_at", NULL, true);
+          Vect3f l_look_at = nodeChild.GetVect3fProperty("lookat", NULL, true);
           float l_fov = nodeChild.GetFloatProperty("fov");
           float l_near_plane = nodeChild.GetFloatProperty("near_plane");
           float l_far_plane = nodeChild.GetFloatProperty("far_plane");

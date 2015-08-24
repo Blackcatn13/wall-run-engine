@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<camera_key_controller name="Camera060" once="true" cycle="false" reverse="false">
+	<key time="0.0" pos="468.144 16.5495 -3.05072" lookat="487.737 9.11982 -2.11315" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
+	<key time="0.166667" pos="474.013 16.5495 -3.05072" lookat="492.932 9.11982 -2.11315" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
+	<key time="0.333333" pos="487.895 16.5495 -3.05072" lookat="505.168 9.11982 -2.11315" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
+	<key time="0.5" pos="502.452 16.5495 -3.05072" lookat="519.415 9.11982 -2.11315" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
+	<key time="0.666667" pos="515.267 16.5495 -3.05072" lookat="530.644 9.11982 -2.11315" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
+	<key time="0.8" pos="520.489 16.5495 -3.05072" lookat="534.077 9.11982 -2.11315" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
+	<key time="1.0" pos="519.87 17.8833 -2.8043" lookat="533.102 9.11982 -1.21043" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
+	<key time="1.16667" pos="518.719 20.2838 -2.36078" lookat="531.295 9.11982 0.461267" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
+	<key time="1.33333" pos="517.491 22.8218 -1.89189" lookat="529.243 9.11982 2.36093" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
+	<key time="1.5" pos="516.357 25.1299 -1.46544" lookat="527.559 9.11982 3.91865" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
+	<key time="1.66667" pos="515.649 26.4161 -1.22783" lookat="526.862 9.11982 4.56453" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
+	<key time="1.83333" pos="515.541 26.4161 -1.52868" lookat="527.111 9.11982 3.04605" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
+	<key time="2.0" pos="515.481 26.4161 -2.59999" lookat="527.707 9.11982 -0.574937" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
+	<key time="2.16667" pos="515.426 26.4161 -3.89119" lookat="528.418 9.11982 -4.89676" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
+	<key time="2.33333" pos="515.371 26.4161 -5.19961" lookat="529.014 9.11982 -8.51775" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
+	<key time="2.5" pos="515.317 26.4161 -6.50306" lookat="529.264 9.11982 -10.0362" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
+	<key time="2.66667" pos="515.264 26.4161 -7.79436" lookat="524.234 9.11982 -9.33065" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
+	<key time="2.83333" pos="515.211 26.4161 -9.06256" lookat="512.239 9.11982 -7.64812" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
+	<key time="3.0" pos="515.161 26.4161 -10.2813" lookat="497.923 9.11982 -5.63994" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
+	<key time="3.16667" pos="515.115 26.4161 -11.3695" lookat="485.928 9.11982 -3.95741" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
+	<key time="3.33333" pos="515.09 26.4161 -11.9727" lookat="480.898 9.11982 -3.25183" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
+</camera_key_controller>

@@ -2,4 +2,5 @@
 <cameras>
 	<key_camera_controller name="Camera056" file="./Data/level4/cameras/Camera056.xml"/>
 	<key_camera_controller name="Camera057" file="./Data/level4/cameras/Camera057.xml"/>
+	<key_camera_controller name="Camera060" file="./Data/level4/cameras/Camera060.xml"/>
 </cameras>
