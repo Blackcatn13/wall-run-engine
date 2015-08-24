@@ -47,6 +47,7 @@ class CEnemy : public CAIController { //CAIController
   bool				m_time_to_fly;
   Vect3f			m_flyVec;
   bool				m_MovedToDiePosition;
+  bool				m_IsDying;
 
 
   CEnemy();
@@ -96,6 +97,7 @@ class CEnemy : public CAIController { //CAIController
   GET_SET(bool, MovedToDiePosition);
   GET_SET(Vect3f, flyVec);
   GET_SET(ENEMY_TYPE, enemyType);
+  GET_SET(bool, IsDying);
   // get & set
   // set(const <type> &name)
   // const <type> & get

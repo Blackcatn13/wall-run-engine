@@ -61,11 +61,11 @@ function CheckPoint.new()
 	function self.change_checkpoint_renderables()
 		local check_point_activated_stand = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("solid", self.renderable_stand.m_Room):get_resource("CheckPointEnabledStand001")
 		
-		if (check_point_activated_stand == nil and self.renderable_stand.m_Room -1 > 0 ) then 
+		if (check_point_activated_stand == nil ) then 
 			local previous_room = last_checkpoint_room
-			if last_checkpoint_room == nil then
-				previous_room = self.renderable_stand.m_Room -1
-			end
+			--if last_checkpoint_room == nil then
+				--previous_room = self.renderable_stand.m_Room -1
+			--end
 			renderable_objects_layer_manager:change_between_vectors("solid", "CheckPointEnabledStand001",previous_room, self.renderable_stand.m_Room)
 			renderable_objects_layer_manager:change_between_vectors("glow", "CheckPointEnabledSphere",previous_room, self.renderable_stand.m_Room)
 		
@@ -93,16 +93,19 @@ function reset_checkpoints()
 	coreInstance:trace("reseting checkpoints: " .. tostring(table.getn(player.visited_checkpoints)) )
 	for i = 1, table.getn(player.visited_checkpoints) do
 		local renderable = player.visited_checkpoints[i].renderable_stand
-		renderable:set_visible(true)
-		renderable.m_Printable = true
-		coreInstance:trace("reseting checkpoint: ".. tostring(i))
-		if i == table.getn(player.visited_checkpoints) then
-			coreInstance:trace("last checkpoint")
-			renderable_objects_layer_manager:change_between_vectors("solid", "CheckPointEnabledStand001", renderable.m_Room, 1)
-			renderable_objects_layer_manager:change_between_vectors("glow", "CheckPointEnabledSphere", renderable.m_Room, 1)
+		if renderable ~= nil then
+			renderable:set_visible(true)
+			renderable.m_Printable = true
+			coreInstance:trace("reseting checkpoint: ".. tostring(i))
+			if i == table.getn(player.visited_checkpoints) then
+				coreInstance:trace("last checkpoint")
+				renderable_objects_layer_manager:change_between_vectors("solid", "CheckPointEnabledStand001", renderable.m_Room, 1)
+				renderable_objects_layer_manager:change_between_vectors("glow", "CheckPointEnabledSphere", renderable.m_Room, 1)
+			end
 		end
 	end
 	last_checkpoint_room = 1
+	player.last_checkpoint = nil
 	clear_array(player.visited_checkpoints)
 end
 

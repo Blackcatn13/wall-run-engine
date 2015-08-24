@@ -3,7 +3,7 @@ Player = {}
 local num_hearts = 0
 local num_lives = 0
 local instance = 0
-local last_checkpoint = nil
+--local last_checkpoint = nil
 local last_spikes_position = nil
 --local visited_checkpoints = {}
 
@@ -44,6 +44,7 @@ function Player.new()
 	self.is_dead = false
 	self.has_ass_burned = false
 	self.can_move = true
+	self.last_checkpoint = nil
 	
 	------	 PLAYER FUNCTIONS -----
 		
@@ -75,8 +76,8 @@ function Player.new()
 	function self.reset_position()
 		player_controller.m_PhysicController:set_position(self.original_position)
 		player_controller:set_yaw(self.original_yaw)
-		if player_controller.m_Room ~= 0 then
-			set_player_room("0", true)
+		if player_controller.m_Room ~= 1 then
+			set_player_room("1", true)
 		end
 	end
 	

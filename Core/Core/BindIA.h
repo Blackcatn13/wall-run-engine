@@ -98,7 +98,7 @@ void RegisterAI() {
     .property("m_time_to_fly", &CEnemy::gettime_to_fly, &CEnemy::settime_to_fly)
     .property("m_flyVec", &CEnemy::getflyVec, &CEnemy::setflyVec)
     .property("m_MovedToDiePosition", &CEnemy::getMovedToDiePosition, &CEnemy::setMovedToDiePosition)
-
+    .property("m_IsDying", &CEnemy::getIsDying, &CEnemy::setIsDying)
     .def("get_name",  &CEnemy::GetEnemyName)
     .def("m_FSM", &CEnemy::getFsm)
     .def("only_rotate", &CEnemy::OnlyRotate)

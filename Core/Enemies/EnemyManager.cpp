@@ -138,7 +138,7 @@ void CEnemyManager::Reload() {
 
 void CEnemyManager::ReloadEnemies() {
   for (size_t num = 0; num < m_Enemies.size(); num++) {
-    if (!m_Enemies[num]->getisAlive()) {
+    if (!m_Enemies[num]->getisAlive() || m_Enemies[num]->getIsDying() ) {
       m_Enemies[num]->setisAlive(true);
       m_Enemies[num]->getRenderableObject()->setPrintable(true);
       m_Enemies[num]->getRenderableObject()->setVisible(true);

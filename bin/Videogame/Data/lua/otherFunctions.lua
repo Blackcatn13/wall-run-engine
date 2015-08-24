@@ -67,9 +67,9 @@ function open_door(_objectName, _objectName2)
 	--play animacion subir puerta
 end
 
-function close_door(_objectName)
+function close_door(_objectName, room)
 	--coreInstance:trace("Opening door ".. _objectName)
-	local door = get_renderable_object("puzzle",player_controller.m_Room, _objectName)
+	local door = get_renderable_object("puzzle",room, _objectName)
 	if door ~= nil then
 		--door.m_Printable = false
 		coreInstance:trace("Door Final Position: " .. tostring(door.m_OriginalPosition.y) )
@@ -84,20 +84,20 @@ function close_door(_objectName)
 	--play animacion subir puerta
 end
 
-function close_door(_objectName, _objectName2)
+function close_door(_objectName, _objectName2, room)
 	--coreInstance:trace("Opening door ".. _objectName.. " and " .. _objectName2 )
-	local door = get_renderable_object("puzzle",player_controller.m_Room, _objectName)
+	local door = get_renderable_object("puzzle",room , _objectName)
 	if door ~= nil then
 		--door.m_Printable = false
-		coreInstance:trace("Door Final Position: " .. tostring(door.m_OriginalPosition.y) )
+		coreInstance:trace("Closing Door Final Position: " .. tostring(door.m_OriginalPosition.y) )
 		door:set_position(door.m_OriginalPosition)
 		door.m_Actor:set_global_position(door.m_OriginalPosition)
 		--door.m_Actor:activate(false)
 	end
-	local door2 = get_renderable_object("puzzle",player_controller.m_Room, _objectName2)
+	local door2 = get_renderable_object("puzzle",room, _objectName2)
 	if door2 ~= nil then
 		--door.m_Printable = false
-		coreInstance:trace("Door Final Position: " .. tostring(door2.m_OriginalPosition.y) )
+		coreInstance:trace("Closing Door Final Position: " .. tostring(door2.m_OriginalPosition.y) )
 		door2:set_position(door2.m_OriginalPosition)
 		door2.m_Actor:set_global_position(door2.m_OriginalPosition)
 		--door.m_Actor:activate(false)
@@ -173,6 +173,9 @@ end
 
 function reset_game()
 	
+	--CheckPoints
+	reset_checkpoints()
+	
 	--Player Position + 3D
 	player.reset_position()
 	player_controller.m_is3D = true;
@@ -191,7 +194,7 @@ function reset_game()
 	gui_manager:set_image('LifeGUI','Life3')
 	player.num_lives = 3;
 	--player.visited_checkpoints = {}
-	player.last_checkpoint = nil
+	
 	player.zone = 1
 	gui_manager:set_image('VidesGUI','Vides3')
 	gui_manager:set_is_displayed_heart(true);
@@ -214,7 +217,7 @@ function reset_game()
 	renderable_objects_layer_manager:deactivate_objects_by_layer("invisible");
 	
 	--Doors
-	close_door("Puerta_arriba", "Puerta_abajo");
+	close_door("Puerta_arriba", "Puerta_abajo", 3);
 	
 	--Traps
 	reset_wall_trap(0, "WALL_TRAP1_RIGHT")
@@ -222,9 +225,8 @@ function reset_game()
 	local trap = search(trap_vector, "ArrowTrap1")
 	--trap:reset_position()
 	 restore_broken_platforms_by_layer("breakable")
-	--CheckPoints
-	reset_checkpoints()
 	
+	--
 	--Others
 	gui_manager:activate_pause(false);
 	gui_manager:set_is_paused(false);

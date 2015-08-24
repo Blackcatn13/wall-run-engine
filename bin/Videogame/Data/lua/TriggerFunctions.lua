@@ -186,6 +186,9 @@ function set_checkpoint(trigger_name, renderable_object)
 		local checkpoint_mesh = get_renderable_object("solid", player_controller.m_Room, renderable_object)
 		if checkpoint_mesh == nil then
 			checkpoint_mesh = get_renderable_object("solid", player_controller.m_Room +1, renderable_object)
+			if checkpoint_mesh == nil then -- Para el caso del fallo aleatorio en el reset
+				checkpoint_mesh = get_renderable_object("solid", 1, renderable_object)
+			end
 		end
 		checkpoint.set_checkpoint(player, trigger_name, checkpoint_mesh)
 		coreInstance:trace(tostring(checkpoint.is_activated))
