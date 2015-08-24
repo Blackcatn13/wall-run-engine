@@ -25,6 +25,9 @@ class CCinematicController {
   void Update(float ElapsedTime);
   void Execute(const std::string &cinematic);
   void Restart(const std::string &cinematic);
+  bool IsExecuting() {
+    return m_executing;
+  }
 };
 
 #endif

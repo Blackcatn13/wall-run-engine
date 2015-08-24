@@ -18,3 +18,4 @@
  particle_manager = coreInstance:getParticleManager()
  billboard_manager = coreInstance:get_billboard_manager()
 chuky_last_room = 0;
+cinematic_controller = coreInstance:get_cinematic_controller()
