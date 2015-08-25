@@ -6,6 +6,9 @@
 #include "Utils\Defines.h"
 #include "Core_Utils/MemLeaks.h"
 #include "Math\MathUtils.h"
+#include "Utils\LerpAnimator1D.h"
+#include "Utils\LerpAnimator3D.h"
+#include <iostream>
 
 
 CCameraKeyController::CCameraKeyController()
@@ -59,8 +62,7 @@ void CCameraKeyController::LoadXML(const std::string &FileName) {
       m_YawInit = l_yaw;
       m_PitchInit = l_pitch;
       m_PosInterpolated = l_aux1;
-      m_YawInterpolated = l_yaw;
-      m_PitchInterpolated = l_pitch;
+      m_LookAt = l_aux2;
       int count = m.GetNumChildren();
       for (int i = 0; i < count; ++i) {
         CXMLTreeNode nodeChild = m.getNextChild();
@@ -111,34 +113,8 @@ void CCameraKeyController::GetCurrentKey() {
 
 void CCameraKeyController::Update(float ElapsedTime) {
   if ((m_IsPlaying) && (m_Keys.size() > 1)) {
-    SetCurrentTime(m_CurrentTime + ElapsedTime);
+    m_CurrentTime += ElapsedTime;
     GetCurrentKey();
-    //Si el siguiente keyframe está a más de 1 frame de distancia (0.034 seg), toca interpolar.
-    /*if ( ( !m_IsReversing && (m_Keys[m_NextKey]->GetTime() - m_Keys[m_CurrentKey]->GetTime() > 0.034) ) ||
-         ( m_IsReversing && (m_Keys[m_CurrentKey]->GetTime() - m_Keys[m_NextKey]->GetTime() > 0.034) ) ) {
-      Vect3f l_p, l_p2;
-      Vect3f l_la;
-      Vect3f l_V;
-      float l_yaw, l_yaw2;
-      float l_pitch, l_pitch2;
-      l_p = m_Keys[m_CurrentKey]->m_CameraInfo->GetPos();
-      l_la = m_Keys[m_CurrentKey]->m_CameraInfo->GetLookAt();
-      l_V = l_p - l_la;
-      l_yaw = atan2(l_V.x, l_V.z);
-      l_pitch = atan2(sqrt((l_V.z * l_V.z) + (l_V.x * l_V.x)), l_V.y);
-      l_p2 = m_Keys[m_NextKey]->m_CameraInfo->GetPos();
-      l_la = m_Keys[m_NextKey]->m_CameraInfo->GetLookAt();
-      l_V = l_p2 - l_la;
-      l_yaw2 = atan2(l_V.x, l_V.z);
-      l_pitch2 = atan2(sqrt((l_V.z * l_V.z) + (l_V.x * l_V.x)), l_V.y);
-      //Interpolación entre frames
-      InterpolatePosition(l_p, l_p2, m_Keys[m_CurrentKey]->GetTime(), m_Keys[m_NextKey]->GetTime(), ElapsedTime);
-      InterpolateYaw(l_yaw, l_yaw2, m_Keys[m_CurrentKey]->GetTime(), m_Keys[m_NextKey]->GetTime(), ElapsedTime);
-      InterpolatePitch(l_pitch, l_pitch2, m_Keys[m_CurrentKey]->GetTime(), m_Keys[m_NextKey]->GetTime(), ElapsedTime);
-      m_pObject3D->SetPosition(m_PosInterpolated);
-      m_pObject3D->SetYaw(m_YawInterpolated);
-      m_pObject3D->SetPitch(m_PitchInterpolated);
-    }*/
     if ( m_CurrentTime >= m_TotalTime ) {
       if (IsOnce()) m_IsPlaying = false;
       else {
@@ -157,31 +133,15 @@ void CCameraKeyController::Update(float ElapsedTime) {
       m_PosInterpolated = l_p;
       m_YawInterpolated = l_yaw;
       m_PitchInterpolated = l_pitch;
+      m_LookAt = l_la;
     } else {
-
-      Vect3f l_p, l_p2;
-      Vect3f l_la;
-      Vect3f l_V;
-      float l_yaw, l_yaw2;
-      float l_pitch, l_pitch2;
-      l_p = m_Keys[m_CurrentKey]->m_CameraInfo->GetPos();
-      l_la = m_Keys[m_CurrentKey]->m_CameraInfo->GetLookAt();
-      l_V = l_p - l_la;
-      l_yaw = atan2(l_V.z, l_V.x);
-      l_pitch = atan2(l_V.y, sqrt((l_V.z * l_V.z) + (l_V.x * l_V.x)));
-      l_p2 = m_Keys[m_NextKey]->m_CameraInfo->GetPos();
-      l_la = m_Keys[m_NextKey]->m_CameraInfo->GetLookAt();
-      l_V = l_p2 - l_la;
-      l_yaw2 = atan2(l_V.z, l_V.x);
-      l_pitch2 = atan2(l_V.y, sqrt((l_V.z * l_V.z) + (l_V.x * l_V.x)));
-      //Interpolación entre frames
-      InterpolatePosition(l_p, l_p2, m_Keys[m_CurrentKey]->GetTime(), m_Keys[m_NextKey]->GetTime(), ElapsedTime);
-      InterpolateYaw(l_yaw, l_yaw2, m_Keys[m_CurrentKey]->GetTime(), m_Keys[m_NextKey]->GetTime(), ElapsedTime);
-      InterpolatePitch(l_pitch, l_pitch2, m_Keys[m_CurrentKey]->GetTime(), m_Keys[m_NextKey]->GetTime(), ElapsedTime);
+      float currentP = (m_CurrentTime - m_Keys[m_CurrentKey]->GetTime()) / (m_Keys[m_NextKey]->GetTime() - m_Keys[m_CurrentKey]->GetTime());
+      CLerpAnimator3D interpolator3D;
+      interpolator3D.SetValues(m_Keys[m_CurrentKey]->m_CameraInfo->GetPos(), m_Keys[m_NextKey]->m_CameraInfo->GetPos(), 1.0f, FUNC_CONSTANT);
+      interpolator3D.Update(currentP, m_PosInterpolated);
+      interpolator3D.SetValues(m_Keys[m_CurrentKey]->m_CameraInfo->GetLookAt(), m_Keys[m_NextKey]->m_CameraInfo->GetLookAt(), 1.0f, FUNC_CONSTANT);
+      interpolator3D.Update(currentP, m_LookAt);
       m_pObject3D->SetPosition(m_PosInterpolated);
-      m_pObject3D->SetYaw(m_YawInterpolated);
-      m_pObject3D->SetPitch(m_PitchInterpolated);
-
     }
   }
 }
@@ -251,29 +211,12 @@ bool CCameraKeyController::IsPlayOn() {
   return m_IsPlaying;
 }
 
-
-void CCameraKeyController::InterpolatePosition(Vect3f PointA, Vect3f PointB, float TimeA, float TimeB, float ElapsedTime) {
-  float t = (m_CurrentTime - TimeA) / TimeB;
-  m_PosInterpolated = PointA;
-  m_PosInterpolated.Lerp(PointB, t);
-}
-
-void CCameraKeyController::InterpolateYaw(float YawA, float YawB, float TimeA, float TimeB, float ElapsedTime) {
-  float t = (m_CurrentTime - TimeA) / TimeB;
-  m_YawInterpolated = mathUtils::Lerp(YawA, YawB, t);
-}
-
-void CCameraKeyController::InterpolatePitch(float PitchA, float PitchB, float TimeA, float TimeB, float ElapsedTime) {
-  float t = (m_CurrentTime - TimeA) / TimeB;
-  m_PitchInterpolated = mathUtils::Lerp(PitchA, PitchB, t);
-}
-
 Vect3f CCameraKeyController::GetDirection () const {
-  return (GetLookAt() - GetEye());
+  return (m_LookAt - GetEye());
 }
 
 Vect3f CCameraKeyController::GetLookAt () const {
-  return m_Keys[m_CurrentKey]->m_CameraInfo->GetLookAt();
+  return m_LookAt;
 }
 
 Vect3f CCameraKeyController::GetEye () const {
@@ -281,12 +224,7 @@ Vect3f CCameraKeyController::GetEye () const {
 }
 
 Vect3f CCameraKeyController::GetVecUp () const {
-  float yaw		= m_pObject3D->GetYaw();
-  float pitch	= m_pObject3D->GetPitch();
-  Vect3f vUpVec(	-cos(yaw) * sin(pitch),
-                  cos(pitch),
-                  -sin(yaw) * sin(pitch) );
-  return vUpVec;
+  return Vect3f(0, 1, 0);
 }
 
 

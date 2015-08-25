@@ -7,9 +7,6 @@
 
 #include "Math/Vector3.h"
 
-typedef enum ETypeFunction { FUNC_CONSTANT, FUNC_INCREMENT, FUNC_DECREMENT};
-
-
 class CLerpAnimator3D {
  public:
   CLerpAnimator3D ():	m_fElapsedTime(0.f), m_bPause(false), m_vInitValue(v3fZERO),

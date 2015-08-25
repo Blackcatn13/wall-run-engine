@@ -27,6 +27,7 @@ class CCameraKeyController: public CCamera {
   Vect3f								        m_PosInterpolated;
   float								          m_YawInterpolated;
   float								          m_PitchInterpolated;
+  Vect3f                        m_LookAt;
 
   Vect3f								        m_PositionInit;
   float								          m_YawInit;
@@ -53,10 +54,6 @@ class CCameraKeyController: public CCamera {
   void Pause();
   void Stop();
   bool IsPlayOn();
-
-  void InterpolatePosition(Vect3f PointA, Vect3f PointB, float TimeA, float TimeB, float ElapsedTime);
-  void InterpolateYaw(float YawA, float YawB, float TimeA, float TimeB, float ElapsedTime);
-  void InterpolatePitch(float PitchA, float PitchB, float TimeA, float TimeB, float ElapsedTime);
 
   virtual Vect3f GetDirection() const;
   virtual Vect3f GetLookAt() const;

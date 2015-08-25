@@ -8,9 +8,6 @@
 #include "Utils\Types.h"
 #include "Math\Vector2.h"
 
-typedef enum ETypeFunction { FUNC_CONSTANT, FUNC_INCREMENT, FUNC_DECREMENT};
-
-
 class CLerpAnimator2D {
  public:
   CLerpAnimator2D ():	m_fElapsedTime(0.f), m_bPause(false), m_vInitValue(v2fZERO),
