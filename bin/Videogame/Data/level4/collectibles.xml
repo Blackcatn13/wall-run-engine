@@ -10,7 +10,7 @@
 	<collectible-type name="pixeliteVermell" core_mesh="Pixelite Vermell001" mesh_lua_function="roll_object" trigger_function="get_pixelite" param_trigger_function="10" trigger_size="0.35 0.30 0.35"/>
 	<collectible-type name="card" core_mesh="Collectible1" mesh_lua_function="roll_object" trigger_function="get_sticker"  trigger_size= "0.40 0.40 0.10" />
 	<!-- <collectible-type name ="card"  core_mesh="" mesh_lua_function ="roll_object" on_enter_function ="get_pixelite" /> -->
-	<unlockable-card mesh_name="Collectible1" img_src="./Data/GUI/GoPixelGo/ImgUnLocked.png" />
-	<unlockable-card mesh_name="Collectible2" img_src="./Data/GUI/GoPixelGo/ImgUnLocked.png" />
+	<unlockable-card mesh_name="Collectible1" img_src="./Data/GUI/GoPixelGo/Card01.png" />
+	<unlockable-card mesh_name="Collectible2" img_src="./Data/GUI/GoPixelGo/Card02.png" />
 
 </collectibles>

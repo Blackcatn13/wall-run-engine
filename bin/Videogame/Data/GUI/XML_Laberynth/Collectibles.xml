@@ -10,13 +10,13 @@
  <Image name="Collectible1" posx="4.50" posy="7.00" height="38" width="15" visible="true" active="true"
          default="ImgLocked" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
     <texture name="ImgLocked" name_texture="./Data/GUI/GoPixelGo/ImgLocked.png"/>
-	<texture name="ImgUnLocked" name_texture="./Data/GUI/GoPixelGo/ImgUnLocked.png"/>
+	<texture name="ImgUnLocked" name_texture="./Data/GUI/GoPixelGo/Card01.png"/>
   </Image>
   
   <Image name="Collectible2" posx="28.50" posy="7.00" height="38" width="15" visible="true" active="true"
          default="ImgLocked" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
     <texture name="ImgLocked" name_texture="./Data/GUI/GoPixelGo/ImgLocked.png"/>
-	<texture name="ImgUnLocked" name_texture="./Data/GUI/GoPixelGo/ImgUnLocked.png"/>
+	<texture name="ImgUnLocked" name_texture="./Data/GUI/GoPixelGo/Card02.png"/>
   </Image>
   
   <Image name="Collectible3" posx="52.50" posy="7.00" height="38" width="15" visible="true" active="true"
