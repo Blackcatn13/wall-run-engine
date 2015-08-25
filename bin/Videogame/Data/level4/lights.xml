@@ -27,6 +27,7 @@
 	<light name="ShadowLight" type="directional" pos="-1.0 10.0 -1.0" dir="1.0 -1.0 1.0" color="1.0 1.0 1.0" intensity="0.2" att_start_range="50.0" att_end_range="100.0" generate_shadow_map="true" shadow_map_format_type="R32F" ortho_shadow_map_width="60" ortho_shadow_map_height="60" shadow_map_width="2048" shadow_map_height="2048" generate_static_shadowm_map="false" static_shadowm_map_format_type="R32F">
 		<dynamic renderable_objects_manager="player"/>
 		<dynamic renderable_objects_manager="enemies"/>
+		<dynamic renderable_objects_manager="collectible"/>
 	</light>
 	<light name="Omni001" type="omni" pos="98.0968 7.66317 3.59258" color="1.0 0.505882 0.309804" intensity="0.7" att_start_range="9.2351" att_end_range="15.8666" enable_distance="40.0"/>
 	<light name="Omni043" type="omni" pos="103.659 7.66317 -25.7024" color="1.0 0.505882 0.309804" intensity="0.7" att_start_range="9.2351" att_end_range="15.8666" enable_distance="40.0"/>
