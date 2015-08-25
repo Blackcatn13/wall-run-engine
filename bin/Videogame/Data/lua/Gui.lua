@@ -1,4 +1,5 @@
 local GameoverCount = 0;
+local gui_visible = true
 
 function onUpdateWindowDisplayGUI()
 	if act2in:do_action_from_lua("ShowLifeGUI") then
@@ -30,6 +31,24 @@ function onUpdateWindowDisplayGUI()
 		GameOver();
 	end
 	
+	if cinematic_controller.m_executing  then
+		if gui_visible then
+			set_visible_gui_elements(false)
+			gui_visible = false
+		end
+	else
+		if not gui_visible then
+			set_visible_gui_elements(true)
+			gui_visible = true
+		end
+	end
+end
+
+function set_visible_gui_elements(visible)
+	gui_manager:set_visible_gui_element("VidesGUI",visible)
+	gui_manager:set_visible_gui_element("PixeliteGUI",visible)
+	gui_manager:set_visible_gui_element("PixeliteNumber",visible)
+	gui_manager:set_visible_gui_element("LifeGUI",visible)
 end
 
 function ManagerGUIHearts()
