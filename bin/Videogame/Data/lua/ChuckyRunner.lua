@@ -12,7 +12,7 @@ local Chucky_super_speed_dist = 10
 local Chucky_running_speed = 14;
 local Chucky_super_speed = 21;
 local Chucky_current_speed = 14;
-
+local chucky_jumped = false
 
 -- Chucky Stopped --
 function chucky_runner_enter_stopped(name)
@@ -205,4 +205,12 @@ end
 
 function set_chucky_need_to_jump(jumping_trigger)
 	need_to_jump = jumping_trigger
+end
+
+function get_chuky_jumped()
+	return chucky_jumped
+end
+
+function set_chuky_jumped(jumped)
+	chucky_jumped = jumped
 end
