@@ -395,13 +395,13 @@ function on_update_player_lua(l_ElapsedTime)
 		if contador > timeAttack then
 			canAttack = true;
 		end
-		
+		local emitter = particle_manager:get_resource(playerRenderable.m_ParticleEmitter)
 		if player_controller.m_isAttack == true then
 			if false then
 				player_controller.m_isAttack = false;
 			else
 				if player.can_finish_atack then
-					local emitter = particle_manager:get_resource(playerRenderable.m_ParticleEmitter)
+					--local emitter = particle_manager:get_resource(playerRenderable.m_ParticleEmitter)
 					if player_controller.m_CurrentAttackForce > 0.5 then					
 						local prev_y = mov.y
 						player_controller.m_CurrentAttackForce = player_controller.m_CurrentAttackForce - (m_AttackGravity * l_ElapsedTime);
@@ -426,6 +426,11 @@ function on_update_player_lua(l_ElapsedTime)
 					mov.y = prev_y
 					emitter.m_vPos = playerRenderable:get_position()+ playerRenderable.m_EmitterOffset
 				end
+			end
+		else
+			if emitter:get_visible() == true then
+				emitter.m_vPos = playerRenderable:get_position()+ playerRenderable.m_EmitterOffset
+				emitter:set_visible(false)
 			end
 		end
 		
