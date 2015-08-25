@@ -15,7 +15,7 @@ function get_pixelite(pixelite_name, value)
 		
 		gui_manager:set_is_displayed_pixelite(true);
 		gui_manager:set_count_pixelite(0.0);
-		gui_manager:set_num_pixelite( gui_manager:get_num_pixelite() + tonumber(value) );
+		gui_manager:set_num_pixelite(tonumber(player.pixelites));
 	end
 end
 
