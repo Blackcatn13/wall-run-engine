@@ -14,13 +14,13 @@
 <trigger name="Hole007" platform_name="" pos="414.947540 3.046466 11.023417" shape="box" size="6.11023 2.55814 9.8392" type_event="enter" script_function="player_die" param1="" group="1" paint="true" color="0.341176 0.882353 0.560784"/>
 <trigger name="Hole008" platform_name="" pos="555.747540 3.046466 -115.023417" shape="box" size="22.00146 3.55814 45.8392" type_event="enter" script_function="player_die" param1="" group="1" paint="false" color="0.341176 0.882353 0.560784"/>
 <trigger name="ChuckyJump001" platform_name="" pos="230.816101 0.015747 11.098312" shape="box" size="0.69519 9.74541 9.85767" type_event="enter" script_function="ChuckyJump" param1="" group="18" paint="true" color="0.878431 0.337255 0.337255"/>
-<trigger name="ChuckyJump002" platform_name="" pos="248.428223 0.015747 11.098312" shape="box" size="0.69519 9.74541 9.85767" type_event="enter" script_function="ChuckyJump" param1="" group="18" paint="true" color="0.878431 0.337255 0.337255"/>
+<trigger name="ChuckyJump002" platform_name="" pos="249.995789 0.015747 11.098312" shape="box" size="3.84399 9.74541 9.85767" type_event="stay" script_function="chucky_check_jump" param1="" type_event2="leave" script_function2="chuky_can_jump" group="18" paint="true" color="0.878431 0.337255 0.337255"/>
 <trigger name="ChuckyJump003" platform_name="" pos="265.401520 0.015747 11.098312" shape="box" size="0.69519 9.74541 9.85767" type_event="enter" script_function="ChuckyJump" param1="" group="18" paint="true" color="0.878431 0.337255 0.337255"/>
 <trigger name="ChuckyJump004" platform_name="" pos="282.806580 0.015747 11.098312" shape="box" size="0.69519 9.74541 9.85767" type_event="enter" script_function="ChuckyJump" param1="" group="18" paint="true" color="0.878431 0.337255 0.337255"/>
-<trigger name="ChuckyJump005" platform_name="" pos="298.798187 0.015747 11.098312" shape="box" size="0.69519 9.74541 9.85767" type_event="enter" script_function="ChuckyJump" param1="" group="18" paint="true" color="0.878431 0.337255 0.337255"/>
+<trigger name="ChuckyJump005" platform_name="" pos="300.427338 0.015747 11.098312" shape="box" size="4.0235 9.74541 9.85767" type_event="stay" script_function="chucky_check_jump" param1="" type_event2="leave" script_function2="chuky_can_jump" group="18" paint="false" color="0.878431 0.337255 0.337255"/>
 <trigger name="ChuckyJump006" platform_name="" pos="316.642639 0.015747 11.098312" shape="box" size="0.69519 9.74541 9.85767" type_event="enter" script_function="ChuckyJump" param1="" group="18" paint="true" color="0.878431 0.337255 0.337255"/>
-<trigger name="ChuckyJump007" platform_name="" pos="334.667419 0.015747 11.098312" shape="box" size="0.69519 9.74541 9.85767" type_event="enter" script_function="ChuckyJump" param1="" group="18" paint="true" color="0.878431 0.337255 0.337255"/>
-<trigger name="ChuckyJump008" platform_name="" pos="354.197510 0.015747 11.098312" shape="box" size="0.69519 9.74541 9.85767" type_event="enter" script_function="ChuckyJump" param1="" group="18" paint="true" color="0.878431 0.337255 0.337255"/>
+<trigger name="ChuckyJump007" platform_name="" pos="336.684174 0.015747 11.098312" shape="box" size="4.54492 9.74541 9.85767" type_event="stay" script_function="chucky_check_jump" param1="" type_event2="leave" script_function2="chuky_can_jump" group="18" paint="true" color="0.878431 0.337255 0.337255"/>
+<trigger name="ChuckyJump008" platform_name="" pos="356.219086 0.015747 11.098312" shape="box" size="4.42407 9.74541 9.85767" type_event="stay" script_function="chucky_check_jump" param1="" type_event2="leave" script_function2="chuky_can_jump" group="18" paint="true" color="0.878431 0.337255 0.337255"/>
 <trigger name="ChuckyJump009" platform_name="" pos="407.789612 8.533447 11.098312" shape="box" size="0.69519 9.74541 9.85767" type_event="enter" script_function="ChuckyJump" param1="" group="18" paint="true" color="0.878431 0.337255 0.337255"/>
 <trigger name="CheckPoint003" platform_name="" pos="436.657074 8.491058 11.098312" shape="box" size="0.69519 9.74541 9.85767" type_event="enter" script_function="set_checkpoint" param1="CheckPoint003" param2="CheckPointDisabledStand003" group="1" paint="false" color="0.882353 0.776471 0.341176"/>
 <trigger name="2DTO3D001" platform_name="" pos="429.490265 8.452271 11.098312" shape="box" size="0.69519 9.74541 9.85767" type_event="enter" script_function="trigger_set_3D" param1="" group="1" paint="false" color="0.109804 0.109804 0.694118"/>
@@ -47,6 +47,12 @@
 <trigger name="Hole010" platform_name="" pos="556.743042 3.283771 -236.391769" shape="box" size="9.83923 2.55814 14.6751" type_event="enter" script_function="player_die" param1="" group="1" paint="true" color="0.341176 0.882353 0.560784"/>
 <trigger name="Hole011" platform_name="" pos="556.743042 6.799273 -331.567444" shape="box" size="9.83923 2.55814 14.6751" type_event="enter" script_function="player_die" param1="" group="1" paint="true" color="0.341176 0.882353 0.560784"/>
 <trigger name="Hole012" platform_name="" pos="556.743042 6.799273 -349.889191" shape="box" size="9.83923 2.55814 11.4299" type_event="enter" script_function="player_die" param1="" group="1" paint="true" color="0.341176 0.882353 0.560784"/>
+
+<trigger name="PikyJumpObstacle001" platform_name="" pos="250.126648 0.015747 11.098312" shape="box" size="3.98801 9.74541 9.85767" type_event="enter" script_function="set_player_obstacle_area" param1="true" type_event2="leave" param1_event2="false" script_function2="set_player_obstacle_area" group="1" paint="false" color="0.580392 0.694118 0.105882"/>
+<trigger name="PikyJumpObstacle002" platform_name="" pos="300.506744 0.015747 11.098312" shape="box" size="4.05597 9.74541 9.85767" type_event="enter" script_function="set_player_obstacle_area" param1="true" type_event2="leave" param1_event2="false" script_function2="set_player_obstacle_area" group="1" paint="false" color="0.580392 0.694118 0.105882"/>
+<trigger name="PikyJumpObstacle003" platform_name="" pos="336.769226 0.015747 11.098312" shape="box" size="4.70245 9.74541 9.85767" type_event="enter" script_function="set_player_obstacle_area" param1="true" type_event2="leave" param1_event2="false" script_function2="set_player_obstacle_area" group="1" paint="true" color="0.580392 0.694118 0.105882"/>
+<trigger name="PikyJumpObstacle004" platform_name="" pos="356.268677 0.015747 11.098312" shape="box" size="4.24103 9.74541 9.85767" type_event="enter" script_function="set_player_obstacle_area" param1="true" type_event2="leave" param1_event2="false" script_function2="set_player_obstacle_area" group="1" paint="true" color="0.580392 0.694118 0.105882"/>
+
 <!--<trigger name="ActivateWallTrapRoom3" platform_name="" pos="440.020081 8.491058 8.098312" shape="box" size="0.85767 9.74541 9.69519" type_event="enter" script_function="activate_wall_traps" param1="0" group="1" paint="false" color="0.690196 0.501961 0.501961"/>
 
 <trigger name="TriggerArrowDamage" platform_name="" pos="80.562675 0.000000 0.052094" shape="box" size="0.826416 4.608 12.1998" type_event="stay" script_function="check_arrows_trap" param1="ArrowTrap1" param2="TriggerActivateArrows" group="1" paint="false" color="0.345098 0.694118 0.105882"/>
@@ -60,6 +66,8 @@
 <trigger name="3DTO2D02" platform_name="" pos="557.374756 9.901652 -177.872345" shape="box" size="9.85767 9.74541 0.69519" type_event="enter" script_function="set_player_room" param1="5" group="1" paint="false" color="0.105882 0.694118 0.105882"/>
 
 <trigger name="TestTrigger" platform_name="" pos="85.382996 0.000000 0.071655" shape="box" size="5.69519 9.74541 9.85767" type_event="enter" type_event2="leave" script_function="test_on_enter" script_function2="test_on_exit" param1_event2="param" group="1" paint="false" color="0.882353 0.776471 0.341176"/>
+
+
 
 
 </triggers>

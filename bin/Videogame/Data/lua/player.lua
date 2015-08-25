@@ -45,6 +45,7 @@ function Player.new()
 	self.has_ass_burned = false
 	self.can_move = true
 	self.last_checkpoint = nil
+	self.inside_obstacle_area = false
 	
 	------	 PLAYER FUNCTIONS -----
 		

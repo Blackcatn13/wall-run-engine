@@ -334,6 +334,23 @@ function ChuckyJump()
 	set_chucky_need_to_jump(true)
 end
 
+function chucky_check_jump()
+	if tostring(player.inside_obstacle_area) == "false" and tostring(get_chuky_jumped()) =="false" then
+		coreInstance:trace("Chuky Check Jump Correct")
+		set_chuky_jumped(true)
+		ChuckyJump()
+	end
+end
+
+function chuky_can_jump()
+	set_chuky_jumped(false)
+end	
+
+function set_player_obstacle_area(is_inside)
+	coreInstance:trace("Player Inside Obstacle area".. tostring(is_inside))
+	player.inside_obstacle_area = is_inside
+end
+
 function set_player_room(room, chucky_appears)
 	set_player_zone(room ..".0")
 	local num_room = tonumber(room)
