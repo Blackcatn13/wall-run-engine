@@ -47,7 +47,7 @@ class CLight : public CObject3D {
   CTexture *m_StaticShadowMap[MAX_SHADOWMAPS];
   CTexture *m_DynamicShadowMap[MAX_SHADOWMAPS];
   CTexture *m_ShadowMaskTexture;
-  std::vector<CRenderableObjectsManager *> m_StaticShadowMapRenderableObjectsManagers,
+  std::vector<std::vector<CRenderableObjectsManager *>> m_StaticShadowMapRenderableObjectsManagers,
       m_DynamicShadowMapRenderableObjectsManagers;
   Mat44f m_ViewShadowMap, m_ProjectionShadowMap;
   std::string m_FormatType;
@@ -158,12 +158,12 @@ class CLight : public CObject3D {
 
   void SetShadowMaskTexture(std::string textureName);
 
-  std::vector<CRenderableObjectsManager *> &GetStaticShadowMapRenderableObjectsManagers() {
+  /*std::vector<CRenderableObjectsManager *> &GetStaticShadowMapRenderableObjectsManagers() {
     return m_StaticShadowMapRenderableObjectsManagers;
   }
   std::vector<CRenderableObjectsManager *> &GetDynamicShadowMapRenderableObjectsManagers() {
     return m_DynamicShadowMapRenderableObjectsManagers;
-  }
+  }*/
 
   void GenerateShadowMap(CGraphicsManager *RM, int index = 0);
 

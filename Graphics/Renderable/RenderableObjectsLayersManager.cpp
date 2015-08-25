@@ -33,7 +33,7 @@ void CRenderableObjectsLayersManager::DestroyRenderableObjectManagers() {
   Destroy();
 }
 
-CRenderableObjectsManager  *CRenderableObjectsLayersManager::GetRenderableObjectsManagerByStrAndRoom(std::string layerName, int roomNumber) {
+CRenderableObjectsManager  *CRenderableObjectsLayersManager::GetRenderableObjectsManagerByStrAndRoom(const std::string &layerName, int roomNumber) {
   std::stringstream ss;
   ss << roomNumber;
   return GetResource(ss.str())->GetResource(layerName);
@@ -106,7 +106,7 @@ void CRenderableObjectsLayersManager::Reload() {
   COLM->Reload();
 }
 
-CRenderableObjectsManager *CRenderableObjectsLayersManager::GetRenderableObjectManager(CXMLTreeNode &Node, std::string roomNumber) {
+CRenderableObjectsManager *CRenderableObjectsLayersManager::GetRenderableObjectManager(CXMLTreeNode &Node, const std::string &roomNumber) {
   std::string l_LayerName = Node.GetPszProperty("layer", m_DefaultLayerName.c_str(), false);
 
   return GetResource(roomNumber)->GetResource(l_LayerName);
@@ -127,7 +127,7 @@ CRenderableObjectsManager *CRenderableObjectsLayersManager::GetRenderableObjectM
   return NULL;
 }
 
-CRenderableObjectsManager *CRenderableObjectsLayersManager::GetRenderableObjectsManagerByStr(std::string layerName) {
+CRenderableObjectsManager *CRenderableObjectsLayersManager::GetRenderableObjectsManagerByStr(const std::string &layerName) {
   std::string l_LayerName = layerName;
   //devuelve el renderable en funcion del nombre de layer y sala del player
   std::stringstream ss;
@@ -136,7 +136,7 @@ CRenderableObjectsManager *CRenderableObjectsLayersManager::GetRenderableObjects
   return GetResource(ss.str())->GetResource(l_LayerName);
 }
 
-CRenderableObjectsManager *CRenderableObjectsLayersManager::GetDefaultRenderableObjectManager(std::string roomName) {
+CRenderableObjectsManager *CRenderableObjectsLayersManager::GetDefaultRenderableObjectManager(const std::string &roomName) {
   return GetResource(roomName)->GetResource( m_DefaultLayerName.c_str());
 }
 
@@ -216,7 +216,7 @@ void CRenderableObjectsLayersManager::Load(const std::string &FileName) {
   }
 }
 
-void CRenderableObjectsLayersManager::DeactivateObjectsByStr(std::string layerName) {
+void CRenderableObjectsLayersManager::DeactivateObjectsByStr(const std::string &layerName) {
 
   for (size_t i = 0 ; i < MAX_ROOMS ; ++i) {
     CRenderableObjectsManager *manager = m_ResourcesVector[i]->GetResource(layerName);
@@ -232,7 +232,7 @@ void CRenderableObjectsLayersManager::DeactivateObjectsByStr(std::string layerNa
   }
 }
 
-void CRenderableObjectsLayersManager::ChangeBetweenVectors( std::string layer, std::string objName, int room ) {
+void CRenderableObjectsLayersManager::ChangeBetweenVectors( const std::string &layer, const std::string &objName, int room ) {
   if (PLAYC->getRoom() != room) {
     CRenderableObjectsManager *l_Rolm = m_ResourcesVector[PLAYC->getRoom()]->GetResource(layer);
     CRenderableObjectsManager *l_RolmAux = m_ResourcesVector[room]->GetResource(layer);
@@ -243,7 +243,7 @@ void CRenderableObjectsLayersManager::ChangeBetweenVectors( std::string layer, s
   }
 }
 
-void CRenderableObjectsLayersManager::ChangeBetweenVectors( std::string layer, std::string objName, int current_room, int room ) {
+void CRenderableObjectsLayersManager::ChangeBetweenVectors( const std::string &layer, const std::string &objName, int current_room, int room ) {
   if (current_room != room) {
     CRenderableObjectsManager *l_Rolm = m_ResourcesVector[current_room]->GetResource(layer);
     CRenderableObjectsManager *l_RolmAux = m_ResourcesVector[room]->GetResource(layer);

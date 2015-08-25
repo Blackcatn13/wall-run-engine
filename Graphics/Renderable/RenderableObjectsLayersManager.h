@@ -13,16 +13,16 @@ class CRenderableObjectsLayersManager : public CTemplatedVectorMapManager <CTemp
   std::string m_DefaultLayerName;
   CRenderableObjectsManager *m_DefaultRenderableObjectManager;
 
-  CRenderableObjectsManager *GetRenderableObjectManager(CXMLTreeNode &Node, std::string roomNumber);
+  CRenderableObjectsManager *GetRenderableObjectManager(CXMLTreeNode &Node, const std::string &roomNumber);
  public:
   CRenderableObjectsLayersManager();
   ~CRenderableObjectsLayersManager();
-  CRenderableObjectsManager *GetDefaultRenderableObjectManager(std::string roomNumber);
-  CRenderableObjectsManager *GetRenderableObjectsManagerByStr(std::string layerName);
-  CRenderableObjectsManager *GetRenderableObjectsManagerByStrAndRoom(std::string layerName, int roomNumber);
-  void ChangeBetweenVectors( std::string layer, std::string objName, int room );
-  void ChangeBetweenVectors( std::string layer, std::string objName, int current_room, int room );
-  void DeactivateObjectsByStr(std::string layerName);
+  CRenderableObjectsManager *GetDefaultRenderableObjectManager(const std::string &roomNumber);
+  CRenderableObjectsManager *GetRenderableObjectsManagerByStr(const std::string &layerName);
+  CRenderableObjectsManager *GetRenderableObjectsManagerByStrAndRoom(const std::string &layerName, int roomNumber);
+  void ChangeBetweenVectors( const std::string &layer, const std::string &objName, int room );
+  void ChangeBetweenVectors( const std::string &layer, const std::string &objName, int current_room, int room );
+  void DeactivateObjectsByStr(const std::string &layerName);
   void DestroyRenderableObjectManagers();
   int GetPreviousZone();
   int GetNextZone();

@@ -52,7 +52,7 @@ CLight::CLight(CXMLTreeNode &Node)
   CRenderableObjectsManager *l_RenderableObjectManager;
   for (int i = 0; i < childs; ++i) {
     if (std::string("dynamic") == Node(i).GetName()) {
-
+      m_DynamicShadowMapRenderableObjectsManagers.resize(RENDLM->GetSize());
       for (int roomNum = 0; roomNum < RENDLM->GetSize(); ++roomNum) {
         int dynamicChilds = Node(i).GetNumChildren();
         if (dynamicChilds > 0) {
@@ -61,31 +61,32 @@ CLight::CLight(CXMLTreeNode &Node)
 
             // l_RenderableObjectManager = RENDLM->GetResource(Node(i)(j).GetPszISOProperty("renderable_objects_manager", "", false));
             l_RenderableObjectManager = RENDLM-> GetRenderableObjectsManagerByStrAndRoom(Node(i)(j).GetPszISOProperty("renderable_objects_manager", "", false), roomNum);
-            m_DynamicShadowMapRenderableObjectsManagers.push_back(l_RenderableObjectManager);
+            m_DynamicShadowMapRenderableObjectsManagers[roomNum].push_back(l_RenderableObjectManager);
           }
         } else {
           renderableDynamicMaps.push_back(Node(i).GetPszISOProperty("renderable_objects_manager", "", false));
           // l_RenderableObjectManager = RENDLM->GetResource(Node(i).GetPszISOProperty("renderable_objects_manager", "", false));
           l_RenderableObjectManager = RENDLM->GetRenderableObjectsManagerByStrAndRoom(Node(i).GetPszISOProperty("renderable_objects_manager", "", false), roomNum);
-          m_DynamicShadowMapRenderableObjectsManagers.push_back(l_RenderableObjectManager);
+          m_DynamicShadowMapRenderableObjectsManagers[roomNum].push_back(l_RenderableObjectManager);
         }
       }
     }
     if (std::string("static") == Node(i).GetName()) {
       int dynamicChilds = Node(i).GetNumChildren();
+      m_StaticShadowMapRenderableObjectsManagers.resize(RENDLM->GetSize());
       for (int roomNum = 0; roomNum < RENDLM->GetSize(); ++roomNum) {
         if (dynamicChilds > 0) {
           for (int j = 0; j < dynamicChilds; ++j) {
             renderableStaticMaps.push_back(Node(i)(j).GetPszISOProperty("renderable_objects_manager", "", false));
             //l_RenderableObjectManager = RENDLM->GetResource(Node(i)(j).GetPszISOProperty("renderable_objects_manager", "", false));
             l_RenderableObjectManager = RENDLM->GetRenderableObjectsManagerByStrAndRoom(Node(i)(j).GetPszISOProperty("renderable_objects_manager", "", false), roomNum);
-            m_StaticShadowMapRenderableObjectsManagers.push_back(l_RenderableObjectManager);
+            m_StaticShadowMapRenderableObjectsManagers[roomNum].push_back(l_RenderableObjectManager);
           }
         } else {
           renderableStaticMaps.push_back(Node(i).GetPszISOProperty("renderable_objects_manager", "", false));
           //l_RenderableObjectManager = RENDLM->GetResource(Node(i).GetPszISOProperty("renderable_objects_manager", "", false));
           l_RenderableObjectManager = RENDLM->GetRenderableObjectsManagerByStrAndRoom(Node(i).GetPszISOProperty("renderable_objects_manager", "", false), roomNum);
-          m_StaticShadowMapRenderableObjectsManagers.push_back(l_RenderableObjectManager);
+          m_StaticShadowMapRenderableObjectsManagers[roomNum].push_back(l_RenderableObjectManager);
         }
       }
     }
@@ -141,8 +142,9 @@ void CLight::GenerateShadowMap(CGraphicsManager *RM, int index /*=0*/) {
     RM->BeginRenderCommand();
     //   RM->Clear(true, true, true, 0xffffffff);
     RM->ClearSceneCommand(true, true, true);
-    for (size_t i = 0; i < m_StaticShadowMapRenderableObjectsManagers.size(); ++i)
-      m_StaticShadowMapRenderableObjectsManagers[i]->Render(RM);
+    std::vector<CRenderableObjectsManager *> staticShadow = m_StaticShadowMapRenderableObjectsManagers[PLAYC->getRoom()];
+    for (size_t i = 0; i < staticShadow.size(); ++i)
+      staticShadow[i]->Render(RM);
     m_MustUpdateStaticShadowMap = false;
     //RM->EndRendering();
     RM->EndRenderCommand();
@@ -154,9 +156,9 @@ void CLight::GenerateShadowMap(CGraphicsManager *RM, int index /*=0*/) {
     RM->BeginRenderCommand();
     //RM->Clear(true, true, true, 0xffffffff);
     RM->ClearSceneCommand(true, true, true);
-    for (size_t i = 0; i <
-         m_DynamicShadowMapRenderableObjectsManagers.size(); ++i)
-      m_DynamicShadowMapRenderableObjectsManagers[i]->Render(RM);
+    std::vector<CRenderableObjectsManager *> dynamicShadow = m_DynamicShadowMapRenderableObjectsManagers[PLAYC->getRoom()];
+    for (size_t i = 0; i < dynamicShadow.size(); ++i)
+      dynamicShadow[i]->Render(RM);
     //   RM->EndRendering();
     RM->EndRenderCommand();
     m_DynamicShadowMap[index]->UnsetAsRenderTarget(0);
@@ -211,11 +213,11 @@ void CLight::ReloadRO() {
   for (int roomNum = 0; roomNum < RENDLM->GetSize(); ++roomNum) {
     for (size_t i = 0; i < renderableDynamicMaps.size(); ++i) {
       l_RenderableObjectManager = RENDLM->GetRenderableObjectsManagerByStrAndRoom(renderableDynamicMaps[i], roomNum);
-      m_DynamicShadowMapRenderableObjectsManagers.push_back(l_RenderableObjectManager);
+      m_DynamicShadowMapRenderableObjectsManagers[roomNum].push_back(l_RenderableObjectManager);
     }
     for (size_t i = 0; i < renderableStaticMaps.size(); ++i) {
       l_RenderableObjectManager = RENDLM->GetRenderableObjectsManagerByStrAndRoom(renderableStaticMaps[i], roomNum);
-      m_StaticShadowMapRenderableObjectsManagers.push_back(l_RenderableObjectManager);
+      m_StaticShadowMapRenderableObjectsManagers[roomNum].push_back(l_RenderableObjectManager);
     }
   }
 }
