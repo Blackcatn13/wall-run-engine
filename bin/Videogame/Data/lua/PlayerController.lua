@@ -1,6 +1,11 @@
 local is_init=true;
 local topPosition = -1000;
 local inLoop = false;
+local inDoubleLoop = false;
+local inDoubleJump = false;
+local executedDoubleStart = false;
+local executedDoubleLoop = false;
+local executedDoubleEnd = false;
 local _land = false;
 local _fallingAnimation = false;
 local _fallPosition = Vect3f(-10000, -10000, -10000);
@@ -301,22 +306,50 @@ function on_update_player_lua(l_ElapsedTime)
 			playerRenderable:blend_cycle(3,1,0.1);
 		end
 		if _land then
-			if _fallingAnimation == false then
-				if dist_to_floor < 17 then
-						playerRenderable:clear_cycle(3,0.2);
+			if inDoubleJump == true then
+				if executedDoubleLoop == false then
+					if (not playerRenderable:is_action_animation_active()) then
+						playerRenderable:remove_action(11);
 						playerRenderable:updateSkeleton(l_ElapsedTime);
-						playerRenderable:blend_cycle(4,1,0.1);
-						_fallingAnimation = true;
+						playerRenderable:blend_cycle(12,1,0.1);
+						executedDoubleLoop = true;
+					end
 				end
-			end
-			if player_controller.m_isGrounded then
-				_land = false;
-				inertiaJump = Vect3f(0,0,0);
-				player.on_air = false;
+				if executedDoubleLoop == true and executedDoubleEnd == false then
+					if dist_to_floor < 17 then
+						playerRenderable:clear_cycle(12,0.2);
+						playerRenderable:updateSkeleton(l_ElapsedTime);
+						playerRenderable:blend_cycle(13,1,0.1);
+						executedDoubleEnd = true;
+					end
+				end
+				if executedDoubleEnd == true then
+					if player_controller.m_isGrounded then
+						_land = false;
+						inertiaJump = Vect3f(0,0,0);
+						player.on_air = false;
+						inDoubleJump = false;
+						playerRenderable:clear_cycle(13,0.2);
+					end
+				end
+			else
 				if _fallingAnimation == false then
-					playerRenderable:clear_cycle(3,0.2);
-				else
-					playerRenderable:clear_cycle(4,0.2);
+					if dist_to_floor < 17 then
+							playerRenderable:clear_cycle(3,0.2);
+							playerRenderable:updateSkeleton(l_ElapsedTime);
+							playerRenderable:blend_cycle(4,1,0.1);
+							_fallingAnimation = true;
+					end
+				end
+				if player_controller.m_isGrounded then
+					_land = false;
+					inertiaJump = Vect3f(0,0,0);
+					player.on_air = false;
+					if _fallingAnimation == false then
+						playerRenderable:clear_cycle(3,0.2);
+					else
+						playerRenderable:clear_cycle(4,0.2);
+					end
 				end
 			end
 		end
@@ -363,29 +396,33 @@ function on_update_player_lua(l_ElapsedTime)
 			playerRenderable:clear_cycle(1,0);
 			playerRenderable:clear_cycle(3,0);
 			playerRenderable:clear_cycle(4,0);
-			playerRenderable:execute_action(8,0.1,0,1,true);
+			playerRenderable:execute_action(10,0.1,0,1,true);
 			player_controller.m_isDoubleJumping = true;
+			player_controller.m_isJumping = false;
+			_land = false;
 			player.on_air = true;
+			inDoubleJump = true;
+			local executedDoubleStart = false;
+			local executedDoubleLoop = false;
+			local executedDoubleEnd = false;
 			_fallingAnimation = false;
 		end
 		if player_controller.m_isDoubleJumping then
 			mov.y = playerRenderable:getBoneMovement().y;
-			if (not playerRenderable:is_cycle_animation_active()) then
+			if (not playerRenderable:is_action_animation_active()) and executedDoubleStart == false then
 				player_controller.m_isDoubleJumping = false;
 				_land = true;
 				local positionOld = playerRenderable:get_position();
 				local auxPosition = playerRenderable:getAnimationBonePosition().y; 
 				local newPosition = Vect3f(positionOld.x, auxPosition, positionOld.z);
 				playerRenderable:set_position(newPosition);
-				playerRenderable:blend_cycle(3,1,0.5);
+				playerRenderable:remove_action(10);
+				playerRenderable:execute_action(11,0.1,0,1,true);
 				playerRenderable:updateSkeleton(l_ElapsedTime);
-				playerRenderable:remove_action(8);
-				playerRenderable:clear_cycle(0,0);
-				playerRenderable:clear_cycle(1,0);
-				playerRenderable:updateSkeleton(l_ElapsedTime);
+				executedDoubleStart = true;
 			end
 		end
-		if (player_controller.m_isJumping == true or _land == true) and _isQuiet == false then
+		if (player_controller.m_isJumping == true or player_controller.m_isDoubleJumping == true or _land == true) and _isQuiet == false then
 			inertiaJump = Vect3f(mov.x,0,mov.z);
 		end
 		
