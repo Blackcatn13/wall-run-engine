@@ -214,6 +214,12 @@ function mikmik_enter_take_damage(name)
 	if enemy ~= nil then
 		enemy.m_CurrentTime = 0
 		enemy.m_Life = enemy.m_Life - 1
+		
+		
+		if(enemy.m_Life <= 0) then
+			enemy.m_IsDying = true
+		end
+		
 		if(enemy.m_Life <= 0 and enemy.m_time_to_fly == false) then
 			enemy:m_FSM():newState("Dead")
 		else 
@@ -240,6 +246,9 @@ end
 
 function mikmik_update_take_damage(ElapsedTime, doComprobation, name)
 	local enemy = enemy_manager:get_enemy(name)
+	if(enemy.m_Life <= 0 and not enemy.m_IsDying ) then
+		enemy.m_IsDying = true
+	end
 	if enemy.m_time_to_fly == true then
 		local auxVec = enemy.m_flyVec * flySpeed;
 		local isGrounded = enemy.m_PhysicController:move(auxVec * ElapsedTime, ElapsedTime);
@@ -285,7 +294,9 @@ function enemy_set_alive(name)
 	--enemy:move_to_position(enemy.m_OriginalPosition)
 	--enemy.m_PhysicController:set_radius(0.5)
 	enemy.m_MovedToDiePosition = false
+	enemy.m_IsDying = true
 	coreInstance:trace("Enemy position: " ..tostring(enemy.m_PhysicController:get_position().x)..","..tostring(enemy.m_PhysicController:get_position().y)..","..tostring(enemy.m_PhysicController:get_position().z))
+	enemy:m_FSM():newState("Parado")
 end
 
 function mikmik_exit_dead(name)
@@ -320,8 +331,6 @@ function mikmik_update_dead(ElapsedTime, doComprobation, name)
 			--enemy.m_RenderableObject:execute_action(3,0.1,0,1,false);
 		end
 		
-		if enemy.m_isAlive == true then
-			enemy:m_FSM():newState("Parado")
-		end
+		
 	end
 end
