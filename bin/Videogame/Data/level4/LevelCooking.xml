@@ -72,14 +72,10 @@
 	<Physx_mesh name="Object011" filename="Data\level4\meshes\Object011.phsx"/>
 	<Physx_mesh name="POLY. PLAT. HORTZ004" filename="Data\level4\meshes\POLY. PLAT. HORTZ004.phsx"/>
 	<Physx_mesh name="POLY. PLAT. HORTZ003" filename="Data\level4\meshes\POLY. PLAT. HORTZ003.phsx"/>
-	<Physx_mesh name="SALA 5" filename="Data\level4\meshes\SALA 5.phsx"/>
-	<Physx_mesh name="CARALLENGUA001" filename="Data\level4\meshes\CARALLENGUA001.phsx"/>
-	<Physx_mesh name="obstacle0230" filename="Data\level4\meshes\obstacle0230.phsx"/>
-	<Physx_mesh name="obstacle024" filename="Data\level4\meshes\obstacle024.phsx"/>
-	<Physx_mesh name="Object0010" filename="Data\level4\meshes\Object0010.phsx"/>
-	<Physx_mesh name="Object002" filename="Data\level4\meshes\Object002.phsx"/>
-	<Physx_mesh name="Object020" filename="Data\level4\meshes\Object020.phsx"/>
-	
+	<Physx_mesh name="SALA_5_TEMPLEPOLYPOLY" filename="Data\level4\meshes\SALA_5_TEMPLEPOLYPOLY.phsx"/>
+	<Physx_mesh name="OBSTACLE_1_SALA5" filename="Data\level4\meshes\OBSTACLE_1_SALA5.phsx"/>
+	<Physx_mesh name="OBSTACLE_2_SALA5" filename="Data\level4\meshes\OBSTACLE_2_SALA5.phsx"/>
+	<Physx_mesh name="PUNXES_01_SALA5" filename="Data\level4\meshes\PUNXES_01_SALA5.phsx"/>
 	<Physx_mesh name="SueloGameOver" filename="Data\level4\meshes\SueloGameOver.phsx"/>
 	<Physx_mesh name="ParedGameOver" filename="Data\level4\meshes\ParedGameOver.phsx"/>
 	

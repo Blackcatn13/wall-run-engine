@@ -293,15 +293,28 @@
 	<mesh_instance name="PUNXES002" core="PUNXES002" pos="557.350647 7.464798 -260.875031" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 	<mesh_instance name="PUNXES00266" core="PUNXES00266" pos="557.350647 7.464798 -260.875031" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 	<mesh_instance name="PUNXES0020" core="PUNXES0020" pos="557.350647 7.464798 -260.875031" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="POLY. PLAT. HORTZ004" core="POLY. PLAT. HORTZ004" pos="557.369873 10.504917 -313.654480" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="5"/>
-	<mesh_instance name="SALA 5" core="SALA 5" pos="557.355652 11.793659 -280.509796" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
-	<mesh_instance name="CARALLENGUA001" core="CARALLENGUA001" pos="561.412292 18.583603 -369.319946" yaw="-1.5708" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
-	<mesh_instance name="obstacle0230" core="obstacle0230" pos="557.347778 10.644835 -222.397614" yaw="-1.5708" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
-	<mesh_instance name="obstacle024" core="obstacle024" pos="557.347778 9.646959 -285.292694" yaw="-1.5708" pitch="0.0" roll="0.0590164" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
-	<mesh_instance name="Object0010" core="Object0010" pos="557.355652 11.793659 -280.509796" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
-	<mesh_instance name="Object002" core="Object002" pos="557.355652 11.793659 -280.509796" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
-	<mesh_instance name="Object020" core="Object020" pos="580.863098 20.311216 -274.359650" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
-	<mesh_instance name="POLY. PLAT. HORTZ003" core="POLY. PLAT. HORTZ003" pos="557.355652 12.484023 -260.550873" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="POLY. PLAT. HORTZ004" core="POLY. PLAT. HORTZ004" pos="557.369873 10.504917 -313.654480" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="POLY. PLAT. HORTZ003" core="POLY. PLAT. HORTZ003" pos="557.355652 12.484023 -260.415375" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="SALA_5_TEMPLEPOLYPOLY" core="SALA_5_TEMPLEPOLYPOLY" pos="564.473083 11.111547 -280.508850" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="OBSTACLE_1_SALA5" core="OBSTACLE_1_SALA5" pos="557.347778 10.644835 -222.397614" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="OBSTACLE_2_SALA5" core="OBSTACLE_2_SALA5" pos="557.347778 9.642675 -285.288879" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="ESTALACTITES_SALA5" core="ESTALACTITES_SALA5" pos="584.787720 20.269979 -273.401978" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="TORCHA_1_SALA5" core="TORCHA_1_SALA5" pos="559.578491 15.364034 -192.992538" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="TORCHA_2_SALA5" core="TORCHA_2_SALA5" pos="571.276245 15.371948 -255.093201" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="TORCHA_3_SALA5" core="TORCHA_3_SALA5" pos="567.347656 15.366942 -279.585022" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="TORCHA_4_SALA5" core="TORCHA_4_SALA5" pos="563.435425 14.302505 -301.100433" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="TORCHA_5_SALA5" core="TORCHA_5_SALA5" pos="561.130798 18.812166 -379.740814" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="PARED_FONS_SALA5" core="PARED_FONS_SALA5" pos="581.415527 21.754503 -280.509796" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="ROCA_FRONT_2_SALA5" core="ROCA_FRONT_2_SALA5" pos="542.988464 3.795357 -284.590729" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="ROCA_FRONT_1_SALA5" core="ROCA_FRONT_1_SALA5" pos="548.671143 4.814244 -192.952652" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="ROCA_BACK_1_SALA5" core="ROCA_BACK_1_SALA5" pos="571.221008 11.592788 -208.330444" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="ROCA_BACK_2_SALA5" core="ROCA_BACK_2_SALA5" pos="564.895569 13.043929 -368.869751" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="LAMPADAFOC_2_SALA5" core="LAMPADAFOC_2_SALA5" pos="593.236389 30.249044 -278.645081" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="LAMPADAFOC_3_SALA5" core="LAMPADAFOC_3_SALA5" pos="582.037109 30.148191 -343.290161" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="LAMPADAFOC_1_SALA5" core="LAMPADAFOC_1_SALA5" pos="585.605408 35.953300 -208.638657" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="PUNXES_01_SALA5" core="PUNXES_01_SALA5" pos="557.473511 8.080101 -260.768463" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="CARALLENGUA_1_SALA5" core="CARALLENGUA_1_SALA5" pos="561.412292 18.583603 -369.319946" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
+	<mesh_instance name="ARCADA_SALA5" core="ARCADA_SALA5" pos="570.086060 12.901175 -278.197845" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
 
 	<mesh_instance name="SueloGameOver" core="SueloGameOver" pos="925.235413 0.000000 -1.597900" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" room="9" layer="solid"/>
 	<mesh_instance name="ParedGameOver" core="ParedGameOver" pos="926.038208 49.771095 -44.694866" yaw="0.0" pitch="1.59575" roll="0.0" scale="1.0 1.0 1.0" visible="false"  room="9" layer="solid"/>
