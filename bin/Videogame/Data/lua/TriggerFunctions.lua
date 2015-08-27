@@ -292,7 +292,7 @@ function check_enemies_killed(num1, door, door2)
 	end
 end
 
-function ChuckyApear()
+function ChuckyApear(distance)
 coreInstance:trace("CHUKY APEARS!!!");
 local Chucky = enemy_manager:get_enemy("Chucky");
 	if player.activating_triggers and not Chucky.m_Appeared then
@@ -302,15 +302,15 @@ local Chucky = enemy_manager:get_enemy("Chucky");
 		dirVec.y = 0;
 		dirVec:normalize(1);
 		local current_position = Vect3f(player.get_player_controller():get_position());
-		local distance = 18;
-		current_position = current_position - dirVec * distance;
+		current_position = current_position - dirVec * tonumber(distance);
 		local pos = Vect3f(current_position.x,current_position.y + 4,current_position.z);
 		Chucky:move_to_position(pos);
-		local yaw = player.get_player_controller():get_yaw();
-		Chucky.m_RenderableObject:set_yaw(-math.rad(90));
+		local yaw = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky"):get_yaw();
+		Chucky.m_RenderableObject:set_yaw(yaw);
 		Chucky.m_Appeared = true
 		set_chucky_need_to_jump(false)
 		Chucky:m_FSM():newState("Corriendo");
+		Chucky:set_visible(true)
 	end
 end
 
@@ -425,7 +425,7 @@ function set_infinite_player_attack(can_finish)
 end
 
 function trigger_zone4() 
-	set_player_room(4, false)
+	set_player_room(4, "false")
 	trigger = trigger_manager:get_resource("Collectible2_UserData")
 	activate_collectible(trigger, "collectible", "Collectible2")
 end
