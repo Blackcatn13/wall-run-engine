@@ -190,6 +190,7 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 					local dead_pos = enemy.m_PhysicController:get_position()
 					enemy.m_OriginalPosition = Vect3f(dead_pos.x,dead_pos.y,dead_pos.z)
 				elseif damageType == 2 then
+					player_controller.m_executeDoubleJump = true;
 					local dead_pos = enemy.m_PhysicController:get_position()
 					enemy.m_OriginalPosition = Vect3f(dead_pos.x,dead_pos.y,dead_pos.z)
 				end

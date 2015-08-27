@@ -358,8 +358,9 @@ function set_player_room(room, chucky_appears)
 
 	renderable_objects_layer_manager:change_between_vectors("solid","scriptedController", num_room)
 	if chucky_appears == "true" and chuky_last_room ~= num_room then
-		renderable_objects_layer_manager:change_between_vectors("enemies", "Chucky", num_room)
+		renderable_objects_layer_manager:change_between_vectors("enemies", "Chucky",chuky_last_room, num_room)
 		chuky_last_room = num_room
+		coreInstance:trace("Chucky room: ".. tostring(chuky_last_room))
 	end
 	
 	player_controller.m_Room = num_room

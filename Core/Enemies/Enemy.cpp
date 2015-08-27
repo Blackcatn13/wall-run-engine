@@ -222,7 +222,7 @@ void CEnemy::ActualizarDisparo(float dt) {
       DestruirDisparo();
     } else {
       m_PosicionBala = m_PosicionBala + m_DireccionBala.Normalize() * m_BalaSpeed * dt;
-      RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->SetPosition(m_PosicionBala);
+      RENDLM->GetRenderableObjectsManagerByStrAndRoom("enemies", m_RenderableObject->getRoom())->GetResource("disparo" + getName())->SetPosition(m_PosicionBala);
       if (CheckPlayerShotCollision()) {
         DestruirDisparo();
         AddDamagePlayer();
@@ -234,8 +234,8 @@ void CEnemy::ActualizarDisparo(float dt) {
 void CEnemy::ShotToVector(float dt, Vect3f point) {
   if (m_isAlive) {
     m_PosicionBala = m_Position;
-    RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->SetPosition(m_PosicionBala);
-    RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->setPrintable(true);
+    RENDLM->GetRenderableObjectsManagerByStrAndRoom("enemies", m_RenderableObject->getRoom())->GetResource("disparo" + getName())->SetPosition(m_PosicionBala);
+    RENDLM->GetRenderableObjectsManagerByStrAndRoom("enemies", m_RenderableObject->getRoom())->GetResource("disparo" + getName())->setPrintable(true);
   }
 }
 
