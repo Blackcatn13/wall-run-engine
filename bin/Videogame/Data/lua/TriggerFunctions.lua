@@ -323,7 +323,11 @@ function ChuckyDesapears()
 		Chucky:m_FSM():newState("Parado");
 		Chucky.m_Appeared = false
 		local emitter = particle_manager:get_resource(Chucky.m_RenderableObject.m_ParticleEmitter)
-		emitter:set_visible(false)
+		local emitter2 = particle_manager:get_resource(Chucky.m_RenderableObject.m_ParticleEmitter2)
+		if emitter ~= nil and emitter2 ~= nil then
+			emitter:set_visible(false)
+			emitter2:set_visible(false)
+		end
 	end
 end
 
@@ -357,7 +361,7 @@ function set_player_room(room, chucky_appears)
 	renderable_objects_layer_manager:change_between_vectors("player", "Piky", num_room)
 
 	renderable_objects_layer_manager:change_between_vectors("solid","scriptedController", num_room)
-	if chucky_appears == "true" and chuky_last_room ~= num_room then
+	if tostring(chucky_appears) == "true" and chuky_last_room ~= num_room then
 		renderable_objects_layer_manager:change_between_vectors("enemies", "Chucky",chuky_last_room, num_room)
 		chuky_last_room = num_room
 		coreInstance:trace("Chucky room: ".. tostring(chuky_last_room))

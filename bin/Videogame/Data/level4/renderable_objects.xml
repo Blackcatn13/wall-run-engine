@@ -324,7 +324,9 @@
 	<mesh_instance name="CheckPointDisabledStand001" core="CheckPointDisabledStand001" pos="59.382996 1.823731 4.071655" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="1" layer="solid"/>
 	<mesh_instance name="CheckPointDisabledStand002" core="CheckPointDisabledStand001" pos="202.563492 1.823731 14.098312" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="2" layer="solid"/>
 	<mesh_instance name="CheckPointDisabledStand003" core="CheckPointDisabledStand001" pos="437.657074 10.291058 14.098312" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="3" layer="solid"/>
-	<mesh_instance name="CheckPointDisabledStand004" core="CheckPointDisabledStand001" pos="563.272339 10.322827 -23.115706" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="4" layer="solid"/>
+	<mesh_instance name="CheckPointDisabledStand004" core="CheckPointDisabledStand001" pos="563.272339 10.322827 -23.115706" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="4" layer="solid"/>	
+	<mesh_instance name="CheckPointDisabledStand005" core="CheckPointDisabledStand001" pos="557.245911 11.554874 -178.728867" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="5" layer="solid"/>
+
 	
 	<mesh_instance name="CheckPointEnabledStand001" core="CheckPointEnabledStand001" pos="93.358940 20.823731 4.000000" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="1" layer="solid"/>
 	<mesh_instance name="CheckPointEnabledSphere" core="CheckPointEnabledSphere" pos="93.358940 20.823731 4.000000" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="1" layer="glow"/>
