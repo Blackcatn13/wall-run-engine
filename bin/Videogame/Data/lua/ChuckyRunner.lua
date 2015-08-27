@@ -128,8 +128,14 @@ function chucky_runner_update_jumping(ElapsedTime, doComprobation, name)
 	if (not chucky_renderable:is_cycle_animation_active() and not jumpStart) then
 		chucky_renderable:blend_cycle(1,1,0);
 		local characterPos = chucky_renderable:get_position();
-		chucky.m_PhysicController:set_position(Vect3f(characterPos.x + 8.992 + 0.164, characterPos.y + 2, characterPos.z));
-		chucky_renderable:set_position(Vect3f(characterPos.x + 8.992 + 0.164, characterPos.y, characterPos.z));
+		local playerPos = playerController:get_position();
+		local mov = playerPos - chucky:get_position();
+		mov.y = 0;
+		mov:normalize(1);
+		mov = mov * (8.992 + 0.164);
+		local newPos = Vect3f(characterPos.x + mov.x, characterPos.y, characterPos.z + mov.z);
+		chucky.m_PhysicController:set_position(Vect3f(newPos.x, newPos.y + 2, newPos.z));
+		chucky_renderable:set_position(Vect3f(newPos.x, newPos.y, newPos.z));
 		jumpStart = true
 		local emitter2 = particle_manager:get_resource(chucky_renderable.m_ParticleEmitter2)
 		emitter2.m_vPos = chucky_renderable:get_position()+ chucky_renderable.m_EmitterOffset2

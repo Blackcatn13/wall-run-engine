@@ -9,5 +9,13 @@
  <word string = "get_cinematic_controller():"/>
  <word string = "execute("/>
  <word string = "restart("/>
+ <word string = "get_enemy_manager():"/>
+ <word string = "get_enemy("/>
+ <word string = "Chucky"/>
+ <word string = ".m_Appeared"/>
+ <word string = "true"/>
+ <word string = "false"/>
+ <word string = "get_renderable_object_layer_manager():"/>
+ <word string = "get_renderable_objects_manager_by_str_and_room("/>
  
 </ConsoleWords>
