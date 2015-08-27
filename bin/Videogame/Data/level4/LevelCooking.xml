@@ -70,8 +70,7 @@
 	<Physx_mesh name="PUNXES010" filename="Data\level4\meshes\PUNXES010.phsx"/>
 	<Physx_mesh name="Object010" filename="Data\level4\meshes\Object010.phsx"/>
 	<Physx_mesh name="Object011" filename="Data\level4\meshes\Object011.phsx"/>
-	<Physx_mesh name="POLY. PLAT. HORTZ004" filename="Data\level4\meshes\POLY. PLAT. HORTZ004.phsx"/>
-	<Physx_mesh name="POLY. PLAT. HORTZ003" filename="Data\level4\meshes\POLY. PLAT. HORTZ003.phsx"/>
+	
 	<Physx_mesh name="SALA_5_TEMPLEPOLYPOLY" filename="Data\level4\meshes\SALA_5_TEMPLEPOLYPOLY.phsx"/>
 	<Physx_mesh name="OBSTACLE_1_SALA5" filename="Data\level4\meshes\OBSTACLE_1_SALA5.phsx"/>
 	<Physx_mesh name="OBSTACLE_2_SALA5" filename="Data\level4\meshes\OBSTACLE_2_SALA5.phsx"/>
