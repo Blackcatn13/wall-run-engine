@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <billboards>
-	<instanced_billboard name="billboard001" billboards="14">
+	<instanced_billboard name="billboard001" billboards="22">
 		<Texture name="./Data/g_Textures/fire01.dds"/>
 		<Texture name="./Data/g_Textures/noise01.dds"/>
 		<Texture name="./Data/g_Textures/alpha01.dds"/>
@@ -18,6 +18,14 @@
 		<Instance size="0.5 0.6" position="312.074 6.046 17.215"/>
 		<Instance size="0.5 0.6" position="339.759 6.046 17.215"/>
 		<Instance size="0.5 0.6" position="369.54 6.046 17.215"/>
+		<Instance size="0.3 0.6" position="559.427 17.0656 -192.997"/>
+		<Instance size="0.3 0.6" position="571.078 17.0469 -254.933"/>
+		<Instance size="0.3 0.6" position="567.133 17.0503 -279.649"/>
+		<Instance size="0.3 0.6" position="563.257 16.0061 -301.154"/>
+		<Instance size="0.3 0.6" position="560.868 20.5454 -379.898"/>
+		<Instance size="2.0 2.0" position="585.31 28.6201 -208.846"/>
+		<Instance size="2.0 2.0" position="592.992 22.7679 -278.861"/>
+		<Instance size="2.0 2.0" position="581.711 22.7652 -343.333"/>
 	</instanced_billboard>
 	
 	<instanced_billboard name="exclamationMik001" billboards="1">
