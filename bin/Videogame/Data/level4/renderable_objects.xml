@@ -400,4 +400,12 @@
 	<mesh_instance name="Pixelite Blau007" core="Pixelite Blau001" pos="558.574646 23.174839 -84.145142" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible"/>
 	<mesh_instance name="Pixelite Blau008" core="Pixelite Blau001" pos="558.647766 21.116028 -114.908752" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible"/>
 	<mesh_instance name="Pixelite Vermell001" core="Pixelite Vermell001" pos="564.579285 16.865039 -132.804779" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible"/>
+	
+	<!--animated_model name="PumPum1" core="mik"  pos="97.358940 1.300000 2.489124" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" room = "1" layer="enemies" />
+	<mesh_instance name="disparoPumPum1" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "1" layer="enemies" />
+	<animated_model name="PumPum2" core="mik"  pos="95.358940 1.300000 -0.489124" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" room = "1" layer="enemies" />
+	<mesh_instance name="disparoPumPum2" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "1" layer="enemies" />
+	<animated_model name="PumPum3" core="mik"  pos="93.358940 1.300000 -3.489124" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" room = "1"/>
+	<mesh_instance name="disparoPumPum3" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "1" layer="enemies" /-->
+	
 </renderable_objects>

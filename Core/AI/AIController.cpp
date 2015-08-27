@@ -221,6 +221,9 @@ void CAIController::RotateOrMove(float dt, Vect3f point) {
 }
 
 
+Vect3f CAIController::UpdtateProjectilePosition(float dt) {
+  return m_PosicionBala + m_DireccionBala.Normalize() * m_BalaSpeed * dt;
+}
 
 void CAIController::DestruirDisparo() {
   RENDLM->GetRenderableObjectsManagerByStr("enemies")->GetResource("disparo" + getName())->setPrintable(false);

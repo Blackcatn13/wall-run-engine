@@ -309,4 +309,7 @@
 	<static_mesh name="PUNXES_01_SALA5" filename="Data\level4\meshes\PUNXES_01_SALA5.mesh"/>
 	<static_mesh name="CARALLENGUA_1_SALA5" filename="Data\level4\meshes\CARALLENGUA_1_SALA5.mesh"/>
 	<static_mesh name="ARCADA_SALA5" filename="Data\level4\meshes\ARCADA_SALA5.mesh"/>
+	
+	<static_mesh filename=".\Data\level3\meshes//Enemy1.mesh" name="Enemy1"/>
+	<static_mesh filename=".\Data\level5\meshes//SpongePicky.mesh" name="SpongePicky"/>
 </static_meshes>

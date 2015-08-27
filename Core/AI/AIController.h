@@ -25,6 +25,7 @@ class CAIController : public CObject3D {
   void DestruirDisparo();
   bool CheckPlayerShotCollision();
   void MoveToPosition(Vect3f pos);
+  Vect3f UpdtateProjectilePosition(float dt);
 
 
   GET_SET(CPhysicController *, PhysicController);
@@ -44,6 +45,16 @@ class CAIController : public CObject3D {
   //GET_SET(std::string, Name);
   GET_SET(Vect3f, Position);
   GET_SET(bool, SpeedModified);
+  GET_SET(bool, IsOnCooldown);
+  GET_SET(float, CooldownTimer);
+  GET_SET(float, BalaSpeed);
+
+  GET_SET(Vect3f, PosicionBala);
+  GET_SET(Vect3f, DireccionBala);
+  GET_SET(float, CurrentCooldown);
+  GET_SET(float, ProjectileHitbox);
+  GET_SET(float, tiempoVidaDisparo);
+
   float getAngleDiff(Vect3f A, Vect3f B);
 
  protected:

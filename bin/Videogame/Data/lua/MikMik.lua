@@ -49,8 +49,16 @@ function mikmik_update_stopped(ElapsedTime, doComprobation, name)
 					end
 				end	
 			-- Si le Player se acerca atacar
-			elseif player.is_hit == false and tostring(enemy.m_Zone) == tostring(player.zone) then
-				enemy:m_FSM():newState("Perseguir_Player")
+			else
+				local temp_zone = enemy.m_Zone
+				if temp_zone == enemy.m_RenderableObject.m_Room then
+					--coreInstance:trace("Sala = zona")
+					temp_zone = temp_zone..".0"
+					--coreInstance:trace(tostring(temp_zone))
+				end
+				if player.is_hit == false and tostring(temp_zone) == tostring(player.zone) then
+					enemy:m_FSM():newState("Perseguir_Player")
+				end
 			end
 		end
 		enemy.m_CurrentTime = enemy.m_CurrentTime + ElapsedTime

@@ -94,6 +94,72 @@ function rotate_renderable(ElapsedTime, angle, _enemy)
 	end
 end
 
+function update_cooldown(enemy, dt, player_position)
+--coreInstance:trace("Enemy Cooldown: "..tostring(enemy.m_IsOnCooldown))
+	if not enemy.m_IsOnCooldown then
+	  enemy.m_IsOnCooldown = true;
+      enemy.m_CurrentCooldown = enemy.m_CooldownTimer;
+	  --enemy:shoot_to_vector(dt, enemy:get_position())
+	  shoot_to_vector(dt, enemy:get_position(), enemy)
+	  enemy.m_DireccionBala = player_position - enemy:get_position()
+	--  coreInstance:trace("Direccion de bala: " .. tostring(enemy.m_DireccionBala.x) ..", ".. tostring(enemy.m_DireccionBala.y).. ", ".. tostring(enemy.m_DireccionBala.z))
+	end
+	
+end
+
+function shoot_to_vector(dt, position, enemy)
+  if (enemy.m_isAlive) then
+    enemy.m_PosicionBala = position
+    local renderable_shoot = get_renderable_object("enemies", enemy.m_RenderableObject.m_Room, "disparo".. enemy:get_name())
+	if renderable_shoot ~= nil then
+		renderable_shoot:set_position(enemy.m_PosicionBala)
+		renderable_shoot.m_Printable = true
+	end
+  end
+end
+
+function update_shoot(dt, enemy)
+ if (enemy.m_IsOnCooldown) then
+	local renderable_shoot = get_renderable_object("enemies", enemy.m_RenderableObject.m_Room, "disparo".. enemy:get_name())
+    enemy.m_CurrentCooldown = enemy.m_CurrentCooldown - dt;
+	--coreInstance:trace("Current CoolDown: "..tostring(enemy.m_CurrentCooldown))
+	--coreInstance:trace("Current CoolDown Timer: "..tostring(enemy.m_CooldownTimer))
+	--coreInstance:trace("Tiempo Vida disparo: "..tostring(enemy.m_tiempoVidaDisparo))
+    if (enemy.m_CurrentCooldown < 0.0) then
+      enemy.m_IsOnCooldown = false;
+	  coreInstance:trace("Listo para borrar disparo por cooldown1")
+      delete_shooting(renderable_shoot)--DestruirDisparo();
+  --elseif (enemy.m_CurrentCooldown < (enemy.m_CooldownTimer - enemy.m_tiempoVidaDisparo)) then
+      --DestruirDisparo();
+	--   coreInstance:trace("Listo para borrar disparo por cooldown2")
+	--	delete_shooting(renderable_shoot)
+    else 
+      enemy.m_PosicionBala = enemy:updtate_projectile_position(dt) --enemy.m_PosicionBala +  luaUtil:normalize(enemy.m_DireccionBala) * enemy.m_BalaSpeed * dt;
+	  renderable_shoot:set_position(enemy.m_PosicionBala)
+      if (check_player_shoot_collision(enemy, renderable_shoot)) then
+        --DestruirDisparo();
+		--  coreInstance:trace("Listo para borrar disparo")
+		delete_shooting(renderable_shoot)
+        enemy:add_damage_player();
+      end
+    end
+  end
+end
+
+
+function delete_shooting(mesh)
+	coreInstance:trace("Borrando disparo")
+	mesh.m_Printable = false
+end
+
+
+function check_player_shoot_collision(enemy, mesh) 
+	if (mesh.m_Printable and enemy.m_PosicionBala:distance(player_controller:get_position()) < enemy.m_ProjectileHitbox) then
+		return true
+	end
+  return false
+end
+
 function check_hitbox(ElapsedTime, player_position, enemy)
 	
 end

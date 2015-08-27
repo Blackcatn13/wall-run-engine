@@ -21,54 +21,65 @@ local instance = CLuaGlobalsWrapper().m_CoreInstance;
 end
 --]]
 function pumpum_enter_stopped(name)
-	--local enemy = coreInstance:get_enemy_manager():get_enemy(name)
-	--currentwp = wp1
-	--coreInstance:trace("Entro y Estoy parado")
+	local enemy = enemy_manager:get_enemy(name)
+	enemy.m_CurrentTime = 0
+	--enemy.m_RenderableObject:blend_cycle(0,1,0);
 	return 0
 end
 
 function pumpum_exit_stopped(name)
-	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
+	local enemy = enemy_manager:get_enemy(name)
 	enemy.m_CurrentTime = 0
+	--enemy.m_RenderableObject:clear_cycle(0,0.3);
 end
 
 function pumpum_update_stopped(ElapsedTime, doComprobation, name)
-	--local enemy = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("enemies"):get_resource(name)
-	--coreInstance:trace("Estoy parado")
-	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
-	if (enemy ~= nil) and (enemy.m_isAlive == true) then
-		if enemy:get_wp_vector_size() > 0 then --Si tiene waypoints para moverse
-			-- En caso de acabar de perseguir o llegar a un WP si la distancia al siguiente es muy corta vuelve a la posicion original
-						
-			if enemy.m_CurrentTime >= 0.1 then
-				enemy:m_FSM():newState("Buscar_next_WP")
-			end
-						
-		else --En caso de no tener waypoints que mire al player
-			if enemy.m_CurrentWp == enemy.m_OriginalPosition and enemy.m_Returning == true then
-				enemy:m_FSM():newState("Andar_WP")
-				enemy.m_Returning = false
-			else 
-				local player_position = coreInstance:get_player_controller():get_position()
-				local player_distance = get_distance_to_player(enemy:get_position(), player_position)
-				if player_distance < 500 then
-					-- Animacion de andar
-					enemy:rotate_yaw(ElapsedTime, player_position)
+	local enemy = enemy_manager:get_enemy(name)
+	local player_position = player_controller:get_position()
+	local player_distance = get_distance_to_player(enemy:get_position(), player_position)
+				
+	if enemy ~= nil then
+		if player_distance < 3500 then
+		
+			if player_distance > enemy.m_AttackPlayerDistance  then --min_player_distance => enemy.m_AttackPlayerDistance
+				if enemy:get_wp_vector_size() > 0 then --Si tiene waypoints para moverse
+					-- En caso de acabar de perseguir o llegar a un WP si la distancia al siguiente es muy corta vuelve a la posicion original
+					if enemy.m_CurrentTime >= 0.1 then
+						enemy:m_FSM():newState("Buscar_next_WP")
+					end
+								
+				else --En caso de no tener waypoints que mire al player
+					if enemy.m_CurrentWp == enemy.m_OriginalPosition and enemy.m_Returning == true then
+						enemy:m_FSM():newState("Andar_WP")
+						enemy.m_Returning = false
+					else 
+						if player_distance < 500 then
+							-- Animacion de andar
+							rotate_yaw(enemy, ElapsedTime, player_position)
+						--	local billboard = billboard_manager:get_resource(enemy.m_RenderableObject.m_Billboard)
+						--	if billboard ~= nil then
+						--		billboard.m_position = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_BillboardOffset
+						--	end
+						end
+					end
+				end	
+			-- Si le Player se acerca atacar
+			
+			else
+				local temp_zone = enemy.m_Zone
+				if temp_zone == enemy.m_RenderableObject.m_Room then
+					coreInstance:trace("Sala = zona")
+					temp_zone = temp_zone..".0"
+					coreInstance:trace(tostring(temp_zone))
+				end
+				if player.is_hit == false and tostring(temp_zone) == tostring(player.zone) then
+					coreInstance:trace("Pum listo para atacar")
+					enemy:m_FSM():newState("Perseguir_Player")
 				end
 			end
-		end	
-		-- Si le Player se acerca atacaarl
-		if check_attack(enemy) == true and enemy.m_CurrentTime >= 2 then
-		--	coreInstance:trace("Vamos a perseguir")
-			enemy:m_FSM():newState("Perseguir_Player")
 		end
-		enemy.m_CurrentTime = enemy.m_CurrentTime +1 * ElapsedTime
-		enemy:actualizar_disparo(ElapsedTime)
-		enemy:actualizar_hitbox()
-	else
-		enemy:m_FSM():newState("Parado")
+		enemy.m_CurrentTime = enemy.m_CurrentTime + ElapsedTime
 	end
-	
 end
 
 function pumpum_enter_moving(name)
@@ -170,8 +181,8 @@ end
 function pumpum_enter_attack_player(name)
 
 	--coreInstance:trace("Entering Perseguir_PLayer");
-	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
-	
+--	local enemy =  enemy_manager:get_enemy(name)
+	--enemy.m_IsOnCoolDown = true
 end
 
 function pumpum_exit_attack_player(name)
@@ -188,8 +199,8 @@ end
 function pumpum_update_attack_player(ElapsedTime, doComprobation, name)
 --player_position = Vect3f(10,0,10)
 	--coreInstance:trace("Persiguiendo");
-	local player_position = coreInstance:get_player_controller():get_position()
-	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
+	local enemy = enemy_manager:get_enemy(name)
+	local player_position = player_controller:get_position()
 	
 	if enemy.m_SpeedModified == false then
 		enemy.m_Speed = enemy.m_AttackSpeed
@@ -197,21 +208,27 @@ function pumpum_update_attack_player(ElapsedTime, doComprobation, name)
 	end
 	--local random_destino = Vect3f(10,0,10)
 	--move_enemy_pumpum(ElapsedTime, random_destino, enemy)
-	move_enemy_pumpum(ElapsedTime, player_position, enemy)
-	
+	--move_enemy_pumpum(ElapsedTime, player_position, enemy)
+
+	rotate_yaw(enemy, ElapsedTime, player_position)
 	--if doComprobation == 1 then
-		local player_distance = get_distance_to_player(enemy:get_position(), player_position)
-		if player_distance > 225 then
-			enemy:m_FSM():newState("Parado")
+	local player_distance = get_distance_to_player(enemy:get_position(), player_position)
+	update_cooldown(enemy, ElapsedTime, player_position)
+	if player_distance > 225 then
+		enemy:m_FSM():newState("Parado")
 		--	enemy.m_Speed = enemy.m_Speed / speed_modifier
-		end
-		if player_distance < 1 then
+	end
+	if player_distance < 1 then
 		-- Aqui meter impacto del ataque
-			enemy:m_FSM():newState("Parado")
+		enemy:m_FSM():newState("Parado")
 		--	enemy.m_Speed = enemy.m_Speed / speed_modifier
-		end
+	end
+		
+		
+		
 	if (enemy ~= nil) then
-		enemy:actualizar_disparo(ElapsedTime)	
+		--enemy:actualizar_disparo(ElapsedTime)	
+		update_shoot(ElapsedTime, enemy)
 		enemy:actualizar_hitbox()
 	end
 	--end
@@ -260,7 +277,9 @@ end
 
 function pumpum_enter_dead(name)
 	local enemy = enemy_manager:get_enemy(name)
+		
 	if enemy ~= nil then
+		coreInstance:trace("Pum mueltoo ENTRANDO")
 		enemy.m_isAlive = false
 		enemy.m_RenderableObject.m_Printable=false
 		local dead_pos = enemy.m_PhysicController:get_position()

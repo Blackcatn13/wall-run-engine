@@ -60,6 +60,14 @@ void RegisterAI() {
     .property("m_isJumping", &CAIController::getisJumping,  &CAIController::setisJumping )
     .property("m_SpeedModified", &CAIController::getSpeedModified, &CAIController::setSpeedModified )
     .property("m_RenderableObject", &CAIController::getRenderableObject,  &CAIController::setRenderableObject )
+    .property("m_IsOnCoolDown", &CAIController::getIsOnCooldown,  &CAIController::setIsOnCooldown)
+    .property("m_CooldownTimer", &CAIController::getCooldownTimer,  &CAIController::setCooldownTimer)
+    .property("BalaSpeed", &CAIController::getBalaSpeed,  &CAIController::setBalaSpeed)
+    .property("m_PosicionBala", &CAIController::getPosicionBala,  &CAIController::setPosicionBala)
+    .property("m_DireccionBala", &CAIController::getDireccionBala,  &CAIController::setDireccionBala)
+    .property("m_CurrentCooldown", &CAIController::getCurrentCooldown,  &CAIController::setCurrentCooldown)
+    .property("m_ProjectileHitbox", &CAIController::getProjectileHitbox,  &CAIController::setProjectileHitbox)
+
     .def("move", &CAIController::Move)
     .def("move_to", &CAIController::MoveTo)
     .def("rotate_or_move", &CAIController::RotateOrMove)
@@ -67,6 +75,7 @@ void RegisterAI() {
     .def("get_angle_diff", &CAIController::getAngleDiff)
     .def("move_to_position", &CAIController::MoveToPosition)
     .def("rotate_renderable", &CAIController::RotateRenderable)
+    .def("updtate_projectile_position",  &CAIController::UpdtateProjectilePosition)
   ];
 
   luabind::module(LUA_STATE) [
@@ -99,11 +108,16 @@ void RegisterAI() {
     .property("m_flyVec", &CEnemy::getflyVec, &CEnemy::setflyVec)
     .property("m_MovedToDiePosition", &CEnemy::getMovedToDiePosition, &CEnemy::setMovedToDiePosition)
     .property("m_IsDying", &CEnemy::getIsDying, &CEnemy::setIsDying)
+    .property("m_IsOnCooldown", &CEnemy::getIsOnCooldown, &CEnemy::setIsOnCooldown)
+    .property("m_tiempoVidaDisparo", &CEnemy::gettiempoVidaDisparo, &CEnemy::settiempoVidaDisparo)
+
     .def("get_name",  &CEnemy::GetEnemyName)
     .def("m_FSM", &CEnemy::getFsm)
     .def("only_rotate", &CEnemy::OnlyRotate)
     .def("actualizar_disparo", &CEnemy::ActualizarDisparo)
     .def("actualizar_hitbox", &CEnemy::ActualizarHitboxEnemigo)
+    .def("shoot_to_vector", &CEnemy::ShotToVector)
+    .def("add_damage_player", &CEnemy::AddDamagePlayer )
     /* .def("update", &CEnemy::Update)
      .def("render", &CEnemy::Render)*/
   ];
