@@ -207,9 +207,9 @@ function reset_game()
 	--player.visited_checkpoints = {}
 	
 	player.zone = 1
-	gui_manager:set_image('VidesGUI','Vides3')
 	gui_manager:set_is_displayed_heart(true);
 	gui_manager:set_count_heart(0.0);
+	gui_manager:set_num_heart( 3 );	
 	player.pixelites = 0;
 	gui_manager:set_is_displayed_pixelite(true);
 	gui_manager:set_count_pixelite(0.0);

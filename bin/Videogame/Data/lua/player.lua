@@ -140,14 +140,7 @@ function Player.new()
 		
 		gui_manager:set_is_displayed_heart(true);
 		gui_manager:set_count_heart(0.0);
-		
-		if gui_manager:get_active_image('VidesGUI') == 'Vides3' then
-			gui_manager:set_image('VidesGUI','Vides2')
-		else
-			if gui_manager:get_active_image('VidesGUI') == 'Vides2' then
-				gui_manager:set_image('VidesGUI','Vides1')
-			end	
-		end
+		gui_manager:set_num_heart( self.num_lives );	
 		
 		--self.check_death_actions()
 	end
