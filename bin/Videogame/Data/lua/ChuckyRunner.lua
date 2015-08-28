@@ -17,6 +17,7 @@ chuky_last_room = 1
 
 -- Chucky Stopped --
 function chucky_runner_enter_stopped(name)
+	coreInstance:trace("Chucky parado")
 	if playerController == nil then
 		playerController = player.get_player_controller()
 	end
@@ -25,8 +26,9 @@ function chucky_runner_enter_stopped(name)
 		chucky.m_RenderableObject:blend_cycle(0,1,0);
 	end
 	local characterPos = chucky.m_PhysicController:get_position();
-	characterPos.y = 0;
+	characterPos.y = player_controller:get_position().y - 1 --0
 	chucky.m_RenderableObject:set_position(characterPos);
+	coreInstance:trace("Chuky position renderable: " ..tostring(characterPos.x)..","..tostring(characterPos.y)..","..tostring(characterPos.z))
 end
 
 function chucky_runner_exit_stopped(name)
@@ -44,8 +46,10 @@ function chucky_runner_enter_running(name)
 	chucky.m_PhysicController:use_gravity(true);
 	local chucky_renderable = chucky.m_RenderableObject
 	local emitter = particle_manager:get_resource(chucky_renderable.m_ParticleEmitter)
-	emitter.m_vPos = chucky_renderable:get_position()+ chucky_renderable.m_EmitterOffset
-	emitter:set_visible(true)
+	if(emitter ~= nil) then
+		emitter.m_vPos = chucky_renderable:get_position()+ chucky_renderable.m_EmitterOffset
+		emitter:set_visible(true)
+	end
 	--local emitter2 = particle_manager:get_resource(chucky.m_RenderableObject.m_ParticleEmitter2)
 	--emitter2:set_visible(false)
 end
