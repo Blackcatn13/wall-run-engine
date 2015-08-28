@@ -166,7 +166,7 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 	
 	--coreInstance:trace("Enemy Zone" .. tostring (enemy.m_Zone))
 	--coreInstance:trace("player Zone" .. tostring (player.zone))
-		if enemy.m_isAttacking == false then
+		if enemy.m_isAttacking == false  and player.is_dead == false then
 			local enemyPosXZ = Vect3f(enemy:get_position().x, 0, enemy:get_position().z)
 			local playerPosXZ = Vect3f(player_position.x, 0, player_position.z)
 			local player_distance = get_distance_to_player(enemyPosXZ, playerPosXZ)
