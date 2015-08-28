@@ -325,7 +325,7 @@
 	<mesh_instance name="CheckPointDisabledStand002" core="CheckPointDisabledStand001" pos="202.563492 1.823731 14.098312" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="2" layer="solid"/>
 	<mesh_instance name="CheckPointDisabledStand003" core="CheckPointDisabledStand001" pos="437.657074 10.291058 14.098312" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="3" layer="solid"/>
 	<mesh_instance name="CheckPointDisabledStand004" core="CheckPointDisabledStand001" pos="563.272339 10.322827 -23.115706" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="4" layer="solid"/>	
-	<mesh_instance name="CheckPointDisabledStand005" core="CheckPointDisabledStand001" pos="557.245911 11.554874 -178.728867" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="CheckPointDisabledStand005" core="CheckPointDisabledStand001" pos="560.656 11.554874 -180.233" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="5" layer="solid"/>
 
 	
 	<mesh_instance name="CheckPointEnabledStand001" core="CheckPointEnabledStand001" pos="93.358940 20.823731 4.000000" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="1" layer="solid"/>
@@ -400,7 +400,7 @@
 	<mesh_instance name="Pixelite Verd052" core="Pixelite Verd001" pos="555.742371 16.724861 -152.477722" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible"/>
 	<mesh_instance name="Pixelite Verd053" core="Pixelite Verd001" pos="557.567810 10.781 -171.844650" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible"/>
 	<mesh_instance name="Pixelite Blau007" core="Pixelite Blau001" pos="558.574646 23.174839 -84.145142" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible"/>
-	<mesh_instance name="Pixelite Blau008" core="Pixelite Blau001" pos="558.647766 21.116028 -114.908752" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible"/>
+	<mesh_instance name="Pixelite Blau008" core="Pixelite Blau001" pos="558.647766 20.827 -114.908752" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible"/>
 	<mesh_instance name="Pixelite Vermell001" core="Pixelite Vermell001" pos="564.579285 16.865039 -132.804779" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible"/>
 	
 	<mesh_instance name="Pixelite Verd054" core="Pixelite Verd001" pos="557.567810 11.242048 -187.313538" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="collectible"/>
