@@ -134,6 +134,14 @@ CAIController::~CAIController() {
 
 }
 
+void CAIController::SetShootingStats(float speedProjectile, float projectileLife, float cooldownTimer) {
+  m_BalaSpeed = speedProjectile;
+  m_CooldownTimer = cooldownTimer;
+  m_tiempoVidaDisparo = projectileLife;
+}
+
+
+
 void CAIController::Move(float dt) {
   /*float deltaX, deltaY, deltaZ;
   if (ACT2IN->DoAction("yaw", deltaX))

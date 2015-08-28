@@ -43,7 +43,14 @@ void CEnemyManager::InitEnemies(std::string layerName) {
             float l_TurnSpeed = m_Cores.find(m_EnemyInstances[j].instanceType)->second.TurnSpeed;
             std::vector<Vect3f> l_WayPoints = m_EnemyInstances[j].waypoints;
             bool isStatic =  m_EnemyInstances[j].Static;
-            CEasyEnemy *Enemy = new CEasyEnemy(l_Rom->GetResourcesVector()[i], l_WayPoints, l_Speed, l_TurnSpeed, l_AttackSpeed, l_Life, l_FsmName, l_ControllerSize, l_AttackDistance, l_Zone, isStatic);
+            std::string l_ProjectileName = m_EnemyInstances[j].ProjectileName;
+            CEasyEnemy *Enemy = new CEasyEnemy(l_Rom->GetResourcesVector()[i], l_WayPoints, l_Speed, l_TurnSpeed, l_AttackSpeed, l_Life, l_FsmName, l_ControllerSize, l_AttackDistance, l_Zone, isStatic, l_ProjectileName);
+            if (l_ProjectileName != "") {
+              float l_SpeedProjectile = m_Cores.find(m_EnemyInstances[j].instanceType)->second.ShootSpeed;
+              float l_ProjectileLife = m_Cores.find(m_EnemyInstances[j].instanceType)->second.LifeProjectile;
+              float l_CooldownTimer = m_Cores.find(m_EnemyInstances[j].instanceType)->second.CooldownTimer;
+              Enemy->SetShootingStats(l_SpeedProjectile, l_ProjectileLife, l_CooldownTimer);
+            }
             m_Enemies.push_back(Enemy);
           } else if (nam.find("_runner") != std::string::npos) {
             CRunnerEnemy *Enemy = new CRunnerEnemy(l_Rom->GetResourcesVector()[i], l_Speed, l_FsmName, l_ControllerSize, l_AttackDistance, l_Zone);
@@ -84,12 +91,14 @@ bool CEnemyManager::Init(const std::string &FileName) {
           std::string type = nodeChild.GetPszProperty("type", "", false);
           StatsStr l_Stats;
           l_Stats.life = nodeChild.GetIntProperty("life", 1 , false);
-          l_Stats.ShootSpeed = nodeChild.GetFloatProperty("shoot_speed", 0.0f , false);
+          l_Stats.ShootSpeed = nodeChild.GetFloatProperty("speed_projectile", 0.0f , false);
           l_Stats.Speed = nodeChild.GetFloatProperty("speed", 0.0f , false);
           l_Stats.SpeedAttack = nodeChild.GetFloatProperty("speed_attack", 0.0f , false);
           l_Stats.FsmName = nodeChild.GetPszISOProperty("fsm", "NoFSM", false);
           l_Stats.ControllerSize = nodeChild.GetVect2fProperty("controller_size", v2fZERO, false);
           l_Stats.TurnSpeed = nodeChild.GetFloatProperty("turn_speed", 0.2f , false);
+          l_Stats.LifeProjectile = nodeChild.GetFloatProperty("projectile_life", 0.2f , false);
+          l_Stats.CooldownTimer = nodeChild.GetFloatProperty("cooldown_timer", 0.2f , false);
           m_Cores.insert(std::pair<std::string, StatsStr>(type, l_Stats));
         } else if (l_Name == "instance_enemy") {
           EnemiesStr l_Enemy;
@@ -102,6 +111,7 @@ bool CEnemyManager::Init(const std::string &FileName) {
           l_Enemy.AttackDistance = nodeChild.GetFloatProperty("attack_distance", 15.0f, false);
           l_Enemy.Zone = nodeChild.GetFloatProperty("zone", 1.0f, false);
           l_Enemy.Static = nodeChild.GetBoolProperty("static", false, false);
+          l_Enemy.ProjectileName = nodeChild.GetPszISOProperty("projectile", "", false);
           m_EnemyInstances.push_back(l_Enemy);
         }
       }

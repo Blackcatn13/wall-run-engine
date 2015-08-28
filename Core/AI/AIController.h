@@ -25,6 +25,7 @@ class CAIController : public CObject3D {
   void DestruirDisparo();
   bool CheckPlayerShotCollision();
   void MoveToPosition(Vect3f pos);
+  void SetShootingStats(float speedProjectile, float projectileLife, float cooldownTimer);
   Vect3f UpdtateProjectilePosition(float dt);
 
 

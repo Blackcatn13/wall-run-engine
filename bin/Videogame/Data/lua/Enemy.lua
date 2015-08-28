@@ -110,22 +110,23 @@ end
 function shoot_to_vector(dt, position, enemy)
   if (enemy.m_isAlive) then
     enemy.m_PosicionBala = position
-    local renderable_shoot = get_renderable_object("enemies", enemy.m_RenderableObject.m_Room, "disparo".. enemy:get_name())
+    local renderable_shoot = get_renderable_object("enemies", enemy.m_RenderableObject.m_Room, enemy.m_ProjectileName)
 	if renderable_shoot ~= nil then
 		renderable_shoot:set_position(enemy.m_PosicionBala)
 		renderable_shoot.m_Printable = true
+		renderable_shoot:set_visible(true)
 	end
   end
 end
 
 function update_shoot(dt, enemy)
  if (enemy.m_IsOnCooldown) then
-	local renderable_shoot = get_renderable_object("enemies", enemy.m_RenderableObject.m_Room, "disparo".. enemy:get_name())
+	local renderable_shoot = get_renderable_object("enemies", enemy.m_RenderableObject.m_Room, enemy.m_ProjectileName)
     enemy.m_CurrentCooldown = enemy.m_CurrentCooldown - dt;
 	--coreInstance:trace("Current CoolDown: "..tostring(enemy.m_CurrentCooldown))
 	--coreInstance:trace("Current CoolDown Timer: "..tostring(enemy.m_CooldownTimer))
 	--coreInstance:trace("Tiempo Vida disparo: "..tostring(enemy.m_tiempoVidaDisparo))
-    if (enemy.m_CurrentCooldown < 0.0) then
+    if (enemy.m_CurrentCooldown < 0.0 or player.is_dead) then
       enemy.m_IsOnCooldown = false;
 	  coreInstance:trace("Listo para borrar disparo por cooldown1")
       delete_shooting(renderable_shoot)--DestruirDisparo();
@@ -150,8 +151,22 @@ end
 function delete_shooting(mesh)
 	coreInstance:trace("Borrando disparo")
 	mesh.m_Printable = false
+	mesh:set_visible(false)
 end
 
+function enemy_set_alive(name)
+	local enemy =  enemy_manager:get_enemy(name)
+	enemy:set_position(enemy.m_OriginalPosition)
+	enemy.m_PhysicController:set_position(enemy.m_OriginalPosition)
+	enemy.m_RenderableObject:set_position(enemy.m_OriginalPosition)
+	--enemy:move_to_position(enemy.m_OriginalPosition)
+	--enemy.m_PhysicController:set_radius(0.5)
+	enemy.m_MovedToDiePosition = false
+	enemy.m_IsDying = true
+	coreInstance:trace("Enemy position: " ..tostring(enemy.m_PhysicController:get_position().x)..","..tostring(enemy.m_PhysicController:get_position().y)..","..tostring(enemy.m_PhysicController:get_position().z))
+	coreInstance:trace("Enemy position Renderable: " ..tostring(enemy.m_RenderableObject:get_position().x)..","..tostring(enemy.m_RenderableObject:get_position().y)..","..tostring(enemy.m_RenderableObject:get_position().z))
+	enemy:m_FSM():newState("Parado")
+end
 
 function check_player_shoot_collision(enemy, mesh) 
 	if (mesh.m_Printable and enemy.m_PosicionBala:distance(player_controller:get_position()) < enemy.m_ProjectileHitbox) then

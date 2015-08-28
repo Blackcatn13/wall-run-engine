@@ -22,8 +22,8 @@ CEasyEnemy::CEasyEnemy(CXMLTreeNode &info1) : CEnemy(info1),
   //InitWpVector(2, 4);
 }
 
-CEasyEnemy::CEasyEnemy(std::string mesh, std::string name, Vect3f position,  float speed, float turnSpeed, float gravity, float yaw) :
-  CEnemy(mesh, name, position, speed, turnSpeed, gravity, yaw),
+CEasyEnemy::CEasyEnemy(std::string mesh, std::string name, Vect3f position,  float speed, float turnSpeed, float gravity, float yaw, std::string projectile) :
+  CEnemy(mesh, name, position, speed, turnSpeed, gravity, yaw, projectile),
   m_WpVector(NULL),
   m_CurrentWp(NULL),
   m_Static(false),
@@ -34,8 +34,8 @@ CEasyEnemy::CEasyEnemy(std::string mesh, std::string name, Vect3f position,  flo
   //InitWpVector(2, 4);
 }
 //Nuevo sistema
-CEasyEnemy::CEasyEnemy(CRenderableObject *renderableObject, std::vector<Vect3f> wayPoints, float speed, float turnSpeed, float speedAttack, int life, std::string fsmName, Vect2f characterSize,  float AttackDistance, float zone, bool isStatic) :
-  CEnemy(renderableObject, speed, turnSpeed, life, characterSize, AttackDistance, zone),
+CEasyEnemy::CEasyEnemy(CRenderableObject *renderableObject, std::vector<Vect3f> wayPoints, float speed, float turnSpeed, float speedAttack, int life, std::string fsmName, Vect2f characterSize,  float AttackDistance, float zone, bool isStatic, std::string projectile) :
+  CEnemy(renderableObject, speed, turnSpeed, life, characterSize, AttackDistance, zone, projectile),
   m_WpVector(wayPoints),
   m_CurrentWp(NULL),
   m_AttackSpeed(speedAttack),

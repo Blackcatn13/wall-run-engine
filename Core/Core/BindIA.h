@@ -95,7 +95,7 @@ void RegisterAI() {
   luabind::module(LUA_STATE) [
     class_<CEnemy, CAIController>("CEnemy")
     .def(constructor<CXMLTreeNode>())
-    .def(constructor<std::string, std::string, Vect3f, float, float, float , float >())
+    .def(constructor<std::string, std::string, Vect3f, float, float, float , float, std::string >())
     //.property("m_Speed", &CEnemy::getSpeed, &CEnemy::setSpeed)
     .property("m_CurrentTime", &CEnemy::getCurrentTime, &CEnemy::setCurrentTime)
     .property("m_OriginalPosition", &CEnemy::GetOriginalPosition , &CEnemy::SetOriginalPosition )
@@ -110,6 +110,7 @@ void RegisterAI() {
     .property("m_IsDying", &CEnemy::getIsDying, &CEnemy::setIsDying)
     .property("m_IsOnCooldown", &CEnemy::getIsOnCooldown, &CEnemy::setIsOnCooldown)
     .property("m_tiempoVidaDisparo", &CEnemy::gettiempoVidaDisparo, &CEnemy::settiempoVidaDisparo)
+    .property("m_ProjectileName", &CEnemy::getProjectileName, &CEnemy::setProjectileName)
 
     .def("get_name",  &CEnemy::GetEnemyName)
     .def("m_FSM", &CEnemy::getFsm)
@@ -125,7 +126,7 @@ void RegisterAI() {
   luabind::module(LUA_STATE) [
     class_<CEasyEnemy, CEnemy>("CEasyEnemy")
     .def(constructor<CXMLTreeNode>())
-    .def(constructor<std::string, std::string, Vect3f, float, float, float , float >())
+    .def(constructor<std::string, std::string, Vect3f, float, float, float , float, std::string >())
     .def("move_enemy", &CEasyEnemy::MoveEnemy)
     .def("get_next_wp", &CEasyEnemy::GetNextWp)
     // .def("init_wp_vector", &CEasyEnemy::InitWpVector)

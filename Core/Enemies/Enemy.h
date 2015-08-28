@@ -48,13 +48,14 @@ class CEnemy : public CAIController { //CAIController
   Vect3f			m_flyVec;
   bool				m_MovedToDiePosition;
   bool				m_IsDying;
+  std::string		m_ProjectileName;
 
 
   CEnemy();
  public:
   CEnemy(CXMLTreeNode &info1);
-  CEnemy(std::string mesh, std::string name, Vect3f position,  float speed, float turnSpeed, float gravity, float yaw);
-  CEnemy(CRenderableObject *renderableObject, float speed, float turnSpeed, int life, Vect2f controller_size, float AttackDistance, float zone);
+  CEnemy(std::string mesh, std::string name, Vect3f position,  float speed, float turnSpeed, float gravity, float yaw, std::string projectile = "");
+  CEnemy(CRenderableObject *renderableObject, float speed, float turnSpeed, int life, Vect2f controller_size, float AttackDistance, float zone, std::string projectile = "");
   virtual ~CEnemy();
 
 
@@ -62,6 +63,7 @@ class CEnemy : public CAIController { //CAIController
   virtual void Init(std::string fsmName) /*= 0*/;
   virtual void Update(float elapsedTime) /*= 0*/;
   virtual void Render() /*= 0*/;
+
   void UpdateFSM(float elapsedTime);
   Vect3f GetOriginalPosition();
   void SetOriginalPosition(Vect3f position);
@@ -98,6 +100,7 @@ class CEnemy : public CAIController { //CAIController
   GET_SET(Vect3f, flyVec);
   GET_SET(ENEMY_TYPE, enemyType);
   GET_SET(bool, IsDying);
+  GET_SET(std::string, ProjectileName);
   // get & set
   // set(const <type> &name)
   // const <type> & get
