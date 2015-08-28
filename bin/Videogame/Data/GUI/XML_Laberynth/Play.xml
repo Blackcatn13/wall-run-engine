@@ -18,7 +18,7 @@
 	<texture name="UnlockCard" name_texture="./Data/GUI/GoPixelGo/UnlockCardMessage.png"/>
   </Image>
   
-  <Image name="LifeGUI" posx="2" posy="77.50" height="17" width="10" visible="true" active="true"
+  <Image name="LifeGUI" posx="2" posy="77.00" height="20" width="12" visible="true" active="true"
          default="Life3" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
     <texture name="Life3" name_texture="./Data/GUI/GoPixelGo/Gui_Vida_3.png"/>
 	<texture name="Life2" name_texture="./Data/GUI/GoPixelGo/Gui_Vida_2.png"/>
@@ -26,19 +26,21 @@
 	<texture name="Life0" name_texture="./Data/GUI/GoPixelGo/Gui_Vida_0.png"/>
   </Image>
   
-  <Image name="VidesGUI" posx="2" posy="60.50" height="17" width="10" visible="true" active="true"
+  <Image name="VidesGUI" posx="2" posy="44.00" height="16" width="9.5" visible="true" active="true"
          default="Vides" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
     <texture name="Vides" name_texture="./Data/GUI/GoPixelGo/GUI_Life.png"/>
   </Image>
   
-  <StaticText name="VidesNumber" posx="12" posy="71.5" height="15" width="15" visible="true" active="true" Literal="x 3"/>
+  <StaticText name="VidesNumberShadow" posx="11.25" posy="53.25" height="15" width="15" visible="true" active="true" Literal="x 3"/>
+  <StaticText name="VidesNumber" posx="11" posy="53" height="15" width="15" visible="true" active="true" Literal="x 3"/>
   
-  <Image name="PixeliteGUI" posx="2" posy="43.50" height="17" width="10" visible="true" active="true"
+  <Image name="PixeliteGUI" posx="2" posy="61.00" height="16" width="9.5" visible="true" active="true"
          default="Pixelite" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
     <texture name="Pixelite" name_texture="./Data/GUI/GoPixelGo/GUI_Pixelites.png"/>
   </Image>
   
-  <StaticText name="PixeliteNumber" posx="12" posy="54.5" height="15" width="15" visible="true" active="true" Literal="x 0"/>
+  <StaticText name="PixeliteNumberShadow" posx="11.25" posy="70.25" height="15" width="15" visible="true" active="true" Literal="x 0"/>
+  <StaticText name="PixeliteNumber" posx="11" posy="70" height="15" width="15" visible="true" active="true" Literal="x 0"/>
 	
 	<Image name="backgroundPause" posx="0.00" posy="0.00" height="100.00" width="100.00" visible="false" active="true"
 		default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">

@@ -29,6 +29,9 @@ function onUpdateWindowDisplayGUI()
 	
 	if gui_manager:get_is_gameover() == true then
 		GameOver();
+		set_visible_gui_elements(false)
+	else
+		set_visible_gui_elements(true)
 	end
 	
 	if cinematic_controller.m_executing  then
@@ -47,8 +50,10 @@ end
 function set_visible_gui_elements(visible)
 	gui_manager:set_visible_gui_element("VidesGUI",visible)
 	gui_manager:set_visible_gui_element("VidesNumber",visible)
+	gui_manager:set_visible_gui_element("VidesNumberShadow",visible)
 	gui_manager:set_visible_gui_element("PixeliteGUI",visible)
 	gui_manager:set_visible_gui_element("PixeliteNumber",visible)
+	gui_manager:set_visible_gui_element("PixeliteNumberShadow",visible)
 	gui_manager:set_visible_gui_element("LifeGUI",visible)
 end
 
@@ -60,25 +65,29 @@ function ManagerGUIHearts()
 	
 	local positionMin = 2;
 	local positionMax = -20;
-	local positionYGUI = 60.50;
-	local positionYNum = 71.5;
+	local positionYGUI = 44;
+	local positionYNum = 53;
+	local textShadowDifference = 0.25;
 	
 	--Vides GUI
 	if pos < positionMin and count == 0.0 then
 		gui_manager:set_position_element("VidesGUI", pos + (65 * gui_manager:get_dt()), positionYGUI);
 		gui_manager:set_position_element("VidesNumber", posPixelitesText + (65 * gui_manager:get_dt()), positionYNum);
+		gui_manager:set_position_element("VidesNumberShadow", posPixelitesText + (65 * gui_manager:get_dt()) + textShadowDifference, positionYNum+textShadowDifference);
 	else
 		if count >= 3.0 then
 			if pos > positionMax then
 				gui_manager:set_position_element("VidesGUI", pos - (25 * gui_manager:get_dt()), positionYGUI);
 				gui_manager:set_position_element("VidesNumber", posPixelitesText - (25 * gui_manager:get_dt()), positionYNum);
+				gui_manager:set_position_element("VidesNumberShadow", posPixelitesText - (25 * gui_manager:get_dt()) + textShadowDifference, positionYNum+textShadowDifference);
 			else
 				gui_manager:set_is_displayed_heart(false);
 				gui_manager:set_count_heart(0.0);
 			end
 		else
 			gui_manager:set_position_element("VidesGUI", positionMin, positionYGUI);
-			gui_manager:set_position_element("VidesNumber", positionMin+10, positionYNum);
+			gui_manager:set_position_element("VidesNumber", positionMin+9, positionYNum);
+			gui_manager:set_position_element("VidesNumberShadow", positionMin+9+textShadowDifference, positionYNum+textShadowDifference);
 			gui_manager:set_count_heart(count + gui_manager:get_dt());
 		end
 	end
@@ -92,25 +101,29 @@ function ManagerGUIPixelites()
 	
 	local positionMin = 2;
 	local positionMax = -20;
-	local positionYGUI = 43.50;
-	local positionYNum = 54.5;
+	local positionYGUI = 61;
+	local positionYNum = 70;
+	local textShadowDifference = 0.25;
 		
 	--Pixelite GUI
 	if posPixelites < positionMin and count == 0.0 then
 		gui_manager:set_position_element("PixeliteGUI", posPixelites + (65 * gui_manager:get_dt()), positionYGUI);
 		gui_manager:set_position_element("PixeliteNumber", posPixelitesText + (65 * gui_manager:get_dt()), positionYNum);
+		gui_manager:set_position_element("PixeliteNumberShadow", posPixelitesText + (65 * gui_manager:get_dt()) + textShadowDifference, positionYNum + textShadowDifference);
 	else
 		if count >= 3.0 then
 			if posPixelites > positionMax then
 				gui_manager:set_position_element("PixeliteGUI", posPixelites - (25 * gui_manager:get_dt()), positionYGUI);
 				gui_manager:set_position_element("PixeliteNumber", posPixelitesText - (25 * gui_manager:get_dt()), positionYNum);
+				gui_manager:set_position_element("PixeliteNumberShadow", posPixelitesText - (25 * gui_manager:get_dt()) + textShadowDifference, positionYNum + textShadowDifference);
 			else
 				gui_manager:set_is_displayed_pixelite(false);
 				gui_manager:set_count_pixelite(0.0);
 			end
 		else
 			gui_manager:set_position_element("PixeliteGUI", positionMin, positionYGUI);
-			gui_manager:set_position_element("PixeliteNumber", positionMin+10, positionYNum);
+			gui_manager:set_position_element("PixeliteNumber", positionMin+9, positionYNum);
+			gui_manager:set_position_element("PixeliteNumberShadow", positionMin+9+textShadowDifference, positionYNum + textShadowDifference);
 			gui_manager:set_count_pixelite(count + gui_manager:get_dt());
 		end
 	end

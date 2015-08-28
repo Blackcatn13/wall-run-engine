@@ -213,7 +213,9 @@ void CGuiElement::RenderText (CGraphicsManager *render, CFontManager *fm)
             uint32 posX = CGuiElement::m_Position.x + m_uTextWidthOffset;
             uint32 posY = CGuiElement::m_Position.y + m_uTextHeightOffset;
             if (m_sName == "PixeliteNumber" || m_sName == "VidesNumber")
-                fm->DrawLiteralNumber(posX, posY, m_sLiteral, colWHITE);
+                fm->DrawLiteralNumber(posX, posY, m_sLiteral, colWHITE, 8);
+            else if (m_sName == "PixeliteNumberShadow" || m_sName == "VidesNumberShadow")
+                fm->DrawLiteralNumber(posX, posY, m_sLiteral, colBLACK, 8);
             else
                 fm->DrawLiteral(posX, posY, m_sLiteral);
         }//if (m_sLiteral != "")

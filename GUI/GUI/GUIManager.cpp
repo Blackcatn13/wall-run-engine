@@ -1004,6 +1004,7 @@ void CGUIManager::SetGUIHeartNumber(int input)
 {
     m_GUINumHeart = input;
     m_ElementsMap.find("VidesNumber")->second->SetLiteral("x " + std::to_string( long double(input) ));
+    m_ElementsMap.find("VidesNumberShadow")->second->SetLiteral("x " + std::to_string( long double(input) ));
 }
 
 float CGUIManager::GetGUICountPixelite()
@@ -1025,6 +1026,7 @@ void CGUIManager::SetGUIPixeliteNumber(int input)
 {
     m_GUINumPixelites = input;
     m_ElementsMap.find("PixeliteNumber")->second->SetLiteral("x " + std::to_string( long double(input) ));
+    m_ElementsMap.find("PixeliteNumberShadow")->second->SetLiteral("x " + std::to_string( long double(input) ));
 }
 
 bool CGUIManager::GetIsGameOver()
