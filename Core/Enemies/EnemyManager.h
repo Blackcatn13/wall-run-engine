@@ -19,6 +19,7 @@ typedef struct EnemyStruct {
   float				AttackDistance;
   float				Zone;
   bool				Static;
+  std::string		ProjectileName;
 
 } EnemiesStr;
 
@@ -32,6 +33,8 @@ typedef struct EnemyStats {
   int			life;
   std::string 	FsmName;
   Vect2f		ControllerSize;
+  float			LifeProjectile;
+  float			CooldownTimer;
 
 } StatsStr;
 

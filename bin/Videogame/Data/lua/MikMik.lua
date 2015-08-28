@@ -296,17 +296,7 @@ function mikmik_enter_dead(name)
 	end
 end
 
-function enemy_set_alive(name)
-	local enemy =  enemy_manager:get_enemy(name)
-	enemy:set_position(enemy.m_OriginalPosition)
-	enemy.m_PhysicController:set_position(enemy.m_OriginalPosition)
-	--enemy:move_to_position(enemy.m_OriginalPosition)
-	--enemy.m_PhysicController:set_radius(0.5)
-	enemy.m_MovedToDiePosition = false
-	enemy.m_IsDying = true
-	coreInstance:trace("Enemy position: " ..tostring(enemy.m_PhysicController:get_position().x)..","..tostring(enemy.m_PhysicController:get_position().y)..","..tostring(enemy.m_PhysicController:get_position().z))
-	enemy:m_FSM():newState("Parado")
-end
+
 
 function mikmik_exit_dead(name)
 	local enemy = enemy_manager:get_enemy(name)
@@ -325,8 +315,10 @@ function mikmik_update_dead(ElapsedTime, doComprobation, name)
 			enemy.m_CurrentTime = enemy.m_CurrentTime + 1 *ElapsedTime
 			--coreInstance:trace("Update muerto Mik sin accion")
 			local emitter = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter)
-			emitter.m_vPos = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_EmitterOffset
-			emitter.m_FireParticles = true 
+			if emitter ~= nil then
+				emitter.m_vPos = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_EmitterOffset
+				emitter.m_FireParticles = true 
+			end
 			if enemy.m_CurrentTime > 0.5 then
 				enemy.m_RenderableObject.m_Printable=false
 				local dead_pos = enemy.m_PhysicController:get_position()
