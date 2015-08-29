@@ -359,10 +359,14 @@
 	<mesh_instance name="Pixelite Blau003" core="Pixelite Blau001" pos="325.236938 1.300000 11.141947" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="collectible"/>
 	<mesh_instance name="Pixelite Verd023" core="Pixelite Verd001" pos="252.990524 3.927197 11.199324" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="collectible"/>
 	<mesh_instance name="Pixelite Verd024" core="Pixelite Verd001" pos="339.931793 3.927197 11.199324" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="collectible"/>
-	<mesh_instance name="Move" core="Move" pos="62.887726 0.100000 -2.018604" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="gui_message"/>
-	<mesh_instance name="Jump" core="Jump" pos="108.026306 0.100000 -23.455200" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="gui_message"/>
-	<mesh_instance name="Attack" core="Attack" pos="470.221924 8.521144 -4.799633" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="3" layer="gui_message"/>
-	<mesh_instance name="Poly" core="Poly" pos="557.959595 12.011963 -55.738464" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="gui_message"/>
+	<mesh_instance name="Move" core="MoveB" pos="62.887726 0.100000 -2.018604" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="gui_message" controller="gamepad"/>
+	<mesh_instance name="Move" core="MoveA" pos="62.887726 0.100000 -2.018604" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="gui_message" controller="keyboard"/>
+	<mesh_instance name="Jump" core="JumpA" pos="108.026306 0.100000 -23.455200" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="gui_message" controller="keyboard"/>
+	<mesh_instance name="Attack" core="AttackA" pos="470.221924 8.521144 -4.799633" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="3" layer="gui_message" controller="keyboard"/>
+	<mesh_instance name="Poly" core="PolyA" pos="557.959595 12.011963 -55.738464" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="gui_message" controller="keyboard"/>
+	<mesh_instance name="Jump" core="JumpB" pos="108.026306 0.100000 -23.455200" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="gui_message" controller="gamepad"/>
+	<mesh_instance name="Attack" core="AttackB" pos="470.221924 8.521144 -4.799633" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="3" layer="gui_message" controller="gamepad"/>
+	<mesh_instance name="Poly" core="PolyB" pos="557.959595 12.011963 -55.738464" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="gui_message" controller="gamepad"/>
 	<mesh_instance name="Pixelite Verd025" core="Pixelite Verd001" pos="376.202179 1.300000 11.199324" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="collectible"/>
 	<mesh_instance name="Pixelite Verd026" core="Pixelite Verd001" pos="383.225952 3.672639 11.199324" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="collectible"/>
 	<mesh_instance name="Pixelite Verd027" core="Pixelite Verd001" pos="391.040405 6.403448 11.199324" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="collectible"/>

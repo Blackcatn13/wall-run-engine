@@ -17,7 +17,7 @@
 #include "SceneElements\Switch.h"
 #include "SceneElements\Door.h"
 #include "SceneElements\WallTrap.h"
-
+#include "InputManager.h"
 
 #include <assert.h>
 
@@ -81,8 +81,19 @@ void CRenderableObjectsManager::Load(const std::string &FileName) {
       CXMLTreeNode nodeChild = m.getNextChild();
       std::string name = nodeChild.GetName();
       if (name == "mesh_instance") {
-        CMeshInstance *l_meshInstance = new CMeshInstance(nodeChild);
-        AddResource(l_meshInstance->getName(), l_meshInstance);
+        std::string controller = nodeChild.GetPszISOProperty("controller", "");
+        if (controller != "") {
+          if (controller == "gamepad" && INPUTM->HasGamePad()) {
+            CMeshInstance *l_meshInstance = new CMeshInstance(nodeChild);
+            AddResource(l_meshInstance->getName(), l_meshInstance);
+          } else if (controller == "keyboard" && !INPUTM->HasGamePad()) {
+            CMeshInstance *l_meshInstance = new CMeshInstance(nodeChild);
+            AddResource(l_meshInstance->getName(), l_meshInstance);
+          }
+        } else {
+          CMeshInstance *l_meshInstance = new CMeshInstance(nodeChild);
+          AddResource(l_meshInstance->getName(), l_meshInstance);
+        }
       } else if (name == "animated_model") {
         std::string meshName = nodeChild.GetPszISOProperty("name", "box1");
         std::string core = nodeChild.GetPszISOProperty("core", "box");
@@ -164,8 +175,19 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node) {
   if (Node.Exists()) {
     std::string name = m.GetName();
     if (name == "mesh_instance") {
-      CMeshInstance *l_meshInstance = new CMeshInstance(Node);
-      AddResource(l_meshInstance->getName(), l_meshInstance);
+      std::string controller = m.GetPszISOProperty("controller", "");
+      if (controller != "") {
+        if (controller == "gamepad" && INPUTM->HasGamePad()) {
+          CMeshInstance *l_meshInstance = new CMeshInstance(m);
+          AddResource(l_meshInstance->getName(), l_meshInstance);
+        } else if (controller == "keyboard" && !INPUTM->HasGamePad()) {
+          CMeshInstance *l_meshInstance = new CMeshInstance(m);
+          AddResource(l_meshInstance->getName(), l_meshInstance);
+        }
+      } else {
+        CMeshInstance *l_meshInstance = new CMeshInstance(m);
+        AddResource(l_meshInstance->getName(), l_meshInstance);
+      }
     } else if (name == "animated_model") {
       std::string meshName = Node.GetPszISOProperty("name", "box1");
       std::string core = Node.GetPszISOProperty("core", "box");
