@@ -29,7 +29,9 @@ CEffectTechnique::CEffectTechnique()
   , m_UseTime(false)
   , m_UseScreenSize(false)
   , m_UseTick(false)
-  , m_tick(0.f) {
+  , m_tick(0.f)
+  , m_ChangeUV(false)
+  , m_UV(false) {
 }
 
 CEffectTechnique::CEffectTechnique(const CXMLTreeNode &node)
@@ -51,7 +53,9 @@ CEffectTechnique::CEffectTechnique(const CXMLTreeNode &node)
   , m_UseTime(node.GetBoolProperty("use_time", false, false))
   , m_UseScreenSize(node.GetBoolProperty("use_screen_size", false, false))
   , m_UseTick(node.GetBoolProperty("use_tick", false, false))
-  , m_tick(0.f) {
+  , m_ChangeUV(node.GetBoolProperty("change_uv", false, false))
+  , m_tick(0.f)
+  , m_UV(false) {
 }
 
 CEffectTechnique::~CEffectTechnique() {
@@ -138,6 +142,9 @@ bool CEffectTechnique::BeginRender() {
   }
   if (m_UseTick) {
     l_Effect->SetFloat(m_Effect->GetTickParameter(), m_tick);
+  }
+  if (m_ChangeUV) {
+    l_Effect->SetBool(m_Effect->GetChangeUVParameter(), m_UV ? TRUE : FALSE);
   }
   if (m_UseScreenSize) {
     int l_Width = 0;

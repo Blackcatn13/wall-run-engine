@@ -357,6 +357,9 @@
     <ClCompile Include="Cinematics\CinematicElement\CinematicElementCinematic.cpp">
       <Filter>Cinematics\CinematicElement</Filter>
     </ClCompile>
+    <ClCompile Include="RenderableCommands\ChangeEffectValueCommand.cpp">
+      <Filter>RenderableCommands</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
@@ -666,6 +669,9 @@
     </ClInclude>
     <ClInclude Include="Cinematics\CinematicElement\CinematicElementCinematic.h">
       <Filter>Cinematics\CinematicElement</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableCommands\ChangeEffectValueCommand.h">
+      <Filter>RenderableCommands</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

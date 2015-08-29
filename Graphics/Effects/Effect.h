@@ -37,7 +37,7 @@ class CEffect {
   D3DXHANDLE m_LightsFallOffParameter, m_LightsStartRangeAttenuationParameter, m_LightsEndRangeAttenuationParameter, m_LightsIntensityParameter, m_LightDynamicIntensityParameter, m_LightDistanceFromPlayerParameter;
   D3DXHANDLE m_CameraPositionParameter;
   D3DXHANDLE m_BonesParameter;
-  D3DXHANDLE m_TimeParameter, m_TickParameter;
+  D3DXHANDLE m_TimeParameter, m_TickParameter, m_ChangeUVParameter;
   D3DXHANDLE m_ScreenSizeParameter;
 
   CLight *m_Light;
@@ -185,6 +185,9 @@ class CEffect {
   }
   D3DXHANDLE GetScreenSizeParameter() {
     return m_ScreenSizeParameter;
+  }
+  D3DXHANDLE GetChangeUVParameter() {
+    return m_ChangeUVParameter;
   }
 };
 

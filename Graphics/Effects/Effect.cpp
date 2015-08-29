@@ -46,6 +46,7 @@ void CEffect::SetNullParameters() {
   m_TickParameter = NULL;
   m_LightDistanceFromPlayerParameter = NULL;
   m_LightDynamicIntensityParameter = NULL;
+  m_ChangeUVParameter = NULL;
 }
 
 void CEffect::GetParameterBySemantic(const std::string &SemanticName, D3DXHANDLE &l_Handle) {
@@ -93,6 +94,7 @@ bool CEffect::LoadEffect() {
   GetParameterBySemantic("TICK", m_TickParameter);
   GetParameterBySemantic("DISTANCEFROMPLAYER", m_LightDistanceFromPlayerParameter);
   GetParameterBySemantic("DYNAMICINTENSITY", m_LightDynamicIntensityParameter);
+  GetParameterBySemantic("CHANGEUV", m_ChangeUVParameter);
   return isOK;
 }
 void CEffect::Unload() {
@@ -133,7 +135,8 @@ CEffect::CEffect()
   , m_NShadowmapsParameter(NULL)
   , m_TickParameter(NULL)
   , m_LightDistanceFromPlayerParameter(NULL)
-  , m_LightDynamicIntensityParameter(NULL) {
+  , m_LightDynamicIntensityParameter(NULL)
+  , m_ChangeUVParameter(NULL) {
 }
 
 CEffect::~CEffect() {

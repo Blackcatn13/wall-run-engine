@@ -81,6 +81,7 @@
     <ClCompile Include="RenderableCommands\BeginRenderSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\BillboardRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\CaptureFrameBufferSceneRendererCommand.cpp" />
+    <ClCompile Include="RenderableCommands\ChangeEffectValueCommand.cpp" />
     <ClCompile Include="RenderableCommands\CheckEnabledPolyRenderCommand.cpp" />
     <ClCompile Include="RenderableCommands\ClearSceneRendererCommand.cpp" />
     <ClCompile Include="RenderableCommands\DeferredShadingSceneRendererCommand.cpp" />
@@ -202,6 +203,7 @@
     <ClInclude Include="RenderableCommands\BeginRenderSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\BillboardRendererCommand.h" />
     <ClInclude Include="RenderableCommands\CaptureFrameBufferSceneRendererCommand.h" />
+    <ClInclude Include="RenderableCommands\ChangeEffectValueCommand.h" />
     <ClInclude Include="RenderableCommands\CheckEnabledPolyRenderCommand.h" />
     <ClInclude Include="RenderableCommands\ClearSceneRendererCommand.h" />
     <ClInclude Include="RenderableCommands\DeferredShadingSceneRendererCommand.h" />

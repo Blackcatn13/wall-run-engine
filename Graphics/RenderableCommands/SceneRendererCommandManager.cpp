@@ -36,6 +36,7 @@
 #include "RenderableCommands\CheckEnabledPolyRenderCommand.h"
 #include "RenderableCommands\SetTextureInSpecificStageCommand.h"
 #include "RenderableCommands\BillboardRendererCommand.h"
+#include "RenderableCommands\ChangeEffectValueCommand.h"
 
 
 #include "Core_Utils/MemLeaks.h"
@@ -238,6 +239,10 @@ void CSceneRendererCommandManager::Load(const std::string &FileName) {
           }
           if (name == "billboard_render") {
             CBillboardRendererCommand *l_Command = new CBillboardRendererCommand(child);
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          if (name == "set_effect_value") {
+            CChangeEffectValueCommand *l_Command = new CChangeEffectValueCommand(child);
             toInsert->AddResource(l_Name, l_Command);
           }
         }

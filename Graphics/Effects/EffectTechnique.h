@@ -27,6 +27,8 @@ class CEffectTechnique {
   bool m_UseTime;
   bool m_UseScreenSize;
   bool m_UseTick;
+  bool m_ChangeUV;
+  bool m_UV;
   float m_tick;
   CEffect *m_Effect;
   D3DXHANDLE m_D3DTechnique;
@@ -98,6 +100,9 @@ class CEffectTechnique {
   bool GetUseScreenSize() {
     return m_UseScreenSize;
   }
+  bool GetChangeUV() {
+    return m_ChangeUV;
+  }
 
   void SetUseCameraPosition(bool value) {
     m_UseCameraPosition = value;
@@ -160,7 +165,9 @@ class CEffectTechnique {
   void SetTick(float tick) {
     m_tick = tick;
   }
-
+  void setChangeUV(bool value) {
+    m_UV = value;
+  }
   //apaño para default vertex repetidos
   int GetDefaultVertex();
 };
