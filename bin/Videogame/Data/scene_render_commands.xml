@@ -62,6 +62,7 @@
 		<set_pool_renderable_objects_technique pool="generate_deferred_shading_pool_renderable_object_technique_movement"/>
 		<set_effect_value technique="GBufferDiffuseMapTechniqueMovement" value="ChangeUV" time="1"/>
 		<render_scene layer="gui_message" active="true"/>
+		<set_pool_renderable_objects_technique pool="generate_deferred_shading_pool_renderable_object_technique"/>
 		<unset_render_target render_target="deferred_multiple_render_target" stencil_buffer="0"/>
 		<disable_z_write/>
 		<disable_z_test />
