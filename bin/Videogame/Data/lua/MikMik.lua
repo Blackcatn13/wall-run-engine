@@ -34,7 +34,8 @@ function mikmik_update_stopped(ElapsedTime, doComprobation, name)
 					end
 								
 				else --En caso de no tener waypoints que mire al player
-					if enemy.m_CurrentWp == enemy.m_OriginalPosition and enemy.m_Returning == true then
+					if enemy.m_CurrentWp ~= nil and enemy.m_CurrentWp == enemy.m_OriginalPosition and enemy.m_Returning == true then
+						coreInstance:trace("Resucitando y andando!!!")
 						enemy:m_FSM():newState("Andar_WP")
 						enemy.m_Returning = false
 					else 
@@ -58,6 +59,7 @@ function mikmik_update_stopped(ElapsedTime, doComprobation, name)
 				end
 				if player.is_hit == false and tostring(temp_zone) == tostring(player.zone) then
 					enemy:m_FSM():newState("Perseguir_Player")
+					coreInstance:trace("A perseguiiiir")
 				end
 			end
 		end
@@ -89,7 +91,14 @@ function mikmik_update_moving(ElapsedTime, doComprobation, name)
 		
 		move_enemy(ElapsedTime, enemy.m_CurrentWp, enemy)
 		
-		if check_attack(enemy) == true and tostring(enemy.m_Zone) == tostring(player.zone) then
+		local temp_zone = enemy.m_Zone
+		if temp_zone == enemy.m_RenderableObject.m_Room then
+			--coreInstance:trace("Sala = zona"
+			temp_zone = temp_zone..".0"
+			--coreInstance:trace(tostring(temp_zone))
+		end
+		
+		if check_attack(enemy) == true and tostring(temp_zone) == tostring(player.zone) then
 			enemy:m_FSM():newState("Perseguir_Player")
 		else
 			local wp_distance = get_distance_between_points(enemy:get_position(), enemy.m_CurrentWp)
@@ -159,7 +168,7 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 	if enemy ~= nil then
 	local billboard = billboard_manager:get_resource(enemy.m_RenderableObject.m_Billboard)
 	if billboard ~= nil then
-		--coreInstance:trace("Mik Position: ".. tostring(enemy:get_position().x) .. ", " .. tostring(enemy:get_position().y) .. ", " ..tostring(enemy:get_position().z))
+	--coreInstance:trace("Mik Ataque Position: ".. tostring(enemy:get_position().x) .. ", " .. tostring(enemy:get_position().y) .. ", " ..tostring(enemy:get_position().z))
 		billboard.m_position = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_BillboardOffset
 		--coreInstance:trace("BillBoard Position: ".. tostring(billboard.m_position.x) .. ", " .. tostring(billboard.m_position.y) .. ", " ..tostring(billboard.m_position.z))
 	end
@@ -171,7 +180,15 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 			local playerPosXZ = Vect3f(player_position.x, 0, player_position.z)
 			local player_distance = get_distance_to_player(enemyPosXZ, playerPosXZ)
 			
-			if player.is_hit == false and tostring(enemy.m_Zone) == tostring(player.zone) then
+			
+			local temp_zone = enemy.m_Zone
+			if temp_zone == enemy.m_RenderableObject.m_Room then
+				--coreInstance:trace("Sala = zona")
+				temp_zone = temp_zone..".0"
+				--coreInstance:trace(tostring(temp_zone))
+			end
+			
+			if player.is_hit == false and tostring(temp_zone) == tostring(player.zone) then
 				if (player.on_air == false) or (player.on_air == true and player_distance > 2) then
 					move_enemy(ElapsedTime, player_position, enemy) -- en caso de no ser estatico
 				end
@@ -195,16 +212,22 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 					enemy.m_flyVec = Vect3f(enemyPosXZ.x - playerPosXZ.x, 0,enemyPosXZ.z - playerPosXZ.z);
 					enemy.m_flyVec:normalize(1);
 					enemy.m_flyVec = Vect3f(enemy.m_flyVec.x, flyInclination, enemy.m_flyVec.z);
-					local dead_pos = enemy.m_PhysicController:get_position()
-					enemy.m_OriginalPosition = Vect3f(dead_pos.x,dead_pos.y,dead_pos.z)
+					if enemy:get_wp_vector_size() > 0 then
+						local dead_pos = enemy.m_PhysicController:get_position()
+						enemy.m_OriginalPosition = Vect3f(dead_pos.x,dead_pos.y,dead_pos.z)
+					--coreInstance:trace("Mik pillando posicion: " ..tostring(enemy.m_RenderableObject:get_position().x)..", "..tostring(enemy.m_RenderableObject:get_position().y)..", "..tostring(enemy.m_RenderableObject:get_position().z))
+					end
 				elseif damageType == 2 then
 					player_controller.m_executeDoubleJump = true;
-					local dead_pos = enemy.m_PhysicController:get_position()
-					enemy.m_OriginalPosition = Vect3f(dead_pos.x,dead_pos.y,dead_pos.z)
+					if enemy:get_wp_vector_size() > 0 then
+						local dead_pos = enemy.m_PhysicController:get_position()
+						enemy.m_OriginalPosition = Vect3f(dead_pos.x,dead_pos.y,dead_pos.z)
+					--coreInstance:trace("Mik pillando posicion: " ..tostring(enemy.m_RenderableObject:get_position().x)..", "..tostring(enemy.m_RenderableObject:get_position().y)..", "..tostring(enemy.m_RenderableObject:get_position().z))
+					end
 				end
 			end
 			
-			if tostring(enemy.m_Zone) ~= tostring(player.zone) then
+			if tostring(temp_zone) ~= tostring(player.zone) then
 				enemy:m_FSM():newState("Parado")
 			end
 		else
@@ -303,6 +326,7 @@ function mikmik_exit_dead(name)
 	if enemy ~= nil then
 		enemy.m_RenderableObject.m_Printable=true
 		enemy.m_CurrentTime = 0
+		enemy.m_Returning = false
 		enemy.m_RenderableObject:remove_action(3);
 		coreInstance:trace("setting alive")
 	end
