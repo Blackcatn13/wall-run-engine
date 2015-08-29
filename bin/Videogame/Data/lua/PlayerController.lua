@@ -186,7 +186,7 @@ function on_update_player_lua(l_ElapsedTime)
 				extraRotationContinue = 0;
 				if acceleration > 0 then
 					local auxValue = 0;
-					if player_controller.m_isJumping or _land then
+					if player_controller.m_isJumping or player_controller.m_isDoubleJumping or _land then
 						auxValue = 1 / deccelerationTimeJump;
 					else
 						auxValue = 1 / deccelerationTime;
@@ -253,7 +253,7 @@ function on_update_player_lua(l_ElapsedTime)
 				inertia = Vect3f(mov.x,0,mov.z);
 				if acceleration < 1 then
 					local auxValue = 0;
-					if player_controller.m_isJumping or _land then
+					if player_controller.m_isJumping or player_controller.m_isDoubleJumping or _land then
 						auxValue = 1 / accelerationTimeJump;
 					else
 						auxValue = 1 / accelerationTime;
@@ -264,7 +264,7 @@ function on_update_player_lua(l_ElapsedTime)
 						acceleration = 1;
 					end
 				end
-				if player_controller.m_isJumping == true then
+				if player_controller.m_isJumping == true or player_controller.m_isDoubleJumping then
 					mov = mov * percentAirMovement;
 				end
 				if (y_axis > 0) then
@@ -402,9 +402,9 @@ function on_update_player_lua(l_ElapsedTime)
 			_land = false;
 			player.on_air = true;
 			inDoubleJump = true;
-			local executedDoubleStart = false;
-			local executedDoubleLoop = false;
-			local executedDoubleEnd = false;
+			executedDoubleStart = false;
+			executedDoubleLoop = false;
+			executedDoubleEnd = false;
 			_fallingAnimation = false;
 		end
 		if player_controller.m_isDoubleJumping then
@@ -474,7 +474,7 @@ function on_update_player_lua(l_ElapsedTime)
 		--///////////////////////////////////////////////////////////
 		-- Acción de saltar del Player. Puede realizar 2 saltos distintos (de longitud, y salto vertical). 
 		--///////////////////////////////////////////////////////////
-		if (act2in:do_action_from_lua("Jump")) and (player_controller.m_isJumping == false and _land == false and player_controller.m_isAttack == false and player.is_hit == false and player_controller.m_isGrounded and not player.is_dead) then
+		if (act2in:do_action_from_lua("Jump")) and (player_controller.m_isJumping == false and player_controller.m_isDoubleJumping == false and _land == false and player_controller.m_isAttack == false and player.is_hit == false and player_controller.m_isGrounded and not player.is_dead) then
 			player_controller.m_JumpingTime = 0;
 			playerRenderable:clear_cycle(0,0.2);
 			playerRenderable:clear_cycle(1,0.2);
@@ -491,7 +491,7 @@ function on_update_player_lua(l_ElapsedTime)
 		--///////////////////////////////////////////////////////////
 		-- Acción de atacar del Player. Realiza un impulso hacia adelante. 
 		--/////////////////////////////////////////////////////////// 
-		if (act2in:do_action_from_lua("Attack") and not player_controller.m_isJumping and not _land and player_controller.m_isAttack == false and canAttack == true and player.is_hit == false and player.attack_enabled and not player.is_dead) then--) and (player_controller.m_isAttack == false) then
+		if (act2in:do_action_from_lua("Attack") and not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land and player_controller.m_isAttack == false and canAttack == true and player.is_hit == false and player.attack_enabled and not player.is_dead) then--) and (player_controller.m_isAttack == false) then
 			canAttack = false;
 			player.get_player_controller():update_character_extents(false, m_ReduceCollider);
 			contador = 0;
@@ -533,7 +533,7 @@ function on_update_player_lua(l_ElapsedTime)
 			inertia = Vect3f(0,0,0);
 		end
 		
-		if player_controller.m_isJumping or _land then
+		if player_controller.m_isJumping or player_controller.m_isDoubleJumping or _land then
 			if _isQuiet == false then
 				local xValue = mov.x * acceleration;
 				local zValue = mov.z * acceleration;
