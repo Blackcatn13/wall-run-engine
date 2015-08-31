@@ -8,6 +8,7 @@ function init_level(a)
 	local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 	coreInstance.m_CameraController:set_active_camera("3DCam");
 	graphics_manager:set_is_GUI_displayed(true);
+	renderable_objects_layer_manager:deactivate_objects_by_layer("invisible")
 	--[[init_platform("MovingPlatform001","Moving001UserData", Vect3f(2,0.5,2), Vect3f(0,0.8,0))
 	init_platform("MovingPlatform002","Moving002UserData", Vect3f(2,0.5,2), Vect3f(0,0.8,0))
 	init_platform("Spikes001","Spikes001UserData", Vect3f(2.5,0.5,2.2), Vect3f(0,0.8,0)) --]]
@@ -29,6 +30,7 @@ function init_level(a)
 	cara1:blend_cycle(0, 1, 0);
 	local cara2 = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("solid",2):get_resource("CARALLENGUA_01");
 	cara2:blend_cycle(0, 1, 0);
+	 set_visible_gui_elements(false)
 	on_init_cameras_lua()
 	
 	local active_camera = cam_Controller:get_active_camera()
@@ -63,5 +65,5 @@ function activate_trigger_update(trigger_name)
 	local trigger_manager = coreInstance:get_trigger_manager()
 	local trigger = trigger_manager:get_resource(trigger_name)
 	trigger.m_Update=true
-
+	coreInstance:trace("Activate trigger update")
 end 

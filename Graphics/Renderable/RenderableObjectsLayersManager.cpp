@@ -224,7 +224,7 @@ void CRenderableObjectsLayersManager::DeactivateObjectsByStr(const std::string &
     for (int j = 0; j < manager->GetResourcesVector().size(); j++) {
       std::string name = manager->GetResourcesVector().at(j)->getName();
       std::stringstream str;
-      str << "deactivate_invisible_wall(\"" << name << "\")";
+      str << "deactivate_invisible_wall(\"" << name << "\", \"" << i << "\")";
       std::string funct  = str.str();
 
       SCRIPTM->RunCode(funct);

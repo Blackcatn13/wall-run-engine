@@ -157,9 +157,9 @@ function trigger_set_3D()
 
 end
 
-function player_die()
+function player_die(name)
 	--local coreInstance = CCoreLuaWrapper().m_CoreInstance;
-	coreInstance:trace("dieeeeee")
+	coreInstance:trace("dieeeeee: ".. name)
 	--local player = Player:get_instance()
 	player.has_ass_burned = true
 	player.player_die()
@@ -238,15 +238,15 @@ function set_puzzle_enemy_active(active)
 	coreInstance:trace("Enemy puzle active ".. tostring(player.enemy_puzzle_active))
 end
 
-function activate_invisible_wall(name)
-	local wall = get_renderable_object("invisible",player_controller.m_Room, name)
+function activate_invisible_wall(name, room_number)
+	local wall = get_renderable_object("invisible",tonumber(room_number), name)
 	if wall ~= nil then
 		wall:activate_phisic(true)
 	end
 end
 
-function deactivate_invisible_wall(name)
-	local wall = get_renderable_object("invisible",player_controller.m_Room, name)
+function deactivate_invisible_wall(name,room_number)
+	local wall = get_renderable_object("invisible",tonumber(room_number), name)
 	if wall ~= nil then
 		wall:activate_phisic(false)
 	end
@@ -293,24 +293,26 @@ function check_enemies_killed(num1, door, door2)
 end
 
 function ChuckyApear(distance)
-coreInstance:trace("CHUKY APEARS!!!");
-local Chucky = enemy_manager:get_enemy("Chucky");
-	if player.activating_triggers and not Chucky.m_Appeared then
-		
-		local active_camera = cam_Controller:get_active_camera();
-		local dirVec = active_camera:get_path_point(active_camera.m_nextWaypoint) - active_camera:get_path_point(active_camera.m_currentWaypoint);
-		dirVec.y = 0;
-		dirVec:normalize(1);
-		local current_position = Vect3f(player.get_player_controller():get_position());
-		current_position = current_position - dirVec * tonumber(distance);
-		local pos = Vect3f(current_position.x,current_position.y + 4,current_position.z);
-		Chucky:move_to_position(pos);
-		local yaw = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky"):get_yaw();
-		Chucky.m_RenderableObject:set_yaw(yaw);
-		Chucky.m_Appeared = true
-		set_chucky_need_to_jump(false)
-		Chucky:m_FSM():newState("Corriendo");
-		Chucky:set_visible(true)
+	coreInstance:trace("CHUKY APEARS!!!");
+	if player_controller.m_Room == 2 or player_controller.m_Room == 5 or player_controller.m_Room == 7 then
+		local Chucky = enemy_manager:get_enemy("Chucky");
+		if player.activating_triggers and not Chucky.m_Appeared then
+				
+			local active_camera = cam_Controller:get_active_camera();
+			local dirVec = active_camera:get_path_point(active_camera.m_nextWaypoint) - active_camera:get_path_point(active_camera.m_currentWaypoint);
+			dirVec.y = 0;
+			dirVec:normalize(1);
+			local current_position = Vect3f(player.get_player_controller():get_position());
+			current_position = current_position - dirVec * tonumber(distance);
+			local pos = Vect3f(current_position.x,current_position.y + 4,current_position.z);
+			Chucky:move_to_position(pos);
+			local yaw = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky"):get_yaw();
+			Chucky.m_RenderableObject:set_yaw(yaw);
+			Chucky.m_Appeared = true
+			set_chucky_need_to_jump(false)
+			Chucky:m_FSM():newState("Corriendo");
+			Chucky:set_visible(true)
+		end
 	end
 end
 

@@ -360,4 +360,9 @@
 	<static_mesh name="Sala_3_LuzPared_003" filename="Data\level4\meshes\Sala_3_LuzPared_003.mesh"/>
 	<static_mesh name="Sala_3_LuzPared_004" filename="Data\level4\meshes\Sala_3_LuzPared_004.mesh"/>
 	<static_mesh name="Sala_3_Columna_002" filename="Data\level4\meshes\Sala_3_Columna_002.mesh"/>
+	<static_mesh name="INVISIBLE_WALL_001" filename="Data\level4\meshes\INVISIBLE_WALL_001.mesh"/>
+	<static_mesh name="INVISIBLE_WALL_002" filename="Data\level4\meshes\INVISIBLE_WALL_002.mesh"/>
+	<static_mesh name="INVISIBLE_WALL_003" filename="Data\level4\meshes\INVISIBLE_WALL_003.mesh"/>
+	<static_mesh name="INVISIBLE_WALL_004" filename="Data\level4\meshes\INVISIBLE_WALL_004.mesh"/>
+	<static_mesh name="INVISIBLE_WALL_005" filename="Data\level4\meshes\INVISIBLE_WALL_005.mesh"/>
 </static_meshes>

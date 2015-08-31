@@ -124,11 +124,11 @@
 
 	<animated_model name="Chucky" core="chuky" pos="12.301392 0.000000 -2.756073" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="DustChuckyEmitter" emitter_offset="0.0 0.0 0.0" emitter2="DustJumpChuckyEmitter" emitter2_offset="0.0 0.0 0.0" room="1"/>
 	
-	<animated_model name="MikMik004" core="mik" pos="530.339172 9.507496 8.188751" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik004DeathEmitter" emitter_offset="0.0 0.0 0.0" billboard="exclamationMik004" billboard_offset="0.0 3.0 0.0" room="3"/>
-	<animated_model name="MikMik005" core="mik" pos="532.398804 9.507496 -10.140839" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik005DeathEmitter" emitter_offset="0.0 0.0 0.0" billboard="exclamationMik005" billboard_offset="0.0 3.0 0.0" room="3"/>
-	<animated_model name="MikMik002" core="mik" pos="493.283875 9.507496 -13.436371" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik002DeathEmitter" emitter_offset="0.0 0.0 0.0" billboard="exclamationMik002" billboard_offset="0.0 3.0 0.0" room="3"/>
-	<animated_model name="MikMik001" core="mik" pos="500.109070 9.507496 9.234039" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik001DeathEmitter" emitter_offset="0.0 0.0 0.0" billboard="exclamationMik001" billboard_offset="0.0 3.0 0.0" room="3" />
-	<animated_model name="MikMik003" core="mik" pos="523.253601 9.507496 -0.450745" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik003DeathEmitter" emitter_offset="0.0 0.0 0.0" billboard="exclamationMik003" billboard_offset="0.0 3.0 0.0" room="3"/>
+	<animated_model name="MikMik004" core="mik" pos="530.339172 9.007496 8.188751" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik004DeathEmitter" emitter_offset="0.0 0.0 0.0" billboard="exclamationMik004" billboard_offset="0.0 3.0 0.0" room="3"/>
+	<animated_model name="MikMik005" core="mik" pos="532.398804 9.007496 -10.140839" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik005DeathEmitter" emitter_offset="0.0 0.0 0.0" billboard="exclamationMik005" billboard_offset="0.0 3.0 0.0" room="3"/>
+	<animated_model name="MikMik002" core="mik" pos="485.283875 9.007496 -13.436371" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik002DeathEmitter" emitter_offset="0.0 0.0 0.0" billboard="exclamationMik002" billboard_offset="0.0 3.0 0.0" room="3"/>
+	<animated_model name="MikMik001" core="mik" pos="500.109070 9.007496 3.234039" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik001DeathEmitter" emitter_offset="0.0 0.0 0.0" billboard="exclamationMik001" billboard_offset="0.0 3.0 0.0" room="3" />
+	<animated_model name="MikMik003" core="mik" pos="520.253601 9.007496 -0.450745" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik003DeathEmitter" emitter_offset="0.0 0.0 0.0" billboard="exclamationMik003" billboard_offset="0.0 3.0 0.0" room="3"/>
 	<mesh_instance name="PilarQuad002" core="PilarQuad002" pos="8.388683 1.227661 -12.106166" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 
 	<mesh_instance name="SALA 4" core="SALA 4" pos="557.800537 18.551483 -116.637451" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="4"/>
@@ -368,8 +368,8 @@
 	<mesh_instance name="Pixelite Blau005" core="Pixelite Blau001" pos="508.197815 9.739000 -13.042528" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="3" layer="collectible"/>
 	<mesh_instance name="Pixelite Blau006" core="Pixelite Blau001" pos="531.147034 9.739000 -11.971483" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="3" layer="collectible"/>
 	<mesh_instance name="Collectible1" core="Collectible1" pos="505.540405 9.283447 -2.339123" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" room="3" layer="collectible"/>
-	<door name="Puerta_abajo" core="Puerta_abajo" final_position="539.615845 5.870041 -1.622209" speed="3" pos="539.615845 10.870041 -1.622209" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="1 2.6 4.0" room="3" layer="puzzle"/>
-	<door name="Puerta_arriba" core="Puerta_arriba" final_position="539.615845 19.380225 -1.622209" speed="3" pos="539.615845 14.380225 -1.622209" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="1 3 4.0" room="3" layer="puzzle"/>
+	<door name="Puerta_abajo" core="Puerta_abajo" final_position="539.615845 5.070041 -1.622209" speed="3" pos="539.615845 10.870041 -1.622209" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="1 2.6 4.0" room="3" layer="puzzle"/>
+	<door name="Puerta_arriba" core="Puerta_arriba" final_position="539.615845 19.180225 -1.622209" speed="3" pos="539.615845 14.380225 -1.622209" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="1 3 4.0" room="3" layer="puzzle"/>
 	<mesh_instance name="Collectible2" core="Collectible1" pos="553.567322 21.407177 -96.786362" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" room="4" layer="collectible"/>
 
 	<mesh_instance name="Pixelite Verd039" core="Pixelite Verd001" pos="552.854736 2.149845 -1.621504" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible"/>
@@ -467,6 +467,12 @@
 	<mesh_instance name="Sala_3_LuzPared_003" core="Sala_3_LuzPared_003" pos="552.395325 10.763003 1.765055" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="3" layer="solid"/>
 	<mesh_instance name="Sala_3_LuzPared_004" core="Sala_3_LuzPared_004" pos="562.379272 10.763001 -9.504450" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="3" layer="solid"/>
 	<mesh_instance name="Sala_3_Columna_002" core="Sala_3_Columna_002" pos="571.958496 7.919519 -34.917099" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="3" layer="solid"/>
+	
+	<platform name="INVISIBLE_WALL_001" core="INVISIBLE_WALL_001" type="static" pos="53.925022 0.000000 -0.057728" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="0.579021 5.62364 7.12513" layer="invisible" use_phisics_mesh="true" room="1"/>
+	<platform name="INVISIBLE_WALL_002" core="INVISIBLE_WALL_002" type="static" pos="180.617888 0.000000 11.973543" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="0.289536 4.64509 7.81159"  layer="invisible" use_phisics_mesh="true" room="2"/>
+	<platform name="INVISIBLE_WALL_003" core="INVISIBLE_WALL_003" type="static" pos="430.066467 7.829697 12.769010" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="0.689819 6.74265 7.63689"  layer="invisible" use_phisics_mesh="true" room="3"/>
+	<platform name="INVISIBLE_WALL_004" core="INVISIBLE_WALL_004" type="static" pos="549.488892 2.376045 0.115322" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="1.19763 7.67462 9.08234"  layer="invisible" use_phisics_mesh="true" room="4"/>
+	<platform name="INVISIBLE_WALL_005" core="INVISIBLE_WALL_005" type="static" pos="557.271423 9.894491 -176.357147" yaw="0.0" pitch="0.0" roll="0.0" scale="0.566471 1.0 1.0" visible="false" phisic_size="5.17535 4.81426 1.11662" layer="invisible" use_phisics_mesh="true" room="5"/>
 
 	<!--animated_model name="PumPum1" core="mik"  pos="97.358940 1.300000 2.489124" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" room = "1" layer="enemies" />
 	<mesh_instance name="disparoPumPum1" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "1" layer="enemies" />
