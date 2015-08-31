@@ -7,4 +7,5 @@
 	<animation name="run" file="Chucky_run.caf"/>
 	<animation name="jump" file="Chucky_jump.caf"/>
 	<animation name="catch_fail" file="Chucky_catch_fail_01.caf"/>
+	<animation name="run_hurt" file="Chucky_run_hurt.caf"/>
 </animated_model>
