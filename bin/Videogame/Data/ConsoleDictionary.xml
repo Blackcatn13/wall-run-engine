@@ -17,5 +17,6 @@
  <word string = "false"/>
  <word string = "get_renderable_object_layer_manager():"/>
  <word string = "get_renderable_objects_manager_by_str_and_room("/>
- 
+ <word string = "coreInstance:trace(tostring("/>
+ <word string = "enemy_manager:get_enemy("/>
 </ConsoleWords>
