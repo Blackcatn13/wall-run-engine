@@ -30,8 +30,8 @@ function onUpdateWindowDisplayGUI()
 	if gui_manager:get_is_gameover() == true then
 		GameOver();
 		set_visible_gui_elements(false)
-	else
-		set_visible_gui_elements(true)
+	--else
+		--set_visible_gui_elements(true) 
 	end
 	
 	if cinematic_controller.m_executing  then
