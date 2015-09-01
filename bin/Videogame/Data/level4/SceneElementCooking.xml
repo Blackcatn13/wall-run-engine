@@ -2,4 +2,11 @@
 <Physx_meshes>
 	<Physx_mesh name="WALL_TRAP1_RIGHT" filename="Data\level4\meshes\WALL_TRAP1_RIGHT.phsx"/>
 	<Physx_mesh name="WALL_TRAP1_LEFT" filename="Data\level4\meshes\WALL_TRAP1_LEFT.phsx"/>
+	<Physx_mesh name="INVISIBLE_WALL_001" filename="Data\level4\meshes\INVISIBLE_WALL_001.phsx"/>
+	<Physx_mesh name="INVISIBLE_WALL_002" filename="Data\level4\meshes\INVISIBLE_WALL_002.phsx"/>
+	<Physx_mesh name="INVISIBLE_WALL_003" filename="Data\level4\meshes\INVISIBLE_WALL_003.phsx"/>
+	<Physx_mesh name="INVISIBLE_WALL_004" filename="Data\level4\meshes\INVISIBLE_WALL_004.phsx"/>
+	<Physx_mesh name="INVISIBLE_WALL_005" filename="Data\level4\meshes\INVISIBLE_WALL_005.phsx"/>
+	<Physx_mesh name="SecurityWall001" filename="Data\level4\meshes\SecurityWall001.phsx"/>
+	<Physx_mesh name="SecurityWall002" filename="Data\level4\meshes\SecurityWall002.phsx"/>
 </Physx_meshes>

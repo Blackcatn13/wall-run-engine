@@ -40,7 +40,7 @@ CSceneElement::CSceneElement(const CXMLTreeNode &node, bool hasRigidBody)
     m_Room(node.GetIntProperty("room", 0)),
     m_PhysicsSize(node.GetVect3fProperty("phisic_size", v3fZERO)),
     m_HasRigidBody(hasRigidBody),
-    m_HasPhisicMesh( node.GetBoolProperty("use_physx_mesh", false)) {
+    m_HasPhisicMesh( node.GetBoolProperty("use_phisics_mesh", false)) {
 }
 
 CSceneElement::~CSceneElement () {
