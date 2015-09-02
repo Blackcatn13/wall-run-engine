@@ -301,6 +301,9 @@
 	<mesh_instance name="PUNXES_01_SALA5" core="PUNXES_01_SALA5" pos="557.473511 8.080101 -260.768463" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
 	<mesh_instance name="CARALLENGUA_1_SALA5" core="CARALLENGUA_1_SALA5" pos="561.412292 18.583603 -369.319946" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="solid"/>
 	<mesh_instance name="ARCADA_SALA5" core="ARCADA_SALA5" pos="570.086060 12.901175 -278.197845" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="PARED_POLY_SALA5" core="PARED_POLY_SALA5" pos="564.574585 0.000000 -260.259735" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="TORCHA_6_SALA5" core="TORCHA_6_SALA5" pos="563.130676 12.086220 -268.515442" yaw="0.0" pitch="0.174533" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="TORCHA_7_SALA5" core="TORCHA_7_SALA5" pos="563.130676 12.037385 -251.912659" yaw="0.0" pitch="0.174533" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
 
 	<mesh_instance name="SueloGameOver" core="SueloGameOver" pos="925.235413 0.000000 -1.597900" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" room="9" layer="solid"/>
 	<mesh_instance name="ParedGameOver" core="ParedGameOver" pos="926.038208 49.771095 -44.694866" yaw="0.0" pitch="1.59575" roll="0.0" scale="1.0 1.0 1.0" visible="false"  room="9" layer="solid"/>
@@ -327,7 +330,7 @@
 	<mesh_instance name="Pixelite Verd010" core="Pixelite Verd001" pos="150.101074 1.300000 10.920358" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="collectible" emitter="Pixelite010Emitter" emitter_offset="0.0 0.0 0.0"/>
 	<mesh_instance name="Pixelite Verd011" core="Pixelite Verd001" pos="162.088165 1.300000 11.122463" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="collectible" emitter="Pixelite011Emitter" emitter_offset="0.0 0.0 0.0"/>
 	<mesh_instance name="Pixelite Blau001" core="Pixelite Blau001" pos="168.864624 1.300000 11.141947" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="collectible"/>
-	<mesh_instance name="Pixelite Verd012" core="Pixelite Verd001" pos="201.055054 1.300000 11.199324" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="collectible"/>
+	<mesh_instance name="Pixelite Verd012" core="Pixelite Verd001" pos="201.055054 1.300000 11.199324" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="collectible"/>
 	<mesh_instance name="Pixelite Verd013" core="Pixelite Verd001" pos="213.701447 1.300000 11.199324" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="collectible"/>
 	<mesh_instance name="Pixelite Verd014" core="Pixelite Verd001" pos="228.063629 1.300000 11.199324" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="collectible"/>
 	<mesh_instance name="Pixelite Verd015" core="Pixelite Verd001" pos="246.095383 1.300000 11.199324" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="collectible"/>

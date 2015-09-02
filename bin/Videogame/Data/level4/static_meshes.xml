@@ -285,6 +285,9 @@
 	<static_mesh name="TORCHA_3_SALA5" filename="Data\level4\meshes\TORCHA_3_SALA5.mesh"/>
 	<static_mesh name="TORCHA_4_SALA5" filename="Data\level4\meshes\TORCHA_4_SALA5.mesh"/>
 	<static_mesh name="TORCHA_5_SALA5" filename="Data\level4\meshes\TORCHA_5_SALA5.mesh"/>
+	<static_mesh name="TORCHA_6_SALA5" filename="Data\level4\meshes\TORCHA_6_SALA5.mesh"/>
+	<static_mesh name="PARED_POLY_SALA5" filename="Data\level4\meshes\PARED_POLY_SALA5.mesh"/>
+	<static_mesh name="TORCHA_7_SALA5" filename="Data\level4\meshes\TORCHA_7_SALA5.mesh"/>
 	<static_mesh name="PARED_FONS_SALA5" filename="Data\level4\meshes\PARED_FONS_SALA5.mesh"/>
 	<static_mesh name="ROCA_FRONT_2_SALA5" filename="Data\level4\meshes\ROCA_FRONT_2_SALA5.mesh"/>
 	<static_mesh name="ROCA_FRONT_1_SALA5" filename="Data\level4\meshes\ROCA_FRONT_1_SALA5.mesh"/>
