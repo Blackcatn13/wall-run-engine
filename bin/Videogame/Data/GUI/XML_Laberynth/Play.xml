@@ -87,7 +87,11 @@
               texture_clicked="./Data/GUI/GoPixelGo/ExitButton.png"
               texture_deactivated="./Data/GUI/GoPixelGo/ExitButton.png"
               OnClickedAction=" CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');
-    							CCoreLuaWrapper().m_CoreInstance:exit_game()"
+								reset_game();
+								gui_manager:set_is_gameover(false);
+								gui_manager:set_visible_mouse(true);
+								CCoreLuaWrapper().m_CoreInstance:get_graphics_manager():set_is_GUI_displayed(true);
+								CCoreLuaWrapper().m_CoreInstance:getGUIManager():pop_windows();"
               OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>
     </Buttons>
   </ButtonList>
