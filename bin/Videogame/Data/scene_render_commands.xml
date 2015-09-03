@@ -112,6 +112,7 @@
 		
 		<enable_z_test />
 		<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>
+		<render_scene layer="alpha_objects" active="true"/>
 		<set_pool_renderable_objects_technique pool="fire_billboard_pool"/>
 		<billboard_render/>
 		<set_pool_renderable_objects_technique pool="particles_pool"/>
