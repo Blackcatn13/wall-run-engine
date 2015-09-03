@@ -87,7 +87,11 @@
               texture_clicked="./Data/GUI/GoPixelGo/ExitButton.png"
               texture_deactivated="./Data/GUI/GoPixelGo/ExitButton.png"
               OnClickedAction=" CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');
-    							CCoreLuaWrapper().m_CoreInstance:exit_game()"
+								reset_game();
+								gui_manager:set_is_gameover(false);
+								gui_manager:set_visible_mouse(true);
+								CCoreLuaWrapper().m_CoreInstance:get_graphics_manager():set_is_GUI_displayed(true);
+								CCoreLuaWrapper().m_CoreInstance:getGUIManager():pop_windows();"
               OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>
     </Buttons>
   </ButtonList>
@@ -97,7 +101,7 @@
     <texture name="background" name_texture="./Data/GUI/GoPixelGo/GameOverBackgroundTrans.png"/>
   </Image>
   
-  <Image name="GameOver" posx="35" posy="5" height="25" width="15" visible="false" active="true"
+  <Image name="GameOver" posx="40" posy="5" height="30" width="17.5" visible="false" active="true"
          default="Gameover" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
     <texture name="Gameover" name_texture="./Data/GUI/GoPixelGo/GameOver.png"/>
   </Image>

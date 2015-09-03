@@ -43,15 +43,16 @@
 	<spline name="line_1">
 		<point id="p1" pos="537.682 8.50987 -1.448"/>
 		<point id="p2" pos="546.892 6.81228 -1.33266"/>
-		<point id="p3" pos="552.036 1.40574 -1.45502"/>
-		<point id="p4" pos="555.038 -1.27281 -2.51315"/>
-		<point id="p5" pos="557.034 -2.02284 -4.00071"/>
-		<point id="p6" pos="558.049 -2.76097 -5.67235"/>
-		<point id="p7" pos="558.326 -4.42409 -15.5983" can_rotate="true"/>
-		<point id="p8" pos="558.305 -4.55091 -19.7049" can_rotate="true"/>
-		<point id="p9" pos="558.28 -2.47902 -24.6862" can_rotate="true"/>
-		<point id="p10" pos="558.257 -0.547654 -29.2503" can_rotate="true" follow_player_y="true"/>
-		<point id="p11" pos="558.191 8.50987 -42.6027" can_rotate="true" follow_player_y="true"/>
+		<point id="p3" pos="548.799 4.76014 -1.3874"/>
+		<point id="p4" pos="552.036 3.7588 -1.45502"/>
+		<point id="p5" pos="555.038 1.32061 -2.51315"/>
+		<point id="p6" pos="557.034 0.407666 -4.00071"/>
+		<point id="p7" pos="558.049 -0.443435 -5.67235"/>
+		<point id="p8" pos="558.326 -2.00235 -15.5983" can_rotate="true"/>
+		<point id="p9" pos="558.305 -2.19432 -19.7049" can_rotate="true"/>
+		<point id="p10" pos="558.28 -0.93636 -24.6862" can_rotate="true"/>
+		<point id="p11" pos="558.257 -0.547654 -29.2503" can_rotate="true" follow_player_y="true"/>
+		<point id="p12" pos="558.191 8.50987 -42.6027" can_rotate="true" follow_player_y="true"/>
 	</spline>
 	<spline name="line_1">
 		<point id="p1" pos="558.031 8.50987 -44.8171" follow_player_y="true" can_rotate="true"/>
