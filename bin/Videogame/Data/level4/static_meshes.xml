@@ -370,4 +370,6 @@
 	<static_mesh name="INVISIBLE_WALL_005" filename="Data\level4\meshes\INVISIBLE_WALL_005.mesh"/>
 	<static_mesh name="SecurityWall001" filename="Data\level4\meshes\SecurityWall001.mesh"/>
 	<static_mesh name="SecurityWall002" filename="Data\level4\meshes\SecurityWall002.mesh"/>
+	<static_mesh name="Teleport" filename="Data\level4\meshes\Teleport.mesh"/>
+	<static_mesh  name="LightBeamTeleport" filename="Data\level4\meshes\LightBeamTeleport.mesh"/>
 </static_meshes>

@@ -111,13 +111,28 @@
 		<disable_z_test />		
 		
 		<enable_z_test />
+		
+		<!--Fog-->
+		<!--<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha" alphablendSrc="one" alphablendDest="one" />
+		<set_pool_renderable_objects_technique pool="fog_pool"/>
+		<render_draw_quad> 
+			<texture stage_id="0" file="DepthMapTexture"/>
+		</render_draw_quad> 
+		<disable_alpha_blend />-->
+		<!--End Fog-->		
+		
 		<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>
+		
 		<set_pool_renderable_objects_technique pool="fire_billboard_pool"/>
 		<billboard_render/>
 		<set_pool_renderable_objects_technique pool="particles_pool"/>
 		<particle_render/>
 		<disable_alpha_blend />
 		
+		<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>		
+		<set_pool_renderable_objects_technique pool="dummy_manager"/>
+		<render_scene layer="alpha_objects" active="true"/>
+		<disable_alpha_blend />
 		<!-- GLOW POLY EFFECT ////////////////////////////////////////////////////////////////////////////////// -->
 	
 		<set_pool_renderable_objects_technique pool="glow_poly_pool"/>
@@ -162,14 +177,7 @@
 		
 		
 		
-		<!--Fog-->
-		<!--<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha" alphablendSrc="one" alphablendDest="one" />
-		<set_pool_renderable_objects_technique pool="fog_pool"/>
-		<render_draw_quad> 
-			<texture stage_id="0" file="DepthMapTexture"/>
-		</render_draw_quad> 
-		<disable_alpha_blend />-->
-		<!--End Fog-->		
+		
 
 		<!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
 		<!-- Bloom pas 1	-->
