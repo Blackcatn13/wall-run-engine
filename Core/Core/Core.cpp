@@ -345,6 +345,7 @@ void CCore::Render() {
 
 void CCore::Update(float dt) {
   m_ElapsedTime = dt;
+  m_ScriptManager->RunCode("update_pause()");
   if (!m_GuiManager->GetIsPaused()) {
     m_ActionToInput->Update();
     m_GraphicsManager->Update();

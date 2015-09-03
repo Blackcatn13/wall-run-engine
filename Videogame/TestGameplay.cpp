@@ -501,10 +501,10 @@ void CTestGameplay::Update(float dt) {
       SCRIPTM->RunFile(".\\Data\\lua\\Gui.lua");
     }
   }
-  if (ACT2IN->DoAction("PauseGameExit")) {
-    GUIM->SetIsPaused(false);
-    GUIM->ActivatePause(false);
-  }
+  /* if (ACT2IN->DoAction("PauseGameExit")) {
+     GUIM->SetIsPaused(false);
+     GUIM->ActivatePause(false);
+   }*/
 }
 
 void CTestGameplay::Render() {

@@ -60,7 +60,17 @@ local percentAirMovement = 0.75;
 
 local m_ReduceCollider = 0.75;
 --////////////////////////////////////////////////////////
-
+function update_pause()
+	if act2in:do_action_from_lua("PauseGame") then
+		if not gui_manager:get_is_paused() then
+			gui_manager:activate_pause(true);
+			gui_manager:set_is_paused(true);
+		else
+			gui_manager:activate_pause(false);
+			gui_manager:set_is_paused(false);
+		end
+	end
+end
 
 function on_update_player_lua(l_ElapsedTime)
 
@@ -77,10 +87,6 @@ function on_update_player_lua(l_ElapsedTime)
 	
 	if gui_manager:get_is_displayed_console() == false and gui_manager.m_sCurrentWindows == "Play.xml" and player.can_move and not cinematic_controller.m_executing then
 	
-		if act2in:do_action_from_lua("PauseGame") then
-			gui_manager:activate_pause(true);
-			gui_manager:set_is_paused(true);
-		end
 
 		if is_init == true then
 			is_init = false
