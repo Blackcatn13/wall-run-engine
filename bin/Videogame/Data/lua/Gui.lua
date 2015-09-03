@@ -55,6 +55,7 @@ function set_visible_gui_elements(visible)
 	gui_manager:set_visible_gui_element("PixeliteNumber",visible)
 	gui_manager:set_visible_gui_element("PixeliteNumberShadow",visible)
 	gui_manager:set_visible_gui_element("LifeGUI",visible)
+	coreInstance:trace("Showing GUI Elements: ".. tostring(visible))
 end
 
 function ManagerGUIHearts()

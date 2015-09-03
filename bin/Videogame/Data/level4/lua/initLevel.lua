@@ -30,7 +30,7 @@ function init_level(a)
 	cara1:blend_cycle(0, 1, 0);
 	local cara2 = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("solid",2):get_resource("CARALLENGUA_01");
 	cara2:blend_cycle(0, 1, 0);
-	 set_visible_gui_elements(false)
+	--set_visible_gui_elements(true)
 	on_init_cameras_lua()
 	
 	local active_camera = cam_Controller:get_active_camera()

@@ -499,12 +499,11 @@ void CTestGameplay::Update(float dt) {
   } else {
     if (GUIM->GetIsDisplayedConsole()) {
       SCRIPTM->RunFile(".\\Data\\lua\\Gui.lua");
-    } else {
-      if (ACT2IN->DoAction("PauseGameExit")) {
-        GUIM->SetIsPaused(false);
-        GUIM->ActivatePause(false);
-      }
     }
+  }
+  if (ACT2IN->DoAction("PauseGameExit")) {
+    GUIM->SetIsPaused(false);
+    GUIM->ActivatePause(false);
   }
 }
 
