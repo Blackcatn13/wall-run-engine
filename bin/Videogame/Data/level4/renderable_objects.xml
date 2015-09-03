@@ -484,5 +484,5 @@
 	<animated_model name="PumPum3" core="mik"  pos="93.358940 1.300000 -3.489124" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" room = "1"/>
 	<mesh_instance name="disparoPumPum3" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "1" layer="enemies" /-->
 	<mesh_instance name="Teleport" core="Teleport" pos="94.358940 0.300000 -0.489124" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="solid"/>
-	<mesh_instance name="Cylinder001" core="Cylinder001" pos="94.358940 0.300000 -0.489124" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="alpha_objects"/>
+	<mesh_instance name="LightBeamTeleport" core="LightBeamTeleport" pos="94.358940 0.300000 -0.489124" yaw="0.256172" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="alpha_objects"/>
 </renderable_objects>
