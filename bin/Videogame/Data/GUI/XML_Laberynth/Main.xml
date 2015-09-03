@@ -18,11 +18,12 @@
                     texture_deactivated="./Data/GUI/GoPixelGo/PlayButton.png"
                     OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');
           							CCoreLuaWrapper().m_CoreInstance:getGUIManager():push_windows('Play.xml');
-									
           							if player.game_over == true then
           								 reset_cameras()
           								 player.game_over = false
 										 set_visible_gui_elements(true)
+									else
+										set_visible_gui_elements(false)
           							end
                                         gui_manager:activate_pause(false);
                                         gui_manager:set_is_paused(false)"
