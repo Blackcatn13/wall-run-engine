@@ -34,7 +34,7 @@ TGBUFFER_TEXTURED1_VERTEX_PS GBufferVS(VertexVS_TTEXTURE_NORMAL_VERTEX IN){
 TMultiRenderTargetPixel GBufferPS(TGBUFFER_TEXTURED1_VERTEX_PS IN) {
 	TMultiRenderTargetPixel OUT = (TMultiRenderTargetPixel)0;
 	float4 l_DiffuseColor = tex2D(S0LinearWrapSampler , IN.UV);
-	clip(l_DiffuseColor.a < 0.05f ? -1 : 1);
+	clip(l_DiffuseColor.a < 0.5f ? -1 : 1);
 	float3 Nn = normalize(IN.Normal);
 	float3 NnScalated = Normal2Texture(Nn);
 	// Cálculo de la z en formato color
