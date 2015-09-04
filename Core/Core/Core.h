@@ -263,9 +263,9 @@ class CCore {
     }*/
 
   void ExitGame() { GetProcess()->setexitGame(true);}
-#ifdef _PARTICLEVIEWER
+//#ifdef _PARTICLEVIEWER
   void CopyToClipboard(std::string toCopy);
-#endif
+//#endif
 };
 
 #endif

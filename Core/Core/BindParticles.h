@@ -57,7 +57,8 @@ void RegisterParticles() {
     .enum_("EmitterType")
     [
       value("EMITTER_ESF", 0),
-      value("EMITTER_PLANE", 1)
+      value("EMITTER_PLANE", 1),
+      value("EMITTER_ESF1", 2)
     ]
     .property("m_Type", &CParticleEmitter::getType, &CParticleEmitter::setType)
     .property("m_vPos", &CParticleEmitter::getvPos, &CParticleEmitter::setvPos)

@@ -6,6 +6,7 @@
 #include "Core\Core.h"
 #include "RenderableCommands\SceneRendererCommandManager.h"
 #include "Language\LanguageManager.h"
+#include "GUI\GUIManager.h"
 
 
 CParticleProcess::CParticleProcess() {
@@ -41,6 +42,9 @@ void CParticleProcess::Update(float dt) {
   }
   if (ACT2IN->DoAction("ChangeIngles")) {
     LANGM->SetCurrentLanguage("ingles");
+  }
+  if (ACT2IN->DoAction("Console")) {
+    GUIM->SetConsole();
   }
 }
 

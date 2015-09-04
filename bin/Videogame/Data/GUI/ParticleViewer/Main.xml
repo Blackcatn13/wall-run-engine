@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <Windows OnLoadWindows="
-     CCoreLuaWrapper().m_CoreInstance:getGUIManager():setEditableTextBox('EmitterNumber', '0')
+     gui_manager:setEditableTextBox('EmitterNumber', '0')
      "
      OnSaveWindows="" OnUpdateWindows="">
 	
@@ -13,8 +13,8 @@
      OnOverAction=""
      OnClickedAction=""
      OnChangeValue="
-          local MinSpeed = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('MinSpeed')
-          local id = tonumber(CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('EmitterNumber'))
+          local MinSpeed = gui_manager:getEditableTextBox('MinSpeed')
+          local id = tonumber(gui_manager:getEditableTextBox('EmitterNumber'))
           MinSpeed = tonumber(MinSpeed)
           if (MinSpeed ~= nil) then
                if (MinSpeed &lt;= 0) then
@@ -23,7 +23,7 @@
           else
                MinSpeed = 0.1
           end
-          CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(id).m_MinSpeed = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getSliderState('MinSpeedSlider') * MinSpeed"
+          particle_manager:get_resource_by_id(id).m_MinSpeed = gui_manager:getSliderState('MinSpeedSlider') * MinSpeed"
      OnSaveValue=""
      OnLoadValue=""/>
 
@@ -38,8 +38,8 @@
      OnOverAction=""
      OnClickedAction=""
      OnChangeValue="
-          local MaxSpeed = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('MaxSpeed')
-          local id = tonumber(CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('EmitterNumber'))
+          local MaxSpeed = gui_manager:getEditableTextBox('MaxSpeed')
+          local id = tonumber(gui_manager:getEditableTextBox('EmitterNumber'))
           MaxSpeed = tonumber(MaxSpeed)
           if (MaxSpeed ~= nil) then
                if (MaxSpeed &lt;= 0) then
@@ -48,7 +48,7 @@
           else
                MaxSpeed = 0.001
           end
-          CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(id).m_MaxSpeed = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getSliderState('MaxSpeedSlider') * MaxSpeed"
+          particle_manager:get_resource_by_id(id).m_MaxSpeed = gui_manager:getSliderState('MaxSpeedSlider') * MaxSpeed"
      OnSaveValue=""
      OnLoadValue=""/>
 
@@ -63,8 +63,8 @@
      OnOverAction=""
      OnClickedAction=""
      OnChangeValue="
-          local MinParticles = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('MinParticles')
-          local id = tonumber(CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('EmitterNumber'))
+          local MinParticles = gui_manager:getEditableTextBox('MinParticles')
+          local id = tonumber(gui_manager:getEditableTextBox('EmitterNumber'))
           MinParticles = tonumber(MinParticles)
           if (MinParticles ~= nil) then
                if (MinParticles &lt;= 0) then
@@ -73,7 +73,7 @@
           else
                MinParticles = 0.1
           end
-          CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(id).m_MinParticles = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getSliderState('MinParticlesSlider') * MinParticles"
+          particle_manager:get_resource_by_id(id).m_MinParticles = gui_manager:getSliderState('MinParticlesSlider') * MinParticles"
      OnSaveValue=""
      OnLoadValue=""/>
 
@@ -88,8 +88,8 @@
      OnOverAction=""
      OnClickedAction=""
      OnChangeValue="
-          local MinEmissionTime = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('MinEmissionTime')
-          local id = tonumber(CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('EmitterNumber'))
+          local MinEmissionTime = gui_manager:getEditableTextBox('MinEmissionTime')
+          local id = tonumber(gui_manager:getEditableTextBox('EmitterNumber'))
           MinEmissionTime = tonumber(MinEmissionTime)
           if (MinEmissionTime ~= nil) then
                if (MinEmissionTime &lt;= 0) then
@@ -98,7 +98,7 @@
           else
                MinEmissionTime = 0.001
           end
-          CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(id).m_MinEmissionTime = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getSliderState('MinEmissionTimeSlider') * MinEmissionTime"
+          particle_manager:get_resource_by_id(id).m_MinEmissionTime = gui_manager:getSliderState('MinEmissionTimeSlider') * MinEmissionTime"
      OnSaveValue=""
      OnLoadValue=""/>
 
@@ -113,8 +113,8 @@
      OnOverAction=""
      OnClickedAction=""
      OnChangeValue="
-          local MaxEmissionTime = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('MaxEmissionTime')
-          local id = tonumber(CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('EmitterNumber'))
+          local MaxEmissionTime = gui_manager:getEditableTextBox('MaxEmissionTime')
+          local id = tonumber(gui_manager:getEditableTextBox('EmitterNumber'))
           MaxEmissionTime = tonumber(MaxEmissionTime)
           if (MaxEmissionTime ~= nil) then
                if (MaxEmissionTime &lt;= 0) then
@@ -123,7 +123,7 @@
           else
                MaxEmissionTime = 0.1 
           end
-          CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(id).m_MaxEmissionTime = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getSliderState('MaxEmissionTimeSlider') * MaxEmissionTime"
+          particle_manager:get_resource_by_id(id).m_MaxEmissionTime = gui_manager:getSliderState('MaxEmissionTimeSlider') * MaxEmissionTime"
      OnSaveValue=""
      OnLoadValue=""/>
 
@@ -138,8 +138,8 @@
      OnOverAction=""
      OnClickedAction=""
      OnChangeValue="
-          local MinAge = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('MinAge')
-          local id = tonumber(CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('EmitterNumber'))
+          local MinAge = gui_manager:getEditableTextBox('MinAge')
+          local id = tonumber(gui_manager:getEditableTextBox('EmitterNumber'))
           MinAge = tonumber(MinAge)
           if (MinAge ~= nil) then
                if (MinAge &lt;= 0) then
@@ -148,7 +148,7 @@
           else
                MinAge = 0.001
           end
-          CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(id).m_MinAge = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getSliderState('MinAgeSlider') * MinAge"
+          particle_manager:get_resource_by_id(id).m_MinAge = gui_manager:getSliderState('MinAgeSlider') * MinAge"
      OnSaveValue=""
      OnLoadValue=""/>
 
@@ -163,8 +163,8 @@
      OnOverAction=""
      OnClickedAction=""
      OnChangeValue="
-          local MaxAge = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('MaxAge')
-          local id = tonumber(CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('EmitterNumber'))
+          local MaxAge = gui_manager:getEditableTextBox('MaxAge')
+          local id = tonumber(gui_manager:getEditableTextBox('EmitterNumber'))
           MaxAge = tonumber(MaxAge)
           if (MaxAge ~= nil) then
                if (MaxAge &lt;= 0) then
@@ -173,7 +173,7 @@
           else
                MaxAge = 0.001
           end
-          CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(id).m_MaxAge = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getSliderState('MaxAgeSlider') * MaxAge"
+          particle_manager:get_resource_by_id(id).m_MaxAge = gui_manager:getSliderState('MaxAgeSlider') * MaxAge"
      OnSaveValue=""
      OnLoadValue=""/>
 
@@ -188,8 +188,8 @@
      OnOverAction=""
      OnClickedAction=""
      OnChangeValue="
-          local MinSize = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('MinSize')
-          local id = tonumber(CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('EmitterNumber'))
+          local MinSize = gui_manager:getEditableTextBox('MinSize')
+          local id = tonumber(gui_manager:getEditableTextBox('EmitterNumber'))
           MinSize = tonumber(MinSize)
           if (MinSize ~= nil) then
                if (MinSize &lt;= 0) then
@@ -198,7 +198,7 @@
           else
                MinSize = 0.001
           end
-          CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(id).m_MinSize = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getSliderState('MinSizeSlider') * MinSize"
+          particle_manager:get_resource_by_id(id).m_MinSize = gui_manager:getSliderState('MinSizeSlider') * MinSize"
      OnSaveValue=""
      OnLoadValue=""/>
 
@@ -213,8 +213,8 @@
      OnOverAction=""
      OnClickedAction=""
      OnChangeValue="
-          local MaxSize = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('MaxSize')
-          local id = tonumber(CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('EmitterNumber'))
+          local MaxSize = gui_manager:getEditableTextBox('MaxSize')
+          local id = tonumber(gui_manager:getEditableTextBox('EmitterNumber'))
           MaxSize = tonumber(MaxSize)
           if (MaxSize ~= nil) then
                if (MaxSize &lt;= 0) then
@@ -223,7 +223,7 @@
           else
                MaxSize = 0.001
           end
-          CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(id).m_MaxSize = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getSliderState('MaxSizeSlider') * MaxSize"
+          particle_manager:get_resource_by_id(id).m_MaxSize = gui_manager:getSliderState('MaxSizeSlider') * MaxSize"
      OnSaveValue=""
      OnLoadValue=""/>
 
@@ -238,14 +238,14 @@
      OnOverAction=""
      OnClickedAction=""
      OnChangeValue="
-          local Gravity = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('Gravity')
-          local id = tonumber(CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('EmitterNumber'))
+          local Gravity = gui_manager:getEditableTextBox('Gravity')
+          local id = tonumber(gui_manager:getEditableTextBox('EmitterNumber'))
           Gravity = tonumber(Gravity)
           if (Gravity ~= nil) then
           else
                Gravity = 0
           end
-          CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(id).m_Gravity = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getSliderState('GravitySlider') * Gravity"
+          particle_manager:get_resource_by_id(id).m_Gravity = gui_manager:getSliderState('GravitySlider') * Gravity"
      OnSaveValue=""
      OnLoadValue=""/>
 
@@ -260,8 +260,8 @@
      OnOverAction=""
      OnClickedAction=""
      OnChangeValue="
-          local MaxVelocidadOndulacion = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('MaxVelocidadOndulacion')
-          local id = tonumber(CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('EmitterNumber'))
+          local MaxVelocidadOndulacion = gui_manager:getEditableTextBox('MaxVelocidadOndulacion')
+          local id = tonumber(gui_manager:getEditableTextBox('EmitterNumber'))
           MaxVelocidadOndulacion = tonumber(MaxVelocidadOndulacion)
           if (MaxVelocidadOndulacion ~= nil) then
                if (MaxVelocidadOndulacion &lt;= 0) then
@@ -270,7 +270,7 @@
           else
                MaxVelocidadOndulacion = 0.001
           end
-          LuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(id).m_MaxVelocidadOndulacion = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getSliderState('MaxVelocidadOndulacionSlider') * MaxVelocidadOndulacion"
+          particle_manager:get_resource_by_id(id).m_MaxVelocidadOndulacion = gui_manager:getSliderState('MaxVelocidadOndulacionSlider') * MaxVelocidadOndulacion"
      OnSaveValue=""
      OnLoadValue=""/>
 
@@ -285,8 +285,8 @@
      OnOverAction=""
      OnClickedAction=""
      OnChangeValue="
-          local MinVelocidadOndulacion = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('MinVelocidadOndulacion')
-          local id = tonumber(CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('EmitterNumber'))
+          local MinVelocidadOndulacion = gui_manager:getEditableTextBox('MinVelocidadOndulacion')
+          local id = tonumber(gui_manager:getEditableTextBox('EmitterNumber'))
           MinVelocidadOndulacion = tonumber(MinVelocidadOndulacion)
           if (MinVelocidadOndulacion ~= nil) then
                if (MinVelocidadOndulacion &lt;= 0) then
@@ -295,7 +295,7 @@
           else
                MinVelocidadOndulacion = 0.001
           end
-          LuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(id).m_MinVelocidadOndulacion = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getSliderState('MinVelocidadOndulacionSlider') * MinVelocidadOndulacion"
+          particle_manager:get_resource_by_id(id).m_MinVelocidadOndulacion = gui_manager:getSliderState('MinVelocidadOndulacionSlider') * MinVelocidadOndulacion"
       OnSaveValue=""
      OnLoadValue=""/>
 
@@ -310,20 +310,22 @@
       texture_clicked="./Data/GUI/Textures_LaberynthGame/exitYes_press.png"
       texture_deactivated="./Data/GUI/Textures_LaberynthGame/exitYes_normal.png"
      OnClickedAction=
-          "local newTexture = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('sTexture')
-          local id = tonumber(CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('EmitterNumber'))
-          CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(id).m_sTexture = newTexture
-          CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(id):reloadTexture()"
+          "local newTexture = gui_manager:getEditableTextBox('sTexture')
+          local id = tonumber(gui_manager:getEditableTextBox('EmitterNumber'))
+          particle_manager:get_resource_by_id(id).m_sTexture = newTexture
+          particle_manager:get_resource_by_id(id):reloadTexture()"
      OnOverAction=""/>
 
      <RadioBox name="EMITTER_TYPE" posx="70" posy="66" height="10" width="15" default_checkButton="EMITTER_ESF" visible="true" active="true"
-      texture_back="" columns="1" rows="2" OnCheckOn="
-          local button = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getButtonCheckInRadioBox('EMITTER_TYPE')
-          local id = tonumber(CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('EmitterNumber'))
+      texture_back="" columns="1" rows="3" OnCheckOn="
+          local button = gui_manager:getButtonCheckInRadioBox('EMITTER_TYPE')
+          local id = tonumber(gui_manager:getEditableTextBox('EmitterNumber'))
           if (button == 'EMITTER_ESF') then
-               CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(id).m_Type = CParticleEmitter.EMITTER_ESF
+               particle_manager:get_resource_by_id(id).m_Type = CParticleEmitter.EMITTER_ESF		  
           elseif (button == 'EMITTER_PLANE') then
-               CCoreLuaWrapper().m_CoreInstance:getParticleManager():get_resource_by_id(id).m_Type = CParticleEmitter.EMITTER_PLANE
+               particle_manager:get_resource_by_id(id).m_Type = CParticleEmitter.EMITTER_PLANE
+		  elseif (button == 'EMITTER_ESF1') then
+               particle_manager:get_resource_by_id(id).m_Type = CParticleEmitter.EMITTER_ESF1			  			   
           end
       " OnCheckOff="" OnOverButton=""
       OnSaveValue=""
@@ -337,6 +339,10 @@
              on="./Data/GUI/ParticleViewer/Emitter_plane_on.png"
              off="./Data/GUI/ParticleViewer/Emitter_plane_off.png"
              deactivated="./Data/GUI/ParticleViewer/Emitter_plane_off.png" />
+		 <texture name="EMITTER_ESF1"
+             on="./Data/GUI/ParticleViewer/Emitter_esf1_on.png"
+             off="./Data/GUI/ParticleViewer/Emitter_esf1_off.png"
+             deactivated="./Data/GUI/ParticleViewer/Emitter_esf1_off.png" />
      </RadioBox>
 
      <EditableTextBox name="EmitterNumber" posx="88" posy="80" height="2" width="5" visible="true" active="true"/>
@@ -347,8 +353,8 @@
       texture_clicked="./Data/GUI/Textures_LaberynthGame/exitYes_press.png"
       texture_deactivated="./Data/GUI/Textures_LaberynthGame/exitYes_normal.png"
      OnClickedAction=
-          "local newValue = CCoreLuaWrapper().m_CoreInstance:getGUIManager():getEditableTextBox('EmitterNumber')
-          CCoreLuaWrapper().m_CoreInstance:getGUIManager():setEditableTextBox('EmitterNumber', newValue)"
+          "local newValue = gui_manager:getEditableTextBox('EmitterNumber')
+          gui_manager:setEditableTextBox('EmitterNumber', newValue)"
      OnOverAction=""/>
 
      <StaticText name="CopyToClipboard" posx="70" posy="84" width="10" height="2" Literal="Texture" visible="true" active="true"/>

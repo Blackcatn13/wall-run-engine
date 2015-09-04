@@ -69,9 +69,9 @@ void RegisterCore() {
     .property("m_CameraController", &CCore::GetCameraController, &CCore::SetCameraController)
     .property("m_ElapsedTime", &CCore::GetElapsedTime)
     //.property("m_PlatformsMap", &CCore::GetPlatformsMap)
-#ifdef _PARTICLEVIEWER
+//#ifdef _PARTICLEVIEWER
     .def("copy_to_clipboard", &CCore::CopyToClipboard)
-#endif
+//#endif
   ];
   luabind::module(LUA_STATE) [
     class_<CCoreLuaWrapper>("CCoreLuaWrapper")
