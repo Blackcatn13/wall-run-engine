@@ -20,8 +20,6 @@
                if (MinSpeed &lt;= 0) then
                     MinSpeed = 0.001
                end
-          else
-               MinSpeed = 0.1
           end
           particle_manager:get_resource_by_id(id).m_MinSpeed = gui_manager:getSliderState('MinSpeedSlider') * MinSpeed"
      OnSaveValue=""
@@ -45,8 +43,6 @@
                if (MaxSpeed &lt;= 0) then
                     MaxSpeed = 0.001
                end
-          else
-               MaxSpeed = 0.001
           end
           particle_manager:get_resource_by_id(id).m_MaxSpeed = gui_manager:getSliderState('MaxSpeedSlider') * MaxSpeed"
      OnSaveValue=""
@@ -70,8 +66,6 @@
                if (MinParticles &lt;= 0) then
                     MinParticles = 1
                end
-          else
-               MinParticles = 0.1
           end
           particle_manager:get_resource_by_id(id).m_MinParticles = gui_manager:getSliderState('MinParticlesSlider') * MinParticles"
      OnSaveValue=""
@@ -95,8 +89,6 @@
                if (MinEmissionTime &lt;= 0) then
                     MinEmissionTime = 0.001
                end
-          else
-               MinEmissionTime = 0.001
           end
           particle_manager:get_resource_by_id(id).m_MinEmissionTime = gui_manager:getSliderState('MinEmissionTimeSlider') * MinEmissionTime"
      OnSaveValue=""
@@ -120,8 +112,6 @@
                if (MaxEmissionTime &lt;= 0) then
                     MaxEmissionTime = 0.1
                end
-          else
-               MaxEmissionTime = 0.1 
           end
           particle_manager:get_resource_by_id(id).m_MaxEmissionTime = gui_manager:getSliderState('MaxEmissionTimeSlider') * MaxEmissionTime"
      OnSaveValue=""
@@ -145,8 +135,6 @@
                if (MinAge &lt;= 0) then
                     MinAge = 0.001
                end
-          else
-               MinAge = 0.001
           end
           particle_manager:get_resource_by_id(id).m_MinAge = gui_manager:getSliderState('MinAgeSlider') * MinAge"
      OnSaveValue=""
@@ -170,8 +158,6 @@
                if (MaxAge &lt;= 0) then
                     MaxAge = 0.001
                end
-          else
-               MaxAge = 0.001
           end
           particle_manager:get_resource_by_id(id).m_MaxAge = gui_manager:getSliderState('MaxAgeSlider') * MaxAge"
      OnSaveValue=""
@@ -195,8 +181,6 @@
                if (MinSize &lt;= 0) then
                     MinSize = 0.001
                end
-          else
-               MinSize = 0.001
           end
           particle_manager:get_resource_by_id(id).m_MinSize = gui_manager:getSliderState('MinSizeSlider') * MinSize"
      OnSaveValue=""
@@ -220,8 +204,6 @@
                if (MaxSize &lt;= 0) then
                     MaxSize = 0.001
                end
-          else
-               MaxSize = 0.001
           end
           particle_manager:get_resource_by_id(id).m_MaxSize = gui_manager:getSliderState('MaxSizeSlider') * MaxSize"
      OnSaveValue=""
@@ -242,8 +224,9 @@
           local id = tonumber(gui_manager:getEditableTextBox('EmitterNumber'))
           Gravity = tonumber(Gravity)
           if (Gravity ~= nil) then
-          else
-               Gravity = 0
+			if Gravity &lt;= 0 then
+				Gravity = 0.001
+			 end
           end
           particle_manager:get_resource_by_id(id).m_Gravity = gui_manager:getSliderState('GravitySlider') * Gravity"
      OnSaveValue=""
@@ -267,8 +250,6 @@
                if (MaxVelocidadOndulacion &lt;= 0) then
                     MaxVelocidadOndulacion = 0.001
                end
-          else
-               MaxVelocidadOndulacion = 0.001
           end
           particle_manager:get_resource_by_id(id).m_MaxVelocidadOndulacion = gui_manager:getSliderState('MaxVelocidadOndulacionSlider') * MaxVelocidadOndulacion"
      OnSaveValue=""
@@ -292,8 +273,6 @@
                if (MinVelocidadOndulacion &lt;= 0) then
                     MinVelocidadOndulacion = 0.001
                end
-          else
-               MinVelocidadOndulacion = 0.001
           end
           particle_manager:get_resource_by_id(id).m_MinVelocidadOndulacion = gui_manager:getSliderState('MinVelocidadOndulacionSlider') * MinVelocidadOndulacion"
       OnSaveValue=""

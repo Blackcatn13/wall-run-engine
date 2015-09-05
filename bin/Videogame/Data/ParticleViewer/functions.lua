@@ -21,22 +21,22 @@ function toClip()
      local MinSpeedValue = gui_manager:getEditableTextBox('MinSpeed')
      MinSpeedValue = tonumber(MinSpeedValue)
      if (MinSpeedValue ~= nil) then
-          if (MinSpeedValue >= 0) then
+          if (MinSpeedValue <= 0) then
                MinSpeedValue = 0.001
           end
-     else
-          MinSpeedValue = 0.001
+     --else
+       --   MinSpeedValue = 1
      end
      local MinSpeed = gui_manager:getSliderState('MinSpeedSlider') * MinSpeedValue
      -- Get the MaxSpeedValue
      local MaxSpeedValue = gui_manager:getEditableTextBox('MaxSpeed')
      MaxSpeedValue = tonumber(MaxSpeedValue)
      if (MaxSpeedValue ~= nil) then
-          if (MaxSpeedValue >= 0) then
+          if (MaxSpeedValue <= 0) then
                MaxSpeedValue = 0.001
           end
-     else
-          MaxSpeedValue = 0.001
+   --  else
+     --     MaxSpeedValue = 1
      end
      local MaxSpeed = gui_manager:getSliderState('MaxSpeedSlider') * MaxSpeedValue
      -- Get the MaxParticlesValue
@@ -45,66 +45,66 @@ function toClip()
      local MinEmissionTimeValue = gui_manager:getEditableTextBox('MinEmissionTime')
      MinEmissionTimeValue = tonumber(MinEmissionTimeValue)
      if (MinEmissionTimeValue ~= nil) then
-          if (MinEmissionTimeValue >= 0) then
+          if (MinEmissionTimeValue <= 0) then
                MinEmissionTimeValue = 0.001
           end
-     else
-          MinEmissionTimeValue = 0.001
+   --  else
+     --     MinEmissionTimeValue = 1
      end
      local MinEmissionTime = gui_manager:getSliderState('MinEmissionTimeSlider') * MinEmissionTimeValue
      -- Get the MaxEmissionTime
      local MaxEmissionTimeValue = gui_manager:getEditableTextBox('MaxEmissionTime')
      MaxEmissionTimeValue = tonumber(MaxEmissionTimeValue)
      if (MaxEmissionTimeValue ~= nil) then
-          if (MaxEmissionTimeValue >= 0) then
+          if (MaxEmissionTimeValue <= 0) then
                MaxEmissionTimeValue = 0.001
           end
-     else
-          MaxEmissionTimeValue = 0.001
+    -- else
+      --    MaxEmissionTimeValue = 1
      end
      local MaxEmissionTime = gui_manager:getSliderState('MaxEmissionTimeSlider') * MaxEmissionTimeValue
      -- Get the MinAge
      local MinAgeValue = gui_manager:getEditableTextBox('MinAge')
      MinAgeValue = tonumber(MinAgeValue)
      if (MinAgeValue ~= nil) then
-          if (MinAgeValue >= 0) then
+          if (MinAgeValue <= 0) then
                MinAgeValue = 0.001
           end
-     else
-          MinAgeValue = 0.001
+    -- else
+      --    MinAgeValue = 1
      end
      local MinAge = gui_manager:getSliderState('MinAgeSlider') * MinAgeValue
      -- Get the MaxAge
      local MaxAgeValue = gui_manager:getEditableTextBox('MaxAge')
      MaxAgeValue = tonumber(MaxAgeValue)
      if (MaxAgeValue ~= nil) then
-          if (MaxAgeValue >= 0) then
+          if (MaxAgeValue <= 0) then
                MaxAgeValue = 0.001
           end
-     else
-          MaxAgeValue = 0.001
+    -- else
+      --    MaxAgeValue = 1
      end
      local MaxAge = gui_manager:getSliderState('MaxAgeSlider') * MaxAgeValue
      -- Get the MinSize
      local MinSizeValue = gui_manager:getEditableTextBox('MinSize')
      MinSizeValue = tonumber(MinSizeValue)
      if (MinSizeValue ~= nil) then
-          if (MinSizeValue >= 0) then
+          if (MinSizeValue <= 0) then
                MinSizeValue = 0.001
           end
-     else
-          MinSizeValue = 0.001
+    -- else
+      --    MinSizeValue = 1
      end
      local MinSize = gui_manager:getSliderState('MinSizeSlider') * MinSizeValue
      -- Get the MaxSize
      local MaxSizeValue = gui_manager:getEditableTextBox('MaxSize')
      MaxSizeValue = tonumber(MaxSizeValue)
      if (MaxSizeValue ~= nil) then
-          if (MaxSizeValue >= 0) then
+          if (MaxSizeValue <= 0) then
                MaxSizeValue = 0.001
           end
-     else
-          MaxSizeValue = 0.001
+     --else
+       --   MaxSizeValue = 1
      end
      local MaxSize = gui_manager:getSliderState('MaxSizeSlider') * MaxSizeValue
      -- Get TextureName
@@ -113,33 +113,33 @@ function toClip()
      local GravityValue = gui_manager:getEditableTextBox('Gravity')
      GravityValue = tonumber(GravityValue)
      if (GravityValue ~= nil) then
-          if (GravityValue >= 0) then
+          if (GravityValue <= 0) then
                GravityValue = 0.001
           end
-     else
-          GravityValue = 0.001
+   --  else
+     --     GravityValue = 1
      end
      local Gravity = gui_manager:getSliderState('GravitySlider') * GravityValue
      -- Get the MinVelocidadOndulacion
      local MinVelocidadOndulacionValue = gui_manager:getEditableTextBox('MinVelocidadOndulacion')
      MinVelocidadOndulacionValue = tonumber(MinVelocidadOndulacionValue)
      if (MinVelocidadOndulacionValue ~= nil) then
-          if (MinVelocidadOndulacionValue >= 0) then
+          if (MinVelocidadOndulacionValue <= 0) then
                MinVelocidadOndulacionValue = 0.001
           end
-     else
-          MinVelocidadOndulacionValue = 0.001
+    -- else
+      --    MinVelocidadOndulacionValue = 1
      end
      local MinVelocidadOndulacion = gui_manager:getSliderState('MinVelocidadOndulacionSlider') * MinVelocidadOndulacionValue
      -- Get the MaxVelocidadOndulacion
      local MaxVelocidadOndulacionValue = gui_manager:getEditableTextBox('MaxVelocidadOndulacion')
      MaxVelocidadOndulacionValue = tonumber(MaxVelocidadOndulacionValue)
      if (MaxVelocidadOndulacionValue ~= nil) then
-          if (MaxVelocidadOndulacionValue >= 0) then
+          if (MaxVelocidadOndulacionValue <= 0) then
                MaxVelocidadOndulacionValue = 0.001
           end
-     else
-          MaxVelocidadOndulacionValue = 0.001
+    -- else
+      --    MaxVelocidadOndulacionValue = 1
      end
      local MaxVelocidadOndulacion = gui_manager:getSliderState('MaxVelocidadOndulacionSlider') * MaxVelocidadOndulacionValue
      -- Generate text to copy
@@ -155,5 +155,5 @@ function toClip()
 end
 
 function format_value(value)
- return string.format("%.5f", value)
+ return string.format("%.3f", value)
 end
