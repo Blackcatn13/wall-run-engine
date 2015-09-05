@@ -49,6 +49,7 @@ class CEnemy : public CAIController { //CAIController
   bool				m_MovedToDiePosition;
   bool				m_IsDying;
   std::string		m_ProjectileName;
+  float       m_visibleTime;
 
 
   CEnemy();
@@ -101,6 +102,7 @@ class CEnemy : public CAIController { //CAIController
   GET_SET(ENEMY_TYPE, enemyType);
   GET_SET(bool, IsDying);
   GET_SET(std::string, ProjectileName);
+  GET_SET(float, visibleTime);
   // get & set
   // set(const <type> &name)
   // const <type> & get

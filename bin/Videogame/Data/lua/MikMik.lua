@@ -3,6 +3,8 @@ local base_yaw = math.pi/2
 local flySpeed = 20;
 local flyInclination = 3;
 local flyDecay = 0.1;
+local visibleTime = 0.4;
+
 function mikmik_enter_stopped(name)
 	--local enemy = enemy_manager:get_enemy(name)
 	--currentwp = wp1
@@ -10,6 +12,13 @@ function mikmik_enter_stopped(name)
 	local enemy = enemy_manager:get_enemy(name)
 	enemy.m_CurrentTime = 0
 	enemy.m_RenderableObject:blend_cycle(0,1,0);
+	exclamation = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter2)
+	if exclamation ~= nil then
+		exclamation:set_visible(true)
+		exclamation.m_FireParticles = true;
+		exclamation.m_vPos = enemy.m_RenderableObject:get_position() + enemy.m_RenderableObject.m_EmitterOffset2;
+		enemy.m_visibleTime = 0;
+	end
 end
 
 function mikmik_exit_stopped(name)
@@ -24,6 +33,12 @@ function mikmik_update_stopped(ElapsedTime, doComprobation, name)
 	local player_distance = get_distance_to_player(enemy:get_position(), player_position)
 				
 	if enemy ~= nil then
+		exclamation = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter2)
+		if exclamation ~= nil then
+			if (exclamation:get_visible() == true) then
+				exclamation:set_visible(false)
+			end
+		end
 		if player_distance < 3500 then
 		
 			if player_distance > enemy.m_AttackPlayerDistance  then --min_player_distance => enemy.m_AttackPlayerDistance
@@ -42,10 +57,10 @@ function mikmik_update_stopped(ElapsedTime, doComprobation, name)
 						if player_distance < 500 then
 							-- Animacion de andar
 							rotate_yaw(enemy, ElapsedTime, player_position)
-							local billboard = billboard_manager:get_resource(enemy.m_RenderableObject.m_Billboard)
-							if billboard ~= nil then
-								billboard.m_position = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_BillboardOffset
-							end
+							--local billboard = billboard_manager:get_resource(enemy.m_RenderableObject.m_Billboard)
+							--if billboard ~= nil then
+								--billboard.m_position = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_BillboardOffset
+							--end
 						end
 					end
 				end	
@@ -142,6 +157,13 @@ function mikmik_enter_attack_player(name)
 		enemy.m_Speed = enemy.m_AttackSpeed
 		enemy.m_SpeedModified = true
 		enemy.m_RenderableObject:blend_cycle(1,1,0.2);
+		exclamation = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter2)
+		if exclamation ~= nil then
+			exclamation:set_visible(true)
+			exclamation.m_FireParticles = true;
+			exclamation.m_vPos = enemy.m_RenderableObject:get_position() + enemy.m_RenderableObject.m_EmitterOffset2;
+			enemy.m_visibleTime = 0;
+		end
 	end
 	return 0
 end
@@ -166,12 +188,24 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 	local player_position = player_controller:get_position()
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil then
-	local billboard = billboard_manager:get_resource(enemy.m_RenderableObject.m_Billboard)
-	if billboard ~= nil then
+	--local billboard = billboard_manager:get_resource(enemy.m_RenderableObject.m_Billboard)
+	--if billboard ~= nil then
 	--coreInstance:trace("Mik Ataque Position: ".. tostring(enemy:get_position().x) .. ", " .. tostring(enemy:get_position().y) .. ", " ..tostring(enemy:get_position().z))
-		billboard.m_position = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_BillboardOffset
+		--billboard.m_position = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_BillboardOffset
 		--coreInstance:trace("BillBoard Position: ".. tostring(billboard.m_position.x) .. ", " .. tostring(billboard.m_position.y) .. ", " ..tostring(billboard.m_position.z))
-	end
+	--end
+		local exclamation = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter2)
+		if (exclamation ~= nil) then
+			
+			if (enemy.m_visibleTime > visibleTime) then
+				exclamation:set_visible(false);
+			else
+				enemy.m_visibleTime = enemy.m_visibleTime + ElapsedTime;
+				exclamation.m_vPos = enemy.m_RenderableObject:get_position() + enemy.m_RenderableObject.m_EmitterOffset2;
+				coreInstance:trace(tostring(enemy.m_visibleTime));
+				coreInstance:trace("Moving billboard?");
+			end
+		end
 	
 	--coreInstance:trace("Enemy Zone" .. tostring (enemy.m_Zone))
 	--coreInstance:trace("player Zone" .. tostring (player.zone))
@@ -304,6 +338,11 @@ end
 function mikmik_enter_dead(name)
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil then
+		exclamation = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter2)
+		if exclamation ~= nil then
+			exclamation:set_visible(false)
+			enemy.m_visibleTime = 0;
+		end
 		--coreInstance:trace("Init muerto Mik")
 		enemy.m_RenderableObject:clear_cycle(0,0.2);
 		enemy.m_RenderableObject:clear_cycle(1,0.2);

@@ -111,6 +111,7 @@ void RegisterAI() {
     .property("m_IsOnCooldown", &CEnemy::getIsOnCooldown, &CEnemy::setIsOnCooldown)
     .property("m_tiempoVidaDisparo", &CEnemy::gettiempoVidaDisparo, &CEnemy::settiempoVidaDisparo)
     .property("m_ProjectileName", &CEnemy::getProjectileName, &CEnemy::setProjectileName)
+    .property("m_visibleTime", &CEnemy::getvisibleTime, &CEnemy::setvisibleTime)
 
     .def("get_name",  &CEnemy::GetEnemyName)
     .def("m_FSM", &CEnemy::getFsm)

@@ -125,10 +125,10 @@ CParticleEmitter::CParticleEmitter()
   const uint32 lVtxCount = 4;
 
   TPARTICLE_VERTEX vertexs[lVtxCount] = {
-    {  -1.f, 15.0f, -1.f, 0, 0 },    // vertex 0
-    {  -1.f, 15.0f,  1.f, 0, 1 },    // vertex 1
-    {   1.f, 15.0f,  1.f, 1, 1 },    // vertex 2
-    {   1.f, 15.0f, -1.f, 1, 0 }     // vertex 3
+    {  -1.f, 15.0f, -1.f, 0, 1 },    // vertex 0
+    {  -1.f, 15.0f,  1.f, 0, 0 },    // vertex 1
+    {   1.f, 15.0f,  1.f, 1, 0 },    // vertex 2
+    {   1.f, 15.0f, -1.f, 1, 1 }     // vertex 3
   };
 
   unsigned short int lIdx[lIdxCount] = { 0, 1, 2, 2, 3, 0};
