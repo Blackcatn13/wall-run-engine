@@ -396,12 +396,13 @@ function on_update_player_lua(l_ElapsedTime)
 				player_controller.m_JumpingTime = player_controller.m_JumpingTime + l_ElapsedTime;
 			end
 		end
-		if player_controller.m_executeDoubleJump == true then
+		if player_controller.m_executeDoubleJump == true and inDoubleJump == false then
 			player_controller.m_executeDoubleJump = false;
 			playerRenderable:clear_cycle(0,0);
 			playerRenderable:clear_cycle(1,0);
 			playerRenderable:clear_cycle(3,0);
 			playerRenderable:clear_cycle(4,0);
+			playerRenderable:remove_action(2);
 			playerRenderable:execute_action(10,0.1,0,1,true);
 			player_controller.m_isDoubleJumping = true;
 			player_controller.m_isJumping = false;
