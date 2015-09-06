@@ -119,6 +119,18 @@
 
 	<pool_renderable_object_technique name="fire_billboard_pool">
         <default_technique vertex_type="8192" technique="FireTechnique"/>
-    </pool_renderable_object_technique>    
+    </pool_renderable_object_technique>   
+
+	<pool_renderable_object_technique name="fade_alpha">
+		<default_technique vertex_type="19" technique="FadeAlphaTechnique"/>
+		<default_technique vertex_type="31" technique="FadeAlphaTechnique"/>
+		<default_technique vertex_type="51" technique="FadeAlphaTechnique"/>
+		<default_technique vertex_type="63" technique="FadeAlphaTechnique"/>
+		<default_technique vertex_type="67" technique="FadeAlphaTechnique"/>
+		<default_technique vertex_type="415" technique="FadeAlphaCal3DTechnique"/>
+		<default_technique vertex_type="531" technique="FadeAlphaTechnique"/>
+		<default_technique vertex_type="1087" technique="FadeAlphaTechnique"/>	
+	</pool_renderable_object_technique> 
+		
 	
 </renderable_object_techniques>

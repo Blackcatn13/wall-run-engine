@@ -1,12 +1,91 @@
-function activate_teleport(player_position)
+local teleporting = false
+function set_teleport_ready(player_position)
+	renderable_objects_layer_manager:change_between_layers("player", "vanishing", player_controller.m_Room, "Piky")
+	local player_renderable = get_renderable_object("vanishing", player_controller.m_Room, "Piky")
+	player_renderable.m_VanishActive =true
+	player_renderable.m_Vanishing = true
+--	player.can_move = false
+	player_renderable.m_Modifier = 1.0
+	player.vanishing = true
+	local teleportRenderable = get_renderable_object("solid", player_controller.m_Room, "Teleport")
+	if teleportRenderable.m_ParticleEmitter ~= "" and teleportRenderable.m_ParticleEmitter2 ~= "" then
+		local emitter = particle_manager:get_resource(teleportRenderable.m_ParticleEmitter)
+		local pos = player_renderable:get_position()+ teleportRenderable.m_EmitterOffset
+		update_emitter_status(emitter, pos, true)
+		local emitter2 = particle_manager:get_resource(teleportRenderable.m_ParticleEmitter2)
+		local pos2 = player_renderable:get_position()+ teleportRenderable.m_EmitterOffset2
+		update_emitter_status(emitter2, pos2, true)
+		
+	end
+--	activate_teleport(player_position)
+end
+
+function update_emitter_status(emitter, position, visible)
+	emitter.m_vPos = position
+	emitter:set_visible(visible)
+	coreInstance:trace("Emitter position: "..tostring(position.x)..", "..tostring(position.y)..", "..tostring(position.z))
+end
+function vanish_player(name, room)
+
 	--local player = coreInstance:get_player_controller()
-	coreInstance:trace(player_position)
-	local vec_array = split_str(player_position, "%s")
-	local vec3f_array = Vect3f(tonumber(vec_array[1]), tonumber(vec_array[2]), tonumber(vec_array[3]))
-	player_controller.m_PhysicController:set_position(vec3f_array)
+	local player_renderable = get_renderable_object("vanishing", player_controller.m_Room, "Piky")
+	if (player_renderable.m_Vanishing) then
+		player_renderable.m_Modifier = player_renderable.m_Modifier - 0.5* coreInstance.m_ElapsedTime
+	--	coreInstance:trace("Alpha Modifier: ".. tostring(player_renderable.m_Modifier))
+		if (player_renderable.m_Modifier <= 0) then
+			if not teleporting then
+				coreInstance:trace("Teletransportandoo")
+				activate_teleport(name, room)
+				teleporting = true
+				
+			end
+			player_renderable.m_Vanishing = false;
+					
+		end
+	end
+end
+function player_teleported()
+	local teleportRenderable = get_renderable_object("solid", player_controller.m_Room, "Teleport")
+	if teleportRenderable.m_ParticleEmitter ~= "" and teleportRenderable.m_ParticleEmitter2 ~= "" then
+		local emitter = particle_manager:get_resource(teleportRenderable.m_ParticleEmitter)
+		local pos = teleportRenderable:get_position()
+		update_emitter_status(emitter, pos, false)
+		local emitter2 = particle_manager:get_resource(teleportRenderable.m_ParticleEmitter2)
+		local pos2 = teleportRenderable:get_position()
+		update_emitter_status(emitter2, pos2, false)
+		
+	end
+end
+
+function unvanish_player()
+	if teleporting == true then
+		local player_renderable = get_renderable_object("vanishing", player_controller.m_Room, "Piky")
+		if not player_renderable.m_Vanishing then
+			player_renderable.m_Modifier = player_renderable.m_Modifier +0.5*  coreInstance.m_ElapsedTime
+			if ( player_renderable.m_Modifier >= 1) then
+				player.can_move = true
+				player_renderable.m_Vanishing = true
+				player_renderable.m_VanishActive =false
+				renderable_objects_layer_manager:change_between_layers("vanishing", "player", player_controller.m_Room, "Piky")
+				player.vanishing = false
+				player_renderable.m_Modifier = 1.0
+				teleporting = false
+				player_teleported()
+			end
+		end
+	end
+end
+
+function activate_teleport(name, room)
+-- una vez se desvanece del todo
+--	coreInstance:trace("Teletransportando: ".. player_position)
+	local teleport_back = get_renderable_object("solid", tonumber(room), name)
+	local position = teleport_back:get_position()
+	local final_pos = Vect3f(position.x, position.y+1, position.z)
+	player_controller.m_PhysicController:set_position(final_pos)
 	local camera = coreInstance.m_CameraController:get_active_camera()
 	--	coreInstance:trace("laaaaaa")
-	camera.m_pObject3D:set_position(Vect3f(camera.m_pObject3D:get_position().x, camera.m_pObject3D:get_position().y, vec3f_array.z - 10))
+	--camera.m_pObject3D:set_position(Vect3f(camera.m_pObject3D:get_position().x, camera.m_pObject3D:get_position().y, vec3f_array.z - 10))
 	local cam_object =  camera.m_pObject3D
 	local PlayerYaw =  - cam_object:get_yaw() + 1.57
 	if player_controller.m_is3D == true then
@@ -15,8 +94,20 @@ function activate_teleport(player_position)
 		player_controller.m_isTurned = false
 		player_controller:set_yaw(PlayerYaw + 1.57); -- 90ยบ
 	end
+	local teleportRenderable = get_renderable_object("solid", player_controller.m_Room, "Teleport")
+	if teleportRenderable.m_ParticleEmitter ~= "" and teleportRenderable.m_ParticleEmitter2 ~= ""  then
+		local teleportRenderable2 = get_renderable_object("solid", player_controller.m_Room, "Teleport2")
+		local emitter = particle_manager:get_resource(teleportRenderable.m_ParticleEmitter)
+		local pos = teleportRenderable2:get_position()+ teleportRenderable.m_EmitterOffset
+		update_emitter_status(emitter, pos, true)
+		local emitter2 = particle_manager:get_resource(teleportRenderable.m_ParticleEmitter2)
+		local pos2 = teleportRenderable2:get_position()+ teleportRenderable.m_EmitterOffset2
+		update_emitter_status(emitter2, pos2, true)
+		
+	end
 	--camera.m_pObject3D:set_position(Vect3f(3.118870, 20.0, 271.008423))
 end
+
 function set_is_3D()
 	--local player = coreInstance:get_player_controller();
 	player_controller.m_is3D = true;

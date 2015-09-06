@@ -10,7 +10,7 @@
 #include "Renderable\RenderableObjectsLayersManager.h"
 #include "Renderable\RenderableObjectsManager.h"
 #include "SceneElements\PolyPlatform.h"
-
+#include "Core\PlayerController.h"
 void CEffect::SetNullParameters() {
   m_Effect = NULL;
   m_WorldMatrixParameter = NULL;
@@ -47,6 +47,7 @@ void CEffect::SetNullParameters() {
   m_LightDistanceFromPlayerParameter = NULL;
   m_LightDynamicIntensityParameter = NULL;
   m_ChangeUVParameter = NULL;
+  m_VanishingModifierParameter = NULL;
 }
 
 void CEffect::GetParameterBySemantic(const std::string &SemanticName, D3DXHANDLE &l_Handle) {
@@ -95,6 +96,7 @@ bool CEffect::LoadEffect() {
   GetParameterBySemantic("DISTANCEFROMPLAYER", m_LightDistanceFromPlayerParameter);
   GetParameterBySemantic("DYNAMICINTENSITY", m_LightDynamicIntensityParameter);
   GetParameterBySemantic("CHANGEUV", m_ChangeUVParameter);
+  GetParameterBySemantic("VANISHINGMODIFIER", m_VanishingModifierParameter);
   return isOK;
 }
 void CEffect::Unload() {
@@ -136,7 +138,8 @@ CEffect::CEffect()
   , m_TickParameter(NULL)
   , m_LightDistanceFromPlayerParameter(NULL)
   , m_LightDynamicIntensityParameter(NULL)
-  , m_ChangeUVParameter(NULL) {
+  , m_ChangeUVParameter(NULL)
+  , m_VanishingModifierParameter(NULL) {
 }
 
 CEffect::~CEffect() {
@@ -201,6 +204,14 @@ bool CEffect::SetLight() {
     return true;
   }
   return false;
+}
+
+bool CEffect::SetVanishingModifier() {
+  for (int i = 0; i < RENDLM->GetRenderableObjectsManagerByStrAndRoom("vanishing", PLAYC->getRoom())->GetSize(); ++i) {
+    m_VanishingModifier[0] = RENDLM->GetRenderableObjectsManagerByStrAndRoom("vanishing", PLAYC->getRoom())->GetResourcesVector()[i]->getModifier();
+    m_Effect->SetFloatArray(m_VanishingModifierParameter, &m_VanishingModifier[0], 1);
+  }
+  return true;
 }
 
 bool CEffect::SetLights(size_t NumOfLights) {

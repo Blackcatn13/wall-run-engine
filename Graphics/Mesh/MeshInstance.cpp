@@ -29,6 +29,17 @@ void CMeshInstance::Update(float dt) {
     else
       m_Printable = false;
   }
+// if (m_VanishActive) {
+  /* if (m_Vanishing) {
+     m_Modifier -= 1 * dt;
+     if (m_Modifier <= 0)
+       m_Vanishing = false;
+   } else {
+     m_Modifier += 1 * dt;
+     if (m_Modifier >= 1)
+       m_Vanishing = true;
+   }*/
+  //}
 }
 
 CMeshInstance::~CMeshInstance() {

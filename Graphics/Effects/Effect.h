@@ -26,6 +26,7 @@ class CEffect {
   float m_LightsIntensity[MAX_LIGHTS_BY_SHADER];
   BOOL	m_DynamicIntensity[MAX_LIGHTS_BY_SHADER];
   float m_LightDistanceFromPlayer[MAX_LIGHTS_BY_SHADER];
+  float m_VanishingModifier[1];
   Vect3f m_LightsPosition[MAX_LIGHTS_BY_SHADER];
   Vect3f m_LightsDirection[MAX_LIGHTS_BY_SHADER];
   Vect3f m_LightsColor[MAX_LIGHTS_BY_SHADER];
@@ -39,7 +40,7 @@ class CEffect {
   D3DXHANDLE m_BonesParameter;
   D3DXHANDLE m_TimeParameter, m_TickParameter, m_ChangeUVParameter;
   D3DXHANDLE m_ScreenSizeParameter;
-
+  D3DXHANDLE m_VanishingModifierParameter;
   CLight *m_Light;
   ////
   D3DXHANDLE m_UseShadowMaskTextureParameter;
@@ -60,6 +61,7 @@ class CEffect {
   ~CEffect();
   bool SetLights(size_t NumOfLights);
   bool SetLight();
+  bool SetVanishingModifier();
   void ChangeLight(CLight *Light) {
     m_Light = Light;
   }
@@ -103,6 +105,9 @@ class CEffect {
     return m_LightsColor ;
   }
 
+  float *GetVanishingModifier() {
+    return m_VanishingModifier;
+  }
 
   //DirectX Methods Interface
   LPD3DXEFFECT GetD3DEffect() const;
@@ -188,6 +193,9 @@ class CEffect {
   }
   D3DXHANDLE GetChangeUVParameter() {
     return m_ChangeUVParameter;
+  }
+  D3DXHANDLE GetVanishingModifierParameter() {
+    return m_VanishingModifierParameter;
   }
 };
 

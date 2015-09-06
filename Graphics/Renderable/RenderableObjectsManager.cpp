@@ -120,6 +120,9 @@ void CRenderableObjectsManager::Load(const std::string &FileName) {
         l_AnimatedInstanceModel->setBillboard(nodeChild.GetPszISOProperty("billboard", ""));
         l_AnimatedInstanceModel->setBillboardOffset(nodeChild.GetVect3fProperty("billboard_offset", v3fZERO));
         l_AnimatedInstanceModel->setRoom(nodeChild.GetIntProperty("room", 1));
+        l_AnimatedInstanceModel->setVanishActive(false);
+        l_AnimatedInstanceModel->setVanishing(true);
+        l_AnimatedInstanceModel->setModifier(1.0f);
         AddResource(meshName, l_AnimatedInstanceModel);
       } else if (name == "switch_instance") {
         CSwitch *l_Switch  = new CSwitch(nodeChild);
@@ -214,6 +217,9 @@ void CRenderableObjectsManager::Load(CXMLTreeNode &Node) {
       l_AnimatedInstanceModel->setBillboard( Node.GetPszISOProperty("billboard", ""));
       l_AnimatedInstanceModel->setBillboardOffset (Node.GetVect3fProperty("billboard_offset", v3fZERO));
       l_AnimatedInstanceModel->setRoom(Node.GetIntProperty("room", 1));
+      l_AnimatedInstanceModel->setVanishActive(false);
+      l_AnimatedInstanceModel->setVanishing(true);
+      l_AnimatedInstanceModel->setModifier(1.0f);
       AddResource(meshName, l_AnimatedInstanceModel);
     } else if (name == "switch_instance") {
       CSwitch *l_Switch  = new CSwitch(Node);
@@ -284,3 +290,4 @@ void CRenderableObjectsManager::RestoreBrokenPlatforms() {
     }
   }
 }
+

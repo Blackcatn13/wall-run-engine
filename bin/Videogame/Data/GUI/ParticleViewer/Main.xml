@@ -67,7 +67,8 @@
                     MinParticles = 1
                end
           end
-          particle_manager:get_resource_by_id(id).m_MinParticles = gui_manager:getSliderState('MinParticlesSlider') * MinParticles"
+          particle_manager:get_resource_by_id(id).m_MinParticles = gui_manager:getSliderState('MinParticlesSlider') * MinParticles
+		  particle_manager:get_resource_by_id(id).m_MaxParticles = gui_manager:getSliderState('MinParticlesSlider') * MinParticles + 5"
      OnSaveValue=""
      OnLoadValue=""/>
 

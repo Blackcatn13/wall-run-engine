@@ -1,3 +1,15 @@
+float3 CalcAnimtedPos(float4 Position, float4 Indices, float4 Weight)
+{
+	float3 l_Position=0;
+	l_Position = mul(g_Bones[Indices.x], Position) * Weight.x;
+	l_Position += mul(g_Bones[Indices.y], Position) * Weight.y;
+	l_Position += mul(g_Bones[Indices.z], Position) * Weight.z;
+	l_Position += mul(g_Bones[Indices.w], Position) * Weight.w;
+	//l_Position.x = -l_Position.x;
+	l_Position.z = -l_Position.z;
+	return l_Position;
+}
+
 float3 GetPositionFromZDepthViewInViewCoordinates(float ZDepthView, float2 UV, float4x4 InverseProjectionMatrix)
 {
 	// Get the depth value for this pixel

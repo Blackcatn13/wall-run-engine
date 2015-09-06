@@ -56,4 +56,8 @@
 
 <trigger name="3DTO2D03" platform_name="" pos="557.374756 9.901652 -177.872345" shape="box" size="9.85767 9.74541 0.69519" type_event="enter" script_function="set_player_room" param1="5" param2="true" group="1" paint="false" color="0.105882 0.694118 0.105882"/>
 
+
+<!--<trigger name="Teleport001" platform_name="" pos="150.101074 1.300000 10.920358" shape="sphere" radius = "1" type_event="enter" script_function="set_teleport_ready" type_event2="stay" script_function2="vanish_player" param1_event2="Teleport2" param2_event2="1" group="1" paint="true" color="0.105882 0.694118 0.105882"/>
+<trigger name="TeleportReturn001" platform_name="" pos="94.358940 0.300000 -0.489124" shape="sphere" radius = "1" type_event="stay" script_function="unvanish_player" group="1" paint="true" color="0.105882 0.694118 0.105882"/>-->
+
 </triggers>

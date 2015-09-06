@@ -31,7 +31,8 @@ CEffectTechnique::CEffectTechnique()
   , m_UseTick(false)
   , m_tick(0.f)
   , m_ChangeUV(false)
-  , m_UV(false) {
+  , m_UV(false)
+  , m_Vanish(false) {
 }
 
 CEffectTechnique::CEffectTechnique(const CXMLTreeNode &node)
@@ -55,7 +56,8 @@ CEffectTechnique::CEffectTechnique(const CXMLTreeNode &node)
   , m_UseTick(node.GetBoolProperty("use_tick", false, false))
   , m_ChangeUV(node.GetBoolProperty("change_uv", false, false))
   , m_tick(0.f)
-  , m_UV(false) {
+  , m_UV(false)
+  , m_Vanish(node.GetBoolProperty("vanish", false, false)) {
 }
 
 CEffectTechnique::~CEffectTechnique() {
@@ -145,6 +147,9 @@ bool CEffectTechnique::BeginRender() {
   }
   if (m_ChangeUV) {
     l_Effect->SetBool(m_Effect->GetChangeUVParameter(), m_UV ? TRUE : FALSE);
+  }
+  if (m_Vanish) {
+    m_Effect->SetVanishingModifier();
   }
   if (m_UseScreenSize) {
     int l_Width = 0;

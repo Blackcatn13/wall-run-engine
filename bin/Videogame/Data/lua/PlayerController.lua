@@ -83,7 +83,12 @@ function on_update_player_lua(l_ElapsedTime)
 	end
 	local camObject = active_camera.m_pObject3D;
 	local directionalLight = lightM:get_resource("ShadowLight");
-	local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky");
+	local layer = "player"
+	if player.vanishing then
+		layer = "vanishing"
+	end
+
+	local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room(layer, player_controller.m_Room):get_resource("Piky");
 	
 	if gui_manager:get_is_displayed_console() == false and gui_manager.m_sCurrentWindows == "Play.xml" and player.can_move and not cinematic_controller.m_executing then
 	
@@ -150,40 +155,43 @@ function on_update_player_lua(l_ElapsedTime)
 		if (player_controller.m_isJumpingMoving == false) and (player_controller.m_isAttack == false) and (player.is_hit == false and not player.is_dead) then
 			local y_axis = 0.0
 			local x_axis = 0.0
-			if inputm:has_game_pad(1) then
-				auxAxisYMoved = act2in:do_action_from_lua("MoveForward", y_axis);
-				auxAxisXMoved = act2in:do_action_from_lua("MoveRigth", x_axis);
-				y_axis = inputm:get_game_pad_left_thumb_y_deflection(1);
-				x_axis = inputm:get_game_pad_left_thumb_x_deflection(1);
-				if (auxAxisXMoved or auxAxisYMoved) and player.activating_triggers == false then
-					player.activating_triggers = true
+			if not playerRenderable.m_VanishActive then
+				if inputm:has_game_pad(1) then
+					auxAxisYMoved = act2in:do_action_from_lua("MoveForward", y_axis);
+					auxAxisXMoved = act2in:do_action_from_lua("MoveRigth", x_axis);
+					y_axis = inputm:get_game_pad_left_thumb_y_deflection(1);
+					x_axis = inputm:get_game_pad_left_thumb_x_deflection(1);
+					if (auxAxisXMoved or auxAxisYMoved) and player.activating_triggers == false then
+						player.activating_triggers = true
+					end
+				else
+					local moving_forward = 0;
+					local moving_back = 0;
+					local moving_right = 0;
+					local moving_left = 0;
+					auxForward = act2in:do_action_from_lua("MoveForward")
+					auxBackward = act2in:do_action_from_lua("MoveBack")
+					auxRight = act2in:do_action_from_lua("MoveRigth")
+					auxLeft = act2in:do_action_from_lua("MoveLeft")
+					
+					if auxForward then
+						moving_forward = 1;
+					end
+					if auxBackward then
+						moving_back = 1;
+					end
+					if auxRight then
+						moving_right = 1;
+					end
+					if auxLeft then
+						moving_left = 1;
+					end
+					if (auxForward or auxBackward or auxRight or auxLeft ) and player.activating_triggers == false then
+						player.activating_triggers = true
+					end
+					y_axis = moving_forward - moving_back;
+					x_axis = moving_right - moving_left;
 				end
-			else
-				local moving_forward = 0;
-				local moving_back = 0;
-				local moving_right = 0;
-				local moving_left = 0;
-				auxForward = act2in:do_action_from_lua("MoveForward")
-				auxBackward = act2in:do_action_from_lua("MoveBack")
-				auxRight = act2in:do_action_from_lua("MoveRigth")
-				auxLeft = act2in:do_action_from_lua("MoveLeft")
-				if auxForward then
-					moving_forward = 1;
-				end
-				if auxBackward then
-					moving_back = 1;
-				end
-				if auxRight then
-					moving_right = 1;
-				end
-				if auxLeft then
-					moving_left = 1;
-				end
-				if (auxForward or auxBackward or auxRight or auxLeft ) and player.activating_triggers == false then
-					player.activating_triggers = true
-				end
-				y_axis = moving_forward - moving_back;
-				x_axis = moving_right - moving_left;
 			end
 			local changedCamYaw = dirYaw - lastCamYaw;
 			if y_axis == 0 and x_axis == 0 then
@@ -481,7 +489,7 @@ function on_update_player_lua(l_ElapsedTime)
 		--///////////////////////////////////////////////////////////
 		-- Acción de saltar del Player. Puede realizar 2 saltos distintos (de longitud, y salto vertical). 
 		--///////////////////////////////////////////////////////////
-		if (act2in:do_action_from_lua("Jump")) and (player_controller.m_isJumping == false and player_controller.m_isDoubleJumping == false and _land == false and player_controller.m_isAttack == false and player.is_hit == false and player_controller.m_isGrounded and not player.is_dead) then
+		if (act2in:do_action_from_lua("Jump")) and (player_controller.m_isJumping == false and player_controller.m_isDoubleJumping == false and _land == false and player_controller.m_isAttack == false and player.is_hit == false and player_controller.m_isGrounded and not player.is_dead) and not playerRenderable.m_VanishActive then
 			player_controller.m_JumpingTime = 0;
 			playerRenderable:clear_cycle(0,0.2);
 			playerRenderable:clear_cycle(1,0.2);
@@ -498,7 +506,7 @@ function on_update_player_lua(l_ElapsedTime)
 		--///////////////////////////////////////////////////////////
 		-- Acción de atacar del Player. Realiza un impulso hacia adelante. 
 		--/////////////////////////////////////////////////////////// 
-		if (act2in:do_action_from_lua("Attack") and not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land and player_controller.m_isAttack == false and canAttack == true and player.is_hit == false and player.attack_enabled and not player.is_dead) then--) and (player_controller.m_isAttack == false) then
+		if (act2in:do_action_from_lua("Attack") and not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land and player_controller.m_isAttack == false and canAttack == true and player.is_hit == false and player.attack_enabled and not player.is_dead) and not playerRenderable.m_VanishActive then --) and (player_controller.m_isAttack == false) then
 			canAttack = false;
 			player.get_player_controller():update_character_extents(false, m_ReduceCollider);
 			contador = 0;
@@ -525,7 +533,7 @@ function on_update_player_lua(l_ElapsedTime)
 		
 		--ACELERACION/INERCIA
 		local stopping = false;
-		if not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land and player_controller.m_isAttack == false and not player.is_hit and not player.is_dead then
+		if not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land and player_controller.m_isAttack == false and not player.is_hit and not player.is_dead and not playerRenderable.m_VanishActive then
 			if _isQuiet == false then
 				local xValue = mov.x * acceleration;
 				local zValue = mov.z * acceleration;
@@ -622,7 +630,11 @@ function on_update_player_lua(l_ElapsedTime)
 end
 
 function move_character_controller_mesh(_player, _position, _jumping, _doubleJumping)
-	local mesh = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky")
+	local layer = "player"
+	if player.vanishing then
+		layer = "vanishing"
+	end
+	local mesh = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room(layer, player_controller.m_Room):get_resource("Piky")
 	mesh:set_yaw(_player:get_yaw() + math.pi)
 	local pos;
 	if (_jumping and not inLoop) or _doubleJumping then

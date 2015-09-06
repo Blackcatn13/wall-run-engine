@@ -43,6 +43,8 @@
 	<effect name="GlowPolyEffect" file="data/effects/GlowPoly.fx"/>
 	<effect name="ParticleEffect" file="data/effects/PolyEffect.fx"/>
 	<effect name="FireEffect" file="data/effects/fire.fx"/>
+	<effect name="FadeAlphaEffect" file="data/effects/FadeAlphaEffect.fx"/>
+	<effect name="FadeAlphaCal3DEffect" file="data/effects/FadeAlphaCal3DEffect.fx"/>
 	
 	<!--<technique name="BasicTechnique" effect="BasicEffect" use_view_to_light_projection_matrix="true" use_world_matrix="true" use_world_view_projection_matrix="true"/>-->
 	<technique name="LightsTechnique" effect="LightsEffect" use_view_to_light_projection_matrix="true" use_world_matrix="true" use_world_view_projection_matrix="true" num_of_lights="4" use_lights="true" use_light_ambient_color="true" use_inverse_view_matrix="true" />
@@ -80,5 +82,7 @@
 	<technique name="GlowPolyTechnique" effect="GlowPolyEffect" use_view_to_light_projection_matrix="true" use_world_matrix="true" use_world_view_projection_matrix="true" num_of_lights="1" use_lights="true" use_light_ambient_color="true" use_inverse_view_matrix="true" use_inverse_projection_matrix="true" use_view_matrix="true"/> 
 	<technique name="ParticlesTechnique" effect="TextureEffect"  use_world_matrix="true" use_view_matrix="true" use_inverse_view_matrix="true" use_projection_matrix="true" use_world_view_projection_matrix="true"/>
 	<technique name="FireTechnique" effect="FireEffect"  use_world_matrix="true" use_view_matrix="true" use_inverse_view_matrix="true" use_projection_matrix="true" use_world_view_projection_matrix="true"/>
+	<technique name="FadeAlphaTechnique" effect="FadeAlphaEffect"  use_world_matrix="true" use_view_matrix="true" use_inverse_view_matrix="true" use_projection_matrix="true" use_world_view_projection_matrix="true" vanish="true"/>
+	<technique name="FadeAlphaCal3DTechnique" effect="FadeAlphaCal3DEffect"  use_world_matrix="true" use_view_matrix="true" use_inverse_view_matrix="true" use_projection_matrix="true" use_world_view_projection_matrix="true" vanish="true"/>
 
 </effects>

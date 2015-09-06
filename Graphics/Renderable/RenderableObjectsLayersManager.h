@@ -22,6 +22,7 @@ class CRenderableObjectsLayersManager : public CTemplatedVectorMapManager <CTemp
   CRenderableObjectsManager *GetRenderableObjectsManagerByStrAndRoom(const std::string &layerName, int roomNumber);
   void ChangeBetweenVectors( const std::string &layer, const std::string &objName, int room );
   void ChangeBetweenVectors( const std::string &layer, const std::string &objName, int current_room, int room );
+  void ChangeBetweenLayers(std::string originalLayer, std::string finalLayer, int room,  std::string objName);
   void DeactivateObjectsByStr(const std::string &layerName);
   void DestroyRenderableObjectManagers();
   int GetPreviousZone();

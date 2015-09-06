@@ -46,6 +46,7 @@ function Player.new()
 	self.can_move = true
 	self.last_checkpoint = nil
 	self.inside_obstacle_area = false
+	self.vanishing = false
 	
 	------	 PLAYER FUNCTIONS -----
 		
