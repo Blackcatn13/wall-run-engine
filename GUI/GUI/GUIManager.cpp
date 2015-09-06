@@ -848,7 +848,7 @@ void CGUIManager::SetConsole() {
 
 
 bool CGUIManager::GetIsPaused() {
-  return false;// m_isPaused;
+  return m_isPaused;
 }
 
 void CGUIManager::SetIsPaused(bool input) {
