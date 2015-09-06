@@ -257,8 +257,8 @@
 	<static_mesh name="SueloGameOver" filename="Data\level4\meshes\SueloGameOver.mesh"/>
 	<static_mesh name="ParedGameOver" filename="Data\level4\meshes\ParedGameOver.mesh"/>
 	
-	<static_mesh name="CheckPointDisabledStand001" filename="Data\level4\meshes\CheckPointDisabledStand001.mesh"/>
 	<static_mesh name="CheckPointDisabledSphere001" filename="Data\level4\meshes\CheckPointDisabledSphere001.mesh"/>
+	<static_mesh name="CheckPointDisabledStand001" filename="Data\level4\meshes\CheckPointDisabledStand001.mesh"/>
 	<static_mesh name="CheckPointEnabledStand001" filename="Data\level4\meshes\CheckPointEnabledStand001.mesh"/>
 	<static_mesh name="CheckPointEnabledSphere" filename="Data\level4\meshes\CheckPointEnabledSphere.mesh"/>
 

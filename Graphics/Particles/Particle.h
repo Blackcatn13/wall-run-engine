@@ -7,6 +7,8 @@
 
 class CGraphicsManager;
 
+enum UpdateType {NORMAL, CONE};
+
 class CParticle : public CBillboard {
  public:
   CParticle(Vect3f Direction1, Vect3f Direction2, float Age, float Speed, CColor Color1, CColor Color2, Vect3f Position, float size, float endSize);
@@ -32,6 +34,7 @@ class CParticle : public CBillboard {
   void setRotation(float rotation) {m_Rotation = rotation;}
   float getCurrentRotation() {return m_currentRotation;}
   float getAlpha();
+  void setType(UpdateType t) { m_UpdateType = t; }
  private:
   Vect3f	m_Direction1;
   Vect3f	m_Direction2;
@@ -49,6 +52,7 @@ class CParticle : public CBillboard {
   float   m_EndAlpha;
   float   m_Rotation;
   float   m_currentRotation;
+  UpdateType m_UpdateType;
 };
 
 #endif // PARTICLE_H_

@@ -54,6 +54,8 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
     m_Type = EMITTER_PLANE;
   else if (type == "ESF1")
     m_Type = EMITTER_ESF1;
+  else if (type == "CONE")
+    m_Type = EMITTER_CONE;
 
   InitPool();
   m_TimeNextParticle = mathUtils::RandomFloatRange(m_MinEmissionTime, m_MaxEmissionTime);
@@ -114,6 +116,8 @@ CParticleEmitter::CParticleEmitter()
     m_Type = EMITTER_PLANE;
   else if (type == "ESF1")
     m_Type = EMITTER_ESF1;
+  else if (type == "CONE")
+    m_Type = EMITTER_CONE;
 
   InitPool();
   m_TimeNextParticle = mathUtils::RandomFloatRange(m_MinEmissionTime, m_MaxEmissionTime);
@@ -171,8 +175,9 @@ void CParticleEmitter::Update(float dt) {
     m_CurrentTime = m_CurrentTime + dt;
 
     if (m_CurrentTime >= m_TimeNextParticle) {
-      int numberOfNewParticles = (int)((m_CurrentTime + m_ExcedentTime) / m_TimeNextParticle);
-      m_ExcedentTime = m_CurrentTime - m_TimeNextParticle;
+      int numberOfNewParticles = mathUtils::Min((int)((m_CurrentTime + m_ExcedentTime) / m_TimeNextParticle), (int)m_FreeElements);
+      m_ExcedentTime = m_CurrentTime - m_TimeNextParticle * numberOfNewParticles;
+      m_CurrentTime = 0;
       m_TimeNextParticle = mathUtils::RandomFloatRange(m_MinEmissionTime, m_MaxEmissionTime);
       for (int i = 0; i < numberOfNewParticles; ++i) {
         CParticle *p = NewParticle();
@@ -263,6 +268,11 @@ void CParticleEmitter::PopulateParticle(CParticle *p) {
       float y = mathUtils::Deg2Rad<float>(mathUtils::RandomFloatRange(0, 360));
       dirFinal = Vect3f(mathUtils::Cos<float>(a), mathUtils::Cos<float>(b), mathUtils::Cos<float>(y));
       break;
+    }
+    case EMITTER_CONE: {
+      p->setType(CONE);
+      dirFinal = m_vSpawnDir1;
+      p->setDirection2(m_vPos);
     }
   }
   p->setDirection1(dirFinal);

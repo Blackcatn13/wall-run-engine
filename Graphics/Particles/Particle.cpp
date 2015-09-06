@@ -1,4 +1,5 @@
 #include "Particles\Particle.h"
+#include "Math\MathUtils.h"
 
 CParticle::CParticle(Vect3f Direction1, Vect3f Direction2, float Age, float Speed, CColor Color1, CColor Color2, Vect3f Position, float size, float endSize)
   : CBillboard(size, Position)
@@ -13,6 +14,7 @@ CParticle::CParticle(Vect3f Direction1, Vect3f Direction2, float Age, float Spee
   , m_EndAlpha(1.f)
   , m_Rotation(0.f)
   , m_currentRotation(0.f)
+  , m_UpdateType(NORMAL)
   , m_EndSize(endSize) {
   m_Color1 = Color1;
 
@@ -30,6 +32,7 @@ CParticle::CParticle()
   , m_currentRotation(0.f)
   , m_StartSize(1.f)
   , m_Color2(CColor(colWHITE))
+  , m_UpdateType(NORMAL)
   , m_Dead(false) {
   m_Color1 = colBLACK;
 }
@@ -40,13 +43,18 @@ void CParticle::Update(float dt) {
   //Gravedad de XML
   //VelocidadOndulacion Maxima y minima
   //VectorOndulacion Maximo y minimo
-  Vect3f l_SumaOndulacion = m_VectorOndulacion * sin(dt * m_VelocidadOndulacion + m_InicioOndulacion);
-  Vect3f l_DirGravity = Vect3f(0, -1, 0);
-  m_Direction1 = m_Direction1 * m_Speed + l_DirGravity * m_Gravity * dt;
-  m_Direction1.Normalize();
-  m_position += m_Direction1 * m_Speed * dt + l_SumaOndulacion * dt;
-  m_size = (1 - m_Age) * m_EndSize + m_Age * m_StartSize;
-  m_currentRotation += m_Rotation * dt;
+  if (m_UpdateType == CONE) {
+    float h = m_StartAge - m_Age;
+    m_position = m_Direction2 + Vect3f(m_Direction1.z * h * mathUtils::Cos(m_Direction1.x * h), h, m_Direction1.z * h * mathUtils::Sin(m_Direction1.x * h));
+  } else {
+    Vect3f l_SumaOndulacion = m_VectorOndulacion * sin(dt * m_VelocidadOndulacion + m_InicioOndulacion);
+    Vect3f l_DirGravity = Vect3f(0, -1, 0);
+    m_Direction1 = m_Direction1 * m_Speed + l_DirGravity * m_Gravity * dt;
+    m_Direction1.Normalize();
+    m_position += m_Direction1 * m_Speed * dt + l_SumaOndulacion * dt;
+    m_size = (1 - m_Age) * m_EndSize + m_Age * m_StartSize;
+    m_currentRotation += m_Rotation * dt;
+  }
   //m_position += m_Direction1.Normalize() * m_Speed * dt + Vect3f(0.0,-1.0,0.0) * m_Gravity * dt*dt;
 
 }
