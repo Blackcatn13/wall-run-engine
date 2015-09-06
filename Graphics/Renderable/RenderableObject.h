@@ -16,6 +16,9 @@ class CRenderableObject : public CObject3D, public CNamed {
   std::string m_ParticleEmitter, m_ParticleEmitter2, m_ParticleEmitter3, m_ParticleEmitter4, m_Billboard;
   Vect3f m_EmitterOffset, m_EmitterOffset2, m_EmitterOffset3, m_EmitterOffset4, m_BillboardOffset;
   int		m_Room;
+  bool		m_Vanishing;
+  bool		m_VanishActive;
+  float		m_Modifier;
  public:
   CRenderableObject();
   CRenderableObject(const CXMLTreeNode &TreeNode);
@@ -39,6 +42,9 @@ class CRenderableObject : public CObject3D, public CNamed {
   GET_SET(Vect3f, EmitterOffset4);
   GET_SET(Vect3f, BillboardOffset);
   GET_SET(int, Room);
+  GET_SET(bool, Vanishing);
+  GET_SET(bool, VanishActive);
+  GET_SET(float, Modifier);
 };
 
 #endif

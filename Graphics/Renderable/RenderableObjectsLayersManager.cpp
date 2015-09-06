@@ -253,3 +253,14 @@ void CRenderableObjectsLayersManager::ChangeBetweenVectors( const std::string &l
     l_Rolm->RemoveFromResource(objName);
   }
 }
+
+void  CRenderableObjectsLayersManager::ChangeBetweenLayers(std::string originalLayer, std::string finalLayer, int room, std::string objName) {
+
+  CRenderableObject *rend =   RENDLM->GetRenderableObjectsManagerByStrAndRoom(originalLayer, room)->GetResource(objName);
+  if (rend != NULL) {
+
+    RENDLM->GetRenderableObjectsManagerByStrAndRoom(finalLayer, room)->AddResource(objName, rend);
+    RENDLM->GetRenderableObjectsManagerByStrAndRoom(originalLayer, room)->RemoveFromResource(objName);
+  }
+}
+

@@ -364,7 +364,9 @@ void CScriptManager::RegisterLUAFunctions() {
     .property("m_EmitterOffset4", &CRenderableObject::getEmitterOffset4, &CRenderableObject::setEmitterOffset4)
     .property("m_BillboardOffset", &CRenderableObject::getBillboardOffset, &CRenderableObject::setBillboardOffset)
     .property("m_Room", &CRenderableObject::getRoom, &CRenderableObject::setRoom)
-
+    .property("m_Vanishing",  &CRenderableObject::getVanishing, &CRenderableObject::setVanishing)
+    .property("m_VanishActive",  &CRenderableObject::getVanishActive, &CRenderableObject::setVanishActive)
+    .property("m_Modifier",  &CRenderableObject::getModifier, &CRenderableObject::setModifier)
 
   ];
   luabind::module(LUA_STATE) [

@@ -17,6 +17,7 @@
 	<layer name="breakable"/>
 	<layer name="glow"/>
 	<layer name="gui_message"/>
+	<layer name="vanishing" />
 	
 	<mesh_instance name="ARCADA" core="ARCADA" pos="-0.017227 9.222342 0.316050" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
 	<mesh_instance name="CUPULA" core="CUPULA" pos="-0.002787 35.136833 -0.108083" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
@@ -483,6 +484,7 @@
 	<mesh_instance name="disparoPumPum2" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "1" layer="enemies" />
 	<animated_model name="PumPum3" core="mik"  pos="93.358940 1.300000 -3.489124" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" room = "1"/>
 	<mesh_instance name="disparoPumPum3" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "1" layer="enemies" /-->
-	<mesh_instance name="Teleport" core="Teleport" pos="94.358940 0.300000 -0.489124" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="solid"/>
-	<mesh_instance name="LightBeamTeleport" core="LightBeamTeleport" pos="94.358940 0.300000 -0.489124" yaw="0.256172" pitch="0.0" roll="0.0" scale="1.18099 1.18099 1.18099" visible="true" room="1" layer="alpha_objects"/>
+	<!--<mesh_instance name="Teleport" core="Teleport" pos="150.101074 0.300000 10.920358" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="solid" emitter="PikyYellowTeleporting" emitter_offset="0.0 1.0 0.0" emitter2="PikyBrownTeleporting" emitter2_offset="0.0 1.0 0.0"/>
+	<mesh_instance name="LightBeamTeleport" core="LightBeamTeleport" pos="150.101074 0.300000 10.920358" yaw="0.256172" pitch="0.0" roll="0.0" scale="1.18099 1.18099 1.18099" visible="true" room="1" layer="alpha_objects"/>
+	<mesh_instance name="Teleport2" core="Teleport" pos="94.358940 0.300000 -0.489124" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" room="1" layer="solid"/>-->
 </renderable_objects>

@@ -29,6 +29,7 @@ class CEffectTechnique {
   bool m_UseTick;
   bool m_ChangeUV;
   bool m_UV;
+  bool m_Vanish;
   float m_tick;
   CEffect *m_Effect;
   D3DXHANDLE m_D3DTechnique;
@@ -103,6 +104,9 @@ class CEffectTechnique {
   bool GetChangeUV() {
     return m_ChangeUV;
   }
+  bool GetVanish() {
+    return m_Vanish;
+  }
 
   void SetUseCameraPosition(bool value) {
     m_UseCameraPosition = value;
@@ -167,6 +171,9 @@ class CEffectTechnique {
   }
   void setChangeUV(bool value) {
     m_UV = value;
+  }
+  void setVanish(bool value) {
+    m_Vanish = value;
   }
   //apaño para default vertex repetidos
   int GetDefaultVertex();
