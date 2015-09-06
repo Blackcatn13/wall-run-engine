@@ -308,11 +308,11 @@
 	<mesh_instance name="SueloGameOver" core="SueloGameOver" pos="925.235413 0.000000 -1.597900" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" room="9" layer="solid"/>
 	<mesh_instance name="ParedGameOver" core="ParedGameOver" pos="926.038208 49.771095 -44.694866" yaw="0.0" pitch="1.59575" roll="0.0" scale="1.0 1.0 1.0" visible="false"  room="9" layer="solid"/>
 
-	<mesh_instance name="CheckPointDisabledStand001" core="CheckPointDisabledStand001" pos="59.382996 1.823731 4.071655" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="1" layer="solid"/>
-	<mesh_instance name="CheckPointDisabledStand002" core="CheckPointDisabledStand001" pos="194.099762 1.823731 14.098312" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="2" layer="solid"/>
-	<mesh_instance name="CheckPointDisabledStand003" core="CheckPointDisabledStand001" pos="437.657074 10.291058 14.098312" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="3" layer="solid"/>
-	<mesh_instance name="CheckPointDisabledStand004" core="CheckPointDisabledStand001" pos="563.272339 10.322827 -23.115706" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="4" layer="solid"/>	
-	<mesh_instance name="CheckPointDisabledStand005" core="CheckPointDisabledStand001" pos="560.656 11.554874 -180.233" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="CheckPointDisabledStand001" core="CheckPointDisabledStand001" pos="59.382996 1.823731 4.071655" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="solid"/>
+	<mesh_instance name="CheckPointDisabledStand002" core="CheckPointDisabledStand001" pos="194.099762 1.823731 14.098312" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="solid"/>
+	<mesh_instance name="CheckPointDisabledStand003" core="CheckPointDisabledStand001" pos="437.657074 9.517207 14.466851" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="3" layer="solid"/>
+	<mesh_instance name="CheckPointDisabledStand004" core="CheckPointDisabledStand001" pos="565.116638 -0.616871 -18.593637" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="solid"/>	
+	<mesh_instance name="CheckPointDisabledStand005" core="CheckPointDisabledStand001" pos="560.656006 11.703578 -180.233002" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
 
 	
 	<mesh_instance name="CheckPointEnabledStand001" core="CheckPointEnabledStand001" pos="93.358940 20.823731 4.000000" yaw="0.0" pitch="0.0" roll="0.0" scale="0.595268 0.595268 0.595268" visible="true" room="1" layer="solid"/>
@@ -345,12 +345,12 @@
 	<mesh_instance name="Pixelite Blau003" core="Pixelite Blau001" pos="325.236938 1.300000 11.141947" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="collectible"/>
 	<mesh_instance name="Pixelite Verd023" core="Pixelite Verd001" pos="252.990524 3.927197 11.199324" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="collectible"/>
 	<mesh_instance name="Pixelite Verd024" core="Pixelite Verd001" pos="339.931793 3.927197 11.199324" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="collectible"/>
-	<mesh_instance name="Move" core="MoveB" pos="62.887726 0.100000 -2.018604" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="gui_message" controller="gamepad"/>
-	<mesh_instance name="Move" core="MoveA" pos="62.887726 0.100000 -2.018604" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="gui_message" controller="keyboard"/>
-	<mesh_instance name="Jump" core="JumpA" pos="108.026306 0.100000 -23.455200" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="gui_message" controller="keyboard"/>
+	<mesh_instance name="Move" core="MoveB" pos="62.887726 0.0100000 -2.018604" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="gui_message" controller="gamepad"/>
+	<mesh_instance name="Move" core="MoveA" pos="62.887726 0.0100000 -2.018604" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="gui_message" controller="keyboard"/>
+	<mesh_instance name="Jump" core="JumpA" pos="108.026306 0.0100000 -23.455200" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="gui_message" controller="keyboard"/>
 	<mesh_instance name="Attack" core="AttackA" pos="470.221924 8.521144 -4.799633" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="3" layer="gui_message" controller="keyboard"/>
 	<mesh_instance name="Poly" core="PolyA" pos="557.959595 12.011963 -55.738464" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="gui_message" controller="keyboard"/>
-	<mesh_instance name="Jump" core="JumpB" pos="108.026306 0.100000 -23.455200" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="gui_message" controller="gamepad"/>
+	<mesh_instance name="Jump" core="JumpB" pos="108.026306 0.0100000 -23.455200" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="gui_message" controller="gamepad"/>
 	<mesh_instance name="Attack" core="AttackB" pos="470.221924 8.521144 -4.799633" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="3" layer="gui_message" controller="gamepad"/>
 	<mesh_instance name="Poly" core="PolyB" pos="557.959595 12.011963 -55.738464" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="gui_message" controller="gamepad"/>
 	<mesh_instance name="Pixelite Verd025" core="Pixelite Verd001" pos="376.202179 1.300000 11.199324" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="collectible"/>

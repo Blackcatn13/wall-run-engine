@@ -118,4 +118,11 @@
 	<Physx_mesh name="Sala_3_Luz_012" filename="Data\level4\meshes\Sala_3_Luz_012.phsx"/>
 	<Physx_mesh name="Sala_3_Luz_013" filename="Data\level4\meshes\Sala_3_Luz_013.phsx"/>
 	<Physx_mesh name="Sala_3_Columna_002" filename="Data\level4\meshes\Sala_3_Columna_002.phsx"/>
+	<Physx_mesh name="CheckPointDisabledStand001" filename="Data\level4\meshes\CheckPointDisabledStand001.phsx"/>
+	<Physx_mesh name="CheckPointDisabledStand002" filename="Data\level4\meshes\CheckPointDisabledStand002.phsx"/>
+	<Physx_mesh name="CheckPointDisabledStand003" filename="Data\level4\meshes\CheckPointDisabledStand003.phsx"/>
+	<Physx_mesh name="CheckPointDisabledStand004" filename="Data\level4\meshes\CheckPointDisabledStand004.phsx"/>
+	<Physx_mesh name="CheckPointDisabledStand005" filename="Data\level4\meshes\CheckPointDisabledStand005.phsx"/>
+	<Physx_mesh name="CheckPointEnabledStand001" filename="Data\level4\meshes\CheckPointEnabledStand001.phsx"/>
+	<Physx_mesh name="CheckPointEnabledSphere" filename="Data\level4\meshes\CheckPointEnabledSphere.phsx"/>
 </Physx_meshes>
