@@ -125,4 +125,11 @@
 	<Physx_mesh name="CheckPointDisabledStand005" filename="Data\level4\meshes\CheckPointDisabledStand005.phsx"/>
 	<Physx_mesh name="CheckPointEnabledStand001" filename="Data\level4\meshes\CheckPointEnabledStand001.phsx"/>
 	<Physx_mesh name="CheckPointEnabledSphere" filename="Data\level4\meshes\CheckPointEnabledSphere.phsx"/>
+
+	<Physx_mesh name="Sala4_Escultura_001" filename="Data\level4\meshes\Sala4_Escultura_001.phsx"/>
+	<Physx_mesh name="Sala4_Escultura_002" filename="Data\level4\meshes\Sala4_Escultura_002.phsx"/>
+	<Physx_mesh name="Sala_4_Paret_ Pedres_001" filename="Data\level4\meshes\Sala_4_Paret_ Pedres_001.phsx"/>
+	<Physx_mesh name="Sala_4_Paret_ Pedres_002" filename="Data\level4\meshes\Sala_4_Paret_ Pedres_002.phsx"/>
+	<Physx_mesh name="Sala4_Cara_lava" filename="Data\level4\meshes\Sala4_Cara_lava.phsx"/>
+	<Physx_mesh name="Sala_4_Paret" filename="Data\level4\meshes\Sala_4_Paret.phsx"/>
 </Physx_meshes>
