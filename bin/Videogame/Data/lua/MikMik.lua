@@ -280,7 +280,11 @@ function mikmik_enter_take_damage(name)
 	if enemy ~= nil then
 		enemy.m_CurrentTime = 0
 		enemy.m_Life = enemy.m_Life - 1
-		
+		local exclamation = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter2)
+		if exclamation ~= nil then
+			exclamation:set_visible(false)
+			enemy.m_visibleTime = 0;
+		end
 		
 		if(enemy.m_Life <= 0) then
 			enemy.m_IsDying = true
@@ -338,11 +342,7 @@ end
 function mikmik_enter_dead(name)
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil then
-		exclamation = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter2)
-		if exclamation ~= nil then
-			exclamation:set_visible(false)
-			enemy.m_visibleTime = 0;
-		end
+		
 		--coreInstance:trace("Init muerto Mik")
 		enemy.m_RenderableObject:clear_cycle(0,0.2);
 		enemy.m_RenderableObject:clear_cycle(1,0.2);
@@ -350,7 +350,7 @@ function mikmik_enter_dead(name)
 		enemy.m_RenderableObject:execute_action(3,0.1,0,1,true);
 		
 		enemy.m_isAlive = false
-		
+				
 		player.enemies_killed = player.enemies_killed + 1
 		--check_enemies_killed(5, "door_001")
 		check_enemies_killed(5, "Puerta_arriba", "Puerta_abajo")
