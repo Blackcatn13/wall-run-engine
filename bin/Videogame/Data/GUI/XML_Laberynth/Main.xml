@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <Windows OnLoadWindows="gui_manager:set_is_displayed_console(true);
-                         CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Menu','Music');"
+                         CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Menu','Music');
+						 if inputm:has_game_pad(1) then
+							gui_manager:set_visible_gui_element('MenuHelp',true)
+						 else
+							gui_manager:set_visible_gui_element('MenuHelp',false)
+						 end"
          OnSaveWindows=""
          OnUpdateWindows="">
 	
@@ -34,8 +39,10 @@
                     texture_over="./Data/GUI/GoPixelGo/OptionsButtonHover.png"
                     texture_clicked="./Data/GUI/GoPixelGo/OptionsButton.png"
                     texture_deactivated="./Data/GUI/GoPixelGo/OptionsButton.png"
-                    OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');"
-                    OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>
+                    OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');
+					 CCoreLuaWrapper().m_CoreInstance:getGUIManager():push_windows('KeyButtonMap.xml')"
+                    OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"
+					/>
           		  
           	<Button name="Extras" posx="60.00" posy="50.00" height="15.00" width="22.00" visible="true" 
                     active="true" texture_normal="./Data/GUI/GoPixelGo/ExtrasButton.png"
@@ -56,5 +63,10 @@
                     OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>
           </Buttons>
      </ButtonList>
+	 
+	 <Image name="MenuHelp" posx="70.00" posy="85.00" height="10.00" width="25.00" visible="false" active="true"
+		default="menuHelp" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+		<texture name="menuHelp" name_texture="./Data/GUI/GoPixelGo/Menu_help.png"/>
+	</Image>
 
 </Windows>

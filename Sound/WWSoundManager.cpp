@@ -274,6 +274,10 @@ void CWWSoundManager::SetListenerPosition(Vect3f pos, Vect3f direction, Vect3f u
 
 }
 
+void CWWSoundManager::StopAllPlayingEvents() {
+  AK::SoundEngine::StopAll();
+}
+
 void CWWSoundManager::PlayEvent(std::string eventName, std::string GameObject) {
   AkPlayingID m_iPID = AK::SoundEngine::PostEvent(eventName.c_str(), m_GameObjects[GameObject]);
 }

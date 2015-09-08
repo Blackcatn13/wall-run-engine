@@ -1,6 +1,16 @@
 local GameoverCount = 0;
 local gui_visible = true
 
+function check_input_controller_map()
+	if inputm:has_game_pad(1) then
+		gui_manager:set_visible_gui_element("KeyboardMap",false)
+		gui_manager:set_visible_gui_element("ControllerMap",true)
+	else
+		gui_manager:set_visible_gui_element("KeyboardMap",true)
+		gui_manager:set_visible_gui_element("ControllerMap",false)
+	end
+end
+
 function onUpdateWindowDisplayGUI()
 	if act2in:do_action_from_lua("ShowLifeGUI") then
 		if gui_manager:get_is_displayed_heart() == false then

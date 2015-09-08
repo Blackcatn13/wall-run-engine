@@ -69,7 +69,8 @@
               texture_over="./Data/GUI/GoPixelGo/OptionsButtonHover.png"
               texture_clicked="./Data/GUI/GoPixelGo/OptionsButton.png"
               texture_deactivated="./Data/GUI/GoPixelGo/OptionsButton.png"
-              OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');"
+              OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');
+			  CCoreLuaWrapper().m_CoreInstance:getGUIManager():push_windows('KeyButtonMap.xml')"
               OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>
     		  
     	<Button name="ExtrasPause" posx="42.00" posy="40.00" height="10.00" width="15.00" visible="true" 
