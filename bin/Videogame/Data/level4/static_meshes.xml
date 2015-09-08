@@ -191,18 +191,6 @@
 	<static_mesh name="ANTORCHA033" filename="Data\level4\meshes\ANTORCHA033.mesh"/>
 	<static_mesh name="obstacle" filename="Data\level4\meshes\obstacle.mesh"/>
 	<static_mesh name="obstacle023" filename="Data\level4\meshes\obstacle023.mesh"/>
-	<static_mesh name="PLATAFORMA_S6_01" filename="Data\level4\meshes\PLATAFORMA_S6_01.mesh"/>
-	<static_mesh name="Plataforma_Mov01" filename="Data\level4\meshes\Plataforma_Mov01.mesh"/>
-	<static_mesh name="PLATAFORMA_S6_03" filename="Data\level4\meshes\PLATAFORMA_S6_03.mesh"/>
-	<static_mesh name="Plataforma_Mov02" filename="Data\level4\meshes\Plataforma_Mov02.mesh"/>
-	<static_mesh name="PLATAFORMA_S6_02" filename="Data\level4\meshes\PLATAFORMA_S6_02.mesh"/>
-	<static_mesh name="Plataforma_Mov03" filename="Data\level4\meshes\Plataforma_Mov03.mesh"/>
-	<static_mesh name="Sala_06" filename="Data\level4\meshes\Sala_06.mesh"/>
-	<static_mesh name="PLATAFORMA_S6_06" filename="Data\level4\meshes\PLATAFORMA_S6_06.mesh"/>
-	<static_mesh name="PLATAFORMA_S6_05" filename="Data\level4\meshes\PLATAFORMA_S6_05.mesh"/>
-	<static_mesh name="Plataforma_Mov06" filename="Data\level4\meshes\Plataforma_Mov06.mesh"/>
-	<static_mesh name="Plataforma_Mov05" filename="Data\level4\meshes\Plataforma_Mov05.mesh"/>
-	<static_mesh name="Plataforma_Mov04" filename="Data\level4\meshes\Plataforma_Mov04.mesh"/>
 	<static_mesh name="PUNXES005" filename="Data\level4\meshes\PUNXES005.mesh"/>
 	<static_mesh name="SALA 7" filename="Data\level4\meshes\SALA 7.mesh"/>
 	<static_mesh name="OBSTACLE006" filename="Data\level4\meshes\OBSTACLE006.mesh"/>
@@ -424,4 +412,63 @@
 	<static_mesh name="Sala_4_Estalagtita_038" filename="Data\level4\meshes\Sala_4_Estalagtita_038.mesh"/>
 	<static_mesh name="Sala_4_Estalagtita_039" filename="Data\level4\meshes\Sala_4_Estalagtita_039.mesh"/>
 	<static_mesh name="Sala_4_Estalagtita_040" filename="Data\level4\meshes\Sala_4_Estalagtita_040.mesh"/>
+
+	<static_mesh name="Plataforma_Mov01" filename="Data\level4\meshes\Plataforma_Mov01.mesh"/>
+	<static_mesh name="PLATAFORMA_S6_1" filename="Data\level4\meshes\PLATAFORMA_S6_1.mesh"/>
+	<static_mesh name="Plataforma_Mov02" filename="Data\level4\meshes\Plataforma_Mov02.mesh"/>
+	<static_mesh name="PLATAFORMA_S6_2" filename="Data\level4\meshes\PLATAFORMA_S6_2.mesh"/>
+	<static_mesh name="Plataforma_Mov03" filename="Data\level4\meshes\Plataforma_Mov03.mesh"/>
+	<static_mesh name="Plataforma_Mov06" filename="Data\level4\meshes\Plataforma_Mov06.mesh"/>
+	<static_mesh name="Plataforma_Mov05" filename="Data\level4\meshes\Plataforma_Mov05.mesh"/>
+	<static_mesh name="Plataforma_Mov04" filename="Data\level4\meshes\Plataforma_Mov04.mesh"/>
+	<static_mesh name="COLUMNAS6_1" filename="Data\level4\meshes\COLUMNAS6_1.mesh"/>
+	<static_mesh name="COBERTAS6_01" filename="Data\level4\meshes\COBERTAS6_01.mesh"/>
+	<static_mesh name="COLUMNAS6_8" filename="Data\level4\meshes\COLUMNAS6_8.mesh"/>
+	<static_mesh name="COLUMNAS6_7" filename="Data\level4\meshes\COLUMNAS6_7.mesh"/>
+	<static_mesh name="COLUMNAS6_6" filename="Data\level4\meshes\COLUMNAS6_6.mesh"/>
+	<static_mesh name="COLUMNAS6_9" filename="Data\level4\meshes\COLUMNAS6_9.mesh"/>
+	<static_mesh name="COLUMNAS6_10" filename="Data\level4\meshes\COLUMNAS6_10.mesh"/>
+	<static_mesh name="COLUMNAS6_13" filename="Data\level4\meshes\COLUMNAS6_13.mesh"/>
+	<static_mesh name="COLUMNAS6_12" filename="Data\level4\meshes\COLUMNAS6_12.mesh"/>
+	<static_mesh name="COLUMNAS6_11" filename="Data\level4\meshes\COLUMNAS6_11.mesh"/>
+	<static_mesh name="SALA6_TEMPLEPOLYPOLY" filename="Data\level4\meshes\SALA6_TEMPLEPOLYPOLY.mesh"/>
+	<static_mesh name="COLUMNALATERAL010" filename="Data\level4\meshes\COLUMNALATERAL010.mesh"/>
+	<static_mesh name="COLUMNALATERAL022" filename="Data\level4\meshes\COLUMNALATERAL022.mesh"/>
+	<static_mesh name="COLUMNALATERAL023" filename="Data\level4\meshes\COLUMNALATERAL023.mesh"/>
+	<static_mesh name="COLUMNALATERAL024" filename="Data\level4\meshes\COLUMNALATERAL024.mesh"/>
+	<static_mesh name="COLUMNALATERAL025" filename="Data\level4\meshes\COLUMNALATERAL025.mesh"/>
+	<static_mesh name="COLUMNALATERAL026" filename="Data\level4\meshes\COLUMNALATERAL026.mesh"/>
+	<static_mesh name="COLUMNALATERAL027" filename="Data\level4\meshes\COLUMNALATERAL027.mesh"/>
+	<static_mesh name="COLUMNALATERAL028" filename="Data\level4\meshes\COLUMNALATERAL028.mesh"/>
+	<static_mesh name="COLUMNALATERAL029" filename="Data\level4\meshes\COLUMNALATERAL029.mesh"/>
+	<static_mesh name="COLUMNALATERAL030" filename="Data\level4\meshes\COLUMNALATERAL030.mesh"/>
+	<static_mesh name="COLUMNALATERAL031" filename="Data\level4\meshes\COLUMNALATERAL031.mesh"/>
+	<static_mesh name="COLUMNALATERAL032" filename="Data\level4\meshes\COLUMNALATERAL032.mesh"/>
+	<static_mesh name="COLUMNALATERAL033" filename="Data\level4\meshes\COLUMNALATERAL033.mesh"/>
+	<static_mesh name="COLUMNALATERAL034" filename="Data\level4\meshes\COLUMNALATERAL034.mesh"/>
+	<static_mesh name="COLUMNALATERAL035" filename="Data\level4\meshes\COLUMNALATERAL035.mesh"/>
+	<static_mesh name="COLUMNALATERAL036" filename="Data\level4\meshes\COLUMNALATERAL036.mesh"/>
+	<static_mesh name="COLUMNALATERAL037" filename="Data\level4\meshes\COLUMNALATERAL037.mesh"/>
+	<static_mesh name="COLUMNALATERAL038" filename="Data\level4\meshes\COLUMNALATERAL038.mesh"/>
+	<static_mesh name="COLUMNALATERAL039" filename="Data\level4\meshes\COLUMNALATERAL039.mesh"/>
+	<static_mesh name="COLUMNALATERAL040" filename="Data\level4\meshes\COLUMNALATERAL040.mesh"/>
+	<static_mesh name="COLUMNALATERAL041" filename="Data\level4\meshes\COLUMNALATERAL041.mesh"/>
+	<static_mesh name="COLUMNALATERAL042" filename="Data\level4\meshes\COLUMNALATERAL042.mesh"/>
+	<static_mesh name="COLUMNALATERAL043" filename="Data\level4\meshes\COLUMNALATERAL043.mesh"/>
+	<static_mesh name="COLUMNALATERAL044" filename="Data\level4\meshes\COLUMNALATERAL044.mesh"/>
+	<static_mesh name="COLUMNALATERAL045" filename="Data\level4\meshes\COLUMNALATERAL045.mesh"/>
+	<static_mesh name="COLUMNALATERAL046" filename="Data\level4\meshes\COLUMNALATERAL046.mesh"/>
+	<static_mesh name="COLUMNALATERAL047" filename="Data\level4\meshes\COLUMNALATERAL047.mesh"/>
+	<static_mesh name="COLUMNALATERAL048" filename="Data\level4\meshes\COLUMNALATERAL048.mesh"/>
+	<static_mesh name="COLUMNALATERAL049" filename="Data\level4\meshes\COLUMNALATERAL049.mesh"/>
+	<static_mesh name="COLUMNALATERAL050" filename="Data\level4\meshes\COLUMNALATERAL050.mesh"/>
+	<static_mesh name="COLUMNALATERAL051" filename="Data\level4\meshes\COLUMNALATERAL051.mesh"/>
+	<static_mesh name="COLUMNALATERAL052" filename="Data\level4\meshes\COLUMNALATERAL052.mesh"/>
+	<static_mesh name="COLUMNALATERAL053" filename="Data\level4\meshes\COLUMNALATERAL053.mesh"/>
+	<static_mesh name="COLUMNALATERAL054" filename="Data\level4\meshes\COLUMNALATERAL054.mesh"/>
+	<static_mesh name="COLUMNALATERAL055" filename="Data\level4\meshes\COLUMNALATERAL055.mesh"/>
+	<static_mesh name="COLUMNALATERAL056" filename="Data\level4\meshes\COLUMNALATERAL056.mesh"/>
+	<static_mesh name="COLUMNALATERAL057" filename="Data\level4\meshes\COLUMNALATERAL057.mesh"/>
+	<static_mesh name="PLATAFORMA_S6_008" filename="Data\level4\meshes\PLATAFORMA_S6_008.mesh"/>
+	<static_mesh name="PLATAFORMA_S6_05" filename="Data\level4\meshes\PLATAFORMA_S6_05.mesh"/>
 </static_meshes>
