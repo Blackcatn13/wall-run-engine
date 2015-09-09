@@ -96,7 +96,7 @@ function Player.new()
 	
 	function self.player_take_damage(direction)
 		if self.is_hit == false then
-			if direction.x ~= 0 or direction.y ~= 0 or direction.z ~= 0 then
+			if (direction.x ~= 0 or direction.y ~= 0 or direction.z ~= 0) and not self.hurt_by_spikes then
 				self.vector_damage = direction
 			end
 			self.num_hearts = self.num_hearts -1
