@@ -97,7 +97,7 @@ end
 --]]
 --Pinchos
 
-function on_enter_pinchos(platform_name)
+function on_enter_pinchos()
 	--TODO registrar todo lo nuevo
 	--[[coreInstance:trace("Entrando en Pinchos")
 	local platform = renderable_objects_layer_manager:get_default_renderable_object_manager():get_resource(platform_name)
@@ -129,12 +129,16 @@ function on_enter_pinchos(platform_name)
 	end
 	--]]
 	--local player = Player:get_instance()
+	
+	player.hurt_by_spikes = true
+	local player_renderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky")
+	--[[ Pasar esto de abajo al player Controller para la animacion
 	coreInstance:trace(tostring(player.num_hearts))
 	if player.num_hearts > 0 then
 		player.get_player_controller():set_position(player.last_spikes_position)
 	end
 	player.player_take_damage(Vect3f(0,0,0), 0)
-	
+	--]]
 	-- Hacer cosas
 	
 end

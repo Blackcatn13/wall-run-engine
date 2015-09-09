@@ -41,6 +41,7 @@ class CWWSoundManager {
   void RegisterGameObject(std::string gameObject);
   void UnregisterGameObject(std::string gameObject);
   void SetState(std::string group, std::string state);
+  void StopAllPlayingEvents();
  private:
   std::string m_fileName;
   std::map<std::string, AkGameObjectID> m_GameObjects;

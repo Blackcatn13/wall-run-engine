@@ -259,6 +259,7 @@ end
 function set_player_respawn_spikes_point()
 	--local player = Player:get_instance()
 	player.last_spikes_position = Vect3f(player.get_player_controller():get_position())
+	player.spikes_yaw = player_controller:get_yaw()
 end
 
 function set_checkpoint(trigger_name, renderable_object)

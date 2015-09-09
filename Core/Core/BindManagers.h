@@ -278,6 +278,7 @@ void RegisterManagers() {
     .def("RegisterGameObject", &CWWSoundManager::RegisterGameObject)
     .def("UnregisterGameObject", &CWWSoundManager::UnregisterGameObject)
     .def("SetState", &CWWSoundManager::SetState)
+    .def("StopAllPlayingEvents", &CWWSoundManager::StopAllPlayingEvents)
   ];
   luabind::module(LUA_STATE) [
     class_<CGUIManager>("CGUIManager")
