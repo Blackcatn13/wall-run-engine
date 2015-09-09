@@ -5,7 +5,7 @@
 		  
   <Image name="ControlsGUI" posx="0.00" posy="0.00" height="100" width="100" visible="true" active="true"
          default="ControlsBase" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
-    <texture name="ControlsBase" name_texture="./Data/GUI/GoPixelGo/MenuMain2.jpg"/>
+    <texture name="ControlsBase" name_texture="./Data/GUI/GoPixelGo/EmptyBackground.jpg"/>
   </Image>
  <Image name="KeyboardMap" posx="0.00" posy="20.00" height="50" width="100" visible="true" active="true"
          default="Keyboard" OnLoadValue="" OnSaveValue="" flip="" backGround="false">

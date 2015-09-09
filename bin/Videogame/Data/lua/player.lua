@@ -18,6 +18,8 @@ function Player.new()
 	self.instance = self
 	self.pixelites = 0
 	self.last_spikes_position = Vect3f(0.0, 0.0, 0.0)
+	self.spikes_yaw = 0
+	self.hurt_by_spikes = false
 	self.coreInstance = CCoreLuaWrapper().m_CoreInstance;
 	self.visited_checkpoints = {}
 	self.score = 0

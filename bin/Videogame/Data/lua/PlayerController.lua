@@ -131,7 +131,7 @@ function on_update_player_lua(l_ElapsedTime)
 		local PlayerYaw =  - dirYaw + 1.57;
 		
 		-- Si dañan al player
-		if player.is_hit == true then
+		if player.is_hit == true and not player.hurt_by_spikes then
 			if timer > m_damageTime then
 				m_damageFeedBackSpeed = m_damageFeedBackSpeed - m_damageFeedBackSpeedDismin * l_ElapsedTime
 			end
@@ -620,6 +620,17 @@ function on_update_player_lua(l_ElapsedTime)
 				end
 			end
 		end
+		
+		if player.hurt_by_spikes and not playerRenderable:is_action_animation_active() then
+			coreInstance:trace(tostring(player.num_hearts))
+			player.hurt_by_spikes = false
+			player.player_take_damage(Vect3f(0,0,0), 0)
+			if player.num_hearts > 0 then
+				player.get_player_controller():set_position(player.last_spikes_position)
+			end
+	
+		end
+		
 		if player.is_dead then
 			if not playerRenderable:is_action_animation_active() then
 				player.check_death_actions()
