@@ -602,10 +602,12 @@ function on_update_player_lua(l_ElapsedTime)
 					if player.playing_hit == false then
 						player.playing_hit = true
 						playerRenderable:execute_action(6,0,0.3,1,true);
+						inputm:set_game_pad_right_motor_speed(15000, 1);
 					else
 						if not playerRenderable:is_cycle_animation_active() then
 							player.is_hit = false
 							player.playing_hit = false
+							inputm:set_game_pad_right_motor_speed(0, 1);
 							timer = 0.0
 							playerRenderable:remove_action(6);
 							playerRenderable:blend_cycle(0,1,0);

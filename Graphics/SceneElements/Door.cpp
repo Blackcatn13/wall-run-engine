@@ -7,6 +7,7 @@
 #include "Utils\PhysicUserData.h"
 #include "XML\XMLTreeNode.h"
 #include "Actor\PhysicActor.h"
+#include "InputManager.h"
 
 
 CDoor::CDoor(std::string switchName, std::string coreName, std::string lua_function, Vect3f final_Position)
@@ -88,6 +89,7 @@ void CDoor::OpeningDoor(float dt) {
     m_IsOpening = false;
     m_IsPlayingAnimation = false;
     m_AnimationDone = true;
+    INPUTM->SetGamePadLeftMotorSpeed(0);
   }
 
 
