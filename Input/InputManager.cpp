@@ -275,16 +275,28 @@ bool CInputManager::IsDown(INPUT_DEVICE_TYPE idType, uint32 nBtn) {
       result = m_pKB->IsDown(nBtn);
       break;
     case IDV_GAMEPAD1:
-      result = m_pGamePad->IsDown(nBtn, 0);
+      if (nBtn != 7 && nBtn != 9)
+        result = m_pGamePad->IsDown(nBtn, 0);
+      else
+        result = m_pGamePad->GetTriggerIsDown(nBtn, 0);
       break;
     case IDV_GAMEPAD2:
-      result = m_pGamePad->IsDown(nBtn, 1);
+      if (nBtn != 7 && nBtn != 9)
+        result = m_pGamePad->IsDown(nBtn, 1);
+      else
+        result = m_pGamePad->GetTriggerIsDown(nBtn, 1);
       break;
     case IDV_GAMEPAD3:
-      result =  m_pGamePad->IsDown(nBtn, 2);
+      if (nBtn != 7 && nBtn != 9)
+        result = m_pGamePad->IsDown(nBtn, 2);
+      else
+        result = m_pGamePad->GetTriggerIsDown(nBtn, 2);
       break;
     case IDV_GAMEPAD4:
-      result = m_pGamePad->IsDown(nBtn, 3);
+      if (nBtn != 7 && nBtn != 9)
+        result = m_pGamePad->IsDown(nBtn, 3);
+      else
+        result = m_pGamePad->GetTriggerIsDown(nBtn, 3);
       break;
   }
   return result;
@@ -303,16 +315,28 @@ bool CInputManager::IsDownUp(INPUT_DEVICE_TYPE idType, uint32 nBtn) {
       result = m_pKB->IsDownUp(nBtn);
       break;
     case IDV_GAMEPAD1:
-      result = m_pGamePad->IsDownUp(nBtn, 0);
+      if (nBtn != 7 && nBtn != 9)
+        result = m_pGamePad->IsDownUp(nBtn, 0);
+      else
+        result = m_pGamePad->GetTriggerIsDownUp(nBtn, 0);
       break;
     case IDV_GAMEPAD2:
-      result = m_pGamePad->IsDownUp(nBtn, 1);
+      if (nBtn != 7 && nBtn != 9)
+        result = m_pGamePad->IsDownUp(nBtn, 1);
+      else
+        result = m_pGamePad->GetTriggerIsDownUp(nBtn, 1);
       break;
     case IDV_GAMEPAD3:
-      result = m_pGamePad->IsDownUp(nBtn, 2);
+      if (nBtn != 7 && nBtn != 9)
+        result = m_pGamePad->IsDownUp(nBtn, 2);
+      else
+        result = m_pGamePad->GetTriggerIsDownUp(nBtn, 2);
       break;
     case IDV_GAMEPAD4:
-      result = m_pGamePad->IsDownUp(nBtn, 3);
+      if (nBtn != 7 && nBtn != 9)
+        result = m_pGamePad->IsDownUp(nBtn, 3);
+      else
+        result = m_pGamePad->GetTriggerIsDownUp(nBtn, 3);
       break;
   }
   return result;
@@ -331,16 +355,28 @@ bool CInputManager::IsUpDown(INPUT_DEVICE_TYPE idType, uint32 nBtn) {
       result = m_pKB->IsUpDown(nBtn);
       break;
     case IDV_GAMEPAD1:
-      result = m_pGamePad->IsUpDown(nBtn, 0);
+      if (nBtn != 7 && nBtn != 9)
+        result = m_pGamePad->IsUpDown(nBtn, 0);
+      else
+        result = m_pGamePad->GetTriggerIsUpDown(nBtn, 0);
       break;
     case IDV_GAMEPAD2:
-      result = m_pGamePad->IsUpDown(nBtn, 1);
+      if (nBtn != 7 && nBtn != 9)
+        result = m_pGamePad->IsUpDown(nBtn, 1);
+      else
+        result = m_pGamePad->GetTriggerIsUpDown(nBtn, 1);
       break;
     case IDV_GAMEPAD3:
-      result = m_pGamePad->IsUpDown(nBtn, 2);
+      if (nBtn != 7 && nBtn != 9)
+        result = m_pGamePad->IsUpDown(nBtn, 2);
+      else
+        result = m_pGamePad->GetTriggerIsUpDown(nBtn, 2);
       break;
     case IDV_GAMEPAD4:
-      result = m_pGamePad->IsUpDown(nBtn, 3);
+      if (nBtn != 7 && nBtn != 9)
+        result = m_pGamePad->IsUpDown(nBtn, 3);
+      else
+        result = m_pGamePad->GetTriggerIsUpDown(nBtn, 3);
       break;
   }
   return result;
@@ -451,5 +487,3 @@ float CInputManager::GetGamePadRightTriggerDelta(INPUT_DEVICE_TYPE device) {
       return 0.f;
   }
 }
-
-
