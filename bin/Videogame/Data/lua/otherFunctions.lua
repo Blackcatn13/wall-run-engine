@@ -249,5 +249,9 @@ function reset_game()
 	--gui_manager:set_visible_gui_element("VidesGUI", true)
 	set_visible_gui_elements(true)
 	coreInstance:trace("Game Reset")
+	local emitter = particle_manager:get_resource("DustPikyEmitter")
+	if emitter:get_visible() == true then
+		emitter:set_visible(false)
+	end
 end
 
