@@ -71,7 +71,7 @@ void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
     //m_PlatorformActor->MoveGlobalPosition(m_Position);
     //   Vect3f vel = m_PlatorformActor->GetLinearVelocity();
     //m_Actor->SetGlobalPosition(m_Position);
-	m_Actor->SetGlobalPosition(m_Position - l_MargenInferiorFisicas);
+    m_Actor->SetGlobalPosition(m_Position - l_MargenInferiorFisicas);
     //EUserDataFlag hit = m_PhysicController->GetUserData()->GetFlags();
     //m_PlatorformActor->AddVelocityAtPos(direction.Normalize(), Vect3f(-1.0f, .0f, .0f), 3.0f);
     // m_PhysicController->Move(direction.Normalize() * m_Speed / 100, dt);
@@ -214,7 +214,7 @@ void CMovingPlatform::Update(float ElapsedTime) {
 
 
 
-bool CMovingPlatform::isAround(Vect3f vector1, Vect3f vector2) {
+/*bool CMovingPlatform::isAround(Vect3f vector1, Vect3f vector2) {
   float l_margenx = GetPhysicsSize().x + 0.5f;
   float l_margenz = GetPhysicsSize().z + 0.5f;
   float l_margeny = GetPhysicsSize().y + 1.5f;
@@ -223,4 +223,4 @@ bool CMovingPlatform::isAround(Vect3f vector1, Vect3f vector2) {
     return true;
   else
     return false;
-}
+}*/

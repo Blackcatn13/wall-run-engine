@@ -136,10 +136,10 @@
 	<platform name="Plataforma_Fragil" core="Plataforma_Fragil" type="breakable" pos="555.813782 13.231201 -150.015015" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="5.20181 0.599147 5.0945" layer="breakable" trigger_name="Break1" room="4"/>
 	<mesh_instance name="Plataforma01" core="Plataforma01" pos="564.250122 20.360819 -84.002731" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="4"/>
 	<mesh_instance name="Plataforma02" core="Plataforma02" pos="564.209717 16.348318 -115.103210" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="4"/>
-	<platform name="MovingHand003" core="Plataforma0er3" phisic_size="7.0 0.4 2.6" type="moving" speed= "2"  pos="559.129456 15.005418 -131.753769" yaw="-1.74846e-007"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms"  room="4">
+	<!--<platform name="MovingHand003" core="Plataforma0er3" phisic_size="7.0 0.4 2.6" type="moving" speed= "2"  pos="559.129456 15.005418 -131.753769" yaw="-1.74846e-007"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms"  room="4">
 		<wp pos="552.129456 15.005418 -131.753769" />
 		<wp pos="561.129456 15.005418 -131.753769" />
-	</platform>
+	</platform>-->
 
 	<mesh_instance name="Box043" core="Box043" pos="-394.223999 -5.056717 -648.276245" yaw="-1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 	<mesh_instance name="Box0001" core="Box0001" pos="-344.127625 -33.909435 -648.276245" yaw="-1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
@@ -847,55 +847,63 @@
 	<mesh_instance name="Sala_7_ColumnaA_008" core="Sala_7_ColumnaA_008" pos="541.348755 9.042343 -627.706482" yaw="0.0" pitch="0.0" roll="0.0" scale="0.78324 0.524658 0.815911" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_7_ColumnaA_010" core="Sala_7_ColumnaA_010" pos="533.643616 11.151215 -637.376465" yaw="0.0" pitch="0.0" roll="0.0" scale="0.78324 0.5488 0.815911" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_7_ColumnaA_011" core="Sala_7_ColumnaA_011" pos="533.643616 11.151215 -649.267761" yaw="0.0" pitch="0.0" roll="0.0" scale="0.78324 0.5488 0.815911" visible="true" room="6" layer="solid"/>
-	<platform name="PlataformaMovil001_1" core="PlataformaMovil001_1" type="moving" pos="546.684998 12.102295 -406.656494" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="6" speed="2">
-		<wp pos="566.928 12.102 -406.656"/>
-		<wp pos="566.928 12.102 426.899"/>
-		<wp pos="546.685 12.102 -426.899"/>
-		<wp pos="546.685 12.102 -406.656"/>
+	
+	
+	
+	<platform name="MovingHand003" core="Plataforma0er3" phisic_size="7.0 0.4 2.6" type="moving" speed= "2"  pos="510.109070 11.007496 0.234039" yaw="-1.74846e-007"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms"  room="3">
+		<wp pos="510.109070 11.007496 3.234039"/>
+		<wp pos="500.109070 11.007496 3.234039"/>
 	</platform>
-	<platform name="PlataformaMovil001_2" core="PlataformaMovil001_2" type="moving" pos="566.927979 12.102295 -406.656494" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="6" speed="2">
-		<wp pos="566.928 12.102 -426.899"/>
-		<wp pos="546.685 12.102 -426.899"/>
-		<wp pos="546.685 12.102 -406.656"/>
-		<wp pos="566.928 12.102 -426.899"/>
-	</platform>
-	<platform name="PlataformaMovil001_3" core="PlataformaMovil001_3" type="moving" pos="566.927979 12.102295 -426.898987" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="6" speed="2">
-		<wp pos="546.685 12.102 -426.899"/>
-		<wp pos="546.685 12.102 -406.656"/>
+	
+	<platform name="PlataformaMovil001_1" core="PlataformaMovil001_1" type="moving" pos="546.685 12.102 -406.656" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="6.42632 1.749243 6.0015" layer="mov_platforms" room="6" speed="2">
 		<wp pos="566.928 12.102 -406.656"/>
 		<wp pos="566.928 12.102 -426.899"/>
+		<wp pos="546.685 12.102 -426.899"/>
+		<wp pos="546.685 12.102 -406.656"/>
 	</platform>
-	<platform name="PlataformaMovil001_4" core="PlataformaMovil001_4" type="moving" pos="546.684998 12.102295 -426.898987" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="6" speed="2">
+	<platform name="PlataformaMovil001_2" core="PlataformaMovil001_2" type="moving" pos="566.928 12.102 -406.656" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="6" speed="2">
+		<wp pos="566.928 12.102 -426.899"/>
+		<wp pos="546.685 12.102 -426.899"/>
 		<wp pos="546.685 12.102 -406.656"/>
+		<wp pos="566.928 12.102 -406.656"/>
+	</platform>
+	<platform name="PlataformaMovil001_3" core="PlataformaMovil001_3" type="moving" pos="566.928 12.102 -426.899" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="6" speed="2">
+		<wp pos="546.685 12.102 -426.899"/>
 		<wp pos="546.685 12.102 -406.656"/>
+		<wp pos="566.928 12.102 -406.656"/>
+		<wp pos="566.928 12.102 -426.899"/>
+	</platform>
+	<platform name="PlataformaMovil001_4" core="PlataformaMovil001_4" type="moving" pos="546.685 12.102 -426.899" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="6" speed="2">
+		<wp pos="546.685 12.102 -406.656"/>
+		<wp pos="566.928 12.102 -406.656"/>
 		<wp pos="566.928 12.102 -426.899"/>
 		<wp pos="546.685 12.102 -426.899"/>
 	</platform>
-	<platform name="PlataformaMovil002_001" core="PlataformaMovil002_001" type="moving" pos="546.684998 12.102295 -450.177551" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="6" speed="2">
+	<platform name="PlataformaMovil002_001" core="PlataformaMovil002_001" type="moving" pos="546.685 12.102 -450.178" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="6" speed="2">
 		<wp pos="566.928 12.102 -450.178"/>
 		<wp pos="566.928 12.102 -470.421"/>
 		<wp pos="546.685 12.102 -470.421"/>
 		<wp pos="546.685 12.102 -450.178"/>
 	</platform>
-	<platform name="PlataformaMovil002_002" core="PlataformaMovil002_002" type="moving" pos="566.927734 12.102295 -450.177551" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="6" speed="2">
+	<platform name="PlataformaMovil002_002" core="PlataformaMovil002_002" type="moving" pos="566.928 12.102 -450.178" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="6" speed="2">
 		<wp pos="566.928 12.102 -470.421"/>
 		<wp pos="546.685 12.102 -470.421"/>
 		<wp pos="546.685 12.102 -450.178"/>
 		<wp pos="566.928 12.102 -450.178"/>
 	</platform>
-	<platform name="PlataformaMovil002_003" core="PlataformaMovil002_003" type="moving" pos="566.927734 12.102295 -470.420654" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="6" speed="2">
+	<platform name="PlataformaMovil002_003" core="PlataformaMovil002_003" type="moving" pos="566.928 12.102 -470.421" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="6" speed="2">
 		<wp pos="546.685 12.102 -470.421"/>
-		<wp pos="546.685 12.1 -450.178"/>
-		<wp pos="566.928 12.1 -450.178"/>
-		<wp pos="566.928 12.1 -470.421"/>
+		<wp pos="546.685 12.102 -450.178"/>
+		<wp pos="566.928 12.102 -450.178"/>
+		<wp pos="566.928 12.102 -470.421"/>
 	</platform>
-	<platform name="PlataformaMovil002_004" core="PlataformaMovil002_004" type="moving" pos="546.684998 12.102295 -470.420654" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="6" speed="2">
+	<platform name="PlataformaMovil002_004" core="PlataformaMovil002_004" type="moving" pos="546.685 12.102 -470.421" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="6" speed="2">
 		<wp pos="546.685 12.102 -450.178"/>
 		<wp pos="566.928 12.102 -450.178"/>
 		<wp pos="566.928 12.102 -470.421"/>
 		<wp pos="546.685 12.102 -470.421"/>
 	</platform>
-	<platform name="PlataformaMovil003_001" core="PlataformaMovil003_001" type="moving" pos="558.683105 5.882080 -497.660675" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="6" speed="2">
+	<platform name="PlataformaMovil003_001" core="PlataformaMovil003_001" type="moving" pos="558.683 5.882 -497.661" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="6" speed="2">
 		<wp pos="578.295 5.882 -497.661"/>
 		<wp pos="558.683 5.882 -497.661"/>
 	</platform>
@@ -905,38 +913,38 @@
 	<switch_instance name="Switch003" core="Switch003" pos="559.539856 11.698151 -490.628113" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="1.3 0.6 1.2" room="6" layer="puzzle"/>
 	<door name="Puerta_arriba002" core="Puerta_arriba002" final_position="538.41 16.203 -511.203" speed="3" pos="538.410278 10.001827 -511.203033" yaw="-1.42824" pitch="0.0" roll="0.0" scale="1.0 1.32259 1.0" visible="true" phisic_size="5.0 4.3 1.0" room="6" layer="puzzle"/>
 	<door name="Puerta_abajo002" core="Puerta_abajo002" final_position="538.41 -0.785 -511.203" speed="3" pos="538.410278 5.450565 -511.203033" yaw="-1.43943" pitch="0.0" roll="0.0" scale="1.0 1.29666 1.0" visible="true" phisic_size="5.0 3.2 1.0" room="6" layer="puzzle"/>
-	<platform name="PlataformaMovil004_001" core="PlataformaMovil004_001" type="moving" pos="533.494141 2.980225 -541.993408" yaw="0.0" pitch="0.0" roll="0.0" scale="0.716438 1.0 1.0" visible="true" phisic_size="2.31146 0.749243 3.00153" layer="mov_platforms" room="6" speed="1">
+	<platform name="PlataformaMovil004_001" core="PlataformaMovil004_001" type="moving" pos="533.494 2.98 -541.993" yaw="0.0" pitch="0.0" roll="0.0" scale="0.716438 1.0 1.0" visible="true" phisic_size="2.31146 0.749243 3.00153" layer="mov_platforms" room="6" speed="1">
 		<wp pos="543.706 2.98 -541.993"/>
 		<wp pos="543.706 2.98 -552.205"/>
 		<wp pos="533.494 2.98 -552.205"/>
 		<wp pos="533.494 2.98 -541.993"/>
 	</platform>
-	<platform name="PlataformaMovil004_002" core="PlataformaMovil004_002" type="moving" pos="543.706238 2.980225 -541.993408" yaw="0.0" pitch="0.0" roll="0.0" scale="0.716438 1.0 1.0" visible="true" phisic_size="2.31146 0.749243 3.00153" layer="mov_platforms" room="6" speed="1">
+	<platform name="PlataformaMovil004_002" core="PlataformaMovil004_002" type="moving" pos="543.706 2.98 -541.993" yaw="0.0" pitch="0.0" roll="0.0" scale="0.716438 1.0 1.0" visible="true" phisic_size="2.31146 0.749243 3.00153" layer="mov_platforms" room="6" speed="1">
 		<wp pos="543.706 2.98 -552.205"/>
 		<wp pos="533.494 2.98 -552.205"/>
 		<wp pos="533.494 2.98 -541.993"/>
 		<wp pos="543.706 2.98 -541.993"/>
 	</platform>
-	<platform name="PlataformaMovil004_003" core="PlataformaMovil004_003" type="moving" pos="543.706238 2.980225 -552.205017" yaw="0.0" pitch="0.0" roll="0.0" scale="0.716438 1.0 1.0" visible="true" phisic_size="2.31146 0.749243 3.00153" layer="mov_platforms" room="6" speed="1">
+	<platform name="PlataformaMovil004_003" core="PlataformaMovil004_003" type="moving" pos="543.706 2.98 -552.205" yaw="0.0" pitch="0.0" roll="0.0" scale="0.716438 1.0 1.0" visible="true" phisic_size="2.31146 0.749243 3.00153" layer="mov_platforms" room="6" speed="1">
 		<wp pos="533.494 2.98 -552.205"/>
 		<wp pos="533.494 2.98 -541.993"/>
 		<wp pos="543.706 2.98 -541.993"/>
 		<wp pos="543.706 2.98 -552.205"/>
 	</platform>
-	<platform name="PlataformaMovil004_004" core="PlataformaMovil004_004" type="moving" pos="533.494324 2.980225 -552.205017" yaw="0.0" pitch="0.0" roll="0.0" scale="0.716438 1.0 1.0" visible="true" phisic_size="2.31146 0.749243 3.00153" layer="mov_platforms" room="6" speed="1">
+	<platform name="PlataformaMovil004_004" core="PlataformaMovil004_004" type="moving" pos="533.494 2.98 -552.20" yaw="0.0" pitch="0.0" roll="0.0" scale="0.716438 1.0 1.0" visible="true" phisic_size="2.31146 0.749243 3.00153" layer="mov_platforms" room="6" speed="1">
 		<wp pos="533.494 2.98 -541.993"/>
 		<wp pos="543.706 2.98 -541.993"/>
 		<wp pos="543.706 2.98 -552.205"/>
 		<wp pos="533.494 2.98 -552.205"/>
 	</platform>
-	<platform name="PlataformaMovil005_001" core="PlataformaMovil005_001" type="moving" pos="529.436707 0.027588 -558.798462" yaw="0.0" pitch="0.0" roll="0.0" scale="0.716438 1.0 1.0" visible="true" phisic_size="2.31146 0.749243 3.00153" layer="mov_platforms" room="6" speed="2">
+	<platform name="PlataformaMovil005_001" core="PlataformaMovil005_001" type="moving" pos="529.437 0.028 -558.798" yaw="0.0" pitch="0.0" roll="0.0" scale="0.716438 1.0 1.0" visible="true" phisic_size="2.31146 0.749243 3.00153" layer="mov_platforms" room="6" speed="2">
 		<wp pos="529.437 0.028 -576.347"/>
 		<wp pos="529.437 0.028 -558.798"/>
 	</platform>
-	<platform name="PlataformaMovil005_002" core="PlataformaMovil005_002" type="static" pos="529.436707 0.027588 -576.346802" yaw="0.0" pitch="0.0" roll="0.0" scale="0.716438 1.0 1.0" visible="true" phisic_size="2.31146 0.749243 3.00153" layer="mov_platforms" room="6"/>
-	<platform name="PlataformaMovil006_001" core="PlataformaMovil006_001" type="moving" pos="537.793518 3.036621 -567.873413" yaw="0.0" pitch="0.0" roll="0.0" scale="0.716438 1.0 1.0" visible="true" phisic_size="2.31146 0.749243 3.00153" layer="mov_platforms" room="6" speed="2">
+	
+	<platform name="PlataformaMovil006_001" core="PlataformaMovil006_001" type="moving" pos="537.794 3.037 -567.873" yaw="0.0" pitch="0.0" roll="0.0" scale="0.716438 1.0 1.0" visible="true" phisic_size="2.31146 0.749243 3.00153" layer="mov_platforms" room="6" speed="2">
 		<wp pos="537.794 3.037 -590.37"/>
 		<wp pos="537.794 3.037 -567.873"/>
 	</platform>
-	<platform name="PlataformaMovil006_002" core="PlataformaMovil006_002" type="static" pos="537.793518 3.036621 -590.370422" yaw="0.0" pitch="0.0" roll="0.0" scale="0.716438 1.0 1.0" visible="true" phisic_size="2.31146 0.749243 3.00153" layer="mov_platforms" room="6"/>
+	
 </renderable_objects>

@@ -740,4 +740,7 @@
 	<static_mesh name="PlataformaMovil005_002" filename="Data\level4\meshes\PlataformaMovil005_002.mesh"/>
 	<static_mesh name="PlataformaMovil006_001" filename="Data\level4\meshes\PlataformaMovil006_001.mesh"/>
 	<static_mesh name="PlataformaMovil006_002" filename="Data\level4\meshes\PlataformaMovil006_002.mesh"/>
+	
+	<static_mesh name="SueloGameOver" filename="Data\level4\meshes\SueloGameOver.mesh"/>
+	<static_mesh name="ParedGameOver" filename="Data\level4\meshes\ParedGameOver.mesh"/>
 </static_meshes>
