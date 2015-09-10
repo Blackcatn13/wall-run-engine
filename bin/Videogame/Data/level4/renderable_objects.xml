@@ -221,44 +221,44 @@
 	<mesh_instance name="obstacle" core="obstacle" pos="252.817764 0.841506 11.095692" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="2"/>
 	<mesh_instance name="obstacle023" core="obstacle023" pos="339.923828 0.841506 11.095692" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="2"/>
 	<mesh_instance name="PUNXES005" core="PUNXES005" pos="408.795105 23.127060 -646.017212" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="OBSTACLE006" core="OBSTACLE006" pos="455.531189 25.792391 -646.028870" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="OBSTACLE002" core="OBSTACLE002" pos="293.157898 31.094244 -646.028870" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="OBSTACLE005" core="OBSTACLE005" pos="282.563782 31.094244 -646.028870" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="OBSTACLE001" core="OBSTACLE001" pos="272.278137 31.094244 -646.028870" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
+	<mesh_instance name="OBSTACLE006" core="OBSTACLE006" pos="455.531189 25.792391 -646.028870" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="OBSTACLE002" core="OBSTACLE002" pos="293.157898 31.094244 -646.028870" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="OBSTACLE005" core="OBSTACLE005" pos="282.563782 31.094244 -646.028870" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="OBSTACLE001" core="OBSTACLE001" pos="272.278137 31.094244 -646.028870" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="PUNXES012" core="PUNXES012" pos="197.821167 28.517717 -646.092651" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 	<mesh_instance name="PUNXES008" core="PUNXES008" pos="164.591431 28.517717 -646.092651" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="OBSTACLE003" core="OBSTACLE003" pos="104.904175 31.094244 -646.028870" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
+	<mesh_instance name="OBSTACLE003" core="OBSTACLE003" pos="104.904175 31.094244 -646.028870" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="PUNXES014" core="PUNXES014" pos="318.113708 28.517717 -646.092651" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="PLAT POLY011" core="PLAT POLY011" pos="408.697449 27.261595 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="PLAT POLY003" core="PLAT POLY003" pos="318.331482 32.188210 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="PLAT POLY006" core="PLAT POLY006" pos="197.868835 32.188210 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="PLAT POLY012" core="PLAT POLY012" pos="164.670105 32.188210 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="PLATAFORMA007" core="PLATAFORMA007" pos="121.968758 32.188210 -646.658630" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
+	<mesh_instance name="PLAT POLY011" core="PLAT POLY011" pos="408.697449 27.261595 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6"  layer="solid"/>
+	<mesh_instance name="PLAT POLY003" core="PLAT POLY003" pos="318.331482 32.188210 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="PLAT POLY006" core="PLAT POLY006" pos="197.868835 32.188210 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="PLAT POLY012" core="PLAT POLY012" pos="164.670105 32.188210 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="PLATAFORMA007" core="PLATAFORMA007" pos="121.968758 32.188210 -646.658630" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="PUNXES003" core="PUNXES003" pos="59.336792 28.517717 -646.092651" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 	<mesh_instance name="PUNXES004" core="PUNXES004" pos="44.796387 28.517717 -646.092651" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 	<mesh_instance name="PUNXES009" core="PUNXES009" pos="30.255981 28.517717 -646.092651" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 	<mesh_instance name="PUNXES001" core="PUNXES001" pos="15.715576 28.517717 -646.092651" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="PLATAFORMA008" core="PLATAFORMA008" pos="59.994633 32.188210 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="PLAT POLY009" core="PLAT POLY009" pos="48.906437 34.117783 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="PLATAFORMA009" core="PLATAFORMA009" pos="37.818241 35.907623 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="PLAT POLY001" core="PLAT POLY001" pos="26.730045 34.117783 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="PLATAFORMA001" core="PLATAFORMA001" pos="15.641850 32.188210 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
+	<mesh_instance name="PLATAFORMA008" core="PLATAFORMA008" pos="59.994633 32.188210 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="PLAT POLY009" core="PLAT POLY009" pos="48.906437 34.117783 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="PLATAFORMA009" core="PLATAFORMA009" pos="37.818241 35.907623 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="PLAT POLY001" core="PLAT POLY001" pos="26.730045 34.117783 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="PLATAFORMA001" core="PLATAFORMA001" pos="15.641850 32.188210 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="PUNXES011" core="PUNXES011" pos="-62.416050 19.450396 -646.092651" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 	<mesh_instance name="PUNXES006" core="PUNXES006" pos="-79.798134 19.450396 -646.092651" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="PLAT POLY007" core="PLAT POLY007" pos="-121.280449 16.191813 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="PLAT POLY013" core="PLAT POLY013" pos="-130.973267 17.904886 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="PLAT POLY008" core="PLAT POLY008" pos="-140.568359 19.775610 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="PLAT POLY004" core="PLAT POLY004" pos="-151.780457 18.228872 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="PLAT POLY002" core="PLAT POLY002" pos="-201.277496 20.519407 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="PLAT POLY014" core="PLAT POLY014" pos="-209.339081 23.741446 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="PLAT POLY005" core="PLAT POLY005" pos="-247.713333 -34.637245 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="PLAT POLY010" core="PLAT POLY010" pos="335.044495 32.844997 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
+	<mesh_instance name="PLAT POLY007" core="PLAT POLY007" pos="-121.280449 16.191813 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="PLAT POLY013" core="PLAT POLY013" pos="-130.973267 17.904886 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="PLAT POLY008" core="PLAT POLY008" pos="-140.568359 19.775610 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="PLAT POLY004" core="PLAT POLY004" pos="-151.780457 18.228872 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="PLAT POLY002" core="PLAT POLY002" pos="-201.277496 20.519407 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="PLAT POLY014" core="PLAT POLY014" pos="-209.339081 23.741446 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="PLAT POLY005" core="PLAT POLY005" pos="-247.713333 -34.637245 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="PLAT POLY010" core="PLAT POLY010" pos="335.044495 32.844997 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="PUNXES007" core="PUNXES007" pos="-248.657822 -41.854347 -646.092651" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 	<mesh_instance name="COLUMNA" core="COLUMNA" pos="164.533813 35.402344 -646.053589" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 	<mesh_instance name="PUNXES0123" core="PUNXES0123" pos="-71.107140 23.583359 -648.293823" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="PUNXES010" core="PUNXES010" pos="-88.489220 23.583359 -648.293823" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="Object010" core="Object010" pos="-187.762909 13.448048 -617.342346" yaw="-3.14159" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<mesh_instance name="Object011" core="Object011" pos="-256.295471 -67.028076 -641.460754" yaw="-3.14159" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
+	<mesh_instance name="PUNXES010" core="PUNXES010" pos="-88.489220 23.583359 -648.293823" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="Object010" core="Object010" pos="-187.762909 13.448048 -617.342346" yaw="-3.14159" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6"  layer="solid"/>
+	<mesh_instance name="Object011" core="Object011" pos="-256.295471 -67.028076 -641.460754" yaw="-3.14159" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<animated_model name="CARALLENGUA_01" core="face" pos="304.051270 5.645349 16.930260" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2"/>
 	<animated_model name="CARALLENGUA_002" core="face" pos="360.035675 5.645350 16.930252" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2"/>
 	<platform name="PolyPlatform002" core="PolyPlatform002" type="poly" pos="557.900879 2.798659 -53.174576" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="5.19568 2.86906 2.5697" layer="poly" final_position="557.901 9.3701 -53.175" direction="0 1 0" time_out="3" speed="5" light="" activation_distance="10"  room="4"/>
@@ -358,7 +358,7 @@
 	<mesh_instance name="Pixelite Blau004" core="Pixelite Blau001" pos="511.478699 9.739000 7.784743" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="3" layer="collectible" emitter="PixeliteBlue004Emitter" emitter_offset="0.0 0.0 0.0"/>
 	<mesh_instance name="Pixelite Blau005" core="Pixelite Blau001" pos="508.197815 9.739000 -13.042528" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="3" layer="collectible" emitter="PixeliteBlue005Emitter" emitter_offset="0.0 0.0 0.0"/>
 	<mesh_instance name="Pixelite Blau006" core="Pixelite Blau001" pos="531.147034 9.739000 -11.971483" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="3" layer="collectible" emitter="PixeliteBlue006Emitter" emitter_offset="0.0 0.0 0.0"/>
-	<mesh_instance name="Collectible1" core="Collectible1" pos="505.540405 9.283447 -2.339123" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" room="3" layer="collectible"/>
+	<mesh_instance name="Collectible1" core="Collectible1" pos="505.540405 9.283447 -2.339123" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="r" room="3" layer="collectible"/>
 	<door name="Puerta_abajo" core="Puerta_abajo" final_position="539.615845 5.070041 -1.622209" speed="3" pos="539.615845 10.870041 -1.622209" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="1 2.6 4.0" room="3" layer="puzzle"/>
 	<door name="Puerta_arriba" core="Puerta_arriba" final_position="539.615845 19.180225 -1.622209" speed="3" pos="539.615845 14.380225 -1.622209" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="1 3 4.0" room="3" layer="puzzle"/>
 	<mesh_instance name="Collectible2" core="Collectible1" pos="553.567322 21.407177 -96.786362" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" room="4" layer="collectible"/>
@@ -620,7 +620,7 @@
 	<mesh_instance name="Sala_7_Esmeralda_007" core="Sala_7_Esmeralda_007" pos="474.597229 24.121017 -620.149658" yaw="0.0" pitch="0.0" roll="0.278754" scale="0.227469 0.227469 0.227469" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_7_PedraPetita_004" core="Sala_7_PedraPetita_004" pos="460.630981 24.644638 -621.151184" yaw="0.654352" pitch="-0.102335" roll="-0.106908" scale="0.442919 0.442919 0.442919" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_7_PedraPetita_005" core="Sala_7_PedraPetita_005" pos="449.048889 25.684982 -621.151184" yaw="0.667924" pitch="0.218475" roll="0.22512" scale="0.442919 0.442919 0.442919" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_7_Roca_014" core="Sala_7_Roca_014" pos="375.948730 23.760262 -642.281128" yaw="-1.59951" pitch="0.0" roll="0.0" scale="0.649913 0.469549 0.649913" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="Sala_7_Roca_014" core="Sala_7_Roca_014" pos="375.948730 23.760262 -658.584" yaw="-1.59951" pitch="0.0" roll="0.0" scale="0.649913 0.469549 0.649913" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_7_Roca_015" core="Sala_7_Roca_015" pos="435.572510 12.490219 -613.316589" yaw="2.14451" pitch="-0.0329876" roll="0.201531" scale="1.18297 0.874747 1.97891" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_7_Esmeralda_009" core="Sala_7_Esmeralda_009" pos="450.028717 21.729660 -617.343506" yaw="-0.147851" pitch="-0.298534" roll="0.0678992" scale="0.227469 0.227469 0.227469" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_7_Esmeralda_010" core="Sala_7_Esmeralda_010" pos="443.469238 23.215134 -617.343506" yaw="-0.185756" pitch="-0.229935" roll="-0.200343" scale="0.227469 0.227469 0.227469" visible="true" room="6" layer="solid"/>
