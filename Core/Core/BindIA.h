@@ -69,12 +69,12 @@ void RegisterAI() {
     .property("m_ProjectileHitbox", &CAIController::getProjectileHitbox,  &CAIController::setProjectileHitbox)
 
     .def("move", &CAIController::Move)
-    .def("move_to", &CAIController::MoveTo)
-    .def("rotate_or_move", &CAIController::RotateOrMove)
-    .def("rotate_yaw", &CAIController::RotateYaw)
+    //.def("move_to", &CAIController::MoveTo)
+    //.def("rotate_or_move", &CAIController::RotateOrMove)
+    //.def("rotate_yaw", &CAIController::RotateYaw)
     .def("get_angle_diff", &CAIController::getAngleDiff)
     .def("move_to_position", &CAIController::MoveToPosition)
-    .def("rotate_renderable", &CAIController::RotateRenderable)
+    //.def("rotate_renderable", &CAIController::RotateRenderable)
     .def("updtate_projectile_position",  &CAIController::UpdtateProjectilePosition)
   ];
 

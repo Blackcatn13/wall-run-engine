@@ -31,28 +31,28 @@ function check_attack (_enemy)
 	return false
 end
 
-function move_enemy(ElapsedTime, _point, Enemy)
+function move_enemy(ElapsedTime, _point, Enemy, height)
 	if player_controller.m_is3D == true then
-		move_to(Enemy, ElapsedTime, _point)
+		move_to(Enemy, ElapsedTime, _point, height)
 	else
-		rotate_or_move(Enemy, ElapsedTime, _point)
+		rotate_or_move(Enemy, ElapsedTime, _point, height)
 	end
 end
 
 
-function move_to(_enemy, ElapsedTime, _point)
+function move_to(_enemy, ElapsedTime, _point, height)
 	--if _point:distance(_enemy:get_position()) >= 2 then
 		rotate_yaw (_enemy, ElapsedTime, _point)
 		-- si no es estatico
 		if _enemy:is_static() == false then
 			_enemy.m_PhysicController:move(Vect3f(1, 0, 0):rotate_y(_enemy:get_yaw()) * _enemy.m_Speed * ElapsedTime, ElapsedTime)
-			move_enemy_renderable(_enemy)	
+			move_enemy_renderable(_enemy, height)	
 		end
 	--end
 end
 
 
-function rotate_or_move(_enemy, ElapsedTime, _point)
+function rotate_or_move(_enemy, ElapsedTime, _point, height)
 	--if _point:distance(_enemy:get_position()) >= 2 then
 		local direction = Vect3f(_point - _enemy:get_position())
 		direction = direction:normalize(1.0)
@@ -63,15 +63,16 @@ function rotate_or_move(_enemy, ElapsedTime, _point)
 		else
 			if _enemy:is_static() == false then
 				_enemy.m_PhysicController:move(direction * _enemy.m_Speed  * ElapsedTime, ElapsedTime)
-				move_enemy_renderable(_enemy)
+				move_enemy_renderable(_enemy, height)
 			end
 		end
 	--end
 end
 
-function move_enemy_renderable(_enemy)
+function move_enemy_renderable(_enemy, height)
 	local l_position = _enemy.m_PhysicController:get_position()
 	_enemy:set_position(l_position)
+	l_position.y = l_position.y - height;
 	if _enemy.m_RenderableObject ~= nil then
 		_enemy.m_RenderableObject:set_position(l_position)
 	end		

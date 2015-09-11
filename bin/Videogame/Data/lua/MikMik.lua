@@ -1,18 +1,20 @@
 --local min_player_distance = 49
 local base_yaw = math.pi/2
-local flySpeed = 20;
+local flySpeed = 10;
 local flyInclination = 3;
 local flyDecay = 0.1;
-local visibleTime = 0.4;
+local visibleTime = 0.2;
+local MikHeight = 0.7;
 
 function mikmik_enter_stopped(name)
 	--local enemy = enemy_manager:get_enemy(name)
 	--currentwp = wp1
---coreInstance:trace("Entro y Estoy parado")
+	coreInstance:trace("Entro y Estoy parado: " .. name)
 	local enemy = enemy_manager:get_enemy(name)
 	enemy.m_CurrentTime = 0
 	enemy.m_RenderableObject:blend_cycle(0,1,0);
 	exclamation = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter2)
+	move_enemy_renderable(enemy, MikHeight);
 	if exclamation ~= nil then
 		exclamation:set_visible(true)
 		exclamation.m_FireParticles = true;
@@ -34,6 +36,7 @@ function mikmik_update_stopped(ElapsedTime, doComprobation, name)
 				
 	if enemy ~= nil then
 		exclamation = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter2)
+		move_enemy_renderable(enemy, MikHeight);
 		if exclamation ~= nil then
 			if (exclamation:get_visible() == true) then
 				exclamation:set_visible(false)
@@ -86,6 +89,7 @@ end
 function mikmik_enter_moving(name)
 	local enemy = enemy_manager:get_enemy(name)
 	enemy.m_RenderableObject:blend_cycle(1,1,0.2);
+	move_enemy_renderable(enemy, MikHeight);
 	return 0;
 end
 
@@ -104,7 +108,7 @@ function mikmik_update_moving(ElapsedTime, doComprobation, name)
 			enemy.m_CurrentWp = enemy:get_next_wp()
 		end
 		
-		move_enemy(ElapsedTime, enemy.m_CurrentWp, enemy)
+		move_enemy(ElapsedTime, enemy.m_CurrentWp, enemy, MikHeight)
 		
 		local temp_zone = enemy.m_Zone
 		if temp_zone == enemy.m_RenderableObject.m_Room then
@@ -202,8 +206,8 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 			else
 				enemy.m_visibleTime = enemy.m_visibleTime + ElapsedTime;
 				exclamation.m_vPos = enemy.m_RenderableObject:get_position() + enemy.m_RenderableObject.m_EmitterOffset2;
-				coreInstance:trace(tostring(enemy.m_visibleTime));
-				coreInstance:trace("Moving billboard?");
+				--coreInstance:trace(tostring(enemy.m_visibleTime));
+				--coreInstance:trace("Moving billboard?");
 			end
 		end
 	
@@ -224,7 +228,7 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 			
 			if player.is_hit == false and tostring(temp_zone) == tostring(player.zone) then
 				if (player.on_air == false) or (player.on_air == true and player_distance > 2) then
-					move_enemy(ElapsedTime, player_position, enemy) -- en caso de no ser estatico
+					move_enemy(ElapsedTime, player_position, enemy, MikHeight) -- en caso de no ser estatico
 				end
 			end
 			
@@ -322,8 +326,8 @@ function mikmik_update_take_damage(ElapsedTime, doComprobation, name)
 	if enemy.m_time_to_fly == true then
 		local auxVec = enemy.m_flyVec * flySpeed;
 		local isGrounded = enemy.m_PhysicController:move(auxVec * ElapsedTime, ElapsedTime);
-		move_enemy_renderable(enemy);
-		if isGrounded == true or enemy.m_CurrentTime > 3 then
+		move_enemy_renderable(enemy, MikHeight);
+		if isGrounded == true or enemy.m_CurrentTime > 1 then
 			enemy.m_time_to_fly = false;
 			enemy.m_flyVec = Vect3f(0,0,0);
 		else
@@ -382,7 +386,7 @@ function mikmik_update_dead(ElapsedTime, doComprobation, name)
 				emitter.m_vPos = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_EmitterOffset
 				emitter.m_FireParticles = true 
 			end
-			if enemy.m_CurrentTime > 0.5 then
+			if enemy.m_CurrentTime > 0.2 then
 				enemy.m_RenderableObject.m_Printable=false
 				local dead_pos = enemy.m_PhysicController:get_position()
 				dead_pos.y = dead_pos.y + 1000

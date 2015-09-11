@@ -330,7 +330,7 @@ function pumpum_update_take_damage(ElapsedTime, doComprobation, name)
 	if enemy.m_time_to_fly == true then
 		local auxVec = enemy.m_flyVec * flySpeed;
 		local isGrounded = enemy.m_PhysicController:move(auxVec * ElapsedTime, ElapsedTime);
-		move_enemy_renderable(enemy);
+		move_enemy_renderable(enemy, 0.5);
 		if isGrounded == true or enemy.m_CurrentTime > 3 then
 			enemy.m_time_to_fly = false;
 			enemy.m_flyVec = Vect3f(0,0,0);
