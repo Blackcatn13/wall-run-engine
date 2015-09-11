@@ -28,9 +28,9 @@
 		<Instance size="2.0 2.0" position="581.711 22.7652 -343.333"/>
 	</instanced_billboard>
 	
-	<instanced_billboard name="lava" billboards="1">
+	<!--<instanced_billboard name="lava" billboards="1">
 		<Texture name="./Data/g_Textures/Lava_test1.jpg"/>
 		<Instance size="5 10" position="548.612 5.473 -123.347"/>
-	</instanced_billboard>
+	</instanced_billboard>-->
 
 </billboards>

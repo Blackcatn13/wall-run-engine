@@ -26,7 +26,7 @@ TGBUFFER_TEXTURED1_VERTEX_PS GBufferVS(VertexVS_TTEXTURE_NORMAL_VERTEX IN){
 	OUT.Normal = normalize(mul(IN.Normal,(float3x3)g_WorldMatrix));
 	OUT.WorldPosition = OUT.HPosition;
 	OUT.UV1 = IN.UV;
-	OUT.UV1.x = OUT.UV1.x + (g_Tick * scrollSpeeds.z);
+	OUT.UV1.y = OUT.UV1.y - (g_Tick * scrollSpeeds.z);
     return OUT;
 }
 

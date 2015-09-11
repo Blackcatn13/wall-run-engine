@@ -135,8 +135,8 @@
 		
 		<set_pool_renderable_objects_technique pool="fire_billboard_pool"/>
 		<billboard_render billboard="billboard001"/>
-		<set_pool_renderable_objects_technique pool="lava_billboard_pool"/>
-		<billboard_render billboard="lava"/>
+		<!--<set_pool_renderable_objects_technique pool="lava_billboard_pool"/>
+		<billboard_render billboard="lava"/>-->
 		<set_pool_renderable_objects_technique pool="particles_pool"/>
 		<particle_render/>
 		<disable_alpha_blend />
