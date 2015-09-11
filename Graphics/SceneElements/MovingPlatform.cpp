@@ -105,7 +105,7 @@ void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
                              Vect3f(0, -1, 0), 0xffffffff, info);
 
       //Intentando arreglar que al saltar debajado de la plataforma el personaje se queda incrustado
-      if (hit != NULL && hit->getName().substr(0, 6) == "Moving"/*"Player"*/ && info.m_fDistance <= 0.4) { //Carlos: Cambio "Moving" por "Player" xq por alguna razón dejaba de moverse con la plataforma
+      if (hit != NULL && /*hit->getName().substr(0, 6) == "Moving" /*"Player"*/hit->GetMyCollisionGroup() == ECG_SCENE_ELEMENTS && info.m_fDistance <= 0.4) { //Carlos: Cambio "Moving" por "Player" xq por alguna razón dejaba de moverse con la plataforma
         PLAYC->getPhysicController()->Move(direction.Normalize() * m_Speed * dt / 1.0, dt);
         PhysicsApplied = true;
       }

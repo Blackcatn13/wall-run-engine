@@ -41,6 +41,7 @@ CSceneElement::CSceneElement(const CXMLTreeNode &node, bool hasRigidBody)
     m_PhysicsSize(node.GetVect3fProperty("phisic_size", v3fZERO)),
     m_HasRigidBody(hasRigidBody),
     m_HasPhisicMesh( node.GetBoolProperty("use_phisics_mesh", false)) {
+
 }
 
 CSceneElement::~CSceneElement () {
@@ -90,6 +91,7 @@ void CSceneElement::InsertPhisic(Vect3f localPosition) {
       //  PHYSXM->AddPhysicActor(m_ActorAux);
       m_Actor->CreateBody(0.5);
   }
+  m_UserData->SetMyCollisionGroup(ECG_SCENE_ELEMENTS);
   PHYSXM->AddPhysicActor(m_Actor);
 }
 

@@ -136,10 +136,10 @@
 	<platform name="Plataforma_Fragil" core="Plataforma_Fragil" type="breakable" pos="555.813782 13.231201 -150.015015" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="5.20181 0.599147 5.0945" layer="breakable" trigger_name="Break1" room="4"/>
 	<mesh_instance name="Plataforma01" core="Plataforma01" pos="564.250122 20.360819 -84.002731" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="4"/>
 	<mesh_instance name="Plataforma02" core="Plataforma02" pos="564.209717 16.348318 -115.103210" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="4"/>
-	<!--<platform name="MovingHand003" core="Plataforma0er3" phisic_size="7.0 0.4 2.6" type="moving" speed= "2"  pos="559.129456 15.005418 -131.753769" yaw="-1.74846e-007"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms"  room="4">
+	<platform name="MovingHand003" core="Plataforma0er3" phisic_size="7.0 0.4 2.6" type="moving" speed= "2"  pos="559.129456 15.005418 -131.753769" yaw="-1.74846e-007"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms"  room="4">
 		<wp pos="552.129456 15.005418 -131.753769" />
 		<wp pos="561.129456 15.005418 -131.753769" />
-	</platform>-->
+	</platform>
 
 	<mesh_instance name="Box043" core="Box043" pos="-394.223999 -5.056717 -648.276245" yaw="-1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 	<mesh_instance name="Box0001" core="Box0001" pos="-344.127625 -33.909435 -648.276245" yaw="-1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
@@ -848,12 +848,6 @@
 	<mesh_instance name="Sala_7_ColumnaA_010" core="Sala_7_ColumnaA_010" pos="533.643616 11.151215 -637.376465" yaw="0.0" pitch="0.0" roll="0.0" scale="0.78324 0.5488 0.815911" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_7_ColumnaA_011" core="Sala_7_ColumnaA_011" pos="533.643616 11.151215 -649.267761" yaw="0.0" pitch="0.0" roll="0.0" scale="0.78324 0.5488 0.815911" visible="true" room="6" layer="solid"/>
 	
-	
-	
-	<platform name="MovingHand003" core="Plataforma0er3" phisic_size="7.0 0.4 2.6" type="moving" speed= "2"  pos="510.109070 11.007496 0.234039" yaw="-1.74846e-007"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms"  room="3">
-		<wp pos="510.109070 11.007496 3.234039"/>
-		<wp pos="500.109070 11.007496 3.234039"/>
-	</platform>
 	
 	<platform name="PlataformaMovil001_1" core="PlataformaMovil001_1" type="moving" pos="546.685 12.102 -406.656" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="6.42632 1.749243 6.0015" layer="mov_platforms" room="6" speed="2">
 		<wp pos="566.928 12.102 -406.656"/>
