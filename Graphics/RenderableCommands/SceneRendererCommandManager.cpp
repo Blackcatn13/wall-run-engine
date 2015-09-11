@@ -37,6 +37,7 @@
 #include "RenderableCommands\SetTextureInSpecificStageCommand.h"
 #include "RenderableCommands\BillboardRendererCommand.h"
 #include "RenderableCommands\ChangeEffectValueCommand.h"
+#include "RenderableCommands\SetTickCommand.h"
 
 
 #include "Core_Utils/MemLeaks.h"
@@ -243,6 +244,10 @@ void CSceneRendererCommandManager::Load(const std::string &FileName) {
           }
           if (name == "set_effect_value") {
             CChangeEffectValueCommand *l_Command = new CChangeEffectValueCommand(child);
+            toInsert->AddResource(l_Name, l_Command);
+          }
+          if (name == "set_tick") {
+            CSetTickCommand *l_Command = new CSetTickCommand(child);
             toInsert->AddResource(l_Name, l_Command);
           }
         }

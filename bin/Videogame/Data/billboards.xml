@@ -28,24 +28,9 @@
 		<Instance size="2.0 2.0" position="581.711 22.7652 -343.333"/>
 	</instanced_billboard>
 	
-	<instanced_billboard name="exclamationMik001" billboards="1">
-		<Texture name="./Data/g_Textures/Exclamation.png"/>
-		<Instance size="0.5 0.5" position="98.0968 7.323 3.59258"/>
+	<instanced_billboard name="lava" billboards="1">
+		<Texture name="./Data/g_Textures/Lava_test1.jpg"/>
+		<Instance size="5 10" position="548.612 5.473 -123.347"/>
 	</instanced_billboard>
-	<instanced_billboard name="exclamationMik002" billboards="1">
-		<Texture name="./Data/g_Textures/Exclamation.png"/>
-		<Instance size="0.5 0.5" position="98.0968 7.323 3.59258"/>
-	</instanced_billboard>
-	<instanced_billboard name="exclamationMik003" billboards="1">
-		<Texture name="./Data/g_Textures/Exclamation.png"/>
-		<Instance size="0.5 0.5" position="98.0968 7.323 3.59258"/>
-	</instanced_billboard>
-	<instanced_billboard name="exclamationMik004" billboards="1">
-		<Texture name="./Data/g_Textures/Exclamation.png"/>
-		<Instance size="0.5 0.5" position="98.0968 7.323 3.59258"/>
-	</instanced_billboard>
-	<instanced_billboard name="exclamationMik005" billboards="1">
-		<Texture name="./Data/g_Textures/Exclamation.png"/>
-		<Instance size="0.5 0.5" position="98.0968 7.323 3.59258"/>
-	</instanced_billboard>
+
 </billboards>

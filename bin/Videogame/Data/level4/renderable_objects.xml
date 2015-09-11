@@ -17,7 +17,8 @@
 	<layer name="breakable"/>
 	<layer name="glow"/>
 	<layer name="gui_message"/>
-	<layer name="vanishing" />
+	<layer name="vanishing"/>
+	<layer name="lava"/>
 	
 	<mesh_instance name="ARCADA" core="ARCADA" pos="-0.017227 9.222342 0.316050" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
 	<mesh_instance name="CUPULA" core="CUPULA" pos="-0.002787 35.136833 -0.108083" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
@@ -854,4 +855,5 @@
 	<mesh_instance name="Sala_7_ColumnaA_008" core="Sala_7_ColumnaA_008" pos="541.348755 9.042343 -627.706482" yaw="0.0" pitch="0.0" roll="0.0" scale="0.78324 0.524658 0.815911" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_7_ColumnaA_010" core="Sala_7_ColumnaA_010" pos="533.643616 11.151215 -637.376465" yaw="0.0" pitch="0.0" roll="0.0" scale="0.78324 0.5488 0.815911" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_7_ColumnaA_011" core="Sala_7_ColumnaA_011" pos="533.643616 11.151215 -649.267761" yaw="0.0" pitch="0.0" roll="0.0" scale="0.78324 0.5488 0.815911" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="PlaneLava" core="PlaneLava" pos="563.188 8.464 -120.497" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="lava"/>
 </renderable_objects>

@@ -209,6 +209,8 @@ void CLight::BeginRenderEffectManagerShadowMap(CEffect *Effect) {
 void CLight::ReloadRO() {
   m_StaticShadowMapRenderableObjectsManagers.clear();
   m_DynamicShadowMapRenderableObjectsManagers.clear();
+  m_DynamicShadowMapRenderableObjectsManagers.resize(RENDLM->GetSize());
+  m_StaticShadowMapRenderableObjectsManagers.resize(RENDLM->GetSize());
   CRenderableObjectsManager *l_RenderableObjectManager;
   for (int roomNum = 0; roomNum < RENDLM->GetSize(); ++roomNum) {
     for (size_t i = 0; i < renderableDynamicMaps.size(); ++i) {

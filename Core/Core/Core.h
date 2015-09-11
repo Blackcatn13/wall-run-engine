@@ -42,6 +42,7 @@ class CWWSoundManager;
 class CPuzzleManager;
 class CGUIManager;
 class CCollectibleManager;
+class CTickCounter;
 
 #define CCORE			  CCore::GetInstance()
 #define GRAPHM			CCore::GetInstance()->GetGraphicsManager()
@@ -76,6 +77,7 @@ class CCollectibleManager;
 #define PUZZLEM			CCore::GetInstance()->GetPuzzleManager()
 #define GUIM			CCore::GetInstance()->GetGuiManager()
 #define COLM			CCore::GetInstance()->GetCollectibleManager()
+#define TICKC     CCore::GetInstance()->GetTickCounter()
 
 class CCore {
  protected:
@@ -121,6 +123,7 @@ class CCore {
   CWWSoundManager					*m_WWSoundManager;
   CGUIManager						*m_GuiManager;
   CCollectibleManager				*m_CollectibleManager;
+  CTickCounter            *m_TickCounter;
   float								m_ElapsedTime;
 
  public:
@@ -247,6 +250,10 @@ class CCore {
 
   CCollectibleManager *GetCollectibleManager() {
     return m_CollectibleManager;
+  }
+
+  CTickCounter *GetTickCounter() {
+    return m_TickCounter;
   }
 
   GET_SET(std::string, LuaLoadLevelFunc)

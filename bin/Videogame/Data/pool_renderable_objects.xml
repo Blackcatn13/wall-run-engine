@@ -44,6 +44,10 @@
 		<default_technique vertex_type="415" technique="GBufferCal3DTechnique"/>
 		<default_technique vertex_type="531" technique="GBufferCubeMapTechnique"/>
 		<default_technique vertex_type="1087" technique="GBufferRNMTechnique"/>
+	</pool_renderable_object_technique>
+
+	<pool_renderable_object_technique name="generate_deferred_shading_pool_renderable_object_technique_lava">
+		<default_technique vertex_type="19" technique="GBufferDiffuseMapTechniqueLava"/>
 	</pool_renderable_object_technique> 
 
 	<pool_renderable_object_technique name="dummy_test">
@@ -119,7 +123,11 @@
 
 	<pool_renderable_object_technique name="fire_billboard_pool">
         <default_technique vertex_type="8192" technique="FireTechnique"/>
-    </pool_renderable_object_technique>   
+    </pool_renderable_object_technique>
+
+    <pool_renderable_object_technique name="lava_billboard_pool">
+        <default_technique vertex_type="8192" technique="LavaTechnique"/>
+    </pool_renderable_object_technique> 
 
 	<pool_renderable_object_technique name="fade_alpha">
 		<default_technique vertex_type="19" technique="FadeAlphaTechnique"/>

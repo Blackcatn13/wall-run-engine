@@ -20,6 +20,7 @@ class CBillboardManager : public CTemplatedVectorMapManager<CBillboard> {
   void Reload();
   void Update(float ElapsedTime);
   void Render(CGraphicsManager *RM);
+  void Render(CGraphicsManager *RM, const std::string &name);
 };
 
 #endif

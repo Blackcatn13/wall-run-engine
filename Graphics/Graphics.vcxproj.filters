@@ -360,6 +360,9 @@
     <ClCompile Include="RenderableCommands\ChangeEffectValueCommand.cpp">
       <Filter>RenderableCommands</Filter>
     </ClCompile>
+    <ClCompile Include="RenderableCommands\SetTickCommand.cpp">
+      <Filter>RenderableCommands</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
@@ -671,6 +674,9 @@
       <Filter>Cinematics\CinematicElement</Filter>
     </ClInclude>
     <ClInclude Include="RenderableCommands\ChangeEffectValueCommand.h">
+      <Filter>RenderableCommands</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableCommands\SetTickCommand.h">
       <Filter>RenderableCommands</Filter>
     </ClInclude>
   </ItemGroup>

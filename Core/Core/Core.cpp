@@ -34,6 +34,7 @@
 #include "GUI\GUIManager.h"
 #include "Collectibles\CollectibleManager.h"
 #include "SceneElements\PolyPlatform.h"
+#include "Core_Utils\TickCounter.h"
 #ifdef _DEBUG
 #include "Core_Utils\Timer.h"
 #endif
@@ -271,6 +272,12 @@ void CCore::Init(HWND handler) {
 #ifdef _DEBUG
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Creating Tick Counter";
+#endif
+  m_TickCounter = CTickCounter::getInstance();
+#ifdef _DEBUG
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Scprit Manager";
 #endif
   m_ScriptManager->Load(m_Config.LuaPath);
@@ -324,6 +331,7 @@ void CCore::DeInit() {
   CHECKED_DELETE(m_PhysicsManager);
   CHECKED_DELETE(m_CollectibleManager);
   CHECKED_DELETE(m_StaticMeshManager);
+  CHECKED_DELETE(m_TickCounter);
   // m_PlatformsMap->Destroy();
 }
 
@@ -362,6 +370,7 @@ void CCore::Update(float dt) {
     m_CollectibleManager->Update(dt);
     m_CinematicManager->Update(dt);
     m_CameraController->UpdateCinematicCameras(dt);
+    m_TickCounter->Update(dt);
   } else {
     m_ActionToInput->Update();
     m_InputManager->Update();

@@ -63,9 +63,11 @@
 		<set_pool_renderable_objects_technique pool="fade_alpha"/>
 		<render_scene layer="vanishing" active="true"/>
 		<disable_alpha_blend />
-		
+		<set_pool_renderable_objects_technique pool="generate_deferred_shading_pool_renderable_object_technique_lava"/>
+		<set_tick tick="lava" technique="GBufferDiffuseMapTechniqueLava"/>
+		<render_scene layer="lava" active="true"/>
 		<set_pool_renderable_objects_technique pool="generate_deferred_shading_pool_renderable_object_technique_movement"/>
-		<set_effect_value technique="GBufferDiffuseMapTechniqueMovement" value="ChangeUV" time="1"/>
+		<set_effect_value technique="GBufferDiffuseMapTechniqueMovement" value="ChangeUV" time="0.6"/>
 		<render_scene layer="gui_message" active="true"/>
 		<set_pool_renderable_objects_technique pool="generate_deferred_shading_pool_renderable_object_technique"/>
 		<unset_render_target render_target="deferred_multiple_render_target" stencil_buffer="0"/>
@@ -132,7 +134,9 @@
 		<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>
 		
 		<set_pool_renderable_objects_technique pool="fire_billboard_pool"/>
-		<billboard_render/>
+		<billboard_render billboard="billboard001"/>
+		<set_pool_renderable_objects_technique pool="lava_billboard_pool"/>
+		<billboard_render billboard="lava"/>
 		<set_pool_renderable_objects_technique pool="particles_pool"/>
 		<particle_render/>
 		<disable_alpha_blend />

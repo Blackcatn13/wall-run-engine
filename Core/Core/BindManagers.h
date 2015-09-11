@@ -19,6 +19,7 @@
 #include "StaticMeshes\StaticMeshManager.h"
 #include "Renderable\RenderableObjectsLayersManager.h"
 #include "RenderableCommands\SceneRendererCommandManager.h"
+#include "Core_Utils\TickCounter.h"
 
 #include <d3dx9.h>
 #include "Math\Matrix44.h"
@@ -255,6 +256,12 @@ void RegisterManagers() {
     .def("get_enemy", &CEnemyManager::GetEnemy)
     .def("reload_enemies",  &CEnemyManager::ReloadEnemies)
     .def("get_direction_enemy", &CEnemyManager::GetClosestEnemyVector)
+  ];
+  luabind::module(LUA_STATE) [
+    class_<CTickCounter>("CTickCounter")
+    .def(constructor<>())
+    .def("get_instance", &CTickCounter::getInstance)
+    .def("addTick", &CTickCounter::addTick)
   ];
   luabind::module(LUA_STATE) [
     class_<CMapManager<CPuzzle>>("CMapManagerPuzzle")

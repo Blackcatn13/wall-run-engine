@@ -66,6 +66,7 @@ void RegisterCore() {
     // .def("get_log_render", &CCore::GetLogRender)
     .def("exit_game", &CCore::ExitGame)
     .def("get_billboard_manager", &CCore::GetBillboardManager)
+    .def("getTickCounter", &CCore::GetTickCounter)
     .property("m_CameraController", &CCore::GetCameraController, &CCore::SetCameraController)
     .property("m_ElapsedTime", &CCore::GetElapsedTime)
     //.property("m_PlatformsMap", &CCore::GetPlatformsMap)

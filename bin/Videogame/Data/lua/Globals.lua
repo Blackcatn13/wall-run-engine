@@ -20,3 +20,4 @@
 chuky_last_room = 0;
 cinematic_controller = coreInstance:get_cinematic_controller()
 sound_manager = CCoreLuaWrapper().m_CoreInstance:getWWSoundManager()
+CCoreLuaWrapper().m_CoreInstance:getTickCounter():addTick("lava", 0.05, 1000);

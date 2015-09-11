@@ -106,6 +106,9 @@
     <ClCompile Include="Enemies\RunnerEnemy.cpp">
       <Filter>Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Core_Utils\TickCounter.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h">
@@ -227,6 +230,9 @@
     </ClInclude>
     <ClInclude Include="Core\BindParticles.h">
       <Filter>ScriptManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Core_Utils\TickCounter.h">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

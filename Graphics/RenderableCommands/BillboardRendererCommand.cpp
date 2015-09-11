@@ -8,12 +8,16 @@
 #include "Utils\Defines.h"
 
 CBillboardRendererCommand::CBillboardRendererCommand(CXMLTreeNode &atts)
-  : CSceneRendererCommand(atts) {
+  : CSceneRendererCommand(atts)
+  , name(atts.GetPszISOProperty("billboard", "")) {
 }
 
 CBillboardRendererCommand::~CBillboardRendererCommand() {
 }
 
 void CBillboardRendererCommand::Execute(CGraphicsManager &RM) {
-  BILLBM->Render(&RM);
+  if (name != "")
+    BILLBM->Render(&RM, name);
+  else
+    BILLBM->Render(&RM);
 }

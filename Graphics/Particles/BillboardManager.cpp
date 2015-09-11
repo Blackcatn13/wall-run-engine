@@ -65,5 +65,10 @@ void CBillboardManager::Render(CGraphicsManager *RM) {
   }
 }
 
-
-
+void CBillboardManager::Render(CGraphicsManager *GM, const std::string &name) {
+  auto it = m_ResourcesMap.find(name);
+  if (it != m_ResourcesMap.end()) {
+    if (it->second.m_Value->getVisible())
+      it->second.m_Value->Render(GM);
+  }
+}

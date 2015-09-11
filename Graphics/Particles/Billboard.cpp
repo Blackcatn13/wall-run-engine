@@ -92,7 +92,7 @@ void CBillboard::Render(CGraphicsManager *GM) {
 
 
 void CBillboard::Update(float ElapsedTime) {
-  m_tick += 0.05f;
+  m_tick += 0.05f * ElapsedTime;
   if (m_tick >= 1000.f)
     m_tick = 0.f;
 }

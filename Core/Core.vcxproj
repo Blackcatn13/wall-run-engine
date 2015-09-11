@@ -35,6 +35,7 @@
     <ClCompile Include="Core\ScriptManager.cpp" />
     <ClCompile Include="Core_Utils\LogRender.cpp" />
     <ClCompile Include="Core_Utils\MemLeaks.cpp" />
+    <ClCompile Include="Core_Utils\TickCounter.cpp" />
     <ClCompile Include="Core_Utils\Timer.cpp" />
     <ClCompile Include="Enemies\BossEnemy.cpp" />
     <ClCompile Include="Enemies\EasyEnemy.cpp" />
@@ -77,6 +78,7 @@
     <ClInclude Include="Core\ScriptManager.h" />
     <ClInclude Include="Core_Utils\LogRender.h" />
     <ClInclude Include="Core_Utils\MemLeaks.h" />
+    <ClInclude Include="Core_Utils\TickCounter.h" />
     <ClInclude Include="Core_Utils\Timer.h" />
     <ClInclude Include="Enemies\BossEnemy.h" />
     <ClInclude Include="Enemies\EasyEnemy.h" />

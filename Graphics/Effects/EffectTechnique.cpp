@@ -140,7 +140,7 @@ bool CEffectTechnique::BeginRender() {
     l_Effect->SetMatrix(m_Effect->GetViewToLightProjectionMatrixParameter(), &l_ViewToLightProjectionMatrix.GetD3DXMatrix());
   }
   if (m_UseTime) {
-    l_Effect->SetFloat(m_Effect->GetTimeParameter(), rand() / 1000.0f);
+    l_Effect->SetFloat(m_Effect->GetTimeParameter(), CCORE->GetElapsedTime());
   }
   if (m_UseTick) {
     l_Effect->SetFloat(m_Effect->GetTickParameter(), m_tick);
