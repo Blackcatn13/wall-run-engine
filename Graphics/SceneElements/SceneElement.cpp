@@ -27,7 +27,8 @@ CSceneElement::CSceneElement(std::string switchName, std::string coreName, bool 
     m_Room(0),
     m_Fsm(NULL),
     m_HasRigidBody(hasRigidBody),
-    m_HasPhisicMesh(hasPhisicMesh) {
+    m_HasPhisicMesh(hasPhisicMesh),
+    m_FirstTime(true) {
 }
 
 CSceneElement::CSceneElement(const CXMLTreeNode &node, bool hasRigidBody)
@@ -37,10 +38,12 @@ CSceneElement::CSceneElement(const CXMLTreeNode &node, bool hasRigidBody)
     m_UserData(NULL),
     m_UserDataAux(NULL),
     m_Fsm(NULL),
+    m_FirstTime(true),
     m_Room(node.GetIntProperty("room", 0)),
     m_PhysicsSize(node.GetVect3fProperty("phisic_size", v3fZERO)),
     m_HasRigidBody(hasRigidBody),
     m_HasPhisicMesh( node.GetBoolProperty("use_phisics_mesh", false)) {
+
 }
 
 CSceneElement::~CSceneElement () {
@@ -71,6 +74,7 @@ void CSceneElement::InsertPhisic(Vect3f localPosition) {
   if (m_HasPhisicMesh) {
     if (PHYSXM->GetSceneCookingMesh()->GetPhysicMeshMap().size() == 0)
       PHYSXM->GetSceneCookingMesh()->LoadFromXML(CCORE->getScenePhisicsFile());
+
     m_Actor->AddMeshFromMap( PHYSXM->GetSceneCookingMesh()->GetPhysicMeshMap(), m_Name);
 
   } else
@@ -82,14 +86,16 @@ void CSceneElement::InsertPhisic(Vect3f localPosition) {
     // m_UserDataAux = new CPhysicUserData(SetUserDataName(nameAux));
     // m_UserDataAux->SetPaint(false);
     //  m_ActorAux = new CPhysicActor(m_UserDataAux);
-    if (m_HasPhisicMesh) {
+    if (!m_HasPhisicMesh) {
+      m_Actor->CreateBody(0.5);
       //  Vect3f newSize = Vect3f(m_PhysicsSize.x - 1, m_PhysicsSize.y - 1, m_PhysicsSize.z - 1);
       //  m_ActorAux->AddBoxSphape(newSize, Vect3f(m_Position.x, m_Position.y - m_PhysicsSize.y, m_Position.z), localPosition);
-    } else
-      //   m_ActorAux->AddBoxSphape(m_PhysicsSize, Vect3f(m_Position.x, m_Position.y - m_PhysicsSize.y, m_Position.z), localPosition);
-      //  PHYSXM->AddPhysicActor(m_ActorAux);
-      m_Actor->CreateBody(0.5);
+    } //else
+    //   m_ActorAux->AddBoxSphape(m_PhysicsSize, Vect3f(m_Position.x, m_Position.y - m_PhysicsSize.y, m_Position.z), localPosition);
+    //  PHYSXM->AddPhysicActor(m_ActorAux);
+
   }
+  m_UserData->SetMyCollisionGroup(ECG_SCENE_ELEMENTS);
   PHYSXM->AddPhysicActor(m_Actor);
 }
 

@@ -45,6 +45,7 @@ void RegisterSceneElements() {
     .def("insert_phisic", &CSceneElement::InsertPhisic)
     .property("m_Actor", &CSceneElement::GetActor)
     .property("m_PhysicsSize", &CSceneElement::GetPhysicsSize)
+    .property("m_FirstTime", &CSceneElement::getFirstTime, &CSceneElement::setFirstTime)
     .def("activate_phisic", &CSceneElement::ActivatePhisic)
     .def("is_around", &CSceneElement::isAround)
     .def("get_fsm", &CSceneElement::getFsm)
@@ -71,6 +72,7 @@ void RegisterSceneElements() {
     .def("add_box_controller", &CMovingPlatform::AddBoxController)
     .property("m_NextWP",  &CMovingPlatform::GetNextWPVector, &CMovingPlatform::SetNextWPVector)
     .property("m_Activated",  &CMovingPlatform::getActivated, &CMovingPlatform::setActivated)
+    .property("m_Direction",  &CMovingPlatform::getDirection, &CMovingPlatform::setDirection)
   ];
 
   luabind::module(LUA_STATE) [

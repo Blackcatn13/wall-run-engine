@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <puzzles>	
-	<puzzle name="puzzle001" lua_function="open_door" min_activated_switches="3" scene_element="door_001" scene_element2="door_002">
-		<switch name="switch_001" />
-		<switch name="switch_002" />
-		<switch name="switch_003" />
+	<puzzle name="puzzle001" lua_function="open_door" min_activated_switches="3" scene_element="Puerta_arriba002" scene_element2="Puerta_arriba002">
+		<switch name="Switch001" />
+		<switch name="Switch002" />
+		<switch name="Switch003" />
 	</puzzle>
 	
 </puzzles>

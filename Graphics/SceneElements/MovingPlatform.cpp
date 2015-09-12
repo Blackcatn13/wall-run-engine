@@ -40,8 +40,9 @@ CMovingPlatform::CMovingPlatform(CXMLTreeNode &node)
       m_WayPointsVector.push_back(l_Wp);
     }
   }
-  m_NextWP = m_WayPointsVector[1];
+  m_NextWP = m_WayPointsVector[0];
   m_Actor->Activate(true);
+  m_Actor->GetUserData()->SetPaint(true);
 }
 
 void CMovingPlatform::AddBoxController(Vect3f size, float slope, float skinwidth, float offset, float gravity) {
@@ -64,21 +65,16 @@ CMovingPlatform::~CMovingPlatform () {
 
 void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
   Vect3f direction = (point - m_Position);
-  float l_MargenInferiorFisicas = 1.0;
+// float l_MargenInferiorFisicas = 0.0;
   direction = direction.Normalize();
+  m_Direction = direction;
   if (point.Distance(m_Position) >= minDistance) {
     m_Position =  m_Position + /*Vect3f(1, 0, 0)*/direction.Normalize() * m_Speed * dt;
-    //m_PlatorformActor->MoveGlobalPosition(m_Position);
-    //   Vect3f vel = m_PlatorformActor->GetLinearVelocity();
-    //m_Actor->SetGlobalPosition(m_Position);
-	m_Actor->SetGlobalPosition(m_Position - l_MargenInferiorFisicas);
-    //EUserDataFlag hit = m_PhysicController->GetUserData()->GetFlags();
-    //m_PlatorformActor->AddVelocityAtPos(direction.Normalize(), Vect3f(-1.0f, .0f, .0f), 3.0f);
-    // m_PhysicController->Move(direction.Normalize() * m_Speed / 100, dt);
-    //  m_Position = m_PhysicController->GetPosition();
-    //Vect3f l_VelPos = m_Position - (Vect3f(GetScale().x / 2, .0f, .0f));
-    //m_PlatorformActor->AddVelocityAtPos(direction.Normalize(), v3fZERO, 10);
-    // m_PlatorformActor->SetLinearVelocity(direction.Normalize() * m_Speed * dt);
+    if (m_HasPhisicMesh)
+      m_Actor->SetGlobalPosition(m_Actor->GetPosition() + direction.Normalize() * m_Speed * dt);
+    else
+      m_Actor->SetGlobalPosition(m_Position /*- l_MargenInferiorFisicas*/);
+    //m_Actor->MoveGlobalPosition(m_Position);
   }
   Vect3f l_playerPosition = PLAYC->GetPosition();
   Vect3f dirRay = (m_Position - l_playerPosition);
@@ -105,12 +101,12 @@ void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
                              Vect3f(0, -1, 0), 0xffffffff, info);
 
       //Intentando arreglar que al saltar debajado de la plataforma el personaje se queda incrustado
-      if (hit != NULL && hit->getName().substr(0, 6) == "Moving"/*"Player"*/ && info.m_fDistance <= 0.4) { //Carlos: Cambio "Moving" por "Player" xq por alguna razón dejaba de moverse con la plataforma
+      if (hit != NULL && /*hit->getName().substr(0, 6) == "Moving" /*"Player"*/hit->GetMyCollisionGroup() == ECG_SCENE_ELEMENTS && info.m_fDistance <= 0.4) {
         PLAYC->getPhysicController()->Move(direction.Normalize() * m_Speed * dt / 1.0, dt);
         PhysicsApplied = true;
       }
 
-      if ((PhysicsApplied == false) && (isAround(l_playerPosition, m_Position))) {
+      if ((PhysicsApplied == false) && (!m_HasPhisicMesh && isAround(l_playerPosition, m_Position) || (m_HasPhisicMesh && PLAYC->getisGrounded())) ) {
         Vect3f dirInvertida = -dirRay.Normalize();
         dirInvertida = Vect3f(dirInvertida.x, 0, dirInvertida.z);
         PLAYC->getPhysicController()->Move(dirInvertida * m_Speed * 3 * dt  + direction.Normalize() * m_Speed * dt, dt);
@@ -214,7 +210,7 @@ void CMovingPlatform::Update(float ElapsedTime) {
 
 
 
-bool CMovingPlatform::isAround(Vect3f vector1, Vect3f vector2) {
+/*bool CMovingPlatform::isAround(Vect3f vector1, Vect3f vector2) {
   float l_margenx = GetPhysicsSize().x + 0.5f;
   float l_margenz = GetPhysicsSize().z + 0.5f;
   float l_margeny = GetPhysicsSize().y + 1.5f;
@@ -223,4 +219,4 @@ bool CMovingPlatform::isAround(Vect3f vector1, Vect3f vector2) {
     return true;
   else
     return false;
-}
+}*/
