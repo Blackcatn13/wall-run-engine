@@ -816,7 +816,7 @@
 	<mesh_instance name="Sala_7_Esmeralda_061" core="Sala_7_Esmeralda_061" pos="-102.975418 21.734293 -628.284180" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_7_PedraPlana_011" core="Sala_7_PedraPlana_011" pos="-20.573895 14.854431 -638.703735" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_7_PedraPlana_012" core="Sala_7_PedraPlana_012" pos="-73.833206 13.482910 -637.688232" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_7_PedraPlana_014" core="Sala_7_PedraPlana_014" pos="-188.534302 14.854431 -641.314941" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="Sala_7_PedraPlana_014" core="Sala_7_PedraPlana_014" pos="-188.534302 14.854431 -637.878296" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_7_PedraPlana_015" core="Sala_7_PedraPlana_015" pos="-222.558014 14.854431 -636.808838" yaw="0.0" pitch="0.0" roll="0.0" scale="0.74529 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_7_PedraPetita_019" core="Sala_7_PedraPetita_019" pos="-198.011246 19.665451 -640.532776" yaw="0.83612" pitch="-0.606269" roll="-0.531785" scale="0.529352 0.529352 0.529352" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_7_PedraPetita_020" core="Sala_7_PedraPetita_020" pos="-198.011246 14.686630 -637.144836" yaw="0.782768" pitch="0.460521" roll="0.424264" scale="0.529352 0.529352 0.529352" visible="true" room="6" layer="solid"/>
