@@ -405,6 +405,7 @@ function ChuckyApear(distance)
 			set_chucky_need_to_jump(false)
 			Chucky:m_FSM():newState("Corriendo");
 			Chucky:set_visible(true)
+			inputm:set_game_pad_left_motor_speed(7000, 1);
 		end
 	end
 end
@@ -417,6 +418,7 @@ function ChuckyDesapears()
 		Chucky:move_to_position(pos);
 		Chucky:m_FSM():newState("Parado");
 		Chucky.m_Appeared = false
+		inputm:set_game_pad_left_motor_speed(0, 1);
 		local emitter = particle_manager:get_resource(Chucky.m_RenderableObject.m_ParticleEmitter)
 		local emitter2 = particle_manager:get_resource(Chucky.m_RenderableObject.m_ParticleEmitter2)
 		if emitter ~= nil and emitter2 ~= nil then
