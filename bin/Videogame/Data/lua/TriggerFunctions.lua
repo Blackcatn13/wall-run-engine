@@ -138,7 +138,7 @@ end
 function toogle_switch(trigger_name, puzzle_name)
 	coreInstance:trace("Enter switch")
 	--local player = Player:get_instance()
-	coreInstance:trace(tostring(player.get_controller().m_isJumping))
+	--coreInstance:trace(tostring(player.get_controller().m_isJumping))
 	local puzzle = coreInstance:get_puzzle_manager():get_resource(puzzle_name)
 	local total_switches = puzzle.m_MinActivatedSwitches
 	
@@ -154,6 +154,7 @@ function toogle_switch(trigger_name, puzzle_name)
 					trigger.m_IsSwitched = true
 				--	coreInstance:trace("Trigger activado?" ..tostring(trigger.m_IsSwitched))
 					puzzle.m_ActivatedSwitches = puzzle.m_ActivatedSwitches + 1	
+					coreInstance:trace("Activated Switches: "..tostring(puzzle.m_ActivatedSwitches))
 					local new_position = Vect3f(switch_mesh:get_position().x,switch_mesh:get_position().y - 1,switch_mesh:get_position().z )
 					change_object_position(switch_mesh, new_position)
 				--[[else 
