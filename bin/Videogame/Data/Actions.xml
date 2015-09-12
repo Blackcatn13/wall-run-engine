@@ -179,6 +179,9 @@
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_F5"/>
 		</action>
 		
+		
+		
+		
 		<!--<action name="DestroyActor" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LCTRL"/>
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_P"/>
@@ -312,6 +315,10 @@
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_E"/>
 	    </action>-->
 
+		<action name="TeleportTest6" debug="true">
+			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_I"/>
+		</action>
+		
 		<action name="ResetGame" debug="true">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_R"/>

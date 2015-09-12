@@ -140,7 +140,7 @@ function toogle_switch(trigger_name, puzzle_name)
 	--local player = Player:get_instance()
 	coreInstance:trace(tostring(player.get_controller().m_isJumping))
 	local puzzle = coreInstance:get_puzzle_manager():get_resource(puzzle_name)
-	--local total_switches = puzzle.m_MinActivatedSwitches
+	local total_switches = puzzle.m_MinActivatedSwitches
 	
 	if player ~= nil then
 		--local player_controller = player.get_controller()
@@ -149,12 +149,12 @@ function toogle_switch(trigger_name, puzzle_name)
 			local trigger = trigger_manager:get_resource(trigger_name)
 			--coreInstance:trace("Toogle switch")
 			if trigger ~= nil then		
-				local switch_mesh = get_renderable_object("puzzle",player_controller.m_Room, trigger_name)
+				local switch_mesh = get_renderable_object("puzzle",6, trigger_name)
 				if trigger.m_IsSwitched ~= true then
 					trigger.m_IsSwitched = true
 				--	coreInstance:trace("Trigger activado?" ..tostring(trigger.m_IsSwitched))
 					puzzle.m_ActivatedSwitches = puzzle.m_ActivatedSwitches + 1	
-					local new_position = Vect3f(switch_mesh:get_position().x,switch_mesh:get_position().y - 0.3,switch_mesh:get_position().z )
+					local new_position = Vect3f(switch_mesh:get_position().x,switch_mesh:get_position().y - 2,switch_mesh:get_position().z )
 					change_object_position(switch_mesh, new_position)
 				--[[else 
 					trigger.m_IsSwitched = false
@@ -168,10 +168,10 @@ function toogle_switch(trigger_name, puzzle_name)
 		--end
 	end
 	--coreInstance:trace(tostring(puzzle.m_ActivatedSwitches))
-	--if activated_switches == total_switches then --TODO obtener datos del puzzle en si
-		--coreInstance:trace("all switches activated")
-		--open_door()
-	--end
+	--[[if activated_switches == total_switches then --TODO obtener datos del puzzle en si
+		coreInstance:trace("all switches activated")
+		open_door(puzzle.m_SceneElement, puzzle.m_SceneElement2)
+	end]]
 end
 
 function activate_trigger_update(trigger_name)

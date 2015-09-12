@@ -40,8 +40,9 @@ CMovingPlatform::CMovingPlatform(CXMLTreeNode &node)
       m_WayPointsVector.push_back(l_Wp);
     }
   }
-  m_NextWP = m_WayPointsVector[1];
+  m_NextWP = m_WayPointsVector[0];
   m_Actor->Activate(true);
+  //m_Actor->GetUserData()->SetPaint(true);
 }
 
 void CMovingPlatform::AddBoxController(Vect3f size, float slope, float skinwidth, float offset, float gravity) {
@@ -64,21 +65,16 @@ CMovingPlatform::~CMovingPlatform () {
 
 void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
   Vect3f direction = (point - m_Position);
-  float l_MargenInferiorFisicas = 1.0;
+// float l_MargenInferiorFisicas = 0.0;
   direction = direction.Normalize();
+  m_Direction = direction;
   if (point.Distance(m_Position) >= minDistance) {
     m_Position =  m_Position + /*Vect3f(1, 0, 0)*/direction.Normalize() * m_Speed * dt;
-    //m_PlatorformActor->MoveGlobalPosition(m_Position);
-    //   Vect3f vel = m_PlatorformActor->GetLinearVelocity();
-    //m_Actor->SetGlobalPosition(m_Position);
-    m_Actor->SetGlobalPosition(m_Position - l_MargenInferiorFisicas);
-    //EUserDataFlag hit = m_PhysicController->GetUserData()->GetFlags();
-    //m_PlatorformActor->AddVelocityAtPos(direction.Normalize(), Vect3f(-1.0f, .0f, .0f), 3.0f);
-    // m_PhysicController->Move(direction.Normalize() * m_Speed / 100, dt);
-    //  m_Position = m_PhysicController->GetPosition();
-    //Vect3f l_VelPos = m_Position - (Vect3f(GetScale().x / 2, .0f, .0f));
-    //m_PlatorformActor->AddVelocityAtPos(direction.Normalize(), v3fZERO, 10);
-    // m_PlatorformActor->SetLinearVelocity(direction.Normalize() * m_Speed * dt);
+    if (m_HasPhisicMesh)
+      m_Actor->SetGlobalPosition(m_Actor->GetPosition() + direction.Normalize() * m_Speed * dt);
+    else
+      m_Actor->SetGlobalPosition(m_Position /*- l_MargenInferiorFisicas*/);
+    //m_Actor->MoveGlobalPosition(m_Position);
   }
   Vect3f l_playerPosition = PLAYC->GetPosition();
   Vect3f dirRay = (m_Position - l_playerPosition);
@@ -110,7 +106,7 @@ void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
         PhysicsApplied = true;
       }
 
-      if ((PhysicsApplied == false) && (isAround(l_playerPosition, m_Position))) {
+      if ((PhysicsApplied == false) && (!m_HasPhisicMesh && isAround(l_playerPosition, m_Position) || (m_HasPhisicMesh && PLAYC->getisGrounded())) ) {
         Vect3f dirInvertida = -dirRay.Normalize();
         dirInvertida = Vect3f(dirInvertida.x, 0, dirInvertida.z);
         PLAYC->getPhysicController()->Move(dirInvertida * m_Speed * 3 * dt  + direction.Normalize() * m_Speed * dt, dt);

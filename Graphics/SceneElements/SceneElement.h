@@ -27,6 +27,7 @@ class CSceneElement : public CMeshInstance {
   int m_Room;
   bool m_HasRigidBody;
   bool m_HasPhisicMesh;
+  bool m_FirstTime;
 
  public:
   CSceneElement(std::string switchName, std::string coreName, bool hasRigidBody = false, bool hasPhisicMesh = false);
@@ -48,6 +49,7 @@ class CSceneElement : public CMeshInstance {
   CFSMInstance *getFsm() { return m_Fsm;}
 
   GET_SET(int, Room);
+  GET_SET(bool, FirstTime);
 };
 
 #endif

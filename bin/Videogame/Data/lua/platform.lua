@@ -159,6 +159,14 @@ function mp_enter_stopped(room_name, name)
 	--next_wp = Vect3f(-15,0,-15) 
 	--instance.m_string = "Buscar_next_WP_Plaform"
 	local platform =renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("mov_platforms", room_name):get_resource(name)
+	
+	if name == "Plataforma0er3" and tostring(platform.m_FirstTime) == "true" then
+		local offsetPose = Vect3f(platform.m_Actor:get_position().x +2, platform.m_Actor:get_position().y, platform.m_Actor:get_position().z)
+			coreInstance:trace("Platform position Antes: "..tostring(platform.m_Actor:get_position().x)..", "..tostring(platform.m_Actor:get_position().y)..", "..tostring(platform.m_Actor:get_position().z))
+			platform.m_Actor:set_global_position(offsetPose)
+			coreInstance:trace("Platform position Despues: "..tostring(platform.m_Actor:get_position().x)..", "..tostring(platform.m_Actor:get_position().y)..", "..tostring(platform.m_Actor:get_position().z))
+			platform.m_FirstTime = false
+	end
 	platform:get_fsm():newState("Buscar_next_WP_Plaform")
 	return 0 
 end
@@ -176,6 +184,15 @@ function mp_update_stopped(ElapsedTime,room_name, name)
 	if player_controller.m_Room == room then
 		platform.m_Activated = true
 	end
+	
+	if name == "Plataforma0er3" and tostring(platform.m_FirstTime) == "true" then
+		local offsetPose = Vect3f(platform.m_Actor:get_position().x +2, platform.m_Actor:get_position().y, platform.m_Actor:get_position().z)
+			coreInstance:trace("Platform position Antes: "..tostring(platform.m_Actor:get_position().x)..", "..tostring(platform.m_Actor:get_position().y)..", "..tostring(platform.m_Actor:get_position().z))
+			platform.m_Actor:set_global_position(offsetPose)
+			coreInstance:trace("Platform position Despues: "..tostring(platform.m_Actor:get_position().x)..", "..tostring(platform.m_Actor:get_position().y)..", "..tostring(platform.m_Actor:get_position().z))
+			platform.m_FirstTime = false
+	end
+	
 	platform.m_Activated = true
 	if platform.m_Activated == true then
 		--coreInstance:trace("activa")
@@ -199,10 +216,17 @@ function mp_update_moving(ElapsedTime, room_name, name)
 	local platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("mov_platforms", room_name):get_resource(name)-- modificar para poder pasarlo por parametro
 	if platform ~= nil then
 		local next_wp = platform.m_NextWP
+		
+		--	coreInstance:trace("Platform position: "..tostring(platform.m_Actor:get_position().x)..", "..tostring(platform.m_Actor:get_position().y)..", "..tostring(platform.m_Actor:get_position().z))
+		
+		--if(act2in:do_action_from_lua("MovePlatforms") == true) then
 		platform:move_to_point(ElapsedTime, next_wp, 2)
+		
+		--end
 		--move_platform_to_point(ElapsedTime, next_wp, platform)
 		local current_pos = platform:get_position()
 		local distance_to_point = get_distance_to_point(current_pos, next_wp)
+		
 		if distance_to_point <= 4 then
 			--coreInstance:trace("Destino alcanzado")
 			--instance.m_string = "Parado"

@@ -433,6 +433,10 @@ void CTestGameplay::Update(float dt) {
       PLAYC->SetPosition(Vect3f(-261.73236, -31.524834, -568.39246));
       PLAYC->getPhysicController()->SetPosition(Vect3f(-261.73236, -31.524834, -568.39246));
     }
+    if (ACT2IN->DoAction("TeleportTest6")) {
+      PLAYC->SetPosition(Vect3f(557.271423, 10.894491, -180.357147));
+      PLAYC->getPhysicController()->SetPosition(Vect3f(557.271423, 10.894491, -180.357147));
+    }
     if (ACT2IN->DoAction("ResetGame") && !CCORE->GetGuiManager()->GetIsGameOver()) {
       char l_Text[256];
       _snprintf_s(l_Text, 256, 256, "reset_game(%f)", dt);

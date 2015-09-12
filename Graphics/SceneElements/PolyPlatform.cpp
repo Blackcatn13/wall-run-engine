@@ -148,7 +148,7 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
       CPhysicUserData *hit = CCORE->GetPhysicsManager()->RaycastClosestActor(Vect3f(l_playerPosition.x + dirRayBounding.x,
                              l_playerPosition.y + dirRayBounding.y, l_playerPosition.z + dirRayBounding.z), Vect3f(0, -1, 0), 0xffffffff, info);
       //Intentando arreglar que al saltar debajado de la plataforma el personaje se queda incrustado
-      if (hit != NULL && (hit->getName().substr(0, 4) == "Poly" || hit->getName().substr(0, 4) == "POLY")  && info.m_fDistance <= 1.2) {
+      if (hit != NULL && /*hit->getName().substr(0, 6) == "Moving" /*"Player"*/hit->GetMyCollisionGroup() == ECG_SCENE_ELEMENTS && info.m_fDistance <= 0.4) {
         PLAYC->getPhysicController()->Move(direction.Normalize() * m_Speed * dt, dt);
         PhysicsApplied = true;
       }
@@ -172,7 +172,7 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
       Vect3f dirRayBounding = Vect3f(l_dirRayFixed.x, -l_RadioPhysicsPlayer, l_dirRayFixed.z);
       CPhysicUserData *hit = CCORE->GetPhysicsManager()->RaycastClosestActor(Vect3f(l_playerPosition.x + dirRayBounding.x,
                              l_playerPosition.y + dirRayBounding.y, l_playerPosition.z + dirRayBounding.z), Vect3f(0, -1, 0), 0xffffffff, info);
-      if (hit != NULL && (l_playerPosition.y > (m_Position.y + l_PosicionMinSobrePlat) && (l_playerPosition.y < (m_Position.y + l_PosicionMaxSobrePlat)) && ((hit->getName().substr(0, 4) == "Poly" || hit->getName().substr(0, 4) == "POLY") && info.m_fDistance <= 5.0))) {
+      if (hit != NULL && (l_playerPosition.y > (m_Position.y + l_PosicionMinSobrePlat) && (l_playerPosition.y < (m_Position.y + l_PosicionMaxSobrePlat)) && (hit->GetMyCollisionGroup() == ECG_SCENE_ELEMENTS && info.m_fDistance) && info.m_fDistance <= 5.0)) {
         if (!PLAYC->getisJumping() || PLAYC->getCurrentJumpForce() < 0) {
           PLAYC->setisOnPlatform(0.0);
           Vect3f l_PlayerPosition = PLAYC->getPhysicController()->GetPosition();
