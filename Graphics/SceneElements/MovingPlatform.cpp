@@ -42,7 +42,7 @@ CMovingPlatform::CMovingPlatform(CXMLTreeNode &node)
   }
   m_NextWP = m_WayPointsVector[0];
   m_Actor->Activate(true);
-  m_Actor->GetUserData()->SetPaint(true);
+  //m_Actor->GetUserData()->SetPaint(true);
 }
 
 void CMovingPlatform::AddBoxController(Vect3f size, float slope, float skinwidth, float offset, float gravity) {
