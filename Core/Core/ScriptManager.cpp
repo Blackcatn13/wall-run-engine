@@ -412,6 +412,7 @@ void CScriptManager::RegisterLUAFunctions() {
     .def("reload", & CRenderableObjectsManager::Reload)
     .def("activate_elements", & CRenderableObjectsManager::ActivateElements)
     .def("restore_broken_platforms", &CRenderableObjectsManager::RestoreBrokenPlatforms)
+    .def("reset_puzzle_renderables", &CRenderableObjectsManager::ResetPuzzleRenderables)
 
   ];
 

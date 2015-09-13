@@ -28,6 +28,7 @@ class CRenderableObjectsManager : public CTemplatedVectorMapManager<CRenderableO
   void Reload();
   std::string SetUserDataName(std::string name);
   void RestoreBrokenPlatforms();
+  void ResetPuzzleRenderables();
   void ChangeBetweenLayers(std::string finalLayer);
 };
 

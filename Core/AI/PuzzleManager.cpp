@@ -6,6 +6,7 @@
 #include "TriggerManager\TriggerManager.h"
 #include "TriggerManager\Trigger.h"
 
+
 CPuzzleManager::CPuzzleManager()
   : m_fileName ("") {
 }
@@ -58,4 +59,14 @@ void CPuzzleManager::Update(float dt) {
   for (TMapResource::iterator it = m_Resources.begin(); it != m_Resources.end(); ++it) {
     it->second->Update(dt);
   }
+}
+
+void CPuzzleManager::ResetPuzzleTriggers(std::string puzzleName) {
+  TMapResource::iterator it = m_Resources.find(puzzleName);
+  int l_NumSwitches = it->second->getSwitches().size();
+  for (int i = 0; i < l_NumSwitches; ++i) {
+    it->second->getSwitches()[i]->setIsSwitched(false);
+  }
+  it->second->setActivatedSwitches(0);
+  it->second->setDone(false);
 }

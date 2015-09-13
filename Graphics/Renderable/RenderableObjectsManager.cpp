@@ -291,3 +291,11 @@ void CRenderableObjectsManager::RestoreBrokenPlatforms() {
   }
 }
 
+void CRenderableObjectsManager::ResetPuzzleRenderables() {
+  for (int i = 0;  i < GetResourcesVector().size(); ++i) {
+    CSwitch *l_Switch = (CSwitch *)GetResourcesVector()[i];
+    if (l_Switch->GetPosition() != l_Switch->GetOriginalPosition()) {
+      l_Switch->ResetSwitch();
+    }
+  }
+}

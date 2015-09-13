@@ -274,6 +274,7 @@ void RegisterManagers() {
   luabind::module(LUA_STATE) [
     class_<CPuzzleManager, CMapManager<CPuzzle>>("CPuzzleManager")
     .def(constructor<>())
+    .def("reset_puzzle_triggers", &CPuzzleManager::ResetPuzzleTriggers )
   ];
   luabind::module(LUA_STATE) [
     class_<CWWSoundManager>("CWWSoundManager")
