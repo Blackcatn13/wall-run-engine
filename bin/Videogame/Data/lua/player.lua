@@ -25,8 +25,10 @@ function Player.new()
 	self.score = 0
 	self.stickers = 0
 	self.is_hit = false
-	self.is_hit_reset_first = false;
+	self.is_hit_reset_first = false
 	self.vector_damage = Vect3f(0.0,0.0,0.0)
+	self.iman_pos = Vect3f(0.0,0.0,0.0)
+	self.use_iman = false
 	self.enemies_killed = 0
 	self.enemy_puzzle_active = false
 	self.going_back = false
