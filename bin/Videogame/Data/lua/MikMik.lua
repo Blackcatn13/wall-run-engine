@@ -239,6 +239,7 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 				-- damage 1 : player pega con ataque
 				-- damage 2 : player pega con salto
 				-- damage 3 : enemy pega player
+				-- damage 4 : no hay damage, el player se imanta a la posicion del enemy
 				-- damage 0 : nada
 				if damageType == 3 then
 					enemy.m_RenderableObject:clear_cycle(0,0.2);
@@ -262,6 +263,9 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 						enemy.m_OriginalPosition = Vect3f(dead_pos.x,dead_pos.y,dead_pos.z)
 					--coreInstance:trace("Mik pillando posicion: " ..tostring(enemy.m_RenderableObject:get_position().x)..", "..tostring(enemy.m_RenderableObject:get_position().y)..", "..tostring(enemy.m_RenderableObject:get_position().z))
 					end
+				elseif damageType == 4 then
+					player.iman_pos = Vect3f(enemy:get_position().x,enemy:get_position().y,enemy:get_position().z);
+					player.use_iman = true;
 				end
 			end
 			

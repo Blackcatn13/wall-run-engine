@@ -327,7 +327,6 @@ function on_update_player_lua(l_ElapsedTime)
 		--///////////////////////////////////////////////////////////
 		local dist_to_floor = get_distance_to_floor(player_controller:get_position());
 		if dist_to_floor > 3 and _land == false and player_controller.m_isJumping == false and player_controller.m_isDoubleJumping == false and player.is_hit == false then
-			coreInstance:trace("entra en el aire");
 			_land = true;
 			_fallingAnimation = false;		
 			playerRenderable:clear_cycle(0,0.1);
@@ -356,6 +355,7 @@ function on_update_player_lua(l_ElapsedTime)
 					if player_controller.m_isGrounded then
 						_land = false;
 						inertiaJump = Vect3f(0,0,0);
+						player.use_iman = false;
 						player.on_air = false;
 						inDoubleJump = false;
 						playerRenderable:clear_cycle(13,0.2);
@@ -373,6 +373,7 @@ function on_update_player_lua(l_ElapsedTime)
 				if player_controller.m_isGrounded then
 					_land = false;
 					inertiaJump = Vect3f(0,0,0);
+					player.use_iman = false;
 					player.on_air = false;
 					if _fallingAnimation == false then
 						playerRenderable:clear_cycle(3,0.2);
@@ -430,6 +431,7 @@ function on_update_player_lua(l_ElapsedTime)
 			player_controller.m_isDoubleJumping = true;
 			player_controller.m_isJumping = false;
 			_land = false;
+			player.use_iman = false;
 			player.on_air = true;
 			inDoubleJump = true;
 			executedDoubleStart = false;
@@ -577,6 +579,17 @@ function on_update_player_lua(l_ElapsedTime)
 			end
 		end
 		
+		if _land and player.use_iman then
+			local playerPosZX = Vect3f(player_controller:get_position().x, 0, player_controller:get_position().z);
+			local imanZX = Vect3f(player.iman_pos.x,0,player.iman_pos.z);
+			local distancePlayerIman = math.abs(get_distance_between_points(playerPosZX,imanZX));
+			if (distancePlayerIman > 0.1) then
+				local movimientoAux = Vect3f(imanZX.x-playerPosZX.x, 0, imanZX.z-playerPosZX.z);
+				movimientoAux = movimientoAux * l_ElapsedTime;
+				mov = Vect3f(movimientoAux.x, mov.y, movimientoAux.z);
+			end
+		end
+		
 		
 		if player_controller.m_isJumping or player_controller.m_isDoubleJumping then
 			player_controller:move(mov, l_ElapsedTime);
@@ -606,16 +619,12 @@ function on_update_player_lua(l_ElapsedTime)
 		player_controller:set_position(player_controller.m_PhysicController:get_position());
 		move_character_controller_mesh(player_controller, player_controller:get_position(), player_controller.m_isJumping, player_controller.m_isDoubleJumping);
 		if not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land then
-			coreInstance:trace("entra no_jumping etc");
 			if (mov.x == 0 and mov.z == 0 or stopping) and player.is_hit == false then
 				playerRenderable:clear_cycle(1,deccelerationTime);
 				playerRenderable:blend_cycle(0,1,deccelerationTime+0.2);
 			else
-				coreInstance:trace("entra movs = 0");
-				coreInstance:trace("is_hit "..tostring(player.is_hit));
 				if player.is_hit then
 					--AQUI VA LA ANIMACION DE RECIBIR DAMAGE
-					coreInstance:trace("entra is_hit anim");
 					playerRenderable:clear_cycle(0,0);
 					playerRenderable:clear_cycle(1,0);
 					if player.playing_hit == false then
