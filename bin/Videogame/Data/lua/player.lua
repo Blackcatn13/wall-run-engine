@@ -137,7 +137,7 @@ function Player.new()
 			end
 		else
 			self.has_ass_burned = false
-			--renderable_piky_mesh:execute_action(9,0,0.3,1,true) animacion de piky tostada
+			renderable_piky_mesh:execute_action(15,0,0.3,1,false) -- animacion de piky tostada
 		end
 		local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 		self.coreInstance:trace("player dies")
@@ -212,6 +212,7 @@ function Player.new()
 			_renderable:remove_action(6)
 			_renderable:remove_action(7)
 			_renderable:remove_action(8)
+			_renderable:remove_action(15)
 		end
 		if _renderable:is_cycle_animation_active() then
 			_renderable:clear_cycle(0,0.1) 

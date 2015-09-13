@@ -182,7 +182,7 @@
 	<animated_model name="MikMik002" core="mik" pos="498.949768 8.583496 -8.934296" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>
 	<animated_model name="MikMik001" core="mik" pos="498.949768 8.583496 3.256622" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>
 	<animated_model name="MikMik003" core="mik" pos="505.668762 8.583496 -2.441345" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies"/>
-	<mesh_instance name="SALA 4" core="SALA 4" pos="557.800537 19.021515 -59.823105" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
+	<mesh_instance name="SALA 4" core="SALA 4" pos="563.274536 22.546162 -116.637451" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 	<mesh_instance name="PUNXES002" core="PUNXES002" pos="557.350647 7.464798 -205.239044" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 	<mesh_instance name="OBSTACLE004" core="OBSTACLE004" pos="557.347839 13.992779 -310.466492" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 	<mesh_instance name="OBSTACLE008" core="OBSTACLE008" pos="557.347778 10.644835 -221.254242" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>

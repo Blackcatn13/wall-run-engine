@@ -653,8 +653,13 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		
 		if player.is_dead then
+			coreInstance:trace("Im dead and checking if an animation is active");
 			if not playerRenderable:is_action_animation_active() then
+				coreInstance:trace("no animation active so kill me");
 				player.check_death_actions()
+			else
+				coreInstance:trace("Animation moving me???");
+				move_character_controller_mesh(player_controller, player_controller:get_position(), false, true);
 			end
 		end
 	end --Final if Console displayed.
