@@ -52,7 +52,7 @@ void CBreakablePlatform::DisablePlatform(float dt/*, Vect3f direction*/) {
 }
 
 void CBreakablePlatform::EnablePlatform() {
-  if (m_Broken && m_Actor != NULL) {
+  if (/*m_Broken &&*/ m_Actor != NULL) {
 
     //  m_ActorAux->Activate(true);
     m_Actor->SetKinematic(true);
