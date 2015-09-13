@@ -662,8 +662,21 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		
 		if player.is_dead then
+			coreInstance:trace("Dead ")
 			if not playerRenderable:is_action_animation_active() then
 				player.check_death_actions()
+			else
+				coreInstance:trace("Animation is runing")
+				if player.has_ass_burned then
+					coreInstance:trace("ass burned")
+					local emitter2 = particle_manager:get_resource(playerRenderable.m_ParticleEmitter2)
+					local pos = Vect3f(0.0, 0.0, 0.0);
+					pos = pos + player.get_player_controller():get_position()
+					local emitterOffset = playerRenderable.m_EmitterOffset2
+					pos.y = pos.y + playerRenderable:getAnimationBonePosition().y
+					pos = pos + emitterOffset
+					emitter2.m_vPos = pos;
+				end
 			end
 		end
 	end --Final if Console displayed.

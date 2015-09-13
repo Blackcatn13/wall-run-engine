@@ -138,8 +138,12 @@ function Player.new()
 				renderable_piky_mesh:execute_action(9,0,0.3,1,false) --animacion de muerto
 			end
 		else
-			self.has_ass_burned = false
 			renderable_piky_mesh:execute_action(15,0,0.3,1,false) -- animacion de piky tostada
+			local emitter2 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter2)
+			if emitter2:get_visible() == false then
+				emitter2:set_visible(true)
+				emitter2.m_vPos = renderable_piky_mesh:get_position() + renderable_piky_mesh.m_EmitterOffset2
+			end
 		end
 		local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 		self.coreInstance:trace("player dies")
@@ -169,6 +173,12 @@ function Player.new()
 	
 	function self.check_death_actions()
 		self.is_dead = false
+		self.has_ass_burned = false
+		local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky")
+		local emitter2 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter2)
+		if emitter2:get_visible() == true then
+			emitter2:set_visible(false)
+		end
 		--Chuky Desaparece
 		ChuckyDesapears()
 		
