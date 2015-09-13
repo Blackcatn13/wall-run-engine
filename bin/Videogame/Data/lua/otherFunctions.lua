@@ -182,7 +182,11 @@ function toboolean(string_to_parse)
 	end
 	return 0
 end
-
+function reset_puzzle(puzzle_name, room, door1, door2)
+	close_door(door1, door2, 5);
+	renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("puzzle", room):reset_puzzle_renderables()
+	puzzle_manager:reset_puzzle_triggers(puzzle_name)
+end
 
 function reset_game()
 	
@@ -229,6 +233,8 @@ function reset_game()
 	--Invisible walls
 	renderable_objects_layer_manager:deactivate_objects_by_layer("invisible");
 	
+	--puzzle
+	reset_puzzle("puzzle001", 6, "Puerta_arriba002", "Puerta_abajo002")
 	--Doors
 	close_door("Puerta_arriba", "Puerta_abajo", 3);
 	

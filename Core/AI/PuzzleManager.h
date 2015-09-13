@@ -12,6 +12,7 @@ class CPuzzleManager : public CMapManager<CPuzzle> {
   void Load(std::string file);
   void Reload();
   void Update(float dt);
+  void ResetPuzzleTriggers(std::string puzzleName);
  private:
   std::string m_fileName;
 

@@ -157,7 +157,6 @@ void RegisterAI() {
     .property("m_MinActivatedSwitches",  &CPuzzle::getMinActivatedSwitches, &CPuzzle::setMinActivatedSwitches )
     .property("m_ActivatedSwitches",  &CPuzzle::getActivatedSwitches, &CPuzzle::setActivatedSwitches )
     .property("m_Done",  &CPuzzle::getDone, &CPuzzle::setDone)
-
   ];
 
 

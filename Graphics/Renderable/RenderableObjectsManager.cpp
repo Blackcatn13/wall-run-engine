@@ -285,9 +285,18 @@ void CRenderableObjectsManager::ActivateElements(int roomName) {
 
 void CRenderableObjectsManager::RestoreBrokenPlatforms() {
   for (int i = 0; i < GetResourcesVector().size(); ++ i ) {
-    if (((CBreakablePlatform *)GetResourcesVector()[i])->IsBroken() == true) {
-      ((CBreakablePlatform *)GetResourcesVector()[i])->EnablePlatform();
-    }
+    // if (((CBreakablePlatform *)GetResourcesVector()[i])->IsBroken() == true) { Que se restaure siempre para prevenir falsas roturas
+
+    ((CBreakablePlatform *)GetResourcesVector()[i])->EnablePlatform();
+    //}
   }
 }
 
+void CRenderableObjectsManager::ResetPuzzleRenderables() {
+  for (int i = 0;  i < GetResourcesVector().size(); ++i) {
+    CSwitch *l_Switch = (CSwitch *)GetResourcesVector()[i];
+    if (l_Switch->GetPosition() != l_Switch->GetOriginalPosition()) {
+      l_Switch->ResetSwitch();
+    }
+  }
+}
