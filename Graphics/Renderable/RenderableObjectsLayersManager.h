@@ -5,7 +5,7 @@
 #include "Utils\TemplatedVectorMapManager.h"
 #include "Renderable\RenderableObjectsManager.h"
 
-#define MAX_ROOMS	11
+#define MAX_ROOMS	15
 
 class CRenderableObjectsLayersManager : public CTemplatedVectorMapManager <CTemplatedVectorMapManager<CRenderableObjectsManager>> {
  private:
