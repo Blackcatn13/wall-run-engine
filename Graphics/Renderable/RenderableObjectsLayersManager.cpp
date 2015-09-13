@@ -40,7 +40,10 @@ CRenderableObjectsManager  *CRenderableObjectsLayersManager::GetRenderableObject
 }
 
 void CRenderableObjectsLayersManager::Update(float ElapsedTime) {
-  for (size_t i = GetPreviousZone() ; i < GetNextZone(); ++i) {
+  int l_NextZone = GetNextZone() + 1;
+  if (l_NextZone > m_ResourcesVector.size())
+    l_NextZone = GetNextZone();
+  for (size_t i = GetPreviousZone() ; i < l_NextZone; ++i) {
     // m_ResourcesVector[i]->Update(ElapsedTime);
     CTemplatedVectorMapManager<CRenderableObjectsManager> *aux = m_ResourcesVector[i];
     size_t maxSize = aux->GetSize();
@@ -53,6 +56,9 @@ void CRenderableObjectsLayersManager::Update(float ElapsedTime) {
 }
 
 void CRenderableObjectsLayersManager::Render(CGraphicsManager *RM) {
+  int l_NextZone = GetNextZone() + 1;
+  if (l_NextZone > m_ResourcesVector.size())
+    l_NextZone = GetNextZone();
   for (size_t i = GetPreviousZone(); i < GetNextZone(); ++i) {
     // m_ResourcesVector[i]->Update(ElapsedTime);
     CTemplatedVectorMapManager<CRenderableObjectsManager> *aux = m_ResourcesVector[i];
@@ -78,7 +84,10 @@ int CRenderableObjectsLayersManager::GetNextZone() {
 }
 
 void CRenderableObjectsLayersManager::Render(CGraphicsManager *RM, const std::string &LayerName) {
-  for (size_t i = GetPreviousZone(); i < GetNextZone(); ++i) {
+  int l_NextZone = GetNextZone() + 1;
+  if (l_NextZone > m_ResourcesVector.size())
+    l_NextZone = GetNextZone();
+  for (size_t i = GetPreviousZone(); i < l_NextZone; ++i) {
     CRenderableObjectsManager *l_managerInstance = m_ResourcesVector[i]->GetResource(LayerName);
     if (l_managerInstance != NULL && l_managerInstance->GetSize() > 0) {
       l_managerInstance->Render(RM);

@@ -63,6 +63,7 @@ void RegisterSceneElements() {
     class_<CBreakablePlatform, CStaticPlatform>("CBreakablePlatform")
     .def(constructor<std::string, std::string, std::string>())
     .def("disable_platform", &CBreakablePlatform::DisablePlatform)
+    .def("enable_platform", &CBreakablePlatform::EnablePlatform)
   ];
   luabind::module(LUA_STATE) [
     class_<CMovingPlatform, CStaticPlatform>("CMovingPlatform")
