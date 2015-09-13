@@ -132,6 +132,20 @@ function on_update_player_lua(l_ElapsedTime)
 		
 		-- Si dañan al player
 		if player.is_hit == true and not player.hurt_by_spikes then
+			if (player.is_hit_reset_first == true) then
+				player_controller.m_isJumping = false;
+				player_controller.m_isDoubleJumping = false;
+				_land = false;
+				playerRenderable:clear_cycle(0,0);
+				playerRenderable:clear_cycle(1,0);
+				playerRenderable:clear_cycle(3,0);
+				playerRenderable:clear_cycle(4,0);
+				playerRenderable:clear_cycle(12,0);
+				playerRenderable:clear_cycle(13,0);
+				playerRenderable:remove_action(2);
+				playerRenderable:remove_action(10);
+				playerRenderable:remove_action(11);
+			end
 			if timer > m_damageTime then
 				m_damageFeedBackSpeed = m_damageFeedBackSpeed - m_damageFeedBackSpeedDismin * l_ElapsedTime
 			end
@@ -312,7 +326,8 @@ function on_update_player_lua(l_ElapsedTime)
 		-- Cuando el Player está saltando, su velocidad dependerá del tipo de salto realizado. 
 		--///////////////////////////////////////////////////////////
 		local dist_to_floor = get_distance_to_floor(player_controller:get_position());
-		if dist_to_floor > 3 and _land == false and player_controller.m_isJumping == false and player_controller.m_isDoubleJumping == false then
+		if dist_to_floor > 3 and _land == false and player_controller.m_isJumping == false and player_controller.m_isDoubleJumping == false and player.is_hit == false then
+			coreInstance:trace("entra en el aire");
 			_land = true;
 			_fallingAnimation = false;		
 			playerRenderable:clear_cycle(0,0.1);
@@ -591,12 +606,16 @@ function on_update_player_lua(l_ElapsedTime)
 		player_controller:set_position(player_controller.m_PhysicController:get_position());
 		move_character_controller_mesh(player_controller, player_controller:get_position(), player_controller.m_isJumping, player_controller.m_isDoubleJumping);
 		if not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land then
+			coreInstance:trace("entra no_jumping etc");
 			if (mov.x == 0 and mov.z == 0 or stopping) and player.is_hit == false then
 				playerRenderable:clear_cycle(1,deccelerationTime);
 				playerRenderable:blend_cycle(0,1,deccelerationTime+0.2);
 			else
+				coreInstance:trace("entra movs = 0");
+				coreInstance:trace("is_hit "..tostring(player.is_hit));
 				if player.is_hit then
 					--AQUI VA LA ANIMACION DE RECIBIR DAMAGE
+					coreInstance:trace("entra is_hit anim");
 					playerRenderable:clear_cycle(0,0);
 					playerRenderable:clear_cycle(1,0);
 					if player.playing_hit == false then

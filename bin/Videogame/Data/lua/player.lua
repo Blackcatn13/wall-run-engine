@@ -25,6 +25,7 @@ function Player.new()
 	self.score = 0
 	self.stickers = 0
 	self.is_hit = false
+	self.is_hit_reset_first = false;
 	self.vector_damage = Vect3f(0.0,0.0,0.0)
 	self.enemies_killed = 0
 	self.enemy_puzzle_active = false
@@ -102,6 +103,7 @@ function Player.new()
 			self.num_hearts = self.num_hearts -1
 			self.coreInstance:trace("Taking damage. Ouch! I lost a heart.")     
 			self.is_hit = true
+			self.is_hit_reset_first = true
 			if gui_manager:get_active_image('LifeGUI') == 'Life3' then
 				gui_manager:set_image('LifeGUI','Life2')
 			else
