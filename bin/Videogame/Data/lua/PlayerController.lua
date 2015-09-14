@@ -292,7 +292,7 @@ function on_update_player_lua(l_ElapsedTime)
 						acceleration = 1;
 					end
 				end
-				if player_controller.m_isJumping == true or player_controller.m_isDoubleJumping then
+				if player_controller.m_isJumping == true or player_controller.m_isDoubleJumping or _land then
 					mov = mov * percentAirMovement;
 				end
 				if (y_axis > 0) then
