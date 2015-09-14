@@ -39,7 +39,7 @@ class CPhysicController : public CObject3D {
 
   //---- Main Functions ------------------------------------------------
   void						Move					    (const Vect3f &_vDirection, float _fElapsedTime);
-  bool						MovePlayer				(const Vect3f &_vDirection, float _fElapsedTime);
+  bool						MovePlayer				(const Vect3f &_vDirection, float _fElapsedTime, bool cae = false);
   void						Jump					    (float _fAmmount);
   void						CreateController	(NxController *_pController, NxScene *_PScene);
 

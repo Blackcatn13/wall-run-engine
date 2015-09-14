@@ -65,8 +65,7 @@ void CPolyPlatform:: ActivatePoly() {
       Vect3f l_NewPosition =  m_Position + (m_Direction * m_Speed * m_Dt);
       m_Actor->SetGlobalPosition(l_NewPosition);
       m_Position = l_NewPosition;
-      if (m_Light != NULL)
-        m_Light->SetPosition(l_NewPosition);
+
       m_IsMoving = true;
       //Si colisiona con Piky => Desplazarle
       ApplyPhysicsToPlayer(m_Direction, m_Dt);
@@ -74,8 +73,7 @@ void CPolyPlatform:: ActivatePoly() {
       m_Position = m_FinalPosition;
       m_Actor->SetGlobalPosition(m_FinalPosition);
       m_Activated = true;
-      if (m_Light != NULL)
-        m_Light->SetPosition(m_FinalPosition);
+
       m_IsMoving = false;
       ApplyPhysicsToPlayer(m_Direction, m_Dt);
     }
@@ -89,8 +87,7 @@ void CPolyPlatform:: DeactivatePoly() {
       Vect3f l_NewPosition =  m_Position + ( -m_Direction * m_Speed * m_Dt);
       m_Actor->SetGlobalPosition(l_NewPosition);
       m_Position = l_NewPosition;
-      if (m_Light != NULL)
-        m_Light->SetPosition(l_NewPosition);
+
       //Si colisiona con Piky => Desplazarle
       ApplyPhysicsToPlayer(-m_Direction, m_Dt);
     } else {
@@ -99,9 +96,16 @@ void CPolyPlatform:: DeactivatePoly() {
       m_Activated = false;
       m_IsMoving = false;
       m_ActiveTime = 0.0f;
-      if (m_Light != NULL && m_LightOriginalPosition != NULL)
-        m_Light->SetPosition(m_LightOriginalPosition);
+
       ApplyPhysicsToPlayer(-m_Direction, m_Dt);
+      if (m_Direction.y == 0) {
+        float yaw = PLAYC->GetYaw();
+        Vect3f vecAux = Vect3f(sin(yaw), 0, cos(yaw));
+        vecAux = vecAux * m_Dt * PLAYC->getSpeed();
+        PLAYC->IsGrounded(vecAux, m_Dt, true);
+      }
+      //  if (PLAYC->getisGrounded() && !PLAYC->getisJumping() && !PLAYC->getisFalling())
+      //   PLAYC->getPhysicController()->Move(Vect3f(0, -1, 0) , m_Dt);
     }
   }
 }

@@ -13,7 +13,7 @@ class CPlayerController : public CObject3D {
   CPlayerController();
   ~CPlayerController();
   void Move(Vect3f direction, float dt);
-  void IsGrounded(Vect3f direction, float dt);
+  void IsGrounded(Vect3f direction, float dt, bool cae = false);
   GET_SET(CPhysicController *, PhysicController);
   GET_SET(CPhysicUserData *, PhysicUserData);
   GET_SET(bool, isGrounded);
