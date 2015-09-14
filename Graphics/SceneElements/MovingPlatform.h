@@ -39,6 +39,7 @@ class CMovingPlatform : public CStaticPlatform {
   //bool isAround(Vect3f vector1, Vect3f vector2);
   GET_SET(bool, Activated);
   GET_SET(Vect3f, Direction);
+  GET_SET(float, Speed)
   void SetNextWPVector(Vect3f NextWp) {
     m_NextWP = NextWp;
   }

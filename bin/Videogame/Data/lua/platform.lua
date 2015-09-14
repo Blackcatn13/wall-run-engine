@@ -335,6 +335,12 @@ function update_poly_platform(current_poly_time, dt, platform_name)
 	end
 	
 	--local act2in = coreInstance:get_action_to_input();
+	coreInstance:trace("poly time: ".. tostring(current_poly_time))
+	local next_wp = platform.m_FinalPosition
+	if current_poly_time > platform.m_TimeOut then
+			next_wp = platform.m_OriginalPosition
+			platform.m_IsMoving = true 
+	end
 	if (act2in:do_action_from_lua("PolyPowa") == true and platform.m_Enabled and not platform.m_IsMoving and  platform.m_ActiveTime== 0.0) or platform.m_IsMoving == true then
 		--[[local pikyRenderable = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky");
 		if pikyRenderable:is_action_animation_active() == false and player.is_activating_poly == false then
@@ -349,22 +355,49 @@ function update_poly_platform(current_poly_time, dt, platform_name)
 		--pikyRenderable:is_action_animation_active()
 		--player_controller.m_isJumping = false
 		player.is_activating_poly = true
-		platform:activate_poly()
+	
+		
+		
+		--	coreInstance:trace("Platform position: "..tostring(platform.m_Actor:get_position().x)..", "..tostring(platform.m_Actor:get_position().y)..", "..tostring(platform.m_Actor:get_position().z))
+		
+		platform:move_to_point(dt, next_wp, 0.4)
+		platform.m_IsMoving = true
+	
+		local current_pos = platform:get_position()
+		local distance_to_point = get_distance_to_point(current_pos, next_wp)
+		
+		if distance_to_point <= 0.25 then
+			--coreInstance:trace("Destino alcanzado")
+			--instance.m_string = "Parado"
+			--platform:get_fsm():newState("Parado")
+		
+			 platform.m_IsMoving = false
+			if next_wp == platform.m_FinalPosition then
+				platform.m_Activated = true
+			else
+				platform.m_Activated = false
+				platform.m_ActiveTime = 0.0
+			end
+			
+			
+		end
+	
 		
 		--activate_poly(platform, dt)
 		--local new_pos = Vect3f(position + platform.m_RedimScale)
 		--coreInstance:get_player_controller().m_PhysicController:set_position(new_pos) 
 	
 	-- If poly is activated
-	elseif current_poly_time > platform.m_TimeOut then
+--[[	elseif current_poly_time > platform.m_TimeOut then
 		platform:deactivate_poly()
 		player.is_activating_poly = false
 		--deactivate_poly(platform, dt)
 	end
 	
-	platform:apply_physics_to_player(platform.m_Direction, 0.0)
-	
-		
+
+		platform:apply_physics_to_player(platform.m_Direction, 0.0)
+	]]
+	end
 end
 
 function activate_poly(_platform, dt)

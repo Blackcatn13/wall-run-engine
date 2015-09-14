@@ -40,7 +40,8 @@ CMovingPlatform::CMovingPlatform(CXMLTreeNode &node)
       m_WayPointsVector.push_back(l_Wp);
     }
   }
-  m_NextWP = m_WayPointsVector[0];
+  if (m_WayPointsVector.size() > 0)
+    m_NextWP = m_WayPointsVector[0];
   m_Actor->Activate(true);
   //m_Actor->GetUserData()->SetPaint(true);
 }
@@ -87,7 +88,7 @@ void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
     //float l_MargenLateralPlataforma = 1.0;
     float l_DesplazamientoVerticalPlataforma = GetPhysicsSize().y + 1.5f;
     float l_PosicionMinSobrePlat = GetPhysicsSize().y + 0.2f;
-    float l_PosicionMaxSobrePlat = GetPhysicsSize().y + 2.5f;
+    float l_PosicionMaxSobrePlat = GetPhysicsSize().y + 3.5f;
 
     //para saber si es movimiento horizontal o vertical
     //Caso horizontal
@@ -144,37 +145,43 @@ void CMovingPlatform::MoveToPoint(float dt,  Vect3f point, float minDistance) {
       	PLAYC->setisGrounded(false);
       }
       else*/
-      if ((l_playerPosition.y > (m_Position.y + l_PosicionMinSobrePlat) && (l_playerPosition.y < (m_Position.y + l_PosicionMaxSobrePlat)) && (hit != NULL && hit->getName().substr(0, 6) == "Moving" && info.m_fDistance <= 5.0))) {
+      if (/*(l_playerPosition.y > (m_Position.y + l_PosicionMinSobrePlat) && (l_playerPosition.y < (m_Position.y + l_PosicionMaxSobrePlat)) && */(hit != NULL && hit->GetMyCollisionGroup() == ECG_SCENE_ELEMENTS && info.m_fDistance <= 1.5)) { /*)*/
         //PLAYC->getPhysicController()->MovePlayer(direction.Normalize() * m_Speed * dt + PLAYC->getGravity() * Vect3f(0,1,0) * 1.2 * dt, dt);
         //PLAYC->IsGrounded(direction.Normalize() * m_Speed * dt / 1.0, dt);
+        // PLAYC->getPhysicController()->Move(direction.Normalize() * m_Speed * dt / 1.0, dt);
+
         if (!PLAYC->getisJumping() || PLAYC->getCurrentJumpForce() < 0) {
+
           PLAYC->setisOnPlatform(0.0);
           Vect3f l_PlayerPosition = PLAYC->getPhysicController()->GetPosition();
-          l_playerPosition.y = m_Position.y + l_DesplazamientoVerticalPlataforma;
+
+          l_playerPosition.y = m_Position.y + (direction.Normalize().y * m_Speed * dt);//l_DesplazamientoVerticalPlataforma;
           PLAYC->getPhysicController()->SetPosition(l_playerPosition);
           PLAYC->SetPosition(l_playerPosition);
-          PLAYC->setisJumping(false);
-          PLAYC->setisGrounded(true);
-          PLAYC->setCurrentJumpForce(0.0);
-          PLAYC->setisJumpingMoving(false);
-        }
-      } else {
-        PLAYC->setisOnPlatform(1.0);
+          //PLAYC->setisJumping(false);
+          //PLAYC->setisGrounded(true);
+          //PLAYC->setCurrentJumpForce(0.0);
+          //PLAYC->setisJumpingMoving(false);
+        } else {
+          PLAYC->setisOnPlatform(1.0);
 
-        if (isAround(l_playerPosition, m_Position)) {
-          if (dirRay.y > 0.45) {
-            PLAYC->getPhysicController()->Move(Vect3f(0, -1, 0) * m_Speed * 4 * dt / 1.0, dt);
-            //PLAYC->setisJumping(false);
-            //PLAYC->setisGrounded(false);
-            //PLAYC->setCurrentJumpForce(0.0);
-            //PLAYC->setisJumpingMoving(false);
-          } else {
-            PLAYC->getPhysicController()->Move(-dirRay.Normalize() * m_Speed * 3 * dt / 1.0, dt);
-          }
+          //  PLAYC->getPhysicController()->Move(direction.Normalize()*m_Speed * dt, dt);
+          // if (isAround(l_playerPosition, m_Position)) {
+
+          //if (dirRay.y > 0.45) {
+          //  PLAYC->getPhysicController()->Move(Vect3f(0, -1, 0) * m_Speed * 4 * dt / 1.0, dt);
+          //  //PLAYC->setisJumping(false);
+          //  //PLAYC->setisGrounded(false);
+          //  //PLAYC->setCurrentJumpForce(0.0);
+          //  //PLAYC->setisJumpingMoving(false);
+          //} else {
+          //  PLAYC->getPhysicController()->Move(-dirRay.Normalize() * m_Speed * 3 * dt / 1.0, dt);
+          //}
           //PLAYC->setCurrentJumpForce(0.0);
           //PLAYC->setisJumping(false);
           //PLAYC->setisGrounded(false);
         }
+
         if (isInside(l_playerPosition, m_Position)) {
           //Hola
           float l_margenInferiorPlataforma = GetPhysicsSize().y * 2;

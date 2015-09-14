@@ -152,3 +152,4 @@ void CSceneElement::UpdateFSM(float elapsedTime) {
     m_Fsm->setCurrentState( m_Fsm->getNewState());
   }
 }
+

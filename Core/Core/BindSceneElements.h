@@ -74,6 +74,7 @@ void RegisterSceneElements() {
     .property("m_NextWP",  &CMovingPlatform::GetNextWPVector, &CMovingPlatform::SetNextWPVector)
     .property("m_Activated",  &CMovingPlatform::getActivated, &CMovingPlatform::setActivated)
     .property("m_Direction",  &CMovingPlatform::getDirection, &CMovingPlatform::setDirection)
+    .property("m_Speed", &CPolyPlatform::getSpeed, &CPolyPlatform::setSpeed)
   ];
 
   luabind::module(LUA_STATE) [
@@ -86,16 +87,16 @@ void RegisterSceneElements() {
       .property("m_FromX",  &CPinchosPlatform::getFromX, &CPinchosPlatform::setFromX)*/
   ];
   luabind::module(LUA_STATE) [
-    class_<CPolyPlatform, CStaticPlatform>("CPolyPlatform")
+    class_<CPolyPlatform, CMovingPlatform>("CPolyPlatform")
     .def(constructor<std::string , std::string ,  Vect3f , Vect3f,  float, float, float>())
-    .def("activate_poly", &CPolyPlatform::ActivatePoly)
-    .def("deactivate_poly", &CPolyPlatform::DeactivatePoly)
-    .def("apply_physics_to_player", &CPolyPlatform::ApplyPhysicsToPlayer)
-    .property("m_Activated", &CPolyPlatform::IsActivated, &CPolyPlatform::SetActivated )
-    .property("m_Direction", &CPolyPlatform::getDirection, &CPolyPlatform::setDirection )
+    //.def("activate_poly", &CPolyPlatform::ActivatePoly)
+    //.def("deactivate_poly", &CPolyPlatform::DeactivatePoly)
+    //  .def("apply_physics_to_player", &CPolyPlatform::ApplyPhysicsToPlayer)
+    //.property("m_Activated", &CPolyPlatform::IsActivated, &CPolyPlatform::SetActivated )
+    // .property("m_Direction", &CPolyPlatform::getDirection, &CPolyPlatform::setDirection )
     .property("m_OriginalPosition", &CPolyPlatform::getOriginalPosition, &CPolyPlatform::setOriginalPosition )
     .property("m_FinalPosition", &CPolyPlatform::getFinalPosition, &CPolyPlatform::setFinalPosition)
-    .property("m_Speed", &CPolyPlatform::getSpeed, &CPolyPlatform::setSpeed)
+    //.property("m_Speed", &CPolyPlatform::getSpeed, &CPolyPlatform::setSpeed)
     // .property("m_RedimScale", &CPolyPlatform::getRedimScale, &CPolyPlatform::setRedimScale )
     .property("m_Enabled", &CPolyPlatform::getEnabled, &CPolyPlatform::setEnabled )
     .property("m_ActivationDistance", &CPolyPlatform::getActivationDistance, &CPolyPlatform::setActivationDistance )
@@ -103,10 +104,10 @@ void RegisterSceneElements() {
     //.property("m_Collission", &CPolyPlatform::getCollission, &CPolyPlatform::setCollission )
     .property("m_IsMoving", &CPolyPlatform::getIsMoving, &CPolyPlatform::setIsMoving )
     .property("m_ActiveTime", &CPolyPlatform::getActiveTime, &CPolyPlatform::setActiveTime )
-    .property("m_LightName", &CPolyPlatform::getLightName, &CPolyPlatform::setLightName)
-    .property("m_Light", &CPolyPlatform::GetLight, &CPolyPlatform::SetLight)
-    .property("m_LightOriginalPosition", &CPolyPlatform::getLightOriginalPosition, &CPolyPlatform::setLightOriginalPosition)
-    // .property("m_RedimAxis", &CPolyPlatform::getRedimAxis, &CPolyPlatform::setRedimAxis )
+    /*  .property("m_LightName", &CPolyPlatform::getLightName, &CPolyPlatform::setLightName)
+      .property("m_Light", &CPolyPlatform::GetLight, &CPolyPlatform::SetLight)
+      .property("m_LightOriginalPosition", &CPolyPlatform::getLightOriginalPosition, &CPolyPlatform::setLightOriginalPosition)
+    */  // .property("m_RedimAxis", &CPolyPlatform::getRedimAxis, &CPolyPlatform::setRedimAxis )
   ];
 
 

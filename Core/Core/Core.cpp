@@ -388,9 +388,9 @@ void CCore::SetLightsToPlatforms(std::string layer) {
   CRenderableObjectsManager *l_Rendm = RENDLM->GetRenderableObjectsManagerByStr(layer);
   for (int i = 0; i < l_Rendm->GetSize(); ++i) {
     CPolyPlatform *l_Poly = (CPolyPlatform *)l_Rendm->GetResourcesVector()[i];
-    CLight *l_Light = LIGHTM->GetResource(l_Poly->getLightName());
-    l_Poly->SetLight(l_Light);
-    l_Poly->setLightOriginalPosition(l_Light->GetPosition());
+    /*   CLight *l_Light = LIGHTM->GetResource(l_Poly->getLightName());
+       l_Poly->SetLight(l_Light);
+       l_Poly->setLightOriginalPosition(l_Light->GetPosition());*/
   }
 }
 
