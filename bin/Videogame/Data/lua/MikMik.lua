@@ -14,6 +14,7 @@ function mikmik_enter_stopped(name)
 	enemy.m_CurrentTime = 0
 	enemy.m_RenderableObject:blend_cycle(0,1,0);
 	exclamation = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter2)
+	enemy.m_PhysicController:move(Vect3f(1, 0, 0) * enemy.m_Speed * coreInstance.m_ElapsedTime, coreInstance.m_ElapsedTime)
 	move_enemy_renderable(enemy, MikHeight);
 	if exclamation ~= nil then
 		exclamation:set_visible(true)
