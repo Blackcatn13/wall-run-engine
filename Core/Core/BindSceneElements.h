@@ -113,6 +113,7 @@ void RegisterSceneElements() {
   luabind::module(LUA_STATE) [
     class_<CSwitch, CSceneElement>("CSwitch")
     .def(constructor < std::string , std::string>())
+    .property("m_Switched" , &CSwitch::getSwitched, &CSwitch::setSwitched)
   ];
 
   luabind::module(LUA_STATE) [
