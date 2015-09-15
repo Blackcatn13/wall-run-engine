@@ -594,7 +594,7 @@ function on_update_player_lua(l_ElapsedTime)
 		if player_controller.m_isJumping or player_controller.m_isDoubleJumping then
 			player_controller:move(mov, l_ElapsedTime);
 		else
-			player_controller:is_grounded(mov,l_ElapsedTime);
+			player_controller:is_grounded(mov,l_ElapsedTime,false);
 		end
 		
 		-- FIJAR AL PLAYER EN 2D

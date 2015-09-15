@@ -200,7 +200,7 @@ void CPhysicController::Move ( const Vect3f &_vDirection, float _ElapsedTime ) {
   CObject3D::InitMat44();
 }
 
-bool CPhysicController::MovePlayer ( const Vect3f &_vDirection, float _ElapsedTime ) {
+bool CPhysicController::MovePlayer ( const Vect3f &_vDirection, float _ElapsedTime, bool cae ) {
   assert ( m_pPhXController != NULL );
   bool l_isGrounded = false;
   NxVec3 l_Direction ( _vDirection.x, _vDirection.y, _vDirection.z);
@@ -213,8 +213,10 @@ bool CPhysicController::MovePlayer ( const Vect3f &_vDirection, float _ElapsedTi
   mask |= 1 << ECG_ENEMY;
   mask |= 1 << ECG_LIMITS;
   m_pPhXController->move( l_Direction , mask, 0.0001f, collisionFlags, sharpness );
-  if ( ( collisionFlags & NXCC_COLLISION_DOWN )) // || ( collisionFlags & NXCC_COLLISION_UP ) ) {
-    l_isGrounded = true;
+  if (!cae) {
+    if ( ( collisionFlags & NXCC_COLLISION_DOWN )) // || ( collisionFlags & NXCC_COLLISION_UP ) ) {
+      l_isGrounded = true;
+  }
   NxExtendedVec3 tmp;
   tmp = m_pPhXController->getDebugPosition();
   SetPosition ( Vect3f ( (float) tmp.x, (float) tmp.y, (float) tmp.z ) );

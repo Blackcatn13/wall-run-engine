@@ -249,11 +249,12 @@ function trigger_set_3D()
 
 end
 
-function player_die(name)
+function player_die(burning)
 	--local coreInstance = CCoreLuaWrapper().m_CoreInstance;
-	coreInstance:trace("dieeeeee: ".. name)
+	--coreInstance:trace("dieeeeee: ".. name)
 	--local player = Player:get_instance()
-	player.has_ass_burned = true
+	--coreInstance:trace("Piky burning?: "..tostring(burning))
+	player.has_ass_burned = toboolean(burning)
 	player.player_die()
 end
 
