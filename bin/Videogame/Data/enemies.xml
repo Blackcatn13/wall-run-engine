@@ -30,6 +30,8 @@
 	<instance_enemy name="MikMik004" type="mikmik_easy" zone="3.5" attack_distance = "90" />
 	<instance_enemy name="MikMik005" type="mikmik_easy" zone="3.5" attack_distance = "90" />
 	
+	<instance_enemy name="MikMik006" type="mikmik_easy" zone="5.0" attack_distance = "5" static="true" platform="PlataformaMovil001_1"/>
+	
 
 
 

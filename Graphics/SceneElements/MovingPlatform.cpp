@@ -18,6 +18,7 @@ CMovingPlatform::CMovingPlatform(std::string platformName, std::string coreName,
     m_Speed(speed),
     m_CurrentWpId(0),
     m_WayPointsVector(NULL),
+    m_Direction(v3fZERO),
     m_Activated(false) {
   /*  m_PhysicUserData = new CPhysicUserData("AI");
   m_PhysicUserData->SetPaint(true);
@@ -30,6 +31,7 @@ CMovingPlatform::CMovingPlatform(CXMLTreeNode &node)
   : CStaticPlatform(node),
     m_Speed(node.GetFloatProperty("speed", 0.0f)),
     m_CurrentWpId(0),
+    m_Direction(v3fZERO),
     m_Activated(false) {
   m_Fsm = new CFSMInstance(FSMMGR->GetResource("MovingPlatform"));
   int wpCount = node.GetNumChildren();

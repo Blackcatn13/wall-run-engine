@@ -20,6 +20,7 @@ typedef struct EnemyStruct {
   float				Zone;
   bool				Static;
   std::string		ProjectileName;
+  std::string		PlatformName;
 
 } EnemiesStr;
 

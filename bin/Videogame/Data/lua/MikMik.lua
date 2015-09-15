@@ -13,6 +13,12 @@ function mikmik_enter_stopped(name)
 	local enemy = enemy_manager:get_enemy(name)
 	enemy.m_CurrentTime = 0
 	enemy.m_RenderableObject:blend_cycle(0,1,0);
+	if enemy:get_platform() ~= nil and enemy.m_isAlive then
+		local temp_pose = Vect3f(enemy:get_platform():get_position().x-1, enemy:get_platform():get_position().y+2, enemy:get_platform():get_position().z-1)
+		enemy.m_RenderableObject:set_position(temp_pose)
+		enemy.m_PhysicController:set_position(temp_pose)
+		coreInstance:trace("Enemy stopped on platform position: "..tostring(enemy.m_RenderableObject:get_position().x)..", "..tostring(enemy.m_RenderableObject:get_position().y)..", "..tostring(enemy.m_RenderableObject:get_position().z))
+	end
 	exclamation = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter2)
 	enemy.m_PhysicController:move(Vect3f(1, 0, 0) * enemy.m_Speed * coreInstance.m_ElapsedTime, coreInstance.m_ElapsedTime)
 	move_enemy_renderable(enemy, MikHeight);
@@ -43,6 +49,25 @@ function mikmik_update_stopped(ElapsedTime, doComprobation, name)
 				exclamation:set_visible(false)
 			end
 		end
+		local platform = enemy:get_platform()
+		if platform ~= nil and platform.m_Direction ~= nil and enemy.m_isAlive then
+			--if enemy:is_on_platform() then
+				-- Si está sobre una plataforma que se desplace con ella
+				--coreInstance:trace("Platform direction: "..tostring(platform.m_Direction.x)..", "..tostring(platform.m_Direction.y)..", "..tostring(platform.m_Direction.z) )
+				enemy.m_PhysicController:move(platform.m_Direction * platform.m_Speed * ElapsedTime, ElapsedTime)
+				local mik_position = Vect3f(enemy.m_PhysicController:get_position().x, enemy.m_RenderableObject:get_position().y, enemy.m_PhysicController:get_position().z)
+				--coreInstance:trace("Mik on platform position: "..tostring(mik_position.x)..", "..tostring(mik_position.y)..", "..tostring(mik_position.z) )
+				if mik_position.y < platform:get_position().y then
+				
+					mik_position= Vect3f( platform:get_position().x-1, platform:get_position().y +2, platform:get_position().z-1)
+					enemy.m_PhysicController:set_position(mik_position)
+				end
+				enemy.m_RenderableObject:set_position(mik_position)
+				coreInstance:trace("Enemy updated on platform position: "..tostring(enemy.m_RenderableObject:get_position().x)..", "..tostring(enemy.m_RenderableObject:get_position().y)..", "..tostring(enemy.m_RenderableObject:get_position().z))
+				coreInstance:trace("Enemy platform position: "..tostring(platform:get_position().x)..", "..tostring(platform:get_position().y)..", "..tostring(platform:get_position().z))
+			--end
+		end
+		
 		if player_distance < 3500 then
 		
 			if player_distance > enemy.m_AttackPlayerDistance  then --min_player_distance => enemy.m_AttackPlayerDistance
@@ -211,7 +236,16 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 				--coreInstance:trace("Moving billboard?");
 			end
 		end
-	
+	if platform ~= nil and platform.m_Direction ~= nil then
+		--if enemy:is_on_platform() then
+		-- Si está sobre una plataforma que se desplace con ella
+		--coreInstance:trace("Platform direction: "..tostring(platform.m_Direction.x)..", "..tostring(platform.m_Direction.y)..", "..tostring(platform.m_Direction.z) )
+		enemy.m_PhysicController:move(platform.m_Direction * platform.m_Speed * ElapsedTime, ElapsedTime)
+		local mik_position = Vect3f(enemy.m_PhysicController:get_position().x, enemy.m_RenderableObject:get_position().y, enemy.m_PhysicController:get_position().z)
+		--coreInstance:trace("Mik on platform position: "..tostring(mik_position.x)..", "..tostring(mik_position.y)..", "..tostring(mik_position.z) )
+		enemy.m_RenderableObject:set_position(mik_position)
+		--end
+	end
 	--coreInstance:trace("Enemy Zone" .. tostring (enemy.m_Zone))
 	--coreInstance:trace("player Zone" .. tostring (player.zone))
 		if enemy.m_isAttacking == false  and player.is_dead == false then
@@ -227,7 +261,7 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 				--coreInstance:trace(tostring(temp_zone))
 			end
 			
-			if player.is_hit == false and tostring(temp_zone) == tostring(player.zone) then
+			if player.is_hit == false and tostring(temp_zone) == tostring(player.zone) and not enemy:is_static() then
 				if (player.on_air == false) or (player.on_air == true and player_distance > 2) then
 					move_enemy(ElapsedTime, player_position, enemy, MikHeight) -- en caso de no ser estatico
 				end
