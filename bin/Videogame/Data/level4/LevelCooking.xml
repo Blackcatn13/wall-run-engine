@@ -137,7 +137,6 @@
 	<Physx_mesh name="PLATAFORMA001" filename="Data\level4\meshes\PLATAFORMA001.phsx"/>
 	<Physx_mesh name="PLAT POLY007" filename="Data\level4\meshes\PLAT POLY007.phsx"/>
 	<Physx_mesh name="PLAT POLY013" filename="Data\level4\meshes\PLAT POLY013.phsx"/>
-	<Physx_mesh name="PLAT POLY008" filename="Data\level4\meshes\PLAT POLY008.phsx"/>
 	<Physx_mesh name="PLAT POLY004" filename="Data\level4\meshes\PLAT POLY004.phsx"/>
 	<Physx_mesh name="PLAT POLY002" filename="Data\level4\meshes\PLAT POLY002.phsx"/>
 	<Physx_mesh name="PLAT POLY014" filename="Data\level4\meshes\PLAT POLY014.phsx"/>
