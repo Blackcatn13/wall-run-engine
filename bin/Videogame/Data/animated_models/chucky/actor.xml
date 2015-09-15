@@ -12,4 +12,5 @@
 	<animation name="boss_hurt" file="Chucky_boss_hurt.caf"/> <!-- 7 -->
 	<animation name="boss_summon" file="Chucky_boss_summon.caf"/> <!-- 8 -->
 	<animation name="boss_death" file="Chucky_boss_death.caf"/> <!-- 9 -->
+	<animation name="boss_return" file="Chucky_boss_return.caf"/> <!-- 10 -->
 </animated_model>
