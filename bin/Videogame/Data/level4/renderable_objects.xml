@@ -866,6 +866,6 @@
 	<mesh_instance name="Sala7_Escultura_009" core="Sala7_Escultura_009" pos="78.075951 30.646294 -657.651733" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala7_Escultura_010" core="Sala7_Escultura_010" pos="0.293545 30.903831 -658.064209" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 
-	<mesh_instance name="PlaneLava" core="PlaneLava" pos="563.188 8.464 -120.497" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="lava"/>
+	<mesh_instance name="PlaneLava" core="PlaneLava" pos="563.188 9.464 -120.497" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="lava"/>
 	<mesh_instance name="LavaFlow" core="LavaFlow" pos="548.119 13.383 -123.458" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="lava"/>
 </renderable_objects>
