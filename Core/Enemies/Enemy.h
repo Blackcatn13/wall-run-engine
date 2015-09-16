@@ -50,6 +50,7 @@ class CEnemy : public CAIController { //CAIController
   bool				m_IsDying;
   std::string		m_ProjectileName;
   float       m_visibleTime;
+  CRenderableObject *m_Platform;
 
 
   CEnemy();
@@ -72,6 +73,10 @@ class CEnemy : public CAIController { //CAIController
     return getName();
   }
 
+  void SetPlatform(std::string platform_name);
+  CRenderableObject *GetPlatform() {
+    return m_Platform;
+  };
   void AddDamagePlayer();
   void AddDamageEnemyMikMik();
   void AddDamageEnemyPumPum();

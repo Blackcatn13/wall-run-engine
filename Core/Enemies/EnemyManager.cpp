@@ -51,6 +51,10 @@ void CEnemyManager::InitEnemies(std::string layerName) {
               float l_CooldownTimer = m_Cores.find(m_EnemyInstances[j].instanceType)->second.CooldownTimer;
               Enemy->SetShootingStats(l_SpeedProjectile, l_ProjectileLife, l_CooldownTimer);
             }
+            std::string l_PlatformName =  m_EnemyInstances[j].PlatformName;
+            if (l_PlatformName != "") {
+              Enemy->SetPlatform(l_PlatformName);
+            }
             m_Enemies.push_back(Enemy);
           } else if (nam.find("_runner") != std::string::npos) {
             CRunnerEnemy *Enemy = new CRunnerEnemy(l_Rom->GetResourcesVector()[i], l_Speed, l_FsmName, l_ControllerSize, l_AttackDistance, l_Zone);
@@ -112,6 +116,7 @@ bool CEnemyManager::Init(const std::string &FileName) {
           l_Enemy.Zone = nodeChild.GetFloatProperty("zone", 1.0f, false);
           l_Enemy.Static = nodeChild.GetBoolProperty("static", false, false);
           l_Enemy.ProjectileName = nodeChild.GetPszISOProperty("projectile", "", false);
+          l_Enemy.PlatformName = nodeChild.GetPszISOProperty("platform", "", false);
           m_EnemyInstances.push_back(l_Enemy);
         }
       }

@@ -76,6 +76,7 @@ void RegisterAI() {
     .def("move_to_position", &CAIController::MoveToPosition)
     //.def("rotate_renderable", &CAIController::RotateRenderable)
     .def("updtate_projectile_position",  &CAIController::UpdtateProjectilePosition)
+    .def("is_on_platform", &CAIController::IsOnPlatform)
   ];
 
   luabind::module(LUA_STATE) [
@@ -120,6 +121,7 @@ void RegisterAI() {
     .def("actualizar_hitbox", &CEnemy::ActualizarHitboxEnemigo)
     .def("shoot_to_vector", &CEnemy::ShotToVector)
     .def("add_damage_player", &CEnemy::AddDamagePlayer )
+    .def("get_platform", &CEnemy::GetPlatform)
     /* .def("update", &CEnemy::Update)
      .def("render", &CEnemy::Render)*/
   ];

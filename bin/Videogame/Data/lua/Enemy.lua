@@ -165,9 +165,9 @@ function enemy_set_alive(name)
 	--enemy:move_to_position(enemy.m_OriginalPosition)
 	--enemy.m_PhysicController:set_radius(0.5)
 	enemy.m_MovedToDiePosition = false
-	enemy.m_IsDying = true
-	coreInstance:trace("Enemy position: " ..tostring(enemy.m_PhysicController:get_position().x)..","..tostring(enemy.m_PhysicController:get_position().y)..","..tostring(enemy.m_PhysicController:get_position().z))
-	coreInstance:trace("Enemy position Renderable: " ..tostring(enemy.m_RenderableObject:get_position().x)..","..tostring(enemy.m_RenderableObject:get_position().y)..","..tostring(enemy.m_RenderableObject:get_position().z))
+	enemy.m_IsDying = false
+	coreInstance:trace("Enemy "..name.." position: " ..tostring(enemy.m_PhysicController:get_position().x)..","..tostring(enemy.m_PhysicController:get_position().y)..","..tostring(enemy.m_PhysicController:get_position().z))
+	coreInstance:trace("Enemy "..name.. "position Renderable: " ..tostring(enemy.m_RenderableObject:get_position().x)..","..tostring(enemy.m_RenderableObject:get_position().y)..","..tostring(enemy.m_RenderableObject:get_position().z))
 	enemy:m_FSM():newState("Parado")
 end
 

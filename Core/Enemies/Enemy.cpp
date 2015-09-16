@@ -27,6 +27,7 @@ CEnemy::CEnemy(CXMLTreeNode &info1)
     m_AttackPlayerDistance(1.0f),
     m_isAttacking(false),
     m_time_to_fly(false),
+    m_Platform(NULL),
     m_flyVec(Vect3f(0, 0, 0)),
     m_MovedToDiePosition(false),
     m_visibleTime(0)
@@ -55,6 +56,7 @@ CEnemy::CEnemy(CRenderableObject *renderableObject, float speed, float turnSpeed
   m_Zone(zone),
   m_isAttacking(false),
   m_time_to_fly(false),
+  m_Platform(NULL),
   m_flyVec(Vect3f(0, 0, 0)),
   m_AttackPlayerDistance(AttackDistance),
   m_ProjectileName(projectile),
@@ -111,6 +113,8 @@ void CEnemy::Render() {
 CEnemy::~CEnemy() {
   CHECKED_DELETE(m_Fsm);
   //CHECKED_DELETE(m_RenderableObject);
+// if (m_Platform != NULL)
+  // CHECKED_DELETE(m_Platform);
 }
 
 Vect3f CEnemy::GetOriginalPosition() {
@@ -274,8 +278,7 @@ int CEnemy::CheckPlayerCollision() {
   float l_DistanceToIman = 3;
   bool is_over_me = (PLAYC->GetPosition().y > (m_Position.y + m_EnemyHitbox - l_MargenInferiorPlayer)) && (PLAYC->GetPosition().y < (m_Position.y + m_EnemyHitbox + l_MargenSuperiorPlayer));
   bool is_over_to_iman = (PLAYC->GetPosition().y > (m_Position.y + m_EnemyHitbox - l_MargenInferiorIman)) && (PLAYC->GetPosition().y < (m_Position.y + m_EnemyHitbox + l_MargenSuperiorIman));
-  if (getisAlive() && ((m_Position.Distance(PLAYC->GetPosition()) < m_EnemyHitbox) || (is_over_me && m_Position.Distance(PLAYC->GetPosition()) < (m_EnemyHitbox + l_MargenSuperiorPlayer)))) 
-  {
+  if (getisAlive() && ((m_Position.Distance(PLAYC->GetPosition()) < m_EnemyHitbox) || (is_over_me && m_Position.Distance(PLAYC->GetPosition()) < (m_EnemyHitbox + l_MargenSuperiorPlayer)))) {
     if (PLAYC->getisAttack()) {
       return 1;
     } else if (is_over_me) {
@@ -283,19 +286,19 @@ int CEnemy::CheckPlayerCollision() {
     } else {
       return 3;
     }
-  }
-  else
-  {
-	  if(is_over_to_iman)
-	  {
-		  Vect3f posPlayerZX = Vect3f(PLAYC->GetPosition().x,0,PLAYC->GetPosition().z);
-		  Vect3f posEnemyZX = Vect3f(m_Position.x,0,m_Position.z);
-		  if(posEnemyZX.Distance(posPlayerZX) < l_DistanceToIman)
-		  {
-			  return 4;
-		  }
-	  }
+  } else {
+    if (is_over_to_iman) {
+      Vect3f posPlayerZX = Vect3f(PLAYC->GetPosition().x, 0, PLAYC->GetPosition().z);
+      Vect3f posEnemyZX = Vect3f(m_Position.x, 0, m_Position.z);
+      if (posEnemyZX.Distance(posPlayerZX) < l_DistanceToIman) {
+        return 4;
+      }
+    }
   }
   return 0;
+}
+
+void CEnemy::SetPlatform(std::string platform_name) {
+  m_Platform = RENDLM->GetRenderableObjectsManagerByStrAndRoom("mov_platforms", m_RenderableObject->getRoom())->GetResource(platform_name);
 }
 

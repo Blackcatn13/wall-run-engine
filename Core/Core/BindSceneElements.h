@@ -74,6 +74,7 @@ void RegisterSceneElements() {
     .property("m_NextWP",  &CMovingPlatform::GetNextWPVector, &CMovingPlatform::SetNextWPVector)
     .property("m_Activated",  &CMovingPlatform::getActivated, &CMovingPlatform::setActivated)
     .property("m_Direction",  &CMovingPlatform::getDirection, &CMovingPlatform::setDirection)
+    .property("m_Speed",  &CMovingPlatform::getSpeed, &CMovingPlatform::setSpeed)
   ];
 
   luabind::module(LUA_STATE) [

@@ -58,6 +58,8 @@ class CAIController : public CObject3D {
 
   float getAngleDiff(Vect3f A, Vect3f B);
 
+  bool IsOnPlatform();
+
  protected:
 
   CPhysicController	*m_PhysicController;

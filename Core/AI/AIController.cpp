@@ -298,3 +298,13 @@ float CAIController::getAngleDiff(Vect3f A, Vect3f B) {
   float dir = (A ^ B).y >= 0 ? 1 : -1;
   return (angle * dir);
 }
+
+bool CAIController::IsOnPlatform() {
+  SCollisionInfo info = SCollisionInfo();
+  CPhysicUserData *hit = CCORE->GetPhysicsManager()->RaycastClosestActor(Vect3f(m_PhysicController->GetPosition().x, m_PhysicController->GetPosition().y - m_PhysicController->GetHeight(), m_PhysicController->GetPosition().z),
+                         Vect3f(0, -1, 0), 0xffffffff, info);
+
+  if (hit != NULL && hit->GetMyCollisionGroup() == ECG_SCENE_ELEMENTS /*&& info.m_fDistance <= 0.4*/)
+    return true;
+  return false;
+}

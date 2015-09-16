@@ -494,25 +494,25 @@
 	<mesh_instance name="CARALLENGUA_1_SALA5" core="CARALLENGUA_1_SALA5" pos="561.412292 18.583603 -369.319946" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
 	<mesh_instance name="PLATAFORMA_S6_1" core="PLATAFORMA_S6_1" pos="565.165283 5.387472 -437.934326" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="PLATAFORMA_S6_2" core="PLATAFORMA_S6_2" pos="534.435425 11.138065 -453.777283" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<platform name="PlataformaMovil001_1" core="PlataformaMovil001_1" type="moving" pos="546.685 12.102 -406.656" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="6" speed="2">
+	<platform name="PlataformaMovil001_1" core="PlataformaMovil001_1" type="moving" pos="546.685 12.102 -406.656" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="5" speed="2">
 		<wp pos="566.928 12.102 -406.656"/>
 		<wp pos="566.928 12.102 -426.899"/>
 		<wp pos="546.685 12.102 -426.899"/>
 		<wp pos="546.685 12.102 -406.656"/>
 	</platform>
-	<platform name="PlataformaMovil001_2" core="PlataformaMovil001_2" type="moving" pos="566.928 12.102 -406.656" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="6" speed="2">
+	<platform name="PlataformaMovil001_2" core="PlataformaMovil001_2" type="moving" pos="566.928 12.102 -406.656" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="5" speed="2">
 		<wp pos="566.928 12.102 -426.899"/>
 		<wp pos="546.685 12.102 -426.899"/>
 		<wp pos="546.685 12.102 -406.656"/>
 		<wp pos="566.928 12.102 -406.656"/>
 	</platform>
-	<platform name="PlataformaMovil001_3" core="PlataformaMovil001_3" type="moving" pos="566.928 12.102 -426.899" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="6" speed="2">
+	<platform name="PlataformaMovil001_3" core="PlataformaMovil001_3" type="moving" pos="566.928 12.102 -426.899" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="5" speed="2">
 		<wp pos="546.685 12.102 -426.899"/>
 		<wp pos="546.685 12.102 -406.656"/>
 		<wp pos="566.928 12.102 -406.656"/>
 		<wp pos="566.928 12.102 -426.899"/>
 	</platform>
-	<platform name="PlataformaMovil001_4" core="PlataformaMovil001_4" type="moving" pos="546.685 12.102 -426.899" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="6" speed="2">
+	<platform name="PlataformaMovil001_4" core="PlataformaMovil001_4" type="moving" pos="546.685 12.102 -426.899" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="5" speed="2">
 		<wp pos="546.685 12.102 -406.656"/>
 		<wp pos="566.928 12.102 -406.656"/>
 		<wp pos="566.928 12.102 -426.899"/>
@@ -584,6 +584,10 @@
 		<wp pos="537.794 3.037 -590.37"/>
 		<wp pos="537.794 3.037 -567.873"/>
 	</platform>
+	
+	<animated_model name="MikMik006" core="mik" pos="546.685 13.102 -406.656" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik005DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation005" emitter2_offset="0.0 3.0 0.0" room="5"/>
+	
+	
 	<mesh_instance name="Sala_6_Coberta_001" core="Sala_6_Coberta_001" pos="556.929260 16.608967 -416.288910" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_6_ColumnaB_001" core="Sala_6_ColumnaB_001" pos="529.566589 16.291885 -568.809937" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_6_ColumnaB_002" core="Sala_6_ColumnaB_002" pos="524.498840 16.794897 -568.809937" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
