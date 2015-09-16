@@ -221,8 +221,6 @@
 	<mesh_instance name="ANTORCHA033" core="ANTORCHA033" pos="422.664795 14.076797 15.390974" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="2"/>
 	<mesh_instance name="obstacle" core="obstacle" pos="252.817764 0.841506 11.095692" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="2"/>
 	<mesh_instance name="obstacle023" core="obstacle023" pos="339.923828 0.841506 11.095692" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="2"/>
-
-	<mesh_instance name="PLAT POLY003" core="PLAT POLY003" pos="311.218445 32.188210 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	
 	<mesh_instance name="COLUMNA" core="COLUMNA" pos="164.533813 35.402344 -646.053589" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 
