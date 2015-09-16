@@ -34,8 +34,8 @@ void CSwitch::Update(float dt) {
     Vect3f l_playerPosition = PLAYC->GetPosition();
     CPhysicUserData *hit = CCORE->GetPhysicsManager()->RaycastClosestActor(Vect3f(l_playerPosition.x , l_playerPosition.y  - 1, l_playerPosition.z + 0),
                            Vect3f(0, -1, 0), 0xffffffff, info);
-
-    if (hit != NULL && hit->GetMyCollisionGroup() == ECG_SCENE_ELEMENTS && info.m_fDistance <= 2.5 && !m_Switched && PLAYC->getisGrounded()) {
+    float height = PLAYC->getPhysicController()->GetHeight();
+    if (hit != NULL && hit->GetMyCollisionGroup() == ECG_SCENE_ELEMENTS && info.m_fDistance <= height && !m_Switched && PLAYC->getisGrounded() && !PLAYC->getisFalling() && !PLAYC->getisJumping()) {
       m_Switched = true;
       Vect3f actor_position = m_Actor->GetPosition();
       m_Actor->SetGlobalPosition(Vect3f(actor_position.x, actor_position.y - 1, actor_position.z));
