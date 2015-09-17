@@ -37,10 +37,9 @@ end --]]
 end
 --]]
 function init_poly_platform(name, user_data_name, size, position, time_out, speed)
-	local platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str("poly"):get_resource(name)
-	if platform == nil then
-		platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str("enabled_poly"):get_resource(name)
-	end		
+
+	local platform = renderable_objects_layer_manager:get_resource_from_layers_and_room("poly", "enabled_poly", name, player_controller.m_Room)
+	
 	platform:insert_platform(user_data_name, size, position)
 	--light = coreInstance:get_light_manager():get_resource(platform.m_LightName)
 	platform.m_Light = coreInstance:get_light_manager():get_resource(platform.m_LightName)
@@ -318,12 +317,9 @@ end
 
 function update_poly_platform(current_poly_time, dt, platform_name)
 	-- Enable Poly Emmerald power
-	local position = coreInstance:get_player_controller():get_position()
-	local platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("poly", player_controller.m_Room):get_resource(platform_name)
-	if platform == nil then
-		platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("enabled_poly", player_controller.m_Room):get_resource(platform_name)
-	end
+	local platform = renderable_objects_layer_manager:get_resource_from_layers_and_room("poly", "enabled_poly", platform_name, player_controller.m_Room)
 	local platform_position = platform:get_position()
+	local position = coreInstance:get_player_controller():get_position()
 	local l_distance = position:distance(platform_position)
 	--[[coreInstance:trace("________________________________________________________")
 	coreInstance:trace(tostring(platform.m_Enabled))

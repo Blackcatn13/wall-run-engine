@@ -7,6 +7,7 @@
 
 #define MAX_ROOMS	15
 
+class CRenderableObject;
 class CRenderableObjectsLayersManager : public CTemplatedVectorMapManager <CTemplatedVectorMapManager<CRenderableObjectsManager>> {
  private:
   std::string m_FileName, m_FileName2, m_CurrentLayer;
@@ -19,6 +20,7 @@ class CRenderableObjectsLayersManager : public CTemplatedVectorMapManager <CTemp
   ~CRenderableObjectsLayersManager();
   CRenderableObjectsManager *GetDefaultRenderableObjectManager(const std::string &roomNumber);
   CRenderableObjectsManager *GetRenderableObjectsManagerByStr(const std::string &layerName);
+  CRenderableObject *GetResourceFromLayersAndRoom(const std::string &layerName, const std::string layerName2, const std::string name, int roomNumber);
   CRenderableObjectsManager *GetRenderableObjectsManagerByStrAndRoom(const std::string &layerName, int roomNumber);
   void ChangeBetweenVectors( const std::string &layer, const std::string &objName, int room );
   void ChangeBetweenVectors( const std::string &layer, const std::string &objName, int current_room, int room );

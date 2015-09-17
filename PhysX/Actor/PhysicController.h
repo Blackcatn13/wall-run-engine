@@ -67,6 +67,7 @@ class CPhysicController : public CObject3D {
   void					  	  UseGravity				    (bool _bUseGravity) { m_bUseGravity = _bUseGravity; }
   EControleType				GetType					      (void) const { return m_Type; }
   void						    SetType					      (EControleType _Type) { m_Type = _Type; }
+  void					ReportSceneChanged();
 
   //---- Members ---------------------------------------
 

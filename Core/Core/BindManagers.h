@@ -214,6 +214,7 @@ void RegisterManagers() {
     .def("destroy", &CTemplatedVectorMapManager<CRenderableObjectsManager>::Destroy)
     .def("get_resource_map", &CTemplatedVectorMapManager<CRenderableObjectsManager>::GetResourcesMap)
     .def("get_resource_vector", &CTemplatedVectorMapManager<CRenderableObjectsManager>::GetResourcesVector)
+    .def("get_resource_without_log", &CTemplatedVectorMapManager<CRenderableObjectsManager>::GetResourceWithoutLog)
   ];
   luabind::module(LUA_STATE) [
     class_<CRenderableObjectsLayersManager, CTemplatedVectorMapManager<CTemplatedVectorMapManager<CRenderableObjectsManager>>>("CRenderableObjectsLayersManager")
@@ -226,6 +227,7 @@ void RegisterManagers() {
     .def("change_between_vectors", (void (CRenderableObjectsLayersManager::*)(const std::string &, const std::string &, int)) &CRenderableObjectsLayersManager::ChangeBetweenVectors)
     .def("change_between_vectors", (void (CRenderableObjectsLayersManager::*)(const std::string &, const std::string &, int, int)) &CRenderableObjectsLayersManager::ChangeBetweenVectors)
     .def("change_between_layers", &CRenderableObjectsLayersManager::ChangeBetweenLayers)
+    .def("get_resource_from_layers_and_room", &CRenderableObjectsLayersManager::GetResourceFromLayersAndRoom)
     .property("m_CurrentLayer", &CRenderableObjectsLayersManager::getCurrentLayer, &CRenderableObjectsLayersManager::setCurrentLayer)
   ];
   luabind::module(LUA_STATE) [
