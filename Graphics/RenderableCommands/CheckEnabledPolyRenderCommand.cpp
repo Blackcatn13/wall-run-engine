@@ -30,7 +30,7 @@ void CCheckEnabledPolyRenderCommand::CheckLayerChange(CRenderableObjectsManager 
       if (poly->getEnabled() == polyEnabled) {
         // m_Effect->SetActivePoly(poly);
         //poly->Render(&RM);
-        if (rolm2->GetResource(poly->getName()) == NULL) {
+        if (rolm2->GetResourceWithoutLog(poly->getName()) == NULL) {
           rolm2->AddResource(poly->getName(), poly);
           rolm1->RemoveFromResource(poly->getName());
         }
@@ -41,13 +41,13 @@ void CCheckEnabledPolyRenderCommand::CheckLayerChange(CRenderableObjectsManager 
         std::string poly_text = "poly_enabled";
         /*  Vect2i textSize = FONTM->GetLiteralSize(width, height, poly_text);
           FONTM->DrawLiteral((width / 2) - textSize.x / 2, height - 30, poly_text);*/
-		if (CCORE->GetPlayerController()->getisGrounded())
-			GUIM->SetIsDisplayedPolyMessage(true);
-        if (poly->GetLight() != NULL)
-          poly->GetLight()->SetIntensity(0.3f);
-      } else {
-        if (poly->GetLight() != NULL)
-          poly->GetLight()->SetIntensity(0.0f);
+        if (CCORE->GetPlayerController()->getisGrounded())
+          GUIM->SetIsDisplayedPolyMessage(true);
+        /*  if (poly->GetLight() != NULL)
+            poly->GetLight()->SetIntensity(0.3f);
+        } else {
+          if (poly->GetLight() != NULL)
+            poly->GetLight()->SetIntensity(0.0f);*/
       }
     }
   }

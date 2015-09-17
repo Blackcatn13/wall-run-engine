@@ -93,6 +93,15 @@ class CTemplatedVectorMapManager {
     }
   }
 
+  virtual T *GetResourceWithoutLog(const std::string &Name) {
+    TMapResources::iterator it = m_ResourcesMap.find(Name);
+    if (it != m_ResourcesMap.end()) {
+      return it->second.m_Value;
+    } else {
+      return NULL;
+    }
+  }
+
   virtual bool AddResource(const std::string &Name, T *Resource) {
     TMapResources::iterator it = m_ResourcesMap.find(Name);
     if (it != m_ResourcesMap.end()) {

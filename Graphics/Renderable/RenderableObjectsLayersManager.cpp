@@ -12,6 +12,7 @@
 #include "Collectibles\CollectibleManager.h"
 #include "Renderable\RenderableObjectsManager.h"
 #include "Core\PlayerController.h"
+#include "Renderable\RenderableObject.h"
 
 
 CRenderableObjectsLayersManager ::CRenderableObjectsLayersManager() {
@@ -273,3 +274,9 @@ void  CRenderableObjectsLayersManager::ChangeBetweenLayers(std::string originalL
   }
 }
 
+CRenderableObject *CRenderableObjectsLayersManager::GetResourceFromLayersAndRoom(const std::string &layerName, const std::string layerName2, const std::string name, int roomNumber) {
+  CRenderableObject *l_Object = GetRenderableObjectsManagerByStrAndRoom(layerName, roomNumber)->GetResourceWithoutLog(name);
+  if (l_Object == NULL)
+    l_Object = GetRenderableObjectsManagerByStrAndRoom(layerName2, roomNumber)->GetResource(name);
+  return l_Object;
+}
