@@ -99,10 +99,8 @@ void CPolyPlatform:: DeactivatePoly() {
 
       ApplyPhysicsToPlayer(-m_Direction, m_Dt);
       if (m_Direction.y == 0) {
-        float yaw = PLAYC->GetYaw();
-        Vect3f vecAux = Vect3f(sin(yaw), 0, cos(yaw));
-        vecAux = vecAux * m_Dt * PLAYC->getSpeed();
-        PLAYC->IsGrounded(vecAux, m_Dt, true);
+
+        PLAYC->getPhysicController()->ReportSceneChanged();
       }
       //  if (PLAYC->getisGrounded() && !PLAYC->getisJumping() && !PLAYC->getisFalling())
       //   PLAYC->getPhysicController()->Move(Vect3f(0, -1, 0) , m_Dt);

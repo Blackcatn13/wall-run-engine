@@ -72,9 +72,9 @@
 <trigger name="TeleportReturn001" platform_name="" pos="94.358940 0.300000 -0.489124" shape="sphere" radius = "1" type_event="stay" script_function="unvanish_player" group="1" paint="true" color="0.105882 0.694118 0.105882"/>-->
 
 <!-- Switches -->
-<trigger name="Switch001" pos="570.367065 15.393707 -438.086243" shape="box"  size="1.1 0.1 1.1" type_event="enter" script_function="toogle_switch" group="1" param1="Switch001" param2="puzzle001" paint="true" color="0.5 0.5 1.0" />
-<trigger name="Switch002" pos="534.139160 12.723053 -453.796356" shape="box"  size="1.1 0.1 1.1" type_event="enter" script_function="toogle_switch" group="1" param1="Switch002" param2="puzzle001" paint="true" color="0.5 0.5 1.0" />
-<trigger name="Switch003" pos="559.539856 13.698151 -490.628113" shape="box"  size="1.1 0.1 1.1" type_event="enter" script_function="toogle_switch" group="1" param1="Switch003" param2="puzzle001" paint="true" color="0.5 0.5 1.0" />
+<trigger name="Switch001" pos="570.367065 15.393707 -438.086243" shape="box"  size="1.2 0.1 1.2" type_event="enter" script_function="toogle_switch" group="1" param1="Switch001" param2="puzzle001" paint="true" color="0.5 0.5 1.0" />
+<trigger name="Switch002" pos="534.139160 12.723053 -453.796356" shape="box"  size="1.2 0.1 1.2" type_event="enter" script_function="toogle_switch" group="1" param1="Switch002" param2="puzzle001" paint="true" color="0.5 0.5 1.0" />
+<trigger name="Switch003" pos="559.539856 13.698151 -490.628113" shape="box"  size="1.2 0.1 1.2" type_event="enter" script_function="toogle_switch" group="1" param1="Switch003" param2="puzzle001" paint="true" color="0.5 0.5 1.0" />
 	
 
 </triggers>

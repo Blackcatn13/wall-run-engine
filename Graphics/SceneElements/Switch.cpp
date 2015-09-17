@@ -25,6 +25,7 @@ void CSwitch::ResetSwitch() {
   if (m_Position != m_OriginalPosition) {
     SetPosition(m_OriginalPosition);
     m_Actor->SetGlobalPosition(m_OriginalPosition);
+    m_Switched = false;
   }
 }
 
@@ -42,10 +43,8 @@ void CSwitch::Update(float dt) {
       m_Position = Vect3f(m_Position.x, m_Position.y - 1, m_Position.z);
       //Por si se queda tonto en el aire
       //if (m_Direction.y == 0) {
-      float yaw = PLAYC->GetYaw();
-      Vect3f vecAux = Vect3f(sin(yaw), 0, cos(yaw));
-      vecAux = vecAux * dt * PLAYC->getSpeed();
-      PLAYC->IsGrounded(vecAux, dt, true);
+
+      PLAYC->getPhysicController()->ReportSceneChanged();
       //}
     }
   }

@@ -164,6 +164,9 @@ Vect3f CPhysicController::GetPosition () {
   return vec;
 }
 
+void CPhysicController::ReportSceneChanged() {
+  m_pPhXController->reportSceneChanged();
+}
 void CPhysicController::Jump(float ammount) {
   m_Jump.StartJump(ammount);
 }
