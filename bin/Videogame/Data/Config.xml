@@ -8,7 +8,7 @@
 
 
   <WindowsPosition posX="10" posY="10"/>
-  <Rendermode fullscreenMode="true"/>          
+  <Rendermode fullscreenMode="false"/>          
   <!--Rendermode fullscreenMode="true"/-->
   <Console_Logger activateConsole="true" Log_Level="INFORMATION" activateLogger="true" linesPerPageInLogger="20"/>
   <Mouse exclusiveModeinMouse="false"  drawPointerMouse="true" />

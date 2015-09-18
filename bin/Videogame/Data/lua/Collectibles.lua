@@ -59,7 +59,15 @@ function deactivate_collectible_by_room (_trigger, layer_name, obj_name, room_nu
 		object:set_visible(false);
 		local emitter = object.m_ParticleEmitter
 		if (emitter ~= "") then
-			coreInstance:getParticleManager():get_resource(emitter):set_visible(false);
+			particle_manager:get_resource(emitter):set_visible(false);
+		end
+		local emitter2_name = object.m_ParticleEmitter2
+		if emitter2_name ~= "" then
+			local emitter2 = particle_manager:get_resource(emitter2_name)
+			if emitter2 ~= nil then
+				emitter2.m_vPos = object:get_position()
+				emitter2.m_FireParticles = true
+			end
 		end
 	end
 end
