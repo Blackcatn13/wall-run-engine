@@ -218,7 +218,7 @@ void CParticleEmitter::PopulateParticle(CParticle *p) {
   p->setPosition(m_vPos);
   p->setColor1(col1);
   p->setGravity(m_Gravity);
-  p->setEndAlpha(1.f);
+  p->setEndAlpha(m_EndAlpha);
   p->setRotation(m_Rotation);
   if (m_EndSize < 0) {
     p->setEndSize(size);
