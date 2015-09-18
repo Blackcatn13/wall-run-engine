@@ -9,10 +9,12 @@ function CheckPoint.new()
 	self.is_activated = false
 	self.name = ""
 	self.renderable_stand = nil
+	self.camera_waypoint = nil
 	
 	--self.yaw = 0.0
 	------	 CHECKPOINT FUNCTIONS -----
 	function self.set_checkpoint(player, trigger_name, renderable_checkpoint)
+		
 		local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 		if self.is_activated == false then
 		
@@ -33,6 +35,16 @@ function CheckPoint.new()
 				self.change_checkpoint_renderables()
 			end
 			
+			--Camera Waypoint
+			local cam = cam_Controller:get_active_camera()
+			local temp_waypoint = cam.m_CurrentWaypoint
+			if temp_waypoint ~= nil and temp_waypoint > 0 then
+				 temp_waypoint = temp_waypoint -1
+			end
+			if (cam.m_eTypeCamera == 5 or cam.m_eTypeCamera == 6) and cam.m_currentWaypoint ~= nil  then
+				self.camera_waypoint = temp_waypoint
+			end
+			
 			coreInstance:trace("checkpoint activated")
 			table.insert(player.visited_checkpoints, self)
 			
@@ -46,6 +58,10 @@ function CheckPoint.new()
 		--local player_controller = player:get_player_controller()
 		player_controller.m_PhysicController:set_position(self.last_position)
 		local active_camera = cam_Controller:get_active_camera()
+		--Restore Camera Waypoint
+		if (active_camera.m_eTypeCamera == 5 or active_camera.m_eTypeCamera == 6) and self.camera_waypoint ~= nil then
+			active_camera.m_currentWaypoint	= self.camera_waypoint 
+		end
 		local cam_object =  active_camera.m_pObject3D
 		local PlayerYaw =  - cam_object:get_yaw() + 1.57
 		if player_controller.m_is3D == true then
@@ -54,6 +70,9 @@ function CheckPoint.new()
 			player_controller.m_isTurned = false
 			player_controller:set_yaw(PlayerYaw + 1.57); -- 90º
 		end
+		
+
+	
 		
 		--player_controller:set_yaw(self.yaw)
 	end
