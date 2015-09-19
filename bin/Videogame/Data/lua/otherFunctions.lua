@@ -204,6 +204,7 @@ function reset_game()
 	player_controller.m_isTurned = false;
 	player.attack_enabled = false
 	--player.set_room(0)
+	set_player_room(1, true)
 	reset_crushing_sides()
 		
 	--Player Lifes + Pixelites

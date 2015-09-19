@@ -147,6 +147,8 @@ public:
     void							SetGUIPixeliteNumber(int input);
     bool							GetIsGameOver();
     void							SetIsGameOver(bool input);
+    bool							GetIsMainMenu();
+    void							SetIsMainMenu(bool input);
     float							GetElapsedTime();
     float							GetScreenWidth();
     float							GetScreenHeight();
@@ -193,6 +195,7 @@ private:
     float																m_GUICountPixelite;
     int																m_GUINumPixelites;
     bool																m_isGameOver;
+    bool																m_isMainMenu;
     float																m_dt;
 };
 

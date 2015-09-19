@@ -1,7 +1,6 @@
 
 function init_level(a)
-	
-	
+		
 	--breakable_platform1 = init_breakable_platform("Box004", "Box004UserData", Vect3f(2,0.5,2), Vect3f(0,0.5,0), "BreakablePlatform_test")	
 	--]]
 	--init_poly_platform("PolyPlatform001","Poly001UserData", Vect3f(2,0.5,2), Vect3f(0,0.4,0), false, 3.0)
@@ -38,7 +37,8 @@ function init_level(a)
 	local camObject = active_camera.m_pObject3D
 	local dirYaw = camObject:get_yaw()
 	local PlayerYaw =  - dirYaw + 1.57
-	player_controller:set_yaw(PlayerYaw)
+	player_controller:set_yaw(PlayerYaw);
+	set_player_room(1, true);
 	
 	local old_position = player_controller.m_PhysicController:get_position()
 	local new_position = Vect3f(old_position.x, 1.0, old_position.z)
@@ -46,8 +46,8 @@ function init_level(a)
 	player_controller.m_PhysicController:set_position(new_position)
 	player.set_initial_position(PlayerYaw, new_position)
 	player.attack_enabled = false
-	--player.set_room(0)
-	
+	player.can_move = true
+	renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky"):remove_action(1);
 	--[[local ro1 = get_renderable_object("solid",0, "Arrow")
 	local ro2 = get_renderable_object("solid",0, "Arrow001")	
 	local ro3 = get_renderable_object("solid",0, "Arrow002")		
