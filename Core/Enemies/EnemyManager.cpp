@@ -201,7 +201,7 @@ CEnemy *CEnemyManager::GetEnemy(std::string enemyName) {
 Vect3f CEnemyManager::GetClosestEnemyVector(Vect3f direction, Vect3f position, float minDistance, float minAngle) {
   Vect3f resultDirection = direction;
   for (size_t i = 0; i < m_Enemies.size(); i++) {
-    if ((m_Enemies[i]->getenemyType() == PUMPUM) || (m_Enemies[i]->getenemyType() == MIKMIK)) {
+    if ((m_Enemies[i]->getenemyType() == PUMPUM) || (m_Enemies[i]->getenemyType() == MIKMIK) && !m_Enemies[i]->getIsDying() && m_Enemies[i]->getisAlive()) {
       Vect3f enemyPosition = m_Enemies[i]->GetPosition();
       if (GetDistance(enemyPosition, position) < minDistance) {
         float h = GetDistance(enemyPosition, position);

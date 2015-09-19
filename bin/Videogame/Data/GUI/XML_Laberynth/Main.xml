@@ -1,63 +1,93 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<Windows OnLoadWindows="gui_manager:set_is_displayed_console(true);
-                         CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Menu','Music');
-						 if inputm:has_game_pad(1) then
+<Windows OnLoadWindows="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Menu','Music');
+						if inputm:has_game_pad(1) then
 							gui_manager:set_visible_gui_element('MenuHelp',true)
-						 else
+						else
 							gui_manager:set_visible_gui_element('MenuHelp',false)
-						 end"
-         OnSaveWindows=""
-         OnUpdateWindows="">
+						end
+						
+						CCoreLuaWrapper().m_CoreInstance:get_scene_render_commands_manager().currentRenderer = 'normal_render';
+						local Piky = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room('player', player_controller.m_Room):get_resource('Piky');
+						Piky:clear_cycle(0,0);
+						Piky:clear_cycle(1,0);
+						Piky:clear_cycle(3,0);
+						Piky:clear_cycle(4,0);
+						Piky:clear_cycle(12,0);
+						Piky:clear_cycle(13,0);
+						Piky:remove_action(2);
+						Piky:remove_action(10);
+						Piky:remove_action(11);
+						set_screen_menu(Vect3f(-922.25, -1, 4.5), 10);
+						gui_manager:set_is_mainmenu(false);
+						gui_manager:set_is_gameover(false);
+						gui_manager:set_is_paused(false);
+						gui_manager:set_is_displayed_console(false);"
+        OnSaveWindows=""
+        OnUpdateWindows="cam_Controller:set_active_camera('GUICamera')
+						renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room('player', 10):get_resource('Piky'):blend_cycle(1,1,0.5);
+						enemy_manager:get_enemy('Chucky').m_RenderableObject:blend_cycle(1,1,0.5)
+						enemy_manager:get_enemy('Chucky'):move_to_position(Vect3f(-920.75, -1, 0));">
 	
-	<Image name="background" posx="0.00" posy="0.00" height="100.00" width="100.00" visible="true" active="true"
+	<Image name="background" posx="0.00" posy="0.00" height="100.00" width="100.00" visible="false" active="true"
 		default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
 		<texture name="img1" name_texture="./Data/GUI/GoPixelGo/MenuMain2.jpg"/>
 	</Image>
 	
+	<Image name="buttonsBackground" posx="50.00" posy="0.00" height="100.00" width="50.00" visible="true" active="true"
+		default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+		<texture name="img1" name_texture="./Data/GUI/GoPixelGo/MenuButtonsBackground.png"/>
+	</Image>
+	
+	<Image name="logo" posx="61.00" posy="10.00" height="20.00" width="30.00" visible="true" active="true"
+		default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+		<texture name="img1" name_texture="./Data/GUI/GoPixelGo/GameLogo.png"/>
+	</Image>
+	
      <ButtonList name="ButtonList" posx="60.00" posy="5.0" height="90.0" width="22.0" visible="true" active="true">
           <Buttons>
-          	<Button name="Play" posx="60.00" posy="10.00" height="15.00" width="22.00" visible="true" 
-                    active="true" texture_normal="./Data/GUI/GoPixelGo/PlayButton.png"
-                    texture_over="./Data/GUI/GoPixelGo/PlayButtonHover.png"
-                    texture_clicked="./Data/GUI/GoPixelGo/PlayButton.png"
-                    texture_deactivated="./Data/GUI/GoPixelGo/PlayButton.png"
+          	<Button name="Play" posx="67.00" posy="35.00" height="13.00" width="18.00" visible="true" 
+                    active="true" texture_normal="./Data/GUI/GoPixelGo/PlayButtonNEW.png"
+                    texture_over="./Data/GUI/GoPixelGo/PlayButtonNEW.png"
+                    texture_clicked="./Data/GUI/GoPixelGo/PlayButtonNEW.png"
+                    texture_deactivated="./Data/GUI/GoPixelGo/PlayButtonNEW.png"
                     OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');
           							CCoreLuaWrapper().m_CoreInstance:getGUIManager():push_windows('Play.xml');
-          							if player.game_over == true then
-          								 reset_cameras()
-          								 player.game_over = false
-										 set_visible_gui_elements(true)
+									if player.game_over == true then
+          								reset_cameras()
+          								player.game_over = false
+										set_visible_gui_elements(true)
 									else
 										set_visible_gui_elements(false)
           							end
-                                        gui_manager:activate_pause(false);
-                                        gui_manager:set_is_paused(false)"
+									
+									gui_manager:set_is_mainmenu(false);
+									init_level(1);"
                     OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>
           		  
-          	<Button name="Options" posx="60.00" posy="30.00" height="15.00" width="22.00" visible="true" 
-                    active="true" texture_normal="./Data/GUI/GoPixelGo/OptionsButton.png"
-                    texture_over="./Data/GUI/GoPixelGo/OptionsButtonHover.png"
-                    texture_clicked="./Data/GUI/GoPixelGo/OptionsButton.png"
-                    texture_deactivated="./Data/GUI/GoPixelGo/OptionsButton.png"
+          	<Button name="Options" posx="67.00" posy="47.50" height="13.00" width="18.00" visible="true" 
+                    active="true" texture_normal="./Data/GUI/GoPixelGo/OptionsButtonNEW.png"
+                    texture_over="./Data/GUI/GoPixelGo/OptionsButtonNEW.png"
+                    texture_clicked="./Data/GUI/GoPixelGo/OptionsButtonNEW.png"
+                    texture_deactivated="./Data/GUI/GoPixelGo/OptionsButtonNEW.png"
                     OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');
 					 CCoreLuaWrapper().m_CoreInstance:getGUIManager():push_windows('KeyButtonMap.xml')"
                     OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"
 					/>
           		  
-          	<Button name="Extras" posx="60.00" posy="50.00" height="15.00" width="22.00" visible="true" 
-                    active="true" texture_normal="./Data/GUI/GoPixelGo/ExtrasButton.png"
-                    texture_over="./Data/GUI/GoPixelGo/ExtrasButtonHover.png"
-                    texture_clicked="./Data/GUI/GoPixelGo/ExtrasButton.png"
-                    texture_deactivated="./Data/GUI/GoPixelGo/ExtrasButton.png"
+          	<Button name="Extras" posx="67.00" posy="60.00" height="13.00" width="18.00" visible="true" 
+                    active="true" texture_normal="./Data/GUI/GoPixelGo/ExtrasButtonNEW.png"
+                    texture_over="./Data/GUI/GoPixelGo/ExtrasButtonNEW.png"
+                    texture_clicked="./Data/GUI/GoPixelGo/ExtrasButtonNEW.png"
+                    texture_deactivated="./Data/GUI/GoPixelGo/ExtrasButtonNEW.png"
                     OnClickedAction=" CCoreLuaWrapper().m_CoreInstance:getGUIManager():push_windows('Collectibles.xml')
           			CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');"
                     OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>
           		  
-          	<Button name="Exit" posx="60.00" posy="70.00" height="15.00" width="22.00" visible="true" 
-                    active="true" texture_normal="./Data/GUI/GoPixelGo/ExitButton.png"
-                    texture_over="./Data/GUI/GoPixelGo/ExitButtonHover.png"
-                    texture_clicked="./Data/GUI/GoPixelGo/ExitButton.png"
-                    texture_deactivated="./Data/GUI/GoPixelGo/ExitButton.png"
+          	<Button name="Exit" posx="67.00" posy="72.50" height="13.00" width="18.00" visible="true" 
+                    active="true" texture_normal="./Data/GUI/GoPixelGo/ExitButtonNEW.png"
+                    texture_over="./Data/GUI/GoPixelGo/ExitButtonNEW.png"
+                    texture_clicked="./Data/GUI/GoPixelGo/ExitButtonNEW.png"
+                    texture_deactivated="./Data/GUI/GoPixelGo/ExitButtonNEW.png"
                     OnClickedAction=" CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');
           							CCoreLuaWrapper().m_CoreInstance:exit_game()"
                     OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>

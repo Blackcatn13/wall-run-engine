@@ -366,6 +366,7 @@
 	<gui_render >
 		<clear_scene color="true" depth="true" stencil="true"/>
 		<begin_scene/>
+		<render_scene layer="player" active="true"/>
 		<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>
 		<render_gui/>
 		<end_scene/>

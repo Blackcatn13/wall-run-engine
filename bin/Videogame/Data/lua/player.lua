@@ -126,33 +126,34 @@ function Player.new()
 	end
 
 	function self.player_die()
-		self.activating_triggers = false
-		--self.remove_animations()
-		self.is_dead = true
-		local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky")
-		self.remove_animations(renderable_piky_mesh)
-		if not self.has_ass_burned then
-			if self.num_lives == 1 then
-				renderable_piky_mesh:execute_action(8,0,0.3,1,false) --animacion de muerto GameOver
+		if not self.is_dead then --Si ya está muerto no se va a morir más, QUE NO ES UN ZOMBIE
+			self.activating_triggers = false
+			--self.remove_animations()
+			self.is_dead = true
+			local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky")
+			self.remove_animations(renderable_piky_mesh)
+			if not self.has_ass_burned then
+				if self.num_lives == 1 then
+					renderable_piky_mesh:execute_action(8,0,0.3,1,false) --animacion de muerto GameOver
+				else
+					renderable_piky_mesh:execute_action(9,0,0.3,1,false) --animacion de muerto
+				end
 			else
-				renderable_piky_mesh:execute_action(9,0,0.3,1,false) --animacion de muerto
+				renderable_piky_mesh:execute_action(15,0,0.3,1,false) -- animacion de piky tostada
+				local emitter2 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter2)
+				if emitter2:get_visible() == false then
+					emitter2:set_visible(true)
+					emitter2.m_vPos = renderable_piky_mesh:get_position() + renderable_piky_mesh.m_EmitterOffset2
+				end
 			end
-		else
-			renderable_piky_mesh:execute_action(15,0,0.3,1,false) -- animacion de piky tostada
-			local emitter2 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter2)
-			if emitter2:get_visible() == false then
-				emitter2:set_visible(true)
-				emitter2.m_vPos = renderable_piky_mesh:get_position() + renderable_piky_mesh.m_EmitterOffset2
-			end
+			local coreInstance = CCoreLuaWrapper().m_CoreInstance;
+			self.coreInstance:trace("player dies")
+			self.num_lives = self.num_lives - 1
+			
+			gui_manager:set_is_displayed_heart(true);
+			gui_manager:set_count_heart(0.0);
+			gui_manager:set_num_heart( self.num_lives );	
 		end
-		local coreInstance = CCoreLuaWrapper().m_CoreInstance;
-		self.coreInstance:trace("player dies")
-		self.num_lives = self.num_lives - 1
-		
-		gui_manager:set_is_displayed_heart(true);
-		gui_manager:set_count_heart(0.0);
-		gui_manager:set_num_heart( self.num_lives );	
-		
 		--self.check_death_actions()
 	end
 	
