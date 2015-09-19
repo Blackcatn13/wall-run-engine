@@ -596,19 +596,15 @@
 	<static_mesh name="Sala_7_Bolet_018" filename="Data\level4\meshes\Sala_7_Bolet_018.mesh"/>
 	<static_mesh name="Sala_7_PedraPetita_011" filename="Data\level4\meshes\Sala_7_PedraPetita_011.mesh"/>
 	<static_mesh name="Sala_7_PedraPetita_012" filename="Data\level4\meshes\Sala_7_PedraPetita_012.mesh"/>
-	<static_mesh name="Sala_7_Esmeralda_018" filename="Data\level4\meshes\Sala_7_Esmeralda_018.mesh"/>
 	<static_mesh name="Sala_7_Esmeralda_019" filename="Data\level4\meshes\Sala_7_Esmeralda_019.mesh"/>
 	<static_mesh name="Sala_7_PedraPetita_013" filename="Data\level4\meshes\Sala_7_PedraPetita_013.mesh"/>
 	<static_mesh name="Sala_7_PedraPetita_014" filename="Data\level4\meshes\Sala_7_PedraPetita_014.mesh"/>
-	<static_mesh name="Sala_7_ColumnaA_001" filename="Data\level4\meshes\Sala_7_ColumnaA_001.mesh"/>
-	<static_mesh name="Sala_7_ColumnaA_rota_001" filename="Data\level4\meshes\Sala_7_ColumnaA_rota_001.mesh"/>
 	<static_mesh name="Sala_7_Esmeralda_020" filename="Data\level4\meshes\Sala_7_Esmeralda_020.mesh"/>
 	<static_mesh name="Sala_7_Esmeralda_022" filename="Data\level4\meshes\Sala_7_Esmeralda_022.mesh"/>
 	<static_mesh name="Sala_7_Esmeralda_023" filename="Data\level4\meshes\Sala_7_Esmeralda_023.mesh"/>
 	<static_mesh name="Sala_7_PedraPetita_015" filename="Data\level4\meshes\Sala_7_PedraPetita_015.mesh"/>
 	<static_mesh name="Sala_7_PedraPetita_016" filename="Data\level4\meshes\Sala_7_PedraPetita_016.mesh"/>
 	<static_mesh name="Sala_7_PedraPlana_009" filename="Data\level4\meshes\Sala_7_PedraPlana_009.mesh"/>
-	<static_mesh name="Sala_7_ColumnaA_002" filename="Data\level4\meshes\Sala_7_ColumnaA_002.mesh"/>
 	<static_mesh name="Sala_7_Esmeralda_025" filename="Data\level4\meshes\Sala_7_Esmeralda_025.mesh"/>
 	<static_mesh name="Sala_7_Esmeralda_026" filename="Data\level4\meshes\Sala_7_Esmeralda_026.mesh"/>
 	<static_mesh name="Sala_7_Bolet_024" filename="Data\level4\meshes\Sala_7_Bolet_024.mesh"/>
@@ -625,9 +621,6 @@
 	<static_mesh name="Sala_7_Esmeralda_028" filename="Data\level4\meshes\Sala_7_Esmeralda_028.mesh"/>
 	<static_mesh name="Sala_7_Arco_004" filename="Data\level4\meshes\Sala_7_Arco_004.mesh"/>
 	<static_mesh name="Sala_7_Cara_lava_008" filename="Data\level4\meshes\Sala_7_Cara_lava_008.mesh"/>
-	<static_mesh name="Sala_7_ColumnaA_rota_005" filename="Data\level4\meshes\Sala_7_ColumnaA_rota_005.mesh"/>
-	<static_mesh name="Sala_7_ColumnaA_rota_007" filename="Data\level4\meshes\Sala_7_ColumnaA_rota_007.mesh"/>
-	<static_mesh name="Sala7_Escultura_015" filename="Data\level4\meshes\Sala7_Escultura_015.mesh"/>
 	<static_mesh name="Sala_7_PedraPetita_017" filename="Data\level4\meshes\Sala_7_PedraPetita_017.mesh"/>
 	<static_mesh name="Sala_7_PedraPetita_018" filename="Data\level4\meshes\Sala_7_PedraPetita_018.mesh"/>
 	<static_mesh name="Sala_7_Esmeralda_061" filename="Data\level4\meshes\Sala_7_Esmeralda_061.mesh"/>
@@ -660,9 +653,6 @@
 	<static_mesh name="Sala_7_ColumnaA_010" filename="Data\level4\meshes\Sala_7_ColumnaA_010.mesh"/>
 	<static_mesh name="Sala_7_ColumnaA_011" filename="Data\level4\meshes\Sala_7_ColumnaA_011.mesh"/>
 	<static_mesh name="PLAT POLY003" filename="Data\level4\meshes\PLAT POLY003.mesh"/>
-	<static_mesh name="Sala_7_Roca_027" filename="Data\level4\meshes\Sala_7_Roca_027.mesh"/>
-	<static_mesh name="Sala_7_Roca_028" filename="Data\level4\meshes\Sala_7_Roca_028.mesh"/>
-	<static_mesh name="Sala_7_Roca_029" filename="Data\level4\meshes\Sala_7_Roca_029.mesh"/>
 	<static_mesh name="Sala_7_Pinxos_013" filename="Data\level4\meshes\Sala_7_Pinxos_013.mesh"/>
 	<static_mesh name="Sala_7_Pinxos_014" filename="Data\level4\meshes\Sala_7_Pinxos_014.mesh"/>
 	<static_mesh name="Sala_7_Paret" filename="Data\level4\meshes\Sala_7_Paret.mesh"/>
@@ -684,6 +674,8 @@
 	<static_mesh name="Sala_07_ParedPoly_005" filename="Data\level4\meshes\Sala_07_ParedPoly_005.mesh"/>
 	<static_mesh name="Sala_07_ParedPoly_006" filename="Data\level4\meshes\Sala_07_ParedPoly_006.mesh"/>
 	<static_mesh name="Sala_07_ParedPoly_007" filename="Data\level4\meshes\Sala_07_ParedPoly_007.mesh"/>
+	<static_mesh name="Sala_7_Esmeralda_062" filename="Data\level4\meshes\Sala_7_Esmeralda_062.mesh"/>
+	<static_mesh name="Sala_7_Pinxos_017" filename="Data\level4\meshes\Sala_7_Pinxos_017.mesh"/>
 	<static_mesh name="Switch001" filename="Data\level4\meshes\Switch001.mesh"/>
 	<static_mesh name="Switch002" filename="Data\level4\meshes\Switch002.mesh"/>
 	<static_mesh name="Switch003" filename="Data\level4\meshes\Switch003.mesh"/>
