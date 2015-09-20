@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<Windows OnLoadWindows="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Menu','Music');
+<Windows OnLoadWindows="coreInstance:trace('First Time Main Menu '.. tostring(first_time_main_menu))
+						if first_time_main_menu then
+							CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Menu','Music');
+							first_time_main_menu = false
+						end
 						if inputm:has_game_pad(1) then
 							gui_manager:set_visible_gui_element('MenuHelp',true)
 						else

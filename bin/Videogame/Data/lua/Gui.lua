@@ -176,10 +176,11 @@ function GameOver()
 	if GameoverCount > 3 then
 		GameoverCount = 0;
 		reset_game();
+		coreInstance:trace('First Time Main Menu Game Over'.. tostring(first_time_main_menu))
+		first_time_main_menu = true
 		gui_manager:set_is_gameover(false);
 		gui_manager:set_visible_mouse(true);
 		CCoreLuaWrapper().m_CoreInstance:get_graphics_manager():set_is_GUI_displayed(true);
-		CCoreLuaWrapper().m_CoreInstance:getGUIManager():pop_windows();
 		local playerRenderableMesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky");
 		playerRenderableMesh:remove_action(8)
 		gui_manager:pop_windows();
