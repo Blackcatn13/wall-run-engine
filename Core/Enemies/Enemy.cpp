@@ -271,11 +271,11 @@ int CEnemy::CheckPlayerCollision() {
   //3 if player gets hit
   //4 if player is in pos to iman
   //0 if no hit
-  float l_MargenSuperiorPlayer = 0.5;//HARDCODED
-  float l_MargenInferiorPlayer = 0;//HARDCODED -- 0 = linea de hitbox
+  float l_MargenSuperiorPlayer = 0.25;//HARDCODED
+  float l_MargenInferiorPlayer = 0.1;//HARDCODED -- 0 = linea de hitbox
   float l_MargenInferiorIman = 0;//HARDCODED
   float l_MargenSuperiorIman = 3;//HARDCODED
-  float l_DistanceToIman = 3;
+  float l_DistanceToIman = 2;
   bool is_over_me = (PLAYC->GetPosition().y > (m_Position.y + m_EnemyHitbox - l_MargenInferiorPlayer)) && (PLAYC->GetPosition().y < (m_Position.y + m_EnemyHitbox + l_MargenSuperiorPlayer));
   bool is_over_to_iman = (PLAYC->GetPosition().y > (m_Position.y + m_EnemyHitbox - l_MargenInferiorIman)) && (PLAYC->GetPosition().y < (m_Position.y + m_EnemyHitbox + l_MargenSuperiorIman));
   if (getisAlive() && ((m_Position.Distance(PLAYC->GetPosition()) < m_EnemyHitbox) || (is_over_me && m_Position.Distance(PLAYC->GetPosition()) < (m_EnemyHitbox + l_MargenSuperiorPlayer)))) {
@@ -287,7 +287,7 @@ int CEnemy::CheckPlayerCollision() {
       return 3;
     }
   } else {
-    if (is_over_to_iman) {
+	  if (is_over_to_iman && PLAYC->getableToIman()) {
       Vect3f posPlayerZX = Vect3f(PLAYC->GetPosition().x, 0, PLAYC->GetPosition().z);
       Vect3f posEnemyZX = Vect3f(m_Position.x, 0, m_Position.z);
       if (posEnemyZX.Distance(posPlayerZX) < l_DistanceToIman) {

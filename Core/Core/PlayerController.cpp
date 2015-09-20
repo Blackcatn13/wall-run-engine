@@ -27,6 +27,7 @@ CPlayerController::CPlayerController()
     m_isJumpingMoving(false),
     m_isDoubleJumping(false),
     m_executeDoubleJump(false),
+	m_ableToIman(false),
     m_isOnPlatform(1.0),
     m_is3D(true),
     m_isAttack(false),
