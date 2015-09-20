@@ -136,6 +136,7 @@ function on_update_player_lua(l_ElapsedTime)
 				player_controller.m_isJumping = false;
 				player_controller.m_isDoubleJumping = false;
 				_land = false;
+				player_controller.m_ableToIman = false;
 				playerRenderable:clear_cycle(0,0);
 				playerRenderable:clear_cycle(1,0);
 				playerRenderable:clear_cycle(3,0);
@@ -328,6 +329,7 @@ function on_update_player_lua(l_ElapsedTime)
 		local dist_to_floor = get_distance_to_floor(player_controller:get_position());
 		if dist_to_floor > 3 and _land == false and player_controller.m_isJumping == false and player_controller.m_isDoubleJumping == false and player.is_hit == false then
 			_land = true;
+			player_controller.m_ableToIman = true;
 			_fallingAnimation = false;		
 			playerRenderable:clear_cycle(0,0.1);
 			playerRenderable:clear_cycle(1,0.1);
@@ -354,8 +356,10 @@ function on_update_player_lua(l_ElapsedTime)
 				if executedDoubleEnd == true then
 					if player_controller.m_isGrounded then
 						_land = false;
+						player_controller.m_ableToIman = false;
 						inertiaJump = Vect3f(0,0,0);
 						player.use_iman = false;
+						player.iman_pos = Vect3f(0,0,0);
 						player.on_air = false;
 						inDoubleJump = false;
 						playerRenderable:clear_cycle(13,0.2);
@@ -372,8 +376,10 @@ function on_update_player_lua(l_ElapsedTime)
 				end
 				if player_controller.m_isGrounded then
 					_land = false;
+					player_controller.m_ableToIman = false;
 					inertiaJump = Vect3f(0,0,0);
 					player.use_iman = false;
+					player.iman_pos = Vect3f(0,0,0);
 					player.on_air = false;
 					if _fallingAnimation == false then
 						playerRenderable:clear_cycle(3,0.2);
@@ -400,6 +406,7 @@ function on_update_player_lua(l_ElapsedTime)
 				
 				inLoop = false;
 				_land = true;
+				player_controller.m_ableToIman = true;
 				player_controller.m_isJumping = false;
 				
 			else
@@ -431,7 +438,9 @@ function on_update_player_lua(l_ElapsedTime)
 			player_controller.m_isDoubleJumping = true;
 			player_controller.m_isJumping = false;
 			_land = false;
+			player_controller.m_ableToIman = false;
 			player.use_iman = false;
+			player.iman_pos = Vect3f(0,0,0);
 			player.on_air = true;
 			inDoubleJump = true;
 			executedDoubleStart = false;
@@ -444,6 +453,7 @@ function on_update_player_lua(l_ElapsedTime)
 			if (not playerRenderable:is_action_animation_active()) and executedDoubleStart == false then
 				player_controller.m_isDoubleJumping = false;
 				_land = true;
+				player_controller.m_ableToIman = true;
 				local positionOld = playerRenderable:get_position();
 				local auxPosition = playerRenderable:getAnimationBonePosition().y; 
 				local newPosition = Vect3f(positionOld.x, auxPosition, positionOld.z);
@@ -579,7 +589,7 @@ function on_update_player_lua(l_ElapsedTime)
 			end
 		end
 		
-		if _land and player.use_iman then
+		if _land and player.use_iman and (player.iman_pos.x ~= 0 or player.iman_pos.y ~= 0 or player.iman_pos.z ~= 0) then
 			local playerPosZX = Vect3f(player_controller:get_position().x, 0, player_controller:get_position().z);
 			local imanZX = Vect3f(player.iman_pos.x,0,player.iman_pos.z);
 			local distancePlayerIman = math.abs(get_distance_between_points(playerPosZX,imanZX));

@@ -25,6 +25,7 @@ class CPlayerController : public CObject3D {
   GET_SET(bool, isJumping);
   GET_SET(bool, isDoubleJumping);
   GET_SET(bool, executeDoubleJump);
+  GET_SET(bool, ableToIman);
   GET_SET(float, isOnPlatform);
   GET_SET(bool, isJumpingMoving);
   GET_SET(float, CurrentJumpForce);
@@ -54,6 +55,7 @@ class CPlayerController : public CObject3D {
   bool				m_isJumpingMoving;
   bool				m_isDoubleJumping;
   bool				m_executeDoubleJump;
+  bool				m_ableToIman;
   bool				m_is3D;
   bool				m_isAttack;
   float				m_AttackForce;

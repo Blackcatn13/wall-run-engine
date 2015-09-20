@@ -171,6 +171,7 @@ void RegisterPhysX() {
     .property("m_isJumping", &CPlayerController::getisJumping, &CPlayerController::setisJumping )
 	.property("m_isDoubleJumping", &CPlayerController::getisDoubleJumping, &CPlayerController::setisDoubleJumping )
 	.property("m_executeDoubleJump", &CPlayerController::getexecuteDoubleJump, &CPlayerController::setexecuteDoubleJump )
+	.property("m_ableToIman", &CPlayerController::getableToIman, &CPlayerController::setableToIman )
     .property("m_isJumpingMoving", &CPlayerController::getisJumpingMoving, &CPlayerController::setisJumpingMoving )
     .property("m_is3D", &CPlayerController::getis3D, &CPlayerController::setis3D )
     .property("m_isFalling", &CPlayerController::getisFalling, &CPlayerController::setisFalling)
