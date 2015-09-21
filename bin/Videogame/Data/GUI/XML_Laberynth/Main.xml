@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<Windows OnLoadWindows="coreInstance:trace('First Time Main Menu '.. tostring(first_time_main_menu))
-						if first_time_main_menu then
+<Windows OnLoadWindows="if first_time_main_menu then
 							CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Menu','Music');
 							first_time_main_menu = false
 						end
@@ -36,7 +35,7 @@
 		default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
 		<texture name="img1" name_texture="./Data/GUI/GoPixelGo/MenuMain2.jpg"/>
 	</Image>
-	
+		
 	<Image name="buttonsBackground" posx="50.00" posy="0.00" height="100.00" width="50.00" visible="true" active="true"
 		default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
 		<texture name="img1" name_texture="./Data/GUI/GoPixelGo/MenuButtonsBackground.png"/>

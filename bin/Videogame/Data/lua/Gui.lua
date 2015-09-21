@@ -176,7 +176,6 @@ function GameOver()
 	if GameoverCount > 3 then
 		GameoverCount = 0;
 		reset_game();
-		coreInstance:trace('First Time Main Menu Game Over'.. tostring(first_time_main_menu))
 		first_time_main_menu = true
 		gui_manager:set_is_gameover(false);
 		gui_manager:set_visible_mouse(true);
