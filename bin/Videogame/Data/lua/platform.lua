@@ -62,14 +62,25 @@ end
 function update_break_platform(dt, current_time, max_time, platform_name, trigger_name)
 	--coreInstance:trace("m_current_time " .. tostring(m_current_time))
 	--local l_time = m_current_time * dt
+	local platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("breakable",player_controller.m_Room):get_resource(platform_name)
+
+	if platform ~= nil and not platform.m_EmittersSet then
+		coreInstance:trace("Setting Platform particles")
+		local array_emitters = { particle_manager:get_resource(platform.m_ParticleEmitter), particle_manager:get_resource(platform.m_ParticleEmitter2), particle_manager:get_resource(platform.m_ParticleEmitter3), particle_manager:get_resource(platform.m_ParticleEmitter4)}
+		set_emitters_visible(array_emitters, true)
+		platform.m_EmittersSet = true
+	end
 	if current_time >= max_time then
-		local platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("breakable",player_controller.m_Room):get_resource(platform_name)
+		
 		--local falling_force = Vect3f(0.0,-1.0,0.0)
 		if platform ~= nil then
 			platform:disable_platform(dt)--, falling_force)
 			--m_current_time = 0
 			local trigger = trigger_manager:get_resource(trigger_name)
 			trigger.m_Time = 0.0
+			local array_emitters = { particle_manager:get_resource(platform.m_ParticleEmitter), particle_manager:get_resource(platform.m_ParticleEmitter2), particle_manager:get_resource(platform.m_ParticleEmitter3), particle_manager:get_resource(platform.m_ParticleEmitter4)}
+			set_emitters_visible(array_emitters, false)
+			platform.m_EmittersSet = false
 		end
 	end
 	
@@ -79,10 +90,13 @@ function update_break_platform(dt, current_time, max_time, platform_name, trigge
 		trigger.m_Time = 0.0
 		trigger.set_update(false)
 		trigger.activate(false)
-		local platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("breakable",player_controller.m_Room):get_resource(platform_name)
+		--local platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("breakable",player_controller.m_Room):get_resource(platform_name)
 		--local falling_force = Vect3f(0.0,-1.0,0.0)
 		if platform ~= nil then
 			platform.enable_platform()
+			local array_emitters = { particle_manager:get_resource(platform.m_ParticleEmitter), particle_manager:get_resource(platform.m_ParticleEmitter2), particle_manager:get_resource(platform.m_ParticleEmitter3), particle_manager:get_resource(platform.m_ParticleEmitter4)}
+			set_emitters_visible(array_emitters, false)
+			platform.m_EmittersSet = false
 		end
 	end
 	--m_current_time = m_current_time + 1

@@ -5,6 +5,7 @@
 #include <string>
 #include "Math\Vector3.h"
 #include "StaticPlatform.h"
+#include "Utils\Defines.h"
 
 class CTrigger;
 class CXMLTreeNode;
@@ -15,6 +16,7 @@ class CBreakablePlatform : public CStaticPlatform {
   bool				m_Broken;
   Vect3f			m_ActorOriginalPosition;
   Vect3f			m_ActorOriginalRotation;
+  bool				m_EmittersSet;
 
  public:
   CBreakablePlatform(std::string platformName, std::string coreName, std::string triggerName);
@@ -28,6 +30,8 @@ class CBreakablePlatform : public CStaticPlatform {
   bool IsBroken() {
     return m_Broken;
   }
+
+  GET_SET(bool, EmittersSet);
 };
 
 #endif

@@ -24,6 +24,15 @@ function get_renderable_object(layer_name,room, _objectName)
 	return object
 end
 
+function set_emitters_visible(array_emitters, visible)
+	for i =1, table.getn(array_emitters) do
+		if array_emitters[i] ~= nil then
+			array_emitters[i]:set_visible(visible)
+		end
+	end
+
+end
+
 function open_door(_objectName)
 	--coreInstance:trace("Opening door ".. _objectName)
 	local door = get_renderable_object("puzzle",player_controller.m_Room, _objectName)
