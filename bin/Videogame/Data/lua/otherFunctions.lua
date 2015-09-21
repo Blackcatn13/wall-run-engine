@@ -245,6 +245,7 @@ function reset_game()
 	
 	--Pixelites and cards
 	collectible_manager:reset_collectibles();
+	reset_cards()
 	player.enemy_puzzle_active = false
 	
 	--Enemies

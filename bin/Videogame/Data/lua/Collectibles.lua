@@ -29,6 +29,17 @@ function check_collectibles()
 	end
 end
 
+function reset_cards()
+	for i = 1, table.maxn(Cards_Vector) do
+		if Cards_Vector[i].unlocked == true then
+			Cards_Vector[i].unlocked = false
+			local image_name = "Collectible"..tostring(i)
+			coreInstance:trace(image_name)
+			gui_manager:set_image(image_name,'ImgLocked')
+		end
+	end
+end
+
 function get_sticker(sticker_name, img_name)
 	local trigger_name = sticker_name .. "_UserData"
 	local trigger = trigger_manager:get_resource(trigger_name)
