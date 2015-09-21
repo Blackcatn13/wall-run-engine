@@ -407,41 +407,6 @@
 	<static_mesh name="Sala_6_ColumnaB_007" filename="Data\level4\meshes\Sala_6_ColumnaB_007.mesh"/>
 	<static_mesh name="Sala_6_ColumnaB_006" filename="Data\level4\meshes\Sala_6_ColumnaB_006.mesh"/>
 	<static_mesh name="Sala_6" filename="Data\level4\meshes\Sala_6.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_016" filename="Data\level4\meshes\Sala_6_ColumnaLateral_016.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_015" filename="Data\level4\meshes\Sala_6_ColumnaLateral_015.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_014" filename="Data\level4\meshes\Sala_6_ColumnaLateral_014.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_013" filename="Data\level4\meshes\Sala_6_ColumnaLateral_013.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_012" filename="Data\level4\meshes\Sala_6_ColumnaLateral_012.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_011" filename="Data\level4\meshes\Sala_6_ColumnaLateral_011.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_010" filename="Data\level4\meshes\Sala_6_ColumnaLateral_010.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_009" filename="Data\level4\meshes\Sala_6_ColumnaLateral_009.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_008" filename="Data\level4\meshes\Sala_6_ColumnaLateral_008.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_007" filename="Data\level4\meshes\Sala_6_ColumnaLateral_007.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_006" filename="Data\level4\meshes\Sala_6_ColumnaLateral_006.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_005" filename="Data\level4\meshes\Sala_6_ColumnaLateral_005.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_004" filename="Data\level4\meshes\Sala_6_ColumnaLateral_004.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_003" filename="Data\level4\meshes\Sala_6_ColumnaLateral_003.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_020" filename="Data\level4\meshes\Sala_6_ColumnaLateral_020.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_021" filename="Data\level4\meshes\Sala_6_ColumnaLateral_021.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_022" filename="Data\level4\meshes\Sala_6_ColumnaLateral_022.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_023" filename="Data\level4\meshes\Sala_6_ColumnaLateral_023.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_024" filename="Data\level4\meshes\Sala_6_ColumnaLateral_024.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_025" filename="Data\level4\meshes\Sala_6_ColumnaLateral_025.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_026" filename="Data\level4\meshes\Sala_6_ColumnaLateral_026.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_027" filename="Data\level4\meshes\Sala_6_ColumnaLateral_027.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_028" filename="Data\level4\meshes\Sala_6_ColumnaLateral_028.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_029" filename="Data\level4\meshes\Sala_6_ColumnaLateral_029.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_030" filename="Data\level4\meshes\Sala_6_ColumnaLateral_030.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_032" filename="Data\level4\meshes\Sala_6_ColumnaLateral_032.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_033" filename="Data\level4\meshes\Sala_6_ColumnaLateral_033.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_031" filename="Data\level4\meshes\Sala_6_ColumnaLateral_031.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_017" filename="Data\level4\meshes\Sala_6_ColumnaLateral_017.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_018" filename="Data\level4\meshes\Sala_6_ColumnaLateral_018.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_019" filename="Data\level4\meshes\Sala_6_ColumnaLateral_019.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_034" filename="Data\level4\meshes\Sala_6_ColumnaLateral_034.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_035" filename="Data\level4\meshes\Sala_6_ColumnaLateral_035.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_036" filename="Data\level4\meshes\Sala_6_ColumnaLateral_036.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_002" filename="Data\level4\meshes\Sala_6_ColumnaLateral_002.mesh"/>
 	<static_mesh name="Sala_6_ColumnaLateral_001" filename="Data\level4\meshes\Sala_6_ColumnaLateral_001.mesh"/>
 	<static_mesh name="Sala_6_Plataforma_002" filename="Data\level4\meshes\Sala_6_Plataforma_002.mesh"/>
 	<static_mesh name="Sala_6_Plataforma_001" filename="Data\level4\meshes\Sala_6_Plataforma_001.mesh"/>
@@ -451,28 +416,6 @@
 	<static_mesh name="Sala_6_ColumnaCentral_004" filename="Data\level4\meshes\Sala_6_ColumnaCentral_004.mesh"/>
 	<static_mesh name="Sala_6_ColumnaCentral_005" filename="Data\level4\meshes\Sala_6_ColumnaCentral_005.mesh"/>
 	<static_mesh name="Sala_6_ColumnaCentral_006" filename="Data\level4\meshes\Sala_6_ColumnaCentral_006.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_037" filename="Data\level4\meshes\Sala_6_ColumnaLateral_037.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_038" filename="Data\level4\meshes\Sala_6_ColumnaLateral_038.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_039" filename="Data\level4\meshes\Sala_6_ColumnaLateral_039.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_040" filename="Data\level4\meshes\Sala_6_ColumnaLateral_040.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_041" filename="Data\level4\meshes\Sala_6_ColumnaLateral_041.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_042" filename="Data\level4\meshes\Sala_6_ColumnaLateral_042.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_043" filename="Data\level4\meshes\Sala_6_ColumnaLateral_043.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_044" filename="Data\level4\meshes\Sala_6_ColumnaLateral_044.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_045" filename="Data\level4\meshes\Sala_6_ColumnaLateral_045.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_046" filename="Data\level4\meshes\Sala_6_ColumnaLateral_046.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_047" filename="Data\level4\meshes\Sala_6_ColumnaLateral_047.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_048" filename="Data\level4\meshes\Sala_6_ColumnaLateral_048.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_049" filename="Data\level4\meshes\Sala_6_ColumnaLateral_049.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_050" filename="Data\level4\meshes\Sala_6_ColumnaLateral_050.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_051" filename="Data\level4\meshes\Sala_6_ColumnaLateral_051.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_052" filename="Data\level4\meshes\Sala_6_ColumnaLateral_052.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_053" filename="Data\level4\meshes\Sala_6_ColumnaLateral_053.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_054" filename="Data\level4\meshes\Sala_6_ColumnaLateral_054.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_055" filename="Data\level4\meshes\Sala_6_ColumnaLateral_055.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_056" filename="Data\level4\meshes\Sala_6_ColumnaLateral_056.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_057" filename="Data\level4\meshes\Sala_6_ColumnaLateral_057.mesh"/>
-	<static_mesh name="Sala_6_ColumnaLateral_058" filename="Data\level4\meshes\Sala_6_ColumnaLateral_058.mesh"/>
 	<static_mesh name="Sala_6_ColumnaCentral_007" filename="Data\level4\meshes\Sala_6_ColumnaCentral_007.mesh"/>
 	<static_mesh name="Sala_6_ColumnaCentral_008" filename="Data\level4\meshes\Sala_6_ColumnaCentral_008.mesh"/>
 	<static_mesh name="Sala_6_ColumnaCentral_009" filename="Data\level4\meshes\Sala_6_ColumnaCentral_009.mesh"/>
