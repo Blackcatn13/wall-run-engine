@@ -24,11 +24,26 @@ function get_renderable_object(layer_name,room, _objectName)
 	return object
 end
 
+function set_emitters_visible(array_emitters, visible)
+	for i =1, table.getn(array_emitters) do
+		if array_emitters[i] ~= nil then
+			array_emitters[i]:set_visible(visible)
+		end
+	end
+
+end
+
 function open_door(_objectName)
 	--coreInstance:trace("Opening door ".. _objectName)
 	local door = get_renderable_object("puzzle",player_controller.m_Room, _objectName)
 	if door ~= nil then
 		--door.m_Printable = false
+		local emitter = particle_manager:get_resource(door.m_ParticleEmitter)
+		if emitter ~= nil then
+			emitter.m_vPos = door:get_position()+ door.m_EmitterOffset
+			emitter:set_yaw(door:get_yaw())
+			emitter.m_FireParticles = true
+		end
 		coreInstance:trace("Door Final Position: " .. tostring(door.m_FinalPosition.y) )
 		door.m_IsOpening = true
 		inputm:set_game_pad_left_motor_speed(20000, 1);
@@ -46,6 +61,12 @@ function open_door(_objectName, _objectName2)
 	inputm:set_game_pad_left_motor_speed(20000, 1);
 	if door ~= nil then
 		--door.m_Printable = false
+		local emitter = particle_manager:get_resource(door.m_ParticleEmitter)
+		if emitter ~= nil then
+			emitter.m_vPos = door:get_position()+ door.m_EmitterOffset
+			emitter:set_yaw(door:get_yaw())
+			emitter.m_FireParticles = true
+		end
 		coreInstance:trace("Door Final Position: " .. tostring(door.m_FinalPosition.y) )
 		door.m_IsOpening = true
 		if door.m_Speed == 0.0 then

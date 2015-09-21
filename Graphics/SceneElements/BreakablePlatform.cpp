@@ -11,6 +11,7 @@
 CBreakablePlatform::CBreakablePlatform(std::string platformName, std::string coreName, std::string triggerName)
   : CStaticPlatform(platformName, coreName, true),
     m_TriggerName(triggerName),
+    m_EmittersSet(false),
     m_Broken(false) {
   m_Actor->Activate(true);
   m_ActorOriginalPosition = m_Actor->GetPosition();
@@ -21,6 +22,7 @@ CBreakablePlatform::CBreakablePlatform(std::string platformName, std::string cor
 CBreakablePlatform::CBreakablePlatform(const CXMLTreeNode &node)
   : CStaticPlatform(node, true),
     m_Broken(false),
+    m_EmittersSet(false),
     m_TriggerName(node.GetPszISOProperty("trigger_name", "")) {
   m_Actor->Activate(true);
   m_ActorOriginalPosition = m_Actor->GetPosition();
