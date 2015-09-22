@@ -565,7 +565,9 @@ void CPhysicActor::RotateByAngles(const float yaw) {
   //trans.Translate(GetPosition());
   //scale.SetScale(1, 1, 1);
   //rot.RotByAngleY(yaw);
-  rot.RotByAnglesYXZ(yaw, 0, 0);
+  float rotAngle = yaw;
+  mathUtils::CanonizeAngle(rotAngle);
+  rot.SetRotByAngleY(rotAngle);
   rot.Translate(GetPosition());
   SetMat44( rot );
   //m_pPhXActor->setGlobalPose((NxMat34 &)rot.GetSubMatrix34());
