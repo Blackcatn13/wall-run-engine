@@ -98,7 +98,7 @@ function Player.new()
 	end
 	
 	function self.player_take_damage(direction)
-		if self.is_hit == false then
+		if self.is_hit == false and not self.is_dead then
 			if (direction.x ~= 0 or direction.y ~= 0 or direction.z ~= 0) and not self.hurt_by_spikes then
 				self.vector_damage = direction
 			end
@@ -207,13 +207,13 @@ function Player.new()
 			
 		end
 		--coreInstance:trace("Player dying zone: ".. tostring(self.zone))
-		if tostring(self.zone) == "4.0" then
+		if tostring(self.zone) == "4.0" or tostring(self.zone) == "7.0" then
 			--coreInstance:trace("Player died in zone 4.0")
 			--enable_breaking_platform("Plataforma_Fragil")
 			 restore_broken_platforms_by_layer("breakable")
-		elseif tostring(self.zone) == "3.0" then
+		--[[elseif tostring(self.zone) == "3.0" then
 			reset_wall_trap(0, "WALL_TRAP1_RIGHT")
-			reset_wall_trap(0, "WALL_TRAP1_LEFT")
+			reset_wall_trap(0, "WALL_TRAP1_LEFT")]]
 		end
 		--self.activating_triggers = true
 	end

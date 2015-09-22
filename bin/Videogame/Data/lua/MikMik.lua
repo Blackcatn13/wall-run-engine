@@ -225,7 +225,7 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 --player_position = Vect3f(10,0,10)
 	local player_position = player_controller:get_position()
 	local enemy = enemy_manager:get_enemy(name)
-	if enemy ~= nil then
+	if enemy ~= nil and not player.is_dead then
 	--local billboard = billboard_manager:get_resource(enemy.m_RenderableObject.m_Billboard)
 	--if billboard ~= nil then
 	--coreInstance:trace("Mik Ataque Position: ".. tostring(enemy:get_position().x) .. ", " .. tostring(enemy:get_position().y) .. ", " ..tostring(enemy:get_position().z))
@@ -331,6 +331,7 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 			end
 		end
 	end
+	
 	
 end
 
