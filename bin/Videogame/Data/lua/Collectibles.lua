@@ -2,9 +2,25 @@
 function roll_object(objectName, layer_name, dt)
 	local object_manager = renderable_objects_layer_manager:get_renderable_objects_manager_by_str(layer_name)
 	local object = object_manager:get_resource(objectName)
-	local new_yaw = object:get_yaw()+ 1* dt
-	object:set_yaw(new_yaw)
+	local new_yaw = 0
+--	if object:get_visible() then
+		new_yaw = object:get_yaw()+ 1* dt
+		
+		object:set_yaw(new_yaw)
+---	end
+	return new_yaw
 end
+
+function roll_collectible(objectName, layer_name, dt)
+	local temp_yaw = roll_object(objectName, layer_name, dt)
+	if temp_yaw ~= 0 then
+		local trigger = trigger_manager:get_resource(objectName.."_UserData")
+		coreInstance:trace("Collectible trigger position Antes: "..tostring(trigger:get_position().x)..", "..tostring(trigger:get_position().y)..", "..tostring(trigger:get_position().z))
+		trigger:rotate_by_angles(temp_yaw)
+		coreInstance:trace("Collectible trigger position Despues: "..tostring(trigger:get_position().x)..", "..tostring(trigger:get_position().y)..", "..tostring(trigger:get_position().z))
+	end
+end
+
 
 function get_pixelite(pixelite_name, value)
 	local trigger_name = pixelite_name .. "_UserData"

@@ -4,6 +4,7 @@
 #include "Utils\PhysicUserData.h"
 #include "Math\Matrix44.h"
 #include "Utils\Defines.h"
+#include "Math\Matrix34.h"
 
 //----PhysX Includes-------------
 #undef min
@@ -554,6 +555,22 @@ void CPhysicActor::SetRotation ( const Mat33f &_vRot ) {
   l_rot44.m22 = _vRot.m22;
   l_rot44.Translate(GetPosition());
   SetMat44(l_rot44);
+}
+
+void CPhysicActor::RotateByAngles(const float yaw) {
+  //Mat44f trans =  m44fIDENTITY;
+  Mat44f rot = m44fIDENTITY;
+  //Mat44f scale = m44fIDENTITY;
+//NxVec3 tempDimensions = m_vBoxDesc[0]->dimensions;
+  //trans.Translate(GetPosition());
+  //scale.SetScale(1, 1, 1);
+  //rot.RotByAngleY(yaw);
+  rot.RotByAnglesYXZ(yaw, 0, 0);
+  rot.Translate(GetPosition());
+  SetMat44( rot );
+  //m_pPhXActor->setGlobalPose((NxMat34 &)rot.GetSubMatrix34());
+// m_vBoxDesc[0]->dimensions = tempDimensions;
+
 }
 
 Vect3f CPhysicActor::GetPosition ( void ) {

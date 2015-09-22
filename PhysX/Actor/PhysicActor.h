@@ -86,6 +86,7 @@ class CPhysicActor {
   Vect3f				GetRotation					();
   void				SetRotation     			( const Vect3f &_vRot);
   void				SetRotation     			( const Mat33f &_mRot);
+  void				RotateByAngles				(const float yaw);
 
   void				SetAngularVelocity			( const Vect3f  _vVelocity );
   Vect3f				GetAngularVelocity			();
