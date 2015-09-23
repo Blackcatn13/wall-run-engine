@@ -23,3 +23,6 @@ sound_manager = CCoreLuaWrapper().m_CoreInstance:getWWSoundManager()
 CCoreLuaWrapper().m_CoreInstance:getTickCounter():addTick("lava", 0.05, 1000);
 puzzle_manager = coreInstance:get_puzzle_manager()
 first_time_main_menu = true
+transition_effect = TransitionEffect()
+gui_manager.m_sTransitionEffect = transition_effect
+fade_done = false

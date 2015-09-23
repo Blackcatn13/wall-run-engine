@@ -1,5 +1,8 @@
 --local coreInstance = CCoreLuaWrapper().m_CoreInstance
 --local physx_manager = coreInstance:get_phisics_manager()
+function fade(fade_time)
+	gui_manager:start_fade(fade_time)
+end
 
 function change_object_position(_object, _position)
 	--local switch_mesh = get_renderable_object("switches", trigger_name)

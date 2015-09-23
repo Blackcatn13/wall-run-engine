@@ -128,6 +128,7 @@ function Player.new()
 
 	function self.player_die()
 		if not self.is_dead then --Si ya está muerto no se va a morir más, QUE NO ES UN ZOMBIE
+			fade(6)
 			self.activating_triggers = false
 			--self.remove_animations()
 			self.is_dead = true
@@ -221,6 +222,7 @@ function Player.new()
 			reset_wall_trap(0, "WALL_TRAP1_RIGHT")
 			reset_wall_trap(0, "WALL_TRAP1_LEFT")]]
 		end
+		
 		--self.activating_triggers = true
 	end
 	

@@ -699,9 +699,9 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		
 		if player.is_dead then
-			coreInstance:trace("Dead ")
+			--coreInstance:trace("Dead ")
 			if not playerRenderable:is_action_animation_active() then
-				player.check_death_actions()
+					player.check_death_actions()
 			else
 				--coreInstance:trace("Animation is runing")
 				if player.has_ass_burned then
