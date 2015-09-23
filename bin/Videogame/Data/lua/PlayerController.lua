@@ -16,6 +16,8 @@ local lastCamYaw = -10;
 local extraRotationContinue = 0;
 local lastJoystickYaw = -10;
 local _isQuiet = false;
+local _gravityForce = -1;
+local _actualGravityForce = 0;
 
 
 --////////////////////////////////////////////////////////
@@ -600,6 +602,12 @@ function on_update_player_lua(l_ElapsedTime)
 			end
 		end
 		
+		if(_land)then
+			_actualGravityForce = _actualGravityForce + (_gravityForce * l_ElapsedTime);
+			mov.y = mov.y + _actualGravityForce;
+		else
+			_actualGravityForce = 0;
+		end
 		
 		if player_controller.m_isJumping or player_controller.m_isDoubleJumping then
 			player_controller:move(mov, l_ElapsedTime);
