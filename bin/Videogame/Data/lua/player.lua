@@ -117,6 +117,7 @@ function Player.new()
 					end
 				end	
 			end
+						
 			if self.num_hearts == 0 then
 				--self.num_hearts = 3
 				self.player_die()
@@ -153,7 +154,12 @@ function Player.new()
 			gui_manager:set_is_displayed_heart(true);
 			gui_manager:set_count_heart(0.0);
 			gui_manager:set_num_heart( self.num_lives );	
+			local emitter3 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter3)
+			if emitter3:get_visible() == true then
+				emitter3:set_visible(false)
+			end
 		end
+		
 		--self.check_death_actions()
 	end
 	

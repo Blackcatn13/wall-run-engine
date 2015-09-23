@@ -639,10 +639,14 @@ function on_update_player_lua(l_ElapsedTime)
 					playerRenderable:clear_cycle(1,0);
 					if player.playing_hit == false then
 						player.playing_hit = true
-						playerRenderable:execute_action(6,0,0.3,1,true);
+						if not player.hurt_by_spikes then
+							playerRenderable:execute_action(6,0,0.3,1,true);
+						else
+							player.hurt_by_spikes = false
+						end
 						inputm:set_game_pad_right_motor_speed(15000, 1);
 					else
-						if not playerRenderable:is_cycle_animation_active() then
+						if not playerRenderable:is_cycle_animation_active() and not player.hurt_by_spikes then
 							player.is_hit = false
 							player.playing_hit = false
 							inputm:set_game_pad_right_motor_speed(0, 1);
@@ -661,14 +665,29 @@ function on_update_player_lua(l_ElapsedTime)
 			end
 		end
 		
-		if player.hurt_by_spikes and not playerRenderable:is_action_animation_active() then
-			coreInstance:trace(tostring(player.num_hearts))
-			player.hurt_by_spikes = false
-			player.player_take_damage(Vect3f(0,0,0), 0)
-			if player.num_hearts > 0 then
-				player.get_player_controller():set_position(player.last_spikes_position)
+		if player.hurt_by_spikes and not player.is_dead then
+			local emitter3 = particle_manager:get_resource(playerRenderable.m_ParticleEmitter3)
+			if not playerRenderable:is_action_animation_active() then
+				coreInstance:trace(tostring(player.num_hearts))		
+				emitter3:set_visible(false)
+				player.player_take_damage(Vect3f(0,0,0), 0)
+				
+				if player.num_hearts > 0 then
+					player.get_player_controller():set_position(player.last_spikes_position)
+				end
+			else
+								
+				local pos = Vect3f(0.0, 0.0, 0.0)
+				--pos = pos + player.get_player_controller():get_position()
+				pos = pos + playerRenderable:get_position()
+				local emitterOffset = playerRenderable.m_EmitterOffset3
+				pos = pos + playerRenderable:getAnimationBonePosition() 
+				--pos.y = pos.y + 100 * l_ElapsedTime
+				--playerRenderable:set_position(pos)
+				--player.get_player_controller():set_position(pos)
+				pos = pos + emitterOffset
+				emitter3.m_vPos = pos
 			end
-	
 		end
 		
 		if player.is_dead then
@@ -676,7 +695,7 @@ function on_update_player_lua(l_ElapsedTime)
 			if not playerRenderable:is_action_animation_active() then
 				player.check_death_actions()
 			else
-				coreInstance:trace("Animation is runing")
+				--coreInstance:trace("Animation is runing")
 				if player.has_ass_burned then
 					coreInstance:trace("ass burned")
 					local emitter2 = particle_manager:get_resource(playerRenderable.m_ParticleEmitter2)
