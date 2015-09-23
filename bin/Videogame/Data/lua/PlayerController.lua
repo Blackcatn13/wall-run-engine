@@ -170,7 +170,7 @@ function on_update_player_lua(l_ElapsedTime)
 		if (player_controller.m_isJumpingMoving == false) and (player_controller.m_isAttack == false) and (player.is_hit == false and not player.is_dead) then
 			local y_axis = 0.0
 			local x_axis = 0.0
-			if not playerRenderable.m_VanishActive then
+			if not playerRenderable.m_VanishActive and not player.hurt_by_spikes then
 				if inputm:has_game_pad(1) then
 					auxAxisYMoved = act2in:do_action_from_lua("MoveForward", y_axis);
 					auxAxisXMoved = act2in:do_action_from_lua("MoveRigth", x_axis);
