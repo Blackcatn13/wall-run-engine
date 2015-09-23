@@ -157,8 +157,15 @@ function on_enter_pinchos()
 	--local player = Player:get_instance()
 	
 	player.hurt_by_spikes = true
-	local player_renderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky")
-	--[[ Pasar esto de abajo al player Controller para la animacion
+	local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky")
+	renderable_piky_mesh:execute_action(15,0,0.3,1,false) -- animacion de piky tostada
+	local emitter3 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter3)
+	if emitter3:get_visible() == false then
+		emitter3:set_visible(true)
+		emitter3.m_vPos = renderable_piky_mesh:get_position() + renderable_piky_mesh.m_EmitterOffset3
+	end
+	--[[local player_renderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky")
+	 Pasar esto de abajo al player Controller para la animacion
 	coreInstance:trace(tostring(player.num_hearts))
 	if player.num_hearts > 0 then
 		player.get_player_controller():set_position(player.last_spikes_position)
