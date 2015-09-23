@@ -98,14 +98,7 @@
 	<Physx_mesh name="Plataforma_Mov04" filename="Data\level4\meshes\Plataforma_Mov04.phsx"/>
 	
 	<Physx_mesh name="Sala_6_Coberta_001" filename="Data\level4\meshes\Sala_6_Coberta_001.phsx"/>
-	<Physx_mesh name="Sala_6_ColumnaB_001" filename="Data\level4\meshes\Sala_6_ColumnaB_001.phsx"/>
-	<Physx_mesh name="Sala_6_ColumnaB_002" filename="Data\level4\meshes\Sala_6_ColumnaB_002.phsx"/>
-	<Physx_mesh name="Sala_6_ColumnaB_003" filename="Data\level4\meshes\Sala_6_ColumnaB_003.phsx"/>
 	<Physx_mesh name="Sala_6_ColumnaB_005" filename="Data\level4\meshes\Sala_6_ColumnaB_005.phsx"/>
-	<Physx_mesh name="Sala_6_ColumnaB_004" filename="Data\level4\meshes\Sala_6_ColumnaB_004.phsx"/>
-	<Physx_mesh name="Sala_6_ColumnaB_008" filename="Data\level4\meshes\Sala_6_ColumnaB_008.phsx"/>
-	<Physx_mesh name="Sala_6_ColumnaB_007" filename="Data\level4\meshes\Sala_6_ColumnaB_007.phsx"/>
-	<Physx_mesh name="Sala_6_ColumnaB_006" filename="Data\level4\meshes\Sala_6_ColumnaB_006.phsx"/>
 	<Physx_mesh name="Sala_6" filename="Data\level4\meshes\Sala_6.phsx"/>
 	<Physx_mesh name="Sala_6_Plataforma_002" filename="Data\level4\meshes\Sala_6_Plataforma_002.phsx"/>
 	<Physx_mesh name="Sala_6_Plataforma_001" filename="Data\level4\meshes\Sala_6_Plataforma_001.phsx"/>

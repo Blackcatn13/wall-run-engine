@@ -492,7 +492,7 @@
 	<mesh_instance name="Sala4_Escultura_001" core="Sala4_Escultura_001" pos="580.358215 20.622276 -96.364967" yaw="-0.19952" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="solid"/>
 	<mesh_instance name="Sala4_Escultura_002" core="Sala4_Escultura_002" pos="579.894775 16.983360 -149.994720" yaw="-0.856899" pitch="0.05568" roll="-0.0638578" scale="0.880708 0.880708 0.880708" visible="true" room="4" layer="solid"/>
 	<mesh_instance name="CARALLENGUA_1_SALA5" core="CARALLENGUA_1_SALA5" pos="561.412292 18.583603 -369.319946" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
-	<mesh_instance name="PLATAFORMA_S6_1" core="PLATAFORMA_S6_1" pos="565.165283 5.387472 -437.934326" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="PLATAFORMA_S6_1" core="PLATAFORMA_S6_1" pos="565.165283 14.080521 -437.934326" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="PLATAFORMA_S6_2" core="PLATAFORMA_S6_2" pos="534.435425 11.138065 -453.777283" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<platform name="PlataformaMovil001_1" core="PlataformaMovil001_1" type="moving" pos="546.685 12.102 -406.656" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.22632 0.749243 3.0015" layer="mov_platforms" room="5" speed="2">
 		<wp pos="566.928 12.102 -406.656"/>
@@ -589,14 +589,7 @@
 	
 	
 	<mesh_instance name="Sala_6_Coberta_001" core="Sala_6_Coberta_001" pos="556.929260 16.608967 -416.288910" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_ColumnaB_001" core="Sala_6_ColumnaB_001" pos="529.566589 16.291885 -568.809937" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_ColumnaB_002" core="Sala_6_ColumnaB_002" pos="524.498840 16.794897 -568.809937" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_ColumnaB_003" core="Sala_6_ColumnaB_003" pos="519.616638 20.083542 -568.809937" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_ColumnaB_005" core="Sala_6_ColumnaB_005" pos="535.034363 19.047207 -578.985168" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_ColumnaB_004" core="Sala_6_ColumnaB_004" pos="540.102112 19.485849 -578.985168" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_ColumnaB_008" core="Sala_6_ColumnaB_008" pos="519.635620 21.905371 -597.762512" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_ColumnaB_007" core="Sala_6_ColumnaB_007" pos="524.703369 21.402359 -597.762512" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_ColumnaB_006" core="Sala_6_ColumnaB_006" pos="529.679504 21.402359 -597.762512" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="Sala_6_ColumnaB_005" core="Sala_6_ColumnaB_005" pos="529.644958 11.056310 -583.286255" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_6" core="Sala_6" pos="553.460876 -4.801757 -501.372406" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_6_ColumnaLateral_001" core="Sala_6_ColumnaLateral_001" pos="546.698181 10.706451 -499.528625" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_6_Plataforma_002" core="Sala_6_Plataforma_002" pos="548.482483 -0.939303 -592.461243" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
