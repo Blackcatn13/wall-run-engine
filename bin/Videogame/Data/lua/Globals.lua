@@ -26,3 +26,4 @@ first_time_main_menu = true
 transition_effect = TransitionEffect()
 gui_manager.m_sTransitionEffect = transition_effect
 fade_done = false
+first_load = true

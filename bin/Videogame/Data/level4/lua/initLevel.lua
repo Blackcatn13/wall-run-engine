@@ -31,20 +31,23 @@ function init_level(a)
 	cara2:blend_cycle(0, 1, 0);
 	--set_visible_gui_elements(true)
 	on_init_cameras_lua()
-	
-	local active_camera = cam_Controller:get_active_camera()
-	local dir3D = active_camera:get_direction()
-	local camObject = active_camera.m_pObject3D
-	local dirYaw = camObject:get_yaw()
-	local PlayerYaw =  - dirYaw + 1.57
-	player_controller:set_yaw(PlayerYaw);
-	set_player_room(1, true);
-	
-	local old_position = player_controller.m_PhysicController:get_position()
-	local new_position = Vect3f(old_position.x, 1.0, old_position.z)
+	if first_load then
+		local active_camera = cam_Controller:get_active_camera()
+		local dir3D = active_camera:get_direction()
+		local camObject = active_camera.m_pObject3D
+		local dirYaw = camObject:get_yaw()
+		local PlayerYaw =  - dirYaw + 1.57
+		player_controller:set_yaw(PlayerYaw);
+		set_player_room(1, true);
+		
+		local old_position = player_controller.m_PhysicController:get_position()
+		local new_position = Vect3f(old_position.x, 1.0, old_position.z)
 
-	player_controller.m_PhysicController:set_position(new_position)
-	player.set_initial_position(PlayerYaw, new_position)
+		player_controller.m_PhysicController:set_position(new_position)
+	
+		player.set_initial_position(PlayerYaw, new_position)
+		first_load = false
+	end
 	player.attack_enabled = false
 	player.can_move = true
 	renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky"):remove_action(1);
