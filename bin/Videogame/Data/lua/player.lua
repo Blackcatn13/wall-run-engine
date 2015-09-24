@@ -52,6 +52,7 @@ function Player.new()
 	self.last_checkpoint = nil
 	self.inside_obstacle_area = false
 	self.vanishing = false
+	self.dead_in_hole = false
 	
 	------	 PLAYER FUNCTIONS -----
 		
@@ -135,10 +136,12 @@ function Player.new()
 			local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky")
 			self.remove_animations(renderable_piky_mesh)
 			if not self.has_ass_burned then
-				if self.num_lives == 1 then
-					renderable_piky_mesh:execute_action(8,0,0.3,1,false) --animacion de muerto GameOver
-				else
-					renderable_piky_mesh:execute_action(9,0,0.3,1,false) --animacion de muerto
+				if not self.dead_in_hole then -- Si cae por una agujero no tiene animacion de caida
+					if self.num_lives == 1 then
+						renderable_piky_mesh:execute_action(8,0,0.3,1,false) --animacion de muerto GameOver
+					else
+						renderable_piky_mesh:execute_action(9,0,0.3,1,false) --animacion de muerto
+					end								
 				end
 			else
 				renderable_piky_mesh:execute_action(15,0,0.3,1,false) -- animacion de piky tostada
@@ -152,10 +155,12 @@ function Player.new()
 			self.coreInstance:trace("player dies")
 			self.num_lives = self.num_lives - 1
 			if self.num_lives > 0 then
-				if not self.has_ass_burned then
+				if not self.has_ass_burned and not self.dead_in_hole then
 					fade(6)
-				else
+				elseif self.has_ass_burned and not self.dead_in_hole then
 					fade(4)
+				else
+					fade(3)
 				end
 			else
 				fade(4)

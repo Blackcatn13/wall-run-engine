@@ -255,6 +255,9 @@ function player_die(burning)
 	--local player = Player:get_instance()
 	--coreInstance:trace("Piky burning?: "..tostring(burning))
 	player.has_ass_burned = toboolean(burning)
+	if not player.has_ass_burned then
+		player.dead_in_hole = true
+	end
 	player.player_die()
 end
 
