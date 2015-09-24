@@ -265,9 +265,12 @@ void CGUIManager::Update (float elapsedTime) {
       it = m_WindowsMap.find( m_sCurrentWindows );
       if ( it != m_WindowsMap.end() ) {
         CWindows *currentWindow = it->second;
-        if (!UpdateTransitionEffect(elapsedTime)) {
-          currentWindow->Update(intputManager, elapsedTime);
-        }
+        /*  if (!UpdateTransitionEffect(elapsedTime)) {
+            currentWindow->Update(intputManager, elapsedTime);
+          }*/
+        if (m_sTransitionEffect.m_bDoEffect)
+          UpdateTransitionEffect(elapsedTime);
+        currentWindow->Update(intputManager, elapsedTime);
         m_bUpdateError = false;
       } else {
         if (!m_bUpdateError) {

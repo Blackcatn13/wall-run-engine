@@ -128,7 +128,7 @@ function Player.new()
 
 	function self.player_die()
 		if not self.is_dead then --Si ya está muerto no se va a morir más, QUE NO ES UN ZOMBIE
-			fade(6)
+			
 			self.activating_triggers = false
 			--self.remove_animations()
 			self.is_dead = true
@@ -151,7 +151,15 @@ function Player.new()
 			local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 			self.coreInstance:trace("player dies")
 			self.num_lives = self.num_lives - 1
-			
+			if self.num_lives > 0 then
+				if not self.has_ass_burned then
+					fade(6)
+				else
+					fade(4)
+				end
+			else
+				fade(4)
+			end
 			gui_manager:set_is_displayed_heart(true);
 			gui_manager:set_count_heart(0.0);
 			gui_manager:set_num_heart( self.num_lives );	
