@@ -59,9 +59,12 @@ end
 function get_sticker(sticker_name, img_name)
 	local trigger_name = sticker_name .. "_UserData"
 	local trigger = trigger_manager:get_resource(trigger_name)
-	if trigger.m_IsSwitched == false and player_controller.m_isGrounded then
+	if trigger.m_IsSwitched == false --[[and player_controller.m_isGrounded ]]then
 		if player.stickers == 0 then
 			gui_manager:set_is_displayed_unlock_message(true);
+			if inputm:has_game_pad(1) then
+				jump_enabled = false
+			end
 		end	
 		player.add_sticker(img_name)
 		deactivate_collectible(trigger,"collectible", sticker_name)

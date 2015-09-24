@@ -277,6 +277,7 @@ function reset_game()
 	gui_manager:set_is_paused(false);
 	gui_manager:set_is_displayed_poly_message(false);
 	gui_manager:set_is_displayed_unlock_message(false);
+	player.stickers = 0
 	gui_manager:set_first_poly_message_displayed(false);
 	gui_manager:set_visibility_message(false);
 	--gui_manager:set_visible_gui_element("LifeGUI", true)
