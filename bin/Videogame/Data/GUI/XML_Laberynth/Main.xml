@@ -27,12 +27,14 @@
 						gui_manager:set_is_displayed_console(false);"
         OnSaveWindows=""
         OnUpdateWindows="cam_Controller:set_active_camera('GUICamera')
+						local ball = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room('solid', 10):get_resource('MenuSphere');
+						ball:set_pitch(ball:get_pitch() - (gui_manager:get_dt() / 2));
 						renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room('player', 10):get_resource('Piky'):blend_cycle(1,1,0.5);
 						enemy_manager:get_enemy('Chucky').m_RenderableObject:blend_cycle(1,1,0.5)
 						enemy_manager:get_enemy('Chucky'):move_to_position(Vect3f(-920.75, -1, 0));">
 	
 	<Image name="background" posx="0.00" posy="0.00" height="100.00" width="100.00" visible="false" active="true"
-		default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+		default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="true">
 		<texture name="img1" name_texture="./Data/GUI/GoPixelGo/MenuMain2.jpg"/>
 	</Image>
 		
