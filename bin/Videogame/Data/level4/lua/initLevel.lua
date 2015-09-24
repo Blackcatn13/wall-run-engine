@@ -38,7 +38,7 @@ function init_level(a)
 		local dirYaw = camObject:get_yaw()
 		local PlayerYaw =  - dirYaw + 1.57
 		player_controller:set_yaw(PlayerYaw);
-		set_player_room(1, true);
+		
 		
 		local old_position = player_controller.m_PhysicController:get_position()
 		local new_position = Vect3f(old_position.x, 1.0, old_position.z)
@@ -47,7 +47,12 @@ function init_level(a)
 	
 		player.set_initial_position(PlayerYaw, new_position)
 		first_load = false
+	else
+		local Chucky = enemy_manager:get_enemy("Chucky")
+		Chucky:move_to_position(Vect3f(12.301, 0.0, -2.75))
+	
 	end
+	set_player_room("1", true);
 	player.attack_enabled = false
 	player.can_move = true
 	renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky"):remove_action(1);
