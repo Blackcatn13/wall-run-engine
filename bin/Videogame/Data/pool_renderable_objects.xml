@@ -48,6 +48,7 @@
 
 	<pool_renderable_object_technique name="generate_deferred_shading_pool_renderable_object_technique_lava">
 		<default_technique vertex_type="19" technique="GBufferDiffuseMapTechniqueLava"/>
+		<default_technique vertex_type="51" technique="GBufferLavaEffectTechnique"/>
 	</pool_renderable_object_technique> 
 
 	<pool_renderable_object_technique name="dummy_test">

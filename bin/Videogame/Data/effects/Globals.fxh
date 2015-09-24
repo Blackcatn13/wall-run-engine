@@ -63,4 +63,7 @@ float2 distortion2 = float2(0.1f, 0.3f);
 float2 distortion3 = float2(0.1f, 0.1f);
 float distortionScale = 0.8f;
 float distortionBias = 0.5f;
+// Lava values
+float loopDuration = 1;
+float displacement = 2;
 

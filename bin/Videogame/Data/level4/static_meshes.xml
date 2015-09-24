@@ -393,7 +393,7 @@
 	<static_mesh name="Plataforma_Mov05" filename="Data\level4\meshes\Plataforma_Mov05.mesh"/>
 	<static_mesh name="Plataforma_Mov04" filename="Data\level4\meshes\Plataforma_Mov04.mesh"/>
 	
-	<static_mesh name="PlaneLava" filename="Data\level4\meshes\Plane001.mesh"/>
+	<static_mesh name="PlaneLava" filename="Data\level4\meshes\PlaneLava.mesh"/>
 	<static_mesh name="LavaFlow" filename="Data\level4\meshes\LavaFlow.mesh"/>
 	<static_mesh name="Object002" filename="Data\level4\meshes\Object002.mesh"/>
 

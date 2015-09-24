@@ -65,6 +65,7 @@
 		<disable_alpha_blend />
 		<set_pool_renderable_objects_technique pool="generate_deferred_shading_pool_renderable_object_technique_lava"/>
 		<set_tick tick="lava" technique="GBufferDiffuseMapTechniqueLava"/>
+		<set_tick tick="lava" technique="GBufferLavaEffectTechnique"/>
 		<render_scene layer="lava" active="true"/>
 		<set_pool_renderable_objects_technique pool="generate_deferred_shading_pool_renderable_object_technique_movement"/>
 		<set_effect_value technique="GBufferDiffuseMapTechniqueMovement" value="ChangeUV" time="0.6"/>

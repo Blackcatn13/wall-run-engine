@@ -804,7 +804,7 @@
 	<mesh_instance name="Sala_7_Pinxos_017" core="Sala_7_Pinxos_017" pos="198.349548 28.841316 -645.208252" yaw="1.39575" pitch="0.0" roll="0.0" scale="0.832388 0.832388 0.832388" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_7_Esmeralda_062" core="Sala_7_Esmeralda_062" pos="-4.065781 30.535812 -638.793701" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 
-	<mesh_instance name="PlaneLava" core="PlaneLava" pos="563.188 9.464 -120.497" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="lava"/>
+	<mesh_instance name="PlaneLava" core="PlaneLava" pos="563.794739 9.0 -119.653076" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="lava"/>
 	<mesh_instance name="LavaFlow" core="LavaFlow" pos="548.119 13.383 -123.458" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="lava"/>
 
 	<platform name="MenuSphere" core="MenuSphere" type="static" pos="-919.000 -6.000 -1.500" yaw="-0.3140" pitch="0.0" roll="0.0" scale="2.5 1.0 2.5" visible="true" phisic_size="5.31929 5.31929 5.31929" layer="solid" use_phisics_mesh="true" room="10"/>
