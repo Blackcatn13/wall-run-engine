@@ -298,7 +298,7 @@ void CGUIManager::RenderTransitionEffect(CGraphicsManager *renderManager) {
           //color.SetAlpha( alpha);
 
 
-          CCORE->Trace("Primer paso");
+          //  CCORE->Trace("Primer paso");
 
         } else {
           //Durante la segunda mitad del tiempo: alpha de 1.f -> 0.f
@@ -306,17 +306,17 @@ void CGUIManager::RenderTransitionEffect(CGraphicsManager *renderManager) {
           alpha = abs(1 - (l_HalfTotalTime / (m_sTransitionEffect.m_fTimeCounter - l_HalfTotalTime)));
 
 
-          CCORE->Trace("Segundo paso");
+          //  CCORE->Trace("Segundo paso");
           //color.SetAlpha(abs(alpha - 2));
         }
         if (alpha > 1)
           alpha = 1;
         color.SetAlpha(alpha);
         renderManager->DrawQuad2D(Vect2i(0, 0), m_ScreenResolution.x, m_ScreenResolution.y, UPPER_LEFT, color);
-        std::stringstream ss;
-        ss << "Alpha: " << alpha;
-        std::string str = ss.str();
-        CCORE->Trace(str);
+        /*  std::stringstream ss;
+          ss << "Alpha: " << alpha;
+          std::string str = ss.str();
+          CCORE->Trace(str);*/
       }
       break;
       default: {
