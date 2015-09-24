@@ -16,7 +16,10 @@ local lastCamYaw = -10;
 local extraRotationContinue = 0;
 local lastJoystickYaw = -10;
 local _isQuiet = false;
-
+local _gravityForce = -1;
+local _actualGravityForce = 0;
+local hole_timer = 0.0
+local max_hole_falling = 2.0
 
 --////////////////////////////////////////////////////////
 -- GLOBAL PARAMETERS
@@ -600,6 +603,12 @@ function on_update_player_lua(l_ElapsedTime)
 			end
 		end
 		
+		if(_land)then
+			_actualGravityForce = _actualGravityForce + (_gravityForce * l_ElapsedTime);
+			mov.y = mov.y + _actualGravityForce;
+		else
+			_actualGravityForce = 0;
+		end
 		
 		if player_controller.m_isJumping or player_controller.m_isDoubleJumping then
 			player_controller:move(mov, l_ElapsedTime);
@@ -691,9 +700,11 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		
 		if player.is_dead then
-			coreInstance:trace("Dead ")
-			if not playerRenderable:is_action_animation_active() then
-				player.check_death_actions()
+			--coreInstance:trace("Dead ")	
+			if not playerRenderable:is_action_animation_active() and not player.dead_in_hole then
+					coreInstance:trace("Dead ".. tostring(player.dead_in_hole))
+					player.check_death_actions()
+					
 			else
 				--coreInstance:trace("Animation is runing")
 				if player.has_ass_burned then
@@ -705,6 +716,19 @@ function on_update_player_lua(l_ElapsedTime)
 					pos.y = pos.y + playerRenderable:getAnimationBonePosition().y
 					pos = pos + emitterOffset
 					emitter2.m_vPos = pos;
+				end
+				
+			end
+			if player.dead_in_hole then
+				--coreInstance:trace("Piky en boquetee" .. tostring(hole_timer))
+				if hole_timer < max_hole_falling then
+					hole_timer = hole_timer + l_ElapsedTime
+				--	coreInstance:trace("Hole Timer: " .. tostring(hole_timer))
+				
+				else
+					hole_timer = 0.0
+					player.dead_in_hole = false
+					player.check_death_actions()
 				end
 			end
 		end

@@ -52,6 +52,7 @@ function Player.new()
 	self.last_checkpoint = nil
 	self.inside_obstacle_area = false
 	self.vanishing = false
+	self.dead_in_hole = false
 	
 	------	 PLAYER FUNCTIONS -----
 		
@@ -128,16 +129,19 @@ function Player.new()
 
 	function self.player_die()
 		if not self.is_dead then --Si ya está muerto no se va a morir más, QUE NO ES UN ZOMBIE
+			
 			self.activating_triggers = false
 			--self.remove_animations()
 			self.is_dead = true
 			local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky")
 			self.remove_animations(renderable_piky_mesh)
 			if not self.has_ass_burned then
-				if self.num_lives == 1 then
-					renderable_piky_mesh:execute_action(8,0,0.3,1,false) --animacion de muerto GameOver
-				else
-					renderable_piky_mesh:execute_action(9,0,0.3,1,false) --animacion de muerto
+				if not self.dead_in_hole then -- Si cae por una agujero no tiene animacion de caida
+					if self.num_lives == 1 then
+						renderable_piky_mesh:execute_action(8,0,0.3,1,false) --animacion de muerto GameOver
+					else
+						renderable_piky_mesh:execute_action(9,0,0.3,1,false) --animacion de muerto
+					end								
 				end
 			else
 				renderable_piky_mesh:execute_action(15,0,0.3,1,false) -- animacion de piky tostada
@@ -150,7 +154,17 @@ function Player.new()
 			local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 			self.coreInstance:trace("player dies")
 			self.num_lives = self.num_lives - 1
-			
+			if self.num_lives > 0 then
+				if not self.has_ass_burned and not self.dead_in_hole then
+					fade(6)
+				elseif self.has_ass_burned and not self.dead_in_hole then
+					fade(4)
+				else
+					fade(3)
+				end
+			else
+				fade(4)
+			end
 			gui_manager:set_is_displayed_heart(true);
 			gui_manager:set_count_heart(0.0);
 			gui_manager:set_num_heart( self.num_lives );	
@@ -221,6 +235,7 @@ function Player.new()
 			reset_wall_trap(0, "WALL_TRAP1_RIGHT")
 			reset_wall_trap(0, "WALL_TRAP1_LEFT")]]
 		end
+		
 		--self.activating_triggers = true
 	end
 	
