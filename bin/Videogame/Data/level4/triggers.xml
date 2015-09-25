@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <triggers>
-<trigger name="InitCamera" platform_name="" pos="48.793602 4.985123 -6.568461" shape="box" size="8.10077 9.92248 12.6073" type_event="enter" script_function="trigger_set_3D" param1="" group="1" paint="false" color="0.882353 0.345098 0.780392"/>
+<!--<trigger name="InitCamera" platform_name="" pos="48.793602 4.985123 -6.568461" shape="box" size="8.10077 9.92248 12.6073" type_event="enter" script_function="trigger_set_3D" param1="" group="1" paint="false" color="0.882353 0.345098 0.780392"/>-->
 <trigger name="CheckPoint001" platform_name="" pos="59.382996 0.000000 0.071655" shape="box" size="0.69519 9.74541 9.85767" type_event="enter" script_function="set_checkpoint" param1="CheckPoint001" param2="CheckPointDisabledStand001" group="1" paint="false" color="0.882353 0.776471 0.341176"/>
 <trigger name="Hole001" platform_name="" pos="117.896194 -5.990989 -21.201315" shape="box" size="5.46999 2.55814 9.8392" type_event="enter" script_function="player_die" param1="false" group="1" paint="false" color="0.341176 0.882353 0.560784"/>
 <trigger name="Hole002" platform_name="" pos="165.467056 -5.990989 11.023417" shape="box" size="6.35031 2.55814 9.8392" type_event="enter" script_function="player_die" param1="false" group="1" paint="false" color="0.341176 0.882353 0.560784"/>
