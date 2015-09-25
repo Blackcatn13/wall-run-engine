@@ -616,4 +616,5 @@
 	<static_mesh name="Switch002" filename="Data\level4\meshes\Switch002.mesh"/>
 	<static_mesh name="Switch003" filename="Data\level4\meshes\Switch003.mesh"/>
 	<static_mesh name="MenuSphere" filename="Data\level4\meshes\MenuSphere.mesh"/>
+	<static_mesh name="MenuBackground" filename="Data\level4\meshes\MenuBackground.mesh"/>
 </static_meshes>

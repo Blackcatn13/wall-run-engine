@@ -430,6 +430,10 @@
 	    <action name="Enter">
 			<input deviceType="IDV_GAMEPAD1" EventType="EVENT_UP_DOWN" Code="PAD_BUTTON_A"/>
 	    </action>
+		
+		 <action name="EnableJump">
+			<input deviceType="IDV_GAMEPAD1" EventType="EVENT_DOWN_UP" Code="PAD_BUTTON_A"/>
+	    </action>
 	</gamepad>
 	
 </Actions>
