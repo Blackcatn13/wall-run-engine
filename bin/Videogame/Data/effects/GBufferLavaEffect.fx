@@ -48,10 +48,11 @@ TGBUFFER_TEXTURED1_VERTEX_PS GBufferVS(VertexVS_TTEXTURE2_NORMAL_VERTEX IN){
 	g *= correction;
 	b *= correction;
     OUT.UV = IN.UV;
-    //float4 dcolor = tex2Dlod(S1LinearWrapSampler2D, float4(OUT.UV,0,0));
-    float3 valToNoise = float3(IN.Position.x * r, IN.Position.y * g, IN.Position.z * b);
-    //float d = dcolor.r + dcolor.g + dcolor.b;
-    float d = noise(valToNoise);
+    float4 texturePos = float4(IN.UV.xy, 0.0f, 0.0f);
+    //float4 dcolor = tex2Dlod(S1LinearWrapSampler, texturePos);
+    float valToNoise = clamp(noise(IN.Position), 0.0, 1.0);
+    float d = valToNoise * r +  g +  b;
+    //float d = noise(dcolor.rgb);
     float3 newPosition = IN.Position + IN.Normal * d * displacement;
     OUT.HPosition = mul(float4(newPosition.xyz,1.0), g_WorldViewProjectionMatrix);
 	OUT.Normal = normalize(mul(IN.Normal,(float3x3)g_WorldMatrix));
@@ -64,7 +65,8 @@ TGBUFFER_TEXTURED1_VERTEX_PS GBufferVS(VertexVS_TTEXTURE2_NORMAL_VERTEX IN){
 
 TMultiRenderTargetPixel GBufferPS(TGBUFFER_TEXTURED1_VERTEX_PS IN) {
 	TMultiRenderTargetPixel OUT = (TMultiRenderTargetPixel)0;
-	float4 l_DiffuseColor = tex2D(S0LinearWrapSampler , IN.UV);
+	float4 l_DiffuseColor = tex2D(S0LinearWrapSampler , IN.UV1
+		);
 	//float4 l_DiffuseColor = tex2Dlod(S1LinearWrapSampler, float4(IN.UV,0,0));
 	//float4 l_DiffuseColor = IN.Col;
 	clip(l_DiffuseColor.a < 0.1f ? -1 : 1);
