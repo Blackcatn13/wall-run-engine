@@ -42,11 +42,7 @@ void CTexture::Activate(size_t StageId) {
 }
 
 bool CTexture::LoadFile() {
-  bool test = false;
-  if (test) {
-    D3DXCreateTextureFromFileEx(GRAPHM->GetDevice(), m_FileName.c_str(), 0, 0, 0, 0,  D3DFMT_UNKNOWN, D3DPOOL_MANAGED, D3DX_DEFAULT, D3DX_DEFAULT, 0, NULL, NULL, (LPDIRECT3DTEXTURE9 *)&m_Texture);
-  } else
-    D3DXCreateTextureFromFile(GRAPHM->GetDevice(), m_FileName.c_str(), (LPDIRECT3DTEXTURE9 *)&m_Texture);
+  D3DXCreateTextureFromFile(GRAPHM->GetDevice(), m_FileName.c_str(), (LPDIRECT3DTEXTURE9 *)&m_Texture);
   return m_Texture != NULL;
 }
 
