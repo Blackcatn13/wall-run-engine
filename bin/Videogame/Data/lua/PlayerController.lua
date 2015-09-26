@@ -91,7 +91,8 @@ function on_update_player_lua(l_ElapsedTime)
 		layer = "vanishing"
 	end
 
-	local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room(layer, player_controller.m_Room):get_resource("Piky");
+	local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room(layer, player_controller.m_Room):get_resource(piky_mesh_name);
+
 	
 	if gui_manager:get_is_displayed_console() == false and gui_manager.m_sCurrentWindows == "Play.xml" and player.can_move and not cinematic_controller.m_executing then
 	
@@ -140,15 +141,15 @@ function on_update_player_lua(l_ElapsedTime)
 				player_controller.m_isDoubleJumping = false;
 				_land = false;
 				player_controller.m_ableToIman = false;
-				playerRenderable:clear_cycle(0,0);
-				playerRenderable:clear_cycle(1,0);
-				playerRenderable:clear_cycle(3,0);
-				playerRenderable:clear_cycle(4,0);
-				playerRenderable:clear_cycle(12,0);
-				playerRenderable:clear_cycle(13,0);
-				playerRenderable:remove_action(2);
-				playerRenderable:remove_action(10);
-				playerRenderable:remove_action(11);
+				playerRenderable:clear_cycle(anim_idle,0);
+				playerRenderable:clear_cycle(anim_run,0);
+				playerRenderable:clear_cycle(anim_jump_loop,0);
+				playerRenderable:clear_cycle(anim_jump_end,0);
+				playerRenderable:clear_cycle(anim_DJump_03,0);
+				playerRenderable:clear_cycle(anim_DJump_04,0);
+				playerRenderable:remove_action(anim_jump_start);
+				playerRenderable:remove_action(anim_DJump_01);
+				playerRenderable:remove_action(anim_DJump_02);
 			end
 			if timer > m_damageTime then
 				m_damageFeedBackSpeed = m_damageFeedBackSpeed - m_damageFeedBackSpeedDismin * l_ElapsedTime
@@ -334,25 +335,25 @@ function on_update_player_lua(l_ElapsedTime)
 			_land = true;
 			player_controller.m_ableToIman = true;
 			_fallingAnimation = false;		
-			playerRenderable:clear_cycle(0,0.1);
-			playerRenderable:clear_cycle(1,0.1);
-			playerRenderable:blend_cycle(3,1,0.1);
+			playerRenderable:clear_cycle(anim_idle,0.1);
+			playerRenderable:clear_cycle(anim_run,0.1);
+			playerRenderable:blend_cycle(anim_jump_loop,1,0.1);
 		end
 		if _land then
 			if inDoubleJump == true then
 				if executedDoubleLoop == false then
 					if (not playerRenderable:is_action_animation_active()) then
-						playerRenderable:remove_action(11);
+						playerRenderable:remove_action(anim_DJump_02);
 						playerRenderable:updateSkeleton(l_ElapsedTime);
-						playerRenderable:blend_cycle(12,1,0.1);
+						playerRenderable:blend_cycle(anim_DJump_03,1,0.1);
 						executedDoubleLoop = true;
 					end
 				end
 				if executedDoubleLoop == true and executedDoubleEnd == false then
 					if dist_to_floor < 17 then
-						playerRenderable:clear_cycle(12,0.2);
+						playerRenderable:clear_cycle(anim_DJump_03,0.2);
 						playerRenderable:updateSkeleton(l_ElapsedTime);
-						playerRenderable:blend_cycle(13,1,0.1);
+						playerRenderable:blend_cycle(anim_DJump_04,1,0.1);
 						executedDoubleEnd = true;
 					end
 				end
@@ -365,15 +366,15 @@ function on_update_player_lua(l_ElapsedTime)
 						player.iman_pos = Vect3f(0,0,0);
 						player.on_air = false;
 						inDoubleJump = false;
-						playerRenderable:clear_cycle(13,0.2);
+						playerRenderable:clear_cycle(anim_DJump_04,0.2);
 					end
 				end
 			else
 				if _fallingAnimation == false then
 					if dist_to_floor < 17 then
-							playerRenderable:clear_cycle(3,0.2);
+							playerRenderable:clear_cycle(anim_jump_loop,0.2);
 							playerRenderable:updateSkeleton(l_ElapsedTime);
-							playerRenderable:blend_cycle(4,1,0.1);
+							playerRenderable:blend_cycle(anim_jump_end,1,0.1);
 							_fallingAnimation = true;
 					end
 				end
@@ -385,9 +386,9 @@ function on_update_player_lua(l_ElapsedTime)
 					player.iman_pos = Vect3f(0,0,0);
 					player.on_air = false;
 					if _fallingAnimation == false then
-						playerRenderable:clear_cycle(3,0.2);
+						playerRenderable:clear_cycle(anim_jump_loop,0.2);
 					else
-						playerRenderable:clear_cycle(4,0.2);
+						playerRenderable:clear_cycle(anim_jump_end,0.2);
 					end
 				end
 			end
@@ -418,11 +419,11 @@ function on_update_player_lua(l_ElapsedTime)
 					local auxPosition = playerRenderable:getAnimationBonePosition().y; 
 					local newPosition = Vect3f(positionOld.x, auxPosition, positionOld.z);
 					playerRenderable:set_position(newPosition);
-					playerRenderable:blend_cycle(3,1,0.5);
+					playerRenderable:blend_cycle(anim_jump_loop,1,0.5);
 					playerRenderable:updateSkeleton(l_ElapsedTime);
-					playerRenderable:remove_action(2);
-					playerRenderable:clear_cycle(0,0);
-					playerRenderable:clear_cycle(1,0);
+					playerRenderable:remove_action(anim_jump_start);
+					playerRenderable:clear_cycle(anim_idle,0);
+					playerRenderable:clear_cycle(anim_run,0);
 					playerRenderable:updateSkeleton(l_ElapsedTime);
 					player_controller.m_isFalling = false;
 					inLoop = true;
@@ -432,12 +433,12 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		if player_controller.m_executeDoubleJump == true and inDoubleJump == false then
 			player_controller.m_executeDoubleJump = false;
-			playerRenderable:clear_cycle(0,0);
-			playerRenderable:clear_cycle(1,0);
-			playerRenderable:clear_cycle(3,0);
-			playerRenderable:clear_cycle(4,0);
-			playerRenderable:remove_action(2);
-			playerRenderable:execute_action(10,0.1,0,1,true);
+			playerRenderable:clear_cycle(anim_idle,0);
+			playerRenderable:clear_cycle(anim_run,0);
+			playerRenderable:clear_cycle(anim_jump_loop,0);
+			playerRenderable:clear_cycle(anim_jump_end,0);
+			playerRenderable:remove_action(anim_jump_start);
+			playerRenderable:execute_action(anim_DJump_01,0.1,0,1,true);
 			player_controller.m_isDoubleJumping = true;
 			player_controller.m_isJumping = false;
 			_land = false;
@@ -461,8 +462,8 @@ function on_update_player_lua(l_ElapsedTime)
 				local auxPosition = playerRenderable:getAnimationBonePosition().y; 
 				local newPosition = Vect3f(positionOld.x, auxPosition, positionOld.z);
 				playerRenderable:set_position(newPosition);
-				playerRenderable:remove_action(10);
-				playerRenderable:execute_action(11,0.1,0,1,true);
+				playerRenderable:remove_action(anim_DJump_01);
+				playerRenderable:execute_action(anim_DJump_02,0.1,0,1,true);
 				playerRenderable:updateSkeleton(l_ElapsedTime);
 				executedDoubleStart = true;
 			end
@@ -521,10 +522,10 @@ function on_update_player_lua(l_ElapsedTime)
 		--///////////////////////////////////////////////////////////
 		if (act2in:do_action_from_lua("Jump")) and (player_controller.m_isJumping == false and player_controller.m_isDoubleJumping == false and _land == false and player_controller.m_isAttack == false and player.is_hit == false and player_controller.m_isGrounded and not player.is_dead) and not playerRenderable.m_VanishActive and jump_enabled then
 			player_controller.m_JumpingTime = 0;
-			playerRenderable:clear_cycle(0,0.2);
-			playerRenderable:clear_cycle(1,0.2);
+			playerRenderable:clear_cycle(anim_idle,0.2);
+			playerRenderable:clear_cycle(anim_run,0.2);
 			playerRenderable:updateSkeleton(l_ElapsedTime);
-			playerRenderable:execute_action(2,0.1,0,1,true);
+			playerRenderable:execute_action(anim_jump_start,0.1,0,1,true);
 			playerRenderable:updateSkeleton(l_ElapsedTime);
 			player_controller.m_isJumping = true;
 			player.on_air = true;
@@ -548,7 +549,7 @@ function on_update_player_lua(l_ElapsedTime)
 			mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce * AttackSpeed * l_ElapsedTime;
 			mov.y = prev_y;
 			player_controller.m_isAttack = true;
-			playerRenderable:execute_action(5,0,0.3,1,false);
+			playerRenderable:execute_action(anim_attack,0,0.3,1,false);
 			local emitter = particle_manager:get_resource(playerRenderable.m_ParticleEmitter)
 			emitter.m_vPos = playerRenderable:get_position()+ playerRenderable.m_EmitterOffset
 			emitter:set_visible(true)
@@ -636,20 +637,22 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		
 		player_controller:set_position(player_controller.m_PhysicController:get_position());
-		move_character_controller_mesh(player_controller, player_controller:get_position(), player_controller.m_isJumping, player_controller.m_isDoubleJumping);
+		--if not player.hurt_by_spikes then
+			move_character_controller_mesh(player_controller, player_controller:get_position(), player_controller.m_isJumping, player_controller.m_isDoubleJumping);
+		--end
 		if not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land then
 			if (mov.x == 0 and mov.z == 0 or stopping) and player.is_hit == false then
-				playerRenderable:clear_cycle(1,deccelerationTime);
-				playerRenderable:blend_cycle(0,1,deccelerationTime+0.2);
+				playerRenderable:clear_cycle(anim_run,deccelerationTime);
+				playerRenderable:blend_cycle(anim_idle,1,deccelerationTime+0.2);
 			else
 				if player.is_hit then
 					--AQUI VA LA ANIMACION DE RECIBIR DAMAGE
-					playerRenderable:clear_cycle(0,0);
-					playerRenderable:clear_cycle(1,0);
+					playerRenderable:clear_cycle(anim_idle,0);
+					playerRenderable:clear_cycle(anim_run,0);
 					if player.playing_hit == false then
 						player.playing_hit = true
 						if not player.hurt_by_spikes then
-							playerRenderable:execute_action(6,0,0.3,1,true);
+							playerRenderable:execute_action(anim_hurt,0,0.3,1,true);
 						else
 							player.hurt_by_spikes = false
 						end
@@ -660,16 +663,16 @@ function on_update_player_lua(l_ElapsedTime)
 							player.playing_hit = false
 							inputm:set_game_pad_right_motor_speed(0, 1);
 							timer = 0.0
-							playerRenderable:remove_action(6);
-							playerRenderable:blend_cycle(0,1,0);
+							playerRenderable:remove_action(anim_hurt);
+							playerRenderable:blend_cycle(anim_idle,1,0);
 							m_damageFeedBackSpeed = m_damageFeedBackSpeedStart
 							--coreInstance:trace("Player hit "..tostring(player.is_hit))
 						end
 					end
 				else
 					--playerRenderable:clear_cycle(0,0);
-					playerRenderable:clear_cycle(0,accelerationTime);
-					playerRenderable:blend_cycle(1,1,accelerationTime);
+					playerRenderable:clear_cycle(anim_idle,accelerationTime);
+					playerRenderable:blend_cycle(anim_run,1,accelerationTime);
 				end
 			end
 		end
@@ -686,16 +689,17 @@ function on_update_player_lua(l_ElapsedTime)
 				end
 			else
 								
-				local pos = Vect3f(0.0, 0.0, 0.0)
-				--pos = pos + player.get_player_controller():get_position()
-				pos = pos + playerRenderable:get_position()
+				local pos_spikes = Vect3f(0.0, 0.0, 0.0)
+				pos_spikes = pos_spikes + player.get_player_controller():get_position()
+				--pos_spikes = pos_spikes + playerRenderable:get_position()
+				coreInstance:trace(tostring(pos_spikes.x)..", "..tostring(pos_spikes.y)..", "..tostring(pos_spikes.z))
 				local emitterOffset = playerRenderable.m_EmitterOffset3
-				pos = pos + playerRenderable:getAnimationBonePosition() 
-				--pos.y = pos.y + 100 * l_ElapsedTime
-				--playerRenderable:set_position(pos)
-				--player.get_player_controller():set_position(pos)
-				pos = pos + emitterOffset
-				emitter3.m_vPos = pos
+				--pos = pos + playerRenderable:getAnimationBonePosition() 
+				pos_spikes.y = pos_spikes.y + 1--0 *l_ElapsedTime
+				--playerRenderable:set_position(pos_spikes)
+				player.get_player_controller():set_position(pos_spikes)
+				pos_spikes = pos_spikes + emitterOffset
+				emitter3.m_vPos = pos_spikes
 			end
 		end
 		
@@ -744,7 +748,7 @@ function move_character_controller_mesh(_player, _position, _jumping, _doubleJum
 	if player.vanishing then
 		layer = "vanishing"
 	end
-	local mesh = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room(layer, player_controller.m_Room):get_resource("Piky")
+	local mesh = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room(layer, player_controller.m_Room):get_resource(piky_mesh_name)
 	mesh:set_yaw(_player:get_yaw() + math.pi)
 	local pos;
 	if (_jumping and not inLoop) or _doubleJumping then

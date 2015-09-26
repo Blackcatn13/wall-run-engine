@@ -10,7 +10,7 @@ function start_boss()
 	cam_Controller:get_active_camera().m_pObject3D:set_pitch(-0.5)	
 	
 	player_controller.m_PhysicController:set_position(position)
-	local playerRenderableMesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", 0):get_resource("Piky");
+	local playerRenderableMesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", 0):get_resource(piky_mesh_name);
 	playerRenderableMesh:set_position(position)
 	
 	local chucky = enemy_manager:get_enemy("Chucky").m_RenderableObject
@@ -237,6 +237,11 @@ function reset_game()
 	reset_checkpoints()
 	
 	--Player Position + 3D
+	
+	if piky_mesh_name =="Piky" then
+		piky_mesh_name ="Piky"
+	end
+	
 	player.reset_position()
 	player_controller.m_is3D = true;
 	local cam = coreInstance.m_CameraController:get_resource("3DCam");

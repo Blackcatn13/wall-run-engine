@@ -1,3 +1,4 @@
+ --Managers
  coreInstance = CCoreLuaWrapper().m_CoreInstance
  instance = CLuaGlobalsWrapper().m_CoreInstance
  physx_manager = coreInstance:get_phisics_manager()
@@ -17,15 +18,40 @@
  collectible_manager = nil
  particle_manager = coreInstance:getParticleManager()
  billboard_manager = coreInstance:get_billboard_manager()
-chuky_last_room = 0;
 cinematic_controller = coreInstance:get_cinematic_controller()
 sound_manager = CCoreLuaWrapper().m_CoreInstance:getWWSoundManager()
-CCoreLuaWrapper().m_CoreInstance:getTickCounter():addTick("lava", 0.05, 1000);
 puzzle_manager = coreInstance:get_puzzle_manager()
+
+--Fin Managers
+CCoreLuaWrapper().m_CoreInstance:getTickCounter():addTick("lava", 0.05, 1000);
+
+--Variables de Control
 first_time_main_menu = true
+chuky_last_room = 0;
 transition_effect = TransitionEffect()
 gui_manager.m_sTransitionEffect = transition_effect
 fade_done = false
 first_load = true
 jump_enabled = true
 boss_started = false
+
+piky_mesh_name = "Piky" --Piky o SuperPiky
+
+--Animaciones del Player
+--Piky
+anim_idle =	0
+anim_run = 1
+anim_jump_start = 2
+anim_jump_loop = 3
+anim_jump_end = 4
+anim_attack = 5
+anim_hurt = 6
+anim_poly = 7
+anim_death = 8
+anim_death_retry = 9
+anim_DJump_01 = 10
+anim_DJump_02 = 11
+anim_DJump_03 = 12
+anim_DJump_04 = 13
+anim_Burn = 14
+anim_BurnJump = 15

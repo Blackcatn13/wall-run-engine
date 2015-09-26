@@ -55,7 +55,7 @@ function init_level(a)
 	set_player_room("1", true);
 	player.attack_enabled = false
 	player.can_move = true
-	renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky"):remove_action(1);
+	renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name):remove_action(1);
 	--[[local ro1 = get_renderable_object("solid",0, "Arrow")
 	local ro2 = get_renderable_object("solid",0, "Arrow001")	
 	local ro3 = get_renderable_object("solid",0, "Arrow002")		
