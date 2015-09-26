@@ -299,6 +299,7 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 					enemy.m_isAttacking = true;
 				elseif damageType == 1 then
 					enemy.m_time_to_fly = true;
+					enemy.m_playAnimationDead = false;
 					enemy.m_flyVec = Vect3f(enemyPosXZ.x - playerPosXZ.x, 0,enemyPosXZ.z - playerPosXZ.z);
 					enemy.m_flyVec:normalize(1);
 					enemy.m_flyVec = Vect3f(enemy.m_flyVec.x, flyInclination, enemy.m_flyVec.z);
@@ -309,6 +310,7 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 					end
 				elseif damageType == 2 then
 					player_controller.m_executeDoubleJump = true;
+					enemy.m_playAnimationDead = true;
 					if enemy:get_wp_vector_size() > 0 then
 						local dead_pos = enemy.m_PhysicController:get_position()
 						enemy.m_OriginalPosition = Vect3f(dead_pos.x,dead_pos.y,dead_pos.z)
@@ -407,7 +409,9 @@ function mikmik_enter_dead(name)
 		enemy.m_RenderableObject:clear_cycle(0,0.2);
 		enemy.m_RenderableObject:clear_cycle(1,0.2);
 		enemy.m_RenderableObject:remove_action(2);
-		enemy.m_RenderableObject:execute_action(3,0.1,0,1,true);
+		if enemy.m_playAnimationDead == true then
+			enemy.m_RenderableObject:execute_action(3,0.1,0,1,true);
+		end
 		
 		enemy.m_isAlive = false
 				

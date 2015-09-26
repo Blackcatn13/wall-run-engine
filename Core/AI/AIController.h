@@ -83,7 +83,8 @@ class CAIController : public CObject3D {
   float				m_tiempoVidaDisparo;
   float				m_minAngleDisparo;
   float				m_ProjectileHitbox;
-  float				m_EnemyHitbox;
+  float				m_EnemyHitboxX;
+  float				m_EnemyHitboxY;
   float				m_Angle;
 };
 
