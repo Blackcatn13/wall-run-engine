@@ -44,6 +44,7 @@ class CEnemy : public CAIController { //CAIController
   float				m_AttackPlayerDistance;
   float				m_Zone;
   bool				m_isAttacking;
+  bool				m_playAnimationDead;
   bool				m_time_to_fly;
   Vect3f			m_flyVec;
   bool				m_MovedToDiePosition;
@@ -101,6 +102,7 @@ class CEnemy : public CAIController { //CAIController
   GET_SET(float, AttackPlayerDistance);
   GET_SET(float, Zone);
   GET_SET(bool, isAttacking);
+  GET_SET(bool, playAnimationDead);
   GET_SET(bool, time_to_fly);
   GET_SET(bool, MovedToDiePosition);
   GET_SET(Vect3f, flyVec);

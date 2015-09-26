@@ -19,7 +19,8 @@ local _isQuiet = false;
 local _gravityForce = -1;
 local _actualGravityForce = 0;
 local hole_timer = 0.0
-local max_hole_falling = 2.0
+local max_hole_falling = 2.0;
+local iman_force = 20;
 
 --////////////////////////////////////////////////////////
 -- GLOBAL PARAMETERS
@@ -562,7 +563,7 @@ function on_update_player_lua(l_ElapsedTime)
 			end
 		end
 		
-		--ACELERACION/INERCIA
+		--ACELERACION/INERCIA (SUELO)
 		local stopping = false;
 		if not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land and player_controller.m_isAttack == false and not player.is_hit and not player.is_dead and not playerRenderable.m_VanishActive then
 			if _isQuiet == false then
@@ -579,6 +580,7 @@ function on_update_player_lua(l_ElapsedTime)
 			inertia = Vect3f(0,0,0);
 		end
 		
+		--ACELERACION/INERCIA (AIRE)
 		if player_controller.m_isJumping or player_controller.m_isDoubleJumping or _land then
 			if _isQuiet == false then
 				local xValue = mov.x * acceleration;
@@ -593,17 +595,7 @@ function on_update_player_lua(l_ElapsedTime)
 			end
 		end
 		
-		if _land and player.use_iman and (player.iman_pos.x ~= 0 or player.iman_pos.y ~= 0 or player.iman_pos.z ~= 0) then
-			local playerPosZX = Vect3f(player_controller:get_position().x, 0, player_controller:get_position().z);
-			local imanZX = Vect3f(player.iman_pos.x,0,player.iman_pos.z);
-			local distancePlayerIman = math.abs(get_distance_between_points(playerPosZX,imanZX));
-			if (distancePlayerIman > 0.1) then
-				local movimientoAux = Vect3f(imanZX.x-playerPosZX.x, 0, imanZX.z-playerPosZX.z);
-				movimientoAux = movimientoAux * l_ElapsedTime;
-				mov = Vect3f(movimientoAux.x, mov.y, movimientoAux.z);
-			end
-		end
-		
+		-- GRAVITY
 		if(_land)then
 			_actualGravityForce = _actualGravityForce + (_gravityForce * l_ElapsedTime);
 			mov.y = mov.y + _actualGravityForce;
@@ -611,6 +603,25 @@ function on_update_player_lua(l_ElapsedTime)
 			_actualGravityForce = 0;
 		end
 		
+		-- IMAN
+		if _land and player.use_iman and (player.iman_pos.x ~= 0 or player.iman_pos.y ~= 0 or player.iman_pos.z ~= 0) then
+			local playerPosZX = Vect3f(player_controller:get_position().x, 0, player_controller:get_position().z);
+			local imanZX = Vect3f(player.iman_pos.x,0,player.iman_pos.z);
+			local distancePlayerImanX = math.abs(get_distance_between_points(playerPosZX,imanZX));
+			local distancePlayerImanY = math.abs(player_controller:get_position().y, player.iman_pos.y);
+			if (distancePlayerImanX > 0.1) then
+				local movimientoAux = Vect3f(imanZX.x-playerPosZX.x, 0, imanZX.z-playerPosZX.z);
+				local variableMultiplicadora = iman_force;
+				if distancePlayerImanY > 0 then
+					variableMultiplicadora = (iman_force * distancePlayerImanX) / distancePlayerImanY;
+				end
+				coreInstance:trace("vM: "..tostring(variableMultiplicadora));
+				movimientoAux = movimientoAux * l_ElapsedTime * variableMultiplicadora;
+				mov = Vect3f(movimientoAux.x, mov.y, movimientoAux.z);
+			end
+		end
+		
+		-- MOVER AL PLAYERCONTROLLER
 		if player_controller.m_isJumping or player_controller.m_isDoubleJumping then
 			player_controller:move(mov, l_ElapsedTime);
 		else
