@@ -199,7 +199,7 @@ end
 
 -- Chucky Falling down --
 function chucky_runner_enter_falling_down(name)
-
+	
 end
 
 function chucky_runner_exit_falling_down(name)
@@ -207,7 +207,22 @@ function chucky_runner_exit_falling_down(name)
 end
 
 function chucky_runner_update_falling_down(ElapsedTime, doComprobation, name)
+	
+end
 
+-- Chucky Stopping --
+function chucky_runner_enter_stopping(name)
+	chucky.m_RenderableObject:execute_action(10,0.1,0,1,true);
+end
+
+function chucky_runner_exit_stopping(name)
+
+end
+
+function chucky_runner_update_stopping(ElapsedTime, doComprobation, name)
+	if not chucky.m_RenderableObject:is_action_animation_active() then
+		chucky.m_RenderableObject:remove_action(10)
+	end
 end
 
 function get_chuky_need_to_jump()

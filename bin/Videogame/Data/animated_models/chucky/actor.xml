@@ -3,15 +3,15 @@
 	<normal_texture file="CHUCKY-CHUCKYNormalsMapFINAL.tga"/>
 	<skeleton file="Chucky_Skeleton.CSF"/>
 	<mesh file="Chucky_Mesh.cmf"/>
-	<animation name="idle" file="Chucky_idle.caf"/> <!-- 1 -->
-	<animation name="run" file="Chucky_run.caf"/> <!-- 2 -->
-	<animation name="jump" file="Chucky_jump.caf"/> <!-- 3 -->
-	<animation name="catch_fail" file="Chucky_catch_fail_01.caf"/> <!-- 4 -->
-	<animation name="run_hurt" file="Chucky_run_hurt.caf"/> <!-- 5 -->
-	<animation name="boss_throw" file="Chucky_boss_throw.caf"/> <!-- 6 -->
-	<animation name="boss_hurt" file="Chucky_boss_hurt.caf"/> <!-- 7 -->
-	<animation name="boss_summon" file="Chucky_boss_summon.caf"/> <!-- 8 -->
-	<animation name="boss_death" file="Chucky_boss_death.caf"/> <!-- 9 -->
-	<animation name="boss_return" file="Chucky_boss_return.caf"/> <!-- 10 -->
-	<animation name="stop" file="Chucky_stop.caf"/> <!-- 11 -->
+	<animation name="idle" file="Chucky_idle.caf"/> <!-- 0 -->
+	<animation name="run" file="Chucky_run.caf"/> <!-- 1 -->
+	<animation name="jump" file="Chucky_jump.caf"/> <!-- 2 -->
+	<animation name="catch_fail" file="Chucky_catch_fail_01.caf"/> <!-- 3 -->
+	<animation name="run_hurt" file="Chucky_run_hurt.caf"/> <!-- 4 -->
+	<animation name="boss_throw" file="Chucky_boss_throw.caf"/> <!-- 5 -->
+	<animation name="boss_hurt" file="Chucky_boss_hurt.caf"/> <!-- 6 -->
+	<animation name="boss_summon" file="Chucky_boss_summon.caf"/> <!-- 7 -->
+	<animation name="boss_death" file="Chucky_boss_death.caf"/> <!-- 8 -->
+	<animation name="boss_return" file="Chucky_boss_return.caf"/> <!-- 9 -->
+	<animation name="stop" file="Chucky_stop.caf"/> <!-- 10 -->
 </animated_model>

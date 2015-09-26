@@ -393,8 +393,7 @@ function ChuckyApear(distance)
 	coreInstance:trace("CHUKY APEARS!!!");
 	if player_controller.m_Room == 2 or player_controller.m_Room == 5 or player_controller.m_Room == 7 then
 		local Chucky = enemy_manager:get_enemy("Chucky");
-		if player.activating_triggers and not Chucky.m_Appeared then
-				
+		if player.activating_triggers and not Chucky.m_Appeared then	
 			local active_camera = cam_Controller:get_active_camera();
 			local dirVec = active_camera:get_path_point(active_camera.m_nextWaypoint) - active_camera:get_path_point(active_camera.m_currentWaypoint);
 			dirVec.y = 0;
@@ -412,6 +411,12 @@ function ChuckyApear(distance)
 			inputm:set_game_pad_left_motor_speed(7000, 1);
 		end
 	end
+end
+
+function ChuckyReApears(distance)
+	local Chucky = enemy_manager:get_enemy("Chucky");
+	Chucky.m_Appeared = false
+	ChuckyApear(distance)
 end
 
 function ChuckyDesapears()
@@ -437,6 +442,11 @@ function ChuckyJump()
 	local Chucky = enemy_manager:get_enemy("Chucky");
 	Chucky:m_FSM():newState("Saltando");
 	set_chucky_need_to_jump(true)
+end
+
+function ChuckyStop()
+	local Chucky = enemy_manager:get_enemy("Chucky")
+	Chucky:m_FSM():newState("Stopping")
 end
 
 function chucky_check_jump()
