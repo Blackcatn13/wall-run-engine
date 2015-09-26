@@ -371,7 +371,7 @@
 	    </action>
 
 	    <action name="TeleportTest1" debug="true">
-	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="PAD_DPAD_BACK"/>
+	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_Y"/>
 	    </action>
 		<action name="TeleportTest2" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_H"/>
