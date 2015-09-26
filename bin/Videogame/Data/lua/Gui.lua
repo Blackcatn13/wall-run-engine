@@ -21,7 +21,7 @@ function onUpdateWindowDisplayGUI()
 		end
 	end
 	
-	--local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky")
+	--local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name)
 	
 	--Si el valor de isDisplayed es TRUE quiere decir que se muestra y, al cabo de 3 segundos, se ocultará.
 	if gui_manager:get_is_displayed_heart() == true then
@@ -180,7 +180,7 @@ function GameOver()
 		gui_manager:set_is_gameover(false);
 		gui_manager:set_visible_mouse(true);
 		CCoreLuaWrapper().m_CoreInstance:get_graphics_manager():set_is_GUI_displayed(true);
-		local playerRenderableMesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky");
+		local playerRenderableMesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name);
 		playerRenderableMesh:remove_action(8)
 		gui_manager:pop_windows();
 		player.can_move = false;

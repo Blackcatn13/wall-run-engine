@@ -55,6 +55,54 @@ function Player.new()
 	self.dead_in_hole = false
 	
 	------	 PLAYER FUNCTIONS -----
+	
+	function self.set_super_piky(super_piky)
+		if super_piky then
+			piky_mesh_name = "SuperPiky"
+			--Actualizar con las animaciones de SuperPiky
+			anim_idle =	0
+			anim_run = 1
+			anim_jump_start = 2
+			anim_jump_loop = 3
+			anim_jump_end = 4
+			anim_attack = 5
+			anim_hurt = 6
+			anim_poly = 7
+			anim_death = 8
+			anim_death_retry = 9
+			anim_DJump_01 = 10
+			anim_DJump_02 = 11
+			anim_DJump_03 = 12
+			anim_DJump_04 = 13
+			anim_Burn = 14
+			anim_BurnJump = 15
+			
+		else
+			piky_mesh_name = "Piky"
+			--Actualizar con las animaciones de Piky
+			anim_idle =	0
+			anim_run = 1
+			anim_jump_start = 2
+			anim_jump_loop = 3
+			anim_jump_end = 4
+			anim_attack = 5
+			anim_hurt = 6
+			anim_poly = 7
+			anim_death = 8
+			anim_death_retry = 9
+			anim_DJump_01 = 10
+			anim_DJump_02 = 11
+			anim_DJump_03 = 12
+			anim_DJump_04 = 13
+			anim_Burn = 14
+			anim_BurnJump = 15
+		end
+		
+		local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name)	
+		if playerRenderable ~= nil then
+			player_controller.m_RenderableObject = playerRenderable
+		end	
+	end
 		
 	function self.set_room(room_number)
 		player_controller.m_Room = room_number
@@ -133,18 +181,18 @@ function Player.new()
 			self.activating_triggers = false
 			--self.remove_animations()
 			self.is_dead = true
-			local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky")
+			local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name)
 			self.remove_animations(renderable_piky_mesh)
 			if not self.has_ass_burned then
 				if not self.dead_in_hole then -- Si cae por una agujero no tiene animacion de caida
 					if self.num_lives == 1 then
-						renderable_piky_mesh:execute_action(8,0,0.3,1,false) --animacion de muerto GameOver
+						renderable_piky_mesh:execute_action(anim_death,0,0.3,1,false) --animacion de muerto GameOver
 					else
-						renderable_piky_mesh:execute_action(9,0,0.3,1,false) --animacion de muerto
+						renderable_piky_mesh:execute_action(anim_death_retry,0,0.3,1,false) --animacion de muerto
 					end								
 				end
 			else
-				renderable_piky_mesh:execute_action(15,0,0.3,1,false) -- animacion de piky tostada
+				renderable_piky_mesh:execute_action(anim_BurnJump,0,0.3,1,false) -- animacion de piky tostada
 				local emitter2 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter2)
 				if emitter2:get_visible() == false then
 					emitter2:set_visible(true)
@@ -169,9 +217,8 @@ function Player.new()
 			gui_manager:set_count_heart(0.0);
 			gui_manager:set_num_heart( self.num_lives );	
 			local emitter3 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter3)
-			if emitter3:get_visible() == true then
-				emitter3:set_visible(false)
-			end
+			emitter3:set_visible(false)
+			
 		end
 		
 		--self.check_death_actions()
@@ -195,7 +242,8 @@ function Player.new()
 	function self.check_death_actions()
 		self.is_dead = false
 		self.has_ass_burned = false
-		local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky")
+		self.set_super_piky(false)
+		local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name)
 		local emitter2 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter2)
 		if emitter2:get_visible() == true then
 			emitter2:set_visible(false)
@@ -241,18 +289,18 @@ function Player.new()
 	
 	function self.remove_animations(_renderable)
 		if _renderable:is_action_animation_active() then
-			_renderable:remove_action(2)
-			_renderable:remove_action(5)
-			_renderable:remove_action(6)
-			_renderable:remove_action(7)
-			_renderable:remove_action(8)
-			_renderable:remove_action(15)
+			_renderable:remove_action(anim_jump_start)
+			_renderable:remove_action(anim_attack)
+			_renderable:remove_action(anim_hurt)
+			_renderable:remove_action(anim_poly)
+			_renderable:remove_action(anim_death)
+			_renderable:remove_action(anim_BurnJump)
 		end
 		if _renderable:is_cycle_animation_active() then
-			_renderable:clear_cycle(0,0.1) 
-			_renderable:clear_cycle(1,0.1)
-			_renderable:clear_cycle(3,0.1)
-			_renderable:clear_cycle(4,0.1)
+			_renderable:clear_cycle(anim_idle,0.1) 
+			_renderable:clear_cycle(anim_run,0.1)
+			_renderable:clear_cycle(anim_jump_loop,0.1)
+			_renderable:clear_cycle(anim_jump_end,0.1)
 		end
 	end
     return self

@@ -155,16 +155,17 @@ function on_enter_pinchos()
 	end
 	--]]
 	--local player = Player:get_instance()
-	
-	player.hurt_by_spikes = true
-	local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky")
-	renderable_piky_mesh:execute_action(15,0,0.3,1,false) -- animacion de piky tostada
-	local emitter3 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter3)
-	if emitter3:get_visible() == false then
-		emitter3:set_visible(true)
-		emitter3.m_vPos = renderable_piky_mesh:get_position() + renderable_piky_mesh.m_EmitterOffset3
+	if not player.hurt_by_spikes then
+		player.hurt_by_spikes = true
+		local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name)
+		renderable_piky_mesh:execute_action(anim_Burn,0,0.3,1,false) -- animacion de piky tostada
+		local emitter3 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter3)
+		if emitter3:get_visible() == false then
+			emitter3:set_visible(true)
+			emitter3.m_vPos = renderable_piky_mesh:get_position() + renderable_piky_mesh.m_EmitterOffset3
+		end
 	end
-	--[[local player_renderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky")
+	--[[local player_renderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name)
 	 Pasar esto de abajo al player Controller para la animacion
 	coreInstance:trace(tostring(player.num_hearts))
 	if player.num_hearts > 0 then
@@ -353,7 +354,7 @@ function update_poly_platform(current_poly_time, dt, platform_name)
 	
 	--local act2in = coreInstance:get_action_to_input();
 	if (act2in:do_action_from_lua("PolyPowa") == true and platform.m_Enabled and not platform.m_IsMoving and  platform.m_ActiveTime== 0.0) or platform.m_IsMoving == true then
-		--[[local pikyRenderable = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky");
+		--[[local pikyRenderable = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name);
 		if pikyRenderable:is_action_animation_active() == false and player.is_activating_poly == false then
 			if player_controller.m_isJumping then
 				pikyRenderable:remove_action(2)

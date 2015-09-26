@@ -403,7 +403,7 @@ function ChuckyApear(distance)
 			current_position = current_position - dirVec * tonumber(distance);
 			local pos = Vect3f(current_position.x,current_position.y + 4,current_position.z);
 			Chucky:move_to_position(pos);
-			local yaw = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource("Piky"):get_yaw();
+			local yaw = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name):get_yaw();
 			Chucky.m_RenderableObject:set_yaw(yaw);
 			Chucky.m_Appeared = true
 			set_chucky_need_to_jump(false)

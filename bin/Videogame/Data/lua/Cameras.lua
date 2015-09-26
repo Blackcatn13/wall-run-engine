@@ -179,7 +179,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 			--coreInstance:trace(tostring(offsetPosVec.y))
 			if pointSpecs.follow_player_y == true then
 				if player.is_dead then
-					local PlayerR = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", pCont.m_Room):get_resource("Piky");
+					local PlayerR = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", pCont.m_Room):get_resource(piky_mesh_name);
 					offsetPosVec = Vect3f(offsetPosVec.x, pCont:get_position().y + PlayerR:getAnimationBonePosition().y, offsetPosVec.z)
 				else
 					offsetPosVec = Vect3f(offsetPosVec.x,pCont:get_position().y + offsetFollowY,offsetPosVec.z)
