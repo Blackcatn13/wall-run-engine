@@ -8,7 +8,6 @@ struct TGBUFFER_TEXTURED1_VERTEX_PS
 {
 	float4 HPosition : POSITION;
     float2 UV : TEXCOORD0;
-	float2 UV2 : TEXCOORD1;
 	float3 Normal : TEXCOORD2;
 	float4 WorldPosition : TEXCOORD3;
 	float2 UV1 : TEXCOORD4;
@@ -20,7 +19,7 @@ float3 Normal2Texture(float3 Normal)
 	return Normal*0.5+0.5;
 }
 
-TGBUFFER_TEXTURED1_VERTEX_PS GBufferVS(VertexVS_TTEXTURE2_NORMAL_VERTEX IN){
+TGBUFFER_TEXTURED1_VERTEX_PS GBufferVS(VertexVS_TTEXTURE_NORMAL_VERTEX IN){
 	
 	TGBUFFER_TEXTURED1_VERTEX_PS OUT = (TGBUFFER_TEXTURED1_VERTEX_PS)0;
 	float r = sin((g_Tick / loopDuration) * 2 * PI) * 0.5f + 0.25f;
@@ -39,7 +38,6 @@ TGBUFFER_TEXTURED1_VERTEX_PS GBufferVS(VertexVS_TTEXTURE2_NORMAL_VERTEX IN){
 	OUT.Normal = normalize(mul(IN.Normal,(float3x3)g_WorldMatrix));
 	OUT.WorldPosition = OUT.HPosition;
 	OUT.UV1 = IN.UV;
-	OUT.UV2 = IN.UV2;
 	OUT.UV1.y = OUT.UV1.y - (g_Tick * scrollSpeeds.z);
     return OUT;
 }
