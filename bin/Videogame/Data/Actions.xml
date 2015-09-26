@@ -296,18 +296,6 @@
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_O"/>
 	    </action>
 		
-		<action name="TeleportTest1" debug="true">
-	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_Y"/>
-	    </action>
-		<action name="TeleportTest2" debug="true">
-	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_H"/>
-	    </action>
-		<action name="TeleportTest3" debug="true">
-	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_T"/>
-	    </action>
-		<action name="TeleportTest4" debug="true">
-	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_Q"/>
-	    </action>
 		<!--<action name="TeleportTest5" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_E"/>
 	    </action>-->
@@ -381,6 +369,19 @@
 	    <action name="Enter">
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_RETURN"/>
 	    </action>
+
+	    <action name="TeleportTest1" debug="true">
+	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="PAD_DPAD_BACK"/>
+	    </action>
+		<action name="TeleportTest2" debug="true">
+	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_H"/>
+	    </action>
+		<action name="TeleportTest3" debug="true">
+	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_T"/>
+	    </action>
+		<action name="TeleportTest4" debug="true">
+	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_Q"/>
+	    </action>
 	</mouse_keyboard>
 	<gamepad>
 		<action name="MoveForward">
@@ -433,6 +434,23 @@
 		
 		 <action name="EnableJump">
 			<input deviceType="IDV_GAMEPAD1" EventType="EVENT_DOWN_UP" Code="PAD_BUTTON_A"/>
+	    </action>
+
+	    <action name="TeleportTest1" debug="true">
+	    	<input deviceType="IDV_GAMEPAD1" EventType="EVENT_DOWN" Code="PAD_DPAD_BACK"/>
+	    	<input deviceType="IDV_GAMEPAD1" EventType="EVENT_DOWN_UP" Code="PAD_BUTTON_A"/>
+	    </action>
+		<action name="TeleportTest2" debug="true">
+	    	<input deviceType="IDV_GAMEPAD1" EventType="EVENT_DOWN" Code="PAD_DPAD_BACK"/>
+	    	<input deviceType="IDV_GAMEPAD1" EventType="EVENT_DOWN_UP" Code="PAD_BUTTON_B"/>
+	    </action>
+		<action name="TeleportTest3" debug="true">
+	    	<input deviceType="IDV_GAMEPAD1" EventType="EVENT_DOWN" Code="PAD_DPAD_BACK"/>
+	    	<input deviceType="IDV_GAMEPAD1" EventType="EVENT_DOWN_UP" Code="PAD_BUTTON_X"/>
+	    </action>
+		<action name="TeleportTest4" debug="true">
+	    	<input deviceType="IDV_GAMEPAD1" EventType="EVENT_DOWN" Code="PAD_DPAD_BACK"/>
+	    	<input deviceType="IDV_GAMEPAD1" EventType="EVENT_DOWN_UP" Code="PAD_BUTTON_Y"/>
 	    </action>
 	</gamepad>
 	
