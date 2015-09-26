@@ -1,9 +1,0 @@
-<animated_model name="thug">
-	<texture file="thug_head.tga"/>
-	<texture file="thug_body.tga"/>
-	<skeleton file="thug.csf"/>
-
-	<mesh file="thug_head.cmf"/>
-	<mesh file="thug_body.cmf"/>
-	<animation name="thug_idle" file="thug_idle.caf"/>
-</animated_model>
