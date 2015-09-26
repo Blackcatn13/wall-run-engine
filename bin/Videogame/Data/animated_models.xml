@@ -3,4 +3,6 @@
 	<animated_model name="chuky" path=".\Data\animated_models\chucky\"/>
 	<animated_model name="mik" path=".\Data\animated_models\mik\"/>
 	<animated_model name="face" path=".\Data\animated_models\face\"/>
+	<animated_model name="SuperPiky" path=".\Data\animated_models\superpiky\"/>
+	
 </animated_models>

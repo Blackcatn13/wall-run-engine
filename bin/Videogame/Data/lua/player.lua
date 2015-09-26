@@ -57,15 +57,21 @@ function Player.new()
 	------	 PLAYER FUNCTIONS -----
 	
 	function self.set_super_piky(super_piky)
+		local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name)	
+		local position = playerRenderable:get_position()
+		local yaw = playerRenderable:get_yaw()
+
+		playerRenderable:set_visible(false)
+	
 		if super_piky then
 			piky_mesh_name = "SuperPiky"
 			--Actualizar con las animaciones de SuperPiky
 			anim_idle =	0
 			anim_run = 1
-			anim_jump_start = 2
+			anim_jump_start = 192
 			anim_jump_loop = 3
 			anim_jump_end = 4
-			anim_attack = 5
+			anim_attack = 2--5
 			anim_hurt = 6
 			anim_poly = 7
 			anim_death = 8
@@ -98,9 +104,13 @@ function Player.new()
 			anim_BurnJump = 15
 		end
 		
-		local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name)	
+		playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name)	
 		if playerRenderable ~= nil then
 			player_controller.m_RenderableObject = playerRenderable
+			playerRenderable:set_position(position)
+			playerRenderable:set_yaw(yaw)
+			playerRenderable:set_visible(true)
+
 		end	
 	end
 		

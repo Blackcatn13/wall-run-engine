@@ -5,5 +5,5 @@
 	<mesh file="SuperPiky_Mesh.CMF"/>
 	<animation name="idle" file="SuperPiky_idle.CAF"/> <!-- 0 -->
 	<animation name="run" file="SuperPiky_run.CAF"/> <!-- 1 -->
-	<animation name="jump_start" file="SuperPiky_return.CAF"/> <!-- 2 -->
+	<animation name="attack" file="SuperPiky_return.CAF"/> <!-- 2 -->
 </animated_model>
