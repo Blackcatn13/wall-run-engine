@@ -65,5 +65,5 @@ float distortionScale = 0.8f;
 float distortionBias = 0.5f;
 // Lava values
 float loopDuration = 0.1;
-float displacement = 2;
+float displacement = 1.2;
 
