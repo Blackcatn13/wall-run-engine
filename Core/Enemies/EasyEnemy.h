@@ -18,6 +18,9 @@ class CEasyEnemy : public CEnemy {
   float					m_OriginalSpeed;
   bool					m_Returning;
   bool					m_Static;
+  bool					m_Hide;
+  bool					m_Hiding;
+  float					m_OffsetHide;
 
 
 
@@ -52,6 +55,10 @@ class CEasyEnemy : public CEnemy {
   int GetWPVectorSize();
 
   GET_SET(bool, Returning)
+  GET_SET(bool, Static)
+  GET_SET(bool, Hiding)
+  GET_SET(bool, Hide)
+  GET_SET(float, OffsetHide)
 
   bool Is_Static() {
     return m_Static;

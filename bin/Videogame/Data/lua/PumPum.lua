@@ -7,6 +7,7 @@ local flyDecay = 0.1;
 --ai_controller = CAIController()
 --ai_controller.m_Speed = 0.1
 local instance = CLuaGlobalsWrapper().m_CoreInstance;
+local hide_offset = 1.7
 
 --local wp_manager = core:get_wp_manager()
 --local id_next_wp
@@ -60,11 +61,18 @@ function pumpum_update_stopped(ElapsedTime, doComprobation, name)
 					else 
 						if player_distance < 500 then
 							-- Animacion de andar
+							if enemy.m_Hide or enemy.m_Hiding then
+								show_or_hide(enemy, hide_offset, ElapsedTime)
+							end
 							rotate_yaw(enemy, ElapsedTime, player_position)
 						--	local billboard = billboard_manager:get_resource(enemy.m_RenderableObject.m_Billboard)
 						--	if billboard ~= nil then
 						--		billboard.m_position = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_BillboardOffset
 						--	end
+						else
+							if not enemy.m_Hide or enemy.m_Hiding then
+								show_or_hide(enemy, hide_offset, ElapsedTime)
+							end
 						end
 					end
 				end	
@@ -77,7 +85,7 @@ function pumpum_update_stopped(ElapsedTime, doComprobation, name)
 					temp_zone = temp_zone..".0"
 					coreInstance:trace(tostring(temp_zone))
 				end
-				if player.is_hit == false and tostring(temp_zone) == tostring(player.zone) then
+				if player.is_hit == false and tostring(temp_zone) == tostring(player.zone) and not enemy.m_Hide and not enemy.m_Hiding then
 					coreInstance:trace("Pum listo para atacar")
 					enemy:m_FSM():newState("Perseguir_Player")
 				end
@@ -240,13 +248,16 @@ function pumpum_update_attack_player(ElapsedTime, doComprobation, name)
 			enemy.m_RenderableObject:clear_cycle(1,0.2);
 			enemy.m_RenderableObject:execute_action(2,0.1,0,1,true);--]]
 			--enemy.m_isAttacking = true;
+			coreInstance:trace("Tocado")
 		elseif damageType == 1 then
-			enemy.m_time_to_fly = true;
+			enemy:add_damage_player()
+			--[[enemy.m_time_to_fly = true;
 			enemy.m_flyVec = Vect3f(enemyPosXZ.x - playerPosXZ.x, 0,enemyPosXZ.z - playerPosXZ.z);
 			enemy.m_flyVec:normalize(1);
-			enemy.m_flyVec = Vect3f(enemy.m_flyVec.x, flyInclination, enemy.m_flyVec.z);
+			enemy.m_flyVec = Vect3f(enemy.m_flyVec.x, flyInclination, enemy.m_flyVec.z);]]
 			--local dead_pos = enemy.m_PhysicController:get_position()
 			--enemy.m_OriginalPosition = Vect3f(dead_pos.x,dead_pos.y,dead_pos.z)
+			coreInstance:trace("Tocado con ataque")
 		elseif damageType == 2 then
 			player_controller.m_executeDoubleJump = true;
 			--local dead_pos = enemy.m_PhysicController:get_position()
@@ -338,7 +349,7 @@ function pumpum_update_take_damage(ElapsedTime, doComprobation, name)
 			enemy.m_flyVec = Vect3f(enemy.m_flyVec.x, enemy.m_flyVec.y - flyDecay, enemy.m_flyVec.z);
 			enemy.m_CurrentTime = enemy.m_CurrentTime + ElapsedTime;
 		end
-	elseif not enemy.m_RenderableObject:is_action_animation_active() then
+	else --if not enemy.m_RenderableObject:is_action_animation_active() then
 		if enemy.m_Life <= 0 then
 			enemy:m_FSM():newState("Dead")
 		else
@@ -376,7 +387,7 @@ function pumpum_update_dead(ElapsedTime, doComprobation, name)
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil then
 	update_shoot(ElapsedTime, enemy)
-	if not enemy.m_RenderableObject:is_action_animation_active() and not enemy.m_isAlive and not enemy.m_MovedToDiePosition then
+	if --[[not enemy.m_RenderableObject:is_action_animation_active() and]] not enemy.m_isAlive and not enemy.m_MovedToDiePosition then
 			enemy.m_CurrentTime = enemy.m_CurrentTime + 1 *ElapsedTime
 			--coreInstance:trace("Update muerto Mik sin accion")
 			local emitter = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter)

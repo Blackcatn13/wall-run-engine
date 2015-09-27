@@ -431,12 +431,12 @@
 	<platform name="INVISIBLE_WALL_004" core="INVISIBLE_WALL_004" type="static" pos="549.488892 2.376045 0.115322" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true"  layer="invisible" use_phisics_mesh="true" room="4"/>
 	<platform name="INVISIBLE_WALL_005" core="INVISIBLE_WALL_005" type="static" pos="557.271423 9.894491 -176.357147" yaw="0.0" pitch="0.0" roll="0.0" scale="0.566471 1.0 1.0" visible="false" layer="invisible" use_phisics_mesh="true" room="5"/>
 	<platform name="SecurityWall002" core="SecurityWall002" type="static" pos="557.115845 7.061012 -315.602539" yaw="0.0" pitch="0.0" roll="0.0" scale="0.449805 1.25069 0.937628" visible="false" layer="solid" use_phisics_mesh="true" room="5"/>
-	<!--animated_model name="PumPum1" core="mik"  pos="97.358940 1.300000 2.489124" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" room = "1" layer="enemies" />
+	<!--<mesh_instance name="PumPum1" core="PumPum"  pos="97.358940 -1.500000 2.489124" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "1" layer="enemies" />
 	<mesh_instance name="disparoPumPum1" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "1" layer="enemies" />
-	<animated_model name="PumPum2" core="mik"  pos="95.358940 1.300000 -0.489124" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" room = "1" layer="enemies" />
+	<mesh_instance name="PumPum2" core="PumPum"  pos="95.358940 -1.500000 -0.489124" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "1" layer="enemies" />
 	<mesh_instance name="disparoPumPum2" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "1" layer="enemies" />
-	<animated_model name="PumPum3" core="mik"  pos="93.358940 1.300000 -3.489124" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="enemies" room = "1"/>
-	<mesh_instance name="disparoPumPum3" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "1" layer="enemies" /-->
+	<mesh_instance name="PumPum3" core="PumPum"  pos="93.358940 -1.500000 -3.489124" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" layer="enemies" room = "1"/>
+	<mesh_instance name="disparoPumPum3" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "1" layer="enemies" />-->
 	<!--<mesh_instance name="Teleport" core="Teleport" pos="150.101074 0.300000 10.920358" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="solid" emitter="PikyYellowTeleporting" emitter_offset="0.0 1.0 0.0" emitter2="PikyBrownTeleporting" emitter2_offset="0.0 1.0 0.0"/>
 	<mesh_instance name="LightBeamTeleport" core="LightBeamTeleport" pos="150.101074 0.300000 10.920358" yaw="0.256172" pitch="0.0" roll="0.0" scale="1.18099 1.18099 1.18099" visible="true" room="1" layer="alpha_objects"/>
 	<mesh_instance name="Teleport2" core="Teleport" pos="94.358940 0.300000 -0.489124" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" room="1" layer="solid"/>-->

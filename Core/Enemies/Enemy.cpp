@@ -26,7 +26,7 @@ CEnemy::CEnemy(CXMLTreeNode &info1)
     m_isAlive(true),
     m_AttackPlayerDistance(1.0f),
     m_isAttacking(false),
-	m_playAnimationDead(true),
+    m_playAnimationDead(true),
     m_time_to_fly(false),
     m_Platform(NULL),
     m_flyVec(Vect3f(0, 0, 0)),
@@ -206,6 +206,10 @@ int CEnemy::ActualizarHitboxEnemigo() {
 
   switch (resultCollision) {
     case 1:
+      if (m_enemyType == MIKMIK) {
+        AddDamageEnemyMikMik();
+      }
+      break;
     case 2:
       if (m_enemyType == MIKMIK) {
         AddDamageEnemyMikMik();
@@ -294,7 +298,7 @@ int CEnemy::CheckPlayerCollision() {
       return 3;
     }
   } else {
-	  if (is_over_to_iman && PLAYC->getableToIman()) {
+    if (is_over_to_iman && PLAYC->getableToIman()) {
       if (l_DistanceEnemyPlayerXZ < l_DistanceToIman) {
         return 4;
       }

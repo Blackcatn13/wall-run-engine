@@ -113,6 +113,7 @@ function shoot_to_vector(dt, position, enemy)
     enemy.m_PosicionBala = position
     local renderable_shoot = get_renderable_object("enemies", enemy.m_RenderableObject.m_Room, enemy.m_ProjectileName)
 	if renderable_shoot ~= nil then
+		-- poner sonido y particulas de disparo	
 		renderable_shoot:set_position(enemy.m_PosicionBala)
 		renderable_shoot.m_Printable = true
 		renderable_shoot:set_visible(true)
@@ -129,7 +130,7 @@ function update_shoot(dt, enemy)
 	--coreInstance:trace("Tiempo Vida disparo: "..tostring(enemy.m_tiempoVidaDisparo))
     if (enemy.m_CurrentCooldown < 0.0 or player.is_dead) then
       enemy.m_IsOnCooldown = false;
-	  coreInstance:trace("Listo para borrar disparo por cooldown1")
+	--  coreInstance:trace("Listo para borrar disparo por cooldown1")
       delete_shooting(renderable_shoot)--DestruirDisparo();
   --elseif (enemy.m_CurrentCooldown < (enemy.m_CooldownTimer - enemy.m_tiempoVidaDisparo)) then
       --DestruirDisparo();
@@ -180,6 +181,34 @@ end
 
 function check_hitbox(ElapsedTime, player_position, enemy)
 	
+end
+
+function show_or_hide(enemy, offset_position, ElapsedTime)
+	--local direction = Vect3f(0, 1, 0)
+	local temp_position = Vect3f(enemy:get_position().x, enemy:get_position().y,enemy:get_position().z)
+	coreInstance:trace(tostring(temp_position.x) .. ", ".. tostring(temp_position.y))
+	if not enemy.m_Hide then
+	--	direction.y = -1
+		if enemy:get_position().y > enemy.m_OriginalPosition.y then
+			-- mover enemigo
+			enemy.m_Hiding = true
+			temp_position.y = temp_position.y - 2* ElapsedTime	
+		else
+			enemy.m_Hide = true
+			enemy.m_Hiding = false
+		end
+	else
+		if enemy:get_position().y <  enemy.m_OriginalPosition.y + offset_position then
+			-- mover enemigo
+			temp_position.y = temp_position.y + 2* ElapsedTime
+			enemy.m_Hiding = true
+		else
+			enemy.m_Hide = false
+			enemy.m_Hiding = false
+		end
+	end
+	enemy:set_position(temp_position)
+	enemy.m_RenderableObject:set_position(temp_position)
 end
 
 function get_distance_to_player(current_position, _player_position)

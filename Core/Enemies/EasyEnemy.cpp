@@ -29,7 +29,11 @@ CEasyEnemy::CEasyEnemy(std::string mesh, std::string name, Vect3f position,  flo
   m_Static(false),
   m_AttackSpeed(NULL),
   m_OriginalSpeed(speed),
-  m_CurrentWpId(0) {
+  m_CurrentWpId(0),
+  m_Returning(false),
+  m_Hide(false),
+  m_OffsetHide(false),
+  m_Hiding(false) {
   Init("NoFSM");
   //InitWpVector(2, 4);
 }
@@ -41,7 +45,11 @@ CEasyEnemy::CEasyEnemy(CRenderableObject *renderableObject, std::vector<Vect3f> 
   m_AttackSpeed(speedAttack),
   m_OriginalSpeed(speed),
   m_Static(isStatic),
-  m_CurrentWpId(0) {
+  m_CurrentWpId(0),
+  m_Returning(false),
+  m_Hide(false),
+  m_OffsetHide(false),
+  m_Hiding(false) {
   Init(fsmName);
   if (fsmName == "MikMik") {
     m_enemyType = MIKMIK;
