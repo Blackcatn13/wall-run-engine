@@ -83,13 +83,16 @@ void CAnimatedInstanceModel::RemoveAction(int Id) {
 
 void CAnimatedInstanceModel::Update(float ElapsedTime) {
   //TODO => Revisar el update (onIdle?)
-  m_CalModel->update(ElapsedTime);
+  if (m_visible)
+    m_CalModel->update(ElapsedTime);
 }
 
 void CAnimatedInstanceModel::Render(CGraphicsManager *RM) {
   //TODO renderObject?
-  RM->SetTransform(getTransform());
-  RenderModelByHardware(RM);
+  if (m_visible) {
+    RM->SetTransform(getTransform());
+    RenderModelByHardware(RM);
+  }
 }
 
 void CAnimatedInstanceModel::LoadTextures() {
