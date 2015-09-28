@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <billboards>
-	<instanced_billboard name="billboard001" billboards="22">
+	<instanced_billboard name="billboard001" billboards="28">
 		<Texture name="./Data/g_Textures/fire01.dds"/>
 		<Texture name="./Data/g_Textures/noise01.dds"/>
 		<Texture name="./Data/g_Textures/alpha01.dds"/>
@@ -18,6 +18,12 @@
 		<Instance size="0.5 0.6" position="312.074 6.046 17.215"/>
 		<Instance size="0.5 0.6" position="339.759 6.046 17.215"/>
 		<Instance size="0.5 0.6" position="369.54 6.046 17.215"/>
+		<Instance size="0.5 0.6" position="406.915 15.476 15.09"/>
+		<Instance size="0.5 0.6" position="422.76 15.4767 15.09"/>	
+		<Instance size="2.0 2.0" position="544.723816 17.471562 -50.349724"/>
+		<Instance size="2.0 2.0" position="571.198059 17.457338 -50.674679"/>
+		<Instance size="2.0 2.0" position="552.395325 13.763003 1.765055"/>
+		<Instance size="2.0 2.0" position="562.379272 13.763001 -9.504450"/>
 		<Instance size="0.3 0.6" position="559.427 17.0656 -192.997"/>
 		<Instance size="0.3 0.6" position="571.078 17.0469 -254.933"/>
 		<Instance size="0.3 0.6" position="567.133 17.0503 -279.649"/>
@@ -28,6 +34,7 @@
 		<Instance size="2.0 2.0" position="581.711 22.7652 -343.333"/>
 	</instanced_billboard>
 	
+
 	<!--<instanced_billboard name="lava" billboards="1">
 		<Texture name="./Data/g_Textures/Lava_test1.jpg"/>
 		<Instance size="5 10" position="548.612 5.473 -123.347"/>
