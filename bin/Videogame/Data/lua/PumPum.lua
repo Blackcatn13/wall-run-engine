@@ -7,7 +7,7 @@ local flyDecay = 0.1;
 --ai_controller = CAIController()
 --ai_controller.m_Speed = 0.1
 local instance = CLuaGlobalsWrapper().m_CoreInstance;
-local hide_offset = 1.7
+local hide_offset = 1.3
 
 --local wp_manager = core:get_wp_manager()
 --local id_next_wp

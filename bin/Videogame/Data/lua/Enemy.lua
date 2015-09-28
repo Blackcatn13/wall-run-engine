@@ -110,10 +110,18 @@ end
 
 function shoot_to_vector(dt, position, enemy)
   if (enemy.m_isAlive) then
-    enemy.m_PosicionBala = position
+	local projectile_position = Vect3f(position.x, position.y+0.25, position.z)
+    enemy.m_PosicionBala = projectile_position
     local renderable_shoot = get_renderable_object("enemies", enemy.m_RenderableObject.m_Room, enemy.m_ProjectileName)
 	if renderable_shoot ~= nil then
 		-- poner sonido y particulas de disparo	
+		local emitter = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter)
+		if emitter ~= nil then
+			emitter.m_vPos = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_EmitterOffset
+			emitter.m_FireParticles = true 
+		end
+		
+		
 		renderable_shoot:set_position(enemy.m_PosicionBala)
 		renderable_shoot.m_Printable = true
 		renderable_shoot:set_visible(true)

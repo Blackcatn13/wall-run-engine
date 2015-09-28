@@ -13,8 +13,8 @@
 		
 	<instance_enemy name="PumPum2" type="pumpum_easy" attack_distance = "160" zone="1.0" projectile="disparoPumPum2" />
 	
-	<instance_enemy name="PumPum3" type="pumpum_easy" attack_distance = "160" zone="1.0" projectile="disparoPumPum3" /> -->
-		
+	<instance_enemy name="PumPum3" type="pumpum_easy" attack_distance = "160" zone="1.0" projectile="disparoPumPum3" /> 
+	-->	
 	
 	
 	 
