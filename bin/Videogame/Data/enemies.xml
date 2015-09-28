@@ -9,12 +9,12 @@
 	
 	<instance_enemy name="Chucky" type="chucky_runner" />
 	
-<!--	<instance_enemy name="PumPum1" type="pumpum_easy" attack_distance = "160" zone="1.0" projectile="disparoPumPum1" />
+	<instance_enemy name="PumPum1" type="pumpum_easy" attack_distance = "160" zone="1.0" projectile="disparoPumPum1" />
 		
 	<instance_enemy name="PumPum2" type="pumpum_easy" attack_distance = "160" zone="1.0" projectile="disparoPumPum2" />
 	
 	<instance_enemy name="PumPum3" type="pumpum_easy" attack_distance = "160" zone="1.0" projectile="disparoPumPum3" /> 
-	-->	
+	
 	
 	
 	 
