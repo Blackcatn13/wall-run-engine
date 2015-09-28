@@ -200,7 +200,7 @@ function show_or_hide(enemy, offset_position, ElapsedTime)
 		if enemy:get_position().y > enemy.m_OriginalPosition.y then
 			-- mover enemigo
 			enemy.m_Hiding = true
-			temp_position.y = temp_position.y - 2* ElapsedTime	
+			temp_position.y = temp_position.y - 3* ElapsedTime	
 		else
 			enemy.m_Hide = true
 			enemy.m_Hiding = false
@@ -208,7 +208,7 @@ function show_or_hide(enemy, offset_position, ElapsedTime)
 	else
 		if enemy:get_position().y <  enemy.m_OriginalPosition.y + offset_position then
 			-- mover enemigo
-			temp_position.y = temp_position.y + 2* ElapsedTime
+			temp_position.y = temp_position.y + 3* ElapsedTime
 			enemy.m_Hiding = true
 		else
 			enemy.m_Hide = false

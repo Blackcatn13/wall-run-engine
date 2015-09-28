@@ -264,12 +264,12 @@ function pumpum_update_attack_player(ElapsedTime, doComprobation, name)
 			--enemy.m_OriginalPosition = Vect3f(dead_pos.x,dead_pos.y,dead_pos.z)
 		end
 	end
-	if player_distance < 1 then
+	--[[if player_distance < 1 then
 		-- Aqui meter impacto del ataque
 		enemy:m_FSM():newState("Parado")
 		--	enemy.m_Speed = enemy.m_Speed / speed_modifier
 	end
-		
+		]]
 		
 		
 	if (enemy ~= nil) then
