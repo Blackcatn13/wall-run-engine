@@ -81,6 +81,7 @@ function open_door(_objectName, _objectName2)
 	--coreInstance:trace("Opening door ".. _objectName.. " and " .. _objectName2 )
 	local door = get_renderable_object("puzzle",player_controller.m_Room, _objectName)
 	inputm:set_game_pad_left_motor_speed(20000, 1);
+	coreInstance:getWWSoundManager():PlayEvent("Door_opening", "Door");
 	if door ~= nil then
 		--door.m_Printable = false
 		local emitter = particle_manager:get_resource(door.m_ParticleEmitter)

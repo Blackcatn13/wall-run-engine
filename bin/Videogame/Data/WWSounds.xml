@@ -44,6 +44,10 @@
 		<Source pos="133.468384 5.623781 -25.368145" dir="1 -1 1"/>
 		<Source pos="147.658112 5.535036 15.345295" dir="1 -1 1"/> 
 	</GameObject3D>
+	<GameObject3D name="Door" register="true" type="MultiSource">
+		<Source pos="539.616 9.004 -1.622" dir="-1 1 1"/>
+		<Source pos="539.41 5.451 -511.203" dir="1 1 -1"/>
+	</GameObject3D>
 
 	<InitEvent event="Torches" GameObject="Torch"/>
 </WWise>
