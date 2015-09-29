@@ -107,6 +107,7 @@
 	<static_mesh name="Plataforma01" filename="Data\level4\meshes\Plataforma01.mesh"/>
 	<static_mesh name="Plataforma02" filename="Data\level4\meshes\Plataforma02.mesh"/>
 	<static_mesh name="Plataforma0er3" filename="Data\level4\meshes\Plataforma0er3.mesh"/>
+	<static_mesh name="BoqueteBoca" filename="Data\level4\meshes\BoqueteBoca.mesh"/>
 	
 	<static_mesh name="Box043" filename="Data\level4\meshes\Box043.mesh"/>
 	<static_mesh name="Box0001" filename="Data\level4\meshes\Box0001.mesh"/>

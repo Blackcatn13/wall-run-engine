@@ -194,13 +194,13 @@ function mp_enter_stopped(room_name, name)
 	--instance.m_string = "Buscar_next_WP_Plaform"
 	local platform =renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("mov_platforms", room_name):get_resource(name)
 	
-	if name == "Plataforma0er3" and tostring(platform.m_FirstTime) == "true" then
-		local offsetPose = Vect3f(platform.m_Actor:get_position().x +2, platform.m_Actor:get_position().y, platform.m_Actor:get_position().z)
+	--[[if name == "Plataforma0er3" and tostring(platform.m_FirstTime) == "true" then
+		local offsetPose = Vect3f(platform.m_Actor:get_position().x , platform.m_Actor:get_position().y, platform.m_Actor:get_position().z)
 			coreInstance:trace("Platform position Antes: "..tostring(platform.m_Actor:get_position().x)..", "..tostring(platform.m_Actor:get_position().y)..", "..tostring(platform.m_Actor:get_position().z))
 			platform.m_Actor:set_global_position(offsetPose)
 			coreInstance:trace("Platform position Despues: "..tostring(platform.m_Actor:get_position().x)..", "..tostring(platform.m_Actor:get_position().y)..", "..tostring(platform.m_Actor:get_position().z))
 			platform.m_FirstTime = false
-	end
+	end]]
 	platform:get_fsm():newState("Buscar_next_WP_Plaform")
 	return 0 
 end
@@ -218,15 +218,15 @@ function mp_update_stopped(ElapsedTime,room_name, name)
 	if player_controller.m_Room == room then
 		platform.m_Activated = true
 	end
-	
+	--[[coreInstance:trace("Platform name: "..tostring(name)..", ".."Platform first time: "..tostring(platform.m_FirstTime))
 	if name == "Plataforma0er3" and tostring(platform.m_FirstTime) == "true" then
-		local offsetPose = Vect3f(platform.m_Actor:get_position().x +2, platform.m_Actor:get_position().y, platform.m_Actor:get_position().z)
+		local offsetPose = Vect3f(platform.m_Actor:get_position().x , platform.m_Actor:get_position().y, platform.m_Actor:get_position().z)
 			coreInstance:trace("Platform position Antes: "..tostring(platform.m_Actor:get_position().x)..", "..tostring(platform.m_Actor:get_position().y)..", "..tostring(platform.m_Actor:get_position().z))
 			platform.m_Actor:set_global_position(offsetPose)
 			coreInstance:trace("Platform position Despues: "..tostring(platform.m_Actor:get_position().x)..", "..tostring(platform.m_Actor:get_position().y)..", "..tostring(platform.m_Actor:get_position().z))
 			platform.m_FirstTime = false
 	end
-	
+	]]
 	platform.m_Activated = true
 	if platform.m_Activated == true then
 		--coreInstance:trace("activa")
