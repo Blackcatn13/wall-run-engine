@@ -127,6 +127,7 @@ void CTestGameplay::Init() {
   CAMCONTM->AddNewCamera("ThPSESF", m_ThPSCamera);
   CAMCONTM->AddNewCamera("3DCam", m_3DCamera);
   CAMCONTM->AddNewCamera("2DCam", m_2DCamera);
+  CAMCONTM->AddNewCamera("BossCam", m_BossCamera);
   CAMCONTM->AddNewCamera("ThPS", m_ThPSCamera1);
   CAMCONTM->AddNewCamera("GUICamera", m_GUICamera);
   //m_CameraController->AddNewCamera("ThPS", m_ThPSCamera1);

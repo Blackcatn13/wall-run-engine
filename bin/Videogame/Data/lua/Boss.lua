@@ -1,18 +1,18 @@
 function start_boss()
 	set_player_room("0", true)
-	cam_Controller:set_active_camera("ThPS")
-	local position = Vect3f(30,1,2)
-	local cam_position = Vect3f(position.x+2, position.y + 3, position.z )
-
-	set_cam_position(cam_position, -math.pi) --  180ยบ en teoria 
-	cam_Controller:get_active_camera().m_pObject3D:set_pitch(-0.5)	
+	cam_Controller:set_active_camera("BossCam")
+	local activeCam = cam_Controller:get_active_camera()
 	
+	local position = Vect3f(30,1,2)
 	player_controller.m_PhysicController:set_position(position)
 	local playerRenderableMesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", 0):get_resource(piky_mesh_name);
 	playerRenderableMesh:set_position(position)
 	
-	local chucky = enemy_manager:get_enemy("Chucky").m_RenderableObject
+	local chucky = enemy_manager:get_enemy("Chucky")
 	chucky:set_position(Vect3f(12.30, 0.00, -2.75))
+	
+	local objCam = activeCam.m_pObject3D;
+	objCam:set_position(Vect3f(chucky:get_position().x,chucky:get_position().y,chucky:get_position().z));
 	
 	set_boss_polis_visible(true)
 	boss_started = true
