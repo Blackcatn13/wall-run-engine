@@ -1,23 +1,6 @@
 --local coreInstance = CCoreLuaWrapper().m_CoreInstance
 --local physx_manager = coreInstance:get_phisics_manager()
-function start_boss()
-	set_player_room("0", true)
-	cam_Controller:set_active_camera("ThPS")
-	local position = Vect3f(30,1,2)
-	local cam_position = Vect3f(position.x+2, position.y + 3, position.z )
 
-	set_cam_position(cam_position, -math.pi) --  180ยบ en teoria 
-	cam_Controller:get_active_camera().m_pObject3D:set_pitch(-0.5)	
-	
-	player_controller.m_PhysicController:set_position(position)
-	local playerRenderableMesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", 0):get_resource(piky_mesh_name);
-	playerRenderableMesh:set_position(position)
-	
-	local chucky = enemy_manager:get_enemy("Chucky").m_RenderableObject
-	chucky:set_position(Vect3f(12.30, 0.00, -2.75))
-	boss_started = true
-	
-end
 
 function fade(fade_time)
 	gui_manager:start_fade(fade_time)
@@ -313,7 +296,8 @@ function reset_game()
 	if emitter:get_visible() == true then
 		emitter:set_visible(false)
 	end
-	
+	player.set_super_piky(false)
+	set_boss_polis_visible(false)
 	boss_started = false
 end
 

@@ -22,6 +22,7 @@
 	<script name="Gui" file="Data/lua/Gui.lua" auto_run = "true"/>
 	<script name="traps" file="Data/lua/Traps.lua" auto_run = "true"/>
 	<script name="menus" file="Data/lua/Menus.lua" auto_run = "true" />
+	<script name="boss" file="Data/lua/Boss.lua" auto_run = "true" />
 	
 	<renderable_script name="scriptedController" file="Data/scripted_controller.lua" />
 
