@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <static_meshes>
+
+	<static_mesh name="Poly_Sala0_001" filename="Data\level4\meshes\Poly_Sala0_001.mesh"/>
+	<static_mesh name="Poly_Sala0_002" filename="Data\level4\meshes\Poly_Sala0_002.mesh"/>
+	<static_mesh name="Poly_Sala0_003" filename="Data\level4\meshes\Poly_Sala0_003.mesh"/>
+	<static_mesh name="Poly_Sala0_004" filename="Data\level4\meshes\Poly_Sala0_004.mesh"/>
 	<static_mesh name="ARCADA" filename="Data\level4\meshes\ARCADA.mesh"/>
 	<static_mesh name="CUPULA" filename="Data\level4\meshes\CUPULA.mesh"/>
 	<static_mesh name="ORO2" filename="Data\level4\meshes\ORO2.mesh"/>
