@@ -114,6 +114,8 @@ void CTestGameplay::Init() {
   m_2DCamera = new CThPSCamera(0.1f, 30.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_Object2D, 50);
   m_2DCamera->SetTypeCamera(CCamera::TC_2DCAM);
   m_2DCamera->LoadPathFromFile(".\\Data\\camera_path.xml");
+  m_BossCamera = new CThPSCamera(0.1f, 2.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_Object3D, 50);
+  m_BossCamera->SetTypeCamera(CCamera::TC_BOSSCAM);
   m_ThPSCamera = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 16.f / 9.f, m_ObjectThPSEsf /*RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky")*/, 200);
   m_ThPSCamera1 = new CThPSCamera(0.1f, 1000.f, 45.0f * D3DX_PI / 180.0f, 16.f / 9.f, m_ObjectThPS /*RENDLM->GetDefaultRenderableObjectManager()->GetResource("SpongePicky")*/, 10);
   //m_ThPSCamera1 = new CThPSCamera(0.1f, 100.f, 45.0f * D3DX_PI / 180.0f, 1.f, m_RenderableObject, 10);

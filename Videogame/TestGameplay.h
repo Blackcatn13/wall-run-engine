@@ -34,6 +34,7 @@ private:
     CThPSCamera	    *m_ThPSCamera;
     CThPSCamera	    *m_ThPSCamera1;
     CThPSCamera	    *m_3DCamera;
+	CThPSCamera	    *m_BossCamera;
     CThPSCamera	    *m_GUICamera;
     CCamera			*tempCam;
     CThPSCamera	    *m_2DCamera;
