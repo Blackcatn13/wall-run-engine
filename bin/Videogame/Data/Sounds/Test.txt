@@ -1,4 +1,6 @@
 Event	ID	Name			Wwise Object Path	Notes
+	1326329452	Set_Mik_Detected			\Default Work Unit\Set_Mik_Detected	
+	2079732196	Set_Mik_Idle			\Default Work Unit\Set_Mik_Idle	
 	2589897592	Door_opening			\Default Work Unit\FX\Door_opening	
 	2607556080	Menu			\Default Work Unit\Background\Menu	
 	2615352377	Torches			\Default Work Unit\FX\Torches	
