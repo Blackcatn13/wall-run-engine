@@ -7,7 +7,15 @@ Event	ID	Name			Wwise Object Path	Notes
 	3711598968	MenuClick			\Default Work Unit\FX\MenuClick	
 	3833651337	Jump			\Default Work Unit\FX\Jump	
 	3969013623	MenuEnd			\Default Work Unit\Background\MenuEnd	
+	4005262595	MikSound			\Default Work Unit\MikSound	
 	4276387422	MenuOver			\Default Work Unit\FX\MenuOver	
+
+Switch Group	ID	Name			Wwise Object Path	Notes
+	1182670502	Mik			\Default Work Unit\Mik	
+
+Switch	ID	Name	Switch Group			Notes
+	298938147	Detected	Mik			
+	1874288895	Idle	Mik			
 
 State Group	ID	Name			Wwise Object Path	Notes
 	1595203709	BackGroundGrup			\Default Work Unit\BackGroundGrup	
@@ -19,17 +27,23 @@ State	ID	Name	State Group			Notes
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	36911512	Voice	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Voice_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\BackGround\Back2\TestSound2\Voice		531976
+	169203991	RugidoDetectado	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\RugidoDetectado_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\FX\Mik\Detected\Viewed\RugidoDetectado		294332
 	225374597	Generdyn - ATMOS - 02	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Generdyn - ATMOS - 02_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\BackGround\Back2\TetstSound\Generdyn - ATMOS - 02		7950124
+	276987036	Idle	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Idle_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\FX\Mik\Idle\Idle		894360
 	334338896	Generdyn - INSTLoops - 03	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Generdyn - INSTLoops - 03_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\BackGround\Back2\TetstSound\Generdyn - INSTLoops - 03		1323064
 	347696487	Flame	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Fireplace-SoundBible.com-127901833_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\FX\Flame		2248768
 	425213579	Jump4	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Jump4_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\FX\Jump4		64590
 	505700893	bits_piece_69	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\bits_piece_69_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\FX\bits_piece_69		113464
+	545300258	RisaMik1	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\RisaMik1_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\FX\Mik\Idle\RisaMik1		235584
 	555342904	Generdyn - INSTLoops - 04	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Generdyn - INSTLoops - 04_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\BackGround\Back2\TetstSound\Generdyn - INSTLoops - 04		330816
 	613283217	Prop2	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Prop2_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\BackGround\Back2\TestSound2\Prop2		715954
 	747286263	Generdyn - INSTLoops - 05	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Generdyn - INSTLoops - 05_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\BackGround\Back2\TetstSound\Generdyn - INSTLoops - 05		1323064
 	785489596	bits_piece_34	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\bits_piece_34_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\FX\bits_piece_34		142400
+	797611864	RugidoDetectado2	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\RugidoDetectado2_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\FX\Mik\Detected\Viewed\RugidoDetectado2		193892
 	835769357	Prop1	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Prop1_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\BackGround\Back2\TestSound2\Prop1		529256
 	888564004	door_002	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\door_002_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\FX\Door_opening_Sounds\door_002		279616
 	889169244	door_001	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\door_001_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\FX\Door_opening_Sounds\door_001		624720
+	924337238	Coming	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\RugidoPerseguir_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\FX\Mik\Detected\Coming		71744
+	974301372	RisaMik2	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\RisaMik2_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\FX\Mik\Idle\RisaMik2		200768
 	989506191	Bass	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Bass_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\BackGround\Back2\TestSound2\Bass		1464974
 

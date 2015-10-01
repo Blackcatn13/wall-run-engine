@@ -48,6 +48,7 @@
 		<Source pos="539.616 9.004 -1.622" dir="-1 1 1"/>
 		<Source pos="539.41 5.451 -511.203" dir="1 1 -1"/>
 	</GameObject3D>
+	<GameObject3D name="Mik" register="true" pos="530.339172 9.007496 8.188751" dir="1 0 1"/>
 
 	<InitEvent event="Torches" GameObject="Torch"/>
 </WWise>

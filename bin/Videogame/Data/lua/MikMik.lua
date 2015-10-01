@@ -28,6 +28,8 @@ function mikmik_enter_stopped(name)
 		exclamation.m_vPos = enemy.m_RenderableObject:get_position() + enemy.m_RenderableObject.m_EmitterOffset2;
 		enemy.m_visibleTime = 0;
 	end
+	coreInstance:getWWSoundManager():SetSwitch("Mik", "Idle", "Mik")
+	coreInstance:getWWSoundManager():PlayEvent("MikSound", "Mik");
 end
 
 function mikmik_exit_stopped(name)
@@ -40,7 +42,6 @@ function mikmik_update_stopped(ElapsedTime, doComprobation, name)
 	local enemy = enemy_manager:get_enemy(name)
 	local player_position = player_controller:get_position()
 	local player_distance = get_distance_to_player(enemy:get_position(), player_position)
-				
 	if enemy ~= nil then
 		exclamation = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter2)
 		move_enemy_renderable(enemy, MikHeight);
