@@ -297,6 +297,8 @@ function reset_game()
 		emitter:set_visible(false)
 	end
 	player.set_super_piky(false)
+	player.super_piky_attack = false
+	player.super_piky_timer = 0.0
 	set_boss_polis_visible(false)
 	boss_started = false
 end

@@ -39,6 +39,11 @@ local m_damageFeedBackSpeedStart = 20;
 local m_damageFeedBackSpeed = 20;
 local m_damageFeedBackSpeedDismin = 40;
 
+--////////////////////////////
+--SUPER PIKY
+--////////////////////////////
+local super_piky_time = 5.0
+local transition_super_piky = false
 
 --////////////////////////////////////////////////////////
 -- PARAMETERS
@@ -92,6 +97,7 @@ function on_update_player_lua(l_ElapsedTime)
 		layer = "vanishing"
 	end
 
+	
 	local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room(layer, player_controller.m_Room):get_resource(piky_mesh_name);
 
 	
@@ -106,7 +112,33 @@ function on_update_player_lua(l_ElapsedTime)
 		if act2in:do_action_from_lua("StartBoss") then
 			start_boss()
 		end
+		
+		if act2in:do_action_from_lua("SuperPiky") then
+			local emitter4 = particle_manager:get_resource(playerRenderable.m_ParticleEmitter4)
+			emitter4.m_vPos = playerRenderable:get_position()
+			emitter4:set_visible(true)
+			playerRenderable:execute_action(anim_poly,0.1,0,1,false)
+			transition_super_piky = true			
+		end
 	
+		if transition_super_piky and not playerRenderable:is_action_animation_active() then
+			transition_super_piky = false
+			player.set_super_piky(true)
+			local emitter4 = particle_manager:get_resource(playerRenderable.m_ParticleEmitter4)
+			--emitter4.m_vPos = playerRenderable:get_position()
+			emitter4:set_visible(false)
+		end
+	
+		if player.super_piky_active then 
+			if player.super_piky_timer < super_piky_time then
+				player.super_piky_timer = player.super_piky_timer+ l_ElapsedTime
+				--coreInstance:trace("Super Piky time: "..tostring(player.super_piky_timer))
+			else
+				player.set_super_piky(false)
+				player.super_piky_timer = 0.0
+				--coreInstance:trace("Bye Super Piky")
+			end
+		end
 	
 		if act2in:do_action_from_lua("ChangeDimension") then
 			if player_controller.m_is3D == true then 
@@ -141,7 +173,7 @@ function on_update_player_lua(l_ElapsedTime)
 		local PlayerYaw =  - dirYaw + 1.57;
 		
 		-- Si dañan al player
-		if player.is_hit == true and not player.hurt_by_spikes then
+		if player.is_hit == true and not player.hurt_by_spikes and not transition_super_piky then
 			if (player.is_hit_reset_first == true) then
 				player_controller.m_isJumping = false;
 				player_controller.m_isDoubleJumping = false;
@@ -180,7 +212,7 @@ function on_update_player_lua(l_ElapsedTime)
 		if (player_controller.m_isJumpingMoving == false) and (player_controller.m_isAttack == false) and (player.is_hit == false and not player.is_dead) then
 			local y_axis = 0.0
 			local x_axis = 0.0
-			if not playerRenderable.m_VanishActive and not player.hurt_by_spikes and not gui_manager:is_transition_effect_active() then
+			if not playerRenderable.m_VanishActive and not player.hurt_by_spikes and not gui_manager:is_transition_effect_active() and not transition_super_piky then
 				if inputm:has_game_pad(1) then
 					auxAxisYMoved = act2in:do_action_from_lua("MoveForward", y_axis);
 					auxAxisXMoved = act2in:do_action_from_lua("MoveRigth", x_axis);
@@ -526,7 +558,7 @@ function on_update_player_lua(l_ElapsedTime)
 		--///////////////////////////////////////////////////////////
 		-- Acción de saltar del Player. Puede realizar 2 saltos distintos (de longitud, y salto vertical). 
 		--///////////////////////////////////////////////////////////
-		if (act2in:do_action_from_lua("Jump")) and (player_controller.m_isJumping == false and player_controller.m_isDoubleJumping == false and _land == false and player_controller.m_isAttack == false and player.is_hit == false and player_controller.m_isGrounded and not player.is_dead) and not playerRenderable.m_VanishActive and jump_enabled and not gui_manager:is_transition_effect_active() then
+		if (act2in:do_action_from_lua("Jump")) and (player_controller.m_isJumping == false and player_controller.m_isDoubleJumping == false and _land == false and player_controller.m_isAttack == false and player.is_hit == false and player_controller.m_isGrounded and not player.is_dead) and not playerRenderable.m_VanishActive and jump_enabled and not gui_manager:is_transition_effect_active() and not player.super_piky_active and not transition_super_piky then
 			player_controller.m_JumpingTime = 0;
 			playerRenderable:clear_cycle(anim_idle,0.2);
 			playerRenderable:clear_cycle(anim_run,0.2);
@@ -543,22 +575,33 @@ function on_update_player_lua(l_ElapsedTime)
 		--///////////////////////////////////////////////////////////
 		-- Acción de atacar del Player. Realiza un impulso hacia adelante. 
 		--/////////////////////////////////////////////////////////// 
-		if (act2in:do_action_from_lua("Attack") and not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land and player_controller.m_isAttack == false and canAttack == true and player.is_hit == false and player.attack_enabled and not player.is_dead) and not playerRenderable.m_VanishActive and not gui_manager:is_transition_effect_active() then --) and (player_controller.m_isAttack == false) then
-			canAttack = false;
-			player.get_player_controller():update_character_extents(false, m_ReduceCollider);
-			contador = 0;
-			local prev_y = mov.y
-			m_AttackGravity = AttackGravityStart;
-			AttackSpeed = AttackStartSpeed;
-			player_controller.m_CurrentAttackForce = player_controller.m_AttackForce;
-			player_controller.m_Direction3D =  get_attack_direction(player_controller.m_Direction3D, player_controller.m_PhysicController:get_position())
-			mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce * AttackSpeed * l_ElapsedTime;
-			mov.y = prev_y;
-			player_controller.m_isAttack = true;
-			playerRenderable:execute_action(anim_attack,0,0.3,1,false);
-			local emitter = particle_manager:get_resource(playerRenderable.m_ParticleEmitter)
-			emitter.m_vPos = playerRenderable:get_position()+ playerRenderable.m_EmitterOffset
-			emitter:set_visible(true)
+		if (act2in:do_action_from_lua("Attack") and not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land and player_controller.m_isAttack == false and canAttack == true and player.is_hit == false and player.attack_enabled and not player.is_dead) and not playerRenderable.m_VanishActive and not gui_manager:is_transition_effect_active() then --) and (player_controller.m_isAttack == false) then			
+			if not player.super_piky_active then
+				canAttack = false;
+				player.get_player_controller():update_character_extents(false, m_ReduceCollider);
+				contador = 0;
+				local prev_y = mov.y
+				m_AttackGravity = AttackGravityStart;
+				AttackSpeed = AttackStartSpeed;
+				player_controller.m_CurrentAttackForce = player_controller.m_AttackForce;
+				player_controller.m_Direction3D =  get_attack_direction(player_controller.m_Direction3D, player_controller.m_PhysicController:get_position())
+				mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce * AttackSpeed * l_ElapsedTime;
+				mov.y = prev_y;
+				player_controller.m_isAttack = true;
+				playerRenderable:execute_action(anim_attack,0,0.3,1,false);
+				local emitter = particle_manager:get_resource(playerRenderable.m_ParticleEmitter)
+				emitter.m_vPos = playerRenderable:get_position()+ playerRenderable.m_EmitterOffset
+				emitter:set_visible(true)
+			else
+				if not player.super_piky_attack then
+					player.super_piky_attack = true
+					playerRenderable:execute_action(anim_attack,0,0.3,1,false);
+				end
+			end
+		end
+		
+		if player.super_piky_attack and not playerRenderable:is_action_animation_active() then
+			player.super_piky_attack = false
 		end
 	
 		if not player_controller.m_isGrounded then

@@ -362,7 +362,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 		end
 		--name2:set_name("UpdatePassFinal");
 	elseif cam.m_eTypeCamera == 7 then -- BOSS CAM
-		coreInstance:trace("entraaaaaa a la camara bosssss")
+		--coreInstance:trace("entraaaaaa a la camara bosssss")
 		local obj = cam.m_pObject3D;
 		local chucky = enemy_manager:get_enemy("Chucky")
 		local chuckyPos = chucky:get_position();

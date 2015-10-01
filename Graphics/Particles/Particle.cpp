@@ -45,7 +45,7 @@ void CParticle::Update(float dt) {
   //VectorOndulacion Maximo y minimo
   if (m_UpdateType == CONE) {
     float h = m_StartAge - m_Age;
-    m_position = m_Direction2 + Vect3f(m_Direction1.z * h * mathUtils::Cos(m_Direction1.x * h), h, m_Direction1.z * h * mathUtils::Sin(m_Direction1.x * h));
+    m_position = m_Direction2 + Vect3f(m_Direction1.z * h * mathUtils::Cos(m_Direction1.x * h), h, m_Direction1.z * h * mathUtils::Sin(m_Direction1.x * h)) * m_Speed * dt * 10 ;
   } else {
     Vect3f l_SumaOndulacion = m_VectorOndulacion * sin(dt * m_VelocidadOndulacion + m_InicioOndulacion);
     Vect3f l_DirGravity = Vect3f(0, -1, 0);

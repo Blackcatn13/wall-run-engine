@@ -130,8 +130,8 @@
 
 	<!--<animated_model name="Piky" core="piky" pos="51.574234 0.714600 0.617737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="player"/>-->
 
-	<animated_model name="Piky" core="piky" pos="55.784378 0.000000 0.617737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="player" emitter="DustPikyEmitter" emitter_offset="0.0 1.0 0.0" emitter2="BurnPikyEmitter" emitter2_offset="0.0 0.0 0.0" emitter3="StarsPikyEmitter" emitter3_offset="0.0 0.0 0.0"/>
-	<animated_model name="SuperPiky" core="SuperPiky" pos="55.784378 1.000000 0.617737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="player" emitter="DustPikyEmitter" emitter_offset="0.0 1.0 0.0" emitter2="BurnPikyEmitter" emitter2_offset="0.0 0.0 0.0" emitter3="StarsPikyEmitter" emitter3_offset="0.0 0.0 0.0" room="1" />
+	<animated_model name="Piky" core="piky" pos="55.784378 0.000000 0.617737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="player" emitter="DustPikyEmitter" emitter_offset="0.0 1.0 0.0" emitter2="BurnPikyEmitter" emitter2_offset="0.0 0.0 0.0" emitter3="StarsPikyEmitter" emitter3_offset="0.0 0.0 0.0" emitter4="YellowSuperPikySparks" />
+	<animated_model name="SuperPiky" core="SuperPiky" pos="55.784378 1.000000 0.617737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="player" emitter="DustPikyEmitter" emitter_offset="0.0 1.0 0.0" emitter2="BurnPikyEmitter" emitter2_offset="0.0 0.0 0.0" emitter3="StarsPikyEmitter" emitter3_offset="0.0 0.0 0.0" room="0" />
 
 	<animated_model name="Chucky" core="chuky" pos="12.301392 0.000000 -2.756073" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="DustChuckyEmitter" emitter_offset="0.0 0.0 0.0" emitter2="DustJumpChuckyEmitter" emitter2_offset="0.0 0.0 0.0" room="1"/>
 	
