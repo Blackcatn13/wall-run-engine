@@ -550,3 +550,13 @@ function trigger_puzzle()
 	set_puzzle_enemy_active("true");
 	coreInstance:get_cinematic_controller():execute("Door");
 end
+
+function checkpoint_3d_to_2d(offset_axis, trigger_name, renderable_object)
+	trigger_set_2D(offset_axis)
+	set_checkpoint(trigger_name, renderable_object)
+end
+
+function checkpoint_2d_to_3d(trigger_name, renderable_object)
+	trigger_set_3D()
+	set_checkpoint(trigger_name, renderable_object)
+end
