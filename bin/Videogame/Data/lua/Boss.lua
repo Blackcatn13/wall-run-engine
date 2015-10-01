@@ -9,10 +9,11 @@ function start_boss()
 	playerRenderableMesh:set_position(position)
 	
 	local chucky = enemy_manager:get_enemy("Chucky")
-	chucky:set_position(Vect3f(12.30, 0.00, -2.75))
-	
+	local chucky_position = Vect3f(12.30, 0.00, -2.75)
+	chucky:set_position(chucky_position)
+	chucky.m_RenderableObject:set_position(chucky_position)
 	local objCam = activeCam.m_pObject3D;
-	objCam:set_position(Vect3f(chucky:get_position().x,chucky:get_position().y,chucky:get_position().z));
+	objCam:set_position(chucky_position);
 	
 	set_boss_polis_visible(true)
 	boss_started = true

@@ -102,6 +102,11 @@ function on_update_player_lua(l_ElapsedTime)
 			is_init = false
 			player_controller.m_is3D = true
 		end
+		
+		if act2in:do_action_from_lua("StartBoss") then
+			start_boss()
+		end
+	
 	
 		if act2in:do_action_from_lua("ChangeDimension") then
 			if player_controller.m_is3D == true then 
