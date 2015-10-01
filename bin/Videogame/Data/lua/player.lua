@@ -179,8 +179,13 @@ function Player.new()
 						
 			if self.num_hearts == 0 then
 				--self.num_hearts = 3
+				if self.hurt_by_spikes then
+					self.get_player_controller():set_position(self.last_spikes_position)
+				end
 				self.player_die()
-				--self.coreInstance:trace("PLAYER DEEEEEEEEEEEEEEEEEEEEEEEEEAD")
+				
+			elseif self.hurt_by_spikes then
+				self.get_player_controller():set_position(self.last_spikes_position)
 			end
 		end
 	end
@@ -250,9 +255,6 @@ function Player.new()
 	end
 	
 	function self.check_death_actions()
-		self.is_dead = false
-		self.has_ass_burned = false
-		self.set_super_piky(false)
 		local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name)
 		local emitter2 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter2)
 		if emitter2:get_visible() == true then
@@ -294,6 +296,9 @@ function Player.new()
 			reset_wall_trap(0, "WALL_TRAP1_LEFT")]]
 		end
 		
+		self.is_dead = false
+		self.has_ass_burned = false
+		self.set_super_piky(false)
 		--self.activating_triggers = true
 	end
 	

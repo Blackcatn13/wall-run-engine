@@ -175,7 +175,7 @@ function on_update_player_lua(l_ElapsedTime)
 		if (player_controller.m_isJumpingMoving == false) and (player_controller.m_isAttack == false) and (player.is_hit == false and not player.is_dead) then
 			local y_axis = 0.0
 			local x_axis = 0.0
-			if not playerRenderable.m_VanishActive and not player.hurt_by_spikes then
+			if not playerRenderable.m_VanishActive and not player.hurt_by_spikes and not gui_manager:is_transition_effect_active() then
 				if inputm:has_game_pad(1) then
 					auxAxisYMoved = act2in:do_action_from_lua("MoveForward", y_axis);
 					auxAxisXMoved = act2in:do_action_from_lua("MoveRigth", x_axis);
@@ -521,7 +521,7 @@ function on_update_player_lua(l_ElapsedTime)
 		--///////////////////////////////////////////////////////////
 		-- Acción de saltar del Player. Puede realizar 2 saltos distintos (de longitud, y salto vertical). 
 		--///////////////////////////////////////////////////////////
-		if (act2in:do_action_from_lua("Jump")) and (player_controller.m_isJumping == false and player_controller.m_isDoubleJumping == false and _land == false and player_controller.m_isAttack == false and player.is_hit == false and player_controller.m_isGrounded and not player.is_dead) and not playerRenderable.m_VanishActive and jump_enabled then
+		if (act2in:do_action_from_lua("Jump")) and (player_controller.m_isJumping == false and player_controller.m_isDoubleJumping == false and _land == false and player_controller.m_isAttack == false and player.is_hit == false and player_controller.m_isGrounded and not player.is_dead) and not playerRenderable.m_VanishActive and jump_enabled and not gui_manager:is_transition_effect_active() then
 			player_controller.m_JumpingTime = 0;
 			playerRenderable:clear_cycle(anim_idle,0.2);
 			playerRenderable:clear_cycle(anim_run,0.2);
@@ -538,7 +538,7 @@ function on_update_player_lua(l_ElapsedTime)
 		--///////////////////////////////////////////////////////////
 		-- Acción de atacar del Player. Realiza un impulso hacia adelante. 
 		--/////////////////////////////////////////////////////////// 
-		if (act2in:do_action_from_lua("Attack") and not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land and player_controller.m_isAttack == false and canAttack == true and player.is_hit == false and player.attack_enabled and not player.is_dead) and not playerRenderable.m_VanishActive then --) and (player_controller.m_isAttack == false) then
+		if (act2in:do_action_from_lua("Attack") and not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land and player_controller.m_isAttack == false and canAttack == true and player.is_hit == false and player.attack_enabled and not player.is_dead) and not playerRenderable.m_VanishActive and not gui_manager:is_transition_effect_active() then --) and (player_controller.m_isAttack == false) then
 			canAttack = false;
 			player.get_player_controller():update_character_extents(false, m_ReduceCollider);
 			contador = 0;
@@ -648,9 +648,9 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		
 		player_controller:set_position(player_controller.m_PhysicController:get_position());
-		--if not player.hurt_by_spikes then
+		if not player.hurt_by_spikes then
 			move_character_controller_mesh(player_controller, player_controller:get_position(), player_controller.m_isJumping, player_controller.m_isDoubleJumping);
-		--end
+		end
 		if not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land then
 			if (mov.x == 0 and mov.z == 0 or stopping) and player.is_hit == false then
 				playerRenderable:clear_cycle(anim_run,deccelerationTime);
@@ -691,24 +691,20 @@ function on_update_player_lua(l_ElapsedTime)
 		if player.hurt_by_spikes and not player.is_dead then
 			local emitter3 = particle_manager:get_resource(playerRenderable.m_ParticleEmitter3)
 			if not playerRenderable:is_action_animation_active() then
-				coreInstance:trace(tostring(player.num_hearts))		
+				--coreInstance:trace(tostring(player.num_hearts))		
 				emitter3:set_visible(false)
 				player.player_take_damage(Vect3f(0,0,0), 0)
-				
-				if player.num_hearts > 0 then
-					player.get_player_controller():set_position(player.last_spikes_position)
-				end
 			else
 								
 				local pos_spikes = Vect3f(0.0, 0.0, 0.0)
-				pos_spikes = pos_spikes + player.get_player_controller():get_position()
-				--pos_spikes = pos_spikes + playerRenderable:get_position()
-				coreInstance:trace(tostring(pos_spikes.x)..", "..tostring(pos_spikes.y)..", "..tostring(pos_spikes.z))
+				--pos_spikes = pos_spikes + player.get_player_controller():get_position()
+				pos_spikes = pos_spikes + playerRenderable:get_position()
+				--coreInstance:trace(tostring(pos_spikes.x)..", "..tostring(pos_spikes.y)..", "..tostring(pos_spikes.z))
 				local emitterOffset = playerRenderable.m_EmitterOffset3
 				--pos = pos + playerRenderable:getAnimationBonePosition() 
-				pos_spikes.y = pos_spikes.y + 1--0 *l_ElapsedTime
-				--playerRenderable:set_position(pos_spikes)
-				player.get_player_controller():set_position(pos_spikes)
+				pos_spikes.y = pos_spikes.y + 20 *l_ElapsedTime
+				playerRenderable:set_position(pos_spikes)
+				--player.get_player_controller():set_position(pos_spikes)
 				pos_spikes = pos_spikes + emitterOffset
 				emitter3.m_vPos = pos_spikes
 			end
@@ -717,7 +713,7 @@ function on_update_player_lua(l_ElapsedTime)
 		if player.is_dead then
 			--coreInstance:trace("Dead ")	
 			if not playerRenderable:is_action_animation_active() and not player.dead_in_hole then
-					coreInstance:trace("Dead ".. tostring(player.dead_in_hole))
+					--coreInstance:trace("Dead ".. tostring(player.dead_in_hole))
 					player.check_death_actions()
 					
 			else

@@ -1034,3 +1034,9 @@ void CGUIManager::StartFade(float time) {
   m_sTransitionEffect.m_bDoEffect = true;
   m_sTransitionEffect.m_fTransitionTime = time;
 }
+
+bool CGUIManager::IsTransitionEffectActive() {
+  if (m_sTransitionEffect.m_bDoEffect)
+    return true;
+  return false;
+}
