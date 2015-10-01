@@ -20,13 +20,13 @@
 	<layer name="vanishing"/>
 	<layer name="lava"/>
 	
-	<platform name="Poly_Sala0_001" core="Poly_Sala0_001" type="poly" pos="-0.038880 -2.746216 -31.213099" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="4.497 1.554 0.9455" layer="poly" room="0" final_position="-0.038880 -0.548 -31.213099"
+	<platform name="Poly_Sala0_001" core="Poly_Sala0_001" type="poly" pos="-0.038880 -5.167576 -31.213099" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="4.497 2.64614 0.9455" layer="poly" room="0" final_position="-0.038880 -0.301 -31.213099"
 		 direction="0 1 0" time_out="5" speed="5" light="" activation_distance="10"/>
-	<platform name="Poly_Sala0_002" core="Poly_Sala0_002" type="poly" pos="-0.038880 -2.746216 31.367226" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="4.497 1.554 0.945499" layer="poly" room="0" final_position="-0.038880 -0.548 31.367226"  
+	<platform name="Poly_Sala0_002" core="Poly_Sala0_002" type="poly" pos="-0.038880 -5.167576 31.367226" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="4.497 2.64614 0.945499" layer="poly" room="0" final_position="-0.038880 -0.301 31.367226"
 		 direction="0 1 0" time_out="5" speed="5" light="" activation_distance="10"/>
-	<platform name="Poly_Sala0_003" core="Poly_Sala0_003" type="poly" pos="30.739902 -2.746216 -1.517880" yaw="-1.5929" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="1.04468 1.554 4.5168" layer="poly" room="0" final_position="30.739902 -0.548 -1.517880" 
+	<platform name="Poly_Sala0_003" core="Poly_Sala0_003" type="poly" pos="30.739902 -5.167576 -1.517880" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="1.04468 2.64614 4.5168" layer="poly" room="0" final_position="30.739902 -0.301 -1.517880"
 		 direction="0 1 0" time_out="5" speed="5" light="" activation_distance="10"/>
-	<platform name="Poly_Sala0_004" core="Poly_Sala0_004" type="poly" pos="-30.742886 -2.746216 -1.517880" yaw="-1.5929" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="1.04468 1.554 4.5168" layer="poly" room="0" final_position="-30.742886 -0.548 -1.517880"
+	<platform name="Poly_Sala0_004" core="Poly_Sala0_004" type="poly" pos="-30.742886 -5.167576 -1.517880" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="1.04468 2.64614 4.5168" layer="poly" room="0" final_position="-30.742886 -0.301 -1.517880"
 		 direction="0 1 0" time_out="5" speed="5" light="" activation_distance="10"/>
 	<mesh_instance name="ARCADA" core="ARCADA" pos="-0.017227 9.222342 0.316050" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
 	<mesh_instance name="CUPULA" core="CUPULA" pos="-0.002787 35.136833 -0.108083" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
@@ -145,7 +145,7 @@
 	<mesh_instance name="SALA 4" core="SALA 4" pos="563.274536 22.546162 -116.637451" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="4"/>
 	<platform name="Plataforma_Fragil" core="Plataforma_Fragil" type="breakable" pos="559.199097 13.231201 -150.015015" yaw="0.0" pitch="0.0" roll="0.0" scale="1.44339 1.0 1.44339" visible="true" phisic_size="7.50827 0.49147 7.35337" layer="breakable" room="4" trigger_name="Break1" emitter="DustPlatformFallingEmitter1-1" emitter2="DustPlatformFallingEmitter1-2" emitter3="DustPlatformFallingEmitter1-3" emitter4="DustPlatformFallingEmitter1-4" />
 	<mesh_instance name="Plataforma01" core="Plataforma01" pos="562.033020 20.360819 -83.370407" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.39612" visible="true" room="4" layer="solid"/>
-	<mesh_instance name="Plataforma02" core="Plataforma02" pos="564.209717 16.348318 -115.103210" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.50261" visible="true" room="4" layer="solid"/>
+	<mesh_instance name="Plataforma02" core="Plataforma02" pos="564.209717 16.348318 -115.709229" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.50261" visible="true" room="4" layer="solid"/>
 	<platform name="Plataforma0er3" core="Plataforma0er3" phisic_size="7.0 0.4 2.6" use_phisics_mesh="true" type="moving" speed= "2"  pos="558.954285 15.171039 -130.976105" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms"  room="4">
 		<wp pos="552.129456 15.171039 -130.976105" />
 		<wp pos="559.129456 15.171039 -130.976105" />

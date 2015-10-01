@@ -350,6 +350,7 @@ void RegisterManagers() {
     .def("set_size_percent", &CGUIManager::SetGUIElementSizePercent)
     .def("set_visible_gui_element", &CGUIManager::SetVisibleGuiElement)
     .def("start_fade", &CGUIManager::StartFade)
+    .def("is_transition_effect_active", &CGUIManager::IsTransitionEffectActive)
     .property("m_sCurrentWindows", &CGUIManager::GetCurrentWindow)
     .property("m_sTransitionEffect", &CGUIManager::GetTransitionEffect, &CGUIManager::SetTransitionEffect)
   ];

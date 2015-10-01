@@ -151,6 +151,7 @@ class CGUIManager { //:public CScriptRegister
   TransitionEffect				GetTransitionEffect() { return m_sTransitionEffect;}
   void							SetTransitionEffect(TransitionEffect transitionEffect);
   void							StartFade(float time);
+  bool							IsTransitionEffectActive();
 
   std::string					GetCurrentWindow() {
     return m_sCurrentWindows;

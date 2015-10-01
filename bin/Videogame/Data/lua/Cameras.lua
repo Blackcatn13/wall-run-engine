@@ -57,6 +57,14 @@ function on_update_cameras_lua(l_ElapsedTime)
 	local cam2D_zoomSpeed = 5;
 	local cam2D_heightSpeed = 5;
 	
+	--______ CAMERA BOSS _______________________
+	local yawBoss = 0;
+	local pitchBoss = -0.20;
+	local zoomBoss = 35;
+	local fovBoss = 60.0 * 3.1415 / 180;
+	local aspectBoss = 16/9;
+	local distToCameraOffsetBoss = 3;
+	
 	--______ GENERALES _______________________
 	local distanciaGiro = 3;
 	
@@ -66,6 +74,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 	local act2in = coreInstance:get_action_to_input();
 	local camController = coreInstance.m_CameraController;
 	local cam = camController:get_active_camera();
+--	coreInstance:trace("tipo camara "..tostring(cam.m_eTypeCamera));
 	if gui_manager:get_is_displayed_console() == false then
 		if act2in:do_action_from_lua("Set3DCamera") then
 			--coreInstance.m_CameraController:set_active_camera("3DCam");
@@ -78,7 +87,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 	end
 	--local name2=CNamed();
 	--name2:set_name("UpdatePass1");
-	if cam.m_eTypeCamera ~= 2 and cam.m_eTypeCamera ~= 1 and cam.m_currentWaypoint ~= nil then
+	if (cam.m_eTypeCamera == 5 or cam.m_eTypeCamera == 6) and cam.m_currentWaypoint ~= nil then
 		local currentWP = cam:get_path_point(cam.m_currentWaypoint);
 		local nextWP = cam:get_path_point(cam.m_nextWaypoint);
 		local pointSpecs = cam:get_path_point_specs(cam.m_currentWaypoint);
@@ -352,6 +361,22 @@ function on_update_cameras_lua(l_ElapsedTime)
 			end
 		end
 		--name2:set_name("UpdatePassFinal");
+	elseif cam.m_eTypeCamera == 7 then -- BOSS CAM
+		coreInstance:trace("entraaaaaa a la camara bosssss")
+		local obj = cam.m_pObject3D;
+		local chucky = enemy_manager:get_enemy("Chucky")
+		local chuckyPos = chucky:get_position();
+		local playerPos = player_controller:get_position();
+		local vectPlayerBoss = Vect3f(chuckyPos.x - playerPos.x, 0 ,chuckyPos.z - playerPos.z);
+		yawBoss = math.atan2(vectPlayerBoss.z, vectPlayerBoss.x);
+		obj:set_yaw(yawBoss);
+		obj:set_pitch(pitchBoss);
+		obj:set_roll(0);
+		cam:set_zoom(zoomBoss);
+		cam.m_fZNear = 0.1;
+		cam.m_fZFar = 90;
+		cam.m_fFOV = fovBoss;
+		cam.m_fAspectRatio = aspectBoss;
 	end
 end
 

@@ -155,7 +155,7 @@ function on_enter_pinchos()
 	end
 	--]]
 	--local player = Player:get_instance()
-	if not player.hurt_by_spikes then
+	if not player.hurt_by_spikes and not player.is_dead and not gui_manager:is_transition_effect_active() then
 		player.hurt_by_spikes = true
 		local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name)
 		renderable_piky_mesh:execute_action(anim_Burn,0,0.3,1,false) -- animacion de piky tostada

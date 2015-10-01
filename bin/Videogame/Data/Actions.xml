@@ -1,5 +1,10 @@
 <Actions>
 	<globals>
+		<action name="StartBoss" debug="true">
+	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
+	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_B"/>
+	    </action>
+		
 		<action name="CommutationCamera" debug="true">
 	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_C"/>
 	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_TAB"/>
