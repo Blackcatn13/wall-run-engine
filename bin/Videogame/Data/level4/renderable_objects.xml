@@ -145,7 +145,7 @@
 	<mesh_instance name="SALA 4" core="SALA 4" pos="563.274536 22.546162 -116.637451" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="4"/>
 	<platform name="Plataforma_Fragil" core="Plataforma_Fragil" type="breakable" pos="559.199097 13.231201 -150.015015" yaw="0.0" pitch="0.0" roll="0.0" scale="1.44339 1.0 1.44339" visible="true" phisic_size="7.50827 0.49147 7.35337" layer="breakable" room="4" trigger_name="Break1" emitter="DustPlatformFallingEmitter1-1" emitter2="DustPlatformFallingEmitter1-2" emitter3="DustPlatformFallingEmitter1-3" emitter4="DustPlatformFallingEmitter1-4" />
 	<mesh_instance name="Plataforma01" core="Plataforma01" pos="562.033020 20.360819 -83.370407" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.39612" visible="true" room="4" layer="solid"/>
-	<mesh_instance name="Plataforma02" core="Plataforma02" pos="564.209717 16.348318 -115.103210" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.50261" visible="true" room="4" layer="solid"/>
+	<mesh_instance name="Plataforma02" core="Plataforma02" pos="564.209717 16.348318 -115.709229" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.50261" visible="true" room="4" layer="solid"/>
 	<platform name="Plataforma0er3" core="Plataforma0er3" phisic_size="7.0 0.4 2.6" use_phisics_mesh="true" type="moving" speed= "2"  pos="558.954285 15.171039 -130.976105" yaw="0.0"  pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" layer="mov_platforms"  room="4">
 		<wp pos="552.129456 15.171039 -130.976105" />
 		<wp pos="559.129456 15.171039 -130.976105" />
