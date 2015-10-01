@@ -184,6 +184,7 @@ function activate_trigger_update(trigger_name)
 end 
 
 function trigger_set_2D(offset_axis)
+	coreInstance:getWWSoundManager():PlayEvent("_2DZone", "Music");
 	local player_controller = coreInstance:get_player_controller();
 	player.going_back = false;
 	player_controller.m_is3D = false;
@@ -241,6 +242,7 @@ function trigger_set_2D(offset_axis)
 end
 
 function trigger_set_3D()
+	coreInstance:getWWSoundManager():PlayEvent("_3DZone", "Music");
 	local player_controller = coreInstance:get_player_controller();
 	player_controller.m_is3D = true;
 	local cam = coreInstance.m_CameraController:get_resource("3DCam");
