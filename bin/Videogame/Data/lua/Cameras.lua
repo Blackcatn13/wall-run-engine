@@ -364,7 +364,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 	elseif cam.m_eTypeCamera == 7 then -- BOSS CAM
 		--coreInstance:trace("entraaaaaa a la camara bosssss")
 		local obj = cam.m_pObject3D;
-		local chucky = enemy_manager:get_enemy("Chucky")
+		local chucky = enemy_manager:get_enemy("ChuckyBoss")
 		local chuckyPos = chucky:get_position();
 		local playerPos = player_controller:get_position();
 		local vectPlayerBoss = Vect3f(chuckyPos.x - playerPos.x, 0 ,chuckyPos.z - playerPos.z);

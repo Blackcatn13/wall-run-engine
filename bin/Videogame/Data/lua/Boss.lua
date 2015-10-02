@@ -8,15 +8,17 @@ function start_boss()
 	local playerRenderableMesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", 0):get_resource(piky_mesh_name);
 	playerRenderableMesh:set_position(position)
 	
-	local chucky = enemy_manager:get_enemy("Chucky")
-	local chucky_position = Vect3f(12.30, 0.00, -2.75)
+	local chucky = enemy_manager:get_enemy("ChuckyBoss")
+	local chucky_position = Vect3f(0.0, 2.48, 0.0)
 	chucky:set_position(chucky_position)
 	chucky.m_RenderableObject:set_position(chucky_position)
+	chucky.m_RenderableObject:set_visible(true)
 	local objCam = activeCam.m_pObject3D;
 	objCam:set_position(chucky_position);
-	
+	local cadira = get_renderable_object("solid",0, "CADIRA")
+	cadira:set_visible(false)
 	set_boss_polis_visible(true)
-	boss_started = true
+	chucky.m_BossRunning = true
 end
 
 function set_boss_polis_visible(visible)
@@ -31,4 +33,96 @@ function set_boss_polis_visible(visible)
 		array_polys[i]:set_visible(visible)
 		array_polys[i].m_Printable = visible
 	end
+end
+
+---- IA----
+----PARADO----
+function chucky_boss_enter_stopped(name)
+	
+end
+
+function chucky_boss_exit_stopped(name)
+	
+end
+
+function chucky_boss_update_stopped(ElapsedTime, doComprobation, name)
+
+end
+
+----DISPARAR----
+function chucky_boss_enter_shoot(name)
+	
+end
+
+function chucky_boss_exit_shoot(name)
+	
+end
+
+function chucky_boss_update_shoot(ElapsedTime, doComprobation, name)
+
+end
+
+----LANZAR----
+function chucky_boss_enter_shoot(name)
+	
+end
+
+function chucky_boss_exit_shoot(name)
+	
+end
+
+function chucky_boss_update_shoot(ElapsedTime, doComprobation, name)
+
+end
+
+----DEVOLVER----
+function chucky_boss_enter_return(name)
+	
+end
+
+function chucky_boss_exit_return(name)
+	
+end
+
+function chucky_boss_update_return(ElapsedTime, doComprobation, name)
+
+end
+
+----LLAMAR----
+function chucky_boss_enter_call(name)
+	
+end
+
+function chucky_boss_exit_call(name)
+	
+end
+
+function chucky_boss_update_call(ElapsedTime, doComprobation, name)
+
+end
+
+----HURT----
+function chucky_boss_enter_hurt(name)
+	
+end
+
+function chucky_boss_exit_hurt(name)
+	
+end
+
+function chucky_boss_update_hurt(ElapsedTime, doComprobation, name)
+
+end
+
+----DEAD----
+function chucky_boss_enter_dead(name)
+	
+end
+
+function chucky_boss_exit_dead(name)
+	
+end
+
+function chucky_boss_update_dead(ElapsedTime, doComprobation, name)
+
 end

@@ -27,7 +27,7 @@ CAIController::CAIController()
     m_CooldownTimer(5),
     m_ProjectileHitbox(0.5),
     m_EnemyHitboxX(1.5),//HARDCODED
-	m_EnemyHitboxY(2.0),//HARDCODED
+    m_EnemyHitboxY(2.0),//HARDCODED
     m_CurrentCooldown(0),
     m_tiempoVidaDisparo(2.0),
     m_minAngleDisparo(0.2),
@@ -45,6 +45,7 @@ CAIController::CAIController()
 }
 
 CAIController::CAIController(std::string mesh, std::string name, Vect3f position, float speed, float turnSpeed, float gravity):
+
   CObject3D (),
   m_Gravity(gravity),
   m_Speed(speed),
@@ -73,6 +74,43 @@ CAIController::CAIController(std::string mesh, std::string name, Vect3f position
   m_PhysicUserData->SetPaint(false);
   m_PhysicUserData->SetColor(colRED);
   m_PhysicController = new CPhysicController(0.5, 0.25, 45, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, position, -gravity);
+  PHYSXM->AddPhysicController(m_PhysicController);
+}
+
+CAIController::CAIController(std::string mesh, std::string name, Vect3f position,  float speed, float turnSpeed, float gravity, Vect2f controller_size):
+  CObject3D (),
+  m_Gravity(gravity),
+  m_Speed(speed),
+  m_TurnSpeed(turnSpeed),
+  m_JumpForce(0),
+  m_tiempoVidaDisparo(2.0),
+  m_minAngleDisparo(0.2),
+  m_BalaSpeed(5),
+  m_CurrentJumpForce(0),
+  m_IsOnCooldown(false),
+  m_CooldownTimer(5),
+  m_ProjectileHitbox(0.5),
+  m_Angle(0.0f),
+  m_EnemyHitboxX(1.5),//HARDCODED
+  m_EnemyHitboxY(2.0),//HARDCODED
+  m_CurrentCooldown(0),
+  m_isJumping(false),
+  m_SpeedModified(false) {
+  for (int roomNum = 0; roomNum < RENDLM->GetSize() ; ++ roomNum) {
+    CRenderableObjectsManager *l_Rom = RENDLM->GetRenderableObjectsManagerByStrAndRoom("enemies", roomNum);
+    if (l_Rom->GetResource(mesh) != NULL)
+      m_RenderableObject = l_Rom->GetResource(mesh);
+  }
+  m_Name = m_RenderableObject->getName();
+  std::stringstream ss;
+  ss << m_Name << "_UserData";
+  std::string userDataName = ss.str();
+  m_PhysicUserData = new CPhysicUserData(userDataName);
+  m_PhysicUserData->SetPaint(false);
+  m_PhysicUserData->SetColor(colRED);
+  Vect3f newPosition = Vect3f(m_RenderableObject->GetPosition().x, m_RenderableObject->GetPosition().y + controller_size.y, m_RenderableObject->GetPosition().z);
+  m_PhysicController = new CPhysicController(controller_size.x, controller_size.y, 45, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, newPosition, -gravity);//0.5,0.25
+
   PHYSXM->AddPhysicController(m_PhysicController);
 }
 CAIController::CAIController(CRenderableObject *rond, float speed, float turnSpeed, float gravity, Vect2f controller_size):

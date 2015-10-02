@@ -33,7 +33,6 @@ gui_manager.m_sTransitionEffect = transition_effect
 fade_done = false
 first_load = true
 jump_enabled = true
-boss_started = false
 
 piky_mesh_name = "Piky" --Piky o SuperPiky
 

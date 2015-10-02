@@ -296,10 +296,17 @@ function reset_game()
 	if emitter:get_visible() == true then
 		emitter:set_visible(false)
 	end
+	
+	--BOSS
 	player.set_super_piky(false)
 	player.super_piky_attack = false
 	player.super_piky_timer = 0.0
 	set_boss_polis_visible(false)
-	boss_started = false
+	local cadira = get_renderable_object("solid",0, "CADIRA")
+	cadira:set_visible(true)
+	local boss = enemy_manager:get_enemy("ChuckyBoss")
+	if boss.m_BossRunning then
+		boss.m_BossRunning = false
+	end
 end
 

@@ -247,15 +247,15 @@ function Player.new()
 	function self.check_visited_checkpoints(trigger_name)
 		-- recorrer array de checkpoints visitados del player
 		-- si coincide con este checkpoint retornar true
-		self.coreInstance:trace("Searching CheckPoint")
+	--	self.coreInstance:trace("Searching CheckPoint")
 		for i = 1, table.getn(self.visited_checkpoints) do
 			self.coreInstance:trace(".")
 			if self.visited_checkpoints[i].name == trigger_name then
-				self.coreInstance:trace("Encontrado!!")
+				--self.coreInstance:trace("Encontrado!!")
 				return true
 			end	
 		end
-		self.coreInstance:trace("No Encontrado")
+		--self.coreInstance:trace("No Encontrado")
 		return false
 	end
 	
@@ -267,6 +267,11 @@ function Player.new()
 		end
 		--Chuky Desaparece
 		ChuckyDesapears()
+		
+		local boss = enemy_manager:get_enemy("ChuckyBoss")
+		if boss.m_BossRunning then
+			boss.m_BossRunning = false
+		end
 		
 		if self.num_lives == 0 then
 			--game over
