@@ -11,7 +11,7 @@ enum UpdateType {NORMAL, CONE};
 
 class CParticle : public CBillboard {
  public:
-  CParticle(Vect3f Direction1, Vect3f Direction2, float Age, float Speed, CColor Color1, CColor Color2, Vect3f Position, float size, float endSize);
+  CParticle(Vect3f Direction1, Vect3f Direction2, float Age, float Speed, CColor Color1, CColor Color2, Vect3f Position, float size, float endSize, bool useSpeed = true);
   CParticle();
   ~CParticle();
   void Update(float dt);
@@ -35,6 +35,7 @@ class CParticle : public CBillboard {
   float getCurrentRotation() {return m_currentRotation;}
   float getAlpha();
   void setType(UpdateType t) { m_UpdateType = t; }
+  GET_SET(bool, UseSpeed)
  private:
   Vect3f	m_Direction1;
   Vect3f	m_Direction2;
@@ -53,6 +54,7 @@ class CParticle : public CBillboard {
   float   m_Rotation;
   float   m_currentRotation;
   UpdateType m_UpdateType;
+  bool	  m_UseSpeed;
 };
 
 #endif // PARTICLE_H_

@@ -161,4 +161,6 @@
 	<Physx_mesh name="Sala_7_Obstacle_004" filename="Data\level4\meshes\Sala_7_Obstacle_004.phsx"/>
 	<Physx_mesh name="Sala_7_Obstacle_005" filename="Data\level4\meshes\Sala_7_Obstacle_005.phsx"/>
 	<Physx_mesh name="Sala_7_Pinxos_015" filename="Data\level4\meshes\Sala_7_Pinxos_015.phsx"/>
+	<Physx_mesh name="Teleport" filename="Data\level4\meshes\Teleport.phsx"/>
+	<Physx_mesh name="Teleport_inactive" filename="Data\level4\meshes\Teleport_inactive.phsx"/>
 </Physx_meshes>

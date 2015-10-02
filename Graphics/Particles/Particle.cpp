@@ -1,7 +1,7 @@
 #include "Particles\Particle.h"
 #include "Math\MathUtils.h"
 
-CParticle::CParticle(Vect3f Direction1, Vect3f Direction2, float Age, float Speed, CColor Color1, CColor Color2, Vect3f Position, float size, float endSize)
+CParticle::CParticle(Vect3f Direction1, Vect3f Direction2, float Age, float Speed, CColor Color1, CColor Color2, Vect3f Position, float size, float endSize, bool useSpeed)
   : CBillboard(size, Position)
   , m_Direction1(Direction1)
   , m_Direction2(Direction2)
@@ -15,7 +15,8 @@ CParticle::CParticle(Vect3f Direction1, Vect3f Direction2, float Age, float Spee
   , m_Rotation(0.f)
   , m_currentRotation(0.f)
   , m_UpdateType(NORMAL)
-  , m_EndSize(endSize) {
+  , m_EndSize(endSize)
+  , m_UseSpeed(useSpeed) {
   m_Color1 = Color1;
 
 }
@@ -33,7 +34,8 @@ CParticle::CParticle()
   , m_StartSize(1.f)
   , m_Color2(CColor(colWHITE))
   , m_UpdateType(NORMAL)
-  , m_Dead(false) {
+  , m_Dead(false)
+  , m_UseSpeed(true) {
   m_Color1 = colBLACK;
 }
 
@@ -45,7 +47,10 @@ void CParticle::Update(float dt) {
   //VectorOndulacion Maximo y minimo
   if (m_UpdateType == CONE) {
     float h = m_StartAge - m_Age;
-    m_position = m_Direction2 + Vect3f(m_Direction1.z * h * mathUtils::Cos(m_Direction1.x * h), h, m_Direction1.z * h * mathUtils::Sin(m_Direction1.x * h)) * m_Speed * dt * 10 ;
+    float l_Speed = 1;
+    if (m_UseSpeed)
+      l_Speed =  m_Speed * dt * 10;
+    m_position = m_Direction2 + Vect3f(m_Direction1.z * h * mathUtils::Cos(m_Direction1.x * h), h, m_Direction1.z * h * mathUtils::Sin(m_Direction1.x * h)) * l_Speed;
   } else {
     Vect3f l_SumaOndulacion = m_VectorOndulacion * sin(dt * m_VelocidadOndulacion + m_InicioOndulacion);
     Vect3f l_DirGravity = Vect3f(0, -1, 0);
