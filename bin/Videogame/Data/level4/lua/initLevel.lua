@@ -63,6 +63,12 @@ function init_level(a)
 	local direction = Vect3f(0,0,1)
 	local arrow_trap = ArrowTrap.new("ArrowTrap1",ro_list,direction, 40, 2, "x"  )
 	--]]
+	enemy_manager:get_enemy("MikMik007"):m_FSM():newState("Dead")
+	enemy_manager:get_enemy("MikMik008"):m_FSM():newState("Dead")
+	enemy_manager:get_enemy("MikMik009"):m_FSM():newState("Dead")
+	enemy_manager:get_enemy("MikMik010"):m_FSM():newState("Dead")
+	enemy_manager:get_enemy("MikMik011"):m_FSM():newState("Dead")
+	
 	enemy_manager:get_enemy("Chucky").m_RenderableObject:execute_action(2,0.25,0,1,false);
 	coreInstance:get_cinematic_controller():execute("start");
 	
