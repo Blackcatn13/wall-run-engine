@@ -65,6 +65,7 @@ function init_level(a)
 	--]]
 	enemy_manager:get_enemy("Chucky").m_RenderableObject:execute_action(2,0.25,0,1,false);
 	coreInstance:get_cinematic_controller():execute("start");
+	
 	return 0
 end
 

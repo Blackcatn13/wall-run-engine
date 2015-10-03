@@ -7,7 +7,7 @@ function set_teleport_ready(player_position)
 --	player.can_move = false
 	player_renderable.m_Modifier = 1.0
 	player.vanishing = true
-	local teleportRenderable = get_renderable_object("solid", player_controller.m_Room, "Teleport")
+	local teleportRenderable = get_renderable_object("solid", 6, "Teleport")
 	if teleportRenderable.m_ParticleEmitter ~= "" and teleportRenderable.m_ParticleEmitter2 ~= "" then
 		local emitter = particle_manager:get_resource(teleportRenderable.m_ParticleEmitter)
 		local pos = player_renderable:get_position()+ teleportRenderable.m_EmitterOffset
@@ -23,7 +23,7 @@ end
 function update_emitter_status(emitter, position, visible)
 	emitter.m_vPos = position
 	emitter:set_visible(visible)
-	coreInstance:trace("Emitter position: "..tostring(position.x)..", "..tostring(position.y)..", "..tostring(position.z))
+	--coreInstance:trace("Emitter position: "..tostring(position.x)..", "..tostring(position.y)..", "..tostring(position.z))
 end
 function vanish_player(name, room)
 
@@ -45,13 +45,14 @@ function vanish_player(name, room)
 	end
 end
 function player_teleported()
-	local teleportRenderable = get_renderable_object("solid", player_controller.m_Room, "Teleport")
+	local teleportRenderable = get_renderable_object("solid", 6, "Teleport")
 	if teleportRenderable.m_ParticleEmitter ~= "" and teleportRenderable.m_ParticleEmitter2 ~= "" then
 		local emitter = particle_manager:get_resource(teleportRenderable.m_ParticleEmitter)
-		local pos = teleportRenderable:get_position()
+		local emitter_offset = Vect3f(0,1,0)
+		local pos = teleportRenderable:get_position() +emitter_offset
 		update_emitter_status(emitter, pos, false)
 		local emitter2 = particle_manager:get_resource(teleportRenderable.m_ParticleEmitter2)
-		local pos2 = teleportRenderable:get_position()
+		local pos2 = teleportRenderable:get_position() +emitter_offset
 		update_emitter_status(emitter2, pos2, false)
 		
 	end
@@ -81,7 +82,7 @@ function activate_teleport(name, room)
 --	coreInstance:trace("Teletransportando: ".. player_position)
 	local teleport_back = get_renderable_object("solid", tonumber(room), name)
 	local position = teleport_back:get_position()
-	local final_pos = Vect3f(position.x, position.y+1, position.z)
+	local final_pos = Vect3f(position.x, position.y+2, position.z)
 	player_controller.m_PhysicController:set_position(final_pos)
 	local camera = coreInstance.m_CameraController:get_active_camera()
 	--	coreInstance:trace("laaaaaa")
@@ -94,9 +95,9 @@ function activate_teleport(name, room)
 		player_controller.m_isTurned = false
 		player_controller:set_yaw(PlayerYaw + 1.57); -- 90ยบ
 	end
-	local teleportRenderable = get_renderable_object("solid", player_controller.m_Room, "Teleport")
+	local teleportRenderable = get_renderable_object("solid", 6, "Teleport")
 	if teleportRenderable.m_ParticleEmitter ~= "" and teleportRenderable.m_ParticleEmitter2 ~= ""  then
-		local teleportRenderable2 = get_renderable_object("solid", player_controller.m_Room, "Teleport2")
+		local teleportRenderable2 = get_renderable_object("solid", 6, name)
 		local emitter = particle_manager:get_resource(teleportRenderable.m_ParticleEmitter)
 		local pos = teleportRenderable2:get_position()+ teleportRenderable.m_EmitterOffset
 		update_emitter_status(emitter, pos, true)

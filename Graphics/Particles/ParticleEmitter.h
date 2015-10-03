@@ -81,6 +81,7 @@ class CParticleEmitter : public CObject3D, public CNamed {
   //CRecyclingArray<CParticle> *m_Particles;
   bool							m_FireOnce;
   bool							m_FireParticles;
+  bool							m_UseSpeed;
 
   float								        m_Gravity;
   float								        m_MaxVelocidadOndulacion;

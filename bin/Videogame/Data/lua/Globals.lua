@@ -24,6 +24,8 @@ puzzle_manager = coreInstance:get_puzzle_manager()
 
 --Fin Managers
 CCoreLuaWrapper().m_CoreInstance:getTickCounter():addTick("lava", 0.05, 1000);
+boss_mesh_name = "ChuckyBoss"
+
 
 --Variables de Control
 first_time_main_menu = true
@@ -33,8 +35,6 @@ gui_manager.m_sTransitionEffect = transition_effect
 fade_done = false
 first_load = true
 jump_enabled = true
-boss_started = false
-
 piky_mesh_name = "Piky" --Piky o SuperPiky
 
 --Animaciones del Player

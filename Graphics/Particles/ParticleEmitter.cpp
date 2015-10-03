@@ -43,8 +43,9 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
   , m_vOndulacion2(node.GetVect3fProperty("ondulacion_vec2", v3fZERO, false))
   , m_EndAlpha(node.GetFloatProperty("end_alpha", 1.f))
   , m_sTexture(node.GetPszISOProperty("texture", "", false))
-  , m_FireOnce(node.GetBoolProperty("fire_once", false, false)),
-    m_FireParticles(false) {
+  , m_FireOnce(node.GetBoolProperty("fire_once", false, false))
+  , m_UseSpeed(node.GetBoolProperty("use_speed", true, false))
+  , m_FireParticles(false) {
   m_visible = node.GetBoolProperty("visible", true, false);
   m_Name = (node.GetPszISOProperty("name", "", false));
   std::string type = node.GetPszISOProperty("type", "PLANE", false);
@@ -107,7 +108,8 @@ CParticleEmitter::CParticleEmitter()
   , m_vOndulacion2(v3fZERO)
   , m_sTexture("")
   , m_FireOnce(false)
-  , m_FireParticles(false) {
+  , m_FireParticles(false)
+  , m_UseSpeed(true) {
   m_visible = true;
   std::string type = "PLANE";
   if (type == "ESF")
@@ -220,6 +222,7 @@ void CParticleEmitter::PopulateParticle(CParticle *p) {
   p->setGravity(m_Gravity);
   p->setEndAlpha(m_EndAlpha);
   p->setRotation(m_Rotation);
+  p->setUseSpeed(m_UseSpeed);
   if (m_EndSize < 0) {
     p->setEndSize(size);
   } else {

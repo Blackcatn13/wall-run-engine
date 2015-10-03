@@ -18,13 +18,18 @@ CEnemy::CEnemy(CXMLTreeNode &info1)
                   info1.GetVect3fProperty("position", v3fZERO, false),
                   info1.GetFloatProperty("speed", .0f, false),
                   info1.GetFloatProperty("turn_speed", .0f, false),
-                  info1.GetFloatProperty("gravity", .0f, false)),
+                  info1.GetFloatProperty("gravity", .0f, false),
+                  info1.GetVect2fProperty("controller_size", v2fZERO, false)),
     // m_RenderableObject(NULL),
+    m_Life(info1.GetIntProperty("life", 0, false)),
+    m_ProjectileName(info1.GetPszISOProperty("projectile", "", false)),
+    m_AttackPlayerDistance(info1.GetFloatProperty("attack_distance", .0f, false)),
+
     m_CurrentTime(0.0f),
     m_Zone(1.0f),
     m_IsDying(false),
     m_isAlive(true),
-    m_AttackPlayerDistance(1.0f),
+
     m_isAttacking(false),
     m_playAnimationDead(true),
     m_time_to_fly(false),
@@ -41,14 +46,16 @@ CEnemy::CEnemy(CXMLTreeNode &info1)
   //, m_TimeToShoot(info2.GetFloatProperty("time_to_shoot"))
   //, m_TimeToSpawn(info2.GetFloatProperty("time_to_spawn"))
 // setMesh(info1.GetPszISOProperty("mesh", "", false));
-  m_fYaw = info1.GetFloatProperty("yaw",  .0f, false);
+// m_fYaw = info1.GetFloatProperty("yaw",  .0f, false);
   //setName (info1.GetPszISOProperty("name", "", false));
-  m_Position = info1.GetVect3fProperty("pos", Vect3f(), false);
+// m_Position = info1.GetVect3fProperty("pos", Vect3f(), false);
+  m_fYaw = m_RenderableObject->GetYaw();
+  m_Position = m_RenderableObject->GetPosition();
   m_OriginalPosition = m_Position;
 }
 
 CEnemy::CEnemy(CRenderableObject *renderableObject, float speed, float turnSpeed, int life, Vect2f controller_size, float AttackDistance, float zone, std::string projectile):
-  //m_RenderableObject(renderableObject),
+//m_RenderableObject(renderableObject),
   m_Life(life),
 // m_Speed(speed),
   m_CurrentTime(0.0f),
@@ -72,7 +79,7 @@ CEnemy::CEnemy(CRenderableObject *renderableObject, float speed, float turnSpeed
 
 CEnemy::CEnemy(std::string mesh, std::string name, Vect3f position,  float speed, float turnSpeed, float gravity, float yaw, std::string projectile) :
   CAIController(mesh, name, position, speed, turnSpeed, gravity) ,
-  //m_RenderableObject(NULL) ,
+//m_RenderableObject(NULL) ,
   m_CurrentTime(0.0f),
   m_isAlive(true),
   m_IsDying(false),

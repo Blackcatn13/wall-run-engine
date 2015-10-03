@@ -93,17 +93,22 @@ bool CEnemyManager::Init(const std::string &FileName) {
           }
         } else if (l_Name == "core_enemy") {
           std::string type = nodeChild.GetPszProperty("type", "", false);
-          StatsStr l_Stats;
-          l_Stats.life = nodeChild.GetIntProperty("life", 1 , false);
-          l_Stats.ShootSpeed = nodeChild.GetFloatProperty("speed_projectile", 0.0f , false);
-          l_Stats.Speed = nodeChild.GetFloatProperty("speed", 0.0f , false);
-          l_Stats.SpeedAttack = nodeChild.GetFloatProperty("speed_attack", 0.0f , false);
-          l_Stats.FsmName = nodeChild.GetPszISOProperty("fsm", "NoFSM", false);
-          l_Stats.ControllerSize = nodeChild.GetVect2fProperty("controller_size", v2fZERO, false);
-          l_Stats.TurnSpeed = nodeChild.GetFloatProperty("turn_speed", 0.2f , false);
-          l_Stats.LifeProjectile = nodeChild.GetFloatProperty("projectile_life", 0.2f , false);
-          l_Stats.CooldownTimer = nodeChild.GetFloatProperty("cooldown_timer", 0.2f , false);
-          m_Cores.insert(std::pair<std::string, StatsStr>(type, l_Stats));
+          if (type == "boss") {
+            CBossEnemy *Enemy = new CBossEnemy(nodeChild);
+            m_Enemies.push_back(Enemy);
+          } else {
+            StatsStr l_Stats;
+            l_Stats.life = nodeChild.GetIntProperty("life", 1 , false);
+            l_Stats.ShootSpeed = nodeChild.GetFloatProperty("speed_projectile", 0.0f , false);
+            l_Stats.Speed = nodeChild.GetFloatProperty("speed", 0.0f , false);
+            l_Stats.SpeedAttack = nodeChild.GetFloatProperty("speed_attack", 0.0f , false);
+            l_Stats.FsmName = nodeChild.GetPszISOProperty("fsm", "NoFSM", false);
+            l_Stats.ControllerSize = nodeChild.GetVect2fProperty("controller_size", v2fZERO, false);
+            l_Stats.TurnSpeed = nodeChild.GetFloatProperty("turn_speed", 0.2f , false);
+            l_Stats.LifeProjectile = nodeChild.GetFloatProperty("projectile_life", 0.2f , false);
+            l_Stats.CooldownTimer = nodeChild.GetFloatProperty("cooldown_timer", 0.2f , false);
+            m_Cores.insert(std::pair<std::string, StatsStr>(type, l_Stats));
+          }
         } else if (l_Name == "instance_enemy") {
           EnemiesStr l_Enemy;
           l_Enemy.instanceName = nodeChild.GetPszISOProperty("name", "", false);

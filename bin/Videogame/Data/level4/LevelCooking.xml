@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <Physx_meshes>
+	<Physx_mesh name="ChukyBossPosition" filename="Data\level4\meshes\ChukyBossPosition.phsx"/>
 	<Physx_mesh name="ARCADA" filename="Data\level4\meshes\ARCADA.phsx"/>
-	<Physx_mesh name="CADIRA" filename="Data\level4\meshes\CADIRA.phsx"/>
+	<!--<Physx_mesh name="CADIRA" filename="Data\level4\meshes\CADIRA.phsx"/>-->
 	<Physx_mesh name="TERRA_SALA0" filename="Data\level4\meshes\TERRA_SALA0.phsx"/>
 	<Physx_mesh name="SALA1_TEMPLEPOLYPOLY_PHYSX" filename="Data\level4\meshes\SALA1_TEMPLEPOLYPOLY_PHYSX.phsx"/>
 	<Physx_mesh name="SALA 8" filename="Data\level4\meshes\SALA 8.phsx"/>
@@ -161,4 +162,6 @@
 	<Physx_mesh name="Sala_7_Obstacle_004" filename="Data\level4\meshes\Sala_7_Obstacle_004.phsx"/>
 	<Physx_mesh name="Sala_7_Obstacle_005" filename="Data\level4\meshes\Sala_7_Obstacle_005.phsx"/>
 	<Physx_mesh name="Sala_7_Pinxos_015" filename="Data\level4\meshes\Sala_7_Pinxos_015.phsx"/>
+	<Physx_mesh name="Teleport" filename="Data\level4\meshes\Teleport.phsx"/>
+	<Physx_mesh name="Teleport_inactive" filename="Data\level4\meshes\Teleport_inactive.phsx"/>
 </Physx_meshes>

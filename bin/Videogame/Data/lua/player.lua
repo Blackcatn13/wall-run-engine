@@ -53,65 +53,70 @@ function Player.new()
 	self.inside_obstacle_area = false
 	self.vanishing = false
 	self.dead_in_hole = false
+	self.super_piky_active = false
+	self.super_piky_timer = 0.0
+	self.super_piky_attack = false
 	
 	------	 PLAYER FUNCTIONS -----
 	
 	function self.set_super_piky(super_piky)
-		local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name)	
-		local position = playerRenderable:get_position()
-		local yaw = playerRenderable:get_yaw()
+		if player_controller.m_Room == 0 then
+			local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name)	
+			local position = playerRenderable:get_position()
+			local yaw = playerRenderable:get_yaw()
 
-		playerRenderable:set_visible(false)
-	
-		if super_piky then
-			piky_mesh_name = "SuperPiky"
-			--Actualizar con las animaciones de SuperPiky
-			anim_idle =	0
-			anim_run = 1
-			anim_jump_start = 192
-			anim_jump_loop = 3
-			anim_jump_end = 4
-			anim_attack = 2--5
-			anim_hurt = 6
-			anim_poly = 7
-			anim_death = 8
-			anim_death_retry = 9
-			anim_DJump_01 = 10
-			anim_DJump_02 = 11
-			anim_DJump_03 = 12
-			anim_DJump_04 = 13
-			anim_Burn = 14
-			anim_BurnJump = 15
-			
-		else
-			piky_mesh_name = "Piky"
-			--Actualizar con las animaciones de Piky
-			anim_idle =	0
-			anim_run = 1
-			anim_jump_start = 2
-			anim_jump_loop = 3
-			anim_jump_end = 4
-			anim_attack = 5
-			anim_hurt = 6
-			anim_poly = 7
-			anim_death = 8
-			anim_death_retry = 9
-			anim_DJump_01 = 10
-			anim_DJump_02 = 11
-			anim_DJump_03 = 12
-			anim_DJump_04 = 13
-			anim_Burn = 14
-			anim_BurnJump = 15
-		end
+			playerRenderable:set_visible(false)
 		
-		playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name)	
-		if playerRenderable ~= nil then
-			player_controller.m_RenderableObject = playerRenderable
-			playerRenderable:set_position(position)
-			playerRenderable:set_yaw(yaw)
-			playerRenderable:set_visible(true)
-
-		end	
+			if super_piky then
+				piky_mesh_name = "SuperPiky"
+				--Actualizar con las animaciones de SuperPiky
+				anim_idle =	0
+				anim_run = 1
+				anim_jump_start = 192
+				anim_jump_loop = 3
+				anim_jump_end = 4
+				anim_attack = 2--5
+				anim_hurt = 6
+				anim_poly = 7
+				anim_death = 8
+				anim_death_retry = 9
+				anim_DJump_01 = 10
+				anim_DJump_02 = 11
+				anim_DJump_03 = 12
+				anim_DJump_04 = 13
+				anim_Burn = 14
+				anim_BurnJump = 15
+				
+			else
+				piky_mesh_name = "Piky"
+				--Actualizar con las animaciones de Piky
+				anim_idle =	0
+				anim_run = 1
+				anim_jump_start = 2
+				anim_jump_loop = 3
+				anim_jump_end = 4
+				anim_attack = 5
+				anim_hurt = 6
+				anim_poly = 7
+				anim_death = 8
+				anim_death_retry = 9
+				anim_DJump_01 = 10
+				anim_DJump_02 = 11
+				anim_DJump_03 = 12
+				anim_DJump_04 = 13
+				anim_Burn = 14
+				anim_BurnJump = 15
+			end
+			
+			playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", 0):get_resource(piky_mesh_name)	
+			if playerRenderable ~= nil then
+				player_controller.m_RenderableObject = playerRenderable
+				playerRenderable:set_position(position)
+				playerRenderable:set_yaw(yaw)
+				playerRenderable:set_visible(true)
+			end	
+			self.super_piky_active = super_piky
+		end
 	end
 		
 	function self.set_room(room_number)
@@ -242,15 +247,15 @@ function Player.new()
 	function self.check_visited_checkpoints(trigger_name)
 		-- recorrer array de checkpoints visitados del player
 		-- si coincide con este checkpoint retornar true
-		self.coreInstance:trace("Searching CheckPoint")
+	--	self.coreInstance:trace("Searching CheckPoint")
 		for i = 1, table.getn(self.visited_checkpoints) do
 			self.coreInstance:trace(".")
 			if self.visited_checkpoints[i].name == trigger_name then
-				self.coreInstance:trace("Encontrado!!")
+				--self.coreInstance:trace("Encontrado!!")
 				return true
 			end	
 		end
-		self.coreInstance:trace("No Encontrado")
+		--self.coreInstance:trace("No Encontrado")
 		return false
 	end
 	
@@ -262,6 +267,11 @@ function Player.new()
 		end
 		--Chuky Desaparece
 		ChuckyDesapears()
+		
+		local boss = enemy_manager:get_enemy("ChuckyBoss")
+		if boss.m_BossRunning then
+			boss.m_BossRunning = false
+		end
 		
 		if self.num_lives == 0 then
 			--game over

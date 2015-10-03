@@ -130,10 +130,12 @@
 
 	<!--<animated_model name="Piky" core="piky" pos="51.574234 0.714600 0.617737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="player"/>-->
 
-	<animated_model name="Piky" core="piky" pos="55.784378 0.000000 0.617737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="player" emitter="DustPikyEmitter" emitter_offset="0.0 1.0 0.0" emitter2="BurnPikyEmitter" emitter2_offset="0.0 0.0 0.0" emitter3="StarsPikyEmitter" emitter3_offset="0.0 0.0 0.0"/>
-	<animated_model name="SuperPiky" core="SuperPiky" pos="55.784378 1.000000 0.617737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="player" emitter="DustPikyEmitter" emitter_offset="0.0 1.0 0.0" emitter2="BurnPikyEmitter" emitter2_offset="0.0 0.0 0.0" emitter3="StarsPikyEmitter" emitter3_offset="0.0 0.0 0.0" room="1" />
+	<animated_model name="Piky" core="piky" pos="55.784378 0.000000 0.617737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="player" emitter="DustPikyEmitter" emitter_offset="0.0 1.0 0.0" emitter2="BurnPikyEmitter" emitter2_offset="0.0 0.0 0.0" emitter3="StarsPikyEmitter" emitter3_offset="0.0 0.0 0.0" emitter4="YellowSuperPikySparks" />
+	<animated_model name="SuperPiky" core="SuperPiky" pos="55.784378 1.000000 0.617737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="player" emitter="DustPikyEmitter" emitter_offset="0.0 1.0 0.0" emitter2="BurnPikyEmitter" emitter2_offset="0.0 0.0 0.0" emitter3="StarsPikyEmitter" emitter3_offset="0.0 0.0 0.0" room="0" />
 
 	<animated_model name="Chucky" core="chuky" pos="12.301392 0.000000 -2.756073" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="DustChuckyEmitter" emitter_offset="0.0 0.0 0.0" emitter2="DustJumpChuckyEmitter" emitter2_offset="0.0 0.0 0.0" room="1"/>
+	<animated_model name="ChuckyBoss" core="chuky" pos="0.0  2.48  0.0" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="enemies" room="0"/>
+		
 	
 	<animated_model name="MikMik004" core="mik" pos="530.339172 9.007496 8.188751" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik004DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation004" emitter2_offset="0.0 3.0 0.0" room="3"/>
 	<animated_model name="MikMik005" core="mik" pos="532.398804 9.007496 -10.140839" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik005DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation005" emitter2_offset="0.0 3.0 0.0" room="3"/>
@@ -450,9 +452,9 @@
 	<mesh_instance name="disparoPumPum3" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "1" layer="enemies" emitter="PumPumFire03Emitter"/>
 	-->
 	
-	<!--<mesh_instance name="Teleport" core="Teleport" pos="150.101074 0.300000 10.920358" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="solid" emitter="PikyYellowTeleporting" emitter_offset="0.0 1.0 0.0" emitter2="PikyBrownTeleporting" emitter2_offset="0.0 1.0 0.0"/>
-	<mesh_instance name="LightBeamTeleport" core="LightBeamTeleport" pos="150.101074 0.300000 10.920358" yaw="0.256172" pitch="0.0" roll="0.0" scale="1.18099 1.18099 1.18099" visible="true" room="1" layer="alpha_objects"/>
-	<mesh_instance name="Teleport2" core="Teleport" pos="94.358940 0.300000 -0.489124" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" room="1" layer="solid"/>-->
+	<mesh_instance name="Teleport" core="Teleport" pos="552.338684 2.577842 -505.727661" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid" emitter="PikyYellowTeleporting" emitter_offset="0.0 1.0 0.0" emitter2="PikyBrownTeleporting" emitter2_offset="0.0 1.0 0.0"/>
+	<mesh_instance name="LightBeamTeleport" core="LightBeamTeleport" pos="552.310120 2.986145 -505.720551" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="alpha_objects"/>
+	<mesh_instance name="Teleport_inactive" core="Teleport_inactive" pos="557.615356 13.373191 -393.422241" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 
 	<mesh_instance name="Sala_4_Paret_ Pedres_001" core="Sala_4_Paret_ Pedres_001" pos="577.806458 22.834660 -120.830582" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="solid"/>
 	<mesh_instance name="Sala_4_Esmeralda_001" core="Sala_4_Esmeralda_001" pos="578.073547 6.696045 -137.404678" yaw="3.07779" pitch="-0.0445538" roll="-0.0410332" scale="0.0532169 0.0532169 0.0532169" visible="true" room="4" layer="solid"/>
@@ -822,6 +824,7 @@
 	<mesh_instance name="PlaneLava" core="PlaneLava" pos="563.187988 9.0 -120.496582" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="lava"/>
 	<mesh_instance name="LavaFlow" core="LavaFlow" pos="544.678772 13.031180 -127.100945" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="lava"/>
 
-	<platform name="MenuSphere" core="MenuSphere" type="static" pos="-920.000 -14.000 -1.500" yaw="-0.6280" pitch="0.0" roll="0.0" scale="2.5 2.5 2.5" visible="true" phisic_size="5.31929 5.31929 5.31929" layer="solid" use_phisics_mesh="true" room="10"/>
+	<platform name="MenuSphere" core="MenuSphere" type="static" pos="-920.000 -14.000 -1.500" yaw="-0.6280" pitch="0.0" roll="0.0" scale="2.5 2.5 2.5" visible="true" phisic_size="5.31929 5.31929 5.31929" layer="solid" use_phisics_mesh="false" room="10"/>
 	<platform name="MenuBackground" core="MenuBackground" type="static" pos="-915.000 2.000 -20.000" yaw="3.14" pitch="1.5708" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="25.1471 15.01 5.06561e-005" layer="solid" room="10"/>
+	<mesh_instance name="ChukyBossPosition" core="ChukyBossPosition" pos="0.000000 0.488770 0.000000" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
 </renderable_objects>

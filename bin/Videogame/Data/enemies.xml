@@ -6,6 +6,7 @@
 	<core_enemy type="mikmik_easy" speed="3" speed_attack="5" turn_speed ="5.0" life="1" fsm="MikMik" controller_size= "0.5 0.25" enemy_type="MikMik"/>
 	<core_enemy type="pumpum_easy" speed="0.1" speed_attack="0.2" turn_speed ="5.0" life="1" fsm="PumPum" controller_size= "0.5 0.25" enemy_type="PumPum" speed_projectile="5" projectile_life="2.0" cooldown_timer="5" />
 	<core_enemy type="chucky_runner" speed="10" fsm="ChuckyRunner" controller_size= "1 2" />
+	<core_enemy type="boss" fsm="ChuckyBoss" controller_size= "1 2" phases="2" life="3" turn_speed ="5.0" speed_projectile="5" projectile_life="2.0" cooldown_timer="5" mesh="ChuckyBoss" attack_distance = "160" projectile="disparoPumPum1"/>
 	
 	<instance_enemy name="Chucky" type="chucky_runner" />
 	

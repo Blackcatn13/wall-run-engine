@@ -1,23 +1,27 @@
 #include "BossEnemy.h"
 #include "XML\XMLTreeNode.h"
+#include "Core\Core.h"
+#include "Renderable\RenderableObjectsLayersManager.h"
+#include "Renderable\RenderableObjectsManager.h"
+
 
 CBossEnemy::CBossEnemy(CXMLTreeNode &info1) : CEnemy(info1)
-{
+  , m_Phases(info1.GetIntProperty("phases", 0, false))
+  , m_BossRunning(false) {
+  if (m_ProjectileName != "")
+    SetShootingStats(info1.GetIntProperty("speed_projectile", 0, false), info1.GetIntProperty("projectile_life", 0, false), info1.GetIntProperty("cooldown_timer", 0, false) );
+  Init(info1.GetPszISOProperty("fsm", "NoFSM", false));
 }
 
 
-CBossEnemy::~CBossEnemy()
-{
+CBossEnemy::~CBossEnemy() {
 }
 
-void CBossEnemy::Init()
-{
+
+void CBossEnemy::Update(float elapsedTime) {
+  if (m_BossRunning)
+    UpdateFSM(elapsedTime);
 }
 
-void CBossEnemy::Update(float elapsedTime)
-{
-}
-
-void CBossEnemy::Render()
-{
+void CBossEnemy::Render() {
 }

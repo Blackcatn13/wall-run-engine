@@ -23,6 +23,7 @@
 #include "Enemies\Enemy.h"
 #include "Enemies\EasyEnemy.h"
 #include "Enemies\RunnerEnemy.h"
+#include "Enemies\BossEnemy.h"
 #include "AI\Puzzle.h"
 #include "AI\FSMInstance.h"
 #include "AI\FSMManager.h"
@@ -155,6 +156,16 @@ void RegisterAI() {
     .property("m_Appeared", &CRunnerEnemy::getAppeared, &CRunnerEnemy::setAppeared)
 
   ];
+
+
+  luabind::module(LUA_STATE) [
+    class_<CBossEnemy, CEnemy>("CBossEnemy")
+    //.def(constructor<CXMLTreeNode>())
+    .def(constructor<CXMLTreeNode & >())
+    .property("m_Phases", &CBossEnemy::getPhases, &CBossEnemy::setPhases)
+    .property("m_BossRunning", &CBossEnemy::getBossRunning, &CBossEnemy::setBossRunning)
+  ];
+
   luabind::module(LUA_STATE) [
     class_<CPuzzle>("CPuzzle")
     .def(constructor<>())
