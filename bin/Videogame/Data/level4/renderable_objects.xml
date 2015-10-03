@@ -20,13 +20,13 @@
 	<layer name="vanishing"/>
 	<layer name="lava"/>
 	
-	<platform name="Poly_Sala0_001" core="Poly_Sala0_001" type="poly" pos="-0.038880 -6.534 -21.177698" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="4.497 3.95611 0.945499" layer="poly" room="0" final_position="-0.038880 0.94 -21.177698"
+	<platform name="Poly_Sala0_001" core="Poly_Sala0_001" type="poly" pos="-0.038880 -6.534 -21.177698" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="4.497 3.72611 0.945499" layer="poly" room="0" final_position="-0.038880 0.94 -21.177698"
 		 direction="0 1 0" time_out="5" speed="20" light="" activation_distance="10"/>
-	<platform name="Poly_Sala0_002" core="Poly_Sala0_002" type="poly" pos="-0.038880 -6.534 21.608681" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="4.497 3.95611 0.945499" layer="poly" room="0" final_position="-0.038880 0.94 21.608681"
+	<platform name="Poly_Sala0_002" core="Poly_Sala0_002" type="poly" pos="-0.038880 -6.534 21.608681" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="4.497 3.72611 0.945499" layer="poly" room="0" final_position="-0.038880 0.94 21.608681"
 		 direction="0 1 0" time_out="5" speed="20" light="" activation_distance="10"/>
-	<platform name="Poly_Sala0_003" core="Poly_Sala0_003" type="poly" pos="20.876621 -6.534 -1.517880" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="1.04468 3.95611 4.5168" layer="poly" room="0" final_position="20.876621 0.94 -1.517880"
+	<platform name="Poly_Sala0_003" core="Poly_Sala0_003" type="poly" pos="20.876621 -6.534 -1.517880" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="1.04468 3.72611 4.5168" layer="poly" room="0" final_position="20.876621 0.94 -1.517880"
 		 direction="0 1 0" time_out="5" speed="20" light="" activation_distance="10"/>
-	<platform name="Poly_Sala0_004" core="Poly_Sala0_004" type="poly" pos="-21.878139 -6.534 -1.517880" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="1.04468 3.95611 4.5168" layer="poly" room="0" final_position="-21.878139 0.94 -1.517880"
+	<platform name="Poly_Sala0_004" core="Poly_Sala0_004" type="poly" pos="-21.878139 -6.534 -1.517880" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="1.04468 3.72611 4.5168" layer="poly" room="0" final_position="-21.878139 0.94 -1.517880"
 		 direction="0 1 0" time_out="5" speed="20" light="" activation_distance="10"/>
 	<mesh_instance name="ARCADA" core="ARCADA" pos="-0.017227 9.222342 0.316050" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
 	<mesh_instance name="CUPULA" core="CUPULA" pos="-0.002787 35.136833 -0.108083" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
