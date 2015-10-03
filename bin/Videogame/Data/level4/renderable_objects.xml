@@ -20,13 +20,13 @@
 	<layer name="vanishing"/>
 	<layer name="lava"/>
 	
-	<platform name="Poly_Sala0_001" core="Poly_Sala0_001" type="poly" pos="-0.038880 -6.534 -21.177698" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="4.497 3.72611 0.945499" layer="poly" room="0" final_position="-0.038880 0.94 -21.177698"
+	<platform name="Poly_Sala0_001" core="Poly_Sala0_001" type="poly" pos="-0.038880 -6.534 -21.177698" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="4.497 3.75611 0.945499" layer="poly" room="0" final_position="-0.038880 0.94 -21.177698"
 		 direction="0 1 0" time_out="5" speed="20" light="" activation_distance="10"/>
-	<platform name="Poly_Sala0_002" core="Poly_Sala0_002" type="poly" pos="-0.038880 -6.534 21.608681" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="4.497 3.72611 0.945499" layer="poly" room="0" final_position="-0.038880 0.94 21.608681"
+	<platform name="Poly_Sala0_002" core="Poly_Sala0_002" type="poly" pos="-0.038880 -6.534 21.608681" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="4.497 3.75611 0.945499" layer="poly" room="0" final_position="-0.038880 0.94 21.608681"
 		 direction="0 1 0" time_out="5" speed="20" light="" activation_distance="10"/>
-	<platform name="Poly_Sala0_003" core="Poly_Sala0_003" type="poly" pos="20.876621 -6.534 -1.517880" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="1.04468 3.72611 4.5168" layer="poly" room="0" final_position="20.876621 0.94 -1.517880"
+	<platform name="Poly_Sala0_003" core="Poly_Sala0_003" type="poly" pos="20.876621 -6.534 -1.517880" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="1.04468 3.75611 4.5168" layer="poly" room="0" final_position="20.876621 0.94 -1.517880"
 		 direction="0 1 0" time_out="5" speed="20" light="" activation_distance="10"/>
-	<platform name="Poly_Sala0_004" core="Poly_Sala0_004" type="poly" pos="-21.878139 -6.534 -1.517880" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="1.04468 3.72611 4.5168" layer="poly" room="0" final_position="-21.878139 0.94 -1.517880"
+	<platform name="Poly_Sala0_004" core="Poly_Sala0_004" type="poly" pos="-21.878139 -6.534 -1.517880" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="1.04468 3.75611 4.5168" layer="poly" room="0" final_position="-21.878139 0.94 -1.517880"
 		 direction="0 1 0" time_out="5" speed="20" light="" activation_distance="10"/>
 	<mesh_instance name="ARCADA" core="ARCADA" pos="-0.017227 9.222342 0.316050" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
 	<mesh_instance name="CUPULA" core="CUPULA" pos="-0.002787 35.136833 -0.108083" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
@@ -835,7 +835,7 @@
 
 	<platform name="MenuSphere" core="MenuSphere" type="static" pos="-920.000 -14.000 -1.500" yaw="-0.6280" pitch="0.0" roll="0.0" scale="2.5 2.5 2.5" visible="true" phisic_size="5.31929 5.31929 5.31929" layer="solid" use_phisics_mesh="false" room="10"/>
 	<platform name="MenuBackground" core="MenuBackground" type="static" pos="-915.000 2.000 -20.000" yaw="3.14" pitch="1.5708" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="25.1471 15.01 5.06561e-005" layer="solid" room="10"/>
-	<mesh_instance name="ChukyBossPosition" core="ChukyBossPosition" pos="0.000000 0.488770 0.000000" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+
 	<mesh_instance name="CheckPointDisabledStand006" core="CheckPointDisabledStand001" pos="561.145142 14.998256 -386.698212" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="CheckPointDisabledStand007" core="CheckPointDisabledStand001" pos="542.091248 4.194057 -527.458862" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="ChukyBossPosition" core="ChukyBossPosition" pos="0.000000 0.488770 0.000000" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" room="0" layer="solid"/>
