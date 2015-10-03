@@ -12,13 +12,20 @@ function start_boss()
 	playerRenderableMesh:set_position(position)
 	
 	local chucky = enemy_manager:get_enemy(boss_mesh_name)
-	local chucky_position = Vect3f(0.0, 2.48, 0.0)
-	chucky:set_position(chucky_position)
+	local chucky_position = Vect3f(0.0, 4.48, 0.0)
+	--chucky:set_position(chucky_position)
 	chucky.m_RenderableObject:set_position(chucky_position)
 	chucky.m_RenderableObject:set_visible(true)
 	local objCam = activeCam.m_pObject3D;
 	objCam:set_position(chucky_position);
 	local cadira = get_renderable_object("solid",0, "CADIRA")
+	get_renderable_object("solid",0, "CADIRA")
+	get_renderable_object("solid",0, "ORO2"):set_visible(false)
+	get_renderable_object("solid",0, "ORO3"):set_visible(false)
+	get_renderable_object("solid",0, "PilarQuad001"):set_visible(false)
+	get_renderable_object("solid",0, "PilarQuad002"):set_visible(false)
+	get_renderable_object("solid",0, "ChukyBossPosition"):set_visible(true)
+	
 	cadira:set_visible(false)
 	set_boss_polis_visible(true)
 	chucky.m_BossRunning = true
@@ -46,7 +53,8 @@ function chucky_boss_enter_stopped(name)
 end
 
 function chucky_boss_exit_stopped(name)
-	
+	local enemy = enemy_manager:get_enemy(name)
+	enemy.m_RenderableObject:blend_cycle(0,0.3);
 end
 
 function chucky_boss_update_stopped(ElapsedTime, doComprobation, name)

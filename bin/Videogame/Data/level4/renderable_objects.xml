@@ -20,14 +20,14 @@
 	<layer name="vanishing"/>
 	<layer name="lava"/>
 	
-	<platform name="Poly_Sala0_001" core="Poly_Sala0_001" type="poly" pos="-0.038880 -5.167576 -31.213099" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="4.497 2.64614 0.9455" layer="poly" room="0" final_position="-0.038880 -0.301 -31.213099"
-		 direction="0 1 0" time_out="5" speed="5" light="" activation_distance="10"/>
-	<platform name="Poly_Sala0_002" core="Poly_Sala0_002" type="poly" pos="-0.038880 -5.167576 31.367226" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="4.497 2.64614 0.945499" layer="poly" room="0" final_position="-0.038880 -0.301 31.367226"
-		 direction="0 1 0" time_out="5" speed="5" light="" activation_distance="10"/>
-	<platform name="Poly_Sala0_003" core="Poly_Sala0_003" type="poly" pos="30.739902 -5.167576 -1.517880" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="1.04468 2.64614 4.5168" layer="poly" room="0" final_position="30.739902 -0.301 -1.517880"
-		 direction="0 1 0" time_out="5" speed="5" light="" activation_distance="10"/>
-	<platform name="Poly_Sala0_004" core="Poly_Sala0_004" type="poly" pos="-30.742886 -5.167576 -1.517880" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="1.04468 2.64614 4.5168" layer="poly" room="0" final_position="-30.742886 -0.301 -1.517880"
-		 direction="0 1 0" time_out="5" speed="5" light="" activation_distance="10"/>
+	<platform name="Poly_Sala0_001" core="Poly_Sala0_001" type="poly" pos="-0.038880 -6.534 -21.177698" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="4.497 3.95611 0.945499" layer="poly" room="0" final_position="-0.038880 0.94 -21.177698"
+		 direction="0 1 0" time_out="5" speed="20" light="" activation_distance="10"/>
+	<platform name="Poly_Sala0_002" core="Poly_Sala0_002" type="poly" pos="-0.038880 -6.534 21.608681" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="4.497 3.95611 0.945499" layer="poly" room="0" final_position="-0.038880 0.94 21.608681"
+		 direction="0 1 0" time_out="5" speed="20" light="" activation_distance="10"/>
+	<platform name="Poly_Sala0_003" core="Poly_Sala0_003" type="poly" pos="20.876621 -6.534 -1.517880" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="1.04468 3.95611 4.5168" layer="poly" room="0" final_position="20.876621 0.94 -1.517880"
+		 direction="0 1 0" time_out="5" speed="20" light="" activation_distance="10"/>
+	<platform name="Poly_Sala0_004" core="Poly_Sala0_004" type="poly" pos="-21.878139 -6.534 -1.517880" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="1.04468 3.95611 4.5168" layer="poly" room="0" final_position="-21.878139 0.94 -1.517880"
+		 direction="0 1 0" time_out="5" speed="20" light="" activation_distance="10"/>
 	<mesh_instance name="ARCADA" core="ARCADA" pos="-0.017227 9.222342 0.316050" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
 	<mesh_instance name="CUPULA" core="CUPULA" pos="-0.002787 35.136833 -0.108083" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
 	<mesh_instance name="ORO2" core="ORO2" pos="-0.001024 1.363649 15.286530" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="0"/>
@@ -134,14 +134,23 @@
 	<animated_model name="SuperPiky" core="SuperPiky" pos="55.784378 1.000000 0.617737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="player" emitter="DustPikyEmitter" emitter_offset="0.0 1.0 0.0" emitter2="BurnPikyEmitter" emitter2_offset="0.0 0.0 0.0" emitter3="StarsPikyEmitter" emitter3_offset="0.0 0.0 0.0" room="0" />
 
 	<animated_model name="Chucky" core="chuky" pos="12.301392 0.000000 -2.756073" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="DustChuckyEmitter" emitter_offset="0.0 0.0 0.0" emitter2="DustJumpChuckyEmitter" emitter2_offset="0.0 0.0 0.0" room="1"/>
-	<animated_model name="ChuckyBoss" core="chuky" pos="0.0  2.48  0.0" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="enemies" room="0"/>
-		
+	<animated_model name="ChuckyBoss" core="chuky" pos="0.0  4.48  0.0" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="enemies" room="0"/>
+	<mesh_instance name="disparoChucky" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "0" layer="enemies" />
+	<mesh_instance name="disparoSuperPiky" core="disparoSuperPiky" pos="-54.258789 0.000000 -12.633484" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="enemies"/>
 	
 	<animated_model name="MikMik004" core="mik" pos="530.339172 9.007496 8.188751" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik004DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation004" emitter2_offset="0.0 3.0 0.0" room="3"/>
 	<animated_model name="MikMik005" core="mik" pos="532.398804 9.007496 -10.140839" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik005DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation005" emitter2_offset="0.0 3.0 0.0" room="3"/>
 	<animated_model name="MikMik002" core="mik" pos="485.283875 9.007496 -13.436371" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik002DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation002" emitter2_offset="0.0 3.0 0.0" room="3"/>
 	<animated_model name="MikMik001" core="mik" pos="500.109070 9.007496 3.234039" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik001DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation001" emitter2_offset="0.0 3.0 0.0" room="3" />
 	<animated_model name="MikMik003" core="mik" pos="520.253601 9.007496 -0.450745" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik003DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation003" emitter2_offset="0.0 3.0 0.0" room="3"/>
+	
+	
+	<animated_model name="MikMik007" core="mik" pos="1.647 2.288 -17.073" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik005DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation005" emitter2_offset="0.0 3.0 0.0" room="0"/>
+	<animated_model name="MikMik008" core="mik" pos="12.387 2.288 0.138" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik002DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation002" emitter2_offset="0.0 3.0 0.0" room="0"/>
+	<animated_model name="MikMik009" core="mik" pos="-12.477 2.288 0.59" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik001DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation001" emitter2_offset="0.0 3.0 0.0" room="0" />
+	<animated_model name="MikMik010" core="mik" pos="14.661 2.288 8.762" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik003DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation003" emitter2_offset="0.0 3.0 0.0" room="0"/>
+	<animated_model name="MikMik011" core="mik" pos="1.647 2.288 16.74" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik004DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation004" emitter2_offset="0.0 3.0 0.0" room="0"/>
+
 	<mesh_instance name="PilarQuad002" core="PilarQuad002" pos="8.388683 1.227661 -12.106166" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 
 	<mesh_instance name="SALA 4" core="SALA 4" pos="563.274536 22.546162 -116.637451" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="4"/>
@@ -829,4 +838,5 @@
 	<mesh_instance name="ChukyBossPosition" core="ChukyBossPosition" pos="0.000000 0.488770 0.000000" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
 	<mesh_instance name="CheckPointDisabledStand006" core="CheckPointDisabledStand001" pos="561.145142 14.998256 -386.698212" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="CheckPointDisabledStand007" core="CheckPointDisabledStand001" pos="542.091248 4.194057 -527.458862" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="ChukyBossPosition" core="ChukyBossPosition" pos="0.000000 0.488770 0.000000" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" room="0" layer="solid"/>
 </renderable_objects>

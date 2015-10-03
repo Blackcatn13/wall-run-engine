@@ -7,6 +7,8 @@
 --************ PARAMTETROS GLOBALES *******************************************
 local Dist_To_Camera_Tot = 3;
 local incYawTot = 0;
+local lastYawBoss = -100;
+local incYawBoss = 0;
 --*****************************************************************************
 function on_init_cameras_lua()
 	local coreInstance = CCoreLuaWrapper().m_CoreInstance;
@@ -33,6 +35,8 @@ function on_update_cameras_lua(l_ElapsedTime)
 	local zoom3D_back = 12;
 	local fov3D = 60.0 * 3.1415 / 180;
 	local aspect3D = 16/9;
+	local near3D = 0.1;
+	local far3D = 280;
 	local distToCameraOffset = 3;
 	local distToCameraOffset_back = -2;
 	local offsetFollowY = -0.3;
@@ -50,6 +54,8 @@ function on_update_cameras_lua(l_ElapsedTime)
 	local zoom2D = 18;
 	local fov2D = 45.0 * 3.1415 / 180;
 	local aspect2D = 16/9;
+	local near2D = 0.1;
+	local far2D = 90;
 	local heightCameraOffset = 2.5;
 	local cam2D_speed = 11;
 	local cam2D_rotateSpeed = 5;
@@ -59,11 +65,14 @@ function on_update_cameras_lua(l_ElapsedTime)
 	
 	--______ CAMERA BOSS _______________________
 	local yawBoss = 0;
-	local pitchBoss = -0.20;
-	local zoomBoss = 35;
+	local pitchBoss = -0.10;
+	local zoomBoss = 40;
 	local fovBoss = 60.0 * 3.1415 / 180;
 	local aspectBoss = 16/9;
+	local nearBoss = 0.1;
+	local farBoss = 280;
 	local distToCameraOffsetBoss = 3;
+	local speedYawBoss = 3;
 	
 	--______ GENERALES _______________________
 	local distanciaGiro = 3;
@@ -269,8 +278,8 @@ function on_update_cameras_lua(l_ElapsedTime)
 				local incZoom = zoom3D - lastZoom;
 				cam:set_zoom(lastZoom + incZoom * l_ElapsedTime * cam3D_zoomSpeed);
 			end
-			cam.m_fZNear = 0.1;
-			cam.m_fZFar = 280;
+			cam.m_fZNear = near3D;
+			cam.m_fZFar = far3D;
 			cam.m_fFOV = fov3D;
 			cam.m_fAspectRatio = aspect3D;
 		end
@@ -336,8 +345,8 @@ function on_update_cameras_lua(l_ElapsedTime)
 			obj:set_pitch(pitch2D);
 			obj:set_roll(0);
 			cam:set_zoom(zoom2D);
-			cam.m_fZNear = 0.1;
-			cam.m_fZFar = 90;
+			cam.m_fZNear = near2D;
+			cam.m_fZFar = far2D;
 			cam.m_fFOV = fov2D;
 			cam.m_fAspectRatio = aspect2D;
 		end
@@ -362,19 +371,47 @@ function on_update_cameras_lua(l_ElapsedTime)
 		end
 		--name2:set_name("UpdatePassFinal");
 	elseif cam.m_eTypeCamera == 7 then -- BOSS CAM
-		--coreInstance:trace("entraaaaaa a la camara bosssss")
 		local obj = cam.m_pObject3D;
 		local chucky = enemy_manager:get_enemy(boss_mesh_name)
 		local chuckyPos = chucky:get_position();
 		local playerPos = player_controller:get_position();
+		local chuckyPosXZ = Vect3f(chuckyPos.x, 0, chuckyPos.z);
+		local playerPosXZ = Vect3f(playerPos.x, 0, playerPos.z);
+		local vectToBoss = playerPosXZ - chuckyPosXZ;
+		local distToBoss = vectToBoss:length();
+		
 		local vectPlayerBoss = Vect3f(chuckyPos.x - playerPos.x, 0 ,chuckyPos.z - playerPos.z);
 		yawBoss = math.atan2(vectPlayerBoss.z, vectPlayerBoss.x);
-		obj:set_yaw(yawBoss);
+		if lastYawBoss == -100 then
+			lastYawBoss = yawBoss;
+		end
+		local incrAux = math.abs(lastYawBoss - yawBoss);
+		while incrAux > math.pi do
+			if lastYawBoss < yawBoss then
+				lastYawBoss = lastYawBoss + 2 * math.pi;
+			else
+				yawBoss = yawBoss + 2 * math.pi;
+			end
+			incrAux = math.abs(lastYawBoss - yawBoss);
+		end
+		local incTotalYaw = yawBoss - lastYawBoss;
+		incYawBoss = incTotalYaw * l_ElapsedTime * speedYawBoss;
+		yawBossTotal = lastYawBoss + incYawBoss;
+		obj:set_yaw(yawBossTotal);
+		lastYawBoss = yawBossTotal;
 		obj:set_pitch(pitchBoss);
 		obj:set_roll(0);
-		cam:set_zoom(zoomBoss);
-		cam.m_fZNear = 0.1;
-		cam.m_fZFar = 90;
+		local zoomFinal = zoomBoss;
+		if distToBoss > 27 then
+			zoomFinal = zoomBoss + (distToBoss - 27);
+		end
+		if distToBoss < 21 then
+			zoomFinal = zoomBoss + ((distToBoss - 21) / ((21 - 9) / (40 - 23)));
+		end
+		coreInstance:trace("zoom to Boss "..tostring(zoomFinal));
+		cam:set_zoom(zoomFinal);
+		cam.m_fZNear = nearBoss;
+		cam.m_fZFar = farBoss;
 		cam.m_fFOV = fovBoss;
 		cam.m_fAspectRatio = aspectBoss;
 	end
