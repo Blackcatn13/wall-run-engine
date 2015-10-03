@@ -463,3 +463,23 @@ function mikmik_update_dead(ElapsedTime, doComprobation, name)
 		
 	end
 end
+
+function mikmik_enter_waiting(name)
+	local enemy = enemy_manager:get_enemy(name)
+	local position = enemy.m_PhysicController:get_position()
+	position.y = position.y + 1000
+	enemy:set_position(position)
+	enemy.m_PhysicController:set_position(position)
+	enemy:move_to_position(position)
+end
+
+function mikmik_exit_waiting(name)
+	local enemy = enemy_manager:get_enemy(name)
+	enemy:set_position(enemy.m_OriginalPosition)
+	enemy.m_PhysicController:set_position(enemy.m_OriginalPosition)
+	enemy.m_RenderableObject:set_position(enemy.m_OriginalPosition)
+end
+
+function mikmik_update_waiting(ElapsedTime, doComprobation, name)
+	
+end
