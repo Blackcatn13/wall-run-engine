@@ -53,7 +53,8 @@ function chucky_boss_enter_stopped(name)
 end
 
 function chucky_boss_exit_stopped(name)
-	
+	local enemy = enemy_manager:get_enemy(name)
+	enemy.m_RenderableObject:blend_cycle(0,0.3);
 end
 
 function chucky_boss_update_stopped(ElapsedTime, doComprobation, name)

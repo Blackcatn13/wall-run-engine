@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <static_meshes>
-
+	<static_mesh name="disparoSuperPiky" filename="Data\level4\meshes\disparoSuperPiky.mesh"/>
 	<static_mesh name="ChukyBossPosition" filename="Data\level4\meshes\ChukyBossPosition.mesh"/>
 	<static_mesh name="Poly_Sala0_001" filename="Data\level4\meshes\Poly_Sala0_001.mesh"/>
 	<static_mesh name="Poly_Sala0_002" filename="Data\level4\meshes\Poly_Sala0_002.mesh"/>
