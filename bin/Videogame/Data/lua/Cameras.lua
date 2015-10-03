@@ -65,7 +65,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 	
 	--______ CAMERA BOSS _______________________
 	local yawBoss = 0;
-	local pitchBoss = -0.20;
+	local pitchBoss = -0.10;
 	local zoomBoss = 40;
 	local fovBoss = 60.0 * 3.1415 / 180;
 	local aspectBoss = 16/9;
@@ -375,6 +375,11 @@ function on_update_cameras_lua(l_ElapsedTime)
 		local chucky = enemy_manager:get_enemy(boss_mesh_name)
 		local chuckyPos = chucky:get_position();
 		local playerPos = player_controller:get_position();
+		local chuckyPosXZ = Vect3f(chuckyPos.x, 0, chuckyPos.z);
+		local playerPosXZ = Vect3f(playerPos.x, 0, playerPos.z);
+		local vectToBoss = playerPosXZ - chuckyPosXZ;
+		local distToBoss = vectToBoss:length();
+		
 		local vectPlayerBoss = Vect3f(chuckyPos.x - playerPos.x, 0 ,chuckyPos.z - playerPos.z);
 		yawBoss = math.atan2(vectPlayerBoss.z, vectPlayerBoss.x);
 		if lastYawBoss == -100 then
@@ -392,12 +397,19 @@ function on_update_cameras_lua(l_ElapsedTime)
 		local incTotalYaw = yawBoss - lastYawBoss;
 		incYawBoss = incTotalYaw * l_ElapsedTime * speedYawBoss;
 		yawBossTotal = lastYawBoss + incYawBoss;
-		coreInstance:trace("Yaw Boss "..tostring(yawBossTotal))
 		obj:set_yaw(yawBossTotal);
 		lastYawBoss = yawBossTotal;
 		obj:set_pitch(pitchBoss);
 		obj:set_roll(0);
-		cam:set_zoom(zoomBoss);
+		local zoomFinal = zoomBoss;
+		if distToBoss > 27 then
+			zoomFinal = zoomBoss + (distToBoss - 27);
+		end
+		if distToBoss < 21 then
+			zoomFinal = zoomBoss + ((distToBoss - 21) / ((21 - 9) / (40 - 23)));
+		end
+		coreInstance:trace("zoom to Boss "..tostring(zoomFinal));
+		cam:set_zoom(zoomFinal);
 		cam.m_fZNear = nearBoss;
 		cam.m_fZFar = farBoss;
 		cam.m_fFOV = fovBoss;
