@@ -30,7 +30,7 @@ function set_screen_menu(model_position, room )
 		local playerRenderableMesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", room):get_resource(piky_mesh_name);
 		playerRenderableMesh:set_position(model_position);
 		playerRenderableMesh:set_yaw(3.14-0.3140)
-		--player_controller:set_position(model_position)
+		player_controller:set_position(model_position)
 		
 		-- AMIMACION DE CORRER
 		--playerRenderableMesh:execute_action(1,0,0.3,1,true)
