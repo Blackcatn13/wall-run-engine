@@ -24,7 +24,7 @@ puzzle_manager = coreInstance:get_puzzle_manager()
 
 --Fin Managers
 CCoreLuaWrapper().m_CoreInstance:getTickCounter():addTick("lava", 0.05, 1000);
-ChuckyBoss = nil
+boss_mesh_name = "ChuckyBoss"
 
 
 --Variables de Control
