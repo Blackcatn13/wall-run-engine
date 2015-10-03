@@ -1,3 +1,6 @@
+local current_shot_type = 0  --0: Normal, 1:powerup
+
+
 function start_boss()
 	set_player_room("0", true)
 	cam_Controller:set_active_camera("BossCam")
@@ -8,17 +11,17 @@ function start_boss()
 	local playerRenderableMesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", 0):get_resource(piky_mesh_name);
 	playerRenderableMesh:set_position(position)
 	
-	local chucky = enemy_manager:get_enemy("ChuckyBoss")
+	--local chucky = enemy_manager:get_enemy(boss_mesh_name)
 	local chucky_position = Vect3f(0.0, 2.48, 0.0)
-	chucky:set_position(chucky_position)
-	chucky.m_RenderableObject:set_position(chucky_position)
-	chucky.m_RenderableObject:set_visible(true)
+	ChuckyBoss:set_position(chucky_position)
+	ChuckyBoss.m_RenderableObject:set_position(chucky_position)
+	ChuckyBoss.m_RenderableObject:set_visible(true)
 	local objCam = activeCam.m_pObject3D;
 	objCam:set_position(chucky_position);
 	local cadira = get_renderable_object("solid",0, "CADIRA")
 	cadira:set_visible(false)
 	set_boss_polis_visible(true)
-	chucky.m_BossRunning = true
+	ChuckyBoss.m_BossRunning = true
 end
 
 function set_boss_polis_visible(visible)
@@ -38,7 +41,8 @@ end
 ---- IA----
 ----PARADO----
 function chucky_boss_enter_stopped(name)
-	
+	--local enemy = enemy_manager:get_enemy(name)
+	ChuckyBoss.m_RenderableObject:blend_cycle(0,1,0);
 end
 
 function chucky_boss_exit_stopped(name)
@@ -46,7 +50,11 @@ function chucky_boss_exit_stopped(name)
 end
 
 function chucky_boss_update_stopped(ElapsedTime, doComprobation, name)
-
+	local player_position = player_controller:get_position()
+	local player_distance = get_distance_to_player(ChuckyBoss:get_position(), player_position)
+	if player_distance < 1000 then
+		rotate_yaw(ChuckyBoss, ElapsedTime, player_position)
+	end
 end
 
 ----DISPARAR----

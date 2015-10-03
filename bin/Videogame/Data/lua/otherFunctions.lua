@@ -304,9 +304,9 @@ function reset_game()
 	set_boss_polis_visible(false)
 	local cadira = get_renderable_object("solid",0, "CADIRA")
 	cadira:set_visible(true)
-	local boss = enemy_manager:get_enemy("ChuckyBoss")
-	if boss.m_BossRunning then
-		boss.m_BossRunning = false
+	--local boss = enemy_manager:get_enemy(boss_mesh_name)
+	if ChuckyBoss.m_BossRunning then
+		ChuckyBoss.m_BossRunning = false
 	end
 end
 
