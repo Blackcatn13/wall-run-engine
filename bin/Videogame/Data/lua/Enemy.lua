@@ -182,12 +182,14 @@ function update_shoot_boss(dt, enemy)
     if (enemy.m_CurrentCooldown < 0.0 or player.is_dead) then
       enemy.m_IsOnCooldown = false;
       delete_shooting(renderable_shoot)
+	  enemy:m_FSM():newState("Parado")
     else 
 		enemy.m_DireccionBala = Vect3f(enemy.m_DireccionBala.x, enemy.m_DireccionBala.y - gravityShot * dt, enemy.m_DireccionBala.z);
       enemy.m_PosicionBala = enemy:updtate_projectile_position(dt)
 	  renderable_shoot:set_position(enemy.m_PosicionBala)
       if (check_player_shoot_collision(enemy, renderable_shoot)) then
 		delete_shooting(renderable_shoot)
+		enemy:m_FSM():newState("Parado")
         enemy:add_damage_player();
       end
     end

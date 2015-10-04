@@ -36,6 +36,7 @@ gui_manager.m_sTransitionEffect = transition_effect
 fade_done = false
 first_load = true
 jump_enabled = true
+all_boss_miks_killed = false
 piky_mesh_name = "Piky" --Piky o SuperPiky
 
 --Animaciones del Player
