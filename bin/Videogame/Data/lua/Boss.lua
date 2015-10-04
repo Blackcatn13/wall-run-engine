@@ -80,8 +80,8 @@ end
 function chucky_boss_enter_shoot(name)
 	coreInstance:trace("Estado Lanzar")
 	local enemy = enemy_manager:get_enemy(name)
-	local player_position = player_controller:get_position()
-	enemy.m_RenderableObject:execute_action(5,0.1,0,1,false);
+	--local player_position = player_controller:get_position()
+	enemy.m_RenderableObject:execute_action(5,0.1,0,1,true);
 	
 	
 	
@@ -97,13 +97,13 @@ function chucky_boss_update_shoot(ElapsedTime, doComprobation, name)
 	local enemy = enemy_manager:get_enemy(name)
 	rotate_yaw(enemy, ElapsedTime, player_position)
 	coreInstance:trace(tostring(enemy.m_RenderableObject:get_animation_time()))
-	if enemy.m_RenderableObject:get_animation_time() > 1.9 then
+	if enemy.m_RenderableObject:get_animation_time() > 2 then
 		update_boss_shoot_cooldown(enemy, player_position)
 	end
 	if (enemy ~= nil) then
 		--enemy:actualizar_disparo(ElapsedTime)	
 		update_shoot(ElapsedTime, enemy)
-		enemy:actualizar_hitbox()
+		--enemy:actualizar_hitbox()
 	end
 	if not enemy.m_RenderableObject:is_cycle_animation_active() then
 		enemy:m_FSM():newState("EsperandoImpacto")
@@ -126,22 +126,45 @@ end
 --WAITING--
 function chucky_boss_enter_waiting(name)
 	coreInstance:trace("Estado Esperando")
-	
+	local enemy = enemy_manager:get_enemy(name)
+	enemy.m_RenderableObject:remove_action(5)
+	enemy.m_RenderableObject:blend_cycle(0,1,0);
 end
 
 function chucky_boss_exit_waiting(name)
-	
+	local enemy = enemy_manager:get_enemy(name)
+	--enemy.m_RenderableObject:clear_cycle(0,0.3);
+
 end
 
 function chucky_boss_update_waiting(ElapsedTime, doComprobation, name)
 	local enemy = enemy_manager:get_enemy(name)
 	if (enemy ~= nil) then
-		--enemy:actualizar_disparo(ElapsedTime)	
+		local player_position = player_controller:get_position()
+		rotate_yaw(enemy, ElapsedTime, player_position)
 		update_shoot(ElapsedTime, enemy)
-		enemy:actualizar_hitbox()
+		--enemy:actualizar_hitbox()
+		if boss_projectile_returned and get_distance_between_points(enemy:get_position(), enemy.m_PosicionBala) < 5 then
+			if check_random_action(3) then
+				enemy:m_FSM():newState("Devolver")
+			else
+				local mesh = get_renderable_object("solid",0, enemy.m_ProjectileName)
+				if check_shoot_collision(enemy, mesh, enemy) then
+					enemy:m_FSM():newState("Hurt")
+				end
+			end
+		end
 	end
 end
 
+function check_random_action(bonus)
+	math.randomseed( os.time() )
+	math.random(); math.random(); math.random()
+	if tonumber(math.random(bonus) >=1 ) then
+		return true
+	end
+	return false
+end
 ----LLAMAR----
 function chucky_boss_enter_call(name)
 	
@@ -157,7 +180,19 @@ end
 
 ----HURT----
 function chucky_boss_enter_hurt(name)
-	
+	local enemy = enemy_manager:get_enemy(name)
+	if (enemy ~= nil) then
+		enemy.m_Life = enemy.m_Life -1
+		if enemy.m_Life ==0 then
+			enemy.m_Phases = enemy.m_Phases -1
+			if enemy.m_Phases == 0 then
+				enemy:m_FSM():newState("Dead")
+			else
+				enemy.m_RenderableObject:clear_cycle(0,0.3);
+				enemy.m_RenderableObject:execute_action(6,0.1,0,1,false)
+			end
+		end
+	end
 end
 
 function chucky_boss_exit_hurt(name)
@@ -165,12 +200,20 @@ function chucky_boss_exit_hurt(name)
 end
 
 function chucky_boss_update_hurt(ElapsedTime, doComprobation, name)
-
+	local enemy = enemy_manager:get_enemy(name)
+	if (enemy ~= nil) then
+		if not enemy.m_RenderableObject:is_action_animation_active() then
+			enemy:m_FSM():newState("Parado")
+		end
+	end
 end
 
 ----DEAD----
 function chucky_boss_enter_dead(name)
-	
+	local enemy = enemy_manager:get_enemy(name)
+	if (enemy ~= nil) then
+		enemy.m_RenderableObject:execute_action(8,0.1,0,1,false)
+	end	
 end
 
 function chucky_boss_exit_dead(name)
@@ -178,5 +221,11 @@ function chucky_boss_exit_dead(name)
 end
 
 function chucky_boss_update_dead(ElapsedTime, doComprobation, name)
-
+	local enemy = enemy_manager:get_enemy(name)
+	if (enemy ~= nil) then
+		if not enemy.m_RenderableObject:is_action_animation_active() then
+			coreInstance:trace("YAAAAY WALL DONE!!")
+			-- Llamar al fin de demo /cinematica final
+		end
+	end
 end

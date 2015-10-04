@@ -146,7 +146,12 @@ function close_door(_objectName, _objectName2, room)
 	--play animacion subir puerta
 end
 
-
+function check_shoot_collision(enemy, mesh, controller) 
+	if (mesh.m_Printable and enemy.m_PosicionBala:distance(controller:get_position()) < enemy.m_ProjectileHitbox) then
+		return true
+	end
+  return false
+end
 
 function get_distance_between_points(current_position, _player_position)
 	-- calcular distancia hacia player
