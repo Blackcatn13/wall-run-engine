@@ -95,6 +95,38 @@ function rotate_renderable(ElapsedTime, angle, _enemy)
 	end
 end
 
+function update_boss_shoot_cooldown(enemy, player_position)
+	if not enemy.m_IsOnCooldown then
+	  enemy.m_IsOnCooldown = true;
+      enemy.m_CurrentCooldown = enemy.m_CooldownTimer;
+	  --enemy:shoot_to_vector(dt, enemy:get_position())
+	  boss_shoot(enemy:get_position(), enemy)
+	  enemy.m_DireccionBala = player_position - enemy:get_position()
+	--  coreInstance:trace("Direccion de bala: " .. tostring(enemy.m_DireccionBala.x) ..", ".. tostring(enemy.m_DireccionBala.y).. ", ".. tostring(enemy.m_DireccionBala.z))
+	end
+end
+
+function boss_shoot(position, enemy)
+	if (enemy.m_isAlive) then
+		local projectile_position = Vect3f(position.x, position.y+2, position.z)
+		enemy.m_PosicionBala = projectile_position
+		local renderable_shoot = get_renderable_object("enemies", 0, enemy.m_ProjectileName)
+		if renderable_shoot ~= nil then
+			-- poner sonido y particulas de disparo	
+			local emitter = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter)
+			if emitter ~= nil then
+				emitter.m_vPos = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_EmitterOffset
+				emitter.m_FireParticles = true 
+			end
+			
+			
+			renderable_shoot:set_position(enemy.m_PosicionBala)
+			renderable_shoot.m_Printable = true
+			renderable_shoot:set_visible(true)
+		end
+	  end
+end
+
 function update_cooldown(enemy, dt, player_position)
 --coreInstance:trace("Enemy Cooldown: "..tostring(enemy.m_IsOnCooldown))
 	if not enemy.m_IsOnCooldown then
@@ -105,7 +137,6 @@ function update_cooldown(enemy, dt, player_position)
 	  enemy.m_DireccionBala = player_position - enemy:get_position()
 	--  coreInstance:trace("Direccion de bala: " .. tostring(enemy.m_DireccionBala.x) ..", ".. tostring(enemy.m_DireccionBala.y).. ", ".. tostring(enemy.m_DireccionBala.z))
 	end
-	
 end
 
 function shoot_to_vector(dt, position, enemy)

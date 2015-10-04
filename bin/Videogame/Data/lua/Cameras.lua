@@ -408,7 +408,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 		if distToBoss < 21 then
 			zoomFinal = zoomBoss + ((distToBoss - 21) / ((21 - 9) / (40 - 23)));
 		end
-		coreInstance:trace("zoom to Boss "..tostring(zoomFinal));
+	--	coreInstance:trace("zoom to Boss "..tostring(zoomFinal));
 		cam:set_zoom(zoomFinal);
 		cam.m_fZNear = nearBoss;
 		cam.m_fZFar = farBoss;

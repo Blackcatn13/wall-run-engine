@@ -165,6 +165,11 @@
 			<onExit lua_funtion="chucky_boss_exit_return"/>
 			<Update time=".01" lua_funtion="chucky_boss_update_return"/>
 		</state>
+			<state name="EsperandoImpacto">
+			<onEnter lua_funtion="chucky_boss_enter_waiting"/>
+			<onExit lua_funtion="chucky_boss_exit_waiting"/>
+			<Update time=".01" lua_funtion="chucky_boss_update_waiting"/>
+		</state>
 		<state name="Llamar">
 			<onEnter lua_funtion="chucky_boss_enter_call"/>
 			<onExit lua_funtion="chucky_boss_exit_call"/>

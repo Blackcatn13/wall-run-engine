@@ -25,6 +25,7 @@ puzzle_manager = coreInstance:get_puzzle_manager()
 --Fin Managers
 CCoreLuaWrapper().m_CoreInstance:getTickCounter():addTick("lava", 0.05, 1000);
 boss_mesh_name = "ChuckyBoss"
+boss_miks_enabled = false
 
 
 --Variables de Control
