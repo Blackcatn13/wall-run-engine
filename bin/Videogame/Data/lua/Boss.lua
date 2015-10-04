@@ -45,9 +45,13 @@ function set_boss_polis_visible(visible)
 	end
 end
 
+--[[function summon_mik(mik_name)
+	local enemy = enemy_manager:get_enemy()
+end]]
 ---- IA----
 ----PARADO----
 function chucky_boss_enter_stopped(name)
+	coreInstance:trace("Estado Parado")
 	local enemy = enemy_manager:get_enemy(name)
 	enemy.m_RenderableObject:blend_cycle(0,1,0);
 end
@@ -67,10 +71,15 @@ function chucky_boss_update_stopped(ElapsedTime, doComprobation, name)
 	
 	boss_timer = boss_timer + (1 * ElapsedTime)
 	if boss_timer >= enemy.m_CooldownTimer then
-		local check_call_miks = false --de momento se deja false
+		local check_call_miks = false 
+		if enemy.m_Phases == 1 and all_boss_miks_killed then
+			check_call_miks = check_random_action (2)
+		end
 		
-		if enemy.m_Phases == 2 or (enemy.m_Phases == 1 and not check_call_miks) then
+		if enemy.m_Phases == 2 and not check_call_miks then
 			enemy:m_FSM():newState("Lanzar")
+		else
+			enemy:m_FSM():newState("Llamar")
 		end
 	end
 	
@@ -82,9 +91,6 @@ function chucky_boss_enter_shoot(name)
 	local enemy = enemy_manager:get_enemy(name)
 	--local player_position = player_controller:get_position()
 	enemy.m_RenderableObject:execute_action(5,0.1,0,1,true);
-	
-	
-	
 end
 
 function chucky_boss_exit_shoot(name)
@@ -171,7 +177,11 @@ function check_random_action(bonus)
 end
 ----LLAMAR----
 function chucky_boss_enter_call(name)
-	
+	coreInstance:trace("Estado Llamando Miks")
+	local enemy = enemy_manager:get_enemy(name)
+	if (enemy ~= nil) then
+		enemy.m_RenderableObject:execute_action(7,0.1,0,1,false)
+	end
 end
 
 function chucky_boss_exit_call(name)
@@ -179,7 +189,15 @@ function chucky_boss_exit_call(name)
 end
 
 function chucky_boss_update_call(ElapsedTime, doComprobation, name)
-
+	local enemy = enemy_manager:get_enemy(name)
+	if (enemy ~= nil) then
+		if not enemy.m_RenderableObject:is_action_animation_active() then
+			local array_mik = {"MikMik007", "MikMik007", "MikMik008", "MikMik009", "MikMik010", "MikMik011"}
+			--[[for local i = 1, table.getn(array_mik) do
+				summon_mik(array_mik[i])
+			end]]
+		end
+	end
 end
 
 ----HURT----

@@ -19,4 +19,5 @@
  <word string = "get_renderable_objects_manager_by_str_and_room("/>
  <word string = "coreInstance:trace(tostring("/>
  <word string = "enemy_manager:get_enemy("/>
+ <word string = "enemy_manager:get_enemy('ChuckyBoss').m_Phases = "/>
 </ConsoleWords>
