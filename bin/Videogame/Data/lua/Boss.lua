@@ -102,7 +102,7 @@ function chucky_boss_update_shoot(ElapsedTime, doComprobation, name)
 	end
 	if (enemy ~= nil) then
 		--enemy:actualizar_disparo(ElapsedTime)	
-		update_shoot(ElapsedTime, enemy)
+		update_shoot_boss(ElapsedTime, enemy)
 		enemy:actualizar_hitbox()
 	end
 	if not enemy.m_RenderableObject:is_cycle_animation_active() then
@@ -137,7 +137,7 @@ function chucky_boss_update_waiting(ElapsedTime, doComprobation, name)
 	local enemy = enemy_manager:get_enemy(name)
 	if (enemy ~= nil) then
 		--enemy:actualizar_disparo(ElapsedTime)	
-		update_shoot(ElapsedTime, enemy)
+		update_shoot_boss(ElapsedTime, enemy)
 		enemy:actualizar_hitbox()
 	end
 end

@@ -99,10 +99,9 @@ function update_boss_shoot_cooldown(enemy, player_position)
 	if not enemy.m_IsOnCooldown then
 	  enemy.m_IsOnCooldown = true;
       enemy.m_CurrentCooldown = enemy.m_CooldownTimer;
-	  --enemy:shoot_to_vector(dt, enemy:get_position())
 	  boss_shoot(enemy:get_position(), enemy)
 	  enemy.m_DireccionBala = player_position - enemy:get_position()
-	--  coreInstance:trace("Direccion de bala: " .. tostring(enemy.m_DireccionBala.x) ..", ".. tostring(enemy.m_DireccionBala.y).. ", ".. tostring(enemy.m_DireccionBala.z))
+	  enemy.m_DireccionBala = Vect3f(enemy.m_DireccionBala.x, enemy.m_DireccionBala.y + 15, enemy.m_DireccionBala.z)
 	end
 end
 
@@ -128,14 +127,11 @@ function boss_shoot(position, enemy)
 end
 
 function update_cooldown(enemy, dt, player_position)
---coreInstance:trace("Enemy Cooldown: "..tostring(enemy.m_IsOnCooldown))
 	if not enemy.m_IsOnCooldown then
 	  enemy.m_IsOnCooldown = true;
       enemy.m_CurrentCooldown = enemy.m_CooldownTimer;
-	  --enemy:shoot_to_vector(dt, enemy:get_position())
 	  shoot_to_vector(dt, enemy:get_position(), enemy)
 	  enemy.m_DireccionBala = player_position - enemy:get_position()
-	--  coreInstance:trace("Direccion de bala: " .. tostring(enemy.m_DireccionBala.x) ..", ".. tostring(enemy.m_DireccionBala.y).. ", ".. tostring(enemy.m_DireccionBala.z))
 	end
 end
 
@@ -164,23 +160,33 @@ function update_shoot(dt, enemy)
  if (enemy.m_IsOnCooldown) then
 	local renderable_shoot = get_renderable_object("enemies", enemy.m_RenderableObject.m_Room, enemy.m_ProjectileName)
     enemy.m_CurrentCooldown = enemy.m_CurrentCooldown - dt;
-	--coreInstance:trace("Current CoolDown: "..tostring(enemy.m_CurrentCooldown))
-	--coreInstance:trace("Current CoolDown Timer: "..tostring(enemy.m_CooldownTimer))
-	--coreInstance:trace("Tiempo Vida disparo: "..tostring(enemy.m_tiempoVidaDisparo))
     if (enemy.m_CurrentCooldown < 0.0 or player.is_dead) then
       enemy.m_IsOnCooldown = false;
-	--  coreInstance:trace("Listo para borrar disparo por cooldown1")
-      delete_shooting(renderable_shoot)--DestruirDisparo();
-  --elseif (enemy.m_CurrentCooldown < (enemy.m_CooldownTimer - enemy.m_tiempoVidaDisparo)) then
-      --DestruirDisparo();
-	--   coreInstance:trace("Listo para borrar disparo por cooldown2")
-	--	delete_shooting(renderable_shoot)
+      delete_shooting(renderable_shoot)
     else 
-      enemy.m_PosicionBala = enemy:updtate_projectile_position(dt) --enemy.m_PosicionBala +  luaUtil:normalize(enemy.m_DireccionBala) * enemy.m_BalaSpeed * dt;
+      enemy.m_PosicionBala = enemy:updtate_projectile_position(dt) 
 	  renderable_shoot:set_position(enemy.m_PosicionBala)
       if (check_player_shoot_collision(enemy, renderable_shoot)) then
-        --DestruirDisparo();
-		--  coreInstance:trace("Listo para borrar disparo")
+		delete_shooting(renderable_shoot)
+        enemy:add_damage_player();
+      end
+    end
+  end
+end
+
+function update_shoot_boss(dt, enemy)
+	local gravityShot = 0.3;
+ if (enemy.m_IsOnCooldown) then
+	local renderable_shoot = get_renderable_object("enemies", enemy.m_RenderableObject.m_Room, enemy.m_ProjectileName)
+    enemy.m_CurrentCooldown = enemy.m_CurrentCooldown - dt;
+    if (enemy.m_CurrentCooldown < 0.0 or player.is_dead) then
+      enemy.m_IsOnCooldown = false;
+      delete_shooting(renderable_shoot)
+    else 
+		enemy.m_DireccionBala = Vect3f(enemy.m_DireccionBala.x, enemy.m_DireccionBala.y - gravityShot * dt, enemy.m_DireccionBala.z);
+      enemy.m_PosicionBala = enemy:updtate_projectile_position(dt)
+	  renderable_shoot:set_position(enemy.m_PosicionBala)
+      if (check_player_shoot_collision(enemy, renderable_shoot)) then
 		delete_shooting(renderable_shoot)
         enemy:add_damage_player();
       end

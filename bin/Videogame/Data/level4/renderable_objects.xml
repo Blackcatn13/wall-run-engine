@@ -135,7 +135,7 @@
 
 	<animated_model name="Chucky" core="chuky" pos="12.301392 0.000000 -2.756073" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="DustChuckyEmitter" emitter_offset="0.0 0.0 0.0" emitter2="DustJumpChuckyEmitter" emitter2_offset="0.0 0.0 0.0" room="1"/>
 	<animated_model name="ChuckyBoss" core="chuky" pos="0.0  4.48  0.0" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="enemies" room="0"/>
-	<mesh_instance name="disparoChucky" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "0" layer="enemies" />
+	<mesh_instance name="disparoChucky" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="2.0 2.0 2.0" room = "0" layer="enemies" />
 	<mesh_instance name="disparoSuperPiky" core="disparoSuperPiky" pos="-54.258789 0.000000 -12.633484" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="enemies"/>
 	
 	<animated_model name="MikMik004" core="mik" pos="530.339172 9.007496 8.188751" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik004DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation004" emitter2_offset="0.0 3.0 0.0" room="3"/>
