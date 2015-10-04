@@ -102,8 +102,10 @@ function chucky_boss_update_shoot(ElapsedTime, doComprobation, name)
 	end
 	if (enemy ~= nil) then
 		--enemy:actualizar_disparo(ElapsedTime)	
-		update_shoot(ElapsedTime, enemy)
+
+		update_shoot_boss(ElapsedTime, enemy)
 		--enemy:actualizar_hitbox()
+
 	end
 	if not enemy.m_RenderableObject:is_cycle_animation_active() then
 		enemy:m_FSM():newState("EsperandoImpacto")
@@ -140,9 +142,10 @@ end
 function chucky_boss_update_waiting(ElapsedTime, doComprobation, name)
 	local enemy = enemy_manager:get_enemy(name)
 	if (enemy ~= nil) then
+
 		local player_position = player_controller:get_position()
 		rotate_yaw(enemy, ElapsedTime, player_position)
-		update_shoot(ElapsedTime, enemy)
+		update_shoot_boss(ElapsedTime, enemy)
 		--enemy:actualizar_hitbox()
 		if boss_projectile_returned and get_distance_between_points(enemy:get_position(), enemy.m_PosicionBala) < 5 then
 			if check_random_action(3) then
@@ -154,6 +157,7 @@ function chucky_boss_update_waiting(ElapsedTime, doComprobation, name)
 				end
 			end
 		end
+
 	end
 end
 
