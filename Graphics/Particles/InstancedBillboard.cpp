@@ -15,11 +15,11 @@
 #include "Renderable\RenderableObjectTechniqueManager.h"
 
 
-CInstancedBillboard::CInstancedBillboard(CXMLTreeNode &node)
-  : m_numBillboards(node.GetIntProperty("billboards")) {
+CInstancedBillboard::CInstancedBillboard(CXMLTreeNode &node) {
   m_Visible = node.GetBoolProperty("visible", true);
   int numChild = node.GetNumChildren();
-  m_vertex_list = new TBILLBOARD_VERTEX_INSTANCE[m_numBillboards];
+  m_numBillboards = numChild;
+  m_vertex_list = new TBILLBOARD_VERTEX_INSTANCE[numChild];
   int j = 0;
   for (int i = 0; i < numChild; ++i) {
     CXMLTreeNode nodeChild = node.getNextChild();
