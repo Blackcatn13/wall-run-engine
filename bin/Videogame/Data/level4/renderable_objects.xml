@@ -606,7 +606,7 @@
 		<wp pos="529.437 0.028 -579.347"/>
 	</platform>
 	
-	<platform name="PlataformaMovil006_001" core="PlataformaMovil006_001" type="moving" pos="537.794 3.037 -567.873" yaw="0.0" pitch="0.0" roll="0.0" scale="0.716438 1.0 1.0" visible="true" phisic_size="2.31146 0.749243 3.00153" layer="mov_platforms" room="6" speed="1.8">
+	<platform name="PlataformaMovil006_001" core="PlataformaMovil006_001" type="moving" pos="537.794 3.037 -567.873" yaw="0.0" pitch="0.0" roll="0.0" scale="0.716438 1.0 1.0" visible="true" phisic_size="2.31146 0.749243 3.00153" layer="mov_platforms" room="6" speed="2.189595">
 		<wp pos="537.794 3.037 -567.873"/>
 		<wp pos="537.794 3.037 -590.37"/>
 	</platform>
@@ -615,7 +615,7 @@
 	
 	
 	<mesh_instance name="Sala_6_Coberta_001" core="Sala_6_Coberta_001" pos="556.929260 16.608967 -416.288910" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_ColumnaB_005" core="Sala_6_ColumnaB_005" pos="529.644958 11.056310 -583.286255" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="Sala_6_ColumnaB_005" core="Sala_6_ColumnaB_005" pos="529.945618 11.056310 -583.286255" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_6" core="Sala_6" pos="553.460876 -4.801757 -501.372406" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_6_ColumnaLateral_001" core="Sala_6_ColumnaLateral_001" pos="546.698181 10.706451 -499.528625" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_6_Plataforma_002" core="Sala_6_Plataforma_002" pos="548.482483 -0.939303 -592.461243" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
@@ -675,12 +675,12 @@
 	<mesh_instance name="Sala_6_LlumDeSostre_001" core="Sala_6_LlumDeSostre_001" pos="532.333984 20.174856 -490.856445" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_6_LlumDeSostre_002" core="Sala_6_LlumDeSostre_002" pos="534.180176 20.174856 -464.445587" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_6_LlumDeSostre_003" core="Sala_6_LlumDeSostre_003" pos="534.180176 20.174856 -420.580109" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_LlumDeSostre_004" core="Sala_6_LlumDeSostre_004" pos="575.557983 20.174856 -420.580109" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_LlumDeSostre_005" core="Sala_6_LlumDeSostre_005" pos="575.557983 20.174856 -456.946838" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="Sala_6_LlumDeSostre_004" core="Sala_6_LlumDeSostre_004" pos="582.044189 20.174856 -420.294098" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="Sala_6_LlumDeSostre_005" core="Sala_6_LlumDeSostre_005" pos="582.044189 20.174856 -456.660828" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_6_LlumDeSostre_006" core="Sala_6_LlumDeSostre_006" pos="522.976318 14.193655 -537.103821" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_6_LlumDeSostre_007" core="Sala_6_LlumDeSostre_007" pos="515.980591 14.193655 -561.453491" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_6_LlumDeSostre_008" core="Sala_6_LlumDeSostre_008" pos="515.980591 14.193655 -587.778137" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_LlumDeSostre_009" core="Sala_6_LlumDeSostre_009" pos="542.313538 14.193655 -587.778137" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="Sala_6_LlumDeSostre_009" core="Sala_6_LlumDeSostre_009" pos="549.561218 14.193655 -572.238037" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="PLAT POLY011" core="PLAT POLY011" pos="408.697449 27.261595 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="PLAT POLY006" core="PLAT POLY006" pos="197.868835 32.188210 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="PLAT POLY012" core="PLAT POLY012" pos="164.670105 32.188210 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
