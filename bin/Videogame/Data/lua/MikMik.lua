@@ -415,11 +415,18 @@ function mikmik_enter_dead(name)
 		end
 		
 		enemy.m_isAlive = false
-				
-		player.enemies_killed = player.enemies_killed + 1
+		if player_controller.m_Room == 3 then		
+			player.enemies_killed = player.enemies_killed + 1
 		--check_enemies_killed(5, "door_001")
-		check_enemies_killed(5, "Puerta_arriba", "Puerta_abajo")
+			check_enemies_killed(5, "Puerta_arriba", "Puerta_abajo")
+		elseif player_controller.m_Room == 0 then
+			boss_miks_killed = boss_miks_killed +1
+			if boss_miks_killed == 5 then
+				all_boss_miks_killed = true
+			end
+		end
 		--enemy.m_PhysicController:set_radius(0.01)
+		 
 	end
 end
 

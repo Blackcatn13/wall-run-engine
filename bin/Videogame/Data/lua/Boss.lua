@@ -28,7 +28,10 @@ function start_boss()
 	chucky:m_FSM():newState("Parado")
 	cadira:set_visible(false)
 	set_boss_polis_visible(true)
+	all_boss_miks_killed = true
+	boss_miks_killed = 0
 	chucky.m_BossRunning = true
+	player.attack_enabled = true
 end
 
 function set_boss_polis_visible(visible)
@@ -56,7 +59,21 @@ function summon_mik(mik_name)
 		enemy.m_RenderableObject.m_Printable =true
 		enemy.m_RenderableObject:set_visible(true)
 	end
+	
 	enemy:m_FSM():newState("Parado")
+end
+
+function fire_mik_summon_particles(mik_name)
+	local enemy = enemy_manager:get_enemy(mik_name)
+	local emitter = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter)
+	if emitter ~= nil then
+		local position = Vect3f(enemy.m_RenderableObject:get_position().x, enemy.m_RenderableObject:get_position().y, enemy.m_RenderableObject:get_position().z) 
+		if position.y > 500 then
+			position.y = position.y -1000
+		end
+		emitter.m_vPos = position + enemy.m_RenderableObject.m_EmitterOffset
+		emitter.m_FireParticles = true 
+	end
 end
 ---- IA----
 ----PARADO----
@@ -205,8 +222,10 @@ function chucky_boss_update_call(ElapsedTime, doComprobation, name)
 			local array_mik = {"MikMik007", "MikMik007", "MikMik008", "MikMik009", "MikMik010", "MikMik011"}
 			for i = 1, table.getn(array_mik) do
 				summon_mik(array_mik[i])
+				fire_mik_summon_particles(array_mik[i])
 			end
 			all_boss_miks_killed = false
+			boss_miks_killed = 0
 			enemy:m_FSM():newState("Parado")
 		end
 	end
