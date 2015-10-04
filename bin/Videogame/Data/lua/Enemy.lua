@@ -208,19 +208,26 @@ function update_shoot_boss(dt, enemy)
 	  enemy:m_FSM():newState("Parado")
     else 
 		enemy.m_DireccionBala = Vect3f(enemy.m_DireccionBala.x, enemy.m_DireccionBala.y - gravityShot * dt, enemy.m_DireccionBala.z);
-      enemy.m_PosicionBala = enemy:updtate_projectile_position(dt)
-	  renderable_shoot:set_position(enemy.m_PosicionBala)
-      if (check_player_shoot_collision(enemy, renderable_shoot)) then
-		enemy.m_IsOnCooldown = false;
-		delete_shooting(renderable_shoot)
-		enemy:m_FSM():newState("Parado")
-		if current_shot_type =="powerup" then
-			start_super_piky()
-		else
-			enemy:add_damage_player();
+		enemy.m_PosicionBala = enemy:updtate_projectile_position(dt)
+		renderable_shoot:set_position(enemy.m_PosicionBala)
+		if (check_player_shoot_collision(enemy, renderable_shoot)) then
+			enemy.m_IsOnCooldown = false;
+			delete_shooting(renderable_shoot)
+			enemy:m_FSM():newState("Parado")
+			if current_shot_type =="powerup" then
+				start_super_piky()
+			else
+				enemy:add_damage_player();
+			end
 		end
-      end
-    end
+		local distance = get_distance_between_points(enemy.m_PosicionBala, enemy:get_position())
+		coreInstance:trace(tostring(enemy.m_PosicionBala.y))
+		if (distance > 600 and enemy.m_PosicionBala.y < -1) or (distance <=600 and enemy.m_PosicionBala.y < 2) then
+			enemy.m_IsOnCooldown = false;
+			delete_shooting(renderable_shoot)
+			enemy:m_FSM():newState("Parado")
+		end
+	end
   end
 end
 

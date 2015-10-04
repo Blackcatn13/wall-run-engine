@@ -142,6 +142,7 @@ function chucky_boss_update_shoot(ElapsedTime, doComprobation, name)
 	if enemy.m_RenderableObject:get_animation_time() > 2 then
 		update_boss_shoot_cooldown(enemy, player_position)
 	end
+	coreInstance:trace("Distancia: "..tostring(player_controller:get_position().y))
 	if (enemy ~= nil) then
 		--enemy:actualizar_disparo(ElapsedTime)	
 
