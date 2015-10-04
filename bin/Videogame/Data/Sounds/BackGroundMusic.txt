@@ -1,0 +1,8 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1481335831	_3DZone			\Default Work Unit\Background\_3DZone	
+	1854652136	_2DZone			\Default Work Unit\Background\_2DZone	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	123410706	BSO Sujeto 04 (Enemigos)	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\BSO Sujeto 04 (Enemigos)_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\FX\BSO Sujeto 04 (Enemigos)		20013448
+	364000553	zona 3d	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\zona 3d_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\zona 3d		21319264
+

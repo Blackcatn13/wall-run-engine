@@ -1,7 +1,5 @@
 Event	ID	Name			Wwise Object Path	Notes
 	1326329452	Set_Mik_Detected			\Default Work Unit\Set_Mik_Detected	
-	1481335831	_3DZone			\Default Work Unit\Background\_3DZone	
-	1854652136	_2DZone			\Default Work Unit\Background\_2DZone	
 	2079732196	Set_Mik_Idle			\Default Work Unit\Set_Mik_Idle	
 	2589897592	Door_opening			\Default Work Unit\FX\Door_opening	
 	2607556080	Menu			\Default Work Unit\Background\Menu	
@@ -28,9 +26,7 @@ State	ID	Name	State Group			Notes
 	2772520554	Back2	BackGroundGrup			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	20152613	zona 3d demo	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\zona 3d demo_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\FX\zona 3d demo		21319264
 	36911512	Voice	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Voice_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\BackGround\Back2\TestSound2\Voice		531976
-	123410706	BSO Sujeto 04 (Enemigos)	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\BSO Sujeto 04 (Enemigos)_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\FX\BSO Sujeto 04 (Enemigos)		20013448
 	169203991	RugidoDetectado	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\RugidoDetectado_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\FX\Mik\Detected\Viewed\RugidoDetectado		294332
 	225374597	Generdyn - ATMOS - 02	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Generdyn - ATMOS - 02_8BD76F1E.wem		\Interactive Music Hierarchy\Default Work Unit\BackGround\Back2\TetstSound\Generdyn - ATMOS - 02		7950124
 	276987036	Idle	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Idle_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\FX\Mik\Idle\Idle		894360

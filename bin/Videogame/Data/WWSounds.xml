@@ -2,6 +2,7 @@
 <WWise>
 	<Bank name="Init.bnk"/>
 	<Bank name="Test.bnk"/> 
+	<Bank name="BackGroundMusic.bnk"/>
 	<GameObject2D name="Music" register="true"/>
 	<GameObject2D name="Piky" register="true"/>
 	<GameObject3D name="Torch" register="true" type="MultiSource">
