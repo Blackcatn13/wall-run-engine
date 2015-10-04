@@ -146,7 +146,12 @@ function close_door(_objectName, _objectName2, room)
 	--play animacion subir puerta
 end
 
-
+function check_shoot_collision(enemy, mesh, controller) 
+	if (mesh.m_Printable and enemy.m_PosicionBala:distance(controller:get_position()) < enemy.m_ProjectileHitbox) then
+		return true
+	end
+  return false
+end
 
 function get_distance_between_points(current_position, _player_position)
 	-- calcular distancia hacia player
@@ -309,6 +314,12 @@ function reset_game()
 	get_renderable_object("solid",0, "PilarQuad001"):set_visible(true)
 	get_renderable_object("solid",0, "PilarQuad002"):set_visible(true)
 	get_renderable_object("solid",0, "ChukyBossPosition"):set_visible(false)
+	enemy_manager:get_enemy("MikMik007"):m_FSM():newState("Waiting")
+	enemy_manager:get_enemy("MikMik008"):m_FSM():newState("Waiting")
+	enemy_manager:get_enemy("MikMik009"):m_FSM():newState("Waiting")
+	enemy_manager:get_enemy("MikMik010"):m_FSM():newState("Waiting")
+	enemy_manager:get_enemy("MikMik011"):m_FSM():newState("Waiting")
+	
 	local boss = enemy_manager:get_enemy(boss_mesh_name)
 	if boss.m_BossRunning then
 		boss.m_BossRunning = false
