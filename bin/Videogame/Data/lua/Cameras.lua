@@ -66,13 +66,24 @@ function on_update_cameras_lua(l_ElapsedTime)
 	--______ CAMERA BOSS _______________________
 	local yawBoss = 0;
 	local pitchBoss = -0.10;
-	local zoomBoss = 40;
+	local zoomBoss = 30;
 	local fovBoss = 60.0 * 3.1415 / 180;
 	local aspectBoss = 16/9;
 	local nearBoss = 0.1;
 	local farBoss = 280;
 	local distToCameraOffsetBoss = 3;
 	local speedYawBoss = 3;
+	-- Distancia jugable entre 9 y 33
+	local distZoomFar = 25;
+	local distZoomNear = 21;
+	local bossZoomFar = 25;
+	local bossZoomNear = 20;
+	local camMovementRange = 23;
+	local camMovementDistStart = 20;
+	local distPitchNear = 17;
+	local distPitchFar = 22;
+	local bossPitchNear = -0.03;
+	local bossPitchFar = -0.80;
 	
 	--______ GENERALES _______________________
 	local distanciaGiro = 3;
@@ -399,16 +410,28 @@ function on_update_cameras_lua(l_ElapsedTime)
 		yawBossTotal = lastYawBoss + incYawBoss;
 		obj:set_yaw(yawBossTotal);
 		lastYawBoss = yawBossTotal;
-		obj:set_pitch(pitchBoss);
+		local pitchFinal = pitchBoss;
+		if distToBoss > distPitchFar then
+			pitchFinal = pitchBoss + (((distToBoss - distPitchFar) * (pitchBoss - bossPitchFar))/(distPitchFar - 33));
+		end
+		if distToBoss < distPitchNear then
+			pitchFinal = pitchBoss + (((distToBoss - distPitchNear) * (pitchBoss - bossPitchNear)) / (distPitchNear - 9));
+		end
+		obj:set_pitch(pitchFinal);
 		obj:set_roll(0);
+		if distToBoss > camMovementDistStart then
+			vectToBoss:normalize(1);
+			local percentCamMovement = (distToBoss - camMovementDistStart) / (33 - camMovementDistStart);
+			coreInstance:trace("percent cam movement "..tostring(percentCamMovement))
+			obj:set_position(chuckyPos + (vectToBoss * percentCamMovement * camMovementRange));
+		end
 		local zoomFinal = zoomBoss;
-		if distToBoss > 27 then
-			zoomFinal = zoomBoss + (distToBoss - 27);
+		if distToBoss > distZoomFar then
+			zoomFinal = zoomBoss + (((distToBoss - distZoomFar) * (zoomBoss - bossZoomFar))/(distZoomFar - 33));
 		end
-		if distToBoss < 21 then
-			zoomFinal = zoomBoss + ((distToBoss - 21) / ((21 - 9) / (40 - 23)));
+		if distToBoss < distZoomNear then
+			zoomFinal = zoomBoss + (((distToBoss - distZoomNear) * (zoomBoss - bossZoomNear)) / (distZoomNear - 9));
 		end
-		coreInstance:trace("zoom to Boss "..tostring(zoomFinal));
 		cam:set_zoom(zoomFinal);
 		cam.m_fZNear = nearBoss;
 		cam.m_fZFar = farBoss;
