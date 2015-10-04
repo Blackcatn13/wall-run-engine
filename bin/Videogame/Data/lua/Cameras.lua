@@ -9,6 +9,13 @@ local Dist_To_Camera_Tot = 3;
 local incYawTot = 0;
 local lastYawBoss = -100;
 local incYawBoss = 0;
+local lastCamPosBoss = Vect3f(-100,-100,-100);
+local incCamPosBoss = Vect3f(0,0,0);
+local lastPitchBoss = -100;
+local incPitchBoss = 0;
+local lastZoomBoss = -100;
+local incZoomBoss = 0;
+
 --*****************************************************************************
 function on_init_cameras_lua()
 	local coreInstance = CCoreLuaWrapper().m_CoreInstance;
@@ -66,24 +73,27 @@ function on_update_cameras_lua(l_ElapsedTime)
 	--______ CAMERA BOSS _______________________
 	local yawBoss = 0;
 	local pitchBoss = -0.10;
-	local zoomBoss = 30;
+	local zoomBoss = 25;
 	local fovBoss = 60.0 * 3.1415 / 180;
 	local aspectBoss = 16/9;
 	local nearBoss = 0.1;
 	local farBoss = 280;
 	local distToCameraOffsetBoss = 3;
 	local speedYawBoss = 3;
+	local speedPitchBoss = 4;
+	local speedZoomBoss = 4;
+	local speedCamPos = 4;
 	-- Distancia jugable entre 9 y 33
-	local distZoomFar = 25;
+	local distZoomFar = 22;
 	local distZoomNear = 21;
-	local bossZoomFar = 25;
-	local bossZoomNear = 20;
-	local camMovementRange = 23;
-	local camMovementDistStart = 20;
+	local bossZoomFar = 3;
+	local bossZoomNear = 25;
+	local camMovementRange = 36;
+	local camMovementDistStart = 17;
 	local distPitchNear = 17;
 	local distPitchFar = 22;
 	local bossPitchNear = -0.03;
-	local bossPitchFar = -0.80;
+	local bossPitchFar = -0.35;
 	
 	--______ GENERALES _______________________
 	local distanciaGiro = 3;
@@ -392,6 +402,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 		local distToBoss = vectToBoss:length();
 		
 		local vectPlayerBoss = Vect3f(chuckyPos.x - playerPos.x, 0 ,chuckyPos.z - playerPos.z);
+		-- YAW
 		yawBoss = math.atan2(vectPlayerBoss.z, vectPlayerBoss.x);
 		if lastYawBoss == -100 then
 			lastYawBoss = yawBoss;
@@ -407,32 +418,55 @@ function on_update_cameras_lua(l_ElapsedTime)
 		end
 		local incTotalYaw = yawBoss - lastYawBoss;
 		incYawBoss = incTotalYaw * l_ElapsedTime * speedYawBoss;
-		yawBossTotal = lastYawBoss + incYawBoss;
+		local yawBossTotal = lastYawBoss + incYawBoss;
 		obj:set_yaw(yawBossTotal);
 		lastYawBoss = yawBossTotal;
+		-- PITCH
 		local pitchFinal = pitchBoss;
+		if lastPitchBoss == -100 then
+			lastPitchBoss = pitchFinal;
+		end
 		if distToBoss > distPitchFar then
 			pitchFinal = pitchBoss + (((distToBoss - distPitchFar) * (pitchBoss - bossPitchFar))/(distPitchFar - 33));
 		end
 		if distToBoss < distPitchNear then
 			pitchFinal = pitchBoss + (((distToBoss - distPitchNear) * (pitchBoss - bossPitchNear)) / (distPitchNear - 9));
 		end
-		obj:set_pitch(pitchFinal);
+		local incTotalPitch = pitchFinal - lastPitchBoss;
+		incPitchBoss = incTotalPitch * l_ElapsedTime * speedPitchBoss;
+		local pitchFinalTotal = lastPitchBoss + incPitchBoss;
+		obj:set_pitch(pitchFinalTotal);
+		lastPitchBoss = pitchFinalTotal;
 		obj:set_roll(0);
+		local CamPos = Vect3f(chuckyPos.x, chuckyPos.y, chuckyPos.z);
+		if(lastCamPosBoss.x == -100 and lastCamPosBoss.y == -100 and lastCamPosBoss.z == -100) then
+			lastCamPosBoss = Vect3f(CamPos.x, CamPos.y, CamPos.z);
+		end
 		if distToBoss > camMovementDistStart then
 			vectToBoss:normalize(1);
 			local percentCamMovement = (distToBoss - camMovementDistStart) / (33 - camMovementDistStart);
-			coreInstance:trace("percent cam movement "..tostring(percentCamMovement))
-			obj:set_position(chuckyPos + (vectToBoss * percentCamMovement * camMovementRange));
+			CamPos = chuckyPos + (vectToBoss * percentCamMovement * camMovementRange);
 		end
+		local incTotalCamPos = CamPos - lastCamPosBoss;
+		incCamPosBoss = incTotalCamPos * l_ElapsedTime * speedCamPos;
+		local camPosFinal = lastCamPosBoss + incCamPosBoss;
+		obj:set_position(camPosFinal);
+		lastCamPosBoss = Vect3f(camPosFinal.x, camPosFinal.y, camPosFinal.z);
 		local zoomFinal = zoomBoss;
+		if lastZoomBoss == -100 then
+			lastZoomBoss = zoomFinal;
+		end
 		if distToBoss > distZoomFar then
 			zoomFinal = zoomBoss + (((distToBoss - distZoomFar) * (zoomBoss - bossZoomFar))/(distZoomFar - 33));
 		end
 		if distToBoss < distZoomNear then
 			zoomFinal = zoomBoss + (((distToBoss - distZoomNear) * (zoomBoss - bossZoomNear)) / (distZoomNear - 9));
 		end
-		cam:set_zoom(zoomFinal);
+		local incTotalZoom = zoomFinal - lastZoomBoss;
+		incZoomBoss = incTotalZoom * l_ElapsedTime * speedZoomBoss;
+		local zoomFinalTotal = lastZoomBoss + incZoomBoss;
+		cam:set_zoom(zoomFinalTotal);
+		lastZoomBoss = zoomFinalTotal;
 		cam.m_fZNear = nearBoss;
 		cam.m_fZFar = farBoss;
 		cam.m_fFOV = fovBoss;
