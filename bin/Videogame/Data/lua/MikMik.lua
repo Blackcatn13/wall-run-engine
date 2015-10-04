@@ -467,6 +467,7 @@ end
 function mikmik_enter_waiting(name)
 	local enemy = enemy_manager:get_enemy(name)
 	local position = enemy.m_PhysicController:get_position()
+	--enemy.m_OriginalPosition = position
 	position.y = position.y + 1000
 	enemy:set_position(position)
 	enemy.m_PhysicController:set_position(position)
