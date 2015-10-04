@@ -119,7 +119,15 @@ function boss_shoot(position, enemy)
 		coreInstance:trace("position y "..tostring(projectile_position.y))
 		coreInstance:trace("position z "..tostring(projectile_position.z))
 		enemy.m_PosicionBala = projectile_position
-		local renderable_shoot = get_renderable_object("enemies", 0, enemy.m_ProjectileName)
+		local projectile_name = enemy.m_ProjectileName
+
+		if not player.super_piky_active and check_random_action(2) then
+			projectile_name = powerup_name
+			current_shot_type = "powerup"
+		else
+			current_shot_type = "rock"
+		end
+		local renderable_shoot = get_renderable_object("enemies", 0, projectile_name)
 		if renderable_shoot ~= nil then
 			-- poner sonido y particulas de disparo	
 			local emitter = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter)
@@ -188,7 +196,11 @@ end
 function update_shoot_boss(dt, enemy)
 	local gravityShot = 0.3;
  if (enemy.m_IsOnCooldown) then
-	local renderable_shoot = get_renderable_object("enemies", enemy.m_RenderableObject.m_Room, enemy.m_ProjectileName)
+	local projectile_name = enemy.m_ProjectileName
+	if current_shot_type == "powerup" then
+		projectile_name = powerup_name
+	end
+	local renderable_shoot = get_renderable_object("enemies", enemy.m_RenderableObject.m_Room, projectile_name)
     enemy.m_CurrentCooldown = enemy.m_CurrentCooldown - dt;
     if (enemy.m_CurrentCooldown < 0.0 or player.is_dead) then
       enemy.m_IsOnCooldown = false;
@@ -202,7 +214,11 @@ function update_shoot_boss(dt, enemy)
 		enemy.m_IsOnCooldown = false;
 		delete_shooting(renderable_shoot)
 		enemy:m_FSM():newState("Parado")
-        enemy:add_damage_player();
+		if current_shot_type =="powerup" then
+			start_super_piky()
+		else
+			enemy:add_damage_player();
+		end
       end
     end
   end

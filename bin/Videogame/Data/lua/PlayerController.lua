@@ -42,8 +42,8 @@ local m_damageFeedBackSpeedDismin = 40;
 --////////////////////////////
 --SUPER PIKY
 --////////////////////////////
-local super_piky_time = 5.0
-local transition_super_piky = false
+local super_piky_time = 30.0
+
 
 --////////////////////////////////////////////////////////
 -- PARAMETERS
@@ -114,11 +114,7 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		
 		if act2in:do_action_from_lua("SuperPiky") then
-			local emitter4 = particle_manager:get_resource(playerRenderable.m_ParticleEmitter4)
-			emitter4.m_vPos = playerRenderable:get_position()
-			emitter4:set_visible(true)
-			playerRenderable:execute_action(anim_poly,0.1,0,1,false)
-			transition_super_piky = true			
+			start_super_piky(playerRenderable)	
 		end
 	
 		if transition_super_piky and not playerRenderable:is_action_animation_active() then

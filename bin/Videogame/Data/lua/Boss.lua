@@ -1,4 +1,3 @@
-local current_shot_type = 0  --0: Normal, 1:powerup
 local boss_timer = 0.0
 
 function start_boss()
@@ -74,6 +73,16 @@ function fire_mik_summon_particles(mik_name)
 		emitter.m_vPos = position + enemy.m_RenderableObject.m_EmitterOffset
 		emitter.m_FireParticles = true 
 	end
+end
+
+function start_super_piky()
+	local renderable = get_renderable_object("player", player_controller.m_Room, piky_mesh_name)
+	local emitter4 = particle_manager:get_resource(renderable.m_ParticleEmitter4)
+	emitter4.m_vPos = renderable:get_position()
+	emitter4:set_visible(true)
+	renderable:execute_action(anim_poly,0.1,0,1,false)
+	transition_super_piky = true		
+
 end
 ---- IA----
 ----PARADO----
