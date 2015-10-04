@@ -45,9 +45,19 @@ function set_boss_polis_visible(visible)
 	end
 end
 
---[[function summon_mik(mik_name)
-	local enemy = enemy_manager:get_enemy()
-end]]
+function summon_mik(mik_name)
+	local enemy = enemy_manager:get_enemy(mik_name)
+	if not enemy.m_isAlive then
+		enemy.m_isAlive = true
+		enemy.m_RenderableObject.m_Printable =true
+		enemy.m_RenderableObject:set_visible(true)
+		enemy_set_alive(mik_name)
+	else
+		enemy.m_RenderableObject.m_Printable =true
+		enemy.m_RenderableObject:set_visible(true)
+	end
+	enemy:m_FSM():newState("Parado")
+end
 ---- IA----
 ----PARADO----
 function chucky_boss_enter_stopped(name)
@@ -76,10 +86,10 @@ function chucky_boss_update_stopped(ElapsedTime, doComprobation, name)
 			check_call_miks = check_random_action (2)
 		end
 		
-		if enemy.m_Phases == 2 and not check_call_miks then
-			enemy:m_FSM():newState("Lanzar")
-		else
+		if check_call_miks then
 			enemy:m_FSM():newState("Llamar")
+		else
+			enemy:m_FSM():newState("Lanzar")
 		end
 	end
 	
@@ -98,11 +108,11 @@ function chucky_boss_exit_shoot(name)
 end
 
 function chucky_boss_update_shoot(ElapsedTime, doComprobation, name)
-	coreInstance:trace("Boss disparandooo")
+--	coreInstance:trace("Boss disparandooo")
 	local player_position = player_controller:get_position()
 	local enemy = enemy_manager:get_enemy(name)
 	rotate_yaw(enemy, ElapsedTime, player_position)
-	coreInstance:trace(tostring(enemy.m_RenderableObject:get_animation_time()))
+--	coreInstance:trace(tostring(enemy.m_RenderableObject:get_animation_time()))
 	if enemy.m_RenderableObject:get_animation_time() > 2 then
 		update_boss_shoot_cooldown(enemy, player_position)
 	end
@@ -168,9 +178,9 @@ function chucky_boss_update_waiting(ElapsedTime, doComprobation, name)
 end
 
 function check_random_action(bonus)
-	math.randomseed( os.time() )
-	math.random(); math.random(); math.random()
-	if tonumber(math.random(bonus) >=1 ) then
+	local rand = tonumber(math.random(bonus))
+	coreInstance:trace(tostring(rand))
+	if rand >=1  then
 		return true
 	end
 	return false
@@ -193,9 +203,11 @@ function chucky_boss_update_call(ElapsedTime, doComprobation, name)
 	if (enemy ~= nil) then
 		if not enemy.m_RenderableObject:is_action_animation_active() then
 			local array_mik = {"MikMik007", "MikMik007", "MikMik008", "MikMik009", "MikMik010", "MikMik011"}
-			--[[for local i = 1, table.getn(array_mik) do
+			for i = 1, table.getn(array_mik) do
 				summon_mik(array_mik[i])
-			end]]
+			end
+			all_boss_miks_killed = false
+			enemy:m_FSM():newState("Parado")
 		end
 	end
 end

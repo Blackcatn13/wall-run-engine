@@ -1,6 +1,7 @@
 --local coreInstance = CCoreLuaWrapper().m_CoreInstance
 --local physx_manager = coreInstance:get_phisics_manager()
-
+math.randomseed( os.time() )
+math.random(); math.random(); math.random()
 
 function fade(fade_time)
 	gui_manager:start_fade(fade_time)

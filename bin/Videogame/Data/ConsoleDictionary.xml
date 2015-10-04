@@ -20,4 +20,5 @@
  <word string = "coreInstance:trace(tostring("/>
  <word string = "enemy_manager:get_enemy("/>
  <word string = "enemy_manager:get_enemy('ChuckyBoss').m_Phases = "/>
+ <word string = "all_boss_miks_killed = "/>
 </ConsoleWords>
