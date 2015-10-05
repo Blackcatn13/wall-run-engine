@@ -204,12 +204,19 @@ void CPolyPlatform::ApplyPhysicsToPlayer(Vect3f direction, float dt) {
           }
         }
         if (isInside(l_playerPosition, m_Position)) {
-          float l_margenInferiorPlataforma = GetPhysicsSize().y + 0.9;
-          PLAYC->getPhysicController()->SetPosition(m_Position + Vect3f(0, -l_margenInferiorPlataforma, 0));
+         // float l_margenInferiorPlataforma = GetPhysicsSize().y + 0.9;
+			Vect3f l_NearestDirection = GetNearestExitDirection();
+			PLAYC->getPhysicController()->SetPosition(PLAYC->getPhysicController()->GetPosition() + (l_NearestDirection*m_Speed*dt));
         }
       }
     }//Final caso vertical/horizontal
   }
+}
+
+Vect3f CPolyPlatform::GetNearestExitDirection(){
+	Vect3f l_TempDirection =  PLAYC->GetPosition() - m_Position;
+	Vect3f l_DirectionXZ = Vect3f(l_TempDirection.x, 0.0f, l_TempDirection.z).Normalize();
+	 return Vect3f(l_DirectionXZ.x, 1, l_DirectionXZ.z);
 }
 
 bool CPolyPlatform::isAround(Vect3f vector1, Vect3f vector2) {

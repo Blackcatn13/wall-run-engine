@@ -101,13 +101,26 @@ void CSceneElement::InsertPhisic(Vect3f localPosition) {
 
 bool CSceneElement::isInside(Vect3f vector1, Vect3f vector2) {
   //FIX BUG DETECTA PLAYER INSIDE
-  float l_margenx = GetPhysicsSize().x + 0.0f;
+ 
+	float l_MargenXLeft = vector2.x - GetPhysicsSize().x;
+	float l_MargenXRight = vector2.x + GetPhysicsSize().x;
+
+	float l_MargenZFront = vector2.z + GetPhysicsSize().z;
+	float l_MargenZBack = vector2.z  - GetPhysicsSize().z;
+
+	float l_MargenYTop = vector2.y + GetPhysicsSize().y *2;
+	float l_MargenYDown = vector2.y - GetPhysicsSize().y *2;
+
+	if((vector1.x > l_MargenXLeft && vector1.x < l_MargenXRight) &&(vector1.y > l_MargenYDown && vector1.y < l_MargenYTop)&&(vector1.z > l_MargenZBack && vector1.z < l_MargenZFront))
+		return true;
+	return false;
+		/*float l_margenx = GetPhysicsSize().x + 0.0f;
   float l_margenz = GetPhysicsSize().z + 0.0f;
   float l_margeny = GetPhysicsSize().y + 0.0f;
   if ((vector1.x > vector2.x - l_margenx) && (vector1.x < vector2.x + l_margenx) && (vector1.y > vector2.y - l_margeny) && (vector1.y < vector2.y + l_margeny) && (vector1.z > vector2.z - l_margenz) && (vector1.z < vector2.z + l_margenz))
     return true;
   else
-    return false;
+    return false;*/
 }
 
 bool CSceneElement::isAround(Vect3f vector1, Vect3f vector2) {

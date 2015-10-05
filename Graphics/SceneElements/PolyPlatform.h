@@ -44,7 +44,7 @@ public:
     bool isAround(Vect3f vector1, Vect3f vector2);
     bool GetDifferencePositions(Vect3f m_Direction, Vect3f m_Position, Vect3f m_FinalPosition);
     int GetAxis(Vect3f direction);
-
+	Vect3f GetNearestExitDirection();
     bool IsActivated()
     {
         return m_Activated;
