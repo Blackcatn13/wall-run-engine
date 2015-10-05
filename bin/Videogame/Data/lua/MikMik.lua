@@ -9,7 +9,7 @@ local MikHeight = 0.7;
 function mikmik_enter_stopped(name)
 	--local enemy = enemy_manager:get_enemy(name)
 	--currentwp = wp1
-	coreInstance:trace("Entro y Estoy parado: " .. name)
+--	coreInstance:trace("Entro y Estoy parado: " .. name)
 	local enemy = enemy_manager:get_enemy(name)
 	enemy.m_CurrentTime = 0
 	enemy.m_RenderableObject:blend_cycle(0,1,0);
@@ -17,7 +17,7 @@ function mikmik_enter_stopped(name)
 		local temp_pose = Vect3f(enemy:get_platform():get_position().x-1, enemy:get_platform():get_position().y+2, enemy:get_platform():get_position().z-1)
 		enemy.m_RenderableObject:set_position(temp_pose)
 		enemy.m_PhysicController:set_position(temp_pose)
-		coreInstance:trace("Enemy stopped on platform position: "..tostring(enemy.m_RenderableObject:get_position().x)..", "..tostring(enemy.m_RenderableObject:get_position().y)..", "..tostring(enemy.m_RenderableObject:get_position().z))
+	--	coreInstance:trace("Enemy stopped on platform position: "..tostring(enemy.m_RenderableObject:get_position().x)..", "..tostring(enemy.m_RenderableObject:get_position().y)..", "..tostring(enemy.m_RenderableObject:get_position().z))
 	end
 	exclamation = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter2)
 	enemy.m_PhysicController:move(Vect3f(1, 0, 0) * enemy.m_Speed * coreInstance.m_ElapsedTime, coreInstance.m_ElapsedTime)
@@ -81,11 +81,11 @@ function mikmik_update_stopped(ElapsedTime, doComprobation, name)
 									
 					else --En caso de no tener waypoints que mire al player
 						if enemy.m_CurrentWp ~= nil and enemy.m_CurrentWp == enemy.m_OriginalPosition and enemy.m_Returning == true then
-							coreInstance:trace("Resucitando y andando!!!")
+						--	coreInstance:trace("Resucitando y andando!!!")
 							enemy:m_FSM():newState("Andar_WP")
 							enemy.m_Returning = false
 						else 
-							if player_distance < 500 then
+							if player_distance < 700 then
 								-- Animacion de andar
 								rotate_yaw(enemy, ElapsedTime, player_position)
 								--local billboard = billboard_manager:get_resource(enemy.m_RenderableObject.m_Billboard)
@@ -96,7 +96,7 @@ function mikmik_update_stopped(ElapsedTime, doComprobation, name)
 						end
 					end	
 				else
-					if player_distance < 500 then
+					if player_distance < 700 then
 						-- Animacion de andar
 						rotate_yaw(enemy, ElapsedTime, player_position)
 								
@@ -112,7 +112,7 @@ function mikmik_update_stopped(ElapsedTime, doComprobation, name)
 				end
 				if player.is_hit == false and tostring(temp_zone) == tostring(player.zone) then
 					enemy:m_FSM():newState("Perseguir_Player")
-					coreInstance:trace("A perseguiiiir")
+				--	coreInstance:trace("A perseguiiiir")
 				end
 			end
 		end
@@ -122,6 +122,7 @@ function mikmik_update_stopped(ElapsedTime, doComprobation, name)
 end
 
 function mikmik_enter_moving(name)
+--coreInstance:trace("Moviendose " .. name)
 	local enemy = enemy_manager:get_enemy(name)
 	enemy.m_RenderableObject:blend_cycle(1,1,0.2);
 	move_enemy_renderable(enemy, MikHeight);
@@ -168,6 +169,7 @@ function mikmik_update_moving(ElapsedTime, doComprobation, name)
 end
 
 function mikmik_enter_calcwp(name)
+--coreInstance:trace("Calculando: " .. name)
 	return 0
 end
 
@@ -181,6 +183,7 @@ function mikmik_exit_calcwp(name)
 end
 
 function mikmik_update_calcwp(ElapsedTime, doComprobation, name)
+
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil and enemy:get_wp_vector_size() > 0 then
 		enemy.m_CurrentWp = enemy:get_next_wp()
@@ -191,11 +194,12 @@ function mikmik_update_calcwp(ElapsedTime, doComprobation, name)
 end
 
 function mikmik_enter_attack_player(name)
+--coreInstance:trace("Atacando: " .. name)
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil and enemy:is_static() == false then -- en caso de no ser estatico
 		enemy.m_Speed = enemy.m_AttackSpeed
 		enemy.m_SpeedModified = true
-		enemy.m_RenderableObject:blend_cycle(1,1,0.2);
+		enemy.m_RenderableObject:blend_cycle(1,0.1,0.2);
 		exclamation = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter2)
 		if exclamation ~= nil then
 			exclamation:set_visible(true)
@@ -284,7 +288,7 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 				end
 			end
 			
-			if player_distance > 225 or (platform_distance ~= nil and platform_distance > 9 ) then
+			if player_distance > (enemy.m_AttackPlayerDistance * 2.5) or (platform_distance ~= nil and platform_distance > 9 ) then
 				enemy:m_FSM():newState("Parado")
 			else
 				local damageType = enemy:actualizar_hitbox() --esto setea take damage si le pegan
@@ -439,7 +443,7 @@ function mikmik_exit_dead(name)
 		enemy.m_CurrentTime = 0
 		enemy.m_Returning = false
 		enemy.m_RenderableObject:remove_action(3);
-		coreInstance:trace("setting alive")
+	--	coreInstance:trace("setting alive")
 	end
 end
 

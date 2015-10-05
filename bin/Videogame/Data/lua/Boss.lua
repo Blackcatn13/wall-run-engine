@@ -109,7 +109,7 @@ function chucky_boss_update_stopped(ElapsedTime, doComprobation, name)
 	if boss_timer >= enemy.m_CooldownTimer then
 		local check_call_miks = false 
 		if enemy.m_Phases == 1 and all_boss_miks_killed then
-			check_call_miks = check_random_action (2)
+			check_call_miks = check_random_action (3)
 		end
 		
 		if check_call_miks then
@@ -191,7 +191,7 @@ function chucky_boss_update_waiting(ElapsedTime, doComprobation, name)
 		update_shoot_boss(ElapsedTime, enemy)
 		--enemy:actualizar_hitbox()
 		if boss_projectile_returned and get_distance_between_points(enemy:get_position(), enemy.m_PosicionBala) < 5 then
-			if check_random_action(3) then
+			if check_random_action(4) then
 				enemy:m_FSM():newState("Devolver")
 			else
 				local mesh = get_renderable_object("solid",0, enemy.m_ProjectileName)
@@ -207,7 +207,7 @@ end
 function check_random_action(bonus)
 	local rand = tonumber(math.random(bonus))
 	coreInstance:trace(tostring(rand))
-	if rand >=1  then
+	if rand >=2  then
 		return true
 	end
 	return false

@@ -31,11 +31,11 @@
 	
 	<instance_enemy name="MikMik006" type="mikmik_easy" zone="6.0" attack_distance="15" platform="PlataformaMovil001_1"/>
 	
-	<instance_enemy name="MikMik007" type="mikmik_easy" zone="0.0" attack_distance="90" />
-	<instance_enemy name="MikMik008" type="mikmik_easy" zone="0.0" attack_distance="90" />
-	<instance_enemy name="MikMik009" type="mikmik_easy" zone="0.0" attack_distance="90" />
-	<instance_enemy name="MikMik010" type="mikmik_easy" zone="0.0" attack_distance="90" />
-	<instance_enemy name="MikMik011" type="mikmik_easy" zone="0.0" attack_distance="90" />
+	<instance_enemy name="MikMik007" type="mikmik_easy" zone="0.0" attack_distance="600" />
+	<instance_enemy name="MikMik008" type="mikmik_easy" zone="0.0" attack_distance="600" />
+	<instance_enemy name="MikMik009" type="mikmik_easy" zone="0.0" attack_distance="600" />
+	<instance_enemy name="MikMik010" type="mikmik_easy" zone="0.0" attack_distance="600" />
+	<instance_enemy name="MikMik011" type="mikmik_easy" zone="0.0" attack_distance="600" />
 
 	<!--<enemy name="Enemy2" type="easy" pos="8.0 2.0 -2.0" yaw="0.0" mesh="Enemy2" />
 	<enemy name="Enemy3" type="easy" pos="4.0 2.0 7.0" yaw="0.0" mesh="Enemy3" />-->

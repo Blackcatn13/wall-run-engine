@@ -141,8 +141,7 @@ CAIController::CAIController(CRenderableObject *rond, float speed, float turnSpe
   m_PhysicUserData->SetPaint(false);
   m_PhysicUserData->SetColor(colRED);
   Vect3f newPosition = Vect3f(rond->GetPosition().x, rond->GetPosition().y + controller_size.y, rond->GetPosition().z);
-  m_PhysicController = new CPhysicController(controller_size.x, controller_size.y, 45, 0.1, 0.3, ECG_ESCENE, m_PhysicUserData, newPosition, -gravity);//0.5,0.25
-
+  m_PhysicController = new CPhysicController(controller_size.x, controller_size.y, 45, 0.1, 0.9, ECG_ESCENE, m_PhysicUserData, newPosition, -gravity);//0.5,0.25
   PHYSXM->AddPhysicController(m_PhysicController);
 }
 //CAIController::CAIController(std::string mesh, std::string name, Vect3f position):
