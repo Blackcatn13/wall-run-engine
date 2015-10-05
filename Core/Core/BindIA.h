@@ -124,6 +124,7 @@ void RegisterAI() {
     .def("shoot_to_vector", &CEnemy::ShotToVector)
     .def("add_damage_player", &CEnemy::AddDamagePlayer )
     .def("get_platform", &CEnemy::GetPlatform)
+    .def("check_player_collision", &CEnemy::CheckPlayerCollision)
     /* .def("update", &CEnemy::Update)
      .def("render", &CEnemy::Render)*/
   ];

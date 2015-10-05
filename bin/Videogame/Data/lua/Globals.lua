@@ -36,8 +36,12 @@ gui_manager.m_sTransitionEffect = transition_effect
 fade_done = false
 first_load = true
 jump_enabled = true
-all_boss_miks_killed = false
+all_boss_miks_killed = true
+boss_miks_killed = 0
 piky_mesh_name = "Piky" --Piky o SuperPiky
+powerup_name = "disparoSuperPiky"
+current_shot_type = "rock"  -- rock /powerup
+transition_super_piky = false
 
 --Animaciones del Player
 --Piky

@@ -100,16 +100,34 @@ function update_boss_shoot_cooldown(enemy, player_position)
 	  enemy.m_IsOnCooldown = true;
       enemy.m_CurrentCooldown = enemy.m_CooldownTimer;
 	  boss_shoot(enemy:get_position(), enemy)
-	  enemy.m_DireccionBala = player_position - enemy:get_position()
-	  enemy.m_DireccionBala = Vect3f(enemy.m_DireccionBala.x, enemy.m_DireccionBala.y + 15, enemy.m_DireccionBala.z)
+	  enemy.m_DireccionBala = player_position - enemy.m_PosicionBala
+	  local vectPlayerXZ = Vect3f(player_position.x, 0, player_position.z);
+	  local vectEnemyXZ = Vect3f(enemy:get_position().x, 0, enemy:get_position().z);
+	  local vectDist = vectPlayerXZ - vectEnemyXZ;
+	  local distPlayerEnemy = vectDist:length();
+	  local inclinacion = (distPlayerEnemy - 11.6) / 3.4; -- valores hardcodeados
+	  enemy.m_DireccionBala = Vect3f(enemy.m_DireccionBala.x, enemy.m_DireccionBala.y + inclinacion, enemy.m_DireccionBala.z)
 	end
 end
 
 function boss_shoot(position, enemy)
-	if (enemy.m_isAlive) then
-		local projectile_position = Vect3f(position.x, position.y+2, position.z)
+	if (enemy.m_isAlive) then	
+		local enemyYaw = enemy:get_yaw() + (math.pi / 2);
+		local vectRight = Vect3f(math.cos(enemyYaw), 0, -math.sin(enemyYaw));
+		local projectile_position = Vect3f(position.x + 2 * vectRight.x, position.y+2.25, position.z + 2 * vectRight.z)
+	--	coreInstance:trace("position x "..tostring(projectile_position.x))
+	--	coreInstance:trace("position y "..tostring(projectile_position.y))
+	--	coreInstance:trace("position z "..tostring(projectile_position.z))
 		enemy.m_PosicionBala = projectile_position
-		local renderable_shoot = get_renderable_object("enemies", 0, enemy.m_ProjectileName)
+		local projectile_name = enemy.m_ProjectileName
+
+		if not player.super_piky_active and check_random_action(3) then
+			projectile_name = powerup_name
+			current_shot_type = "powerup"
+		else
+			current_shot_type = "rock"
+		end
+		local renderable_shoot = get_renderable_object("enemies", 0, projectile_name)
 		if renderable_shoot ~= nil then
 			-- poner sonido y particulas de disparo	
 			local emitter = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter)
@@ -120,6 +138,7 @@ function boss_shoot(position, enemy)
 			
 			
 			renderable_shoot:set_position(enemy.m_PosicionBala)
+			renderable_shoot:set_yaw(enemy:get_yaw());
 			renderable_shoot.m_Printable = true
 			renderable_shoot:set_visible(true)
 		end
@@ -177,7 +196,11 @@ end
 function update_shoot_boss(dt, enemy)
 	local gravityShot = 0.3;
  if (enemy.m_IsOnCooldown) then
-	local renderable_shoot = get_renderable_object("enemies", enemy.m_RenderableObject.m_Room, enemy.m_ProjectileName)
+	local projectile_name = enemy.m_ProjectileName
+	if current_shot_type == "powerup" then
+		projectile_name = powerup_name
+	end
+	local renderable_shoot = get_renderable_object("enemies", enemy.m_RenderableObject.m_Room, projectile_name)
     enemy.m_CurrentCooldown = enemy.m_CurrentCooldown - dt;
     if (enemy.m_CurrentCooldown < 0.0 or player.is_dead) then
       enemy.m_IsOnCooldown = false;
@@ -185,14 +208,32 @@ function update_shoot_boss(dt, enemy)
 	  enemy:m_FSM():newState("Parado")
     else 
 		enemy.m_DireccionBala = Vect3f(enemy.m_DireccionBala.x, enemy.m_DireccionBala.y - gravityShot * dt, enemy.m_DireccionBala.z);
-      enemy.m_PosicionBala = enemy:updtate_projectile_position(dt)
-	  renderable_shoot:set_position(enemy.m_PosicionBala)
-      if (check_player_shoot_collision(enemy, renderable_shoot)) then
-		delete_shooting(renderable_shoot)
-		enemy:m_FSM():newState("Parado")
-        enemy:add_damage_player();
-      end
-    end
+		enemy.m_PosicionBala = enemy:updtate_projectile_position(dt)
+		renderable_shoot:set_position(enemy.m_PosicionBala)
+		if (check_player_shoot_collision(enemy, renderable_shoot)) then
+			enemy.m_IsOnCooldown = false;
+			delete_shooting(renderable_shoot)
+			enemy:m_FSM():newState("Parado")
+			if current_shot_type =="powerup" then
+				start_super_piky()
+			else
+				enemy:add_damage_player();
+			end
+		end
+		local posXZBala = Vect3f(enemy.m_PosicionBala.x, 0, enemy.m_PosicionBala.z)
+		local posXZChucky = Vect3f(enemy:get_position().x, 0,enemy:get_position().z)
+		local distance = get_distance_between_points(posXZBala, posXZChucky)
+		--local posXZPlayer = Vect3f(player_controller:get_position().x,0,player_controller:get_position().z)
+		--local distance2 = get_distance_between_points(posXZPlayer, posXZChucky)
+		--coreInstance:trace("Distancia player al boss: "..tostring(distance2))
+		--coreInstance:trace(tostring(enemy.m_PosicionBala.y))
+		--coreInstance:trace("Distancia: "..tostring(distance))
+		if (distance > 450 and enemy.m_PosicionBala.y < -1) or (distance <=450 and enemy.m_PosicionBala.y < 2) then
+			enemy.m_IsOnCooldown = false;
+			delete_shooting(renderable_shoot)
+			enemy:m_FSM():newState("Parado")
+		end
+	end
   end
 end
 
@@ -214,8 +255,8 @@ function enemy_set_alive(name)
 	--enemy.m_PhysicController:set_radius(0.5)
 	enemy.m_MovedToDiePosition = false
 	enemy.m_IsDying = false
-	coreInstance:trace("Enemy "..name.." position: " ..tostring(enemy.m_PhysicController:get_position().x)..","..tostring(enemy.m_PhysicController:get_position().y)..","..tostring(enemy.m_PhysicController:get_position().z))
-	coreInstance:trace("Enemy "..name.. "position Renderable: " ..tostring(enemy.m_RenderableObject:get_position().x)..","..tostring(enemy.m_RenderableObject:get_position().y)..","..tostring(enemy.m_RenderableObject:get_position().z))
+	--coreInstance:trace("Enemy "..name.." position: " ..tostring(enemy.m_PhysicController:get_position().x)..","..tostring(enemy.m_PhysicController:get_position().y)..","..tostring(enemy.m_PhysicController:get_position().z))
+	--coreInstance:trace("Enemy "..name.. "position Renderable: " ..tostring(enemy.m_RenderableObject:get_position().x)..","..tostring(enemy.m_RenderableObject:get_position().y)..","..tostring(enemy.m_RenderableObject:get_position().z))
 	enemy:m_FSM():newState("Parado")
 end
 
@@ -233,7 +274,7 @@ end
 function show_or_hide(enemy, offset_position, ElapsedTime)
 	--local direction = Vect3f(0, 1, 0)
 	local temp_position = Vect3f(enemy:get_position().x, enemy:get_position().y,enemy:get_position().z)
-	coreInstance:trace(tostring(temp_position.x) .. ", ".. tostring(temp_position.y))
+	--coreInstance:trace(tostring(temp_position.x) .. ", ".. tostring(temp_position.y))
 	if not enemy.m_Hide then
 	--	direction.y = -1
 		if enemy:get_position().y > enemy.m_OriginalPosition.y then

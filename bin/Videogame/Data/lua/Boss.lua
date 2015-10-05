@@ -1,4 +1,3 @@
-local current_shot_type = 0  --0: Normal, 1:powerup
 local boss_timer = 0.0
 
 function start_boss()
@@ -28,7 +27,11 @@ function start_boss()
 	chucky:m_FSM():newState("Parado")
 	cadira:set_visible(false)
 	set_boss_polis_visible(true)
+	all_boss_miks_killed = true
+	boss_miks_killed = 0
 	chucky.m_BossRunning = true
+	set_checkpoint("boss_checkpoint", nil)
+	player.attack_enabled = true
 end
 
 function set_boss_polis_visible(visible)
@@ -56,7 +59,31 @@ function summon_mik(mik_name)
 		enemy.m_RenderableObject.m_Printable =true
 		enemy.m_RenderableObject:set_visible(true)
 	end
+	
 	enemy:m_FSM():newState("Parado")
+end
+
+function fire_mik_summon_particles(mik_name)
+	local enemy = enemy_manager:get_enemy(mik_name)
+	local emitter = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter)
+	if emitter ~= nil then
+		local position = Vect3f(enemy.m_RenderableObject:get_position().x, enemy.m_RenderableObject:get_position().y, enemy.m_RenderableObject:get_position().z) 
+		if position.y > 500 then
+			position.y = position.y -1000
+		end
+		emitter.m_vPos = position + enemy.m_RenderableObject.m_EmitterOffset
+		emitter.m_FireParticles = true 
+	end
+end
+
+function start_super_piky()
+	local renderable = get_renderable_object("player", player_controller.m_Room, piky_mesh_name)
+	local emitter4 = particle_manager:get_resource(renderable.m_ParticleEmitter4)
+	emitter4.m_vPos = renderable:get_position()
+	emitter4:set_visible(true)
+	renderable:execute_action(anim_poly,0.1,0,1,false)
+	transition_super_piky = true		
+
 end
 ---- IA----
 ----PARADO----
@@ -83,7 +110,7 @@ function chucky_boss_update_stopped(ElapsedTime, doComprobation, name)
 	if boss_timer >= enemy.m_CooldownTimer then
 		local check_call_miks = false 
 		if enemy.m_Phases == 1 and all_boss_miks_killed then
-			check_call_miks = check_random_action (2)
+			check_call_miks = check_random_action (3)
 		end
 		
 		if check_call_miks then
@@ -116,6 +143,7 @@ function chucky_boss_update_shoot(ElapsedTime, doComprobation, name)
 	if enemy.m_RenderableObject:get_animation_time() > 2 then
 		update_boss_shoot_cooldown(enemy, player_position)
 	end
+	coreInstance:trace("Distancia: "..tostring(player_controller:get_position().y))
 	if (enemy ~= nil) then
 		--enemy:actualizar_disparo(ElapsedTime)	
 
@@ -164,7 +192,7 @@ function chucky_boss_update_waiting(ElapsedTime, doComprobation, name)
 		update_shoot_boss(ElapsedTime, enemy)
 		--enemy:actualizar_hitbox()
 		if boss_projectile_returned and get_distance_between_points(enemy:get_position(), enemy.m_PosicionBala) < 5 then
-			if check_random_action(3) then
+			if check_random_action(4) then
 				enemy:m_FSM():newState("Devolver")
 			else
 				local mesh = get_renderable_object("solid",0, enemy.m_ProjectileName)
@@ -180,7 +208,7 @@ end
 function check_random_action(bonus)
 	local rand = tonumber(math.random(bonus))
 	coreInstance:trace(tostring(rand))
-	if rand >=1  then
+	if rand >=2  then
 		return true
 	end
 	return false
@@ -205,8 +233,10 @@ function chucky_boss_update_call(ElapsedTime, doComprobation, name)
 			local array_mik = {"MikMik007", "MikMik007", "MikMik008", "MikMik009", "MikMik010", "MikMik011"}
 			for i = 1, table.getn(array_mik) do
 				summon_mik(array_mik[i])
+				fire_mik_summon_particles(array_mik[i])
 			end
 			all_boss_miks_killed = false
+			boss_miks_killed = 0
 			enemy:m_FSM():newState("Parado")
 		end
 	end

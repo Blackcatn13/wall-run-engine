@@ -320,7 +320,8 @@ function reset_game()
 	enemy_manager:get_enemy("MikMik009"):m_FSM():newState("Waiting")
 	enemy_manager:get_enemy("MikMik010"):m_FSM():newState("Waiting")
 	enemy_manager:get_enemy("MikMik011"):m_FSM():newState("Waiting")
-	
+	all_boss_miks_killed = true
+	boss_miks_killed = 0
 	local boss = enemy_manager:get_enemy(boss_mesh_name)
 	if boss.m_BossRunning then
 		boss.m_BossRunning = false
