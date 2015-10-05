@@ -557,12 +557,16 @@ function trigger_puzzle()
 	coreInstance:get_cinematic_controller():execute("Door");
 end
 
-function checkpoint_3d_to_2d(offset_axis, trigger_name, renderable_object)
+function cambiozona_3d_to_2d(offset_axis, room_number)
 	trigger_set_2D(offset_axis)
-	set_checkpoint(trigger_name, renderable_object)
+	set_player_room(room_number, "false")
+	--activate_invisible_wall(wall_name, room_number)
+	--set_checkpoint(trigger_name, renderable_object)
 end
 
-function checkpoint_2d_to_3d(trigger_name, renderable_object)
+function cambiozona_2d_to_3d(room_number)
 	trigger_set_3D()
-	set_checkpoint(trigger_name, renderable_object)
+	set_player_room(room_number, "false")
+	--activate_invisible_wall(wall_name, room_number)
+	--set_checkpoint(trigger_name, renderable_object)
 end
