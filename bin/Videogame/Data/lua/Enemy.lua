@@ -220,9 +220,15 @@ function update_shoot_boss(dt, enemy)
 				enemy:add_damage_player();
 			end
 		end
-		local distance = get_distance_between_points(enemy.m_PosicionBala, enemy:get_position())
-	--	coreInstance:trace(tostring(enemy.m_PosicionBala.y))
-		if (distance > 600 and enemy.m_PosicionBala.y < -1) or (distance <=600 and enemy.m_PosicionBala.y < 2) then
+		local posXZBala = Vect3f(enemy.m_PosicionBala.x, 0, enemy.m_PosicionBala.z)
+		local posXZChucky = Vect3f(enemy:get_position().x, 0,enemy:get_position().z)
+		local distance = get_distance_between_points(posXZBala, posXZChucky)
+		--local posXZPlayer = Vect3f(player_controller:get_position().x,0,player_controller:get_position().z)
+		--local distance2 = get_distance_between_points(posXZPlayer, posXZChucky)
+		--coreInstance:trace("Distancia player al boss: "..tostring(distance2))
+		--coreInstance:trace(tostring(enemy.m_PosicionBala.y))
+		--coreInstance:trace("Distancia: "..tostring(distance))
+		if (distance > 450 and enemy.m_PosicionBala.y < -1) or (distance <=450 and enemy.m_PosicionBala.y < 2) then
 			enemy.m_IsOnCooldown = false;
 			delete_shooting(renderable_shoot)
 			enemy:m_FSM():newState("Parado")
