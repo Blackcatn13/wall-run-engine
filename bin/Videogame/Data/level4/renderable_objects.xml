@@ -834,7 +834,7 @@
 	<mesh_instance name="LavaFlow" core="LavaFlow" pos="544.678772 13.031180 -127.100945" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="lava"/>
 
 	<platform name="MenuSphere" core="MenuSphere" type="static" pos="-920.000 -14.000 -1.500" yaw="-0.6280" pitch="0.0" roll="0.0" scale="2.5 2.5 2.5" visible="true" phisic_size="5.31929 5.31929 5.31929" layer="solid" use_phisics_mesh="false" room="10"/>
-	<platform name="MenuBackground" core="MenuBackground" type="static" pos="-915.000 2.000 -20.000" yaw="3.14" pitch="1.5708" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="25.1471 15.01 5.06561e-005" layer="solid" room="10"/>
+	<platform name="MenuBackground" core="MenuBackground" type="static" pos="-930.000 2.000 -30.000" yaw="3.14" pitch="1.5708" roll="0.0" scale="1.5 1.5 1.5" visible="true" phisic_size="25.1471 15.01 5.06561e-005" layer="solid" room="10"/>
 
 	<mesh_instance name="CheckPointDisabledStand006" core="CheckPointDisabledStand001" pos="561.145142 14.998256 -386.698212" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="CheckPointDisabledStand007" core="CheckPointDisabledStand001" pos="542.091248 4.194057 -527.458862" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
