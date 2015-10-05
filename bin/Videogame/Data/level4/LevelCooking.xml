@@ -166,4 +166,5 @@
 	<Physx_mesh name="Teleport_inactive" filename="Data\level4\meshes\Teleport_inactive.phsx"/>
 	<Physx_mesh name="BossCirculoExterior" filename="Data\level4\meshes\BossCirculoExterior.phsx"/>
 	<Physx_mesh name="BossCirculoInterior" filename="Data\level4\meshes\BossCirculoInterior.phsx"/>
+	<Physx_mesh name="Sala_6_ColumnaLateral_001" filename="Data\level4\meshes\Sala_6_ColumnaLateral_001.phsx"/>
 </Physx_meshes>

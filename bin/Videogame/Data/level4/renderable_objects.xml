@@ -649,20 +649,20 @@
 	<mesh_instance name="Sala_6_Cara_lava_010" core="Sala_6_Cara_lava_010" pos="519.048767 -2.097493 -445.774872" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_6_Cara_lava_011" core="Sala_6_Cara_lava_011" pos="519.048767 -2.097493 -429.838318" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_6_Cara_lava_012" core="Sala_6_Cara_lava_012" pos="519.048767 -2.097493 -413.447479" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_LuzPared_001" core="Sala_6_LuzPared_001" pos="547.773987 11.482485 -509.687164" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="3" layer="solid"/>
+	<mesh_instance name="Sala_6_LuzPared_001" core="Sala_6_LuzPared_001" pos="547.773987 11.482485 -509.687164" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_6_LuzPared_002" core="Sala_6_LuzPared_002" pos="528.958557 11.482485 -509.687164" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_LuzPared_003" core="Sala_6_LuzPared_003" pos="511.045746 11.482485 -498.594116" yaw="-1.5708" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_LuzPared_004" core="Sala_6_LuzPared_004" pos="511.045746 11.482485 -480.693939" yaw="-1.5708" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_LuzPared_005" core="Sala_6_LuzPared_005" pos="511.045746 11.482485 -463.515625" yaw="-1.5708" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_LuzPared_006" core="Sala_6_LuzPared_006" pos="511.045746 11.482485 -445.210297" yaw="-1.5708" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_LuzPared_007" core="Sala_6_LuzPared_007" pos="511.045746 11.482485 -427.295837" yaw="-1.5708" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_LuzPared_008" core="Sala_6_LuzPared_008" pos="511.045746 11.482485 -409.282349" yaw="-1.5708" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_LuzPared_009" core="Sala_6_LuzPared_009" pos="595.737000 11.482485 -409.282349" yaw="1.5708" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_LuzPared_010" core="Sala_6_LuzPared_010" pos="595.737000 11.482485 -427.263824" yaw="1.5708" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_LuzPared_011" core="Sala_6_LuzPared_011" pos="595.737000 11.482485 -446.028107" yaw="1.5708" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_LuzPared_012" core="Sala_6_LuzPared_012" pos="595.737000 11.482485 -463.034973" yaw="1.5708" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_LuzPared_013" core="Sala_6_LuzPared_013" pos="595.737000 11.482485 -481.263611" yaw="1.5708" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_LuzPared_014" core="Sala_6_LuzPared_014" pos="595.737000 11.482485 -498.411194" yaw="1.5708" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="Sala_6_LuzPared_003" core="Sala_6_LuzPared_003" pos="511.045746 11.482485 -498.594116" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="Sala_6_LuzPared_004" core="Sala_6_LuzPared_004" pos="511.045746 11.482485 -480.693939" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="Sala_6_LuzPared_005" core="Sala_6_LuzPared_005" pos="511.045746 11.482485 -463.515625" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="Sala_6_LuzPared_006" core="Sala_6_LuzPared_006" pos="511.045746 11.482485 -445.210297" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="Sala_6_LuzPared_007" core="Sala_6_LuzPared_007" pos="511.045746 11.482485 -427.295837" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="Sala_6_LuzPared_008" core="Sala_6_LuzPared_008" pos="511.045746 11.482485 -409.282349" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="Sala_6_LuzPared_024" core="Sala_6_LuzPared_024" pos="500.948242 11.482485 -564.567444" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="" layer="solid"/>
+	<mesh_instance name="Sala_6_LuzPared_010" core="Sala_6_LuzPared_010" pos="595.737000 11.482485 -427.263824" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="Sala_6_LuzPared_011" core="Sala_6_LuzPared_011" pos="595.737000 11.482485 -446.028107" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="Sala_6_LuzPared_012" core="Sala_6_LuzPared_012" pos="595.737000 11.482485 -463.034973" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="Sala_6_LuzPared_013" core="Sala_6_LuzPared_013" pos="595.737000 11.482485 -481.263611" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="Sala_6_LuzPared_014" core="Sala_6_LuzPared_014" pos="595.737000 11.482485 -498.411194" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_6_LuzPared_015" core="Sala_6_LuzPared_015" pos="564.564270 11.482485 -553.203003" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_6_LuzPared_016" core="Sala_6_LuzPared_016" pos="563.968872 11.482485 -565.272827" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_6_LuzPared_017" core="Sala_6_LuzPared_017" pos="562.927307 11.482485 -577.631287" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
@@ -670,8 +670,8 @@
 	<mesh_instance name="Sala_6_LuzPared_019" core="Sala_6_LuzPared_019" pos="536.753540 13.568911 -618.549194" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_6_LuzPared_020" core="Sala_6_LuzPared_020" pos="504.714630 11.482485 -595.639832" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_6_LuzPared_021" core="Sala_6_LuzPared_021" pos="500.401733 11.482485 -577.444946" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_LuzPared_022" core="Sala_6_LuzPared_022" pos="501.015320 11.482485 -564.616089" yaw="-1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
-	<mesh_instance name="Sala_6_LuzPared_023" core="Sala_6_LuzPared_023" pos="506.010559 11.482485 -545.844727" yaw="-1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="Sala_6_LuzPared_022" core="Sala_6_LuzPared_022" pos="501.015320 11.482485 -564.616089" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
+	<mesh_instance name="Sala_6_LuzPared_023" core="Sala_6_LuzPared_023" pos="506.010559 11.482485 -545.844727" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_6_LlumDeSostre_001" core="Sala_6_LlumDeSostre_001" pos="532.333984 20.174856 -490.856445" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_6_LlumDeSostre_002" core="Sala_6_LlumDeSostre_002" pos="534.180176 20.174856 -464.445587" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="Sala_6_LlumDeSostre_003" core="Sala_6_LlumDeSostre_003" pos="534.180176 20.174856 -420.580109" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
