@@ -30,6 +30,7 @@ function start_boss()
 	all_boss_miks_killed = true
 	boss_miks_killed = 0
 	chucky.m_BossRunning = true
+	set_checkpoint("boss_checkpoint", nil)
 	player.attack_enabled = true
 end
 

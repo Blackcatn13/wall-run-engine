@@ -269,9 +269,7 @@ function Player.new()
 		ChuckyDesapears()
 		
 		local boss = enemy_manager:get_enemy("ChuckyBoss")
-		if boss.m_BossRunning then
-			boss.m_BossRunning = false
-		end
+	
 		
 		if self.num_lives == 0 then
 			--game over
@@ -310,6 +308,9 @@ function Player.new()
 		self.has_ass_burned = false
 		self.set_super_piky(false)
 		--self.activating_triggers = true
+		if boss.m_BossRunning and self.num_lives > 0 then
+			start_boss()
+		end
 	end
 	
 	function self.remove_animations(_renderable)
