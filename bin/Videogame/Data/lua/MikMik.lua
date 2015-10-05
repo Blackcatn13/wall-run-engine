@@ -291,23 +291,28 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 			if player_distance > (enemy.m_AttackPlayerDistance * 2.5) or (platform_distance ~= nil and platform_distance > 9 ) then
 				enemy:m_FSM():newState("Parado")
 			else
-				local damageType = enemy:actualizar_hitbox() --esto setea take damage si le pegan
+				--local damageType = enemy:actualizar_hitbox() --esto setea take damage si le pegan
+				local damageType = enemy:check_player_collision()
 				-- damage 1 : player pega con ataque
 				-- damage 2 : player pega con salto
 				-- damage 3 : enemy pega player
 				-- damage 4 : no hay damage, el player se imanta a la posicion del enemy
 				-- damage 0 : nada
-				if damageType == 3 then
+				if damageType == 3 and not player.super_piky_active then
 					enemy.m_RenderableObject:clear_cycle(0,0.2);
 					enemy.m_RenderableObject:clear_cycle(1,0.2);
 					enemy.m_RenderableObject:execute_action(2,0.1,0,1,true);
 					enemy.m_isAttacking = true;
-				elseif damageType == 1 then
+					enemy:add_damage_player()
+				elseif damageType == 1 or (damageType == 3 and player.super_piky_active)then
+					coreInstance:trace("Damage type: "..tostring(damageType))
+					coreInstance:trace("SuperPiky: "..tostring(player.super_piky_active))
 					enemy.m_time_to_fly = true;
 					enemy.m_playAnimationDead = false;
 					enemy.m_flyVec = Vect3f(enemyPosXZ.x - playerPosXZ.x, 0,enemyPosXZ.z - playerPosXZ.z);
 					enemy.m_flyVec:normalize(1);
 					enemy.m_flyVec = Vect3f(enemy.m_flyVec.x, flyInclination, enemy.m_flyVec.z);
+					enemy:m_FSM():newState("Take_Damage")
 					if enemy:get_wp_vector_size() > 0 then
 						local dead_pos = enemy.m_PhysicController:get_position()
 						enemy.m_OriginalPosition = Vect3f(dead_pos.x,dead_pos.y,dead_pos.z)
@@ -316,6 +321,7 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 				elseif damageType == 2 then
 					player_controller.m_executeDoubleJump = true;
 					enemy.m_playAnimationDead = true;
+					enemy:m_FSM():newState("Take_Damage")
 					if enemy:get_wp_vector_size() > 0 then
 						local dead_pos = enemy.m_PhysicController:get_position()
 						enemy.m_OriginalPosition = Vect3f(dead_pos.x,dead_pos.y,dead_pos.z)
