@@ -38,7 +38,7 @@
 	<mesh_instance name="ORO3" core="ORO3" pos="-0.174196 1.363649 -14.681000" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="0"/>
 	<mesh_instance name="PilarQuad001" core="PilarQuad001" pos="8.388683 1.227661 9.618172" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="0"/>
 	<mesh_instance name="SUPORT ANTORCHA012" core="SUPORT ANTORCHA012" pos="-59.875648 3.739071 -28.452377" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="0"/>
-	<mesh_instance name="PARED_TIP2_003" core="PARED_TIP2_003" pos="-62.577660 0.000007 -34.306442" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="PARED_TIP2_003" core="PARED_TIP2_003" pos="-35.560001 4.000113 -37.716335" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
 	<mesh_instance name="PARED_TIP3_007" core="PARED_TIP3_007" pos="-24.000145 4.000118 -45.884838" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
 	<mesh_instance name="ANTORCHA013" core="ANTORCHA013" pos="-46.536671 3.568692 -19.880173" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="0"/>
 	<mesh_instance name="PARED_TIP1_004" core="PARED_TIP1_004" pos="40.014263 4.000007 -32.471478" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="0"/>
