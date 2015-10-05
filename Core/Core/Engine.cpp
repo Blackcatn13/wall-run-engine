@@ -25,7 +25,7 @@
 #define APPLICATION_NAME	"VIDEOGAME"
 
 CEngine::CEngine() :
-  m_Timer(1),
+  m_Timer(30),
   m_Process(NULL),
   m_Core(NULL),
   m_Conf_info(),
