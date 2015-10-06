@@ -32,9 +32,38 @@
 		<Instance size="2.0 2.0" position="585.31 28.6201 -208.846"/>
 		<Instance size="2.0 2.0" position="592.992 22.7679 -278.861"/>
 		<Instance size="2.0 2.0" position="581.711 22.7652 -343.333"/>
+
 		<Instance size="2.0 2.0" position="581.709 12.34 -420.442"/>
-		<Instance size="2.0 2.0" position="595.614 13.607 -498.512"/>
+		<Instance size="2.0 2.0" position="533.825 12.34 -420.753"/>
+		<Instance size="2.0 2.0" position="533.837 12.34 -464.55"/>
+		<Instance size="2.0 2.0" position="531.99 12.34 -490.982"/>
+		<Instance size="2.0 2.0" position="581.726 12.34 -456.748"/>
 		<Instance size="2.0 2.0" position="515.565 6.614 -561.564"/>
+		<Instance size="2.0 2.0" position="522.654 6.614 -537.211"/>
+		<Instance size="2.0 2.0" position="549.248 6.614 -572.341"/>
+		<Instance size="2.0 2.0" position="515.648 6.614 -587.92"/>
+		<Instance size="2.0 2.0" position="595.614 14.107 -498.512"/>
+		<Instance size="2.0 2.0" position="595.623 14.107 -480.984"/>
+		<Instance size="2.0 2.0" position="595.623 14.107 -462.778"/>
+		<Instance size="2.0 2.0" position="595.623 14.107 -445.899"/>
+		<Instance size="2.0 2.0" position="595.623 14.107 -427.058"/>
+		<Instance size="2.0 2.0" position="595.623 14.107 -408.912"/>
+		<Instance size="2.0 2.0" position="511.256 14.107 -409.409"/>
+		<Instance size="2.0 2.0" position="511.256 14.107 -427.66"/>
+		<Instance size="2.0 2.0" position="511.256 14.107 -445.899"/>
+		<Instance size="2.0 2.0" position="511.256 14.107 -462.778"/>
+		<Instance size="2.0 2.0" position="511.256 14.107 -480.984"/>
+		<Instance size="2.0 2.0" position="511.256 14.107 -498.512"/>
+		<Instance size="2.0 2.0" position="529.536 14.107 -509.347"/>
+		<Instance size="2.0 2.0" position="548.229 14.107 -509.347"/>
+		<Instance size="2.0 2.0" position="564.898 14.107 -553.297"/>
+		<Instance size="2.0 2.0" position="564.229 14.107 -565.24"/>
+		<Instance size="2.0 2.0" position="563.317 14.107 -577.719"/>
+		<Instance size="2.0 2.0" position="561.433 14.107 -590.064"/>
+		<Instance size="2.0 2.0" position="504.569 14.107 -595.678"/>
+		<Instance size="2.0 2.0" position="500.2 13.607 -577.46"/>
+		<Instance size="2.0 2.0" position="501.008 13.607 -564.856"/>
+		<Instance size="2.0 2.0" position="506.073 13.607 -546.059"/>
 		<Instance size="2.0 2.0" position="536.831 15.479 -618.373"/>
 	</instanced_billboard>
 	
