@@ -283,7 +283,7 @@ void CGUIManager::Update (float elapsedTime) {
 }
 
 void CGUIManager::RenderTransitionEffect(CGraphicsManager *renderManager) {
-  if (m_sTransitionEffect.m_bDoEffect) {
+  if (m_sTransitionEffect.m_bDoEffect && !m_isPaused) {
     switch (m_sTransitionEffect.m_eType) {
       case TE_SHADOW: {
         //Dibujamos un quad2d en toda la pantalla:
@@ -330,7 +330,7 @@ void CGUIManager::RenderTransitionEffect(CGraphicsManager *renderManager) {
 }
 
 bool CGUIManager::UpdateTransitionEffect (float elapsedTime) {
-  if (m_sTransitionEffect.m_bDoEffect) {
+  if (m_sTransitionEffect.m_bDoEffect && !m_isPaused) {
     m_sTransitionEffect.m_fTimeCounter += elapsedTime;
     if (!m_sTransitionEffect.m_bActiveWindows && m_sTransitionEffect.m_fTimeCounter > m_sTransitionEffect.m_fTransitionTime * 0.5f) {
       ActiveWindows(m_sTransitionEffect.m_sWindowsName);

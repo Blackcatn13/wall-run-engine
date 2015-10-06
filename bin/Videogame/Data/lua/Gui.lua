@@ -82,7 +82,9 @@ function check_death_fade()
 			fade(2)
 			
 		else
-			black_screen_timer = black_screen_timer +1 *coreInstance.m_ElapsedTime
+			if not gui_manager:get_is_paused() then
+				black_screen_timer = black_screen_timer +1 *coreInstance.m_ElapsedTime
+			end
 		end
 	elseif player.is_dead and gui_manager:is_transition_effect_active() and fade_step == 3 then
 		if gui_manager.m_sTransitionEffect.m_currentState > (gui_manager.m_sTransitionEffect.m_fTransitionTime *0.5) then	
@@ -135,7 +137,9 @@ function ManagerGUIHearts()
 			gui_manager:set_position_element("VidesGUI", positionMin, positionYGUI);
 			gui_manager:set_position_element("VidesNumber", positionMin+9, positionYNum);
 			gui_manager:set_position_element("VidesNumberShadow", positionMin+9+textShadowDifference, positionYNum+textShadowDifference);
-			gui_manager:set_count_heart(count + gui_manager:get_dt());
+			if not gui_manager:get_is_paused() then
+				gui_manager:set_count_heart(count + gui_manager:get_dt());
+			end
 		end
 	end
 end
