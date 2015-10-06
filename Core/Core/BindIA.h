@@ -165,6 +165,7 @@ void RegisterAI() {
     .def(constructor<CXMLTreeNode & >())
     .property("m_Phases", &CBossEnemy::getPhases, &CBossEnemy::setPhases)
     .property("m_BossRunning", &CBossEnemy::getBossRunning, &CBossEnemy::setBossRunning)
+    .property("m_TiempoBalaOriginal", &CBossEnemy::getTiempoBalaOriginal, &CBossEnemy::setTiempoBalaOriginal)
   ];
 
   luabind::module(LUA_STATE) [

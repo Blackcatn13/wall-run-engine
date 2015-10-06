@@ -12,6 +12,7 @@ class CBossEnemy : public CEnemy {
  private:
   int m_Phases;
   bool m_BossRunning;
+  float m_TiempoBalaOriginal;
 
 
 
@@ -22,6 +23,7 @@ class CBossEnemy : public CEnemy {
   virtual void Render();
   GET_SET(int, Phases)
   GET_SET(bool, BossRunning)
+  GET_SET(float, TiempoBalaOriginal);
 };
 
 #endif
