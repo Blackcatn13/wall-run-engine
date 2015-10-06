@@ -1,5 +1,7 @@
 local GameoverCount = 0;
 local gui_visible = true
+local black_screen_timer = 0
+local max_count_timer = 3.0
 
 function check_input_controller_map()
 	if inputm:has_game_pad(1) then
@@ -55,6 +57,41 @@ function onUpdateWindowDisplayGUI()
 			gui_visible = true
 		end
 	end
+	
+	check_death_fade()
+	
+end
+
+function check_death_fade()
+	if player.is_dead and gui_manager:is_transition_effect_active() and fade_step == 1 then
+	coreInstance:trace(tostring(gui_manager.m_sTransitionEffect.m_currentState))
+		if gui_manager.m_sTransitionEffect.m_currentState > (gui_manager.m_sTransitionEffect.m_fTransitionTime *0.5) then
+			
+			--coreInstance:trace("Fading step 1")
+			gui_manager:set_visible_gui_element("BlackScreen", true)
+			fade_step = 2
+		end
+	elseif player.is_dead and not gui_manager:is_transition_effect_active() and fade_step == 2 then
+		coreInstance:trace("Pantalla negra")
+		if gui_manager:get_is_displayed_heart() == false then
+			gui_manager:set_is_displayed_heart(true);
+		end
+		if black_screen_timer >= max_count_timer then
+			black_screen_timer = 0.0
+			fade_step = 3
+			fade(2)
+			
+		else
+			black_screen_timer = black_screen_timer +1 *coreInstance.m_ElapsedTime
+		end
+	elseif player.is_dead and gui_manager:is_transition_effect_active() and fade_step == 3 then
+		if gui_manager.m_sTransitionEffect.m_currentState > (gui_manager.m_sTransitionEffect.m_fTransitionTime *0.5) then	
+			coreInstance:trace("Ya toca quitar la pantalla negra")
+			player.check_death_actions()
+			gui_manager:set_visible_gui_element("BlackScreen", false)
+			fade_step = 0
+		end
+	end
 end
 
 function set_visible_gui_elements(visible)
@@ -73,7 +110,6 @@ function ManagerGUIHearts()
 	local posPixelitesText = gui_manager:get_position_x_element("VidesNumber");
 	
 	local count = gui_manager:get_count_heart();
-	
 	local positionMin = 2;
 	local positionMax = -20;
 	local positionYGUI = 44;
@@ -173,7 +209,7 @@ end
 
 function GameOver()
 	--GameOver	
-	if GameoverCount > 3 then
+	if GameoverCount > 5 then
 		GameoverCount = 0;
 		reset_game();
 		first_time_main_menu = true

@@ -248,7 +248,7 @@ function reset_game()
 	--Player Lifes + Pixelites
 	player.num_hearts = 3;
 	gui_manager:set_image('LifeGUI','Life3')
-	player.num_lives = 3;
+	player.num_lifes = 3;
 	--player.visited_checkpoints = {}
 	
 	player.zone = 1

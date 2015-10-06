@@ -1,7 +1,7 @@
 Player = {}
 
 local num_hearts = 0
-local num_lives = 0
+local num_lifes = 0
 local instance = 0
 --local last_checkpoint = nil
 local last_spikes_position = nil
@@ -12,9 +12,9 @@ function Player.new()
     local self = {}    -- the new instance
    -- setmetatable( new_inst, Player_mt ) -- all instances share the same metatable
 	self.MAXHEARTS = 3
-	self.MAXLIVES = 3
+	self.MAXLIFES = 3
 	self.num_hearts = self.MAXHEARTS
-	self.num_lives = self.MAXLIVES
+	self.num_lifes = self.MAXLIFES
 	self.instance = self
 	self.pixelites = 0
 	self.last_spikes_position = Vect3f(0.0, 0.0, 0.0)
@@ -205,14 +205,14 @@ function Player.new()
 			self.remove_animations(renderable_piky_mesh)
 			if not self.has_ass_burned then
 				if not self.dead_in_hole then -- Si cae por una agujero no tiene animacion de caida
-					if self.num_lives == 1 then
-						renderable_piky_mesh:execute_action(anim_death,0,0.3,1,false) --animacion de muerto GameOver
+					if self.num_lifes == 1 then
+						renderable_piky_mesh:execute_action(anim_death,0,0.3,1,true) --animacion de muerto GameOver
 					else
 						renderable_piky_mesh:execute_action(anim_death_retry,0,0.3,1,false) --animacion de muerto
 					end								
 				end
 			else
-				renderable_piky_mesh:execute_action(anim_BurnJump,0,0.3,1,false) -- animacion de piky tostada
+				renderable_piky_mesh:execute_action(anim_BurnJump,0,0.3,1,true) -- animacion de piky tostada
 				local emitter2 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter2)
 				if emitter2:get_visible() == false then
 					emitter2:set_visible(true)
@@ -221,8 +221,8 @@ function Player.new()
 			end
 			local coreInstance = CCoreLuaWrapper().m_CoreInstance;
 			self.coreInstance:trace("player dies")
-			self.num_lives = self.num_lives - 1
-			if self.num_lives > 0 then
+			self.num_lifes = self.num_lifes - 1
+			--[[if self.num_lifes > 0 then
 				if not self.has_ass_burned and not self.dead_in_hole then
 					fade(6)
 				elseif self.has_ass_burned and not self.dead_in_hole then
@@ -232,10 +232,10 @@ function Player.new()
 				end
 			else
 				fade(4)
-			end
-			gui_manager:set_is_displayed_heart(true);
+			end]]
+			--gui_manager:set_is_displayed_heart(true);
 			gui_manager:set_count_heart(0.0);
-			gui_manager:set_num_heart( self.num_lives );	
+			gui_manager:set_num_heart( self.num_lifes );	
 			local emitter3 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter3)
 			emitter3:set_visible(false)
 			
@@ -267,11 +267,12 @@ function Player.new()
 		end
 		--Chuky Desaparece
 		ChuckyDesapears()
-		
+		renderable_piky_mesh:remove_action(anim_death)
+		renderable_piky_mesh:remove_action(anim_BurnJump)
 		local boss = enemy_manager:get_enemy("ChuckyBoss")
 	
 		
-		if self.num_lives == 0 then
+		if self.num_lifes == 0 then
 			--game over
 			self.coreInstance:trace("game over")
 			local game_over_pos = Vect3f(925, 0, -1.5)
@@ -279,7 +280,7 @@ function Player.new()
 			gui_manager:set_is_gameover(true);
 			self.game_over = true
 		else
-			self.coreInstance:trace(tostring(self.num_lives))
+			self.coreInstance:trace(tostring(self.num_lifes))
 			gui_manager:set_image('LifeGUI','Life3')
 			--actualizar gui
 			self.num_hearts = self.MAXHEARTS
@@ -308,7 +309,7 @@ function Player.new()
 		self.has_ass_burned = false
 		self.set_super_piky(false)
 		--self.activating_triggers = true
-		if boss.m_BossRunning and self.num_lives > 0 then
+		if boss.m_BossRunning and self.num_lifes > 0 then
 			start_boss()
 		end
 	end

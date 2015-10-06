@@ -754,12 +754,13 @@ function on_update_player_lua(l_ElapsedTime)
 			end
 		end
 		
-		if player.is_dead then
+		if player.is_dead and fade_step == 0 then
 			--coreInstance:trace("Dead ")	
 			if not playerRenderable:is_action_animation_active() and not player.dead_in_hole then
 					--coreInstance:trace("Dead ".. tostring(player.dead_in_hole))
-					player.check_death_actions()
-					
+					--player.check_death_actions()
+					fade(2)
+					fade_step = 1
 			else
 				--coreInstance:trace("Animation is runing")
 				if player.has_ass_burned then
@@ -779,11 +780,13 @@ function on_update_player_lua(l_ElapsedTime)
 				if hole_timer < max_hole_falling then
 					hole_timer = hole_timer + l_ElapsedTime
 				--	coreInstance:trace("Hole Timer: " .. tostring(hole_timer))
-				
+					
 				else
 					hole_timer = 0.0
 					player.dead_in_hole = false
-					player.check_death_actions()
+					--player.check_death_actions()
+					fade(2)
+					fade_step = 1
 				end
 			end
 		end
