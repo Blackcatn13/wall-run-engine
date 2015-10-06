@@ -14,6 +14,7 @@ local Chucky_super_speed = 21;
 local Chucky_current_speed = 14;
 local chucky_jumped = false
 chuky_last_room = 1
+showing_emitter = false
 
 -- Chucky Stopped --
 function chucky_runner_enter_stopped(name)
@@ -46,6 +47,7 @@ function chucky_runner_enter_running(name)
 	chucky.m_PhysicController:use_gravity(true);
 	local chucky_renderable = chucky.m_RenderableObject
 	local emitter = particle_manager:get_resource(chucky_renderable.m_ParticleEmitter)
+	showing_emitter =true
 	if(emitter ~= nil) then
 		emitter.m_vPos = chucky_renderable:get_position()+ chucky_renderable.m_EmitterOffset
 		emitter:set_visible(true)
@@ -70,8 +72,10 @@ function move_chucky_running(ElapsedTime)
 	local chucky_renderable = chucky.m_RenderableObject
 	chucky_renderable:set_position(Vect3f(pos.x, pos.y - 2, pos.z));
 	
-	local emitter = particle_manager:get_resource(chucky.m_RenderableObject.m_ParticleEmitter)
-	emitter.m_vPos = chucky_renderable:get_position()+ chucky_renderable.m_EmitterOffset
+	if showing_emitter then
+		local emitter = particle_manager:get_resource(chucky.m_RenderableObject.m_ParticleEmitter)
+		emitter.m_vPos = chucky_renderable:get_position()+ chucky_renderable.m_EmitterOffset
+	end
 	return math.sqrt( math.pow((playerPos.x - chuckyPos.x),2) + math.pow((playerPos.y - chuckyPos.y),2) + math.pow((playerPos.z - chuckyPos.z),2) );
 end
 
@@ -216,14 +220,40 @@ function chucky_runner_enter_stopping(name)
 end
 
 function chucky_runner_exit_stopping(name)
-
+	chucky.m_RenderableObject:remove_action(10)
 end
 
 function chucky_runner_update_stopping(ElapsedTime, doComprobation, name)
 	if not chucky.m_RenderableObject:is_action_animation_active() then
-		chucky.m_RenderableObject:remove_action(10)
+		local emitter = particle_manager:get_resource(chucky.m_RenderableObject.m_ParticleEmitter)
+		emitter:set_visible(false)
+		showing_emitter =false
+		chucky:m_FSM():newState("Waiting");
 	end
 end
+
+--- Chucky Waiting --
+function chucky_runner_enter_waiting(name)
+
+	chucky.m_RenderableObject:blend_cycle(0,0.1,0)
+end
+
+function chucky_runner_exit_waiting(name)
+	chucky.m_RenderableObject:clear_cycle(0,0.1)
+end
+
+function chucky_runner_update_waiting(ElapsedTime, doComprobation, name)
+	local pos_chucky_xz = Vect3f(chucky:get_position().x, 0, chucky:get_position().z)
+	local pos_piky_xz = Vect3f(player_controller:get_position().x, 0, player_controller:get_position().z)
+	rotate_yaw(chucky, ElapsedTime, player_controller:get_position())
+	local distance = get_distance_between_points(pos_chucky_xz, pos_piky_xz)
+	if distance < chuky_catching_distance then
+		chucky:m_FSM():newState("Atrapando")
+	end
+	
+end	
+	
+
 
 function get_chuky_need_to_jump()
 	return need_to_jump
