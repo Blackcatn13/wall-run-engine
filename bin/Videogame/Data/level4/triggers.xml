@@ -72,9 +72,9 @@
 <trigger name="SpikesFront004" platform_name="" pos="5.283531 29.766283 -645.786804" shape="box" size="1.55134 11.5894 12.2469" type_event="enter" script_function="set_player_respawn_spikes_point" param1="" group="1" paint="false" color="0.694118 0.580392 0.105882"/>
 <trigger name="Spikes004" platform_name="" pos="6.488438 28.788540 -645.786804" shape="box" size="64.7214 1.62942 12.2469" type_event="enter" script_function="on_enter_pinchos" param1="" group="1" paint="false" color="0.694118 0.580392 0.105882"/>-->
 
-<trigger name="Teleport001" platform_name="" pos="552.338684 3.577842 -505.727661" shape="sphere" radius = "1" type_event="enter" script_function="set_teleport_ready" type_event2="stay" script_function2="vanish_player" param1_event2="Teleport_inactive" param2_event2="6" group="1" paint="true" color="0.105882 0.694118 0.105882"/>
-<trigger name="Teleport001" platform_name="" pos="552.338684 3.577842 -505.727661" shape="sphere" radius = "1" type_event="enter" script_function="set_teleport_ready" type_event2="stay" script_function2="vanish_player" param1_event2="Teleport_inactive" param2_event2="6" group="1" paint="true" color="0.105882 0.694118 0.105882"/>
-<trigger name="TeleportReturn001" platform_name="" pos="557.615356 14.373191 -393.422241" shape="sphere" radius = "1" type_event="stay" script_function="unvanish_player" group="1" paint="true" color="0.105882 0.694118 0.105882"/>
+<trigger name="Teleport001" platform_name="" pos="552.338684 3.577842 -505.727661" shape="sphere" radius="1" type_event="enter" script_function="set_teleport_ready" type_event2="stay" script_function2="vanish_player" param1_event2="Teleport_inactive" param2_event2="6" group="1" paint="true" color="0.105882 0.694118 0.105882"/>
+<trigger name="Teleport001" platform_name="" pos="552.338684 3.577842 -505.727661" shape="sphere" radius="1" type_event="enter" script_function="set_teleport_ready" type_event2="stay" script_function2="vanish_player" param1_event2="Teleport_inactive" param2_event2="6" group="1" paint="true" color="0.105882 0.694118 0.105882"/>
+<trigger name="TeleportReturn001" platform_name="" pos="557.615356 14.373191 -393.422241" shape="sphere" radius="1" type_event="stay" script_function="unvanish_player" group="1" paint="true" color="0.105882 0.694118 0.105882"/>
 
 <!-- Switches -->
 <trigger name="Switch001" pos="570.367065 15.393707 -438.086243" shape="box"  size="1.2 0.1 1.2" type_event="enter" script_function="toogle_switch" group="1" param1="Switch001" param2="puzzle001" paint="true" color="0.5 0.5 1.0" />
@@ -87,6 +87,7 @@
 <trigger name="CheckPoint006" platform_name="" pos="557.389099 12.928116 -386.755371" shape="box" size="9.85767 9.74541 0.39519" type_event="enter" script_function="set_checkpoint" param1="CheckPoint006" param2="CheckPointDisabledStand006" group="1" paint="true" color="0.882353 0.776471 0.341176"/>
 <trigger name="CheckPoint007" platform_name="" pos="538.397034 2.157120 -525.584717" shape="box" size="9.85767 9.74541 0.69519" type_event="enter" script_function="set_checkpoint" param1="CheckPoint007" param2="CheckPointDisabledStand007" group="1" paint="true" color="0.882353 0.776471 0.341176"/>
 <trigger name="Hole014" platform_name="" pos="530.670471 -4.992230 -573.077026" shape="box" size="28.7016 3.06802 47.7978" type_event="enter" script_function="player_die" param1="" group="1" paint="true" color="0.341176 0.882353 0.560784"/>
+<trigger name="ChukyDesapears002" platform_name="" pos="557.232849 13.106750 -330.408813" shape="box" size="9.85767 9.74541 0.69519" type_event="enter" script_function="ChuckyDesapears" param1="" group="1" paint="true" color="1.0 0.0235294 0.0235294"/>
 
 </triggers>
 
