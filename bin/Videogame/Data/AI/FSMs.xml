@@ -146,7 +146,12 @@
 			<onEnter lua_funtion="chucky_runner_enter_stopping"/>
 			<onExit lua_funtion="chucky_runner_exit_stopping"/>
 			<Update time=".01" lua_funtion="chucky_runner_update_stopping"/>
-		</state>	
+		</state>
+		<state name="Waiting">
+			<onEnter lua_funtion="chucky_runner_enter_waiting"/>
+			<onExit lua_funtion="chucky_runner_exit_waiting"/>
+			<Update time=".01" lua_funtion="chucky_runner_update_waiting"/>
+		</state>			
 	</fsm>
 	<fsm name="ChuckyBoss">
 		<initialState name="Parado"/>
