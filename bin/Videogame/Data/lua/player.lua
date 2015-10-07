@@ -17,12 +17,12 @@ function Player.new()
 	self.num_lifes = self.MAXLIFES
 	self.instance = self
 	self.pixelites = 0
-	self.last_spikes_position = Vect3f(0.0, 0.0, 0.0)
-	self.spikes_yaw = 0
+--	self.last_spikes_position = Vect3f(0.0, 0.0, 0.0)
+--	self.spikes_yaw = 0
 	self.hurt_by_spikes = false
 	self.coreInstance = CCoreLuaWrapper().m_CoreInstance;
 	self.visited_checkpoints = {}
-	self.score = 0
+--	self.score = 0
 	self.stickers = 0
 	self.is_hit = false
 	self.is_hit_reset_first = false
@@ -196,13 +196,13 @@ function Player.new()
 						
 			if self.num_hearts == 0 then
 				--self.num_hearts = 3
-				if self.hurt_by_spikes then
+			--[[	if self.hurt_by_spikes then
 					self.get_player_controller():set_position(self.last_spikes_position)
-				end
+				end]]
 				self.player_die()
 				
-			elseif self.hurt_by_spikes then
-				self.get_player_controller():set_position(self.last_spikes_position)
+		--	elseif self.hurt_by_spikes then
+			--	self.get_player_controller():set_position(self.last_spikes_position)
 			end
 		end
 	end
@@ -215,13 +215,20 @@ function Player.new()
 			self.is_dead = true
 			local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name)
 			self.remove_animations(renderable_piky_mesh)
-			if not self.has_ass_burned then
+			if not self.has_ass_burned and not self.hurt_by_spikes then
 				if not self.dead_in_hole then -- Si cae por una agujero no tiene animacion de caida
 					if self.num_lifes == 1 then
 						renderable_piky_mesh:execute_action(anim_death,0,0.3,1,true) --animacion de muerto GameOver
 					else
 						renderable_piky_mesh:execute_action(anim_death_retry,0,0.3,1,false) --animacion de muerto
 					end								
+				end
+			elseif not self.has_ass_burned and self.hurt_by_spikes then
+				renderable_piky_mesh:execute_action(anim_Burn,0,0.3,1,false) -- animacion de piky pinchos
+				local emitter3 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter3)
+				if emitter3:get_visible() == false then
+					emitter3:set_visible(true)
+					emitter3.m_vPos = renderable_piky_mesh:get_position() + renderable_piky_mesh.m_EmitterOffset3
 				end
 			else
 				renderable_piky_mesh:execute_action(anim_BurnJump,0,0.3,1,true) -- animacion de piky tostada
@@ -248,8 +255,8 @@ function Player.new()
 			--gui_manager:set_is_displayed_heart(true);
 			gui_manager:set_count_heart(0.0);
 			gui_manager:set_num_heart( self.num_lifes );	
-			local emitter3 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter3)
-			emitter3:set_visible(false)
+			--local emitter3 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter3)
+			--emitter3:set_visible(false)
 			
 		end
 		
@@ -319,6 +326,7 @@ function Player.new()
 		
 		self.is_dead = false
 		self.has_ass_burned = false
+		self.hurt_by_spikes = false
 		self.set_super_piky(false)
 		--self.activating_triggers = true
 		if boss.m_BossRunning and self.num_lifes > 0 then

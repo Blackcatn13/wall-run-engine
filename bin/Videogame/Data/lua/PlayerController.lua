@@ -732,28 +732,28 @@ function on_update_player_lua(l_ElapsedTime)
 			end
 		end
 		
-		if player.hurt_by_spikes and not player.is_dead then
+	--[[	if player.hurt_by_spikes then
 			local emitter3 = particle_manager:get_resource(playerRenderable.m_ParticleEmitter3)
-			if not playerRenderable:is_action_animation_active() then
-				--coreInstance:trace(tostring(player.num_hearts))		
-				emitter3:set_visible(false)
-				player.player_take_damage(Vect3f(0,0,0), 0)
-			else
-								
-				local pos_spikes = Vect3f(0.0, 0.0, 0.0)
-				--pos_spikes = pos_spikes + player.get_player_controller():get_position()
-				pos_spikes = pos_spikes + playerRenderable:get_position()
-				--coreInstance:trace(tostring(pos_spikes.x)..", "..tostring(pos_spikes.y)..", "..tostring(pos_spikes.z))
-				local emitterOffset = playerRenderable.m_EmitterOffset3
-				--pos = pos + playerRenderable:getAnimationBonePosition() 
-				pos_spikes.y = pos_spikes.y + 20 *l_ElapsedTime
-				playerRenderable:set_position(pos_spikes)
-				--player.get_player_controller():set_position(pos_spikes)
-				pos_spikes = pos_spikes + emitterOffset
-				emitter3.m_vPos = pos_spikes
+				if not playerRenderable:is_action_animation_active() then
+					--coreInstance:trace(tostring(player.num_hearts))		
+					emitter3:set_visible(false)
+				--	player.player_take_damage(Vect3f(0,0,0), 0)
+				else
+									
+					local pos_spikes = Vect3f(0.0, 0.0, 0.0)
+					--pos_spikes = pos_spikes + player.get_player_controller():get_position()
+					pos_spikes = pos_spikes + playerRenderable:get_position()
+					--coreInstance:trace(tostring(pos_spikes.x)..", "..tostring(pos_spikes.y)..", "..tostring(pos_spikes.z))
+					local emitterOffset = playerRenderable.m_EmitterOffset3
+					--pos = pos + playerRenderable:getAnimationBonePosition() 
+					pos_spikes.y = pos_spikes.y + 20 *l_ElapsedTime
+					playerRenderable:set_position(pos_spikes)
+					--player.get_player_controller():set_position(pos_spikes)
+					pos_spikes = pos_spikes + emitterOffset
+					emitter3.m_vPos = pos_spikes
+				end
 			end
-		end
-		
+		]]
 		if player.is_dead and fade_step == 0 then
 			--coreInstance:trace("Dead ")	
 			if not playerRenderable:is_action_animation_active() and not player.dead_in_hole then
@@ -774,6 +774,20 @@ function on_update_player_lua(l_ElapsedTime)
 					emitter2.m_vPos = pos;
 				end
 				
+				if player.hurt_by_spikes then
+					local emitter3 = particle_manager:get_resource(playerRenderable.m_ParticleEmitter3)
+					local pos_spikes = Vect3f(0.0, 0.0, 0.0)
+					--pos_spikes = pos_spikes + player.get_player_controller():get_position()
+					pos_spikes = pos_spikes + playerRenderable:get_position()
+					--coreInstance:trace(tostring(pos_spikes.x)..", "..tostring(pos_spikes.y)..", "..tostring(pos_spikes.z))
+					local emitterOffset = playerRenderable.m_EmitterOffset3
+					--pos = pos + playerRenderable:getAnimationBonePosition() 
+					pos_spikes.y = pos_spikes.y + 20 *l_ElapsedTime
+					playerRenderable:set_position(pos_spikes)
+					--player.get_player_controller():set_position(pos_spikes)
+					pos_spikes = pos_spikes + emitterOffset
+					emitter3.m_vPos = pos_spikes
+				end
 			end
 			if player.dead_in_hole then
 				--coreInstance:trace("Piky en boquetee" .. tostring(hole_timer))
