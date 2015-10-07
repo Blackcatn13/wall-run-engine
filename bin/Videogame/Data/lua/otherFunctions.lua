@@ -249,6 +249,7 @@ function reset_game()
 	player.num_hearts = 3;
 	gui_manager:set_image('LifeGUI','Life3')
 	player.num_lifes = 3;
+	player.count_pixelites = 0.0
 	--player.visited_checkpoints = {}
 	
 	player.zone = 1

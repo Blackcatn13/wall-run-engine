@@ -56,6 +56,7 @@ function Player.new()
 	self.super_piky_active = false
 	self.super_piky_timer = 0.0
 	self.super_piky_attack = false
+	self.count_pixelites = 0.0
 	
 	------	 PLAYER FUNCTIONS -----
 	
@@ -124,8 +125,19 @@ function Player.new()
 	end
 	function self.add_pixelites(inc_pixelites)
 		self.pixelites = self.pixelites + inc_pixelites
-		self.coreInstance:trace("Pixelite value: "..tostring(inc_pixelites))
-		self.coreInstance:trace("Num Pixelites: "..tostring(self.pixelites))
+		self.count_pixelites = self.count_pixelites + inc_pixelites
+		if self.count_pixelites >= 50 then
+			self.extra_life()
+			self.count_pixelites = self.count_pixelites -50
+		end
+		--self.coreInstance:trace("Pixelite value: "..tostring(inc_pixelites))
+		--self.coreInstance:trace("Num Pixelites: "..tostring(self.pixelites))
+	end
+	
+	function self.extra_life()
+		self.num_lifes = self.num_lifes +1
+		gui_manager:set_num_heart( self.num_lifes )
+		gui_manager:set_is_displayed_heart(true)
 	end
 	
 	function self.add_sticker(img_name)
