@@ -642,7 +642,7 @@ function on_update_player_lua(l_ElapsedTime)
 		-- GRAVITY
 		if(_land)then
 			_actualGravityForce = _actualGravityForce + (_gravityForce * l_ElapsedTime);
-			mov.y = mov.y + _actualGravityForce;
+			mov.y = mov.y + _actualGravityForce * l_ElapsedTime;
 		else
 			_actualGravityForce = 0;
 		end

@@ -228,7 +228,7 @@ function update_shoot_boss(dt, enemy)
 		--coreInstance:trace("Distancia player al boss: "..tostring(distance2))
 		--coreInstance:trace(tostring(enemy.m_PosicionBala.y))
 		--coreInstance:trace("Distancia: "..tostring(distance))
-		if (distance > 450 and enemy.m_PosicionBala.y < -1) or (distance <=450 and enemy.m_PosicionBala.y < 2) then
+		if (distance > 450 and enemy.m_PosicionBala.y < -1.2) or (distance <=450 and enemy.m_PosicionBala.y < 1.8) then
 			enemy.m_IsOnCooldown = false;
 			delete_shooting(renderable_shoot)
 			enemy:m_FSM():newState("Parado")

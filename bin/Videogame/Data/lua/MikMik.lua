@@ -396,11 +396,16 @@ function mikmik_update_take_damage(ElapsedTime, doComprobation, name)
 		local auxVec = enemy.m_flyVec * flySpeed;
 		local isGrounded = enemy.m_PhysicController:move(auxVec * ElapsedTime, ElapsedTime);
 		move_enemy_renderable(enemy, MikHeight);
-		if isGrounded == true or enemy.m_CurrentTime > 1 then
+		if not enemy.m_RenderableObject:is_action_animation_active() then
 			enemy.m_time_to_fly = false;
 			enemy.m_flyVec = Vect3f(0,0,0);
+			if enemy.m_Life <= 0 then
+				enemy:m_FSM():newState("Dead")
+			else
+				enemy:m_FSM():newState("Parado")
+			end
 		else
-			enemy.m_flyVec = Vect3f(enemy.m_flyVec.x, enemy.m_flyVec.y - flyDecay, enemy.m_flyVec.z);
+			enemy.m_flyVec = Vect3f(enemy.m_flyVec.x, enemy.m_flyVec.y - flyDecay * ElapsedTime, enemy.m_flyVec.z);
 			enemy.m_CurrentTime = enemy.m_CurrentTime + ElapsedTime;
 		end
 	elseif not enemy.m_RenderableObject:is_action_animation_active() then
