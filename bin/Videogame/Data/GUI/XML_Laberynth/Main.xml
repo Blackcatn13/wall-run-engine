@@ -47,7 +47,7 @@
 	
      <ButtonList name="ButtonList" posx="60.00" posy="5.0" height="90.0" width="22.0" visible="true" active="true">
           <Buttons>
-          	<Button name="Play" posx="67.00" posy="20.50" height="13.00" width="20.00" visible="true" 
+          	<Button name="Play" posx="71.00" posy="20.50" height="13.00" width="20.00" visible="true" 
                     active="true" texture_normal="./Data/GUI/GoPixelGo/Button_1_A.png"
                     texture_over="./Data/GUI/GoPixelGo/Button_1_B.png"
                     texture_clicked="./Data/GUI/GoPixelGo/Button_1_C.png"
@@ -66,7 +66,7 @@
 									init_level(1);"
                     OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>
           		  
-          	<Button name="Options" posx="67.00" posy="34.00" height="13.00" width="20.00" visible="true" 
+          	<Button name="Options" posx="71.00" posy="34.00" height="13.00" width="20.00" visible="true" 
                     active="true" texture_normal="./Data/GUI/GoPixelGo/Button_2_A.png"
                     texture_over="./Data/GUI/GoPixelGo/Button_2_B.png"
                     texture_clicked="./Data/GUI/GoPixelGo/Button_2_C.png"
@@ -76,7 +76,7 @@
                     OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"
 					/>
           		  
-          	<Button name="Extras" posx="67.00" posy="47.50" height="13.00" width="20.00" visible="true" 
+          	<Button name="Extras" posx="71.00" posy="47.50" height="13.00" width="20.00" visible="true" 
                     active="true" texture_normal="./Data/GUI/GoPixelGo/Button_3_A.png"
                     texture_over="./Data/GUI/GoPixelGo/Button_3_B.png"
                     texture_clicked="./Data/GUI/GoPixelGo/Button_3_C.png"
@@ -85,7 +85,7 @@
           			CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');"
                     OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>
 					
-			<Button name="Credits" posx="67.00" posy="61.00" height="13.00" width="20.00" visible="true" 
+			<Button name="Credits" posx="71.00" posy="61.00" height="13.00" width="20.00" visible="true" 
                     active="true" texture_normal="./Data/GUI/GoPixelGo/Button_5_A.png"
                     texture_over="./Data/GUI/GoPixelGo/Button_5_B.png"
                     texture_clicked="./Data/GUI/GoPixelGo/Button_5_C.png"
@@ -93,7 +93,7 @@
                     OnClickedAction=" CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');"
                     OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>
 					
-			<Button name="Exit" posx="67.00" posy="74.50" height="13.00" width="20.00" visible="true" 
+			<Button name="Exit" posx="71.00" posy="74.50" height="13.00" width="20.00" visible="true" 
                     active="true" texture_normal="./Data/GUI/GoPixelGo/Button_4_A.png"
                     texture_over="./Data/GUI/GoPixelGo/Button_4_B.png"
                     texture_clicked="./Data/GUI/GoPixelGo/Button_4_C.png"
@@ -104,7 +104,7 @@
           </Buttons>
      </ButtonList>
 	 
-	 <Image name="MenuHelp" posx="65.00" posy="85.00" height="10.00" width="25.00" visible="false" active="true" default="menuHelp" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+	 <Image name="MenuHelp" posx="68.00" posy="85.00" height="10.00" width="25.00" visible="false" active="true" default="menuHelp" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
 		<texture name="menuHelp" name_texture="./Data/GUI/GoPixelGo/Menu_help.png"/>
 	</Image>
 
