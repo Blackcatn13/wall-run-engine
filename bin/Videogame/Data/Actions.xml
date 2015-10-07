@@ -1,6 +1,6 @@
 <Actions>
 	<globals>
-		<action name="StartBoss" debug="true">
+		<action name="StartBoss" debug="false">
 	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
 	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_B"/>
 	    </action>

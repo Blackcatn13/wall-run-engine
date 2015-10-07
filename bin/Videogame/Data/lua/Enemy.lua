@@ -105,7 +105,7 @@ function update_boss_shoot_cooldown(enemy, player_position)
 	  local vectEnemyXZ = Vect3f(enemy:get_position().x, 0, enemy:get_position().z);
 	  local vectDist = vectPlayerXZ - vectEnemyXZ;
 	  local distPlayerEnemy = vectDist:length();
-	  local inclinacion = (distPlayerEnemy - 11.6) / 3.4; -- valores hardcodeados
+	  local inclinacion = ((distPlayerEnemy - 12) / 3.4)+0.5; -- valores hardcodeados 11.6, 3.4
 	  enemy.m_DireccionBala = Vect3f(enemy.m_DireccionBala.x, enemy.m_DireccionBala.y + inclinacion, enemy.m_DireccionBala.z)
 	end
 end

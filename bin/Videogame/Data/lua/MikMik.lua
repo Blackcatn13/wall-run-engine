@@ -2,7 +2,7 @@
 local base_yaw = math.pi/2
 local flySpeed = 10;
 local flyInclination = 3;
-local flyDecay = 0.1;
+local flyDecay = 5;
 local visibleTime = 0.2;
 local MikHeight = 0.7;
 
