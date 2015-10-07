@@ -23,7 +23,9 @@ function init_level(a)
 	--coreInstance:getWWSoundManager():PlayEvent("Torches", "Torch");
 	
 	--player_controller.m_Direction3D = dir3D
-	
+	if collectible_manager == nil then
+		collectible_manager = coreInstance:getCollectibleManager()
+	end
 	--actualizar caras con las salas
 	local cara1 = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("solid",2):get_resource("CARALLENGUA_002");
 	cara1:blend_cycle(0, 1, 0);

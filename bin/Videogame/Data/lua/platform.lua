@@ -124,37 +124,7 @@ end
 --Pinchos
 
 function on_enter_pinchos()
-	--TODO registrar todo lo nuevo
-	--[[coreInstance:trace("Entrando en Pinchos")
-	local platform = renderable_objects_layer_manager:get_default_renderable_object_manager():get_resource(platform_name)
-	coreInstance:trace(platform_name)
-	--platform:falling_into_platform()
-	--calcular direccion del salto
-	
-	local player = coreInstance:get_player_controller()
-	local player_position = player.m_PhysicController:get_position()
-	local platform_position = platform:get_position()
-	coreInstance:trace(tostring(player_position.x))
-	coreInstance:trace(tostring(platform_position.x))
-	
-	if platform.m_FromX == true then
-		direction = platform_position.x - player_position.x
-	end
-	if platform.m_FromZ == true then
-		direction = platform_position.z - player_position.z
-	end
-	coreInstance:trace(tostring(direction))
-	-- <- set position atrás 
-	-- -> set position delante
-	-- lanzar animacion de daño
-	-- restar corazón
-	if direction <= 0 then
-		player.m_PhysicController:set_position(platform.m_FrontPos)
-	else
-		player.m_PhysicController:set_position(platform.m_BackPos)
-	end
-	--]]
-	--local player = Player:get_instance()
+--[[
 	if not player.hurt_by_spikes and not player.is_dead and not gui_manager:is_transition_effect_active() then
 		player.hurt_by_spikes = true
 		local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name)
@@ -165,15 +135,10 @@ function on_enter_pinchos()
 			emitter3.m_vPos = renderable_piky_mesh:get_position() + renderable_piky_mesh.m_EmitterOffset3
 		end
 	end
-	--[[local player_renderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name)
-	 Pasar esto de abajo al player Controller para la animacion
-	coreInstance:trace(tostring(player.num_hearts))
-	if player.num_hearts > 0 then
-		player.get_player_controller():set_position(player.last_spikes_position)
-	end
-	player.player_take_damage(Vect3f(0,0,0), 0)
-	--]]
-	-- Hacer cosas
+]]
+	player.hurt_by_spikes = true
+
+	player.player_die()
 	
 end
 
