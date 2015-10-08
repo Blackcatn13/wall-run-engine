@@ -20,6 +20,10 @@ function check_input_controller_map()
 end
 
 function onUpdateWindowDisplayGUI()
+	if gui_manager:get_is_displayed_unlock_message() == true then
+			ManagerGUIUnlockMessage();
+		end
+		
 	if not gui_manager:get_is_paused() then
 		if act2in:do_action_from_lua("ShowLifeGUI") then
 			if gui_manager:get_is_displayed_heart() == false then
@@ -42,9 +46,6 @@ function onUpdateWindowDisplayGUI()
 		--[[if gui_manager:get_is_displayed_poly_message() == true and gui_manager:get_first_poly_message_displayed() == false then
 			ManagerGUIPolyMessage();
 		end]]--
-		if gui_manager:get_is_displayed_unlock_message() == true then
-			ManagerGUIUnlockMessage();
-		end
 		
 		if gui_manager:get_is_gameover() == true then
 			GameOver();
