@@ -8,7 +8,6 @@
 	<Physx_mesh name="INVISIBLE_WALL_004" filename="Data\level4\meshes\INVISIBLE_WALL_004.phsx"/>
 	<Physx_mesh name="INVISIBLE_WALL_005" filename="Data\level4\meshes\INVISIBLE_WALL_005.phsx"/>
 	<Physx_mesh name="SecurityWall001" filename="Data\level4\meshes\SecurityWall001.phsx"/>
-	<Physx_mesh name="SecurityWall002" filename="Data\level4\meshes\SecurityWall002.phsx"/>
 	<Physx_mesh name="Plataforma0er3" filename="Data\level4\meshes\Plataforma0er3.phsx"/>
 	<!--<Physx_mesh name="MenuSphere" filename="Data\level4\meshes\MenuSphere.phsx"/>-->
 </Physx_meshes>

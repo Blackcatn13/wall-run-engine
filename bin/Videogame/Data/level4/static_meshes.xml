@@ -626,4 +626,5 @@
 	<static_mesh name="MenuSphere" filename="Data\level4\meshes\MenuSphere.mesh"/>
 	<static_mesh name="MenuBackground" filename="Data\level4\meshes\MenuBackground.mesh"/>
 	<static_mesh name="PumPum" filename="Data\level4\meshes\PumPum.mesh"/>
+	<static_mesh name="POLY PLAT VERT R5_001" filename="Data\level4\meshes\POLY PLAT VERT R5_001.mesh"/>
 </static_meshes>
