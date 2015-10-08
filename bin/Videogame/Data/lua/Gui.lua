@@ -3,6 +3,12 @@ local gui_visible = true
 local black_screen_timer = 0
 local max_count_timer = 3.0
 
+function update_fading_black_screen()
+	 if gui_manager.m_IsBlackScreenActive then
+		check_death_fade()
+	end
+end
+
 function check_input_controller_map()
 	if inputm:has_game_pad(1) then
 		gui_manager:set_visible_gui_element("KeyboardMap",false)
@@ -14,52 +20,53 @@ function check_input_controller_map()
 end
 
 function onUpdateWindowDisplayGUI()
-	if act2in:do_action_from_lua("ShowLifeGUI") then
-		if gui_manager:get_is_displayed_heart() == false then
-			gui_manager:set_is_displayed_heart(true);
+	if not gui_manager:get_is_paused() then
+		if act2in:do_action_from_lua("ShowLifeGUI") then
+			if gui_manager:get_is_displayed_heart() == false then
+				gui_manager:set_is_displayed_heart(true);
+			end
+			if gui_manager:get_is_displayed_pixelite() == false then
+				gui_manager:set_is_displayed_pixelite(true);
+			end
 		end
-		if gui_manager:get_is_displayed_pixelite() == false then
-			gui_manager:set_is_displayed_pixelite(true);
+		
+		--local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name)
+		
+		--Si el valor de isDisplayed es TRUE quiere decir que se muestra y, al cabo de 3 segundos, se ocultará.
+		if gui_manager:get_is_displayed_heart() == true then
+			ManagerGUIHearts();
 		end
-	end
-	
-	--local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name)
-	
-	--Si el valor de isDisplayed es TRUE quiere decir que se muestra y, al cabo de 3 segundos, se ocultará.
-	if gui_manager:get_is_displayed_heart() == true then
-		ManagerGUIHearts();
-	end
-	if gui_manager:get_is_displayed_pixelite() == true then
-		ManagerGUIPixelites();
-	end
-	--[[if gui_manager:get_is_displayed_poly_message() == true and gui_manager:get_first_poly_message_displayed() == false then
-		ManagerGUIPolyMessage();
-	end]]--
-	if gui_manager:get_is_displayed_unlock_message() == true then
-		ManagerGUIUnlockMessage();
-	end
-	
-	if gui_manager:get_is_gameover() == true then
-		GameOver();
-		set_visible_gui_elements(false)
-	--else
-		--set_visible_gui_elements(true) 
-	end
-	
-	if cinematic_controller.m_executing  then
-		if gui_visible then
+		if gui_manager:get_is_displayed_pixelite() == true then
+			ManagerGUIPixelites();
+		end
+		--[[if gui_manager:get_is_displayed_poly_message() == true and gui_manager:get_first_poly_message_displayed() == false then
+			ManagerGUIPolyMessage();
+		end]]--
+		if gui_manager:get_is_displayed_unlock_message() == true then
+			ManagerGUIUnlockMessage();
+		end
+		
+		if gui_manager:get_is_gameover() == true then
+			GameOver();
 			set_visible_gui_elements(false)
-			gui_visible = false
+		--else
+			--set_visible_gui_elements(true) 
 		end
-	else
-		if not gui_visible then
-			set_visible_gui_elements(true)
-			gui_visible = true
+		
+		if cinematic_controller.m_executing  then
+			if gui_visible then
+				set_visible_gui_elements(false)
+				gui_visible = false
+			end
+		else
+			if not gui_visible then
+				set_visible_gui_elements(true)
+				gui_visible = true
+			end
 		end
-	end
-	
-	check_death_fade()
-	
+		
+		check_death_fade()
+	end	
 end
 
 function check_death_fade()
@@ -69,18 +76,21 @@ function check_death_fade()
 			
 			--coreInstance:trace("Fading step 1")
 			gui_manager:set_visible_gui_element("BlackScreen", true)
+			gui_manager:set_visible_gui_element("VidesGUIDeath",true)
+			--gui_manager:set_visible_gui_element("VidesNumberShadowDeath",true)
+			gui_manager:set_visible_gui_element("VidesNumberDeath",true)
 			fade_step = 2
 		end
 	elseif player.is_dead and not gui_manager:is_transition_effect_active() and fade_step == 2 then
-		coreInstance:trace("Pantalla negra")
 		if gui_manager:get_is_displayed_heart() == false then
-			gui_manager:set_is_displayed_heart(true);
+			--gui_manager:set_is_displayed_heart(true);
+			gui_manager.m_IsBlackScreenActive = true
+			show_lifes_death()
 		end
 		if black_screen_timer >= max_count_timer then
 			black_screen_timer = 0.0
 			fade_step = 3
 			fade(2)
-			
 		else
 			if not gui_manager:get_is_paused() then
 				black_screen_timer = black_screen_timer +1 *coreInstance.m_ElapsedTime
@@ -88,9 +98,14 @@ function check_death_fade()
 		end
 	elseif player.is_dead and gui_manager:is_transition_effect_active() and fade_step == 3 then
 		if gui_manager.m_sTransitionEffect.m_currentState > (gui_manager.m_sTransitionEffect.m_fTransitionTime *0.5) then	
-			coreInstance:trace("Ya toca quitar la pantalla negra")
+			--coreInstance:trace("Ya toca quitar la pantalla negra")
+			if gui_manager:get_visible_gui_element("VidesGUIDeath") then
+				gui_manager:set_visible_gui_element("VidesGUIDeath",false)
+				gui_manager:set_visible_gui_element("VidesNumberDeath",false)
+			end
 			player.check_death_actions()
 			gui_manager:set_visible_gui_element("BlackScreen", false)
+			gui_manager.m_IsBlackScreenActive = false
 			fade_step = 0
 		end
 	end
@@ -105,6 +120,26 @@ function set_visible_gui_elements(visible)
 	gui_manager:set_visible_gui_element("PixeliteNumberShadow",visible)
 	gui_manager:set_visible_gui_element("LifeGUI",visible)
 	--coreInstance:trace("Showing GUI Elements: ".. tostring(visible))
+end
+
+function show_lifes_death()
+
+	local count = gui_manager:get_count_heart()
+	if count <= max_count_timer then
+		
+		if count >= max_count_timer/2 and gui_manager:get_num_heart() ~= player.num_lifes then
+			gui_manager:set_num_heart( player.num_lifes )
+		end
+		if not gui_manager:get_is_paused() then
+			gui_manager:set_count_heart(count + gui_manager:get_dt());
+			coreInstance:trace(tostring(count))
+		end
+	else
+		
+		--gui_manager:set_is_displayed_heart(false)
+		gui_manager:set_count_heart(0.0)
+	end
+
 end
 
 function ManagerGUIHearts()
@@ -124,6 +159,7 @@ function ManagerGUIHearts()
 		gui_manager:set_position_element("VidesNumber", posPixelitesText + (65 * gui_manager:get_dt()), positionYNum);
 		gui_manager:set_position_element("VidesNumberShadow", posPixelitesText + (65 * gui_manager:get_dt()) + textShadowDifference, positionYNum+textShadowDifference);
 	else
+		
 		if count >= 3.0 then
 			if pos > positionMax then
 				gui_manager:set_position_element("VidesGUI", pos - (25 * gui_manager:get_dt()), positionYGUI);
@@ -134,6 +170,9 @@ function ManagerGUIHearts()
 				gui_manager:set_count_heart(0.0);
 			end
 		else
+			if count>=2.0 and pos >= positionMax and gui_manager:get_num_heart() ~= player.num_lifes then
+				gui_manager:set_num_heart( player.num_lifes )
+			end
 			gui_manager:set_position_element("VidesGUI", positionMin, positionYGUI);
 			gui_manager:set_position_element("VidesNumber", positionMin+9, positionYNum);
 			gui_manager:set_position_element("VidesNumberShadow", positionMin+9+textShadowDifference, positionYNum+textShadowDifference);
