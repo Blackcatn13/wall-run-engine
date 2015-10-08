@@ -265,7 +265,7 @@
 	<mesh_instance name="TORCHA_3_SALA5" core="TORCHA_3_SALA5" pos="567.347656 15.366942 -279.585022" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
 	<mesh_instance name="TORCHA_4_SALA5" core="TORCHA_4_SALA5" pos="563.435425 14.302505 -301.100433" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
 	<mesh_instance name="TORCHA_5_SALA5" core="TORCHA_5_SALA5" pos="561.130798 18.812166 -379.740814" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
-	<mesh_instance name="PARED_FONS_SALA5" core="PARED_FONS_SALA5" pos="581.415527 21.754503 -280.509796" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
+	<mesh_instance name="PARED_FONS_SALA5" core="PARED_FONS_SALA5" pos="564.050049 21.754503 -280.853271" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
 	<mesh_instance name="ROCA_FRONT_2_SALA5" core="ROCA_FRONT_2_SALA5" pos="542.988464 3.795357 -284.590729" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
 	<mesh_instance name="ROCA_FRONT_1_SALA5" core="ROCA_FRONT_1_SALA5" pos="548.671143 4.814244 -192.952652" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
 	<mesh_instance name="ROCA_BACK_1_SALA5" core="ROCA_BACK_1_SALA5" pos="571.221008 11.592788 -208.330444" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
