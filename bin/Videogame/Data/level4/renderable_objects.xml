@@ -247,13 +247,13 @@
 
 	<animated_model name="CARALLENGUA_01" core="face" pos="304.051270 5.645349 16.930260" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2"/>
 	<animated_model name="CARALLENGUA_002" core="face" pos="360.035675 5.645350 16.930252" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2"/>
-	
-	<platform name="PolyPlatform002" core="PolyPlatform002" type="poly" pos="557.900879 3.424636 -51.899994" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="5.19568 2.86906 2.5697" layer="poly" room="4" final_position="557.900879 7.424636 -51.899994" direction="0 1 0" time_out="3" speed="5" light="" activation_distance="10"/>
+	<platform name="security_wall_001" core="security_wall_001" type="static" pos="557.780579 8.168335 -56.606869" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="12.6033 3.64714 0.910183" layer="solid" room="4"/>
+	<platform name="PolyPlatform002" core="PolyPlatform002" type="poly" pos="557.900879 3.424636 -53.296799" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="5.19568 2.86906 2.5697" layer="poly" room="4" final_position="557.900879 7.424636 -53.296799" direction="0 1 0" time_out="3" speed="5" light="" activation_distance="10"/>
 	<mesh_instance name="PUNXES002" core="PUNXES002" pos="557.350647 7.464798 -260.875031" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 	<mesh_instance name="PUNXES00266" core="PUNXES00266" pos="557.350647 7.464798 -260.875031" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 	<mesh_instance name="PUNXES0020" core="PUNXES0020" pos="557.350647 7.464798 -260.875031" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
-	<platform name="POLY. PLAT. HORTZ004" core="POLY. PLAT. HORTZ004" type="poly" pos="557.369873 10.174000 -315.936523" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="2.24045 0.331228 1.16403" layer="poly" room="5" final_position="557.37 10.174000 -313.66"
-		 direction="0 0 1" time_out="3" speed="15" light="" activation_distance="15"/>
+	<platform name="POLY PLAT VERT R5_001" core="POLY PLAT VERT R5_001" type="poly" pos="557.489990 3.613 -313.900299" yaw="0.0" pitch="0.0" roll="0.0" scale="0.325229 1.0 1.0" visible="true" phisic_size="2.30853 1.82097 0.979034" layer="poly" room="5" final_position="557.489990 6.886 -313.900299"
+		 direction="0 1 0" time_out="3" speed="15" light="" activation_distance="15"/>
 	<platform name="POLY. PLAT. HORTZ003" core="POLY. PLAT. HORTZ003" type="poly" pos="564.555969 12.153000 -260.415375" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="2.24045 0.331228 4.9034" layer="poly" room="5" final_position="557.356 12.153 -260.415"
 		 direction="1 0 0" time_out="3" speed="15" light="" activation_distance="15"/>
 	<mesh_instance name="SALA_5_TEMPLEPOLYPOLY" core="SALA_5_TEMPLEPOLYPOLY" pos="564.473083 11.111547 -280.508850" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
@@ -451,8 +451,7 @@
 	<platform name="INVISIBLE_WALL_003" core="INVISIBLE_WALL_003" type="static" pos="430.066467 7.829697 12.769010" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true"  layer="invisible" use_phisics_mesh="true" room="3"/>
 	<platform name="INVISIBLE_WALL_004" core="INVISIBLE_WALL_004" type="static" pos="549.488892 2.376045 0.115322" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true"  layer="invisible" use_phisics_mesh="true" room="4"/>
 	<platform name="INVISIBLE_WALL_005" core="INVISIBLE_WALL_005" type="static" pos="557.271423 9.894491 -176.357147" yaw="0.0" pitch="0.0" roll="0.0" scale="0.566471 1.0 1.0" visible="false" layer="invisible" use_phisics_mesh="true" room="5"/>
-	<platform name="SecurityWall002" core="SecurityWall002" type="static" pos="557.115845 7.061012 -315.602539" yaw="0.0" pitch="0.0" roll="0.0" scale="0.449805 1.25069 0.937628" visible="false" layer="solid" use_phisics_mesh="true" room="5"/>
-	
+	<platform name="SecurityWall002" core="SecurityWall002" type="static" pos="557.271973 7.069 -315.611645" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="2.98108 2.9871 0.981232" layer="solid" room="5"/>
 	<!--<mesh_instance name="PumPum1" core="PumPum"  pos="97.358940 -1.500000 2.489124" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "1" layer="enemies" emitter="PumPumDeath01Emitter"/>
 	<mesh_instance name="disparoPumPum1" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "1" layer="enemies" emitter="PumPumFire01Emitter" />
 	<mesh_instance name="PumPum2" core="PumPum"  pos="95.358940 -1.500000 -0.489124" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "1" layer="enemies" emitter="PumPumDeath02Emitter"/>

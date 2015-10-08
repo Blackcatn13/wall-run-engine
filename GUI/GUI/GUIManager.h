@@ -75,7 +75,7 @@ class CGUIManager { //:public CScriptRegister
   void								SetVisiblePointerMouse		(bool flag) {
     m_bVisiblePointerMouse = flag;
   }
-
+  bool				GetVisibleGuiElement (const std::string &inNameGuiElement);
   void								SetConsole();
 
 
@@ -152,6 +152,10 @@ class CGUIManager { //:public CScriptRegister
   void							SetTransitionEffect(TransitionEffect transitionEffect);
   void							StartFade(float time);
   bool							IsTransitionEffectActive();
+  bool							IsBlackScreenActive(){return m_IsBlackScreenActive;}
+  void							SetBlackScreenActive(bool active){
+	  m_IsBlackScreenActive = active;
+  }
 
   std::string					GetCurrentWindow() {
     return m_sCurrentWindows;
@@ -163,6 +167,7 @@ class CGUIManager { //:public CScriptRegister
   bool								UpdateTransitionEffect		(float elapsedTime);
 
  private:
+  bool								m_IsBlackScreenActive;
   Vect2i															m_ScreenResolution;
   bool																m_bIsOk;
   std::map<std::string, CWindows *>		m_WindowsMap;

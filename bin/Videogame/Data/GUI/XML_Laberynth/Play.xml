@@ -36,8 +36,16 @@
     <texture name="Vides" name_texture="./Data/GUI/GoPixelGo/GUI_Life.png"/>
   </Image>
   
+    <Image name="VidesGUIDeath" posx="40" posy="33.00" height="32" width="19" visible="false" active="true"
+         default="Vides" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="Vides" name_texture="./Data/GUI/GoPixelGo/GUI_Life.png"/>
+  </Image>
+  
   <StaticText name="VidesNumberShadow" posx="11.25" posy="53.25" height="15" width="15" visible="true" active="true" Literal="x 3"/>
   <StaticText name="VidesNumber" posx="11" posy="53" height="15" width="15" visible="true" active="true" Literal="x 3"/>
+  
+  <!--<StaticText name="VidesNumberShadowDeath" posx="58.5" posy="53.25" height="50" width="50" visible="true" active="true" Literal="x 3"/>-->
+  <StaticText name="VidesNumberDeath" posx="58" posy="51" height="50" width="50" visible="false" active="true" Literal="x 3"/>
   
   <Image name="PixeliteGUI" posx="2" posy="61.00" height="16" width="9.5" visible="true" active="true"
          default="Pixelite" OnLoadValue="" OnSaveValue="" flip="" backGround="false">

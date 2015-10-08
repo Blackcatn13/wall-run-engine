@@ -70,7 +70,7 @@ local percentAirMovement = 0.75;
 local m_ReduceCollider = 0.75;
 --////////////////////////////////////////////////////////
 function update_pause()
-	if act2in:do_action_from_lua("PauseGame") and gui_manager.m_sCurrentWindows == "Play.xml" and not cinematic_controller.m_executing and not gui_manager:get_is_gameover() then 
+	if act2in:do_action_from_lua("PauseGame") and gui_manager.m_sCurrentWindows == "Play.xml" and not cinematic_controller.m_executing and not gui_manager:get_is_gameover() and not player.is_dead then 
 		if not gui_manager:get_is_paused() then
 			gui_manager:activate_pause(true);
 			gui_manager:set_is_paused(true);

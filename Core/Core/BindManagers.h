@@ -349,10 +349,12 @@ void RegisterManagers() {
     .def("get_screen_height", &CGUIManager::GetScreenHeight)
     .def("set_size_percent", &CGUIManager::SetGUIElementSizePercent)
     .def("set_visible_gui_element", &CGUIManager::SetVisibleGuiElement)
+	.def("get_visible_gui_element", &CGUIManager::GetVisibleGuiElement)
     .def("start_fade", &CGUIManager::StartFade)
     .def("is_transition_effect_active", &CGUIManager::IsTransitionEffectActive)
     .property("m_sCurrentWindows", &CGUIManager::GetCurrentWindow)
     .property("m_sTransitionEffect", &CGUIManager::GetTransitionEffect, &CGUIManager::SetTransitionEffect)
+	.property("m_IsBlackScreenActive", &CGUIManager::IsBlackScreenActive, &CGUIManager::SetBlackScreenActive)
   ];
   luabind::module(LUA_STATE) [
     class_<CCollectibleManager>("CCollectibleManager")

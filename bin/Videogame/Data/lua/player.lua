@@ -136,7 +136,7 @@ function Player.new()
 	
 	function self.extra_life()
 		self.num_lifes = self.num_lifes +1
-		gui_manager:set_num_heart( self.num_lifes )
+		--gui_manager:set_num_heart( self.num_lifes )
 		gui_manager:set_is_displayed_heart(true)
 	end
 	
@@ -254,7 +254,7 @@ function Player.new()
 			end]]
 			--gui_manager:set_is_displayed_heart(true);
 			gui_manager:set_count_heart(0.0);
-			gui_manager:set_num_heart( self.num_lifes );	
+			--gui_manager:set_num_heart( self.num_lifes );	
 			--local emitter3 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter3)
 			--emitter3:set_visible(false)
 			

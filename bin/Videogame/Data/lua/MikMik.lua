@@ -464,12 +464,13 @@ function mikmik_update_dead(ElapsedTime, doComprobation, name)
 		if not enemy.m_RenderableObject:is_action_animation_active() and not enemy.m_isAlive and not enemy.m_MovedToDiePosition then
 			enemy.m_CurrentTime = enemy.m_CurrentTime + 1 *ElapsedTime
 			--coreInstance:trace("Update muerto Mik sin accion")
+			enemy.m_RenderableObject:blend_cycle(0,0.1,0)
 			local emitter = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter)
 			if emitter ~= nil then
 				emitter.m_vPos = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_EmitterOffset
 				emitter.m_FireParticles = true 
 			end
-			if enemy.m_CurrentTime > 0.2 then
+			if enemy.m_CurrentTime > 0.1 then
 				enemy.m_RenderableObject.m_Printable=false
 				local dead_pos = enemy.m_PhysicController:get_position()
 				dead_pos.y = dead_pos.y + 1000
@@ -477,6 +478,7 @@ function mikmik_update_dead(ElapsedTime, doComprobation, name)
 				enemy.m_PhysicController:set_position(dead_pos)
 				enemy:move_to_position(dead_pos)
 				enemy.m_MovedToDiePosition  = true
+				enemy.m_RenderableObject:clear_cycle(0,0.1)
 			end
 		--elseif enemy.m_RenderableObject:is_action_animation_active() and not enemy.m_isAlive then
 			--enemy.m_RenderableObject:execute_action(3,0.1,0,1,false);

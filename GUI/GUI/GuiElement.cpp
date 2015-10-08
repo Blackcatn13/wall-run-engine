@@ -216,6 +216,10 @@ void CGuiElement::RenderText (CGraphicsManager *render, CFontManager *fm)
                 fm->DrawLiteralNumber(posX, posY, m_sLiteral, colWHITE, 8);
             else if (m_sName == "PixeliteNumberShadow" || m_sName == "VidesNumberShadow")
                 fm->DrawLiteralNumber(posX, posY, m_sLiteral, colBLACK, 8);
+			else if (m_sName =="VidesNumberDeath")
+				 fm->DrawLiteralNumber(posX, posY, m_sLiteral, colWHITE, 9);
+			else if (m_sName =="VidesNumberShadowDeath")
+				 fm->DrawLiteralNumber(posX, posY, m_sLiteral, colBLACK, 9);
             else
                 fm->DrawLiteral(posX, posY, m_sLiteral);
         }//if (m_sLiteral != "")

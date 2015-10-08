@@ -54,6 +54,7 @@ CGUIManager::CGUIManager(const Vect2i &resolution)
   , m_GUICountPixelite(0.0f)
   , m_GUINumPixelites(0)
   , m_isMainMenu(false)
+  ,m_IsBlackScreenActive(false)
   , m_dt(0.0f)
 {}
 
@@ -517,6 +518,15 @@ void CGUIManager::SetVisibleGuiElement (const std::string &inNameGuiElement, boo
   }
 }
 
+bool CGUIManager::GetVisibleGuiElement (const std::string &inNameGuiElement) {
+  std::map<std::string, CGuiElement *>::iterator it;
+  it = m_ElementsMap.find(inNameGuiElement);
+  if ( it != m_ElementsMap.end() ) {
+    return it->second->IsVisible();
+  } 
+  return false;
+}
+
 bool CGUIManager::GetProgressBarValue (const std::string &inNameGuiElement, float &outValue) {
   std::map<std::string, CGuiElement *>::iterator it;
   it = m_ElementsMap.find(inNameGuiElement);
@@ -969,6 +979,8 @@ void CGUIManager::SetGUIHeartNumber(int input) {
   m_GUINumHeart = input;
   m_ElementsMap.find("VidesNumber")->second->SetLiteral("x " + std::to_string( long double(input) ));
   m_ElementsMap.find("VidesNumberShadow")->second->SetLiteral("x " + std::to_string( long double(input) ));
+  m_ElementsMap.find("VidesNumberDeath")->second->SetLiteral("x " + std::to_string( long double(input) ));
+ // m_ElementsMap.find("VidesNumberShadowDeath")->second->SetLiteral("x " + std::to_string( long double(input) ));
 }
 
 float CGUIManager::GetGUICountPixelite() {
