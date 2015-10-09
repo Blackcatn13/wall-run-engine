@@ -419,50 +419,9 @@
 	<static_mesh name="Sala_6_ColumnaCentral_006" filename="Data\level4\meshes\Sala_6_ColumnaCentral_006.mesh"/>
 	<static_mesh name="Sala_6_ColumnaCentral_007" filename="Data\level4\meshes\Sala_6_ColumnaCentral_007.mesh"/>
 	<static_mesh name="Sala_6_ColumnaCentral_008" filename="Data\level4\meshes\Sala_6_ColumnaCentral_008.mesh"/>
-	<static_mesh name="Sala_6_ColumnaCentral_009" filename="Data\level4\meshes\Sala_6_ColumnaCentral_009.mesh"/>
-	<static_mesh name="Sala_6_ColumnaCentral_010" filename="Data\level4\meshes\Sala_6_ColumnaCentral_010.mesh"/>
-	<static_mesh name="Sala_6_ColumnaCentral_011" filename="Data\level4\meshes\Sala_6_ColumnaCentral_011.mesh"/>
-	<static_mesh name="Sala_6_ColumnaCentral_012" filename="Data\level4\meshes\Sala_6_ColumnaCentral_012.mesh"/>
-	<static_mesh name="Sala_6_ColumnaCentral_013" filename="Data\level4\meshes\Sala_6_ColumnaCentral_013.mesh"/>
-	<static_mesh name="Sala_6_ColumnaCentral_014" filename="Data\level4\meshes\Sala_6_ColumnaCentral_014.mesh"/>
-	<static_mesh name="Sala_6_ColumnaCentral_015" filename="Data\level4\meshes\Sala_6_ColumnaCentral_015.mesh"/>
-	<static_mesh name="Sala_6_ColumnaCentral_016" filename="Data\level4\meshes\Sala_6_ColumnaCentral_016.mesh"/>
-	<static_mesh name="Sala_6_ColumnaCentral_017" filename="Data\level4\meshes\Sala_6_ColumnaCentral_017.mesh"/>
 	<static_mesh name="Sala_6_Cara_lava_001" filename="Data\level4\meshes\Sala_6_Cara_lava_001.mesh"/>
-	<static_mesh name="Sala_6_Cara_lava_002" filename="Data\level4\meshes\Sala_6_Cara_lava_002.mesh"/>
-	<static_mesh name="Sala_6_Cara_lava_003" filename="Data\level4\meshes\Sala_6_Cara_lava_003.mesh"/>
-	<static_mesh name="Sala_6_Cara_lava_004" filename="Data\level4\meshes\Sala_6_Cara_lava_004.mesh"/>
-	<static_mesh name="Sala_6_Cara_lava_005" filename="Data\level4\meshes\Sala_6_Cara_lava_005.mesh"/>
-	<static_mesh name="Sala_6_Cara_lava_006" filename="Data\level4\meshes\Sala_6_Cara_lava_006.mesh"/>
-	<static_mesh name="Sala_6_Cara_lava_007" filename="Data\level4\meshes\Sala_6_Cara_lava_007.mesh"/>
-	<static_mesh name="Sala_6_Cara_lava_008" filename="Data\level4\meshes\Sala_6_Cara_lava_008.mesh"/>
-	<static_mesh name="Sala_6_Cara_lava_009" filename="Data\level4\meshes\Sala_6_Cara_lava_009.mesh"/>
-	<static_mesh name="Sala_6_Cara_lava_010" filename="Data\level4\meshes\Sala_6_Cara_lava_010.mesh"/>
-	<static_mesh name="Sala_6_Cara_lava_011" filename="Data\level4\meshes\Sala_6_Cara_lava_011.mesh"/>
-	<static_mesh name="Sala_6_Cara_lava_012" filename="Data\level4\meshes\Sala_6_Cara_lava_012.mesh"/>
-	<static_mesh name="Sala_6_LuzPared_010" filename="Data\level4\meshes\Sala_6_LuzPared_010.mesh"/>
-	<static_mesh name="Sala_6_LuzPared_009" filename="Data\level4\meshes\Sala_6_LuzPared_009.mesh"/>
-	<static_mesh name="Sala_6_LuzPared_011" filename="Data\level4\meshes\Sala_6_LuzPared_011.mesh"/>
-	<static_mesh name="Sala_6_LuzPared_012" filename="Data\level4\meshes\Sala_6_LuzPared_012.mesh"/>
-	<static_mesh name="Sala_6_LuzPared_013" filename="Data\level4\meshes\Sala_6_LuzPared_013.mesh"/>
-	<static_mesh name="Sala_6_LuzPared_014" filename="Data\level4\meshes\Sala_6_LuzPared_014.mesh"/>
-	<static_mesh name="Sala_6_LuzPared_015" filename="Data\level4\meshes\Sala_6_LuzPared_015.mesh"/>
 	<static_mesh name="Sala_6_LuzPared_001" filename="Data\level4\meshes\Sala_6_LuzPared_001.mesh"/>
 	<static_mesh name="Sala_6_LuzPared_002" filename="Data\level4\meshes\Sala_6_LuzPared_002.mesh"/>
-	<static_mesh name="Sala_6_LuzPared_003" filename="Data\level4\meshes\Sala_6_LuzPared_003.mesh"/>
-	<static_mesh name="Sala_6_LuzPared_004" filename="Data\level4\meshes\Sala_6_LuzPared_004.mesh"/>
-	<static_mesh name="Sala_6_LuzPared_005" filename="Data\level4\meshes\Sala_6_LuzPared_005.mesh"/>
-	<static_mesh name="Sala_6_LuzPared_006" filename="Data\level4\meshes\Sala_6_LuzPared_006.mesh"/>
-	<static_mesh name="Sala_6_LuzPared_007" filename="Data\level4\meshes\Sala_6_LuzPared_007.mesh"/>
-	<static_mesh name="Sala_6_LuzPared_008" filename="Data\level4\meshes\Sala_6_LuzPared_008.mesh"/>
-	<static_mesh name="Sala_6_LuzPared_016" filename="Data\level4\meshes\Sala_6_LuzPared_016.mesh"/>
-	<static_mesh name="Sala_6_LuzPared_017" filename="Data\level4\meshes\Sala_6_LuzPared_017.mesh"/>
-	<static_mesh name="Sala_6_LuzPared_018" filename="Data\level4\meshes\Sala_6_LuzPared_018.mesh"/>
-	<static_mesh name="Sala_6_LuzPared_019" filename="Data\level4\meshes\Sala_6_LuzPared_019.mesh"/>
-	<static_mesh name="Sala_6_LuzPared_020" filename="Data\level4\meshes\Sala_6_LuzPared_020.mesh"/>
-	<static_mesh name="Sala_6_LuzPared_021" filename="Data\level4\meshes\Sala_6_LuzPared_021.mesh"/>
-	<static_mesh name="Sala_6_LuzPared_022" filename="Data\level4\meshes\Sala_6_LuzPared_022.mesh"/>
-	<static_mesh name="Sala_6_LuzPared_023" filename="Data\level4\meshes\Sala_6_LuzPared_023.mesh"/>
 	<static_mesh name="Sala_6_LlumDeSostre_001" filename="Data\level4\meshes\Sala_6_LlumDeSostre_001.mesh"/>
 	<static_mesh name="Sala_6_LlumDeSostre_002" filename="Data\level4\meshes\Sala_6_LlumDeSostre_002.mesh"/>
 	<static_mesh name="Sala_6_LlumDeSostre_003" filename="Data\level4\meshes\Sala_6_LlumDeSostre_003.mesh"/>

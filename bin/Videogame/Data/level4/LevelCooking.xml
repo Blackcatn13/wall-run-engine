@@ -87,6 +87,8 @@
 	<Physx_mesh name="CheckPointDisabledStand003" filename="Data\level4\meshes\CheckPointDisabledStand003.phsx"/>
 	<Physx_mesh name="CheckPointDisabledStand004" filename="Data\level4\meshes\CheckPointDisabledStand004.phsx"/>
 	<Physx_mesh name="CheckPointDisabledStand005" filename="Data\level4\meshes\CheckPointDisabledStand005.phsx"/>
+	<Physx_mesh name="CheckPointDisabledStand006" filename="Data\level4\meshes\CheckPointDisabledStand006.phsx"/>
+	<Physx_mesh name="CheckPointDisabledStand007" filename="Data\level4\meshes\CheckPointDisabledStand007.phsx"/>
 	<Physx_mesh name="CheckPointEnabledStand001" filename="Data\level4\meshes\CheckPointEnabledStand001.phsx"/>
 	<Physx_mesh name="CheckPointEnabledSphere" filename="Data\level4\meshes\CheckPointEnabledSphere.phsx"/>
 
@@ -111,15 +113,6 @@
 	<Physx_mesh name="Sala_6_ColumnaCentral_006" filename="Data\level4\meshes\Sala_6_ColumnaCentral_006.phsx"/>
 	<Physx_mesh name="Sala_6_ColumnaCentral_007" filename="Data\level4\meshes\Sala_6_ColumnaCentral_007.phsx"/>
 	<Physx_mesh name="Sala_6_ColumnaCentral_008" filename="Data\level4\meshes\Sala_6_ColumnaCentral_008.phsx"/>
-	<Physx_mesh name="Sala_6_ColumnaCentral_009" filename="Data\level4\meshes\Sala_6_ColumnaCentral_009.phsx"/>
-	<Physx_mesh name="Sala_6_ColumnaCentral_010" filename="Data\level4\meshes\Sala_6_ColumnaCentral_010.phsx"/>
-	<Physx_mesh name="Sala_6_ColumnaCentral_011" filename="Data\level4\meshes\Sala_6_ColumnaCentral_011.phsx"/>
-	<Physx_mesh name="Sala_6_ColumnaCentral_012" filename="Data\level4\meshes\Sala_6_ColumnaCentral_012.phsx"/>
-	<Physx_mesh name="Sala_6_ColumnaCentral_013" filename="Data\level4\meshes\Sala_6_ColumnaCentral_013.phsx"/>
-	<Physx_mesh name="Sala_6_ColumnaCentral_014" filename="Data\level4\meshes\Sala_6_ColumnaCentral_014.phsx"/>
-	<Physx_mesh name="Sala_6_ColumnaCentral_015" filename="Data\level4\meshes\Sala_6_ColumnaCentral_015.phsx"/>
-	<Physx_mesh name="Sala_6_ColumnaCentral_016" filename="Data\level4\meshes\Sala_6_ColumnaCentral_016.phsx"/>
-	<Physx_mesh name="Sala_6_ColumnaCentral_017" filename="Data\level4\meshes\Sala_6_ColumnaCentral_017.phsx"/>
 	<Physx_mesh name="PLAT POLY011" filename="Data\level4\meshes\PLAT POLY011.phsx"/>
 	<Physx_mesh name="PLAT POLY006" filename="Data\level4\meshes\PLAT POLY006.phsx"/>
 	<Physx_mesh name="PLAT POLY012" filename="Data\level4\meshes\PLAT POLY012.phsx"/>
