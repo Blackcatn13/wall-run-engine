@@ -10,12 +10,11 @@
 	
 	<instance_enemy name="Chucky" type="chucky_runner" />
 	
-	<!--<instance_enemy name="PumPum1" type="pumpum_easy" attack_distance = "160" zone="1.0" projectile="disparoPumPum1" />
-		
-	<instance_enemy name="PumPum2" type="pumpum_easy" attack_distance = "160" zone="1.0" projectile="disparoPumPum2" />
+	<instance_enemy name="PumPum1" type="pumpum_easy" attack_distance = "160" zone="6.0" projectile="disparoPumPum1" />	
+	<instance_enemy name="PumPum2" type="pumpum_easy" attack_distance = "160" zone="6.0" projectile="disparoPumPum2" />
+	<instance_enemy name="PumPum3" type="pumpum_easy" attack_distance = "160" zone="6.0" projectile="disparoPumPum3" /> 
+	<instance_enemy name="PumPum4" type="pumpum_easy" attack_distance = "160" zone="6.0" projectile="disparoPumPum4" /> 
 	
-	<instance_enemy name="PumPum3" type="pumpum_easy" attack_distance = "160" zone="1.0" projectile="disparoPumPum3" /> 
-	-->
 	
 	<instance_enemy name="MikMik001" type="mikmik_easy" attack_distance="60" zone="3.5">
 		<wp position="500.826767 10.000014 5.216164" />
@@ -36,6 +35,14 @@
 	<instance_enemy name="MikMik009" type="mikmik_easy" zone="0.0" attack_distance="600" />
 	<instance_enemy name="MikMik010" type="mikmik_easy" zone="0.0" attack_distance="600" />
 	<instance_enemy name="MikMik011" type="mikmik_easy" zone="0.0" attack_distance="600" />
+	
+	<instance_enemy name="MikMik_S5_001" type="mikmik_easy" zone="5.0" attack_distance="70" />
+	<instance_enemy name="MikMik_S5_002" type="mikmik_easy" zone="5.0" attack_distance="80" />
+	<instance_enemy name="MikMik_S5_003" type="mikmik_easy" zone="5.0" attack_distance="60" />
+	<instance_enemy name="MikMik_S5_004" type="mikmik_easy" zone="5.0" attack_distance="70" />
+	<instance_enemy name="MikMik_S5_005" type="mikmik_easy" zone="5.0" attack_distance="70" />
+	
+	<instance_enemy name="MikMik012" type="mikmik_easy" zone="6.0" attack_distance="90" />
 
 	<!--<enemy name="Enemy2" type="easy" pos="8.0 2.0 -2.0" yaw="0.0" mesh="Enemy2" />
 	<enemy name="Enemy3" type="easy" pos="4.0 2.0 7.0" yaw="0.0" mesh="Enemy3" />-->

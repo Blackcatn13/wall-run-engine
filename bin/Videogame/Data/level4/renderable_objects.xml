@@ -151,6 +151,15 @@
 	<animated_model name="MikMik010" core="mik" pos="14.661 2.288 8.762" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik003DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation003" emitter2_offset="0.0 3.0 0.0" room="0"/>
 	<animated_model name="MikMik011" core="mik" pos="1.647 2.288 16.74" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik004DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation004" emitter2_offset="0.0 3.0 0.0" room="0"/>
 
+	<animated_model name="MikMik012" core="mik" pos="559.558 12.938 -487.047" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik004DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation004" emitter2_offset="0.0 3.0 0.0" room="6"/>
+
+	<animated_model name="MikMik_S5_001" core="mik" pos="557.568 9.875 -227.738" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik004DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation004" emitter2_offset="0.0 3.0 0.0" room="5"/>
+	<animated_model name="MikMik_S5_002" core="mik" pos="557.568 8.639 -290.675" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik005DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation005" emitter2_offset="0.0 3.0 0.0" room="5"/>
+	<animated_model name="MikMik_S5_003" core="mik" pos="557.568 7.593 -306.438 " yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik002DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation002" emitter2_offset="0.0 3.0 0.0" room="5"/>
+	<animated_model name="MikMik_S5_004" core="mik" pos="557.767 13.23 -366.54" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik001DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation001" emitter2_offset="0.0 3.0 0.0" room="5" />
+	<animated_model name="MikMik_S5_005" core="mik" pos="557.767 13.23 -377.215" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik003DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation003" emitter2_offset="0.0 3.0 0.0" room="5"/>
+	
+	
 	<mesh_instance name="PilarQuad002" core="PilarQuad002" pos="8.388683 1.227661 -12.106166" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 
 	<mesh_instance name="SALA 4" core="SALA 4" pos="563.274536 22.546162 -116.637451" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="4"/>
@@ -253,7 +262,7 @@
 	<mesh_instance name="PUNXES00266" core="PUNXES00266" pos="557.350647 7.464798 -260.875031" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 	<mesh_instance name="PUNXES0020" core="PUNXES0020" pos="557.350647 7.464798 -260.875031" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 	<platform name="POLY PLAT VERT R5_001" core="POLY PLAT VERT R5_001" type="poly" pos="557.489990 3.613 -313.900299" yaw="0.0" pitch="0.0" roll="0.0" scale="0.325229 1.0 1.0" visible="true" phisic_size="2.30853 1.82097 0.979034" layer="poly" room="5" final_position="557.489990 6.886 -313.900299"
-		 direction="0 1 0" time_out="3" speed="10" light="" activation_distance="15"/>
+		 direction="0 1 0" time_out="3" speed="5" light="" activation_distance="15"/>
 	<platform name="POLY. PLAT. HORTZ003" core="POLY. PLAT. HORTZ003" type="poly" pos="564.555969 12.153000 -260.415375" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="2.24045 0.331228 4.9034" layer="poly" room="5" final_position="557.356 12.153 -260.415"
 		 direction="1 0 0" time_out="3" speed="15" light="" activation_distance="15"/>
 	<mesh_instance name="SALA_5_TEMPLEPOLYPOLY" core="SALA_5_TEMPLEPOLYPOLY" pos="564.473083 11.111547 -280.508850" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
@@ -452,13 +461,15 @@
 	<platform name="INVISIBLE_WALL_004" core="INVISIBLE_WALL_004" type="static" pos="549.488892 2.376045 0.115322" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true"  layer="invisible" use_phisics_mesh="true" room="4"/>
 	<platform name="INVISIBLE_WALL_005" core="INVISIBLE_WALL_005" type="static" pos="557.271423 9.894491 -176.357147" yaw="0.0" pitch="0.0" roll="0.0" scale="0.566471 1.0 1.0" visible="false" layer="invisible" use_phisics_mesh="true" room="5"/>
 	<platform name="SecurityWall002" core="SecurityWall002" type="static" pos="557.271973 7.069 -315.611645" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="2.98108 2.9871 0.981232" layer="solid" room="5"/>
-	<!--<mesh_instance name="PumPum1" core="PumPum"  pos="97.358940 -1.500000 2.489124" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "1" layer="enemies" emitter="PumPumDeath01Emitter"/>
-	<mesh_instance name="disparoPumPum1" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "1" layer="enemies" emitter="PumPumFire01Emitter" />
-	<mesh_instance name="PumPum2" core="PumPum"  pos="95.358940 -1.500000 -0.489124" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "1" layer="enemies" emitter="PumPumDeath02Emitter"/>
-	<mesh_instance name="disparoPumPum2" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "1" layer="enemies" emitter="PumPumFire02Emitter"/>
-	<mesh_instance name="PumPum3" core="PumPum"  pos="93.358940 -1.500000 -3.489124" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" layer="enemies" room = "1" emitter="PumPumDeath03Emitter"/>
-	<mesh_instance name="disparoPumPum3" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "1" layer="enemies" emitter="PumPumFire03Emitter"/>
-	-->
+	<mesh_instance name="PumPum1" core="PumPum"  pos="557.07 11.022 -416.279" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "6" layer="enemies" emitter="PumPumDeath01Emitter"/>
+	<mesh_instance name="disparoPumPum1" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "6" layer="enemies" emitter="PumPumFire01Emitter" />
+	<mesh_instance name="PumPum2" core="PumPum"  pos="534.005 0.806 -505.328" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "6" layer="enemies" emitter="PumPumDeath02Emitter"/>
+	<mesh_instance name="disparoPumPum2" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "6" layer="enemies" emitter="PumPumFire02Emitter"/>
+	<mesh_instance name="PumPum3" core="PumPum"  pos="549.085 6.68 -615.408" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" layer="enemies" room = "6" emitter="PumPumDeath03Emitter"/>
+	<mesh_instance name="disparoPumPum3" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "6" layer="enemies" emitter="PumPumFire03Emitter"/>
+	<mesh_instance name="PumPum4" core="PumPum"  pos="543.913 6.68 -616.073" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" layer="enemies" room = "6" emitter="PumPumDeath01Emitter"/>
+	<mesh_instance name="disparoPumPum4" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "6" layer="enemies" emitter="PumPumFire01Emitter"/>
+	
 	
 	<mesh_instance name="Teleport" core="Teleport" pos="552.338684 2.577842 -505.727661" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid" emitter="PikyYellowTeleporting" emitter_offset="0.0 1.0 0.0" emitter2="PikyBrownTeleporting" emitter2_offset="0.0 1.0 0.0"/>
 	<mesh_instance name="LightBeamTeleport" core="LightBeamTeleport" pos="552.310120 2.986145 -505.720551" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="alpha_objects"/>

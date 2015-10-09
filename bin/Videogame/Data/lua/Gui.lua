@@ -87,6 +87,7 @@ function check_death_fade()
 			--gui_manager:set_is_displayed_heart(true);
 			gui_manager.m_IsBlackScreenActive = true
 			show_lifes_death()
+			player.check_death_actions()
 		end
 		if black_screen_timer >= max_count_timer then
 			black_screen_timer = 0.0
@@ -104,10 +105,19 @@ function check_death_fade()
 				gui_manager:set_visible_gui_element("VidesGUIDeath",false)
 				gui_manager:set_visible_gui_element("VidesNumberDeath",false)
 			end
-			player.check_death_actions()
+			
 			gui_manager:set_visible_gui_element("BlackScreen", false)
 			gui_manager.m_IsBlackScreenActive = false
 			fade_step = 0
+			if player.num_lifes == 0 then
+				coreInstance:trace("game over")
+				local game_over_pos = Vect3f(925, 0, -1.5)
+				set_screen_menu(game_over_pos, 9)
+				--game over
+				gui_manager:set_is_gameover(true);
+				player.game_over = true
+			end
+			player.is_dead = false
 		end
 	end
 end
