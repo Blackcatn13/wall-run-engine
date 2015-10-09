@@ -422,7 +422,10 @@ end
 function ChuckyReApears(distance)
 	local Chucky = enemy_manager:get_enemy("Chucky");
 	Chucky.m_Appeared = false
-	ChuckyApear(distance)
+	if not chucky_reapeared then
+		ChuckyApear(distance)
+		chucky_reapeared = true
+	end
 end
 
 function ChuckyDesapears()
@@ -433,6 +436,7 @@ function ChuckyDesapears()
 		Chucky:move_to_position(pos);
 		Chucky:m_FSM():newState("Parado");
 		Chucky.m_Appeared = false
+		chucky_reapeared = false
 		inputm:set_game_pad_left_motor_speed(0, 1);
 		local emitter = particle_manager:get_resource(Chucky.m_RenderableObject.m_ParticleEmitter)
 		local emitter2 = particle_manager:get_resource(Chucky.m_RenderableObject.m_ParticleEmitter2)

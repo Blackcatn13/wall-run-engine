@@ -24,12 +24,17 @@
 						gui_manager:set_is_mainmenu(false);
 						gui_manager:set_is_gameover(false);
 						gui_manager:set_is_paused(false);
-						gui_manager:set_is_displayed_console(false);"
+						gui_manager:set_is_displayed_console(false);
+						enemy_manager:get_enemy('Chucky'):m_FSM():newState('Parado');"
         OnSaveWindows=""
         OnUpdateWindows="cam_Controller:set_active_camera('GUICamera')
+						local enemy = enemy_manager:get_enemy('Chucky')
 						local ball = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room('solid', 10):get_resource('MenuSphere');
 						ball:set_pitch(ball:get_pitch() - (gui_manager:get_dt() / 2));
 						renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room('player', 10):get_resource('Piky'):blend_cycle(1,1,0.5);
+						if enemy.m_RenderableObject:is_action_animation_active() then
+							enemy.m_RenderableObject:remove_action(3)
+						end
 						enemy_manager:get_enemy('Chucky').m_RenderableObject:blend_cycle(1,1,0.5)
 						enemy_manager:get_enemy('Chucky'):move_to_position(Vect3f(-920.75, -1, 0));">
 	

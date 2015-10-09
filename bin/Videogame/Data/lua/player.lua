@@ -319,6 +319,8 @@ function Player.new()
 		end
 		
 		--self.is_dead = false
+		self.use_iman = false;
+		self.iman_pos = Vect3f(0,0,0);
 		self.has_ass_burned = false
 		self.hurt_by_spikes = false
 		self.set_super_piky(false)
