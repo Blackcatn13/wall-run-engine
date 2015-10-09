@@ -68,9 +68,11 @@ void ShowErrorMessage (const std::string &message) {
 
 int APIENTRY WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance, LPSTR _lpCmdLine, int _nCmdShow) {
 
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   {
+#ifdef _DEBUG
     MemLeaks::MemoryBegin();
+#endif
     AllocConsole();
     freopen("CONOUT$", "w", stdout);
   }

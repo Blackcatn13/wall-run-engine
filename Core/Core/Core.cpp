@@ -35,7 +35,7 @@
 #include "Collectibles\CollectibleManager.h"
 #include "SceneElements\PolyPlatform.h"
 #include "Core_Utils\TickCounter.h"
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
 #include "Core_Utils\Timer.h"
 #endif
 
@@ -50,7 +50,7 @@ CCore::~CCore() {
 }
 
 void CCore::Init(HWND handler) {
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   std::cout << "Creating Graphics Manager";
   CTimer t = CTimer(1);
   CTimer t1 = CTimer(1);
@@ -60,7 +60,7 @@ void CCore::Init(HWND handler) {
   m_GraphicsManager = new CGraphicsManager();
   m_GraphicsManager->Init(handler, m_Config.FullScreen, m_Config.Screen_Width, m_Config.Screen_Heigth);
   //m_SoundManager = new CSoundManager();
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Effect Manager";
@@ -69,21 +69,21 @@ void CCore::Init(HWND handler) {
   m_EffectManager->Load(m_Config.EffectPath);
   //m_RenderableObjectTechniqueManager = new CRenderableObjectTechniqueManager();
   //Load?
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Renderable Object Technique Manager";
 #endif
   m_RenderableObjectTechniqueManager = new CRenderableObjectTechniqueManager();
   m_RenderableObjectTechniqueManager->Load(m_Config.PoolRenderableObjects);
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Input Manager";
 #endif
   m_InputManager = new CInputManager();
   m_InputManager->Init(handler, Vect2i(m_Config.Screen_Width, m_Config.Screen_Heigth), m_Config.Mouse_Exclusive);
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Font Manager";
@@ -91,7 +91,7 @@ void CCore::Init(HWND handler) {
   m_FontManager = new CFontManager();
   m_FontManager->Init(m_GraphicsManager);
   m_FontManager->LoadTTFs(m_Config.FontsPath);
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Language Manager";
@@ -101,27 +101,27 @@ void CCore::Init(HWND handler) {
     m_LanguageManager->SetXmlFile(m_Config.LanguagesPath[i]);
   m_LanguageManager->LoadXMLs();
   m_LanguageManager->SetCurrentLanguage(m_Config.CurrentLanguage);
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Action To Input";
 #endif
   m_ActionToInput = new CActionToInput(m_InputManager);
   m_ActionToInput->LoadXML(m_Config.ActionsPath);
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Texture Manager";
 #endif
   m_TextureManager = new CTextureManager();
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Static Mesh Manager";
 #endif
   m_StaticMeshManager = new CStaticMeshManager();
   m_StaticMeshManager->Load(m_Config.MeshesPath);
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Script Manager";
@@ -129,7 +129,7 @@ void CCore::Init(HWND handler) {
   m_ScriptManager = new CScriptManager();
   m_ScriptManager->Initialize();
   //m_RenderableManager = new CRenderableObjectsManager();
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Animated Model Manager";
@@ -137,14 +137,14 @@ void CCore::Init(HWND handler) {
   m_AnimatedModelManager = new CAnimatedModelManager();
   m_AnimatedModelManager->Load(m_Config.AnimatedMeshPath);
   //Cargamos Technique pools
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Physics Manager";
 #endif
   m_PhysicsManager = new CPhysicsManager();
   m_PhysicsManager->Init();
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating FSM Manager";
@@ -152,7 +152,7 @@ void CCore::Init(HWND handler) {
   m_FSMManager = new CFSMManager();
   m_FSMManager->Load(m_Config.FSMPath);
   //Cargando Layers
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Renderable Layers Manager";
@@ -166,14 +166,14 @@ void CCore::Init(HWND handler) {
   //m_RenderableLayersManager->Load(m_Config.LuaPath);
   //m_RenderableManager->Load(m_Config.RenderablePath);
   //m_RenderableManager->Load(m_Config.LuaPath);
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Light Manager";
 #endif
   m_LightManager = new CLightManager();
   m_LightManager->Load(m_Config.LightsPath);
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Camera Controller Manager";
@@ -184,33 +184,33 @@ void CCore::Init(HWND handler) {
   m_ScriptManager = new CScriptManager();
   m_ScriptManager->Initialize();
   m_LightManager = new CLightManager();*/
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Cinematic Manager";
 #endif
   m_CinematicManager = new CCinematicController();
   m_CinematicManager->Load(m_Config.CinematicPath);
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Logger Render";
 #endif
   m_LogRender = new CLogRender();
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Player Controller";
 #endif
   m_PlayerController = new CPlayerController();
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Scene Render Command Manager";
 #endif
   m_SceneRendererCommandManager = new CSceneRendererCommandManager();
   m_SceneRendererCommandManager->Load(m_Config.SceneRenderCommandsPath);
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Trigger Manager";
@@ -219,7 +219,7 @@ void CCore::Init(HWND handler) {
   m_TriggerManager->LoadTriggers(m_Config.TriggersPath);
 // m_WPManager = new CWPManager();
   //m_WPManager->Load("data//AI//Waypoints3.xml");
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Enemy Manager";
@@ -227,7 +227,7 @@ void CCore::Init(HWND handler) {
   m_EnemyManager = CEnemyManager::GetInstance();
   if (m_EnemyManager->Init(m_Config.EnemiesPath))
     m_EnemyManager->InitEnemies("enemies");
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Puzzle Manager";
@@ -236,14 +236,14 @@ void CCore::Init(HWND handler) {
   m_PuzzleManager->Load(m_Config.PuzzlesPath);
   m_LuaLoadLevelFunc = m_Config.LuaLevelObjectsFunc;
   m_LevelPhisicsFile = m_Config.LevelPhisics;
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Particle Manager";
 #endif
   m_ParticleManager = new CParticleManager();
   m_ParticleManager->Load(m_Config.ParticlesPath);
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Billboard Manager";
@@ -253,7 +253,7 @@ void CCore::Init(HWND handler) {
   //m_SoundManager = new CSoundManager();
   //m_SoundManager->Init();
   //m_SoundManager->LoadSounds("./Data/sounds.xml");
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating WW Sound Manager";
@@ -261,7 +261,7 @@ void CCore::Init(HWND handler) {
   m_WWSoundManager = new CWWSoundManager();
   m_WWSoundManager->Init();
   m_WWSoundManager->Load(m_Config.SoundPath);
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating GUI Manager";
@@ -269,19 +269,19 @@ void CCore::Init(HWND handler) {
   m_GuiManager = new CGUIManager(Vect2i(m_Config.Screen_Width, m_Config.Screen_Heigth));
   if (m_GuiManager->Init(m_Config.GUIPath))
     m_GuiManager->LoadGuiFiles(m_Config.GUIFolder);
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Tick Counter";
 #endif
   m_TickCounter = CTickCounter::getInstance();
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Scprit Manager";
 #endif
   m_ScriptManager->Load(m_Config.LuaPath);
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   std::cout << "Creating Collectible Manager";
@@ -289,7 +289,7 @@ void CCore::Init(HWND handler) {
   m_CollectibleManager = new CCollectibleManager();
   if (m_CollectibleManager->Load(m_Config.CollectiblesPath))
     m_CollectibleManager->InitCollectibles(m_CollectibleManager->GetCollectiblesLayerName());
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
   t1.Update();
@@ -355,7 +355,7 @@ void CCore::Update(float dt) {
   m_ElapsedTime = dt;
   m_ScriptManager->RunCode("update_pause()");
   m_ScriptManager->RunCode("update_fading_black_screen()");
-  if (!m_GuiManager->GetIsPaused() &&!m_GuiManager->IsBlackScreenActive()) {
+  if (!m_GuiManager->GetIsPaused() && !m_GuiManager->IsBlackScreenActive()) {
     m_ActionToInput->Update();
     m_GraphicsManager->Update();
     m_PhysicsManager->Update(dt);
@@ -382,7 +382,9 @@ void CCore::Update(float dt) {
 
 
 void CCore::Trace(const std::string &msg ) {
+#ifdef _DEBUG
   std::cout << msg << std::endl;
+#endif
 }
 
 void CCore::SetLightsToPlatforms(std::string layer) {
