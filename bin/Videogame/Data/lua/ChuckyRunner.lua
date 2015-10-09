@@ -66,6 +66,7 @@ function move_chucky_running(ElapsedTime)
 	local mov = playerPos - chucky:get_position();
 	mov.y = 0;
 	mov:normalize(1);
+	rotate_yaw(chucky, ElapsedTime, player_controller:get_position())
 	chucky.m_PhysicController:move(mov * Chucky_current_speed * ElapsedTime, ElapsedTime);
 	local pos = chucky:get_position();
 	chucky:set_position(chucky.m_PhysicController:get_position());

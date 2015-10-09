@@ -36,11 +36,11 @@
 	<instance_enemy name="MikMik010" type="mikmik_easy" zone="0.0" attack_distance="600" />
 	<instance_enemy name="MikMik011" type="mikmik_easy" zone="0.0" attack_distance="600" />
 	
-	<instance_enemy name="MikMik_S5_001" type="mikmik_easy" zone="5.0" attack_distance="70" />
+	<!--<instance_enemy name="MikMik_S5_001" type="mikmik_easy" zone="5.0" attack_distance="70" />-->
 	<instance_enemy name="MikMik_S5_002" type="mikmik_easy" zone="5.0" attack_distance="80" />
 	<instance_enemy name="MikMik_S5_003" type="mikmik_easy" zone="5.0" attack_distance="60" />
 	<instance_enemy name="MikMik_S5_004" type="mikmik_easy" zone="5.0" attack_distance="70" />
-	<instance_enemy name="MikMik_S5_005" type="mikmik_easy" zone="5.0" attack_distance="70" />
+	<!--<instance_enemy name="MikMik_S5_005" type="mikmik_easy" zone="5.0" attack_distance="70" />-->
 	
 	<instance_enemy name="MikMik012" type="mikmik_easy" zone="6.0" attack_distance="90" />
 

@@ -42,6 +42,7 @@ piky_mesh_name = "Piky" --Piky o SuperPiky
 powerup_name = "disparoSuperPiky"
 current_shot_type = "rock"  -- rock /powerup
 transition_super_piky = false
+chucky_reapeared = false
 fade_step = 0 --0: Not fade, 1: first fade, 2: black_screen, 3: second fade
 
 --Animaciones del Player

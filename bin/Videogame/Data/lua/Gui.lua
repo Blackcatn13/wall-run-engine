@@ -72,7 +72,7 @@ end
 
 function check_death_fade()
 	if player.is_dead and gui_manager:is_transition_effect_active() and fade_step == 1 then
-	coreInstance:trace(tostring(gui_manager.m_sTransitionEffect.m_currentState))
+	--coreInstance:trace(tostring(gui_manager.m_sTransitionEffect.m_currentState))
 		if gui_manager.m_sTransitionEffect.m_currentState > (gui_manager.m_sTransitionEffect.m_fTransitionTime *0.5) then
 			
 			--coreInstance:trace("Fading step 1")
@@ -81,13 +81,13 @@ function check_death_fade()
 			--gui_manager:set_visible_gui_element("VidesNumberShadowDeath",true)
 			gui_manager:set_visible_gui_element("VidesNumberDeath",true)
 			fade_step = 2
+			player.check_death_actions()
 		end
 	elseif player.is_dead and not gui_manager:is_transition_effect_active() and fade_step == 2 then
 		if gui_manager:get_is_displayed_heart() == false then
 			--gui_manager:set_is_displayed_heart(true);
 			gui_manager.m_IsBlackScreenActive = true
 			show_lifes_death()
-			player.check_death_actions()
 		end
 		if black_screen_timer >= max_count_timer then
 			black_screen_timer = 0.0
@@ -143,7 +143,7 @@ function show_lifes_death()
 		end
 		if not gui_manager:get_is_paused() then
 			gui_manager:set_count_heart(count + gui_manager:get_dt());
-			coreInstance:trace(tostring(count))
+			--coreInstance:trace(tostring(count))
 		end
 	else
 		
