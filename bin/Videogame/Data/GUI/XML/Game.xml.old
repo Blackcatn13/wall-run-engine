@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Windows OnLoadWindows="" OnSaveWindows="" OnUpdateWindows="">
+
+  <Image name="game_columna_left" posx="0.00" posy="0.00" height="100.00" width="50.00" visible="true" active="true"
+         default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="img1" name_texture="./Data/GUI/Textures_LaberynthGame/columna.png"/>
+  </Image>
+
+  <Image name="game_columna_right" posx="50.00" posy="0.00" height="100.00" width="50.00" visible="true" active="true"
+       default="img1" OnLoadValue="" OnSaveValue="" flip="FLIP_Y" backGround="false">
+    <texture name="img1" name_texture="./Data/GUI/Textures_LaberynthGame/columna.png"/>
+  </Image>
+
+
+  <Button name="Game_2_setup" posx="42.00" posy="87.00" height="10.00" width="15.00" visible="true" active="true" 
+         texture_normal="./Data/GUI/Textures_LaberynthGame/setup_normal.png"
+         texture_over="./Data/GUI/Textures_LaberynthGame/setup_over.png" 
+         texture_clicked="./Data/GUI/Textures_LaberynthGame/setup_press.png"
+         texture_deactivated="./Data/GUI/Textures_LaberynthGame/setup_normal.png" 
+         OnClickedAction=" _soundM:playAction2D('guiBack')
+                            _guiM:pushWindows('Setup.xml')"
+         OnOverAction="_soundM:playAction2D('guiOver')"/>
+  
+  <Button name="Game_2_Main" posx="10.00" posy="86.00" height="12.00" width="15.00" visible="true" active="true" 
+          texture_normal="./Data/GUI/Textures_LaberynthGame/exit_normal.png"
+          texture_over="./Data/GUI/Textures_LaberynthGame/exit_over.png" 
+          texture_clicked="./Data/GUI/Textures_LaberynthGame/exit_press.png"
+          texture_deactivated="./Data/GUI/Textures_LaberynthGame/exit_normal.png" 
+          OnClickedAction=" getGameLaberynth():endGame()
+                            _soundM:playAction2D('guiBack')
+                            _guiM:activeWindows('Main.xml')
+                            "
+          OnOverAction="_soundM:playAction2D('guiOver')"/>
+
+  <Button name="Game_Restart" posx="70.00" posy="87.00" height="9.00" width="18.00" visible="true" active="true" 
+          texture_normal="./Data/GUI/Textures_LaberynthGame/restart_normal.png"
+          texture_over="./Data/GUI/Textures_LaberynthGame/restart_over.png" 
+          texture_clicked="./Data/GUI/Textures_LaberynthGame/restart_press.png"
+          texture_deactivated="./Data/GUI/Textures_LaberynthGame/restart_normal.png" 
+          OnClickedAction=" _soundM:playAction2D('guiNext')
+                            getGameLaberynth():start(false)"
+          OnOverAction="_soundM:playAction2D('guiOver')"/>
+  
+  <Image name="game_stars" posx="2.00" posy="39.00" height="50.00" width="30.00" visible="false" active="true"
+     default="17" 
+     OnLoadValue=""
+     OnSaveValue=""
+     flip="" backGround="false">
+    <texture name="0" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_000.dds"/>
+    <texture name="1" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_001.dds"/>
+    <texture name="2" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_002.dds"/>
+    <texture name="3" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_003.dds"/>
+    <texture name="4" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_004.dds"/>
+    <texture name="5" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_005.dds"/>
+    <texture name="6" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_006.dds"/>
+    <texture name="7" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_007.dds"/>
+    <texture name="8" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_008.dds"/>
+    <texture name="9" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_009.dds"/>
+    <texture name="10" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_010.dds"/>
+    <texture name="11" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_011.dds"/>
+    <texture name="12" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_012.dds"/>
+    <texture name="13" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_013.dds"/>
+    <texture name="14" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_014.dds"/>
+    <texture name="15" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_015.dds"/>
+    <texture name="16" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_016.dds"/>
+    <texture name="17" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_017.dds"/>
+  </Image>
+
+  <Image name="game_stars2" posx="64.00" posy="38.00" height="50.00" width="30.00" visible="false" active="true"
+    default="17" 
+    OnLoadValue=""
+    OnSaveValue=""
+    flip="FLIP_Y" backGround="false">
+    <texture name="0" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_000.dds"/>
+    <texture name="1" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_001.dds"/>
+    <texture name="2" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_002.dds"/>
+    <texture name="3" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_003.dds"/>
+    <texture name="4" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_004.dds"/>
+    <texture name="5" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_005.dds"/>
+    <texture name="6" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_006.dds"/>
+    <texture name="7" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_007.dds"/>
+    <texture name="8" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_008.dds"/>
+    <texture name="9" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_009.dds"/>
+    <texture name="10" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_010.dds"/>
+    <texture name="11" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_011.dds"/>
+    <texture name="12" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_012.dds"/>
+    <texture name="13" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_013.dds"/>
+    <texture name="14" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_014.dds"/>
+    <texture name="15" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_015.dds"/>
+    <texture name="16" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_016.dds"/>
+    <texture name="17" name_texture="./Data/GUI/Textures_LaberynthGame/stars/stars_017.dds"/>
+  </Image>
+</Windows>

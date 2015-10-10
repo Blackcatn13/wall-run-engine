@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Windows OnLoadWindows="" OnSaveWindows="" OnUpdateWindows="">
+
+  <Image name="mexit_fondo" posx="0.00" posy="0.00" height="100.00" width="100.00" visible="true" active="true"
+         default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="img1" name_texture="./Data/GUI/Textures_LaberynthGame/f_pral.png"/>
+  </Image>
+
+  <Image name="exit_game" posx="28.0" posy="30.00" height="30.00" width="50.00" visible="true" active="true"
+        default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="img1" name_texture="./Data/GUI/Textures_LaberynthGame/exit_game.png"/>
+  </Image>
+
+  <Button name="ExitYes" posx="37.00" posy="48.00" height="8.00" width="15.00" visible="true" 
+          active="true" 
+          texture_normal="./Data/GUI/Textures_LaberynthGame/exitYes_normal.png"
+          texture_over="./Data/GUI/Textures_LaberynthGame/exitYes_over.png" 
+          texture_clicked="./Data/GUI/Textures_LaberynthGame/exitYes_press.png"
+          texture_deactivated="./Data/GUI/Textures_LaberynthGame/exitYes_normal.png" 
+          OnClickedAction=" _soundM:playAction2D('guiBack')
+                            _core:finished()" 
+          OnOverAction="_soundM:playAction2D('guiOver')"/>
+		  
+  <Button name="ExitNot" posx="53.00" posy="48.00" height="8.00" width="15.00" visible="true" 
+          active="true"
+          texture_normal="./Data/GUI/Textures_LaberynthGame/exitNot_normal.png"
+          texture_over="./Data/GUI/Textures_LaberynthGame/exitNot_over.png"
+          texture_clicked="./Data/GUI/Textures_LaberynthGame/exitNot_press.png"
+          texture_deactivated="./Data/GUI/Textures_LaberynthGame/exitNot_normal.png" 
+          OnClickedAction=" _guiM:activeWindows('Main.xml')
+                            _soundM:playAction2D('guiBack')"
+          OnOverAction="_soundM:playAction2D('guiOver')"/>
+  
+</Windows>

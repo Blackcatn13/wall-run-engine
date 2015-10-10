@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Windows  OnLoadWindows=" source_help = _soundM:createSource()
+                          _soundM:playSource2D(source_help,'help',true)
+                          _soundM:setSourceGain(source_help, 0.1)" 
+          OnSaveWindows=" _soundM:stopSource(source_help)
+                          _soundM:deleteSource(source_help)"
+          
+          OnUpdateWindows="if _core:isEndTimer('credits_destello1',10)== true then                            
+                            _guiM:playImage('credits_destello1',0.1,false)
+                          end
+                          
+                          if _core:isEndTimer('credits_destello2',12)== true then                            
+                            _guiM:playImage('credits_destello2',0.1,false)
+                          end
+                          
+                          if _core:isEndTimer('credits_destello3',20)== true then                            
+                            _guiM:playImage('credits_destello3',0.1,false)
+                          end">
+  
+  <Image name="credits_fondo_left" posx="0.00" posy="0.00" height="100.00" width="50.00" visible="true" active="true"
+         default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="true">
+    <texture name="img1" name_texture="./Data/GUI/Textures_LaberynthGame/f_helpa.png"/>
+  </Image>
+
+  <Image name="credits_fondo_right" posx="50.00" posy="0.00" height="100.00" width="50.00" visible="true" active="true"
+         default="img1" OnLoadValue="" OnSaveValue="" flip="FLIP_Y" backGround="true">
+    <texture name="img1" name_texture="./Data/GUI/Textures_LaberynthGame/f_helpa.png"/>
+  </Image>
+
+  <Image name="credits_title" posx="34.00" posy="8.00" height="13.00" width="30.0" visible="true" active="true"
+       default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="img1" name_texture="./Data/GUI/Textures_LaberynthGame/credits.png"/>
+  </Image>
+
+  <Image name="credits_destello1" posx="8.00" posy="20.00" height="10.00" width="10.00" visible="true" active="true"
+    default="11" 
+    OnLoadValue=""
+    OnSaveValue=""
+    flip="" 
+    backGround="false">
+    <texture name="0" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_000.dds"/>
+    <texture name="1" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_001.dds"/>
+    <texture name="2" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_002.dds"/>
+    <texture name="3" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_003.dds"/>
+    <texture name="4" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_004.dds"/>
+    <texture name="5" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_005.dds"/>
+    <texture name="6" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_006.dds"/>
+    <texture name="7" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_007.dds"/>
+    <texture name="8" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_008.dds"/>
+    <texture name="9" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_009.dds"/>
+    <texture name="10" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_010.dds"/>
+  </Image>
+
+
+  <Image name="credits_destello2" posx="55.00" posy="10.00" height="10.00" width="10.00" visible="true" active="true"
+      default="11" 
+      OnLoadValue=""
+      OnSaveValue=""
+      flip="" 
+      backGround="false">
+    <texture name="0" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_000.dds"/>
+    <texture name="1" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_001.dds"/>
+    <texture name="2" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_002.dds"/>
+    <texture name="3" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_003.dds"/>
+    <texture name="4" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_004.dds"/>
+    <texture name="5" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_005.dds"/>
+    <texture name="6" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_006.dds"/>
+    <texture name="7" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_007.dds"/>
+    <texture name="8" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_008.dds"/>
+    <texture name="9" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_009.dds"/>
+    <texture name="10" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_010.dds"/>
+  </Image>
+
+  <Image name="credits_destello3" posx="85.00" posy="80.00" height="10.00" width="10.00" visible="true" active="true"
+      default="11" 
+      OnLoadValue=""
+      OnSaveValue=""
+      flip=""
+      backGround="false">
+    <texture name="0" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_000.dds"/>
+    <texture name="1" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_001.dds"/>
+    <texture name="2" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_002.dds"/>
+    <texture name="3" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_003.dds"/>
+    <texture name="4" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_004.dds"/>
+    <texture name="5" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_005.dds"/>
+    <texture name="6" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_006.dds"/>
+    <texture name="7" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_007.dds"/>
+    <texture name="8" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_008.dds"/>
+    <texture name="9" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_009.dds"/>
+    <texture name="10" name_texture="./Data/GUI/Textures_LaberynthGame/destelloamar/destelloamar_010.dds"/>
+  </Image>
+    
+  <Button name="Credits_2_Main" posx="40.00" posy="86.00" height="9.00" width="21.00" visible="true" active="true" 
+          texture_normal="./Data/GUI/Textures_LaberynthGame/back_normal.png"
+          texture_over="./Data/GUI/Textures_LaberynthGame/back_over.png" 
+          texture_clicked="./Data/GUI/Textures_LaberynthGame/back_press.png"
+          texture_deactivated="./Data/GUI/Textures_LaberynthGame/back_normal.png" 
+          OnClickedAction=" _guiM:activeWindows('Main.xml')
+                            _soundM:playAction2D('guiBack')"
+          OnOverAction="_soundM:playAction2D('guiOver')"/>
+</Windows>
