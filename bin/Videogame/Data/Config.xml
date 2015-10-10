@@ -19,7 +19,7 @@
   </Languages>
   <Fonts fontsXML="./Data/fonts/fonts.xml"/>
   <Actions actionsXML="./Data/Actions.xml"/>
-  <GUI initGuiXML="./Data/GUI/initGui_laberynth.xml" dataFolder="./Data/GUI/XML_Laberynth"/>
+  <GUI initGuiXML="./Data/GUI/initGui.xml" dataFolder="./Data/GUI/XML"/>
   <Sound soundXML="./Data/WWSounds.xml"/>
   <Meshes meshesXML="./Data/level4/static_meshes.xml"/>
   <Renderable renderXML="./Data/level4/renderable_objects.xml"/> 

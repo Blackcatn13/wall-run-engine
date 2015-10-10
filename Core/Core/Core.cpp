@@ -267,8 +267,12 @@ void CCore::Init(HWND handler) {
   std::cout << "Creating GUI Manager";
 #endif
   m_GuiManager = new CGUIManager(Vect2i(m_Config.Screen_Width, m_Config.Screen_Heigth));
-  if (m_GuiManager->Init(m_Config.GUIPath))
-    m_GuiManager->LoadGuiFiles(m_Config.GUIFolder);
+#ifdef _DEBUGTIME
+  t.Update();
+  std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
+  std::cout << "Init GUI Manager";
+#endif
+  m_GuiManager->Init(m_Config.GUIPath);
 #ifdef _DEBUGTIME
   t.Update();
   std::cout << " ... " << t.GetElapsedTime() << " s" << std::endl;
