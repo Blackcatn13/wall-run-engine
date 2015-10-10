@@ -160,42 +160,62 @@ bool CStaticMesh::Load (const std::string &FileName) {
         fread(&n_vtxs, sizeof n_vtxs, 1, f);
         int type_size;
         // Getting vertex type size
-        if (vertex_type[i] == TTEXTURE_NORMAL_VERTEX::GetVertexType())
-          type_size = sizeof(TTEXTURE_NORMAL_VERTEX);
-        if (vertex_type[i] == TCOLORED_VERTEX::GetVertexType())
-          type_size = sizeof(TCOLORED_VERTEX);
-        if (vertex_type[i] == TCOLOR_TEXTURE2_VERTEX::GetVertexType())
-          type_size = sizeof(TCOLOR_TEXTURE2_VERTEX);
-        if (vertex_type[i] == TCOLOR_TEXTURE_NORMAL_VERTEX::GetVertexType())
-          type_size = sizeof(TCOLOR_TEXTURE_NORMAL_VERTEX);
-        if (vertex_type[i] == TCOLOR_NORMAL_DIFFUSE_TEXTURE2_VERTEX::GetVertexType())
-          type_size = sizeof(TCOLOR_NORMAL_DIFFUSE_TEXTURE2_VERTEX);
-        if (vertex_type[i] == TTEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexType())
-          type_size = sizeof(TTEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX);
-        if (vertex_type[i] == TTEXTURE_VERTEX::GetVertexType())
-          type_size = sizeof(TTEXTURE_VERTEX);
-        if (vertex_type[i] == TCOLOR_TEXTURE_VERTEX::GetVertexType())
-          type_size = sizeof(TCOLOR_TEXTURE_VERTEX);
-        if (vertex_type[i] == TTEXTURE2_VERTEX::GetVertexType())
-          type_size = sizeof(TTEXTURE2_VERTEX);
-        if (vertex_type[i] == TTEXTURE2_NORMAL_VERTEX::GetVertexType())
-          type_size = sizeof(TTEXTURE2_NORMAL_VERTEX);
-        if (vertex_type[i] == TTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexType())
-          type_size = sizeof(TTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX);
-        if (vertex_type[i] == TCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexType())
-          type_size = sizeof(TCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX);
-        if (vertex_type[i] == TCOLORED_TEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexType())
-          type_size = sizeof(TCOLORED_TEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX);
-        if (vertex_type[i] == TTEXTURE2_RNORMALM_TANGET_BINORMAL_VERTEX::GetVertexType())
-          type_size = sizeof(TTEXTURE2_RNORMALM_TANGET_BINORMAL_VERTEX);
-        if (vertex_type[i] == TCOLORED_NORMAL_VERTEX::GetVertexType())
-          type_size = sizeof(TCOLORED_NORMAL_VERTEX);
-        if (vertex_type[i] == TTEXTURE_CUBE_NORMAL_VERTEX::GetVertexType())
-          type_size = sizeof(TTEXTURE_CUBE_NORMAL_VERTEX);
-        if (vertex_type[i] == TTEXTURE_POLY_VERTEX::GetVertexType())
-          type_size = sizeof(TTEXTURE_POLY_VERTEX);
-        if (vertex_type[i] == TTEXTURE_POLY_NORMAL_VERTEX::GetVertexType())
-          type_size = sizeof(TTEXTURE_POLY_NORMAL_VERTEX);
+        switch (vertex_type[i]) {
+          case VTTEXTURE2_RNORMALM_TANGET_BINORMAL_VERTEX:
+            type_size = sizeof(TTEXTURE2_RNORMALM_TANGET_BINORMAL_VERTEX);
+            break;
+          case VTTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX:
+            type_size = sizeof(TTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX);
+            break;
+          case VTTEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX:
+            type_size = sizeof(TTEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX);
+            break;
+          case VTTEXTURE_NORMAL_VERTEX:
+            type_size = sizeof(TTEXTURE_NORMAL_VERTEX);
+            break;
+          case VTCOLORED_NORMAL_VERTEX:
+            type_size = sizeof(TCOLORED_NORMAL_VERTEX);
+            break;
+          case VTTEXTURE2_NORMAL_VERTEX:
+            type_size = sizeof(TTEXTURE2_NORMAL_VERTEX);
+            break;
+          case VTCOLORED_VERTEX:
+            type_size = sizeof(TCOLORED_VERTEX);
+            break;
+          case VTCOLOR_TEXTURE2_VERTEX:
+            type_size = sizeof(TCOLOR_TEXTURE2_VERTEX);
+            break;
+          case VTCOLOR_TEXTURE_NORMAL_VERTEX:
+            type_size = sizeof(TCOLOR_TEXTURE_NORMAL_VERTEX);
+            break;
+          case VTCOLOR_NORMAL_DIFFUSE_TEXTURE2_VERTEX:
+            type_size = sizeof(TCOLOR_NORMAL_DIFFUSE_TEXTURE2_VERTEX);
+            break;
+          case VTTEXTURE_VERTEX:
+            type_size = sizeof(TTEXTURE_VERTEX);
+            break;
+          case VTCOLOR_TEXTURE_VERTEX:
+            type_size = sizeof(TCOLOR_TEXTURE_VERTEX);
+            break;
+          case VTTEXTURE2_VERTEX:
+            type_size = sizeof(TTEXTURE2_VERTEX);
+            break;
+          case VTCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX:
+            type_size = sizeof(TCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX);
+            break;
+          case VTCOLORED_TEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX:
+            type_size = sizeof(TCOLORED_TEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX);
+            break;
+          case VTTEXTURE_CUBE_NORMAL_VERTEX:
+            type_size = sizeof(TTEXTURE_CUBE_NORMAL_VERTEX);
+            break;
+          case VTTEXTURE_POLY_VERTEX:
+            type_size = sizeof(TTEXTURE_POLY_VERTEX);
+            break;
+          case VTTEXTURE_POLY_NORMAL_VERTEX:
+            type_size = sizeof(TTEXTURE_POLY_NORMAL_VERTEX);
+            break;
+        }
         // Getting vertex list (vb) and index list (ib)
         void *vertex_list = (void *)malloc(n_vtxs * type_size);
         fread(vertex_list, n_vtxs * type_size, 1, f);
@@ -204,53 +224,75 @@ bool CStaticMesh::Load (const std::string &FileName) {
         void *index_list = (void *)malloc(n_idxs * sizeof(unsigned short));
         fread(index_list , n_idxs * sizeof(unsigned short), 1, f);
         // Calculate Tangent and binormal
-        if (vertex_type[i] == TTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexType()) {
-          CalcTangentsAndBinormals(vertex_list, (unsigned short *)index_list, n_vtxs, n_idxs, type_size, 0, 12, 28, 44, 60);
-        }
-        if (vertex_type[i] == TCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexType()) {
-          CalcTangentsAndBinormals(vertex_list, (unsigned short *)index_list, n_vtxs, n_idxs, type_size, 0, 12, 28, 44, 64);
-        }
-        if (vertex_type[i] == TTEXTURE2_RNORMALM_TANGET_BINORMAL_VERTEX::GetVertexType()) {
-          CalcTangentsAndBinormals(vertex_list, (unsigned short *)index_list, n_vtxs, n_idxs, type_size, 0, 12, 28, 44, 60);
+        switch (vertex_type[i]) {
+          case VTTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX :
+            CalcTangentsAndBinormals(vertex_list, (unsigned short *)index_list, n_vtxs, n_idxs, type_size, 0, 12, 28, 44, 60);
+            break;
+          case VTCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX :
+            CalcTangentsAndBinormals(vertex_list, (unsigned short *)index_list, n_vtxs, n_idxs, type_size, 0, 12, 28, 44, 64);
+            break;
+          case VTTEXTURE2_RNORMALM_TANGET_BINORMAL_VERTEX :
+            CalcTangentsAndBinormals(vertex_list, (unsigned short *)index_list, n_vtxs, n_idxs, type_size, 0, 12, 28, 44, 60);
+            break;
         }
         // Creating Renderable vertex
         CRenderableVertexs *l_rv = NULL;
-        if (vertex_type[i] == TTEXTURE_NORMAL_VERTEX::GetVertexType())
-          l_rv = new CIndexedVertexs<TTEXTURE_NORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
-        if (vertex_type[i] == TCOLORED_VERTEX::GetVertexType())
-          l_rv = new CIndexedVertexs<TCOLORED_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
-        if (vertex_type[i] == TCOLOR_TEXTURE2_VERTEX::GetVertexType())
-          l_rv = new CIndexedVertexs<TCOLOR_TEXTURE2_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
-        if (vertex_type[i] == TCOLOR_TEXTURE_NORMAL_VERTEX::GetVertexType())
-          l_rv = new CIndexedVertexs<TCOLOR_TEXTURE_NORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
-        if (vertex_type[i] == TCOLOR_NORMAL_DIFFUSE_TEXTURE2_VERTEX::GetVertexType())
-          l_rv = new CIndexedVertexs<TCOLOR_NORMAL_DIFFUSE_TEXTURE2_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
-        if (vertex_type[i] == TTEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexType())
-          l_rv = new CIndexedVertexs<TTEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
-        if (vertex_type[i] == TTEXTURE_VERTEX::GetVertexType())
-          l_rv = new CIndexedVertexs<TTEXTURE_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
-        if (vertex_type[i] == TCOLOR_TEXTURE_VERTEX::GetVertexType())
-          l_rv = new CIndexedVertexs<TCOLOR_TEXTURE_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
-        if (vertex_type[i] == TTEXTURE2_VERTEX::GetVertexType())
-          l_rv = new CIndexedVertexs<TTEXTURE2_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
-        if (vertex_type[i] == TTEXTURE2_NORMAL_VERTEX::GetVertexType())
-          l_rv = new CIndexedVertexs<TTEXTURE2_NORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
-        if (vertex_type[i] == TTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexType())
-          l_rv = new CIndexedVertexs<TTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
-        if (vertex_type[i] == TCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexType())
-          l_rv = new CIndexedVertexs<TCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
-        if (vertex_type[i] == TCOLORED_TEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX::GetVertexType())
-          l_rv = new CIndexedVertexs<TCOLORED_TEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
-        if (vertex_type[i] == TTEXTURE2_RNORMALM_TANGET_BINORMAL_VERTEX::GetVertexType())
-          l_rv = new CIndexedVertexs<TTEXTURE2_RNORMALM_TANGET_BINORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
-        if (vertex_type[i] == TCOLORED_NORMAL_VERTEX::GetVertexType())
-          l_rv = new CIndexedVertexs<TCOLORED_NORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
-        if (vertex_type[i] == TTEXTURE_CUBE_NORMAL_VERTEX::GetVertexType())
-          l_rv = new CIndexedVertexs<TTEXTURE_CUBE_NORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
-        if (vertex_type[i] == TTEXTURE_POLY_NORMAL_VERTEX::GetVertexType())
-          l_rv = new CIndexedVertexs<TTEXTURE_POLY_NORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
-        if (vertex_type[i] == TTEXTURE_POLY_VERTEX::GetVertexType())
-          l_rv = new CIndexedVertexs<TTEXTURE_POLY_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
+        switch (vertex_type[i]) {
+          case VTTEXTURE2_RNORMALM_TANGET_BINORMAL_VERTEX:
+            l_rv = new CIndexedVertexs<TTEXTURE2_RNORMALM_TANGET_BINORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
+            break;
+          case VTTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX:
+            l_rv = new CIndexedVertexs<TTEXTURE_NORMAL_TANGET_BINORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
+            break;
+          case VTTEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX:
+            l_rv = new CIndexedVertexs<TTEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
+            break;
+          case VTTEXTURE_NORMAL_VERTEX:
+            l_rv = new CIndexedVertexs<TTEXTURE_NORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
+            break;
+          case VTCOLORED_NORMAL_VERTEX:
+            l_rv = new CIndexedVertexs<TCOLORED_NORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
+            break;
+          case VTTEXTURE2_NORMAL_VERTEX:
+            l_rv = new CIndexedVertexs<TTEXTURE2_NORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
+            break;
+          case VTCOLORED_VERTEX:
+            l_rv = new CIndexedVertexs<TCOLORED_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
+            break;
+          case VTCOLOR_TEXTURE2_VERTEX:
+            l_rv = new CIndexedVertexs<TCOLOR_TEXTURE2_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
+            break;
+          case VTCOLOR_TEXTURE_NORMAL_VERTEX:
+            l_rv = new CIndexedVertexs<TCOLOR_TEXTURE_NORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
+            break;
+          case VTCOLOR_NORMAL_DIFFUSE_TEXTURE2_VERTEX:
+            l_rv = new CIndexedVertexs<TCOLOR_NORMAL_DIFFUSE_TEXTURE2_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
+            break;
+          case VTTEXTURE_VERTEX:
+            l_rv = new CIndexedVertexs<TTEXTURE_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
+            break;
+          case VTCOLOR_TEXTURE_VERTEX:
+            l_rv = new CIndexedVertexs<TCOLOR_TEXTURE_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
+            break;
+          case VTTEXTURE2_VERTEX:
+            l_rv = new CIndexedVertexs<TTEXTURE2_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
+            break;
+          case VTCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX:
+            l_rv = new CIndexedVertexs<TCOLORED_TEXTURE_NORMAL_TANGET_BINORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
+            break;
+          case VTCOLORED_TEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX:
+            l_rv = new CIndexedVertexs<TCOLORED_TEXTURE2_NORMAL_TANGET_BINORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
+            break;
+          case VTTEXTURE_CUBE_NORMAL_VERTEX:
+            l_rv = new CIndexedVertexs<TTEXTURE_CUBE_NORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
+            break;
+          case VTTEXTURE_POLY_VERTEX:
+            l_rv = new CIndexedVertexs<TTEXTURE_POLY_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
+            break;
+          case VTTEXTURE_POLY_NORMAL_VERTEX:
+            l_rv = new CIndexedVertexs<TTEXTURE_POLY_NORMAL_VERTEX>(GRAPHM, vertex_list, index_list, n_vtxs, n_idxs);
+            break;
+        }          
         m_RVs.push_back(l_rv);
         free(vertex_list);
         free(index_list);
