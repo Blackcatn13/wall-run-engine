@@ -88,6 +88,7 @@ void RegisterCinematics() {
     .def("update", &CCinematicController::Update)
     .def("execute", &CCinematicController::Execute)
     .def("restart", &CCinematicController::Restart)
+    .def("restart_all_cinematics",  &CCinematicController::RestartAllCinematics)
     .property("m_executing", &CCinematicController::IsExecuting)
   ];
 }

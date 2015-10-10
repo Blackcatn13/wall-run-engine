@@ -102,3 +102,13 @@ void CCinematicController::Restart(const std::string &cinematic) {
     }
   }
 }
+
+void CCinematicController::RestartAllCinematics() {
+  std::map<std::string, std::vector<CCinematicElement *>>::iterator it = m_cinematics.begin();
+  while (it != m_cinematics.end()) {
+    for (int i = 0; i < it->second.size(); ++i) {
+      it->second[i]->restart();
+    }
+    ++it;
+  }
+}

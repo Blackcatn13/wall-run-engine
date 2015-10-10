@@ -303,7 +303,10 @@ function reset_game()
 	if emitter:get_visible() == true then
 		emitter:set_visible(false)
 	end
-	
+	--CINEMATICS
+	--cinematic_controller:restart("start")
+	--cinematic_controller:restart("Door")
+	cinematic_controller:restart_all_cinematics()
 	--BOSS
 	player.set_super_piky(false)
 	player.super_piky_attack = false
