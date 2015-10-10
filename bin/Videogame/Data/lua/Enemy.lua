@@ -228,7 +228,87 @@ function update_shoot_boss(dt, enemy)
 		--coreInstance:trace("Distancia player al boss: "..tostring(distance2))
 		--coreInstance:trace(tostring(enemy.m_PosicionBala.y))
 		--coreInstance:trace("Distancia: "..tostring(distance))
-		if (distance > 450 and enemy.m_PosicionBala.y < -1.2) or (distance <=450 and enemy.m_PosicionBala.y < 1.8) then
+		local vectPoly = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("poly", player_controller.m_Room);
+		local vectActivePoly = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("enabled_poly", player_controller.m_Room);
+		local numPolis = vectPoly:get_size();
+		local numEnabledPolis = vectActivePoly:get_size();
+		local choca = false;
+		for i=0, numPolis-1 do
+			local platform = vectPoly:get_resource_by_id(i);
+			if platform ~= nil then
+				if platform.m_Activated or platform.m_IsMoving then
+					coreInstance:trace("entra en activadaa");
+					local platformPosXZ = Vect3f(platform:get_position().x, 0, platform:get_position().z);
+					local platformSizeXZ = Vect3f(platform.m_PhysicsSize.x, 0, platform.m_PhysicsSize.z);
+					local vectToBossXZ = platformPosXZ - posXZChucky;
+					local vectToBalaXZ = platformPosXZ - posXZBala;
+					local distanceToBala = vectToBalaXZ:length();
+					if vectToBossXZ.x ~= 0 or vectToBossXZ.y ~= 0 or vectToBossXZ.z ~= 0 then
+						vectToBossXZ:normalize(1);
+					end
+					if vectToBalaXZ.x ~= 0 or vectToBalaXZ.y ~= 0 or vectToBalaXZ.z ~= 0 then
+						vectToBalaXZ:normalize(1);
+					end
+					local dot = vectToBossXZ * vectToBalaXZ;
+					dot = math.abs(dot);
+					local sizeLargo = 0;
+					local sizeCorto = 0;
+					if platformSizeXZ.x > platformSizeXZ.z then
+						sizeLargo = platformSizeXZ.x;
+						sizeCorto = platformSizeXZ.z;
+					else
+						sizeLargo = platformSizeXZ.z;
+						sizeCorto = platformSizeXZ.x;
+					end
+					local valorCorto = sizeCorto * dot;
+					local valorLargo = sizeLargo * (1-dot);
+					local distanceToCrashAlCuadrao = valorCorto * valorCorto + valorLargo * valorLargo;
+					distanceToCrashAlCuadrao = distanceToCrashAlCuadrao + (enemy.m_ProjectileHitbox * enemy.m_ProjectileHitbox);
+					local distanceToBalaAlCuadrao = distanceToBala * distanceToBala;
+					if distanceToBalaAlCuadrao <= distanceToCrashAlCuadrao then
+						choca = true;
+					end
+				end
+			end
+		end
+		for i=0, numEnabledPolis-1 do
+			local platform = vectActivePoly:get_resource_by_id(i);
+			if platform ~= nil then
+				if platform.m_Activated or platform.m_IsMoving then
+					local platformPosXZ = Vect3f(platform:get_position().x, 0, platform:get_position().z);
+					local platformSizeXZ = Vect3f(platform.m_PhysicsSize.x, 0, platform.m_PhysicsSize.z);
+					local vectToBossXZ = platformPosXZ - posXZChucky;
+					local vectToBalaXZ = platformPosXZ - posXZBala;
+					local distanceToBala = vectToBalaXZ:length();
+					if vectToBossXZ.x ~= 0 or vectToBossXZ.y ~= 0 or vectToBossXZ.z ~= 0 then
+						vectToBossXZ:normalize(1);
+					end
+					if vectToBalaXZ.x ~= 0 or vectToBalaXZ.y ~= 0 or vectToBalaXZ.z ~= 0 then
+						vectToBalaXZ:normalize(1);
+					end
+					local dot = vectToBossXZ * vectToBalaXZ;
+					dot = math.abs(dot);
+					local sizeLargo = 0;
+					local sizeCorto = 0;
+					if platformSizeXZ.x > platformSizeXZ.z then
+						sizeLargo = platformSizeXZ.x;
+						sizeCorto = platformSizeXZ.z;
+					else
+						sizeLargo = platformSizeXZ.z;
+						sizeCorto = platformSizeXZ.x;
+					end
+					local valorCorto = sizeCorto * dot;
+					local valorLargo = sizeLargo * (1-dot);
+					local distanceToCrashAlCuadrao = valorCorto * valorCorto + valorLargo * valorLargo;
+					distanceToCrashAlCuadrao = distanceToCrashAlCuadrao + (enemy.m_ProjectileHitbox * enemy.m_ProjectileHitbox);
+					local distanceToBalaAlCuadrao = distanceToBala * distanceToBala;
+					if distanceToBalaAlCuadrao <= distanceToCrashAlCuadrao then
+						choca = true;
+					end
+				end
+			end
+		end
+		if ((distance > 450 and enemy.m_PosicionBala.y < -1.2) or (distance <=450 and enemy.m_PosicionBala.y < 1.8)) or choca then
 			enemy.m_IsOnCooldown = false;
 			delete_shooting(renderable_shoot)
 			enemy:m_FSM():newState("Parado")
