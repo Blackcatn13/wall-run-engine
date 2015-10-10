@@ -90,6 +90,7 @@ end
 function chucky_boss_enter_stopped(name)
 	coreInstance:trace("Estado Parado")
 	local enemy = enemy_manager:get_enemy(name)
+	enemy.m_RenderableObject:remove_action(5)
 	enemy.m_RenderableObject:blend_cycle(0,1,0);
 end
 
@@ -143,7 +144,6 @@ function chucky_boss_update_shoot(ElapsedTime, doComprobation, name)
 	if enemy.m_RenderableObject:get_animation_time() > 2 then
 		update_boss_shoot_cooldown(enemy, player_position)
 	end
-	coreInstance:trace("Distancia: "..tostring(player_controller:get_position().y))
 	if (enemy ~= nil) then
 		--enemy:actualizar_disparo(ElapsedTime)	
 
@@ -151,7 +151,7 @@ function chucky_boss_update_shoot(ElapsedTime, doComprobation, name)
 		--enemy:actualizar_hitbox()
 
 	end
-	if not enemy.m_RenderableObject:is_cycle_animation_active() then
+	if not enemy.m_RenderableObject:is_action_animation_active() then
 		enemy:m_FSM():newState("EsperandoImpacto")
 	end
 end

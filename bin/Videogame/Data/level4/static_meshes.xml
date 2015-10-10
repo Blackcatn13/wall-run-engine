@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <static_meshes>
-	<static_mesh name="disparoSuperPiky" filename="Data\level4\meshes\disparoSuperPiky.mesh"/>
+	<!--<static_mesh name="disparoSuperPiky" filename="Data\level4\meshes\disparoSuperPiky.mesh"/>-->
 	<static_mesh name="ChukyBossPosition" filename="Data\level4\meshes\ChukyBossPosition.mesh"/>
 	<static_mesh name="Poly_Sala0_001" filename="Data\level4\meshes\Poly_Sala0_001.mesh"/>
 	<static_mesh name="Poly_Sala0_002" filename="Data\level4\meshes\Poly_Sala0_002.mesh"/>
@@ -587,4 +587,6 @@
 	<static_mesh name="PumPum" filename="Data\level4\meshes\PumPum.mesh"/>
 	<static_mesh name="POLY PLAT VERT R5_001" filename="Data\level4\meshes\POLY PLAT VERT R5_001.mesh"/>
 	<static_mesh name="security_wall_001" filename="Data\level4\meshes\security_wall_001.mesh"/>
+	<static_mesh name="disparo_superPiky" filename="Data\level4\meshes\disparo_superPiky.mesh"/>
+	<static_mesh name="disparoChucky" filename="Data\level4\meshes\disparoChucky.mesh"/>
 </static_meshes>
