@@ -8,7 +8,20 @@
 	<GameObject3D name="Torch" register="true" type="MultiSource">
 		<Source pos="98.133629 5.806 3.802600" dir="-0.5 0 -0.5"/>
 		<Source pos="103.663 5.806 -25.712" dir="0.242536 0 0.970143"/>
+		<Source pos="133.345 5.806 -25.228" dir="0.242536 0 -0.970143"/>
+		<Source pos="147.757 5.806 15.186" dir="0 0 1"/>
 		<Source pos="189.583267 4.630239 17.396589" dir="0 0 -1"/>
+		<Source pos="204.494 4.630239 17.397" dir="0 0 -1"/>
+		<Source pos="219.222 4.630239 17.396589" dir="0 0 -1"/>
+		<Source pos="243.908 4.630239 17.396589" dir="0 0 -1"/>
+		<Source pos="259.813 4.630239 17.396589" dir="0 0 -1"/>
+		<Source pos="279.042 4.630239 17.396589" dir="0 0 -1"/>
+		<Source pos="296.229 4.630239 17.396589" dir="0 0 -1"/>
+		<Source pos="311.99 4.630239 17.396589" dir="0 0 -1"/>
+		<Source pos="339.665 4.630239 17.396589" dir="0 0 -1"/>
+		<Source pos="369.444 4.630239 17.396589" dir="0 0 -1"/>
+		<Source pos="406.819 14.077 15.391" dir="0 0 -1"/>
+		<Source pos="422.665 14.077 15.391" dir="0 0 -1"/>
 	</GameObject3D>
 	<GameObject3D name="Door" register="true" type="MultiSource">
 		<Source pos="539.616 9.004 -1.622" dir="-1 0 0"/>
