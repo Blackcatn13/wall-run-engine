@@ -408,7 +408,9 @@ function check_player_shoot_return(enemy,mesh)
 		qte_emmiter_name = playerRenderable.m_ParticleEmitter2
 	end
 	local emitter = particle_manager:get_resource(qte_emmiter_name)
-	if (mesh.m_Printable and enemy.m_PosicionBala:distance(player_controller:get_position()) < enemy.m_ProjectileReturnDist) and boss_projectile_returned == false and current_shot_type == "rock" then
+	local distance_to_bala = enemy.m_PosicionBala:distance(player_controller:get_position());
+	if (mesh.m_Printable and distance_to_bala < enemy.m_ProjectileReturnDist) and boss_projectile_returned == false and current_shot_type == "rock" then
+		coreInstance:trace("distancia a la bala: "..tostring(distance_to_bala).."   pressed return "..tostring(player.pressed_return));
 		if player.super_piky_active and player.pressed_return then
 			player.execute_return_pr = true;
 			boss_projectile_returned = true;
