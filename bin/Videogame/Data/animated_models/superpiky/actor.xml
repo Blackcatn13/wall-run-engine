@@ -1,5 +1,5 @@
 <animated_model name="SuperPiky">
-	<texture file="DIF2.tga"/>
+	<texture file="DIF_Piky.tga"/>
 	<normal_texture file="NRM_Piky.tga"/>
 	<skeleton file="SuperPiky_Skeleton.CSF"/>
 	<mesh file="SuperPiky_Mesh.CMF"/>
