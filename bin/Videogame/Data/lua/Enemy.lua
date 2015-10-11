@@ -354,7 +354,17 @@ function update_horizontal_boss_shoot(dt, enemy)
       if (check_player_shoot_collision(enemy, renderable_shoot)) then
 		enemy.m_IsOnCooldown = false;
 		delete_shooting(renderable_shoot)
+		local playerRenderable =  coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name);
+		local qte_emmiter_name = playerRenderable.m_ParticleEmitter
+		if not inputm:has_game_pad(1) then
+			qte_emmiter_name = playerRenderable.m_ParticleEmitter2
+		end
+		local emitter = particle_manager:get_resource(qte_emmiter_name)
+		if emitter:get_visible() == true then
+			emitter:set_visible(false)
+		end
         enemy:add_damage_player();
+	
 		coreInstance:trace("entra update_horizontal_boss_shoot check collision")
 		enemy:m_FSM():newState("Parado")
       end
@@ -365,6 +375,7 @@ function update_horizontal_boss_shoot(dt, enemy)
 	  if ((distance > 450 and enemy.m_PosicionBala.y < -1.2) or (distance <=450 and enemy.m_PosicionBala.y < 1.8)) or choca then
 			enemy.m_IsOnCooldown = false;
 			delete_shooting(renderable_shoot)
+			
 			enemy:m_FSM():newState("Parado")
 		end
     end
@@ -420,7 +431,11 @@ function check_player_shoot_return(enemy,mesh)
 			emitter:set_visible(false)
 		elseif player.super_piky_active and not player.pressed_return then
 			coreInstance:trace("Sacando exclamacion")
-			emitter.m_vPos = player_controller:get_position() + playerRenderable.m_EmitterOffset
+			local pikyYaw = enemy:get_yaw() + (math.pi / 2);
+			local vectRight = Vect3f(math.cos(pikyYaw), 0, -math.sin(pikyYaw));
+			local position = player_controller:get_position()
+			local emitter_pos = Vect3f(position.x - (2 * vectRight.x), position.y, position.z + -(2 * vectRight.z))
+			emitter.m_vPos =emitter_pos + playerRenderable.m_EmitterOffset
 			emitter:set_visible(true)
 			
 		end
