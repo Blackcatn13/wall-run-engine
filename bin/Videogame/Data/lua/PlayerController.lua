@@ -839,7 +839,7 @@ function move_character_controller_mesh(_player, _position, _jumping, _doubleJum
 		local mesh_position = Vect3f(_position.x, _position.y - pos - 0.2, _position.z)
 		mesh:set_position(mesh_position)
 	end
-	dir = Vect3f(math.sin(mesh:get_yaw()), 0, math.cos(mesh:get_yaw()))
+	dir = Vect3f(math.cos(mesh:get_yaw()), 0, math.sin(mesh:get_yaw()))
 	coreInstance:getWWSoundManager():SetListenerPosition(mesh:get_position(), dir, Vect3f(0,1,0))
 	
 end
