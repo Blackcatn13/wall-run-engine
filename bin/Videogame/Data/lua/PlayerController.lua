@@ -116,6 +116,8 @@ function on_update_player_lua(l_ElapsedTime)
 		if act2in:do_action_from_lua("SuperPiky") then
 			start_super_piky(playerRenderable)	
 		end
+		
+	
 	
 		if transition_super_piky and not playerRenderable:is_action_animation_active() then
 			transition_super_piky = false
@@ -125,14 +127,21 @@ function on_update_player_lua(l_ElapsedTime)
 			emitter4:set_visible(false)
 		end
 	
-		if player.super_piky_active then 
+		if player.super_piky_active and piky_mesh_name == "SuperPiky" then 
+			local aura_emitter = particle_manager:get_resource("SuperPikyAuraEmitter")
 			if player.super_piky_timer < super_piky_time then
 				player.super_piky_timer = player.super_piky_timer+ l_ElapsedTime
 				--coreInstance:trace("Super Piky time: "..tostring(player.super_piky_timer))
-			
+				
+					aura_emitter.m_vPos = player_controller:get_position()
+					if not aura_emitter:get_visible() then
+						aura_emitter:set_visible(true)
+					end
 			else
 				player.set_super_piky(false)
 				player.super_piky_timer = 0.0
+				
+				aura_emitter:set_visible(false)
 				--coreInstance:trace("Bye Super Piky")
 			end
 		end
