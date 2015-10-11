@@ -18,13 +18,9 @@
 				<Event Id="1481335831" Name="_3DZone"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
-				<File Id="123410706" Language="SFX">
-					<ShortName>BSO Sujeto 04 (Enemigos).wav</ShortName>
-					<Path>SFX\BSO Sujeto 04 (Enemigos)_8BD76F1E.wem</Path>
-				</File>
 				<File Id="364000553" Language="SFX">
 					<ShortName>zona 3d.wav</ShortName>
-					<Path>SFX\zona 3d_DDC98EF4.wem</Path>
+					<Path>SFX\zona 3d_8BD76F1E.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
