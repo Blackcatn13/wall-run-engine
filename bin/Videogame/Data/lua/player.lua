@@ -54,8 +54,10 @@ function Player.new()
 	self.vanishing = false
 	self.dead_in_hole = false
 	self.super_piky_active = false
+	self.execute_return_pr = false
 	self.super_piky_timer = 0.0
 	self.super_piky_attack = false
+	self.pressed_return = false
 	self.count_pixelites = 0.0
 	
 	------	 PLAYER FUNCTIONS -----

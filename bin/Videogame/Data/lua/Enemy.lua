@@ -115,9 +115,9 @@ function boss_shoot(position, enemy)
 		local enemyYaw = enemy:get_yaw() + (math.pi / 2);
 		local vectRight = Vect3f(math.cos(enemyYaw), 0, -math.sin(enemyYaw));
 		local projectile_position = Vect3f(position.x + 2 * vectRight.x, position.y+2.25, position.z + 2 * vectRight.z)
-	--	coreInstance:trace("position x "..tostring(projectile_position.x))
-	--	coreInstance:trace("position y "..tostring(projectile_position.y))
-	--	coreInstance:trace("position z "..tostring(projectile_position.z))
+		coreInstance:trace("position x "..tostring(projectile_position.x))
+		coreInstance:trace("position y "..tostring(projectile_position.y))
+		coreInstance:trace("position z "..tostring(projectile_position.z))
 		enemy.m_PosicionBala = projectile_position
 		local projectile_name = enemy.m_ProjectileName
 
@@ -205,14 +205,18 @@ function update_shoot_boss(dt, enemy)
     if (enemy.m_CurrentCooldown < 0.0 or player.is_dead) then
       enemy.m_IsOnCooldown = false;
       delete_shooting(renderable_shoot)
+	  coreInstance:trace("entra update_shoot_boss currentCooldown < 0")
 	  enemy:m_FSM():newState("Parado")
     else 
 		enemy.m_DireccionBala = Vect3f(enemy.m_DireccionBala.x, enemy.m_DireccionBala.y - gravityShot * dt, enemy.m_DireccionBala.z);
 		enemy.m_PosicionBala = enemy:updtate_projectile_position(dt)
 		renderable_shoot:set_position(enemy.m_PosicionBala)
+		renderable_shoot:set_pitch(renderable_shoot:get_pitch() + 2 * dt);
+		check_player_shoot_return(enemy, renderable_shoot);
 		if (check_player_shoot_collision(enemy, renderable_shoot)) then
 			enemy.m_IsOnCooldown = false;
 			delete_shooting(renderable_shoot)
+			coreInstance:trace("entra update_shoot_boss else check collision true")
 			enemy:m_FSM():newState("Parado")
 			if current_shot_type =="powerup" then
 				start_super_piky()
@@ -317,22 +321,36 @@ function update_shoot_boss(dt, enemy)
   end
 end
 
-function update_horizontal_boss_shoot(enemy, dt)
+function update_horizontal_boss_shoot(dt, enemy)
 
  if (enemy.m_IsOnCooldown) then
 	local renderable_shoot = get_renderable_object("enemies", enemy.m_RenderableObject.m_Room, enemy.m_ProjectileName)
-    enemy.m_CurrentCooldown = enemy.m_CurrentCooldown - dt;
-    if (enemy.m_CurrentCooldown < 0.0 or player.is_dead) then
-      enemy.m_IsOnCooldown = false;
-      delete_shooting(renderable_shoot)
+    --enemy.m_CurrentCooldown = enemy.m_CurrentCooldown - dt;
+    if (player.is_dead) then
+	  enemy.m_IsOnCooldown = false;
+	  delete_shooting(renderable_shoot)
+	  coreInstance:trace("entra update_horizontal_boss_shoot player dead")
 	  enemy:m_FSM():newState("Parado")
     else 
       enemy.m_PosicionBala = enemy:updtate_projectile_position(dt) 
 	  renderable_shoot:set_position(enemy.m_PosicionBala)
+	  check_player_shoot_return(enemy, renderable_shoot);
       if (check_player_shoot_collision(enemy, renderable_shoot)) then
+		enemy.m_IsOnCooldown = false;
 		delete_shooting(renderable_shoot)
         enemy:add_damage_player();
+		coreInstance:trace("entra update_horizontal_boss_shoot check collision")
+		enemy:m_FSM():newState("Parado")
       end
+		local posXZBala = Vect3f(enemy.m_PosicionBala.x, 0, enemy.m_PosicionBala.z)
+		local posXZChucky = Vect3f(enemy:get_position().x, 0,enemy:get_position().z)
+		local distance = get_distance_between_points(posXZBala, posXZChucky)
+		local choca = false;
+	  if ((distance > 450 and enemy.m_PosicionBala.y < -1.2) or (distance <=450 and enemy.m_PosicionBala.y < 1.8)) or choca then
+			enemy.m_IsOnCooldown = false;
+			delete_shooting(renderable_shoot)
+			enemy:m_FSM():newState("Parado")
+		end
     end
   end
 
@@ -365,6 +383,18 @@ function check_player_shoot_collision(enemy, mesh)
 		return true
 	end
   return false
+end
+
+function check_player_shoot_return(enemy,mesh)
+	if (mesh.m_Printable and enemy.m_PosicionBala:distance(player_controller:get_position()) < enemy.m_ProjectileReturnDist) and boss_projectile_returned == false and current_shot_type == "rock" then
+		if player.super_piky_active and player.pressed_return then
+			player.execute_return_pr = true;
+			boss_projectile_returned = true;
+			boss_projectile_returned_by_chucky = false;
+			local enemyPos = Vect3f(enemy:get_position().x, enemy:get_position().y + 2, enemy:get_position().z);
+			enemy.m_DireccionBala = enemyPos - player_controller:get_position();
+		end
+	end
 end
 
 function check_hitbox(ElapsedTime, player_position, enemy)

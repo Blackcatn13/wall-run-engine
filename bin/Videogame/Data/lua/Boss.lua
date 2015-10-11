@@ -1,4 +1,6 @@
 local boss_timer = 0.0
+local contador = 0
+local executedReturn = false;
 
 function start_boss()
 	set_player_room("0", true)
@@ -126,6 +128,8 @@ end
 ----LANZAR----
 function chucky_boss_enter_shoot(name)
 	coreInstance:trace("Estado Lanzar")
+	boss_projectile_returned = false
+	boss_projectile_returned_by_chucky = false;
 	local enemy = enemy_manager:get_enemy(name)
 	--local player_position = player_controller:get_position()
 	enemy.m_RenderableObject:execute_action(5,0.1,0,1,true);
@@ -147,7 +151,11 @@ function chucky_boss_update_shoot(ElapsedTime, doComprobation, name)
 	if (enemy ~= nil) then
 		--enemy:actualizar_disparo(ElapsedTime)	
 
-		update_shoot_boss(ElapsedTime, enemy)
+		if boss_projectile_returned or boss_projectile_returned_by_chucky then
+			update_horizontal_boss_shoot(ElapsedTime, enemy)
+		else
+			update_shoot_boss(ElapsedTime, enemy)
+		end
 		--enemy:actualizar_hitbox()
 
 	end
@@ -159,15 +167,42 @@ end
 
 ----DEVOLVER----
 function chucky_boss_enter_return(name)
-	
+	coreInstance:trace("Devuelvo");
+	local enemy = enemy_manager:get_enemy(name)
+	contador = 0;
+	executedReturn = false;
+	enemy.m_RenderableObject:remove_action(5);
+	enemy.m_RenderableObject:clear_cycle(0,0.1);
+	enemy.m_RenderableObject:execute_action(9,0.1,0,1,true);
 end
 
 function chucky_boss_exit_return(name)
-	
+	local enemy = enemy_manager:get_enemy(name)
+	enemy.m_RenderableObject:remove_action(9)
+	contador = 0;
+	executedReturn = false;
 end
 
 function chucky_boss_update_return(ElapsedTime, doComprobation, name)
-
+	local enemy = enemy_manager:get_enemy(name)
+	if (enemy ~= nil) then
+		contador = contador + ElapsedTime;
+		if contador > 0.5 and not executedReturn then
+			boss_projectile_returned = false
+			boss_projectile_returned_by_chucky = true
+			local enemyPos = Vect3f(enemy:get_position().x, enemy:get_position().y + 2, enemy:get_position().z);
+			enemy.m_DireccionBala = player_controller:get_position() - enemyPos;
+			executedReturn = true;
+		end
+		if boss_projectile_returned or boss_projectile_returned_by_chucky then
+			update_horizontal_boss_shoot(ElapsedTime, enemy)
+		else
+			update_shoot_boss(ElapsedTime, enemy)
+		end
+		if not enemy.m_RenderableObject:is_action_animation_active() then
+			enemy:m_FSM():newState("EsperandoImpacto")
+		end
+	end
 end
 --WAITING--
 function chucky_boss_enter_waiting(name)
@@ -189,15 +224,24 @@ function chucky_boss_update_waiting(ElapsedTime, doComprobation, name)
 
 		local player_position = player_controller:get_position()
 		rotate_yaw(enemy, ElapsedTime, player_position)
-		update_shoot_boss(ElapsedTime, enemy)
+		if boss_projectile_returned or boss_projectile_returned_by_chucky then
+			update_horizontal_boss_shoot(ElapsedTime, enemy)
+		else
+			update_shoot_boss(ElapsedTime, enemy)
+		end
 		--enemy:actualizar_hitbox()
-		if boss_projectile_returned and get_distance_between_points(enemy:get_position(), enemy.m_PosicionBala) < 5 then
+		if boss_projectile_returned and get_distance_between_points(enemy:get_position(), enemy.m_PosicionBala) < 15 then
 			if check_random_action(4) then
 				enemy:m_FSM():newState("Devolver")
 			else
-				local mesh = get_renderable_object("solid",0, enemy.m_ProjectileName)
+				local mesh = get_renderable_object("enemies", enemy.m_RenderableObject.m_Room, enemy.m_ProjectileName)
 				if check_shoot_collision(enemy, mesh, enemy) then
+					boss_projectile_returned = false
+					boss_projectile_returned_by_chucky = false;
+					enemy.m_IsOnCooldown = false;
+					delete_shooting(mesh)
 					enemy:m_FSM():newState("Hurt")
+					coreInstance:trace("HUUUUUUURT");
 				end
 			end
 		end
@@ -260,7 +304,8 @@ function chucky_boss_enter_hurt(name)
 end
 
 function chucky_boss_exit_hurt(name)
-	
+	local enemy = enemy_manager:get_enemy(name);
+	enemy.m_RenderableObject:remove_action(6);
 end
 
 function chucky_boss_update_hurt(ElapsedTime, doComprobation, name)

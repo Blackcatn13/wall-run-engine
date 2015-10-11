@@ -54,6 +54,7 @@ class CAIController : public CObject3D {
   GET_SET(Vect3f, DireccionBala);
   GET_SET(float, CurrentCooldown);
   GET_SET(float, ProjectileHitbox);
+  GET_SET(float, ProjectileReturnDist);
   GET_SET(float, tiempoVidaDisparo);
 
   float getAngleDiff(Vect3f A, Vect3f B);
@@ -83,6 +84,7 @@ class CAIController : public CObject3D {
   float				m_tiempoVidaDisparo;
   float				m_minAngleDisparo;
   float				m_ProjectileHitbox;
+  float				m_ProjectileReturnDist;
   float				m_EnemyHitboxX;
   float				m_EnemyHitboxY;
   float				m_Angle;

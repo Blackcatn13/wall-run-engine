@@ -26,6 +26,7 @@ CAIController::CAIController()
     m_IsOnCooldown(false),
     m_CooldownTimer(5),
     m_ProjectileHitbox(0.5),
+	m_ProjectileReturnDist(0.1),
     m_EnemyHitboxX(1.5),//HARDCODED
     m_EnemyHitboxY(2.0),//HARDCODED
     m_CurrentCooldown(0),
@@ -58,6 +59,7 @@ CAIController::CAIController(std::string mesh, std::string name, Vect3f position
   m_IsOnCooldown(false),
   m_CooldownTimer(5),
   m_ProjectileHitbox(0.5),
+  m_ProjectileReturnDist(0.1),
   m_Angle(0.0f),
   m_EnemyHitboxX(1.5),//HARDCODED
   m_EnemyHitboxY(2.0),//HARDCODED
@@ -90,6 +92,7 @@ CAIController::CAIController(std::string mesh, std::string name, Vect3f position
   m_IsOnCooldown(false),
   m_CooldownTimer(5),
   m_ProjectileHitbox(0.5),
+  m_ProjectileReturnDist(0.1),
   m_Angle(0.0f),
   m_EnemyHitboxX(1.5),//HARDCODED
   m_EnemyHitboxY(2.0),//HARDCODED
@@ -126,6 +129,7 @@ CAIController::CAIController(CRenderableObject *rond, float speed, float turnSpe
   m_IsOnCooldown(false),
   m_CooldownTimer(5),
   m_ProjectileHitbox(0.5),
+  m_ProjectileReturnDist(0.1),
   m_Angle(0.0f),
   m_EnemyHitboxX(1.5),//HARDCODED
   m_EnemyHitboxY(2.0),//HARDCODED

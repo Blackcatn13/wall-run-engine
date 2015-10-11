@@ -12,6 +12,7 @@ CBossEnemy::CBossEnemy(CXMLTreeNode &info1) : CEnemy(info1)
   if (m_ProjectileName != "")
     SetShootingStats(info1.GetIntProperty("speed_projectile", 0, false), info1.GetIntProperty("projectile_life", 0, false), info1.GetIntProperty("cooldown_timer", 0, false) );
   m_ProjectileHitbox = info1.GetFloatProperty("projectile_size", .0f, false);
+  m_ProjectileReturnDist = info1.GetFloatProperty("projectile_return_dist", .0f, false);
   Init(info1.GetPszISOProperty("fsm", "NoFSM", false));
 }
 

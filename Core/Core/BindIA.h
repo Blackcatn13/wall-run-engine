@@ -68,6 +68,7 @@ void RegisterAI() {
     .property("m_DireccionBala", &CAIController::getDireccionBala,  &CAIController::setDireccionBala)
     .property("m_CurrentCooldown", &CAIController::getCurrentCooldown,  &CAIController::setCurrentCooldown)
     .property("m_ProjectileHitbox", &CAIController::getProjectileHitbox,  &CAIController::setProjectileHitbox)
+	.property("m_ProjectileReturnDist", &CAIController::getProjectileReturnDist,  &CAIController::setProjectileReturnDist)
 
     .def("move", &CAIController::Move)
     //.def("move_to", &CAIController::MoveTo)

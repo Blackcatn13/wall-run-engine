@@ -27,6 +27,7 @@ CCoreLuaWrapper().m_CoreInstance:getTickCounter():addTick("lava", 0.05, 1000);
 boss_mesh_name = "ChuckyBoss"
 boss_miks_enabled = false
 boss_projectile_returned = false
+boss_projectile_returned_by_chucky = false
 
 --Variables de Control
 first_time_main_menu = true

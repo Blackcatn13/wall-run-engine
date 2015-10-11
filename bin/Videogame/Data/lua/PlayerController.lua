@@ -168,6 +168,8 @@ function on_update_player_lua(l_ElapsedTime)
 		local mov = Vect3f(0,0,0);
 		local PlayerYaw =  - dirYaw + 1.57;
 		
+		player.pressed_return = false
+		
 		-- Si dañan al player
 		if player.is_hit == true and not player.hurt_by_spikes and not transition_super_piky then
 			if (player.is_hit_reset_first == true) then
@@ -205,7 +207,7 @@ function on_update_player_lua(l_ElapsedTime)
 		--///////////////////////////////////////////////////////////
 		-- Movimiento del Player en las distintas direcciones. 
 		--///////////////////////////////////////////////////////////
-		if (player_controller.m_isJumpingMoving == false) and (player_controller.m_isAttack == false) and (player.is_hit == false and not player.is_dead) then
+		if (player_controller.m_isJumpingMoving == false) and (player_controller.m_isAttack == false) and (player.is_hit == false and not player.is_dead) and player.super_piky_attack == false then
 			local y_axis = 0.0
 			local x_axis = 0.0
 			if not playerRenderable.m_VanishActive and not player.hurt_by_spikes and not gui_manager:is_transition_effect_active() and not transition_super_piky then
@@ -589,15 +591,23 @@ function on_update_player_lua(l_ElapsedTime)
 				emitter.m_vPos = playerRenderable:get_position()+ playerRenderable.m_EmitterOffset
 				emitter:set_visible(true)
 			else
-				if not player.super_piky_attack then
-					player.super_piky_attack = true
-					playerRenderable:execute_action(anim_attack,0,0.3,1,false);
-				end
+				player.pressed_return = true
+				--playerRenderable:execute_action(anim_attack,0,0.3,1,false);
 			end
 		end
 		
-		if player.super_piky_attack and not playerRenderable:is_action_animation_active() then
-			player.super_piky_attack = false
+		if player.execute_return_pr then
+			player.execute_return_pr = false;
+			player.super_piky_attack = true;
+			playerRenderable:clear_cycle(anim_idle,0);
+			playerRenderable:clear_cycle(anim_run,0);
+			playerRenderable:execute_action(anim_attack,0,0.3,1,false);
+		end
+		
+		if player.super_piky_attack then
+			if not playerRenderable:is_action_animation_active() then
+				player.super_piky_attack = false;
+			end
 		end
 	
 		if not player_controller.m_isGrounded then
@@ -609,7 +619,7 @@ function on_update_player_lua(l_ElapsedTime)
 		
 		--ACELERACION/INERCIA (SUELO)
 		local stopping = false;
-		if not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land and player_controller.m_isAttack == false and not player.is_hit and not player.is_dead and not playerRenderable.m_VanishActive then
+		if not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land and player_controller.m_isAttack == false and not player.is_hit and not player.is_dead and not playerRenderable.m_VanishActive and player.super_piky_attack == false then
 			if _isQuiet == false then
 				local xValue = mov.x * acceleration;
 				local zValue = mov.z * acceleration;
@@ -695,7 +705,7 @@ function on_update_player_lua(l_ElapsedTime)
 		if not player.hurt_by_spikes then
 			move_character_controller_mesh(player_controller, player_controller:get_position(), player_controller.m_isJumping, player_controller.m_isDoubleJumping);
 		end
-		if not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land then
+		if not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land and player.super_piky_attack == false then
 			if (mov.x == 0 and mov.z == 0 or stopping) and player.is_hit == false then
 				playerRenderable:clear_cycle(anim_run,deccelerationTime);
 				playerRenderable:blend_cycle(anim_idle,1,deccelerationTime+0.2);
