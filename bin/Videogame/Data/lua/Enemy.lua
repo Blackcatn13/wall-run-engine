@@ -130,7 +130,13 @@ function boss_shoot(position, enemy)
 		local renderable_shoot = get_renderable_object("enemies", 0, projectile_name)
 		if renderable_shoot ~= nil then
 			-- poner sonido y particulas de disparo	
-			local emitter = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter)
+			local playerRenderableMesh =  coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name);
+	
+			local qte_emmiter_name = playerRenderableMesh.m_ParticleEmitter
+			if not inputm:has_game_pad(1) then
+				qte_emmiter_name = playerRenderableMesh.m_ParticleEmitter2
+			end
+			local emitter = particle_manager:get_resource(qte_emmiter_name)
 			if emitter ~= nil then
 				emitter.m_vPos = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_EmitterOffset
 				emitter.m_FireParticles = true 
@@ -222,6 +228,16 @@ function update_shoot_boss(dt, enemy)
 				start_super_piky()
 			else
 				enemy:add_damage_player();
+				local playerRenderable =  coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name);
+				
+				local qte_emmiter_name = playerRenderable.m_ParticleEmitter
+				if not inputm:has_game_pad(1) then
+					qte_emmiter_name = playerRenderable.m_ParticleEmitter2
+				end
+				local emitter = particle_manager:get_resource(qte_emmiter_name)
+				if emitter:get_visible() == true then
+					emitter:set_visible(false)
+				end
 			end
 		end
 		local posXZBala = Vect3f(enemy.m_PosicionBala.x, 0, enemy.m_PosicionBala.z)
@@ -386,6 +402,12 @@ function check_player_shoot_collision(enemy, mesh)
 end
 
 function check_player_shoot_return(enemy,mesh)
+	local playerRenderable =  coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name);
+	local qte_emmiter_name = playerRenderable.m_ParticleEmitter
+	if not inputm:has_game_pad(1) then
+		qte_emmiter_name = playerRenderable.m_ParticleEmitter2
+	end
+	local emitter = particle_manager:get_resource(qte_emmiter_name)
 	if (mesh.m_Printable and enemy.m_PosicionBala:distance(player_controller:get_position()) < enemy.m_ProjectileReturnDist) and boss_projectile_returned == false and current_shot_type == "rock" then
 		if player.super_piky_active and player.pressed_return then
 			player.execute_return_pr = true;
@@ -393,7 +415,15 @@ function check_player_shoot_return(enemy,mesh)
 			boss_projectile_returned_by_chucky = false;
 			local enemyPos = Vect3f(enemy:get_position().x, enemy:get_position().y + 2, enemy:get_position().z);
 			enemy.m_DireccionBala = enemyPos - player_controller:get_position();
+			emitter:set_visible(false)
+		elseif player.super_piky_active and not player.pressed_return then
+			coreInstance:trace("Sacando exclamacion")
+			emitter.m_vPos = player_controller:get_position() + playerRenderable.m_EmitterOffset
+			emitter:set_visible(true)
+			
 		end
+	elseif emitter:get_visible() == true then
+			emitter:set_visible(false)
 	end
 end
 
