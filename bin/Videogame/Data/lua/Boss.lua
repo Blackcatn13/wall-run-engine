@@ -1,6 +1,8 @@
 local boss_timer = 0.0
 local contador = 0
 local executedReturn = false;
+local execute_hurt = false;
+local doing_hurt = false;
 
 function start_boss()
 	set_player_room("0", true)
@@ -114,7 +116,7 @@ function chucky_boss_update_stopped(ElapsedTime, doComprobation, name)
 	if boss_timer >= enemy.m_CooldownTimer then
 		local check_call_miks = false 
 		if enemy.m_Phases == 1 and all_boss_miks_killed then
-			check_call_miks = check_random_action (3)
+			check_call_miks = check_random_action (6)
 		end
 		
 		if check_call_miks then
@@ -188,7 +190,7 @@ function chucky_boss_update_return(ElapsedTime, doComprobation, name)
 	local enemy = enemy_manager:get_enemy(name)
 	if (enemy ~= nil) then
 		contador = contador + ElapsedTime;
-		if contador > 0.5 and not executedReturn then
+		if not executedReturn and get_distance_between_points(enemy:get_position(), enemy.m_PosicionBala) < 5 then
 			boss_projectile_returned = false
 			boss_projectile_returned_by_chucky = true
 			local enemyPos = Vect3f(enemy:get_position().x, enemy:get_position().y + 2, enemy:get_position().z);
@@ -231,19 +233,12 @@ function chucky_boss_update_waiting(ElapsedTime, doComprobation, name)
 			update_shoot_boss(ElapsedTime, enemy)
 		end
 		--enemy:actualizar_hitbox()
-		if boss_projectile_returned and get_distance_between_points(enemy:get_position(), enemy.m_PosicionBala) < 15 then
-			if check_random_action(4) then
+		if boss_projectile_returned and get_distance_between_points(enemy:get_position(), enemy.m_PosicionBala) < 250 then
+			if check_random_action(5) then
 				enemy:m_FSM():newState("Devolver")
 			else
-				local mesh = get_renderable_object("enemies", enemy.m_RenderableObject.m_Room, enemy.m_ProjectileName)
-				if check_shoot_collision(enemy, mesh, enemy) then
-					boss_projectile_returned = false
-					boss_projectile_returned_by_chucky = false;
-					enemy.m_IsOnCooldown = false;
-					delete_shooting(mesh)
-					enemy:m_FSM():newState("Hurt")
-					coreInstance:trace("HUUUUUUURT");
-				end
+				enemy:m_FSM():newState("Hurt")
+				coreInstance:trace("HUUUUUUURT");
 			end
 		end
 
@@ -252,8 +247,7 @@ end
 
 function check_random_action(bonus)
 	local rand = tonumber(math.random(bonus))
-	coreInstance:trace(tostring(rand))
-	if rand >=2  then
+	if rand >3  then
 		return true
 	end
 	return false
@@ -289,19 +283,8 @@ end
 
 ----HURT----
 function chucky_boss_enter_hurt(name)
-	local enemy = enemy_manager:get_enemy(name)
-	if (enemy ~= nil) then
-		enemy.m_Life = enemy.m_Life -1
-		if enemy.m_Life ==0 then
-			enemy.m_Phases = enemy.m_Phases -1
-			if enemy.m_Phases == 0 then
-				enemy:m_FSM():newState("Dead")
-			else
-				enemy.m_RenderableObject:clear_cycle(0,0.3);
-				enemy.m_RenderableObject:execute_action(6,0.1,0,1,false)
-			end
-		end
-	end
+	doing_hurt = false
+	execute_hurt = false
 end
 
 function chucky_boss_exit_hurt(name)
@@ -312,7 +295,43 @@ end
 function chucky_boss_update_hurt(ElapsedTime, doComprobation, name)
 	local enemy = enemy_manager:get_enemy(name)
 	if (enemy ~= nil) then
-		if not enemy.m_RenderableObject:is_action_animation_active() then
+		if not doing_hurt then
+			update_horizontal_boss_shoot(ElapsedTime, enemy)
+			local mesh = get_renderable_object("enemies", enemy.m_RenderableObject.m_Room, enemy.m_ProjectileName)
+			local distance_to_bala = get_distance_between_points(enemy:get_position(), enemy.m_PosicionBala);
+			--coreInstance:trace("distance to bala: "..tostring(distance_to_bala))
+			if distance_to_bala < 7 then
+				coreInstance:trace("colisionaaaaaa")
+				execute_hurt = true
+				boss_projectile_returned = false
+				boss_projectile_returned_by_chucky = false;
+				enemy.m_IsOnCooldown = false;
+				delete_shooting(mesh)
+			end
+		end
+		if execute_hurt then
+			execute_hurt = false
+			enemy.m_Life = enemy.m_Life -1
+			coreInstance:trace("vidas: "..tostring(enemy.m_Life))
+			local animation_hurt = true
+			if enemy.m_Life <=0 then
+				enemy.m_Phases = enemy.m_Phases -1
+				enemy.m_Life = 3;
+				if enemy.m_Phases <= 0 then
+					enemy:m_FSM():newState("Dead")
+					animation_hurt = false;
+				end
+			end
+			if animation_hurt then
+				coreInstance:trace("doing animation hurt")
+				doing_hurt = true
+				enemy.m_RenderableObject:clear_cycle(0,0.3);
+				enemy.m_RenderableObject:execute_action(6,0.1,0,1,false)
+			end
+		end
+		if doing_hurt and not enemy.m_RenderableObject:is_action_animation_active() then
+			coreInstance:trace("stoping hurt")
+			doing_hurt = false
 			enemy:m_FSM():newState("Parado")
 		end
 	end
