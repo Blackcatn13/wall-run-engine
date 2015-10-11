@@ -9,9 +9,9 @@
   </Image>
   <Image name="ControlsGUI" posx="0.00" posy="0.00" height="100" width="100" visible="true" active="true"
          default="ControlsBase" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
-    <texture name="ControlsBase" name_texture="./Data/GUI/GoPixelGo/GUI_OPTIONS.png"/>
+    <texture name="ControlsBase" name_texture="./Data/GUI/GoPixelGo/GUI_Controles.png"/>
   </Image>
- <Image name="KeyboardMap" posx="0.00" posy="20.00" height="50" width="100" visible="true" active="true"
+ <Image name="KeyboardMap" posx="3.00" posy="25.00" height="50" width="100" visible="true" active="true"
          default="Keyboard" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
 	<texture name="Keyboard" name_texture="./Data/GUI/GoPixelGo/keyboard.png"/>
   </Image>

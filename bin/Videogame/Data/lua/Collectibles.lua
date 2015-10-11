@@ -40,7 +40,8 @@ function check_collectibles()
 		if Cards_Vector[i].unlocked == true then
 			local image_name = "Collectible"..tostring(i)
 			coreInstance:trace(image_name)
-			gui_manager:set_image(image_name,'ImgUnLocked')
+			--gui_manager:set_image(image_name,'ImgUnLocked')
+			gui_manager:set_visible_element(image_name, true);
 		end
 	end
 end
@@ -51,7 +52,8 @@ function reset_cards()
 			Cards_Vector[i].unlocked = false
 			local image_name = "Collectible"..tostring(i)
 			coreInstance:trace(image_name)
-			gui_manager:set_image(image_name,'ImgLocked')
+			--gui_manager:set_image(image_name,'ImgLocked')
+			gui_manager:set_visible_element(image_name, false);
 		end
 	end
 end
