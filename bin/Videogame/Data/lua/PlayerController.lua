@@ -129,6 +129,7 @@ function on_update_player_lua(l_ElapsedTime)
 			if player.super_piky_timer < super_piky_time then
 				player.super_piky_timer = player.super_piky_timer+ l_ElapsedTime
 				--coreInstance:trace("Super Piky time: "..tostring(player.super_piky_timer))
+			
 			else
 				player.set_super_piky(false)
 				player.super_piky_timer = 0.0
@@ -547,7 +548,7 @@ function on_update_player_lua(l_ElapsedTime)
 				end
 			end
 		else
-			if emitter:get_visible() == true then
+			if emitter:get_visible() == true and not player.super_piky_active then
 				emitter.m_vPos = playerRenderable:get_position()+ playerRenderable.m_EmitterOffset
 				emitter:set_visible(false)
 			end
