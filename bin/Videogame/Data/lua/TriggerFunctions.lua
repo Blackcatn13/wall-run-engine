@@ -106,7 +106,7 @@ function activate_teleport(name, room)
 		update_emitter_status(emitter2, pos2, true)
 		
 	end
-	coreInstance:getWWSoundManager():PlayEvent("Telepor", "Music");
+	coreInstance:getWWSoundManager():PlayEvent("Teleport", "Music");
 	--camera.m_pObject3D:set_position(Vect3f(3.118870, 20.0, 271.008423))
 end
 
