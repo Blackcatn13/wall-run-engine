@@ -192,6 +192,7 @@ function on_update_player_lua(l_ElapsedTime)
 		-- Si dañan al player
 		if player.is_hit == true and not player.hurt_by_spikes and not transition_super_piky then
 			if (player.is_hit_reset_first == true) then
+				player.use_iman = false;
 				player_controller.m_isJumping = false;
 				player_controller.m_isDoubleJumping = false;
 				_land = false;
@@ -677,11 +678,11 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		
 		-- IMAN
-		if _land and player.use_iman and (player.iman_pos.x ~= 0 or player.iman_pos.y ~= 0 or player.iman_pos.z ~= 0) then
+		if _land and player.use_iman and (player.iman_pos.x ~= 0 or player.iman_pos.y ~= 0 or player.iman_pos.z ~= 0) and player_controller.m_is3D == true then
 			local playerPosZX = Vect3f(player_controller:get_position().x, 0, player_controller:get_position().z);
 			local imanZX = Vect3f(player.iman_pos.x,0,player.iman_pos.z);
 			local distancePlayerImanX = math.abs(get_distance_between_points(playerPosZX,imanZX));
-			local distancePlayerImanY = math.abs(player_controller:get_position().y, player.iman_pos.y);
+			local distancePlayerImanY = math.abs(player_controller:get_position().y - player.iman_pos.y);
 			if (distancePlayerImanX > 0.1) then
 				local movimientoAux = Vect3f(imanZX.x-playerPosZX.x, 0, imanZX.z-playerPosZX.z);
 				local variableMultiplicadora = iman_force;

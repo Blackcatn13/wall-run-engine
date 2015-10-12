@@ -306,7 +306,11 @@ int CEnemy::CheckPlayerCollision() {
     }
   } else {
     if (is_over_to_iman && PLAYC->getableToIman()) {
-      if (l_DistanceEnemyPlayerXZ < l_DistanceToIman) {
+		float playerYaw = PLAYC->GetYaw();
+		Vect3f playerYawVec = Vect3f(mathUtils::Sin(playerYaw), 0, mathUtils::Cos(playerYaw)).Normalize();
+		Vect3f enemyVec = posEnemyZX - posPlayerZX;
+		float dot = playerYawVec * enemyVec;
+      if ((l_DistanceEnemyPlayerXZ < l_DistanceToIman) && dot > 0) {
         return 4;
       }
     }
