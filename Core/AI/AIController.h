@@ -49,6 +49,7 @@ class CAIController : public CObject3D {
   GET_SET(bool, IsOnCooldown);
   GET_SET(float, CooldownTimer);
   GET_SET(float, BalaSpeed);
+  GET_SET(float, BalaOriginalSpeed);
 
   GET_SET(Vect3f, PosicionBala);
   GET_SET(Vect3f, DireccionBala);
@@ -80,6 +81,7 @@ class CAIController : public CObject3D {
   Vect3f			m_PosicionBala;
   Vect3f			m_DireccionBala;
   float             m_BalaSpeed;
+  float				m_BalaOriginalSpeed;
   float				m_CurrentCooldown;
   float				m_tiempoVidaDisparo;
   float				m_minAngleDisparo;

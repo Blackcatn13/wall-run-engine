@@ -33,6 +33,7 @@ CAIController::CAIController()
     m_tiempoVidaDisparo(2.0),
     m_minAngleDisparo(0.2),
     m_BalaSpeed(5),
+	m_BalaOriginalSpeed(5),
     m_CurrentJumpForce(0),
     m_isJumping(false),
     m_RenderableObject(NULL),
@@ -55,6 +56,7 @@ CAIController::CAIController(std::string mesh, std::string name, Vect3f position
   m_tiempoVidaDisparo(2.0),
   m_minAngleDisparo(0.2),
   m_BalaSpeed(5),
+  m_BalaOriginalSpeed(5),
   m_CurrentJumpForce(0),
   m_IsOnCooldown(false),
   m_CooldownTimer(5),
@@ -88,6 +90,7 @@ CAIController::CAIController(std::string mesh, std::string name, Vect3f position
   m_tiempoVidaDisparo(2.0),
   m_minAngleDisparo(0.2),
   m_BalaSpeed(5),
+  m_BalaOriginalSpeed(5),
   m_CurrentJumpForce(0),
   m_IsOnCooldown(false),
   m_CooldownTimer(5),
@@ -125,6 +128,7 @@ CAIController::CAIController(CRenderableObject *rond, float speed, float turnSpe
   m_tiempoVidaDisparo(2.0),
   m_minAngleDisparo(0.2),
   m_BalaSpeed(5),
+  m_BalaOriginalSpeed(5),
   m_CurrentJumpForce(0),
   m_IsOnCooldown(false),
   m_CooldownTimer(5),
@@ -180,6 +184,7 @@ CAIController::~CAIController() {
 
 void CAIController::SetShootingStats(float speedProjectile, float projectileLife, float cooldownTimer) {
   m_BalaSpeed = speedProjectile;
+  m_BalaOriginalSpeed = speedProjectile;
   m_CooldownTimer = cooldownTimer;
   m_tiempoVidaDisparo = projectileLife;
 }

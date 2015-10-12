@@ -207,6 +207,9 @@ function update_shoot_boss(dt, enemy)
     enemy.m_CurrentCooldown = enemy.m_CurrentCooldown - dt;
     if (enemy.m_CurrentCooldown < 0.0 or player.is_dead) then
       enemy.m_IsOnCooldown = false;
+	  enemy.BalaSpeed = enemy.BalaOriginalSpeed;
+	  current_speed_change = inicial_speed_change;
+	  actual_speed_change = 0;
       delete_shooting(renderable_shoot)
 	  enemy:m_FSM():newState("Parado")
     else 
@@ -218,6 +221,9 @@ function update_shoot_boss(dt, enemy)
 		if (check_player_shoot_collision(enemy, renderable_shoot)) then
 			enemy.m_IsOnCooldown = false;
 			delete_shooting(renderable_shoot)
+			enemy.BalaSpeed = enemy.BalaOriginalSpeed;
+			current_speed_change = inicial_speed_change;
+			actual_speed_change = 0;
 			enemy:m_FSM():newState("Parado")
 			if current_shot_type =="powerup" then
 				start_super_piky()
@@ -324,6 +330,9 @@ function update_shoot_boss(dt, enemy)
 		end
 		if ((distance > 450 and enemy.m_PosicionBala.y < -1.2) or (distance <=450 and enemy.m_PosicionBala.y < 1.8)) or choca then
 			enemy.m_IsOnCooldown = false;
+			enemy.BalaSpeed = enemy.BalaOriginalSpeed;
+			current_speed_change = inicial_speed_change;
+			actual_speed_change = 0;
 			delete_shooting(renderable_shoot)
 			enemy:m_FSM():newState("Parado")
 		end
@@ -338,14 +347,21 @@ function update_horizontal_boss_shoot(dt, enemy)
     --enemy.m_CurrentCooldown = enemy.m_CurrentCooldown - dt;
     if (player.is_dead) then
 	  enemy.m_IsOnCooldown = false;
+	  enemy.BalaSpeed = enemy.BalaOriginalSpeed;
+	  current_speed_change = inicial_speed_change;
+	  actual_speed_change = 0;
 	  delete_shooting(renderable_shoot)
 	  enemy:m_FSM():newState("Parado")
     else 
       enemy.m_PosicionBala = enemy:updtate_projectile_position(dt) 
 	  renderable_shoot:set_position(enemy.m_PosicionBala)
+	  renderable_shoot:set_roll(renderable_shoot:get_roll() + 2 * dt * enemy.BalaSpeed)
 	  check_player_shoot_return(enemy, renderable_shoot);
       if (check_player_shoot_collision(enemy, renderable_shoot)) then
 		enemy.m_IsOnCooldown = false;
+		enemy.BalaSpeed = enemy.BalaOriginalSpeed;
+		current_speed_change = inicial_speed_change;
+		actual_speed_change = 0;
 		delete_shooting(renderable_shoot)
 		local playerRenderable =  coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name);
 		local qte_emmiter_name = playerRenderable.m_ParticleEmitter
@@ -362,11 +378,91 @@ function update_horizontal_boss_shoot(dt, enemy)
 		local posXZBala = Vect3f(enemy.m_PosicionBala.x, 0, enemy.m_PosicionBala.z)
 		local posXZChucky = Vect3f(enemy:get_position().x, 0,enemy:get_position().z)
 		local distance = get_distance_between_points(posXZBala, posXZChucky)
+		local vectPoly = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("poly", player_controller.m_Room);
+		local vectActivePoly = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("enabled_poly", player_controller.m_Room);
+		local numPolis = vectPoly:get_size();
+		local numEnabledPolis = vectActivePoly:get_size();
 		local choca = false;
+		for i=0, numPolis-1 do
+			local platform = vectPoly:get_resource_by_id(i);
+			if platform ~= nil then
+				if platform.m_Activated or platform.m_IsMoving then
+					local platformPosXZ = Vect3f(platform:get_position().x, 0, platform:get_position().z);
+					local platformSizeXZ = Vect3f(platform.m_PhysicsSize.x, 0, platform.m_PhysicsSize.z);
+					local vectToBossXZ = platformPosXZ - posXZChucky;
+					local vectToBalaXZ = platformPosXZ - posXZBala;
+					local distanceToBala = vectToBalaXZ:length();
+					if vectToBossXZ.x ~= 0 or vectToBossXZ.y ~= 0 or vectToBossXZ.z ~= 0 then
+						vectToBossXZ:normalize(1);
+					end
+					if vectToBalaXZ.x ~= 0 or vectToBalaXZ.y ~= 0 or vectToBalaXZ.z ~= 0 then
+						vectToBalaXZ:normalize(1);
+					end
+					local dot = vectToBossXZ * vectToBalaXZ;
+					dot = math.abs(dot);
+					local sizeLargo = 0;
+					local sizeCorto = 0;
+					if platformSizeXZ.x > platformSizeXZ.z then
+						sizeLargo = platformSizeXZ.x;
+						sizeCorto = platformSizeXZ.z;
+					else
+						sizeLargo = platformSizeXZ.z;
+						sizeCorto = platformSizeXZ.x;
+					end
+					local valorCorto = sizeCorto * dot;
+					local valorLargo = sizeLargo * (1-dot);
+					local distanceToCrashAlCuadrao = valorCorto * valorCorto + valorLargo * valorLargo;
+					distanceToCrashAlCuadrao = distanceToCrashAlCuadrao + (enemy.m_ProjectileHitbox * enemy.m_ProjectileHitbox);
+					local distanceToBalaAlCuadrao = distanceToBala * distanceToBala;
+					if distanceToBalaAlCuadrao <= distanceToCrashAlCuadrao then
+						choca = true;
+					end
+				end
+			end
+		end
+		for i=0, numEnabledPolis-1 do
+			local platform = vectActivePoly:get_resource_by_id(i);
+			if platform ~= nil then
+				if platform.m_Activated or platform.m_IsMoving then
+					local platformPosXZ = Vect3f(platform:get_position().x, 0, platform:get_position().z);
+					local platformSizeXZ = Vect3f(platform.m_PhysicsSize.x, 0, platform.m_PhysicsSize.z);
+					local vectToBossXZ = platformPosXZ - posXZChucky;
+					local vectToBalaXZ = platformPosXZ - posXZBala;
+					local distanceToBala = vectToBalaXZ:length();
+					if vectToBossXZ.x ~= 0 or vectToBossXZ.y ~= 0 or vectToBossXZ.z ~= 0 then
+						vectToBossXZ:normalize(1);
+					end
+					if vectToBalaXZ.x ~= 0 or vectToBalaXZ.y ~= 0 or vectToBalaXZ.z ~= 0 then
+						vectToBalaXZ:normalize(1);
+					end
+					local dot = vectToBossXZ * vectToBalaXZ;
+					dot = math.abs(dot);
+					local sizeLargo = 0;
+					local sizeCorto = 0;
+					if platformSizeXZ.x > platformSizeXZ.z then
+						sizeLargo = platformSizeXZ.x;
+						sizeCorto = platformSizeXZ.z;
+					else
+						sizeLargo = platformSizeXZ.z;
+						sizeCorto = platformSizeXZ.x;
+					end
+					local valorCorto = sizeCorto * dot;
+					local valorLargo = sizeLargo * (1-dot);
+					local distanceToCrashAlCuadrao = valorCorto * valorCorto + valorLargo * valorLargo;
+					distanceToCrashAlCuadrao = distanceToCrashAlCuadrao + (enemy.m_ProjectileHitbox * enemy.m_ProjectileHitbox);
+					local distanceToBalaAlCuadrao = distanceToBala * distanceToBala;
+					if distanceToBalaAlCuadrao <= distanceToCrashAlCuadrao then
+						choca = true;
+					end
+				end
+			end
+		end
 	  if ((distance > 450 and enemy.m_PosicionBala.y < -1.2) or (distance <=450 and enemy.m_PosicionBala.y < 1.8)) or choca then
 			enemy.m_IsOnCooldown = false;
+			enemy.BalaSpeed = enemy.BalaOriginalSpeed;
+			current_speed_change = inicial_speed_change;
+			actual_speed_change = 0;
 			delete_shooting(renderable_shoot)
-			
 			enemy:m_FSM():newState("Parado")
 		end
     end
@@ -418,6 +514,20 @@ function check_player_shoot_return(enemy,mesh)
 			boss_projectile_returned_by_chucky = false;
 			local enemyPos = Vect3f(enemy:get_position().x, enemy:get_position().y + 2, enemy:get_position().z);
 			enemy.m_DireccionBala = enemyPos - player_controller:get_position();
+			if actual_speed_change < max_speed_change then
+				local maxReached = false
+				if actual_speed_change + current_speed_change > max_speed_change then
+					current_speed_change = max_speed_change - actual_speed_change;
+					maxReached = true;
+				end
+				enemy.BalaSpeed = enemy.BalaSpeed + current_speed_change;
+				if maxReached then
+					actual_speed_change = max_speed_change;
+				else
+					actual_speed_change = actual_speed_change + current_speed_change;
+					current_speed_change = current_speed_change / 2;
+				end
+			end
 			emitter:set_visible(false)
 		elseif player.super_piky_active and not player.pressed_return then
 			local pikyYaw = enemy:get_yaw() + (math.pi / 2);

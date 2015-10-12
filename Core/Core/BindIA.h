@@ -64,6 +64,7 @@ void RegisterAI() {
     .property("m_IsOnCoolDown", &CAIController::getIsOnCooldown,  &CAIController::setIsOnCooldown)
     .property("m_CooldownTimer", &CAIController::getCooldownTimer,  &CAIController::setCooldownTimer)
     .property("BalaSpeed", &CAIController::getBalaSpeed,  &CAIController::setBalaSpeed)
+	.property("BalaOriginalSpeed", &CAIController::getBalaOriginalSpeed,  &CAIController::setBalaOriginalSpeed)
     .property("m_PosicionBala", &CAIController::getPosicionBala,  &CAIController::setPosicionBala)
     .property("m_DireccionBala", &CAIController::getDireccionBala,  &CAIController::setDireccionBala)
     .property("m_CurrentCooldown", &CAIController::getCurrentCooldown,  &CAIController::setCurrentCooldown)
