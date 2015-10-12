@@ -328,6 +328,8 @@ function reset_game()
 	boss_miks_killed = 0
 	local boss = enemy_manager:get_enemy(boss_mesh_name)
 	if boss.m_BossRunning then
+		boss.m_Phases = chucky.m_OriginalPhases
+		boss.m_Lifes = chucky.m_OriginalLifes
 		boss.m_BossRunning = false
 	end
 end

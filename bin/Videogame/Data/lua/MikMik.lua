@@ -35,7 +35,9 @@ end
 function mikmik_exit_stopped(name)
 	local enemy = enemy_manager:get_enemy(name)
 	enemy.m_CurrentTime = 0
-	enemy.m_RenderableObject:clear_cycle(0,0.3);
+	if not enemy:is_static() then
+		enemy.m_RenderableObject:clear_cycle(0,0.3);
+	end
 end
 
 function mikmik_update_stopped(ElapsedTime, doComprobation, name)
@@ -134,6 +136,7 @@ function mikmik_exit_moving(name)
 	if enemy ~= nil then
 		enemy.m_CurrentTime = 0
 	end
+
 	enemy.m_RenderableObject:clear_cycle(1,0.2);
 end
 
@@ -196,10 +199,12 @@ end
 function mikmik_enter_attack_player(name)
 --coreInstance:trace("Atacando: " .. name)
 	local enemy = enemy_manager:get_enemy(name)
-	if enemy ~= nil and enemy:is_static() == false then -- en caso de no ser estatico
-		enemy.m_Speed = enemy.m_AttackSpeed
-		enemy.m_SpeedModified = true
-		enemy.m_RenderableObject:blend_cycle(1,0.1,0.2);
+	if enemy ~= nil then
+		if not enemy:is_static() then -- en caso de no ser estatico
+			enemy.m_Speed = enemy.m_AttackSpeed
+			enemy.m_SpeedModified = true
+			enemy.m_RenderableObject:blend_cycle(1,0.1,0.2);
+		end
 		exclamation = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter2)
 		if exclamation ~= nil then
 			exclamation:set_visible(true)
@@ -339,7 +344,11 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 		else
 			if not enemy.m_RenderableObject:is_cycle_animation_active() then
 				enemy.m_RenderableObject:remove_action(2);
-				enemy.m_RenderableObject:blend_cycle(1,1,0.2);
+				if not enemy:is_static() then
+					enemy.m_RenderableObject:blend_cycle(1,1,0.2);
+				else
+					enemy.m_RenderableObject:blend_cycle(0,1,0.2);
+				end
 				enemy.m_isAttacking = false;
 			end
 		end
