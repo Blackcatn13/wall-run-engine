@@ -129,14 +129,23 @@ function on_update_player_lua(l_ElapsedTime)
 	
 		if player.super_piky_active and piky_mesh_name == "SuperPiky" then 
 			local aura_emitter = particle_manager:get_resource("SuperPikyAuraEmitter")
+			local aura_emitter2 = particle_manager:get_resource("SuperPikyAura2Emitter")
 			if player.super_piky_timer < super_piky_time then
 				player.super_piky_timer = player.super_piky_timer+ l_ElapsedTime
-				--coreInstance:trace("Super Piky time: "..tostring(player.super_piky_timer))
+			--	coreInstance:trace("Super Piky time: "..tostring(player.super_piky_timer))
 				
 					aura_emitter.m_vPos = player_controller:get_position()
+					aura_emitter2.m_vPos = player_controller:get_position()
 					if not aura_emitter:get_visible() then
 						aura_emitter:set_visible(true)
+						aura_emitter2:set_visible(true)
 					end
+				if  player.super_piky_timer >(super_piky_time -5) then
+					if aura_emitter2:get_visible() then
+					--	coreInstance:trace("Toca quitar aura 2")
+						aura_emitter2:set_visible(false)
+					end
+				end
 			else
 				player.set_super_piky(false)
 				player.super_piky_timer = 0.0
