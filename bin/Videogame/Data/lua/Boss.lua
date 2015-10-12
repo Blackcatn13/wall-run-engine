@@ -190,11 +190,29 @@ function chucky_boss_update_return(ElapsedTime, doComprobation, name)
 	local enemy = enemy_manager:get_enemy(name)
 	if (enemy ~= nil) then
 		contador = contador + ElapsedTime;
-		if not executedReturn and get_distance_between_points(enemy:get_position(), enemy.m_PosicionBala) < 5 then
+		local enemyPosXZ = Vect3f(enemy:get_position().x, 0, enemy:get_position().z);
+		local balaPosXZ = Vect3f(enemy.m_PosicionBala.x, 0, enemy.m_PosicionBala.z);
+		local distance_to_bala = get_distance_between_points(enemyPosXZ, balaPosXZ);
+		coreInstance:trace("distancia a la bala: "..tostring(distance_to_bala));
+		if not executedReturn and distance_to_bala < 7 then
 			boss_projectile_returned = false
 			boss_projectile_returned_by_chucky = true
 			local enemyPos = Vect3f(enemy:get_position().x, enemy:get_position().y + 2, enemy:get_position().z);
 			enemy.m_DireccionBala = player_controller:get_position() - enemyPos;
+			if actual_speed_change < max_speed_change then
+				local maxReached = false
+				if actual_speed_change + current_speed_change > max_speed_change then
+					current_speed_change = max_speed_change - actual_speed_change;
+					maxReached = true;
+				end
+				enemy.BalaSpeed = enemy.BalaSpeed + current_speed_change;
+				if maxReached then
+					actual_speed_change = max_speed_change;
+				else
+					actual_speed_change = actual_speed_change + current_speed_change;
+					current_speed_change = current_speed_change / 2;
+				end
+			end
 			executedReturn = true;
 		end
 		if boss_projectile_returned or boss_projectile_returned_by_chucky then
@@ -202,7 +220,7 @@ function chucky_boss_update_return(ElapsedTime, doComprobation, name)
 		else
 			update_shoot_boss(ElapsedTime, enemy)
 		end
-		if not enemy.m_RenderableObject:is_action_animation_active() then
+		if boss_projectile_returned_by_chucky and not enemy.m_RenderableObject:is_action_animation_active() then
 			enemy:m_FSM():newState("EsperandoImpacto")
 		end
 	end
@@ -298,14 +316,18 @@ function chucky_boss_update_hurt(ElapsedTime, doComprobation, name)
 		if not doing_hurt then
 			update_horizontal_boss_shoot(ElapsedTime, enemy)
 			local mesh = get_renderable_object("enemies", enemy.m_RenderableObject.m_Room, enemy.m_ProjectileName)
-			local distance_to_bala = get_distance_between_points(enemy:get_position(), enemy.m_PosicionBala);
+			local enemyPosXZ = Vect3f(enemy:get_position().x, 0, enemy:get_position().z);
+			local balaPosXZ = Vect3f(enemy.m_PosicionBala.x, 0, enemy.m_PosicionBala.z);
+			local distance_to_bala = get_distance_between_points(enemyPosXZ, balaPosXZ);
 			--coreInstance:trace("distance to bala: "..tostring(distance_to_bala))
 			if distance_to_bala < 7 then
-				coreInstance:trace("colisionaaaaaa")
 				execute_hurt = true
 				boss_projectile_returned = false
 				boss_projectile_returned_by_chucky = false;
 				enemy.m_IsOnCooldown = false;
+				enemy.BalaSpeed = enemy.BalaOriginalSpeed;
+				current_speed_change = inicial_speed_change;
+				actual_speed_change = 0;
 				delete_shooting(mesh)
 			end
 		end
