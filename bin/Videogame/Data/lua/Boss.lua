@@ -215,12 +215,17 @@ function chucky_boss_update_return(ElapsedTime, doComprobation, name)
 		local enemyPosXZ = Vect3f(enemy:get_position().x, 0, enemy:get_position().z);
 		local balaPosXZ = Vect3f(enemy.m_PosicionBala.x, 0, enemy.m_PosicionBala.z);
 		local distance_to_bala = get_distance_between_points(enemyPosXZ, balaPosXZ);
-		coreInstance:trace("distancia a la bala: "..tostring(distance_to_bala));
+		if distance_to_bala < 7 then
+			coreInstance:trace("distancia a la bala: "..tostring(distance_to_bala));
+			coreInstance:trace("executed return?? "..tostring(executedReturn));
+		end
 		if not executedReturn and distance_to_bala < 7 then
+			coreInstance:trace("executing return");
 			boss_projectile_returned = false
 			boss_projectile_returned_by_chucky = true
 			local enemyPos = Vect3f(enemy:get_position().x, enemy:get_position().y + 2, enemy:get_position().z);
 			enemy.m_DireccionBala = player_controller:get_position() - enemyPos;
+			coreInstance:trace("actual speed change: "..tostring(actual_speed_change));
 			if actual_speed_change < max_speed_change then
 				local maxReached = false
 				if actual_speed_change + current_speed_change > max_speed_change then
@@ -243,7 +248,11 @@ function chucky_boss_update_return(ElapsedTime, doComprobation, name)
 			update_shoot_boss(ElapsedTime, enemy)
 		end
 		if boss_projectile_returned_by_chucky and not enemy.m_RenderableObject:is_action_animation_active() then
+			coreInstance:trace("CAMBIO A ESPERANDO");
 			enemy:m_FSM():newState("EsperandoImpacto")
+		elseif executedReturn and not boss_projectile_returned_by_chucky and boss_projectile_returned and distance_to_bala < 7 then
+			enemy:m_FSM():newState("Hurt")
+			coreInstance:trace("HUUUUUUURT");
 		end
 	end
 end
@@ -274,7 +283,8 @@ function chucky_boss_update_waiting(ElapsedTime, doComprobation, name)
 		end
 		--enemy:actualizar_hitbox()
 		if boss_projectile_returned and get_distance_between_points(enemy:get_position(), enemy.m_PosicionBala) < 250 then
-			if check_random_action(5) then
+			--if check_random_action(100) then
+			if true then
 				enemy:m_FSM():newState("Devolver")
 			else
 				enemy:m_FSM():newState("Hurt")
