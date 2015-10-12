@@ -39,8 +39,8 @@ void CSwitch::Update(float dt) {
     if (hit != NULL && hit->GetMyCollisionGroup() == ECG_SCENE_ELEMENTS && info.m_fDistance <= height && !m_Switched && PLAYC->getisGrounded() && !PLAYC->getisFalling() && !PLAYC->getisJumping()) {
       m_Switched = true;
       Vect3f actor_position = m_Actor->GetPosition();
-      m_Actor->SetGlobalPosition(Vect3f(actor_position.x, actor_position.y - 1, actor_position.z));
-      m_Position = Vect3f(m_Position.x, m_Position.y - 1, m_Position.z);
+      m_Actor->SetGlobalPosition(Vect3f(actor_position.x, actor_position.y - 0.5, actor_position.z));
+      m_Position = Vect3f(m_Position.x, m_Position.y - 0.5, m_Position.z);
       //Por si se queda tonto en el aire
       //if (m_Direction.y == 0) {
 

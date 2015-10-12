@@ -115,13 +115,10 @@ function boss_shoot(position, enemy)
 		local enemyYaw = enemy:get_yaw() + (math.pi / 2);
 		local vectRight = Vect3f(math.cos(enemyYaw), 0, -math.sin(enemyYaw));
 		local projectile_position = Vect3f(position.x + 2 * vectRight.x, position.y+2.25, position.z + 2 * vectRight.z)
-		coreInstance:trace("position x "..tostring(projectile_position.x))
-		coreInstance:trace("position y "..tostring(projectile_position.y))
-		coreInstance:trace("position z "..tostring(projectile_position.z))
 		enemy.m_PosicionBala = projectile_position
 		local projectile_name = enemy.m_ProjectileName
 
-		if not player.super_piky_active and check_random_action(3) then
+		if not player.super_piky_active and check_random_action(6) then
 			projectile_name = powerup_name
 			current_shot_type = "powerup"
 		else
@@ -211,7 +208,6 @@ function update_shoot_boss(dt, enemy)
     if (enemy.m_CurrentCooldown < 0.0 or player.is_dead) then
       enemy.m_IsOnCooldown = false;
       delete_shooting(renderable_shoot)
-	  coreInstance:trace("entra update_shoot_boss currentCooldown < 0")
 	  enemy:m_FSM():newState("Parado")
     else 
 		enemy.m_DireccionBala = Vect3f(enemy.m_DireccionBala.x, enemy.m_DireccionBala.y - gravityShot * dt, enemy.m_DireccionBala.z);
@@ -222,7 +218,6 @@ function update_shoot_boss(dt, enemy)
 		if (check_player_shoot_collision(enemy, renderable_shoot)) then
 			enemy.m_IsOnCooldown = false;
 			delete_shooting(renderable_shoot)
-			coreInstance:trace("entra update_shoot_boss else check collision true")
 			enemy:m_FSM():newState("Parado")
 			if current_shot_type =="powerup" then
 				start_super_piky()
@@ -257,7 +252,6 @@ function update_shoot_boss(dt, enemy)
 			local platform = vectPoly:get_resource_by_id(i);
 			if platform ~= nil then
 				if platform.m_Activated or platform.m_IsMoving then
-					coreInstance:trace("entra en activadaa");
 					local platformPosXZ = Vect3f(platform:get_position().x, 0, platform:get_position().z);
 					local platformSizeXZ = Vect3f(platform.m_PhysicsSize.x, 0, platform.m_PhysicsSize.z);
 					local vectToBossXZ = platformPosXZ - posXZChucky;
@@ -345,7 +339,6 @@ function update_horizontal_boss_shoot(dt, enemy)
     if (player.is_dead) then
 	  enemy.m_IsOnCooldown = false;
 	  delete_shooting(renderable_shoot)
-	  coreInstance:trace("entra update_horizontal_boss_shoot player dead")
 	  enemy:m_FSM():newState("Parado")
     else 
       enemy.m_PosicionBala = enemy:updtate_projectile_position(dt) 
@@ -354,8 +347,16 @@ function update_horizontal_boss_shoot(dt, enemy)
       if (check_player_shoot_collision(enemy, renderable_shoot)) then
 		enemy.m_IsOnCooldown = false;
 		delete_shooting(renderable_shoot)
+		local playerRenderable =  coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name);
+		local qte_emmiter_name = playerRenderable.m_ParticleEmitter
+		if not inputm:has_game_pad(1) then
+			qte_emmiter_name = playerRenderable.m_ParticleEmitter2
+		end
+		local emitter = particle_manager:get_resource(qte_emmiter_name)
+		if emitter:get_visible() == true then
+			emitter:set_visible(false)
+		end
         enemy:add_damage_player();
-		coreInstance:trace("entra update_horizontal_boss_shoot check collision")
 		enemy:m_FSM():newState("Parado")
       end
 		local posXZBala = Vect3f(enemy.m_PosicionBala.x, 0, enemy.m_PosicionBala.z)
@@ -365,6 +366,7 @@ function update_horizontal_boss_shoot(dt, enemy)
 	  if ((distance > 450 and enemy.m_PosicionBala.y < -1.2) or (distance <=450 and enemy.m_PosicionBala.y < 1.8)) or choca then
 			enemy.m_IsOnCooldown = false;
 			delete_shooting(renderable_shoot)
+			
 			enemy:m_FSM():newState("Parado")
 		end
     end
@@ -408,7 +410,8 @@ function check_player_shoot_return(enemy,mesh)
 		qte_emmiter_name = playerRenderable.m_ParticleEmitter2
 	end
 	local emitter = particle_manager:get_resource(qte_emmiter_name)
-	if (mesh.m_Printable and enemy.m_PosicionBala:distance(player_controller:get_position()) < enemy.m_ProjectileReturnDist) and boss_projectile_returned == false and current_shot_type == "rock" then
+	local distance_to_bala = enemy.m_PosicionBala:distance(player_controller:get_position());
+	if (mesh.m_Printable and distance_to_bala < enemy.m_ProjectileReturnDist) and boss_projectile_returned == false and current_shot_type == "rock" then
 		if player.super_piky_active and player.pressed_return then
 			player.execute_return_pr = true;
 			boss_projectile_returned = true;
@@ -417,8 +420,11 @@ function check_player_shoot_return(enemy,mesh)
 			enemy.m_DireccionBala = enemyPos - player_controller:get_position();
 			emitter:set_visible(false)
 		elseif player.super_piky_active and not player.pressed_return then
-			coreInstance:trace("Sacando exclamacion")
-			emitter.m_vPos = player_controller:get_position() + playerRenderable.m_EmitterOffset
+			local pikyYaw = enemy:get_yaw() + (math.pi / 2);
+			local vectRight = Vect3f(math.cos(pikyYaw), 0, -math.sin(pikyYaw));
+			local position = player_controller:get_position()
+			local emitter_pos = Vect3f(position.x - (2 * vectRight.x), position.y, position.z + -(2 * vectRight.z))
+			emitter.m_vPos =emitter_pos + playerRenderable.m_EmitterOffset
 			emitter:set_visible(true)
 			
 		end
