@@ -540,7 +540,6 @@ function check_player_shoot_return(enemy,mesh)
 			boss_projectile_returned_by_chucky = false;
 			local enemyPos = Vect3f(enemy:get_position().x, enemy:get_position().y + 2, enemy:get_position().z);
 			enemy.m_DireccionBala = enemyPos - player_controller:get_position();
-			coreInstance:trace("actual speed change: "..tostring(actual_speed_change));
 			if actual_speed_change < max_speed_change then
 				local maxReached = false
 				if actual_speed_change + current_speed_change > max_speed_change then
