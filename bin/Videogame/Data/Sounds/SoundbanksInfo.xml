@@ -16,6 +16,7 @@
 			<IncludedEvents>
 				<Event Id="1854652136" Name="_2DZone"/>
 				<Event Id="1481335831" Name="_3DZone"/>
+				<Event Id="2958144319" Name="StartBackground"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
 				<File Id="364000553" Language="SFX">
@@ -28,41 +29,24 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="3157003241" Language="SFX">
-			<ShortName>Test</ShortName>
-			<Path>Test.bnk</Path>
+		<SoundBank Id="1492361653" Language="SFX">
+			<ShortName>Sounds</ShortName>
+			<Path>Sounds.bnk</Path>
 			<IncludedEvents>
+				<Event Id="248834808" Name="AppearCard"/>
 				<Event Id="2589897592" Name="Door_opening"/>
+				<Event Id="1654208281" Name="GetCard"/>
 				<Event Id="3833651337" Name="Jump"/>
-				<Event Id="2607556080" Name="Menu"/>
 				<Event Id="3711598968" Name="MenuClick"/>
-				<Event Id="3969013623" Name="MenuEnd"/>
 				<Event Id="4276387422" Name="MenuOver"/>
-				<Event Id="4005262595" Name="MikSound"/>
-				<Event Id="1326329452" Name="Set_Mik_Detected"/>
-				<Event Id="2079732196" Name="Set_Mik_Idle"/>
+				<Event Id="3876639966" Name="SwitchActivate"/>
+				<Event Id="530129416" Name="Teleport"/>
 				<Event Id="2615352377" Name="Torches"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
-				<File Id="36911512" Language="SFX">
-					<ShortName>Voice.wav</ShortName>
-					<Path>SFX\Voice_8BD76F1E.wem</Path>
-				</File>
-				<File Id="169203991" Language="SFX">
-					<ShortName>RugidoDetectado.wav</ShortName>
-					<Path>SFX\RugidoDetectado_DDC98EF4.wem</Path>
-				</File>
-				<File Id="225374597" Language="SFX">
-					<ShortName>Generdyn - ATMOS - 02.wav</ShortName>
-					<Path>SFX\Generdyn - ATMOS - 02_8BD76F1E.wem</Path>
-				</File>
-				<File Id="276987036" Language="SFX">
-					<ShortName>Idle.wav</ShortName>
-					<Path>SFX\Idle_DDC98EF4.wem</Path>
-				</File>
-				<File Id="334338896" Language="SFX">
-					<ShortName>Generdyn - INSTLoops - 03.wav</ShortName>
-					<Path>SFX\Generdyn - INSTLoops - 03_8BD76F1E.wem</Path>
+				<File Id="2491162" Language="SFX">
+					<ShortName>CromoCoger.wav</ShortName>
+					<Path>SFX\CromoCoger_DDC98EF4.wem</Path>
 				</File>
 				<File Id="347696487" Language="SFX">
 					<ShortName>Fireplace-SoundBible.com-127901833.wav</ShortName>
@@ -76,33 +60,17 @@
 					<ShortName>bits_piece_69.wav</ShortName>
 					<Path>SFX\bits_piece_69_DDC98EF4.wem</Path>
 				</File>
-				<File Id="545300258" Language="SFX">
-					<ShortName>RisaMik1.wav</ShortName>
-					<Path>SFX\RisaMik1_DDC98EF4.wem</Path>
-				</File>
-				<File Id="555342904" Language="SFX">
-					<ShortName>Generdyn - INSTLoops - 04.wav</ShortName>
-					<Path>SFX\Generdyn - INSTLoops - 04_8BD76F1E.wem</Path>
-				</File>
-				<File Id="613283217" Language="SFX">
-					<ShortName>Prop2.wav</ShortName>
-					<Path>SFX\Prop2_8BD76F1E.wem</Path>
-				</File>
-				<File Id="747286263" Language="SFX">
-					<ShortName>Generdyn - INSTLoops - 05.wav</ShortName>
-					<Path>SFX\Generdyn - INSTLoops - 05_8BD76F1E.wem</Path>
+				<File Id="692942212" Language="SFX">
+					<ShortName>ActivarSwitch.wav</ShortName>
+					<Path>SFX\ActivarSwitch_DDC98EF4.wem</Path>
 				</File>
 				<File Id="785489596" Language="SFX">
 					<ShortName>bits_piece_34.wav</ShortName>
 					<Path>SFX\bits_piece_34_DDC98EF4.wem</Path>
 				</File>
-				<File Id="797611864" Language="SFX">
-					<ShortName>RugidoDetectado2.wav</ShortName>
-					<Path>SFX\RugidoDetectado2_DDC98EF4.wem</Path>
-				</File>
-				<File Id="835769357" Language="SFX">
-					<ShortName>Prop1.wav</ShortName>
-					<Path>SFX\Prop1_8BD76F1E.wem</Path>
+				<File Id="830485670" Language="SFX">
+					<ShortName>Teletransporte.wav</ShortName>
+					<Path>SFX\Teletransporte_DDC98EF4.wem</Path>
 				</File>
 				<File Id="888564004" Language="SFX">
 					<ShortName>door_002.wav</ShortName>
@@ -112,17 +80,9 @@
 					<ShortName>door_001.wav</ShortName>
 					<Path>SFX\door_001_DDC98EF4.wem</Path>
 				</File>
-				<File Id="924337238" Language="SFX">
-					<ShortName>RugidoPerseguir.wav</ShortName>
-					<Path>SFX\RugidoPerseguir_DDC98EF4.wem</Path>
-				</File>
-				<File Id="974301372" Language="SFX">
-					<ShortName>RisaMik2.wav</ShortName>
-					<Path>SFX\RisaMik2_DDC98EF4.wem</Path>
-				</File>
-				<File Id="989506191" Language="SFX">
-					<ShortName>Bass.wav</ShortName>
-					<Path>SFX\Bass_8BD76F1E.wem</Path>
+				<File Id="940326234" Language="SFX">
+					<ShortName>CromoAparecer.wav</ShortName>
+					<Path>SFX\CromoAparecer_DDC98EF4.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>

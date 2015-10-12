@@ -28,8 +28,8 @@ function mikmik_enter_stopped(name)
 		exclamation.m_vPos = enemy.m_RenderableObject:get_position() + enemy.m_RenderableObject.m_EmitterOffset2;
 		enemy.m_visibleTime = 0;
 	end
-	coreInstance:getWWSoundManager():SetSwitch("Mik", "Idle", "Mik")
-	coreInstance:getWWSoundManager():PlayEvent("MikSound", "Mik");
+	--coreInstance:getWWSoundManager():SetSwitch("Mik", "Idle", "Mik")
+	--coreInstance:getWWSoundManager():PlayEvent("MikSound", "Mik");
 end
 
 function mikmik_exit_stopped(name)

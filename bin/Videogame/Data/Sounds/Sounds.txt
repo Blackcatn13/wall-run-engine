@@ -1,0 +1,23 @@
+Event	ID	Name			Wwise Object Path	Notes
+	248834808	AppearCard			\Default Work Unit\FX\AppearCard	
+	530129416	Teleport			\Default Work Unit\FX\Teleport	
+	1654208281	GetCard			\Default Work Unit\FX\GetCard	
+	2589897592	Door_opening			\Default Work Unit\FX\Door_opening	
+	2615352377	Torches			\Default Work Unit\FX\Torches	
+	3711598968	MenuClick			\Default Work Unit\FX\MenuClick	
+	3833651337	Jump			\Default Work Unit\FX\Jump	
+	3876639966	SwitchActivate			\Default Work Unit\FX\SwitchActivate	
+	4276387422	MenuOver			\Default Work Unit\FX\MenuOver	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	2491162	Get	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\CromoCoger_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\FX\Cards\Get		237376
+	347696487	Flame	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Fireplace-SoundBible.com-127901833_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\FX\Torches\Flame		2248768
+	425213579	Jump4	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Jump4_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\FX\Jump4		64590
+	505700893	bits_piece_69	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\bits_piece_69_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\FX\bits_piece_69		113464
+	692942212	Activate	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\ActivarSwitch_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\FX\Switch\Activate		43840
+	785489596	bits_piece_34	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\bits_piece_34_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\FX\bits_piece_34		142400
+	830485670	Activate	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Teletransporte_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\FX\Teleport\Activate		439968
+	888564004	door_002	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\door_002_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\FX\Doors\Door_opening_Sounds\door_002		188436
+	889169244	door_001	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\door_001_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\FX\Doors\Door_opening_Sounds\door_001		355768
+	940326234	Apears	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\CromoAparecer_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\FX\Cards\Apears		344680
+

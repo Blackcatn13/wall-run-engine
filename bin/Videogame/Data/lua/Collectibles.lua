@@ -67,6 +67,7 @@ function get_sticker(sticker_name, img_name)
 			end
 		end	
 		player.add_sticker(img_name)
+		coreInstance:getWWSoundManager():PlayEvent("Music", "GetCard");
 		deactivate_collectible(trigger,"collectible", sticker_name)
 	end
 end
