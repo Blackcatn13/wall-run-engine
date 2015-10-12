@@ -4,6 +4,7 @@ local executedReturn = false;
 local execute_hurt = false;
 local doing_hurt = false;
 
+
 function start_boss()
 	set_player_room("0", true)
 	cam_Controller:set_active_camera("BossCam")
@@ -22,18 +23,39 @@ function start_boss()
 	local objCam = activeCam.m_pObject3D;
 	objCam:set_position(chucky_position);
 	local cadira = get_renderable_object("solid",0, "CADIRA")
-	get_renderable_object("solid",0, "CADIRA")
-	get_renderable_object("solid",0, "ORO2"):set_visible(false)
-	get_renderable_object("solid",0, "ORO3"):set_visible(false)
-	get_renderable_object("solid",0, "PilarQuad001"):set_visible(false)
-	get_renderable_object("solid",0, "PilarQuad002"):set_visible(false)
-	get_renderable_object("solid",0, "ChukyBossPosition"):set_visible(true)
+	--get_renderable_object("solid",0, "CADIRA"):set_visible(false)
+	if cadira:get_visible() then
+		cadira:set_visible(false)
+		get_renderable_object("solid",0, "ORO2"):set_visible(false)
+		get_renderable_object("solid",0, "ORO3"):set_visible(false)
+		get_renderable_object("solid",0, "PilarQuad001"):set_visible(false)
+		get_renderable_object("solid",0, "PilarQuad002"):set_visible(false)
+		get_renderable_object("solid",0, "ChukyBossPosition"):set_visible(true)
+	end 
 	chucky:m_FSM():newState("Parado")
-	cadira:set_visible(false)
+
 	set_boss_polis_visible(true)
 	all_boss_miks_killed = true
 	boss_miks_killed = 0
 	chucky.m_BossRunning = true
+	
+	enemy_manager:get_enemy("MikMik007"):m_FSM():newState("Waiting")
+	enemy_manager:get_enemy("MikMik008"):m_FSM():newState("Waiting")
+	enemy_manager:get_enemy("MikMik009"):m_FSM():newState("Waiting")
+	enemy_manager:get_enemy("MikMik010"):m_FSM():newState("Waiting")
+	enemy_manager:get_enemy("MikMik011"):m_FSM():newState("Waiting")
+	
+	
+	
+	if player.super_piky_active then
+		player.set_super_piky(false)
+		player.super_piky_timer = 0.0
+	end
+	particle_manager:get_resource("SuperPikyAuraEmitter"):set_visible(false)
+	particle_manager:get_resource("SuperPikyAura2Emitter"):set_visible(false)
+	chucky.m_Phases = chucky.m_OriginalPhases
+	coreInstance:trace("Vidas Boss" .. tostring(chucky.m_OriginalLifes))
+	chucky.m_Life = chucky.m_OriginalLifes
 	
 	set_checkpoint("boss_checkpoint", nil)
 	player.attack_enabled = true
