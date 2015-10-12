@@ -573,6 +573,16 @@ function on_update_player_lua(l_ElapsedTime)
 			end
 		end
 		
+		if act2in:do_action_from_lua("PolyPowa") then
+			if playerRenderable:is_action_animation_active() == false and player.is_activating_poly == false then
+				--[[if player_controller.m_isJumping then
+					playerRenderable:remove_action(2)
+					player_controller.m_isJumping = false
+				end]]
+				playerRenderable:execute_action(7,0,0.3,1,false);
+			end
+		end
+		
 		--///////////////////////////////////////////////////////////
 		-- Acción de saltar del Player. Puede realizar 2 saltos distintos (de longitud, y salto vertical). 
 		--///////////////////////////////////////////////////////////
