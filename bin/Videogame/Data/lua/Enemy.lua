@@ -199,6 +199,8 @@ end
 function update_shoot_boss(dt, enemy)
 	local gravityShot = 0.3;
  if (enemy.m_IsOnCooldown) then
+	local playerRenderable =  coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name);
+				
 	local projectile_name = enemy.m_ProjectileName
 	if current_shot_type == "powerup" then
 		projectile_name = powerup_name
@@ -229,7 +231,6 @@ function update_shoot_boss(dt, enemy)
 				start_super_piky()
 			else
 				enemy:add_damage_player();
-				local playerRenderable =  coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name);
 				
 				local qte_emmiter_name = playerRenderable.m_ParticleEmitter
 				if not inputm:has_game_pad(1) then
@@ -334,6 +335,14 @@ function update_shoot_boss(dt, enemy)
 			current_speed_change = inicial_speed_change;
 			actual_speed_change = 0;
 			delete_shooting(renderable_shoot)
+			local qte_emmiter_name = playerRenderable.m_ParticleEmitter
+			if not inputm:has_game_pad(1) then
+				qte_emmiter_name = playerRenderable.m_ParticleEmitter2
+			end
+			local emitter = particle_manager:get_resource(qte_emmiter_name)
+			if emitter:get_visible() == true then
+				emitter:set_visible(false)
+			end
 			enemy:m_FSM():newState("Parado")
 		end
 	end
@@ -344,6 +353,7 @@ function update_horizontal_boss_shoot(dt, enemy)
 
  if (enemy.m_IsOnCooldown) then
 	local renderable_shoot = get_renderable_object("enemies", enemy.m_RenderableObject.m_Room, enemy.m_ProjectileName)
+	local playerRenderable =  coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name);
     --enemy.m_CurrentCooldown = enemy.m_CurrentCooldown - dt;
     if (player.is_dead) then
 	  enemy.m_IsOnCooldown = false;
@@ -352,6 +362,14 @@ function update_horizontal_boss_shoot(dt, enemy)
 	  actual_speed_change = 0;
 	  delete_shooting(renderable_shoot)
 	  enemy:m_FSM():newState("Parado")
+	  local qte_emmiter_name = playerRenderable.m_ParticleEmitter
+	  if not inputm:has_game_pad(1) then
+		qte_emmiter_name = playerRenderable.m_ParticleEmitter2
+	  end
+	  local emitter = particle_manager:get_resource(qte_emmiter_name)
+	  if emitter:get_visible() == true then
+		emitter:set_visible(false)
+	  end
     else 
       enemy.m_PosicionBala = enemy:updtate_projectile_position(dt) 
 	  renderable_shoot:set_position(enemy.m_PosicionBala)
@@ -363,7 +381,7 @@ function update_horizontal_boss_shoot(dt, enemy)
 		current_speed_change = inicial_speed_change;
 		actual_speed_change = 0;
 		delete_shooting(renderable_shoot)
-		local playerRenderable =  coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name);
+		
 		local qte_emmiter_name = playerRenderable.m_ParticleEmitter
 		if not inputm:has_game_pad(1) then
 			qte_emmiter_name = playerRenderable.m_ParticleEmitter2
@@ -463,6 +481,14 @@ function update_horizontal_boss_shoot(dt, enemy)
 			current_speed_change = inicial_speed_change;
 			actual_speed_change = 0;
 			delete_shooting(renderable_shoot)
+			local qte_emmiter_name = playerRenderable.m_ParticleEmitter
+			if not inputm:has_game_pad(1) then
+				qte_emmiter_name = playerRenderable.m_ParticleEmitter2
+			end
+			local emitter = particle_manager:get_resource(qte_emmiter_name)
+			if emitter:get_visible() == true then
+				emitter:set_visible(false)
+			end
 			enemy:m_FSM():newState("Parado")
 		end
     end
