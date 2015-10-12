@@ -96,7 +96,7 @@ function chucky_boss_enter_stopped(name)
 	coreInstance:trace("Estado Parado")
 	local enemy = enemy_manager:get_enemy(name)
 	enemy.m_RenderableObject:remove_action(5)
-	enemy.m_RenderableObject:blend_cycle(0,1,0);
+	enemy.m_RenderableObject:blend_cycle(0,0.1,0);
 end
 
 function chucky_boss_exit_stopped(name)
@@ -275,7 +275,7 @@ function chucky_boss_enter_call(name)
 	coreInstance:trace("Estado Llamando Miks")
 	local enemy = enemy_manager:get_enemy(name)
 	if (enemy ~= nil) then
-		enemy.m_RenderableObject:execute_action(7,0.1,0,1,false)
+		enemy.m_RenderableObject:execute_action(7,0.1,0,1,true)
 	end
 end
 
@@ -287,6 +287,7 @@ function chucky_boss_update_call(ElapsedTime, doComprobation, name)
 	local enemy = enemy_manager:get_enemy(name)
 	if (enemy ~= nil) then
 		if not enemy.m_RenderableObject:is_action_animation_active() then
+		enemy.m_RenderableObject:remove_action(7)
 			local array_mik = {"MikMik007", "MikMik007", "MikMik008", "MikMik009", "MikMik010", "MikMik011"}
 			for i = 1, table.getn(array_mik) do
 				summon_mik(array_mik[i])
@@ -307,7 +308,9 @@ end
 
 function chucky_boss_exit_hurt(name)
 	local enemy = enemy_manager:get_enemy(name);
-	enemy.m_RenderableObject:remove_action(6);
+	--enemy.m_RenderableObject:remove_action(6);
+	enemy.m_RenderableObject:blend_cycle(0,0.1,0);
+	
 end
 
 function chucky_boss_update_hurt(ElapsedTime, doComprobation, name)
@@ -348,10 +351,12 @@ function chucky_boss_update_hurt(ElapsedTime, doComprobation, name)
 				coreInstance:trace("doing animation hurt")
 				doing_hurt = true
 				enemy.m_RenderableObject:clear_cycle(0,0.3);
-				enemy.m_RenderableObject:execute_action(6,0.1,0,1,false)
+				enemy.m_RenderableObject:execute_action(6,0.1,0,1,true)
 			end
 		end
 		if doing_hurt and not enemy.m_RenderableObject:is_action_animation_active() then
+			enemy.m_RenderableObject:remove_action(6)
+			enemy.m_RenderableObject:blend_cycle(0,0.1,0);
 			coreInstance:trace("stoping hurt")
 			doing_hurt = false
 			enemy:m_FSM():newState("Parado")
