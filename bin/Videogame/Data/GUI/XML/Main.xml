@@ -38,7 +38,7 @@
 						enemy_manager:get_enemy('Chucky'):move_to_position(Vect3f(-920.75, -1, 0));">
 	
 	<Image name="background" posx="0.00" posy="0.00" height="100.00" width="100.00" visible="false" active="true" default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="true">
-		<texture name="img1" name_texture="./Data/GUI/GoPixelGo/MenuMain2.jpg"/>
+		<texture name="img1" name_texture="./Data/GUI/GoPixelGo/Old GUI/MenuMain2.jpg"/>
 	</Image>
 		
 	<Image name="buttonsBackground" posx="0.00" posy="0.00" height="100.00" width="100.00" visible="true" active="true" default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">

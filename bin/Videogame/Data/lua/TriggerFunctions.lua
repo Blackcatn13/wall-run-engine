@@ -106,7 +106,7 @@ function activate_teleport(name, room)
 		update_emitter_status(emitter2, pos2, true)
 		
 	end
-	coreInstance:getWWSoundManager():PlayEvent("Music", "Teleport");
+	coreInstance:getWWSoundManager():PlayEvent("Telepor", "Music");
 	--camera.m_pObject3D:set_position(Vect3f(3.118870, 20.0, 271.008423))
 end
 
@@ -157,7 +157,7 @@ function toogle_switch(trigger_name, puzzle_name)
 				--	coreInstance:trace("Trigger activado?" ..tostring(trigger.m_IsSwitched))
 					puzzle.m_ActivatedSwitches = puzzle.m_ActivatedSwitches + 1	
 					coreInstance:trace("Activated Switches: "..tostring(puzzle.m_ActivatedSwitches))
-					coreInstance:getWWSoundManager():PlayEvent("Music", "SwitchActivate");
+					coreInstance:getWWSoundManager():PlayEvent("SwitchActivate", "Music");
 				--	local new_position = Vect3f(switch_mesh:get_position().x,switch_mesh:get_position().y - 1,switch_mesh:get_position().z )
 				--	change_object_position(switch_mesh, new_position)
 				--[[else 
