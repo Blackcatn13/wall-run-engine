@@ -4,6 +4,17 @@ local executedReturn = false;
 local execute_hurt = false;
 local doing_hurt = false;
 
+local current_sequence =  {}
+local last_action_id = 1
+local actions = {{"mik", "sp","roca","roca"}, 
+{"mik", "roca","sp", "roca"},
+{"mik","roca", "roca","sp"},
+{"mik","sp", "roca","mik","roca"},
+{"mik","roca", "sp","mik","roca"},
+{"mik","roca", "roca","mik","sp"},
+{"mik","sp", "mik","roca","roca"},
+{"mik","roca", "mik","sp","roca"},
+{"mik","roca", "mik","roca","sp"},}
 
 function start_boss()
 	set_player_room("0", true)
@@ -44,9 +55,7 @@ function start_boss()
 	enemy_manager:get_enemy("MikMik009"):m_FSM():newState("Waiting")
 	enemy_manager:get_enemy("MikMik010"):m_FSM():newState("Waiting")
 	enemy_manager:get_enemy("MikMik011"):m_FSM():newState("Waiting")
-	
-	
-	
+		
 	if player.super_piky_active then
 		player.set_super_piky(false)
 		player.super_piky_timer = 0.0
@@ -56,10 +65,13 @@ function start_boss()
 	chucky.m_Phases = chucky.m_OriginalPhases
 	coreInstance:trace("Vidas Boss" .. tostring(chucky.m_OriginalLifes))
 	chucky.m_Life = chucky.m_OriginalLifes
+	last_action_id = 1
+	current_sequence =  {}
 	
 	set_checkpoint("boss_checkpoint", nil)
 	player.attack_enabled = true
 end
+
 
 function set_boss_polis_visible(visible)
 	local poly1 = renderable_objects_layer_manager:get_resource_from_layers_and_room("poly", "enabled_poly", "Poly_Sala0_001", 0)
@@ -136,7 +148,7 @@ function chucky_boss_update_stopped(ElapsedTime, doComprobation, name)
 	
 	boss_timer = boss_timer + (1 * ElapsedTime)
 	if boss_timer >= enemy.m_CooldownTimer then
-		local check_call_miks = false 
+		--[[local check_call_miks = false 
 		if enemy.m_Phases == 1 and all_boss_miks_killed then
 			check_call_miks = check_random_action (6)
 		end
@@ -145,10 +157,47 @@ function chucky_boss_update_stopped(ElapsedTime, doComprobation, name)
 			enemy:m_FSM():newState("Llamar")
 		else
 			enemy:m_FSM():newState("Lanzar")
+		end]]
+		local action = call_next_action()
+		if action == "mik" then
+			if enemy.m_Phases == 1 and all_boss_miks_killed then
+				enemy:m_FSM():newState("Llamar")
+			else
+				action = call_next_action()
+			end
+		end
+		if action =="sp" then
+			if player.super_piky_active then
+				action = "roca"
+			else
+				current_shot_type = "powerup"
+				enemy:m_FSM():newState("Lanzar")
+			end
+		end
+		if action == "roca" then
+			current_shot_type = "rock"
+			enemy:m_FSM():newState("Lanzar")
 		end
 	end
 	
 end
+
+function call_next_action() 
+	
+	if next(current_sequence) == nil or last_action_id > table.getn(current_sequence) then
+		local rand = math.random(table.getn(actions)) 
+		current_sequence = actions[rand]
+		
+		coreInstance:trace("CurrentSequence "..tostring(rand) )
+		last_action_id = 1
+	end
+
+	local ret = current_sequence[last_action_id]
+	last_action_id = last_action_id +1
+	return ret
+
+end
+
 
 ----LANZAR----
 function chucky_boss_enter_shoot(name)
@@ -364,6 +413,7 @@ function chucky_boss_update_hurt(ElapsedTime, doComprobation, name)
 			local animation_hurt = true
 			if enemy.m_Life <=0 then
 				enemy.m_Phases = enemy.m_Phases -1
+				current_sequence = {}
 				enemy.m_Life = 3;
 				if enemy.m_Phases <= 0 then
 					enemy:m_FSM():newState("Dead")

@@ -505,6 +505,7 @@ function mikmik_enter_waiting(name)
 	enemy:set_position(position)
 	enemy.m_PhysicController:set_position(position)
 	enemy:move_to_position(position)
+	coreInstance:trace("Entro en waiting: "..name)
 end
 
 function mikmik_exit_waiting(name)
