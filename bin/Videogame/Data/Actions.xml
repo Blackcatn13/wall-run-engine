@@ -330,6 +330,14 @@
 	    <action name="MenuDown">
 	    	<input deviceType="IDV_GAMEPAD1" EventType="EVENT_DOWN_UP" Code="PAD_DPAD_DOWN"/>
 	    </action>
+
+		<action name="MenuRight">
+	    	<input deviceType="IDV_GAMEPAD1" EventType="EVENT_DOWN_UP" Code="PAD_DPAD_RIGHT"/>
+	    </action>
+
+	    <action name="MenuLeft">
+	    	<input deviceType="IDV_GAMEPAD1" EventType="EVENT_DOWN_UP" Code="PAD_DPAD_LEFT"/>
+	    </action>	    
 	</globals>
     <mouse_keyboard>
 	    <action name="MoveForward">

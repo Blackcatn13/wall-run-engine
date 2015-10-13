@@ -10,7 +10,7 @@
 #define INC_GUI_ELEMENT_H
 
 #include <string>
-#include <vector>
+#include <map>
 #include <assert.h>
 //#include "Utils\BaseUtils.h"
 #include <Math/MathTypes.h>
@@ -61,6 +61,7 @@ class CGuiElement {
   bool								IsActive							() const 											{return m_bIsActive;}
 
   void								SetVisible						(bool flag) 									{m_bIsVisible = flag;}
+  void                SetChildVisible       (const std::string  &name, bool flag);
   void								SetActive							(bool flag) 									{m_bIsActive = flag;}
 
   uint32							GetWidth							() const 											{return m_uWidth;}
@@ -118,7 +119,7 @@ class CGuiElement {
   std::string								m_sName;									//Identificador del GuiElement
   std::string								m_sLuaCode_OnLoadValue;		//Codigo LUA que ha de ejecutar cuando se entre por primera vez en la ventana que contiene al GuiElement
   std::string								m_sLuaCode_OnSaveValue;		//Codigo LUA que ha de ejecutar cuando se salga de la ventana que contiene al GuiElement
-  std::vector<CGuiElement *>	m_Children;								//GuiElements que estan atachados a este.
+  std::map<std::string, CGuiElement *>	m_Children;								//GuiElements que estan atachados a este.
   CGuiElement							*m_pParent;								//GuiElements al que esta atachado este.
   TypeEditMode							m_eEditMode;							//Indica si esta en estado de edicion o navegacion.
   TypeGuiElement						m_eType;									//Indica el tipo de GuiElement que sera (button, checkbutton...)

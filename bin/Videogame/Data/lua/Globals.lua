@@ -29,6 +29,9 @@ boss_miks_enabled = false
 boss_projectile_returned = false
 boss_projectile_returned_by_chucky = false
 
+--Collectible variables
+CollectibleVisibleName = ""
+
 --Variables de Control
 first_time_main_menu = true
 chuky_last_room = 0;

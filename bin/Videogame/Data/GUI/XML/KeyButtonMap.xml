@@ -23,14 +23,16 @@
 
   <ButtonList name="BackButtonList" posx="0" posy="0" height="1" width="1" visible="true" active="true">
     <Buttons>
-    	<Button name="Back" posx="94" posy="89" height="5.00" width="5.00" visible="true" 
-              active="true" texture_normal="./Data/GUI/GoPixelGo/go-back-button.png"
-              texture_over="./Data/GUI/GoPixelGo/go-back-button-hover.png"
-              texture_clicked="./Data/GUI/GoPixelGo/go-back-button.png"
-              texture_deactivated="./Data/GUI/GoPixelGo/go-back-button.png"
-              OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getGUIManager():pop_windows();
-    							CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music');"
-              OnOverAction=""/>
+      <row>
+      	<Button name="Back" posx="94" posy="89" height="5.00" width="5.00" visible="true" 
+                active="true" texture_normal="./Data/GUI/GoPixelGo/go-back-button.png"
+                texture_over="./Data/GUI/GoPixelGo/go-back-button-hover.png"
+                texture_clicked="./Data/GUI/GoPixelGo/go-back-button.png"
+                texture_deactivated="./Data/GUI/GoPixelGo/go-back-button.png"
+                OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getGUIManager():pop_windows();
+      							CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music');"
+                OnOverAction=""/>
+      </row>
     </Buttons>
   </ButtonList>
 	

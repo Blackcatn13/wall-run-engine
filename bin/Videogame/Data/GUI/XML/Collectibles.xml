@@ -8,139 +8,81 @@
     <texture name="CollectibleBase" name_texture="./Data/GUI/GoPixelGo/GUI_CROMOS.png"/>
   </Image>  
   
-  <ButtonList name="Collectible1" posx="0" posy="0" height="1" width="1" visible="false" active="true">
+  <ButtonList name="Collectibles" posx="0" posy="0" height="1" width="1" visible="true" active="true">
     <Buttons>
-    	<Button name="Collectible1" posx="4.85" posy="24" height="25.50" width="33.00" visible="true" active="true" 
-			  texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_01_Petit.png"
-              texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_01_Petit_Hover.png"
-              texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_01_Petit.png"
-              texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.png"
-              OnClickedAction="gui_manager:set_visible_element('ActiveBackground', true);
-								gui_manager:set_visible_element('ActiveCollectible', true);
-								gui_manager:set_visible_element('BackButtonActiveCollectible', true);
-								gui_manager:set_image('ActiveCollectible','Collectible1');"
-              OnOverAction=""/>
-	</Buttons>
-  </ButtonList>
-  
-  <ButtonList name="Collectible2" posx="0" posy="0" height="1" width="1" visible="false" active="true">
-    <Buttons>
-    	<Button name="Collectible2" posx="33.15" posy="24" height="25.50" width="33.00" visible="true" active="true" 
-			  texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_02_Petit.png"
-              texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_02_Petit_Hover.png"
-              texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_02_Petit.png"
-              texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.png"
-              OnClickedAction="gui_manager:set_visible_element('ActiveBackground', true);
-								gui_manager:set_visible_element('ActiveCollectible', true);
-								gui_manager:set_visible_element('BackButtonActiveCollectible', true);
-								gui_manager:set_image('ActiveCollectible','Collectible2');"
-              OnOverAction=""/>
-	</Buttons>
-  </ButtonList>
-  
-  <ButtonList name="Collectible3" posx="0" posy="0" height="1" width="1" visible="false" active="true">
-    <Buttons>
-    	<Button name="Collectible3" posx="61.85" posy="24" height="25.50" width="33.00" visible="true" active="true" 
-			  texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_03_Petit.png"
-              texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_03_Petit_Hover.png"
-              texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_03_Petit.png"
-              texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.png"
-              OnClickedAction="gui_manager:set_visible_element('ActiveBackground', true);
-								gui_manager:set_visible_element('ActiveCollectible', true);
-								gui_manager:set_visible_element('BackButtonActiveCollectible', true);
-								gui_manager:set_image('ActiveCollectible','Collectible3');"
-              OnOverAction=""/>
-	</Buttons>
-  </ButtonList>
-  
-  <ButtonList name="Collectible4" posx="0" posy="0" height="1" width="1" visible="false" active="true">
-    <Buttons>
-    	<Button name="Collectible4" posx="4.65" posy="48.7" height="25.50" width="33.00" visible="true" active="true" 
-			  texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_04_Petit.png"
-              texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_04_Petit_Hover.png"
-              texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_04_Petit.png"
-              texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.png"
-              OnClickedAction="gui_manager:set_visible_element('ActiveBackground', true);
-								gui_manager:set_visible_element('ActiveCollectible', true);
-								gui_manager:set_visible_element('BackButtonActiveCollectible', true);
-								gui_manager:set_image('ActiveCollectible','Collectible4');"
-              OnOverAction=""/>
-	</Buttons>
-  </ButtonList>
-  
-  <ButtonList name="Collectible5" posx="0" posy="0" height="1" width="1" visible="false" active="true">
-    <Buttons>
-    	<Button name="Collectible5" posx="33.38" posy="48.7" height="25.50" width="33.00" visible="true" active="true" 
-			  texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_05_Petit.png"
-              texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_05_Petit_Hover.png"
-              texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_05_Petit.png"
-              texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.png"
-              OnClickedAction="gui_manager:set_visible_element('ActiveBackground', true);
-								gui_manager:set_visible_element('ActiveCollectible', true);
-								gui_manager:set_visible_element('BackButtonActiveCollectible', true);
-								gui_manager:set_image('ActiveCollectible','Collectible5');"
-              OnOverAction=""/>
-	</Buttons>
-  </ButtonList>
-  
-  <ButtonList name="Collectible6" posx="0" posy="0" height="1" width="1" visible="false" active="true">
-    <Buttons>
-    	<Button name="Collectible6" posx="62.25" posy="48.7" height="25.50" width="33.00" visible="true" active="true" 
-			  texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_06_Petit.png"
-              texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_06_Petit_Hover.png"
-              texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_06_Petit.png"
-              texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.png"
-              OnClickedAction="gui_manager:set_visible_element('ActiveBackground', true);
-								gui_manager:set_visible_element('ActiveCollectible', true);
-								gui_manager:set_visible_element('BackButtonActiveCollectible', true);
-								gui_manager:set_image('ActiveCollectible','Collectible6');"
-              OnOverAction=""/>
-	</Buttons>
-  </ButtonList>
-  
-  <ButtonList name="BackButton" posx="0" posy="0" height="1" width="1" visible="true" active="true">
-    <Buttons> 
-		<Button name="Back" posx="94" posy="89" height="5.00" width="5.00" visible="true" 
-              active="true" texture_normal="./Data/GUI/GoPixelGo/go-back-button.png"
-              texture_over="./Data/GUI/GoPixelGo/go-back-button-hover.png"
-              texture_clicked="./Data/GUI/GoPixelGo/go-back-button.png"
-              texture_deactivated="./Data/GUI/GoPixelGo/go-back-button.png"
-              OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getGUIManager():pop_windows();
-    							CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music');"
-              OnOverAction=""/>
+      <row>
+      	<Button name="Collectible1" posx="8.3496" posy="25.7712" height="21.722365" width="26.3183594" visible="false" active="true" 
+  			  texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_01_Petit_Large.png"
+                texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_01_Petit_Hover_Large.png"
+                texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_01_Petit_Large.png"
+                texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.png"
+                OnClickedAction="CollectibleVisibleName = 'Collectible1';
+                  gui_manager:set_render_prev_windows(true); 
+                  gui_manager:push_windows('Collectible.xml');"
+                OnOverAction=""/>
+
+      	<Button name="Collectible4" posx="8.15429" posy="50.6426735" height="21.722365" width="26.3183594" visible="false" active="true" 
+          texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_04_Petit_Large.png"
+                texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_04_Petit_Hover_Large.png"
+                texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_04_Petit_Large.png"
+                texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.png"
+                OnClickedAction="CollectibleVisibleName = 'Collectible4';
+                  gui_manager:set_render_prev_windows(true); 
+                  gui_manager:push_windows('Collectible.xml');"
+                OnOverAction=""/>
+
+        <Button name="Back" posx="94" posy="89" height="5.00" width="5.00" visible="true" 
+                  active="true" texture_normal="./Data/GUI/GoPixelGo/go-back-button.png"
+                  texture_over="./Data/GUI/GoPixelGo/go-back-button-hover.png"
+                  texture_clicked="./Data/GUI/GoPixelGo/go-back-button.png"
+                  texture_deactivated="./Data/GUI/GoPixelGo/go-back-button.png"
+                  OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getGUIManager():pop_windows();
+                      CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music');"
+                  OnOverAction=""/>
+      </row>
+      <row>
+        <Button name="Collectible2" posx="36.8652344" posy="25.7712082" height="21.722365" width="26.3183594" visible="false" active="true" 
+          texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_02_Petit_Large.png"
+                texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_02_Petit_Hover_Large.png"
+                texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_02_Petit_Large.png"
+                texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.png"
+                OnClickedAction="CollectibleVisibleName = 'Collectible2';
+                  gui_manager:set_render_prev_windows(true); 
+                  gui_manager:push_windows('Collectible.xml');"
+                OnOverAction=""/>
+        <Button name="Collectible5" posx="36.8652344" posy="50.6426735" height="21.722365" width="26.3183594" visible="false" active="true" 
+          texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_05_Petit_Large.png"
+                texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_05_Petit_Hover_Large.png"
+                texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_05_Petit_Large.png"
+                texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.png"
+                OnClickedAction="CollectibleVisibleName = 'Collectible5';
+                  gui_manager:set_render_prev_windows(true); 
+                  gui_manager:push_windows('Collectible.xml');"
+                OnOverAction=""/>
+        <ButtonRef name="Back"/>
+      </row>
+      <row>
+        <Button name="Collectible3" posx="65.3320312" posy="25.7712082" height="21.722365" width="26.3183594" visible="false" active="true" 
+          texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_03_Petit_Large.png"
+                texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_03_Petit_Hover_Large.png"
+                texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_03_Petit_Large.png"
+                texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.png"
+                OnClickedAction="CollectibleVisibleName = 'Collectible3';
+                  gui_manager:set_render_prev_windows(true); 
+                  gui_manager:push_windows('Collectible.xml');"
+                OnOverAction=""/>
+      	<Button name="Collectible6" posx="65.625" posy="50.6426735" height="21.722365" width="26.3183594" visible="false" active="true" 
+  			  texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_06_Petit_Large.png"
+                texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_06_Petit_Hover_Large.png"
+                texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_06_Petit_Large.png"
+                texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.png"
+                OnClickedAction="CollectibleVisibleName = 'Collectible6';
+                  gui_manager:set_render_prev_windows(true); 
+                  gui_manager:push_windows('Collectible.xml');"
+                OnOverAction=""/>
+        <ButtonRef name="Back"/>
+      </row>
     </Buttons>
   </ButtonList>
-  
-  <Image name="ActiveBackground" posx="0.00" posy="0.00" height="100.00" width="100.00" visible="false" active="true"
-		default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
-		<texture name="img1" name_texture="./Data/GUI/GoPixelGo/PauseBackground.png"/>
-	</Image>
-  
-  <Image name="ActiveCollectible" posx="20.00" posy="15.00" height="60" width="60" visible="false" active="true"
-         default="NoCollectible" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
-    <texture name="NoCollectible" name_texture="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.png"/>
-	<texture name="Collectible1" name_texture="./Data/GUI/GoPixelGo/Cromos/Cromo_01.png"/>
-	<texture name="Collectible2" name_texture="./Data/GUI/GoPixelGo/Cromos/Cromo_02.png"/>
-	<texture name="Collectible3" name_texture="./Data/GUI/GoPixelGo/Cromos/Cromo_03.png"/>
-	<texture name="Collectible4" name_texture="./Data/GUI/GoPixelGo/Cromos/Cromo_04.png"/>
-	<texture name="Collectible5" name_texture="./Data/GUI/GoPixelGo/Cromos/Cromo_05.png"/>
-	<texture name="Collectible6" name_texture="./Data/GUI/GoPixelGo/Cromos/Cromo_06.png"/>
-  </Image> 
-  
-  <ButtonList name="BackButtonActiveCollectible" posx="0" posy="0" height="1" width="1" visible="false" active="true">
-    <Buttons> 
-		<Button name="Back" posx="50" posy="89" height="5.00" width="5.00" visible="true" 
-              active="true" texture_normal="./Data/GUI/GoPixelGo/go-back-button.png"
-              texture_over="./Data/GUI/GoPixelGo/go-back-button-hover.png"
-              texture_clicked="./Data/GUI/GoPixelGo/go-back-button.png"
-              texture_deactivated="./Data/GUI/GoPixelGo/go-back-button.png"
-              OnClickedAction="gui_manager:set_visible_element('ActiveBackground', false);
-								gui_manager:set_visible_element('ActiveCollectible', false);
-								gui_manager:set_visible_element('BackButtonActiveCollectible', false);
-								gui_manager:set_image('ActiveCollectible','NoCollectible');
-    							CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music');"
-              OnOverAction=""/>
-    </Buttons>
-  </ButtonList>
-	
+
 </Windows>

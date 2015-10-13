@@ -15,22 +15,41 @@ CButtonList::CButtonList (	uint32 windowsHeight, uint32 windowsWidth, float heig
                             const Vect2f position_percent, uint32 columns, uint32 rows, std::string lit, uint32 textHeightOffset,
                             uint32 textWidthOffset, bool isVisible, bool isActive)
   : CGuiElement( windowsHeight, windowsWidth, height_precent, witdh_percent, position_percent, BUTTON_LIST, lit, textHeightOffset, textWidthOffset, isVisible, isActive)
-  , m_currentId(0)
+  , m_currentIdX(0)
+  , m_currentIdY(0)
 {}
 
 CButtonList::CButtonList(CXMLTreeNode &node, uint32 windowsHeight, uint32 windowsWidth)
   : CGuiElement(node, windowsHeight, windowsWidth, BUTTON_LIST)
-  , m_currentId(0) {
+  , m_currentIdX(0)
+  , m_currentIdY(0) {
+  Vect2i pos = Vect2i(-1, -1);
   CXMLTreeNode m = node["Buttons"];
   if (m.Exists()) {
     int childs = m.GetNumChildren();
+    m_buttons = std::vector<std::vector<CButton *>>(childs);
     for (int i = 0; i < childs; ++i) {
-      CButton *b = new CButton(m.getNextChild(), windowsHeight, windowsWidth);
-      m_buttons.push_back(b);
-      AddChild(b);
+      CXMLTreeNode n = m.getNextChild();
+      int childs1 = n.GetNumChildren();
+      for (int j = 0; j < childs1; ++j) {
+        CXMLTreeNode node1 = n.getNextChild();
+        std::string name = node1.GetName();
+        CButton *b;
+        if (name == "Button") {
+          b = new CButton(node1, windowsHeight, windowsWidth);
+        } else if (name == "ButtonRef") {
+          b = (CButton *)m_Children.find(node1.GetPszISOProperty("name", "", false))->second;
+        }
+        m_buttons[i].push_back(b);
+        if (b->IsVisible() && pos == Vect2i(-1, -1)) {
+          pos = b->GetPosition();
+          m_currentIdX = i;
+          m_currentIdX = j;
+        }
+        AddChild(b);
+      }
     }
   }
-  Vect2i pos = m_buttons[0]->GetPosition();
   pos += v2iONE;
   m_lastMousePosition = pos;
   if (m_bIsVisible && m_bIsActive)
@@ -39,7 +58,7 @@ CButtonList::CButtonList(CXMLTreeNode &node, uint32 windowsHeight, uint32 window
 
 CButtonList::~CButtonList() {
   for (auto it = m_Children.begin(); it != m_Children.end(); ++it) {
-    delete(*it);
+    delete(it->second);
   }
 }
 
@@ -58,24 +77,43 @@ void CButtonList::Update(CInputManager *intputManager, float elapsedTime) {
   if ( CGuiElement::m_bIsVisible && CGuiElement::m_bIsActive ) {
     //Primero actualizamos todos los hijos que pudiera tener el button:
     if (intputManager->HasGamePad()) {
+      bool actionDone = false;
       Vect2i mousePos;
       intputManager->GetPosition(IDV_MOUSE, mousePos);
       if (mousePos != m_lastMousePosition) {
         intputManager->setFakePosition(m_lastMousePosition);
       }
       if (ACT2IN->DoAction("MenuDown")) {
-        m_currentId++;
-        if (m_currentId == m_buttons.size())
-          m_currentId = 0;
-        Vect2i pos = m_buttons[m_currentId]->GetPosition();
-        pos += v2iONE;
-        m_lastMousePosition = pos;
-        intputManager->setFakePosition(m_lastMousePosition);
+        do {
+          m_currentIdY++;
+          if (m_currentIdY == m_buttons[m_currentIdX].size())
+            m_currentIdY = 0;
+        } while (!m_buttons[m_currentIdX][m_currentIdY]->IsVisible());
+        actionDone = true;
       } else if (ACT2IN->DoAction("MenuUp")) {
-        m_currentId--;
-        if (m_currentId == -1)
-          m_currentId = m_buttons.size() - 1;
-        Vect2i pos = m_buttons[m_currentId]->GetPosition();
+        do {
+          m_currentIdY--;
+          if (m_currentIdY == -1)
+            m_currentIdY = m_buttons[m_currentIdX].size() - 1;
+        } while (!m_buttons[m_currentIdX][m_currentIdY]->IsVisible());
+        actionDone = true;
+      } else if (ACT2IN->DoAction("MenuRight")) {
+        do {
+          m_currentIdX++;
+          if (m_currentIdX == m_buttons.size())
+            m_currentIdX = 0;
+        } while (!m_buttons[m_currentIdX][m_currentIdY]->IsVisible());
+        actionDone = true;
+      } else if (ACT2IN->DoAction("MenuLeft")) {
+        do {
+          m_currentIdX--;
+          if (m_currentIdX == -1)
+            m_currentIdX = m_buttons.size() - 1;
+        } while (!m_buttons[m_currentIdX][m_currentIdY]->IsVisible());
+        actionDone = true;
+      }
+      if (actionDone) {
+        Vect2i pos = m_buttons[m_currentIdX][m_currentIdY]->GetPosition();
         pos += v2iONE;
         m_lastMousePosition = pos;
         intputManager->setFakePosition(m_lastMousePosition);

@@ -34,8 +34,9 @@ class CButtonList: public CGuiElement {
   virtual void	OnClickedChild			(const std::string &name);
 
  private:
-  int m_currentId;
-  std::vector<CButton *> m_buttons;
+  int m_currentIdX;
+  int m_currentIdY;
+  std::vector<std::vector<CButton *>> m_buttons;
   Vect2i m_lastMousePosition;
 };
 

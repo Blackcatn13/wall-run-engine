@@ -12,5 +12,9 @@
 	<!-- <collectible-type name ="card"  core_mesh="" mesh_lua_function ="roll_object" on_enter_function ="get_pixelite" /> -->
 	<unlockable-card mesh_name="Collectible1" img_src="./Data/GUI/GoPixelGo/Card01.png" />
 	<unlockable-card mesh_name="Collectible2" img_src="./Data/GUI/GoPixelGo/Card02.png" />
+	<unlockable-card mesh_name="Collectible3" img_src="./Data/GUI/GoPixelGo/Card02.png" />
+	<unlockable-card mesh_name="Collectible4" img_src="./Data/GUI/GoPixelGo/Card02.png" />
+	<unlockable-card mesh_name="Collectible5" img_src="./Data/GUI/GoPixelGo/Card02.png" />
+	<unlockable-card mesh_name="Collectible6" img_src="./Data/GUI/GoPixelGo/Card02.png" />
 
 </collectibles>
