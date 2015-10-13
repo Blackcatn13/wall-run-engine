@@ -41,7 +41,10 @@ function start_boss()
 		get_renderable_object("solid",0, "ORO3"):set_visible(false)
 		get_renderable_object("solid",0, "PilarQuad001"):set_visible(false)
 		get_renderable_object("solid",0, "PilarQuad002"):set_visible(false)
-		get_renderable_object("solid",0, "ChukyBossPosition"):set_visible(true)
+		--get_renderable_object("solid",0, "ChukyBossPosition"):set_visible(true)
+		get_renderable_object("solid",0, "Ruinas"):set_visible(true)
+		get_renderable_object("solid",0, "ORO006"):set_visible(true)
+		get_renderable_object("solid",0, "ORO005"):set_visible(true)
 	end 
 	chucky:m_FSM():newState("Parado")
 
