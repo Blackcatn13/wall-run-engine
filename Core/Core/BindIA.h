@@ -64,12 +64,12 @@ void RegisterAI() {
     .property("m_IsOnCoolDown", &CAIController::getIsOnCooldown,  &CAIController::setIsOnCooldown)
     .property("m_CooldownTimer", &CAIController::getCooldownTimer,  &CAIController::setCooldownTimer)
     .property("BalaSpeed", &CAIController::getBalaSpeed,  &CAIController::setBalaSpeed)
-	.property("BalaOriginalSpeed", &CAIController::getBalaOriginalSpeed,  &CAIController::setBalaOriginalSpeed)
+    .property("BalaOriginalSpeed", &CAIController::getBalaOriginalSpeed,  &CAIController::setBalaOriginalSpeed)
     .property("m_PosicionBala", &CAIController::getPosicionBala,  &CAIController::setPosicionBala)
     .property("m_DireccionBala", &CAIController::getDireccionBala,  &CAIController::setDireccionBala)
     .property("m_CurrentCooldown", &CAIController::getCurrentCooldown,  &CAIController::setCurrentCooldown)
     .property("m_ProjectileHitbox", &CAIController::getProjectileHitbox,  &CAIController::setProjectileHitbox)
-	.property("m_ProjectileReturnDist", &CAIController::getProjectileReturnDist,  &CAIController::setProjectileReturnDist)
+    .property("m_ProjectileReturnDist", &CAIController::getProjectileReturnDist,  &CAIController::setProjectileReturnDist)
 
     .def("move", &CAIController::Move)
     //.def("move_to", &CAIController::MoveTo)
@@ -168,6 +168,8 @@ void RegisterAI() {
     .property("m_Phases", &CBossEnemy::getPhases, &CBossEnemy::setPhases)
     .property("m_BossRunning", &CBossEnemy::getBossRunning, &CBossEnemy::setBossRunning)
     .property("m_TiempoBalaOriginal", &CBossEnemy::getTiempoBalaOriginal, &CBossEnemy::setTiempoBalaOriginal)
+    .property("m_OriginalPhases", &CBossEnemy::getOriginalPhases, &CBossEnemy::setOriginalPhases)
+    .property("m_OriginalLifes", &CBossEnemy::getOriginalLifes, &CBossEnemy::setOriginalLifes)
   ];
 
   luabind::module(LUA_STATE) [

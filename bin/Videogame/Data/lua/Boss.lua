@@ -4,6 +4,18 @@ local executedReturn = false;
 local execute_hurt = false;
 local doing_hurt = false;
 
+local current_sequence =  {}
+local last_action_id = 1
+local actions = {{"mik", "sp","roca","roca"}, 
+{"mik", "roca","sp", "roca"},
+{"mik","roca", "roca","sp"},
+{"mik","sp", "roca","mik","roca"},
+{"mik","roca", "sp","mik","roca"},
+{"mik","roca", "roca","mik","sp"},
+{"mik","sp", "mik","roca","roca"},
+{"mik","roca", "mik","sp","roca"},
+{"mik","roca", "mik","roca","sp"},}
+
 function start_boss()
 	set_player_room("0", true)
 	cam_Controller:set_active_camera("BossCam")
@@ -22,22 +34,47 @@ function start_boss()
 	local objCam = activeCam.m_pObject3D;
 	objCam:set_position(chucky_position);
 	local cadira = get_renderable_object("solid",0, "CADIRA")
-	get_renderable_object("solid",0, "CADIRA")
-	get_renderable_object("solid",0, "ORO2"):set_visible(false)
-	get_renderable_object("solid",0, "ORO3"):set_visible(false)
-	get_renderable_object("solid",0, "PilarQuad001"):set_visible(false)
-	get_renderable_object("solid",0, "PilarQuad002"):set_visible(false)
-	get_renderable_object("solid",0, "ChukyBossPosition"):set_visible(true)
+	--get_renderable_object("solid",0, "CADIRA"):set_visible(false)
+	if cadira:get_visible() then
+		cadira:set_visible(false)
+		get_renderable_object("solid",0, "ORO2"):set_visible(false)
+		get_renderable_object("solid",0, "ORO3"):set_visible(false)
+		get_renderable_object("solid",0, "PilarQuad001"):set_visible(false)
+		get_renderable_object("solid",0, "PilarQuad002"):set_visible(false)
+		--get_renderable_object("solid",0, "ChukyBossPosition"):set_visible(true)
+		get_renderable_object("solid",0, "Ruinas"):set_visible(true)
+		get_renderable_object("solid",0, "ORO006"):set_visible(true)
+		get_renderable_object("solid",0, "ORO005"):set_visible(true)
+	end 
 	chucky:m_FSM():newState("Parado")
-	cadira:set_visible(false)
+
 	set_boss_polis_visible(true)
 	all_boss_miks_killed = true
 	boss_miks_killed = 0
 	chucky.m_BossRunning = true
 	
+	enemy_manager:get_enemy("MikMik007"):m_FSM():newState("Waiting")
+	enemy_manager:get_enemy("MikMik008"):m_FSM():newState("Waiting")
+	enemy_manager:get_enemy("MikMik009"):m_FSM():newState("Waiting")
+	enemy_manager:get_enemy("MikMik010"):m_FSM():newState("Waiting")
+	enemy_manager:get_enemy("MikMik011"):m_FSM():newState("Waiting")
+		
+	if player.super_piky_active then
+		player.set_super_piky(false)
+		player.super_piky_timer = 0.0
+	end
+	particle_manager:get_resource("SuperPikyAuraEmitter"):set_visible(false)
+	particle_manager:get_resource("SuperPikyAura2Emitter"):set_visible(false)
+	chucky.m_Phases = chucky.m_OriginalPhases
+	coreInstance:trace("Vidas Boss" .. tostring(chucky.m_OriginalLifes))
+	chucky.m_Life = chucky.m_OriginalLifes
+	last_action_id = 1
+	current_sequence =  {}
+	
 	set_checkpoint("boss_checkpoint", nil)
 	player.attack_enabled = true
 end
+
 
 function set_boss_polis_visible(visible)
 	local poly1 = renderable_objects_layer_manager:get_resource_from_layers_and_room("poly", "enabled_poly", "Poly_Sala0_001", 0)
@@ -114,7 +151,7 @@ function chucky_boss_update_stopped(ElapsedTime, doComprobation, name)
 	
 	boss_timer = boss_timer + (1 * ElapsedTime)
 	if boss_timer >= enemy.m_CooldownTimer then
-		local check_call_miks = false 
+		--[[local check_call_miks = false 
 		if enemy.m_Phases == 1 and all_boss_miks_killed then
 			check_call_miks = check_random_action (6)
 		end
@@ -123,10 +160,47 @@ function chucky_boss_update_stopped(ElapsedTime, doComprobation, name)
 			enemy:m_FSM():newState("Llamar")
 		else
 			enemy:m_FSM():newState("Lanzar")
+		end]]
+		local action = call_next_action()
+		if action == "mik" then
+			if enemy.m_Phases == 1 and all_boss_miks_killed then
+				enemy:m_FSM():newState("Llamar")
+			else
+				action = call_next_action()
+			end
+		end
+		if action =="sp" then
+			if player.super_piky_active then
+				action = "roca"
+			else
+				current_shot_type = "powerup"
+				enemy:m_FSM():newState("Lanzar")
+			end
+		end
+		if action == "roca" then
+			current_shot_type = "rock"
+			enemy:m_FSM():newState("Lanzar")
 		end
 	end
 	
 end
+
+function call_next_action() 
+	
+	if next(current_sequence) == nil or last_action_id > table.getn(current_sequence) then
+		local rand = math.random(table.getn(actions)) 
+		current_sequence = actions[rand]
+		
+		coreInstance:trace("CurrentSequence "..tostring(rand) )
+		last_action_id = 1
+	end
+
+	local ret = current_sequence[last_action_id]
+	last_action_id = last_action_id +1
+	return ret
+
+end
+
 
 ----LANZAR----
 function chucky_boss_enter_shoot(name)
@@ -193,7 +267,6 @@ function chucky_boss_update_return(ElapsedTime, doComprobation, name)
 		local enemyPosXZ = Vect3f(enemy:get_position().x, 0, enemy:get_position().z);
 		local balaPosXZ = Vect3f(enemy.m_PosicionBala.x, 0, enemy.m_PosicionBala.z);
 		local distance_to_bala = get_distance_between_points(enemyPosXZ, balaPosXZ);
-		coreInstance:trace("distancia a la bala: "..tostring(distance_to_bala));
 		if not executedReturn and distance_to_bala < 7 then
 			boss_projectile_returned = false
 			boss_projectile_returned_by_chucky = true
@@ -222,6 +295,9 @@ function chucky_boss_update_return(ElapsedTime, doComprobation, name)
 		end
 		if boss_projectile_returned_by_chucky and not enemy.m_RenderableObject:is_action_animation_active() then
 			enemy:m_FSM():newState("EsperandoImpacto")
+		elseif executedReturn and not boss_projectile_returned_by_chucky and boss_projectile_returned and distance_to_bala < 7 then
+			enemy:m_FSM():newState("Hurt")
+			coreInstance:trace("HUUUUUUURT");
 		end
 	end
 end
@@ -256,7 +332,6 @@ function chucky_boss_update_waiting(ElapsedTime, doComprobation, name)
 				enemy:m_FSM():newState("Devolver")
 			else
 				enemy:m_FSM():newState("Hurt")
-				coreInstance:trace("HUUUUUUURT");
 			end
 		end
 
@@ -341,6 +416,7 @@ function chucky_boss_update_hurt(ElapsedTime, doComprobation, name)
 			local animation_hurt = true
 			if enemy.m_Life <=0 then
 				enemy.m_Phases = enemy.m_Phases -1
+				current_sequence = {}
 				enemy.m_Life = 3;
 				if enemy.m_Phases <= 0 then
 					enemy:m_FSM():newState("Dead")

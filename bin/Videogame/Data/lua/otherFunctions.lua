@@ -318,7 +318,10 @@ function reset_game()
 	get_renderable_object("solid",0, "ORO3"):set_visible(true)
 	get_renderable_object("solid",0, "PilarQuad001"):set_visible(true)
 	get_renderable_object("solid",0, "PilarQuad002"):set_visible(true)
-	get_renderable_object("solid",0, "ChukyBossPosition"):set_visible(false)
+	--get_renderable_object("solid",0, "ChukyBossPosition"):set_visible(false)
+	get_renderable_object("solid",0, "Ruinas"):set_visible(false)
+	get_renderable_object("solid",0, "ORO006"):set_visible(false)
+	get_renderable_object("solid",0, "ORO005"):set_visible(false)
 	enemy_manager:get_enemy("MikMik007"):m_FSM():newState("Waiting")
 	enemy_manager:get_enemy("MikMik008"):m_FSM():newState("Waiting")
 	enemy_manager:get_enemy("MikMik009"):m_FSM():newState("Waiting")
@@ -328,6 +331,8 @@ function reset_game()
 	boss_miks_killed = 0
 	local boss = enemy_manager:get_enemy(boss_mesh_name)
 	if boss.m_BossRunning then
+		boss.m_Phases = chucky.m_OriginalPhases
+		boss.m_Lifes = chucky.m_OriginalLifes
 		boss.m_BossRunning = false
 	end
 end

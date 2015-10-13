@@ -117,12 +117,15 @@ function boss_shoot(position, enemy)
 		local projectile_position = Vect3f(position.x + 2 * vectRight.x, position.y+2.25, position.z + 2 * vectRight.z)
 		enemy.m_PosicionBala = projectile_position
 		local projectile_name = enemy.m_ProjectileName
-
+--[[
 		if not player.super_piky_active and check_random_action(6) then
 			projectile_name = powerup_name
 			current_shot_type = "powerup"
 		else
 			current_shot_type = "rock"
+		end]]
+		if current_shot_type == "powerup" then
+			projectile_name = powerup_name
 		end
 		local renderable_shoot = get_renderable_object("enemies", 0, projectile_name)
 		if renderable_shoot ~= nil then
