@@ -216,7 +216,7 @@ function toboolean(string_to_parse)
 	return 0
 end
 function reset_puzzle(puzzle_name, room, door1, door2)
-	close_door(door1, door2, 5);
+	close_door(door1, door2, room);
 	renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("puzzle", room):reset_puzzle_renderables()
 	puzzle_manager:reset_puzzle_triggers(puzzle_name)
 end
