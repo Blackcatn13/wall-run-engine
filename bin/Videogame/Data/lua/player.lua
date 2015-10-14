@@ -64,7 +64,7 @@ function Player.new()
 	
 	function self.set_super_piky(super_piky)
 		if player_controller.m_Room == 0 then
-			local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name)	
+			local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room(piky_layer, player_controller.m_Room):get_resource(piky_mesh_name)	
 			local position = playerRenderable:get_position()
 			local yaw = playerRenderable:get_yaw()
 
@@ -89,7 +89,7 @@ function Player.new()
 				anim_DJump_04 = 13
 				anim_Burn = 14
 				anim_BurnJump = 15
-				
+				piky_layer = "superPiky"
 			else
 				piky_mesh_name = "Piky"
 				--Actualizar con las animaciones de Piky
@@ -109,9 +109,10 @@ function Player.new()
 				anim_DJump_04 = 13
 				anim_Burn = 14
 				anim_BurnJump = 15
+				piky_layer ="player"
 			end
 			
-			playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", 0):get_resource(piky_mesh_name)	
+			playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room(piky_layer, 0):get_resource(piky_mesh_name)	
 			if playerRenderable ~= nil then
 				player_controller.m_RenderableObject = playerRenderable
 				playerRenderable:set_position(position)
@@ -215,7 +216,7 @@ function Player.new()
 			self.activating_triggers = false
 			--self.remove_animations()
 			self.is_dead = true
-			local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name)
+			local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room(piky_layer, player_controller.m_Room):get_resource(piky_mesh_name)
 			self.remove_animations(renderable_piky_mesh)
 			if not self.has_ass_burned and not self.hurt_by_spikes then
 				if not self.dead_in_hole then -- Si cae por una agujero no tiene animacion de caida
@@ -281,7 +282,7 @@ function Player.new()
 	end
 	
 	function self.check_death_actions()
-		local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name)
+		local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room(piky_layer, player_controller.m_Room):get_resource(piky_mesh_name)
 		local emitter2 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter2)
 		if emitter2:get_visible() == true then
 			emitter2:set_visible(false)

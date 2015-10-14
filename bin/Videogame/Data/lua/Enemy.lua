@@ -130,7 +130,7 @@ function boss_shoot(position, enemy)
 		local renderable_shoot = get_renderable_object("enemies", 0, projectile_name)
 		if renderable_shoot ~= nil then
 			-- poner sonido y particulas de disparo	
-			local playerRenderableMesh =  coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name);
+			local playerRenderableMesh =  coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room(piky_layer, player_controller.m_Room):get_resource(piky_mesh_name);
 	
 			local qte_emmiter_name = playerRenderableMesh.m_ParticleEmitter
 			if not inputm:has_game_pad(1) then
@@ -202,7 +202,7 @@ end
 function update_shoot_boss(dt, enemy)
 	local gravityShot = 0.3;
  if (enemy.m_IsOnCooldown) then
-	local playerRenderable =  coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name);
+	local playerRenderable =  coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room(piky_layer, player_controller.m_Room):get_resource(piky_mesh_name);
 				
 	local projectile_name = enemy.m_ProjectileName
 	if current_shot_type == "powerup" then
@@ -356,7 +356,7 @@ function update_horizontal_boss_shoot(dt, enemy)
 
  if (enemy.m_IsOnCooldown) then
 	local renderable_shoot = get_renderable_object("enemies", enemy.m_RenderableObject.m_Room, enemy.m_ProjectileName)
-	local playerRenderable =  coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name);
+	local playerRenderable =  coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room(piky_layer, player_controller.m_Room):get_resource(piky_mesh_name);
     --enemy.m_CurrentCooldown = enemy.m_CurrentCooldown - dt;
     if (player.is_dead) then
 	  enemy.m_IsOnCooldown = false;
@@ -529,7 +529,7 @@ function check_player_shoot_collision(enemy, mesh)
 end
 
 function check_player_shoot_return(enemy,mesh)
-	local playerRenderable =  coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name);
+	local playerRenderable =  coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room(piky_layer, player_controller.m_Room):get_resource(piky_mesh_name);
 	local qte_emmiter_name = playerRenderable.m_ParticleEmitter
 	if not inputm:has_game_pad(1) then
 		qte_emmiter_name = playerRenderable.m_ParticleEmitter2

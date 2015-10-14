@@ -1,6 +1,6 @@
 local teleporting = false
 function set_teleport_ready(player_position)
-	renderable_objects_layer_manager:change_between_layers("player", "vanishing", player_controller.m_Room, "Piky")
+	renderable_objects_layer_manager:change_between_layers(piky_layer, "vanishing", player_controller.m_Room, "Piky")
 	local player_renderable = get_renderable_object("vanishing", player_controller.m_Room, "Piky")
 	player_renderable.m_VanishActive =true
 	player_renderable.m_Vanishing = true
@@ -481,7 +481,7 @@ end
 function set_player_room(room, chucky_appears)
 	set_player_zone(room ..".0")
 	local num_room = tonumber(room)
-	renderable_objects_layer_manager:change_between_vectors("player", "Piky", num_room)
+	renderable_objects_layer_manager:change_between_vectors(piky_layer, "Piky", num_room)
 
 	renderable_objects_layer_manager:change_between_vectors("solid","scriptedController", num_room)
 	if tostring(chucky_appears) == "true" and chuky_last_room ~= num_room then

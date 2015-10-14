@@ -43,6 +43,7 @@ jump_enabled = true
 all_boss_miks_killed = true
 boss_miks_killed = 0
 piky_mesh_name = "Piky" --Piky o SuperPiky
+piky_layer ="player" -- player o superPiky
 powerup_name = "disparoSuperPiky"
 current_shot_type = "rock"  -- rock /powerup
 inicial_speed_change = 5

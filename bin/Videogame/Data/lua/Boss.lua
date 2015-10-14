@@ -23,7 +23,7 @@ function start_boss()
 	
 	local position = Vect3f(30,1,2)
 	player_controller.m_PhysicController:set_position(position)
-	local playerRenderableMesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", 0):get_resource(piky_mesh_name);
+	local playerRenderableMesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room(piky_layer, 0):get_resource(piky_mesh_name);
 	playerRenderableMesh:set_position(position)
 	
 	local chucky = enemy_manager:get_enemy(boss_mesh_name)
@@ -119,7 +119,7 @@ function fire_mik_summon_particles(mik_name)
 end
 
 function start_super_piky()
-	local renderable = get_renderable_object("player", player_controller.m_Room, piky_mesh_name)
+	local renderable = get_renderable_object(piky_layer, player_controller.m_Room, piky_mesh_name)
 	local emitter4 = particle_manager:get_resource(renderable.m_ParticleEmitter4)
 	emitter4.m_vPos = renderable:get_position()
 	emitter4:set_visible(true)

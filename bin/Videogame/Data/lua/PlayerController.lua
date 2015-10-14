@@ -92,12 +92,11 @@ function on_update_player_lua(l_ElapsedTime)
 	end
 	local camObject = active_camera.m_pObject3D;
 	local directionalLight = lightM:get_resource("ShadowLight");
-	local layer = "player"
+	local layer = piky_layer
 	if player.vanishing then
 		layer = "vanishing"
 	end
 
-	
 	local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room(layer, player_controller.m_Room):get_resource(piky_mesh_name);
 
 	
@@ -852,7 +851,7 @@ function on_update_player_lua(l_ElapsedTime)
 end
 
 function move_character_controller_mesh(_player, _position, _jumping, _doubleJumping)
-	local layer = "player"
+	local layer = piky_layer
 	if player.vanishing then
 		layer = "vanishing"
 	end
