@@ -12,9 +12,9 @@
     <Buttons>
       <row>
       	<Button name="Collectible1" posx="8.3496" posy="25.7712" height="21.722365" width="26.3183594" visible="false" active="true" 
-  			  texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_01_Petit_Large.png"
-                texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_01_Petit_Hover_Large.png"
-                texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_01_Petit_Large.png"
+  			  texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_01_Petit.png"
+                texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_01_Petit_Hover.png"
+                texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_01_Petit.png"
                 texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.png"
                 OnClickedAction="CollectibleVisibleName = 'Collectible1';
                   gui_manager:set_render_prev_windows(true); 
@@ -31,11 +31,11 @@
                   gui_manager:push_windows('Collectible.xml');"
                 OnOverAction=""/>
 
-        <Button name="Back" posx="94" posy="89" height="5.00" width="5.00" visible="true" 
-                  active="true" texture_normal="./Data/GUI/GoPixelGo/go-back-button.png"
-                  texture_over="./Data/GUI/GoPixelGo/go-back-button-hover.png"
-                  texture_clicked="./Data/GUI/GoPixelGo/go-back-button.png"
-                  texture_deactivated="./Data/GUI/GoPixelGo/go-back-button.png"
+        <Button name="Back" posx="8.15429" posy="75" height="13.0" width="20.00" visible="true" 
+                  active="true" texture_normal="./Data/GUI/GoPixelGo/ButtonBack_03.png"
+                  texture_over="./Data/GUI/GoPixelGo/ButtonBack_02.png"
+                  texture_clicked="./Data/GUI/GoPixelGo/ButtonBack_01.png"
+                  texture_deactivated="./Data/GUI/GoPixelGo/ButtonBack_03.png"
                   OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getGUIManager():pop_windows();
                       CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music');"
                   OnOverAction=""/>
