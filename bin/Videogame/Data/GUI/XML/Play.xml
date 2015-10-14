@@ -59,9 +59,9 @@
 		<texture name="img1" name_texture="./Data/GUI/GoPixelGo/PauseBackground.png"/>
 	</Image>
 	
-	<Image name="pause" posx="40.00" posy="20.00" height="41.50" width="19.00" visible="false" active="true"
+	<Image name="pause" posx="40.00" posy="10.00" height="55.00" width="19.00" visible="false" active="true"
 		default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
-		<texture name="img1" name_texture="./Data/GUI/GoPixelGo/Pause.png"/>
+		<texture name="img1" name_texture="./Data/GUI/GoPixelGo/GUI PAUSA.png"/>
 	</Image>
 	
   <ButtonList name="PauseButtonList" posx="42" posy="20" height="60" width="15" visible="false" active="true">
