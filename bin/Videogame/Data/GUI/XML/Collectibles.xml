@@ -12,9 +12,9 @@
     <Buttons>
       <row>
       	<Button name="Collectible1" posx="8.3496" posy="25.7712" height="21.722365" width="26.3183594" visible="false" active="true" 
-  			  texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_01_Petit.png"
-                texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_01_Petit_Hover.png"
-                texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_01_Petit.png"
+  			  texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_01_Petit_Large.png"
+                texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_01_Petit_Hover_Large.png"
+                texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_01_Petit_Large.png"
                 texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.png"
                 OnClickedAction="CollectibleVisibleName = 'Collectible1';
                   gui_manager:set_render_prev_windows(true); 
