@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Windows OnLoadWindows="gui_manager:set_image('ActiveCollectible',CollectibleVisibleName);"
+         OnSaveWindows=""
+         OnUpdateWindows="">
+    <Image name="ActiveBackground" posx="0.00" posy="0.00" height="100.00" width="100.00" visible="true" active="true" default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+		<texture name="img1" name_texture="./Data/GUI/GoPixelGo/PauseBackground.png"/>
+	</Image>
+  
+  <Image name="ActiveCollectible" posx="10.00" posy="2" height="80" width="80" visible="true" active="true"
+         default="NoCollectible" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="NoCollectible" name_texture="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.png"/>
+	<texture name="Collectible1" name_texture="./Data/GUI/GoPixelGo/Cromos/Cromo_01.png"/>
+	<texture name="Collectible2" name_texture="./Data/GUI/GoPixelGo/Cromos/Cromo_02.png"/>
+	<texture name="Collectible3" name_texture="./Data/GUI/GoPixelGo/Cromos/Cromo_03.png"/>
+	<texture name="Collectible4" name_texture="./Data/GUI/GoPixelGo/Cromos/Cromo_04.png"/>
+	<texture name="Collectible5" name_texture="./Data/GUI/GoPixelGo/Cromos/Cromo_05.png"/>
+	<texture name="Collectible6" name_texture="./Data/GUI/GoPixelGo/Cromos/Cromo_06.png"/>
+  </Image> 
+  
+  <ButtonList name="BackButtonActiveCollectible" posx="0" posy="0" height="1" width="1" visible="true" active="true">
+    <Buttons>
+    	<row> 
+			<Button name="Back" posx="10" posy="82.5" height="13.00" width="20.00" visible="true" 
+	              active="true"  texture_normal="./Data/GUI/GoPixelGo/ButtonBack_03.png"
+                  texture_over="./Data/GUI/GoPixelGo/ButtonBack_02.png"
+                  texture_clicked="./Data/GUI/GoPixelGo/ButtonBack_01.png"
+                  texture_deactivated="./Data/GUI/GoPixelGo/ButtonBack_03.png"
+	              OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music');
+	              gui_manager:set_render_prev_windows(false);
+	              gui_manager:pop_windows();"
+	              OnOverAction=""/>
+	    </row>
+    </Buttons>
+  </ButtonList>
+</Windows>
