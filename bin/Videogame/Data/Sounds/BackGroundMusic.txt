@@ -1,8 +1,10 @@
 Event	ID	Name			Wwise Object Path	Notes
 	1481335831	_3DZone			\Default Work Unit\Background\_3DZone	
 	1854652136	_2DZone			\Default Work Unit\Background\_2DZone	
+	2380376969	_BossZone			\Default Work Unit\Background\_BossZone	
 	2958144319	StartBackground			\Default Work Unit\Background\StartBackground	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	45329365	GGP_Boss	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\GGP_Boss_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\GGP_Boss		11114560
 	364000553	zona 3d	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\zona 3d_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\zona 3d		21319264
 

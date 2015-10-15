@@ -20,6 +20,7 @@ function start_boss()
 	set_player_room("0", true)
 	cam_Controller:set_active_camera("BossCam")
 	local activeCam = cam_Controller:get_active_camera()
+	coreInstance:getWWSoundManager():PlayEvent("_BossZone", "Music");
 	
 	local position = Vect3f(30,1,2)
 	player_controller.m_PhysicController:set_position(position)
