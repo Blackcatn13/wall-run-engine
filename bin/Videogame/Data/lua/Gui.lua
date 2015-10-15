@@ -82,6 +82,9 @@ function check_death_fade()
 			gui_manager:set_visible_gui_element("VidesNumberDeath",true)
 			fade_step = 2
 			player.check_death_actions()
+			if player.num_lifes == 0 then
+				coreInstance:getWWSoundManager():PlayEvent("_Fail", "Music");
+			end
 		end
 	elseif player.is_dead and not gui_manager:is_transition_effect_active() and fade_step == 2 then
 		if gui_manager:get_is_displayed_heart() == false then
@@ -111,6 +114,7 @@ function check_death_fade()
 			fade_step = 0
 			if player.num_lifes == 0 then
 				coreInstance:trace("game over")
+				--coreInstance:getWWSoundManager():PlayEvent("_Fail", "Music");
 				local game_over_pos = Vect3f(925, 0, -1.5)
 				set_screen_menu(game_over_pos, 9)
 				--game over

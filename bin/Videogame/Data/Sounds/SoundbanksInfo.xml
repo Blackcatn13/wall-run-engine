@@ -17,6 +17,7 @@
 				<Event Id="1854652136" Name="_2DZone"/>
 				<Event Id="1481335831" Name="_3DZone"/>
 				<Event Id="2380376969" Name="_BossZone"/>
+				<Event Id="1091151884" Name="_Fail"/>
 				<Event Id="2958144319" Name="StartBackground"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
@@ -27,6 +28,10 @@
 				<File Id="364000553" Language="SFX">
 					<ShortName>zona 3d.wav</ShortName>
 					<Path>SFX\zona 3d_8BD76F1E.wem</Path>
+				</File>
+				<File Id="523121214" Language="SFX">
+					<ShortName>fail.wav</ShortName>
+					<Path>SFX\fail_DDC98EF4.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
