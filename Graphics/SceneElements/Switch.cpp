@@ -10,15 +10,16 @@
 CSwitch::CSwitch(const CXMLTreeNode &node)
   : CSceneElement(node),
     m_Switched(false) {
-  InsertPhisic(Vect3f(.0f, m_PhysicsSize.y, .0f));
+  InsertPhisic(Vect3f(.0f, m_PhysicsSize.y, .0f), ECG_SWITCHES);
   m_OriginalPosition = m_Position;
 }
 
 CSwitch::CSwitch(std::string switchName, std::string coreName)
   : CSceneElement(switchName, coreName, false),
     m_Switched(false) {
-  InsertPhisic(Vect3f(.0f, m_PhysicsSize.y, .0f));
+  InsertPhisic(Vect3f(.0f, m_PhysicsSize.y, .0f), ECG_SWITCHES);
   m_OriginalPosition = m_Position;
+
 }
 
 void CSwitch::ResetSwitch() {
@@ -36,7 +37,7 @@ void CSwitch::Update(float dt) {
     CPhysicUserData *hit = CCORE->GetPhysicsManager()->RaycastClosestActor(Vect3f(l_playerPosition.x , l_playerPosition.y  - 1, l_playerPosition.z + 0),
                            Vect3f(0, -1, 0), 0xffffffff, info);
     float height = PLAYC->getPhysicController()->GetHeight();
-    if (hit != NULL && hit->GetMyCollisionGroup() == ECG_SCENE_ELEMENTS && info.m_fDistance <= height && !m_Switched && PLAYC->getisGrounded() && !PLAYC->getisFalling() && !PLAYC->getisJumping()) {
+    if (hit != NULL && hit->GetMyCollisionGroup() == ECG_SWITCHES && info.m_fDistance <= height && !m_Switched && PLAYC->getisGrounded() && !PLAYC->getisFalling() && !PLAYC->getisJumping()) {
       m_Switched = true;
       Vect3f actor_position = m_Actor->GetPosition();
       m_Actor->SetGlobalPosition(Vect3f(actor_position.x, actor_position.y - 0.5, actor_position.z));
