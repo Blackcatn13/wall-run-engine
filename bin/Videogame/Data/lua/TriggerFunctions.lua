@@ -433,9 +433,10 @@ end
 function ChuckyDesapears()
 	coreInstance:trace("CHUKY goes out");
 	local Chucky = enemy_manager:get_enemy("Chucky");
-	if(Chucky.m_Appeared == true) then
+	--if(Chucky.m_Appeared == true) then
 		local pos = Vect3f(12.30, 0.0, -2.75)
 		Chucky:move_to_position(pos);
+		Chucky:set_yaw(0.0);
 		Chucky:m_FSM():newState("Parado");
 		Chucky.m_Appeared = false
 		chucky_reapeared = false
@@ -446,7 +447,7 @@ function ChuckyDesapears()
 			emitter:set_visible(false)
 			emitter2:set_visible(false)
 		end
-	end
+	--end
 end
 
 function ChuckyJump()
@@ -575,4 +576,16 @@ function cambiozona_2d_to_3d(room_number)
 	set_player_room(room_number, "false")
 	--activate_invisible_wall(wall_name, room_number)
 	--set_checkpoint(trigger_name, renderable_object)
+end
+
+function trigger_damage_player()
+	player.player_take_damage(Vect3f(0,0,0))
+end
+
+function init_boss_trigger()
+	player_controller.m_is3D = true;
+	local cam = coreInstance.m_CameraController:get_resource("3DCam");
+	cam.m_eTypeCamera = 6;
+	coreInstance.m_CameraController:set_active_camera("3DCam");
+	start_boss()
 end
