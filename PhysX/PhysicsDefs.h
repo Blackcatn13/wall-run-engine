@@ -54,6 +54,7 @@ enum ECollisionGroup {
   ECG_LIMITS,			// Representa muros o límites del escenario por donde el player no debería poder cruzar
   ECG_CHASER,
   ECG_SCENE_ELEMENTS,
+  ECG_SWITCHES,
   //aquest ha de ser l'últim sempre!!!!
   ECG_LAST_GROUP
 };

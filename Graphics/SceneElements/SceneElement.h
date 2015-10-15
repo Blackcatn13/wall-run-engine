@@ -10,6 +10,7 @@
 #include "Utils\Defines.h"
 #include "AI\FSMManager.h"
 #include "AI\FSMInstance.h"
+#include "PhysicsDefs.h"
 
 class CPhysicActor;
 class CPhysicUserData;
@@ -33,7 +34,7 @@ class CSceneElement : public CMeshInstance {
   CSceneElement(std::string switchName, std::string coreName, bool hasRigidBody = false, bool hasPhisicMesh = false);
   CSceneElement(const CXMLTreeNode &node, bool hasRigidBody = false);
   virtual ~CSceneElement ();
-  void InsertPhisic(Vect3f localPosition);
+  void InsertPhisic(Vect3f localPosition, ECollisionGroup collisionGroup = ECollisionGroup::ECG_SCENE_ELEMENTS);
   std::string SetUserDataName(std::string name);
   void ActivatePhisic(bool active);
   bool isAround(Vect3f vector1, Vect3f vector2);
