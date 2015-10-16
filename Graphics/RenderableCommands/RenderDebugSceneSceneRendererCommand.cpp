@@ -58,7 +58,11 @@ void CRenderDebugSceneSceneRendererCommand::Execute(CGraphicsManager &RM) {
         PROCESS->setPaintPhisicTriggers(m_PaintTriggers);
       }
       PHYSXM->DebugRender(&RM);
-      PHYSXM->SetPaintByActorName(m_CookingMeshName, m_PaintCookingMesh);
+      if (ACT2IN->DoAction("ToggleDebugPhisXMesh")) {
+        m_PaintCookingMesh = !m_PaintCookingMesh;
+        PHYSXM->SetPaintByActorName(m_CookingMeshName, m_PaintCookingMesh);
+      }
+      // PHYSXM->SetPaintByActorName(m_CookingMeshName, m_PaintCookingMesh);
       //Render de la layer
       CCORE->Render();
       RENDLM->Render(GRAPHM, RENDLM->getCurrentLayer());
