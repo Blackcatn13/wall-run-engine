@@ -18,6 +18,7 @@
 				<Event Id="1481335831" Name="_3DZone"/>
 				<Event Id="2380376969" Name="_BossZone"/>
 				<Event Id="1091151884" Name="_Fail"/>
+				<Event Id="3721368369" Name="_Success"/>
 				<Event Id="2958144319" Name="StartBackground"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
@@ -32,6 +33,10 @@
 				<File Id="523121214" Language="SFX">
 					<ShortName>fail.wav</ShortName>
 					<Path>SFX\fail_DDC98EF4.wem</Path>
+				</File>
+				<File Id="980570799" Language="SFX">
+					<ShortName>GGP_Success.wav</ShortName>
+					<Path>SFX\GGP_Success_DDC98EF4.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
