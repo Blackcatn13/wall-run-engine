@@ -91,7 +91,7 @@ function pumpum_update_stopped(ElapsedTime, doComprobation, name)
 				end
 			end
 		else
-			local renderable_shoot = get_renderable_object("enemies", enemy.m_RenderableObject.m_Room,  enemy.m_ProjectileName)
+			local renderable_shoot = get_renderable_object("lava", enemy.m_RenderableObject.m_Room,  enemy.m_ProjectileName)
 			delete_shooting(renderable_shoot)
 		end
 		enemy.m_CurrentTime = enemy.m_CurrentTime + ElapsedTime

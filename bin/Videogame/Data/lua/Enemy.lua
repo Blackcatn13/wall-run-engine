@@ -164,8 +164,10 @@ function shoot_to_vector(dt, position, enemy)
   if (enemy.m_isAlive) then
 	local projectile_position = Vect3f(position.x, position.y+0.25, position.z)
     enemy.m_PosicionBala = projectile_position
-    local renderable_shoot = get_renderable_object("enemies", enemy.m_RenderableObject.m_Room, enemy.m_ProjectileName)
+    local renderable_shoot = get_renderable_object("lava", enemy.m_RenderableObject.m_Room, enemy.m_ProjectileName)
+	
 	if renderable_shoot ~= nil then
+		renderable_shoot:set_yaw(enemy:get_yaw())
 		-- poner sonido y particulas de disparo	
 		local emitter = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter)
 		if emitter ~= nil then
@@ -183,7 +185,7 @@ end
 
 function update_shoot(dt, enemy)
  if (enemy.m_IsOnCooldown) then
-	local renderable_shoot = get_renderable_object("enemies", enemy.m_RenderableObject.m_Room, enemy.m_ProjectileName)
+	local renderable_shoot = get_renderable_object("lava", enemy.m_RenderableObject.m_Room, enemy.m_ProjectileName)
     enemy.m_CurrentCooldown = enemy.m_CurrentCooldown - dt;
     if (enemy.m_CurrentCooldown < 0.0 or player.is_dead) then
       enemy.m_IsOnCooldown = false;
