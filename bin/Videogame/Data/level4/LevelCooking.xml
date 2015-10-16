@@ -112,9 +112,8 @@
 	<Physx_mesh name="Sala_6_ColumnaCentral_007" filename="Data\level4\meshes\Sala_6_ColumnaCentral_007.phsx"/>
 	<Physx_mesh name="Sala_6_ColumnaCentral_008" filename="Data\level4\meshes\Sala_6_ColumnaCentral_008.phsx"/>
 	<Physx_mesh name="PLATAFORMA007" filename="Data\level4\meshes\PLATAFORMA007.phsx"/>
-	<Physx_mesh name="PLATAFORMA008" filename="Data\level4\meshes\PLATAFORMA008.phsx"/>
+	<!--<Physx_mesh name="PLATAFORMA001" filename="Data\level4\meshes\PLATAFORMA001.phsx"/>-->
 	<Physx_mesh name="PLATAFORMA009" filename="Data\level4\meshes\PLATAFORMA009.phsx"/>
-	<Physx_mesh name="PLATAFORMA001" filename="Data\level4\meshes\PLATAFORMA001.phsx"/>
 	<Physx_mesh name="PLAT POLY005" filename="Data\level4\meshes\PLAT POLY005.phsx"/>
 	<Physx_mesh name="SALA 7" filename="Data\level4\meshes\SALA 7.phsx"/>
 	<Physx_mesh name="Sala_7_Pinxos_001" filename="Data\level4\meshes\Sala_7_Pinxos_001.phsx"/>

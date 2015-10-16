@@ -165,6 +165,13 @@
 	<animated_model name="MikMik_S5_004" core="mik" pos="557.767 13.23 -366.54" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik001DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation001" emitter2_offset="0.0 3.0 0.0" room="5" />
 	<!--<animated_model name="MikMik_S5_005" core="mik" pos="557.767 13.23 -377.215" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik003DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation003" emitter2_offset="0.0 3.0 0.0" room="5"/>-->
 	
+	<animated_model name="MikMik_S7_001" core="mik" pos="450.247253 25.135864 -645.309082" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik005DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation005" emitter2_offset="0.0 3.0 0.0" room="7"/>
+	<animated_model name="MikMik_S7_002" core="mik" pos="384.589355 25.135864 -645.309082" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik002DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation002" emitter2_offset="0.0 3.0 0.0" room="7"/>
+	<animated_model name="MikMik_S7_003" core="mik" pos="369.727753 25.135864 -645.309082" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik001DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation001" emitter2_offset="0.0 3.0 0.0" room="7" />
+	<animated_model name="MikMik_S7_004" core="mik" pos="-8.001144 30.247437 -645.052673" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik003DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation003" emitter2_offset="0.0 3.0 0.0" room="7"/>
+	<animated_model name="MikMik_S7_005" core="mik" pos="-52.004 19.891 -645.052673" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik004DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation004" emitter2_offset="0.0 3.0 0.0" room="7"/>
+	<animated_model name="MikMik_S7_006" core="mik" pos="-99.081573 18.696899 -645.052673" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik005DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation005" emitter2_offset="0.0 3.0 0.0" room="7"/>
+	<animated_model name="MikMik_S7_007" core="mik" pos="-174.672119 18.696899 -645.052673" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik002DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation002" emitter2_offset="0.0 3.0 0.0" room="7"/>
 	
 	<mesh_instance name="PilarQuad002" core="PilarQuad002" pos="8.388683 1.227661 -12.106166" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 
@@ -263,7 +270,7 @@
 	<animated_model name="CARALLENGUA_01" core="face" pos="304.051270 5.645349 16.930260" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2"/>
 	<animated_model name="CARALLENGUA_002" core="face" pos="360.035675 5.645350 16.930252" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2"/>
 	<platform name="security_wall_001" core="security_wall_001" type="static" pos="557.780579 8.168335 -56.606869" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="12.6033 3.64714 0.910183" layer="solid" room="4"/>
-	<platform name="PolyPlatform002" core="PolyPlatform002" type="poly" pos="557.900879 3.424636 -53.296799" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="5.19568 2.86906 2.5697" layer="poly" room="4" final_position="557.900879 7.424636 -53.296799" direction="0 1 0" time_out="3" speed="5" light="" activation_distance="10"/>
+	<platform name="PolyPlatform002" core="PolyPlatform002" type="poly" pos="557.900879 3.144636 -53.296799" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="5.19568 2.86906 2.5697" layer="poly" room="4" final_position="557.900879 7.424636 -53.296799" direction="0 1 0" time_out="3" speed="5" light="" activation_distance="10"/>
 	<mesh_instance name="PUNXES002" core="PUNXES002" pos="557.350647 7.464798 -260.875031" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 	<mesh_instance name="PUNXES00266" core="PUNXES00266" pos="557.350647 7.464798 -260.875031" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 	<mesh_instance name="PUNXES0020" core="PUNXES0020" pos="557.350647 7.464798 -260.875031" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
@@ -370,7 +377,7 @@
 	<mesh_instance name="Pixelite Verd041" core="Pixelite Verd001" pos="558.347412 -3.771163 -18.564283" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible" emitter="Pixelite041Emitter" emitter_offset="0.0 0.0 0.0" emitter2="PixelitePilladoGreen5"/>
 	<mesh_instance name="Pixelite Verd042" core="Pixelite Verd001" pos="558.244507 0.283467 -28.628477" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible" emitter="Pixelite042Emitter" emitter_offset="0.0 0.0 0.0" emitter2="PixelitePilladoGreen6"/>
 	<mesh_instance name="Pixelite Verd043" core="Pixelite Verd001" pos="558.219543 3.992339 -35.436356" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible" emitter="Pixelite043Emitter" emitter_offset="0.0 0.0 0.0" emitter2="PixelitePilladoGreen7"/>
-	<mesh_instance name="Pixelite Verd044" core="Pixelite Verd001" pos="558.224487 8.585810 -42.385345" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible" emitter="Pixelite044Emitter" emitter_offset="0.0 0.0 0.0" emitter2="PixelitePilladoGreen8"/>
+	<mesh_instance name="Pixelite Verd044" core="Pixelite Verd001" pos="558.224487 9.65810 -42.385345" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible" emitter="Pixelite044Emitter" emitter_offset="0.0 0.0 0.0" emitter2="PixelitePilladoGreen8"/>
 	<mesh_instance name="Pixelite Verd045" core="Pixelite Verd001" pos="557.980957 9.738913 -49.162117" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible" emitter="Pixelite045Emitter" emitter_offset="0.0 0.0 0.0" emitter2="PixelitePilladoGreen9"/>
 	<mesh_instance name="Pixelite Verd046" core="Pixelite Verd001" pos="558.470764 16.943180 -58.376896" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible" emitter="Pixelite046Emitter" emitter_offset="0.0 0.0 0.0" emitter2="PixelitePilladoGreen"/>
 	<mesh_instance name="Pixelite Verd047" core="Pixelite Verd001" pos="561.506958 16.943180 -64.989037" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible" emitter="Pixelite047Emitter" emitter_offset="0.0 0.0 0.0" emitter2="PixelitePilladoGreen2"/>
@@ -468,14 +475,22 @@
 	<platform name="INVISIBLE_WALL_005" core="INVISIBLE_WALL_005" type="static" pos="557.271423 9.894491 -176.357147" yaw="0.0" pitch="0.0" roll="0.0" scale="0.566471 1.0 1.0" visible="false" layer="invisible" use_phisics_mesh="true" room="5"/>
 	<platform name="SecurityWall002" core="SecurityWall002" type="static" pos="557.271973 7.069 -315.611645" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="2.98108 2.9871 0.981232" layer="solid" room="5"/>
 	<mesh_instance name="PumPum1" core="PumPum"  pos="557.07 11.022 -416.279" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "6" layer="enemies" emitter="PumPumDeath01Emitter"/>
-	<mesh_instance name="disparoPumPum1" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "6" layer="enemies" emitter="PumPumFire01Emitter" />
+	<mesh_instance name="disparoPumPum1" core="disparoPumPum"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "6" layer="lava" emitter="PumPumFire01Emitter" />
 	<mesh_instance name="PumPum2" core="PumPum"  pos="534.005 0.806 -505.328" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "6" layer="enemies" emitter="PumPumDeath02Emitter"/>
-	<mesh_instance name="disparoPumPum2" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "6" layer="enemies" emitter="PumPumFire02Emitter"/>
+	<mesh_instance name="disparoPumPum2" core="disparoPumPum"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "6" layer="lava" emitter="PumPumFire02Emitter"/>
 	<mesh_instance name="PumPum3" core="PumPum"  pos="549.085 6.68 -615.408" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" layer="enemies" room = "6" emitter="PumPumDeath03Emitter"/>
-	<mesh_instance name="disparoPumPum3" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "6" layer="enemies" emitter="PumPumFire03Emitter"/>
+	<mesh_instance name="disparoPumPum3" core="disparoPumPum"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "6" layer="lava" emitter="PumPumFire03Emitter"/>
 	<mesh_instance name="PumPum4" core="PumPum"  pos="543.913 6.68 -616.073" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" layer="enemies" room = "6" emitter="PumPumDeath01Emitter"/>
-	<mesh_instance name="disparoPumPum4" core="SpongePicky"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.5 0.5 0.5" room = "6" layer="enemies" emitter="PumPumFire01Emitter"/>
+	<mesh_instance name="disparoPumPum4" core="disparoPumPum"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "6" layer="lava" emitter="PumPumFire01Emitter"/>
 	
+	<mesh_instance name="PumPum_S7_001" core="PumPum"  pos="226.917526 28.647437 -645.052673" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "7" layer="enemies" emitter="PumPumDeath01Emitter"/>
+	<mesh_instance name="disparoPumPum_S7_001" core="disparoPumPum"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "7" layer="lava" emitter="PumPumFire01Emitter" />
+	<mesh_instance name="PumPum_S7_002" core="PumPum"  pos="-22.759338 28.647437 -645.052673" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "7" layer="enemies" emitter="PumPumDeath02Emitter"/>
+	<mesh_instance name="disparoPumPum_S7_002" core="disparoPumPum"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "7" layer="lava" emitter="PumPumFire02Emitter"/>
+	<mesh_instance name="PumPum_S7_003" core="PumPum"  pos="-187.095978 17.096899 -645.052673" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" layer="enemies" room = "7" emitter="PumPumDeath03Emitter"/>
+	<mesh_instance name="disparoPumPum_S7_003" core="disparoPumPum"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "7" layer="lava" emitter="PumPumFire03Emitter"/>
+	<mesh_instance name="PumPum_S7_004" core="PumPum"  pos="-225.335602 27.052563 -645.052673" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" layer="enemies" room = "7" emitter="PumPumDeath01Emitter"/>
+	<mesh_instance name="disparoPumPum_S7_004" core="disparoPumPum"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "7" layer="lava" emitter="PumPumFire01Emitter"/>
 	
 	<mesh_instance name="Teleport" core="Teleport" pos="552.338684 2.577842 -505.727661" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid" emitter="PikyYellowTeleporting" emitter_offset="0.0 1.0 0.0" emitter2="PikyBrownTeleporting" emitter2_offset="0.0 1.0 0.0"/>
 	<mesh_instance name="LightBeamTeleport" core="LightBeamTeleport" pos="552.310120 2.986145 -505.720551" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="alpha_objects"/>
@@ -668,13 +683,13 @@
 	<platform name="PLAT POLY012" core="PLAT POLY012" type="poly" pos="163.207336 32.188210 -650.316284" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="9.2873 0.275734 2.44058" layer="poly" room="7" final_position="163.207336 32.188210 -646.051"
 		 direction="0 0 1" time_out="5" speed="20" light="" activation_distance="15"/>
 	<mesh_instance name="PLATAFORMA007" core="PLATAFORMA007" pos="121.968758 32.188210 -646.658630" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="7" layer="solid"/>
-	<mesh_instance name="PLATAFORMA008" core="PLATAFORMA008" pos="59.994633 32.188210 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="7" layer="solid"/>
+	<platform name="PLATAFORMA008" core="PLATAFORMA008" type="breakable" pos="59.994633 31.859566 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.55695 0.275734 2.44058" layer="breakable" room="7" trigger_name="TriggerBreak_Sala7Platf008"/>
 	<platform name="PLAT POLY009" core="PLAT POLY009" type="poly" pos="48.906437 34.117783 -650.392212" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.55695 0.275734 2.44058" layer="poly" room="7" final_position="48.906 34.118 -646.021"
 		 direction="0 0 1" time_out="3" speed="20" light="" activation_distance="15"/>
-	<mesh_instance name="PLATAFORMA009" core="PLATAFORMA009" pos="37.818241 35.907623 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="7" layer="solid"/>
+	<mesh_instance name="PLATAFORMA009" core="PLATAFORMA009" pos="37.818241 35.408554 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="7" layer="solid"/>
 	<platform name="PLAT POLY001" core="PLAT POLY001" type="poly" pos="25.961430 34.117783 -650.320923" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.55695 0.275734 2.44058" layer="poly" room="7" final_position="25.961 34.118 -645.897"
 		 direction="0 0 1" time_out="3" speed="20" light="" activation_distance="15"/>
-	<mesh_instance name="PLATAFORMA001" core="PLATAFORMA001" pos="13.505879 32.188210 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="7" layer="solid"/>
+	<platform name="PLATAFORMA001" core="PLATAFORMA001" type="breakable" pos="13.505879 32.188210 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.55695 0.275734 2.44058" layer="breakable" room="7" trigger_name="TriggerBreak_Sala7Platf001"/>
 	<platform name="PLAT POLY007" core="PLAT POLY007" type="poly" pos="-121.280449 16.191813 -650.162781" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.55695 0.275734 2.44058" layer="poly" room="7" final_position="-121.28 16.192 -645.866 "
 		 direction="0 0 1" time_out="3" speed="20" light="" activation_distance="15"/>
 	<platform name="PLAT POLY013" core="PLAT POLY013" type="poly" pos="-136.277756 17.904886 -650.285706" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.55695 0.275734 2.44058" layer="poly" room="7" final_position="-136.278 17.905 -645.845"
@@ -682,9 +697,9 @@
 	<platform name="PLAT POLY004" core="PLAT POLY004" type="poly" pos="-151.296982 18.228872 -650.266785" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.55695 0.275734 2.44058" layer="poly" room="7" final_position="-151.297 18.229 -645.851"
 		 direction="0 0 1" time_out="3" speed="20" light="" activation_distance="15"/>
 	<platform name="PLAT POLY002" core="PLAT POLY002" type="poly" pos="-201.277496 15.189070 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="1.42979 1.7942 2.44058" layer="poly" room="7" final_position="-201.277 18.572 -646.002"
-		 direction="0 1 0" time_out="3" speed="5" light="" activation_distance="5"/>
+		 direction="0 1 0" time_out="3" speed="5" light="" activation_distance="7"/>
 	<platform name="PLAT POLY014" core="PLAT POLY014" type="poly" pos="-209.339081 20.400671 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="1.42979 1.84263 2.44058" layer="poly" room="7" final_position="-209.339 23.9147 -646.002"
-		 direction="0 1 0" time_out="3" speed="5" light="" activation_distance="5"/>
+		 direction="0 1 0" time_out="3" speed="5" light="" activation_distance="7"/>
 	<platform name="PLAT POLY010" core="PLAT POLY010" type="poly" pos="335.044495 25.132473 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="2.64252 2.53177 2.44058" layer="poly" room="7" final_position="335.044495 29.981 -646.001892"
 		 direction="0 1 0" time_out="3" speed="5" light="" activation_distance="15"/>
 	<mesh_instance name="SALA 7" core="SALA 7" pos="136.574951 3.237059 -635.103516" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="7" layer="solid"/>

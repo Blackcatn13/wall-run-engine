@@ -284,9 +284,15 @@ function Player.new()
 	function self.check_death_actions()
 		local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room(piky_layer, player_controller.m_Room):get_resource(piky_mesh_name)
 		local emitter2 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter2)
-		if emitter2:get_visible() == true then
+		if emitter2~= nil and emitter2:get_visible() == true then
 			emitter2:set_visible(false)
 		end
+		
+		local emitter3 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter3)
+		if emitter3~= nil and emitter3:get_visible() == true then
+			emitter3:set_visible(false)
+		end
+		
 		--Chuky Desaparece
 		ChuckyDesapears()
 		renderable_piky_mesh:remove_action(anim_death)
@@ -320,7 +326,9 @@ function Player.new()
 			reset_wall_trap(0, "WALL_TRAP1_RIGHT")
 			reset_wall_trap(0, "WALL_TRAP1_LEFT")]]
 		end
-		
+		if tostring(self.zone) == "5.0" then
+			close_door("Puerta_arriba002", "Puerta_abajo002", 6);
+		end
 		--self.is_dead = false
 		self.use_iman = false;
 		self.iman_pos = Vect3f(0,0,0);

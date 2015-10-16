@@ -15,7 +15,12 @@
 	<instance_enemy name="PumPum3" type="pumpum_easy" attack_distance = "160" zone="6.0" projectile="disparoPumPum3" /> 
 	<instance_enemy name="PumPum4" type="pumpum_easy" attack_distance = "160" zone="6.0" projectile="disparoPumPum4" /> 
 	
+	<instance_enemy name="PumPum_S7_001" type="pumpum_easy" attack_distance = "160" zone="7.0" projectile="disparoPumPum_S7_001" />	
+	<instance_enemy name="PumPum_S7_002" type="pumpum_easy" attack_distance = "160" zone="7.0" projectile="disparoPumPum_S7_002" />
+	<instance_enemy name="PumPum_S7_003" type="pumpum_easy" attack_distance = "160" zone="7.0" projectile="disparoPumPum_S7_003" /> 
+	<instance_enemy name="PumPum_S7_004" type="pumpum_easy" attack_distance = "160" zone="7.0" projectile="disparoPumPum_S7_004" /> 
 	
+		
 	<instance_enemy name="MikMik001" type="mikmik_easy" attack_distance="60" zone="3.5">
 		<wp position="500.826767 10.000014 5.216164" />
 		<wp position="500.826767 10.000014 -13.216164" />
@@ -43,7 +48,16 @@
 	<!--<instance_enemy name="MikMik_S5_005" type="mikmik_easy" zone="5.0" attack_distance="70" />-->
 	
 	<instance_enemy name="MikMik012" type="mikmik_easy" zone="6.0" attack_distance="90" />
-
+	
+	<instance_enemy name="MikMik_S7_001" type="mikmik_easy" zone="7.0" attack_distance="80" static="true"/>
+	<instance_enemy name="MikMik_S7_002" type="mikmik_easy" zone="7.0" attack_distance="60" static="true" />
+	<instance_enemy name="MikMik_S7_003" type="mikmik_easy" zone="7.0" attack_distance="70" static="false" />
+	<instance_enemy name="MikMik_S7_004" type="mikmik_easy" zone="7.0" attack_distance="80" static="true"/>
+	<instance_enemy name="MikMik_S7_005" type="mikmik_easy" zone="7.0" attack_distance="60" static="false" />
+	<instance_enemy name="MikMik_S7_006" type="mikmik_easy" zone="7.0" attack_distance="70" static="true" />
+	<instance_enemy name="MikMik_S7_007" type="mikmik_easy" zone="7.0" attack_distance="70" static="true" />
+	
+	
 	<!--<enemy name="Enemy2" type="easy" pos="8.0 2.0 -2.0" yaw="0.0" mesh="Enemy2" />
 	<enemy name="Enemy3" type="easy" pos="4.0 2.0 7.0" yaw="0.0" mesh="Enemy3" />-->
 	<!--<enemy name="Enemy4" type="easy" pos="5.0 2.0 3.0" yaw="0.0"/>

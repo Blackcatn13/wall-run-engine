@@ -278,13 +278,14 @@ function reset_game()
 	reset_puzzle("puzzle001", 6, "Puerta_arriba002", "Puerta_abajo002")
 	--Doors
 	close_door("Puerta_arriba", "Puerta_abajo", 3);
+	close_door("Puerta_arriba002", "Puerta_abajo002", 6);
 	
 	--Traps
 	reset_wall_trap(0, "WALL_TRAP1_RIGHT")
 	reset_wall_trap(0, "WALL_TRAP1_LEFT")
 	local trap = search(trap_vector, "ArrowTrap1")
 	--trap:reset_position()
-	 restore_broken_platforms_by_layer("breakable")
+	restore_broken_platforms_by_layer("breakable")
 	
 	--
 	--Others
