@@ -296,6 +296,7 @@ function reset_game()
 	player.stickers = 0
 	gui_manager:set_first_poly_message_displayed(false);
 	gui_manager:set_visibility_message(false);
+	activate_invisible_wall("INVISIBLE_WALL_001",1)
 	--gui_manager:set_visible_gui_element("LifeGUI", true)
 	--gui_manager:set_visible_gui_element("VidesGUI", true)
 	set_visible_gui_elements(true)
@@ -317,6 +318,8 @@ function reset_game()
 	cadira:set_visible(true)
 	get_renderable_object("solid",0, "ORO2"):set_visible(true)
 	get_renderable_object("solid",0, "ORO3"):set_visible(true)
+	--get_renderable_object("solid",0, "ORO4"):set_visible(false)
+	get_renderable_object("solid",0, "ORO1"):set_visible(false)
 	get_renderable_object("solid",0, "PilarQuad001"):set_visible(true)
 	get_renderable_object("solid",0, "PilarQuad002"):set_visible(true)
 	--get_renderable_object("solid",0, "ChukyBossPosition"):set_visible(false)

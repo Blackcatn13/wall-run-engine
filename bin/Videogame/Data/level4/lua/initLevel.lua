@@ -23,6 +23,7 @@ function init_level(a)
 	--coreInstance:getWWSoundManager():PlayEvent("Torches", "Torch");
 	
 	--player_controller.m_Direction3D = dir3D
+	activate_invisible_wall("INVISIBLE_WALL_001",1)
 	if collectible_manager == nil then
 		collectible_manager = coreInstance:getCollectibleManager()
 	end
@@ -49,10 +50,10 @@ function init_level(a)
 	
 		player.set_initial_position(PlayerYaw, new_position)
 		first_load = false
-	else
-		local Chucky = enemy_manager:get_enemy("Chucky")
-		Chucky:move_to_position(Vect3f(12.301, 0.0, -2.75))
-	
+	--else
+		--local Chucky = enemy_manager:get_enemy("Chucky")
+		--Chucky:move_to_position(Vect3f(12.301, 0.0, -2.75))
+		--ChuckyDesapears()
 	end
 	set_player_room("1", true);
 	player.attack_enabled = false

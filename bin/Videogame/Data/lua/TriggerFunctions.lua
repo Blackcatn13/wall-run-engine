@@ -567,15 +567,15 @@ end
 
 function cambiozona_3d_to_2d(offset_axis, room_number)
 	trigger_set_2D(offset_axis)
-	set_player_room(room_number, "false")
+	set_player_room(room_number, "true")
 	--activate_invisible_wall(wall_name, room_number)
 	--set_checkpoint(trigger_name, renderable_object)
 end
 
-function cambiozona_2d_to_3d(room_number)
+function cambiozona_2d_to_3d(room_number, wall_name)
 	trigger_set_3D()
 	set_player_room(room_number, "false")
-	--activate_invisible_wall(wall_name, room_number)
+	activate_invisible_wall(wall_name, room_number)
 	--set_checkpoint(trigger_name, renderable_object)
 end
 

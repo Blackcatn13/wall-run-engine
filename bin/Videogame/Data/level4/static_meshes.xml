@@ -600,4 +600,7 @@
 	<static_mesh name="ORO005" filename="Data\level4\meshes\ORO005.mesh"/>
 	<static_mesh name="ORO006" filename="Data\level4\meshes\ORO006.mesh"/>
 	<static_mesh name="disparoPumPum" filename="Data\level4\meshes\disparoPumPum.mesh"/>
+	<static_mesh name="Security_Wall_003" filename="Data\level4\meshes\Security_Wall_003.mesh"/>
+	<static_mesh name="Security_Wall_004" filename="Data\level4\meshes\Security_Wall_004.mesh"/>
+	<static_mesh name="Security_Wall_005" filename="Data\level4\meshes\Security_Wall_005.mesh"/>
 </static_meshes>
