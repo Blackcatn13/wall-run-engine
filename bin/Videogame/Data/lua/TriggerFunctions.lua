@@ -387,6 +387,7 @@ function check_enemies_killed(num1, door, door2)
 			local trigger = trigger_manager:get_resource(trigger_name)
 			if(trigger ~= nil) then
 				activate_collectible(trigger, "collectible", "Collectible1")
+				coreInstance:getWWSoundManager():PlayEvent("AppearCard", "Music");
 			end
 			player.enemy_puzzle_active = false
 		end
