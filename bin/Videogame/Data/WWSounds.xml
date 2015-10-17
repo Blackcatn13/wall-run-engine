@@ -4,6 +4,7 @@
 	<Bank name="Sounds.bnk"/> 
 	<Bank name="BackGroundMusic.bnk"/>
 	<Bank name="BackGroundMusic2.bnk"/>
+	<Bank name="Mik.bnk"/>
 	<GameObject2D name="Music" register="true"/>
 	<GameObject2D name="Piky" register="true"/>
 	<GameObject3D name="Torch" register="true" type="MultiSource">
@@ -28,7 +29,7 @@
 		<Source pos="539.616 9.004 -1.622" dir="-1 0 0"/>
 		<Source pos="539.41 5.451 -511.203" dir="0 0 1"/>
 	</GameObject3D>
-	<!--<GameObject3D name="Mik" register="true" pos="530.339172 9.007496 8.188751" dir="1 0 1"/>-->
+	<GameObject3D name="Mik" register="true" pos="530.339172 9.007496 8.188751" dir="1 0 1"/>
 
 	<InitEvent event="Torches" GameObject="Torch"/>
 </WWise>

@@ -60,6 +60,59 @@
 		<SoundBank Id="1182670502" Language="SFX">
 			<ShortName>Mik</ShortName>
 			<Path>Mik.bnk</Path>
+			<IncludedEvents>
+				<Event Id="2970383493" Name="Mik_Attack"/>
+				<Event Id="3001633723" Name="Mik_Dead"/>
+				<Event Id="3569977758" Name="Mik_Follow"/>
+				<Event Id="2299701063" Name="Mik_Idle"/>
+				<Event Id="3056034208" Name="Mik_Saw"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="50278207" Language="SFX">
+					<ShortName>Mordisco2.wav</ShortName>
+					<Path>SFX\Mordisco2_DDC98EF4.wem</Path>
+				</File>
+				<File Id="169203991" Language="SFX">
+					<ShortName>RugidoDetectado.wav</ShortName>
+					<Path>SFX\RugidoDetectado_DDC98EF4.wem</Path>
+				</File>
+				<File Id="194837334" Language="SFX">
+					<ShortName>Silence.wav</ShortName>
+					<Path>SFX\Silence_DDC98EF4.wem</Path>
+				</File>
+				<File Id="276987036" Language="SFX">
+					<ShortName>Idle.wav</ShortName>
+					<Path>SFX\Idle_DDC98EF4.wem</Path>
+				</File>
+				<File Id="288145229" Language="SFX">
+					<ShortName>Mordisco1.wav</ShortName>
+					<Path>SFX\Mordisco1_DDC98EF4.wem</Path>
+				</File>
+				<File Id="354466126" Language="SFX">
+					<ShortName>Dead.wav</ShortName>
+					<Path>SFX\Dead_DDC98EF4.wem</Path>
+				</File>
+				<File Id="545300258" Language="SFX">
+					<ShortName>RisaMik1.wav</ShortName>
+					<Path>SFX\RisaMik1_DDC98EF4.wem</Path>
+				</File>
+				<File Id="797611864" Language="SFX">
+					<ShortName>RugidoDetectado2.wav</ShortName>
+					<Path>SFX\RugidoDetectado2_DDC98EF4.wem</Path>
+				</File>
+				<File Id="924337238" Language="SFX">
+					<ShortName>RugidoPerseguir.wav</ShortName>
+					<Path>SFX\RugidoPerseguir_DDC98EF4.wem</Path>
+				</File>
+				<File Id="932336074" Language="SFX">
+					<ShortName>Dead2.wav</ShortName>
+					<Path>SFX\Dead2_DDC98EF4.wem</Path>
+				</File>
+				<File Id="974301372" Language="SFX">
+					<ShortName>RisaMik2.wav</ShortName>
+					<Path>SFX\RisaMik2_DDC98EF4.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
 		</SoundBank>
 		<SoundBank Id="1355168291" Language="SFX">
 			<ShortName>Init</ShortName>
