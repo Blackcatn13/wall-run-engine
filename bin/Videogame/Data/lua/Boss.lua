@@ -41,7 +41,7 @@ function start_boss()
 		get_renderable_object("solid",0, "ORO2"):set_visible(false)
 		get_renderable_object("solid",0, "ORO3"):set_visible(false)
 		get_renderable_object("solid",0, "ORO1"):set_visible(false)
-		--get_renderable_object("solid",0, "ORO4"):set_visible(false)
+		get_renderable_object("solid",0, "ORO004"):set_visible(false)
 		
 		get_renderable_object("solid",0, "PilarQuad001"):set_visible(false)
 		get_renderable_object("solid",0, "PilarQuad002"):set_visible(false)
