@@ -3,6 +3,7 @@
 	<Bank name="Init.bnk"/>
 	<Bank name="Sounds.bnk"/> 
 	<Bank name="BackGroundMusic.bnk"/>
+	<Bank name="BackGroundMusic2.bnk"/>
 	<GameObject2D name="Music" register="true"/>
 	<GameObject2D name="Piky" register="true"/>
 	<GameObject3D name="Torch" register="true" type="MultiSource">

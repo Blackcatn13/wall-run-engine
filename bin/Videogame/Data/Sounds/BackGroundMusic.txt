@@ -1,16 +1,11 @@
 Event	ID	Name			Wwise Object Path	Notes
-	1091151884	_Fail			\Default Work Unit\Background\_Fail	
 	1481335831	_3DZone			\Default Work Unit\Background\_3DZone	
-	1615472509	_Menu			\Default Work Unit\Background\_Menu	
 	1854652136	_2DZone			\Default Work Unit\Background\_2DZone	
 	2380376969	_BossZone			\Default Work Unit\Background\_BossZone	
 	2958144319	StartBackground			\Default Work Unit\Background\StartBackground	
-	3721368369	_Success			\Default Work Unit\Background\_Success	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	45329365	GGP_Boss	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\GGP_Boss_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\GGP_Boss		11114560
-	72649360	GPP_Creditos	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\GPP_Creditos_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\GPP_Creditos		9237012
 	364000553	zona 3d	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\zona 3d_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\zona 3d		21319264
-	523121214	fail	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\fail_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\fail		1974924
-	980570799	GGP_Success	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\GGP_Success_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\GGP_Success		1810352
+	835545566	GPP_2D	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\GPP_2D_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\GPP_2D		17236868
 

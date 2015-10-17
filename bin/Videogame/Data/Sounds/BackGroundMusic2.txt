@@ -1,0 +1,10 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1091151884	_Fail			\Default Work Unit\Background\_Fail	
+	1615472509	_Menu			\Default Work Unit\Background\_Menu	
+	3721368369	_Success			\Default Work Unit\Background\_Success	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	72649360	GPP_Creditos	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\GPP_Creditos_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\GPP_Creditos		9237012
+	523121214	fail	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\fail_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\fail		1974924
+	980570799	GGP_Success	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\GGP_Success_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\GGP_Success		1810352
+
