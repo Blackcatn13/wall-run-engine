@@ -32,16 +32,17 @@ class CWWSoundManager {
   void	Done		();
   CAkDefaultIOHookBlocking *m_lowLevelIO;
   void Render();
-  void Load(std::string file);
+  void Load(const std::string &file);
   void Reload();
   void SetListenerPosition(Vect3f pos, Vect3f direction = Vect3f(1, 0, 0), Vect3f up = Vect3f(0, 1, 0));
-  void PlayEvent(std::string eventName, std::string GameObject);
-  void SetSwitch(std::string group, std::string switch_, std::string gameObject);
-  void SetTrigger(std::string trigger, std::string gameObject);
-  void RegisterGameObject(std::string gameObject);
-  void UnregisterGameObject(std::string gameObject);
-  void SetState(std::string group, std::string state);
+  void PlayEvent(const std::string &eventName, const std::string &GameObject);
+  void SetSwitch(const std::string &group, const std::string &switch_, const std::string &gameObject);
+  void SetTrigger(const std::string &trigger, const std::string &gameObject);
+  void RegisterGameObject(const std::string &gameObject);
+  void UnregisterGameObject(const std::string &gameObject);
+  void SetState(const std::string &group, const std::string &state);
   void StopAllPlayingEvents();
+  void SetGameObjectPosition(const std::string &gameObject, Vect3f pos, Vect3f direction = Vect3f(1, 0, 0));
  private:
   std::string m_fileName;
   std::map<std::string, AkGameObjectID> m_GameObjects;

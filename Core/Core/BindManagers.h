@@ -288,6 +288,7 @@ void RegisterManagers() {
     .def("UnregisterGameObject", &CWWSoundManager::UnregisterGameObject)
     .def("SetState", &CWWSoundManager::SetState)
     .def("StopAllPlayingEvents", &CWWSoundManager::StopAllPlayingEvents)
+    .def("SetGameOBjectPosition", &CWWSoundManager::SetGameObjectPosition)
   ];
   luabind::module(LUA_STATE) [
     class_<TransitionEffect>("TransitionEffect")
