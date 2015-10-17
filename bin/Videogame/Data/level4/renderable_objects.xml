@@ -468,11 +468,14 @@
 	<mesh_instance name="Sala_3_LuzPared_004" core="Sala_3_LuzPared_004" pos="562.379272 10.763001 -9.504450" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="3" layer="solid"/>
 	<mesh_instance name="Sala_3_Columna_002" core="Sala_3_Columna_002" pos="571.958496 7.919519 -34.917099" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="3" layer="solid"/>
 	
-	<platform name="INVISIBLE_WALL_001" core="INVISIBLE_WALL_001" type="static" pos="53.925022 0.000000 -0.057728" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="invisible" use_phisics_mesh="true" room="1"/>
-	<platform name="INVISIBLE_WALL_002" core="INVISIBLE_WALL_002" type="static" pos="180.617888 0.000000 11.973543" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="invisible" use_phisics_mesh="true" room="2"/>
-	<platform name="INVISIBLE_WALL_003" core="INVISIBLE_WALL_003" type="static" pos="430.066467 7.829697 12.769010" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true"  layer="invisible" use_phisics_mesh="true" room="3"/>
+	<platform name="INVISIBLE_WALL_001" core="INVISIBLE_WALL_001" type="static" pos="58.05022 0.000000 -0.057728" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="invisible" phisic_size="0.3 5.0 4.5" room="1"/>
+	<platform name="INVISIBLE_WALL_002" core="INVISIBLE_WALL_002" type="static" pos="179.017888 0.000000 11.973543" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="invisible" phisic_size="0.3 5.0 4.5" room="2"/>
+	<platform name="INVISIBLE_WALL_003" core="INVISIBLE_WALL_003" type="static" pos="428.066467 7.829697 12.769010" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true"  layer="invisible" phisic_size="0.5 7.0 6.0" room="3"/>
 	<platform name="INVISIBLE_WALL_004" core="INVISIBLE_WALL_004" type="static" pos="549.488892 2.376045 0.115322" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true"  layer="invisible" use_phisics_mesh="true" room="4"/>
 	<platform name="INVISIBLE_WALL_005" core="INVISIBLE_WALL_005" type="static" pos="557.271423 9.894491 -176.357147" yaw="0.0" pitch="0.0" roll="0.0" scale="0.566471 1.0 1.0" visible="false" layer="invisible" use_phisics_mesh="true" room="5"/>
+	<platform name="INVISIBLE_WALL_007" core="INVISIBLE_WALL_002" type="static" pos="505.022614 19.366253 -645.640503" yaw="1.5708" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="0.347595 4.87271 4.92883" layer="invisible" room="7"/>
+	<platform name="INVISIBLE_WALL_006" core="INVISIBLE_WALL_005" type="static" pos="557.271423 12.852377 -382.723816" yaw="0.0" pitch="0.0" roll="0.0" scale="0.566471 1.0 1.0" visible="false" phisic_size="5.17535 4.81426 1.11664" layer="invisible" use_phisics_mesh="true" room="6"/>
+	
 	<platform name="SecurityWall002" core="SecurityWall002" type="static" pos="557.271973 7.069 -315.611645" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="2.98108 2.9871 0.981232" layer="solid" room="5"/>
 	<mesh_instance name="PumPum1" core="PumPum"  pos="557.07 11.022 -416.279" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "6" layer="enemies" emitter="PumPumDeath01Emitter"/>
 	<mesh_instance name="disparoPumPum1" core="disparoPumPum"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "6" layer="lava" emitter="PumPumFire01Emitter" />
@@ -840,4 +843,7 @@
 	<mesh_instance name="ChukyBossPosition" core="ChukyBossPosition" pos="0.000000 0.488770 0.000000" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" room="0" layer="solid"/>
 	<mesh_instance name="CheckPointDisabledStand008" core="CheckPointDisabledStand001" pos="483.784912 26.828030 -649.985657" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="7" layer="solid"/>
 	<mesh_instance name="CheckPointDisabledStand009" core="CheckPointDisabledStand001" pos="75.168388 32.059963 -649.985657" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="7" layer="solid"/>
+	<platform name="Security_Wall_003" core="Security_Wall_003" type="static" pos="329.905552 28.771194 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="2.64252 4.17197 2.44058" layer="solid" room="7"/>
+	<platform name="Security_Wall_004" core="Security_Wall_004" type="static" pos="-204.247009 18.560547 -645.968262" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="1.37692 2.65969 4.97992" layer="solid" room="7"/>
+	<platform name="Security_Wall_005" core="Security_Wall_005" type="static" pos="-212.656860 23.708252 -645.968262" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="1.37692 2.65969 4.97992" layer="solid" room="7"/>
 </renderable_objects>

@@ -98,7 +98,6 @@ void CScriptManager::RunCode(const std::string &Code) const {
   if (luaL_dostring(m_LS, Code.c_str())) {
     const char *l_Str = lua_tostring(m_LS, -1);
     //Info("%s",l_Str);
-
     LOGGER->AddNewLog(ELL_INFORMATION, l_Str);
   }
 }
