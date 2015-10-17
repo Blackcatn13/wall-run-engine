@@ -53,7 +53,7 @@ function reset_cards()
 			local image_name = "Collectible"..tostring(i)
 			coreInstance:trace(image_name)
 			--gui_manager:set_image(image_name,'ImgLocked')
-			gui_manager:set_visible_element(image_name, false);
+			gui_manager:set_visible_gui_child_element("Collectibles", image_name, false);
 		end
 	end
 end
