@@ -12,24 +12,26 @@ function mikmik_enter_stopped(name)
 --	coreInstance:trace("Entro y Estoy parado: " .. name)
 	local enemy = enemy_manager:get_enemy(name)
 	enemy.m_CurrentTime = 0
-	enemy.m_RenderableObject:blend_cycle(0,1,0);
+	mesh = enemy.m_RenderableObject
+	mesh:blend_cycle(0,1,0);
 	if enemy:get_platform() ~= nil and enemy.m_isAlive then
 		local temp_pose = Vect3f(enemy:get_platform():get_position().x-1, enemy:get_platform():get_position().y+2, enemy:get_platform():get_position().z-1)
-		enemy.m_RenderableObject:set_position(temp_pose)
+		mesh:set_position(temp_pose)
 		enemy.m_PhysicController:set_position(temp_pose)
-	--	coreInstance:trace("Enemy stopped on platform position: "..tostring(enemy.m_RenderableObject:get_position().x)..", "..tostring(enemy.m_RenderableObject:get_position().y)..", "..tostring(enemy.m_RenderableObject:get_position().z))
+	--	coreInstance:trace("Enemy stopped on platform position: "..tostring(mesh:get_position().x)..", "..tostring(mesh:get_position().y)..", "..tostring(mesh:get_position().z))
 	end
-	exclamation = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter2)
+	exclamation = particle_manager:get_resource(mesh.m_ParticleEmitter2)
 	enemy.m_PhysicController:move(Vect3f(1, 0, 0) * enemy.m_Speed * coreInstance.m_ElapsedTime, coreInstance.m_ElapsedTime)
 	move_enemy_renderable(enemy, MikHeight);
 	if exclamation ~= nil then
 		exclamation:set_visible(true)
 		exclamation.m_FireParticles = true;
-		exclamation.m_vPos = enemy.m_RenderableObject:get_position() + enemy.m_RenderableObject.m_EmitterOffset2;
+		exclamation.m_vPos = mesh:get_position() + mesh.m_EmitterOffset2;
 		enemy.m_visibleTime = 0;
 	end
-	--coreInstance:getWWSoundManager():SetSwitch("Mik", "Idle", "Mik")
-	--coreInstance:getWWSoundManager():PlayEvent("MikSound", "Mik");
+	dir = Vect3f(math.cos(mesh:get_yaw()), 0, math.sin(mesh:get_yaw()))
+	sound_manager:SetGameObjectPosition(name, mesh:get_position(), dir)
+	sound_manager:PlayEvent("Mik_Idle", name);
 end
 
 function mikmik_exit_stopped(name)
@@ -90,6 +92,9 @@ function mikmik_update_stopped(ElapsedTime, doComprobation, name)
 							if player_distance < 700 then
 								-- Animacion de andar
 								rotate_yaw(enemy, ElapsedTime, player_position)
+								mesh = enemy.m_RenderableObject
+								dir = Vect3f(math.cos(mesh:get_yaw()), 0, math.sin(mesh:get_yaw()))
+								sound_manager:SetGameObjectPosition(name, mesh:get_position(), dir)
 								--local billboard = billboard_manager:get_resource(enemy.m_RenderableObject.m_Billboard)
 								--if billboard ~= nil then
 									--billboard.m_position = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_BillboardOffset
@@ -101,6 +106,9 @@ function mikmik_update_stopped(ElapsedTime, doComprobation, name)
 					if player_distance < 700 then
 						-- Animacion de andar
 						rotate_yaw(enemy, ElapsedTime, player_position)
+						mesh = enemy.m_RenderableObject
+						dir = Vect3f(math.cos(mesh:get_yaw()), 0, math.sin(mesh:get_yaw()))
+						sound_manager:SetGameObjectPosition(name, mesh:get_position(), dir)
 								
 					end
 				end
@@ -148,6 +156,9 @@ function mikmik_update_moving(ElapsedTime, doComprobation, name)
 		end
 		
 		move_enemy(ElapsedTime, enemy.m_CurrentWp, enemy, MikHeight)
+		mesh = enemy.m_RenderableObject
+		dir = Vect3f(math.cos(mesh:get_yaw()), 0, math.sin(mesh:get_yaw()))
+		sound_manager:SetGameObjectPosition(name, mesh:get_position(), dir)
 		
 		local temp_zone = enemy.m_Zone
 		if temp_zone == enemy.m_RenderableObject.m_Room then
@@ -211,6 +222,7 @@ function mikmik_enter_attack_player(name)
 			exclamation.m_FireParticles = true;
 			exclamation.m_vPos = enemy.m_RenderableObject:get_position() + enemy.m_RenderableObject.m_EmitterOffset2;
 			enemy.m_visibleTime = 0;
+			sound_manager:PlayEvent("Mik_Saw", name);
 		end
 	end
 	return 0
@@ -266,6 +278,9 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 					enemy.m_PhysicController:set_position(mik_position)
 				end
 				enemy.m_RenderableObject:set_position(mik_position)
+				mesh = enemy.m_RenderableObject
+				dir = Vect3f(math.cos(mesh:get_yaw()), 0, math.sin(mesh:get_yaw()))
+				sound_manager:SetGameObjectPosition(name, mesh:get_position(), dir)
 			
 		end
 	--coreInstance:trace("Enemy Zone" .. tostring (enemy.m_Zone))
@@ -290,6 +305,9 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 			if player.is_hit == false and tostring(temp_zone) == tostring(player.zone) and not enemy:is_static() then
 				if (player.on_air == false) or (player.on_air == true and player_distance > 2) then
 					move_enemy(ElapsedTime, player_position, enemy, MikHeight) -- en caso de no ser estatico
+					mesh = enemy.m_RenderableObject
+					dir = Vect3f(math.cos(mesh:get_yaw()), 0, math.sin(mesh:get_yaw()))
+					sound_manager:SetGameObjectPosition(name, mesh:get_position(), dir)
 				end
 			end
 			
@@ -309,6 +327,7 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 					enemy.m_RenderableObject:execute_action(2,0.1,0,1,true);
 					enemy.m_isAttacking = true;
 					enemy:add_damage_player()
+					sound_manager:PlayEvent("Mik_Attack", name);
 				elseif damageType == 1 or (damageType == 3 and player.super_piky_active)then
 					coreInstance:trace("Damage type: "..tostring(damageType))
 					coreInstance:trace("SuperPiky: "..tostring(player.super_piky_active))
@@ -429,7 +448,7 @@ end
 function mikmik_enter_dead(name)
 	local enemy = enemy_manager:get_enemy(name)
 	if enemy ~= nil then
-		
+		sound_manager:PlayEvent("Mik_Dead", name);
 		--coreInstance:trace("Init muerto Mik")
 		enemy.m_RenderableObject:clear_cycle(0,0.2);
 		enemy.m_RenderableObject:clear_cycle(1,0.2);

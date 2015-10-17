@@ -29,7 +29,11 @@
 		<Source pos="539.616 9.004 -1.622" dir="-1 0 0"/>
 		<Source pos="539.41 5.451 -511.203" dir="0 0 1"/>
 	</GameObject3D>
-	<GameObject3D name="Mik" register="true" pos="530.339172 9.007496 8.188751" dir="1 0 1"/>
+	<GameObject3D name="MikMik001" register="true" pos="500.109070 9.007496 3.234039" dir="1 0 0"/>
+	<GameObject3D name="MikMik002" register="true" pos="485.283875 9.007496 -13.436371" dir="1 0 0"/>
+	<GameObject3D name="MikMik003" register="true" pos="520.253601 9.007496 -0.450745" dir="1 0 0"/>
+	<GameObject3D name="MikMik004" register="true" pos="530.339172 9.007496 8.188751" dir="1 0 0"/>
+	<GameObject3D name="MikMik005" register="true" pos="532.398804 9.007496 -10.140839" dir="1 0 0"/>
 
 	<InitEvent event="Torches" GameObject="Torch"/>
 </WWise>
