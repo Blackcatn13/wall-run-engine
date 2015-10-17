@@ -127,8 +127,16 @@ void RegisterCameraController() {
     class_< PathPointSpec>("PathPointSpec")
     .def(constructor<>())
     .def_readwrite("can_rotate", &PathPointSpec::canRotate)
+	.def_readwrite("dist_to_rotate", &PathPointSpec::distToRotate)
     .def_readwrite("can_go_back", &PathPointSpec::canGoBack)
+	.def_readwrite("follow_player_x", &PathPointSpec::followPlayerX)
     .def_readwrite("follow_player_y", &PathPointSpec::followPlayerY)
+	.def_readwrite("variable_zoom", &PathPointSpec::variableZoom)
+	.def_readwrite("variable_zoom_value", &PathPointSpec::variableZoomValue)
+	.def_readwrite("variable_pitch", &PathPointSpec::variablePitch)
+	.def_readwrite("variable_pitch_value", &PathPointSpec::variablePitchValue)
+	.def_readwrite("yaw_offset", &PathPointSpec::yawOffset)
+	.def_readwrite("yaw_offset_value", &PathPointSpec::yawOffsetValue)
   ];
 
 
