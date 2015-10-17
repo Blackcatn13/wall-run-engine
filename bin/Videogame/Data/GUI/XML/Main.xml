@@ -20,6 +20,7 @@
 						Piky:remove_action(10);
 						Piky:remove_action(11);
 						set_screen_menu(Vect3f(-922.25, -1, 4.5), 10);
+						CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('_Menu','Music');
 						gui_manager:set_is_mainmenu(false);
 						gui_manager:set_is_gameover(false);
 						gui_manager:set_is_paused(false);
