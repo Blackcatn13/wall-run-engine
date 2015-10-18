@@ -285,8 +285,8 @@ int CEnemy::CheckPlayerCollision() {
   //3 if player gets hit
   //4 if player is in pos to iman
   //0 if no hit
-  float l_MargenSuperiorPlayer = 0.25;//HARDCODED
-  float l_MargenInferiorPlayer = 0.1;//HARDCODED -- 0 = linea de hitbox
+  float l_MargenSuperiorPlayer = 0.2;//HARDCODED
+  float l_MargenInferiorPlayer = 0.3;//HARDCODED -- 0 = linea de hitbox
   float l_MargenInferiorIman = 0;//HARDCODED
   float l_MargenSuperiorIman = 3;//HARDCODED
   float l_DistanceToIman = 3;
