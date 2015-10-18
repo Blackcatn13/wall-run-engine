@@ -274,15 +274,18 @@ void CWWSoundManager::SetListenerPosition(Vect3f pos, Vect3f direction, Vect3f u
 }
 
 void CWWSoundManager::SetGameObjectPosition(const std::string &gameObject, Vect3f pos, Vect3f direction) {
-  AkSoundPosition soundPos;
-  direction.Normalize();
-  soundPos.Orientation.X = direction.x;
-  soundPos.Orientation.Y = direction.y;
-  soundPos.Orientation.Z = direction.z;
-  soundPos.Position.X = pos.x;
-  soundPos.Position.Y = pos.y;
-  soundPos.Position.Z = pos.z;
-  AK::SoundEngine::SetPosition(m_GameObjects[gameObject], soundPos);
+  auto it = m_GameObjects.find(gameObject);
+  if (it != m_GameObjects.end()) {
+    AkSoundPosition soundPos;
+    direction.Normalize();
+    soundPos.Orientation.X = direction.x;
+    soundPos.Orientation.Y = direction.y;
+    soundPos.Orientation.Z = direction.z;
+    soundPos.Position.X = pos.x;
+    soundPos.Position.Y = pos.y;
+    soundPos.Position.Z = pos.z;
+    AK::SoundEngine::SetPosition(it->second, soundPos);
+  }
 }
 
 void CWWSoundManager::StopAllPlayingEvents() {
@@ -290,23 +293,38 @@ void CWWSoundManager::StopAllPlayingEvents() {
 }
 
 void CWWSoundManager::PlayEvent(const std::string &eventName, const std::string &GameObject) {
-  AkPlayingID m_iPID = AK::SoundEngine::PostEvent(eventName.c_str(), m_GameObjects[GameObject]);
+  auto it = m_GameObjects.find(GameObject);
+  if (it != m_GameObjects.end()) {
+    AkPlayingID m_iPID = AK::SoundEngine::PostEvent(eventName.c_str(), it->second);
+  }
 }
 
 void CWWSoundManager::SetSwitch(const std::string &group, const std::string &switch_, const std::string &gameObject) {
-  AK::SoundEngine::SetSwitch(group.c_str(), switch_.c_str(), m_GameObjects[gameObject]);
+  auto it = m_GameObjects.find(gameObject);
+  if (it != m_GameObjects.end()) {
+    AK::SoundEngine::SetSwitch(group.c_str(), switch_.c_str(), it->second);
+  }
 }
 
 void CWWSoundManager::SetTrigger(const std::string &trigger, const std::string &gameObject) {
-  AK::SoundEngine::PostTrigger(trigger.c_str(), m_GameObjects[gameObject]);
+  auto it = m_GameObjects.find(gameObject);
+  if (it != m_GameObjects.end()) {
+    AK::SoundEngine::PostTrigger(trigger.c_str(), it->second);
+  }
 }
 
 void CWWSoundManager::RegisterGameObject(const std::string &gameObject) {
-  AK::SoundEngine::RegisterGameObj(m_GameObjects[gameObject]);
+  auto it = m_GameObjects.find(gameObject);
+  if (it != m_GameObjects.end()) {
+    AK::SoundEngine::RegisterGameObj(it->second);
+  }
 }
 
 void CWWSoundManager::UnregisterGameObject(const std::string &gameObject) {
-  AK::SoundEngine::UnregisterGameObj(m_GameObjects[gameObject]);
+  auto it = m_GameObjects.find(gameObject);
+  if (it != m_GameObjects.end()) {
+    AK::SoundEngine::UnregisterGameObj(it->second);
+  }
 }
 
 void CWWSoundManager::SetState(const std::string &group, const std::string &state) {
