@@ -4,7 +4,7 @@
 	<Bank name="Sounds.bnk"/> 
 	<Bank name="BackGroundMusic.bnk"/>
 	<Bank name="BackGroundMusic2.bnk"/>
-	<Bank name="Mik.bnk"/>
+	<Bank name="Enemies.bnk"/>
 	<GameObject2D name="Music" register="true"/>
 	<GameObject2D name="Piky" register="true"/>
 	<GameObject3D name="Torch" register="true" type="MultiSource">
@@ -51,6 +51,15 @@
 	<GameObject3D name="MikMik_S7_005" register="true" pos="-52.004 19.891 -645.052673" dir="1 0 0"/>
 	<GameObject3D name="MikMik_S7_006" register="true" pos="-99.081573 18.696899 -645.052673" dir="1 0 0"/>
 	<GameObject3D name="MikMik_S7_007" register="true" pos="-174.672119 18.696899 -645.052673" dir="1 0 0"/>
+
+	<GameObject3D name="PumPum1" register="true" pos="557.07 11.022 -416.279" dir="1 0 0"/>
+	<GameObject3D name="PumPum2" register="true" pos="534.005 0.806 -505.328" dir="1 0 0"/>
+	<GameObject3D name="PumPum3" register="true" pos="549.085 6.68 -615.408" dir="1 0 0"/>
+	<GameObject3D name="PumPum4" register="true" pos="543.913 6.68 -616.073" dir="1 0 0"/>
+	<GameObject3D name="PumPum_S7_001" register="true" pos="226.917526 28.647437 -645.052673" dir="1 0 0"/>
+	<GameObject3D name="PumPum_S7_002" register="true" pos="-22.759338 28.647437 -645.052673" dir="1 0 0"/>
+	<GameObject3D name="PumPum_S7_003" register="true" pos="-187.095978 17.096899 -645.052673" dir="1 0 0"/>
+	<GameObject3D name="PumPum_S7_004" register="true" pos="-225.335602 27.052563 -645.052673" dir="1 0 0"/>
 
 
 	<InitEvent event="Torches" GameObject="Torch"/>

@@ -28,6 +28,9 @@ function pumpum_enter_stopped(name)
 	local enemy = enemy_manager:get_enemy(name)
 	enemy.m_CurrentTime = 0
 	--enemy.m_RenderableObject:blend_cycle(0,1,0);
+	mesh = enemy.m_RenderableObject
+	dir = Vect3f(math.cos(mesh:get_yaw()), 0, math.sin(mesh:get_yaw()))
+	sound_manager:SetGameObjectPosition(name, mesh:get_position(), dir)
 	return 0
 end
 
@@ -65,6 +68,9 @@ function pumpum_update_stopped(ElapsedTime, doComprobation, name)
 								show_or_hide(enemy, hide_offset, ElapsedTime)
 							end
 							rotate_yaw(enemy, ElapsedTime, player_position)
+							mesh = enemy.m_RenderableObject
+							dir = Vect3f(math.cos(mesh:get_yaw()), 0, math.sin(mesh:get_yaw()))
+							sound_manager:SetGameObjectPosition(name, mesh:get_position(), dir)
 						--	local billboard = billboard_manager:get_resource(enemy.m_RenderableObject.m_Billboard)
 						--	if billboard ~= nil then
 						--		billboard.m_position = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_BillboardOffset
@@ -231,6 +237,9 @@ function pumpum_update_attack_player(ElapsedTime, doComprobation, name)
 	--move_enemy_pumpum(ElapsedTime, player_position, enemy)
 
 	rotate_yaw(enemy, ElapsedTime, player_position)
+	mesh = enemy.m_RenderableObject
+	dir = Vect3f(math.cos(mesh:get_yaw()), 0, math.sin(mesh:get_yaw()))
+	sound_manager:SetGameObjectPosition(name, mesh:get_position(), dir)
 	--if doComprobation == 1 then
 	--local player_distance = get_distance_to_player(enemy:get_position(), player_position)
 	update_cooldown(enemy, ElapsedTime, player_position)
@@ -369,6 +378,7 @@ function pumpum_enter_dead(name)
 		enemy.m_RenderableObject:execute_action(3,0.1,0,1,true);
 		--]]
 		enemy.m_isAlive = false
+		sound_manager:PlayEvent("Pum_Dead", name);
 		
 	end
 end
