@@ -298,6 +298,9 @@ function chucky_boss_update_return(ElapsedTime, doComprobation, name)
 		else
 			update_shoot_boss(ElapsedTime, enemy)
 		end
+		if not enemy.m_RenderableObject:is_action_animation_active() and enemy.BalaActiva == false then
+			enemy:m_FSM():newState("Parado");
+		end
 		if boss_projectile_returned_by_chucky and not enemy.m_RenderableObject:is_action_animation_active() then
 			enemy:m_FSM():newState("EsperandoImpacto")
 		elseif executedReturn and not boss_projectile_returned_by_chucky and boss_projectile_returned and distance_to_bala < 7 then
@@ -339,7 +342,9 @@ function chucky_boss_update_waiting(ElapsedTime, doComprobation, name)
 				enemy:m_FSM():newState("Hurt")
 			end
 		end
-
+		if enemy.BalaActiva == false then
+			enemy:m_FSM():newState("Parado")
+		end
 	end
 end
 
@@ -410,6 +415,7 @@ function chucky_boss_update_hurt(ElapsedTime, doComprobation, name)
 				enemy.BalaSpeed = enemy.BalaOriginalSpeed;
 				current_speed_change = inicial_speed_change;
 				actual_speed_change = 0;
+				enemy.BalaActiva = false;
 				delete_shooting(mesh)
 			end
 		end

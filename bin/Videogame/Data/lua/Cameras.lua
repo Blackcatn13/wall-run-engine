@@ -120,8 +120,20 @@ function on_update_cameras_lua(l_ElapsedTime)
 	if (cam.m_eTypeCamera == 5 or cam.m_eTypeCamera == 6) and cam.m_currentWaypoint ~= nil then
 		local currentWP = cam:get_path_point(cam.m_currentWaypoint);
 		local nextWP = cam:get_path_point(cam.m_nextWaypoint);
+		-- POINT SPECS
 		local pointSpecs = cam:get_path_point_specs(cam.m_currentWaypoint);
 		local canRotate = pointSpecs.can_rotate;
+		if pointSpecs.dist_to_rotate > 0 then
+			dist_to_rotate = pointSpecs.dist_to_rotate;
+		end
+		if pointSpecs.variable_zoom == true then
+			zoom3D = zoom3D + pointSpecs.variable_zoom_value;
+			zoom3D_back = zoom3D_back + pointSpecs.variable_zoom_value;
+		end
+		if pointSpecs.variable_pitch == true then
+			pitch3D = pitch3D + pointSpecs.variable_pitch_value;
+			pitch3D_back = pitch3D_back + pointSpecs.variable_pitch_value;
+		end
 		--name2:set_name("UpdatePass2");
 		--local lastPlayerPos = cam.m_lastPlayerPos;
 		local pCont = coreInstance:get_player_controller();
@@ -186,6 +198,9 @@ function on_update_cameras_lua(l_ElapsedTime)
 		--Update Camera 3D
 		if(cam.m_eTypeCamera == 6) then
 			local incYaw = 0;
+			if pointSpecs.yaw_offset == true then
+				incYaw = pointSpecs.yaw_offset_value;
+			end
 			local distToCamera = 0;
 			if player.going_back == true and pointSpecs.can_go_back == true then
 				local incDist = distToCameraOffset_back - Dist_To_Camera_Tot;
@@ -198,11 +213,11 @@ function on_update_cameras_lua(l_ElapsedTime)
 			end
 			local offsetPosVec = newPosReal + Vect3f(0, distToCamera, 0);
 			
-			if canRotate == true then
+			if canRotate == true or pointSpecs.follow_player_x == true then
 				local distVector =  currentPlayerPos - newPosReal;
 				distVector.y = 0;
 				local distFromPath = distVector:length()
-				if dist_to_rotate < distFromPath then
+				if dist_to_rotate < distFromPath and canRotate == true and pointSpecs.follow_player_x == false then
 					incYaw = (distFromPath - dist_to_rotate) * yaw_to_rotate;
 				end
 				local vector_aux = Vect3f(cameraVecZXN.x, 0, cameraVecZXN.z);

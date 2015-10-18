@@ -53,7 +53,7 @@ float g_EndLinearFog = 20.0;
 float4 g_FogColor = float4(0.05f,0.05f,0.05f,1.0f); 
 float g_ExpDensityFog = 0.20;
 float g_Exp2DensityFog = 0.02; //0.20
-float g_ShadowEpsilon = 0.005f;
+float g_ShadowEpsilon = 0.0005f;
 // Fire values
 float3 scrollSpeeds = float3(1.3f, 1.9f, 2.1f);
 float3 scrollSpeedsLava = float3(0.3f, 0.5f, 0.8f);
