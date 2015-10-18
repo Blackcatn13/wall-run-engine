@@ -156,7 +156,9 @@ function update_cooldown(enemy, dt, player_position)
 	  enemy.m_IsOnCooldown = true;
       enemy.m_CurrentCooldown = enemy.m_CooldownTimer;
 	  shoot_to_vector(dt, enemy:get_position(), enemy)
+	  sound_manager:PlayEvent("Pum_Attack", enemy.m_RenderableObject:get_name())
 	  enemy.m_DireccionBala = player_position - enemy:get_position()
+
 	end
 end
 
