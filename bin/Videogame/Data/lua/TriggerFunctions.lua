@@ -435,7 +435,7 @@ function ChuckyDesapears()
 	coreInstance:trace("CHUKY goes out");
 	local Chucky = enemy_manager:get_enemy("Chucky");
 	--if(Chucky.m_Appeared == true) then
-		local pos = Vect3f(12.30, 0.0, -2.75)
+		local pos = Vect3f(1000.30, 1000.0, -1000.75)
 		Chucky:move_to_position(pos);
 		Chucky:set_yaw(0.0);
 		Chucky:m_FSM():newState("Parado");

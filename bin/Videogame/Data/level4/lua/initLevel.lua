@@ -53,8 +53,10 @@ function init_level(a)
 	--else
 		--local Chucky = enemy_manager:get_enemy("Chucky")
 		--Chucky:move_to_position(Vect3f(12.301, 0.0, -2.75))
-		--ChuckyDesapears()
+		ChuckyDesapears()
 	end
+
+	
 	set_player_room("1", true);
 	player.attack_enabled = false
 	player.can_move = true
@@ -72,7 +74,7 @@ function init_level(a)
 	enemy_manager:get_enemy("MikMik010"):m_FSM():newState("Waiting")
 	enemy_manager:get_enemy("MikMik011"):m_FSM():newState("Waiting")
 	
-	enemy_manager:get_enemy("Chucky").m_RenderableObject:execute_action(2,0.25,0,1,false);
+	--enemy_manager:get_enemy("Chucky").m_RenderableObject:execute_action(2,0.25,0,1,false);
 	coreInstance:get_cinematic_controller():execute("start");
 	coreInstance:getWWSoundManager():PlayEvent("StartBackground", "Music");
 	return 0

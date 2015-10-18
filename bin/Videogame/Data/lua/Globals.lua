@@ -53,6 +53,7 @@ actual_speed_change = 0
 transition_super_piky = false
 chucky_reapeared = false
 fade_step = 0 --0: Not fade, 1: first fade, 2: black_screen, 3: second fade
+last_checkpoint_room = 1
 
 --Animaciones del Player
 --Piky

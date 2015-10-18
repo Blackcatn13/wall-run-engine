@@ -300,7 +300,7 @@ function reset_game()
 	--gui_manager:set_visible_gui_element("LifeGUI", true)
 	--gui_manager:set_visible_gui_element("VidesGUI", true)
 	set_visible_gui_elements(true)
-	coreInstance:trace("Game Reset")
+	
 	local emitter = particle_manager:get_resource("DustPikyEmitter")
 	if emitter:get_visible() == true then
 		emitter:set_visible(false)
@@ -320,10 +320,15 @@ function reset_game()
 	get_renderable_object("solid",0, "ORO3"):set_visible(true)
 	get_renderable_object("solid",0, "ORO004"):set_visible(false)
 	get_renderable_object("solid",0, "ORO1"):set_visible(false)
+	
 	get_renderable_object("solid",0, "PilarQuad001"):set_visible(true)
 	get_renderable_object("solid",0, "PilarQuad002"):set_visible(true)
 	--get_renderable_object("solid",0, "ChukyBossPosition"):set_visible(false)
-	get_renderable_object("solid",0, "Ruinas"):set_visible(false)
+	local ruinas = get_renderable_object("solid",0, "Ruinas")
+	particle_manager:get_resource("SuperPikyAuraEmitter"):set_visible(false)
+	particle_manager:get_resource("SuperPikyAura2Emitter"):set_visible(false)
+	ruinas:set_visible(false)
+	ruinas.m_Printable = false
 	get_renderable_object("solid",0, "ORO006"):set_visible(false)
 	get_renderable_object("solid",0, "ORO005"):set_visible(false)
 
@@ -336,10 +341,12 @@ function reset_game()
 	all_boss_miks_killed = true
 	boss_miks_killed = 0
 	local boss = enemy_manager:get_enemy(boss_mesh_name)
+	boss.m_RenderableObject:set_visible(false)
 	if boss.m_BossRunning then
-		boss.m_Phases = chucky.m_OriginalPhases
-		boss.m_Lifes = chucky.m_OriginalLifes
+		boss.m_Phases = boss.m_OriginalPhases
+		boss.m_Lifes = boss.m_OriginalLifes
 		boss.m_BossRunning = false
 	end
+	coreInstance:trace("RESET DONE")
 end
 
