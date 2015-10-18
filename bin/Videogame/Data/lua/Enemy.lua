@@ -107,6 +107,7 @@ function update_boss_shoot_cooldown(enemy, player_position)
 	  local distPlayerEnemy = vectDist:length();
 	  local inclinacion = ((distPlayerEnemy - 12) / 3.4)+0.5; -- valores hardcodeados 11.6, 3.4
 	  enemy.m_DireccionBala = Vect3f(enemy.m_DireccionBala.x, enemy.m_DireccionBala.y + inclinacion, enemy.m_DireccionBala.z)
+	  enemy.BalaActiva = true;
 	end
 end
 
@@ -157,6 +158,7 @@ function update_cooldown(enemy, dt, player_position)
       enemy.m_CurrentCooldown = enemy.m_CooldownTimer;
 	  shoot_to_vector(dt, enemy:get_position(), enemy)
 	  enemy.m_DireccionBala = player_position - enemy:get_position()
+	  enemy.BalaActiva = true;
 	end
 end
 
@@ -189,11 +191,13 @@ function update_shoot(dt, enemy)
     enemy.m_CurrentCooldown = enemy.m_CurrentCooldown - dt;
     if (enemy.m_CurrentCooldown < 0.0 or player.is_dead) then
       enemy.m_IsOnCooldown = false;
+	  enemy.BalaActiva = false;
       delete_shooting(renderable_shoot)
     else 
       enemy.m_PosicionBala = enemy:updtate_projectile_position(dt) 
 	  renderable_shoot:set_position(enemy.m_PosicionBala)
       if (check_player_shoot_collision(enemy, renderable_shoot)) then
+		enemy.BalaActiva = false;
 		delete_shooting(renderable_shoot)
         enemy:add_damage_player();
       end
@@ -217,6 +221,7 @@ function update_shoot_boss(dt, enemy)
 	  enemy.BalaSpeed = enemy.BalaOriginalSpeed;
 	  current_speed_change = inicial_speed_change;
 	  actual_speed_change = 0;
+	  enemy.BalaActiva = false;
       delete_shooting(renderable_shoot)
 	  enemy:m_FSM():newState("Parado")
     else 
@@ -227,6 +232,7 @@ function update_shoot_boss(dt, enemy)
 		check_player_shoot_return(enemy, renderable_shoot);
 		if (check_player_shoot_collision(enemy, renderable_shoot)) then
 			enemy.m_IsOnCooldown = false;
+			enemy.BalaActiva = false;
 			delete_shooting(renderable_shoot)
 			enemy.BalaSpeed = enemy.BalaOriginalSpeed;
 			current_speed_change = inicial_speed_change;
@@ -339,6 +345,7 @@ function update_shoot_boss(dt, enemy)
 			enemy.BalaSpeed = enemy.BalaOriginalSpeed;
 			current_speed_change = inicial_speed_change;
 			actual_speed_change = 0;
+			enemy.BalaActiva = false;
 			delete_shooting(renderable_shoot)
 			local qte_emmiter_name = playerRenderable.m_ParticleEmitter
 			if not inputm:has_game_pad(1) then
@@ -365,6 +372,7 @@ function update_horizontal_boss_shoot(dt, enemy)
 	  enemy.BalaSpeed = enemy.BalaOriginalSpeed;
 	  current_speed_change = inicial_speed_change;
 	  actual_speed_change = 0;
+	  enemy.BalaActiva = false;
 	  delete_shooting(renderable_shoot)
 	  enemy:m_FSM():newState("Parado")
 	  local qte_emmiter_name = playerRenderable.m_ParticleEmitter
@@ -385,6 +393,7 @@ function update_horizontal_boss_shoot(dt, enemy)
 		enemy.BalaSpeed = enemy.BalaOriginalSpeed;
 		current_speed_change = inicial_speed_change;
 		actual_speed_change = 0;
+		enemy.BalaActiva = false;
 		delete_shooting(renderable_shoot)
 		
 		local qte_emmiter_name = playerRenderable.m_ParticleEmitter
@@ -485,6 +494,7 @@ function update_horizontal_boss_shoot(dt, enemy)
 			enemy.BalaSpeed = enemy.BalaOriginalSpeed;
 			current_speed_change = inicial_speed_change;
 			actual_speed_change = 0;
+			enemy.BalaActiva = false;
 			delete_shooting(renderable_shoot)
 			local qte_emmiter_name = playerRenderable.m_ParticleEmitter
 			if not inputm:has_game_pad(1) then
