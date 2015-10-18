@@ -68,6 +68,9 @@ void CWWSoundManager::Done() {
     AK::IAkStreamMgr::Get()->Destroy();
   AK::MemoryMgr::Term();
 
+  for (auto it = m_GameObjects.begin(); it != m_GameObjects.end(); ++it) {
+    delete(it->second);
+  }
   m_GameObjects.clear();
   for (size_t i = 0; i < m_events.size(); ++i) {
     delete (m_events[i]);
@@ -192,62 +195,68 @@ void CWWSoundManager::Load(const std::string &file) {
           }
         } else if (name == "GameObject2D") {
           std::string goName = nodeChild.GetPszISOProperty("name", "", false);
-          m_GameObjects[goName] = ++m_LastId;
           bool register_ = nodeChild.GetBoolProperty("register", false, false);
+          GameObjectInfo *go = new GameObjectInfo();
+          go->GameObjectID = ++m_LastId;
+          go->registered = register_;
+          m_GameObjects[goName] = go;
           if (register_) {
-            AK::SoundEngine::RegisterGameObj(m_GameObjects[goName]);
+            AK::SoundEngine::RegisterGameObj(m_GameObjects[goName]->GameObjectID);
           }
         } else if (name == "GameObject3D") {
           std::string goName = nodeChild.GetPszISOProperty("name", "", false);
-          m_GameObjects[goName] = ++m_LastId;
           bool register_ = nodeChild.GetBoolProperty("register", false, false);
+          GameObjectInfo *go = new GameObjectInfo();
+          go->GameObjectID = ++m_LastId;
+          go->registered = register_;
+          m_GameObjects[goName] = go;
           if (register_) {
-            AK::SoundEngine::RegisterGameObj(m_GameObjects[goName]);
-          }
-          int positions = nodeChild.GetNumChildren();
-          if (positions > 0) {
-            AkSoundPosition *posList = new (std::nothrow) AkSoundPosition[positions];
-            for (int j = 0; j < positions; ++j) {
-              CXMLTreeNode nodeChild1 = nodeChild.getNextChild();
-              Vect3f pos = nodeChild1.GetVect3fProperty("pos", v3fZERO, false);
-              Vect3f dir = nodeChild1.GetVect3fProperty("dir", v3fZERO, false);
-              posList[j].Position.X = pos.x;
-              posList[j].Position.Y = pos.y;
-              posList[j].Position.Z = pos.z;
-              dir.Normalize();
-              posList[j].Orientation.X = dir.x;
-              posList[j].Orientation.Y = dir.y;
-              posList[j].Orientation.Z = dir.z;
+            AK::SoundEngine::RegisterGameObj(m_GameObjects[goName]->GameObjectID);
+            int positions = nodeChild.GetNumChildren();
+            if (positions > 0) {
+              AkSoundPosition *posList = new (std::nothrow) AkSoundPosition[positions];
+              for (int j = 0; j < positions; ++j) {
+                CXMLTreeNode nodeChild1 = nodeChild.getNextChild();
+                Vect3f pos = nodeChild1.GetVect3fProperty("pos", v3fZERO, false);
+                Vect3f dir = nodeChild1.GetVect3fProperty("dir", v3fZERO, false);
+                posList[j].Position.X = pos.x;
+                posList[j].Position.Y = pos.y;
+                posList[j].Position.Z = pos.z;
+                dir.Normalize();
+                posList[j].Orientation.X = dir.x;
+                posList[j].Orientation.Y = dir.y;
+                posList[j].Orientation.Z = dir.z;
 
-            }
-            std::string type = nodeChild.GetPszISOProperty("type", "", false);
-            AK::SoundEngine::MultiPositionType type_pos;
-            if (type == "MultiSource") {
-              type_pos = AK::SoundEngine::MultiPositionType::MultiPositionType_MultiSources;
+              }
+              std::string type = nodeChild.GetPszISOProperty("type", "", false);
+              AK::SoundEngine::MultiPositionType type_pos;
+              if (type == "MultiSource") {
+                type_pos = AK::SoundEngine::MultiPositionType::MultiPositionType_MultiSources;
+              } else {
+                type_pos = AK::SoundEngine::MultiPositionType::MultiPositionType_MultiDirections;
+              }
+              AK::SoundEngine::SetMultiplePositions(m_GameObjects[goName]->GameObjectID, posList, positions, type_pos);
+              delete[] posList;
             } else {
-              type_pos = AK::SoundEngine::MultiPositionType::MultiPositionType_MultiDirections;
+              Vect3f pos = nodeChild.GetVect3fProperty("pos", v3fZERO, false);
+              Vect3f dir = nodeChild.GetVect3fProperty("dir", v3fZERO, false);
+              AkSoundPosition soundPos;
+              soundPos.Position.X = pos.x;
+              soundPos.Position.Y = pos.y;
+              soundPos.Position.Z = pos.z;
+              dir.Normalize();
+              soundPos.Orientation.X = dir.x;
+              soundPos.Orientation.Y = dir.y;
+              soundPos.Orientation.Z = dir.z;
+              AK::SoundEngine::SetPosition(m_GameObjects[goName]->GameObjectID, soundPos);
             }
-            AK::SoundEngine::SetMultiplePositions(m_GameObjects[goName], posList, positions, type_pos);
-            delete[] posList;
-          } else {
-            Vect3f pos = nodeChild.GetVect3fProperty("pos", v3fZERO, false);
-            Vect3f dir = nodeChild.GetVect3fProperty("dir", v3fZERO, false);
-            AkSoundPosition soundPos;
-            soundPos.Position.X = pos.x;
-            soundPos.Position.Y = pos.y;
-            soundPos.Position.Z = pos.z;
-            dir.Normalize();
-            soundPos.Orientation.X = dir.x;
-            soundPos.Orientation.Y = dir.y;
-            soundPos.Orientation.Z = dir.z;
-            AK::SoundEngine::SetPosition(m_GameObjects[goName], soundPos);
           }
         } else if (name == "InitEvent") {
           std::string eventName = nodeChild.GetPszISOProperty("event", "", false);
           std::string goName = nodeChild.GetPszISOProperty("GameObject", "", false);
           EventInfo *ei = new EventInfo();
           ei->Event = eventName;
-          ei->GameObjectID = m_GameObjects[goName];
+          ei->GameObjectID = m_GameObjects[goName]->GameObjectID;
           m_events.push_back(ei);
         }
       }
@@ -275,7 +284,7 @@ void CWWSoundManager::SetListenerPosition(Vect3f pos, Vect3f direction, Vect3f u
 
 void CWWSoundManager::SetGameObjectPosition(const std::string &gameObject, Vect3f pos, Vect3f direction) {
   auto it = m_GameObjects.find(gameObject);
-  if (it != m_GameObjects.end()) {
+  if (it != m_GameObjects.end() && it->second->registered) {
     AkSoundPosition soundPos;
     direction.Normalize();
     soundPos.Orientation.X = direction.x;
@@ -284,7 +293,7 @@ void CWWSoundManager::SetGameObjectPosition(const std::string &gameObject, Vect3
     soundPos.Position.X = pos.x;
     soundPos.Position.Y = pos.y;
     soundPos.Position.Z = pos.z;
-    AK::SoundEngine::SetPosition(it->second, soundPos);
+    AK::SoundEngine::SetPosition(it->second->GameObjectID, soundPos);
   }
 }
 
@@ -294,36 +303,38 @@ void CWWSoundManager::StopAllPlayingEvents() {
 
 void CWWSoundManager::PlayEvent(const std::string &eventName, const std::string &GameObject) {
   auto it = m_GameObjects.find(GameObject);
-  if (it != m_GameObjects.end()) {
-    AkPlayingID m_iPID = AK::SoundEngine::PostEvent(eventName.c_str(), it->second);
+  if (it != m_GameObjects.end() && it->second->registered) {
+    AkPlayingID m_iPID = AK::SoundEngine::PostEvent(eventName.c_str(), it->second->GameObjectID);
   }
 }
 
 void CWWSoundManager::SetSwitch(const std::string &group, const std::string &switch_, const std::string &gameObject) {
   auto it = m_GameObjects.find(gameObject);
-  if (it != m_GameObjects.end()) {
-    AK::SoundEngine::SetSwitch(group.c_str(), switch_.c_str(), it->second);
+  if (it != m_GameObjects.end() && it->second->registered) {
+    AK::SoundEngine::SetSwitch(group.c_str(), switch_.c_str(), it->second->GameObjectID);
   }
 }
 
 void CWWSoundManager::SetTrigger(const std::string &trigger, const std::string &gameObject) {
   auto it = m_GameObjects.find(gameObject);
-  if (it != m_GameObjects.end()) {
-    AK::SoundEngine::PostTrigger(trigger.c_str(), it->second);
+  if (it != m_GameObjects.end() && it->second->registered) {
+    AK::SoundEngine::PostTrigger(trigger.c_str(), it->second->GameObjectID);
   }
 }
 
 void CWWSoundManager::RegisterGameObject(const std::string &gameObject) {
   auto it = m_GameObjects.find(gameObject);
-  if (it != m_GameObjects.end()) {
-    AK::SoundEngine::RegisterGameObj(it->second);
+  if (it != m_GameObjects.end() && !it->second->registered) {
+    AK::SoundEngine::RegisterGameObj(it->second->GameObjectID);
+    it->second->registered = true;
   }
 }
 
 void CWWSoundManager::UnregisterGameObject(const std::string &gameObject) {
   auto it = m_GameObjects.find(gameObject);
-  if (it != m_GameObjects.end()) {
-    AK::SoundEngine::UnregisterGameObj(it->second);
+  if (it != m_GameObjects.end() && it->second->registered) {
+    AK::SoundEngine::UnregisterGameObj(it->second->GameObjectID);
+    it->second->registered = false;
   }
 }
 

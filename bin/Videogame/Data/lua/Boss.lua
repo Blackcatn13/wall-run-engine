@@ -16,6 +16,8 @@ local actions = {{"mik", "sp","roca","roca"},
 {"mik","roca", "mik","sp","roca"},
 {"mik","roca", "mik","roca","sp"},}
 
+local array_mik = {"MikMik007", "MikMik007", "MikMik008", "MikMik009", "MikMik010", "MikMik011"}
+
 function start_boss()
 	set_player_room("0", true)
 	cam_Controller:set_active_camera("BossCam")
@@ -56,13 +58,12 @@ function start_boss()
 	all_boss_miks_killed = true
 	boss_miks_killed = 0
 	chucky.m_BossRunning = true
-	
-	enemy_manager:get_enemy("MikMik007"):m_FSM():newState("Waiting")
-	enemy_manager:get_enemy("MikMik008"):m_FSM():newState("Waiting")
-	enemy_manager:get_enemy("MikMik009"):m_FSM():newState("Waiting")
-	enemy_manager:get_enemy("MikMik010"):m_FSM():newState("Waiting")
-	enemy_manager:get_enemy("MikMik011"):m_FSM():newState("Waiting")
-		
+
+	for i = 1, table.getn(array_mik) do
+		enemy_manager:get_enemy(array_mik[i]):m_FSM():newState("Waiting")
+		sound_manager:RegisterGameObject(array_mik[i])
+	end
+
 	if player.super_piky_active then
 		player.set_super_piky(false)
 		player.super_piky_timer = 0.0
@@ -367,7 +368,6 @@ function chucky_boss_update_call(ElapsedTime, doComprobation, name)
 	if (enemy ~= nil) then
 		if not enemy.m_RenderableObject:is_action_animation_active() then
 		enemy.m_RenderableObject:remove_action(7)
-			local array_mik = {"MikMik007", "MikMik007", "MikMik008", "MikMik009", "MikMik010", "MikMik011"}
 			for i = 1, table.getn(array_mik) do
 				summon_mik(array_mik[i])
 				fire_mik_summon_particles(array_mik[i])

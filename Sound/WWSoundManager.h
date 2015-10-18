@@ -23,6 +23,11 @@ struct EventInfo {
   AkPlayingID PlayindID;
 };
 
+struct GameObjectInfo {
+  AkGameObjectID GameObjectID;
+  bool registered;
+};
+
 class CWWSoundManager {
  public:
   //----Init and End protocols------------------------------------
@@ -45,7 +50,7 @@ class CWWSoundManager {
   void SetGameObjectPosition(const std::string &gameObject, Vect3f pos, Vect3f direction = Vect3f(1, 0, 0));
  private:
   std::string m_fileName;
-  std::map<std::string, AkGameObjectID> m_GameObjects;
+  std::map<std::string, GameObjectInfo *> m_GameObjects;
   AkGameObjectID m_LastId;
   std::vector<EventInfo *> m_events;
 };

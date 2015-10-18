@@ -19,7 +19,7 @@
 	<layer name="gui_message"/>
 	<layer name="vanishing"/>
 	<layer name="lava"/>
-	<layer name ="superPiky" />
+	<layer name="superPiky"/>
 	
 	<platform name="Poly_Sala0_001" core="Poly_Sala0_001" type="poly" pos="-0.038880 -6.534 -21.177698" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="4.497 3.75611 0.945499" layer="poly" room="0" final_position="-0.038880 0.94 -21.177698"
 		 direction="0 1 0" time_out="5" speed="20" light="" activation_distance="10"/>

@@ -10,15 +10,15 @@
 	
 	<instance_enemy name="Chucky" type="chucky_runner" />
 	
-	<instance_enemy name="PumPum1" type="pumpum_easy" attack_distance = "160" zone="6.0" projectile="disparoPumPum1" />	
-	<instance_enemy name="PumPum2" type="pumpum_easy" attack_distance = "160" zone="6.0" projectile="disparoPumPum2" />
-	<instance_enemy name="PumPum3" type="pumpum_easy" attack_distance = "160" zone="6.0" projectile="disparoPumPum3" /> 
-	<instance_enemy name="PumPum4" type="pumpum_easy" attack_distance = "160" zone="6.0" projectile="disparoPumPum4" /> 
+	<instance_enemy name="PumPum1" type="pumpum_easy" attack_distance="160" zone="6.0" projectile="disparoPumPum1" />	
+	<instance_enemy name="PumPum2" type="pumpum_easy" attack_distance="160" zone="6.0" projectile="disparoPumPum2" />
+	<instance_enemy name="PumPum3" type="pumpum_easy" attack_distance="160" zone="6.0" projectile="disparoPumPum3" /> 
+	<instance_enemy name="PumPum4" type="pumpum_easy" attack_distance="160" zone="6.0" projectile="disparoPumPum4" /> 
 	
-	<instance_enemy name="PumPum_S7_001" type="pumpum_easy" attack_distance = "160" zone="7.0" projectile="disparoPumPum_S7_001" />	
-	<instance_enemy name="PumPum_S7_002" type="pumpum_easy" attack_distance = "160" zone="7.0" projectile="disparoPumPum_S7_002" />
-	<instance_enemy name="PumPum_S7_003" type="pumpum_easy" attack_distance = "160" zone="7.0" projectile="disparoPumPum_S7_003" /> 
-	<instance_enemy name="PumPum_S7_004" type="pumpum_easy" attack_distance = "160" zone="7.0" projectile="disparoPumPum_S7_004" /> 
+	<instance_enemy name="PumPum_S7_001" type="pumpum_easy" attack_distance="160" zone="7.0" projectile="disparoPumPum_S7_001" />	
+	<instance_enemy name="PumPum_S7_002" type="pumpum_easy" attack_distance="160" zone="7.0" projectile="disparoPumPum_S7_002" />
+	<instance_enemy name="PumPum_S7_003" type="pumpum_easy" attack_distance="160" zone="7.0" projectile="disparoPumPum_S7_003" /> 
+	<instance_enemy name="PumPum_S7_004" type="pumpum_easy" attack_distance="160" zone="7.0" projectile="disparoPumPum_S7_004" /> 
 	
 		
 	<instance_enemy name="MikMik001" type="mikmik_easy" attack_distance="60" zone="3.5">

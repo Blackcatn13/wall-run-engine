@@ -326,11 +326,13 @@ function reset_game()
 	get_renderable_object("solid",0, "Ruinas"):set_visible(false)
 	get_renderable_object("solid",0, "ORO006"):set_visible(false)
 	get_renderable_object("solid",0, "ORO005"):set_visible(false)
-	enemy_manager:get_enemy("MikMik007"):m_FSM():newState("Waiting")
-	enemy_manager:get_enemy("MikMik008"):m_FSM():newState("Waiting")
-	enemy_manager:get_enemy("MikMik009"):m_FSM():newState("Waiting")
-	enemy_manager:get_enemy("MikMik010"):m_FSM():newState("Waiting")
-	enemy_manager:get_enemy("MikMik011"):m_FSM():newState("Waiting")
+
+	local array_mik = {"MikMik007", "MikMik007", "MikMik008", "MikMik009", "MikMik010", "MikMik011"}
+
+	for i = 1, table.getn(array_mik) do
+		enemy_manager:get_enemy(array_mik[i]):m_FSM():newState("Waiting")
+		--sound_manager:UnregisterGameObject(array_mik[i])
+	end
 	all_boss_miks_killed = true
 	boss_miks_killed = 0
 	local boss = enemy_manager:get_enemy(boss_mesh_name)

@@ -34,6 +34,24 @@
 	<GameObject3D name="MikMik003" register="true" pos="520.253601 9.007496 -0.450745" dir="1 0 0"/>
 	<GameObject3D name="MikMik004" register="true" pos="530.339172 9.007496 8.188751" dir="1 0 0"/>
 	<GameObject3D name="MikMik005" register="true" pos="532.398804 9.007496 -10.140839" dir="1 0 0"/>
+	<GameObject3D name="MikMik006" register="true" pos="546.685 13.102 -406.656" dir="1 0 0"/>
+	<GameObject3D name="MikMik007" register="false" pos="1.647 2.288 -17.073" dir="1 0 0"/>
+	<GameObject3D name="MikMik008" register="false" pos="12.387 2.288 0.138" dir="1 0 0"/>
+	<GameObject3D name="MikMik009" register="false" pos="-12.477 2.288 0.59" dir="1 0 0"/>
+	<GameObject3D name="MikMik010" register="false" pos="14.661 2.288 8.762" dir="1 0 0"/>
+	<GameObject3D name="MikMik011" register="false" pos="1.647 2.288 16.74" dir="1 0 0"/>
+	<GameObject3D name="MikMik012" register="true" pos="559.558 12.938 -487.047" dir="1 0 0"/>
+	<GameObject3D name="MikMik_S5_002" register="true" pos="557.568 8.639 -290.675" dir="1 0 0"/>
+	<GameObject3D name="MikMik_S5_003" register="true" pos="557.568 7.593 -306.438" dir="1 0 0"/>
+	<GameObject3D name="MikMik_S5_004" register="true" pos="557.767 13.23 -366.54" dir="1 0 0"/>
+	<GameObject3D name="MikMik_S7_001" register="true" pos="450.247253 25.135864 -645.309082" dir="1 0 0"/>
+	<GameObject3D name="MikMik_S7_002" register="true" pos="384.589355 25.135864 -645.309082" dir="1 0 0"/>
+	<GameObject3D name="MikMik_S7_003" register="true" pos="369.727753 25.135864 -645.309082" dir="1 0 0"/>
+	<GameObject3D name="MikMik_S7_004" register="true" pos="-8.001144 30.247437 -645.052673" dir="1 0 0"/>
+	<GameObject3D name="MikMik_S7_005" register="true" pos="-52.004 19.891 -645.052673" dir="1 0 0"/>
+	<GameObject3D name="MikMik_S7_006" register="true" pos="-99.081573 18.696899 -645.052673" dir="1 0 0"/>
+	<GameObject3D name="MikMik_S7_007" register="true" pos="-174.672119 18.696899 -645.052673" dir="1 0 0"/>
+
 
 	<InitEvent event="Torches" GameObject="Torch"/>
 </WWise>
