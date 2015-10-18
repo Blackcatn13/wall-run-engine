@@ -232,7 +232,7 @@
 
 	<platform name="POLY PLAT. HORTZ004" core="POLY PLAT. HORTZ004" type="poly" pos="568.288513 11.963495 -71.396538" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="5.26819 1.83506 3.42394" layer="poly" room="4" final_position="568.288513 15.963495 -71.396538"
 		 direction="0 1 0" time_out="3" speed="5" light="" activation_distance="10"/>
-	<platform name="POLY PLAT. HORTZ005" core="POLY PLAT. HORTZ005" type="poly" pos="585.507996 20.284309 -98.097610" yaw="0.0" pitch="0.0" roll="0.0" scale="2.893 1.24187 2.069" visible="true" phisic_size="8.314 0.411344 4.8211" layer="poly" room="4" final_position="573.68 20.284 -98.098" direction="-1 0 0" time_out="3" speed="15" light="" activation_distance="30"/>
+	<platform name="POLY PLAT. HORTZ005" core="POLY PLAT. HORTZ005" type="poly" pos="585.507996 20.284309 -98.097610" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="8.314 0.411344 4.8211" layer="poly" room="4" final_position="573.68 20.284 -98.098" direction="-1 0 0" time_out="3" speed="15" light="" activation_distance="30"/>
 	<platform name="POLY PLAT. HORTZ006" core="POLY PLAT. HORTZ006" type="poly" pos="536.216003 20.370979 -96.517426" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="9.05542 0.331227 4.3216" layer="poly" room="4" final_position="549.651 20.370979 -96.517426" direction="1 0 0" time_out="10" speed="15" light="" activation_distance="30"/>
 	<mesh_instance name="SALA1_TEMPLEPOLYPOLY" core="SALA1_TEMPLEPOLYPOLY" pos="115.736115 3.385889 -5.362411" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="solid"/>
 	<mesh_instance name="Columna005" core="Columna005" pos="123.349655 0.741134 -27.675018" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="1"/>
@@ -550,7 +550,7 @@
 	<mesh_instance name="Sala_4_Estalagtita_039" core="Sala_4_Estalagtita_039" pos="556.171021 33.953308 -131.082977" yaw="-1.09689" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="solid"/>
 	<mesh_instance name="Sala_4_Estalagtita_040" core="Sala_4_Estalagtita_040" pos="551.062378 35.366489 -129.329773" yaw="-1.09689" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="solid"/>
 	<mesh_instance name="Sala4_Escultura_001" core="Sala4_Escultura_001" pos="583.343872 20.622276 -97.959480" yaw="0.0596803" pitch="0.0" roll="0.0" scale="0.85168 0.85168 0.85168" visible="true" room="4" layer="solid"/>
-	<mesh_instance name="Sala4_Escultura_002" core="Sala4_Escultura_002" pos="579.894775 16.983360 -149.994720" yaw="-0.821534" pitch="0.0524273" roll="-0.0623177" scale="0.769093 0.769093 0.769093" visible="true" room="4" layer="solid"/>
+	<mesh_instance name="Sala4_Escultura_002" core="Sala4_Escultura_002" pos="579.894775 16.983360 -149.994720" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="solid"/>
 	<mesh_instance name="CARALLENGUA_1_SALA5" core="CARALLENGUA_1_SALA5" pos="561.412292 18.583603 -369.319946" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
 	<mesh_instance name="PLATAFORMA_S6_1" core="PLATAFORMA_S6_1" pos="565.165283 13.701187 -437.934326" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
 	<mesh_instance name="PLATAFORMA_S6_2" core="PLATAFORMA_S6_2" pos="534.435425 11.138065 -453.777283" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid"/>
