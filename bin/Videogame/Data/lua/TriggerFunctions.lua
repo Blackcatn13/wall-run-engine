@@ -1,21 +1,23 @@
 local teleporting = false
 function set_teleport_ready(player_position)
-	renderable_objects_layer_manager:change_between_layers(piky_layer, "vanishing", player_controller.m_Room, "Piky")
-	local player_renderable = get_renderable_object("vanishing", player_controller.m_Room, "Piky")
-	player_renderable.m_VanishActive =true
-	player_renderable.m_Vanishing = true
---	player.can_move = false
-	player_renderable.m_Modifier = 1.0
-	player.vanishing = true
-	local teleportRenderable = get_renderable_object("solid", 6, "Teleport")
-	if teleportRenderable.m_ParticleEmitter ~= "" and teleportRenderable.m_ParticleEmitter2 ~= "" then
-		local emitter = particle_manager:get_resource(teleportRenderable.m_ParticleEmitter)
-		local pos = player_renderable:get_position()+ teleportRenderable.m_EmitterOffset
-		update_emitter_status(emitter, pos, true)
-		local emitter2 = particle_manager:get_resource(teleportRenderable.m_ParticleEmitter2)
-		local pos2 = player_renderable:get_position()+ teleportRenderable.m_EmitterOffset2
-		update_emitter_status(emitter2, pos2, true)
-		
+	if (player_controller.m_isAttack == false) and (player.is_hit == false and not player.is_dead) then
+		renderable_objects_layer_manager:change_between_layers(piky_layer, "vanishing", player_controller.m_Room, "Piky")
+		local player_renderable = get_renderable_object("vanishing", player_controller.m_Room, "Piky")
+		player_renderable.m_VanishActive =true
+		player_renderable.m_Vanishing = true
+	--	player.can_move = false
+		player_renderable.m_Modifier = 1.0
+		player.vanishing = true
+		local teleportRenderable = get_renderable_object("solid", 6, "Teleport")
+		if teleportRenderable.m_ParticleEmitter ~= "" and teleportRenderable.m_ParticleEmitter2 ~= "" then
+			local emitter = particle_manager:get_resource(teleportRenderable.m_ParticleEmitter)
+			local pos = player_renderable:get_position()+ teleportRenderable.m_EmitterOffset
+			update_emitter_status(emitter, pos, true)
+			local emitter2 = particle_manager:get_resource(teleportRenderable.m_ParticleEmitter2)
+			local pos2 = player_renderable:get_position()+ teleportRenderable.m_EmitterOffset2
+			update_emitter_status(emitter2, pos2, true)
+			
+		end
 	end
 --	activate_teleport(player_position)
 end
@@ -26,21 +28,22 @@ function update_emitter_status(emitter, position, visible)
 	--coreInstance:trace("Emitter position: "..tostring(position.x)..", "..tostring(position.y)..", "..tostring(position.z))
 end
 function vanish_player(name, room)
-
-	--local player = coreInstance:get_player_controller()
-	local player_renderable = get_renderable_object("vanishing", player_controller.m_Room, "Piky")
-	if (player_renderable.m_Vanishing) then
-		player_renderable.m_Modifier = player_renderable.m_Modifier - 0.5* coreInstance.m_ElapsedTime
-	--	coreInstance:trace("Alpha Modifier: ".. tostring(player_renderable.m_Modifier))
-		if (player_renderable.m_Modifier <= 0) then
-			if not teleporting then
-				coreInstance:trace("Teletransportandoo")
-				activate_teleport(name, room)
-				teleporting = true
-				
-			end
-			player_renderable.m_Vanishing = false;
+	if (player_controller.m_isAttack == false) and (player.is_hit == false and not player.is_dead) and player.vanishing then
+		--local player = coreInstance:get_player_controller()
+		local player_renderable = get_renderable_object("vanishing", player_controller.m_Room, "Piky")
+		if (player_renderable.m_Vanishing) then
+			player_renderable.m_Modifier = player_renderable.m_Modifier - 0.5* coreInstance.m_ElapsedTime
+		--	coreInstance:trace("Alpha Modifier: ".. tostring(player_renderable.m_Modifier))
+			if (player_renderable.m_Modifier <= 0) then
+				if not teleporting then
+					coreInstance:trace("Teletransportandoo")
+					activate_teleport(name, room)
+					teleporting = true
 					
+				end
+				player_renderable.m_Vanishing = false;
+						
+			end
 		end
 	end
 end
@@ -435,7 +438,7 @@ function ChuckyDesapears()
 	coreInstance:trace("CHUKY goes out");
 	local Chucky = enemy_manager:get_enemy("Chucky");
 	--if(Chucky.m_Appeared == true) then
-		local pos = Vect3f(12.30, 0.0, -2.75)
+		local pos = Vect3f(1000.30, 1000.0, -1000.75)
 		Chucky:move_to_position(pos);
 		Chucky:set_yaw(0.0);
 		Chucky:m_FSM():newState("Parado");

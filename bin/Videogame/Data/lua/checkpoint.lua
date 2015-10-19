@@ -1,6 +1,6 @@
 CheckPoint = {}
 --CheckPoint_mt = { __index = CheckPoint}
-local last_checkpoint_room = 1
+
 local last_position = Vect3f(0.0, 0.0, 0.0)
 local is_activated = false
 function CheckPoint.new()
@@ -116,13 +116,15 @@ function reset_checkpoints()
 			renderable:set_visible(true)
 			renderable.m_Printable = true
 			coreInstance:trace("reseting checkpoint: ".. tostring(i))
-			if i == table.getn(player.visited_checkpoints) then
-				coreInstance:trace("last checkpoint")
-				renderable_objects_layer_manager:change_between_vectors("solid", "CheckPointEnabledStand001", renderable.m_Room, 1)
-				renderable_objects_layer_manager:change_between_vectors("glow", "CheckPointEnabledSphere", renderable.m_Room, 1)
-			end
+			
 		end
+		--if i == table.getn(player.visited_checkpoints) then
+				
+		--	end
 	end
+	coreInstance:trace("last checkpoint")
+	renderable_objects_layer_manager:change_between_vectors("solid", "CheckPointEnabledStand001", last_checkpoint_room, 1)
+	renderable_objects_layer_manager:change_between_vectors("glow", "CheckPointEnabledSphere", last_checkpoint_room, 1)
 	last_checkpoint_room = 1
 	player.last_checkpoint = nil
 	clear_array(player.visited_checkpoints)

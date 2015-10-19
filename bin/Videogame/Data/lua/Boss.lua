@@ -66,8 +66,9 @@ function start_boss()
 
 	if player.super_piky_active then
 		player.set_super_piky(false)
-		player.super_piky_timer = 0.0
+		--player.super_piky_timer = 0.0
 	end
+	player.super_piky_timer = 0.0
 	particle_manager:get_resource("SuperPikyAuraEmitter"):set_visible(false)
 	particle_manager:get_resource("SuperPikyAura2Emitter"):set_visible(false)
 	chucky.m_Phases = chucky.m_OriginalPhases
@@ -416,6 +417,7 @@ function chucky_boss_update_hurt(ElapsedTime, doComprobation, name)
 				current_speed_change = inicial_speed_change;
 				actual_speed_change = 0;
 				enemy.BalaActiva = false;
+				fire_boss_projectile_particles(mesh, enemy, false)
 				delete_shooting(mesh)
 			end
 		end
