@@ -5,6 +5,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	2970383493	Mik_Attack			\Default Work Unit\Mik\Mik_Attack	
 	3001633723	Mik_Dead			\Default Work Unit\Mik\Mik_Dead	
 	3056034208	Mik_Saw			\Default Work Unit\Mik\Mik_Saw	
+	3271548291	Piky_Attack			\Default Work Unit\Piky\Piky_Attack	
 	3569977758	Mik_Follow			\Default Work Unit\Mik\Mik_Follow	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size

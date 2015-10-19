@@ -127,6 +127,7 @@
 				<Event Id="3569977758" Name="Mik_Follow"/>
 				<Event Id="2299701063" Name="Mik_Idle"/>
 				<Event Id="3056034208" Name="Mik_Saw"/>
+				<Event Id="3271548291" Name="Piky_Attack"/>
 				<Event Id="2367787684" Name="Pum_Attack"/>
 				<Event Id="1786886922" Name="Pum_Dead"/>
 			</IncludedEvents>
