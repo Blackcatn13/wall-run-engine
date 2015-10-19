@@ -178,6 +178,11 @@ function shoot_to_vector(dt, position, enemy)
 			emitter.m_FireParticles = true 
 		end
 		
+		local emitter2 = particle_manager:get_resource(renderable_shoot.m_ParticleEmitter2)
+		if emitter2 ~= nil then
+			emitter2.m_vPos = enemy.m_PosicionBala
+			emitter2:set_visible(true)
+		end
 		
 		renderable_shoot:set_position(enemy.m_PosicionBala)
 		renderable_shoot.m_Printable = true
@@ -188,6 +193,7 @@ end
 
 function update_shoot(dt, enemy)
  local renderable_shoot = get_renderable_object("lava", enemy.m_RenderableObject.m_Room, enemy.m_ProjectileName)
+	local emitter2 = particle_manager:get_resource(renderable_shoot.m_ParticleEmitter2)
  if (enemy.m_IsOnCooldown) then
 	coreInstance:trace("Updateando disparo pum!!")
 	
@@ -196,11 +202,21 @@ function update_shoot(dt, enemy)
       enemy.m_IsOnCooldown = false;
 	  enemy.BalaActiva = false;
       delete_shooting(renderable_shoot)
+		if emitter2 ~= nil then
+			emitter2:set_visible(false)
+		end
     else 
       enemy.m_PosicionBala = enemy:updtate_projectile_position(dt) 
 	  renderable_shoot:set_position(enemy.m_PosicionBala)
+	
+		if emitter2 ~= nil then
+			emitter2.m_vPos = enemy.m_PosicionBala
+		end
       if (check_player_shoot_collision(enemy, renderable_shoot)) then
 		enemy.BalaActiva = false;
+		if emitter2 ~= nil then
+			emitter2:set_visible(false)
+		end
 		delete_shooting(renderable_shoot)
         enemy:add_damage_player();
       end
@@ -209,6 +225,9 @@ function update_shoot(dt, enemy)
 	if player.is_dead then
 	  enemy.m_IsOnCooldown = false;
 	  enemy.BalaActiva = false;
+	  if emitter2 ~= nil then
+		emitter2:set_visible(false)
+	  end
       delete_shooting(renderable_shoot)
 	end
 end
@@ -230,6 +249,7 @@ function update_shoot_boss(dt, enemy)
 	  current_speed_change = inicial_speed_change;
 	  actual_speed_change = 0;
 	  enemy.BalaActiva = false;
+	  fire_boss_projectile_particles(renderable_shoot, enemy, false)
       delete_shooting(renderable_shoot)
 	  enemy:m_FSM():newState("Parado")
     else 
@@ -241,6 +261,7 @@ function update_shoot_boss(dt, enemy)
 		if (check_player_shoot_collision(enemy, renderable_shoot)) then
 			enemy.m_IsOnCooldown = false;
 			enemy.BalaActiva = false;
+			--fire_boss_projectile_particles(renderable_shoot, enemy)
 			delete_shooting(renderable_shoot)
 			enemy.BalaSpeed = enemy.BalaOriginalSpeed;
 			current_speed_change = inicial_speed_change;
@@ -250,7 +271,7 @@ function update_shoot_boss(dt, enemy)
 				start_super_piky()
 			else
 				enemy:add_damage_player();
-				
+				fire_boss_projectile_particles(renderable_shoot, enemy, false)
 				local qte_emmiter_name = playerRenderable.m_ParticleEmitter
 				if not inputm:has_game_pad(1) then
 					qte_emmiter_name = playerRenderable.m_ParticleEmitter2
@@ -354,6 +375,16 @@ function update_shoot_boss(dt, enemy)
 			current_speed_change = inicial_speed_change;
 			actual_speed_change = 0;
 			enemy.BalaActiva = false;
+			if not choca then
+				local dust_emitter = particle_manager:get_resource(renderable_shoot.m_ParticleEmitter)
+				if dust_emitter ~= nil then
+					coreInstance:trace("Proyectil Roto")
+					dust_emitter.m_vPos = enemy.m_PosicionBala + renderable_shoot.m_EmitterOffset
+					dust_emitter.m_FireParticles = true
+				end
+			end
+			
+			fire_boss_projectile_particles(renderable_shoot, enemy, true)
 			delete_shooting(renderable_shoot)
 			local qte_emmiter_name = playerRenderable.m_ParticleEmitter
 			if not inputm:has_game_pad(1) then
@@ -368,6 +399,19 @@ function update_shoot_boss(dt, enemy)
 	end
   end
 end
+function fire_boss_projectile_particles(renderable, enemy, use_offset)
+	local projectile_particles = {renderable.m_ParticleEmitter2, renderable.m_ParticleEmitter3}
+	local offsets = {renderable.m_EmitterOffset2, renderable.m_EmitterOffset3} 
+	for i = 1 , table.getn(projectile_particles) do
+		local particle_emitter = particle_manager:get_resource(projectile_particles[i])
+		if use_offset then
+			particle_emitter.m_vPos = enemy.m_PosicionBala + offsets[i]
+		else
+			particle_emitter.m_vPos = enemy.m_PosicionBala 
+		end
+		particle_emitter.m_FireParticles = true
+	end
+end
 
 function update_horizontal_boss_shoot(dt, enemy)
 
@@ -381,6 +425,7 @@ function update_horizontal_boss_shoot(dt, enemy)
 	  current_speed_change = inicial_speed_change;
 	  actual_speed_change = 0;
 	  enemy.BalaActiva = false;
+	  fire_boss_projectile_particles(renderable_shoot, enemy, false)
 	  delete_shooting(renderable_shoot)
 	  enemy:m_FSM():newState("Parado")
 	  local qte_emmiter_name = playerRenderable.m_ParticleEmitter
@@ -402,6 +447,7 @@ function update_horizontal_boss_shoot(dt, enemy)
 		current_speed_change = inicial_speed_change;
 		actual_speed_change = 0;
 		enemy.BalaActiva = false;
+		fire_boss_projectile_particles(renderable_shoot, enemy, false)
 		delete_shooting(renderable_shoot)
 		
 		local qte_emmiter_name = playerRenderable.m_ParticleEmitter
@@ -503,6 +549,7 @@ function update_horizontal_boss_shoot(dt, enemy)
 			current_speed_change = inicial_speed_change;
 			actual_speed_change = 0;
 			enemy.BalaActiva = false;
+			fire_boss_projectile_particles(renderable_shoot, enemy, true)
 			delete_shooting(renderable_shoot)
 			local qte_emmiter_name = playerRenderable.m_ParticleEmitter
 			if not inputm:has_game_pad(1) then

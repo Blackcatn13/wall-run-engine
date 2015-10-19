@@ -140,8 +140,8 @@
 
 	<animated_model name="Chucky" core="chuky" pos="12.301392 1000.000000 -2.756073" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="DustChuckyEmitter" emitter_offset="0.0 0.0 0.0" emitter2="DustJumpChuckyEmitter" emitter2_offset="0.0 0.0 0.0" room="1"/>
 	<animated_model name="ChuckyBoss" core="chuky" pos="0.0  4.48  0.0" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="enemies" room="0"/>
-	<mesh_instance name="disparoChucky" core="disparoChucky" pos="7.0 6.0 -100.0" yaw="0.0" pitch="0.0" roll="0.0" scale="2.0 2.0 2.0" visible="true" room="0" layer="enemies"/>
-	<mesh_instance name="disparoSuperPiky" core="disparo_superPiky" pos="-54.258789 0.000000 -12.633484" yaw="0.0" pitch="0.0" roll="0.0" scale="1.5 1.5 1.5" visible="true" room="0" layer="enemies"/>
+	<mesh_instance name="disparoChucky" core="disparoChucky" pos="7.0 6.0 -100.0" yaw="0.0" pitch="0.0" roll="0.0" scale="2.0 2.0 2.0" visible="true" room="0" layer="enemies" emitter="BossProjectileDustEmitter" emitter_offset="0.0 2.0 0.0" emitter2="BossProjectileRockEmitter" emitter2_offset="0.0 2.0 0.0" emitter3="BossProjectileRock2Emitter" emitter3_offset="0.0 2.0 0.0" />
+	<mesh_instance name="disparoSuperPiky" core="disparo_superPiky" pos="-54.258789 0.000000 -12.633484" yaw="0.0" pitch="0.0" roll="0.0" scale="1.5 1.5 1.5" visible="true" room="0" layer="enemies" emitter="BossProjectileDustEmitter" emitter_offset="0.0 2.0 0.0" emitter2="BossProjectileSPEmitter" emitter2_offset="0.0 2.0 0.0" emitter3="BossProjectileSP2Emitter" emitter3_offset="0.0 2.0 0.0" />
 
 		
 	<animated_model name="MikMik004" core="mik" pos="530.339172 9.007496 8.188751" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="Mik004DeathEmitter" emitter_offset="0.0 0.0 0.0" emitter2="MikExclamation004" emitter2_offset="0.0 3.0 0.0" room="3"/>
@@ -478,22 +478,22 @@
 	
 	<platform name="SecurityWall002" core="SecurityWall002" type="static" pos="557.271973 7.069 -315.611645" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="2.98108 2.9871 0.981232" layer="solid" room="5"/>
 	<mesh_instance name="PumPum1" core="PumPum"  pos="557.07 11.022 -416.279" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "6" layer="enemies" emitter="PumPumDeath01Emitter"/>
-	<mesh_instance name="disparoPumPum1" core="disparoPumPum"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "6" layer="lava" emitter="PumPumFire01Emitter" />
-	<mesh_instance name="PumPum2" core="PumPum"  pos="534.005 0.806 -505.328" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "6" layer="enemies" emitter="PumPumDeath02Emitter"/>
-	<mesh_instance name="disparoPumPum2" core="disparoPumPum"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "6" layer="lava" emitter="PumPumFire02Emitter"/>
+	<mesh_instance name="disparoPumPum1" core="disparoPumPum"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "6" layer="lava" emitter="PumPumFire01Emitter" emitter2="PumPumProjectileFire01Emitter" />
+	<mesh_instance name="PumPum2" core="PumPum"  pos="534.005 0.806 -505.328" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "6" layer="enemies" emitter="PumPumDeath02Emitter" />
+	<mesh_instance name="disparoPumPum2" core="disparoPumPum"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "6" layer="lava" emitter="PumPumFire02Emitter"  emitter2="PumPumProjectileFire02Emitter" />
 	<mesh_instance name="PumPum3" core="PumPum"  pos="549.085 6.68 -615.408" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" layer="enemies" room = "6" emitter="PumPumDeath03Emitter"/>
-	<mesh_instance name="disparoPumPum3" core="disparoPumPum"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "6" layer="lava" emitter="PumPumFire03Emitter"/>
+	<mesh_instance name="disparoPumPum3" core="disparoPumPum"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "6" layer="lava" emitter="PumPumFire03Emitter"  emitter2="PumPumProjectileFire03Emitter"/>
 	<mesh_instance name="PumPum4" core="PumPum"  pos="543.913 6.68 -616.073" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" layer="enemies" room = "6" emitter="PumPumDeath01Emitter"/>
-	<mesh_instance name="disparoPumPum4" core="disparoPumPum"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "6" layer="lava" emitter="PumPumFire01Emitter"/>
+	<mesh_instance name="disparoPumPum4" core="disparoPumPum"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "6" layer="lava" emitter="PumPumFire01Emitter"  emitter2="PumPumProjectileFire01Emitter"/>
 	
 	<mesh_instance name="PumPum_S7_001" core="PumPum"  pos="226.917526 28.647437 -645.052673" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "7" layer="enemies" emitter="PumPumDeath01Emitter"/>
-	<mesh_instance name="disparoPumPum_S7_001" core="disparoPumPum"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "7" layer="lava" emitter="PumPumFire01Emitter" />
+	<mesh_instance name="disparoPumPum_S7_001" core="disparoPumPum"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "7" layer="lava" emitter="PumPumFire01Emitter"  emitter2="PumPumProjectileFire01Emitter"/>
 	<mesh_instance name="PumPum_S7_002" core="PumPum"  pos="-22.759338 28.647437 -645.052673" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "7" layer="enemies" emitter="PumPumDeath02Emitter"/>
-	<mesh_instance name="disparoPumPum_S7_002" core="disparoPumPum"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "7" layer="lava" emitter="PumPumFire02Emitter"/>
+	<mesh_instance name="disparoPumPum_S7_002" core="disparoPumPum"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "7" layer="lava" emitter="PumPumFire02Emitter"  emitter2="PumPumProjectileFire02Emitter"/>
 	<mesh_instance name="PumPum_S7_003" core="PumPum"  pos="-187.095978 17.096899 -645.052673" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" layer="enemies" room = "7" emitter="PumPumDeath03Emitter"/>
-	<mesh_instance name="disparoPumPum_S7_003" core="disparoPumPum"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "7" layer="lava" emitter="PumPumFire03Emitter"/>
+	<mesh_instance name="disparoPumPum_S7_003" core="disparoPumPum"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "7" layer="lava" emitter="PumPumFire03Emitter"  emitter2="PumPumProjectileFire03Emitter"/>
 	<mesh_instance name="PumPum_S7_004" core="PumPum"  pos="-225.335602 27.052563 -645.052673" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" layer="enemies" room = "7" emitter="PumPumDeath01Emitter"/>
-	<mesh_instance name="disparoPumPum_S7_004" core="disparoPumPum"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "7" layer="lava" emitter="PumPumFire01Emitter"/>
+	<mesh_instance name="disparoPumPum_S7_004" core="disparoPumPum"  pos="7.0 5.0 -100.0" yaw="0.0"  pitch="0.0" roll="0.0" scale="0.3 0.3 0.3" room = "7" layer="lava" emitter="PumPumFire01Emitter"  emitter2="PumPumProjectileFire01Emitter"/>
 	
 	<mesh_instance name="Teleport" core="Teleport" pos="552.338684 2.577842 -505.727661" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="solid" emitter="PikyYellowTeleporting" emitter_offset="0.0 1.0 0.0" emitter2="PikyBrownTeleporting" emitter2_offset="0.0 1.0 0.0"/>
 	<mesh_instance name="LightBeamTeleport" core="LightBeamTeleport" pos="552.310120 2.986145 -505.720551" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="6" layer="alpha_objects"/>
