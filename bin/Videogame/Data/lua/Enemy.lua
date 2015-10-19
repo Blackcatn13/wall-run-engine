@@ -187,10 +187,12 @@ function shoot_to_vector(dt, position, enemy)
 end
 
 function update_shoot(dt, enemy)
+ local renderable_shoot = get_renderable_object("lava", enemy.m_RenderableObject.m_Room, enemy.m_ProjectileName)
  if (enemy.m_IsOnCooldown) then
-	local renderable_shoot = get_renderable_object("lava", enemy.m_RenderableObject.m_Room, enemy.m_ProjectileName)
+	coreInstance:trace("Updateando disparo pum!!")
+	
     enemy.m_CurrentCooldown = enemy.m_CurrentCooldown - dt;
-    if (enemy.m_CurrentCooldown < 0.0 or player.is_dead) then
+    if (enemy.m_CurrentCooldown < 0.0) then
       enemy.m_IsOnCooldown = false;
 	  enemy.BalaActiva = false;
       delete_shooting(renderable_shoot)
@@ -204,6 +206,11 @@ function update_shoot(dt, enemy)
       end
     end
   end
+	if player.is_dead then
+	  enemy.m_IsOnCooldown = false;
+	  enemy.BalaActiva = false;
+      delete_shooting(renderable_shoot)
+	end
 end
 
 function update_shoot_boss(dt, enemy)
