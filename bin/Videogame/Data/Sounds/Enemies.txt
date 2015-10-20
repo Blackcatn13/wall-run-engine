@@ -1,6 +1,8 @@
 Event	ID	Name			Wwise Object Path	Notes
+	1518290705	Piky_Quiet			\Default Work Unit\Piky\Piky_Quiet	
 	1786886922	Pum_Dead			\Default Work Unit\Pum\Pum_Dead	
 	2299701063	Mik_Idle			\Default Work Unit\Mik\Mik_Idle	
+	2333595876	Piky_Walk			\Default Work Unit\Piky\Piky_Walk	
 	2367787684	Pum_Attack			\Default Work Unit\Pum\Pum_Attack	
 	2970383493	Mik_Attack			\Default Work Unit\Mik\Mik_Attack	
 	3001633723	Mik_Dead			\Default Work Unit\Mik\Mik_Dead	
@@ -10,8 +12,10 @@ Event	ID	Name			Wwise Object Path	Notes
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	50278207	Mordisco2	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Mordisco2_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Miks\Mik_Atack\Mordisco2		15408
+	121954957	Paso2	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Paso2_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Piky\Piky_Steps\Paso2		22078
 	169203991	RugidoDetectado	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\RugidoDetectado_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Miks\Mik_Viewed\RugidoDetectado		294332
 	194837334	Silence	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Silence_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Miks\Mik_Following\Silence		480064
+	195247926	Paso1	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Paso1_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Piky\Piky_Steps\Paso1		23668
 	230531197	Pum_Dead	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\EnemyExplosion_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Pum\Pum_Dead		34456
 	276987036	Idle	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Idle_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Miks\Mik_Idle\Idle		894360
 	288145229	Mordisco1	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Mordisco1_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Miks\Mik_Atack\Mordisco1		14064

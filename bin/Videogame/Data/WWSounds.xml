@@ -63,4 +63,5 @@
 
 
 	<InitEvent event="Torches" GameObject="Torch"/>
+	<InitEvent event="Piky_Walk" GameObject="Piky"/>
 </WWise>

@@ -128,6 +128,8 @@
 				<Event Id="2299701063" Name="Mik_Idle"/>
 				<Event Id="3056034208" Name="Mik_Saw"/>
 				<Event Id="3271548291" Name="Piky_Attack"/>
+				<Event Id="1518290705" Name="Piky_Quiet"/>
+				<Event Id="2333595876" Name="Piky_Walk"/>
 				<Event Id="2367787684" Name="Pum_Attack"/>
 				<Event Id="1786886922" Name="Pum_Dead"/>
 			</IncludedEvents>
@@ -136,6 +138,10 @@
 					<ShortName>Mordisco2.wav</ShortName>
 					<Path>SFX\Mordisco2_DDC98EF4.wem</Path>
 				</File>
+				<File Id="121954957" Language="SFX">
+					<ShortName>Paso2.wav</ShortName>
+					<Path>SFX\Paso2_DDC98EF4.wem</Path>
+				</File>
 				<File Id="169203991" Language="SFX">
 					<ShortName>RugidoDetectado.wav</ShortName>
 					<Path>SFX\RugidoDetectado_DDC98EF4.wem</Path>
@@ -143,6 +149,10 @@
 				<File Id="194837334" Language="SFX">
 					<ShortName>Silence.wav</ShortName>
 					<Path>SFX\Silence_DDC98EF4.wem</Path>
+				</File>
+				<File Id="195247926" Language="SFX">
+					<ShortName>Paso1.wav</ShortName>
+					<Path>SFX\Paso1_DDC98EF4.wem</Path>
 				</File>
 				<File Id="230531197" Language="SFX">
 					<ShortName>EnemyExplosion.wav</ShortName>
