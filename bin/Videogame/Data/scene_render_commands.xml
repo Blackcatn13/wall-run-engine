@@ -49,6 +49,7 @@
 		<enable_z_test/>		
 	
 		<render_scene layer="enemies" active="true" />
+		<render_scene layer="angry" active="true" />
 		<render_scene layer="collectible" active="true" />
 		<!--<render_scene layer="switches" active="true" />-->
 		<render_scene layer="puzzle" active="true" />
