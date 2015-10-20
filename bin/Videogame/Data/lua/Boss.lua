@@ -17,9 +17,15 @@ local actions = {{"mik", "sp","roca","roca"},
 {"mik","roca", "mik","roca","sp"},}
 
 local array_mik = {"MikMik007", "MikMik007", "MikMik008", "MikMik009", "MikMik010", "MikMik011"}
+function switch_boss_layer(layer)
+	local old_layer = chucky_boss_layer
+	chucky_boss_layer = layer
+	renderable_objects_layer_manager:change_between_layers(old_layer, chucky_boss_layer, 0, boss_mesh_name)
+	coreInstance:trace("Switch Boss Layer from " .. old_layer.. " to "..chucky_boss_layer)
+end
 
 function start_boss()
-	set_player_room("0", true)
+	set_player_room("0", false)
 	cam_Controller:set_active_camera("BossCam")
 	local activeCam = cam_Controller:get_active_camera()
 	coreInstance:getWWSoundManager():PlayEvent("_BossZone", "Music");
@@ -28,6 +34,10 @@ function start_boss()
 	player_controller.m_PhysicController:set_position(position)
 	local playerRenderableMesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room(piky_layer, 0):get_resource(piky_mesh_name);
 	playerRenderableMesh:set_position(position)
+	
+	if chucky_boss_layer ~= "enemies" then
+		switch_boss_layer("enemies")
+	end
 	
 	local chucky = enemy_manager:get_enemy(boss_mesh_name)
 	local chucky_position = Vect3f(0.0, 4.48, 0.0)
@@ -431,8 +441,13 @@ function chucky_boss_update_hurt(ElapsedTime, doComprobation, name)
 				current_sequence = {}
 				enemy.m_Life = 3;
 				if enemy.m_Phases <= 0 then
+					switch_boss_layer("enemies")
 					enemy:m_FSM():newState("Dead")
 					animation_hurt = false;
+				end
+				if enemy.m_Phases == 1 then
+					coreInstance:trace("CHUCKY ANGRY")
+					switch_boss_layer("angry")
 				end
 			end
 			if animation_hurt then

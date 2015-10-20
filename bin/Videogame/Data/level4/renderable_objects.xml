@@ -20,6 +20,7 @@
 	<layer name="vanishing"/>
 	<layer name="lava"/>
 	<layer name="superPiky"/>
+	<layer name="angry"/>
 	
 	<platform name="Poly_Sala0_001" core="Poly_Sala0_001" type="poly" pos="-0.038880 -6.534 -21.177698" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="4.497 3.75611 0.945499" layer="poly" room="0" final_position="-0.038880 0.94 -21.177698"
 		 direction="0 1 0" time_out="5" speed="20" light="" activation_distance="10"/>
@@ -276,7 +277,7 @@
 	<mesh_instance name="PUNXES0020" core="PUNXES0020" pos="557.350647 7.464798 -260.875031" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 	<platform name="POLY PLAT VERT R5_001" core="POLY PLAT VERT R5_001" type="poly" pos="557.489990 3.613 -313.900299" yaw="0.0" pitch="0.0" roll="0.0" scale="0.325229 1.0 1.0" visible="true" phisic_size="2.30853 1.82097 0.979034" layer="poly" room="5" final_position="557.489990 6.886 -313.900299"
 		 direction="0 1 0" time_out="3" speed="5" light="" activation_distance="15"/>
-	<platform name="POLY. PLAT. HORTZ003" core="POLY. PLAT. HORTZ003" type="poly" pos="564.555969 12.153000 -260.415375" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="2.24045 0.331228 4.9034" layer="poly" room="5" final_position="557.356 12.153 -260.415"
+	<platform name="POLY. PLAT. HORTZ003" core="POLY. PLAT. HORTZ003" type="poly" pos="568.998474 12.484023 -260.415375" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="4.81592 0.331228 4.9034" layer="poly" room="5" final_position="560.099 12.484023 -260.415375"
 		 direction="1 0 0" time_out="3" speed="15" light="" activation_distance="15"/>
 	<mesh_instance name="SALA_5_TEMPLEPOLYPOLY" core="SALA_5_TEMPLEPOLYPOLY" pos="564.473083 11.111547 -280.508850" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
 	<mesh_instance name="OBSTACLE_1_SALA5" core="OBSTACLE_1_SALA5" pos="557.347778 10.644835 -222.397614" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="5" layer="solid"/>
@@ -381,7 +382,7 @@
 	<mesh_instance name="Pixelite Verd045" core="Pixelite Verd001" pos="557.980957 9.738913 -49.162117" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible" emitter="Pixelite045Emitter" emitter_offset="0.0 0.0 0.0" emitter2="PixelitePilladoGreen9"/>
 	<mesh_instance name="Pixelite Verd046" core="Pixelite Verd001" pos="558.470764 16.943180 -58.376896" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible" emitter="Pixelite046Emitter" emitter_offset="0.0 0.0 0.0" emitter2="PixelitePilladoGreen"/>
 	<mesh_instance name="Pixelite Verd047" core="Pixelite Verd001" pos="561.506958 16.943180 -64.989037" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible" emitter="Pixelite047Emitter" emitter_offset="0.0 0.0 0.0" emitter2="PixelitePilladoGreen2"/>
-	<mesh_instance name="Pixelite Verd048" core="Pixelite Verd001" pos="566.156555 16.943180 -69.505119" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible" emitter="Pixelite048Emitter" emitter_offset="0.0 0.0 0.0" emitter2="PixelitePilladoGreen3"/>
+	<mesh_instance name="Pixelite Verd048" core="Pixelite Verd001" pos="566.156555 21.156180 -69.505119" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible" emitter="Pixelite048Emitter" emitter_offset="0.0 0.0 0.0" emitter2="PixelitePilladoGreen3"/>
 	<mesh_instance name="Pixelite Verd049" core="Pixelite Verd001" pos="568.171692 22.345400 -85.049721" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible" emitter="Pixelite049Emitter" emitter_offset="0.0 0.0 0.0" emitter2="PixelitePilladoGreen4"/>
 	<mesh_instance name="Pixelite Verd050" core="Pixelite Verd001" pos="566.960022 17.689640 -114.047119" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible" emitter="Pixelite050Emitter" emitter_offset="0.0 0.0 0.0" emitter2="PixelitePilladoGreen5"/>
 	<mesh_instance name="Pixelite Verd051" core="Pixelite Verd001" pos="557.767456 15.921260 -133.030746" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="collectible" emitter="Pixelite051Emitter" emitter_offset="0.0 0.0 0.0" emitter2="PixelitePilladoGreen6"/>
