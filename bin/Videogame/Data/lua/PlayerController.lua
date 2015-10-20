@@ -19,7 +19,7 @@ local _isQuiet = false;
 local _gravityForce = -50;
 local _actualGravityForce = 0;
 local hole_timer = 0.0
-local max_hole_falling = 2.0;
+local max_hole_falling = 1.0;
 local iman_force = 20;
 
 --////////////////////////////////////////////////////////

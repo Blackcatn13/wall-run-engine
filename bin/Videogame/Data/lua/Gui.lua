@@ -76,6 +76,9 @@ function check_death_fade()
 		if gui_manager.m_sTransitionEffect.m_currentState > (gui_manager.m_sTransitionEffect.m_fTransitionTime *0.5) then
 			
 			--coreInstance:trace("Fading step 1")
+			gui_manager:set_visible_gui_element("PixeliteGUI",false)
+			gui_manager:set_visible_gui_element("PixeliteNumber",false)
+			gui_manager:set_visible_gui_element("PixeliteNumberShadow",false)
 			gui_manager:set_visible_gui_element("BlackScreen", true)
 			gui_manager:set_visible_gui_element("VidesGUIDeath",true)
 			--gui_manager:set_visible_gui_element("VidesNumberShadowDeath",true)
@@ -112,6 +115,9 @@ function check_death_fade()
 			gui_manager:set_visible_gui_element("BlackScreen", false)
 			gui_manager.m_IsBlackScreenActive = false
 			fade_step = 0
+			gui_manager:set_visible_gui_element("PixeliteGUI",true)
+			gui_manager:set_visible_gui_element("PixeliteNumber",true)
+			gui_manager:set_visible_gui_element("PixeliteNumberShadow",true)
 			if player.num_lifes == 0 then
 				coreInstance:trace("game over")
 				--coreInstance:getWWSoundManager():PlayEvent("_Fail", "Music");
