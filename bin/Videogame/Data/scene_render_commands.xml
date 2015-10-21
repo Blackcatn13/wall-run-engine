@@ -336,8 +336,8 @@
 		<set_pool_renderable_objects_technique pool="draw_vignetting"/>
 		<render_draw_quad>
 			<texture stage_id="0" file="FrameBuffer"/>
-			<texture stage_id="1" file="./data/level2/textures/noise2d.png" load_file="true"/>
-			<texture stage_id="2" file="./data/level2/textures/Vignetting.tga" load_file="true"/>
+			<texture stage_id="1" file="./data/level4/textures/noise2d.png" load_file="true"/>
+			<texture stage_id="2" file="./data/level4/textures/Vignetting.tga" load_file="true"/>
 		</render_draw_quad>
 		<!-- END NOISE AND VIGNETING -->
 		<!--<enable_z_test/> -->
