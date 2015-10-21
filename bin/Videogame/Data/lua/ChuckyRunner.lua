@@ -26,10 +26,12 @@ function chucky_runner_enter_stopped(name)
 		chucky = enemy_manager:get_enemy(name)
 		chucky.m_RenderableObject:blend_cycle(0,1,0);
 	end
-	local characterPos = chucky.m_PhysicController:get_position();
-	characterPos.y = player_controller:get_position().y - 1 --0
-	chucky.m_RenderableObject:set_position(characterPos);
-	coreInstance:trace("Chuky position renderable: " ..tostring(characterPos.x)..","..tostring(characterPos.y)..","..tostring(characterPos.z))
+	if not player.is_dead then
+		local characterPos = chucky.m_PhysicController:get_position();
+		characterPos.y = player_controller:get_position().y - 1 --0
+		chucky.m_RenderableObject:set_position(characterPos);
+		coreInstance:trace("Chuky position renderable: " ..tostring(characterPos.x)..","..tostring(characterPos.y)..","..tostring(characterPos.z))
+	end
 end
 
 function chucky_runner_exit_stopped(name)
@@ -77,6 +79,7 @@ function move_chucky_running(ElapsedTime)
 		local emitter = particle_manager:get_resource(chucky.m_RenderableObject.m_ParticleEmitter)
 		emitter.m_vPos = chucky_renderable:get_position()+ chucky_renderable.m_EmitterOffset
 	end
+
 	return math.sqrt( math.pow((playerPos.x - chuckyPos.x),2) + math.pow((playerPos.y - chuckyPos.y),2) + math.pow((playerPos.z - chuckyPos.z),2) );
 end
 
@@ -99,6 +102,9 @@ function chucky_runner_update_running(ElapsedTime, doComprobation, name)
 		chucky:m_FSM():newState("Atrapando")
 	end
 	
+	if player.is_dead then
+		chucky:m_FSM():newState("Parado")
+	end
 
 end
 
@@ -198,6 +204,9 @@ function chucky_runner_update_catching(ElapsedTime, doComprobation, name)
 	end	
 	if need_to_jump then
 		chucky:m_FSM():newState("Saltando");
+	end
+	if player.is_dead then
+		chucky:m_FSM():newState("Parado")
 	end
 
 end

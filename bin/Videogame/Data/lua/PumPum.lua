@@ -76,7 +76,7 @@ function pumpum_update_stopped(ElapsedTime, doComprobation, name)
 						--		billboard.m_position = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_BillboardOffset
 						--	end
 						else
-							if not enemy.m_Hide or enemy.m_Hiding then
+							if not enemy.m_Hide or not enemy.m_Hiding then
 								show_or_hide(enemy, hide_offset, ElapsedTime)
 							end
 						end
