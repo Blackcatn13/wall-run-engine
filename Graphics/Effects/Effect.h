@@ -40,6 +40,7 @@ class CEffect {
   D3DXHANDLE m_BonesParameter;
   D3DXHANDLE m_TimeParameter, m_TickParameter, m_ChangeUVParameter;
   D3DXHANDLE m_ScreenSizeParameter;
+  D3DXHANDLE m_UseVignetingParameter;
   D3DXHANDLE m_VanishingModifierParameter;
   CLight *m_Light;
   ////
@@ -95,6 +96,7 @@ class CEffect {
   BOOL *GetLightsDynamicIntensity() {
     return m_DynamicIntensity;
   }
+
   Vect3f *GetLightsPosition() {
     return m_LightsPosition;
   }
@@ -196,6 +198,9 @@ class CEffect {
   }
   D3DXHANDLE GetVanishingModifierParameter() {
     return m_VanishingModifierParameter;
+  }
+  D3DXHANDLE GetUseVignetingParameter() {
+    return m_UseVignetingParameter;
   }
 };
 

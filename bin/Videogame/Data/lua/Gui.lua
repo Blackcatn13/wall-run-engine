@@ -54,15 +54,23 @@ function onUpdateWindowDisplayGUI()
 			--set_visible_gui_elements(true) 
 		end
 		
+		local use_vignetting = effect_manager:get_effect_technique("DrawVignettingTechnique").m_UseVigneting
 		if cinematic_controller.m_executing  then
 			if gui_visible then
 				set_visible_gui_elements(false)
 				gui_visible = false
 			end
+			if not use_vignetting then
+				effect_manager:get_effect_technique("DrawVignettingTechnique").m_UseVigneting = true
+			end
 		else
 			if not gui_visible then
 				set_visible_gui_elements(true)
 				gui_visible = true
+			end
+			
+			if use_vignetting then
+				effect_manager:get_effect_technique("DrawVignettingTechnique").m_UseVigneting = false
 			end
 		end
 		

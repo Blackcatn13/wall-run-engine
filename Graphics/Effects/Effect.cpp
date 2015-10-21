@@ -48,6 +48,7 @@ void CEffect::SetNullParameters() {
   m_LightDynamicIntensityParameter = NULL;
   m_ChangeUVParameter = NULL;
   m_VanishingModifierParameter = NULL;
+  m_UseVignetingParameter = NULL;
 }
 
 void CEffect::GetParameterBySemantic(const std::string &SemanticName, D3DXHANDLE &l_Handle) {
@@ -97,6 +98,7 @@ bool CEffect::LoadEffect() {
   GetParameterBySemantic("DYNAMICINTENSITY", m_LightDynamicIntensityParameter);
   GetParameterBySemantic("CHANGEUV", m_ChangeUVParameter);
   GetParameterBySemantic("VANISHINGMODIFIER", m_VanishingModifierParameter);
+  GetParameterBySemantic("USEVIGNETING", m_UseVignetingParameter);
   return isOK;
 }
 void CEffect::Unload() {
@@ -139,7 +141,8 @@ CEffect::CEffect()
   , m_LightDistanceFromPlayerParameter(NULL)
   , m_LightDynamicIntensityParameter(NULL)
   , m_ChangeUVParameter(NULL)
-  , m_VanishingModifierParameter(NULL) {
+  , m_VanishingModifierParameter(NULL)
+  , m_UseVignetingParameter(NULL) {
 }
 
 CEffect::~CEffect() {
