@@ -228,9 +228,8 @@ function reset_game()
 	
 	--Player Position + 3D
 	
-	if piky_mesh_name =="Piky" then
-		piky_mesh_name ="Piky"
-	end
+	player.set_super_piky(false)
+	player.super_piky_timer = 0.0
 	
 	player.reset_position()
 	player_controller.m_is3D = true;

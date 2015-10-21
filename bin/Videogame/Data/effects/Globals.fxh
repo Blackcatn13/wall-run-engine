@@ -34,6 +34,7 @@ int g_nShadowmaps : NSHADOWMAPS;
 float g_Tick : TICK;
 bool g_ChangeUV : CHANGEUV; 
 float g_VanishingModifier[1] : VANISHINGMODIFIER;
+bool g_UseVigneting : USEVIGNETING;
 
 float g_ZBlurFocalStart = 7.0;
 float g_ZBlurFocalEnd = 10.5;

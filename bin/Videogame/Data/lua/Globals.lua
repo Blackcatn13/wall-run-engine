@@ -21,6 +21,7 @@
 cinematic_controller = coreInstance:get_cinematic_controller()
 sound_manager = CCoreLuaWrapper().m_CoreInstance:getWWSoundManager()
 puzzle_manager = coreInstance:get_puzzle_manager()
+effect_manager = coreInstance:get_effect_manager()
 
 --Fin Managers
 CCoreLuaWrapper().m_CoreInstance:getTickCounter():addTick("lava", 0.05, 1000);

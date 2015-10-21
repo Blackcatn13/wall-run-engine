@@ -31,6 +31,7 @@ class CEffectTechnique {
   bool m_UV;
   bool m_Vanish;
   float m_tick;
+  bool m_UseVigneting;
   CEffect *m_Effect;
   D3DXHANDLE m_D3DTechnique;
   std::string m_TechniqueName;
@@ -107,7 +108,12 @@ class CEffectTechnique {
   bool GetVanish() {
     return m_Vanish;
   }
-
+  bool GetUseVigneting() {
+    return m_UseVigneting;
+  }
+  void SetUseVigneting( bool useVigneting) {
+    m_UseVigneting = useVigneting;
+  }
   void SetUseCameraPosition(bool value) {
     m_UseCameraPosition = value;
   }

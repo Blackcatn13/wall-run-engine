@@ -32,6 +32,7 @@ CEffectTechnique::CEffectTechnique()
   , m_tick(0.f)
   , m_ChangeUV(false)
   , m_UV(false)
+  , m_UseVigneting(false)
   , m_Vanish(false) {
 }
 
@@ -57,6 +58,7 @@ CEffectTechnique::CEffectTechnique(const CXMLTreeNode &node)
   , m_ChangeUV(node.GetBoolProperty("change_uv", false, false))
   , m_tick(0.f)
   , m_UV(false)
+  , m_UseVigneting(false)
   , m_Vanish(node.GetBoolProperty("vanish", false, false)) {
 }
 
@@ -151,6 +153,9 @@ bool CEffectTechnique::BeginRender() {
   if (m_Vanish) {
     m_Effect->SetVanishingModifier();
   }
+
+  l_Effect->SetBool(m_Effect->GetUseVignetingParameter(), m_UseVigneting);
+
   if (m_UseScreenSize) {
     int l_Width = 0;
     int l_Height = 0;
