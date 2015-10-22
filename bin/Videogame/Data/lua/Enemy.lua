@@ -153,13 +153,11 @@ function boss_shoot(position, enemy)
 end
 
 function update_cooldown(enemy, dt, player_position)
-	if not enemy.m_IsOnCooldown then
+	if not enemy.m_IsOnCooldown and not player.is_dead then
 	  enemy.m_IsOnCooldown = true;
       enemy.m_CurrentCooldown = enemy.m_CooldownTimer;
 	  shoot_to_vector(dt, enemy:get_position(), enemy)
-	  if not player.is_dead then
-		sound_manager:PlayEvent("Pum_Attack", enemy.m_RenderableObject:get_name())
-	  end
+	  sound_manager:PlayEvent("Pum_Attack", enemy.m_RenderableObject:get_name())
 	  enemy.m_DireccionBala = player_position - enemy:get_position()
 	  enemy.BalaActiva = true;
 	end

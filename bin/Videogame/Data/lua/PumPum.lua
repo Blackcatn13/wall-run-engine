@@ -51,37 +51,26 @@ function pumpum_update_stopped(ElapsedTime, doComprobation, name)
 		update_shoot(ElapsedTime, enemy)
 		
 			if player_distance > enemy.m_AttackPlayerDistance  then --min_player_distance => enemy.m_AttackPlayerDistance
-				if enemy:get_wp_vector_size() > 0 then --Si tiene waypoints para moverse
-					-- En caso de acabar de perseguir o llegar a un WP si la distancia al siguiente es muy corta vuelve a la posicion original
-					if enemy.m_CurrentTime >= 0.1 then
-						enemy:m_FSM():newState("Buscar_next_WP")
+				 
+				if player_distance <  enemy.m_AttackPlayerDistance *3 then
+				-- Animacion de andar
+					if enemy.m_Hide or enemy.m_Hiding then
+						show_or_hide(enemy, hide_offset, ElapsedTime)
 					end
-								
-				else --En caso de no tener waypoints que mire al player
-					if enemy.m_CurrentWp == enemy.m_OriginalPosition and enemy.m_Returning == true then
-						enemy:m_FSM():newState("Andar_WP")
-						enemy.m_Returning = false
-					else 
-						if player_distance < 500 then
-							-- Animacion de andar
-							if enemy.m_Hide or enemy.m_Hiding then
-								show_or_hide(enemy, hide_offset, ElapsedTime)
-							end
-							rotate_yaw(enemy, ElapsedTime, player_position)
-							mesh = enemy.m_RenderableObject
-							dir = Vect3f(math.cos(mesh:get_yaw()), 0, math.sin(mesh:get_yaw()))
-							sound_manager:SetGameObjectPosition(name, mesh:get_position(), dir)
-						--	local billboard = billboard_manager:get_resource(enemy.m_RenderableObject.m_Billboard)
-						--	if billboard ~= nil then
-						--		billboard.m_position = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_BillboardOffset
-						--	end
-						else
-							if not enemy.m_Hide or enemy.m_Hiding then
-								show_or_hide(enemy, hide_offset, ElapsedTime)
-							end
-						end
+					rotate_yaw(enemy, ElapsedTime, player_position)
+					mesh = enemy.m_RenderableObject
+					dir = Vect3f(math.cos(mesh:get_yaw()), 0, math.sin(mesh:get_yaw()))
+					sound_manager:SetGameObjectPosition(name, mesh:get_position(), dir)
+					--	local billboard = billboard_manager:get_resource(enemy.m_RenderableObject.m_Billboard)
+					--	if billboard ~= nil then
+					--		billboard.m_position = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_BillboardOffset
+					--	end
+				else
+					if not enemy.m_Hide or enemy.m_Hiding then
+						show_or_hide(enemy, hide_offset, ElapsedTime)
 					end
-				end	
+				end
+				
 			-- Si le Player se acerca atacar
 			
 			else
@@ -91,6 +80,12 @@ function pumpum_update_stopped(ElapsedTime, doComprobation, name)
 					temp_zone = temp_zone..".0"
 					coreInstance:trace(tostring(temp_zone))
 				end
+				rotate_yaw(enemy, ElapsedTime, player_position)
+				
+				if enemy.m_Hide or enemy.m_Hiding then
+					show_or_hide(enemy, hide_offset, ElapsedTime)
+				end
+				
 				if player.is_hit == false and tostring(temp_zone) == tostring(player.zone) and not enemy.m_Hide and not enemy.m_Hiding then
 					coreInstance:trace("Pum listo para atacar")
 					enemy:m_FSM():newState("Perseguir_Player")
@@ -104,101 +99,8 @@ function pumpum_update_stopped(ElapsedTime, doComprobation, name)
 	end
 end
 
-function pumpum_enter_moving(name)
-	return 0;
-end
 
-function pumpum_exit_moving(name)
-	--local enemy = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("enemies"):get_resource(name)
-	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
-	--instance.m_string = "Buscar_next_WP"
-	if (enemy ~= nil) and (enemy.m_isAlive == true) then
-		enemy.m_CurrentTime = 0 
-	else
-		enemy:m_FSM():newState("Parado")
-	end
-end
 
-function pumpum_update_moving(ElapsedTime, doComprobation, name)
-
-	--local enemy = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("enemies"):get_resource(name)
-	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
-	if (enemy ~= nil) and (enemy.m_isAlive == true) then
-		if enemy.m_CurrentWp == nil then
-		--	coreInstance:trace("I have a breakpoint")
-			enemy.m_CurrentWp = enemy:get_next_wp()
-		end
-		
-	--	coreInstance:trace(tostring(currentwp.x))
-		
-	--	enemy:move_to(ElapsedTime, enemy.m_CurrentWp)
-		--move_enemy_pumpum(ElapsedTime, enemy.m_CurrentWp, enemy)
-	--		coreInstance:trace("Am I moving??")
-		if check_attack(enemy) == true then
-		--	coreInstance:trace("Vamos a perseguir")
-			enemy:m_FSM():newState("Perseguir_Player")
-		else
-		
-			local wp_distance = get_distance_between_points(enemy:get_position(), enemy.m_CurrentWp)
-			if wp_distance < 4 then
-				--coreInstance:trace("Ya he llegado y a por otro")
-				enemy:m_FSM():newState("Buscar_next_WP")
-			end
-		end
-		update_shoot(ElapsedTime, enemy)
-		enemy:actualizar_hitbox()
-	else
-		enemy:m_FSM():newState("Parado")
-	end
-		
-end
-
-function pumpum_enter_calcwp(name)
-	
-	--local enemy = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("enemies"):get_resource(name)
-	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
-	
-	if (enemy ~= nil) and (enemy:get_wp_vector_size() > 0) and (enemy.m_isAlive == true) then
-		--[[if currentwp.z == wp2.z then
-			currentwp = wp
-		else
-			currentwp = wp2
-		end--]]
-		enemy.m_CurrentWp = enemy:get_next_wp()
-		enemy:m_FSM():newState("Andar_WP")
-	else
-		enemy:m_FSM():newState("Parado")
-	end
-end
-
-function pumpum_exit_calcwp(name)
---core:trace("Saliendo Buscar_next_WP");
--- OnExit Buscar_next_WP
-	--local enemy = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("enemies"):get_resource(name)
-	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
-	if (enemy ~= nil) and (enemy.m_isAlive == true) then
-		 enemy.m_CurrentTime = 0
-	else
-		enemy:m_FSM():newState("Parado")
-	end
-end
-
-function pumpum_update_calcwp(ElapsedTime, doComprobation, name)
-	--local enemy = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str("enemies"):get_resource(name)
-	local enemy = coreInstance:get_enemy_manager():get_enemy(name)
-	if (enemy ~= nil) and (enemy.m_isAlive == true) and enemy:get_wp_vector_size() > 0 then
-		enemy:actualizar_disparo(ElapsedTime)
-		enemy:actualizar_hitbox()
-		--[[if enemy.wp.z == 15 then
-			enemy.wp = Vect3f(2.0,2.0,-15.0)
-		else
-			enemy.wp = Vect3f(2.0,2.0,15.0)
-		end--]]
-		enemy:m_FSM():newState("Andar_WP")
-	else
-		enemy:m_FSM():newState("Parado")
-	end
-end
 
 function pumpum_enter_attack_player(name)
 
@@ -297,14 +199,6 @@ function move_enemy_pumpum(ElapsedTime, _point, Enemy)
 		Enemy:only_rotate(ElapsedTime, _point)
 	end
 end
-
-function get_distance_to_player(current_position, _player_position)
-	-- calcular distancia hacia player
-	local distance = 0
-	distance = ((_player_position.x - current_position.x) ^2 + (_player_position.y - current_position.y) ^2 + (_player_position.z - current_position.z) ^2)
-	return distance
-end
-
 
 function pumpum_enter_take_damage(name)
 	local enemy = enemy_manager:get_enemy(name)
