@@ -342,6 +342,7 @@ function Player.new()
 		if boss.m_BossRunning and self.num_lifes > 0 then
 			start_boss()
 		end
+		reset_player_states()
 	end
 	
 	function self.remove_animations(_renderable)

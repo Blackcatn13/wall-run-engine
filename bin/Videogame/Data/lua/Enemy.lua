@@ -153,7 +153,7 @@ function boss_shoot(position, enemy)
 end
 
 function update_cooldown(enemy, dt, player_position)
-	if not enemy.m_IsOnCooldown then
+	if not enemy.m_IsOnCooldown and not player.is_dead then
 	  enemy.m_IsOnCooldown = true;
       enemy.m_CurrentCooldown = enemy.m_CooldownTimer;
 	  shoot_to_vector(dt, enemy:get_position(), enemy)

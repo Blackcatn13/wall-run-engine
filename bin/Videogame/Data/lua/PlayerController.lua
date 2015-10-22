@@ -81,6 +81,34 @@ function update_pause()
 	end
 end
 
+function reset_player_states()
+	inDoubleLoop = false;
+	inDoubleJump = false;
+	executedDoubleStart = false;
+	executedDoubleLoop = false;
+	executedDoubleEnd = false;
+	_land = false;
+	_fallingAnimation = false;
+	timer = 0.0
+	player_moving = false
+	_isQuiet = false
+	hole_timer = 0.0
+	canAttack = true;
+	contador = 0;
+	jumpTime = 0;
+	
+	player.hurt_by_spikes = false
+	player.is_hit = false
+	player.is_hit_reset_first = false
+	player.vector_damage = Vect3f(0.0,0.0,0.0)
+	player.going_back = false
+	player.playing_hit = false
+	player.on_air = false
+	player.is_activating_poly = false
+	player.vanishing = false
+	player.can_move = true
+end
+
 function on_update_player_lua(l_ElapsedTime)
 
 	local active_camera = cam_Controller:get_active_camera();
