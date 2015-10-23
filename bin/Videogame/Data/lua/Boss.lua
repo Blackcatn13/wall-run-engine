@@ -3,6 +3,12 @@ local contador = 0
 local executedReturn = false;
 local execute_hurt = false;
 local doing_hurt = false;
+local min_return_factor = 7
+local return_factor = min_return_factor
+local max_return_times = 3
+local max_timer = 4.0
+local current_max_timer = max_timer
+
 
 local current_sequence =  {}
 local last_action_id = 1
@@ -16,7 +22,7 @@ local actions = {{"mik", "sp","roca","roca"},
 {"mik","roca", "mik","sp","roca"},
 {"mik","roca", "mik","roca","sp"},}
 
-local array_mik = {"MikMik007", "MikMik007", "MikMik008", "MikMik009", "MikMik010", "MikMik011"}
+local array_mik = {"MikMik007", "MikMik008", "MikMik009", "MikMik010", "MikMik011"}
 function switch_boss_layer(layer)
 	local old_layer = chucky_boss_layer
 	chucky_boss_layer = layer
@@ -63,7 +69,9 @@ function start_boss()
 		get_renderable_object("solid",0, "ORO005"):set_visible(true)
 	end 
 	chucky:m_FSM():newState("Parado")
-
+	return_factor = min_return_factor
+	returned_times = 0
+	current_max_timer = max_timer
 	set_boss_polis_visible(true)
 	all_boss_miks_killed = true
 	boss_miks_killed = 0
@@ -166,7 +174,7 @@ function chucky_boss_update_stopped(ElapsedTime, doComprobation, name)
 	rotate_yaw(enemy, ElapsedTime, player_position)
 	
 	boss_timer = boss_timer + (1 * ElapsedTime)
-	if boss_timer >= enemy.m_CooldownTimer then
+	if boss_timer >= current_max_timer then
 		--[[local check_call_miks = false 
 		if enemy.m_Phases == 1 and all_boss_miks_killed then
 			check_call_miks = check_random_action (6)
@@ -266,7 +274,8 @@ function chucky_boss_enter_return(name)
 	executedReturn = false;
 	enemy.m_RenderableObject:remove_action(5);
 	enemy.m_RenderableObject:clear_cycle(0,0.1);
-	enemy.m_RenderableObject:execute_action(9,0.1,0,1,true);
+	enemy.m_RenderableObject:execute_action(9,0.1,0,1,true);				
+	returned_times = returned_times +1
 end
 
 function chucky_boss_exit_return(name)
@@ -347,7 +356,7 @@ function chucky_boss_update_waiting(ElapsedTime, doComprobation, name)
 		end
 		--enemy:actualizar_hitbox()
 		if boss_projectile_returned and get_distance_between_points(enemy:get_position(), enemy.m_PosicionBala) < 250 then
-			if check_random_action(5) then
+			if check_random_action(return_factor) and returned_times < max_return_times then
 				enemy:m_FSM():newState("Devolver")
 			else
 				enemy:m_FSM():newState("Hurt")
@@ -399,6 +408,10 @@ end
 function chucky_boss_enter_hurt(name)
 	doing_hurt = false
 	execute_hurt = false
+	returned_times = 0 
+	if current_max_timer > 1 then
+		current_max_timer = current_max_timer - 1
+	end
 end
 
 function chucky_boss_exit_hurt(name)
@@ -434,6 +447,7 @@ function chucky_boss_update_hurt(ElapsedTime, doComprobation, name)
 		if execute_hurt then
 			execute_hurt = false
 			enemy.m_Life = enemy.m_Life -1
+			return_factor = return_factor + 1
 			coreInstance:trace("vidas: "..tostring(enemy.m_Life))
 			local animation_hurt = true
 			if enemy.m_Life <=0 then

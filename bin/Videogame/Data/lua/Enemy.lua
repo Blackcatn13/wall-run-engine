@@ -251,6 +251,7 @@ function update_shoot_boss(dt, enemy)
 	  enemy.BalaActiva = false;
 	  fire_boss_projectile_particles(renderable_shoot, enemy, false)
       delete_shooting(renderable_shoot)
+	  returned_times = 0
 	  enemy:m_FSM():newState("Parado")
     else 
 		enemy.m_DireccionBala = Vect3f(enemy.m_DireccionBala.x, enemy.m_DireccionBala.y - gravityShot * dt, enemy.m_DireccionBala.z);
@@ -267,6 +268,7 @@ function update_shoot_boss(dt, enemy)
 			current_speed_change = inicial_speed_change;
 			actual_speed_change = 0;
 			enemy:m_FSM():newState("Parado")
+			returned_times = 0
 			if current_shot_type =="powerup" then
 				start_super_piky()
 			else
@@ -386,6 +388,7 @@ function update_shoot_boss(dt, enemy)
 			
 			fire_boss_projectile_particles(renderable_shoot, enemy, true)
 			delete_shooting(renderable_shoot)
+			returned_times = 0
 			local qte_emmiter_name = playerRenderable.m_ParticleEmitter
 			if not inputm:has_game_pad(1) then
 				qte_emmiter_name = playerRenderable.m_ParticleEmitter2
@@ -426,6 +429,7 @@ function update_horizontal_boss_shoot(dt, enemy)
 	  actual_speed_change = 0;
 	  enemy.BalaActiva = false;
 	  fire_boss_projectile_particles(renderable_shoot, enemy, false)
+	  returned_times = 0
 	  delete_shooting(renderable_shoot)
 	  enemy:m_FSM():newState("Parado")
 	  local qte_emmiter_name = playerRenderable.m_ParticleEmitter
@@ -448,6 +452,7 @@ function update_horizontal_boss_shoot(dt, enemy)
 		actual_speed_change = 0;
 		enemy.BalaActiva = false;
 		fire_boss_projectile_particles(renderable_shoot, enemy, false)
+		returned_times = 0
 		delete_shooting(renderable_shoot)
 		
 		local qte_emmiter_name = playerRenderable.m_ParticleEmitter
@@ -550,6 +555,7 @@ function update_horizontal_boss_shoot(dt, enemy)
 			actual_speed_change = 0;
 			enemy.BalaActiva = false;
 			fire_boss_projectile_particles(renderable_shoot, enemy, true)
+			returned_times = 0
 			delete_shooting(renderable_shoot)
 			local qte_emmiter_name = playerRenderable.m_ParticleEmitter
 			if not inputm:has_game_pad(1) then
