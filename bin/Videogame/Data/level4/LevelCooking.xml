@@ -145,4 +145,8 @@
 	<Physx_mesh name="BossCirculoInterior" filename="Data\level4\meshes\BossCirculoInterior.phsx"/>
 	<Physx_mesh name="Sala_6_ColumnaLateral_001" filename="Data\level4\meshes\Sala_6_ColumnaLateral_001.phsx"/>
 	<Physx_mesh name="COLUMNA" filename="Data\level4\meshes\COLUMNA.phsx"/>
+	<Physx_mesh name="Sala3_Wall_1" filename="Data\level4\meshes\Sala3_Wall_1.phsx"/>
+	<Physx_mesh name="Sala3_Wall_2" filename="Data\level4\meshes\Sala3_Wall_2.phsx"/>
+	<Physx_mesh name="Sala4_Wall_1" filename="Data\level4\meshes\Sala4_Wall_1.phsx"/>
+	<Physx_mesh name="Sala4_Wall_2" filename="Data\level4\meshes\Sala4_Wall_2.phsx"/>
 </Physx_meshes>

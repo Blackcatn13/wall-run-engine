@@ -528,10 +528,10 @@ function mikmik_enter_waiting(name)
 end
 
 function mikmik_exit_waiting(name)
-	local enemy = enemy_manager:get_enemy(name)
+	--[[local enemy = enemy_manager:get_enemy(name)
 	enemy:set_position(enemy.m_OriginalPosition)
 	enemy.m_PhysicController:set_position(enemy.m_OriginalPosition)
-	enemy.m_RenderableObject:set_position(enemy.m_OriginalPosition)
+	enemy.m_RenderableObject:set_position(enemy.m_OriginalPosition)]]
 end
 
 function mikmik_update_waiting(ElapsedTime, doComprobation, name)

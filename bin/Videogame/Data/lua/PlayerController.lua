@@ -174,12 +174,28 @@ function on_update_player_lua(l_ElapsedTime)
 					end
 				end
 			else
+								
 				player.set_super_piky(false)
 				player.super_piky_timer = 0.0
 				
 				aura_emitter:set_visible(false)
+				
+			
 				--coreInstance:trace("Bye Super Piky")
 			end
+		end
+	
+		if not player.super_piky_active and enemy_manager:get_enemy(boss_mesh_name).m_BossRunning then
+			local sp_mesh = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("superPiky", player_controller.m_Room):get_resource("SuperPiky")
+			local qte_emmiter_name = sp_mesh.m_ParticleEmitter
+			if not inputm:has_game_pad(1) then
+				qte_emmiter_name = sp_mesh.m_ParticleEmitter2
+			end
+			local emitter_qte = particle_manager:get_resource(qte_emmiter_name)
+			if emitter_qte:get_visible() == true then
+				emitter_qte:set_visible(false)
+			end
+		
 		end
 	
 		if act2in:do_action_from_lua("ChangeDimension") then

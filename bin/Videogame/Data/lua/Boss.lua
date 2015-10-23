@@ -3,6 +3,12 @@ local contador = 0
 local executedReturn = false;
 local execute_hurt = false;
 local doing_hurt = false;
+local min_return_factor = 7
+local return_factor = min_return_factor
+local max_return_times = 3
+local max_timer = 4.0
+local current_max_timer = max_timer
+
 
 local current_sequence =  {}
 local last_action_id = 1
@@ -16,7 +22,32 @@ local actions = {{"mik", "sp","roca","roca"},
 {"mik","roca", "mik","sp","roca"},
 {"mik","roca", "mik","roca","sp"},}
 
-local array_mik = {"MikMik007", "MikMik007", "MikMik008", "MikMik009", "MikMik010", "MikMik011"}
+local array_mik = {"MikMik007", "MikMik008", "MikMik009", "MikMik010", "MikMik011"}
+
+local mik_positions = {{Vect3f(31.434, 1, -16.009), Vect3f(26.444, 1, -8.715), Vect3f(15.389, 2.288, -0.857), Vect3f(26.137, 1, 7.399), Vect3f(30.282, 1, 16.712)}, 
+{Vect3f(15.914, 1, 25.021), Vect3f(-20.02, 1, 20.878), Vect3f(9.836, 1, 34.8), Vect3f(-12.751, 1, 30.243), Vect3f(-1.255, 2.288, 15.628)},
+{Vect3f(-28.807, 1, 14.852), Vect3f(-27.51, 1, 3.497), Vect3f(-27.153, 1, -17.837), Vect3f(-17.463, 2.288, -5.043), Vect3f(-33.338, 1, -7.951)},
+{Vect3f(-18.206, 1,-30.661), Vect3f(-7.39, 1, -26.59), Vect3f(15.948, 1, -22.901), Vect3f(7.94, 1, -35.235), Vect3f(0.409, 2.288, -15.715)}} --{Section{MikPos},{MikPos2}...},{Section2{MikPos},{MikPos2}...}
+
+function get_room_section()
+	local poly1 = renderable_objects_layer_manager:get_resource_from_layers_and_room("poly", "enabled_poly", "Poly_Sala0_003", 0)
+	local poly2 = renderable_objects_layer_manager:get_resource_from_layers_and_room("poly", "enabled_poly", "Poly_Sala0_002", 0)
+	local poly3 = renderable_objects_layer_manager:get_resource_from_layers_and_room("poly", "enabled_poly", "Poly_Sala0_004", 0)
+	local poly4 = renderable_objects_layer_manager:get_resource_from_layers_and_room("poly", "enabled_poly", "Poly_Sala0_001", 0)
+	local array_polys = {poly1, poly2, poly3, poly4}
+	
+	local min_distance = nil
+	local current_section = 0
+	for i = 1, table.getn(array_polys) do
+		local temp_distance = get_distance_between_points(array_polys[i]:get_position(), player_controller:get_position())
+		if min_distance == nil or temp_distance < min_distance then
+			min_distance = temp_distance
+			current_section = i
+		end
+	end
+	return current_section
+end
+
 function switch_boss_layer(layer)
 	local old_layer = chucky_boss_layer
 	chucky_boss_layer = layer
@@ -63,7 +94,9 @@ function start_boss()
 		get_renderable_object("solid",0, "ORO005"):set_visible(true)
 	end 
 	chucky:m_FSM():newState("Parado")
-
+	return_factor = min_return_factor
+	returned_times = 0
+	current_max_timer = max_timer
 	set_boss_polis_visible(true)
 	all_boss_miks_killed = true
 	boss_miks_killed = 0
@@ -117,7 +150,6 @@ function summon_mik(mik_name)
 		enemy.m_RenderableObject.m_Printable =true
 		enemy.m_RenderableObject:set_visible(true)
 	end
-	
 	enemy:m_FSM():newState("Parado")
 end
 
@@ -166,7 +198,7 @@ function chucky_boss_update_stopped(ElapsedTime, doComprobation, name)
 	rotate_yaw(enemy, ElapsedTime, player_position)
 	
 	boss_timer = boss_timer + (1 * ElapsedTime)
-	if boss_timer >= enemy.m_CooldownTimer then
+	if boss_timer >= current_max_timer then
 		--[[local check_call_miks = false 
 		if enemy.m_Phases == 1 and all_boss_miks_killed then
 			check_call_miks = check_random_action (6)
@@ -266,7 +298,8 @@ function chucky_boss_enter_return(name)
 	executedReturn = false;
 	enemy.m_RenderableObject:remove_action(5);
 	enemy.m_RenderableObject:clear_cycle(0,0.1);
-	enemy.m_RenderableObject:execute_action(9,0.1,0,1,true);
+	enemy.m_RenderableObject:execute_action(9,0.1,0,1,true);				
+	returned_times = returned_times +1
 end
 
 function chucky_boss_exit_return(name)
@@ -347,7 +380,7 @@ function chucky_boss_update_waiting(ElapsedTime, doComprobation, name)
 		end
 		--enemy:actualizar_hitbox()
 		if boss_projectile_returned and get_distance_between_points(enemy:get_position(), enemy.m_PosicionBala) < 250 then
-			if check_random_action(5) then
+			if check_random_action(return_factor) and returned_times < max_return_times then
 				enemy:m_FSM():newState("Devolver")
 			else
 				enemy:m_FSM():newState("Hurt")
@@ -383,10 +416,14 @@ function chucky_boss_update_call(ElapsedTime, doComprobation, name)
 	local enemy = enemy_manager:get_enemy(name)
 	if (enemy ~= nil) then
 		if not enemy.m_RenderableObject:is_action_animation_active() then
-		enemy.m_RenderableObject:remove_action(7)
+			enemy.m_RenderableObject:remove_action(7)
+			local array_pos = mik_positions[get_room_section()] 
 			for i = 1, table.getn(array_mik) do
 				summon_mik(array_mik[i])
+				enemy_manager:get_enemy(array_mik[i]):move_to_position(array_pos[i])
+				--coreInstance:trace("Mik ".. array_mik[i] .. " position: " .. tostring(enemy_manager:get_enemy(array_mik[i]):get_position().x) .. ", "..tostring(enemy_manager:get_enemy(array_mik[i]):get_position().y).. ", "..tostring(enemy_manager:get_enemy(array_mik[i]):get_position().z))
 				fire_mik_summon_particles(array_mik[i])
+				coreInstance:trace("Mik ".. array_mik[i] .. " final position: " .. tostring(enemy_manager:get_enemy(array_mik[i]):get_position().x) .. ", "..tostring(enemy_manager:get_enemy(array_mik[i]):get_position().y).. ", "..tostring(enemy_manager:get_enemy(array_mik[i]):get_position().z))
 			end
 			all_boss_miks_killed = false
 			boss_miks_killed = 0
@@ -399,6 +436,10 @@ end
 function chucky_boss_enter_hurt(name)
 	doing_hurt = false
 	execute_hurt = false
+	returned_times = 0 
+	if current_max_timer > 1 then
+		current_max_timer = current_max_timer - 1
+	end
 end
 
 function chucky_boss_exit_hurt(name)
@@ -434,6 +475,7 @@ function chucky_boss_update_hurt(ElapsedTime, doComprobation, name)
 		if execute_hurt then
 			execute_hurt = false
 			enemy.m_Life = enemy.m_Life -1
+			return_factor = return_factor + 1
 			coreInstance:trace("vidas: "..tostring(enemy.m_Life))
 			local animation_hurt = true
 			if enemy.m_Life <=0 then
