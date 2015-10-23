@@ -146,6 +146,10 @@
 					<ShortName>RugidoDetectado.wav</ShortName>
 					<Path>SFX\RugidoDetectado_DDC98EF4.wem</Path>
 				</File>
+				<File Id="171462856" Language="SFX">
+					<ShortName>Segada.wav</ShortName>
+					<Path>SFX\Segada_DDC98EF4.wem</Path>
+				</File>
 				<File Id="194837334" Language="SFX">
 					<ShortName>Silence.wav</ShortName>
 					<Path>SFX\Silence_DDC98EF4.wem</Path>

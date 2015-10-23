@@ -14,6 +14,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	50278207	Mordisco2	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Mordisco2_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Miks\Mik_Atack\Mordisco2		15408
 	121954957	Paso2	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Paso2_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Piky\Piky_Steps\Paso2		22078
 	169203991	RugidoDetectado	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\RugidoDetectado_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Miks\Mik_Viewed\RugidoDetectado		294332
+	171462856	Piky_Attak	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Segada_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Piky\Piky_Attak		255996
 	194837334	Silence	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Silence_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Miks\Mik_Following\Silence		480064
 	195247926	Paso1	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Paso1_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Piky\Piky_Steps\Paso1		23668
 	230531197	Pum_Dead	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\EnemyExplosion_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Pum\Pum_Dead		34456
