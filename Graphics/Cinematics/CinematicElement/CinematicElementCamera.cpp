@@ -27,6 +27,7 @@ bool CCinematicElementCamera::Update(float dt) {
       return true;
     }
   }
+  return false;
 }
 
 bool CCinematicElementCamera::Execute() {

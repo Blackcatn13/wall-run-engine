@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<camera_key_controller name="Camera001_Animacio2D" once="true" cycle="false" reverse="false">
-	<key time="0.0" pos="-34.9184 10.2075 126.374" lookat="0.905502 7.07328 126.374" fov="0.277647" near_plane="1.0" far_plane="1000.0"/>
-	<key time="24.7667" pos="-34.9184 10.2075 126.374" lookat="0.905502 7.07328 126.374" fov="0.277647" near_plane="1.0" far_plane="1000.0"/>
-	<key time="25.4" pos="-40.8266 10.2075 126.374" lookat="-5.0027 7.07328 126.374" fov="0.277647" near_plane="1.0" far_plane="1000.0"/>
-	<key time="60.0" pos="-40.8266 10.2075 126.374" lookat="-5.0027 7.07328 126.374" fov="0.277647" near_plane="1.0" far_plane="1000.0"/>
+<camera_key_controller name="Camera001_Animacio2D" once="true" cycle="false" reverse="false" aspect="1.77777777">
+	<key time="0.0" pos="-34.9184 10.0075 126.374" lookat="0.905502 7.26328 126.374" fov="0.237647" near_plane="1.0" far_plane="1000.0"/>
+	<key time="24.7667" pos="-34.9184 10.0075 126.374" lookat="0.905502 7.26328 126.374" fov="0.237647" near_plane="1.0" far_plane="1000.0"/>
+	<key time="25.4" pos="-40.8266 10.0075 126.374" lookat="-5.0027 7.26328 126.374" fov="0.237647" near_plane="1.0" far_plane="1000.0"/>
+	<key time="60.0" pos="-40.8266 10.0075 126.374" lookat="-5.0027 7.26328 126.374" fov="0.237647" near_plane="1.0" far_plane="1000.0"/>
 	<key time="60.0333" pos="28.6367 7.2404 3.55011" lookat="-6.5419 2.76521 9.51733" fov="0.277647" near_plane="1.0" far_plane="1000.0"/>
 	<key time="60.5667" pos="29.4463 5.02881 6.66371" lookat="-5.73239 0.55362 12.6309" fov="0.277647" near_plane="1.0" far_plane="1000.0"/>
 	<key time="60.8" pos="29.4463 5.02881 6.66371" lookat="-5.73239 0.55362 12.6309" fov="0.277647" near_plane="1.0" far_plane="1000.0"/>

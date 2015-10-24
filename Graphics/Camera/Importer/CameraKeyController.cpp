@@ -48,6 +48,8 @@ void CCameraKeyController::LoadXML(const std::string &FileName) {
       bool l_once = m.GetBoolProperty("once");
       bool l_cycle = m.GetBoolProperty("cycle");
       bool l_reverse = false;//m.GetBoolProperty("reverse");
+      float aspect = m.GetFloatProperty("aspect", 1.77777);
+      m_fAspectRatio = aspect;
       SetOnce(l_once);
       SetCycle(l_cycle);
       SetReverse(l_reverse);
