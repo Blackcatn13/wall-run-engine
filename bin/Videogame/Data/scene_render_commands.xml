@@ -60,6 +60,7 @@
 		<render_scene layer="solid" active="true"/>
 		<render_scene layer="player" active="true"/>
 		<render_scene layer="superPiky" active="true"/>
+		<render_scene layer="AnimationStart" active="true"/>
 		<!--<render_scene layer="invisible" active="true" />-->
 		<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>
 		<set_pool_renderable_objects_technique pool="fade_alpha"/>

@@ -632,4 +632,8 @@
 	<static_mesh name="Cartel08_Animation" filename="Data\level4\meshes\Cartel08_Animation.mesh"/>
 	<static_mesh name="Mano_Piky_Animation" filename="Data\level4\meshes\Mano_Piky_Animation.mesh"/>
 	<static_mesh name="Vortex_Animation" filename="Data\level4\meshes\Vortex_Animation.mesh"/>
+	<static_mesh name="Plano_Negro_01_Animation" filename="Data\level4\meshes\Plano_Negro_01_Animation.mesh"/>
+	<static_mesh name="Plano_Negro_02_Animation" filename="Data\level4\meshes\Plano_Negro_02_Animation.mesh"/>
+	<static_mesh name="Plano_Negro_03_Animation" filename="Data\level4\meshes\Plano_Negro_03_Animation.mesh"/>
+	<static_mesh name="Plano_Negro_04_Animation" filename="Data\level4\meshes\Plano_Negro_04_Animation.mesh"/>
 </static_meshes>
