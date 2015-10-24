@@ -124,8 +124,8 @@
 	<Physx_mesh name="Sala_7_Pinxos_008" filename="Data\level4\meshes\Sala_7_Pinxos_008.phsx"/>
 	<Physx_mesh name="Sala_7_Pinxos_009" filename="Data\level4\meshes\Sala_7_Pinxos_009.phsx"/>
 	<Physx_mesh name="Sala_7_Pinxos_010" filename="Data\level4\meshes\Sala_7_Pinxos_010.phsx"/>
-	<Physx_mesh name="Sala_7_Pinxos_011" filename="Data\level4\meshes\Sala_7_Pinxos_011.phsx"/>
-	<Physx_mesh name="Sala_7_Pinxos_012" filename="Data\level4\meshes\Sala_7_Pinxos_012.phsx"/>
+	<!--<Physx_mesh name="Sala_7_Pinxos_011" filename="Data\level4\meshes\Sala_7_Pinxos_011.phsx"/>
+	<Physx_mesh name="Sala_7_Pinxos_012" filename="Data\level4\meshes\Sala_7_Pinxos_012.phsx"/>-->
 	<Physx_mesh name="Sala_7_ColumnaA_007" filename="Data\level4\meshes\Sala_7_ColumnaA_007.phsx"/>
 	<Physx_mesh name="Sala_7_ColumnaA_008" filename="Data\level4\meshes\Sala_7_ColumnaA_008.phsx"/>
 	<Physx_mesh name="Sala_7_ColumnaA_010" filename="Data\level4\meshes\Sala_7_ColumnaA_010.phsx"/>
