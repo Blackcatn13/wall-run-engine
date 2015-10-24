@@ -295,9 +295,9 @@ function Player.new()
 		
 		--Chuky Desaparece
 		local Chucky = enemy_manager:get_enemy("Chucky");
-		if Chucky.m_Appeared then
-			ChuckyDesapears()
-		end
+		--if Chucky.m_Appeared then
+		ChuckyDesapears()
+		--end
 		renderable_piky_mesh:remove_action(anim_death)
 		renderable_piky_mesh:remove_action(anim_BurnJump)
 		local boss = enemy_manager:get_enemy("ChuckyBoss")
