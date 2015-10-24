@@ -27,6 +27,7 @@ class CCinematicPlayer {
     return m_CurrentTime;
   }
   virtual void OnRestartCycle();
+  bool IsPlaying() { return m_Playing;}
 };
 
 

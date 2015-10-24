@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <cinmetaics>
 	<cinematic_controller name="start">
-		<play_camera name="Camera061" return="3DCam" block="true"/>
+		<play_camera name="Camera001_Animacio2D" return="3DCam" block="true"/>
+		<play_cinematic name="./Data/level4/cinematics/StartCinematic.xml"/>
 	</cinematic_controller>
 	<cinematic_controller name="Chucky-appears">
 		<play_camera name="Camera057" return="2DCam" block="true"/>
 	</cinematic_controller>
-	<cinematic_controller name="Wall">
+	<!--<cinematic_controller name="Wall">
 		<play_cinematic name="break-wall.xml"/>
-	</cinematic_controller>
+	</cinematic_controller>-->
 	<cinematic_controller name="Door">
 		<play_camera name="Camera060" return="3DCam" block="true"/>
 	</cinematic_controller>

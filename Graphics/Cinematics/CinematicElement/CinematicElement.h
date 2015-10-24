@@ -15,6 +15,7 @@ class CCinematicElement {
   virtual ~CCinematicElement();
   virtual bool Execute() = 0;
   virtual void restart() {m_ended = false; }
+  virtual bool Update(float dt) = 0;
 };
 
 #endif

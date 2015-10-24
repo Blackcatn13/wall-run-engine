@@ -74,14 +74,11 @@ bool CCinematicController::Reload(const std::string &FileName) {
 
 void CCinematicController::Update(float ElapsedTime) {
   if (m_executing) {
-    int aux = m_lastElement;
-    while (aux < m_currentCinematic.size() && !m_currentCinematic[aux]->Execute()) {
-      aux++;
+    bool aux = false;
+    for (int i = 0; i < m_currentCinematic.size(); ++i) {
+      aux |= m_currentCinematic[i]->Update(ElapsedTime);
     }
-    m_lastElement = aux;
-    if (m_lastElement >= m_currentCinematic.size()) {
-      m_executing = false;
-    }
+    m_executing = aux;
   }
 }
 
@@ -91,6 +88,9 @@ void CCinematicController::Execute(const std::string &cinematic) {
     m_currentCinematic = it->second;
     m_lastElement = 0;
     m_executing = true;
+    for (int i = 0; i < m_currentCinematic.size(); ++i) {
+      m_currentCinematic[i]->Execute();
+    }
   }
 }
 

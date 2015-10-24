@@ -7,14 +7,18 @@
 #include <string>
 
 class CXMLTreeNode;
+class CCinematic;
 
 class CCinematicElementCinematic : public CCinematicElement {
  public:
   CCinematicElementCinematic(const CXMLTreeNode &node);
   virtual ~CCinematicElementCinematic();
   bool Execute();
+  bool Update(float dt);
  private:
   bool m_played;
+  CCinematic *m_cinematic;
+
 };
 
 
