@@ -12,5 +12,9 @@ bool CCinematicElementCinematic::Execute() {
   return false;
 }
 
+bool CCinematicElementCinematic::Update(float dt) {
+  return false;
+}
+
 CCinematicElementCinematic::~CCinematicElementCinematic() {
 }

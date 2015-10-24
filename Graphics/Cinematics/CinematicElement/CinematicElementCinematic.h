@@ -13,6 +13,7 @@ class CCinematicElementCinematic : public CCinematicElement {
   CCinematicElementCinematic(const CXMLTreeNode &node);
   virtual ~CCinematicElementCinematic();
   bool Execute();
+  bool Update(float dt);
  private:
   bool m_played;
 };

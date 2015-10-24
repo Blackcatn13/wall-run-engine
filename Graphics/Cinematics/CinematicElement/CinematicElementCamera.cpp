@@ -15,6 +15,20 @@ CCinematicElementCamera::CCinematicElementCamera(const CXMLTreeNode &node)
   }
 }
 
+bool CCinematicElementCamera::Update(float dt) {
+  if (!m_ended) {
+    if (m_played && !CAMCONTM->IsAnyCinematicPlaying()) {
+      CAMCONTM->Stop();
+      CAMCONTM->setActiveCamera(m_returnCamera);
+      m_ended = true;
+      m_block = false;
+      return false;
+    } else {
+      return true;
+    }
+  }
+}
+
 bool CCinematicElementCamera::Execute() {
   if (!m_ended) {
     if (m_played && !CAMCONTM->IsAnyCinematicPlaying()) {
