@@ -92,7 +92,7 @@
 	</cinematic_object>
 	<cinematic_object resource="Plano_Negro_rey_habla_Animation" renderable_objects_manager="solid" room="0">
 		<cinematic_object_key_frame time="32.2" pos="-9.38803 6.76945 86.547" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
-		<cinematic_object_key_frame time="62.1667" pos="-9.38803 6.76945 125.673" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="37.9333" pos="-9.38803 6.76945 125.673" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
 	</cinematic_object>
 	<cinematic_object resource="Poly EMerald_Animation" renderable_objects_manager="solid" room="0">
 		<cinematic_object_key_frame time="37.6333" pos="-10.7761 8.69898 106.617" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>

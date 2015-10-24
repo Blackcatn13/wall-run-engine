@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <lights>
 	<light name="OmniMenu" type="omni" pos="-925 3 5" color="1.0 1.0 1.0" intensity="1.0" att_start_range="800.2351" att_end_range="805.8666" enable_distance="300.0"/>
-	<light name="OmniGameOver" type="omni" pos="925 10 -1.5" color="1.0 1.0 1.0" intensity="1.0" att_start_range="20" att_end_range="50" enable_distance="60.0"/>
+	<light name="OmniGameOver" type="omni" pos="925 10 -1.5" color="1.0 1.0 1.0" intensity="0.2" att_start_range="20" att_end_range="50" enable_distance="60.0"/>
 	<!--<light name="DireMenu" type="directional" pos="-925 2 3.5" dir="1.0 0.0 0.0" color="1.0 1.0 1.0" intensity="0.5" att_start_range="20.0" att_end_range="30.0" generate_shadow_map="false" shadow_map_format_type="R32F" ortho_shadow_map_width="60" ortho_shadow_map_height="60" shadow_map_width="2048" shadow_map_height="2048" generate_static_shadowm_map="false" static_shadowm_map_format_type="R32F">
 	</light>-->
 	<light name="Omni001_Animacio2D_Animation" type="omni" pos="-17.2161 6.15704 125.476" color="1.0 1.0 1.0" intensity="1.0" dynamic_intensity="false" att_start_range="80.0" att_end_range="200.0"/>

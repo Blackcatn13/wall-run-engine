@@ -56,49 +56,50 @@ void CCinematicObject::CalculateFrame() {
 void CCinematicObject::Update(float ElapsedTime) {
   if (m_Playing == true) {
     m_CurrentTime += ElapsedTime;
+    if (m_CurrentTime >= m_CinematicObjectKeyFrames[m_CurrentKeyFrame]->GetKeyFrameTime()) {
+      if (m_CurrentTime > m_Duration) {
+        Stop();
+      } else {
+        CalculateFrame();
 
-    if (m_CurrentTime > m_Duration) {
-      Stop();
-    } else {
-      CalculateFrame();
+        CCinematicObjectKeyFrame *current = m_CinematicObjectKeyFrames[m_CurrentKeyFrame];
+        CCinematicObjectKeyFrame *next = m_CinematicObjectKeyFrames[m_NextKeyFrame];
 
-      CCinematicObjectKeyFrame *current = m_CinematicObjectKeyFrames[m_CurrentKeyFrame];
-      CCinematicObjectKeyFrame *next = m_CinematicObjectKeyFrames[m_NextKeyFrame];
+        float currentP = (m_CurrentTime - current->GetKeyFrameTime()) / (next->GetKeyFrameTime() - current->GetKeyFrameTime());
+        CLerpAnimator1D interpolator1D;
+        CLerpAnimator3D interpolator3D;
 
-      float currentP = (m_CurrentTime - current->GetKeyFrameTime()) / (next->GetKeyFrameTime() - current->GetKeyFrameTime());
-      CLerpAnimator1D interpolator1D;
-      CLerpAnimator3D interpolator3D;
+        interpolator3D.SetValues(current->GetPosition(), next->GetPosition(), 1.0f, FUNC_CONSTANT);
+        Vect3f position;
+        interpolator3D.Update(currentP, position);
+        m_RenderableObject->SetPosition(position);
 
-      interpolator3D.SetValues(current->GetPosition(), next->GetPosition(), 1.0f, FUNC_CONSTANT);
-      Vect3f position;
-      interpolator3D.Update(currentP, position);
-      m_RenderableObject->SetPosition(position);
+        interpolator3D.SetValues(current->GetScale(), next->GetScale(), 1.0f, FUNC_CONSTANT);
+        Vect3f scale;
+        interpolator3D.Update(currentP, scale);
+        m_RenderableObject->SetScale(scale);
 
-      interpolator3D.SetValues(current->GetScale(), next->GetScale(), 1.0f, FUNC_CONSTANT);
-      Vect3f scale;
-      interpolator3D.Update(currentP, scale);
-      m_RenderableObject->SetScale(scale);
+        interpolator1D.SetValues(current->GetYaw(), next->GetYaw(), 1.0f, FUNC_CONSTANT);
+        float yaw;
+        interpolator1D.Update(currentP, yaw);
+        m_RenderableObject->SetYaw(yaw);
 
-      interpolator1D.SetValues(current->GetYaw(), next->GetYaw(), 1.0f, FUNC_CONSTANT);
-      float yaw;
-      interpolator1D.Update(currentP, yaw);
-      m_RenderableObject->SetYaw(yaw);
+        interpolator1D.SetValues(current->GetPitch(), next->GetPitch(), 1.0f, FUNC_CONSTANT);
+        float pitch;
+        interpolator1D.Update(currentP, pitch);
+        m_RenderableObject->SetPitch(pitch);
 
-      interpolator1D.SetValues(current->GetPitch(), next->GetPitch(), 1.0f, FUNC_CONSTANT);
-      float pitch;
-      interpolator1D.Update(currentP, pitch);
-      m_RenderableObject->SetPitch(pitch);
+        interpolator1D.SetValues(current->GetRoll(), next->GetRoll(), 1.0f, FUNC_CONSTANT);
+        float roll;
+        interpolator1D.Update(currentP, roll);
+        m_RenderableObject->SetRoll(roll);
 
-      interpolator1D.SetValues(current->GetRoll(), next->GetRoll(), 1.0f, FUNC_CONSTANT);
-      float roll;
-      interpolator1D.Update(currentP, roll);
-      m_RenderableObject->SetRoll(roll);
-
-      if (m_CurrentKeyFrame == (m_CinematicObjectKeyFrames.size() - 1)) {
-        if (m_Cycle == true) {
-          OnRestartCycle();
-        } else {
-          Stop();
+        if (m_CurrentKeyFrame == (m_CinematicObjectKeyFrames.size() - 1)) {
+          if (m_Cycle == true) {
+            OnRestartCycle();
+          } else {
+            Stop();
+          }
         }
       }
     }
@@ -110,7 +111,7 @@ void CCinematicObject::Stop() {
   m_CurrentTime = 0.0;
   m_CurrentKeyFrame = 0;
   m_NextKeyFrame = 1;
-  Vect3f l_Position;
+  /*Vect3f l_Position;
   float l_Yaw;
   float l_Pitch;
   float l_Roll;
@@ -124,7 +125,7 @@ void CCinematicObject::Stop() {
   m_RenderableObject->SetYaw(l_Yaw);
   m_RenderableObject->SetPitch(l_Pitch);
   m_RenderableObject->SetRoll(l_Roll);
-  m_RenderableObject->SetScale(l_Scale);
+  m_RenderableObject->SetScale(l_Scale);*/
 }
 
 void CCinematicObject::OnRestartCycle() {
