@@ -116,13 +116,13 @@
 	<Physx_mesh name="PLATAFORMA009" filename="Data\level4\meshes\PLATAFORMA009.phsx"/>
 	<Physx_mesh name="PLAT POLY005" filename="Data\level4\meshes\PLAT POLY005.phsx"/>
 	<Physx_mesh name="SALA 7" filename="Data\level4\meshes\SALA 7.phsx"/>
-	<Physx_mesh name="Sala_7_Pinxos_001" filename="Data\level4\meshes\Sala_7_Pinxos_001.phsx"/>
+	<!--<Physx_mesh name="Sala_7_Pinxos_001" filename="Data\level4\meshes\Sala_7_Pinxos_001.phsx"/>
 	<Physx_mesh name="Sala_7_Pinxos_004" filename="Data\level4\meshes\Sala_7_Pinxos_004.phsx"/>
 	<Physx_mesh name="Sala_7_Pinxos_005" filename="Data\level4\meshes\Sala_7_Pinxos_005.phsx"/>
 	<Physx_mesh name="Sala_7_Pinxos_006" filename="Data\level4\meshes\Sala_7_Pinxos_006.phsx"/>
 	<Physx_mesh name="Sala_7_Pinxos_007" filename="Data\level4\meshes\Sala_7_Pinxos_007.phsx"/>
 	<Physx_mesh name="Sala_7_Pinxos_008" filename="Data\level4\meshes\Sala_7_Pinxos_008.phsx"/>
-	<Physx_mesh name="Sala_7_Pinxos_009" filename="Data\level4\meshes\Sala_7_Pinxos_009.phsx"/>
+	<Physx_mesh name="Sala_7_Pinxos_009" filename="Data\level4\meshes\Sala_7_Pinxos_009.phsx"/>-->
 	<Physx_mesh name="Sala_7_Pinxos_010" filename="Data\level4\meshes\Sala_7_Pinxos_010.phsx"/>
 	<!--<Physx_mesh name="Sala_7_Pinxos_011" filename="Data\level4\meshes\Sala_7_Pinxos_011.phsx"/>
 	<Physx_mesh name="Sala_7_Pinxos_012" filename="Data\level4\meshes\Sala_7_Pinxos_012.phsx"/>-->
@@ -130,15 +130,15 @@
 	<Physx_mesh name="Sala_7_ColumnaA_008" filename="Data\level4\meshes\Sala_7_ColumnaA_008.phsx"/>
 	<Physx_mesh name="Sala_7_ColumnaA_010" filename="Data\level4\meshes\Sala_7_ColumnaA_010.phsx"/>
 	<Physx_mesh name="Sala_7_ColumnaA_011" filename="Data\level4\meshes\Sala_7_ColumnaA_011.phsx"/>
-	<Physx_mesh name="Sala_7_Pinxos_013" filename="Data\level4\meshes\Sala_7_Pinxos_013.phsx"/>
-	<Physx_mesh name="Sala_7_Pinxos_014" filename="Data\level4\meshes\Sala_7_Pinxos_014.phsx"/>
+	<!--<Physx_mesh name="Sala_7_Pinxos_013" filename="Data\level4\meshes\Sala_7_Pinxos_013.phsx"/>
+	<Physx_mesh name="Sala_7_Pinxos_014" filename="Data\level4\meshes\Sala_7_Pinxos_014.phsx"/>-->
 	<Physx_mesh name="Sala_7_Paret" filename="Data\level4\meshes\Sala_7_Paret.phsx"/>
 	<Physx_mesh name="Sala_7_Obstacle_001" filename="Data\level4\meshes\Sala_7_Obstacle_001.phsx"/>
 	<Physx_mesh name="Sala_7_Obstacle_002" filename="Data\level4\meshes\Sala_7_Obstacle_002.phsx"/>
 	<Physx_mesh name="Sala_7_Obstacle_003" filename="Data\level4\meshes\Sala_7_Obstacle_003.phsx"/>
 	<Physx_mesh name="Sala_7_Obstacle_004" filename="Data\level4\meshes\Sala_7_Obstacle_004.phsx"/>
 	<Physx_mesh name="Sala_7_Obstacle_005" filename="Data\level4\meshes\Sala_7_Obstacle_005.phsx"/>
-	<Physx_mesh name="Sala_7_Pinxos_015" filename="Data\level4\meshes\Sala_7_Pinxos_015.phsx"/>
+	<!--<Physx_mesh name="Sala_7_Pinxos_015" filename="Data\level4\meshes\Sala_7_Pinxos_015.phsx"/>-->
 	<Physx_mesh name="Teleport" filename="Data\level4\meshes\Teleport.phsx"/>
 	<Physx_mesh name="Teleport_inactive" filename="Data\level4\meshes\Teleport_inactive.phsx"/>
 	<Physx_mesh name="BossCirculoExterior" filename="Data\level4\meshes\BossCirculoExterior.phsx"/>
@@ -149,4 +149,5 @@
 	<Physx_mesh name="Sala3_Wall_2" filename="Data\level4\meshes\Sala3_Wall_2.phsx"/>
 	<Physx_mesh name="Sala4_Wall_1" filename="Data\level4\meshes\Sala4_Wall_1.phsx"/>
 	<Physx_mesh name="Sala4_Wall_2" filename="Data\level4\meshes\Sala4_Wall_2.phsx"/>
+	<Physx_mesh name="Sala7_Pinchos_001" filename="Data\level4\meshes\Sala7_Pinchos_001.phsx"/>
 </Physx_meshes>

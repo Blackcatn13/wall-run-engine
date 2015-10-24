@@ -847,4 +847,5 @@
 	<platform name="Security_Wall_003" core="Security_Wall_003" type="static" pos="329.905552 28.771194 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="2.64252 4.17197 2.44058" layer="solid" room="7"/>
 	<platform name="Security_Wall_004" core="Security_Wall_004" type="static" pos="-204.247009 18.560547 -645.968262" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="1.37692 2.65969 4.97992" layer="solid" room="7"/>
 	<platform name="Security_Wall_005" core="Security_Wall_005" type="static" pos="-212.656860 23.708252 -645.968262" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="1.37692 2.65969 4.97992" layer="solid" room="7"/>
+	<mesh_instance name="Sala7_Pinchos_001" core="Sala7_Pinchos_001" pos="36.177689 26.678833 -645.353760" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" room="7" layer="solid"/>
 </renderable_objects>
