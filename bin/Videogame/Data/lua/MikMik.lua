@@ -303,7 +303,7 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 			end
 			
 			if player.is_hit == false and tostring(temp_zone) == tostring(player.zone) and not enemy:is_static() then
-				if (player.on_air == false) or (player.on_air == true and player_distance > 2) then
+				if (player.on_air == false) or (player.on_air == true and player_distance > 1) then
 					move_enemy(ElapsedTime, player_position, enemy, MikHeight) -- en caso de no ser estatico
 					mesh = enemy.m_RenderableObject
 					dir = Vect3f(math.cos(mesh:get_yaw()), 0, math.sin(mesh:get_yaw()))
