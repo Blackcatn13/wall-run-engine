@@ -82,6 +82,7 @@ function update_pause()
 end
 
 function reset_player_states()
+	inLoop = false;
 	inDoubleLoop = false;
 	inDoubleJump = false;
 	executedDoubleStart = false;
@@ -97,6 +98,32 @@ function reset_player_states()
 	contador = 0;
 	jumpTime = 0;
 	
+	player_controller.m_ableToIman = false;
+	player_controller.m_isJumping = false;
+	player_controller.m_isDoubleJumping = false;
+	player_controller.m_isJumpingMoving = false;
+	player_controller.m_isAttack = false;
+	player_controller.m_Direction3D = Vect3f(0,0,0);
+	player_controller.m_isTurned = false;
+	player_controller.m_isOnPlatform = false;
+	player_controller.m_isFalling = false;
+	player_controller.m_executeDoubleJump = false;
+	
+	playerRenderable:clear_cycle(anim_idle,0);
+	playerRenderable:clear_cycle(anim_run,0);
+	playerRenderable:clear_cycle(anim_jump_loop,0);
+	playerRenderable:clear_cycle(anim_jump_end,0);
+	playerRenderable:clear_cycle(anim_DJump_03,0);
+	playerRenderable:clear_cycle(anim_DJump_04,0);
+	playerRenderable:remove_action(anim_jump_start);
+	playerRenderable:remove_action(anim_attack);
+	playerRenderable:remove_action(anim_hurt);
+	playerRenderable:remove_action(anim_poly);
+	playerRenderable:remove_action(anim_DJump_01);
+	playerRenderable:remove_action(anim_DJump_02);
+	
+	player.use_iman = false;
+	player.iman_pos = Vect3f(0.0,0.0,0.0)
 	player.hurt_by_spikes = false
 	player.is_hit = false
 	player.is_hit_reset_first = false
@@ -107,6 +134,11 @@ function reset_player_states()
 	player.is_activating_poly = false
 	player.vanishing = false
 	player.can_move = true
+	player.can_move = true
+	player.playing_hit = false
+	player.can_finish_atack = true
+	player.is_activating_poly = false
+	player.has_ass_burned = false
 end
 
 function on_update_player_lua(l_ElapsedTime)
@@ -578,12 +610,15 @@ function on_update_player_lua(l_ElapsedTime)
 			canAttack = true;
 		end
 		local emitter = particle_manager:get_resource(playerRenderable.m_ParticleEmitter)
+		coreInstance:trace("IsAttack "..tostring(player_controller.m_isAttack))
 		if player_controller.m_isAttack == true then
 			if false then
 				player_controller.m_isAttack = false;
 			else
+				
 				if player.can_finish_atack then
 					--local emitter = particle_manager:get_resource(playerRenderable.m_ParticleEmitter)
+					
 					if player_controller.m_CurrentAttackForce > 0.5 then					
 						local prev_y = mov.y
 						player_controller.m_CurrentAttackForce = player_controller.m_CurrentAttackForce - (m_AttackGravity * l_ElapsedTime);
@@ -616,13 +651,14 @@ function on_update_player_lua(l_ElapsedTime)
 			end
 		end
 		
+		
 		if act2in:do_action_from_lua("PolyPowa") then
 			if playerRenderable:is_action_animation_active() == false and player.is_activating_poly == false then
 				--[[if player_controller.m_isJumping then
 					playerRenderable:remove_action(2)
 					player_controller.m_isJumping = false
 				end]]
-				playerRenderable:execute_action(7,0,0.3,1,false);
+				playerRenderable:execute_action(anim_poly,0,0.3,1,false);
 			end
 		end
 		
@@ -646,6 +682,7 @@ function on_update_player_lua(l_ElapsedTime)
 		--///////////////////////////////////////////////////////////
 		-- Acción de atacar del Player. Realiza un impulso hacia adelante. 
 		--/////////////////////////////////////////////////////////// 
+		local first_frame_attack = false;
 		if (act2in:do_action_from_lua("Attack") and not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land and player_controller.m_isAttack == false and canAttack == true and player.is_hit == false and player.attack_enabled and not player.is_dead) and not playerRenderable.m_VanishActive and not gui_manager:is_transition_effect_active() then --) and (player_controller.m_isAttack == false) then			
 			if not player.super_piky_active then
 				canAttack = false;
@@ -659,6 +696,7 @@ function on_update_player_lua(l_ElapsedTime)
 				mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce * AttackSpeed * l_ElapsedTime;
 				mov.y = prev_y;
 				player_controller.m_isAttack = true;
+				first_frame_attack = true;
 				playerRenderable:execute_action(anim_attack,0,0.3,1,false);
 				local emitter = particle_manager:get_resource(playerRenderable.m_ParticleEmitter)
 				emitter.m_vPos = playerRenderable:get_position()+ playerRenderable.m_EmitterOffset
@@ -684,8 +722,9 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 	
 		if not player_controller.m_isGrounded then
-			if  player_controller.m_isAttack then	-- Aqui ir poniendo siempre que se tenga que parar alguna acción si no está grounded
+			if  player_controller.m_isAttack and not first_frame_attack then	-- Aqui ir poniendo siempre que se tenga que parar alguna acción si no está grounded
 				player.get_player_controller():update_character_extents(true, m_ReduceCollider);
+				coreInstance:trace("entro a parar el ataque")
 				player_controller.m_isAttack = false
 			end
 		end
