@@ -847,4 +847,34 @@
 	<platform name="Security_Wall_003" core="Security_Wall_003" type="static" pos="329.905552 28.771194 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="2.64252 4.17197 2.44058" layer="solid" room="7"/>
 	<platform name="Security_Wall_004" core="Security_Wall_004" type="static" pos="-204.247009 18.560547 -645.968262" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="1.37692 2.65969 4.97992" layer="solid" room="7"/>
 	<platform name="Security_Wall_005" core="Security_Wall_005" type="static" pos="-212.656860 23.708252 -645.968262" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="1.37692 2.65969 4.97992" layer="solid" room="7"/>
+
+	<mesh_instance name="Teatro_01_Animation" core="Teatro_01_Animation" pos="0.000000 7.307668 126.377167" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Cortinillas_Animation" core="Cortinillas_Animation" pos="0.917252 6.558058 126.178268" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Fondo Negro_Animation" core="Fondo Negro_Animation" pos="3.779144 6.542286 126.202888" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Plane001_Animation" core="Plane001_Animation" pos="1.084747 14.127685 126.301186" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Bitland_Animation" core="Bitland_Animation" pos="1.672438 14.814299 126.307922" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Casas_01_Animation" core="Casas_01_Animation" pos="0.000000 -1.765550 130.492935" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Casas_2_Animation" core="Casas_2_Animation" pos="-0.028138 5.271357 116.980980" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Cartel_02_Animation" core="Cartel_02_Animation" pos="-0.080933 15.594865 126.635880" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Fondo Pixels_Animation" core="Fondo Pixels_Animation" pos="-0.900146 6.618665 110.352837" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Pixels_pintados_Animation" core="Pixels_pintados_Animation" pos="-1.239992 7.671438 111.172340" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Piky_Sentado_Animation" core="Piky_Sentado_Animation" pos="-2.221679 -1.300851 129.845337" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Cartel03_Animation" core="Cartel03_Animation" pos="-1.801270 15.904229 125.245598" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Cartel04_Animation" core="Cartel04_Animation" pos="-4.684571 6.272544 114.607193" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Columnas_palacio_Animation" core="Columnas_palacio_Animation" pos="-4.833009 6.636253 108.744331" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Suelo_palacio_Animation" core="Suelo_palacio_Animation" pos="-5.564697 -0.249824 125.395012" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Banderines_Animation" core="Banderines_Animation" pos="-5.879393 9.191162 139.827148" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Rey01_Animation" core="Rey01_Animation" pos="-6.607666 6.774450 113.779442" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Piky_caminando_Animation" core="Piky_caminando_Animation" pos="-7.324123 5.309360 135.605499" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Cartel05_Animation" core="Cartel05_Animation" pos="-8.984381 15.819118 127.985962" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Plano_Rey_habla_Animation" core="Plano_Rey_habla_Animation" pos="-9.557862 7.533294 108.312141" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Plano_Negro_rey_habla_Animation" core="Plano_Negro_rey_habla_Animation" pos="-9.388033 6.769444 86.546837" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Poly EMerald_Animation" core="Poly EMerald_Animation" pos="-10.776124 8.698976 106.617104" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Cartel06_Animation" core="Cartel06_Animation" pos="-10.759194 -5.698965 126.083832" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Tunel_Animation" core="Tunel_Animation" pos="-10.216428 5.894479 141.182297" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Piky_linterna_Animation" core="Piky_linterna_Animation" pos="-10.510864 5.767041 135.370316" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Cartel07_Animation" core="Cartel07_Animation" pos="-10.688356 9.129238 113.430740" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Cartel08_Animation" core="Cartel08_Animation" pos="-10.645265 5.969631 141.110992" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Mano_Piky_Animation" core="Mano_Piky_Animation" pos="-11.373291 -2.913425 125.950287" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
+	<mesh_instance name="Vortex_Animation" core="Vortex_Animation" pos="12.714676 7.726181 126.460922" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
 </renderable_objects>

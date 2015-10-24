@@ -2,6 +2,7 @@
 #include "CinematicObjectKeyFrame.h"
 #include "Renderable\RenderableObject.h"
 #include "Renderable\RenderableObjectsManager.h"
+#include "Renderable\RenderableObjectsLayersManager.h"
 #include "Core\Core.h"
 #include "Core_Utils/MemLeaks.h"
 #include "Utils\LerpAnimator1D.h"
@@ -14,7 +15,8 @@ CCinematicObject::CCinematicObject(CXMLTreeNode &atts)
   , m_NextKeyFrame(1) {
   std::string l_Resource = atts.GetPszProperty("resource");
   std::string l_Layer = atts.GetPszProperty("renderable_objects_manager");
-  m_RenderableObject = CCORE->GetRenderableManager()->GetResource(l_Resource);
+  int room = atts.GetIntProperty("room", 0);
+  m_RenderableObject = RENDLM->GetRenderableObjectsManagerByStrAndRoom(l_Layer, room)->GetResource(l_Resource);
   int count = atts.GetNumChildren();
   for (int i = 0; i < count; ++i) {
     if (!strcmp(atts(i).GetName(), "cinematic_object_key_frame")) {
@@ -41,8 +43,11 @@ void CCinematicObject::AddCinematicObjectKeyFrame(CCinematicObjectKeyFrame *Cine
 void CCinematicObject::CalculateFrame() {
   for (size_t i = m_CurrentKeyFrame; i < m_CinematicObjectKeyFrames.size(); ++i) {
     if (m_CinematicObjectKeyFrames[i]->GetKeyFrameTime() > m_CurrentTime) {
+      if (i == 0)
+        i++;
       m_CurrentKeyFrame = i - 1;
-      m_NextKeyFrame = i;
+      if (m_CinematicObjectKeyFrames.size() > i)
+        m_NextKeyFrame = i;
       return;
     }
   }

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<cinematic name="Ani" duration="60.0333">
+	<cinematic_object resource="Teatro_01_Animation" renderable_objects_manager="solid" room="0">
+		<cinematic_object_key_frame time="0.0" pos="0.0 7.30767 126.377" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="8.9" pos="0.0 7.30767 126.377" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="9.9" pos="0.0 18.7946 126.377" yaw="0.0" pitch="0.0" roll="0.0" scale="1.93848 1.93848 1.93848"/>
+		<cinematic_object_key_frame time="10.2" pos="0.0 20.5902 126.377" yaw="0.0" pitch="0.0" roll="0.0" scale="1.93848 1.93848 1.93848"/>
+	</cinematic_object>
+	<cinematic_object resource="Cortinillas_Animation" renderable_objects_manager="solid" room="0">
+		<cinematic_object_key_frame time="0.0" pos="0.917252 6.55806 126.178" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="2.0" pos="0.917252 6.55806 126.178" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="6.66667" pos="0.917252 15.2878 126.178" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="7.13333" pos="0.917252 15.2878 126.178" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	</cinematic_object>
+	<cinematic_object resource="Plane001_Animation" renderable_objects_manager="solid" room="0">
+		<cinematic_object_key_frame time="0.0" pos="1.08475 14.1277 126.301" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="6.73333" pos="1.08475 14.1277 126.301" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="6.96667" pos="1.08475 7.43603 126.301" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="7.3" pos="1.08475 7.70877 126.301" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="7.56667" pos="1.08475 7.43603 126.301" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="8.3" pos="1.08475 7.43603 126.301" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="8.63333" pos="1.08475 8.45483 126.301" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="9.3" pos="1.08475 12.7614 126.301" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	</cinematic_object>
+	<cinematic_object resource="Bitland_Animation" renderable_objects_manager="solid" room="0">
+		<cinematic_object_key_frame time="10.2667" pos="1.67244 14.8143 126.308" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="10.7333" pos="1.67244 5.85186 126.308" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	</cinematic_object>
+	<cinematic_object resource="Casas_01_Animation" renderable_objects_manager="solid" room="0">
+		<cinematic_object_key_frame time="0.0" pos="2.03796e-007 -1.76555 130.493" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="10.2333" pos="1.46599e-007 -1.76555 129.184" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="10.9333" pos="1.46599e-007 5.429 129.184" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	</cinematic_object>
+	<cinematic_object resource="Casas_2_Animation" renderable_objects_manager="solid" room="0">
+		<cinematic_object_key_frame time="0.0" pos="-0.0281379 5.27136 116.981" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="10.7333" pos="-0.0281379 5.27136 116.981" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="11.2667" pos="-0.0281377 5.76596 123.421" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	</cinematic_object>
+	<cinematic_object resource="Cartel_02_Animation" renderable_objects_manager="solid" room="0">
+		<cinematic_object_key_frame time="11.7" pos="-0.0809326 15.5949 126.636" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="12.3333" pos="-0.0809326 9.07063 126.636" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="12.5" pos="-0.0809326 8.27809 126.636" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="12.6667" pos="-0.0809326 8.78352 126.636" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="14.0333" pos="-0.0809326 8.78352 126.636" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="14.5667" pos="-0.0809326 16.1509 126.636" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	</cinematic_object>
+	<cinematic_object resource="Fondo Pixels_Animation" renderable_objects_manager="solid" room="0">
+		<cinematic_object_key_frame time="14.5" pos="-0.900146 6.61867 110.353" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="15.2333" pos="-0.900146 6.61867 125.737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	</cinematic_object>
+	<cinematic_object resource="Pixels_pintados_Animation" renderable_objects_manager="solid" room="0">
+		<cinematic_object_key_frame time="0.0" pos="-1.23999 7.67144 111.172" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="19.5" pos="-2.17793 7.67144 111.172" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="19.8333" pos="-2.17793 7.67144 118.556" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="20.6" pos="-2.17793 7.67144 126.896" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="21.2667" pos="-2.17793 7.67144 125.474" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	</cinematic_object>
+	<cinematic_object resource="Piky_Sentado_Animation" renderable_objects_manager="solid" room="0">
+		<cinematic_object_key_frame time="15.5333" pos="-2.22168 -1.30085 129.845" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="15.9333" pos="-2.22168 5.7975 129.845" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	</cinematic_object>
+	<cinematic_object resource="Cartel03_Animation" renderable_objects_manager="solid" room="0">
+		<cinematic_object_key_frame time="16.0" pos="-1.80127 15.9042 125.246" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="16.6667" pos="-1.80127 7.06834 125.246" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="16.8" pos="-1.80127 7.81112 125.246" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="19.8" pos="-1.80127 7.81112 125.246" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="19.9" pos="-1.80127 7.81112 126.5" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="19.9667" pos="-1.80127 7.81112 129.902" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="20.1" pos="-1.80127 7.81112 134.857" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="20.1333" pos="-1.80127 7.81112 140.845" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	</cinematic_object>
+	<cinematic_object resource="Cartel04_Animation" renderable_objects_manager="solid" room="0">
+		<cinematic_object_key_frame time="21.6667" pos="-4.68457 6.27254 114.607" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="22.5667" pos="-4.68457 6.27254 124.001" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	</cinematic_object>
+	<cinematic_object resource="Suelo_palacio_Animation" renderable_objects_manager="solid" room="0">
+		<cinematic_object_key_frame time="25.2667" pos="-5.5647 -0.249824 125.395" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="25.9333" pos="-5.5647 2.69619 125.395" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	</cinematic_object>
+	<cinematic_object resource="Cartel05_Animation" renderable_objects_manager="solid" room="0">
+		<cinematic_object_key_frame time="26.9333" pos="-8.98438 15.8191 127.986" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="26.9667" pos="-8.98438 15.8191 127.986" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="28.2" pos="-8.98438 8.0583 127.986" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="28.2333" pos="-8.98438 8.0583 127.986" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="28.7333" pos="-8.98438 8.63029 127.986" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	</cinematic_object>
+	<cinematic_object resource="Plano_Rey_habla_Animation" renderable_objects_manager="solid" room="0">
+		<cinematic_object_key_frame time="29.3" pos="-9.55786 7.53329 108.312" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="33.9333" pos="-9.55786 7.53329 126.176" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="37.7" pos="-9.55786 7.53329 126.176" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="38.8333" pos="-9.55786 -3.17714 126.176" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	</cinematic_object>
+	<cinematic_object resource="Plano_Negro_rey_habla_Animation" renderable_objects_manager="solid" room="0">
+		<cinematic_object_key_frame time="32.2" pos="-9.38803 6.76945 86.547" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="62.1667" pos="-9.38803 6.76945 125.673" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	</cinematic_object>
+	<cinematic_object resource="Poly EMerald_Animation" renderable_objects_manager="solid" room="0">
+		<cinematic_object_key_frame time="37.6333" pos="-10.7761 8.69898 106.617" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="39.0667" pos="-10.7761 8.69898 126.232" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="43.3667" pos="-10.7761 8.69898 126.232" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="44.9333" pos="-10.7761 8.69898 128.742" yaw="0.0" pitch="0.0" roll="0.0" scale="0.628862 0.628862 0.628862"/>
+		<cinematic_object_key_frame time="51.9333" pos="-10.7761 8.69898 128.742" yaw="0.0" pitch="0.0" roll="0.0" scale="0.628862 0.628862 0.628862"/>
+		<cinematic_object_key_frame time="53.7667" pos="-10.7761 7.96404 126.185" yaw="0.0" pitch="0.0" roll="0.0" scale="1.53046 1.53046 1.53046"/>
+	</cinematic_object>
+	<cinematic_object resource="Cartel06_Animation" renderable_objects_manager="solid" room="0">
+		<cinematic_object_key_frame time="38.5" pos="-10.7592 -5.69897 126.084" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="39.5" pos="-10.7592 6.00365 126.084" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="43.2667" pos="-10.7592 6.00365 126.084" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="44.6333" pos="-10.7592 6.00365 112.818" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	</cinematic_object>
+	<cinematic_object resource="Tunel_Animation" renderable_objects_manager="solid" room="0">
+		<cinematic_object_key_frame time="43.4667" pos="-10.2164 5.89448 141.182" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="46.3333" pos="-10.2164 5.89448 125.768" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="51.4333" pos="-10.2164 5.89448 125.768" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="52.7667" pos="-10.2164 -2.70606 125.768" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	</cinematic_object>
+	<cinematic_object resource="Cartel07_Animation" renderable_objects_manager="solid" room="0">
+		<cinematic_object_key_frame time="43.8" pos="-10.6884 9.12924 113.431" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="45.0667" pos="-10.6884 9.12924 124.762" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="48.9" pos="-10.6884 9.12924 124.762" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="50.3" pos="-10.6884 15.0206 124.762" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	</cinematic_object>
+	<cinematic_object resource="Cartel08_Animation" renderable_objects_manager="solid" room="0">
+		<cinematic_object_key_frame time="45.5667" pos="-10.6453 5.96963 141.111" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="54.2333" pos="-10.6453 5.96963 112.215" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	</cinematic_object>
+	<cinematic_object resource="Mano_Piky_Animation" renderable_objects_manager="solid" room="0">
+		<cinematic_object_key_frame time="52.2" pos="-11.3733 -2.91342 125.95" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="56.6667" pos="-11.3733 6.51856 125.95" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	</cinematic_object>
+	<cinematic_object resource="Vortex_Animation" renderable_objects_manager="solid" room="0">
+		<cinematic_object_key_frame time="54.0333" pos="12.7147 7.72618 126.461" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="57.3" pos="-11.4157 7.72618 126.461" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="57.5" pos="-11.6496 7.72618 126.461" yaw="0.0" pitch="-0.436332" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="57.8667" pos="-11.6496 7.72618 126.461" yaw="0.0" pitch="2.80459" roll="0.0" scale="5.3466 5.3466 5.3466"/>
+		<cinematic_object_key_frame time="58.9667" pos="-11.6496 7.72618 126.461" yaw="0.0" pitch="-1.82706" roll="0.0" scale="5.3466 5.3466 5.3466"/>
+	</cinematic_object>
+</cinematic>

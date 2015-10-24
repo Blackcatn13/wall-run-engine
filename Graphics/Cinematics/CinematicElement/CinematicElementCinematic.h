@@ -7,6 +7,7 @@
 #include <string>
 
 class CXMLTreeNode;
+class CCinematic;
 
 class CCinematicElementCinematic : public CCinematicElement {
  public:
@@ -16,6 +17,8 @@ class CCinematicElementCinematic : public CCinematicElement {
   bool Update(float dt);
  private:
   bool m_played;
+  CCinematic *m_cinematic;
+
 };
 
 
