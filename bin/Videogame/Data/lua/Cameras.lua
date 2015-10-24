@@ -50,10 +50,10 @@ function on_update_cameras_lua(l_ElapsedTime)
 	local dist_to_rotate = 3;
 	local yaw_to_rotate = 0.05;
 	local cam3D_speed = 11;
-	local cam3D_rotateSpeed = 5;
+	local cam3D_pitchSpeed = 3;
 	local cam3D_yawSpeed = 5;
-	local cam3D_zoomSpeed = 5;
-	local cam3D_distSpeed = 5;
+	local cam3D_zoomSpeed = 3;
+	local cam3D_distSpeed = 3;
 	
 	
 	--______ CAMERA 2D _______________________
@@ -300,10 +300,10 @@ function on_update_cameras_lua(l_ElapsedTime)
 			local lastPitch = obj:get_pitch();
 			if player.going_back == true and pointSpecs.can_go_back == true then
 				local incPitch = pitch3D_back - lastPitch;
-				obj:set_pitch(lastPitch + incPitch * l_ElapsedTime * cam3D_rotateSpeed);
+				obj:set_pitch(lastPitch + incPitch * l_ElapsedTime * cam3D_pitchSpeed);
 			else
 				local incPitch = pitch3D - lastPitch;
-				obj:set_pitch(lastPitch + incPitch * l_ElapsedTime * cam3D_rotateSpeed);
+				obj:set_pitch(lastPitch + incPitch * l_ElapsedTime * cam3D_pitchSpeed);
 			end
 			obj:set_roll(0);
 			local lastZoom = cam:get_zoom();
