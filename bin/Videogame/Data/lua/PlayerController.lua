@@ -82,7 +82,6 @@ function update_pause()
 end
 
 function reset_player_states()
-	inLoop = false;
 	inDoubleLoop = false;
 	inDoubleJump = false;
 	executedDoubleStart = false;
@@ -103,27 +102,12 @@ function reset_player_states()
 	player_controller.m_isDoubleJumping = false;
 	player_controller.m_isJumpingMoving = false;
 	player_controller.m_isAttack = false;
-	player_controller.m_Direction3D = Vect3f(0,0,0);
-	player_controller.m_isTurned = false;
-	player_controller.m_isOnPlatform = false;
+	--player_controller.m_Direction3D = Vect3f(0,0,0);
+	--player_controller.m_isTurned = false;
+	--player_controller.m_isOnPlatform = false;
 	player_controller.m_isFalling = false;
 	player_controller.m_executeDoubleJump = false;
 	
-	playerRenderable:clear_cycle(anim_idle,0);
-	playerRenderable:clear_cycle(anim_run,0);
-	playerRenderable:clear_cycle(anim_jump_loop,0);
-	playerRenderable:clear_cycle(anim_jump_end,0);
-	playerRenderable:clear_cycle(anim_DJump_03,0);
-	playerRenderable:clear_cycle(anim_DJump_04,0);
-	playerRenderable:remove_action(anim_jump_start);
-	playerRenderable:remove_action(anim_attack);
-	playerRenderable:remove_action(anim_hurt);
-	playerRenderable:remove_action(anim_poly);
-	playerRenderable:remove_action(anim_DJump_01);
-	playerRenderable:remove_action(anim_DJump_02);
-	
-	player.use_iman = false;
-	player.iman_pos = Vect3f(0.0,0.0,0.0)
 	player.hurt_by_spikes = false
 	player.is_hit = false
 	player.is_hit_reset_first = false
@@ -134,11 +118,6 @@ function reset_player_states()
 	player.is_activating_poly = false
 	player.vanishing = false
 	player.can_move = true
-	player.can_move = true
-	player.playing_hit = false
-	player.can_finish_atack = true
-	player.is_activating_poly = false
-	player.has_ass_burned = false
 end
 
 function on_update_player_lua(l_ElapsedTime)
@@ -610,7 +589,7 @@ function on_update_player_lua(l_ElapsedTime)
 			canAttack = true;
 		end
 		local emitter = particle_manager:get_resource(playerRenderable.m_ParticleEmitter)
-		coreInstance:trace("IsAttack "..tostring(player_controller.m_isAttack))
+		--coreInstance:trace("IsAttack "..tostring(player_controller.m_isAttack))
 		if player_controller.m_isAttack == true then
 			if false then
 				player_controller.m_isAttack = false;
