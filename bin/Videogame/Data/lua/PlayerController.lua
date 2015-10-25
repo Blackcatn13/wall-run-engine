@@ -21,6 +21,8 @@ local _actualGravityForce = 0;
 local hole_timer = 0.0
 local max_hole_falling = 1.0;
 local iman_force = 20;
+local max_finish_counter_time = 0.5
+local temp_finish_counter_time = 0.0
 
 --////////////////////////////////////////////////////////
 -- GLOBAL PARAMETERS
@@ -96,7 +98,8 @@ function reset_player_states()
 	canAttack = true;
 	contador = 0;
 	jumpTime = 0;
-	
+		
+	temp_finish_counter_time = 0.0
 	player_controller.m_ableToIman = false;
 	player_controller.m_isJumping = false;
 	player_controller.m_isDoubleJumping = false;
@@ -107,7 +110,7 @@ function reset_player_states()
 	--player_controller.m_isOnPlatform = false;
 	player_controller.m_isFalling = false;
 	player_controller.m_executeDoubleJump = false;
-	
+
 	player.hurt_by_spikes = false
 	player.is_hit = false
 	player.is_hit_reset_first = false
@@ -178,17 +181,34 @@ function on_update_player_lua(l_ElapsedTime)
 						aura_emitter:set_visible(true)
 						aura_emitter2:set_visible(true)
 					end
-				if  player.super_piky_timer >(super_piky_time -5) then
+				if  player.super_piky_timer >(super_piky_time -3) then
 					if aura_emitter2:get_visible() then
 					--	coreInstance:trace("Toca quitar aura 2")
 						aura_emitter2:set_visible(false)
 					end
+					temp_finish_counter_time = temp_finish_counter_time +1*l_ElapsedTime
+					if temp_finish_counter_time >= max_finish_counter_time then
+						temp_finish_counter_time = 0.0
+						
+						if piky_layer == "superPiky" then
+							piky_layer = "player"
+							renderable_objects_layer_manager:change_between_layers("superPiky", piky_layer, 0, "SuperPiky")
+						else
+							piky_layer = "superPiky"
+							renderable_objects_layer_manager:change_between_layers("player", piky_layer, 0, "SuperPiky")
+						end
+						playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room(piky_layer, player_controller.m_Room):get_resource("SuperPiky");
+					end
 				end
+				
 			else
-								
+				if piky_layer =="player" then
+					piky_layer = "superPiky"
+					renderable_objects_layer_manager:change_between_layers("player", piky_layer, 0, "SuperPiky")	
+				end
 				player.set_super_piky(false)
 				player.super_piky_timer = 0.0
-				
+				temp_finish_counter_time = 0.0
 				aura_emitter:set_visible(false)
 				
 			
