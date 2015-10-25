@@ -849,6 +849,9 @@
 	<platform name="Security_Wall_004" core="Security_Wall_004" type="static" pos="-204.247009 18.560547 -645.968262" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="1.37692 2.65969 4.97992" layer="solid" room="7"/>
 	<platform name="Security_Wall_005" core="Security_Wall_005" type="static" pos="-212.656860 23.708252 -645.968262" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="1.37692 2.65969 4.97992" layer="solid" room="7"/>
 
+
+	<mesh_instance name="Sala7_Pinchos_001" core="Sala7_Pinchos_001" pos="36.177689 26.678833 -645.353760" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" room="7" layer="solid"/>
+
 	<mesh_instance name="Teatro_01_Animation" core="Teatro_01_Animation" pos="0.000000 7.307668 126.377167" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="AnimationStart"/>
 	<mesh_instance name="Cortinillas_Animation" core="Cortinillas_Animation" pos="0.917252 6.558058 126.178268" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="AnimationStart"/>
 	<mesh_instance name="Fondo Negro_Animation" core="Fondo Negro_Animation" pos="3.779144 6.542286 126.202888" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="AnimationStart"/>

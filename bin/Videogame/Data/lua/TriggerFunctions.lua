@@ -593,3 +593,20 @@ function init_boss_trigger()
 	coreInstance.m_CameraController:set_active_camera("3DCam");
 	start_boss()
 end
+
+function nail_platform(obj_name, layer)
+	--coreInstance:trace("Unsetting kinematic")
+	local platform = get_renderable_object(layer, player_controller.m_Room, obj_name)
+	if platform ~= nil then
+	--	coreInstance:trace("Platform found")
+		platform.m_Actor:set_kinematic(true)
+		platform.m_Actor:activate(false)
+	end
+end
+
+function activate_actor(obj_name, layer)
+	local obj = get_renderable_object(layer, player_controller.m_Room, obj_name)
+	if obj ~= nil then
+		obj.m_Actor:activate(true)
+	end
+end

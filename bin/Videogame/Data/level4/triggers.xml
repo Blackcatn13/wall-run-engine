@@ -152,6 +152,8 @@
 <trigger name="ChukyDesapears006" platform_name="" pos="-138.108139 17.554810 -644.411682" shape="box" size="0.86792 9.74541 9.84399" type_event="enter" script_function="ChuckyDesapears" param1="" group="1" paint="true" color="1.0 0.0235294 0.0235294"/>
 <trigger name="ChuckyReApears005" platform_name="" pos="-173.027008 17.966553 -644.021729" shape="box" size="1.0824 11.1305 10.7328" type_event="enter" script_function="ChuckyReApears" param1="18" group="1" paint="true" color="0.878431 0.337255 0.337255"/>
 <trigger name="ChuckyStop007" platform_name="" pos="-198.755951 16.606567 -645.895935" shape="box" size="0.845459 15.4299 10.5983" type_event="enter" script_function="ChuckyStop" param1="" group="18" paint="false" color="0.878431 0.337255 0.337255"/>
+<trigger name="UnsetKinematic_001" platform_name="" pos="55.091629 27.147644 -644.696899" shape="box" size="23.8827 1.23131 10.4016" type_event="enter" script_function="nail_platform" param1="PLATAFORMA008" param2 ="breakable" type_event2="leave" param1_event2="PLATAFORMA008" param2_event2="breakable" script_function2="activate_actor" group="19" paint="false" color="0.603922 0.843137 0.898039"/>
+<trigger name="UnsetKinematic_002" platform_name="" pos="16.031387 27.147644 -644.696899" shape="box" size="23.8827 1.23131 10.4016" type_event="enter" script_function="nail_platform" param1="PLATAFORMA001" param2 ="breakable" type_event2="leave" param1_event2="PLATAFORMA001" param2_event2="breakable" script_function2="activate_actor" group="19" paint="false" color="0.603922 0.843137 0.898039"/>
 </triggers>
 
 
