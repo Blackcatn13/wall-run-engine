@@ -49,6 +49,7 @@
 	<effect name="GBufferDiffuseLavaEffect" file="data/effects/GBufferDiffuseLava.fxc"/>
 	<effect name="GBufferLavaEffectEffect" file="data/effects/GBufferLavaEffect.fxc"/>
 	<effect name="GBufferRimLCal3DEffect" file="data/effects/GBufferCal3DRimL.fx"/>
+	<effect name="GBufferSuperPCal3DEffect" file="data/effects/GBufferCal3DSuperP.fx"/>
 
 	<!--<technique name="BasicTechnique" effect="BasicEffect" use_view_to_light_projection_matrix="true" use_world_matrix="true" use_world_view_projection_matrix="true"/>-->
 	<technique name="LightsTechnique" effect="LightsEffect" use_view_to_light_projection_matrix="true" use_world_matrix="true" use_world_view_projection_matrix="true" num_of_lights="4" use_lights="true" use_light_ambient_color="true" use_inverse_view_matrix="true" />
@@ -65,6 +66,7 @@
 	<technique name="GBufferNormalMapTechnique" effect="GBufferNormalMapEffect"  use_world_matrix="true" use_world_view_projection_matrix="true" use_inverse_view_matrix="true"/>
 	<technique name="GBufferCal3DTechnique" effect="GBufferCal3DEffect"  use_world_matrix="true" use_world_view_projection_matrix="true" use_inverse_view_matrix="true"/>
 	<technique name="GBufferCal3DRimTechnique" effect="GBufferRimLCal3DEffect"  use_world_matrix="true" use_world_view_projection_matrix="true" use_inverse_view_matrix="true"/>
+	<technique name="GBufferCal3DSuperPTechnique" effect="GBufferSuperPCal3DEffect"  use_world_matrix="true" use_world_view_projection_matrix="true" use_inverse_view_matrix="true"/>
 	<technique name="GBufferLightMapTechnique" effect="GBufferLightMapEffect"  use_world_matrix="true" use_world_view_projection_matrix="true" />
 	<technique name="GBufferLightMapNoNormalTechnique" effect="GBufferLightMapNoNormalEffect"  use_world_matrix="true" use_world_view_projection_matrix="true" />
 	<technique name="GBufferCubeMapTechnique" effect="GBufferCubeMapEffect"  use_world_matrix="true" use_world_view_projection_matrix="true" use_inverse_view_matrix="true" />

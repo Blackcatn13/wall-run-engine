@@ -42,6 +42,10 @@
 	<pool_renderable_object_technique name="generate_deferred_shading_pool_renderable_object_technique_rim">
 		<default_technique vertex_type="415" technique="GBufferCal3DRimTechnique"/>
 	</pool_renderable_object_technique>
+	
+	<pool_renderable_object_technique name="generate_deferred_shading_pool_renderable_object_technique_superp">
+		<default_technique vertex_type="415" technique="GBufferCal3DSuperPTechnique"/>
+	</pool_renderable_object_technique>
 
 	<pool_renderable_object_technique name="generate_deferred_shading_pool_renderable_object_technique_lava">
 		<default_technique vertex_type="19" technique="GBufferLavaEffectTechnique"/>

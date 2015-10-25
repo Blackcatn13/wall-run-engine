@@ -105,11 +105,11 @@ TMultiRenderTargetPixel RenderCal3DHWPS(CAL3D_HW_VERTEX_PS IN)
 	float3 l_CameraToPixel=normalize(l_EyePos-IN.RealWorldPosition.xyz);
 	float l_normalDiff = saturate(dot(l_Nn,l_CameraToPixel));
 	float rim_contrib = 0;
-	if(l_normalDiff < g_RimThickness)
+	if(l_normalDiff < g_RimThicknessSP)
 	{
-		float value = l_normalDiff/g_RimThickness;
+		float value = l_normalDiff/g_RimThicknessSP;
 		rim_contrib = 1 - value;
-		rim_contrib = rim_contrib * g_RimIntensity * g_RimColor;
+		rim_contrib = rim_contrib * g_RimIntensitySP;
 	}
 	if(l_normalDiff < g_ContourNormalThickness)
 	{
@@ -121,7 +121,7 @@ TMultiRenderTargetPixel RenderCal3DHWPS(CAL3D_HW_VERTEX_PS IN)
 	
 
 	OUT.RT0 = float4(l_DiffuseColor, 1.0);
-	OUT.RT1 = saturate(l_ambientColor + rim_contrib);
+	OUT.RT1 = saturate(l_ambientColor + rim_contrib * g_RimColorSP);
 	OUT.RT2.xyz = NnScaled;
 	OUT.RT2.w = l_NormText.a;
 	OUT.RT3 = l_Depth;

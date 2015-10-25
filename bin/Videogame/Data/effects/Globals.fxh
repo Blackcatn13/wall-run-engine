@@ -42,6 +42,12 @@ float g_ZBlurEnd = 300;
 float g_ConstantBlur = 0.05;
 float2 g_RenderTargetSize = float2(754 , 584);
 float g_ContourNormalThickness = 0.0;
+float g_RimThickness = 0.4;
+float g_RimIntensity = 0.5;
+float4 g_RimColor = float4(1,1,1,1);
+float g_RimThicknessSP = 0.8;
+float g_RimIntensitySP = 1;
+float4 g_RimColorSP = float4(0,1,0,1);
 
 float3 g_LightAmbient=float3(0.35, 0.35, 0.35);
 float g_SpecularExponent = 200;
