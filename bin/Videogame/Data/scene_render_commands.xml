@@ -48,7 +48,8 @@
 		<enable_z_write/>
 		<enable_z_test/>		
 	
-		<render_scene layer="enemies" active="true" />
+		
+		
 		<render_scene layer="angry" active="true" />
 		<render_scene layer="collectible" active="true" />
 		<!--<render_scene layer="switches" active="true" />-->
@@ -58,9 +59,11 @@
 		<render_scene layer="breakable" active="true"/>
 		<!--<render_scene layer="alpha_objects" active="true"/> -->
 		<render_scene layer="solid" active="true"/>
+		<render_scene layer="AnimationStart" active="true"/>
+		<set_pool_renderable_objects_technique pool="generate_deferred_shading_pool_renderable_object_technique_rim"/>
+		<render_scene layer="enemies" active="true" />
 		<render_scene layer="player" active="true"/>
 		<render_scene layer="superPiky" active="true"/>
-		<render_scene layer="AnimationStart" active="true"/>
 		<!--<render_scene layer="invisible" active="true" />-->
 		<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>
 		<set_pool_renderable_objects_technique pool="fade_alpha"/>

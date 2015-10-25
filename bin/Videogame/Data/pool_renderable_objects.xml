@@ -37,13 +37,10 @@
 
 	<pool_renderable_object_technique name="generate_deferred_shading_pool_renderable_object_technique_movement">
 		<default_technique vertex_type="19" technique="GBufferDiffuseMapTechniqueMovement"/>
-		<default_technique vertex_type="31" technique="GBufferNormalMapTechnique"/>
-		<default_technique vertex_type="51" technique="GBufferLightMapNoNormalTechnique"/>
-		<default_technique vertex_type="63" technique="GBufferLightMapTechnique"/>
-		<default_technique vertex_type="67" technique="GBufferColoredTechnique"/>
-		<default_technique vertex_type="415" technique="GBufferCal3DTechnique"/>
-		<default_technique vertex_type="531" technique="GBufferCubeMapTechnique"/>
-		<default_technique vertex_type="1087" technique="GBufferRNMTechnique"/>
+	</pool_renderable_object_technique>
+	
+	<pool_renderable_object_technique name="generate_deferred_shading_pool_renderable_object_technique_rim">
+		<default_technique vertex_type="415" technique="GBufferCal3DRimTechnique"/>
 	</pool_renderable_object_technique>
 
 	<pool_renderable_object_technique name="generate_deferred_shading_pool_renderable_object_technique_lava">
@@ -75,6 +72,10 @@
 
 	<pool_renderable_object_technique name="deferred_lights_pool">
         <default_technique vertex_type="2048" technique="DeferredLightsTechnique"/>
+    </pool_renderable_object_technique>
+	
+	<pool_renderable_object_technique name="rim_lighting_pool">
+        <default_technique vertex_type="2048" technique="RimLightingTechnique"/>
     </pool_renderable_object_technique>
 	
 	<pool_renderable_object_technique name="deferred_celshade_pool">
