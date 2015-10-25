@@ -878,8 +878,4 @@
 	<mesh_instance name="Cartel08_Animation" core="Cartel08_Animation" pos="-10.645265 5.969631 141.110992" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="AnimationStart"/>
 	<mesh_instance name="Mano_Piky_Animation" core="Mano_Piky_Animation" pos="-11.373291 -2.913425 125.950287" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="AnimationStart"/>
 	<mesh_instance name="Vortex_Animation" core="Vortex_Animation" pos="12.714676 7.726181 126.460922" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="AnimationStart"/>
-	<mesh_instance name="Plano_Negro_01_Animation" core="Plano_Negro_01_Animation" pos="-9.388033 8.003038 113.705780" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="AnimationStart"/>
-	<mesh_instance name="Plano_Negro_02_Animation" core="Plano_Negro_02_Animation" pos="-9.388033 8.003038 138.813751" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="AnimationStart"/>
-	<mesh_instance name="Plano_Negro_03_Animation" core="Plano_Negro_03_Animation" pos="-9.388033 16.841400 126.788513" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="AnimationStart"/>
-	<mesh_instance name="Plano_Negro_04_Animation" core="Plano_Negro_04_Animation" pos="-9.388033 -0.857763 126.788513" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="AnimationStart"/>
 </renderable_objects>

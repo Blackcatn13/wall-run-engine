@@ -104,9 +104,9 @@
 	</cinematic_object>
 	<cinematic_object resource="Cartel06_Animation" renderable_objects_manager="AnimationStart" room="0">
 		<cinematic_object_key_frame time="38.5" pos="-10.7592 -5.69897 126.084" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
-		<cinematic_object_key_frame time="39.5" pos="-10.7592 6.00365 126.084" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
-		<cinematic_object_key_frame time="43.2667" pos="-10.7592 6.00365 126.084" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
-		<cinematic_object_key_frame time="44.6333" pos="-10.7592 6.00365 112.818" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="39.5" pos="-10.7592 6.33365 126.084" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="43.2667" pos="-10.7592 6.33365 126.084" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="44.6333" pos="-10.7592 6.33365 112.818" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
 	</cinematic_object>
 	<cinematic_object resource="Tunel_Animation" renderable_objects_manager="AnimationStart" room="0">
 		<cinematic_object_key_frame time="43.4667" pos="-10.2164 5.89448 141.182" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
