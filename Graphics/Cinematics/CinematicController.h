@@ -16,6 +16,7 @@ class CCinematicController {
   std::map<std::string, std::vector<CCinematicElement *> > m_cinematics;
   std::vector<CCinematicElement *> m_currentCinematic;
   int m_lastElement;
+  void ExecuteAtEnd();
  public:
   CCinematicController();
   ~CCinematicController();

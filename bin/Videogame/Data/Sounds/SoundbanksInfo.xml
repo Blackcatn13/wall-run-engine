@@ -14,12 +14,17 @@
 			<ShortName>BackGroundMusic2</ShortName>
 			<Path>BackGroundMusic2.bnk</Path>
 			<IncludedEvents>
+				<Event Id="2380376969" Name="_BossZone"/>
 				<Event Id="1091151884" Name="_Fail"/>
 				<Event Id="1615472509" Name="_Menu"/>
 				<Event Id="3721368369" Name="_Success"/>
 				<Event Id="1170801819" Name="Animation2D"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
+				<File Id="45329365" Language="SFX">
+					<ShortName>GGP_Boss.wav</ShortName>
+					<Path>SFX\GGP_Boss_8BD76F1E.wem</Path>
+				</File>
 				<File Id="72649360" Language="SFX">
 					<ShortName>GPP_Creditos.wav</ShortName>
 					<Path>SFX\GPP_Creditos_8BD76F1E.wem</Path>
@@ -44,14 +49,9 @@
 			<IncludedEvents>
 				<Event Id="1854652136" Name="_2DZone"/>
 				<Event Id="1481335831" Name="_3DZone"/>
-				<Event Id="2380376969" Name="_BossZone"/>
 				<Event Id="2958144319" Name="StartBackground"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
-				<File Id="45329365" Language="SFX">
-					<ShortName>GGP_Boss.wav</ShortName>
-					<Path>SFX\GGP_Boss_8BD76F1E.wem</Path>
-				</File>
 				<File Id="364000553" Language="SFX">
 					<ShortName>zona 3d.wav</ShortName>
 					<Path>SFX\zona 3d_8BD76F1E.wem</Path>

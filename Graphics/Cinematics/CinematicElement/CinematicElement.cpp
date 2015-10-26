@@ -5,6 +5,7 @@
 CCinematicElement::CCinematicElement(const CXMLTreeNode &node)
   : m_onStart(node.GetBoolProperty("oninit")) ,
     m_block(node.GetBoolProperty("block", true)) ,
+    m_atEnd(node.GetBoolProperty("atEnd", false)),
     m_ended(false) {
 }
 

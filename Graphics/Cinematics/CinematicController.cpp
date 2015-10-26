@@ -82,6 +82,8 @@ void CCinematicController::Update(float ElapsedTime) {
       aux |= m_currentCinematic[i]->Update(ElapsedTime);
     }
     m_executing = aux;
+    if (!m_executing)
+      ExecuteAtEnd();
   }
 }
 
@@ -92,7 +94,8 @@ void CCinematicController::Execute(const std::string &cinematic) {
     m_lastElement = 0;
     m_executing = true;
     for (int i = 0; i < m_currentCinematic.size(); ++i) {
-      m_currentCinematic[i]->Execute();
+      if (!m_currentCinematic[i]->atEnd())
+        m_currentCinematic[i]->Execute();
     }
   }
 }
@@ -113,5 +116,12 @@ void CCinematicController::RestartAllCinematics() {
       it->second[i]->restart();
     }
     ++it;
+  }
+}
+
+void CCinematicController::ExecuteAtEnd() {
+  for (int i = 0; i < m_currentCinematic.size(); ++i) {
+    if (m_currentCinematic[i]->atEnd())
+      m_currentCinematic[i]->Execute();
   }
 }
