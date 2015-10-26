@@ -73,9 +73,28 @@
 		<cinematic_object_key_frame time="21.6667" pos="-4.68457 6.27254 114.607" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
 		<cinematic_object_key_frame time="22.5667" pos="-4.68457 6.27254 124.001" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
 	</cinematic_object>
+	<cinematic_object resource="Columnas_palacio_Animation" renderable_objects_manager="AnimationStart">
+		<cinematic_object_key_frame time="23.8667" pos="-4.83301 6.63625 108.744" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="23.9" pos="-4.83301 7.192 108.744" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="25.6" pos="-4.83301 7.192 125.392" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	</cinematic_object>
 	<cinematic_object resource="Suelo_palacio_Animation" renderable_objects_manager="AnimationStart" room="0">
 		<cinematic_object_key_frame time="25.2667" pos="-5.5647 -0.249824 125.395" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
 		<cinematic_object_key_frame time="25.9333" pos="-5.5647 2.69619 125.395" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	</cinematic_object>
+	<cinematic_object resource="Banderines_Animation" renderable_objects_manager="AnimationStart">
+		<cinematic_object_key_frame time="25.5" pos="-5.87939 9.19116 139.827" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="26.0" pos="-5.87939 9.19116 127.807" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	</cinematic_object>
+	<cinematic_object resource="Rey01_Animation" renderable_objects_manager="AnimationStart">
+		<cinematic_object_key_frame time="0.0" pos="-6.60767 7.034 113.779" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="26.0333" pos="-6.60767 7.034 113.779" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="26.0667" pos="-6.60767 7.034 113.779" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="26.6333" pos="-6.60767 7.034 123.677" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	</cinematic_object>
+	<cinematic_object resource="Piky_caminando_Animation" renderable_objects_manager="AnimationStart">
+		<cinematic_object_key_frame time="26.8" pos="-7.32412 5.30936 135.605" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="30.6667" pos="-7.32412 5.30936 126.205" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
 	</cinematic_object>
 	<cinematic_object resource="Cartel05_Animation" renderable_objects_manager="AnimationStart" room="0">
 		<cinematic_object_key_frame time="26.9333" pos="-8.98438 15.8191 127.986" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
@@ -113,6 +132,10 @@
 		<cinematic_object_key_frame time="46.3333" pos="-10.2164 5.89448 125.768" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
 		<cinematic_object_key_frame time="51.4333" pos="-10.2164 5.89448 125.768" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
 		<cinematic_object_key_frame time="52.7667" pos="-10.2164 -2.70606 125.768" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+	</cinematic_object>
+		<cinematic_object resource="Piky_linterna_Animation" renderable_objects_manager="AnimationStart">
+		<cinematic_object_key_frame time="44.7667" pos="-10.5109 5.76704 135.37" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
+		<cinematic_object_key_frame time="51.4667" pos="-10.5109 5.76704 115.444" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
 	</cinematic_object>
 	<cinematic_object resource="Cartel07_Animation" renderable_objects_manager="AnimationStart" room="0">
 		<cinematic_object_key_frame time="43.8" pos="-10.6884 9.12924 113.431" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>
