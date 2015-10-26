@@ -836,7 +836,7 @@
 	<mesh_instance name="PlaneLava" core="PlaneLava" pos="563.187988 8.7 -120.496582" yaw="0.0" pitch="0.0" roll="0.0" scale="1.5 1.0 1.0" visible="true" room="4" layer="lava"/>
 	<mesh_instance name="LavaFlow" core="LavaFlow" pos="544.678772 13.031180 -127.100945" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="lava"/>
 	<!--<mesh_instance name="PlaneLavaGlow" core="PlaneLava" pos="563.187988 9.8 -120.496582" yaw="0.0" pitch="0.0" roll="0.0" scale="1.5 1.0 1.0" visible="true" room="4" layer="lava_glow"/>-->
-	<mesh_instance name="PlaneLavaGlow" core="PlaneLavaGlow" pos="564.556335 11.000000 -118.487381" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="lava_glow"/>
+	<mesh_instance name="PlaneLavaGlow" core="PlaneLavaGlow" pos="564.556335 10.700000 -118.487381" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="lava_glow"/>
 	<mesh_instance name="LavaFlowGlow" core="LavaFlow" pos="544.678772 13.231180 -127.100945" yaw="0.0" pitch="0.0" roll="0.0" scale="1.4 1.1 1.4" visible="true" room="4" layer="lava_glow"/>
 
 	<platform name="MenuSphere" core="MenuSphere" type="static" pos="-920.000 -14.000 -1.500" yaw="-0.6280" pitch="0.0" roll="0.0" scale="2.5 2.5 2.5" visible="true" phisic_size="5.31929 5.31929 5.31929" layer="solid" use_phisics_mesh="false" room="10"/>
