@@ -61,6 +61,10 @@
 	<pool_renderable_object_technique name="draw_textured_quad_pool">
 		 <default_technique vertex_type="2048" technique="DrawQuadSolidTechnique"/>
 	</pool_renderable_object_technique>
+	
+	<pool_renderable_object_technique name="ssao_pool">
+		 <default_technique vertex_type="2048" technique="SSAOTechnique"/>
+	</pool_renderable_object_technique>
 
 	<pool_renderable_object_technique name="draw_vignetting">
 		 <default_technique vertex_type="2048" technique="DrawVignettingTechnique"/>

@@ -36,6 +36,6 @@ void CCaptureFrameBufferSceneRendererCommand::Execute(CGraphicsManager &RM) {
     m_StageTextures[i].m_Texture->CaptureFrameBuffer(m_StageTextures[i].m_StageId);
     bool l_Done = false;
     if (l_Done)
-      m_StageTextures[i].m_Texture->SaveToFile("C:/Users/Marc/Desktop/test.jpg");
+      m_StageTextures[i].m_Texture->SaveToFile("D:/test.jpg");
   }
 }

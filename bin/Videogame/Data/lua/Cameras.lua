@@ -117,7 +117,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 	end
 	--local name2=CNamed();
 	--name2:set_name("UpdatePass1");
-	if (cam.m_eTypeCamera == 5 or cam.m_eTypeCamera == 6) and cam.m_currentWaypoint ~= nil then
+	if (cam.m_eTypeCamera == 5 or cam.m_eTypeCamera == 6) and cam.m_currentWaypoint ~= nil and player.stop_follow_camera == false then
 		local currentWP = cam:get_path_point(cam.m_currentWaypoint);
 		local nextWP = cam:get_path_point(cam.m_nextWaypoint);
 		-- POINT SPECS

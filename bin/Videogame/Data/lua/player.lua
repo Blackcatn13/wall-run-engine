@@ -59,6 +59,7 @@ function Player.new()
 	self.super_piky_attack = false
 	self.pressed_return = false
 	self.count_pixelites = 0.0
+	self.stop_follow_camera = false
 	
 	------	 PLAYER FUNCTIONS -----
 	

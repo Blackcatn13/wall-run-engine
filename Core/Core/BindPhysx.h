@@ -210,6 +210,7 @@ void RegisterPhysX() {
     .def("execute_on_enter", &CTrigger::ExecuteOnEnter )
     .def("execute_on_stay", &CTrigger::ExecuteOnStay )
     .def("execute_on_exit", &CTrigger::ExecuteOnExit )
+    .def("set_update", &CTrigger::setUpdate )
     .property("m_Update",  &CTrigger::getUpdate,  &CTrigger::setUpdate)
     .property("m_IsSwitched",  &CTrigger::getIsSwitched,  &CTrigger::setIsSwitched)
     .property("m_Time",  &CTrigger::getTime,  &CTrigger::setTime)

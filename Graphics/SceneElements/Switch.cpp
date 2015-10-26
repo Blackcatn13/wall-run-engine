@@ -34,21 +34,22 @@ void CSwitch::Update(float dt) {
   if (m_Position.Distance(PLAYC->GetPosition()) < 10) {
     SCollisionInfo info = SCollisionInfo();
     Vect3f l_playerPosition = PLAYC->GetPosition();
-    float l_height =  PLAYC->getPhysicController()->GetHeight();
+    float l_height =  PLAYC->getPhysicController()->GetHeight() + 0.05;
     CPhysicUserData *hit = CCORE->GetPhysicsManager()->RaycastClosestActor(Vect3f(l_playerPosition.x , l_playerPosition.y  - l_height, l_playerPosition.z + 0),
                            Vect3f(0, -1, 0), 0xffffffff, info);
     float height = PLAYC->getPhysicController()->GetHeight();
-    if (hit != NULL && hit->GetMyCollisionGroup() == ECG_SWITCHES &&/* info.m_fDistance <= height && */!m_Switched && PLAYC->getisGrounded() && !PLAYC->getisFalling() && !PLAYC->getisJumping()) {
-      //  if (info.m_fDistance <= height) {
-      m_Switched = true;
-      Vect3f actor_position = m_Actor->GetPosition();
-      m_Actor->SetGlobalPosition(Vect3f(actor_position.x, actor_position.y - 0.5, actor_position.z));
-      m_Position = Vect3f(m_Position.x, m_Position.y - 0.5, m_Position.z);
-      //Por si se queda tonto en el aire
-      //if (m_Direction.y == 0) {
+    PLAYC->getPhysicController()->ReportSceneChanged();
+    if (hit != NULL && hit->GetMyCollisionGroup() == ECG_SWITCHES &&/* info.m_fDistance <= height && */!m_Switched /*&& PLAYC->getisGrounded()*/ && !PLAYC->getisFalling() && !PLAYC->getisJumping() ) {
+      if (info.m_fDistance <= 0.2) {
+        m_Switched = true;
+        Vect3f actor_position = m_Actor->GetPosition();
+        m_Actor->SetGlobalPosition(Vect3f(actor_position.x, actor_position.y - 0.5, actor_position.z));
+        m_Position = Vect3f(m_Position.x, m_Position.y - 0.5, m_Position.z);
+        //Por si se queda tonto en el aire
+        //if (m_Direction.y == 0) {
 
-      PLAYC->getPhysicController()->ReportSceneChanged();
-      //}
+        PLAYC->getPhysicController()->ReportSceneChanged();
+      }
       // }
     }
   }
