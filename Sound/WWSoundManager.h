@@ -17,6 +17,7 @@
 #include "Math\Vector3.h"
 #include <vector>
 
+
 struct EventInfo {
   std::string Event;
   AkGameObjectID GameObjectID;

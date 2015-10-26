@@ -17,11 +17,16 @@
 				<Event Id="1091151884" Name="_Fail"/>
 				<Event Id="1615472509" Name="_Menu"/>
 				<Event Id="3721368369" Name="_Success"/>
+				<Event Id="1170801819" Name="Animation2D"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
 				<File Id="72649360" Language="SFX">
 					<ShortName>GPP_Creditos.wav</ShortName>
 					<Path>SFX\GPP_Creditos_8BD76F1E.wem</Path>
+				</File>
+				<File Id="293604321" Language="SFX">
+					<ShortName>GGPCinematica2DFINAL.wav</ShortName>
+					<Path>SFX\GGPCinematica2DFINAL_DDC98EF4.wem</Path>
 				</File>
 				<File Id="523121214" Language="SFX">
 					<ShortName>fail.wav</ShortName>

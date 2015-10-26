@@ -363,6 +363,9 @@
     <ClCompile Include="RenderableCommands\SetTickCommand.cpp">
       <Filter>RenderableCommands</Filter>
     </ClCompile>
+    <ClCompile Include="Cinematics\CinematicElement\CinematicElementMusic.cpp">
+      <Filter>Cinematics\CinematicElement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
@@ -678,6 +681,9 @@
     </ClInclude>
     <ClInclude Include="RenderableCommands\SetTickCommand.h">
       <Filter>RenderableCommands</Filter>
+    </ClInclude>
+    <ClInclude Include="Cinematics\CinematicElement\CinematicElementMusic.h">
+      <Filter>Cinematics\CinematicElement</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

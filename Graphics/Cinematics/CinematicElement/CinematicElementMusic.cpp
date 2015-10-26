@@ -8,8 +8,8 @@
 
 CCinematicElementMusic::CCinematicElementMusic(const CXMLTreeNode &node)
   : CCinematicElement(node),
-    m_Event(node.GetPszISOProperty("name")),
-    m_Actor(node.GetPszISOProperty("actor")) {
+    m_Event(node.GetPszISOProperty("name", "")),
+    m_Actor(node.GetPszISOProperty("actor", "")) {
 }
 
 bool CCinematicElementMusic::Execute() {
