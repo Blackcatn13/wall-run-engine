@@ -121,6 +121,7 @@ function reset_player_states()
 	player.is_activating_poly = false
 	player.vanishing = false
 	player.can_move = true
+	player.stop_follow_camera = false
 end
 
 function on_update_player_lua(l_ElapsedTime)

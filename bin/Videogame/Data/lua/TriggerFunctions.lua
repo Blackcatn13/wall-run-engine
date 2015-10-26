@@ -265,6 +265,7 @@ function player_die(burning)
 	player.has_ass_burned = toboolean(burning)
 	if not player.has_ass_burned then
 		player.dead_in_hole = true
+		player.stop_follow_camera = true
 	end
 	player.player_die()
 end
