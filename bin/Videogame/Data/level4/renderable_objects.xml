@@ -19,6 +19,7 @@
 	<layer name="gui_message"/>
 	<layer name="vanishing"/>
 	<layer name="lava"/>
+	<layer name="lava_glow"/>
 	<layer name="superPiky"/>
 	<layer name="angry"/>
 	<layer name="AnimationStart"/>
@@ -832,8 +833,10 @@
 	<mesh_instance name="Sala7_Escultura_010" core="Sala7_Escultura_010" pos="77.173859 29.246399 -657.048584" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="7" layer="solid"/>
 	<mesh_instance name="COLUMNA" core="COLUMNA" pos="164.533997 37.075001 -644.997070" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="7" layer="solid"/>
 
-	<mesh_instance name="PlaneLava" core="PlaneLava" pos="563.187988 9.0 -120.496582" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="lava"/>
+	<mesh_instance name="PlaneLava" core="PlaneLava" pos="563.187988 9.0 -120.496582" yaw="0.0" pitch="0.0" roll="0.0" scale="1.5 1.0 1.0" visible="true" room="4" layer="lava"/>
 	<mesh_instance name="LavaFlow" core="LavaFlow" pos="544.678772 13.031180 -127.100945" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="4" layer="lava"/>
+	<mesh_instance name="PlaneLavaGlow" core="PlaneLava" pos="563.187988 10.0 -120.496582" yaw="0.0" pitch="0.0" roll="0.0" scale="1.5 1.0 1.0" visible="true" room="4" layer="lava_glow"/>
+	<mesh_instance name="LavaFlowGlow" core="LavaFlow" pos="544.678772 13.231180 -127.100945" yaw="0.0" pitch="0.0" roll="0.0" scale="1.4 1.1 1.4" visible="true" room="4" layer="lava_glow"/>
 
 	<platform name="MenuSphere" core="MenuSphere" type="static" pos="-920.000 -14.000 -1.500" yaw="-0.6280" pitch="0.0" roll="0.0" scale="2.5 2.5 2.5" visible="true" phisic_size="5.31929 5.31929 5.31929" layer="solid" use_phisics_mesh="false" room="10"/>
 
@@ -850,7 +853,7 @@
 	<platform name="Security_Wall_005" core="Security_Wall_005" type="static" pos="-212.656860 23.708252 -645.968262" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="1.37692 2.65969 4.97992" layer="solid" room="7"/>
 
 
-	<mesh_instance name="Sala7_Pinchos_001" core="Sala7_Pinchos_001" pos="36.177689 26.678833 -645.353760" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" room="7" layer="solid"/>
+	<mesh_instance name="Sala7_Pinchos_001" core="Sala7_Pinchos_001" pos="36.177689 28.14 -645.353760" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" room="7" layer="solid"/>
 
 	<mesh_instance name="Teatro_01_Animation" core="Teatro_01_Animation" pos="0.000000 7.307668 126.377167" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="AnimationStart"/>
 	<mesh_instance name="Cortinillas_Animation" core="Cortinillas_Animation" pos="0.917252 6.558058 126.178268" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="AnimationStart"/>
