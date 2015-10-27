@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <cinmetaics>
-<!--	<cinematic_controller name="start">
+	<cinematic_controller name="start">
 		<play_camera name="Camera001_Animacio2D" return="3DCam" block="true"/>
 		<play_cinematic name="./Data/level4/cinematics/StartCinematic.xml"/>
 		<play_audio name="Animation2D" actor="Music"/>
 		<play_audio name="StartBackground" actor="Music" atEnd="true"/>
-	</cinematic_controller>-->
+	</cinematic_controller>
 	<cinematic_controller name="Chucky-appears">
 		<play_camera name="Camera057" return="2DCam" block="true"/>
 	</cinematic_controller>

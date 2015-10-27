@@ -8,6 +8,7 @@ local return_factor = min_return_factor
 local max_return_times = 3
 local max_timer = 4.0
 local current_max_timer = max_timer
+local dust_particles_fired = false
 
 
 local current_sequence =  {}
@@ -119,7 +120,7 @@ function start_boss()
 	chucky.m_Life = chucky.m_OriginalLifes
 	last_action_id = 1
 	current_sequence =  {}
-	
+	dust_particles_fired = false
 	set_checkpoint("boss_checkpoint", nil)
 	player.attack_enabled = true
 end
@@ -427,7 +428,17 @@ function chucky_boss_update_call(ElapsedTime, doComprobation, name)
 			end
 			all_boss_miks_killed = false
 			boss_miks_killed = 0
+			dust_particles_fired = false
 			enemy:m_FSM():newState("Parado")
+		elseif enemy.m_RenderableObject:get_animation_time() > 1.2 and not dust_particles_fired then
+			dust_particles_fired = true
+			local enemyYaw = enemy:get_yaw() + (math.pi / 2);
+			local vectRight = Vect3f(math.cos(enemyYaw), 0, -math.sin(enemyYaw));
+			local position = enemy:get_position()
+			local emitter_position = Vect3f(position.x + 1 * vectRight.x, position.y, position.z + 1 * vectRight.z)	
+			local dust_emitter = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter)
+			dust_emitter.m_vPos = emitter_position
+			dust_emitter.m_FireParticles = true
 		end
 	end
 end
