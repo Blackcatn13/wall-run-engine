@@ -25,7 +25,7 @@
 	<effect name="GBufferLightMapNoNormalEffect" file="data/effects/GBufferLightMapNoNormal.fxc"/>
 	<effect name="GBufferCubeMapEffect" file="data/effects/GBufferCubeMap.fxc"/>
 	<effect name="GBufferCal3DEffect" file="data/effects/GBufferCal3D.fxc"/>
-	<effect name="GBufferRNMEffect" file="data/effects/GBufferRNM.fxc"/>
+	<effect name="GBufferRNMEffect" file="data/effects/GBufferRNM.fx"/>
 	<effect name="DrawQuadEffect" file="data/effects/DrawQuad.fxc"/>
 	<effect name="DrawVignettingEffect" file="data/effects/DrawVignetting.fxc"/>
 	<effect name="DeferredLightsEffect" file="data/effects/DeferredLights.fxc"/>
