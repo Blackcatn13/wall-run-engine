@@ -65,6 +65,7 @@ void RegisterSceneElements() {
     .def("disable_platform", &CBreakablePlatform::DisablePlatform)
     .def("enable_platform", &CBreakablePlatform::EnablePlatform)
     .property("m_EmittersSet", &CBreakablePlatform::getEmittersSet, &CBreakablePlatform::setEmittersSet)
+    .property("m_Nailed", &CBreakablePlatform::getNailed, &CBreakablePlatform::setNailed)
   ];
   luabind::module(LUA_STATE) [
     class_<CMovingPlatform, CStaticPlatform>("CMovingPlatform")

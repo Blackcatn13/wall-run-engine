@@ -1070,3 +1070,7 @@ bool CGUIManager::IsTransitionEffectActive() {
     return true;
   return false;
 }
+
+void CGUIManager::SetTransitionEffectActive(bool active) {
+  m_sTransitionEffect.m_bDoEffect = active;
+}

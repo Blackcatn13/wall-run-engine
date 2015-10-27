@@ -598,8 +598,22 @@ end
 function nail_platform(obj_name, layer)
 	--coreInstance:trace("Unsetting kinematic")
 	local platform = get_renderable_object(layer, player_controller.m_Room, obj_name)
-	if platform ~= nil then
+	if platform ~= nil and not platform.m_Nailed then
 	--	coreInstance:trace("Platform found")
+		platform.m_Nailed = true
+		local position = platform:get_position()
+		local emitter1 = particle_manager:get_resource("PlatformBrokenEmitter")
+		local emitter1_pos = Vect3f(position.x -2, position.y, position.z)
+		local emitter2 = particle_manager:get_resource("PlatformBroken2Emitter")
+		local emitter2_pos = Vect3f(position.x +2, position.y, position.z)
+		if emitter1 ~= nil then
+			emitter1.m_vPos = emitter1_pos
+			emitter1.m_FireParticles = true
+		end
+		if emitter2 ~= nil then
+			emitter2.m_vPos = emitter2_pos
+			emitter2.m_FireParticles = true
+		end
 		platform.m_Actor:set_kinematic(true)
 		platform.m_Actor:activate(false)
 	end
@@ -609,5 +623,6 @@ function activate_actor(obj_name, layer)
 	local obj = get_renderable_object(layer, player_controller.m_Room, obj_name)
 	if obj ~= nil then
 		obj.m_Actor:activate(true)
+		obj.m_Nailed = false
 	end
 end

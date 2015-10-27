@@ -98,6 +98,10 @@ function reset_player_states()
 	canAttack = true;
 	contador = 0;
 	jumpTime = 0;
+	acceleration = 0
+	inertia = Vect3f(0,0,0);
+	inertiaJump = Vect3f(0,0,0);
+	inLoop = false;
 		
 	temp_finish_counter_time = 0.0
 	player_controller.m_ableToIman = false;
@@ -110,7 +114,8 @@ function reset_player_states()
 	--player_controller.m_isOnPlatform = false;
 	player_controller.m_isFalling = false;
 	player_controller.m_executeDoubleJump = false;
-
+	player_controller.m_JumpingTime = 0.0;
+			
 	player.hurt_by_spikes = false
 	player.is_hit = false
 	player.is_hit_reset_first = false
@@ -121,6 +126,7 @@ function reset_player_states()
 	player.is_activating_poly = false
 	player.vanishing = false
 	player.can_move = true
+	player.hurt_by_spikes = false
 	player.stop_follow_camera = false
 end
 
@@ -665,7 +671,10 @@ function on_update_player_lua(l_ElapsedTime)
 		--///////////////////////////////////////////////////////////
 		-- Acción de saltar del Player. Puede realizar 2 saltos distintos (de longitud, y salto vertical). 
 		--///////////////////////////////////////////////////////////
-		if (act2in:do_action_from_lua("Jump")) and (player_controller.m_isJumping == false and player_controller.m_isDoubleJumping == false and _land == false and player_controller.m_isAttack == false and player.is_hit == false and player_controller.m_isGrounded and not player.is_dead) and not playerRenderable.m_VanishActive and jump_enabled and not gui_manager:is_transition_effect_active() and not player.super_piky_active and not transition_super_piky then
+		if (act2in:do_action_from_lua("Jump")) and (player_controller.m_isJumping == false and player_controller.m_isDoubleJumping == false and _land == false and player_controller.m_isAttack == false and player.is_hit == false and player_controller.m_isGrounded and not player.is_dead) and not playerRenderable.m_VanishActive and jump_enabled and not gui_manager:is_transition_effect_active() and not player.super_piky_active and not transition_super_piky and not gui_manager:is_transition_effect_active() then
+			local y_axis = 0.0
+			local x_axis = 0.0
+						
 			player_controller.m_JumpingTime = 0;
 			playerRenderable:clear_cycle(anim_idle,0.2);
 			playerRenderable:clear_cycle(anim_run,0.2);

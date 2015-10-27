@@ -17,6 +17,7 @@ class CBreakablePlatform : public CStaticPlatform {
   Vect3f			m_ActorOriginalPosition;
   Vect3f			m_ActorOriginalRotation;
   bool				m_EmittersSet;
+  bool				m_Nailed;
 
  public:
   CBreakablePlatform(std::string platformName, std::string coreName, std::string triggerName);
@@ -32,6 +33,7 @@ class CBreakablePlatform : public CStaticPlatform {
   }
 
   GET_SET(bool, EmittersSet);
+  GET_SET(bool, Nailed);
 };
 
 #endif
