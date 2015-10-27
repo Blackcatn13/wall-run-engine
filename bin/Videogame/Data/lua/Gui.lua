@@ -136,6 +136,7 @@ function check_death_fade()
 				player.game_over = true
 			end
 			player.is_dead = false
+			gui_manager:set_transition_effect_active(false)
 		end
 	end
 end

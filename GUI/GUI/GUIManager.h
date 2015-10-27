@@ -157,6 +157,7 @@ class CGUIManager { //:public CScriptRegister
   void							SetTransitionEffect(TransitionEffect transitionEffect);
   void							StartFade(float time);
   bool							IsTransitionEffectActive();
+  void							SetTransitionEffectActive(bool active);
   bool							IsBlackScreenActive() {
     return m_IsBlackScreenActive;
   }
