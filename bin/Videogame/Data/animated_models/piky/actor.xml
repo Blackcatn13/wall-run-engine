@@ -19,4 +19,5 @@
 	<animation name="DJump_04" file="Piky_DoubleJump04.CAF"/> <!-- 13 -->
 	<animation name="Burn" file="Piky_burn.CAF"/> <!-- 14 -->
 	<animation name="BurnJump" file="Piky_burn_jump.CAF"/> <!-- 15 -->
+	<animation name="test" file="test.CAF"/>
 </animated_model>
