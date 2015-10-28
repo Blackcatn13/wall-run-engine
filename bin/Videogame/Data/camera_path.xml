@@ -66,16 +66,22 @@
 		<!-- SALA 3.poly -->
 		<point id="p1" pos="558.031 8.50987 -44.8171" follow_player_y="true" can_rotate="true" dist_to_rotate="1"/>
 		<point id="p2" pos="557.89 15.5063 -55.9209" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2"/>
-		
 	</spline>
 	<spline name="line_1">
 		<!-- SALA 4 -->
-		<point id="p1" pos="558.726 18.3346 -59.0317" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.10"/>
-		<point id="p2" pos="558.697 18.3346 -64.5525" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="4" variable_pitch="true" variable_pitch_value="-0.10"/>
-		<point id="p3" pos="558.667 18.3346 -69.436" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="5" variable_pitch="true" variable_pitch_value="-0.20"/>
-		<point id="p4" pos="557.728 18.3346 -164.974" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="1" variable_pitch="true" variable_pitch_value="-0.10"/>
-		<point id="p5" pos="557.659 18.3346 -172.084" follow_player_y="true" follow_player_x="true"/>
-		<point id="p6" pos="557.598 18.3346 -177.838" follow_player_y="true" follow_player_x="true"/>
+		<point id="p1" pos="557.836 18.3346 -59.0317" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.10"/>
+		<point id="p2" pos="557.772 18.3346 -64.5525" variable_zoom="true" variable_zoom_value="4" variable_pitch="true" variable_pitch_value="-0.10"/>
+		<point id="p3" pos="557.832 18.3346 -69.436" variable_zoom="true" variable_zoom_value="5" variable_pitch="true" variable_pitch_value="-0.20"/>
+		<point id="p4" pos="557.791 18.3346 -73.7442" variable_zoom="true" variable_zoom_value="5" variable_pitch="true" variable_pitch_value="-0.20"/>
+		<point id="p5" pos="557.761 18.3346 -77.315" variable_zoom="true" variable_zoom_value="5" variable_pitch="true" variable_pitch_value="-0.20"/>
+		<point id="p6" pos="557.732 18.3346 -80.9516" variable_zoom="true" variable_zoom_value="5" variable_pitch="true" variable_pitch_value="-0.20"/>
+		<point id="p7" pos="557.674 18.3346 -89.787" variable_zoom="true" variable_zoom_value="5" variable_pitch="true" variable_pitch_value="-0.20"/>
+		<point id="p8" pos="557.632 18.3346 -130.842" variable_zoom="true" variable_zoom_value="5" variable_pitch="true" variable_pitch_value="-0.20"/>
+		<point id="p9" pos="557.699 18.3346 -145.391" variable_zoom="true" variable_zoom_value="5" variable_pitch="true" variable_pitch_value="-0.20"/>
+		<point id="p10" pos="557.746 18.3346 -155.931" variable_zoom="true" variable_zoom_value="5" variable_pitch="true" variable_pitch_value="-0.20"/>
+		<point id="p11" pos="557.728 14.5676 -164.974" variable_zoom="true" variable_zoom_value="1" variable_pitch="true" variable_pitch_value="-0.10"/>
+		<point id="p12" pos="557.659 11.4085 -172.084"/>
+		<point id="p13" pos="557.598 9.89258 -177.838"/>
 	</spline><!-- cambio camara -->
 	<spline name="line_1">
 		<!-- Room 5 -->
@@ -85,35 +91,54 @@
 		<point id="p4" pos="557.216 7.89405 -311.557"/>
 		<point id="p5" pos="557.206 13.1532 -316.652"/>
 		<!-- Room 6 -->
-		<point id="p6" pos="557.197 13.6075 -392.975" follow_player_y="true" follow_player_x="true" can_go_back="true"/>
-		<point id="p7" pos="557.192 13.2634 -461.764" follow_player_y="true" follow_player_x="true" can_go_back="true"/>
-		<point id="p8" pos="557.191 10.742 -477.074" follow_player_y="true" follow_player_x="true" can_go_back="true"/>
-		<point id="p9" pos="553.952 8.42143 -486.352" follow_player_y="true" follow_player_x="true" can_go_back="true"/>
-		<point id="p10" pos="541.285 3.59176 -503.614" follow_player_y="true" follow_player_x="true" can_go_back="true"/>
-		<point id="p11" pos="538.227 2.47138 -520.654" follow_player_y="true" follow_player_x="true" can_go_back="true"/>
-		<point id="p12" pos="536.464 1.34753 -547.508" follow_player_y="true" follow_player_x="true" can_go_back="true"/>
-		<point id="p13" pos="536.62 0.760836 -567.01" follow_player_y="true" follow_player_x="true" can_go_back="true"/>
-		<point id="p14" pos="545.586 7.12525 -590.477" follow_player_y="true" follow_player_x="true" can_go_back="true"/>
-		<point id="p15" pos="544.232 13.7025 -631.388" follow_player_y="true" follow_player_x="true" can_go_back="true"/>
-		<point id="p16" pos="540.716 13.7167 -637.943" follow_player_y="true" follow_player_x="true" can_go_back="true"/>
-		<point id="p17" pos="534.373 13.7253 -643.575" follow_player_y="true" follow_player_x="true" can_go_back="true"/>
-		<point id="p18" pos="526.764 15.0447 -646.149" follow_player_y="true" follow_player_x="true" can_go_back="true"/>
-		<point id="p19" pos="490.04 25.3396 -645.736" follow_player_y="true" follow_player_x="true" can_go_back="true"/>
-		<point id="p20" pos="361.409 26.0665 -644.382" follow_player_y="true" follow_player_x="true" can_go_back="true"/>
-		<point id="p21" pos="346.333 30.3643 -644.513"/>
-		<point id="p22" pos="333.109 37.2389 -644.474"/>
-		<point id="p23" pos="324.74 37.5292 -644.43"/>
-		<point id="p24" pos="321.533 33.6198 -644.406"/>
-		<point id="p25" pos="309.876 30.3074 -644.403"/>
-		<point id="p26" pos="67.8658 30.3071 -644.402"/>
-		<point id="p27" pos="47.0788 32.8333 -644.4"/>
-		<point id="p28" pos="32.2551 32.8329 -644.399"/>
-		<point id="p29" pos="6.62994 30.5733 -644.397"/>
-		<point id="p30" pos="-26.3312 30.5728 -644.395"/>
-		<point id="p31" pos="-54.5673 18.8128 -644.393"/>
-		<point id="p32" pos="-198.552 18.8124 -644.391"/>
-		<point id="p33" pos="-203.053 22.493 -644.389"/>
-		<point id="p34" pos="-210.85 25.3492 -644.385"/>
-		<point id="p35" pos="-249.055 25.3666 -644.382"/>
+		<point id="p6" pos="557.197 13.6075 -392.975" follow_player_y="true" follow_player_x="true"/>
+		<point id="p7" pos="557.2 13.3182 -397.231" follow_player_y="true" follow_player_x="true"/>
+		<point id="p8" pos="557.206 13.3182 -404.927" follow_player_y="true" follow_player_x="true"/>
+		<point id="p9" pos="557.289 13.3182 -421.597" follow_player_y="true" follow_player_x="true"/>
+		<point id="p10" pos="557.217 13.3182 -440.199" follow_player_y="true" follow_player_x="true"/>
+		<point id="p11" pos="557.148 13.3182 -457.952" follow_player_y="true" follow_player_x="true"/>
+		<point id="p12" pos="557.134 13.3182 -472.298" follow_player_y="true" follow_player_x="true"/>
+		<point id="p13" pos="554.106 13.3182 -481.192" follow_player_y="true" follow_player_x="true"/>
+		<point id="p14" pos="548.499 8.83502 -491.569" follow_player_y="true" follow_player_x="true"/>
+		<point id="p15" pos="541.082 6.05023 -498.872" follow_player_y="true" follow_player_x="true"/>
+		<point id="p16" pos="538.563 6.05023 -506.111" follow_player_y="true" follow_player_x="true"/>
+		<point id="p17" pos="538.423 2.64276 -510.23"/>
+		<point id="p18" pos="538.126 2.64276 -518.957"/>
+		<point id="p19" pos="538.207 2.60674 -525.787"/>
+		<point id="p20" pos="538.545 2.51668 -528.801" follow_player_y="true" follow_player_x="true"/>
+		<point id="p21" pos="538.91 2.67267 -534.431" follow_player_y="true" follow_player_x="true"/>
+		<point id="p22" pos="538.954 7.57193 -540.373" follow_player_y="true" follow_player_x="true"/>
+		<point id="p23" pos="538.631 8.19202 -549.099" follow_player_y="true" follow_player_x="true"/>
+		<point id="p24" pos="538.969 9.02269 -560.79" follow_player_y="true" follow_player_x="true"/>
+		<point id="p25" pos="539.834 9.86458 -572.638" follow_player_y="true" follow_player_x="true"/>
+		<point id="p26" pos="541.199 9.93419 -579.021" follow_player_y="true" follow_player_x="true"/>
+		<point id="p27" pos="542.585 9.94618 -585.371" follow_player_y="true" follow_player_x="true"/>
+		<point id="p28" pos="543.533 10.2659 -592.205" follow_player_y="true" follow_player_x="true"/>
+		<point id="p29" pos="544.538 10.3499 -598.828" follow_player_y="true" follow_player_x="true"/>
+		<point id="p30" pos="545.014 10.4533 -605.598" follow_player_y="true" follow_player_x="true"/>
+		<point id="p31" pos="545.236 10.6755 -612.602" follow_player_y="true" follow_player_x="true"/>
+		<point id="p32" pos="544.971 11.3486 -617.198" follow_player_y="true" follow_player_x="true"/>
+		<point id="p33" pos="544.624 12.2322 -623.229" follow_player_y="true" follow_player_x="true"/>
+		<point id="p34" pos="544.232 13.7025 -631.388" follow_player_y="true" follow_player_x="true"/>
+		<point id="p35" pos="540.716 13.7167 -637.943" follow_player_y="true" follow_player_x="true"/>
+		<point id="p36" pos="534.373 13.7253 -643.575" follow_player_y="true" follow_player_x="true"/>
+		<point id="p37" pos="526.764 15.0447 -646.149" follow_player_y="true" follow_player_x="true"/>
+		<point id="p38" pos="490.04 25.3396 -645.736" follow_player_y="true" follow_player_x="true"/>
+		<point id="p39" pos="361.409 26.0665 -644.382" follow_player_y="true" follow_player_x="true"/>
+		<point id="p40" pos="346.333 30.3643 -644.513"/>
+		<point id="p41" pos="333.109 37.2389 -644.474"/>
+		<point id="p42" pos="324.74 37.5292 -644.43"/>
+		<point id="p43" pos="321.533 33.6198 -644.406"/>
+		<point id="p44" pos="309.876 30.3074 -644.403"/>
+		<point id="p45" pos="67.8658 30.3071 -644.402"/>
+		<point id="p46" pos="47.0788 32.8333 -644.4"/>
+		<point id="p47" pos="32.2551 32.8329 -644.399"/>
+		<point id="p48" pos="6.62994 30.5733 -644.397"/>
+		<point id="p49" pos="-26.3312 30.5728 -644.395"/>
+		<point id="p50" pos="-54.5673 18.8128 -644.393"/>
+		<point id="p51" pos="-198.552 18.8124 -644.391"/>
+		<point id="p52" pos="-203.053 22.493 -644.389"/>
+		<point id="p53" pos="-210.85 25.3492 -644.385"/>
+		<point id="p54" pos="-249.055 25.3666 -644.382"/>
 	</spline>
 </camera_path>
