@@ -144,14 +144,7 @@
 		
 		<enable_z_test />
 		
-		<!--Fog-->
-		<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha" alphablendSrc="one" alphablendDest="one" />
-		<set_pool_renderable_objects_technique pool="fog_pool"/>
-		<render_draw_quad> 
-			<texture stage_id="0" file="DepthMapTexture"/>
-		</render_draw_quad> 
-		<disable_alpha_blend />
-		<!--End Fog-->		
+			
 		
 		<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha"/>
 		
@@ -346,6 +339,15 @@
 		<set_pool_renderable_objects_technique pool="dummy_manager"/>
 		<render_scene layer="solid" active="true"/>
 		-->
+		<!--Fog-->
+		<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha" alphablendSrc="one" alphablendDest="one" />
+		<set_pool_renderable_objects_technique pool="fog_pool"/>
+		<render_draw_quad> 
+			<texture stage_id="0" file="DepthMapTexture"/>
+		</render_draw_quad> 
+		<disable_alpha_blend />
+		<!--End Fog-->	
+		
 		<!-- NOISE AND VIGNETING -->
 		<capture_frame_buffer>
 			<dynamic_texture stage_id="0" name="FrameBuffer" texture_width_as_frame_buffer="true" format_type="A8R8G8B8"/>
