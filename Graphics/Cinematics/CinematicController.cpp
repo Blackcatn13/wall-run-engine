@@ -10,6 +10,7 @@
 #include "CinematicElement\CinematicElementCinematic.h"
 #include "CinematicElement\CinematicElement.h"
 #include "CinematicElement\CinematicElementMusic.h"
+#include "CinematicElement\CinematicElementAnimation.h"
 
 
 CCinematicController::CCinematicController()
@@ -52,6 +53,8 @@ bool CCinematicController::Load(const std::string &FileName) {
               aux.push_back(new CCinematicElementCinematic(nChild));
             } else if (elementType == "play_audio") {
               aux.push_back(new CCinematicElementMusic(nChild));
+            } else if (elementType == "play_animation") {
+              aux.push_back(new CCinematicElementAnimation(nChild));
             }
           }
           m_cinematics[cinematic_name] = aux;

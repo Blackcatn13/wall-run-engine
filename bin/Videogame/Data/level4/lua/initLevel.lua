@@ -62,9 +62,9 @@ function init_level(a)
 	player.can_move = true
 	renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name):remove_action(1);
 
-	renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name):set_position(Vect3f(10.785, 1.316, 10.879))
-	renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name):set_yaw(1.57)
-	renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name):execute_action(16,0.1,0,1,false);
+	--renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name):set_position(Vect3f(10.785, 1.316, 10.879))
+	--renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name):set_yaw(1.57)
+	--renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name):execute_action(16,0.1,0,1,false);
 	--[[local ro1 = get_renderable_object("solid",0, "Arrow")
 	local ro2 = get_renderable_object("solid",0, "Arrow001")	
 	local ro3 = get_renderable_object("solid",0, "Arrow002")		

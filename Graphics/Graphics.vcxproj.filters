@@ -366,6 +366,9 @@
     <ClCompile Include="Cinematics\CinematicElement\CinematicElementMusic.cpp">
       <Filter>Cinematics\CinematicElement</Filter>
     </ClCompile>
+    <ClCompile Include="Cinematics\CinematicElement\CinematicElementAnimation.cpp">
+      <Filter>Cinematics\CinematicElement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsManager.h" />
@@ -683,6 +686,9 @@
       <Filter>RenderableCommands</Filter>
     </ClInclude>
     <ClInclude Include="Cinematics\CinematicElement\CinematicElementMusic.h">
+      <Filter>Cinematics\CinematicElement</Filter>
+    </ClInclude>
+    <ClInclude Include="Cinematics\CinematicElement\CinematicElementAnimation.h">
       <Filter>Cinematics\CinematicElement</Filter>
     </ClInclude>
   </ItemGroup>

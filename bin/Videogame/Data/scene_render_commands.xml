@@ -62,6 +62,7 @@
 		<!--<render_scene layer="alpha_objects" active="true"/> -->
 		<render_scene layer="solid" active="true"/>
 		<render_scene layer="AnimationStart" active="true"/>
+		<render_scene layer="animationLayerAux" active="true"/>
 		<!--<set_pool_renderable_objects_technique pool="generate_deferred_shading_pool_renderable_object_technique_rim"/>-->
 		<render_scene layer="enemies" active="true" />
 		<render_scene layer="player" active="true"/>
