@@ -500,6 +500,17 @@ function set_player_room(room, chucky_appears)
 		coreInstance:trace("Chucky room: ".. tostring(chuky_last_room))
 	end
 	
+	if room == "5" then
+		local trigger = trigger_manager:get_resource("Collectible3_UserData")
+		activate_collectible(trigger, "collectible", "Collectible3")
+	elseif room == "6" then
+		local trigger1 = trigger_manager:get_resource("Collectible5_UserData")
+		activate_collectible(trigger1, "collectible", "Collectible5")
+	elseif room == "7" then
+		local trigger = trigger_manager:get_resource("Collectible6_UserData")
+		activate_collectible(trigger, "collectible", "Collectible6")
+	end
+	
 	player_controller.m_Room = num_room
 end
 
@@ -576,13 +587,6 @@ end
 function cambiozona_3d_to_2d(offset_axis, room_number)
 	trigger_set_2D(offset_axis)
 	set_player_room(room_number, "true")
-	if room_number == "5" then
-		local trigger = trigger_manager:get_resource("Collectible3_UserData")
-		activate_collectible(trigger, "collectible", "Collectible3")
-	elseif room_number == "7" then
-		local trigger = trigger_manager:get_resource("Collectible6_UserData")
-		activate_collectible(trigger, "collectible", "Collectible6")
-	end
 	--activate_invisible_wall(wall_name, room_number)
 	--set_checkpoint(trigger_name, renderable_object)
 end
@@ -591,10 +595,7 @@ function cambiozona_2d_to_3d(room_number, wall_name)
 	trigger_set_3D()
 	set_player_room(room_number, "false")
 	activate_invisible_wall(wall_name, room_number)
-	if room_number == "6" then
-		local trigger1 = trigger_manager:get_resource("Collectible5_UserData")
-		activate_collectible(trigger1, "collectible", "Collectible5")
-	end
+	
 	--set_checkpoint(trigger_name, renderable_object)
 end
 
