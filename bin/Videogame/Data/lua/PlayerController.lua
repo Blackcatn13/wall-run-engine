@@ -128,6 +128,7 @@ function reset_player_states()
 	player.can_move = true
 	player.hurt_by_spikes = false
 	player.stop_follow_camera = false
+	player_reseted = true
 end
 
 function on_update_player_lua(l_ElapsedTime)

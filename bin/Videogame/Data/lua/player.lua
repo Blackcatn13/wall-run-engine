@@ -261,7 +261,7 @@ function Player.new()
 			--gui_manager:set_num_heart( self.num_lifes );	
 			--local emitter3 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter3)
 			--emitter3:set_visible(false)
-			
+			reset_player_states()
 		end
 		
 		--self.check_death_actions()
@@ -343,7 +343,9 @@ function Player.new()
 		if boss.m_BossRunning and self.num_lifes > 0 then
 			start_boss()
 		end
-		reset_player_states()
+		if not player_reseted then
+			reset_player_states()
+		end
 	end
 	
 	function self.remove_animations(_renderable)
