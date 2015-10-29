@@ -11,4 +11,7 @@
 	<cinematic_controller name="Door">
 		<play_camera name="CameraEnemies" return="3DCam" block="true"/>
 	</cinematic_controller>
+	<cinematic_controller name="PuzzleRoom">
+		<play_camera name="CameraSwitch" return="3DCam" block="true"/>
+	</cinematic_controller>
 </cinmetaics>
