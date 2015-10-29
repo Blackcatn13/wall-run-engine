@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<camera_key_controller name="CameraEnemies" once="true" cycle="false" reverse="false">
+	<key time="0.0" pos="469.483 9.67015 -2.76545" lookat="628.874 23.6151 -2.76546" fov="0.911245" near_plane="1.0" far_plane="1000.0"/>
+	<key time="2.43333" pos="487.808 11.2819 -3.60745" lookat="644.777 25.2268 -31.2854" fov="0.826177" near_plane="1.0" far_plane="1000.0"/>
+	<key time="4.36667" pos="505.621 10.8801 -4.0906" lookat="659.582 24.825 37.1629" fov="0.737124" near_plane="1.0" far_plane="1000.0"/>
+	<key time="5.33333" pos="514.265 9.32467 -2.27598" lookat="668.813 50.7357 -2.27596" fov="0.721484" near_plane="1.0" far_plane="1000.0"/>
+	<key time="6.66667" pos="514.265 9.32467 -2.27598" lookat="668.813 50.7357 -2.27596" fov="0.721484" near_plane="1.0" far_plane="1000.0"/>
+</camera_key_controller>

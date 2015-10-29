@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <cinmetaics>
 	<cinematic_controller name="start">
-		<!--<play_camera name="Camera001_Animacio2D" return="3DCam" block="true"/>
+		<play_camera name="Camera001_Animacio2D" return="3DCam" block="true"/>
 		<play_cinematic name="./Data/level4/cinematics/StartCinematic.xml"/>
 		<play_audio name="Animation2D" actor="Music"/>
 		<play_audio name="StartBackground" actor="Music" atEnd="true"/>
-		<play_animation room="0" layer="animationLayerAux" animated="Piky1" id="16"/>-->
+		<play_animation room="0" layer="animationLayerAux" animated="Piky1" id="16"/>
 	</cinematic_controller>
-	<cinematic_controller name="Chucky-appears">
-		<play_camera name="Camera057" return="2DCam" block="true"/>
-	</cinematic_controller>
-	<!--<cinematic_controller name="Wall">
-		<play_cinematic name="break-wall.xml"/>
-	</cinematic_controller>-->
 	<cinematic_controller name="Door">
-		<play_camera name="Camera060" return="3DCam" block="true"/>
+		<play_camera name="CameraEnemies" return="3DCam" block="true"/>
 	</cinematic_controller>
 </cinmetaics>

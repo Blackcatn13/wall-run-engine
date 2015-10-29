@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <cameras>
-	<key_camera_controller name="Camera056" file="./Data/level4/cameras/Camera056.xml"/>
-	<key_camera_controller name="Camera057" file="./Data/level4/cameras/Camera057.xml"/>
-	<key_camera_controller name="Camera060" file="./Data/level4/cameras/Camera060.xml"/>
-	<key_camera_controller name="Camera061" file="./Data/level4/cameras/Camera061.xml"/>
+	<key_camera_controller name="CameraEnemies" file="./Data/level4/cameras/CameraEnemies.xml"/>
+	<!--<key_camera_controller name="CameraPuzzle" file="./Data/level4/cameras/CameraPuzzle.xml"/>-->
 	<key_camera_controller name="Camera001_Animacio2D" file="./Data/level4/cameras/Camera001_Animacio2D.xml"/>
 </cameras>
