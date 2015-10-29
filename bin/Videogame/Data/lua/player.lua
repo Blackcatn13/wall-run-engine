@@ -60,6 +60,7 @@ function Player.new()
 	self.pressed_return = false
 	self.count_pixelites = 0.0
 	self.stop_follow_camera = false
+	self.waiting_to_die = false
 	
 	------	 PLAYER FUNCTIONS -----
 	
@@ -213,55 +214,57 @@ function Player.new()
 
 	function self.player_die()
 		if not self.is_dead then --Si ya está muerto no se va a morir más, QUE NO ES UN ZOMBIE
-			
-			self.activating_triggers = false
-			--self.remove_animations()
-			self.is_dead = true
-			local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room(piky_layer, player_controller.m_Room):get_resource(piky_mesh_name)
-			self.remove_animations(renderable_piky_mesh)
-			if not self.has_ass_burned and not self.hurt_by_spikes then
-				if not self.dead_in_hole then -- Si cae por una agujero no tiene animacion de caida
-					if self.num_lifes == 1 then
-						renderable_piky_mesh:execute_action(anim_death,0,0.3,1,true) --animacion de muerto GameOver
-					else
-						renderable_piky_mesh:execute_action(anim_death_retry,0,0.3,1,false) --animacion de muerto
-					end								
-				end
-			elseif not self.has_ass_burned and self.hurt_by_spikes then
-				renderable_piky_mesh:execute_action(anim_Burn,0,0.3,1,false) -- animacion de piky pinchos
-				local emitter3 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter3)
-				if emitter3:get_visible() == false then
-					emitter3:set_visible(true)
-					emitter3.m_vPos = renderable_piky_mesh:get_position() + renderable_piky_mesh.m_EmitterOffset3
-				end
-			else
-				renderable_piky_mesh:execute_action(anim_BurnJump,0,0.3,1,true) -- animacion de piky tostada
-				local emitter2 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter2)
-				if emitter2:get_visible() == false then
-					emitter2:set_visible(true)
-					emitter2.m_vPos = renderable_piky_mesh:get_position() + renderable_piky_mesh.m_EmitterOffset2
-				end
-			end
-			local coreInstance = CCoreLuaWrapper().m_CoreInstance;
-			self.coreInstance:trace("player dies")
-			self.num_lifes = self.num_lifes - 1
-			--[[if self.num_lifes > 0 then
-				if not self.has_ass_burned and not self.dead_in_hole then
-					fade(6)
-				elseif self.has_ass_burned and not self.dead_in_hole then
-					fade(4)
+			if not self.is_hit then
+				self.activating_triggers = false
+				--self.remove_animations()
+				self.is_dead = true
+				local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room(piky_layer, player_controller.m_Room):get_resource(piky_mesh_name)
+				self.remove_animations(renderable_piky_mesh)
+				if not self.has_ass_burned and not self.hurt_by_spikes then
+					if not self.dead_in_hole then -- Si cae por una agujero no tiene animacion de caida
+						if self.num_lifes == 1 then
+							renderable_piky_mesh:execute_action(anim_death,0,0.3,1,true) --animacion de muerto GameOver
+						else
+							renderable_piky_mesh:execute_action(anim_death_retry,0,0.3,1,false) --animacion de muerto
+						end								
+					end
+				elseif not self.has_ass_burned and self.hurt_by_spikes then
+					renderable_piky_mesh:execute_action(anim_Burn,0,0.3,1,false) -- animacion de piky pinchos
+					local emitter3 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter3)
+					if emitter3:get_visible() == false then
+						emitter3:set_visible(true)
+						emitter3.m_vPos = renderable_piky_mesh:get_position() + renderable_piky_mesh.m_EmitterOffset3
+					end
 				else
-					fade(3)
+					renderable_piky_mesh:execute_action(anim_BurnJump,0,0.3,1,true) -- animacion de piky tostada
+					local emitter2 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter2)
+					if emitter2:get_visible() == false then
+						emitter2:set_visible(true)
+						emitter2.m_vPos = renderable_piky_mesh:get_position() + renderable_piky_mesh.m_EmitterOffset2
+					end
 				end
+				local coreInstance = CCoreLuaWrapper().m_CoreInstance;
+				self.coreInstance:trace("player dies")
+				self.num_lifes = self.num_lifes - 1
+				--[[if self.num_lifes > 0 then
+					if not self.has_ass_burned and not self.dead_in_hole then
+						fade(6)
+					elseif self.has_ass_burned and not self.dead_in_hole then
+						fade(4)
+					else
+						fade(3)
+					end
+				else
+					fade(4)
+				end]]
+				--gui_manager:set_is_displayed_heart(true);
+				gui_manager:set_count_heart(0.0);
+				--gui_manager:set_num_heart( self.num_lifes );	
+				--local emitter3 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter3)
+				--emitter3:set_visible(false)
 			else
-				fade(4)
-			end]]
-			--gui_manager:set_is_displayed_heart(true);
-			gui_manager:set_count_heart(0.0);
-			--gui_manager:set_num_heart( self.num_lifes );	
-			--local emitter3 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter3)
-			--emitter3:set_visible(false)
-			reset_player_states()
+				self.waiting_to_die = true
+			end
 		end
 		
 		--self.check_death_actions()
@@ -338,14 +341,16 @@ function Player.new()
 		self.iman_pos = Vect3f(0,0,0);
 		self.has_ass_burned = false
 		self.hurt_by_spikes = false
+		self.stop_follow_camera = false
+		--coreInstance:trace("Stop Follow Camera del player:" ..tostring(player.stop_follow_camera))
 		self.set_super_piky(false)
-		--self.activating_triggers = true
+	--	self.activating_triggers = true
 		if boss.m_BossRunning and self.num_lifes > 0 then
 			start_boss()
 		end
-		if not player_reseted then
-			reset_player_states()
-		end
+		
+		reset_player_states()
+		
 	end
 	
 	function self.remove_animations(_renderable)
