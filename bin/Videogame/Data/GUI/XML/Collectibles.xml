@@ -5,56 +5,56 @@
 		  
   <Image name="CollectiblesGUI" posx="0.00" posy="0.00" height="100" width="100" visible="true" active="true"
          default="CollectibleBase" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
-    <texture name="CollectibleBase" name_texture="./Data/GUI/GoPixelGo/GUI_CROMOS.png"/>
+    <texture name="CollectibleBase" name_texture="./Data/GUI/GoPixelGo/GUI_CROMOS.tga"/>
   </Image>  
   
   <ButtonList name="Collectibles" posx="0" posy="0" height="1" width="1" visible="true" active="true">
     <Buttons>
       <row>
       	<Button name="Collectible1" posx="8.3496" posy="25.7712" height="21.722365" width="26.3183594" visible="false" active="true" 
-  			  texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_01_Petit_Large.png"
-                texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_01_Petit_Hover_Large.png"
-                texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_01_Petit_Large.png"
-                texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.png"
+  			  texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_01_Petit_Large.tga"
+                texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_01_Petit_Hover_Large.tga"
+                texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_01_Petit_Large.tga"
+                texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.tga"
                 OnClickedAction="CollectibleVisibleName = 'Collectible1';
                   gui_manager:set_render_prev_windows(true); 
                   gui_manager:push_windows('Collectible.xml');"
                 OnOverAction=""/>
 
       	<Button name="Collectible4" posx="8.15429" posy="50.6426735" height="21.722365" width="26.3183594" visible="false" active="true" 
-          texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_04_Petit_Large.png"
-                texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_04_Petit_Hover_Large.png"
-                texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_04_Petit_Large.png"
-                texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.png"
+          texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_04_Petit_Large.tga"
+                texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_04_Petit_Hover_Large.tga"
+                texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_04_Petit_Large.tga"
+                texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.tga"
                 OnClickedAction="CollectibleVisibleName = 'Collectible4';
                   gui_manager:set_render_prev_windows(true); 
                   gui_manager:push_windows('Collectible.xml');"
                 OnOverAction=""/>
 
         <Button name="Back" posx="8.15429" posy="75" height="13.0" width="20.00" visible="true" 
-                  active="true" texture_normal="./Data/GUI/GoPixelGo/ButtonBack_03.png"
-                  texture_over="./Data/GUI/GoPixelGo/ButtonBack_02.png"
-                  texture_clicked="./Data/GUI/GoPixelGo/ButtonBack_01.png"
-                  texture_deactivated="./Data/GUI/GoPixelGo/ButtonBack_03.png"
+                  active="true" texture_normal="./Data/GUI/GoPixelGo/ButtonBack_03.tga"
+                  texture_over="./Data/GUI/GoPixelGo/ButtonBack_02.tga"
+                  texture_clicked="./Data/GUI/GoPixelGo/ButtonBack_01.tga"
+                  texture_deactivated="./Data/GUI/GoPixelGo/ButtonBack_03.tga"
                   OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getGUIManager():pop_windows();
                       CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music');"
                   OnOverAction=""/>
       </row>
       <row>
         <Button name="Collectible2" posx="36.8652344" posy="25.7712082" height="21.722365" width="26.3183594" visible="false" active="true" 
-          texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_02_Petit_Large.png"
-                texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_02_Petit_Hover_Large.png"
-                texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_02_Petit_Large.png"
-                texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.png"
+          texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_02_Petit_Large.tga"
+                texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_02_Petit_Hover_Large.tga"
+                texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_02_Petit_Large.tga"
+                texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.tga"
                 OnClickedAction="CollectibleVisibleName = 'Collectible2';
                   gui_manager:set_render_prev_windows(true); 
                   gui_manager:push_windows('Collectible.xml');"
                 OnOverAction=""/>
         <Button name="Collectible5" posx="36.8652344" posy="50.6426735" height="21.722365" width="26.3183594" visible="false" active="true" 
-          texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_05_Petit_Large.png"
-                texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_05_Petit_Hover_Large.png"
-                texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_05_Petit_Large.png"
-                texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.png"
+          texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_05_Petit_Large.tga"
+                texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_05_Petit_Hover_Large.tga"
+                texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_05_Petit_Large.tga"
+                texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.tga"
                 OnClickedAction="CollectibleVisibleName = 'Collectible5';
                   gui_manager:set_render_prev_windows(true); 
                   gui_manager:push_windows('Collectible.xml');"
@@ -63,19 +63,19 @@
       </row>
       <row>
         <Button name="Collectible3" posx="65.3320312" posy="25.7712082" height="21.722365" width="26.3183594" visible="false" active="true" 
-          texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_03_Petit_Large.png"
-                texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_03_Petit_Hover_Large.png"
-                texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_03_Petit_Large.png"
-                texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.png"
+          texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_03_Petit_Large.tga"
+                texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_03_Petit_Hover_Large.tga"
+                texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_03_Petit_Large.tga"
+                texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.tga"
                 OnClickedAction="CollectibleVisibleName = 'Collectible3';
                   gui_manager:set_render_prev_windows(true); 
                   gui_manager:push_windows('Collectible.xml');"
                 OnOverAction=""/>
       	<Button name="Collectible6" posx="65.625" posy="50.6426735" height="21.722365" width="26.3183594" visible="false" active="true" 
-  			  texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_06_Petit_Large.png"
-                texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_06_Petit_Hover_Large.png"
-                texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_06_Petit_Large.png"
-                texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.png"
+  			  texture_normal="./Data/GUI/GoPixelGo/Cromos/Cromo_06_Petit_Large.tga"
+                texture_over="./Data/GUI/GoPixelGo/Cromos/Cromo_06_Petit_Hover_Large.tga"
+                texture_clicked="./Data/GUI/GoPixelGo/Cromos/Cromo_06_Petit_Large.tga"
+                texture_deactivated="./Data/GUI/GoPixelGo/Cromos/Cromo_Bloquejat.tga"
                 OnClickedAction="CollectibleVisibleName = 'Collectible6';
                   gui_manager:set_render_prev_windows(true); 
                   gui_manager:push_windows('Collectible.xml');"

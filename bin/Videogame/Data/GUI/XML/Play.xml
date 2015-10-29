@@ -13,31 +13,31 @@
 	
 	<Image name="MessageGUI" posx="37.5" posy="37.50" height="20" width="24" visible="true" active="true"
          default="PolyPlatform" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
-    <texture name="PolyPlatform" name_texture="./Data/GUI/GoPixelGo/GUI_WINDOW_POLY.png"/>
-	<texture name="UnlockCard" name_texture="./Data/GUI/GoPixelGo/GUI_WINDOW_CROMO.png"/>
+    <texture name="PolyPlatform" name_texture="./Data/GUI/GoPixelGo/GUI_WINDOW_POLY.tga"/>
+	<texture name="UnlockCard" name_texture="./Data/GUI/GoPixelGo/GUI_WINDOW_CROMO.tga"/>
   </Image>
   
   <Image name="LifeGUI" posx="2" posy="77.00" height="20" width="12" visible="true" active="true"
          default="Life3" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
-    <texture name="Life3" name_texture="./Data/GUI/GoPixelGo/Gui_Vida_3.png"/>
-	<texture name="Life2" name_texture="./Data/GUI/GoPixelGo/Gui_Vida_2.png"/>
-	<texture name="Life1" name_texture="./Data/GUI/GoPixelGo/Gui_Vida_1.png"/>
-	<texture name="Life0" name_texture="./Data/GUI/GoPixelGo/Gui_Vida_0.png"/>
+    <texture name="Life3" name_texture="./Data/GUI/GoPixelGo/Gui_Vida_3.tga"/>
+	<texture name="Life2" name_texture="./Data/GUI/GoPixelGo/Gui_Vida_2.tga"/>
+	<texture name="Life1" name_texture="./Data/GUI/GoPixelGo/Gui_Vida_1.tga"/>
+	<texture name="Life0" name_texture="./Data/GUI/GoPixelGo/Gui_Vida_0.tga"/>
   </Image>
   
   <Image name="BlackScreen" posx="0" posy="0" height="100" width="100" visible="false" active="true"
 		default="Black" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
-		<texture name="Black" name_texture="./Data/GUI/GoPixelGo/GameOverBackground.png" />
+		<texture name="Black" name_texture="./Data/GUI/GoPixelGo/GameOverBackground.tga" />
 	</Image>
 	
   <Image name="VidesGUI" posx="2" posy="44.00" height="16" width="9.5" visible="true" active="true"
          default="Vides" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
-    <texture name="Vides" name_texture="./Data/GUI/GoPixelGo/GUI_Life.png"/>
+    <texture name="Vides" name_texture="./Data/GUI/GoPixelGo/GUI_Life.tga"/>
   </Image>
   
     <Image name="VidesGUIDeath" posx="40" posy="33.00" height="32" width="19" visible="false" active="true"
          default="Vides" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
-    <texture name="Vides" name_texture="./Data/GUI/GoPixelGo/GUI_Life.png"/>
+    <texture name="Vides" name_texture="./Data/GUI/GoPixelGo/GUI_Life.tga"/>
   </Image>
   
   <StaticText name="VidesNumberShadow" posx="11.25" posy="53.25" height="15" width="15" visible="true" active="true" Literal="x 3"/>
@@ -48,7 +48,7 @@
   
   <Image name="PixeliteGUI" posx="2" posy="61.00" height="16" width="9.5" visible="true" active="true"
          default="Pixelite" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
-    <texture name="Pixelite" name_texture="./Data/GUI/GoPixelGo/GUI_Pixelites.png"/>
+    <texture name="Pixelite" name_texture="./Data/GUI/GoPixelGo/GUI_Pixelites.tga"/>
   </Image>
   
   <StaticText name="PixeliteNumberShadow" posx="11.25" posy="70.25" height="15" width="15" visible="true" active="true" Literal="x 0"/>
@@ -56,50 +56,50 @@
 	
 	<Image name="backgroundPause" posx="0.00" posy="0.00" height="100.00" width="100.00" visible="false" active="true"
 		default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
-		<texture name="img1" name_texture="./Data/GUI/GoPixelGo/PauseBackground.png"/>
+		<texture name="img1" name_texture="./Data/GUI/GoPixelGo/PauseBackground.tga"/>
 	</Image>
 	
 	<Image name="pause" posx="40.00" posy="10.00" height="55.00" width="19.00" visible="false" active="true"
 		default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
-		<texture name="img1" name_texture="./Data/GUI/GoPixelGo/GUI PAUSA.png"/>
+		<texture name="img1" name_texture="./Data/GUI/GoPixelGo/GUI PAUSA.tga"/>
 	</Image>
 	
   <ButtonList name="PauseButtonList" posx="42" posy="20" height="60" width="15" visible="false" active="true">
     <Buttons>
       <row>
       	<Button name="PlayPause" posx="42.00" posy="20.00" height="10.00" width="15.00" visible="true" 
-                active="true" texture_normal="./Data/GUI/GoPixelGo/Button_1_A.png"
-  			  texture_over="./Data/GUI/GoPixelGo/Button_1_B.png"
-  			  texture_clicked="./Data/GUI/GoPixelGo/Button_1_C.png"
-  			  texture_deactivated="./Data/GUI/GoPixelGo/Button_1_A.png"
+                active="true" texture_normal="./Data/GUI/GoPixelGo/Button_1_A.tga"
+  			  texture_over="./Data/GUI/GoPixelGo/Button_1_B.tga"
+  			  texture_clicked="./Data/GUI/GoPixelGo/Button_1_C.tga"
+  			  texture_deactivated="./Data/GUI/GoPixelGo/Button_1_A.tga"
                 OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');
       							gui_manager:activate_pause(false);
       							gui_manager:set_is_paused(false)"
                 OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>
       		  
       	<Button name="OptionsPause" posx="42.00" posy="30.00" height="10.00" width="15.00" visible="true" 
-                active="true" texture_normal="./Data/GUI/GoPixelGo/Button_2_A.png"
-  			  texture_over="./Data/GUI/GoPixelGo/Button_2_B.png"
-  			  texture_clicked="./Data/GUI/GoPixelGo/Button_2_C.png"
-  			  texture_deactivated="./Data/GUI/GoPixelGo/Button_2_A.png"
+                active="true" texture_normal="./Data/GUI/GoPixelGo/Button_2_A.tga"
+  			  texture_over="./Data/GUI/GoPixelGo/Button_2_B.tga"
+  			  texture_clicked="./Data/GUI/GoPixelGo/Button_2_C.tga"
+  			  texture_deactivated="./Data/GUI/GoPixelGo/Button_2_A.tga"
                 OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');
   			  CCoreLuaWrapper().m_CoreInstance:getGUIManager():push_windows('KeyButtonMap.xml')"
                 OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>
       		  
       	<Button name="ExtrasPause" posx="42.00" posy="40.00" height="10.00" width="15.00" visible="true" 
-                active="true" texture_normal="./Data/GUI/GoPixelGo/Button_3_A.png"
-  			  texture_over="./Data/GUI/GoPixelGo/Button_3_B.png"
-  			  texture_clicked="./Data/GUI/GoPixelGo/Button_3_C.png"
-  			  texture_deactivated="./Data/GUI/GoPixelGo/Button_3_A.png"
+                active="true" texture_normal="./Data/GUI/GoPixelGo/Button_3_A.tga"
+  			  texture_over="./Data/GUI/GoPixelGo/Button_3_B.tga"
+  			  texture_clicked="./Data/GUI/GoPixelGo/Button_3_C.tga"
+  			  texture_deactivated="./Data/GUI/GoPixelGo/Button_3_A.tga"
                 OnClickedAction=" CCoreLuaWrapper().m_CoreInstance:getGUIManager():push_windows('Collectibles.xml')
       			CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');"
                 OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>
       		  
       	<Button name="ExitPause" posx="42.00" posy="50.00" height="10.00" width="15.00" visible="true" 
-                active="true" texture_normal="./Data/GUI/GoPixelGo/Button_4_A.png"
-  			  texture_over="./Data/GUI/GoPixelGo/Button_4_B.png"
-  			  texture_clicked="./Data/GUI/GoPixelGo/Button_4_C.png"
-  			  texture_deactivated="./Data/GUI/GoPixelGo/Button_4_A.png"
+                active="true" texture_normal="./Data/GUI/GoPixelGo/Button_4_A.tga"
+  			  texture_over="./Data/GUI/GoPixelGo/Button_4_B.tga"
+  			  texture_clicked="./Data/GUI/GoPixelGo/Button_4_C.tga"
+  			  texture_deactivated="./Data/GUI/GoPixelGo/Button_4_A.tga"
                 OnClickedAction=" CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');
   								reset_game();
   								gui_manager:set_is_gameover(false);
@@ -113,11 +113,11 @@
   
   <Image name="GameOverBackground" posx="0" posy="0" height="100" width="100" visible="false" active="true"
          default="background" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
-    <texture name="background" name_texture="./Data/GUI/GoPixelGo/GameOverBackgroundTrans2.png"/>
+    <texture name="background" name_texture="./Data/GUI/GoPixelGo/GameOverBackgroundTrans2.tga"/>
   </Image>
   
   <Image name="GameOver" posx="0" posy="0" height="100" width="100" visible="false" active="true"
          default="Gameover" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
-    <texture name="Gameover" name_texture="./Data/GUI/GoPixelGo/GAMEOVER.png"/>
+    <texture name="Gameover" name_texture="./Data/GUI/GoPixelGo/GAMEOVER.tga"/>
   </Image>
 </Windows>
