@@ -138,9 +138,13 @@
 	<mesh_instance name="SUPORT ANTORCHA014" core="SUPORT ANTORCHA014" pos="-17.295013 3.284921 -47.792854" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="0"/>
 
 	<!--<animated_model name="Piky" core="piky" pos="51.574234 0.714600 0.617737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="player"/>-->
+	<!-- cinematic models -->
+	<animated_model name="Chucky1" core="chuky" pos="6.772 2.529 -1.528" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="animationLayerAux" room="0"/>
+	<animated_model name="Piky1" core="piky" pos="10.785 1.316 10.879" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="animationLayerAux" room="0"/>
+	<!-- end cinematic models -->
 
 	<animated_model name="Piky" core="piky" pos="55.784378 0.000000 0.617737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="player" emitter="DustPikyEmitter" emitter_offset="0.0 1.0 0.0" emitter2="BurnPikyEmitter" emitter2_offset="0.0 0.0 0.0" emitter3="StarsPikyEmitter" emitter3_offset="0.0 0.0 0.0" emitter4="YellowSuperPikySparks" />
-	<animated_model name="Piky1" core="piky" pos="10.785 1.316 10.879" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="animationLayerAux" room="0"/>
+	
 	<animated_model name="SuperPiky" core="SuperPiky" pos="55.784378 1.000000 0.617737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="superPiky" emitter="SuperPikyQTE_B" emitter_offset="0.0 3.0 0.0" emitter2="SuperPikyQTE_KB" emitter2_offset="0.0 3.0 0.0" emitter3="SuperPikyAuraEmitter" emitter4="SuperPikyAura2Emitter" emitter3_offset="0.0 0.0 0.0" room="0" />
 
 	<animated_model name="Chucky" core="chuky" pos="12.301392 1000.000000 -2.756073" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="DustChuckyEmitter" emitter_offset="0.0 0.0 0.0" emitter2="DustJumpChuckyEmitter" emitter2_offset="0.0 0.0 0.0" room="1"/>

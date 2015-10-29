@@ -65,4 +65,5 @@
 	<key time="78.5" pos="64.501 1.58775 1.20871" lookat="29.3223 -2.88744 7.17593" fov="1.42007" near_plane="1.0" far_plane="1000.0"/>
 	<key time="78.6667" pos="64.2915 2.26438 0.481386" lookat="29.1129 -2.21081 6.4486" fov="1.42342" near_plane="1.0" far_plane="1000.0"/>
 	<key time="79.1667" pos="63.285 8.25572 -0.959048" lookat="28.1064 3.78053 5.00817" fov="1.42588" near_plane="1.0" far_plane="1000.0"/>
+	<key time="83.3333" pos="63.285 8.25572 -0.959048" lookat="28.1064 3.78053 5.00817" fov="1.42588" near_plane="1.0" far_plane="1000.0"/>
 </camera_key_controller>
