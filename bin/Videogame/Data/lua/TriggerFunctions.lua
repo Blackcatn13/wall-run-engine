@@ -584,6 +584,11 @@ function trigger_puzzle()
 	coreInstance:get_cinematic_controller():execute("Door");
 end
 
+function trigger_zone6(room_number, wall_name)
+	cambiozona_2d_to_3d(room_number, wall_name)
+	coreInstance:get_cinematic_controller():execute("PuzzleRoom");
+end
+
 function cambiozona_3d_to_2d(offset_axis, room_number)
 	trigger_set_2D(offset_axis)
 	set_player_room(room_number, "true")
