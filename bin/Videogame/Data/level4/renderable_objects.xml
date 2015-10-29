@@ -36,7 +36,7 @@
 	<mesh_instance name="Ruinas" core="Ruinas" pos="1.558468 4.163818 1.960205" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" room="0" layer="solid"/>
 	<mesh_instance name="ORO005" core="ORO005" pos="-7.491734 1.363649 -5.465696" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" room="0" layer="solid"/>
 	<mesh_instance name="ORO006" core="ORO006" pos="6.050563 1.363649 -11.028826" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" room="0" layer="solid"/>
-		 
+	<mesh_instance name="SALA1_LIGHTMAP2" core="SALA1_LIGHTMAP2" pos="115.736115 3.385889 -5.362411" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" room="0" visible="true" layer="solid"/>
 	<mesh_instance name="ARCADA" core="ARCADA" pos="-0.017227 9.222342 0.316050" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
 	<mesh_instance name="CUPULA" core="CUPULA" pos="-0.002787 35.136833 -0.108083" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="0" layer="solid"/>
 	<mesh_instance name="ORO2" core="ORO2" pos="-0.001024 1.363649 15.286530" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="0"/>
@@ -140,7 +140,7 @@
 	<!--<animated_model name="Piky" core="piky" pos="51.574234 0.714600 0.617737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="player"/>-->
 
 	<animated_model name="Piky" core="piky" pos="55.784378 0.000000 0.617737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="player" emitter="DustPikyEmitter" emitter_offset="0.0 1.0 0.0" emitter2="BurnPikyEmitter" emitter2_offset="0.0 0.0 0.0" emitter3="StarsPikyEmitter" emitter3_offset="0.0 0.0 0.0" emitter4="YellowSuperPikySparks" />
-	<animated_model name="Piky1" core="piky" pos="10.785 1.316 10.879" yaw="-1.57" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="animationLayerAux" room="0"/>
+	<animated_model name="Piky1" core="piky" pos="44.182 0.096 38.388" yaw="-1.57" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="animationLayerAux" room="0"/>
 	<animated_model name="SuperPiky" core="SuperPiky" pos="55.784378 1.000000 0.617737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" layer="superPiky" emitter="SuperPikyQTE_B" emitter_offset="0.0 3.0 0.0" emitter2="SuperPikyQTE_KB" emitter2_offset="0.0 3.0 0.0" emitter3="SuperPikyAuraEmitter" emitter4="SuperPikyAura2Emitter" emitter3_offset="0.0 0.0 0.0" room="0" />
 
 	<animated_model name="Chucky" core="chuky" pos="12.301392 1000.000000 -2.756073" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="enemies" emitter="DustChuckyEmitter" emitter_offset="0.0 0.0 0.0" emitter2="DustJumpChuckyEmitter" emitter2_offset="0.0 0.0 0.0" room="1"/>
@@ -242,7 +242,7 @@
 	<mesh_instance name="SALA1_TEMPLEPOLYPOLY" core="SALA1_TEMPLEPOLYPOLY" pos="115.736115 3.385889 -5.362411" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="1" layer="solid"/>
 	<mesh_instance name="Columna005" core="Columna005" pos="123.349655 0.741134 -27.675018" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="1"/>
 	<mesh_instance name="ANTORCHA034" core="ANTORCHA034" pos="98.133629 5.549440 3.802600" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="1"/>
-	<mesh_instance name="Object001" core="Object001" pos="289.695251 4.516609 11.109434" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="solid"/>
+	<mesh_instance name="sala2_light" core="sala2_light" pos="289.695251 4.516609 11.109434" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="solid"/>
 	<mesh_instance name="ANTORCHA022" core="ANTORCHA022" pos="189.583267 4.630239 17.396589" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="2"/>
 	<mesh_instance name="SUPORT ANTORCHA022" core="SUPORT ANTORCHA022" pos="189.620514 4.346467 17.767475" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="2"/>
 	<mesh_instance name="ANTORCHA023" core="ANTORCHA023" pos="204.493729 4.630239 17.396589" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid" room="2"/>

@@ -54,7 +54,7 @@ TMultiRenderTargetPixel GBufferPS(TGBUFFER_TEXTURED2_TANGENT_BINORMAL_VERTEX_PS 
 	float3 l_TangentNormalized = normalize(IN.WorldTangent);
 	float3 l_WNn= normalize(IN.WorldNormal);
 	float3 l_BinormalNormalized = normalize(IN.WorldBinormal);
-	float4 l_NormalTex = tex2D(S1LinearClampSampler, IN.UV);
+	float4 l_NormalTex = tex2D(S1LinearWrapSampler, IN.UV);
 	float3 l_Bump = g_Bump * (l_NormalTex.rgb - float3 (0.5,0.5,0.5));
 	float3 l_Nn = l_WNn + l_Bump.x*l_TangentNormalized + l_Bump.y*l_BinormalNormalized;
 	l_Nn = normalize(l_Nn);
@@ -65,7 +65,6 @@ TMultiRenderTargetPixel GBufferPS(TGBUFFER_TEXTURED2_TANGENT_BINORMAL_VERTEX_PS 
 	float3 NnScalated = Normal2Texture(Nn);
 	// Cálculo de la z en formato color
 	float l_Depth = IN.WorldPosition.z/IN.WorldPosition.w;
-	
 	OUT.RT0=float4(l_DiffuseColor.xyz, 1.0);
 	OUT.RT1=float4(l_intensity*g_LightAmbientIntensity, 1.0);
 	OUT.RT2.xyz=NnScalated;

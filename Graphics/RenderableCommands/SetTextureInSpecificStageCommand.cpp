@@ -13,7 +13,6 @@
 CSetTextureInSpecificStageCommand::CSetTextureInSpecificStageCommand(CXMLTreeNode &atts) {
   m_TextureName = atts.GetPszProperty("texture_name", "", false);
   m_Stage = atts.GetIntProperty("stage_id", 0, false);
-
 }
 
 

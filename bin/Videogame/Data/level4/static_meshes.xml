@@ -114,6 +114,7 @@
 	<static_mesh name="Plataforma02" filename="Data\level4\meshes\Plataforma02.mesh"/>
 	<static_mesh name="Plataforma0er3" filename="Data\level4\meshes\Plataforma0er3.mesh"/>
 	<static_mesh name="BoqueteBoca" filename="Data\level4\meshes\BoqueteBoca.mesh"/>
+	<static_mesh name="SALA1_LIGHTMAP2" filename="Data\level4\meshes\SALA1_LIGHTMAP2.mesh"/>
 	
 	<static_mesh name="Box043" filename="Data\level4\meshes\Box043.mesh"/>
 	<static_mesh name="Box0001" filename="Data\level4\meshes\Box0001.mesh"/>
@@ -166,7 +167,7 @@
 	<static_mesh name="SALA1_TEMPLEPOLYPOLY" filename="Data\level4\meshes\SALA1_TEMPLEPOLYPOLY.mesh"/>
 	<static_mesh name="Columna005" filename="Data\level4\meshes\Columna005.mesh"/>
 	<static_mesh name="ANTORCHA034" filename="Data\level4\meshes\ANTORCHA034.mesh"/>
-	<static_mesh name="Object001" filename="Data\level4\meshes\Object001.mesh"/>
+	<static_mesh name="sala2_light" filename="Data\level4\meshes\sala2_light.mesh"/>
 	<static_mesh name="ANTORCHA022" filename="Data\level4\meshes\ANTORCHA022.mesh"/>
 	<static_mesh name="SUPORT ANTORCHA022" filename="Data\level4\meshes\SUPORT ANTORCHA022.mesh"/>
 	<static_mesh name="ANTORCHA023" filename="Data\level4\meshes\ANTORCHA023.mesh"/>

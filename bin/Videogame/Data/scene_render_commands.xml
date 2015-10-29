@@ -76,7 +76,7 @@
 		<set_pool_renderable_objects_technique pool="generate_deferred_shading_pool_renderable_object_technique_lava"/>
 		<set_tick tick="lava" technique="GBufferDiffuseMapTechniqueLava"/>
 		<set_tick tick="lava" technique="GBufferLavaEffectTechnique"/>
-		<set_texture_in_stage texture_name="./Data/level4/textures/dispImage.tga" stage_id="258"/>
+		<!--<set_texture_in_stage texture_name="./Data/level4/textures/dispImage.tga" stage_id="258"/>-->
 		<render_scene layer="lava" active="true"/>
 		<set_pool_renderable_objects_technique pool="generate_deferred_shading_pool_renderable_object_technique_movement"/>
 		<set_effect_value technique="GBufferDiffuseMapTechniqueMovement" value="ChangeUV" time="0.6"/>
