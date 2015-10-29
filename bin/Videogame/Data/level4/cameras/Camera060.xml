@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<camera_key_controller name="Camera060" once="true" cycle="false" reverse="false">
-	<key time="0.0" pos="468.144 16.5495 -3.05072" lookat="487.737 9.11982 -2.11315" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
-	<key time="0.8" pos="520.489 16.5495 -3.05072" lookat="534.077 9.11982 -2.11315" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
-	<key time="1.6" pos="515.649 26.4161 -1.22783" lookat="526.983 9.11982 4.45207" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
-	<key time="2.4" pos="515.317 26.4161 -6.50306" lookat="529.169 9.11982 -9.45594" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
-	<key time="3.2" pos="515.09 26.4161 -11.9727" lookat="484.216 9.11982 -3.71729" fov="1.287" near_plane="1.0" far_plane="1000.0"/>
-</camera_key_controller>
