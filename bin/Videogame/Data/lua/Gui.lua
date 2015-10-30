@@ -2,6 +2,7 @@ local GameoverCount = 0;
 local gui_visible = true
 local black_screen_timer = 0
 local max_count_timer = 3.0
+local original_num_position = gui_manager:get_position_x_element("VidesNumber")
 
 function update_fading_black_screen()
 	 if gui_manager.m_IsBlackScreenActive then
@@ -177,6 +178,7 @@ function ManagerGUIHearts()
 	local pos = gui_manager:get_position_x_element("VidesGUI");
 	local posPixelitesText = gui_manager:get_position_x_element("VidesNumber");
 	
+	
 	local count = gui_manager:get_count_heart();
 	local positionMin = 2;
 	local positionMax = -20;
@@ -190,26 +192,33 @@ function ManagerGUIHearts()
 		gui_manager:set_position_element("VidesNumber", posPixelitesText + (65 * gui_manager:get_dt()), positionYNum);
 		gui_manager:set_position_element("VidesNumberShadow", posPixelitesText + (65 * gui_manager:get_dt()) + textShadowDifference, positionYNum+textShadowDifference);
 	else
-		
-		if count >= 3.0 then
-			if pos > positionMax then
-				gui_manager:set_position_element("VidesGUI", pos - (25 * gui_manager:get_dt()), positionYGUI);
-				gui_manager:set_position_element("VidesNumber", posPixelitesText - (25 * gui_manager:get_dt()), positionYNum);
-				gui_manager:set_position_element("VidesNumberShadow", posPixelitesText - (25 * gui_manager:get_dt()) + textShadowDifference, positionYNum+textShadowDifference);
+		if not player.is_dead then
+			if count >= 3.0 then
+				if pos > positionMax then
+					gui_manager:set_position_element("VidesGUI", pos - (25 * gui_manager:get_dt()), positionYGUI);
+					gui_manager:set_position_element("VidesNumber", posPixelitesText - (25 * gui_manager:get_dt()), positionYNum);
+					gui_manager:set_position_element("VidesNumberShadow", posPixelitesText - (25 * gui_manager:get_dt()) + textShadowDifference, positionYNum+textShadowDifference);
+				else
+					gui_manager:set_is_displayed_heart(false);
+					gui_manager:set_count_heart(0.0);
+				end
 			else
-				gui_manager:set_is_displayed_heart(false);
-				gui_manager:set_count_heart(0.0);
+				if count>=2.0 and pos >= positionMax and gui_manager:get_num_heart() ~= player.num_lifes then
+					gui_manager:set_num_heart( player.num_lifes )
+				end
+				gui_manager:set_position_element("VidesGUI", positionMin, positionYGUI);
+				gui_manager:set_position_element("VidesNumber", positionMin+9, positionYNum);
+				gui_manager:set_position_element("VidesNumberShadow", positionMin+9+textShadowDifference, positionYNum+textShadowDifference);
+				if not gui_manager:get_is_paused() then
+					gui_manager:set_count_heart(count + gui_manager:get_dt());
+				end
 			end
 		else
-			if count>=2.0 and pos >= positionMax and gui_manager:get_num_heart() ~= player.num_lifes then
-				gui_manager:set_num_heart( player.num_lifes )
-			end
-			gui_manager:set_position_element("VidesGUI", positionMin, positionYGUI);
-			gui_manager:set_position_element("VidesNumber", positionMin+9, positionYNum);
-			gui_manager:set_position_element("VidesNumberShadow", positionMin+9+textShadowDifference, positionYNum+textShadowDifference);
-			if not gui_manager:get_is_paused() then
-				gui_manager:set_count_heart(count + gui_manager:get_dt());
-			end
+			gui_manager:set_position_element("VidesGUI",positionMax , positionYGUI);
+			gui_manager:set_position_element("VidesNumber", original_num_position, positionYNum);
+			gui_manager:set_position_element("VidesNumberShadow",original_num_position + textShadowDifference, positionYNum+textShadowDifference);
+			gui_manager:set_is_displayed_heart(false);
+			gui_manager:set_count_heart(0.0);
 		end
 	end
 end
