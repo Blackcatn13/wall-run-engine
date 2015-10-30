@@ -212,8 +212,8 @@
 	<cinematic_object resource="Vortex2_Animation" renderable_objects_manager="AnimationStart" room="0">
 		<cinematic_object_key_frame time="0.0" pos="9.7668 4.78844 7.83781" yaw="0.0" pitch="-0.906465" roll="0.0" scale="1.0 1.0 1.0"/>
 		<cinematic_object_key_frame time="60.0333" pos="9.7668 4.78844 7.83781" yaw="0.0" pitch="-0.906465" roll="0.0" scale="1.0 1.0 1.0"/>
-		<cinematic_object_key_frame time="61.9333" pos="10.7453 3.07574 9.70488" yaw="0.0" pitch="-0.215059" roll="0.0" scale="0.170646 0.170646 0.170646"/>
-		<cinematic_object_key_frame time="61.9667" pos="10.7922 -37.7165 9.74049" yaw="0.0" pitch="-0.197076" roll="0.0" scale="0.08 0.08 0.08"/>
+		<cinematic_object_key_frame time="61.9333" pos="10.7453 3.07574 9.70488" yaw="0.0" pitch="-0.215059" roll="0.0" scale="0.005 0.005 0.005"/>
+		<cinematic_object_key_frame time="63.0333" pos="10.7922 -37.7165 9.74049" yaw="0.0" pitch="-0.197076" roll="0.0" scale="0.005 0.005 0.005"/>
 	</cinematic_object>
 	<cinematic_object resource="Roca_002_Animation" renderable_objects_manager="solid" room="0">
 		<cinematic_object_key_frame time="0.0" pos="50.2328 52.1903 -3.10217" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0"/>

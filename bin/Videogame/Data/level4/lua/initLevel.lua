@@ -61,6 +61,9 @@ function init_level(a)
 	player.attack_enabled = false
 	player.can_move = true
 	renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name):remove_action(1);
+	-- Add visibility to cinematic objects
+	renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("animationLayerAux", 0):get_resource("Piky1"):set_visible(true);
+	renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("animationLayerAux", 0):get_resource("Chucky1"):set_visible(true);
 
 	--renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name):set_position(Vect3f(10.785, 1.316, 10.879))
 	--renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("player", player_controller.m_Room):get_resource(piky_mesh_name):set_yaw(1.57)
