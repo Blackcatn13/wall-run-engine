@@ -3,4 +3,5 @@
 	<key_camera_controller name="CameraEnemies" file="./Data/level4/cameras/CameraEnemies.xml"/>
 	<key_camera_controller name="CameraSwitch" file="./Data/level4/cameras/CameraSwitch.xml"/>
 	<key_camera_controller name="Camera001_Animacio2D" file="./Data/level4/cameras/Camera001_Animacio2D.xml"/>
+	<key_camera_controller name="CameraAngelFall" file="./Data/level4/cameras/CameraAngelFall.xml"/>
 </cameras>

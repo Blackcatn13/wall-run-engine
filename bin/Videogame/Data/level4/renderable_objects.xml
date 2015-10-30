@@ -141,6 +141,9 @@
 	<!-- cinematic models -->
 	<animated_model name="Chucky1" core="chuky" pos="0.0 0.0 0.0" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="animationLayerAux" room="0"/>
 	<animated_model name="Piky1" core="piky" pos="10.785 1.316 10.879" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="animationLayerAux" room="0"/>
+	<animated_model name="Chucky2" core="chuky" pos="0.0 0.0 0.0" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="animationLayerAux" room="0"/>
+	<animated_model name="Chucky3" core="chuky" pos="0.0 0.0 0.0" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="animationLayerAux" room="0"/>
+	<animated_model name="Piky2" core="piky" pos="-234.777 28.975 -645.629" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="animationLayerAux" room="0"/>
 	<!-- end cinematic models -->
 
 	<animated_model name="Piky" core="piky" pos="55.784378 0.000000 0.617737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="player" emitter="DustPikyEmitter" emitter_offset="0.0 1.0 0.0" emitter2="BurnPikyEmitter" emitter2_offset="0.0 0.0 0.0" emitter3="StarsPikyEmitter" emitter3_offset="0.0 0.0 0.0" emitter4="YellowSuperPikySparks" />

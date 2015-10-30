@@ -615,11 +615,12 @@ function trigger_damage_player()
 end
 
 function init_boss_trigger()
-	player_controller.m_is3D = true;
+	--[[player_controller.m_is3D = true;
 	local cam = coreInstance.m_CameraController:get_resource("3DCam");
 	cam.m_eTypeCamera = 6;
 	coreInstance.m_CameraController:set_active_camera("3DCam");
-	start_boss()
+	start_boss()--]]
+	coreInstance:get_cinematic_controller():execute("AngelFall");
 end
 
 function nail_platform(obj_name, layer)

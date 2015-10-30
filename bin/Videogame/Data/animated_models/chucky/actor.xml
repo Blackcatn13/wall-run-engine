@@ -15,4 +15,6 @@
 	<animation name="boss_return" file="Chucky_boss_return.caf"/> <!-- 9 -->
 	<animation name="stop" file="Chucky_stop.caf"/> <!-- 10 -->
 	<animation name="Animation_scene1" file="Animation_scene1.caf"/> <!-- 11 -->
+	<animation name="Animation_scene2" file="Animation_scene2.caf"/> <!-- 12 -->
+	<animation name="Animation_scene3" file="Animation_scene3.caf"/> <!-- 13 -->
 </animated_model>
