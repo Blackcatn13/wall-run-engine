@@ -139,7 +139,7 @@
 
 	<!--<animated_model name="Piky" core="piky" pos="51.574234 0.714600 0.617737" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="player"/>-->
 	<!-- cinematic models -->
-	<animated_model name="Chucky1" core="chuky" pos="6.772 2.529 -1.528" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="animationLayerAux" room="0"/>
+	<animated_model name="Chucky1" core="chuky" pos="0.0 0.0 0.0" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="animationLayerAux" room="0"/>
 	<animated_model name="Piky1" core="piky" pos="10.785 1.316 10.879" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="animationLayerAux" room="0"/>
 	<!-- end cinematic models -->
 
