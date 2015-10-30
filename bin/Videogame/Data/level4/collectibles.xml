@@ -9,7 +9,7 @@
 	<collectible-type name="pixeliteBlau" core_mesh="Pixelite Blau001" mesh_lua_function="roll_object" trigger_function="get_pixelite" param_trigger_function="5" trigger_size="0.35 0.30 0.35"/><!-- Blue -->
 	<collectible-type name="pixeliteVermell" core_mesh="Pixelite Vermell001" mesh_lua_function="roll_object" trigger_function="get_pixelite" param_trigger_function="10" trigger_size="0.35 0.30 0.35"/><!-- Red -->
 	<collectible-type name="pixeliteGroc" core_mesh="Pixelite Groc001" mesh_lua_function="roll_object" trigger_function="get_pixelite" param_trigger_function="50" trigger_size= "0.35 0.30 0.35"/><!--Yellow-->
-	<collectible-type name="card" core_mesh="Collectible1" mesh_lua_function="roll_object" trigger_function="get_sticker"  trigger_size= "0.50 0.60 0.50" />
+	<collectible-type name="card" core_mesh="Collectible1" mesh_lua_function="roll_object" trigger_function="get_sticker"  trigger_size= "0.50 0.30 0.50" />
 	<!-- <collectible-type name ="card"  core_mesh="" mesh_lua_function ="roll_object" on_enter_function ="get_pixelite" /> -->
 	<unlockable-card mesh_name="Collectible1" img_src="./Data/GUI/GoPixelGo/Card01.png" />
 	<unlockable-card mesh_name="Collectible2" img_src="./Data/GUI/GoPixelGo/Card02.png" />

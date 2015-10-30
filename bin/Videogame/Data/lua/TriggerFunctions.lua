@@ -412,7 +412,8 @@ function ChuckyApear(distance)
 	coreInstance:trace("CHUKY APEARS!!!");
 	if player_controller.m_Room == 2 or player_controller.m_Room == 5 or player_controller.m_Room == 7 then
 		local Chucky = enemy_manager:get_enemy("Chucky");
-		if player.activating_triggers and not Chucky.m_Appeared then	
+		if player.activating_triggers and not Chucky.m_Appeared then
+			chucky_able_to_catch = true
 			local active_camera = cam_Controller:get_active_camera();
 			local dirVec = active_camera:get_path_point(active_camera.m_nextWaypoint) - active_camera:get_path_point(active_camera.m_currentWaypoint);
 			dirVec.y = 0;
@@ -468,8 +469,11 @@ function ChuckyJump()
 	set_chucky_need_to_jump(true)
 end
 
-function ChuckyStop()
+function ChuckyStop(able_to_cach)
 	local Chucky = enemy_manager:get_enemy("Chucky")
+	if tostring(able_to_cach) == "false" then
+		chucky_able_to_catch = false
+	end
 	Chucky:m_FSM():newState("Stopping")
 end
 
@@ -501,6 +505,8 @@ function set_player_room(room, chucky_appears)
 		chuky_last_room = num_room
 		coreInstance:trace("Chucky room: ".. tostring(chuky_last_room))
 	end
+		
+	player_controller.m_Room = num_room
 	
 	if room == "5" then
 		local trigger = trigger_manager:get_resource("Collectible3_UserData")
@@ -512,8 +518,6 @@ function set_player_room(room, chucky_appears)
 		local trigger = trigger_manager:get_resource("Collectible6_UserData")
 		activate_collectible(trigger, "collectible", "Collectible6")
 	end
-	
-	player_controller.m_Room = num_room
 end
 
 function activate_wall_traps(room_number)
@@ -626,9 +630,9 @@ function nail_platform(obj_name, layer)
 		platform.m_Nailed = true
 		local position = platform:get_position()
 		local emitter1 = particle_manager:get_resource("PlatformBrokenEmitter")
-		local emitter1_pos = Vect3f(position.x -2, position.y, position.z)
+		local emitter1_pos = Vect3f(position.x -2, position.y +0.5, position.z)
 		local emitter2 = particle_manager:get_resource("PlatformBroken2Emitter")
-		local emitter2_pos = Vect3f(position.x +2, position.y, position.z)
+		local emitter2_pos = Vect3f(position.x +2, position.y +0.5, position.z)
 		if emitter1 ~= nil then
 			emitter1.m_vPos = emitter1_pos
 			emitter1.m_FireParticles = true

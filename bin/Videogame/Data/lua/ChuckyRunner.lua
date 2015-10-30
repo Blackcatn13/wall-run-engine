@@ -250,6 +250,7 @@ end
 
 function chucky_runner_exit_waiting(name)
 	chucky.m_RenderableObject:clear_cycle(0,0.1)
+	chucky_able_to_catch = true
 end
 
 function chucky_runner_update_waiting(ElapsedTime, doComprobation, name)
@@ -257,10 +258,12 @@ function chucky_runner_update_waiting(ElapsedTime, doComprobation, name)
 	local pos_piky_xz = Vect3f(player_controller:get_position().x, 0, player_controller:get_position().z)
 	rotate_yaw(chucky, ElapsedTime, player_controller:get_position())
 	local distance = get_distance_between_points(pos_chucky_xz, pos_piky_xz)
-	if distance < chuky_catching_distance then
+	if distance < chuky_catching_distance and chucky_able_to_catch then
 		chucky:m_FSM():newState("Atrapando")
 	end
-	
+	if distance >= chuky_catching_distance and not chucky_able_to_catch then
+		chucky_able_to_catch = true
+	end
 end	
 	
 

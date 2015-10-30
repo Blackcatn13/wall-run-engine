@@ -111,6 +111,7 @@ function activate_collectible_by_room (_trigger, layer_name, obj_name, room_numb
 	end
 	local object_manager = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room(layer_name, room_number)
 	local object = object_manager:get_resource(obj_name)
+	coreInstance:trace("Activating collectible: ".. obj_name)
 	if object ~= nil then
 		object.m_Printable = true
 		local emitter = object.m_ParticleEmitter

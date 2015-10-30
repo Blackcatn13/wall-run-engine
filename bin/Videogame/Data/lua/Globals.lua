@@ -57,7 +57,7 @@ fade_step = 0 --0: Not fade, 1: first fade, 2: black_screen, 3: second fade
 last_checkpoint_room = 1
 chucky_boss_layer ="enemies" --enemies / angry
 returned_times = 0
-
+chucky_able_to_catch = true
 
 --Animaciones del Player
 --Piky
