@@ -65,7 +65,8 @@
 	          							end
 										
 										gui_manager:set_is_mainmenu(false);
-										init_level(1);"
+										init_level(1);
+										renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room('player', player_controller.m_Room):get_resource(piky_mesh_name):set_visible(false);"
 	                    OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>
 	          		  
 	          	<Button name="Options" posx="71.00" posy="34.00" height="13.00" width="20.00" visible="true" 

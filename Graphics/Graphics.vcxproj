@@ -38,6 +38,7 @@
     <ClCompile Include="Cinematics\CinematicElement\CinematicElementAnimation.cpp" />
     <ClCompile Include="Cinematics\CinematicElement\CinematicElementCamera.cpp" />
     <ClCompile Include="Cinematics\CinematicElement\CinematicElementCinematic.cpp" />
+    <ClCompile Include="Cinematics\CinematicElement\CinematicElementLua.cpp" />
     <ClCompile Include="Cinematics\CinematicElement\CinematicElementMusic.cpp" />
     <ClCompile Include="Cinematics\CinematicObject.cpp" />
     <ClCompile Include="Cinematics\CinematicObjectKeyFrame.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Cinematics\CinematicElement\CinematicElementAnimation.h" />
     <ClInclude Include="Cinematics\CinematicElement\CinematicElementCamera.h" />
     <ClInclude Include="Cinematics\CinematicElement\CinematicElementCinematic.h" />
+    <ClInclude Include="Cinematics\CinematicElement\CinematicElementLua.h" />
     <ClInclude Include="Cinematics\CinematicElement\CinematicElementMusic.h" />
     <ClInclude Include="Cinematics\CinematicObject.h" />
     <ClInclude Include="Cinematics\CinematicObjectKeyFrame.h" />
