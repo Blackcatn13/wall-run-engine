@@ -267,9 +267,11 @@ function player_die(burning)
 	--local player = Player:get_instance()
 	--coreInstance:trace("Piky burning?: "..tostring(burning))
 	player.has_ass_burned = toboolean(burning)
-	if not player.has_ass_burned then
+	--coreInstance:trace("Stop Follow Camera previo del trigger: "..tostring(player.stop_follow_camera))
+	if not player.has_ass_burned and player.activating_triggers then
 		player.dead_in_hole = true
 		player.stop_follow_camera = true
+		--coreInstance:trace("Stop Follow Camera del trigger: "..tostring(player.stop_follow_camera))
 	end
 	player.player_die()
 end

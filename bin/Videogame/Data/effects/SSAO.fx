@@ -41,6 +41,7 @@ float doAmbientOcclusion(in float2 tcoord,in float2 uv, in float3 p, in float3 c
 float4 SSAOPS(in float2 UV:TEXCOORD0) : COLOR 
 {
 
+	float l_EffectAffect = tex2D(S0LinearWrapSampler, UV).w;
 	float3 final_color = float3(1,1,1);
 	const float2 vec[4] = {float2(1,0),float2(-1,0),float2(0,1),float2(0,-1)};
 
@@ -67,8 +68,10 @@ float4 SSAOPS(in float2 UV:TEXCOORD0) : COLOR
 	ao/=(float)iterations*4.0;
 	//**END**//
 
-	
-	final_color = final_color * ao;
+	if(l_EffectAffect > 0.5)
+	{
+		final_color = final_color * ao;
+	}
 	
 	//Do stuff here with your occlusion value Ã¢aoÃ¢: modulate ambient lighting, write it to a buffer for later //use, etc.
 	return float4(final_color,1);

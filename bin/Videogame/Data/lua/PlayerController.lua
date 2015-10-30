@@ -127,8 +127,10 @@ function reset_player_states()
 	player.vanishing = false
 	player.can_move = true
 	player.hurt_by_spikes = false
+	--player.activating_triggers = true
 	player.stop_follow_camera = false
-	player_reseted = true
+	player.waiting_to_die = false
+	--coreInstance:trace("Stop Follow Camera del reset:" ..tostring(player.stop_follow_camera))
 end
 
 function on_update_player_lua(l_ElapsedTime)
@@ -886,6 +888,12 @@ function on_update_player_lua(l_ElapsedTime)
 				end
 			end
 		]]
+		if player.waiting_to_die and not player.is_hit then
+			player.waiting_to_die = false
+			player.player_die()
+		end
+		
+		
 		if player.is_dead and fade_step == 0 then
 			--coreInstance:trace("Dead ")	
 			if not playerRenderable:is_action_animation_active() and not player.dead_in_hole then

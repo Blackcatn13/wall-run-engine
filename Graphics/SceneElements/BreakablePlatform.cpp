@@ -57,7 +57,10 @@ void CBreakablePlatform::DisablePlatform(float dt/*, Vect3f direction*/) {
 
 void CBreakablePlatform::EnablePlatform() {
   if (/*m_Broken &&*/ m_Actor != NULL) {
-
+    if (m_Nailed) {
+      m_Actor->Activate(true);
+      m_Nailed = false;
+    }
     //  m_ActorAux->Activate(true);
     m_Actor->SetKinematic(true);
 // m_ActorAux->SetGlobalPosition(Vect3f(m_ActorOriginalPosition.x, m_ActorOriginalPosition.y - m_PhysicsSize.y, m_ActorOriginalPosition.z));

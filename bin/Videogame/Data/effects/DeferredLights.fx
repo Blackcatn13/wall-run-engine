@@ -43,14 +43,14 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 	
 	float4 l_RT0 = tex2D(S0LinearWrapSampler, UV);
 	float3 l_DiffuseColor = l_RT0.xyz;
-	float l_SpecularFactor = l_RT0.w;
+	float l_lightAffect = l_RT0.w;
 	float4 l_RT1 = tex2D(S1LinearWrapSampler, UV);
 	float3 l_Ambient = l_RT1.xyz;
 	float l_SpecularExponent = l_RT1.w*90;
 	float3 l_N = tex2D(S2LinearWrapSampler, UV).xyz;
 	float3 l_Nn = normalize(Texture2Normal(l_N));
 	float l_Depth = tex2D(S3LinearWrapSampler, UV).x;
-	//l_SpecularFactor=1.0;
+	float l_SpecularFactor=1.0;
 	//l_SpecularExponent=200;
 	float SpecPower = tex2D(S2LinearWrapSampler, UV).a;
 	float x = UV.x * 2 - 1;
@@ -100,7 +100,7 @@ float4 DeferredLightPS(in float2 UV:TEXCOORD0) : COLOR
 	
 	//return float4(lightAmount, lightAmount, lightAmount, 1);
 	//return tex2D(S7LinearClampSampler, ShadowTexC);
-	if(g_LightEnabled[0]==1)
+	if(g_LightEnabled[0]==1 && l_lightAffect > 0.5)
 	{
 		if(g_LightType[0]==0) //omni
 		{	
