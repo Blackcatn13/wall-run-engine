@@ -144,6 +144,9 @@ void CCameraKeyController::Update(float ElapsedTime) {
       interpolator3D.SetValues(m_Keys[m_CurrentKey]->m_CameraInfo->GetLookAt(), m_Keys[m_NextKey]->m_CameraInfo->GetLookAt(), 1.0f, FUNC_CONSTANT);
       interpolator3D.Update(currentP, m_LookAt);
       m_pObject3D->SetPosition(m_PosInterpolated);
+      CLerpAnimator1D interpolator1D;
+      interpolator1D.SetValues(m_Keys[m_CurrentKey]->m_CameraInfo->m_FOV, m_Keys[m_NextKey]->m_CameraInfo->m_FOV, 1.0f, FUNC_CONSTANT);
+      interpolator1D.Update(currentP, m_fFOV);
     }
   }
 }
