@@ -15,6 +15,7 @@ local Chucky_current_speed = 14;
 local chucky_jumped = false
 chuky_last_room = 1
 showing_emitter = false
+chucky_falling = false
 
 -- Chucky Stopped --
 function chucky_runner_enter_stopped(name)
@@ -49,7 +50,9 @@ function chucky_runner_enter_running(name)
 	chucky.m_PhysicController:use_gravity(true);
 	local chucky_renderable = chucky.m_RenderableObject
 	local emitter = particle_manager:get_resource(chucky_renderable.m_ParticleEmitter)
-	showing_emitter =true
+	if not chucky_falling then
+		showing_emitter =true
+	end
 	if(emitter ~= nil) then
 		emitter.m_vPos = chucky_renderable:get_position()+ chucky_renderable.m_EmitterOffset
 		emitter:set_visible(true)
@@ -192,8 +195,10 @@ function chucky_runner_update_catching(ElapsedTime, doComprobation, name)
 			chucky.m_RenderableObject:remove_action(3)
 			chucky.m_RenderableObject:execute_action(3,0.1,0,1,false);
 		else
-			chucky:m_FSM():newState("Corriendo");
-			coreInstance:trace("Paro de pillar y corro")
+			if not chucky_falling then
+				chucky:m_FSM():newState("Corriendo");
+				coreInstance:trace("Paro de pillar y corro")
+			end
 		end
 	end
 	

@@ -452,6 +452,7 @@ function ChuckyDesapears()
 		Chucky:m_FSM():newState("Parado");
 		Chucky.m_Appeared = false
 		chucky_reapeared = false
+		chucky_falling = false
 		inputm:set_game_pad_left_motor_speed(0, 1);
 		local emitter = particle_manager:get_resource(Chucky.m_RenderableObject.m_ParticleEmitter)
 		local emitter2 = particle_manager:get_resource(Chucky.m_RenderableObject.m_ParticleEmitter2)
@@ -467,6 +468,14 @@ function ChuckyJump()
 	local Chucky = enemy_manager:get_enemy("Chucky");
 	Chucky:m_FSM():newState("Saltando");
 	set_chucky_need_to_jump(true)
+end
+
+function chucky_fall_into_hole()
+	local Chucky = enemy_manager:get_enemy("Chucky");
+	Chucky:m_FSM():newState("Atrapando");
+	showing_emitter = false
+	chucky_falling = true
+	particle_manager:get_resource(Chucky.m_RenderableObject.m_ParticleEmitter):set_visible(false)
 end
 
 function ChuckyStop(able_to_cach)
