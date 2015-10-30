@@ -8,7 +8,8 @@ Event	ID	Name			Wwise Object Path	Notes
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	45329365	GGP_Boss	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\GGP_Boss_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\GGP_Boss		11114560
 	72649360	GPP_Creditos	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\GPP_Creditos_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\GPP_Creditos		9237012
-	293604321	GGPCinematica2DFINAL	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\GGPCinematica2DFINAL_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\GGPCinematica2DFINAL		12986244
 	523121214	fail	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\fail_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\fail		1974924
+	549336989	GGPCinematica2DFINAL	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\GGPCinematica2DFINAL_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\Cinematic\GGPCinematica2DFINAL		12986244
+	808049988	GGPCinematica3DFINAL	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\GGPCinematica3DFINAL_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\Cinematic\GGPCinematica3DFINAL		5026976
 	980570799	GGP_Success	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\GGP_Success_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\GGP_Success		1810352
 

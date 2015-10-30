@@ -29,13 +29,17 @@
 					<ShortName>GPP_Creditos.wav</ShortName>
 					<Path>SFX\GPP_Creditos_8BD76F1E.wem</Path>
 				</File>
-				<File Id="293604321" Language="SFX">
-					<ShortName>GGPCinematica2DFINAL.wav</ShortName>
-					<Path>SFX\GGPCinematica2DFINAL_DDC98EF4.wem</Path>
-				</File>
 				<File Id="523121214" Language="SFX">
 					<ShortName>fail.wav</ShortName>
 					<Path>SFX\fail_DDC98EF4.wem</Path>
+				</File>
+				<File Id="549336989" Language="SFX">
+					<ShortName>GGPCinematica2DFINAL.wav</ShortName>
+					<Path>SFX\GGPCinematica2DFINAL_DDC98EF4.wem</Path>
+				</File>
+				<File Id="808049988" Language="SFX">
+					<ShortName>GGPCinematica3DFINAL.wav</ShortName>
+					<Path>SFX\GGPCinematica3DFINAL_DDC98EF4.wem</Path>
 				</File>
 				<File Id="980570799" Language="SFX">
 					<ShortName>GGP_Success.wav</ShortName>
