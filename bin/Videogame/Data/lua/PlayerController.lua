@@ -468,7 +468,7 @@ function on_update_player_lua(l_ElapsedTime)
 		--local dist_to_flooraux = get_distance_to_floor(player_controller:get_position());
 		
 		--///////////////////////////////////////////////////////////
-		-- Cuando el Player está saltando, su velocidad dependerá del tipo de salto realizado. 
+		-- JUMP
 		--///////////////////////////////////////////////////////////
 		local dist_to_floor = get_distance_to_floor(player_controller:get_position());
 		if dist_to_floor > 3 and _land == false and player_controller.m_isJumping == false and player_controller.m_isDoubleJumping == false and player.is_hit == false then
@@ -535,7 +535,7 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		if (player_controller.m_isJumping == true) or (player_controller.m_isFalling) then
 			jumpTime = jumpTime + l_ElapsedTime;
-
+			
 			if player_controller.m_isJumping then
 				mov.y = playerRenderable:getBoneMovement().y;
 			end
@@ -573,12 +573,19 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		if player_controller.m_executeDoubleJump == true and inDoubleJump == false then
 			player_controller.m_executeDoubleJump = false;
+			if player_controller.m_isJumping then
+				local positionOld = playerRenderable:get_position();
+				local auxPosition = playerRenderable:getAnimationBonePosition().y; 
+				local newPosition = Vect3f(positionOld.x, auxPosition, positionOld.z);
+				playerRenderable:set_position(player_controller:get_position());
+			end
 			playerRenderable:clear_cycle(anim_idle,0);
 			playerRenderable:clear_cycle(anim_run,0);
 			playerRenderable:clear_cycle(anim_jump_loop,0);
 			playerRenderable:clear_cycle(anim_jump_end,0);
 			playerRenderable:remove_action(anim_jump_start);
 			playerRenderable:execute_action(anim_DJump_01,0.1,0,1,true);
+			playerRenderable:updateSkeleton(l_ElapsedTime);
 			player_controller.m_isDoubleJumping = true;
 			player_controller.m_isJumping = false;
 			_land = false;
