@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <Windows OnLoadWindows="if first_time_main_menu then
+							CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('_Menu','Music');
 							first_time_main_menu = false
 						end
 						if inputm:has_game_pad(1) then
@@ -20,7 +21,7 @@
 						Piky:remove_action(10);
 						Piky:remove_action(11);
 						set_screen_menu(Vect3f(-922.25, -1, 4.5), 10);
-						CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('_Menu','Music');
+						
 						gui_manager:set_is_mainmenu(false);
 						gui_manager:set_is_gameover(false);
 						gui_manager:set_is_paused(false);
@@ -63,7 +64,7 @@
 										else
 											set_visible_gui_elements(false)
 	          							end
-										
+										first_time_main_menu = true
 										gui_manager:set_is_mainmenu(false);
 										init_level(1);
 										renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room('player', player_controller.m_Room):get_resource(piky_mesh_name):set_visible(false);"
@@ -93,7 +94,8 @@
 	                    texture_over="./Data/GUI/GoPixelGo/Button_5_B.tga"
 	                    texture_clicked="./Data/GUI/GoPixelGo/Button_5_C.tga"
 	                    texture_deactivated="./Data/GUI/GoPixelGo/Button_5_A.tga"
-	                    OnClickedAction=" CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');"
+	                    OnClickedAction=" CCoreLuaWrapper().m_CoreInstance:getGUIManager():push_windows('Credits.xml')
+						CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');"
 	                    OnOverAction="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"/>
 						
 				<Button name="Exit" posx="71.00" posy="74.50" height="13.00" width="20.00" visible="true" 
