@@ -179,6 +179,7 @@ function chucky_runner_update_jumping(ElapsedTime, doComprobation, name)
 	local distance = math.sqrt( math.pow((playerPos.x - chuckyPos.x),2) + math.pow((playerPos.y - chuckyPos.y),2) + math.pow((playerPos.z - chuckyPos.z),2) );
 	--coreInstance:trace("Pos------------------ "..tostring(distance))
 	if distance < 3.0 then
+		player.catched =true
 		player:player_die()
 		coreInstance:trace("PIKY IS DEAD, AND YOU'RE THE NEXT")
 		chucky:m_FSM():newState("Parado");
@@ -215,6 +216,7 @@ function chucky_runner_update_catching(ElapsedTime, doComprobation, name)
 	end
 	
 	if distance < 2.0 then
+		player.catched =true
 		player:player_die()
 		coreInstance:trace("PIKY IS DEAD, AND YOU'RE THE NEXT")
 		chucky:m_FSM():newState("Parado");
@@ -280,6 +282,7 @@ function chucky_runner_update_waiting(ElapsedTime, doComprobation, name)
 	end
 	
 	if distance < 3.0 and chucky_able_to_catch then
+		player.catched =true
 		player:player_die()
 		coreInstance:trace("PIKY IS DEAD, AND YOU'RE THE NEXT")
 		chucky:m_FSM():newState("Parado");

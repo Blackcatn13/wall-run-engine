@@ -61,6 +61,7 @@ function Player.new()
 	self.count_pixelites = 0.0
 	self.stop_follow_camera = false
 	self.waiting_to_die = false
+	self.catched = false
 	
 	------	 PLAYER FUNCTIONS -----
 	
@@ -221,7 +222,7 @@ function Player.new()
 				local renderable_piky_mesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room(piky_layer, player_controller.m_Room):get_resource(piky_mesh_name)
 				self.remove_animations(renderable_piky_mesh)
 				if not self.has_ass_burned and not self.hurt_by_spikes then
-					if not self.dead_in_hole then -- Si cae por una agujero no tiene animacion de caida
+					if not self.dead_in_hole and not self.catched then -- Si cae por una agujero no tiene animacion de caida
 						if self.num_lifes == 1 then
 							renderable_piky_mesh:execute_action(anim_death,0,0.3,1,true) --animacion de muerto GameOver
 						else
@@ -342,6 +343,7 @@ function Player.new()
 		self.has_ass_burned = false
 		self.hurt_by_spikes = false
 		self.stop_follow_camera = false
+		self.catched = false
 		--coreInstance:trace("Stop Follow Camera del player:" ..tostring(player.stop_follow_camera))
 		self.set_super_piky(false)
 	--	self.activating_triggers = true
