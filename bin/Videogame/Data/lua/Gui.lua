@@ -265,7 +265,7 @@ function ManagerGUIPolyMessage()
 	gui_manager:set_visibility_message(true);
 	-- Fins que no apretes ENTER no marxa
 	gui_manager:set_is_displayed_console(true);
-	gui_manager:set_image('MessageGUI','PolyPlatform');
+--	gui_manager:set_image('MessageGUI','PolyPlatform');
 	if act2in:do_action_from_lua("Enter") then
 		gui_manager:set_is_displayed_poly_message(false);
 		gui_manager:set_is_displayed_console(false);
@@ -281,7 +281,11 @@ function ManagerGUIUnlockMessage()
 	gui_manager:set_visibility_message(true);
 	-- Fins que no apretes ENTER no marxa
 	gui_manager:set_is_displayed_console(true);
-	gui_manager:set_image('MessageGUI','UnlockCard');
+	if inputm:has_game_pad(1) then
+		gui_manager:set_image('MessageGUI','UnlockCardController');
+	else
+		gui_manager:set_image('MessageGUI','UnlockCardKeyboard');
+	end
 	if act2in:do_action_from_lua("Enter") then
 		gui_manager:set_is_displayed_unlock_message(false);
 		gui_manager:set_is_displayed_console(false);
