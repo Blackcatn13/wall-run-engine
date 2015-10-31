@@ -214,7 +214,7 @@ function Player.new()
 
 	function self.player_die()
 		if not self.is_dead then --Si ya está muerto no se va a morir más, QUE NO ES UN ZOMBIE
-			if not self.is_hit then
+			if not self.is_hit and not player_controller.m_isAttack then
 				self.activating_triggers = false
 				--self.remove_animations()
 				self.is_dead = true
