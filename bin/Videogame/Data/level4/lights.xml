@@ -36,26 +36,38 @@
 	</light>
 	<!-- Sala 1 lights -->
 	<light name="OmniSALA1007" type="omni" pos="165.477 9.24699 10.8162" color="1.0 0.505882 0.309804" intensity="1.0" enable_distance="40.0" att_start_range="9.0" att_end_range="26.0"/>
-	<light name="OmniSALA1006" type="omni" pos="117.107 9.99867 -20.9727" color="1.0 0.505882 0.309804" intensity="1.0" enable_distance="40.0" att_start_range="9.0" att_end_range="26.0"/>
+	<light name="OmniSALA1006" type="omni" pos="117.107 9.99867 -20.9727" color="1.0 0.505882 0.309804" intensity="0.5" enable_distance="40.0" att_start_range="9.0" att_end_range="26.0"/>
 	<light name="OmniSALA1005" type="omni" pos="147.745 7.66317 15.1147" color="1.0 0.505882 0.309804" intensity="1.0" enable_distance="40.0" att_start_range="9.0" att_end_range="26.0"/>
 	<light name="OmniSALA1004" type="omni" pos="133.339 7.66317 -25.203" color="1.0 0.505882 0.309804" intensity="1.0" enable_distance="40.0" att_start_range="9.0" att_end_range="26.0"/>
 	<light name="OmniSALA1003" type="omni" pos="103.659 7.66317 -25.7024" color="1.0 0.505882 0.309804" intensity="1.0" enable_distance="40.0" att_start_range="9.0" att_end_range="26.0"/>
 	<light name="OmniSALA1002" type="omni" pos="98.0968 7.66317 3.59258" color="1.0 0.505882 0.309804" intensity="1.0" enable_distance="40.0" att_start_range="9.0" att_end_range="26.0"/>
 	<light name="OmniSALA1001" type="omni" pos="68.5256 7.66317 3.59258" color="1.0 0.505882 0.309804" intensity="1.0" enable_distance="40.0" att_start_range="9.0" att_end_range="26.0"/>
 	<!-- Sala 2 lights -->
-
-	<light name="Omni005" type="omni" pos="189.645 5.92454 15.1945" color="1.0 0.505882 0.309804" intensity="0.7" att_start_range="9.2351" att_end_range="15.8666" enable_distance="40.0"/>
-	<light name="Omni006" type="omni" pos="204.594 5.92454 15.1945" color="1.0 0.505882 0.309804" intensity="0.7" att_start_range="9.2351" att_end_range="15.8666" enable_distance="40.0"/>
-	<light name="Omni007" type="omni" pos="219.318 5.92454 15.1945" color="1.0 0.505882 0.309804" intensity="0.7" att_start_range="9.2351" att_end_range="15.8666" enable_distance="40.0"/>
-	<light name="Omni008" type="omni" pos="243.996 5.92454 15.1945" color="1.0 0.505882 0.309804" intensity="0.7" att_start_range="9.2351" att_end_range="15.8666" enable_distance="40.0"/>
-	<light name="Omni009" type="omni" pos="259.894 5.92454 15.1945" color="1.0 0.505882 0.309804" intensity="0.7" att_start_range="9.2351" att_end_range="15.8666" enable_distance="40.0"/>
-	<light name="Omni011" type="omni" pos="279.141 5.92454 15.1945" color="1.0 0.505882 0.309804" intensity="0.7" att_start_range="9.2351" att_end_range="15.8666" enable_distance="40.0"/>
-	<light name="Omni012" type="omni" pos="296.321 5.92454 15.1945" color="1.0 0.505882 0.309804" intensity="0.7" att_start_range="9.2351" att_end_range="15.8666" enable_distance="40.0"/>
-	<light name="Omni013" type="omni" pos="312.074 5.92454 15.1945" color="1.0 0.505882 0.309804" intensity="0.7" att_start_range="9.2351" att_end_range="15.8666" enable_distance="40.0"/>
-	<light name="Omni015" type="omni" pos="339.759 5.92454 15.1945" color="1.0 0.505882 0.309804" intensity="0.7" att_start_range="9.2351" att_end_range="15.8666" enable_distance="40.0"/>
-	<light name="Omni016" type="omni" pos="369.54 5.92454 15.1945" color="1.0 0.505882 0.309804" intensity="0.7" att_start_range="9.2351" att_end_range="15.8666" enable_distance="40.0"/>
-	<light name="Omni017" type="omni" pos="406.911 15.5123 14.334" color="1.0 0.505882 0.309804" intensity="0.7" att_start_range="9.2351" att_end_range="15.8666" enable_distance="40.0"/>
-	<light name="Omni018" type="omni" pos="422.744 15.5089 14.2518" color="1.0 0.505882 0.309804" intensity="0.7" att_start_range="9.2351" att_end_range="15.8666" enable_distance="40.0"/>
+	<light name="OmniSALA2_024" type="omni" pos="296.321 5.92454 15.1945" color="1.0 0.505882 0.309804" intensity="0.05" enable_distance="40.0" att_start_range="7.215" att_end_range="26.0"/>
+	<light name="OmniSALA2_007" type="omni" pos="312.074 5.92454 15.1945" color="1.0 0.505882 0.309804" intensity="0.05" enable_distance="40.0" att_start_range="7.215" att_end_range="26.0"/>
+	<light name="OmniSALA2_006" type="omni" pos="279.141 5.92454 15.1945" color="1.0 0.505882 0.309804" intensity="0.1" enable_distance="40.0" att_start_range="7.215" att_end_range="26.0"/>
+	<light name="OmniSALA2_019" type="omni" pos="323.89 5.92454 7.43221" color="1.0 0.505882 0.309804" intensity="0.5" enable_distance="40.0" att_start_range="7.215" att_end_range="26.0"/>
+	<light name="OmniSALA2_018" type="omni" pos="308.136 5.92454 7.43221" color="1.0 0.505882 0.309804" intensity="0.2" enable_distance="40.0" att_start_range="7.215" att_end_range="26.0"/>
+	<light name="OmniSALA2_017" type="omni" pos="290.956 5.92454 7.43221" color="1.0 0.505882 0.309804" intensity="0.5" enable_distance="40.0" att_start_range="7.215" att_end_range="26.0"/>
+	<light name="OmniSALA2_009" type="omni" pos="369.54 5.92454 15.1945" color="1.0 0.505882 0.309804" intensity="0.5" enable_distance="40.0" att_start_range="7.215" att_end_range="26.0"/>
+	<light name="OmniSALA2_010" type="omni" pos="406.911 15.5123 14.334" color="1.0 0.505882 0.309804" intensity="1.0" enable_distance="40.0" att_start_range="7.215" att_end_range="26.0"/>
+	<light name="OmniSALA2_008" type="omni" pos="339.759 5.92454 15.1945" color="1.0 0.505882 0.309804" intensity="0.1" enable_distance="40.0" att_start_range="7.215" att_end_range="26.0"/>
+	<light name="OmniSALA2_011" type="omni" pos="422.744 15.5089 14.2518" color="1.0 0.505882 0.309804" intensity="0.1" enable_distance="40.0" att_start_range="7.215" att_end_range="26.0"/>
+	<light name="OmniSALA2_021" type="omni" pos="381.355 5.92454 7.43221" color="1.0 0.505882 0.309804" intensity="0.5" enable_distance="40.0" att_start_range="7.215" att_end_range="26.0"/>
+	<light name="OmniSALA2_022" type="omni" pos="418.726 15.5123 6.57163" color="1.0 0.505882 0.309804" intensity="0.3" enable_distance="40.0" att_start_range="7.215" att_end_range="26.0"/>
+	<light name="OmniSALA2_020" type="omni" pos="351.574 5.92454 7.43221" color="1.0 0.505882 0.309804" intensity="0.5" enable_distance="40.0" att_start_range="7.215" att_end_range="26.0"/>
+	<light name="OmniSALA2_023" type="omni" pos="434.56 15.5089 6.48946" color="1.0 0.505882 0.309804" intensity="0.5" enable_distance="40.0" att_start_range="7.215" att_end_range="26.0"/>
+	<light name="OmniSALA2_003" type="omni" pos="219.318 5.92454 15.1945" color="1.0 0.505882 0.309804" intensity="0.1" enable_distance="40.0" att_start_range="7.215" att_end_range="26.0"/>
+	<light name="OmniSALA2_002" type="omni" pos="204.594 5.92454 15.1945" color="1.0 0.505882 0.309804" intensity="0.1" enable_distance="40.0" att_start_range="7.215" att_end_range="26.0"/>
+	<light name="OmniSALA2_004" type="omni" pos="243.996 5.92454 15.1945" color="1.0 0.505882 0.309804" intensity="0.1" enable_distance="40.0" att_start_range="7.215" att_end_range="26.0"/>
+	<light name="OmniSALA2_005" type="omni" pos="259.894 5.92454 15.1945" color="1.0 0.505882 0.309804" intensity="0.1" enable_distance="40.0" att_start_range="7.215" att_end_range="26.0"/>
+	<light name="OmniSALA2_015" type="omni" pos="255.812 5.92454 7.43221" color="1.0 0.505882 0.309804" intensity="0.4" enable_distance="40.0" att_start_range="7.215" att_end_range="26.0"/>
+	<light name="OmniSALA2_013" type="omni" pos="216.409 5.92454 7.43221" color="1.0 0.505882 0.309804" intensity="0.2" enable_distance="40.0" att_start_range="7.215" att_end_range="26.0"/>
+	<light name="OmniSALA2_016" type="omni" pos="271.709 5.92454 7.43221" color="1.0 0.505882 0.309804" intensity="0.5" enable_distance="40.0" att_start_range="7.215" att_end_range="26.0"/>
+	<light name="OmniSALA2_014" type="omni" pos="231.134 5.92454 7.43221" color="1.0 0.505882 0.309804" intensity="0.3" enable_distance="40.0" att_start_range="7.215" att_end_range="26.0"/>
+	<light name="OmniSALA2_001" type="omni" pos="189.645 5.92454 15.1945" color="1.0 0.505882 0.309804" intensity="0.5" enable_distance="40.0" att_start_range="7.215" att_end_range="26.0"/>
+	<light name="OmniSALA2_012" type="omni" pos="201.46 5.92454 7.43221" color="1.0 0.505882 0.309804" intensity="0.2" enable_distance="40.0" att_start_range="7.215" att_end_range="26.0"/>
+	<!-- Sala 3 lights -->
 	<light name="Omni046" type="omni" pos="469.055 15.5089 -2.32012" color="1.0 0.505882 0.309804" intensity="0.7" att_start_range="25" att_end_range="40" enable_distance="80.0"/>
 	<light name="Omni047" type="omni" pos="493.655 15.5089 -2.32012" color="1.0 0.505882 0.309804" intensity="0.7" att_start_range="25" att_end_range="40" enable_distance="80.0"/>
 	<light name="Omni048" type="omni" pos="516.717 15.5089 -2.32012" color="1.0 0.505882 0.309804" intensity="0.9" att_start_range="40" att_end_range="80" enable_distance="80.0"/>
