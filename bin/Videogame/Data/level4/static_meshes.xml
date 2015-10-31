@@ -270,67 +270,11 @@
 	
 	<static_mesh filename=".\Data\level3\meshes//Enemy1.mesh" name="Enemy1"/>
 	<static_mesh filename=".\Data\level5\meshes//SpongePicky.mesh" name="SpongePicky"/>
+	<!-- Sala 3 -->
+	<static_mesh name="SALA_3LIGHT" filename="Data\level4\meshes\SALA_3LIGHT.mesh"/>
+	<static_mesh name="SAL3LIGHTMAPOBJECTES" filename="Data\level4\meshes\SAL3LIGHTMAPOBJECTES.mesh"/>
 
-	<static_mesh name="SALA_3" filename="Data\level4\meshes\SALA_3.mesh"/>
-	<static_mesh name="Sala_3_Pedra_01" filename="Data\level4\meshes\Sala_3_Pedra_01.mesh"/>
-	<static_mesh name="Sala_3_Pedra_03" filename="Data\level4\meshes\Sala_3_Pedra_03.mesh"/>
-	<static_mesh name="Sala_3_Pedra_02" filename="Data\level4\meshes\Sala_3_Pedra_02.mesh"/>
-	<static_mesh name="Sala_3_Paret_Pedres_02" filename="Data\level4\meshes\Sala_3_Paret_Pedres_02.mesh"/>
-	<static_mesh name="Sala_3_Pedra_08" filename="Data\level4\meshes\Sala_3_Pedra_08.mesh"/>
-	<static_mesh name="Sala_3_Pedra_04" filename="Data\level4\meshes\Sala_3_Pedra_04.mesh"/>
-	<static_mesh name="Sala_3_Pedra_05" filename="Data\level4\meshes\Sala_3_Pedra_05.mesh"/>
-	<static_mesh name="Sala_3_Pedra_06" filename="Data\level4\meshes\Sala_3_Pedra_06.mesh"/>
-	<static_mesh name="Sala_3_Pedra_07" filename="Data\level4\meshes\Sala_3_Pedra_07.mesh"/>
-	<static_mesh name="Sala_3_Minitemplo" filename="Data\level4\meshes\Sala_3_Minitemplo.mesh"/>
-	<static_mesh name="Sala_3_Ull_Minitemple_01" filename="Data\level4\meshes\Sala_3_Ull_Minitemple_01.mesh"/>
-	<static_mesh name="Sala_3_Ull_Minitemple_02" filename="Data\level4\meshes\Sala_3_Ull_Minitemple_02.mesh"/>
-	<static_mesh name="Sala_3_Pedra_09" filename="Data\level4\meshes\Sala_3_Pedra_09.mesh"/>
-	<static_mesh name="Sala_3_Pedra_11" filename="Data\level4\meshes\Sala_3_Pedra_11.mesh"/>
-	<static_mesh name="Sala_3_Pedra_12" filename="Data\level4\meshes\Sala_3_Pedra_12.mesh"/>
-	<static_mesh name="Sala_3_Paret_ Pedres_01" filename="Data\level4\meshes\Sala_3_Paret_ Pedres_01.mesh"/>
-	<static_mesh name="Sala_3_Estalagtita_001" filename="Data\level4\meshes\Sala_3_Estalagtita_001.mesh"/>
-	<static_mesh name="Sala_3_Estalagtita_002" filename="Data\level4\meshes\Sala_3_Estalagtita_002.mesh"/>
-	<static_mesh name="Sala_3_Estalagtita_003" filename="Data\level4\meshes\Sala_3_Estalagtita_003.mesh"/>
-	<static_mesh name="Sala_3_Estalagtita_004" filename="Data\level4\meshes\Sala_3_Estalagtita_004.mesh"/>
-	<static_mesh name="Sala_3_Estalagtita_005" filename="Data\level4\meshes\Sala_3_Estalagtita_005.mesh"/>
-	<static_mesh name="Sala_3_Estalagtita_006" filename="Data\level4\meshes\Sala_3_Estalagtita_006.mesh"/>
-	<static_mesh name="Sala_3_Estalagtita_007" filename="Data\level4\meshes\Sala_3_Estalagtita_007.mesh"/>
-	<static_mesh name="Sala_3_Estalagtita_008" filename="Data\level4\meshes\Sala_3_Estalagtita_008.mesh"/>
-	<static_mesh name="Sala_3_Estalagtita_009" filename="Data\level4\meshes\Sala_3_Estalagtita_009.mesh"/>
-	<static_mesh name="Sala_3_Estalagtita_010" filename="Data\level4\meshes\Sala_3_Estalagtita_010.mesh"/>
-	<static_mesh name="Sala_3_Estalagtita_011" filename="Data\level4\meshes\Sala_3_Estalagtita_011.mesh"/>
-	<static_mesh name="Sala_3_Estalagtita_012" filename="Data\level4\meshes\Sala_3_Estalagtita_012.mesh"/>
-	<static_mesh name="Sala_3_Estalagtita_013" filename="Data\level4\meshes\Sala_3_Estalagtita_013.mesh"/>
-	<static_mesh name="Sala_3_Estalagtita_014" filename="Data\level4\meshes\Sala_3_Estalagtita_014.mesh"/>
-	<static_mesh name="Sala_3_Estalagtita_015" filename="Data\level4\meshes\Sala_3_Estalagtita_015.mesh"/>
-	<static_mesh name="Sala_3_Estalagtita_016" filename="Data\level4\meshes\Sala_3_Estalagtita_016.mesh"/>
-	<static_mesh name="Sala_3_Estalagtita_017" filename="Data\level4\meshes\Sala_3_Estalagtita_017.mesh"/>
-	<static_mesh name="Sala_3_Estalagtita_018" filename="Data\level4\meshes\Sala_3_Estalagtita_018.mesh"/>
-	<static_mesh name="Sala_3_Estalagtita_019" filename="Data\level4\meshes\Sala_3_Estalagtita_019.mesh"/>
-	<static_mesh name="Sala_3_Estalagtita_020" filename="Data\level4\meshes\Sala_3_Estalagtita_020.mesh"/>
-	<static_mesh name="Sala_3_Reja" filename="Data\level4\meshes\Sala_3_Reja.mesh"/>
-	<static_mesh name="Sala_3_Escalera" filename="Data\level4\meshes\Sala_3_Escalera.mesh"/>
-	<static_mesh name="Sala_3_Arco_002" filename="Data\level4\meshes\Sala_3_Arco_002.mesh"/>
-	<static_mesh name="Sala_3_Arco_003" filename="Data\level4\meshes\Sala_3_Arco_003.mesh"/>
-	<static_mesh name="Sala_3_Arco_001" filename="Data\level4\meshes\Sala_3_Arco_001.mesh"/>
-	<static_mesh name="Sala_3_Luz_001" filename="Data\level4\meshes\Sala_3_Luz_001.mesh"/>
-	<static_mesh name="Sala_3_Luz_002" filename="Data\level4\meshes\Sala_3_Luz_002.mesh"/>
-	<static_mesh name="Sala_3_Luz_003" filename="Data\level4\meshes\Sala_3_Luz_003.mesh"/>
-	<static_mesh name="Sala_3_Luz_004" filename="Data\level4\meshes\Sala_3_Luz_004.mesh"/>
-	<static_mesh name="Sala_3_Luz_005" filename="Data\level4\meshes\Sala_3_Luz_005.mesh"/>
-	<static_mesh name="Sala_3_Luz_006" filename="Data\level4\meshes\Sala_3_Luz_006.mesh"/>
-	<static_mesh name="Sala_3_Luz_007" filename="Data\level4\meshes\Sala_3_Luz_007.mesh"/>
-	<static_mesh name="Sala_3_Luz_008" filename="Data\level4\meshes\Sala_3_Luz_008.mesh"/>
-	<static_mesh name="Sala_3_Luz_009" filename="Data\level4\meshes\Sala_3_Luz_009.mesh"/>
-	<static_mesh name="Sala_3_Luz_010" filename="Data\level4\meshes\Sala_3_Luz_010.mesh"/>
-	<static_mesh name="Sala_3_Luz_011" filename="Data\level4\meshes\Sala_3_Luz_011.mesh"/>
-	<static_mesh name="Sala_3_Luz_012" filename="Data\level4\meshes\Sala_3_Luz_012.mesh"/>
-	<static_mesh name="Sala_3_Luz_013" filename="Data\level4\meshes\Sala_3_Luz_013.mesh"/>
-	<static_mesh name="Sala_3_LuzPared_001" filename="Data\level4\meshes\Sala_3_LuzPared_001.mesh"/>
-	<static_mesh name="Sala_3_LuzPared_002" filename="Data\level4\meshes\Sala_3_LuzPared_002.mesh"/>
-	<static_mesh name="Sala_3_LuzPared_003" filename="Data\level4\meshes\Sala_3_LuzPared_003.mesh"/>
-	<static_mesh name="Sala_3_LuzPared_004" filename="Data\level4\meshes\Sala_3_LuzPared_004.mesh"/>
-	<static_mesh name="Sala_3_Columna_002" filename="Data\level4\meshes\Sala_3_Columna_002.mesh"/>
+
 	<static_mesh name="INVISIBLE_WALL_001" filename="Data\level4\meshes\INVISIBLE_WALL_001.mesh"/>
 	<static_mesh name="INVISIBLE_WALL_002" filename="Data\level4\meshes\INVISIBLE_WALL_002.mesh"/>
 	<static_mesh name="INVISIBLE_WALL_003" filename="Data\level4\meshes\INVISIBLE_WALL_003.mesh"/>
