@@ -386,7 +386,7 @@ void CCore::Update(float dt) {
 
 
 void CCore::Trace(const std::string &msg ) {
-#ifdef _DEBUG
+#ifdef _DEBUGTIME
   std::cout << msg << std::endl;
 #endif
 }
