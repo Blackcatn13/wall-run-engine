@@ -207,7 +207,7 @@ function chucky_runner_update_catching(ElapsedTime, doComprobation, name)
 			chucky.m_RenderableObject:remove_action(3)
 			chucky.m_RenderableObject:execute_action(3,0.1,0,1,false);
 		else
-			if not chucky_falling then
+			if not chucky_falling and chucky_able_to_catch then
 				chucky:m_FSM():newState("Corriendo");
 				coreInstance:trace("Paro de pillar y corro")
 			end
@@ -278,9 +278,18 @@ function chucky_runner_update_waiting(ElapsedTime, doComprobation, name)
 	if distance < chuky_catching_distance and chucky_able_to_catch then
 		chucky:m_FSM():newState("Atrapando")
 	end
-	if distance >= (chuky_catching_distance * 2)-2 and not chucky_able_to_catch then
+	
+	if distance < 3.0 and chucky_able_to_catch then
+		player:player_die()
+		coreInstance:trace("PIKY IS DEAD, AND YOU'RE THE NEXT")
+		chucky:m_FSM():newState("Parado");
+	end
+	if distance >= (chuky_catching_distance * 2) and not chucky_able_to_catch then
 		chucky_able_to_catch = true
 	end
+	--[[if distance >= (chuky_catching_distance * 2) and chucky_able_to_catch then
+		chucky:m_FSM():newState("Corriendo")
+	end]]
 end	
 	
 

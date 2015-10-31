@@ -631,7 +631,7 @@ function on_update_player_lua(l_ElapsedTime)
 			if false then
 				player_controller.m_isAttack = false;
 			else
-				if not player.is_hit then
+				if not player.is_hit or not player.is_dead then
 					if player.can_finish_atack then
 						--local emitter = particle_manager:get_resource(playerRenderable.m_ParticleEmitter)
 						

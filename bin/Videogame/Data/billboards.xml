@@ -65,6 +65,13 @@
 		<Instance size="2.0 2.0" position="501.008 13.607 -564.856"/>
 		<Instance size="2.0 2.0" position="506.073 13.607 -546.059"/>
 		<Instance size="2.0 2.0" position="536.831 15.479 -618.373"/>
+		<Instance size="0.3 0.6" position="562.871 13.633 -251.686"/>
+		<Instance size="0.3 0.6" position="562.871 13.633 -268.269"/>
+		
+		<Instance size="2.0 2.0" position="280.266 34.3 -671.568"/>
+		<Instance size="2.0 2.0" position="214.393 35.759 -671.568"/>
+		<Instance size="2.0 2.0" position="-141.035 29.966 -665.256"/>
+										  
 	</instanced_billboard>
 	
 
