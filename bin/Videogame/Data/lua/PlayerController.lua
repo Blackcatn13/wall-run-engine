@@ -393,21 +393,22 @@ function on_update_player_lua(l_ElapsedTime)
 				else
 					if extraRotationContinue ~= 0 then
 						local changedJoyYaw = auxyaw - lastJoystickYaw;
-						if math.abs(changedJoyYaw) > 0.3 then
+						if math.abs(changedJoyYaw) > 1 then
 							extraRotationContinue = 0;
 						elseif extraRotationContinue > 0 then
 							extraRotationContinue = extraRotationContinue - math.abs(changedJoyYaw);
-							if math.abs(extraRotationContinue) < 0.3 then
+							if math.abs(extraRotationContinue) < 0.1 then
 								extraRotationContinue = 0;
 							end
 						else
 							extraRotationContinue = extraRotationContinue + math.abs(changedJoyYaw);
-							if math.abs(extraRotationContinue) < 0.3 then
+							if math.abs(extraRotationContinue) < 0.1 then
 								extraRotationContinue = 0;
 							end
 						end
 					end
 				end
+				coreInstance:trace("extra rotation "..tostring(extraRotationContinue));
 				local worldauxyaw = auxyaw + extraRotationContinue;
 				worldauxyaw = worldauxyaw +1.57;
 				cosyaw = math.cos(worldauxyaw); -- derecha 1 izquierda -1
