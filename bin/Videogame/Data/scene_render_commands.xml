@@ -129,8 +129,8 @@
 			<texture stage_id="3" file="DepthMapTexture"/>
 		</render_deferred_shading>
 		
-		<!--<enable_alpha_blend blendOP="revsubstract" blendSrc="one" blendDest="one"/>
-		<set_texture_in_stage texture_name="./Data/level4/textures/rand_nrm_tex.png" stage_id="4"/>
+		<!--<enable_alpha_blend blendOP="revsubstract" blendSrc="one" blendDest="one"/>-->
+		<!--<set_texture_in_stage texture_name="./Data/level4/textures/rand_nrm_tex.png" stage_id="4"/>
 		<set_pool_renderable_objects_technique pool="ssao_pool"/>
 		<render_draw_quad technique_name="DrawQuadSolidTechnique">
 			<texture stage_id="0" file="DiffuseMapTexture"/>

@@ -39,9 +39,10 @@ TMultiRenderTargetPixel GBufferPS(TGBUFFER_TEXTURED1_VERTEX_PS IN) {
 	float3 NnScalated = Normal2Texture(Nn);
 	// Cálculo de la z en formato color
 	float l_Depth = IN.WorldPosition.z/IN.WorldPosition.w;
+	float l_AffectLights = 0.0;
 	
-	OUT.RT0=float4(l_DiffuseColor.xyz, 1.0);
-	OUT.RT1=float4(l_DiffuseColor.xyz*g_LightAmbient*g_LightAmbientIntensity, 1.0);
+	OUT.RT0=float4(l_DiffuseColor.xyz, l_AffectLights);
+	OUT.RT1=float4(l_DiffuseColor.xyz, 1.0);
 	OUT.RT2.xyz=NnScalated;
 	OUT.RT2.w = 1;
 	OUT.RT3=l_Depth;  

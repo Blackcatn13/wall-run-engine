@@ -3,10 +3,10 @@
 #include "VertexTypes.fxh"
 
 float random_size = 64;
-float g_scale = 10;
-float g_bias = 0.01;
-float g_intensity = 10;
-float g_sample_rad = 6; //radio
+float g_scale = 1;
+float g_bias = 0.0000002;
+float g_intensity = 0.125;
+float g_sample_rad = 0.006; //radio
 
 
 float3 getPosition(in float2 uv)
@@ -43,7 +43,25 @@ float4 SSAOPS(in float2 UV:TEXCOORD0) : COLOR
 
 	float l_EffectAffect = tex2D(S0LinearWrapSampler, UV).w;
 	float3 final_color = float3(1,1,1);
-	const float2 vec[4] = {float2(1,0),float2(-1,0),float2(0,1),float2(0,-1)};
+	const float2 vec[16] = 
+	{
+	float2(1,0),
+	float2(-1,0),
+	float2(0,1),
+	float2(0,-1),
+	float2(1,1),
+	float2(-1,1),
+	float2(-1,-1),
+	float2(1,-1),
+	float2(0.8,0.1),
+	float2(-0.7,-0.2),
+	float2(0.3,0.8),
+	float2(0.2,-0.6),
+	float2(0.4,0.9),
+	float2(-0.7,0.3),
+	float2(-0.8,-0.4),
+	float2(0.3,-0.9)
+	};
 
 	float3 p = getPosition(UV);
 	float3 n = getNormal(UV);
@@ -53,7 +71,7 @@ float4 SSAOPS(in float2 UV:TEXCOORD0) : COLOR
 	float rad = g_sample_rad/p.z;
 
 	//**SSAO Calculation**//
-	int iterations = 4;
+	int iterations = 16;
 	for (int j = 0; j < iterations; ++j)
 	{
 	  float2 coord1 = reflect(vec[j],rand)*rad;

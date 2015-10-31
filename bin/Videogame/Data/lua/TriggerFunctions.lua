@@ -472,7 +472,7 @@ end
 
 function chucky_fall_into_hole()
 	local Chucky = enemy_manager:get_enemy("Chucky");
-	Chucky:m_FSM():newState("Atrapando");
+	Chucky:m_FSM():newState("Saltando");
 	showing_emitter = false
 	chucky_falling = true
 	particle_manager:get_resource(Chucky.m_RenderableObject.m_ParticleEmitter):set_visible(false)
