@@ -341,12 +341,12 @@
 		<render_scene layer="solid" active="true"/>
 		-->
 		<!--Fog-->
-		<!--<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha" alphablendSrc="one" alphablendDest="one" />
+		<enable_alpha_blend blendOP="add" blendSrc="srcalpha" blendDest="invsrcalpha" alphablendSrc="one" alphablendDest="one" />
 		<set_pool_renderable_objects_technique pool="fog_pool"/>
 		<render_draw_quad> 
 			<texture stage_id="0" file="DepthMapTexture"/>
 		</render_draw_quad> 
-		<disable_alpha_blend />-->
+		<disable_alpha_blend />
 		<!--End Fog-->	
 		
 		<!-- NOISE AND VIGNETING -->

@@ -373,7 +373,7 @@
 	<platform name="INVISIBLE_WALL_003" core="INVISIBLE_WALL_003" type="static" pos="428.066467 7.829697 12.769010" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true"  layer="invisible" phisic_size="0.5 7.0 6.0" room="3"/>
 	<platform name="INVISIBLE_WALL_004" core="INVISIBLE_WALL_004" type="static" pos="549.488892 2.376045 0.115322" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true"  layer="invisible" use_phisics_mesh="true" room="4"/>
 	<platform name="INVISIBLE_WALL_005" core="INVISIBLE_WALL_005" type="static" pos="557.271423 9.894491 -184.487147" yaw="0.0" pitch="0.0" roll="0.0" scale="0.566471 1.0 1.0" visible="false" layer="invisible" use_phisics_mesh="true" room="5"/>
-	<platform name="INVISIBLE_WALL_007" core="INVISIBLE_WALL_002" type="static" pos="505.022614 19.366253 -645.640503" yaw="1.5708" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="0.347595 4.87271 4.92883" layer="invisible" room="7"/>
+	<platform name="INVISIBLE_WALL_007" core="INVISIBLE_WALL_002" type="static" pos="507.022614 19.366253 -645.640503" yaw="1.5708" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="0.347595 4.87271 4.92883" layer="invisible" room="7"/>
 	<platform name="INVISIBLE_WALL_006" core="INVISIBLE_WALL_005" type="static" pos="557.271423 12.852377 -382.723816" yaw="0.0" pitch="0.0" roll="0.0" scale="0.566471 1.0 1.0" visible="false" phisic_size="5.17535 4.81426 1.11664" layer="invisible" use_phisics_mesh="true" room="6"/>
 	
 	<platform name="SecurityWall002" core="SecurityWall002" type="static" pos="557.271973 7.069 -315.611645" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="2.98108 2.9871 0.981232" layer="solid" room="5"/>

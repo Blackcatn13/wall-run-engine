@@ -57,7 +57,8 @@ float g_LightAmbientIntensity = 1;
 float g_StartLinearFog = 5.0;
 // Distancia final Fog lineal respecto a la cámara
 float g_EndLinearFog = 20.0;
-float4 g_FogColor = float4(0.05f,0.05f,0.05f,1.0f); 
+float4 g_FogColor = float4(0.2,0.2,0.2,0.4f);
+//(0.5f,0.4f,0.9f,1.0f); 
 float g_ExpDensityFog = 0.20;
 float g_Exp2DensityFog = 0.02; //0.20
 float g_ShadowEpsilon = 0.0005f;
