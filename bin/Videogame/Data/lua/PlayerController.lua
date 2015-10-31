@@ -323,7 +323,6 @@ function on_update_player_lua(l_ElapsedTime)
 				move_3D = true 
 		end
 		
-		coreInstance:trace("hit "..tostring(player.is_hit));
 		
 		local auxyaw = 0;
 		--///////////////////////////////////////////////////////////
@@ -332,12 +331,7 @@ function on_update_player_lua(l_ElapsedTime)
 		if (player_controller.m_isJumpingMoving == false) and (player_controller.m_isAttack == false) and (player.is_hit == false and not player.is_dead) and player.super_piky_attack == false then
 			local y_axis = 0.0
 			local x_axis = 0.0
-			coreInstance:trace("entra 1");
-			coreInstance:trace("m_VanishActive "..tostring(playerRenderable.m_VanishActive));
-			coreInstance:trace("hurt_by_spikes "..tostring(player.hurt_by_spikes));
-			coreInstance:trace("transition_super_piky "..tostring(transition_super_piky));
 			if not playerRenderable.m_VanishActive and not player.hurt_by_spikes and not gui_manager:is_transition_effect_active() and not transition_super_piky then
-				coreInstance:trace("entra 2");
 				if inputm:has_game_pad(1) then
 					auxAxisYMoved = act2in:do_action_from_lua("MoveForward", y_axis);
 					auxAxisXMoved = act2in:do_action_from_lua("MoveRigth", x_axis);

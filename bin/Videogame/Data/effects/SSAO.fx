@@ -3,10 +3,10 @@
 #include "VertexTypes.fxh"
 
 float random_size = 64;
-float g_scale = 1;
-float g_bias = 0.0000002;
-float g_intensity = 0.125;
-float g_sample_rad = 0.006; //radio
+float g_scale = 10;
+float g_bias = 0.6;
+float g_intensity = 1;
+float g_sample_rad = 0.000001; //radio
 
 
 float3 getPosition(in float2 uv)
@@ -43,24 +43,28 @@ float4 SSAOPS(in float2 UV:TEXCOORD0) : COLOR
 
 	float l_EffectAffect = tex2D(S0LinearWrapSampler, UV).w;
 	float3 final_color = float3(1,1,1);
-	const float2 vec[16] = 
+	const float2 vec[20] = 
 	{
 	float2(1,0),
-	float2(-1,0),
+	float2(0.9781,0.2079),
+	float2(0.9135,0.4067),
+	float2(0.5,0.8660),
+	float2(0.3090,0.9510),
 	float2(0,1),
+	float2(0.2079,-0.9781),
+	float2(0.4067,-0.9135),
+	float2(0.5877,-0.8090),
+	float2(0.8660,-0.5000),
+	float2(-1,0),
+	float2(-0.9781,-0.2079),
+	float2(-0.9135,-0.4067),
+	float2(-0.5,-0.8660),
+	float2(-0.3090,-0.9510),
 	float2(0,-1),
-	float2(1,1),
-	float2(-1,1),
-	float2(-1,-1),
-	float2(1,-1),
-	float2(0.8,0.1),
-	float2(-0.7,-0.2),
-	float2(0.3,0.8),
-	float2(0.2,-0.6),
-	float2(0.4,0.9),
-	float2(-0.7,0.3),
-	float2(-0.8,-0.4),
-	float2(0.3,-0.9)
+	float2(-0.2079,0.9781),
+	float2(-0.4067,0.9135),
+	float2(-0.8660,0.5000),
+	float2(-0.9510,0.3090)
 	};
 
 	float3 p = getPosition(UV);
@@ -71,24 +75,25 @@ float4 SSAOPS(in float2 UV:TEXCOORD0) : COLOR
 	float rad = g_sample_rad/p.z;
 
 	//**SSAO Calculation**//
-	int iterations = 16;
+	int iterations = 20;
 	for (int j = 0; j < iterations; ++j)
 	{
 	  float2 coord1 = reflect(vec[j],rand)*rad;
-	  float2 coord2 = float2(coord1.x*0.707 - coord1.y*0.707,
-				  coord1.x*0.707 + coord1.y*0.707);
+	  //float2 coord2 = float2(coord1.x*0.707 - coord1.y*0.707, coord1.x*0.707 + coord1.y*0.707);
 	  
-	  ao += doAmbientOcclusion(UV,coord1*0.25, p, n);
-	  ao += doAmbientOcclusion(UV,coord2*0.5, p, n);
-	  ao += doAmbientOcclusion(UV,coord1*0.75, p, n);
-	  ao += doAmbientOcclusion(UV,coord2, p, n);
+	  ao += doAmbientOcclusion(UV,coord1, p, n);
+	  //ao += doAmbientOcclusion(UV,coord2*0.5, p, n);
+	  //ao += doAmbientOcclusion(UV,coord1*0.75, p, n);
+	  //ao += doAmbientOcclusion(UV,coord2, p, n);
 	}
-	ao/=(float)iterations*4.0;
-	//**END**//
+	ao/=(float)iterations;
 
 	if(l_EffectAffect > 0.5)
 	{
 		final_color = final_color * ao;
+	}else
+	{
+		final_color = 0;
 	}
 	
 	//Do stuff here with your occlusion value Ã¢aoÃ¢: modulate ambient lighting, write it to a buffer for later //use, etc.

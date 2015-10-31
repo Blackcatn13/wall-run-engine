@@ -62,7 +62,7 @@ TMultiRenderTargetPixel GBufferPS(TGBUFFER_TEXTURED2_TANGENT_BINORMAL_VERTEX_PS 
 	float3 l_DiffuseLigthMap = GetRadiosityNormalMap(l_Nn, IN.UV2, g_WorldMatrix);
 	float3 l_intensity = l_DiffuseColor.xyz * l_DiffuseLigthMap;
 
-	float3 NnScalated = Normal2Texture(Nn);
+	float3 NnScalated = Normal2Texture(l_Nn);
 	// Cálculo de la z en formato color
 	float l_Depth = IN.WorldPosition.z/IN.WorldPosition.w;
 	OUT.RT0=float4(l_DiffuseColor.xyz, 1.0);
