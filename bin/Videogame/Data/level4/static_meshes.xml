@@ -108,7 +108,7 @@
 	<static_mesh name="PilarQuad002" filename="Data\level4\meshes\PilarQuad002.mesh"/>
 
 	
-	<static_mesh name="SALA 4" filename="Data\level4\meshes\SALA 4.mesh"/>
+	<static_mesh name="sala4_atach" filename="Data\level4\meshes\sala4_atach.mesh"/>
 	<static_mesh name="Plataforma_Fragil" filename="Data\level4\meshes\Plataforma_Fragil.mesh"/>
 	<static_mesh name="Plataforma01" filename="Data\level4\meshes\Plataforma01.mesh"/>
 	<static_mesh name="Plataforma02" filename="Data\level4\meshes\Plataforma02.mesh"/>
@@ -267,57 +267,7 @@
 	<static_mesh name="Teleport_inactive" filename="Data\level4\meshes\Teleport_inactive.mesh"/>
 	<static_mesh  name="LightBeamTeleport" filename="Data\level4\meshes\LightBeamTeleport.mesh"/>
 
-	<static_mesh name="Sala4_Escultura_001" filename="Data\level4\meshes\Sala4_Escultura_001.mesh"/>
-	<static_mesh name="Sala4_Escultura_002" filename="Data\level4\meshes\Sala4_Escultura_002.mesh"/>
-	<static_mesh name="Sala_4_Paret_ Pedres_001" filename="Data\level4\meshes\Sala_4_Paret_ Pedres_001.mesh"/>
-	<static_mesh name="Sala_4_Esmeralda_001" filename="Data\level4\meshes\Sala_4_Esmeralda_001.mesh"/>
-	<static_mesh name="Sala_4_Esmeralda_002" filename="Data\level4\meshes\Sala_4_Esmeralda_002.mesh"/>
-	<static_mesh name="Sala_4_Esmeralda_003" filename="Data\level4\meshes\Sala_4_Esmeralda_003.mesh"/>
-	<static_mesh name="Sala_4_Esmeralda_004" filename="Data\level4\meshes\Sala_4_Esmeralda_004.mesh"/>
-	<static_mesh name="Sala_4_Esmeralda_005" filename="Data\level4\meshes\Sala_4_Esmeralda_005.mesh"/>
-	<static_mesh name="Sala_4_Paret_ Pedres_002" filename="Data\level4\meshes\Sala_4_Paret_ Pedres_002.mesh"/>
-	<static_mesh name="Sala4_Cara_lava" filename="Data\level4\meshes\Sala4_Cara_lava.mesh"/>
-	<static_mesh name="Sala_4_Paret" filename="Data\level4\meshes\Sala_4_Paret.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_001" filename="Data\level4\meshes\Sala_4_Estalagtita_001.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_002" filename="Data\level4\meshes\Sala_4_Estalagtita_002.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_003" filename="Data\level4\meshes\Sala_4_Estalagtita_003.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_004" filename="Data\level4\meshes\Sala_4_Estalagtita_004.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_005" filename="Data\level4\meshes\Sala_4_Estalagtita_005.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_006" filename="Data\level4\meshes\Sala_4_Estalagtita_006.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_007" filename="Data\level4\meshes\Sala_4_Estalagtita_007.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_008" filename="Data\level4\meshes\Sala_4_Estalagtita_008.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_009" filename="Data\level4\meshes\Sala_4_Estalagtita_009.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_010" filename="Data\level4\meshes\Sala_4_Estalagtita_010.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_011" filename="Data\level4\meshes\Sala_4_Estalagtita_011.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_012" filename="Data\level4\meshes\Sala_4_Estalagtita_012.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_013" filename="Data\level4\meshes\Sala_4_Estalagtita_013.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_014" filename="Data\level4\meshes\Sala_4_Estalagtita_014.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_015" filename="Data\level4\meshes\Sala_4_Estalagtita_015.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_016" filename="Data\level4\meshes\Sala_4_Estalagtita_016.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_017" filename="Data\level4\meshes\Sala_4_Estalagtita_017.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_018" filename="Data\level4\meshes\Sala_4_Estalagtita_018.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_019" filename="Data\level4\meshes\Sala_4_Estalagtita_019.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_020" filename="Data\level4\meshes\Sala_4_Estalagtita_020.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_021" filename="Data\level4\meshes\Sala_4_Estalagtita_021.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_022" filename="Data\level4\meshes\Sala_4_Estalagtita_022.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_023" filename="Data\level4\meshes\Sala_4_Estalagtita_023.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_024" filename="Data\level4\meshes\Sala_4_Estalagtita_024.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_025" filename="Data\level4\meshes\Sala_4_Estalagtita_025.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_026" filename="Data\level4\meshes\Sala_4_Estalagtita_026.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_027" filename="Data\level4\meshes\Sala_4_Estalagtita_027.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_028" filename="Data\level4\meshes\Sala_4_Estalagtita_028.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_029" filename="Data\level4\meshes\Sala_4_Estalagtita_029.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_030" filename="Data\level4\meshes\Sala_4_Estalagtita_030.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_031" filename="Data\level4\meshes\Sala_4_Estalagtita_031.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_032" filename="Data\level4\meshes\Sala_4_Estalagtita_032.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_033" filename="Data\level4\meshes\Sala_4_Estalagtita_033.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_034" filename="Data\level4\meshes\Sala_4_Estalagtita_034.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_035" filename="Data\level4\meshes\Sala_4_Estalagtita_035.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_036" filename="Data\level4\meshes\Sala_4_Estalagtita_036.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_037" filename="Data\level4\meshes\Sala_4_Estalagtita_037.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_038" filename="Data\level4\meshes\Sala_4_Estalagtita_038.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_039" filename="Data\level4\meshes\Sala_4_Estalagtita_039.mesh"/>
-	<static_mesh name="Sala_4_Estalagtita_040" filename="Data\level4\meshes\Sala_4_Estalagtita_040.mesh"/>
+	
 
 	<static_mesh name="Plataforma_Mov01" filename="Data\level4\meshes\Plataforma_Mov01.mesh"/>
 	<static_mesh name="Plataforma_Mov02" filename="Data\level4\meshes\Plataforma_Mov02.mesh"/>
