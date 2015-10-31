@@ -244,29 +244,7 @@
 
 	<static_mesh name="Collectible1" filename="Data\level4\meshes\Collectible1.mesh"/>
 
-	<static_mesh name="SALA_5_TEMPLEPOLYPOLY" filename="Data\level4\meshes\SALA_5_TEMPLEPOLYPOLY.mesh"/>
-	<static_mesh name="OBSTACLE_1_SALA5" filename="Data\level4\meshes\OBSTACLE_1_SALA5.mesh"/>
-	<static_mesh name="OBSTACLE_2_SALA5" filename="Data\level4\meshes\OBSTACLE_2_SALA5.mesh"/>
-	<static_mesh name="ESTALACTITES_SALA5" filename="Data\level4\meshes\ESTALACTITES_SALA5.mesh"/>
-	<static_mesh name="TORCHA_1_SALA5" filename="Data\level4\meshes\TORCHA_1_SALA5.mesh"/>
-	<static_mesh name="TORCHA_2_SALA5" filename="Data\level4\meshes\TORCHA_2_SALA5.mesh"/>
-	<static_mesh name="TORCHA_3_SALA5" filename="Data\level4\meshes\TORCHA_3_SALA5.mesh"/>
-	<static_mesh name="TORCHA_4_SALA5" filename="Data\level4\meshes\TORCHA_4_SALA5.mesh"/>
-	<static_mesh name="TORCHA_5_SALA5" filename="Data\level4\meshes\TORCHA_5_SALA5.mesh"/>
-	<static_mesh name="TORCHA_6_SALA5" filename="Data\level4\meshes\TORCHA_6_SALA5.mesh"/>
-	<static_mesh name="PARED_POLY_SALA5" filename="Data\level4\meshes\PARED_POLY_SALA5.mesh"/>
-	<static_mesh name="TORCHA_7_SALA5" filename="Data\level4\meshes\TORCHA_7_SALA5.mesh"/>
-	<static_mesh name="PARED_FONS_SALA5" filename="Data\level4\meshes\PARED_FONS_SALA5.mesh"/>
-	<static_mesh name="ROCA_FRONT_2_SALA5" filename="Data\level4\meshes\ROCA_FRONT_2_SALA5.mesh"/>
-	<static_mesh name="ROCA_FRONT_1_SALA5" filename="Data\level4\meshes\ROCA_FRONT_1_SALA5.mesh"/>
-	<static_mesh name="ROCA_BACK_1_SALA5" filename="Data\level4\meshes\ROCA_BACK_1_SALA5.mesh"/>
-	<static_mesh name="ROCA_BACK_2_SALA5" filename="Data\level4\meshes\ROCA_BACK_2_SALA5.mesh"/>
-	<static_mesh name="LAMPADAFOC_2_SALA5" filename="Data\level4\meshes\LAMPADAFOC_2_SALA5.mesh"/>
-	<static_mesh name="LAMPADAFOC_3_SALA5" filename="Data\level4\meshes\LAMPADAFOC_3_SALA5.mesh"/>
-	<static_mesh name="LAMPADAFOC_1_SALA5" filename="Data\level4\meshes\LAMPADAFOC_1_SALA5.mesh"/>
-	<static_mesh name="PUNXES_01_SALA5" filename="Data\level4\meshes\PUNXES_01_SALA5.mesh"/>
-	<static_mesh name="CARALLENGUA_1_SALA5" filename="Data\level4\meshes\CARALLENGUA_1_SALA5.mesh"/>
-	<static_mesh name="ARCADA_SALA5" filename="Data\level4\meshes\ARCADA_SALA5.mesh"/>
+	
 	
 	<static_mesh filename=".\Data\level3\meshes//Enemy1.mesh" name="Enemy1"/>
 	<static_mesh filename=".\Data\level5\meshes//SpongePicky.mesh" name="SpongePicky"/>
@@ -274,6 +252,8 @@
 	<static_mesh name="SALA_3LIGHT" filename="Data\level4\meshes\SALA_3LIGHT.mesh"/>
 	<static_mesh name="SAL3LIGHTMAPOBJECTES" filename="Data\level4\meshes\SAL3LIGHTMAPOBJECTES.mesh"/>
 
+	<!-- sALA 5 -->
+	<static_mesh name="SALA5" filename="Data\level4\meshes\SALA5.mesh"/>
 
 	<static_mesh name="INVISIBLE_WALL_001" filename="Data\level4\meshes\INVISIBLE_WALL_001.mesh"/>
 	<static_mesh name="INVISIBLE_WALL_002" filename="Data\level4\meshes\INVISIBLE_WALL_002.mesh"/>
