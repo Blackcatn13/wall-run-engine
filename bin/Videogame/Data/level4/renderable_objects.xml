@@ -194,8 +194,8 @@
 	
 	<mesh_instance name="COLUMNA" core="COLUMNA" pos="164.533813 35.402344 -646.053589" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
 
-	<animated_model name="CARALLENGUA_01" core="face" pos="304.051270 5.645349 16.930260" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2"/>
-	<animated_model name="CARALLENGUA_002" core="face" pos="360.035675 5.645350 16.930252" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2"/>
+	<mesh_instance name="CARALLENGUA_002" core="CARALLENGUA_002" pos="360.036011 5.645000 16.930000" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="solid"/>
+	<mesh_instance name="CARALLENGUA_001" core="CARALLENGUA_001" pos="304.050995 5.645000 16.930000" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" room="2" layer="solid"/>
 	<platform name="security_wall_001" core="security_wall_001" type="static" pos="557.780579 8.168335 -56.606869" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="false" phisic_size="12.6033 3.64714 0.910183" layer="solid" room="4"/>
 	<platform name="PolyPlatform002" core="PolyPlatform002" type="poly" pos="557.900879 3.144636 -53.296799" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="5.19568 2.86906 2.5697" layer="poly" room="4" final_position="557.900879 7.424636 -53.296799" direction="0 1 0" time_out="3" speed="5" light="" activation_distance="10"/>
 	<mesh_instance name="PUNXES002" core="PUNXES002" pos="557.350647 7.464798 -260.875031" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="solid"/>
