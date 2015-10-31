@@ -33,11 +33,11 @@
 		<Instance size="2.0 2.0" position="592.992 22.7679 -278.861"/>
 		<Instance size="2.0 2.0" position="581.711 22.7652 -343.333"/>
 
-		<Instance size="2.0 2.0" position="581.709 12.34 -420.442"/>
+		<Instance size="2.0 2.0" position="574.709 12.34 -420.442"/>
 		<Instance size="2.0 2.0" position="533.825 12.34 -420.753"/>
 		<Instance size="2.0 2.0" position="533.837 12.34 -464.55"/>
 		<Instance size="2.0 2.0" position="531.99 12.34 -490.982"/>
-		<Instance size="2.0 2.0" position="581.726 12.34 -456.748"/>
+		<Instance size="2.0 2.0" position="574.726 12.34 -456.748"/>
 		<Instance size="2.0 2.0" position="515.565 6.614 -561.564"/>
 		<Instance size="2.0 2.0" position="522.654 6.614 -537.211"/>
 		<Instance size="2.0 2.0" position="549.248 6.614 -572.341"/>
@@ -65,6 +65,13 @@
 		<Instance size="2.0 2.0" position="501.008 13.607 -564.856"/>
 		<Instance size="2.0 2.0" position="506.073 13.607 -546.059"/>
 		<Instance size="2.0 2.0" position="536.831 15.479 -618.373"/>
+		<Instance size="0.3 0.6" position="562.871 13.633 -251.686"/>
+		<Instance size="0.3 0.6" position="562.871 13.633 -268.269"/>
+		
+		<Instance size="2.0 2.0" position="280.266 34.3 -671.568"/>
+		<Instance size="2.0 2.0" position="214.393 35.759 -671.568"/>
+		<Instance size="2.0 2.0" position="-141.035 29.966 -665.256"/>
+										  
 	</instanced_billboard>
 	
 
