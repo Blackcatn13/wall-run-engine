@@ -176,6 +176,7 @@ function toogle_switch(trigger_name, puzzle_name)
 	end
 	if puzzle.m_ActivatedSwitches == total_switches and not puzzle.m_Done then
 		local trigger = trigger_manager:get_resource("Collectible4_UserData")
+		coreInstance:getWWSoundManager():PlayEvent("AppearCard", "Music");
 		activate_collectible(trigger, "collectible", "Collectible4")
 	end
 	--coreInstance:trace(tostring(puzzle.m_ActivatedSwitches))
