@@ -295,7 +295,6 @@ function GameOver()
 	if GameoverCount > 5 then
 		GameoverCount = 0;
 		reset_game();
-		first_time_main_menu = true
 		gui_manager:set_is_gameover(false);
 		gui_manager:set_visible_mouse(true);
 		CCoreLuaWrapper().m_CoreInstance:get_graphics_manager():set_is_GUI_displayed(true);

@@ -84,6 +84,9 @@ function update_pause()
 end
 
 function reset_player_states()
+
+	local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room(layer, player_controller.m_Room):get_resource(piky_mesh_name);
+
 	inDoubleLoop = false;
 	inDoubleJump = false;
 	executedDoubleStart = false;
@@ -115,6 +118,20 @@ function reset_player_states()
 	player_controller.m_isFalling = false;
 	player_controller.m_executeDoubleJump = false;
 	player_controller.m_JumpingTime = 0.0;
+	
+	playerRenderable:clear_cycle(anim_idle,0);
+	playerRenderable:clear_cycle(anim_run,0);
+	playerRenderable:clear_cycle(anim_jump_loop,0);
+	playerRenderable:clear_cycle(anim_jump_end,0);
+	playerRenderable:clear_cycle(anim_DJump_03,0);
+	playerRenderable:clear_cycle(anim_DJump_04,0);
+	playerRenderable:remove_action(anim_jump_start);
+	playerRenderable:remove_action(anim_attack);
+	playerRenderable:remove_action(anim_hurt);
+	playerRenderable:remove_action(anim_poly);
+	playerRenderable:remove_action(anim_DJump_01);
+	playerRenderable:remove_action(anim_DJump_02)
+	playerRenderable:remove_action(anim_death_retry)
 			
 	player.hurt_by_spikes = false
 	player.is_hit = false
@@ -408,7 +425,6 @@ function on_update_player_lua(l_ElapsedTime)
 						end
 					end
 				end
-				coreInstance:trace("extra rotation "..tostring(extraRotationContinue));
 				local worldauxyaw = auxyaw + extraRotationContinue;
 				worldauxyaw = worldauxyaw +1.57;
 				cosyaw = math.cos(worldauxyaw); -- derecha 1 izquierda -1
@@ -689,7 +705,7 @@ function on_update_player_lua(l_ElapsedTime)
 		--///////////////////////////////////////////////////////////
 		-- Acción de saltar del Player. Puede realizar 2 saltos distintos (de longitud, y salto vertical). 
 		--///////////////////////////////////////////////////////////
-		if (act2in:do_action_from_lua("Jump")) and (player_controller.m_isJumping == false and player_controller.m_isDoubleJumping == false and _land == false and player_controller.m_isAttack == false and player.is_hit == false and player_controller.m_isGrounded and not player.is_dead) and not playerRenderable.m_VanishActive and jump_enabled and not gui_manager:is_transition_effect_active() and not player.super_piky_active and not transition_super_piky and not gui_manager:is_transition_effect_active() then
+		if (act2in:do_action_from_lua("Jump")) and (player_controller.m_isJumping == false and player_controller.m_isDoubleJumping == false and _land == false and player_controller.m_isAttack == false and player.is_hit == false and player_controller.m_isGrounded and not player.is_dead) and not playerRenderable.m_VanishActive and jump_enabled and not gui_manager:is_transition_effect_active() and not player.super_piky_active and not transition_super_piky then
 			local y_axis = 0.0
 			local x_axis = 0.0
 						
@@ -751,7 +767,6 @@ function on_update_player_lua(l_ElapsedTime)
 		if not player_controller.m_isGrounded then
 			if  player_controller.m_isAttack and not first_frame_attack then	-- Aqui ir poniendo siempre que se tenga que parar alguna acción si no está grounded
 				player.get_player_controller():update_character_extents(true, m_ReduceCollider);
-				coreInstance:trace("entro a parar el ataque")
 				player_controller.m_isAttack = false
 			end
 		end
@@ -808,7 +823,6 @@ function on_update_player_lua(l_ElapsedTime)
 				if distancePlayerImanY > 0 then
 					variableMultiplicadora = (iman_force * distancePlayerImanX) / distancePlayerImanY;
 				end
-				coreInstance:trace("vM: "..tostring(variableMultiplicadora));
 				movimientoAux = movimientoAux * l_ElapsedTime * variableMultiplicadora;
 				mov = Vect3f(movimientoAux.x, mov.y, movimientoAux.z);
 			end

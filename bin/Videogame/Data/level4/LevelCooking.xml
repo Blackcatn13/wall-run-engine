@@ -151,4 +151,6 @@
 	<Physx_mesh name="Sala4_Wall_2" filename="Data\level4\meshes\Sala4_Wall_2.phsx"/>
 	<Physx_mesh name="Sala7_Pinchos_001" filename="Data\level4\meshes\Sala7_Pinchos_001.phsx"/>
 	<Physx_mesh name="security_wall_room4-5" filename="Data\level4\meshes\security_wall_room4-5.phsx"/>
+	<Physx_mesh name="CARALLENGUA_001" filename="Data\level4\meshes\CARALLENGUA_001.phsx"/>
+	<Physx_mesh name="CARALLENGUA_002" filename="Data\level4\meshes\CARALLENGUA_002.phsx"/>
 </Physx_meshes>

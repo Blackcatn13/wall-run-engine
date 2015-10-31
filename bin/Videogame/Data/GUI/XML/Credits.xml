@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Windows OnLoadWindows="check_input_controller_map()"
+         OnSaveWindows=""
+         OnUpdateWindows="">
+		  
+  <Image name="ControlsGUIBack" posx="0.00" posy="0.00" height="100" width="100" visible="true" active="true"
+         default="ControlsBase" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+    <texture name="ControlsBase" name_texture="./Data/GUI/GoPixelGo/EmptyBackground.jpg"/>
+  </Image>
+
+ <Image name="Credits" posx="0.00" posy="0.00" height="100" width="100" visible="true" active="true"
+         default="Credit" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+	<texture name="Credit" name_texture="./Data/GUI/GoPixelGo/GUI_Credits.tga"/>
+  </Image>
+ 
+
+  <ButtonList name="BackButtonList" posx="0" posy="0" height="1" width="1" visible="true" active="true">
+    <Buttons>
+      <row>
+      	<Button name="Back" posx="2" posy="78" height="13.00" width="20.00" visible="true" 
+                active="true" texture_normal="./Data/GUI/GoPixelGo/ButtonBack_03.tga"
+                  texture_over="./Data/GUI/GoPixelGo/ButtonBack_02.tga"
+                  texture_clicked="./Data/GUI/GoPixelGo/ButtonBack_01.tga"
+                  texture_deactivated="./Data/GUI/GoPixelGo/ButtonBack_03.tga"
+                OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getGUIManager():pop_windows();
+      							CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music');"
+                OnOverAction=""/>
+      </row>
+    </Buttons>
+  </ButtonList>
+	
+</Windows>

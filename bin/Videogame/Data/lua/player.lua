@@ -215,7 +215,7 @@ function Player.new()
 
 	function self.player_die()
 		if not self.is_dead then --Si ya está muerto no se va a morir más, QUE NO ES UN ZOMBIE
-			if not self.is_hit and not player_controller.m_isAttack then
+			--if not self.is_hit and not player_controller.m_isAttack then
 				self.activating_triggers = false
 				--self.remove_animations()
 				self.is_dead = true
@@ -263,9 +263,9 @@ function Player.new()
 				--gui_manager:set_num_heart( self.num_lifes );	
 				--local emitter3 = particle_manager:get_resource(renderable_piky_mesh.m_ParticleEmitter3)
 				--emitter3:set_visible(false)
-			else
+			--[[else
 				self.waiting_to_die = true
-			end
+			end]]
 		end
 		
 		--self.check_death_actions()
