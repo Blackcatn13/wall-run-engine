@@ -468,7 +468,7 @@ function on_update_player_lua(l_ElapsedTime)
 		--local dist_to_flooraux = get_distance_to_floor(player_controller:get_position());
 		
 		--///////////////////////////////////////////////////////////
-		-- Cuando el Player está saltando, su velocidad dependerá del tipo de salto realizado. 
+		-- JUMP
 		--///////////////////////////////////////////////////////////
 		local dist_to_floor = get_distance_to_floor(player_controller:get_position());
 		if dist_to_floor > 3 and _land == false and player_controller.m_isJumping == false and player_controller.m_isDoubleJumping == false and player.is_hit == false then
@@ -535,7 +535,7 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		if (player_controller.m_isJumping == true) or (player_controller.m_isFalling) then
 			jumpTime = jumpTime + l_ElapsedTime;
-
+			
 			if player_controller.m_isJumping then
 				mov.y = playerRenderable:getBoneMovement().y;
 			end
@@ -573,12 +573,19 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		if player_controller.m_executeDoubleJump == true and inDoubleJump == false then
 			player_controller.m_executeDoubleJump = false;
+			if player_controller.m_isJumping then
+				local positionOld = playerRenderable:get_position();
+				local auxPosition = playerRenderable:getAnimationBonePosition().y; 
+				local newPosition = Vect3f(positionOld.x, auxPosition, positionOld.z);
+				playerRenderable:set_position(player_controller:get_position());
+			end
 			playerRenderable:clear_cycle(anim_idle,0);
 			playerRenderable:clear_cycle(anim_run,0);
 			playerRenderable:clear_cycle(anim_jump_loop,0);
 			playerRenderable:clear_cycle(anim_jump_end,0);
 			playerRenderable:remove_action(anim_jump_start);
 			playerRenderable:execute_action(anim_DJump_01,0.1,0,1,true);
+			playerRenderable:updateSkeleton(l_ElapsedTime);
 			player_controller.m_isDoubleJumping = true;
 			player_controller.m_isJumping = false;
 			_land = false;
@@ -624,33 +631,40 @@ function on_update_player_lua(l_ElapsedTime)
 			if false then
 				player_controller.m_isAttack = false;
 			else
-				
-				if player.can_finish_atack then
-					--local emitter = particle_manager:get_resource(playerRenderable.m_ParticleEmitter)
-					
-					if player_controller.m_CurrentAttackForce > 0.5 then					
-						local prev_y = mov.y
-						player_controller.m_CurrentAttackForce = player_controller.m_CurrentAttackForce - (m_AttackGravity * l_ElapsedTime);
-						mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce * AttackSpeed * l_ElapsedTime;
-						if AttackSpeed > 0.05 then
-							AttackSpeed = AttackSpeed - AttackDismin * l_ElapsedTime;
-						end
-						mov.y = prev_y;
-						m_AttackGravity = m_AttackGravity + AtackGravityModifier * l_ElapsedTime;
+				if not player.is_hit then
+					if player.can_finish_atack then
+						--local emitter = particle_manager:get_resource(playerRenderable.m_ParticleEmitter)
 						
+						if player_controller.m_CurrentAttackForce > 0.5 then					
+							local prev_y = mov.y
+							player_controller.m_CurrentAttackForce = player_controller.m_CurrentAttackForce - (m_AttackGravity * l_ElapsedTime);
+							mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce * AttackSpeed * l_ElapsedTime;
+							if AttackSpeed > 0.05 then
+								AttackSpeed = AttackSpeed - AttackDismin * l_ElapsedTime;
+							end
+							mov.y = prev_y;
+							m_AttackGravity = m_AttackGravity + AtackGravityModifier * l_ElapsedTime;
+							
+							emitter.m_vPos = playerRenderable:get_position()+ playerRenderable.m_EmitterOffset
+						else
+							local mesh = playerRenderable;
+							mesh:set_position(player_controller:get_position());
+							player_controller.m_isAttack = false;
+							player.get_player_controller():update_character_extents(true, m_ReduceCollider);
+							emitter:set_visible(false)
+						end
+					else -- En el caso de estar entre triggers para impedir fin de ataque
+						local prev_y = mov.y
+						mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce * AttackSpeed * l_ElapsedTime
+						mov.y = prev_y
 						emitter.m_vPos = playerRenderable:get_position()+ playerRenderable.m_EmitterOffset
-					else
-						local mesh = playerRenderable;
-						mesh:set_position(player_controller:get_position());
-						player_controller.m_isAttack = false;
-						player.get_player_controller():update_character_extents(true, m_ReduceCollider);
-						emitter:set_visible(false)
 					end
-				else -- En el caso de estar entre triggers para impedir fin de ataque
-					local prev_y = mov.y
-					mov = player_controller.m_Direction3D * player_controller.m_CurrentAttackForce * AttackSpeed * l_ElapsedTime
-					mov.y = prev_y
-					emitter.m_vPos = playerRenderable:get_position()+ playerRenderable.m_EmitterOffset
+				else
+					local mesh = playerRenderable;
+					mesh:set_position(player_controller:get_position());
+					player_controller.m_isAttack = false;
+					player.get_player_controller():update_character_extents(true, m_ReduceCollider);
+					emitter:set_visible(false)
 				end
 			end
 		else
@@ -888,7 +902,7 @@ function on_update_player_lua(l_ElapsedTime)
 				end
 			end
 		]]
-		if player.waiting_to_die and not player.is_hit then
+		if player.waiting_to_die and not player.is_hit and not player_controller.m_isAttack then
 			player.waiting_to_die = false
 			player.player_die()
 		end

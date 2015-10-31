@@ -278,7 +278,7 @@ function chucky_runner_update_waiting(ElapsedTime, doComprobation, name)
 	if distance < chuky_catching_distance and chucky_able_to_catch then
 		chucky:m_FSM():newState("Atrapando")
 	end
-	if distance >= chuky_catching_distance and not chucky_able_to_catch then
+	if distance >= (chuky_catching_distance * 2)-2 and not chucky_able_to_catch then
 		chucky_able_to_catch = true
 	end
 end	
