@@ -27,6 +27,7 @@ typedef struct PathPointSpecStruct
 	float variablePitchValue;
 	bool yawOffset;
 	float yawOffsetValue;
+	float yawSpeed;
 } PathPointSpec;
 
 class CThPSCamera : public CCamera {

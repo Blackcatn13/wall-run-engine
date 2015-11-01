@@ -12,9 +12,10 @@
          OnUpdateWindows="onUpdateWindowDisplayGUI()">
 	
 	<Image name="MessageGUI" posx="37.5" posy="37.50" height="20" width="24" visible="true" active="true"
-         default="PolyPlatform" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
-    <texture name="PolyPlatform" name_texture="./Data/GUI/GoPixelGo/GUI_WINDOW_POLY.tga"/>
-	<texture name="UnlockCard" name_texture="./Data/GUI/GoPixelGo/GUI_WINDOW_CROMO.tga"/>
+         default="UnlockCardController" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
+  <!--  <texture name="PolyPlatform" name_texture="./Data/GUI/GoPixelGo/GUI_WINDOW_POLY.tga"/>-->
+	<texture name="UnlockCardKeyboard" name_texture="./Data/GUI/GoPixelGo/GUI_WINDOW_CROMO.tga"/>
+	<texture name="UnlockCardController" name_texture="./Data/GUI/GoPixelGo/GUI_CROMO_2.tga"/>
   </Image>
   
   <Image name="LifeGUI" posx="2" posy="77.00" height="20" width="12" visible="true" active="true"

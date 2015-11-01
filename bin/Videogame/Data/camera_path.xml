@@ -92,39 +92,40 @@
 		<point id="p5" pos="557.206 13.1532 -316.652"/>
 		<!-- Room 6 -->
 		<point id="p6" pos="557.197 13.6075 -392.975" follow_player_y="true" follow_player_x="true"/>
-		<point id="p7" pos="557.2 13.3182 -397.231" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2"  variable_pitch="true" variable_pitch_value="-0.10"/>
-		<point id="p8" pos="557.206 13.3182 -404.927" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.15"/>
-		<point id="p9" pos="557.289 13.3182 -421.597" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="4" variable_pitch="true" variable_pitch_value="-0.20"/>
-		<point id="p10" pos="557.217 13.3182 -440.199" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="4" variable_pitch="true" variable_pitch_value="-0.20"/>
-		<point id="p11" pos="557.148 13.3182 -457.952" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="4" variable_pitch="true" variable_pitch_value="-0.20"/>
-		<point id="p12" pos="557.134 13.3182 -472.298" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="4" variable_pitch="true" variable_pitch_value="-0.20"/>
-		<point id="p13" pos="554.106 13.3182 -481.192" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="4" variable_pitch="true" variable_pitch_value="-0.20"/>
-		<point id="p14" pos="548.499 8.83502 -491.569" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.15"/>
-		<point id="p15" pos="541.082 6.05023 -498.872" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2"  variable_pitch="true" variable_pitch_value="-0.10"/>
-		<point id="p16" pos="538.563 6.05023 -506.111" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="1"/>
+		<point id="p7" pos="557.2 13.3182 -397.231" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2"  variable_pitch="true" variable_pitch_value="-0.10" yaw_speed="2"/>
+		<point id="p8" pos="557.206 13.3182 -404.927" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.15" yaw_speed="2"/>
+		<point id="p9" pos="557.289 13.3182 -421.597" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="4" variable_pitch="true" variable_pitch_value="-0.20" yaw_speed="2"/>
+		<point id="p10" pos="557.217 13.3182 -440.199" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="4" variable_pitch="true" variable_pitch_value="-0.20" yaw_speed="2"/>
+		<point id="p11" pos="557.148 13.3182 -457.952" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="4" variable_pitch="true" variable_pitch_value="-0.20" yaw_speed="2"/>
+		<point id="p12" pos="557.134 13.3182 -472.298" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="4" variable_pitch="true" variable_pitch_value="-0.20" yaw_speed="2"/>
+		<point id="p13" pos="554.106 13.3182 -481.192" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="4" variable_pitch="true" variable_pitch_value="-0.20" yaw_speed="2"/>
+		<point id="p14" pos="548.499 8.83502 -491.569" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.15" yaw_speed="2"/>
+		<point id="p15" pos="541.082 6.05023 -498.872" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2"  variable_pitch="true" variable_pitch_value="-0.10" yaw_speed="2"/>
+		<point id="p16" pos="538.563 6.05023 -506.111" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="1" yaw_speed="2"/>
 		<point id="p17" pos="538.423 2.64276 -510.23" follow_player_x="true"/>
 		<point id="p18" pos="538.126 2.64276 -518.957" follow_player_x="true"/>
 		<point id="p19" pos="538.207 2.60674 -525.787" follow_player_x="true"/>
-		<point id="p20" pos="538.545 2.51668 -528.801" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="1"/>
-		<point id="p21" pos="538.91 2.67267 -534.431" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.10"/>
-		<point id="p22" pos="538.954 7.57193 -540.373" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.15"/>
-		<point id="p23" pos="538.631 8.19202 -549.099" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20"/>
-		<point id="p24" pos="538.969 9.02269 -560.79" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20"/>
-		<point id="p25" pos="539.834 9.86458 -572.638" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20"/>
-		<point id="p26" pos="541.199 9.93419 -579.021" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20"/>
-		<point id="p27" pos="542.585 9.94618 -585.371" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20"/>
-		<point id="p28" pos="543.533 10.2659 -592.205" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20"/>
-		<point id="p29" pos="544.538 10.3499 -598.828" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20"/>
-		<point id="p30" pos="545.014 10.4533 -605.598" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20"/>
-		<point id="p31" pos="545.236 10.6755 -612.602" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20"/>
-		<point id="p32" pos="544.971 11.3486 -617.198" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20"/>
-		<point id="p33" pos="544.624 12.2322 -623.229" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20"/>
-		<point id="p34" pos="544.232 13.7025 -631.388" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20"/>
-		<point id="p35" pos="540.716 13.7167 -637.943" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20"/>
-		<point id="p36" pos="534.373 13.7253 -643.575" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.15"/>
-		<point id="p37" pos="526.764 15.0447 -646.149" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.10"/>
+		<point id="p20" pos="538.545 2.51668 -528.801" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="1" yaw_speed="2"/>
+		<point id="p21" pos="538.91 2.67267 -534.431" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.10" yaw_speed="2"/>
+		<point id="p22" pos="538.954 7.57193 -540.373" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.15" yaw_speed="2"/>
+		<point id="p23" pos="538.631 8.19202 -549.099" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20" yaw_speed="2"/>
+		<point id="p24" pos="538.969 9.02269 -560.79" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20" yaw_speed="2"/>
+		<point id="p25" pos="539.834 9.86458 -572.638" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20" yaw_speed="2"/>
+		<point id="p26" pos="541.199 9.93419 -579.021" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20" yaw_speed="2"/>
+		<point id="p27" pos="542.585 9.94618 -585.371" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20" yaw_speed="2"/>
+		<point id="p28" pos="543.533 10.2659 -592.205" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20" yaw_speed="2"/>
+		<point id="p29" pos="544.538 10.3499 -598.828" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20" yaw_speed="2"/>
+		<point id="p30" pos="545.014 10.4533 -605.598" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20" yaw_speed="2"/>
+		<point id="p31" pos="545.236 10.6755 -612.602" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20" yaw_speed="2"/>
+		<point id="p32" pos="544.971 11.3486 -617.198" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20" yaw_speed="2"/>
+		<point id="p33" pos="544.624 12.2322 -623.229" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20" yaw_speed="2"/>
+		<point id="p34" pos="544.232 13.7025 -631.388" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20" yaw_speed="2"/>
+		<point id="p35" pos="540.716 13.7167 -637.943" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.20" yaw_speed="2"/>
+		<point id="p36" pos="534.373 13.7253 -643.575" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.15" yaw_speed="2"/>
+		<point id="p37" pos="526.764 15.0447 -646.149" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="2" variable_pitch="true" variable_pitch_value="-0.10" yaw_speed="2"/>
 		<point id="p38" pos="490.04 25.3396 -645.736" follow_player_y="true" follow_player_x="true" variable_zoom="true" variable_zoom_value="1"/>
 		<point id="p39" pos="361.409 26.0665 -644.382" follow_player_y="true" follow_player_x="true"/>
+		<!-- Room 7 -->
 		<point id="p40" pos="346.333 30.3643 -644.513"/>
 		<point id="p41" pos="333.109 37.2389 -644.474"/>
 		<point id="p42" pos="324.74 37.5292 -644.43"/>

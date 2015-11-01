@@ -17,16 +17,13 @@ end
 
 function Card:set_unlocked(unlocked)
 	self.unlocked = unlocked
-	coreInstance:trace(tostring (self.unlocked))
 end
 
 function Card:get_path ()
-	coreInstance:trace(self.path)
 	return self.path
 end
 
 function Card:get_name ()
-	coreInstance:trace(self.name)
 	return self.name
 end
 

@@ -85,7 +85,7 @@ end
 
 function reset_player_states()
 
-	local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room(layer, player_controller.m_Room):get_resource(piky_mesh_name);
+	local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room(piky_layer, player_controller.m_Room):get_resource(piky_mesh_name);
 
 	inDoubleLoop = false;
 	inDoubleJump = false;
@@ -933,7 +933,6 @@ function on_update_player_lua(l_ElapsedTime)
 			else
 				--coreInstance:trace("Animation is runing")
 				if player.has_ass_burned then
-					coreInstance:trace("ass burned")
 					local emitter2 = particle_manager:get_resource(playerRenderable.m_ParticleEmitter2)
 					local pos = Vect3f(0.0, 0.0, 0.0);
 					pos = pos + player.get_player_controller():get_position()

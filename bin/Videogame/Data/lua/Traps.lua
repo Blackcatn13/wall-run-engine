@@ -6,7 +6,6 @@ function activate_wall_trap(room_name, name)
 end
 
 function wt_enter_initial(room_name, name)
-	coreInstance:trace("Inicializando Trampa")
 	local trap = get_renderable_object("solid", room_name, name)
 	trap.m_CurrentTime = 0.0
 	--if trap:get_position() ~= trap.m_OriginalPosition then
@@ -30,7 +29,6 @@ function wt_update_initial(ElapsedTime, room_name, name)
 		if trap:get_position() ~= trap.m_OriginalPosition then
 			trap:set_position(trap.m_OriginalPosition)
 			trap.m_Actor:set_global_position(trap.m_OriginalPosition)
-			coreInstance:trace("Position ".. name .. tostring(trap:get_position().z))
 		end
 		
 		if trap.m_CurrentTime > 0.0 then
@@ -42,7 +40,6 @@ end
 
 --PARADO---
 function wt_enter_stopped(room_name, name)
-	coreInstance:trace("Entrando en parada de Trampa")
 	local trap = get_renderable_object("solid", room_name, name)
 	trap.m_CurrentTime = 0.0
 	--if trap:get_position() ~= trap.m_OriginalPosition then

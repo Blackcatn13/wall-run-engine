@@ -24,14 +24,11 @@ function CheckPoint.new()
 			--local player_controller = player.get_player_controller()
 			self.last_position = player_controller.m_PhysicController:get_position()
 			--self.yaw = player_controller:get_yaw()
-			coreInstance:trace("checkpoint con player position")
 			player.last_checkpoint = self
-			coreInstance:trace("last checkpoint set")
 			self.is_activated = true
 			self.name = trigger_name
 			self.renderable_stand = renderable_checkpoint
 			if self.renderable_stand ~= nil then
-				coreInstance:trace("Cambiando renderables del checkpoint")
 				self.change_checkpoint_renderables()
 			end
 			
@@ -44,17 +41,12 @@ function CheckPoint.new()
 			if (cam.m_eTypeCamera == 5 or cam.m_eTypeCamera == 6) and cam.m_currentWaypoint ~= nil  then
 				self.camera_waypoint = temp_waypoint
 			end
-			
-			coreInstance:trace("checkpoint activated")
 			table.insert(player.visited_checkpoints, self)
-			
-			coreInstance:trace("checkpoint set")
 		end
 	end
 
 	function self.load_checkpoint(player)
 		local coreInstance = CCoreLuaWrapper().m_CoreInstance;
-			coreInstance:trace("activating checkpoint!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
 		--local player_controller = player:get_player_controller()
 		player_controller.m_PhysicController:set_position(self.last_position)
 		local active_camera = cam_Controller:get_active_camera()
@@ -109,20 +101,17 @@ function CheckPoint.new()
 end
 
 function reset_checkpoints()
-	coreInstance:trace("reseting checkpoints: " .. tostring(table.getn(player.visited_checkpoints)) )
 	for i = 1, table.getn(player.visited_checkpoints) do
 		local renderable = player.visited_checkpoints[i].renderable_stand
 		if renderable ~= nil then
 			renderable:set_visible(true)
 			renderable.m_Printable = true
-			coreInstance:trace("reseting checkpoint: ".. tostring(i))
 			
 		end
 		--if i == table.getn(player.visited_checkpoints) then
 				
 		--	end
 	end
-	coreInstance:trace("last checkpoint")
 	renderable_objects_layer_manager:change_between_vectors("solid", "CheckPointEnabledStand001", last_checkpoint_room, 1)
 	renderable_objects_layer_manager:change_between_vectors("glow", "CheckPointEnabledSphere", last_checkpoint_room, 1)
 	last_checkpoint_room = 1

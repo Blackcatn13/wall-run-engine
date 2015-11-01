@@ -119,7 +119,7 @@
 <trigger name="Trigger_Damage_S7_002" platform_name="" pos="-70.928825 22.758636 -645.675415" shape="box" size="1.853 0.25 4.224" type_event="enter" script_function="trigger_damage_player" param1="" group="1" paint="false" color="0.580392 0.694118 0.105882"/>
 <trigger name="Trigger_Damage_S7_003" platform_name="" pos="-88.636734 22.758636 -645.675415" shape="box" size="1.853 0.25 4.224" type_event="enter" script_function="trigger_damage_player" param1="" group="1" paint="false" color="0.580392 0.694118 0.105882"/>
 
-<trigger name="BossTrigger" platform_name="" pos="-243.075516 27.506714 -646.446289" shape="box" size="1.6051 4.52832 8.8901" type_event="enter" script_function="init_boss_trigger" param1="" group="1" paint="false" color="0.105882 0.694118 0.580392"/>
+<trigger name="BossTrigger" platform_name="" pos="-238.075516 27.506714 -646.446289" shape="box" size="1.6051 4.52832 8.8901" type_event="enter" script_function="init_boss_trigger" param1="" group="1" paint="false" color="0.105882 0.694118 0.580392"/>
 
 <trigger name="PikyJumpObstacle005" platform_name="" pos="557.400879 9.430176 -219.364960" shape="box" size="9.87915 9.74541 4.29111" type_event="enter" script_function="set_player_obstacle_area" param1="true" type_event2="leave" param1_event2="false" script_function2="set_player_obstacle_area" group="1" paint="true" color="0.580392 0.694118 0.105882"/>
 <trigger name="PikyJumpObstacle006" platform_name="" pos="557.400879 9.430176 -282.323730" shape="box" size="9.87915 9.74541 4.29114" type_event="enter" script_function="set_player_obstacle_area" param1="true" type_event2="leave" param1_event2="false" script_function2="set_player_obstacle_area" group="1" paint="true" color="0.580392 0.694118 0.105882"/>

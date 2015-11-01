@@ -137,7 +137,7 @@
 			<texture stage_id="1" file="LightMapTexture"/>
 			<texture stage_id="2" file="NormalMapTexture"/>
 			<texture stage_id="3" file="DepthMapTexture"/>
-		</render_draw_quad>
+		</render_draw_quad>-
 		
 		<disable_alpha_blend />
 		<disable_z_write/>

@@ -50,7 +50,6 @@ function open_door(_objectName)
 			emitter:set_yaw(door:get_yaw())
 			emitter.m_FireParticles = true
 		end
-		coreInstance:trace("Door Final Position: " .. tostring(door.m_FinalPosition.y) )
 		door.m_IsOpening = true
 		inputm:set_game_pad_left_motor_speed(20000, 1);
 		--door:set_position(door.m_FinalPosition)
@@ -74,7 +73,6 @@ function open_door(_objectName, _objectName2)
 			emitter:set_yaw(door:get_yaw())
 			emitter.m_FireParticles = true
 		end
-		coreInstance:trace("Door Final Position: " .. tostring(door.m_FinalPosition.y) )
 		door.m_IsOpening = true
 		if door.m_Speed == 0.0 then
 			door:set_position(door.m_FinalPosition)
@@ -85,7 +83,6 @@ function open_door(_objectName, _objectName2)
 	local door2 = get_renderable_object("puzzle",player_controller.m_Room, _objectName2)
 	if door2 ~= nil then
 		--door.m_Printable = false
-		coreInstance:trace("Door Final Position: " .. tostring(door2.m_FinalPosition.y) )
 		door2.m_IsOpening = true
 		if door2.m_Speed == 0.0 then
 			door2:set_position(door2.m_FinalPosition)
@@ -103,7 +100,6 @@ function close_door(_objectName, room)
 	
 	if door ~= nil then
 		--door.m_Printable = false
-		coreInstance:trace("Door Final Position: " .. tostring(door.m_OriginalPosition.y) )
 		if door.m_IsOpening then
 			door.m_IsOpening = false
 		end
@@ -126,7 +122,6 @@ function close_door(_objectName, _objectName2, room)
 		if door.m_IsOpening then
 			door.m_IsOpening = false
 		end
-		coreInstance:trace("Closing Door Final Position: " .. tostring(door.m_OriginalPosition.y) )
 		door:set_position(door.m_OriginalPosition)
 		door.m_Actor:set_global_position(door.m_OriginalPosition)
 		--door.m_Actor:activate(false)
@@ -138,7 +133,6 @@ function close_door(_objectName, _objectName2, room)
 		if door2.m_IsOpening then
 			door2.m_IsOpening = false
 		end
-		coreInstance:trace("Closing Door Final Position: " .. tostring(door2.m_OriginalPosition.y) )
 		door2:set_position(door2.m_OriginalPosition)
 		door2.m_Actor:set_global_position(door2.m_OriginalPosition)
 		--door.m_Actor:activate(false)
@@ -346,6 +340,5 @@ function reset_game()
 		boss.m_Lifes = boss.m_OriginalLifes
 		boss.m_BossRunning = false
 	end
-	coreInstance:trace("RESET DONE")
 end
 

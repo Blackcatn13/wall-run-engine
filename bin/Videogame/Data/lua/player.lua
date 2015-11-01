@@ -149,12 +149,10 @@ function Player.new()
 	function self.add_sticker(img_name)
 		self.stickers = self.stickers + 1
 		unlock_image(img_name)
-		self.coreInstance:trace("Num Stickers: "..tostring(self.stickers))
 	end
 	
 	function self.inc_score(value)
 		self.score = self.score + value
-		self.coreInstance:trace("Score: "..tostring(self.score))
 	end
 	
 	function self.set_initial_position(yaw, position)
@@ -185,7 +183,6 @@ function Player.new()
 				self.vector_damage = direction
 			end
 			self.num_hearts = self.num_hearts -1
-			self.coreInstance:trace("Taking damage. Ouch! I lost a heart.")     
 			self.is_hit = true
 			self.is_hit_reset_first = true
 			if gui_manager:get_active_image('LifeGUI') == 'Life3' then
@@ -245,7 +242,6 @@ function Player.new()
 					end
 				end
 				local coreInstance = CCoreLuaWrapper().m_CoreInstance;
-				self.coreInstance:trace("player dies")
 				self.num_lifes = self.num_lifes - 1
 				--[[if self.num_lifes > 0 then
 					if not self.has_ass_burned and not self.dead_in_hole then
@@ -276,7 +272,6 @@ function Player.new()
 		-- si coincide con este checkpoint retornar true
 	--	self.coreInstance:trace("Searching CheckPoint")
 		for i = 1, table.getn(self.visited_checkpoints) do
-			self.coreInstance:trace(".")
 			if self.visited_checkpoints[i].name == trigger_name then
 				--self.coreInstance:trace("Encontrado!!")
 				return true
@@ -309,15 +304,12 @@ function Player.new()
 	
 		
 		if self.num_lifes > 0 then
-			
-			self.coreInstance:trace(tostring(self.num_lifes))
 			gui_manager:set_image('LifeGUI','Life3')
 			--actualizar gui
 			self.num_hearts = self.MAXHEARTS
 			--cargar ultimo chekpoint
 			if self.last_checkpoint ~= nil then
 				self.last_checkpoint.load_checkpoint(self)
-				self.coreInstance:trace("checkpoint loaded")
 			--else 
 				
 			--	self.coreInstance:trace("reset level")

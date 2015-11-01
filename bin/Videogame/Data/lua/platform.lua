@@ -51,7 +51,6 @@ function init_poly_platform(name, user_data_name, size, position, time_out, spee
 	if platform.m_Collission == 0 then
 		collision = false
 	end
-	coreInstance:trace(tostring(collision))
 	--platform.m_PlatformActor:activate(collision)
 	platform.m_OriginalScale = platform:get_scale()
 	platform.m_TimeOut= time_out
@@ -65,7 +64,6 @@ function update_break_platform(dt, current_time, max_time, platform_name, trigge
 	local platform = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room("breakable",player_controller.m_Room):get_resource(platform_name)
 
 	if platform ~= nil and not platform.m_EmittersSet then
-		coreInstance:trace("Setting Platform particles")
 		local array_emitters = { particle_manager:get_resource(platform.m_ParticleEmitter), particle_manager:get_resource(platform.m_ParticleEmitter2), particle_manager:get_resource(platform.m_ParticleEmitter3), particle_manager:get_resource(platform.m_ParticleEmitter4)}
 		set_emitters_visible(array_emitters, true)
 		platform.m_EmittersSet = true

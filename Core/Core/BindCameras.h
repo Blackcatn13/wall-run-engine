@@ -137,6 +137,7 @@ void RegisterCameraController() {
 	.def_readwrite("variable_pitch_value", &PathPointSpec::variablePitchValue)
 	.def_readwrite("yaw_offset", &PathPointSpec::yawOffset)
 	.def_readwrite("yaw_offset_value", &PathPointSpec::yawOffsetValue)
+	.def_readwrite("yaw_speed", &PathPointSpec::yawSpeed)
   ];
 
 

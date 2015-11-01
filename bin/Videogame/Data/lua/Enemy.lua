@@ -195,7 +195,6 @@ function update_shoot(dt, enemy)
  local renderable_shoot = get_renderable_object("lava", enemy.m_RenderableObject.m_Room, enemy.m_ProjectileName)
 	local emitter2 = particle_manager:get_resource(renderable_shoot.m_ParticleEmitter2)
  if (enemy.m_IsOnCooldown) then
-	coreInstance:trace("Updateando disparo pum!!")
 	
     enemy.m_CurrentCooldown = enemy.m_CurrentCooldown - dt;
     if (enemy.m_CurrentCooldown < 0.0) then
@@ -380,7 +379,6 @@ function update_shoot_boss(dt, enemy)
 			if not choca then
 				local dust_emitter = particle_manager:get_resource(renderable_shoot.m_ParticleEmitter)
 				if dust_emitter ~= nil then
-					coreInstance:trace("Proyectil Roto")
 					dust_emitter.m_vPos = enemy.m_PosicionBala + renderable_shoot.m_EmitterOffset
 					dust_emitter.m_FireParticles = true
 				end
