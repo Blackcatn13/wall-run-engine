@@ -50,7 +50,7 @@
 	<!-- cinematic models -->
 	<animated_model name="Chucky1" core="chuky" pos="0.0 0.0 0.0" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="animationLayerAux" room="0"/>
 	<animated_model name="Piky1" core="piky" pos="10.785 1.316 10.879" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="animationLayerAux" room="0"/>
-	<animated_model name="Chucky2" core="chuky" pos="0.0 0.0 0.0" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="animationLayerAux" room="7"/>
+	<animated_model name="Chucky2" core="chuky" pos="-104.969 14.644 -306.201" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="animationLayerAux" room="7"/>
 	<animated_model name="Chucky3" core="chuky" pos="0.0 0.0 0.0" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="animationLayerAux" room="7"/>
 	<animated_model name="Piky2" core="piky" pos="-234.777 28.975 -645.629" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" layer="animationLayerAux" room="7"/>
 	<!-- end cinematic models -->
