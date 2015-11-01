@@ -85,7 +85,7 @@ end
 
 function reset_player_states()
 
-	local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room(layer, player_controller.m_Room):get_resource(piky_mesh_name);
+	local playerRenderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room(piky_layer, player_controller.m_Room):get_resource(piky_mesh_name);
 
 	inDoubleLoop = false;
 	inDoubleJump = false;

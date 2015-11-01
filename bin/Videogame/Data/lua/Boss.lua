@@ -9,7 +9,7 @@ local max_return_times = 3
 local max_timer = 4.0
 local current_max_timer = max_timer
 local dust_particles_fired = false
-
+local boss_dead = false
 
 local current_sequence =  {}
 local last_action_id = 1
@@ -123,6 +123,7 @@ function start_boss()
 	dust_particles_fired = false
 	set_checkpoint("boss_checkpoint", nil)
 	player.attack_enabled = true
+	boss_dead = false
 end
 
 
@@ -532,15 +533,17 @@ function chucky_boss_enter_dead(name)
 end
 
 function chucky_boss_exit_dead(name)
-	
+	boss_dead = false
 end
 
 function chucky_boss_update_dead(ElapsedTime, doComprobation, name)
 	local enemy = enemy_manager:get_enemy(name)
 	if (enemy ~= nil) then
-		if not enemy.m_RenderableObject:is_action_animation_active() then
+		if not enemy.m_RenderableObject:is_action_animation_active() and not boss_dead then
 			coreInstance:trace("YAAAAY WALL DONE!!")
+			CCoreLuaWrapper().m_CoreInstance:getGUIManager():push_windows('Succeed.xml')
 			-- Llamar al fin de demo /cinematica final
+			boss_dead = true
 		end
 	end
 end
