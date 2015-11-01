@@ -262,6 +262,7 @@ function player_die(burning)
 	--coreInstance:trace("Stop Follow Camera previo del trigger: "..tostring(player.stop_follow_camera))
 	if not player.has_ass_burned and player.activating_triggers then
 		player.dead_in_hole = true
+		sound_manager:PlayEvent("Piky_Fall","Piky");
 		player.stop_follow_camera = true
 		--coreInstance:trace("Stop Follow Camera del trigger: "..tostring(player.stop_follow_camera))
 	end

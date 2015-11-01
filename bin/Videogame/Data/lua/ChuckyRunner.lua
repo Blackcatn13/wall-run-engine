@@ -46,6 +46,7 @@ end
 function chucky_runner_enter_running(name)
 	chucky.m_RenderableObject:blend_cycle(1,1,0);
 	chucky.m_PhysicController:use_gravity(true);
+	sound_manager:PlayEvent("Chucky_Walk","ChuckyRunner");
 	local chucky_renderable = chucky.m_RenderableObject
 	local emitter = particle_manager:get_resource(chucky_renderable.m_ParticleEmitter)
 	if not chucky_falling then
@@ -60,6 +61,7 @@ function chucky_runner_enter_running(name)
 end
 
 function chucky_runner_exit_running(name)
+	sound_manager:PlayEvent("Chucky_Quiet","ChuckyRunner");
 	chucky.m_RenderableObject:clear_cycle(1,0.25);
 end
 

@@ -171,6 +171,7 @@ function start_super_piky()
 	local emitter4 = particle_manager:get_resource(renderable.m_ParticleEmitter4)
 	emitter4.m_vPos = renderable:get_position()
 	emitter4:set_visible(true)
+	sound_manager:PlayEvent("Piky_To_SuperPiky","Piky");
 	renderable:execute_action(anim_poly,0.1,0,1,false)
 	transition_super_piky = true		
 
@@ -314,6 +315,7 @@ function chucky_boss_update_return(ElapsedTime, doComprobation, name)
 		if not executedReturn and distance_to_bala < 7 then
 			boss_projectile_returned = false
 			boss_projectile_returned_by_chucky = true
+			sound_manager:PlayEvent("SuperPiky_return","ChuckyBoss");
 			local enemyPos = Vect3f(enemy:get_position().x, enemy:get_position().y + 2, enemy:get_position().z);
 			enemy.m_DireccionBala = player_controller:get_position() - enemyPos;
 			if actual_speed_change < max_speed_change then
@@ -421,6 +423,7 @@ function chucky_boss_update_call(ElapsedTime, doComprobation, name)
 			dust_particles_fired = false
 			enemy:m_FSM():newState("Parado")
 		elseif enemy.m_RenderableObject:get_animation_time() > 1.2 and not dust_particles_fired then
+			sound_manager:PlayEvent("Chucky_Miks","ChuckyBoss");
 			dust_particles_fired = true
 			local enemyYaw = enemy:get_yaw() + (math.pi / 2);
 			local vectRight = Vect3f(math.cos(enemyYaw), 0, -math.sin(enemyYaw));
@@ -474,6 +477,7 @@ function chucky_boss_update_hurt(ElapsedTime, doComprobation, name)
 			end
 		end
 		if execute_hurt then
+			sound_manager:PlayEvent("Chucky_Hurt","ChuckyBoss");
 			execute_hurt = false
 			enemy.m_Life = enemy.m_Life -1
 			return_factor = return_factor + 1
@@ -513,6 +517,7 @@ function chucky_boss_enter_dead(name)
 	local enemy = enemy_manager:get_enemy(name)
 	if (enemy ~= nil) then
 		enemy.m_RenderableObject:execute_action(8,0.1,0,1,false)
+		sound_manager:PlayEvent("Chucky_Dead","ChuckyBoss");
 	end	
 end
 

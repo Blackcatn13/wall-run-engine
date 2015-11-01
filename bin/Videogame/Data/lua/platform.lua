@@ -298,7 +298,6 @@ function mp_update_calcwp(ElapsedTime, room_name, name)
 end
 --End Moving Platform
 
-
 --Poly Platform
 
 function update_poly_platform(current_poly_time, dt, platform_name)
@@ -331,6 +330,10 @@ function update_poly_platform(current_poly_time, dt, platform_name)
 		--pikyRenderable:is_action_animation_active()
 		--player_controller.m_isJumping = false
 		player.is_activating_poly = true
+		if platform.m_PlayingSound == false then
+			sound_manager:PlayEvent("Poly","PolyPlatform");
+			platform.m_PlayingSound = true;
+		end
 		platform:activate_poly()
 		
 		--activate_poly(platform, dt)
@@ -340,6 +343,9 @@ function update_poly_platform(current_poly_time, dt, platform_name)
 	-- If poly is activated
 	elseif current_poly_time > platform.m_TimeOut then
 		platform:deactivate_poly()
+		if platform.m_PlayingSound == true then
+			platform.m_PlayingSound = false;
+		end
 		player.is_activating_poly = false
 		--deactivate_poly(platform, dt)
 	end
@@ -352,14 +358,14 @@ end
 function activate_poly(_platform, dt)
 	if _platform.m_Activated == false then
 		max_distance = _platform.m_OriginalPosition:distance(_platform.m_FinalPosition)
-
+		
 		if _platform:get_position():distance(_platform.m_FinalPosition) >= 0.1 and _platform:get_position():distance(_platform.m_FinalPosition) <= max_distance then
 			local new_position = _platform:get_position() + (_platform.m_Direction * _platform.m_Speed * dt)
 			_platform.m_Actor:set_global_position(new_position)
 			_platform:set_position(new_position)
 			--_platform.m_Light:set_position(new_position)
 			_platform.m_IsMoving = true
-
+			
 			player_controller:move(_platform.m_Direction * _platform.m_Speed * dt, dt)
 			-- Si colisiona con piky (o si debería bajar) que lo desplace
 		else
@@ -374,6 +380,7 @@ end
 
 function deactivate_poly(_platform, dt)
 	if _platform.m_Activated == true then
+		
 		max_distance = _platform.m_OriginalPosition:distance(_platform.m_FinalPosition)
 		if _platform:get_position():distance(_platform.m_OriginalPosition) >= 0.1 and _platform:get_position():distance(_platform.m_OriginalPosition) <= max_distance+0.1 then
 			local new_position = _platform:get_position() + (_platform.m_Direction * _platform.m_Speed * dt * -1)
@@ -384,6 +391,7 @@ function deactivate_poly(_platform, dt)
 		else
 			--_platform.m_Light:set_position(_platform.m_LightOriginalPosition)
 			_platform:set_position(_platform.m_OriginalPosition)
+			
 			_platform.m_Activated = false
 			_platform.m_ActiveTime = 0.0
 		end

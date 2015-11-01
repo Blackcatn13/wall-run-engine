@@ -23,6 +23,7 @@ local max_hole_falling = 1.0;
 local iman_force = 20;
 local max_finish_counter_time = 0.5
 local temp_finish_counter_time = 0.0
+local playing_moving = false;
 
 --////////////////////////////////////////////////////////
 -- GLOBAL PARAMETERS
@@ -504,6 +505,10 @@ function on_update_player_lua(l_ElapsedTime)
 			playerRenderable:blend_cycle(anim_jump_loop,1,0.1);
 		end
 		if _land then
+			if playing_moving == true then
+				sound_manager:PlayEvent("Piky_Quiet","Piky");
+				playing_moving = false;
+			end
 			if inDoubleJump == true then
 				if executedDoubleLoop == false then
 					if (not playerRenderable:is_action_animation_active()) then
@@ -596,6 +601,8 @@ function on_update_player_lua(l_ElapsedTime)
 			end
 		end
 		if player_controller.m_executeDoubleJump == true and inDoubleJump == false then
+			sound_manager:PlayEvent("Piky_Quiet","Piky");
+			playing_moving = false;
 			player_controller.m_executeDoubleJump = false;
 			if player_controller.m_isJumping then
 				local positionOld = playerRenderable:get_position();
@@ -715,7 +722,9 @@ function on_update_player_lua(l_ElapsedTime)
 		if (act2in:do_action_from_lua("Jump")) and (player_controller.m_isJumping == false and player_controller.m_isDoubleJumping == false and _land == false and player_controller.m_isAttack == false and player.is_hit == false and player_controller.m_isGrounded and not player.is_dead) and not playerRenderable.m_VanishActive and jump_enabled and not gui_manager:is_transition_effect_active() and not player.super_piky_active and not transition_super_piky then
 			local y_axis = 0.0
 			local x_axis = 0.0
-						
+			sound_manager:PlayEvent("Piky_Quiet","Piky");
+			playing_moving = false;
+			sound_manager:PlayEvent("Piky_Jump","Piky");
 			player_controller.m_JumpingTime = 0;
 			playerRenderable:clear_cycle(anim_idle,0.2);
 			playerRenderable:clear_cycle(anim_run,0.2);
@@ -735,6 +744,9 @@ function on_update_player_lua(l_ElapsedTime)
 		local first_frame_attack = false;
 		if (act2in:do_action_from_lua("Attack") and not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land and player_controller.m_isAttack == false and canAttack == true and player.is_hit == false and player.attack_enabled and not player.is_dead) and not playerRenderable.m_VanishActive and not gui_manager:is_transition_effect_active() then --) and (player_controller.m_isAttack == false) then			
 			if not player.super_piky_active then
+				sound_manager:PlayEvent("Piky_Quiet","Piky");
+				playing_moving = false;
+				sound_manager:PlayEvent("Piky_Attack","Piky");
 				canAttack = false;
 				player.get_player_controller():update_character_extents(false, m_ReduceCollider);
 				contador = 0;
@@ -782,10 +794,18 @@ function on_update_player_lua(l_ElapsedTime)
 		local stopping = false;
 		if not player_controller.m_isJumping and not player_controller.m_isDoubleJumping and not _land and player_controller.m_isAttack == false and not player.is_hit and not player.is_dead and not playerRenderable.m_VanishActive and player.super_piky_attack == false then
 			if _isQuiet == false then
+				if acceleration == 1 and playing_moving == false then
+					sound_manager:PlayEvent("Piky_Walk","Piky");
+					playing_moving = true;
+				end
 				local xValue = mov.x * acceleration;
 				local zValue = mov.z * acceleration;
 				mov = Vect3f(xValue, mov.y, zValue);
 			else
+				if playing_moving == true then
+					sound_manager:PlayEvent("Piky_Quiet","Piky");
+					playing_moving = false;
+				end
 				stopping = true;
 				if acceleration > 0 then
 					mov = inertia * acceleration;
@@ -872,6 +892,10 @@ function on_update_player_lua(l_ElapsedTime)
 			else
 				if player.is_hit then
 					--AQUI VA LA ANIMACION DE RECIBIR DAMAGE
+					if playing_moving == true then
+						sound_manager:PlayEvent("Piky_Quiet","Piky");
+						playing_moving = false;
+					end
 					playerRenderable:clear_cycle(anim_idle,0);
 					playerRenderable:clear_cycle(anim_run,0);
 					if player.playing_hit == false then
@@ -932,6 +956,10 @@ function on_update_player_lua(l_ElapsedTime)
 		
 		if player.is_dead and fade_step == 0 then
 			--coreInstance:trace("Dead ")	
+			if playing_moving == true then
+				sound_manager:PlayEvent("Piky_Quiet","Piky");
+				playing_moving = false;
+			end
 			if not playerRenderable:is_action_animation_active() and not player.dead_in_hole then
 					--coreInstance:trace("Dead ".. tostring(player.dead_in_hole))
 					--player.check_death_actions()
