@@ -128,7 +128,6 @@ function check_death_fade()
 			gui_manager:set_visible_gui_element("PixeliteNumber",true)
 			gui_manager:set_visible_gui_element("PixeliteNumberShadow",true)
 			if player.num_lifes == 0 then
-				coreInstance:trace("game over")
 				--coreInstance:getWWSoundManager():PlayEvent("_Fail", "Music");
 				local game_over_pos = Vect3f(925, 0, -1.5)
 				set_screen_menu(game_over_pos, 9)

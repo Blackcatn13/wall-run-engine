@@ -329,8 +329,6 @@ function mikmik_update_attack_player(ElapsedTime, doComprobation, name)
 					enemy:add_damage_player()
 					sound_manager:PlayEvent("Mik_Attack", name);
 				elseif damageType == 1 or (damageType == 3 and player.super_piky_active)then
-					coreInstance:trace("Damage type: "..tostring(damageType))
-					coreInstance:trace("SuperPiky: "..tostring(player.super_piky_active))
 					enemy.m_time_to_fly = true;
 					enemy.m_playAnimationDead = false;
 					enemy.m_flyVec = Vect3f(enemyPosXZ.x - playerPosXZ.x, 0,enemyPosXZ.z - playerPosXZ.z);
@@ -524,7 +522,6 @@ function mikmik_enter_waiting(name)
 	enemy:set_position(position)
 	enemy.m_PhysicController:set_position(position)
 	enemy:move_to_position(position)
-	coreInstance:trace("Entro en waiting: "..name)
 end
 
 function mikmik_exit_waiting(name)

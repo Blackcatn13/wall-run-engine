@@ -53,7 +53,6 @@ function switch_boss_layer(layer)
 	local old_layer = chucky_boss_layer
 	chucky_boss_layer = layer
 	renderable_objects_layer_manager:change_between_layers(old_layer, chucky_boss_layer, 0, boss_mesh_name)
-	coreInstance:trace("Switch Boss Layer from " .. old_layer.. " to "..chucky_boss_layer)
 end
 
 function start_boss()
@@ -116,7 +115,6 @@ function start_boss()
 	particle_manager:get_resource("SuperPikyAuraEmitter"):set_visible(false)
 	particle_manager:get_resource("SuperPikyAura2Emitter"):set_visible(false)
 	chucky.m_Phases = chucky.m_OriginalPhases
-	coreInstance:trace("Vidas Boss" .. tostring(chucky.m_OriginalLifes))
 	chucky.m_Life = chucky.m_OriginalLifes
 	last_action_id = 1
 	current_sequence =  {}
@@ -180,7 +178,6 @@ end
 ---- IA----
 ----PARADO----
 function chucky_boss_enter_stopped(name)
-	coreInstance:trace("Estado Parado")
 	local enemy = enemy_manager:get_enemy(name)
 	enemy.m_RenderableObject:remove_action(5)
 	enemy.m_RenderableObject:blend_cycle(0,0.1,0);
@@ -240,8 +237,6 @@ function call_next_action()
 	if next(current_sequence) == nil or last_action_id > table.getn(current_sequence) then
 		local rand = math.random(table.getn(actions)) 
 		current_sequence = actions[rand]
-		
-		coreInstance:trace("CurrentSequence "..tostring(rand) )
 		last_action_id = 1
 	end
 
@@ -254,7 +249,6 @@ end
 
 ----LANZAR----
 function chucky_boss_enter_shoot(name)
-	coreInstance:trace("Estado Lanzar")
 	boss_projectile_returned = false
 	boss_projectile_returned_by_chucky = false;
 	local enemy = enemy_manager:get_enemy(name)
@@ -294,7 +288,6 @@ end
 
 ----DEVOLVER----
 function chucky_boss_enter_return(name)
-	coreInstance:trace("Devuelvo");
 	local enemy = enemy_manager:get_enemy(name)
 	contador = 0;
 	executedReturn = false;
@@ -351,13 +344,11 @@ function chucky_boss_update_return(ElapsedTime, doComprobation, name)
 			enemy:m_FSM():newState("EsperandoImpacto")
 		elseif executedReturn and not boss_projectile_returned_by_chucky and boss_projectile_returned and distance_to_bala < 7 then
 			enemy:m_FSM():newState("Hurt")
-			coreInstance:trace("HUUUUUUURT");
 		end
 	end
 end
 --WAITING--
 function chucky_boss_enter_waiting(name)
-	coreInstance:trace("Estado Esperando")
 	local enemy = enemy_manager:get_enemy(name)
 	enemy.m_RenderableObject:remove_action(5)
 	enemy.m_RenderableObject:blend_cycle(0,1,0);
@@ -403,7 +394,6 @@ function check_random_action(bonus)
 end
 ----LLAMAR----
 function chucky_boss_enter_call(name)
-	coreInstance:trace("Estado Llamando Miks")
 	local enemy = enemy_manager:get_enemy(name)
 	if (enemy ~= nil) then
 		enemy.m_RenderableObject:execute_action(7,0.1,0,1,true)
@@ -425,7 +415,6 @@ function chucky_boss_update_call(ElapsedTime, doComprobation, name)
 				enemy_manager:get_enemy(array_mik[i]):move_to_position(array_pos[i])
 				--coreInstance:trace("Mik ".. array_mik[i] .. " position: " .. tostring(enemy_manager:get_enemy(array_mik[i]):get_position().x) .. ", "..tostring(enemy_manager:get_enemy(array_mik[i]):get_position().y).. ", "..tostring(enemy_manager:get_enemy(array_mik[i]):get_position().z))
 				fire_mik_summon_particles(array_mik[i])
-				coreInstance:trace("Mik ".. array_mik[i] .. " final position: " .. tostring(enemy_manager:get_enemy(array_mik[i]):get_position().x) .. ", "..tostring(enemy_manager:get_enemy(array_mik[i]):get_position().y).. ", "..tostring(enemy_manager:get_enemy(array_mik[i]):get_position().z))
 			end
 			all_boss_miks_killed = false
 			boss_miks_killed = 0
@@ -452,7 +441,6 @@ function chucky_boss_enter_hurt(name)
 	if current_max_timer > 1 then
 		current_max_timer = current_max_timer - 1
 	end
-	coreInstance:trace("Toy Hurt")
 end
 
 function chucky_boss_exit_hurt(name)
@@ -489,7 +477,6 @@ function chucky_boss_update_hurt(ElapsedTime, doComprobation, name)
 			execute_hurt = false
 			enemy.m_Life = enemy.m_Life -1
 			return_factor = return_factor + 1
-			coreInstance:trace("vidas: "..tostring(enemy.m_Life))
 			local animation_hurt = true
 			if enemy.m_Life <=0 then
 				enemy.m_Phases = enemy.m_Phases -1
@@ -503,12 +490,10 @@ function chucky_boss_update_hurt(ElapsedTime, doComprobation, name)
 					animation_hurt = false;
 				end
 				if enemy.m_Phases == 1 then
-					coreInstance:trace("CHUCKY ANGRY")
 					switch_boss_layer("angry")
 				end
 			end
 			if animation_hurt then
-				coreInstance:trace("doing animation hurt")
 				doing_hurt = true
 				enemy.m_RenderableObject:clear_cycle(0,0.3);
 				enemy.m_RenderableObject:execute_action(6,0.1,0,1,true)
@@ -517,7 +502,6 @@ function chucky_boss_update_hurt(ElapsedTime, doComprobation, name)
 		if doing_hurt and not enemy.m_RenderableObject:is_action_animation_active() then
 			enemy.m_RenderableObject:remove_action(6)
 			enemy.m_RenderableObject:blend_cycle(0,0.1,0);
-			coreInstance:trace("stoping hurt")
 			doing_hurt = false
 			enemy:m_FSM():newState("Parado")
 		end
@@ -540,7 +524,6 @@ function chucky_boss_update_dead(ElapsedTime, doComprobation, name)
 	local enemy = enemy_manager:get_enemy(name)
 	if (enemy ~= nil) then
 		if not enemy.m_RenderableObject:is_action_animation_active() and not boss_dead then
-			coreInstance:trace("YAAAAY WALL DONE!!")
 			CCoreLuaWrapper().m_CoreInstance:getGUIManager():push_windows('Succeed.xml')
 			-- Llamar al fin de demo /cinematica final
 			boss_dead = true

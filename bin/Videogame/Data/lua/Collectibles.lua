@@ -15,9 +15,7 @@ function roll_collectible(objectName, layer_name, dt)
 	local temp_yaw = roll_object(objectName, layer_name, dt)
 	if temp_yaw ~= 0 then
 		local trigger = trigger_manager:get_resource(objectName.."_UserData")
-		coreInstance:trace("Collectible trigger position Antes: "..tostring(trigger:get_position().x)..", "..tostring(trigger:get_position().y)..", "..tostring(trigger:get_position().z))
 		trigger:rotate_by_angles(temp_yaw)
-		coreInstance:trace("Collectible trigger position Despues: "..tostring(trigger:get_position().x)..", "..tostring(trigger:get_position().y)..", "..tostring(trigger:get_position().z))
 	end
 end
 
@@ -39,7 +37,6 @@ function check_collectibles()
 	for i = 1, table.maxn(Cards_Vector) do
 		if Cards_Vector[i].unlocked == true then
 			local image_name = "Collectible"..tostring(i)
-			coreInstance:trace(image_name)
 			--gui_manager:set_image(image_name,'ImgUnLocked')
 			gui_manager:set_visible_gui_child_element("Collectibles", image_name, true);
 		end
@@ -51,7 +48,6 @@ function reset_cards()
 		if Cards_Vector[i].unlocked == true then
 			Cards_Vector[i].unlocked = false
 			local image_name = "Collectible"..tostring(i)
-			coreInstance:trace(image_name)
 			--gui_manager:set_image(image_name,'ImgLocked')
 			gui_manager:set_visible_gui_child_element("Collectibles", image_name, false);
 		end
@@ -111,7 +107,6 @@ function activate_collectible_by_room (_trigger, layer_name, obj_name, room_numb
 	end
 	local object_manager = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room(layer_name, room_number)
 	local object = object_manager:get_resource(obj_name)
-	coreInstance:trace("Activating collectible: ".. obj_name)
 	if object ~= nil then
 		object.m_Printable = true
 		local emitter = object.m_ParticleEmitter

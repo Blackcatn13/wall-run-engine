@@ -933,7 +933,6 @@ function on_update_player_lua(l_ElapsedTime)
 			else
 				--coreInstance:trace("Animation is runing")
 				if player.has_ass_burned then
-					coreInstance:trace("ass burned")
 					local emitter2 = particle_manager:get_resource(playerRenderable.m_ParticleEmitter2)
 					local pos = Vect3f(0.0, 0.0, 0.0);
 					pos = pos + player.get_player_controller():get_position()

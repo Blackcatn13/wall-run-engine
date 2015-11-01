@@ -19,13 +19,6 @@ function on_enter_patrulla_parado()
 --core:trace("onEnter1");
   id_next_wp = wp_manager:find_closest_waypoint("sala_principal", ai_controller:get_position())
   next_wp = wp_manager:get_waypoint_position(id_next_wp, "sala_principal")
-  core:trace("Buscando closest waypoint ");
-  core:trace("ID:");
-  core:trace(tostring(id_next_wp))
-  core:trace("Coords:");
-  core:trace(tostring(next_wp.x))
-  core:trace(tostring(next_wp.y))
-  core:trace(tostring(next_wp.z))
   return 0 
 end
 
@@ -41,13 +34,11 @@ function on_enter_patrulla_buscar_next_wp()
 --core:trace(tostring(next_wp.x));
 --local name = CNamed()
 	--core:trace("Creando wpManager ");
-	core:trace(tostring(id_next_wp));
 	id_destino_wp = wp_manager:find_closest_waypoint("sala_principal", core:get_player_controller():get_position())
 	--destino_wp = wp_manager:get_waypoint_position(id_destino_wp, "sala_principal")
 	 
 	id_path_next_wp = wp_manager:calcular_siguiente_waypoint(id_next_wp,id_destino_wp,"sala_principal")
 	id_next_wp = id_path_next_wp
-	core:trace(tostring(id_next_wp));
 	next_wp = wp_manager:get_waypoint_position(id_next_wp, "sala_principal")
 	
 	--core:trace(tostring(resultado))
@@ -66,7 +57,6 @@ function on_enter_patrulla_buscar_next_wp()
 end
 
 function on_enter_patrulla_perseguir_player()
-	core:trace("Entering Perseguir_PLayer");
 -- OnEnter Perseguir_PLayer  
 end
 
@@ -84,7 +74,6 @@ function on_exit_patrulla_andar_wp()
 end
 
 function on_exit_patrulla_buscar_next_wp()
-	core:trace("Saliendo Buscar_next_WP");
 -- OnExit Buscar_next_WP
 	current_time = 0
 end
@@ -153,11 +142,9 @@ function on_update_patrulla_buscar_next_wp(ElapsedTime, doComprobation)
 			local wp_distance = get_distance_to_player(ai_controller:get_position(), origen_wp)
 			
 			if wp_distance > 25 then
-				core:trace("me acerco al WP mas cercano");
 				origen_wp = wp_manager:get_waypoint_position(id_origen_wp, "sala_principal")
 				next_wp = origen_wp
 			else
-				core:trace("estoy en WP origen, voy al siguiente");
 				id_next_wp = wp_manager:calcular_siguiente_waypoint(id_origen_wp,id_destino_wp,"sala_principal")
 				next_wp = wp_manager:get_waypoint_position(id_next_wp, "sala_principal")
 			end

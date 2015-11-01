@@ -76,9 +76,7 @@ function pumpum_update_stopped(ElapsedTime, doComprobation, name)
 			else
 				local temp_zone = enemy.m_Zone
 				if temp_zone == enemy.m_RenderableObject.m_Room then
-					coreInstance:trace("Sala = zona")
 					temp_zone = temp_zone..".0"
-					coreInstance:trace(tostring(temp_zone))
 				end
 				rotate_yaw(enemy, ElapsedTime, player_position)
 				
@@ -87,7 +85,6 @@ function pumpum_update_stopped(ElapsedTime, doComprobation, name)
 				end
 				
 				if player.is_hit == false and tostring(temp_zone) == tostring(player.zone) and not enemy.m_Hide and not enemy.m_Hiding then
-					coreInstance:trace("Pum listo para atacar")
 					enemy:m_FSM():newState("Perseguir_Player")
 				end
 			end
@@ -159,7 +156,6 @@ function pumpum_update_attack_player(ElapsedTime, doComprobation, name)
 			enemy.m_RenderableObject:clear_cycle(1,0.2);
 			enemy.m_RenderableObject:execute_action(2,0.1,0,1,true);--]]
 			--enemy.m_isAttacking = true;
-			coreInstance:trace("Tocado")
 		elseif damageType == 1 then
 			enemy:add_damage_player()
 			--[[enemy.m_time_to_fly = true;
@@ -168,7 +164,6 @@ function pumpum_update_attack_player(ElapsedTime, doComprobation, name)
 			enemy.m_flyVec = Vect3f(enemy.m_flyVec.x, flyInclination, enemy.m_flyVec.z);]]
 			--local dead_pos = enemy.m_PhysicController:get_position()
 			--enemy.m_OriginalPosition = Vect3f(dead_pos.x,dead_pos.y,dead_pos.z)
-			coreInstance:trace("Tocado con ataque")
 		elseif damageType == 2 then
 			player_controller.m_executeDoubleJump = true;
 			--local dead_pos = enemy.m_PhysicController:get_position()
@@ -283,7 +278,6 @@ function pumpum_exit_dead(name)
 		enemy.m_RenderableObject.m_Printable=true
 		enemy.m_CurrentTime = 0
 		--enemy.m_RenderableObject:remove_action(3);
-		coreInstance:trace("setting alive")
 	end
 end
 

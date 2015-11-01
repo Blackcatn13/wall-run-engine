@@ -36,7 +36,6 @@ function vanish_player(name, room)
 		--	coreInstance:trace("Alpha Modifier: ".. tostring(player_renderable.m_Modifier))
 			if (player_renderable.m_Modifier <= 0) then
 				if not teleporting then
-					coreInstance:trace("Teletransportandoo")
 					activate_teleport(name, room)
 					teleporting = true
 					
@@ -124,24 +123,18 @@ function set_player_zone(zone_number)
 --set_player_room("3", "false")
 	player.zone = zone_number
 	--renderable_objects_layer_manager:change_between_vectors("player", "Piky", tonumber(zone_number))
-	coreInstance:trace("New Zone " .. tostring(player.zone) )
 end
 
 function unlock_image(image_name)
-	coreInstance:trace("Imagen a obtener: "  ..image_name)
 	for i = 1, table.maxn(Cards_Vector) do
-	coreInstance:trace("Imagen segun el vector: " ..Cards_Vector[i]:get_name())
 		if Cards_Vector[i]:get_name() == image_name then
 			Cards_Vector[i]:set_unlocked(true)
-			coreInstance:trace("Image ".. image_name .."Unclocked!!")
 			return 0
 		end
 	end
-	coreInstance:trace("Image Not found")
 end
 
 function toogle_switch(trigger_name, puzzle_name)
-	coreInstance:trace("Enter switch")
 	--local player = Player:get_instance()
 	--coreInstance:trace(tostring(player.get_controller().m_isJumping))
 	local puzzle = coreInstance:get_puzzle_manager():get_resource(puzzle_name)
@@ -159,7 +152,6 @@ function toogle_switch(trigger_name, puzzle_name)
 					trigger.m_IsSwitched = true
 				--	coreInstance:trace("Trigger activado?" ..tostring(trigger.m_IsSwitched))
 					puzzle.m_ActivatedSwitches = puzzle.m_ActivatedSwitches + 1	
-					coreInstance:trace("Activated Switches: "..tostring(puzzle.m_ActivatedSwitches))
 					coreInstance:getWWSoundManager():PlayEvent("SwitchActivate", "Music");
 				--	local new_position = Vect3f(switch_mesh:get_position().x,switch_mesh:get_position().y - 1,switch_mesh:get_position().z )
 				--	change_object_position(switch_mesh, new_position)
@@ -191,7 +183,6 @@ function activate_trigger_update(trigger_name)
 	--local trigger_manager = coreInstance:get_trigger_manager()
 	local trigger = trigger_manager:get_resource(trigger_name)
 	trigger.m_Update=true
-	coreInstance:trace("Trigger update " .. tostring(trigger.m_Update))
 end 
 
 function trigger_set_2D(offset_axis)
@@ -285,16 +276,13 @@ end
 
 function set_checkpoint(trigger_name, renderable_object)
 	--local coreInstance = CCoreLuaWrapper().m_CoreInstance;
-		coreInstance:trace("enter checkpoint")
 	--local player = Player:get_instance()
 	local current_position = Vect3f(player.get_player_controller():get_position())
-	coreInstance:trace("Player Position set")
 	
 	--coreInstance:trace(tostring(checkpoint:is_activated()))
 	--if checkpoint:is_activated() == false then
 	if player.check_visited_checkpoints(trigger_name) == false then
 		local checkpoint = CheckPoint.new()
-		coreInstance:trace("Checkpoint created")
 		--coreInstance:trace(renderable_object)
 		local checkpoint_mesh = nil
 		if renderable_object ~= nil then
@@ -307,21 +295,19 @@ function set_checkpoint(trigger_name, renderable_object)
 			end
 		end
 		checkpoint.set_checkpoint(player, trigger_name, checkpoint_mesh)
-		coreInstance:trace(tostring(checkpoint.is_activated))
-		coreInstance:trace("checkpoint activated")
 	end
 end
 
 function test_on_enter()
-	coreInstance:trace("Entrando en trigger")
+	--coreInstance:trace("Entrando en trigger")
 end
 
 function test_on_exit( param)
-	coreInstance:trace("Saliendo de trigger " .. param)
+	--coreInstance:trace("Saliendo de trigger " .. param)
 end
 
 function test_on_stay( param)
-	coreInstance:trace("Dentro de trigger ".. param)
+	--coreInstance:trace("Dentro de trigger ".. param)
 end
 -------------------------------------------------------------------
 -- Esta es temporal hasta que se pongan los renderables en la mashup
@@ -351,7 +337,6 @@ function set_puzzle_enemy_active(active)
 	else
 		player.enemy_puzzle_active = false
 	end
-	coreInstance:trace("Enemy puzle active ".. tostring(player.enemy_puzzle_active))
 end
 
 function activate_invisible_wall(name, room_number)
@@ -370,10 +355,8 @@ end
 
 function check_enemies_killed(num1, door)
 	if player.enemy_puzzle_active then
-		coreInstance:trace("----------------------------Enemies: ".. tostring(player.enemies_killed))
 		if player.enemies_killed == tonumber(num1) then
 			-- Aparece el collectible
-			coreInstance:trace("----------------------------Cromo is here!!")
 			local trigger_name ="Collectible1_UserData"
 			local trigger = trigger_manager:get_resource(trigger_name)
 			if(trigger ~= nil) then
@@ -382,7 +365,6 @@ function check_enemies_killed(num1, door)
 			player.enemy_puzzle_active = false
 		end
 		if player.enemies_killed == 2 then
-			coreInstance:trace("----------------------------Opening door")
 			open_door(door)
 		end
 	end
@@ -390,10 +372,8 @@ end
 
 function check_enemies_killed(num1, door, door2)
 	if player.enemy_puzzle_active then
-		coreInstance:trace("----------------------------Enemies: ".. tostring(player.enemies_killed))
 		if player.enemies_killed == tonumber(num1) then
 			-- Aparece el collectible
-			coreInstance:trace("----------------------------Cromo is here!!")
 			local trigger_name ="Collectible1_UserData"
 			local trigger = trigger_manager:get_resource(trigger_name)
 			if(trigger ~= nil) then
@@ -403,14 +383,12 @@ function check_enemies_killed(num1, door, door2)
 			player.enemy_puzzle_active = false
 		end
 		if player.enemies_killed == 2 then
-			coreInstance:trace("----------------------------Opening door")
 			open_door(door, door2)
 		end
 	end
 end
 
 function ChuckyApear(distance)
-	coreInstance:trace("CHUKY APEARS!!!");
 	if player_controller.m_Room == 2 or player_controller.m_Room == 5 or player_controller.m_Room == 7 then
 		local Chucky = enemy_manager:get_enemy("Chucky");
 		if player.activating_triggers and not Chucky.m_Appeared then
@@ -444,7 +422,6 @@ function ChuckyReApears(distance)
 end
 
 function ChuckyDesapears()
-	coreInstance:trace("CHUKY goes out");
 	local Chucky = enemy_manager:get_enemy("Chucky");
 	--if(Chucky.m_Appeared == true) then
 		local pos = Vect3f(1000.30, 1000.0, -1000.75)
@@ -489,7 +466,6 @@ end
 
 function chucky_check_jump()
 	if tostring(player.inside_obstacle_area) == "false" and tostring(get_chuky_jumped()) =="false" then
-		coreInstance:trace("Chuky Check Jump Correct")
 		set_chuky_jumped(true)
 		ChuckyJump()
 	end
@@ -500,7 +476,6 @@ function chuky_can_jump()
 end	
 
 function set_player_obstacle_area(is_inside)
-	coreInstance:trace("Player Inside Obstacle area".. tostring(is_inside))
 	player.inside_obstacle_area = is_inside
 end
 
@@ -513,7 +488,6 @@ function set_player_room(room, chucky_appears)
 	if tostring(chucky_appears) == "true" and chuky_last_room ~= num_room then
 		renderable_objects_layer_manager:change_between_vectors("enemies", "Chucky",chuky_last_room, num_room)
 		chuky_last_room = num_room
-		coreInstance:trace("Chucky room: ".. tostring(chuky_last_room))
 	end
 		
 	player_controller.m_Room = num_room
@@ -544,7 +518,6 @@ function check_arrows_trap(trap_name, trap_trigger_name)
 	local trap = search(trap_vector, trap_name)
 	local trap_time = trap.time_out
 	if trigger_trap.m_Time > trap_time +0.1 and trigger_trap.m_Time < trap_time +0.4 then--tonumber(damage_time) and trigger_trap.m_Time < tonumber(damage_time) + 0.3 then
-		coreInstance:trace("Hit")
 		local player_position = player_controller:get_position()
 		
 		local axis = trap.damage_axis

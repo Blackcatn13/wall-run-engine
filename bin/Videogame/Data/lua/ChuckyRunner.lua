@@ -19,7 +19,6 @@ chucky_falling = false
 
 -- Chucky Stopped --
 function chucky_runner_enter_stopped(name)
-	coreInstance:trace("Chucky parado")
 	if playerController == nil then
 		playerController = player.get_player_controller()
 	end
@@ -31,7 +30,6 @@ function chucky_runner_enter_stopped(name)
 		local characterPos = chucky.m_PhysicController:get_position();
 		characterPos.y = player_controller:get_position().y - 1 --0
 		chucky.m_RenderableObject:set_position(characterPos);
-		coreInstance:trace("Chuky position renderable: " ..tostring(characterPos.x)..","..tostring(characterPos.y)..","..tostring(characterPos.z))
 	end
 end
 
@@ -120,7 +118,6 @@ function chucky_runner_enter_jumping(name)
 	chucky.m_RenderableObject:execute_action(2,0.25,0,1,true);
 	chucky.m_PhysicController:use_gravity(false);
 	jumpStart = false;
-	coreInstance:trace("Entro saltando")
 	set_chucky_need_to_jump(false)
 	local emitter = particle_manager:get_resource(chucky.m_RenderableObject.m_ParticleEmitter)
 	emitter:set_visible(false)
@@ -145,7 +142,6 @@ function chucky_runner_update_jumping(ElapsedTime, doComprobation, name)
 		chucky_renderable:execute_action(2,0.25,0,1,true);
 		chucky.m_PhysicController:use_gravity(false);
 		jumpStart = false;
-		coreInstance:trace("Entro saltando pero no estaba dentro ya?")
 	end
 	--coreInstance:trace("Update saltando chuky")
 	if (not chucky_renderable:is_cycle_animation_active() and not jumpStart) then
@@ -165,12 +161,10 @@ function chucky_runner_update_jumping(ElapsedTime, doComprobation, name)
 			emitter2.m_vPos = chucky_renderable:get_position()+ chucky_renderable.m_EmitterOffset2
 			emitter2.m_FireParticles = true
 		else
-			coreInstance:trace("Cayendooooooooooo")
 			local emitter3 = particle_manager:get_resource(chucky_renderable.m_ParticleEmitter3)
 			emitter3.m_vPos = chucky_renderable:get_position()+ chucky_renderable.m_EmitterOffset3
 			emitter3.m_FireParticles = true
 		end
-		coreInstance:trace("Salgo del saltooo")
 		chucky:m_FSM():newState("Corriendo");
 	end
 
@@ -181,7 +175,6 @@ function chucky_runner_update_jumping(ElapsedTime, doComprobation, name)
 	if distance < 3.0 then
 		player.catched =true
 		player:player_die()
-		coreInstance:trace("PIKY IS DEAD, AND YOU'RE THE NEXT")
 		chucky:m_FSM():newState("Parado");
 	end
 	
@@ -210,7 +203,6 @@ function chucky_runner_update_catching(ElapsedTime, doComprobation, name)
 		else
 			if not chucky_falling and chucky_able_to_catch then
 				chucky:m_FSM():newState("Corriendo");
-				coreInstance:trace("Paro de pillar y corro")
 			end
 		end
 	end
@@ -218,7 +210,6 @@ function chucky_runner_update_catching(ElapsedTime, doComprobation, name)
 	if distance < 2.0 then
 		player.catched =true
 		player:player_die()
-		coreInstance:trace("PIKY IS DEAD, AND YOU'RE THE NEXT")
 		chucky:m_FSM():newState("Parado");
 	end	
 	if need_to_jump then
@@ -284,7 +275,6 @@ function chucky_runner_update_waiting(ElapsedTime, doComprobation, name)
 	if distance < 3.0 and chucky_able_to_catch then
 		player.catched =true
 		player:player_die()
-		coreInstance:trace("PIKY IS DEAD, AND YOU'RE THE NEXT")
 		chucky:m_FSM():newState("Parado");
 	end
 	if distance >= (chuky_catching_distance * 2) and not chucky_able_to_catch then
