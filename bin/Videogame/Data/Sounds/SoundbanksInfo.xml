@@ -172,6 +172,10 @@
 					<ShortName>Mordisco2.wav</ShortName>
 					<Path>SFX\Mordisco2_DDC98EF4.wem</Path>
 				</File>
+				<File Id="67929592" Language="SFX">
+					<ShortName>Segada.wav</ShortName>
+					<Path>SFX\Segada_DDC98EF4.wem</Path>
+				</File>
 				<File Id="121954957" Language="SFX">
 					<ShortName>Paso2.wav</ShortName>
 					<Path>SFX\Paso2_DDC98EF4.wem</Path>
@@ -183,10 +187,6 @@
 				<File Id="169203991" Language="SFX">
 					<ShortName>RugidoDetectado.wav</ShortName>
 					<Path>SFX\RugidoDetectado_DDC98EF4.wem</Path>
-				</File>
-				<File Id="171462856" Language="SFX">
-					<ShortName>Segada.wav</ShortName>
-					<Path>SFX\Segada_DDC98EF4.wem</Path>
 				</File>
 				<File Id="194837334" Language="SFX">
 					<ShortName>Silence.wav</ShortName>
@@ -211,10 +211,6 @@
 				<File Id="295033910" Language="SFX">
 					<ShortName>Hurt2.wav</ShortName>
 					<Path>SFX\Hurt2_DDC98EF4.wem</Path>
-				</File>
-				<File Id="325475089" Language="SFX">
-					<ShortName>whoosh-1.wav</ShortName>
-					<Path>SFX\whoosh-1_DDC98EF4.wem</Path>
 				</File>
 				<File Id="354466126" Language="SFX">
 					<ShortName>Dead.wav</ShortName>
@@ -251,6 +247,10 @@
 				<File Id="797611864" Language="SFX">
 					<ShortName>RugidoDetectado2.wav</ShortName>
 					<Path>SFX\RugidoDetectado2_DDC98EF4.wem</Path>
+				</File>
+				<File Id="809786282" Language="SFX">
+					<ShortName>woosh_1.wav</ShortName>
+					<Path>SFX\woosh_1_DDC98EF4.wem</Path>
 				</File>
 				<File Id="886837217" Language="SFX">
 					<ShortName>Grito(Wooaaah).wav</ShortName>

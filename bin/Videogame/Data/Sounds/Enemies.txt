@@ -22,17 +22,16 @@ Event	ID	Name			Wwise Object Path	Notes
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	50278207	Mordisco2	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Mordisco2_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Miks\Mik_Atack\Mordisco2		15408
+	67929592	Segada	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Segada_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Piky\Segada		221984
 	121954957	Paso2	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Paso2_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Piky\Piky_Steps\Paso2		22078
 	137002666	woosh_3	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\woosh_3_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Chucky\Launch\woosh_3		139212
 	169203991	RugidoDetectado	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\RugidoDetectado_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Miks\Mik_Viewed\RugidoDetectado		294332
-	171462856	Piky_Attak	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Segada_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Piky\Piky_Attak		255996
 	194837334	Silence	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Silence_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Miks\Mik_Following\Silence		480064
 	195247926	Paso1	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Paso1_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Piky\Piky_Steps\Paso1		23668
 	230531197	Pum_Dead	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\EnemyExplosion_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Pum\Pum_Dead		34456
 	276987036	Idle	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Idle_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Miks\Mik_Idle\Idle		894360
 	288145229	Mordisco1	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Mordisco1_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Miks\Mik_Atack\Mordisco1		14064
 	295033910	Hurt2	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Hurt2_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Chucky\Hurt\Hurt2		193696
-	325475089	whoosh-1	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\whoosh-1_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Piky\whoosh-1		589612
 	354466126	Dead	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Dead_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Miks\Mik_Dead\Dead		180416
 	359074099	Caer	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Caer_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Piky\Caer		355860
 	421356454	smash	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\smash_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Piky\smash		15740
@@ -42,6 +41,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	675357815	PasoChucky	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\PasoChucky_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Chucky\PasoChucky		46388
 	785294855	whoosh2	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\whoosh2_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Chucky\Launch\whoosh2		3492
 	797611864	RugidoDetectado2	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\RugidoDetectado2_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Miks\Mik_Viewed\RugidoDetectado2		193892
+	809786282	whoosh_1	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\woosh_1_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Piky\whoosh_1		80816
 	886837217	Grito(Wooaaah)	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Grito(Wooaaah)_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Piky\Grito(Wooaaah)		154592
 	924337238	Coming	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\RugidoPerseguir_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Miks\Mik_Following\Coming		71744
 	932336074	Dead2	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Dead2_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Miks\Mik_Dead\Dead2		431744
