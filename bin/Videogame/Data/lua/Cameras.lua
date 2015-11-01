@@ -303,6 +303,15 @@ function on_update_cameras_lua(l_ElapsedTime)
 			if lastYaw == -100 then
 				lastYaw = yaw;
 			end
+			local incrAux = math.abs(lastYaw - yaw);
+			while incrAux > math.pi do
+				if lastYaw < yaw then
+					lastYaw = lastYaw + 2 * math.pi;
+				else
+					yaw = yaw + 2 * math.pi;
+				end
+				incrAux = math.abs(lastYaw - yaw);
+			end
 			incYawTot = incYaw;
 			local incrementoFinalYaw = yaw - lastYaw;
 			local yawTotalFinal = lastYaw + incrementoFinalYaw * cam3D_yawSpeedGeneral * l_ElapsedTime;
