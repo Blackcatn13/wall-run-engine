@@ -49,7 +49,7 @@ float g_RimThicknessSP = 0.8;
 float g_RimIntensitySP = 1;
 float4 g_RimColorSP = float4(0,1,0,1);
 
-float3 g_LightAmbient=float3(0.35, 0.35, 0.35);
+float3 g_LightAmbient=float3(0.6, 0.6, 0.6);
 float g_SpecularExponent = 200;
 float g_LightAmbientIntensity = 1;
 
