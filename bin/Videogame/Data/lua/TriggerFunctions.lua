@@ -633,10 +633,12 @@ function nail_platform(obj_name, layer)
 		local emitter2 = particle_manager:get_resource("PlatformBroken2Emitter")
 		local emitter2_pos = Vect3f(position.x +2, position.y +0.5, position.z)
 		if emitter1 ~= nil then
+			emitter1:set_visible(true)
 			emitter1.m_vPos = emitter1_pos
 			emitter1.m_FireParticles = true
 		end
 		if emitter2 ~= nil then
+			emitter2:set_visible(true)
 			emitter2.m_vPos = emitter2_pos
 			emitter2.m_FireParticles = true
 		end

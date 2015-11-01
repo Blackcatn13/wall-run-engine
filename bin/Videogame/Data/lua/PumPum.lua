@@ -290,6 +290,7 @@ function pumpum_update_dead(ElapsedTime, doComprobation, name)
 			--coreInstance:trace("Update muerto Mik sin accion")
 			local emitter = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter)
 			if emitter ~= nil then
+				emitter:set_visible(true)
 				emitter.m_vPos = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_EmitterOffset
 				emitter.m_FireParticles = true 
 			end

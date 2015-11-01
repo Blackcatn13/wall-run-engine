@@ -39,7 +39,7 @@
 						end
 						enemy_manager:get_enemy('Chucky').m_RenderableObject:blend_cycle(1,1,0.5)
 						enemy_manager:get_enemy('Chucky'):move_to_position(Vect3f(-920.75, -1, 0));
-						enemy_manager:get_enemy('Chucky'):set_yaw(player_controller:get_yaw())">
+						enemy_manager:get_enemy('Chucky'):set_yaw(player_controller:get_yaw()+1.57)">
 	
 	<Image name="buttonsBackground" posx="0.00" posy="0.00" height="100.00" width="100.00" visible="true" active="true" default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
 		<texture name="img1" name_texture="./Data/GUI/GoPixelGo/GUI_MENU.tga"/>

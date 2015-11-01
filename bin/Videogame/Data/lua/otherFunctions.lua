@@ -46,6 +46,7 @@ function open_door(_objectName)
 		--door.m_Printable = false
 		local emitter = particle_manager:get_resource(door.m_ParticleEmitter)
 		if emitter ~= nil then
+			emitter:set_visible(true)
 			emitter.m_vPos = door:get_position()+ door.m_EmitterOffset
 			emitter:set_yaw(door:get_yaw())
 			emitter.m_FireParticles = true
@@ -69,6 +70,7 @@ function open_door(_objectName, _objectName2)
 		--door.m_Printable = false
 		local emitter = particle_manager:get_resource(door.m_ParticleEmitter)
 		if emitter ~= nil then
+			emitter:set_visible(true)
 			emitter.m_vPos = door:get_position()+ door.m_EmitterOffset
 			emitter:set_yaw(door:get_yaw())
 			emitter.m_FireParticles = true
