@@ -597,13 +597,21 @@ function trigger_damage_player()
 	player.player_take_damage(Vect3f(0,0,0))
 end
 
-function init_boss_trigger()
+function init_boss_trigger(a)
 	--[[player_controller.m_is3D = true;
 	local cam = coreInstance.m_CameraController:get_resource("3DCam");
 	cam.m_eTypeCamera = 6;
 	coreInstance.m_CameraController:set_active_camera("3DCam");
 	start_boss()--]]
-	player_controller.m_PhysicController:set_position(Vect3f(55.784378, 1.000000, 0.617737))
+	local position = player_controller:get_position()
+	local player_renderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", 7):get_resource("Piky");
+	if player_renderable ~= nil then
+		player_renderable:set_visible(false)
+		--player_renderable.m_Printable = false
+	end
+	--local final_position = Vect3f(position.x, position.y, position.z)
+	--player_controller.m_PhysicController:set_position(final_position)
+	--player_controller:set_position(final_position)
 	coreInstance:get_cinematic_controller():execute("AngelFall");
 end
 
