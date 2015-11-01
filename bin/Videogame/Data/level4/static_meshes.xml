@@ -398,4 +398,6 @@
 	<static_mesh name="Roca_125_Animation" filename="Data\level4\meshes\Roca_125_Animation.mesh"/>
 	<static_mesh name="CARALLENGUA_002" filename="Data\level4\meshes\CARALLENGUA_002.mesh"/>
 	<static_mesh name="CARALLENGUA_001" filename="Data\level4\meshes\CARALLENGUA_001.mesh"/>
+	<static_mesh name="DJumpA" filename="Data\level4\meshes\DJumpA.mesh"/>
+	
 </static_meshes>
