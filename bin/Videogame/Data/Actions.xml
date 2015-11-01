@@ -1,12 +1,12 @@
 <Actions>
 	<globals>
 	
-		<action name="Extra_life" debug="false">
+		<action name="Extra_life" debug="true">
 	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
 	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_V"/>
 	    </action>
 		
-		<action name="StartBoss" debug="false">
+		<action name="StartBoss" debug="true">
 	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
 	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_B"/>
 	    </action>
@@ -336,7 +336,7 @@
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_R"/>
 	    </action>
 		
-		<action name="PauseGameExit">
+		<action name="PauseGameExit" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_K"/>
 	    </action>
 
@@ -398,7 +398,7 @@
 		</action>
 
 		<action name="PauseGame">
-			<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LSHIFT"/>
+			<!--<input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN" Code="KEY_LSHIFT"/>-->
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_P"/>
 	    </action>
 
