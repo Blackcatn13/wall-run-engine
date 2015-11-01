@@ -37,7 +37,7 @@
                   texture_clicked="./Data/GUI/GoPixelGo/ButtonBack_01.tga"
                   texture_deactivated="./Data/GUI/GoPixelGo/ButtonBack_03.tga"
                   OnClickedAction="CCoreLuaWrapper().m_CoreInstance:getGUIManager():pop_windows();
-                      CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('Jump','Music');"
+                      CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');"
                   OnOverAction=""/>
       </row>
       <row>

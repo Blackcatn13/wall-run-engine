@@ -22,7 +22,7 @@
                   texture_over="./Data/GUI/GoPixelGo/ButtonBack_02.tga"
                   texture_clicked="./Data/GUI/GoPixelGo/ButtonBack_01.tga"
                   texture_deactivated="./Data/GUI/GoPixelGo/ButtonBack_03.tga"
-                OnClickedAction=" CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuClick','Music');
+                OnClickedAction=" CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('MenuOver','Music');
   								reset_game();
   								gui_manager:set_is_gameover(false);
   								gui_manager:set_visible_mouse(true);

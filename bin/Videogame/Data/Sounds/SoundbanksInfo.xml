@@ -100,6 +100,10 @@
 					<ShortName>CromoCoger.wav</ShortName>
 					<Path>SFX\CromoCoger_DDC98EF4.wem</Path>
 				</File>
+				<File Id="77686774" Language="SFX">
+					<ShortName>SonidoAux1.wav</ShortName>
+					<Path>SFX\SonidoAux1_DDC98EF4.wem</Path>
+				</File>
 				<File Id="347696487" Language="SFX">
 					<ShortName>Fireplace-SoundBible.com-127901833.wav</ShortName>
 					<Path>SFX\Fireplace-SoundBible.com-127901833_8BD76F1E.wem</Path>
@@ -108,21 +112,17 @@
 					<ShortName>Jump4.wav</ShortName>
 					<Path>SFX\Jump4_DDC98EF4.wem</Path>
 				</File>
-				<File Id="505700893" Language="SFX">
-					<ShortName>bits_piece_69.wav</ShortName>
-					<Path>SFX\bits_piece_69_DDC98EF4.wem</Path>
-				</File>
 				<File Id="543946898" Language="SFX">
 					<ShortName>Poly.wav</ShortName>
 					<Path>SFX\Poly_DDC98EF4.wem</Path>
 				</File>
+				<File Id="598298635" Language="SFX">
+					<ShortName>SonidoAux3.wav</ShortName>
+					<Path>SFX\SonidoAux3_DDC98EF4.wem</Path>
+				</File>
 				<File Id="692942212" Language="SFX">
 					<ShortName>ActivarSwitch.wav</ShortName>
 					<Path>SFX\ActivarSwitch_DDC98EF4.wem</Path>
-				</File>
-				<File Id="785489596" Language="SFX">
-					<ShortName>bits_piece_34.wav</ShortName>
-					<Path>SFX\bits_piece_34_DDC98EF4.wem</Path>
 				</File>
 				<File Id="830485670" Language="SFX">
 					<ShortName>Teletransporte.wav</ShortName>
