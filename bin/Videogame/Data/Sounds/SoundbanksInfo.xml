@@ -90,6 +90,7 @@
 				<Event Id="3833651337" Name="Jump"/>
 				<Event Id="3711598968" Name="MenuClick"/>
 				<Event Id="4276387422" Name="MenuOver"/>
+				<Event Id="1977787639" Name="Poly"/>
 				<Event Id="3876639966" Name="SwitchActivate"/>
 				<Event Id="530129416" Name="Teleport"/>
 				<Event Id="2615352377" Name="Torches"/>
@@ -110,6 +111,10 @@
 				<File Id="505700893" Language="SFX">
 					<ShortName>bits_piece_69.wav</ShortName>
 					<Path>SFX\bits_piece_69_DDC98EF4.wem</Path>
+				</File>
+				<File Id="543946898" Language="SFX">
+					<ShortName>Poly.wav</ShortName>
+					<Path>SFX\Poly_DDC98EF4.wem</Path>
 				</File>
 				<File Id="692942212" Language="SFX">
 					<ShortName>ActivarSwitch.wav</ShortName>
@@ -141,6 +146,12 @@
 			<ShortName>Enemies</ShortName>
 			<Path>Enemies.bnk</Path>
 			<IncludedEvents>
+				<Event Id="1215667661" Name="Chucky_Dead"/>
+				<Event Id="1492618040" Name="Chucky_Hurt"/>
+				<Event Id="4074679506" Name="Chucky_Launch"/>
+				<Event Id="1219190363" Name="Chucky_Miks"/>
+				<Event Id="3195024413" Name="Chucky_Quiet"/>
+				<Event Id="3498755584" Name="Chucky_Walk"/>
 				<Event Id="2970383493" Name="Mik_Attack"/>
 				<Event Id="3001633723" Name="Mik_Dead"/>
 				<Event Id="3569977758" Name="Mik_Follow"/>
@@ -164,6 +175,10 @@
 				<File Id="121954957" Language="SFX">
 					<ShortName>Paso2.wav</ShortName>
 					<Path>SFX\Paso2_DDC98EF4.wem</Path>
+				</File>
+				<File Id="137002666" Language="SFX">
+					<ShortName>woosh_3.wav</ShortName>
+					<Path>SFX\woosh_3_DDC98EF4.wem</Path>
 				</File>
 				<File Id="169203991" Language="SFX">
 					<ShortName>RugidoDetectado.wav</ShortName>
@@ -193,6 +208,10 @@
 					<ShortName>Mordisco1.wav</ShortName>
 					<Path>SFX\Mordisco1_DDC98EF4.wem</Path>
 				</File>
+				<File Id="295033910" Language="SFX">
+					<ShortName>Hurt2.wav</ShortName>
+					<Path>SFX\Hurt2_DDC98EF4.wem</Path>
+				</File>
 				<File Id="325475089" Language="SFX">
 					<ShortName>whoosh-1.wav</ShortName>
 					<Path>SFX\whoosh-1_DDC98EF4.wem</Path>
@@ -209,6 +228,10 @@
 					<ShortName>smash.wav</ShortName>
 					<Path>SFX\smash_DDC98EF4.wem</Path>
 				</File>
+				<File Id="494498344" Language="SFX">
+					<ShortName>whoosh.wav</ShortName>
+					<Path>SFX\whoosh_DDC98EF4.wem</Path>
+				</File>
 				<File Id="545300258" Language="SFX">
 					<ShortName>RisaMik1.wav</ShortName>
 					<Path>SFX\RisaMik1_DDC98EF4.wem</Path>
@@ -216,6 +239,14 @@
 				<File Id="560005912" Language="SFX">
 					<ShortName>PopDisparo.wav</ShortName>
 					<Path>SFX\PopDisparo_DDC98EF4.wem</Path>
+				</File>
+				<File Id="675357815" Language="SFX">
+					<ShortName>PasoChucky.wav</ShortName>
+					<Path>SFX\PasoChucky_8BD76F1E.wem</Path>
+				</File>
+				<File Id="785294855" Language="SFX">
+					<ShortName>whoosh2.wav</ShortName>
+					<Path>SFX\whoosh2_DDC98EF4.wem</Path>
 				</File>
 				<File Id="797611864" Language="SFX">
 					<ShortName>RugidoDetectado2.wav</ShortName>
@@ -236,6 +267,14 @@
 				<File Id="974301372" Language="SFX">
 					<ShortName>RisaMik2.wav</ShortName>
 					<Path>SFX\RisaMik2_DDC98EF4.wem</Path>
+				</File>
+				<File Id="981975394" Language="SFX">
+					<ShortName>Hurt1.wav</ShortName>
+					<Path>SFX\Hurt1_DDC98EF4.wem</Path>
+				</File>
+				<File Id="1003975470" Language="SFX">
+					<ShortName>monster_footsteps.wav</ShortName>
+					<Path>SFX\monster_footsteps_DDC98EF4.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>

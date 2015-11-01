@@ -2,6 +2,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	248834808	AppearCard			\Default Work Unit\FX\AppearCard	
 	530129416	Teleport			\Default Work Unit\FX\Teleport	
 	1654208281	GetCard			\Default Work Unit\FX\GetCard	
+	1977787639	Poly			\Default Work Unit\FX\Poly	
 	2589897592	Door_opening			\Default Work Unit\FX\Door_opening	
 	2615352377	Torches			\Default Work Unit\FX\Torches	
 	3711598968	MenuClick			\Default Work Unit\FX\MenuClick	
@@ -14,6 +15,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	347696487	Flame	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Fireplace-SoundBible.com-127901833_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\FX\Torches\Flame		2248768
 	425213579	Jump4	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Jump4_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\FX\Jump4		64590
 	505700893	bits_piece_69	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\bits_piece_69_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\FX\bits_piece_69		113464
+	543946898	Poly	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Poly_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\FX\Poly		166136
 	692942212	Activate	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\ActivarSwitch_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\FX\Switch\Activate		43840
 	785489596	bits_piece_34	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\bits_piece_34_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\FX\bits_piece_34		142400
 	830485670	Activate	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Teletransporte_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\FX\Teleport\Activate		439968
