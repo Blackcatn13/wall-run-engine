@@ -65,7 +65,7 @@ function start_boss()
 	player_controller.m_PhysicController:set_position(position)
 	local playerRenderableMesh = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room(piky_layer, 0):get_resource(piky_mesh_name);
 	playerRenderableMesh:set_position(position)
-	
+	playerRenderableMesh:set_visible(true)
 	if chucky_boss_layer ~= "enemies" then
 		switch_boss_layer("enemies")
 	end
@@ -73,13 +73,17 @@ function start_boss()
 	local chucky = enemy_manager:get_enemy(boss_mesh_name)
 	local chucky_position = Vect3f(0.0, 4.48, 0.0)
 	--chucky:set_position(chucky_position)
+	coreInstance:trace("Seleccionar Camara")
 	chucky.m_RenderableObject:set_position(chucky_position)
 	chucky.m_RenderableObject:set_visible(true)
+	coreInstance:trace("Camara visible")
 	local objCam = activeCam.m_pObject3D;
 	objCam:set_position(chucky_position);
+	coreInstance:trace("Desactivando rendreables")
 	local cadira = get_renderable_object("solid",0, "CADIRA")
 	--get_renderable_object("solid",0, "CADIRA"):set_visible(false)
 	if cadira:get_visible() then
+		coreInstance:trace("Silla encontrada")
 		cadira:set_visible(false)
 		get_renderable_object("solid",0, "ORO2"):set_visible(false)
 		get_renderable_object("solid",0, "ORO3"):set_visible(false)
@@ -92,7 +96,21 @@ function start_boss()
 		get_renderable_object("solid",0, "Ruinas"):set_visible(true)
 		get_renderable_object("solid",0, "ORO006"):set_visible(true)
 		get_renderable_object("solid",0, "ORO005"):set_visible(true)
+		
+		cadira.m_Printable = false
+		get_renderable_object("solid",0, "ORO2").m_Printable = false
+		get_renderable_object("solid",0, "ORO3").m_Printable = false
+		get_renderable_object("solid",0, "ORO1").m_Printable = false
+		get_renderable_object("solid",0, "ORO004").m_Printable = false
+		
+		get_renderable_object("solid",0, "PilarQuad001").m_Printable = false
+		get_renderable_object("solid",0, "PilarQuad002").m_Printable = false
+		--get_renderable_object("solid",0, "ChukyBossPosition"):set_visible(true)
+		get_renderable_object("solid",0, "Ruinas").m_Printable = true
+		get_renderable_object("solid",0, "ORO006").m_Printable = true
+		get_renderable_object("solid",0, "ORO005").m_Printable = true
 	end 
+	coreInstance:trace("Poniendo Chucky a parado")
 	chucky:m_FSM():newState("Parado")
 	return_factor = min_return_factor
 	returned_times = 0
@@ -122,6 +140,7 @@ function start_boss()
 	set_checkpoint("boss_checkpoint", nil)
 	player.attack_enabled = true
 	boss_dead = false
+	coreInstance:trace("Boss loaded")
 end
 
 

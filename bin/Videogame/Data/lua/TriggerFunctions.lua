@@ -604,7 +604,8 @@ function init_boss_trigger(a)
 	cam.m_eTypeCamera = 6;
 	coreInstance.m_CameraController:set_active_camera("3DCam");
 	start_boss()--]]
-	local position = player_controller:get_position()
+	local aux_renderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("animationLayerAux", 7):get_resource("Piky2");
+	aux_renderable:set_visible(true)
 	local player_renderable = coreInstance:get_renderable_object_layer_manager():get_renderable_objects_manager_by_str_and_room("player", 7):get_resource("Piky");
 	if player_renderable ~= nil then
 		player_renderable:set_visible(false)
