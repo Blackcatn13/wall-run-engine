@@ -18,6 +18,7 @@
 		<play_camera name="CameraSwitch" return="3DCam" block="true"/>
 	</cinematic_controller>
 	<cinematic_controller name="AngelFall">
+		<play_audio name="Animation2" actor="Music"/>
 		<play_camera name="CameraAngelFall" return="3DCam" block="true"/>
 		<play_animation room="7" layer="animationLayerAux" animated="Piky2" id="17"/>
 		<!--<play_animation room="7" layer="animationLayerAux" animated="Chucky2" id="12"/>

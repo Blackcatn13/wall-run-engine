@@ -95,6 +95,7 @@ void RegisterSceneElements() {
     .def("deactivate_poly", &CPolyPlatform::DeactivatePoly)
     .def("apply_physics_to_player", &CPolyPlatform::ApplyPhysicsToPlayer)
     .property("m_Activated", &CPolyPlatform::IsActivated, &CPolyPlatform::SetActivated )
+	.property("m_PlayingSound", &CPolyPlatform::IsPlayingSound, &CPolyPlatform::SetPlayingSound )
     .property("m_Direction", &CPolyPlatform::getDirection, &CPolyPlatform::setDirection )
     .property("m_OriginalPosition", &CPolyPlatform::getOriginalPosition, &CPolyPlatform::setOriginalPosition )
     .property("m_FinalPosition", &CPolyPlatform::getFinalPosition, &CPolyPlatform::setFinalPosition)

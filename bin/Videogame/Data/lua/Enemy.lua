@@ -142,7 +142,7 @@ function boss_shoot(position, enemy)
 				emitter.m_vPos = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_EmitterOffset
 				emitter.m_FireParticles = true 
 			end
-			
+			sound_manager:PlayEvent("Chucky_Launch","ChuckyBoss");
 			
 			renderable_shoot:set_position(enemy.m_PosicionBala)
 			renderable_shoot:set_yaw(enemy:get_yaw());
@@ -611,6 +611,7 @@ function check_player_shoot_return(enemy,mesh)
 		if player.super_piky_active and player.pressed_return then
 			player.execute_return_pr = true;
 			boss_projectile_returned = true;
+			sound_manager:PlayEvent("SuperPiky_return","Piky");
 			boss_projectile_returned_by_chucky = false;
 			local enemyPos = Vect3f(enemy:get_position().x, enemy:get_position().y + 2, enemy:get_position().z);
 			enemy.m_DireccionBala = enemyPos - enemy.m_PosicionBala;

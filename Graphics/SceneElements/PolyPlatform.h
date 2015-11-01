@@ -19,6 +19,7 @@ protected:
     Vect3f		m_Direction;
     // float		m_RedimScale;
     bool		m_Activated;
+	bool		m_PlayingSound;
     bool		m_Enabled;
     float		m_ActivationDistance;
     float		m_TimeOut;
@@ -45,6 +46,14 @@ public:
     bool GetDifferencePositions(Vect3f m_Direction, Vect3f m_Position, Vect3f m_FinalPosition);
     int GetAxis(Vect3f direction);
 	Vect3f GetNearestExitDirection();
+	bool IsPlayingSound()
+    {
+        return m_PlayingSound;
+    }
+	void SetPlayingSound(bool playing_sound)
+    {
+        m_PlayingSound = playing_sound;
+    }
     bool IsActivated()
     {
         return m_Activated;

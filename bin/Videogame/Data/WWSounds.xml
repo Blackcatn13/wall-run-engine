@@ -7,6 +7,9 @@
 	<Bank name="Enemies.bnk"/>
 	<GameObject2D name="Music" register="true"/>
 	<GameObject2D name="Piky" register="true"/>
+	<GameObject2D name="ChuckyRunner" register="true"/>
+	<GameObject2D name="ChuckyBoss" register="true"/>
+	<GameObject2D name="PolyPlatform" register="true"/>
 	<GameObject3D name="Torch" register="true" type="MultiSource">
 		<Source pos="98.133629 5.806 3.802600" dir="-0.5 0 -0.5"/>
 		<Source pos="103.663 5.806 -25.712" dir="0.242536 0 0.970143"/>
