@@ -18,16 +18,13 @@
 				<Event Id="1091151884" Name="_Fail"/>
 				<Event Id="1615472509" Name="_Menu"/>
 				<Event Id="3721368369" Name="_Success"/>
+				<Event Id="2087567973" Name="Animation2"/>
 				<Event Id="1170801819" Name="Animation2D"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
 				<File Id="45329365" Language="SFX">
 					<ShortName>GGP_Boss.wav</ShortName>
 					<Path>SFX\GGP_Boss_8BD76F1E.wem</Path>
-				</File>
-				<File Id="72649360" Language="SFX">
-					<ShortName>GPP_Creditos.wav</ShortName>
-					<Path>SFX\GPP_Creditos_8BD76F1E.wem</Path>
 				</File>
 				<File Id="523121214" Language="SFX">
 					<ShortName>fail.wav</ShortName>
@@ -37,6 +34,10 @@
 					<ShortName>GGPCinematica2DFINAL.wav</ShortName>
 					<Path>SFX\GGPCinematica2DFINAL_DDC98EF4.wem</Path>
 				</File>
+				<File Id="779457179" Language="SFX">
+					<ShortName>salto_de_fe.wav</ShortName>
+					<Path>SFX\salto_de_fe_DDC98EF4.wem</Path>
+				</File>
 				<File Id="808049988" Language="SFX">
 					<ShortName>GGPCinematica3DFINAL.wav</ShortName>
 					<Path>SFX\GGPCinematica3DFINAL_DDC98EF4.wem</Path>
@@ -44,6 +45,10 @@
 				<File Id="980570799" Language="SFX">
 					<ShortName>GGP_Success.wav</ShortName>
 					<Path>SFX\GGP_Success_DDC98EF4.wem</Path>
+				</File>
+				<File Id="1053762078" Language="SFX">
+					<ShortName>GPP_Titulo.wav</ShortName>
+					<Path>SFX\GPP_Titulo_8BD76F1E.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
@@ -53,9 +58,14 @@
 			<IncludedEvents>
 				<Event Id="1854652136" Name="_2DZone"/>
 				<Event Id="1481335831" Name="_3DZone"/>
+				<Event Id="2116554998" Name="_Credits"/>
 				<Event Id="2958144319" Name="StartBackground"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
+				<File Id="72649360" Language="SFX">
+					<ShortName>GPP_Creditos.wav</ShortName>
+					<Path>SFX\GPP_Creditos_8BD76F1E.wem</Path>
+				</File>
 				<File Id="364000553" Language="SFX">
 					<ShortName>zona 3d.wav</ShortName>
 					<Path>SFX\zona 3d_8BD76F1E.wem</Path>

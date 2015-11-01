@@ -2,14 +2,16 @@ Event	ID	Name			Wwise Object Path	Notes
 	1091151884	_Fail			\Default Work Unit\Background\_Fail	
 	1170801819	Animation2D			\Default Work Unit\Background\Animation2D	
 	1615472509	_Menu			\Default Work Unit\Background\_Menu	
+	2087567973	Animation2			\Default Work Unit\Background\Animation2	
 	2380376969	_BossZone			\Default Work Unit\Background\_BossZone	
 	3721368369	_Success			\Default Work Unit\Background\_Success	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	45329365	GGP_Boss	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\GGP_Boss_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\GGP_Boss		11114560
-	72649360	GPP_Creditos	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\GPP_Creditos_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\GPP_Creditos		9237012
 	523121214	fail	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\fail_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\fail		1974924
 	549336989	GGPCinematica2DFINAL	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\GGPCinematica2DFINAL_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\Cinematic\GGPCinematica2DFINAL		12986244
+	779457179	salto_de_fe	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\salto_de_fe_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\salto_de_fe		3027764
 	808049988	GGPCinematica3DFINAL	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\GGPCinematica3DFINAL_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\Cinematic\GGPCinematica3DFINAL		5026976
 	980570799	GGP_Success	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\GGP_Success_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\GGP_Success		1810352
+	1053762078	GPP_Titulo	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\GPP_Titulo_8BD76F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Background\GPP_Titulo		10006760
 
