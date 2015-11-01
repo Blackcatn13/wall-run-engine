@@ -43,28 +43,20 @@ float4 SSAOPS(in float2 UV:TEXCOORD0) : COLOR
 
 	float l_EffectAffect = tex2D(S0LinearWrapSampler, UV).w;
 	float3 final_color = float3(1,1,1);
-	const float2 vec[20] = 
+	const float2 vec[12] = 
 	{
 	float2(1,0),
-	float2(0.9781,0.2079),
 	float2(0.9135,0.4067),
 	float2(0.5,0.8660),
-	float2(0.3090,0.9510),
 	float2(0,1),
 	float2(0.2079,-0.9781),
-	float2(0.4067,-0.9135),
 	float2(0.5877,-0.8090),
-	float2(0.8660,-0.5000),
 	float2(-1,0),
-	float2(-0.9781,-0.2079),
 	float2(-0.9135,-0.4067),
 	float2(-0.5,-0.8660),
-	float2(-0.3090,-0.9510),
 	float2(0,-1),
-	float2(-0.2079,0.9781),
 	float2(-0.4067,0.9135),
 	float2(-0.8660,0.5000),
-	float2(-0.9510,0.3090)
 	};
 
 	float3 p = getPosition(UV);
@@ -75,7 +67,7 @@ float4 SSAOPS(in float2 UV:TEXCOORD0) : COLOR
 	float rad = g_sample_rad/p.z;
 
 	//**SSAO Calculation**//
-	int iterations = 20;
+	int iterations = 12;
 	for (int j = 0; j < iterations; ++j)
 	{
 	  float2 coord1 = reflect(vec[j],rand)*rad;

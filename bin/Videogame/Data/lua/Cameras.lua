@@ -15,6 +15,7 @@ local lastPitchBoss = -100;
 local incPitchBoss = 0;
 local lastZoomBoss = -100;
 local incZoomBoss = 0;
+local lastYaw = -100;
 
 --*****************************************************************************
 function on_init_cameras_lua()
@@ -52,6 +53,7 @@ function on_update_cameras_lua(l_ElapsedTime)
 	local cam3D_speed = 11;
 	local cam3D_pitchSpeed = 3;
 	local cam3D_yawSpeed = 5;
+	local cam3D_yawSpeedGeneral = 5;
 	local cam3D_zoomSpeed = 3;
 	local cam3D_distSpeed = 3;
 	
@@ -123,6 +125,9 @@ function on_update_cameras_lua(l_ElapsedTime)
 		-- POINT SPECS
 		local pointSpecs = cam:get_path_point_specs(cam.m_currentWaypoint);
 		local canRotate = pointSpecs.can_rotate;
+		if pointSpecs.yaw_speed > 0 then
+			cam3D_yawSpeedGeneral = pointSpecs.yaw_speed;
+		end
 		if pointSpecs.dist_to_rotate > 0 then
 			dist_to_rotate = pointSpecs.dist_to_rotate;
 		end
@@ -295,8 +300,14 @@ function on_update_cameras_lua(l_ElapsedTime)
 			end
 			incrementYaw = incYaw - incYawTot;
 			yaw = yaw + incYawTot + incrementYaw * l_ElapsedTime * cam3D_yawSpeed;
+			if lastYaw == -100 then
+				lastYaw = yaw;
+			end
 			incYawTot = incYaw;
-			obj:set_yaw(yaw);
+			local incrementoFinalYaw = yaw - lastYaw;
+			local yawTotalFinal = lastYaw + incrementoFinalYaw * cam3D_yawSpeedGeneral * l_ElapsedTime;
+			obj:set_yaw(yawTotalFinal);
+			lastYaw = yawTotalFinal;
 			local lastPitch = obj:get_pitch();
 			if player.going_back == true and pointSpecs.can_go_back == true then
 				local incPitch = pitch3D_back - lastPitch;

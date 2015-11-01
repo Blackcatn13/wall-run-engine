@@ -1,6 +1,6 @@
 <animated_model name="chuky">
 	<texture file="DIFF_CHUCKY.tga"/>
-	<normal_texture file="CHUCKY-CHUCKYNormalsMapFINAL.tga"/>
+	<normal_texture file="NRM_CHUCKY.tga"/>
 	<skeleton file="Chucky_Skeleton.CSF"/>
 	<mesh file="Chucky_Mesh.cmf"/>
 	<animation name="idle" file="Chucky_idle.caf"/> <!-- 0 -->

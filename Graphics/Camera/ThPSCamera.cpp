@@ -97,6 +97,7 @@ bool CThPSCamera::LoadPathFromFile(std::string filename) {
 		  pointSpecs.variablePitchValue = nodeChild1.GetFloatProperty("variable_pitch_value", -0.2);
 		  pointSpecs.yawOffset = nodeChild1.GetBoolProperty("yaw_offset", false);
 		  pointSpecs.yawOffsetValue = nodeChild1.GetFloatProperty("yaw_offset_value", 0);
+		  pointSpecs.yawSpeed = nodeChild1.GetFloatProperty("yaw_speed", 0);
           m_pathSpecs.push_back(pointSpecs);
         }
 
