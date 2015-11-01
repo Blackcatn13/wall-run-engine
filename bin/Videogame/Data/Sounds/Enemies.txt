@@ -1,12 +1,16 @@
 Event	ID	Name			Wwise Object Path	Notes
+	137162860	Piky_Fall			\Default Work Unit\Piky\Piky_Fall	
 	1518290705	Piky_Quiet			\Default Work Unit\Piky\Piky_Quiet	
 	1786886922	Pum_Dead			\Default Work Unit\Pum\Pum_Dead	
+	1815352093	Piky_To_SuperPiky			\Default Work Unit\Piky\Piky_To_SuperPiky	
 	2299701063	Mik_Idle			\Default Work Unit\Mik\Mik_Idle	
 	2333595876	Piky_Walk			\Default Work Unit\Piky\Piky_Walk	
 	2367787684	Pum_Attack			\Default Work Unit\Pum\Pum_Attack	
 	2970383493	Mik_Attack			\Default Work Unit\Mik\Mik_Attack	
 	3001633723	Mik_Dead			\Default Work Unit\Mik\Mik_Dead	
 	3056034208	Mik_Saw			\Default Work Unit\Mik\Mik_Saw	
+	3128790028	SuperPiky_return			\Default Work Unit\Piky\SuperPiky_return	
+	3144521379	Piky_Jump			\Default Work Unit\Piky\Piky_Jump	
 	3271548291	Piky_Attack			\Default Work Unit\Piky\Piky_Attack	
 	3569977758	Mik_Follow			\Default Work Unit\Mik\Mik_Follow	
 
@@ -20,10 +24,14 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	230531197	Pum_Dead	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\EnemyExplosion_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Pum\Pum_Dead		34456
 	276987036	Idle	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Idle_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Miks\Mik_Idle\Idle		894360
 	288145229	Mordisco1	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Mordisco1_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Miks\Mik_Atack\Mordisco1		14064
+	325475089	whoosh-1	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\whoosh-1_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Piky\whoosh-1		589612
 	354466126	Dead	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Dead_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Miks\Mik_Dead\Dead		347200
+	359074099	Caer	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Caer_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Piky\Caer		355860
+	421356454	smash	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\smash_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Piky\smash		15740
 	545300258	RisaMik1	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\RisaMik1_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Miks\Mik_Idle\RisaMik1		235584
 	560005912	Pum_Fire	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\PopDisparo_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Pum\Pum_Fire		60972
 	797611864	RugidoDetectado2	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\RugidoDetectado2_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Miks\Mik_Viewed\RugidoDetectado2		193892
+	886837217	Grito(Wooaaah)	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Grito(Wooaaah)_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Piky\Grito(Wooaaah)		154592
 	924337238	Coming	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\RugidoPerseguir_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Miks\Mik_Following\Coming		71744
 	932336074	Dead2	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\Dead2_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Miks\Mik_Dead\Dead2		431744
 	974301372	RisaMik2	D:\Desktop\UAB\wall-run-engine\WWiseProject\GoGoPixel\.cache\Windows\SFX\RisaMik2_DDC98EF4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Miks\Mik_Idle\RisaMik2		200768

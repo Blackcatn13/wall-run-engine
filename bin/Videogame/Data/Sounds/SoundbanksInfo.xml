@@ -147,10 +147,14 @@
 				<Event Id="2299701063" Name="Mik_Idle"/>
 				<Event Id="3056034208" Name="Mik_Saw"/>
 				<Event Id="3271548291" Name="Piky_Attack"/>
+				<Event Id="137162860" Name="Piky_Fall"/>
+				<Event Id="3144521379" Name="Piky_Jump"/>
 				<Event Id="1518290705" Name="Piky_Quiet"/>
+				<Event Id="1815352093" Name="Piky_To_SuperPiky"/>
 				<Event Id="2333595876" Name="Piky_Walk"/>
 				<Event Id="2367787684" Name="Pum_Attack"/>
 				<Event Id="1786886922" Name="Pum_Dead"/>
+				<Event Id="3128790028" Name="SuperPiky_return"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
 				<File Id="50278207" Language="SFX">
@@ -189,9 +193,21 @@
 					<ShortName>Mordisco1.wav</ShortName>
 					<Path>SFX\Mordisco1_DDC98EF4.wem</Path>
 				</File>
+				<File Id="325475089" Language="SFX">
+					<ShortName>whoosh-1.wav</ShortName>
+					<Path>SFX\whoosh-1_DDC98EF4.wem</Path>
+				</File>
 				<File Id="354466126" Language="SFX">
 					<ShortName>Dead.wav</ShortName>
 					<Path>SFX\Dead_DDC98EF4.wem</Path>
+				</File>
+				<File Id="359074099" Language="SFX">
+					<ShortName>Caer.wav</ShortName>
+					<Path>SFX\Caer_DDC98EF4.wem</Path>
+				</File>
+				<File Id="421356454" Language="SFX">
+					<ShortName>smash.wav</ShortName>
+					<Path>SFX\smash_DDC98EF4.wem</Path>
 				</File>
 				<File Id="545300258" Language="SFX">
 					<ShortName>RisaMik1.wav</ShortName>
@@ -204,6 +220,10 @@
 				<File Id="797611864" Language="SFX">
 					<ShortName>RugidoDetectado2.wav</ShortName>
 					<Path>SFX\RugidoDetectado2_DDC98EF4.wem</Path>
+				</File>
+				<File Id="886837217" Language="SFX">
+					<ShortName>Grito(Wooaaah).wav</ShortName>
+					<Path>SFX\Grito(Wooaaah)_DDC98EF4.wem</Path>
 				</File>
 				<File Id="924337238" Language="SFX">
 					<ShortName>RugidoPerseguir.wav</ShortName>
