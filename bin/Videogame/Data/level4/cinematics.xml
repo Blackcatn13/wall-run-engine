@@ -23,12 +23,12 @@
 		<play_animation room="7" layer="animationLayerAux" animated="Piky2" id="17"/>
 		<!--<play_animation room="7" layer="animationLayerAux" animated="Chucky2" id="12"/>
 		<play_animation room="7" layer="animationLayerAux" animated="Chucky3" id="13"/>-->
-		<play_lua_code code=" fade(1)
+		<play_lua_code code=" fade(2);
 							 player_controller.m_is3D = true;
 							 local cam = coreInstance.m_CameraController:get_resource('3DCam');
 							 cam.m_eTypeCamera = 6;
 						     coreInstance.m_CameraController:set_active_camera('3DCam');
-							 start_boss()" atEnd="true"/>
+							 start_boss();" atEnd="true"/>
 	</cinematic_controller>
 	<!--<cinematic_controller name="AngelFallTest">
 		<play_camera name="CameraAngelFall" return="3DCam" block="true"/>
