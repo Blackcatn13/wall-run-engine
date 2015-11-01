@@ -33,11 +33,13 @@
 						local ball = renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room('solid', 10):get_resource('MenuSphere');
 						ball:set_pitch(ball:get_pitch() - (gui_manager:get_dt() / 2));
 						renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room('player', 10):get_resource('Piky'):blend_cycle(1,1,0.5);
+						
 						if enemy.m_RenderableObject:is_action_animation_active() then
 							enemy.m_RenderableObject:remove_action(3)
 						end
 						enemy_manager:get_enemy('Chucky').m_RenderableObject:blend_cycle(1,1,0.5)
-						enemy_manager:get_enemy('Chucky'):move_to_position(Vect3f(-920.75, -1, 0));">
+						enemy_manager:get_enemy('Chucky'):move_to_position(Vect3f(-920.75, -1, 0));
+						enemy_manager:get_enemy('Chucky'):set_yaw(player_controller:get_yaw())">
 	
 	<Image name="buttonsBackground" posx="0.00" posy="0.00" height="100.00" width="100.00" visible="true" active="true" default="img1" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
 		<texture name="img1" name_texture="./Data/GUI/GoPixelGo/GUI_MENU.tga"/>
