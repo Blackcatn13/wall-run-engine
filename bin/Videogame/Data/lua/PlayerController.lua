@@ -190,7 +190,7 @@ function on_update_player_lua(l_ElapsedTime)
 		end
 		
 		if act2in:do_action_from_lua("Extra_life") then
-			player.add_pixeltes(50)
+			player.add_pixelites(50)
 		end
 	
 	

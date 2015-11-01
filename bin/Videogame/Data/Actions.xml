@@ -3,7 +3,7 @@
 	
 		<action name="Extra_life" debug="false">
 	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
-	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="U"/>
+	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="V"/>
 	    </action>
 		
 		<action name="StartBoss" debug="false">
