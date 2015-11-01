@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<Windows OnLoadWindows="check_input_controller_map()"
-         OnSaveWindows=""
+<Windows OnLoadWindows="check_input_controller_map();
+						CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('_Credits','Music');"
+         OnSaveWindows="CCoreLuaWrapper().m_CoreInstance:getWWSoundManager():PlayEvent('_Menu','Music');"
          OnUpdateWindows="">
 		  
   <Image name="ControlsGUIBack" posx="0.00" posy="0.00" height="100" width="100" visible="true" active="true"
