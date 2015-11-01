@@ -27,9 +27,12 @@ class CCinematicController {
   void Execute(const std::string &cinematic);
   void Restart(const std::string &cinematic);
   void RestartAllCinematics();
+  bool m_UpdateLuaFinish;
   bool IsExecuting() {
     return m_executing;
   }
+
+  GET_SET(bool, UpdateLuaFinish)
 };
 
 #endif

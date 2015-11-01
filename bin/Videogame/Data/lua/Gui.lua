@@ -3,6 +3,8 @@ local gui_visible = true
 local black_screen_timer = 0
 local max_count_timer = 3.0
 local original_num_position = gui_manager:get_position_x_element("VidesNumber")
+local cinematic_fade_running = false
+local max_boss_black_screen_time = 2
 
 function update_fading_black_screen()
 	 if gui_manager.m_IsBlackScreenActive then
@@ -21,6 +23,11 @@ function check_input_controller_map()
 end
 
 function onUpdateWindowDisplayGUI()
+	
+	if boss_cinematic_fade then
+		check_boss_fade(max_boss_black_screen_time)
+	end
+	
 	if gui_manager:get_is_displayed_unlock_message() == true then
 			ManagerGUIUnlockMessage();
 		end
@@ -291,6 +298,91 @@ function ManagerGUIUnlockMessage()
 		gui_manager:set_visibility_message(false);
 		gui_manager:set_is_paused(false);
 	end	
+end
+
+function check_cinematic_fade(max_time, max_cinematic_time)
+	cinematic_time = cinematic_time + 1* coreInstance.m_ElapsedTime
+	coreInstance:trace("Cinematic Time:" ..tostring(cinematic_time))
+	if cinematic_time >= max_time and not gui_manager:is_transition_effect_active() and fade_step == 0 then
+		fade(1)
+		cinematic_fade_running = true
+		fade_step = 1
+		coreInstance:trace("Step: 0")
+		cinematic_controller.m_UpdateLuaFinish = true
+	end
+	if fade_step == 1 and gui_manager.m_sTransitionEffect.m_currentState > (gui_manager.m_sTransitionEffect.m_fTransitionTime *0.5) then
+		gui_manager:set_visible_gui_element("BlackScreen", true)
+		fade_step = 2
+	--	coreInstance:trace("Step: 1")
+	elseif not gui_manager:is_transition_effect_active() and fade_step == 2 then
+--		coreInstance:trace("Step: 2")
+		--if not gui_manager.m_IsBlackScreenActive then
+		--	gui_manager.m_IsBlackScreenActive = true	
+		--end
+		--cinematic_time =0
+		--cinematic_controller.m_UpdateLuaFinish = false
+	--	coreInstance:trace("Update finish: " .. tostring(cinematic_controller.m_UpdateLuaFinish))
+	end
+	if cinematic_time >= max_cinematic_time then
+		cinematic_time =0
+		cinematic_controller.m_UpdateLuaFinish = false
+	--	coreInstance:trace("Update finish: " .. tostring(cinematic_controller.m_UpdateLuaFinish))
+	end
+	
+end
+
+function finish_cinematic()
+	--coreInstance:trace("Finish Cinematic")
+	fade_step = 3
+	fade(1)
+	cinematic_fade_done = true
+	player_controller.m_is3D = true;
+	local cam = coreInstance.m_CameraController:get_resource('3DCam');
+	cam.m_eTypeCamera = 6;
+	coreInstance.m_CameraController:set_active_camera('3DCam');
+	cinematic_controller:restart_all_cinematics()
+end
+
+function finish_cinematic_fade()
+--	coreInstance:trace("Step: 3")
+	if gui_manager:is_transition_effect_active() and fade_step == 3 then
+		if gui_manager.m_sTransitionEffect.m_currentState > (gui_manager.m_sTransitionEffect.m_fTransitionTime *0.5) then
+			gui_manager:set_visible_gui_element("BlackScreen", false)
+			fade_step = 0
+			cinematic_time = 0
+			cinematic_fade_done = false
+		end
+	end
+end
+
+function check_boss_fade(max_black_screen_time)
+	
+	if gui_manager:is_transition_effect_active() and fade_step == 0 then
+		if gui_manager.m_sTransitionEffect.m_currentState > (gui_manager.m_sTransitionEffect.m_fTransitionTime *0.5) then
+			fade_step = 1
+			gui_manager:set_visible_gui_element("BlackScreen", true)
+		end
+	elseif fade_step == 1 then
+		fade_time = fade_time + 1* coreInstance.m_ElapsedTime
+		if fade_time >= max_black_screen_time and not gui_manager:is_transition_effect_active() then
+			fade_time = 0
+			fade_step = 2
+			fade(1)
+		end
+	elseif gui_manager:is_transition_effect_active() and fade_step == 2 then
+		if gui_manager.m_sTransitionEffect.m_currentState > (gui_manager.m_sTransitionEffect.m_fTransitionTime *0.5) then
+			fade_step = 3
+			gui_manager:set_visible_gui_element("BlackScreen", false)
+			player_controller.m_is3D = true;
+			local cam = coreInstance.m_CameraController:get_resource('3DCam');
+			cam.m_eTypeCamera = 6;
+			coreInstance.m_CameraController:set_active_camera('3DCam');
+			start_boss()
+		end
+	elseif fade_step == 3 then
+		fade_step = 0
+		boss_cinematic_fade = false
+	end
 end
 
 function GameOver()

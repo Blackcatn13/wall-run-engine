@@ -41,33 +41,59 @@ CRenderableObjectsManager  *CRenderableObjectsLayersManager::GetRenderableObject
 }
 
 void CRenderableObjectsLayersManager::Update(float ElapsedTime) {
-  int l_NextZone = GetNextZone() + 1;
-  if (l_NextZone > m_ResourcesVector.size())
-    l_NextZone = GetNextZone();
-  for (size_t i = GetPreviousZone() ; i < l_NextZone; ++i) {
-    // m_ResourcesVector[i]->Update(ElapsedTime);
-    CTemplatedVectorMapManager<CRenderableObjectsManager> *aux = m_ResourcesVector[i];
-    size_t maxSize = aux->GetSize();
-    std::vector<CRenderableObjectsManager *> resources = aux->GetResourcesVector();
-    for (size_t j = 0; j < maxSize; ++j) {
-      if (resources[j]->GetSize() > 0)
-        resources[j]->  Update(ElapsedTime);
+  if (PLAYC->getRoom() != 7) {
+    int l_NextZone = GetNextZone() + 1;
+    if (l_NextZone > m_ResourcesVector.size())
+      l_NextZone = GetNextZone();
+    for (size_t i = GetPreviousZone() ; i < l_NextZone; ++i) {
+      // m_ResourcesVector[i]->Update(ElapsedTime);
+      CTemplatedVectorMapManager<CRenderableObjectsManager> *aux = m_ResourcesVector[i];
+      size_t maxSize = aux->GetSize();
+      std::vector<CRenderableObjectsManager *> resources = aux->GetResourcesVector();
+      for (size_t j = 0; j < maxSize; ++j) {
+        if (resources[j]->GetSize() > 0)
+          resources[j]->  Update(ElapsedTime);
+      }
+    }
+  } else {
+    int rooms[3] = {6, 7, 0};
+    for (size_t i = 0; i < 3; ++i) {
+      CTemplatedVectorMapManager<CRenderableObjectsManager> *aux = m_ResourcesVector[rooms[i]];
+      size_t maxSize = aux->GetSize();
+      std::vector<CRenderableObjectsManager *> resources = aux->GetResourcesVector();
+      for (size_t j = 0; j < maxSize; ++j) {
+        if (resources[j]->GetSize() > 0)
+          resources[j]->  Update(ElapsedTime);
+      }
     }
   }
 }
 
 void CRenderableObjectsLayersManager::Render(CGraphicsManager *RM) {
-  int l_NextZone = GetNextZone() + 1;
-  if (l_NextZone > m_ResourcesVector.size())
-    l_NextZone = GetNextZone();
-  for (size_t i = GetPreviousZone(); i < GetNextZone(); ++i) {
-    // m_ResourcesVector[i]->Update(ElapsedTime);
-    CTemplatedVectorMapManager<CRenderableObjectsManager> *aux = m_ResourcesVector[i];
-    size_t maxSize = aux->GetSize();
-    std::vector<CRenderableObjectsManager *> resources = aux->GetResourcesVector();
-    for (size_t j = 0; j < maxSize; ++j) {
-      if (resources[j]->GetSize() > 0)
-        resources[j]->Render(RM);
+  if (PLAYC->getRoom() != 7) {
+    int l_NextZone = GetNextZone() + 1;
+    if (l_NextZone > m_ResourcesVector.size())
+      l_NextZone = GetNextZone();
+    for (size_t i = GetPreviousZone(); i < GetNextZone(); ++i) {
+      // m_ResourcesVector[i]->Update(ElapsedTime);
+      CTemplatedVectorMapManager<CRenderableObjectsManager> *aux = m_ResourcesVector[i];
+      size_t maxSize = aux->GetSize();
+      std::vector<CRenderableObjectsManager *> resources = aux->GetResourcesVector();
+      for (size_t j = 0; j < maxSize; ++j) {
+        if (resources[j]->GetSize() > 0)
+          resources[j]->Render(RM);
+      }
+    }
+  } else {
+    int rooms[3] = {6, 7, 0};
+    for (size_t i = 0; i < 3; ++i) {
+      CTemplatedVectorMapManager<CRenderableObjectsManager> *aux = m_ResourcesVector[rooms[i]];
+      size_t maxSize = aux->GetSize();
+      std::vector<CRenderableObjectsManager *> resources = aux->GetResourcesVector();
+      for (size_t j = 0; j < maxSize; ++j) {
+        if (resources[j]->GetSize() > 0)
+          resources[j]->  Render(RM);
+      }
     }
   }
 }
@@ -85,13 +111,23 @@ int CRenderableObjectsLayersManager::GetNextZone() {
 }
 
 void CRenderableObjectsLayersManager::Render(CGraphicsManager *RM, const std::string &LayerName) {
-  int l_NextZone = GetNextZone() + 1;
-  if (l_NextZone > m_ResourcesVector.size())
-    l_NextZone = GetNextZone();
-  for (size_t i = GetPreviousZone(); i < l_NextZone; ++i) {
-    CRenderableObjectsManager *l_managerInstance = m_ResourcesVector[i]->GetResource(LayerName);
-    if (l_managerInstance != NULL && l_managerInstance->GetSize() > 0) {
-      l_managerInstance->Render(RM);
+  if (PLAYC->getRoom() != 7) {
+    int l_NextZone = GetNextZone() + 1;
+    if (l_NextZone > m_ResourcesVector.size())
+      l_NextZone = GetNextZone();
+    for (size_t i = GetPreviousZone(); i < l_NextZone; ++i) {
+      CRenderableObjectsManager *l_managerInstance = m_ResourcesVector[i]->GetResource(LayerName);
+      if (l_managerInstance != NULL && l_managerInstance->GetSize() > 0) {
+        l_managerInstance->Render(RM);
+      }
+    }
+  } else {
+    int rooms[3] = {6, 7, 0};
+    for (size_t i = 0; i < 3; ++i) {
+      CRenderableObjectsManager *l_managerInstance = m_ResourcesVector[rooms[i]]->GetResource(LayerName);
+      if (l_managerInstance != NULL && l_managerInstance->GetSize() > 0) {
+        l_managerInstance->Render(RM);
+      }
     }
   }
 }

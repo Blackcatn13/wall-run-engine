@@ -1,5 +1,11 @@
 <Actions>
 	<globals>
+	
+		<action name="Extra_life" debug="false">
+	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
+	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="U"/>
+	    </action>
+		
 		<action name="StartBoss" debug="false">
 	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
 	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_B"/>
@@ -18,6 +24,11 @@
 	    <action name="Logger" debug="true">
 	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
 	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_F1"/>
+	    </action>
+		
+		 <action name="Activate_Angel" debug="true">
+	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_DOWN"  Code="KEY_LCTRL"/>
+	   	 <input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN"  Code="KEY_A"/>
 	    </action>
 		
 		<action name="LoggerOpen" debug="true">

@@ -22,10 +22,23 @@
 		<play_animation room="7" layer="animationLayerAux" animated="Piky2" id="17"/>
 		<play_animation room="7" layer="animationLayerAux" animated="Chucky2" id="12"/>
 		<play_animation room="7" layer="animationLayerAux" animated="Chucky3" id="13"/>
-		<play_lua_code code="player_controller.m_is3D = true;
-							 local cam = coreInstance.m_CameraController:get_resource('3DCam');
-							 cam.m_eTypeCamera = 6;
-						     coreInstance.m_CameraController:set_active_camera('3DCam');
-							 start_boss()" atEnd="true"/>
+		<play_lua_code code=" cinematic_time = cinematic_time + 1* coreInstance.m_ElapsedTime
+							 if cinematic_time > 15 then
+								fade(1)
+								boss_cinematic_fade = true
+								 cinematic_time = 0
+							end" atEnd="false" at_update="true"/>
 	</cinematic_controller>
+	<!--<cinematic_controller name="AngelFallTest">
+		<play_camera name="CameraAngelFall" return="3DCam" block="true"/>
+		<play_animation room="7" layer="animationLayerAux" animated="Piky2" id="17"/>
+		<play_animation room="7" layer="animationLayerAux" animated="Chucky2" id="12"/>
+		<play_animation room="7" layer="animationLayerAux" animated="Chucky3" id="13"/>
+		<play_lua_code code=" cinematic_time = cinematic_time + 1* coreInstance.m_ElapsedTime
+							 if cinematic_time > 15 then
+								fade(1)
+								boss_cinematic_fade = true
+								 cinematic_time = 0
+							end" atEnd="false" at_update="true"/>
+	</cinematic_controller>-->
 </cinmetaics>

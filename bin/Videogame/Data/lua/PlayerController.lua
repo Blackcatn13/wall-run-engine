@@ -185,6 +185,13 @@ function on_update_player_lua(l_ElapsedTime)
 			start_super_piky(playerRenderable)	
 		end
 		
+		if act2in:do_action_from_lua("Activate_Angel") then
+			activate_angel_animation()	
+		end
+		
+		if act2in:do_action_from_lua("Extra_life") then
+			player.add_pixeltes(50)
+		end
 	
 	
 		if transition_super_piky and not playerRenderable:is_action_animation_active() then

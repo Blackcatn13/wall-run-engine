@@ -58,6 +58,9 @@ last_checkpoint_room = 1
 chucky_boss_layer ="enemies" --enemies / angry
 returned_times = 0
 chucky_able_to_catch = true
+cinematic_time =0 
+boss_cinematic_fade = false
+fade_time = 0
 
 --Animaciones del Player
 --Piky

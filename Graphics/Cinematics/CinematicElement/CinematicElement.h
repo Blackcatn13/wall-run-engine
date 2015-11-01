@@ -11,6 +11,7 @@ class CCinematicElement {
   bool m_block;
   bool m_ended;
   bool m_atEnd;
+
  public:
   CCinematicElement(const CXMLTreeNode &node);
   virtual ~CCinematicElement();

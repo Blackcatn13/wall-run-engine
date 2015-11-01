@@ -90,6 +90,7 @@ void RegisterCinematics() {
     .def("restart", &CCinematicController::Restart)
     .def("restart_all_cinematics",  &CCinematicController::RestartAllCinematics)
     .property("m_executing", &CCinematicController::IsExecuting)
+    .property("m_UpdateLuaFinish", &CCinematicController::getUpdateLuaFinish, &CCinematicController::setUpdateLuaFinish)
   ];
 }
 

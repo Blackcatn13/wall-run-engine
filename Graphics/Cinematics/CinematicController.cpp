@@ -17,7 +17,8 @@
 CCinematicController::CCinematicController()
   : m_FileName("")
   , m_lastElement(0)
-  , m_executing(false) {
+  , m_executing(false),
+    m_UpdateLuaFinish(false) {
 }
 
 CCinematicController::~CCinematicController() {

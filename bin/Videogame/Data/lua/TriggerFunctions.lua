@@ -603,9 +603,14 @@ function init_boss_trigger()
 	cam.m_eTypeCamera = 6;
 	coreInstance.m_CameraController:set_active_camera("3DCam");
 	start_boss()--]]
+	player_controller.m_PhysicController:set_position(Vect3f(55.784378, 1.000000, 0.617737))
 	coreInstance:get_cinematic_controller():execute("AngelFall");
 end
 
+function activate_angel_animation()
+	set_player_room("7", "false")
+	coreInstance:get_cinematic_controller():execute("AngelFallTest");
+end
 function nail_platform(obj_name, layer)
 	--coreInstance:trace("Unsetting kinematic")
 	local platform = get_renderable_object(layer, player_controller.m_Room, obj_name)
