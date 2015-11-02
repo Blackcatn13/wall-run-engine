@@ -38,7 +38,7 @@ function set_screen_menu(model_position, room )
 		--playerRenderableMesh:blend_cycle(1,1,0.5);
 		
 		-- CHUCKY
-		local Chucky = enemy_manager:get_enemy("Chucky");
+		local Chucky = enemy_manager:get_enemy("ChuckyMenu");
 		--Chucky:move_to_position(Vect3f(-922.2, 6, -1.5));
 		--local chucky_renderable = Chucky.m_RenderableObject
 		--chucky_renderable:set_position(Vect3f(-922.2, 10, -1.5));

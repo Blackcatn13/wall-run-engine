@@ -9,6 +9,7 @@
 	<core_enemy type="boss" fsm="ChuckyBoss" controller_size= "1 2" phases="2" life="3" turn_speed="10.0" speed_projectile="20" projectile_life="2.0" cooldown_timer="5" mesh="ChuckyBoss" attack_distance="160" projectile="disparoChucky" projectile_size="2" projectile_return_dist="6"/>
 	
 	<instance_enemy name="Chucky" type="chucky_runner" />
+	<instance_enemy name="ChuckyMenu" type="chucky_runner" />
 	
 	<instance_enemy name="PumPum1" type="pumpum_easy" attack_distance="160" zone="6.0" projectile="disparoPumPum1" />	
 	<instance_enemy name="PumPum2" type="pumpum_easy" attack_distance="160" zone="6.0" projectile="disparoPumPum2" />
