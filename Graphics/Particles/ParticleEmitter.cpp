@@ -46,7 +46,7 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
   , m_FireOnce(node.GetBoolProperty("fire_once", false, false))
   , m_UseSpeed(node.GetBoolProperty("use_speed", true, false))
   , m_FireParticles(false) {
-  m_visible = node.GetBoolProperty("visible", true, false);
+  m_visible = node.GetBoolProperty("visible", false, false);
   m_Name = (node.GetPszISOProperty("name", "", false));
   std::string type = node.GetPszISOProperty("type", "PLANE", false);
   if (type == "ESF")

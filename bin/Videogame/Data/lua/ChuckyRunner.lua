@@ -160,10 +160,12 @@ function chucky_runner_update_jumping(ElapsedTime, doComprobation, name)
 		jumpStart = true
 		if not chucky_falling then
 			local emitter2 = particle_manager:get_resource(chucky_renderable.m_ParticleEmitter2)
+			emitter2:set_visible(true)
 			emitter2.m_vPos = chucky_renderable:get_position()+ chucky_renderable.m_EmitterOffset2
 			emitter2.m_FireParticles = true
 		else
 			local emitter3 = particle_manager:get_resource(chucky_renderable.m_ParticleEmitter3)
+			emitter3:set_visible(true)
 			emitter3.m_vPos = chucky_renderable:get_position()+ chucky_renderable.m_EmitterOffset3
 			emitter3.m_FireParticles = true
 		end

@@ -180,6 +180,7 @@ function fire_mik_summon_particles(mik_name)
 		if position.y > 500 then
 			position.y = position.y -1000
 		end
+		emitter:set_visible(true)
 		emitter.m_vPos = position + enemy.m_RenderableObject.m_EmitterOffset
 		emitter.m_FireParticles = true 
 	end
@@ -449,6 +450,7 @@ function chucky_boss_update_call(ElapsedTime, doComprobation, name)
 			local position = enemy:get_position()
 			local emitter_position = Vect3f(position.x + 1 * vectRight.x, position.y, position.z + 1 * vectRight.z)	
 			local dust_emitter = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter)
+			dust_emitter:set_visible(true)
 			dust_emitter.m_vPos = emitter_position
 			dust_emitter.m_FireParticles = true
 		end

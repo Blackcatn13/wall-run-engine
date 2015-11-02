@@ -139,6 +139,7 @@ function boss_shoot(position, enemy)
 			end
 			local emitter = particle_manager:get_resource(qte_emmiter_name)
 			if emitter ~= nil then
+				emitter:set_visible(true)
 				emitter.m_vPos = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_EmitterOffset
 				emitter.m_FireParticles = true 
 			end
@@ -174,6 +175,7 @@ function shoot_to_vector(dt, position, enemy)
 		-- poner sonido y particulas de disparo	
 		local emitter = particle_manager:get_resource(enemy.m_RenderableObject.m_ParticleEmitter)
 		if emitter ~= nil then
+			emitter:set_visible(true)
 			emitter.m_vPos = enemy.m_RenderableObject:get_position()+ enemy.m_RenderableObject.m_EmitterOffset
 			emitter.m_FireParticles = true 
 		end
@@ -379,6 +381,7 @@ function update_shoot_boss(dt, enemy)
 			if not choca then
 				local dust_emitter = particle_manager:get_resource(renderable_shoot.m_ParticleEmitter)
 				if dust_emitter ~= nil then
+					dust_emitter:set_visible(true)
 					dust_emitter.m_vPos = enemy.m_PosicionBala + renderable_shoot.m_EmitterOffset
 					dust_emitter.m_FireParticles = true
 				end
@@ -410,6 +413,7 @@ function fire_boss_projectile_particles(renderable, enemy, use_offset)
 		else
 			particle_emitter.m_vPos = enemy.m_PosicionBala 
 		end
+		particle_emitter:set_visible(true)
 		particle_emitter.m_FireParticles = true
 	end
 end

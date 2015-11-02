@@ -94,6 +94,7 @@ function deactivate_collectible_by_room (_trigger, layer_name, obj_name, room_nu
 		if emitter2_name ~= "" then
 			local emitter2 = particle_manager:get_resource(emitter2_name)
 			if emitter2 ~= nil then
+				emitter2:set_visible(true)
 				emitter2.m_vPos = object:get_position()
 				emitter2.m_FireParticles = true
 			end
