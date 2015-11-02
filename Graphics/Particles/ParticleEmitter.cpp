@@ -57,6 +57,8 @@ CParticleEmitter::CParticleEmitter(CXMLTreeNode  &node)
     m_Type = EMITTER_ESF1;
   else if (type == "CONE")
     m_Type = EMITTER_CONE;
+  else
+    m_Type = EMITTER_ESF;
 
   InitPool();
   m_TimeNextParticle = mathUtils::RandomFloatRange(m_MinEmissionTime, m_MaxEmissionTime);
@@ -175,7 +177,6 @@ void CParticleEmitter::Update(float dt) {
   DeleteOldParticles(dt);
   if (m_visible && ((m_FireOnce && m_FireParticles) || !m_FireOnce)) {
     m_CurrentTime = m_CurrentTime + dt;
-
     if (m_CurrentTime >= m_TimeNextParticle) {
       int numberOfNewParticles = mathUtils::Min((int)((m_CurrentTime + m_ExcedentTime) / m_TimeNextParticle), (int)m_FreeElements);
       m_ExcedentTime = m_CurrentTime - m_TimeNextParticle * numberOfNewParticles;
@@ -191,6 +192,9 @@ void CParticleEmitter::Update(float dt) {
     if (m_UsedElements > 0) {
       UpdateParticles(dt);
     }
+  }
+  if (m_visible && (m_FireOnce && !m_FireParticles)) {
+    m_visible = false;
   }
 }
 
