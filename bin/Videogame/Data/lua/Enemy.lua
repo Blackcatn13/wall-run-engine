@@ -219,7 +219,9 @@ function update_shoot(dt, enemy)
 			emitter2:set_visible(false)
 		end
 		delete_shooting(renderable_shoot)
-        enemy:add_damage_player();
+		if not cinematic_controller.m_executing and not player.vanishing then
+			enemy:add_damage_player();
+		end
       end
     end
   end

@@ -178,7 +178,7 @@ function Player.new()
 	end
 	
 	function self.player_take_damage(direction)
-		if self.is_hit == false and not self.is_dead then
+		if self.is_hit == false and not self.is_dead and not cinematic_controller.m_executing and not self.vanishing then
 			if (direction.x ~= 0 or direction.y ~= 0 or direction.z ~= 0) and not self.hurt_by_spikes then
 				self.vector_damage = direction
 			end
