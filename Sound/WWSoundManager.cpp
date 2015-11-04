@@ -88,7 +88,7 @@ bool CWWSoundManager::Init() {
   //
 
   AkMemSettings memSettings;
-  memSettings.uMaxNumPools = 50;
+  memSettings.uMaxNumPools = 30;
 
   if ( AK::MemoryMgr::Init( &memSettings ) != AK_Success ) {
     assert( ! "Could not create the memory manager." );
@@ -132,6 +132,8 @@ bool CWWSoundManager::Init() {
   AkPlatformInitSettings platformInitSettings;
   AK::SoundEngine::GetDefaultInitSettings( initSettings );
   AK::SoundEngine::GetDefaultPlatformInitSettings( platformInitSettings );
+  initSettings.uDefaultPoolSize = 128 * 1024 * 1024;
+  platformInitSettings.uLEngineDefaultPoolSize = 128 * 1024 * 1024;
 
   if ( AK::SoundEngine::Init( &initSettings, &platformInitSettings ) != AK_Success ) {
     assert( ! "Could not initialize the Sound Engine." );
