@@ -105,9 +105,13 @@ function check_death_fade()
 		if gui_manager.m_sTransitionEffect.m_currentState > (gui_manager.m_sTransitionEffect.m_fTransitionTime *0.5) then
 			
 			--coreInstance:trace("Fading step 1")
+			
 			gui_manager:set_visible_gui_element("PixeliteGUI",false)
 			gui_manager:set_visible_gui_element("PixeliteNumber",false)
 			gui_manager:set_visible_gui_element("PixeliteNumberShadow",false)
+			gui_manager:set_visible_gui_element("VidesGUI",false)
+			gui_manager:set_visible_gui_element("VidesNumber",false)
+			gui_manager:set_visible_gui_element("VidesNumberShadow",false)
 			gui_manager:set_visible_gui_element("BlackScreen", true)
 			gui_manager:set_visible_gui_element("VidesGUIDeath",true)
 			--gui_manager:set_visible_gui_element("VidesNumberShadowDeath",true)
@@ -119,6 +123,9 @@ function check_death_fade()
 			end
 		end
 	elseif player.is_dead and not gui_manager:is_transition_effect_active() and fade_step == 2 then
+		gui_manager:set_visible_gui_element("PixeliteGUI",false)
+		gui_manager:set_visible_gui_element("PixeliteNumber",false)
+		gui_manager:set_visible_gui_element("PixeliteNumberShadow",false)
 		if gui_manager:get_is_displayed_heart() == false then
 			--gui_manager:set_is_displayed_heart(true);
 			gui_manager.m_IsBlackScreenActive = true
@@ -144,6 +151,9 @@ function check_death_fade()
 			gui_manager:set_visible_gui_element("BlackScreen", false)
 			gui_manager.m_IsBlackScreenActive = false
 			fade_step = 0
+			gui_manager:set_visible_gui_element("VidesGUI",true)
+			gui_manager:set_visible_gui_element("VidesNumber",true)
+			gui_manager:set_visible_gui_element("VidesNumberShadow",true)
 			gui_manager:set_visible_gui_element("PixeliteGUI",true)
 			gui_manager:set_visible_gui_element("PixeliteNumber",true)
 			gui_manager:set_visible_gui_element("PixeliteNumberShadow",true)
@@ -205,13 +215,14 @@ function ManagerGUIHearts()
 	local positionYNum = 53;
 	local textShadowDifference = 0.25;
 	
+	
 	--Vides GUI
 	if pos < positionMin and count == 0.0 then
 		gui_manager:set_position_element("VidesGUI", pos + (65 * gui_manager:get_dt()), positionYGUI);
 		gui_manager:set_position_element("VidesNumber", posPixelitesText + (65 * gui_manager:get_dt()), positionYNum);
 		gui_manager:set_position_element("VidesNumberShadow", posPixelitesText + (65 * gui_manager:get_dt()) + textShadowDifference, positionYNum+textShadowDifference);
 	else
-		if not player.is_dead then
+		--if not player.is_dead then
 			if count >= 3.0 then
 				if pos > positionMax then
 					gui_manager:set_position_element("VidesGUI", pos - (25 * gui_manager:get_dt()), positionYGUI);
@@ -232,13 +243,14 @@ function ManagerGUIHearts()
 					gui_manager:set_count_heart(count + gui_manager:get_dt());
 				end
 			end
-		else
+		--[[else
 			gui_manager:set_position_element("VidesGUI",positionMax , positionYGUI);
 			gui_manager:set_position_element("VidesNumber", original_num_position, positionYNum);
 			gui_manager:set_position_element("VidesNumberShadow",original_num_position + textShadowDifference, positionYNum+textShadowDifference);
 			gui_manager:set_is_displayed_heart(false);
 			gui_manager:set_count_heart(0.0);
-		end
+			
+		end]]
 	end
 end
 

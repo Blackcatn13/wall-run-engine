@@ -1,5 +1,5 @@
 local teleporting = false
-local teleport_timer_modifier = 2 -- 2 Release, 0.5 Debug
+local teleport_timer_modifier = 3-- 2 Release, 0.5 Debug
 function set_teleport_ready(player_position)
 	if (player_controller.m_isAttack == false) and (player.is_hit == false and not player.is_dead) then
 		renderable_objects_layer_manager:change_between_layers(piky_layer, "vanishing", player_controller.m_Room, "Piky")
