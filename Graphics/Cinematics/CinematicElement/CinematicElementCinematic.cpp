@@ -17,10 +17,18 @@ bool CCinematicElementCinematic::Execute() {
 }
 
 bool CCinematicElementCinematic::Update(float dt) {
-  m_cinematic->Update(dt);
-  return m_cinematic->IsPlaying();
+  bool playing = m_cinematic->IsPlaying();
+  if (playing) {
+    m_cinematic->Update(dt);
+    playing = m_cinematic->IsPlaying();
+  }
+  return playing;
 }
 
 CCinematicElementCinematic::~CCinematicElementCinematic() {
   delete m_cinematic;
+}
+
+void CCinematicElementCinematic::Stop() {
+  m_cinematic->ToEnd();
 }

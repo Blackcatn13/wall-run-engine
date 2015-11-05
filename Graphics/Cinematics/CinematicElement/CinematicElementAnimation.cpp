@@ -28,3 +28,7 @@ bool CCinematicElementAnimation::Update(float dt) {
 
 CCinematicElementAnimation::~CCinematicElementAnimation() {
 }
+
+void CCinematicElementAnimation::Stop() {
+  ((CAnimatedInstanceModel *)RENDLM->GetRenderableObjectsManagerByStrAndRoom(m_layer, m_room)->GetResource(m_animatedModel))->RemoveAction(m_animationId);
+}

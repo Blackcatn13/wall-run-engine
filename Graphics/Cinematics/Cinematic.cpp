@@ -26,6 +26,15 @@ void CCinematic::Stop() {
   }
 }
 
+void CCinematic::ToEnd() {
+  m_Playing = false;
+  m_CurrentTime = 0.0;
+  for (size_t i = 0; i < m_CinematicObjects.size(); ++i) {
+    m_CinematicObjects[i]->ToEnd();
+  }
+}
+
+
 void CCinematic::Play(bool Cycle) {
   m_Playing = true;
   m_Cycle = Cycle;

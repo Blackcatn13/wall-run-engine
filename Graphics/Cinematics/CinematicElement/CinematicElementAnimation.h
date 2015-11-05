@@ -15,6 +15,7 @@ class CCinematicElementAnimation : public CCinematicElement {
   virtual ~CCinematicElementAnimation();
   bool Execute();
   bool Update(float dt);
+  void Stop();
  private:
   bool m_played;
   int m_room;

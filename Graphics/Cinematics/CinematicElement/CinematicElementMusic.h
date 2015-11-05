@@ -15,6 +15,7 @@ class CCinematicElementMusic : public CCinematicElement {
   virtual ~CCinematicElementMusic();
   bool Execute();
   bool Update(float dt);
+  void Stop() {}
  private:
   bool m_played;
   std::string m_Event;

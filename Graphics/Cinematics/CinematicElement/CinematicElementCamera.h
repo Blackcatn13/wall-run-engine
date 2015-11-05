@@ -15,6 +15,7 @@ class CCinematicElementCamera : public CCinematicElement {
   bool Execute();
   virtual void restart();
   bool Update(float dt);
+  void Stop();
  private:
   std::string m_cameraName;
   std::string m_returnCamera;

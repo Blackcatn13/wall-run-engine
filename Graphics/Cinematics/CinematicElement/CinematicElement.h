@@ -18,6 +18,7 @@ class CCinematicElement {
   virtual bool Execute() = 0;
   virtual void restart() {m_ended = false; }
   virtual bool Update(float dt) = 0;
+  virtual void Stop() = 0;
   bool atEnd() {return m_atEnd;}
 };
 

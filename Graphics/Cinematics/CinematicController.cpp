@@ -12,6 +12,7 @@
 #include "CinematicElement\CinematicElementMusic.h"
 #include "CinematicElement\CinematicElementAnimation.h"
 #include "CinematicElement\CinematicElementLua.h"
+#include "ActionToInput.h"
 
 
 CCinematicController::CCinematicController()
@@ -85,12 +86,20 @@ bool CCinematicController::Reload(const std::string &FileName) {
 void CCinematicController::Update(float ElapsedTime) {
   if (m_executing) {
     bool aux = false;
-    for (int i = 0; i < m_currentCinematic.size(); ++i) {
-      aux |= m_currentCinematic[i]->Update(ElapsedTime);
+    if (ACT2IN->DoAction("JumpCinematic")) {
+      m_executing = false;
+      for (int i = 0; i < m_currentCinematic.size(); ++i) {
+        m_currentCinematic[i]->Stop();
+      }
+    } else {
+      for (int i = 0; i < m_currentCinematic.size(); ++i) {
+        aux |= m_currentCinematic[i]->Update(ElapsedTime);
+      }
     }
     m_executing = aux;
     if (!m_executing)
       ExecuteAtEnd();
+
   }
 }
 

@@ -15,6 +15,7 @@ class CCinematicElementCinematic : public CCinematicElement {
   virtual ~CCinematicElementCinematic();
   bool Execute();
   bool Update(float dt);
+  void Stop();
  private:
   bool m_played;
   CCinematic *m_cinematic;

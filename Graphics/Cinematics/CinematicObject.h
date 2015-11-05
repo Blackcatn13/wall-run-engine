@@ -27,6 +27,7 @@ class CCinematicObject : public CCinematicPlayer {
   void Stop();
   void OnRestartCycle();
   void CalculateFrame();
+  void ToEnd();
 };
 
 #endif

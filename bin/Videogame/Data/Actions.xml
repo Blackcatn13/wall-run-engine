@@ -406,6 +406,10 @@
 			<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_RETURN"/>
 	    </action>
 
+	    <action name="JumpCinematic">
+	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_RETURN"/>
+	    </action>
+
 	    <action name="TeleportTest1" debug="true">
 	    	<input deviceType="IDV_KEYBOARD" EventType="EVENT_UP_DOWN" Code="KEY_Y"/>
 	    </action>
@@ -468,8 +472,12 @@
 			<input deviceType="IDV_GAMEPAD1" EventType="EVENT_UP_DOWN" Code="PAD_BUTTON_A"/>
 	    </action>
 		
-		 <action name="EnableJump">
+		<action name="EnableJump">
 			<input deviceType="IDV_GAMEPAD1" EventType="EVENT_DOWN_UP" Code="PAD_BUTTON_A"/>
+	    </action>
+
+	    <action name="JumpCinematic">
+	    	<input deviceType="IDV_GAMEPAD1" EventType="EVENT_UP_DOWN" Code="PAD_DPAD_BACK"/>
 	    </action>
 
 	    <action name="TeleportTest1" debug="true">

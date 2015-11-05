@@ -55,3 +55,9 @@ void CCinematicElementCamera::restart() {
   m_ended = false;
   ((CCameraKeyController *)CAMCONTM->GetResource(m_cameraName))->ResetTime(false);
 }
+
+void CCinematicElementCamera::Stop() {
+  CAMCONTM->Stop();
+  CAMCONTM->setActiveCamera(m_returnCamera);
+  m_ended = true;
+}

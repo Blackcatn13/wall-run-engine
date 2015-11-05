@@ -133,3 +133,16 @@ void CCinematicObject::OnRestartCycle() {
   m_CurrentKeyFrame = 0;
   m_NextKeyFrame = 1;
 }
+
+void CCinematicObject::ToEnd() {
+  auto last = m_CinematicObjectKeyFrames.rbegin();
+  m_RenderableObject->SetPosition((*last)->GetPosition());
+  m_RenderableObject->SetScale((*last)->GetScale());
+  m_RenderableObject->SetYaw((*last)->GetYaw());
+  m_RenderableObject->SetPitch((*last)->GetPitch());
+  m_RenderableObject->SetRoll((*last)->GetRoll());
+  m_Playing = false;
+  m_CurrentTime = 0.0;
+  m_CurrentKeyFrame = 0;
+  m_NextKeyFrame = 1;
+}

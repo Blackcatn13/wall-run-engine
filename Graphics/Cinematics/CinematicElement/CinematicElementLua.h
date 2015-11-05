@@ -16,6 +16,7 @@ class CCinematicElementLua : public CCinematicElement {
   bool Execute();
   bool Update(float dt);
   bool m_ExecuteOnUpdate;
+  void Stop() {}
  private:
   bool m_played;
   std::string m_code;

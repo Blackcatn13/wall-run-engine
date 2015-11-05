@@ -21,6 +21,7 @@ class CCinematic : public CRenderableObject, public CCinematicPlayer {
   virtual void Stop();
   virtual void Play(bool Cycle);
   virtual void Pause();
+  void ToEnd();
   std::string LoadXML(const std::string &Filename);
   void AddCinematicObject(CCinematicObject *CinematicObject);
   void Update(float ElapsedTime);
