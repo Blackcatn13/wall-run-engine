@@ -1,4 +1,5 @@
 local teleporting = false
+local teleport_timer_modifier = 2 -- 2 Release, 0.5 Debug
 function set_teleport_ready(player_position)
 	if (player_controller.m_isAttack == false) and (player.is_hit == false and not player.is_dead) then
 		renderable_objects_layer_manager:change_between_layers(piky_layer, "vanishing", player_controller.m_Room, "Piky")
@@ -32,7 +33,7 @@ function vanish_player(name, room)
 		--local player = coreInstance:get_player_controller()
 		local player_renderable = get_renderable_object("vanishing", player_controller.m_Room, "Piky")
 		if (player_renderable.m_Vanishing) then
-			player_renderable.m_Modifier = player_renderable.m_Modifier - 0.5* coreInstance.m_ElapsedTime
+			player_renderable.m_Modifier = player_renderable.m_Modifier - teleport_timer_modifier* coreInstance.m_ElapsedTime
 		--	coreInstance:trace("Alpha Modifier: ".. tostring(player_renderable.m_Modifier))
 			if (player_renderable.m_Modifier <= 0) then
 				if not teleporting then
@@ -64,7 +65,7 @@ function unvanish_player()
 	if teleporting == true then
 		local player_renderable = get_renderable_object("vanishing", player_controller.m_Room, "Piky")
 		if not player_renderable.m_Vanishing then
-			player_renderable.m_Modifier = player_renderable.m_Modifier +0.5*  coreInstance.m_ElapsedTime
+			player_renderable.m_Modifier = player_renderable.m_Modifier +teleport_timer_modifier*  coreInstance.m_ElapsedTime
 			if ( player_renderable.m_Modifier >= 1) then
 				player.can_move = true
 				player_renderable.m_Vanishing = true
