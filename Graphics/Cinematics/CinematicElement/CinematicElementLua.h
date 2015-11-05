@@ -20,6 +20,10 @@ class CCinematicElementLua : public CCinematicElement {
  private:
   bool m_played;
   std::string m_code;
+  float m_time;
+  float m_auxTime;
+  bool m_withTime;
+  bool m_onlyUpdate;
 };
 
 

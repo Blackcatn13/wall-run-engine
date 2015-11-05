@@ -22,6 +22,19 @@ function check_input_controller_map()
 	end
 end
 
+function show_cinematic_jump()
+	gui_manager:set_visible_gui_element("JumpCinematic",true)
+	if inputm:has_game_pad(1) then
+		gui_manager:set_literal_in_static_text("JumpCinematic", "JumpCinematicGamepad")
+	else
+		gui_manager:set_literal_in_static_text("JumpCinematic", "JumpCinematicKeyboard")
+	end
+end
+
+function hide_cinematic_jump()
+	gui_manager:set_visible_gui_element("JumpCinematic",false)
+end
+
 function onUpdateWindowDisplayGUI()
 	
 	if boss_cinematic_fade then

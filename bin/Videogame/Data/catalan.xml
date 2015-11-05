@@ -16,5 +16,6 @@
  <literal id="MaxVelocidadOndulacion" font="arial" color="0 0 0 0.9" value="Velocitat Ondulacio 1"/>
  <literal id="MinVelocidadOndulacion" font="arial" color="0 0 0 0.9" value="Velocitat Ondulacio 2"/>
  <literal id="Texture" font="arial" color="0 0 0 0.9" value="Prem Ok per canviar la textura"/>
-
+ <literal id="JumpCinematicKeyboard" font="GUI" color="0.0 0.0 0.0" value="Press Enter to jump cinematic"/>
+ <literal id="JumpCinematicGamepad" font="GUI" color="0.0 0.0 0.0" value="Press Back to jump cinematic"/>
 </Language>

@@ -7,15 +7,24 @@
 		<play_audio name="StartBackground" actor="Music" atEnd="true"/>
 		<play_animation room="0" layer="animationLayerAux" animated="Piky1" id="16"/>
 		<play_animation room="0" layer="animationLayerAux" animated="Chucky1" id="11"/>
+		<play_lua_code code="show_cinematic_jump();"/>
 		<play_lua_code code="renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room('player', player_controller.m_Room):get_resource(piky_mesh_name):set_visible(true);
 			renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room('animationLayerAux', 0):get_resource('Chucky1'):set_visible(false);
 			renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room('animationLayerAux', 0):get_resource('Piky1'):set_visible(false);" atEnd="true"/>
+		<play_lua_code code="hide_cinematic_jump();" atEnd="true"/>
+		<play_lua_code code="hide_cinematic_jump();" withTime="true" atTime="6.0" onlyUpdate="true"/>
 	</cinematic_controller>
 	<cinematic_controller name="Door">
 		<play_camera name="CameraEnemies" return="3DCam" block="true"/>
+		<play_lua_code code="show_cinematic_jump();"/>
+		<play_lua_code code="hide_cinematic_jump();" atEnd="true"/>
+		<play_lua_code code="hide_cinematic_jump();" withTime="true" atTime="6.0" onlyUpdate="true"/>
 	</cinematic_controller>
 	<cinematic_controller name="PuzzleRoom">
 		<play_camera name="CameraSwitch" return="3DCam" block="true"/>
+		<play_lua_code code="show_cinematic_jump();"/>
+		<play_lua_code code="hide_cinematic_jump();" atEnd="true"/>
+		<play_lua_code code="hide_cinematic_jump();" withTime="true" atTime="6.0" onlyUpdate="true"/>
 	</cinematic_controller>
 	<cinematic_controller name="AngelFall">
 		<play_audio name="Animation2" actor="Music"/>
@@ -23,6 +32,9 @@
 		<play_animation room="7" layer="animationLayerAux" animated="Piky2" id="17"/>
 		<!--<play_animation room="7" layer="animationLayerAux" animated="Chucky2" id="12"/>
 		<play_animation room="7" layer="animationLayerAux" animated="Chucky3" id="13"/>-->
+		<play_lua_code code="show_cinematic_jump();"/>
+		<play_lua_code code="hide_cinematic_jump();" atEnd="true"/>
+		<play_lua_code code="hide_cinematic_jump();" withTime="true" atTime="6.0" onlyUpdate="true"/>
 		<play_lua_code code=" fade(2);
 							 player_controller.m_is3D = true;
 							 local cam = coreInstance.m_CameraController:get_resource('3DCam');

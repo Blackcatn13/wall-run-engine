@@ -356,6 +356,7 @@ void RegisterManagers() {
     .def("set_render_prev_windows", &CGUIManager::SetRenderPrevWindows)
     .def("is_transition_effect_active", &CGUIManager::IsTransitionEffectActive)
     .def("set_transition_effect_active", &CGUIManager::SetTransitionEffectActive)
+    .def("set_literal_in_static_text", &CGUIManager::SetLiteralInStaticText)
     .property("m_sCurrentWindows", &CGUIManager::GetCurrentWindow)
     .property("m_sTransitionEffect", &CGUIManager::GetTransitionEffect, &CGUIManager::SetTransitionEffect)
     .property("m_IsBlackScreenActive", &CGUIManager::IsBlackScreenActive, &CGUIManager::SetBlackScreenActive)

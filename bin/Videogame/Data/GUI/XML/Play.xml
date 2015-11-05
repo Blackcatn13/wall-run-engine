@@ -121,4 +121,6 @@
          default="Gameover" OnLoadValue="" OnSaveValue="" flip="" backGround="false">
     <texture name="Gameover" name_texture="./Data/GUI/GoPixelGo/GAMEOVER.tga"/>
   </Image>
+
+  <StaticText name="JumpCinematic" posx="30" posy="90" heigth="40" widht="100" visible="false" active="true" Literal="JumpCinematicKeyboard"/>
 </Windows>
