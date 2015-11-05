@@ -342,7 +342,7 @@ function reset_game()
 		boss.m_Lifes = boss.m_OriginalLifes
 		boss.m_BossRunning = false
 	--end
-	boss_dead = false
+	--boss_dead = false
 	get_renderable_object("animationLayerAux",7, "Piky2"):set_visible(false)
 end
 

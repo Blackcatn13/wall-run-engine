@@ -540,19 +540,20 @@ function chucky_boss_enter_dead(name)
 		enemy.m_RenderableObject:execute_action(8,0.1,0,1,false)
 		sound_manager:PlayEvent("Chucky_Dead","ChuckyBoss");
 	end	
+	boss_dead = true
 end
 
 function chucky_boss_exit_dead(name)
-	boss_dead = false
+
 end
 
 function chucky_boss_update_dead(ElapsedTime, doComprobation, name)
 	local enemy = enemy_manager:get_enemy(name)
 	if (enemy ~= nil) then
-		if not enemy.m_RenderableObject:is_action_animation_active() and not boss_dead then
+		if not enemy.m_RenderableObject:is_action_animation_active() and boss_dead then
 			CCoreLuaWrapper().m_CoreInstance:getGUIManager():push_windows('Succeed.xml')
 			-- Llamar al fin de demo /cinematica final
-			boss_dead = true
+			boss_dead = false
 		end
 	end
 end
