@@ -10,7 +10,7 @@
 	<default_technique vertex_type="2048" technique="DrawQuadSolidTechnique"/>
 	
 	<effect name="BasicEffect" file="data/effects/BasicEffect.fxc"/>
-	<effect name="TextureEffect" file="data/effects/Texture.fxc"/>
+	<effect name="TextureEffect" file="data/effects/Texture.fx"/>
 	<effect name="LightsEffect" file="data/effects/Lights.fxc"/>
 	<effect name="NormalMapEffect" file="data/effects/NormalMapEffect.fxc"/>
 	<effect name="CubeMapEffect" file="data/effects/CubeMap.fxc"/>

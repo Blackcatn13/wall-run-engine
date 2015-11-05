@@ -410,13 +410,15 @@ function fire_boss_projectile_particles(renderable, enemy, use_offset)
 	local offsets = {renderable.m_EmitterOffset2, renderable.m_EmitterOffset3} 
 	for i = 1 , table.getn(projectile_particles) do
 		local particle_emitter = particle_manager:get_resource(projectile_particles[i])
-		if use_offset then
-			particle_emitter.m_vPos = enemy.m_PosicionBala + offsets[i]
-		else
-			particle_emitter.m_vPos = enemy.m_PosicionBala 
+		if particle_emitter ~= nil then
+			if use_offset then
+				particle_emitter.m_vPos = enemy.m_PosicionBala + offsets[i]
+			else
+				particle_emitter.m_vPos = enemy.m_PosicionBala 
+			end
+			particle_emitter:set_visible(true)
+			particle_emitter.m_FireParticles = true
 		end
-		particle_emitter:set_visible(true)
-		particle_emitter.m_FireParticles = true
 	end
 end
 

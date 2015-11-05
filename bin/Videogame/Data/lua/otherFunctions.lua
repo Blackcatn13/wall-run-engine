@@ -337,10 +337,12 @@ function reset_game()
 	boss_miks_killed = 0
 	local boss = enemy_manager:get_enemy(boss_mesh_name)
 	boss.m_RenderableObject:set_visible(false)
-	if boss.m_BossRunning then
+	--if boss.m_BossRunning then
 		boss.m_Phases = boss.m_OriginalPhases
 		boss.m_Lifes = boss.m_OriginalLifes
 		boss.m_BossRunning = false
-	end
+	--end
+	boss_dead = false
+	get_renderable_object("animationLayerAux",7, "Piky2"):set_visible(false)
 end
 

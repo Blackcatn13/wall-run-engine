@@ -513,7 +513,7 @@
 		 direction="0 0 1" time_out="3" speed="20" light="" activation_distance="15"/>
 	<platform name="PLAT POLY006" core="PLAT POLY006" type="poly" pos="197.868835 32.188210 -650.429504" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.55695 0.275734 2.44058" layer="poly" room="7" final_position="197.869 32.188 -645.77"
 		 direction="0 0 1" time_out="3" speed="20" light="" activation_distance="15"/>
-	<platform name="PLAT POLY012" core="PLAT POLY012" type="poly" pos="163.207336 32.188210 -650.316284" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="9.2873 0.275734 2.44058" layer="poly" room="7" final_position="163.207336 32.188210 -646.051"
+	<platform name="PLAT POLY012" core="PLAT POLY012" type="poly" pos="163.207336 31.988210 -650.316284" yaw="0.0" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="9.2873 0.275734 2.44058" layer="poly" room="7" final_position="163.207336 32.188210 -646.051"
 		 direction="0 0 1" time_out="5" speed="20" light="" activation_distance="15"/>
 	
 	<platform name="PLATAFORMA008" core="PLATAFORMA008" type="breakable" pos="59.994633 31.859566 -646.001892" yaw="1.74846e-007" pitch="0.0" roll="0.0" scale="1.0 1.0 1.0" visible="true" phisic_size="3.55695 0.275734 2.44058" layer="breakable" room="7" trigger_name="TriggerBreak_Sala7Platf008"  emitter="DustPlatformFallingEmitter2-1" emitter2="DustPlatformFallingEmitter2-2" emitter3="DustPlatformFallingEmitter2-3" emitter4="DustPlatformFallingEmitter2-4"/>
