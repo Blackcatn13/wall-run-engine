@@ -21,11 +21,9 @@ struct PARTICLEIN
 
 PSVertex VS(PARTICLEIN IN) {
 	PSVertex OUT = (PSVertex)0;
-<<<<<<< HEAD
+
 	if (IN.params.y > 0 && IN.params.x < 6.1 && IN.params.x > 0) {
-=======
-	if (IN.params.y > 0 && IN.params.x < 6.1) {
->>>>>>> origin/master
+
 		float3 rightVector = normalize(float3(g_ViewMatrix[0][0], g_ViewMatrix[1][0], g_ViewMatrix[2][0]));
 		float3 upVector = normalize(float3(g_ViewMatrix[0][1], g_ViewMatrix[1][1], g_ViewMatrix[2][1]));
 		float3 viewVector = normalize(float3(g_ViewMatrix[0][2], g_ViewMatrix[1][2], g_ViewMatrix[2][2]));
