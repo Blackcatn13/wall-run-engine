@@ -33,6 +33,13 @@ boss_projectile_returned_by_chucky = false
 --Collectible variables
 CollectibleVisibleName = ""
 
+--cinematic particles
+--start_cinematic_particles = {particle_manager:get_resource("DustCinematicEmitter"), particle_manager:get_resource("DustCinematicEmitter2"), particle_manager:get_resource("DustCinematicEmitter3"),
+-- particle_manager:get_resource("DustCinematicEmitter4"), particle_manager:get_resource("DustCinematicEmitter5"), particle_manager:get_resource("DustCinematicBigEmitter"), 
+-- particle_manager:get_resource("DustCinematicBigEmitter2"), particle_manager:get_resource("DustCinematicBigEmitter3"), particle_manager:get_resource("DustCinematicBigEmitter4")}
+start_cinematic_particles = {particle_manager:get_resource("DustCinematicBigEmitter"), particle_manager:get_resource("DustCinematicBigEmitter2"), particle_manager:get_resource("DustCinematicBigEmitter3"), particle_manager:get_resource("DustCinematicBigEmitter4")}
+start_cinematic_particles_shot = {particle_manager:get_resource("DustCinematicBigEmitter_Once"), particle_manager:get_resource("DustCinematicBigEmitter2_Once"), particle_manager:get_resource("DustCinematicBigEmitter3_Once"), particle_manager:get_resource("DustCinematicBigEmitter4_Once")}
+
 --Variables de Control
 first_time_main_menu = true
 chuky_last_room = 0;

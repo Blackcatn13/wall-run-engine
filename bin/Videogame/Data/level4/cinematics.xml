@@ -13,6 +13,9 @@
 			renderable_objects_layer_manager:get_renderable_objects_manager_by_str_and_room('animationLayerAux', 0):get_resource('Piky1'):set_visible(false);" atEnd="true"/>
 		<play_lua_code code="hide_cinematic_jump();" atEnd="true"/>
 		<play_lua_code code="hide_cinematic_jump();" withTime="true" atTime="6.0" onlyUpdate="true"/>
+		<play_lua_code code="show_cinematic_particles(start_cinematic_particles, true);" withTime="true" atTime="78.5" onlyUpdate="true" print_time="false"/>
+		<play_lua_code code="show_cinematic_particles(start_cinematic_particles, false);
+							fire_cinematic_particles(start_cinematic_particles_shot)" withTime="true" atTime="81" onlyUpdate="true" print_time="false"/>
 	</cinematic_controller>
 	<cinematic_controller name="Door">
 		<play_camera name="CameraEnemies" return="3DCam" block="true"/>

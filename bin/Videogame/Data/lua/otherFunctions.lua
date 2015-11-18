@@ -2,6 +2,20 @@
 --local physx_manager = coreInstance:get_phisics_manager()
 math.randomseed( os.time() )
 math.random(); math.random(); math.random()
+function show_cinematic_particles(particle_emitters, visible)
+	if (visible and not particle_emitters[1]:get_visible()) or not visible then
+		set_emitters_visible(particle_emitters, visible)
+	end
+end
+
+function fire_cinematic_particles(array_emitters)
+	for i =1, table.getn(array_emitters) do
+		if array_emitters[i] ~= nil then
+			array_emitters[i]:set_visible(true)
+			array_emitters[i].m_FireParticles = true
+		end
+	end
+end
 
 function fade(fade_time)
 	gui_manager:start_fade(fade_time)

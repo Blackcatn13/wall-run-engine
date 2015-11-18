@@ -14,6 +14,7 @@ CCinematicElementLua::CCinematicElementLua(const CXMLTreeNode &node)
     m_ExecuteOnUpdate(node.GetBoolProperty("at_update", false)),
     m_time(node.GetFloatProperty("atTime", 0.0f)),
     m_onlyUpdate(node.GetBoolProperty("onlyUpdate", false)),
+    m_printTime(node.GetBoolProperty("print_time", false)),
     m_auxTime(0.0f) {
 }
 
@@ -26,6 +27,11 @@ bool CCinematicElementLua::Execute() {
 bool CCinematicElementLua::Update(float dt) {
   if (m_withTime) {
     m_auxTime += dt;
+    if (m_printTime) {
+      std::stringstream ss;
+      ss << m_auxTime;
+      CCORE->Trace(ss.str());
+    }
     if (m_auxTime >= m_time) {
       SCRIPTM->RunCode(m_code);
       m_auxTime = 0;
