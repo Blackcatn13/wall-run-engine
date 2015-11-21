@@ -88,7 +88,7 @@ bool CWWSoundManager::Init() {
   //
 
   AkMemSettings memSettings;
-  memSettings.uMaxNumPools = 50;
+  memSettings.uMaxNumPools = 100;
 
   if ( AK::MemoryMgr::Init( &memSettings ) != AK_Success ) {
     assert( ! "Could not create the memory manager." );
@@ -100,11 +100,14 @@ bool CWWSoundManager::Init() {
   // that you can override the default streaming manager with your own. Refer
   // to the SDK documentation for more information.
   //
+  AkDeviceSettings deviceSettings;
+  AK::StreamMgr::GetDefaultDeviceSettings(deviceSettings);
 
   AkStreamMgrSettings stmSettings;
   AK::StreamMgr::GetDefaultSettings( stmSettings );
 
   // Customize the Stream Manager settings here.
+  stmSettings.uMemorySize = 2 * deviceSettings.uGranularity * 300;
 
   if ( !AK::StreamMgr::Create( stmSettings ) ) {
     assert( ! "Could not create the Streaming Manager" );
@@ -116,9 +119,6 @@ bool CWWSoundManager::Init() {
   // Note that you can override the default low-level I/O module with your own. Refer
   // to the SDK documentation for more information.
   //
-  AkDeviceSettings deviceSettings;
-  AK::StreamMgr::GetDefaultDeviceSettings( deviceSettings );
-
   // Customize the streaming device settings here.
   m_lowLevelIO = new CAkDefaultIOHookBlocking();
   // CAkFilePackageLowLevelIOBlocking::Init() creates a streaming device
@@ -132,6 +132,9 @@ bool CWWSoundManager::Init() {
   AkPlatformInitSettings platformInitSettings;
   AK::SoundEngine::GetDefaultInitSettings( initSettings );
   AK::SoundEngine::GetDefaultPlatformInitSettings( platformInitSettings );
+
+  initSettings.uDefaultPoolSize = 4 * 1024 * 1024;
+  platformInitSettings.uLEngineDefaultPoolSize = 10 * 1024 * 1024;
 
   if ( AK::SoundEngine::Init( &initSettings, &platformInitSettings ) != AK_Success ) {
     assert( ! "Could not initialize the Sound Engine." );
