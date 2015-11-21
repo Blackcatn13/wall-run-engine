@@ -24,6 +24,8 @@ class CCinematicElementLua : public CCinematicElement {
   float m_auxTime;
   bool m_withTime;
   bool m_onlyUpdate;
+  bool m_printTime;
+
 };
 
 
