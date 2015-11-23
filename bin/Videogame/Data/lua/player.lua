@@ -135,6 +135,7 @@ function Player.new()
 		if self.count_pixelites >= 50 then
 			self.extra_life()
 			self.count_pixelites = self.count_pixelites -50
+			coreInstance:getWWSoundManager():PlayEvent("New_Life", "Music");
 		end
 		--self.coreInstance:trace("Pixelite value: "..tostring(inc_pixelites))
 		--self.coreInstance:trace("Num Pixelites: "..tostring(self.pixelites))

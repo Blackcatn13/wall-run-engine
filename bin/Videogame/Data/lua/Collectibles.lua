@@ -26,7 +26,7 @@ function get_pixelite(pixelite_name, value)
 	if trigger.m_IsSwitched == false then
 		player.add_pixelites(tonumber(value))
 		deactivate_collectible(trigger,"collectible", pixelite_name)
-		
+		coreInstance:getWWSoundManager():PlayEvent("Pixelite", "Music");
 		gui_manager:set_is_displayed_pixelite(true);
 		gui_manager:set_count_pixelite(0.0);
 		gui_manager:set_num_pixelite(tonumber(player.pixelites));

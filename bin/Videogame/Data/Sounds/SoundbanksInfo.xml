@@ -90,6 +90,8 @@
 				<Event Id="3833651337" Name="Jump"/>
 				<Event Id="3711598968" Name="MenuClick"/>
 				<Event Id="4276387422" Name="MenuOver"/>
+				<Event Id="1488033030" Name="New_Life"/>
+				<Event Id="2487657813" Name="Pixelite"/>
 				<Event Id="1977787639" Name="Poly"/>
 				<Event Id="3876639966" Name="SwitchActivate"/>
 				<Event Id="530129416" Name="Teleport"/>
@@ -103,6 +105,10 @@
 				<File Id="77686774" Language="SFX">
 					<ShortName>SonidoAux1.wav</ShortName>
 					<Path>SFX\SonidoAux1_DDC98EF4.wem</Path>
+				</File>
+				<File Id="280062512" Language="SFX">
+					<ShortName>vida_extra.wav</ShortName>
+					<Path>SFX\vida_extra_DDC98EF4.wem</Path>
 				</File>
 				<File Id="347696487" Language="SFX">
 					<ShortName>Fireplace-SoundBible.com-127901833.wav</ShortName>
@@ -127,6 +133,10 @@
 				<File Id="830485670" Language="SFX">
 					<ShortName>Teletransporte.wav</ShortName>
 					<Path>SFX\Teletransporte_DDC98EF4.wem</Path>
+				</File>
+				<File Id="880391914" Language="SFX">
+					<ShortName>pixelite.wav</ShortName>
+					<Path>SFX\pixelite_DDC98EF4.wem</Path>
 				</File>
 				<File Id="888564004" Language="SFX">
 					<ShortName>door_002.wav</ShortName>
